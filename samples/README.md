@@ -10,6 +10,7 @@
 | [B](B/article.zh.md) · [EN](B/article.en.md) | 世界史 | 拆掉水泵把手，宽街的霍乱就停了吗？ | 如何纠错 | 2668 字 · 约 8 分钟 | 2272 words · ~11 min | 20 / 2 | 37 KB | 0 | 23 |
 | [C](C/article.zh.md) · [EN](C/article.en.md) | 中国近现代 | 快要毕业时，一百个留学生被叫回国 | 不确定下决策（项目中途如何评估） | 2534 字 · 约 8 分钟 | 2192 words · ~11 min | 23 / 3 | 39 KB | 0 | 17 |
 | [D](D/article.zh.md) · [EN](D/article.en.md) | 美国史 | 欠饷是真的，匿名信也是真的：华盛顿在纽堡站在哪里 | 如何传达坏消息 | 2554 字 · 约 8 分钟 | 2002 words · ~10 min | 17 / 3 | 36 KB | 0 | 14 |
+| [E](E/article.zh.md) · [EN](E/article.en.md) | 中国近现代 | 没有调查，没有发言权：这句话原本要求什么（Claude 撰写，非 Hermes 生成） | 相信谁 | 2605 字 · 约 8 分钟 | 1898 words · ~9 min | 24 / 1 | 34 KB | 0 | 0 |
 
 - 阅读时间是估算：中文 320 字/分、英文 200 词/分，均不含出处与延伸阅读。
 - 中文四篇都在 2,500–2,700 字，比 2,800 字的参考下限略短，约 8 分钟。按要求没有为凑字数扩写；若两位读者实读明显短于十分钟，再补有依据的背景。
@@ -33,6 +34,7 @@
 | B | 601 s | 4_expand_zh 156s (24→12 KB) · 5_review_zh 171s (25→5 KB) · 6_en_long 141s (26→16 KB, invalid JSON) · 6b_en_long_retry 202s (26→16 KB, invalid JSON) | 670 s |
 | C | 554 s | 4_expand_zh 245s (24→12 KB) · 5_review_zh 220s (24→6 KB) · 6_en_long 203s (25→16 KB) | 668 s |
 | D | 447 s | 4_expand_zh 217s (20→12 KB, invalid JSON) · 4b_expand_zh_retry 111s (21→13 KB) · 5_review_zh 135s (23→4 KB) · 6_en_long 149s (24→16 KB) | 612 s |
+| E | — | provider refused (MiMo: “rejected because it was considered high risk”, 2 calls × ~6 s); written by Claude from the evidence pack | — |
 
 无效 JSON 都没有手工修 JSON：两次是括号错位，靠自动重试解决；一次是结尾多余逗号，靠解析回退修复。
 
