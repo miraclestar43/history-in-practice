@@ -1,0 +1,106 @@
+{
+ "candidate_id": "attempt-1",
+ "editor": "hermes-isolated editor (prompts/edit_zh_en.md)",
+ "code_rev": "a61c045",
+ "started_at": 1793378195.3713434,
+ "evidence_sha256": "87639667ec75bbc8d4aa62dad58182f479793eeec24ba472cd06d015a19571cf",
+ "original_content_sha256": "126498622b3d7c9b4ae32da12e377d6a6ca408d59515e23b77f6256dd0f2da43",
+ "rounds": [
+  {
+   "round": 0,
+   "issues_in": [],
+   "review_after": {
+    "issues": [
+     {
+      "section": "story",
+      "para": 1,
+      "severity": "note",
+      "problem": "“为了显示他的看法多年没有改变，莱尔和胡克选了第二份材料”把选择动机写成了史实；证据只说这份摘要“shows that these remained unaltered from 1839 to 1857”，没有说明他们选材的动机",
+      "suggestion": "改为“这份材料显示他的看法从1839年到1857年没有改变”或加“作者认为”"
+     },
+     {
+      "section": "story",
+      "para": 6,
+      "severity": "note",
+      "problem": "“信中把三份材料按日期排列”是作者的概括，信里只是编号列出1、2、3（恰好时间递进），并未说明按日期排列",
+      "suggestion": "改为“信中依次列出三份材料，先后与日期递进一致”或删去“按日期排列”"
+     },
+     {
+      "section": "analysis",
+      "para": 1,
+      "severity": "fix",
+      "problem": "“他们给出的回答是：算，但要公开兑现”把作者的解释写成了莱尔和胡克的表态；信中没有说“想到而不发表算占住位置”这类话",
+      "suggestion": "改为“作者把他们的做法概括为：算，但要公开兑现”"
+     },
+     {
+      "section": "analysis",
+      "para": 0,
+      "severity": "note",
+      "problem": "“莱尔和胡克关于两人互不知情的说法”表述可，但“而且论文是他自己寄出的”仅见于“sent to him with the expressed wish”，即华莱士寄给达尔文并附言，与“转交莱尔”并非同一动作，措辞易混",
+      "suggestion": "改为“论文由他寄给达尔文，并附言请达尔文视情况转给莱尔”"
+     },
+     {
+      "section": "hook",
+      "para": 0,
+      "severity": "note",
+      "problem": "“两位皇家学会会员”中胡克的头衔原文为V.P.R.S.（皇家学会副会长）与F.L.S.，未直接写F.R.S.；作会员解可通，但严格说头衔证据只明写莱尔为F.R.S.",
+      "suggestion": "改为“莱尔与胡克（后者时任皇家学会副会长）”或直接用姓名"
+     }
+    ],
+    "unsupported_claims": [
+     "为了显示他的看法多年没有改变，莱尔和胡克选了第二份材料（选材动机未见于证据）",
+     "他们给出的回答是：算，但要公开兑现（信中无此表述，属作者解释）"
+    ],
+    "invented_inner_life": [],
+    "quote_mismatches": [],
+    "overall": "事实核对基本准确，日期、数字、引语与归属均与证据相符，唯个别处把作者解释或概括写成了史实或当事人的表态，需加标注或改写。",
+    "_content_sha256": "126498622b3d7c9b4ae32da12e377d6a6ca408d59515e23b77f6256dd0f2da43"
+   },
+   "parity_after": {
+    "issues": [
+     {
+      "path": "sections.story.6",
+      "severity": "fix",
+      "problem": "The English adds a quoted essay title from the 1877 sketch — \"On the Tendency of Species to form Varieties, and on the Perpetuation of Species and Varieties by means of Natural Selection\" — which has no counterpart in the Chinese text; the Chinese only reports the date, the transmission through Lyell, and the reading alongside Darwin's paper.",
+      "suggestion": "Add the essay title quoted in the sketch to the Chinese sentence (e.g. 小传给出的标题是《论物种形成变种的倾向，以及物种与变种借自然选择得以延续》), or delete the title clause from the English."
+     },
+     {
+      "path": "reflection.scenario",
+      "severity": "note",
+      "problem": "Chinese says the journal requires 先定下署名方式 (how authorship is to be assigned), while English narrows this to \"the order of the names\".",
+      "suggestion": "Align one with the other, e.g. Chinese 署名顺序 (order of the names) to match the English and the later alternative field."
+     }
+    ],
+    "overall": "The two editions match closely in facts, dates and attributions, with one content gap: the English carries a quoted essay title from the 1877 sketch that the Chinese omits.",
+    "_content_sha256": "126498622b3d7c9b4ae32da12e377d6a6ca408d59515e23b77f6256dd0f2da43"
+   },
+   "checker_after": [],
+   "content_sha256_after": "126498622b3d7c9b4ae32da12e377d6a6ca408d59515e23b77f6256dd0f2da43"
+  }
+ ],
+ "final_content_sha256": "126498622b3d7c9b4ae32da12e377d6a6ca408d59515e23b77f6256dd0f2da43",
+ "remaining": [
+  {
+   "id": "R1",
+   "source": "review",
+   "severity": "fix",
+   "where": "analysis.1",
+   "problem": "“他们给出的回答是：算，但要公开兑现”把作者的解释写成了莱尔和胡克的表态；信中没有说“想到而不发表算占住位置”这类话",
+   "suggestion": "改为“作者把他们的做法概括为：算，但要公开兑现”"
+  },
+  {
+   "id": "P2",
+   "source": "parity",
+   "severity": "fix",
+   "where": "sections.story.6",
+   "problem": "The English adds a quoted essay title from the 1877 sketch — \"On the Tendency of Species to form Varieties, and on the Perpetuation of Species and Varieties by means of Natural Selection\" — which has no counterpart in the Chinese text; the Chinese only reports the date, the transmission through Lyell, and the reading alongside Darwin's paper.",
+   "suggestion": "Add the essay title quoted in the sketch to the Chinese sentence (e.g. 小传给出的标题是《论物种形成变种的倾向，以及物种与变种借自然选择得以延续》), or delete the title clause from the English."
+  }
+ ],
+ "final_reviewed": true,
+ "outcome": "pending_review",
+ "model_calls": 2,
+ "model_wall_s": 191.7,
+ "edits_total": 0,
+ "finished_at": 1793378387.0945394
+}

@@ -1,0 +1,145 @@
+{
+ "candidate_id": "attempt-1",
+ "editor": "hermes-isolated editor (prompts/edit_zh_en.md)",
+ "code_rev": "a61c045",
+ "started_at": 1793376725.2099898,
+ "evidence_sha256": "2f27ceea809585428ca2a3b87c7d998573be856048dcd64f6dddadf0b8b2cfcf",
+ "original_content_sha256": "96210bc1ea13064cbf914b2e02849e3f34252bee0ee299e8b5a751abda74f1c5",
+ "rounds": [
+  {
+   "round": 0,
+   "issues_in": [],
+   "review_after": {
+    "issues": [
+     {
+      "section": "story",
+      "para": 0,
+      "severity": "note",
+      "problem": "'用他的原话，负担不起多余的重量'把译写概述当作原文引语；原文是 'We could not afford to cumber ourselves with unnecessary weight'，中文是转述而非逐字引语",
+      "suggestion": "删掉'用他的原话'，或改为'大意是负担不起多余的重量'"
+     },
+     {
+      "section": "story",
+      "para": 1,
+      "severity": "note",
+      "problem": "证据标签 S-E4（两磅上限）与本段内容无关；本段（金币、照片、圣经扉页）只见于 S-E5",
+      "suggestion": "ev 只留 S-E5"
+     },
+     {
+      "section": "story",
+      "para": 6,
+      "severity": "note",
+      "problem": "'下午开路顺利得多'中的'下午'在 S-E14 里没有记载，只是由 S-E13 '午饭后拔营'推出的顺序",
+      "suggestion": "删去'下午'，改为'拔营之后开路顺利得多'"
+     },
+     {
+      "section": "story",
+      "para": 6,
+      "severity": "note",
+      "problem": "'十几个人'对应原文 'a dozen men'（十二人），'十几'在中文里范围偏大且易被读成多于十二",
+      "suggestion": "改为'十二个人'"
+     },
+     {
+      "section": "story",
+      "para": 10,
+      "severity": "note",
+      "problem": "S-E16（挪两条船）在原文位于'最后的行军'一节，是否即搬往海洋营那次挪船证据未明说；稿件把它排在扎营之后并写成'挪过去'，是顺序推断",
+      "suggestion": "改为'据他记述，挪两条船费尽了力气'，不指明与扎营的先后"
+     },
+     {
+      "section": "story",
+      "para": 13,
+      "severity": "note",
+      "problem": "ev 标了 S-E7，但'耐心营、将近三个半月'只见于 S-E8",
+      "suggestion": "ev 只留 S-E8"
+     },
+     {
+      "section": "analysis",
+      "para": 1,
+      "severity": "note",
+      "problem": "'用“轻松的乐观”来形容最初那场……打算'移置了 'light-hearted optimism' 的指向：原文是他们'怀着轻松的乐观，以为可以把东西丢在身后'",
+      "suggestion": "改为'他用“轻松的乐观”形容他们当初以为可以把东西丢在身后'"
+     },
+     {
+      "section": "limits",
+      "para": 0,
+      "severity": "fix",
+      "problem": "'其中有些段落像是当时的日记'是证据包不支持的判断；证据只显示有一处转引队员日记",
+      "suggestion": "删去该句，或改为'其中一处引了一位队员的日记'"
+     },
+     {
+      "section": "limits",
+      "para": 1,
+      "severity": "fix",
+      "problem": "以'所有数字'起头却只列了部分（漏了570多英里、180英里、360英里、300英里、十英里、20英尺、14英尺、1902年等），清单与'所有'不符",
+      "suggestion": "改为'主要数字'，或补全清单"
+     }
+    ],
+    "unsupported_claims": [
+     "'其中有些段落像是当时的日记'（limits 第0段）——证据包只显示沙克尔顿转引过一位队员的日记一句，不能据此判断全书段落性质"
+    ],
+    "invented_inner_life": [],
+    "quote_mismatches": [
+     "'用他的原话，负担不起多余的重量'——非原话，是'We could not afford to cumber ourselves with unnecessary weight'的译述",
+     "'他引了一位队员日记里的话：喝过更干净的水，但很少有来得这么是时候的'——为译述且省略了原文 'One has seen and tasted cleaner' 中的 seen，被称作'引的话'略有出入"
+    ],
+    "overall": "整体忠实于证据，日期、数字、人名、引语归属基本准确，仅需修掉两处把译述称作'原话/引的话'、一处'所有数字'清单不全和一处'像是日记'的无据判断。",
+    "_content_sha256": "96210bc1ea13064cbf914b2e02849e3f34252bee0ee299e8b5a751abda74f1c5"
+   },
+   "parity_after": {
+    "issues": [
+     {
+      "path": "sections.context.0",
+      "severity": "note",
+      "problem": "EN adds a summary sentence not present in ZH: \"Eighteen hundred miles, the Pole, a base on the far side of the continent.\" The facts echo the quoted plan (which ZH already gives), but the sentence itself has no counterpart in the Chinese text.",
+      "suggestion": "Either add a short echo in ZH (e.g. 「一千八百英里，极点，大陆另一侧的基地」) or drop the sentence from EN."
+     },
+     {
+      "path": "sections.analysis.0",
+      "severity": "note",
+      "problem": "EN specifies the hope as \"leads opening nearby, boats in the water, land to the north-west\"; ZH only says 「附近可能开出水道，那时可以划船去找陆地」 and omits the direction (north-west), which both languages give in sections.story.8.",
+      "suggestion": "Change ZH to 「那时可以划船向西北去找陆地」 (or remove \"to the north-west\" from EN)."
+     }
+    ],
+    "overall": "The two editions match on all facts, figures, quotations and attributions; only two minor wording gaps remain — an EN-only echo sentence and an omitted direction in ZH.",
+    "_content_sha256": "96210bc1ea13064cbf914b2e02849e3f34252bee0ee299e8b5a751abda74f1c5"
+   },
+   "checker_after": [
+    [
+     "CHECK",
+     "story[4] numbers differ zh[2, 20] en[2, 10, 20]"
+    ],
+    [
+     "CHECK",
+     "story[6] numbers differ zh[14, 18] en[10, 14, 18]"
+    ]
+   ],
+   "content_sha256_after": "96210bc1ea13064cbf914b2e02849e3f34252bee0ee299e8b5a751abda74f1c5"
+  }
+ ],
+ "final_content_sha256": "96210bc1ea13064cbf914b2e02849e3f34252bee0ee299e8b5a751abda74f1c5",
+ "remaining": [
+  {
+   "id": "R1",
+   "source": "review",
+   "severity": "fix",
+   "where": "limits.0",
+   "problem": "'其中有些段落像是当时的日记'是证据包不支持的判断；证据只显示有一处转引队员日记",
+   "suggestion": "删去该句，或改为'其中一处引了一位队员的日记'"
+  },
+  {
+   "id": "R2",
+   "source": "review",
+   "severity": "fix",
+   "where": "limits.1",
+   "problem": "以'所有数字'起头却只列了部分（漏了570多英里、180英里、360英里、300英里、十英里、20英尺、14英尺、1902年等），清单与'所有'不符",
+   "suggestion": "改为'主要数字'，或补全清单"
+  }
+ ],
+ "final_reviewed": true,
+ "outcome": "pending_review",
+ "model_calls": 2,
+ "model_wall_s": 215.6,
+ "edits_total": 0,
+ "finished_at": 1793376940.7556098
+}

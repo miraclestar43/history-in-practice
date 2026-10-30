@@ -1,0 +1,181 @@
+{
+ "candidate_id": "attempt-1",
+ "editor": "hermes-isolated editor (prompts/edit_zh_en.md)",
+ "code_rev": "a61c045",
+ "started_at": 1793377108.1921926,
+ "evidence_sha256": "8936fad054de59aaae6503720d959f0f756272e5d645662fa04c50061fc5cb27",
+ "original_content_sha256": "f0ae934f8567fe3fb562568736a68013db318337c5c8b9ca377774d8abb92ccf",
+ "rounds": [
+  {
+   "round": 0,
+   "issues_in": [],
+   "review_after": {
+    "issues": [
+     {
+      "section": "hook",
+      "para": 0,
+      "severity": "fix",
+      "problem": "「廉颇的不服不是无理取闹——他确有攻城野战之大功」把作者判断写成史实；「攻城野战之大功」只是廉颇自述（L-E5），战绩仅见伐齐取阳晋（L-E1）、L-E14 数条，dek 中「廉颇的委屈，从一开始就是有依据的」同属作者结论",
+      "suggestion": "改为「按他自己的说法，他有攻城野战之大功（L-E5）」，dek 处加「作者认为」或改为「以他的战绩看，这份不服并非全无来由」"
+     },
+     {
+      "section": "context",
+      "para": 0,
+      "severity": "note",
+      "problem": "原文作「趙惠文王十六年，廉頗爲趙將伐齊」（L-E1），稿件只写「赵惠文王时」，丢失原文具体年份；limits 段又称年份只用「趙惠文王時」这类说法，与原文不符",
+      "suggestion": "写作「赵惠文王十六年」"
+     },
+     {
+      "section": "story",
+      "para": 0,
+      "severity": "note",
+      "problem": "「相如出使前，先把理路摆清」给 L-E11 的话加上了场合与时间，证据包只有话语本身，未载其发言场合",
+      "suggestion": "改为「相如分析局势时说」，或注明「出使前对赵王言」出自原文相应段落"
+     },
+     {
+      "section": "story",
+      "para": 1,
+      "severity": "fix",
+      "problem": "「拿到璧便『持其璧睨柱，欲以撃柱』」时序错置：原文是取璧退立倚柱、怒髮上沖冠、一番长篇斥责之后，才「相如持其璧睨柱，欲以撃柱」（L-E3），引用本身准确但位置被挪到取璧即刻",
+      "suggestion": "改为「拿到璧退立倚柱，怒斥秦王『臣頭今與璧倶碎於柱矣』之后，相如持其璧睨柱、欲以撃柱」"
+     },
+     {
+      "section": "story",
+      "para": 2,
+      "severity": "block",
+      "problem": "「渑池之会前，赵王怕秦，不想去；廉颇和相如商量后说，王不去就是向秦国示弱示怯。赵王于是动身，相如随行」整段情节在证据包中不存在：所引 L-E13 只记廉颇送王至境与三十日之约，L-E4 只记宴会结果，均无赵王欲毋行、相如劝行、相如随行等内容；「赵王怕秦」还替人物写了内心",
+      "suggestion": "删除该句，或只保留证据支持的「廉颇送至境，与王诀别」；如确要保留须补入原文出处并重新标注 ev"
+     },
+     {
+      "section": "analysis",
+      "para": 0,
+      "severity": "note",
+      "problem": "「说明他不服的不只是排序，还有出身」以「说明」把动机推断写成结论；同段「廉颇计较的不是功劳有无，而是功劳能否被看见」写人物内心，虽有「一种解释是」标注，仍与 limits 段「不替廉颇写心里怎么想」的自许冲突",
+      "suggestion": "「说明」改为「可以读出」；limits 段的自述相应改为「凡写人物心理均以『一种解释是』标明」"
+     },
+     {
+      "section": "analysis",
+      "para": 1,
+      "severity": "note",
+      "problem": "「他把争执从谁功劳大，换成赵国还剩几个能用的人」是作者概括，无解释性标注；「没有把对方逼到必须立刻表态的位置」「廉颇要回头，不必先当众收回自己的话」写的是廉颇的处境与顾虑，原文无（虽有「一种解释是」）",
+      "suggestion": "首句加「可以理解为」；后两处保留标注即可，但不要在别处宣称全文不写人物心理"
+     },
+     {
+      "section": "analysis",
+      "para": 2,
+      "severity": "note",
+      "problem": "「两者都是脱去上衣、把身体交出去的姿势」中「把身体交出去」是作者的阐释，非原文语义（肉袒即脱衣露体）",
+      "suggestion": "改为「两者都是肉袒——脱去上衣、露出身体的姿势」"
+     },
+     {
+      "section": "limits",
+      "para": 0,
+      "severity": "fix",
+      "problem": "「这段故事的唯一史源是司马迁《廉颇蔺相如列传》」超出证据包可支持范围：证据包只说明本文取材于该篇，不能证明别无其他记载；同段「文中不替廉颇写心里怎么想，只写原文记下的动作和他说出口的话」与 analysis 段的多处心理推断矛盾",
+      "suggestion": "改为「本文所据材料只有《史记·廉颇蔺相如列传》一篇」；后句改为「凡原文未写的人物心理，均以『一种解释是』标明为作者解释」"
+     },
+     {
+      "section": "limits",
+      "para": 0,
+      "severity": "note",
+      "problem": "「年份只用原文的『趙惠文王時』这类说法」不准确：原文该事明记「趙惠文王十六年」（L-E1），稿件反而略去年份",
+      "suggestion": "改为「年份照录原文，如『趙惠文王十六年』，不换算公元年」"
+     },
+     {
+      "section": "limits",
+      "para": 1,
+      "severity": "note",
+      "problem": "「一次认错没有改变了廉颇的脾气」先立结论，且所举门客散而复来（L-E15）记的是门客「以市道交」，与廉颇脾气无关，只与他失势复用的处境有关",
+      "suggestion": "改为「一次认错没有改写他后来的处境与行事」"
+     }
+    ],
+    "unsupported_claims": [
+     "渑池会前「赵王怕秦，不想去；廉颇和相如商量后说，王不去就是向秦国示弱示怯；赵王于是动身，相如随行」——L-E13/L-E4 均无此事（story 段第2段）",
+     "「这段故事的唯一史源是司马迁《廉颇蔺相如列传》」——证据包只能说明本文取材，不能证明别无史源（limits 段第0段）",
+     "「廉颇的不服不是无理取闹」「廉颇的委屈，从一开始就是有依据的」——作者价值判断当史实写出（hook 段、dek）",
+     "「一次认错没有改变廉颇的脾气」——性格—因果判断，证据只并列记下后来两件事，未涉脾气（limits 段第1段）",
+     "「文中不替廉颇写心里怎么想，只写原文记下的动作和他说出口的话」——与 analysis 段实际写法不符（limits 段第0段）"
+    ],
+    "invented_inner_life": [
+     "「廉颇计较的不是功劳有无，而是功劳能否被看见——战场胜负可以点数，口舌上的成败要靠人转述」：写廉颇内心计较与考量，原文无（有「一种解释是」标注）",
+     "「说明他不服的不只是排序，还有出身」：把对廉颇动机的推断用「说明」写成定论",
+     "「这样就没有把对方逼到必须立刻表态的位置」：写廉颇一方的处境与心理反应，原文无",
+     "「这正是给对方留的台阶……廉颇要回头，不必先当众收回自己的话」：写廉颇想回头又碍于面子的顾虑，原文无",
+     "「廉颇的委屈」（标题、dek）：「委屈」是内心状态，原文只记其自述「吾羞，不忍爲之下」与宣言"
+    ],
+    "quote_mismatches": [],
+    "overall": "日期、数字、人名与引语基本与《史记》原文一致，主要问题是渑池会前劝行一段在证据包中无据、「唯一史源」等表述越界，以及几处把作者对廉颇内心的推断写成定论。",
+    "_content_sha256": "f0ae934f8567fe3fb562568736a68013db318337c5c8b9ca377774d8abb92ccf"
+   },
+   "parity_after": {
+    "issues": [
+     {
+      "path": "sections.context.1",
+      "severity": "fix",
+      "problem": "ZH adds the consequence of Miao Xian's course of action — 「倒还有活路」, i.e. confessing this way still leaves a way to survive — but EN stops at 'Better to strip and lie on the block ... and ask pardon' and gives no reason or payoff.",
+      "suggestion": "Change to: Better to \"strip and lie on the block\", as the phrase went, and ask pardon — there might still be a way to keep his life."
+     },
+     {
+      "path": "sections.context.0",
+      "severity": "note",
+      "problem": "EN adds 'his courage known to every state', which is not in this ZH field (it appears only in sections.hook.0 as 以勇气闻名诸侯); ZH context.0 ends at 拜为上卿.",
+      "suggestion": "Delete 'his courage known to every state' (or add 以勇气闻名诸侯 to the ZH field)."
+     }
+    ],
+    "overall": "The two editions match closely in facts, names, dates, quotations and hedges, with only one small omitted clause and one small added clause.",
+    "_content_sha256": "f0ae934f8567fe3fb562568736a68013db318337c5c8b9ca377774d8abb92ccf"
+   },
+   "checker_after": [],
+   "content_sha256_after": "f0ae934f8567fe3fb562568736a68013db318337c5c8b9ca377774d8abb92ccf"
+  }
+ ],
+ "final_content_sha256": "f0ae934f8567fe3fb562568736a68013db318337c5c8b9ca377774d8abb92ccf",
+ "remaining": [
+  {
+   "id": "R1",
+   "source": "review",
+   "severity": "fix",
+   "where": "hook.0",
+   "problem": "「廉颇的不服不是无理取闹——他确有攻城野战之大功」把作者判断写成史实；「攻城野战之大功」只是廉颇自述（L-E5），战绩仅见伐齐取阳晋（L-E1）、L-E14 数条，dek 中「廉颇的委屈，从一开始就是有依据的」同属作者结论",
+   "suggestion": "改为「按他自己的说法，他有攻城野战之大功（L-E5）」，dek 处加「作者认为」或改为「以他的战绩看，这份不服并非全无来由」"
+  },
+  {
+   "id": "R2",
+   "source": "review",
+   "severity": "fix",
+   "where": "story.1",
+   "problem": "「拿到璧便『持其璧睨柱，欲以撃柱』」时序错置：原文是取璧退立倚柱、怒髮上沖冠、一番长篇斥责之后，才「相如持其璧睨柱，欲以撃柱」（L-E3），引用本身准确但位置被挪到取璧即刻",
+   "suggestion": "改为「拿到璧退立倚柱，怒斥秦王『臣頭今與璧倶碎於柱矣』之后，相如持其璧睨柱、欲以撃柱」"
+  },
+  {
+   "id": "R3",
+   "source": "review",
+   "severity": "block",
+   "where": "story.2",
+   "problem": "「渑池之会前，赵王怕秦，不想去；廉颇和相如商量后说，王不去就是向秦国示弱示怯。赵王于是动身，相如随行」整段情节在证据包中不存在：所引 L-E13 只记廉颇送王至境与三十日之约，L-E4 只记宴会结果，均无赵王欲毋行、相如劝行、相如随行等内容；「赵王怕秦」还替人物写了内心",
+   "suggestion": "删除该句，或只保留证据支持的「廉颇送至境，与王诀别」；如确要保留须补入原文出处并重新标注 ev"
+  },
+  {
+   "id": "R4",
+   "source": "review",
+   "severity": "fix",
+   "where": "limits.0",
+   "problem": "「这段故事的唯一史源是司马迁《廉颇蔺相如列传》」超出证据包可支持范围：证据包只说明本文取材于该篇，不能证明别无其他记载；同段「文中不替廉颇写心里怎么想，只写原文记下的动作和他说出口的话」与 analysis 段的多处心理推断矛盾",
+   "suggestion": "改为「本文所据材料只有《史记·廉颇蔺相如列传》一篇」；后句改为「凡原文未写的人物心理，均以『一种解释是』标明为作者解释」"
+  },
+  {
+   "id": "P5",
+   "source": "parity",
+   "severity": "fix",
+   "where": "sections.context.1",
+   "problem": "ZH adds the consequence of Miao Xian's course of action — 「倒还有活路」, i.e. confessing this way still leaves a way to survive — but EN stops at 'Better to strip and lie on the block ... and ask pardon' and gives no reason or payoff.",
+   "suggestion": "Change to: Better to \"strip and lie on the block\", as the phrase went, and ask pardon — there might still be a way to keep his life."
+  }
+ ],
+ "final_reviewed": true,
+ "outcome": "pending_review",
+ "model_calls": 2,
+ "model_wall_s": 408.3,
+ "edits_total": 0,
+ "finished_at": 1793377516.4298825
+}

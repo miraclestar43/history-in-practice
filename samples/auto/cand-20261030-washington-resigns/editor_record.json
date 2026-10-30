@@ -1,0 +1,201 @@
+{
+ "candidate_id": "attempt-1",
+ "editor": "hermes-isolated editor (prompts/edit_zh_en.md)",
+ "code_rev": "a61c045",
+ "started_at": 1793376439.8746817,
+ "evidence_sha256": "f6e35ee70844c1f18cb2f1efa8d0270e01c518ac869da265000492846e28fd40",
+ "original_content_sha256": "6a020d0913c24fa9b5000009cbb75dfda9af4bdfb4a285f47797a7994ec3866e",
+ "rounds": [
+  {
+   "round": 0,
+   "issues_in": [],
+   "review_after": {
+    "issues": [
+     {
+      "section": "context",
+      "para": 0,
+      "severity": "fix",
+      "problem": "\"总司令当天写来的信\"：证据（U-E10）只记12月20日宣读此信，未记写信日期，\"当天写来\"是把宣读日当成写信日",
+      "suggestion": "改为\"国会读到总司令写来的信（当日宣读）\""
+     },
+     {
+      "section": "context",
+      "para": 1,
+      "severity": "note",
+      "problem": "\"有议员动议先问一个问题\"：U-E11只有问题原文，无动议人记录",
+      "suggestion": "改为\"国会先议了一个问题\""
+     },
+     {
+      "section": "context",
+      "para": 1,
+      "severity": "note",
+      "problem": "\"埃勒里应本人要求把反对改成了赞成\"：U-E12原文为\"changed into ay at the request of the Member\"，未明确是埃勒里本人请求",
+      "suggestion": "改为\"应一位议员的要求改成了赞成\"或注明归属不确定"
+     },
+     {
+      "section": "context",
+      "para": 1,
+      "severity": "note",
+      "problem": "\"名单上列出的议员几乎都投赞成\"：U-E12自述只是点名表决的一部分（part of the yeas and nays），完整结果不可知",
+      "suggestion": "补一句\"（日志此处只留下部分点名）\""
+     },
+     {
+      "section": "context",
+      "para": 1,
+      "severity": "note",
+      "problem": "\"到了23日接见当天上午\"：U-E16未记时刻，写信决议是否在中午接见之前无从证实",
+      "suggestion": "删去\"上午\"，改为\"23日当天\""
+     },
+     {
+      "section": "analysis",
+      "para": 2,
+      "severity": "note",
+      "problem": "同上：\"接见当天上午，它还在写信催缺席的州派人来\"的时刻未经证据支持",
+      "suggestion": "删去\"上午\""
+     },
+     {
+      "section": "story",
+      "para": 2,
+      "severity": "note",
+      "problem": "\"请辞用的是请求允准的说法，而不是通知已经生效\"是对claim the indulgence的作者解释，却置于kind=record段",
+      "suggestion": "移入interpretation段或加\"作者读出\"字样"
+     },
+     {
+      "section": "story",
+      "para": 6,
+      "severity": "note",
+      "problem": "\"委任状是权力的凭证，副本是这番说法的留档，两件东西一次交清\"为作者诠释却标为record；\"议定稿里这一步写得几经改动\"中的\"几经\"在U-E14只见方括号增补与个别替换",
+      "suggestion": "诠释句标注作者解读；\"几经改动\"改为\"留有改动痕迹\""
+     },
+     {
+      "section": "analysis",
+      "para": 0,
+      "severity": "note",
+      "problem": "\"现场没有临时调整的记录\"是关于记录完整性的断言，证据包仅为节选，无从核对",
+      "suggestion": "改为\"本篇所据节选中未见现场调整\""
+     },
+     {
+      "section": "limits",
+      "para": 1,
+      "severity": "fix",
+      "problem": "\"另有两处技术性保留\"之后列出第一、第二、第三三条，计数错误",
+      "suggestion": "改为\"另有三处技术性保留\""
+     },
+     {
+      "section": "limits",
+      "para": 0,
+      "severity": "fix",
+      "problem": "\"本篇所据只有……12月22日议定的接见次序、23日的接见经过与讲话文本\"与正文不符：正文使用了12月20日的信、质询与点名表决（U-E10/E11/E12）",
+      "suggestion": "改为\"所据为《大陆会议日志》第25卷12月20日至23日的官方记录\""
+     }
+    ],
+    "unsupported_claims": [
+     "信是12月20日\"当天写来\"的（仅知当天宣读）",
+     "23日的催促信函决议发生在\"接见当天上午\"",
+     "议长答词\"在该卷中以带删改痕迹的草稿形式印出\"（U-E14/U-E15的带删改草稿是接见次序议定稿，不是答词）",
+     "\"现场没有临时调整的记录\"（证据为节选，不能证明无调整）",
+     "\"有议员动议\"提出七州是否有权接受辞职的问题",
+     "议定稿这一步\"几经改动\""
+    ],
+    "invented_inner_life": [
+     "\"接受这份辞呈的国会，自己都不太确定是否够格\"——把不确定心理写给国会（虽标注为作者解读，但原文只记了就该问题表决，未记任何人的疑虑）"
+    ],
+    "quote_mismatches": [
+     "\"辞去公职生涯中的一切职务\"对应原文\"take my leave of all the employments of public life\"，take my leave of 是告别、退出，非辞去职务；\"本篇英文引文只取清晰片段\"与稿件实际不符——全篇引文均为中文转述，无英文引文"
+    ],
+    "overall": "日期、人名、次序、引语主干与证据相符，但存在一处计数错误、来源范围声明与正文矛盾、把答词印本状态写错，以及若干把推断当记录的小问题，修订后可用。",
+    "_content_sha256": "6a020d0913c24fa9b5000009cbb75dfda9af4bdfb4a285f47797a7994ec3866e"
+   },
+   "parity_after": {
+    "issues": [
+     {
+      "path": "title",
+      "severity": "note",
+      "problem": "The two titles name opposite hat actions for the same second party: ZH 脱帽的人 = 'the one(s) who took the hat off' (the uncovering salute), while EN 'the Men Who Kept Their Hats On' describes them staying covered. Both are true of Congress, but the headline points at different gestures.",
+      "suggestion": "Align one to the other: e.g. EN 'the Men Who Uncovered' (or ZH title '…与戴着帽子坐着的人')."
+     },
+     {
+      "path": "sections.context.3",
+      "severity": "fix",
+      "problem": "The quoted set words differ: EN has 'Sir, The United States in Congress assembled are prepared to receive your communications.' while the ZH quotation ('合众国国会已准备好听取您的陈述。') drops the form of address 'Sir'.",
+      "suggestion": "Add the address to the ZH quote: '阁下，合众国国会已准备好听取您的陈述。'"
+     },
+     {
+      "path": "sections.context.3",
+      "severity": "note",
+      "problem": "ZH says the silence was declared by the secretary ('必要时由秘书宣布肃静'); EN leaves the actor out ('silence was to be ordered if necessary').",
+      "suggestion": "EN: 'silence was to be ordered by the secretary if necessary.'"
+     },
+     {
+      "path": "sections.analysis.3",
+      "severity": "fix",
+      "problem": "Hedge mismatch: ZH asserts the alternatives could work '甚至更快' (even faster), while EN softens this to 'perhaps faster', adding an uncertainty absent in Chinese.",
+      "suggestion": "EN: change 'perhaps faster' to 'and even faster' (or ZH: '甚至更快' → '也许更快')."
+     }
+    ],
+    "overall": "The English edition tracks the Chinese closely in facts, dates, names, quotations and attributions; only the quoted 'Sir', the secretary-ordering-silence detail, one hedge, and the title's hat gesture need alignment.",
+    "_content_sha256": "6a020d0913c24fa9b5000009cbb75dfda9af4bdfb4a285f47797a7994ec3866e"
+   },
+   "checker_after": [
+    [
+     "CHECK",
+     "analysis[0] numbers differ zh[22, 23] en[20]"
+    ],
+    [
+     "CHECK",
+     "limits[0] numbers differ zh[22, 23, 25] en[20, 22, 25]"
+    ]
+   ],
+   "content_sha256_after": "6a020d0913c24fa9b5000009cbb75dfda9af4bdfb4a285f47797a7994ec3866e"
+  }
+ ],
+ "final_content_sha256": "6a020d0913c24fa9b5000009cbb75dfda9af4bdfb4a285f47797a7994ec3866e",
+ "remaining": [
+  {
+   "id": "R1",
+   "source": "review",
+   "severity": "fix",
+   "where": "context.0",
+   "problem": "\"总司令当天写来的信\"：证据（U-E10）只记12月20日宣读此信，未记写信日期，\"当天写来\"是把宣读日当成写信日",
+   "suggestion": "改为\"国会读到总司令写来的信（当日宣读）\""
+  },
+  {
+   "id": "R2",
+   "source": "review",
+   "severity": "fix",
+   "where": "limits.1",
+   "problem": "\"另有两处技术性保留\"之后列出第一、第二、第三三条，计数错误",
+   "suggestion": "改为\"另有三处技术性保留\""
+  },
+  {
+   "id": "R3",
+   "source": "review",
+   "severity": "fix",
+   "where": "limits.0",
+   "problem": "\"本篇所据只有……12月22日议定的接见次序、23日的接见经过与讲话文本\"与正文不符：正文使用了12月20日的信、质询与点名表决（U-E10/E11/E12）",
+   "suggestion": "改为\"所据为《大陆会议日志》第25卷12月20日至23日的官方记录\""
+  },
+  {
+   "id": "P4",
+   "source": "parity",
+   "severity": "fix",
+   "where": "sections.context.3",
+   "problem": "The quoted set words differ: EN has 'Sir, The United States in Congress assembled are prepared to receive your communications.' while the ZH quotation ('合众国国会已准备好听取您的陈述。') drops the form of address 'Sir'.",
+   "suggestion": "Add the address to the ZH quote: '阁下，合众国国会已准备好听取您的陈述。'"
+  },
+  {
+   "id": "P5",
+   "source": "parity",
+   "severity": "fix",
+   "where": "sections.analysis.3",
+   "problem": "Hedge mismatch: ZH asserts the alternatives could work '甚至更快' (even faster), while EN softens this to 'perhaps faster', adding an uncertainty absent in Chinese.",
+   "suggestion": "EN: change 'perhaps faster' to 'and even faster' (or ZH: '甚至更快' → '也许更快')."
+  }
+ ],
+ "final_reviewed": true,
+ "outcome": "pending_review",
+ "model_calls": 2,
+ "model_wall_s": 285.2,
+ "edits_total": 0,
+ "finished_at": 1793376725.053432
+}

@@ -1,0 +1,363 @@
+{
+ "candidate_id": "attempt-1",
+ "editor": "hermes-isolated editor (prompts/edit_zh_en.md)",
+ "code_rev": "7b6f610",
+ "started_at": 1793375425.736262,
+ "evidence_sha256": "b0e102ba14bf56f7d0e399992cac96efc095ddc8ad5b4c8dc6f043ac3c40fafc",
+ "original_content_sha256": "dae448f4328278b1b5d35cc3c8c5836bd40a2fdf91f37b30f3272eb09192a0e0",
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    {
+     "id": "C1",
+     "source": "checker",
+     "severity": "BLOCK",
+     "where": "",
+     "problem": "context[2] zh quote not in cited evidence: 「先停一停」",
+     "suggestion": ""
+    }
+   ],
+   "edits_applied": [
+    {
+     "path": "sections.context.2.zh",
+     "before": "一种解释是，此时摊开的已不是清廷与帕夏两方，而是清廷、帕夏、英、俄交错的局；所以「先停一停」要成立，得先说清停了以后这块地由谁看、谁来填。这是作者的推断，传记只记事，未作此分析。",
+     "after": "一种解释是，此时摊开的已不是清廷与帕夏两方，而是清廷、帕夏、英、俄交错的局；所以“先停一停”要成立，得先说清停了以后这块地由谁看、谁来填。这是作者的推断，传记只记事，未作此分析。",
+     "reason": "「先停一停」并非证据《清史稿》的逐字原文，属于现代汉语的转述，按规范改用“”标注，不再冒充古文引语；事实内容不变。",
+     "issues": [
+      "C1"
+     ]
+    },
+    {
+     "path": "sections.context.2.en",
+     "before": "One reading of the position is that by now the table held not two parties but four — the court, Pasha, Britain and Russia, all entangled. For \"stop a while\" to hold up, someone must first say who watches this ground during the pause, and who fills it. That is the author's inference; the biography records events and offers no such analysis.",
+     "after": "One reading of the position is that by now the table held not two parties but four — the court, Pasha, Britain and Russia, all entangled. For a pause to hold up, someone must first say who watches this ground during the pause, and who fills it. That is the author's inference; the biography records events and offers no such analysis.",
+     "reason": "英文中该短语同样不是证据逐字原文，去引号以免暗示为原文引语，与中文字段同步；仅是转述标记的调整，事实不变。",
+     "issues": [
+      "C1"
+     ]
+    }
+   ],
+   "edits_failed": [],
+   "dispositions": [
+    {
+     "issue": "C1",
+     "action": "fixed",
+     "reason": "已修好：证据包中并无「先停一停」的逐字片段（E3 相关原文为「宜徇英人議，許帕夏自立為國稱籓，罷西征，專力海防」等），该处是现代汉语转述，故中文由「」改为“”，英文对应处去除引号，中英同步。"
+    }
+   ],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[5] numbers differ zh[] en[10000]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[] en[10000]"
+    ]
+   ],
+   "content_sha256_after": "0d884f83292b0e4c4975690065125a861ea6bf11eb556d9f91277ace0d533a0a",
+   "review_after": {
+    "issues": [
+     {
+      "section": "context",
+      "para": 1,
+      "severity": "note",
+      "problem": "「到光绪元年，伊犁已在俄国手中，乌鲁木齐也在其口头计划之内」把E2的「当是时」直接系于光绪元年；证据包未记俄取伊犁的确切年份，也未说「代取乌鲁木齐」之言到光绪元年仍然有效",
+      "suggestion": "改为「据传记，俄已取伊犁，且曾言将代取乌鲁木齐」，不系年于光绪元年"
+     },
+     {
+      "section": "story",
+      "para": 1,
+      "severity": "fix",
+      "problem": "「边界反而更长」不见于E4，E4说的是「吾地坐縮，邊要盡失，防邊兵不可減」，与「边界更长」方向相反，属无据引申",
+      "suggestion": "删去「边界反而更长」，改按原文写「地坐缩、边要尽失，防边兵减不掉」"
+     },
+     {
+      "section": "story",
+      "para": 4,
+      "severity": "fix",
+      "problem": "「出塞前有一道军令」的时序无据；E7只记令的内容，未记发布时间，且在证据包顺序中排在出塞（E6）之后",
+      "suggestion": "改为「军中有一道令，传记记作」，不标「出塞前」"
+     },
+     {
+      "section": "story",
+      "para": 5,
+      "severity": "note",
+      "problem": "「放回俘虏与南疆恟惧」与原文「南路恟懼」不一致，「南疆」与「南路」所指范围不同",
+      "suggestion": "照录原文作「南路恟惧」"
+     },
+     {
+      "section": "story",
+      "para": 7,
+      "severity": "note",
+      "problem": "「伯克胡里与白彦虎遁走俄」把E11的「复遁走俄」（承前主语伯克胡里）扩为二人同遁，白彦虎遁走俄一事在E11未明记",
+      "suggestion": "改作「伯克胡里遁走俄（其前已纳白彦虎）」或注明系据传记上下文推知"
+     },
+     {
+      "section": "analysis",
+      "para": 4,
+      "severity": "note",
+      "problem": "「他示谕晓之」把E23「為示諭曉，乃止」的示谕主体定为左宗棠，原文未明记主体",
+      "suggestion": "改作「官方出示晓谕，乃止」或「传记未记示谕者为谁」"
+     }
+    ],
+    "unsupported_claims": [
+     "「边界反而更长」（story第1段，与E4「吾地坐縮」相悖且原文无此说）",
+     "「到光绪元年……乌鲁木齐也在其口头计划之内」（E2未系年，亦未言该计划持续至光绪元年）"
+    ],
+    "invented_inner_life": [],
+    "quote_mismatches": [],
+    "overall": "引语与史实基本照录准确、推断多已标注，仅需修正一处时序（出塞前军令）、一处方向性错写（边界反而更长）及两三处措辞与主体归属。",
+    "_content_sha256": "0d884f83292b0e4c4975690065125a861ea6bf11eb556d9f91277ace0d533a0a"
+   },
+   "parity_after": {
+    "issues": [
+     {
+      "path": "sections.story.1",
+      "severity": "note",
+      "problem": "In the Zuo quotation, 「不及時規還國家舊所沒地」 carries 'without seizing the moment / promptly' recovering the lost lands; the English reads simply 'Instead of recovering the lands the state once lost', dropping the timing element.",
+      "suggestion": "Change to 'Instead of promptly recovering the lands the state once lost' or 'Instead of recovering in time the lands the state once lost'."
+     },
+     {
+      "path": "sections.analysis.3",
+      "severity": "note",
+      "problem": "The English adds an explanation of the old garrison abuses — 'men on the army rolls who could not also farm' — that is not stated in the Chinese, which only says he criticized 「关内外旧屯之弊」 and proposed splitting soldier and farmer.",
+      "suggestion": "Drop the added clause, e.g. 'he set out the abuses of the old garrisons inside and outside the pass and proposed dividing the two'."
+     },
+     {
+      "path": "sections.analysis.4",
+      "severity": "note",
+      "problem": "The English says the overseas powers were 'talking of wealth and strength among themselves'; the Chinese 「私议以为脆弱」 only says they privately discussed the matter and judged China fragile — no mention of wealth and strength.",
+      "suggestion": "Replace with 'still privately judged China to be frail'."
+     }
+    ],
+    "overall": "The two editions agree on all facts, dates, numbers, names, quotations and attributions, with only three minor translator's glosses in the English that go slightly beyond the Chinese.",
+    "_content_sha256": "0d884f83292b0e4c4975690065125a861ea6bf11eb556d9f91277ace0d533a0a"
+   },
+   "carried_over": []
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    {
+     "id": "R1",
+     "source": "review",
+     "severity": "fix",
+     "where": "story.1",
+     "problem": "「边界反而更长」不见于E4，E4说的是「吾地坐縮，邊要盡失，防邊兵不可減」，与「边界更长」方向相反，属无据引申",
+     "suggestion": "删去「边界反而更长」，改按原文写「地坐缩、边要尽失，防边兵减不掉」"
+    },
+    {
+     "id": "R2",
+     "source": "review",
+     "severity": "fix",
+     "where": "story.4",
+     "problem": "「出塞前有一道军令」的时序无据；E7只记令的内容，未记发布时间，且在证据包顺序中排在出塞（E6）之后",
+     "suggestion": "改为「军中有一道令，传记记作」，不标「出塞前」"
+    }
+   ],
+   "edits_applied": [
+    {
+     "path": "sections.story.1.zh",
+     "before": "左宗棠的反驳不在道德，而在账。他认为割弃不等于省钱：关陇新平，不趁势收回旧地，反而让帕夏另立一国，是坐自遗患；帕夏若守不住，地不是归英就是入俄，边界反而更长。传记记其言：「關隴新平，不及時規還國家舊所沒地，而割棄使別為國，此坐自遺患。萬一帕夏不能有，不西為英並，即北折而入俄耳。吾地坐縮，邊要盡失，防邊兵不可減，糜餉自若。無益海防而挫國威，且長亂。此必不可。」要害在中段：兵减不掉，饷照旧要花。",
+     "after": "左宗棠的反驳不在道德，而在账。他认为割弃不等于省钱：关陇新平，不趁势收回旧地，反而让帕夏另立一国，是坐自遗患；帕夏若守不住，地不是归英就是入俄，地盘坐缩，边防要地尽失，防边的兵也减不掉。传记记其言：「關隴新平，不及時規還國家舊所沒地，而割棄使別為國，此坐自遺患。萬一帕夏不能有，不西為英並，即北折而入俄耳。吾地坐縮，邊要盡失，防邊兵不可減，糜餉自若。無益海防而挫國威，且長亂。此必不可。」要害在中段：兵减不掉，饷照旧要花。",
+     "reason": "删去不见于E4的「边界反而更长」（与E4「吾地坐縮，邊要盡失，防邊兵不可減」方向相反），改按E4原文收窄为地缩、边要尽失、兵减不掉的说法",
+     "issues": [
+      "R1"
+     ]
+    },
+    {
+     "path": "sections.story.1.en",
+     "before": "Zuo's answer was arithmetic, not moral: carving territory loose did not save money. The biography gives his words: \"Guanlong has only just been pacified. Instead of recovering the lands the state once lost, we carve them off and let another state be founded there — that is to store up trouble of our own making. Should Pasha fail to hold them, they will be swallowed by England in the west or fold north into Russia. Our territory shrinks of its own accord, every strategic point is lost, the frontier troops cannot be reduced, and the spending goes on as before. It does nothing for coastal defense, it damages our prestige, and it feeds disorder. This must not be.\" The sting is in the middle: the troops cannot be cut, and the money flows out all the same.",
+     "after": "Zuo's answer was arithmetic, not moral: carving territory loose did not save money: the territory would only shrink, every strategic point be lost, and the frontier troops could not be cut. The biography gives his words: \"Guanlong has only just been pacified. Instead of recovering the lands the state once lost, we carve them off and let another state be founded there — that is to store up trouble of our own making. Should Pasha fail to hold them, they will be swallowed by England in the west or fold north into Russia. Our territory shrinks of its own accord, every strategic point is lost, the frontier troops cannot be reduced, and the spending goes on as before. It does nothing for coastal defense, it damages our prestige, and it feeds disorder. This must not be.\" The sting is in the middle: the troops cannot be cut, and the money flows out all the same.",
+     "reason": "英文字段同步中文修改：补入与E4「吾地坐縮，邊要盡失，防邊兵不可減」一致的收窄说法，不含「边界更长」一类无据引申",
+     "issues": [
+      "R1"
+     ]
+    },
+    {
+     "path": "sections.story.4.zh",
+     "before": "出塞前有一道军令，传记记作：「回部為安酋驅迫，厭亂久矣。大軍所至，勿淫掠，勿殘殺。王者之師如時雨，此其時也。」约束只有两条：不淫掠，不残杀。",
+     "after": "军中有一道令，传记记作：「回部為安酋驅迫，厭亂久矣。大軍所至，勿淫掠，勿殘殺。王者之師如時雨，此其時也。」约束只有两条：不淫掠，不残杀。",
+     "reason": "E7只记令的内容，未记发布时间，且在证据顺序中位于出塞（E6）之后；删去无据的「出塞前」时序，仅保留「军中有一道令」",
+     "issues": [
+      "R2"
+     ]
+    },
+    {
+     "path": "sections.story.4.en",
+     "before": "Before the army moved, there was a general order: \"The Muslims of the west were driven on by their Andijan chief and have long been sick of disorder. Wherever the great army goes, no rape or plunder, no slaughter. A kingly army is like a seasonable rain; this is the moment for it.\" Two prohibitions, and no more: no rape or plunder, and no killing.",
+     "after": "There was a general order in the army: \"The Muslims of the west were driven on by their Andijan chief and have long been sick of disorder. Wherever the great army goes, no rape or plunder, no slaughter. A kingly army is like a seasonable rain; this is the moment for it.\" Two prohibitions, and no more: no rape or plunder, and no killing.",
+     "reason": "英文字段同步中文修改：去掉无据的“出塞前”时序，只说军中有一道令，与E7所记范围一致",
+     "issues": [
+      "R2"
+     ]
+    }
+   ],
+   "edits_failed": [],
+   "dispositions": [
+    {
+     "issue": "R1",
+     "action": "fixed",
+     "reason": "已删去「边界反而更长」这一无据引申，并按E4原文「吾地坐縮，邊要盡失，防邊兵不可減」改为地盘坐缩、边防要地尽失、防边兵减不掉；英文字段同步补入同一说法，中英事实一致"
+    },
+    {
+     "issue": "R2",
+     "action": "fixed",
+     "reason": "E7只记令文「回部為安酋驅迫……王者之師如時雨，此其時也」，未记发布时间，且证据顺序中排在E6出塞之后，故删去「出塞前」，改为「军中有一道令，传记记作」，英文同步改为「There was a general order in the army:」"
+    }
+   ],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[5] numbers differ zh[] en[10000]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[] en[10000]"
+    ]
+   ],
+   "content_sha256_after": "ba69d7fc4625735da2a4b86540c9d36c13a3573fe411a2e2cf8585bb67ad38fc",
+   "review_after": {
+    "issues": [
+     {
+      "section": "story",
+      "para": 0,
+      "severity": "fix",
+      "problem": "「赞成一方在史料里只留下这一句判断」与证据不符：E3记有论者一方的整段理由（岁糜数百万此漏卮、竭天下力赡西军无以待不虞、宜徇英人议许帕夏自立称籓），且与本文开头段引用的正是这些理由，自相矛盾；未记具体论据的只是李鸿章个人",
+      "suggestion": "改为：传记未记鸿章本人的具体论据，赞成一方的理由在史料中仅存「论者多言」一段概述"
+     },
+     {
+      "section": "limits",
+      "para": 1,
+      "severity": "fix",
+      "problem": "列举纪年「光绪元年、二年、三年、六年」漏掉四年，正文「四年正月，宗棠条上新疆建行省事宜」用到四年",
+      "suggestion": "改为「原文纪年用光绪元年、二年、三年、四年、六年」"
+     },
+     {
+      "section": "story",
+      "para": 1,
+      "severity": "note",
+      "problem": "「左宗棠的反驳不在道德，而在账」是作者对其立论的定性，且E4引语含「無益海防而挫國威，且長亂」，并非只算账目；此段kind标为record",
+      "suggestion": "改为「反驳的重心在账」或移入interpretation并注明是作者归纳"
+     },
+     {
+      "section": "context",
+      "para": 0,
+      "severity": "note",
+      "problem": "E1作「稍蠶食南八城」，转述为「蚕食南八城」，漏程度词「稍」",
+      "suggestion": "改为「稍蚕食南八城」或「逐渐蚕食南八城」"
+     },
+     {
+      "section": "context",
+      "para": 1,
+      "severity": "note",
+      "problem": "E2作「遽引兵逐回」，转述为「引兵逐回」，漏「遽」（俄突然出兵的含义）",
+      "suggestion": "改为「遽引兵逐回」"
+     },
+     {
+      "section": "story",
+      "para": 7,
+      "severity": "note",
+      "problem": "「伯克胡里与白彦虎遁走俄」：E11只记「伯克胡里既納白彥虎……大軍至，复遁走俄」，遁走主语未明记为二人同行",
+      "suggestion": "改为「伯克胡里（已纳白彦虎）遁走俄」或注明原文主语未明"
+     },
+     {
+      "section": "analysis",
+      "para": 4,
+      "severity": "note",
+      "problem": "「外部的看法也变了」强于E22「外國乃稍稍傳說之」（只是开始谈论）",
+      "suggestion": "改为「外国人开始谈论他（传记只说『稍稍传说之』）」"
+     }
+    ],
+    "unsupported_claims": [
+     "「赞成一方在史料里只留下这一句判断」——E3记有论者一方的多条理由，非只一句",
+     "「外部的看法也变了」——E22只说「外国乃稍稍传说之」"
+    ],
+    "invented_inner_life": [
+     "「左宗棠的反驳不在道德，而在账」——替其立论动机定性，E4原文未作此区分，且含挫国威、长乱等非账目论点"
+    ],
+    "quote_mismatches": [],
+    "overall": "引语与史实、日期、人名基本照录无误，主要问题是把论者一方说成只留一句判断（与开头自相矛盾）、纪年列举漏四年，以及两处转述略强于原文。",
+    "_content_sha256": "ba69d7fc4625735da2a4b86540c9d36c13a3573fe411a2e2cf8585bb67ad38fc"
+   },
+   "parity_after": {
+    "issues": [
+     {
+      "path": "sections.analysis.4",
+      "severity": "fix",
+      "problem": "The English sentence ends with a truncated phrase: \"the foreigners began to tell the story about\" — the verb has no object, so the claim (外国乃稍稍传说之, that foreigners began spreading word of him/it) is left incomplete.",
+      "suggestion": "Change to \"the foreigners began to spread the word about him.\""
+     },
+     {
+      "path": "sections.context.0",
+      "severity": "note",
+      "problem": "English adds an explanatory gloss not in the Chinese: \"Pasha — a title, roughly governor —\" and \"hoşbeg, or clan chief\". The Chinese only gives 帕夏 and 和硕伯克 with no such definitions.",
+      "suggestion": "Either drop \"a title, roughly governor\" or add a matching gloss in the Chinese."
+     },
+     {
+      "path": "sections.analysis.3",
+      "severity": "note",
+      "problem": "English inserts a cause not stated in Chinese: \"men on the army rolls who could not also farm\" as the content of 旧屯之弊; the Chinese only says \"the abuses of the old garrisons\".",
+      "suggestion": "Reduce to \"the abuses of the old garrisons inside and outside the pass\" or add the same explanation in Chinese."
+     },
+     {
+      "path": "sections.analysis.4",
+      "severity": "note",
+      "problem": "English adds \"talking of wealth and strength among themselves\"; the Chinese only says the overseas powers 私议以为脆弱 (privately judged China frail), with no mention of discussing wealth and strength.",
+      "suggestion": "Drop \"talking of wealth and strength among themselves\" or render 私议 as \"privately whispered\"."
+     },
+     {
+      "path": "sections.analysis.1",
+      "severity": "note",
+      "problem": "English puts \"only a stretch of empty outskirts\" in quotation marks as a source quote, while the Chinese 我所得不过一荒郊 is unquoted narrative.",
+      "suggestion": "Remove the quotation marks around \"only a stretch of empty outskirts\" (or add 引号 in the Chinese)."
+     },
+     {
+      "path": "sections.story.8",
+      "severity": "note",
+      "problem": "Chinese opens with 作者推断, marking the standard as the author's inference; English states it flatly (\"the two lines show one test\"), though it later restores the hedge (\"One reading is... The biography draws no such conclusion\").",
+      "suggestion": "Open with \"The author infers that, set side by side, the two lines show one test.\""
+     }
+    ],
+    "overall": "The two editions are essentially aligned in facts, dates, quotes and hedging, with one truncated English clause to repair and a few English-only explanatory glosses to reconcile.",
+    "_content_sha256": "ba69d7fc4625735da2a4b86540c9d36c13a3573fe411a2e2cf8585bb67ad38fc"
+   },
+   "carried_over": []
+  }
+ ],
+ "final_content_sha256": "ba69d7fc4625735da2a4b86540c9d36c13a3573fe411a2e2cf8585bb67ad38fc",
+ "remaining": [
+  {
+   "id": "R1",
+   "source": "review",
+   "severity": "fix",
+   "where": "story.0",
+   "problem": "「赞成一方在史料里只留下这一句判断」与证据不符：E3记有论者一方的整段理由（岁糜数百万此漏卮、竭天下力赡西军无以待不虞、宜徇英人议许帕夏自立称籓），且与本文开头段引用的正是这些理由，自相矛盾；未记具体论据的只是李鸿章个人",
+   "suggestion": "改为：传记未记鸿章本人的具体论据，赞成一方的理由在史料中仅存「论者多言」一段概述"
+  },
+  {
+   "id": "R2",
+   "source": "review",
+   "severity": "fix",
+   "where": "limits.1",
+   "problem": "列举纪年「光绪元年、二年、三年、六年」漏掉四年，正文「四年正月，宗棠条上新疆建行省事宜」用到四年",
+   "suggestion": "改为「原文纪年用光绪元年、二年、三年、四年、六年」"
+  },
+  {
+   "id": "P3",
+   "source": "parity",
+   "severity": "fix",
+   "where": "sections.analysis.4",
+   "problem": "The English sentence ends with a truncated phrase: \"the foreigners began to tell the story about\" — the verb has no object, so the claim (外国乃稍稍传说之, that foreigners began spreading word of him/it) is left incomplete.",
+   "suggestion": "Change to \"the foreigners began to spread the word about him.\""
+  }
+ ],
+ "final_reviewed": true,
+ "outcome": "pending_review",
+ "model_calls": 6,
+ "model_wall_s": 648.8,
+ "edits_total": 6,
+ "finished_at": 1793376074.5336251
+}
