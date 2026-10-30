@@ -19,7 +19,8 @@ from . import checks, render, llm, state, registry
 from .config import REPO
 from .pipeline import PROMPTS, REFUSAL, CODE_REV, _evidence_block
 
-MAX_ROUNDS = 2
+from .config import load_project as _lp
+MAX_ROUNDS = int(_lp().get("editor", {}).get("max_rounds", 2))
 TIMEOUTS = {"edit": 1500, "review": 1200, "parity": 1200}
 EDITOR_NAME = "hermes-isolated editor (prompts/edit_zh_en.md)"
 

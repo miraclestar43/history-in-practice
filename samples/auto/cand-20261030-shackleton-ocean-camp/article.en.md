@@ -64,9 +64,9 @@ Then there are alternatives the author raises for the sake of argument; nothing 
 
 ## Where These Claims Stop
 
-Everything in this piece comes from Shackleton's own narrative, read here through the OCR text of the 1920 printing: the account of a participant who led the party, parts of which read like a contemporary diary. No other member's diary has been brought in for comparison. What the rest of the camp thought, and whether anyone questioned the decision, is not in the evidence, and this piece does not put feelings in their mouths. The line about the sip of water comes from an unnamed member's diary, as quoted by Shackleton.
+Everything in this piece comes from Shackleton's own narrative, read here through the OCR text of the 1920 printing: the account of a participant who led the party. No other member's diary has been brought in for comparison. What the rest of the camp thought, and whether anyone questioned the decision, is not in the evidence, and this piece does not put feelings in their mouths. The line about the sip of water comes from an unnamed member's diary, as quoted by Shackleton.
 
-The text is machine-read, and it carries errors. Quotations are taken only from clean stretches; a few damaged words are reproduced without quotation marks. All the figures — 1,800 miles, 281 days, 346 miles, two pounds, a ton, one mile, six miles, one and a half miles, two months, three and a half months — come from his account and have not been checked against any other record. Nor does this piece tell the story of the rescue that followed; that falls outside the evidence gathered here.
+The text is machine-read, and it carries errors. Quotations are taken only from clean stretches; a few damaged words are reproduced without quotation marks. The main figures — 1,800 miles, 281 days, 346 miles, two pounds, a ton, one mile, six miles, one and a half miles, two months, three and a half months — come from his account and have not been checked against any other record. Nor does this piece tell the story of the rescue that followed; that falls outside the evidence gathered here.
 
 ## Think about it
 

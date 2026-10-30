@@ -56,5 +56,10 @@
    300
   ],
   "note": "live-check retries after the site commit (~22 min); the retry timer resumes later runs until send_deadline"
+ },
+ "editor": {
+  "max_rounds": 2,
+  "max_attempts": 2,
+  "note": "bounded editor loop per draft; drafts still open after max_attempts wait for a person. The fix/block threshold is never relaxed here."
  }
 }

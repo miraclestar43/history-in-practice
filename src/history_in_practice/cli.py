@@ -278,11 +278,12 @@ def _edit_one(d, cid: str, max_rounds=editor.MAX_ROUNDS, article: Path | None = 
 def cmd_edit(a):
     d = db()
     with publish.lock("prepare"):
-        r = _edit_one(d, a.edition)
+        r = _edit_one(d, a.edition, max_rounds=a.rounds or editor.MAX_ROUNDS)
     print(json.dumps(r, ensure_ascii=False, indent=1)); return 0 if r.get("outcome") == "admitted" else 2
 
 
-def _edit_queue(d, max_n, budget_min, max_attempts=2):
+def _edit_queue(d, max_n, budget_min, max_attempts=None):
+    max_attempts = max_attempts or int(config.load_project().get("editor", {}).get("max_attempts", 2))
     import time as _t
     t0 = _t.monotonic(); out = []
     rows = d.execute("SELECT edition_id, COALESCE(reason,'') FROM edition WHERE status='pending_review' ORDER BY updated_at").fetchall()
@@ -441,7 +442,8 @@ def main(argv=None):
     p.add_argument("--base-url", default="https://starhub.vip"); p.set_defaults(f=cmd_send_test)
     p = sp.add_parser("supply"); p.add_argument("--category"); p.add_argument("--max", type=int, default=1); p.add_argument("--check", action="store_true")
     p.set_defaults(f=cmd_supply)
-    p = sp.add_parser("edit"); p.add_argument("edition"); p.set_defaults(f=cmd_edit)
+    p = sp.add_parser("edit"); p.add_argument("edition"); p.add_argument("--rounds", type=int, help="override editor.max_rounds for this attempt")
+    p.set_defaults(f=cmd_edit)
     p = sp.add_parser("edit-queue"); p.add_argument("--max", type=int, default=3); p.add_argument("--budget-minutes", type=float, default=120)
     p.set_defaults(f=cmd_edit_queue)
     p = sp.add_parser("rereview"); p.add_argument("edition"); p.add_argument("--rounds", type=int, default=0)

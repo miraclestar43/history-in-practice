@@ -18,7 +18,14 @@ def summary(cid: str) -> dict:
     for w in sorted((DATA / "editor" / cid).glob("attempt-*"), key=lambda p: int(p.name.split("-")[1])):
         rec = json.loads((w / "editor_record.json").read_text()) if (w / "editor_record.json").exists() else {}
         cs = calls(w / "calls.jsonl")
-        att.append({"attempt": w.name, "outcome": rec.get("outcome", "unfinished"), "rounds": [r["round"] for r in rec.get("rounds", [])],
+        rounds = rec.get("rounds", []); traj = []
+        for k, r in enumerate(rounds):
+            nxt = len(rounds[k + 1]["issues_in"]) if k + 1 < len(rounds) else len(rec.get("remaining", []))
+            carried = len(r.get("carried_over", []))
+            traj.append({"round": r["round"], "in": len(r.get("issues_in", [])), "edits": len(r.get("edits_applied", [])),
+                         "carried_unfixed": carried, "fresh_from_review": max(0, nxt - carried),
+                         "review_refused": r.get("review_after") is None and r["round"] > 0})
+        att.append({"attempt": w.name, "outcome": rec.get("outcome", "unfinished"), "trajectory": traj, "rounds": [r["round"] for r in rec.get("rounds", [])],
                     "issues_in": [len(r.get("issues_in", [])) for r in rec.get("rounds", [])],
                     "edits_applied": rec.get("edits_total"), "edits_failed": sum(len(r.get("edits_failed", [])) for r in rec.get("rounds", [])),
                     "remaining": len(rec.get("remaining", [])), "calls": len(cs), "invalid_json": sum(1 for c in cs if not c.get("json_ok")),

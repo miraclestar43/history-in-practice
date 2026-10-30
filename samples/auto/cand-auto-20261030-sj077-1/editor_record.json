@@ -1,401 +1,256 @@
 {
- "candidate_id": "attempt-1",
+ "candidate_id": "attempt-2",
  "editor": "hermes-isolated editor (prompts/edit_zh_en.md)",
- "code_rev": "7b6f610",
- "started_at": 1793374474.756424,
+ "code_rev": "a61c045",
+ "started_at": 1793378402.9720085,
  "evidence_sha256": "4ca849c182d95c74b2861f9543be3010d9470f2f6498b94b9d8a59da00e54362",
- "original_content_sha256": "bd24db7c5f3bbdf9fa1f11a6ba5573466ccd9f04e313dd135893654a42dfb3de",
+ "original_content_sha256": "5948a54f0006556d14a4913946b6ac6eb308591b17b6b1d42a17090eb2ec1ac6",
  "rounds": [
   {
    "round": 1,
    "issues_in": [
     {
-     "id": "R1",
-     "source": "review",
-     "severity": "fix",
-     "where": "dek.0",
-     "problem": "时序错置：“出城前被一个守门老人当面点破：那是拿肉投餒虎”。据E13/E14，侯生在夷门初见只说“公子勉之矣，老臣不能從”，“以肉投餒虎”是公子行数里后折返，侯生才说的",
-     "suggestion": "改为“出城后折返夷门，被守门老人当面点破：那是拿肉投餒虎”"
-    },
-    {
-     "id": "R2",
-     "source": "review",
-     "severity": "fix",
-     "where": "dek.0",
-     "problem": "“信陵君”之名号不见于证据包（全部条目只称“公子”），且“魏王不敢出兵”的“不敢”是动机推断，其止晋鄙留军观望仅见于未逐字核对的简报转述",
-     "suggestion": "名号改为“魏公子”（或注明出自常识）；“不敢出兵”改“按兵不动”"
-    },
-    {
-     "id": "R3",
+     "id": "S1",
      "source": "review",
      "severity": "fix",
      "where": "hook.0",
-     "problem": "“大军却没有走到邯郸”属简报转述（魏王止晋鄙、留军壁邺），证据包无此记载，却以record呈现，ev所列E9/E11不支持",
-     "suggestion": "句末补“（据简报转述）”，或删去该断言"
+     "problem": "把使者之辞概括为「魏国答应的救兵至今不到」，原文重心是「今邯鄲旦暮降秦而魏救不至」——邯郸旦暮降秦这一层被抹去",
+     "suggestion": "补上「邯郸旦暮之间就要降秦，而魏国救兵不至」",
+     "seeded_from": "R1"
     },
     {
-     "id": "R4",
+     "id": "S2",
      "source": "review",
      "severity": "fix",
      "where": "hook.1",
-     "problem": "“魏王不肯再发兵”同属未核对的简报转述，ev所列E13/E14不支持",
-     "suggestion": "补“（据简报转述）”标注"
+     "problem": "「魏王不肯再发兵」证据包无（虽标简报转述）；「手里只有三千门客，没有兵权」中「没有兵权」是推断，证据只说「不敢任公子以國政」；「拼个同归于尽」超出 E13「欲死秦軍」的记述，添了意图",
+     "suggestion": "改为「魏王未再发兵（据简报转述），公子手中只有门客，无国政之任；他决意赴秦军而死」",
+     "seeded_from": "R2"
     },
     {
-     "id": "R5",
+     "id": "S3",
      "source": "review",
      "severity": "fix",
-     "where": "hook.1",
-     "problem": "“没有一兵一卒”是夸张表述，证据只说“致食客三千人”（E2），未写公子无兵",
-     "suggestion": "改为“手里只有三千门客，没有兵权”"
+     "where": "context.1",
+     "problem": "「他连调动一支偏师的资格都没有，手里只剩人，没有权」写成事实，证据（SJ0771-E3）只有「不敢任公子以國政」，具体到「偏师」是作者外推",
+     "suggestion": "改为「他未被任以国政，调兵无从谈起（作者推断）」",
+     "seeded_from": "R3"
     },
     {
-     "id": "R6",
+     "id": "S4",
      "source": "review",
      "severity": "fix",
-     "where": "context.2",
-     "problem": "“公子敬的另一个人在夷门”疑为错字病句",
-     "suggestion": "改为“公子敬重的另一个人，在夷门”"
+     "where": "story.1",
+     "problem": "把公子出口之言改写成内心活动：原文是「公子……心不快，曰：『吾所以待侯生者備矣……』」，稿件写成「想的是自己待侯生不薄……」；且「心不快」是司马迁叙述用语，稿件既承认是叙述用语，又把其后自言当心理实录",
+     "suggestion": "改为「心不快，说：『吾所以待侯生者備矣……我豈有所失哉？』」",
+     "seeded_from": "R4"
     },
     {
-     "id": "R7",
+     "id": "S5",
+     "source": "review",
+     "severity": "block",
+     "where": "story.8",
+     "problem": "「这场救赵从头到尾没有魏王的授权」与证据矛盾：E9 明载魏王遣晋鄙将十万众救赵，最初是奉王命出兵，无授权的只是矫符夺军、杀将",
+     "suggestion": "改为「夺军救赵这一段没有魏王的授权」，删「从头到尾」",
+     "seeded_from": "R5"
+    },
+    {
+     "id": "S6",
      "source": "review",
      "severity": "fix",
-     "where": "story.0",
-     "problem": "“约百余乘车骑，打算带门客直入秦军，与赵俱死”属简报转述内容，但“（此节据简报转述）”只附在前一句之后，覆盖范围不明",
-     "suggestion": "把标注移到该句后，或明确标注覆盖两句"
+     "where": "limits.0",
+     "problem": "「如侯嬴屏人间语献计」是证据包没有的细节：E15 未记「屏人」「间语」，且《史记》中「屏人間語」是公子屏退左右问计的行为，此处把细节和归属都安到侯嬴头上",
+     "suggestion": "删去「屏人间语」，改为「如侯嬴献窃符之计、朱亥答话，是史家的记述，未必逐字」",
+     "seeded_from": "R6"
     },
     {
-     "id": "R8",
-     "source": "review",
+     "id": "S7",
+     "source": "parity",
      "severity": "fix",
-     "where": "story.2",
-     "problem": "把「無他端」释为“有难不去解决”，与原文“没有别的办法、别无手段”不合，且“他等的就是这一返”把作者推断写成史实（人物预谋）",
-     "suggestion": "改为“没有别的办法，只想冲进秦军”；末句改“作者推断：他料到公子会折返”或删"
+     "where": "sections.story.3",
+     "problem": "English adds a fact not in the Chinese: \"from the king on down no one could get it for her\" (i.e., the king and all below tried and failed to avenge her father). The Chinese only says she was unable to take revenge for three years.",
+     "suggestion": "Delete \"and from the king on down no one could get it for her\", or add the equivalent to the Chinese line.",
+     "seeded_from": "P7"
     },
     {
-     "id": "R9",
-     "source": "review",
+     "id": "S8",
+     "source": "parity",
      "severity": "fix",
-     "where": "analysis.1",
-     "problem": "“他明知要欠自己这方一笔债……仍然把方案走完”断言其“明知”，与同段末“原文没有写他权衡的内心”自相矛盾，属拟构内心",
-     "suggestion": "改为“从结果看欠了……一笔债；原文未写他事前是否权衡”"
-    },
-    {
-     "id": "R10",
-     "source": "review",
-     "severity": "fix",
-     "where": "analysis.2",
-     "problem": "“他在赵国能被以礼相待”证据包只记迎接时的礼遇（E23），未记其留赵后所受待遇，以此作因果解释缺据",
-     "suggestion": "改为“赵王、平原君以高规格相迎”，或注明为作者解释"
-    },
-    {
-     "id": "R11",
-     "source": "review",
-     "severity": "fix",
-     "where": "limits.1",
-     "problem": "ev所引“SJ0771-E16”在证据包中不存在（E15与E17之间编号跳空）",
-     "suggestion": "删去该条或改引实际存在的条目"
-    },
-    {
-     "id": "C12",
-     "source": "checker",
-     "severity": "BLOCK",
-     "where": "",
-     "problem": "limits[1] unknown evidence id SJ0771-E16",
-     "suggestion": ""
+     "where": "sections.limits.1",
+     "problem": "English adds the place name \"at Ye\" (\"hold the army at Ye in wait-and-see\"); the Chinese only says 魏王使人止晋鄙留军观望 with no location.",
+     "suggestion": "Drop \"at Ye\", or add 驻于邺 (or 邺) to the Chinese.",
+     "seeded_from": "P8"
     }
    ],
    "edits_applied": [
     {
-     "path": "dek.zh",
-     "before": "魏安釐王二十年，秦军围邯郸，魏王不敢出兵。信陵君准备带门客去送死，出城前被一个守门老人当面点破：那是拿肉投餒虎。本文看他如何在没有干净选项时准备、付代价、认亏欠。",
-     "after": "魏安釐王二十年，秦军围邯郸，魏王按兵不动。信陵君准备带门客去送死，出城前被一个守门老人当面点破：那是拿肉投餒虎。本文看他如何在没有干净选项时准备、付代价、认亏欠。",
-     "reason": "“不敢”是动机推断，证据包无此记载；改为只陈述行动的“按兵不动”，中性且不引入证据外的心理。",
-     "issues": [
-      "R2"
-     ]
-    },
-    {
-     "path": "dek.zh",
-     "before": "魏安釐王二十年，秦军围邯郸，魏王按兵不动。信陵君准备带门客去送死，出城前被一个守门老人当面点破：那是拿肉投餒虎。本文看他如何在没有干净选项时准备、付代价、认亏欠。",
-     "after": "魏安釐王二十年，秦军围邯郸，魏王按兵不动。魏公子准备带门客去送死，出城后折返夷门，被一个守门老人当面点破：那是拿肉投餒虎。本文看他如何在没有干净选项时准备、付代价、认亏欠。",
-     "reason": "名号“信陵君”不见于证据（全部条目只称“公子”），改“魏公子”；据E13，侯生初见只说“公子勉之矣，老臣不能從”，公子“復引車還”后E14才说“以肉投餒虎”，故改“出城前”为“出城后折返夷门”。",
-     "issues": [
-      "R1",
-      "R2"
-     ]
-    },
-    {
-     "path": "dek.en",
-     "before": "In the twentieth year of King Anxi of Wei, Qin's armies closed around Handan and the king of Wei would not commit his troops. Lord Xinling was set on marching his retainers to their deaths when an old gatekeeper cut him to his face: that is meat thrown to a starving tiger. Here is how he worked the problem when no option was clean — what he prepared, what it cost, and what he admitted he owed.",
-     "after": "In the twentieth year of King Anxi of Wei, Qin's armies closed around Handan and the king of Wei held his troops back. Lord Xinling was set on marching his retainers to their deaths when an old gatekeeper cut him to his face: that is meat thrown to a starving tiger. Here is how he worked the problem when no option was clean — what he prepared, what it cost, and what he admitted he owed.",
-     "reason": "同步中文“按兵不动”，去掉“不敢”所隐含的动机推断，只保留行动描述。",
-     "issues": [
-      "R2"
-     ]
-    },
-    {
-     "path": "dek.en",
-     "before": "In the twentieth year of King Anxi of Wei, Qin's armies closed around Handan and the king of Wei held his troops back. Lord Xinling was set on marching his retainers to their deaths when an old gatekeeper cut him to his face: that is meat thrown to a starving tiger. Here is how he worked the problem when no option was clean — what he prepared, what it cost, and what he admitted he owed.",
-     "after": "In the twentieth year of King Anxi of Wei, Qin's armies closed around Handan and the king of Wei held his troops back. The lord of Wei was set on marching his retainers to their deaths; after riding out and turning back at the Yimen gate, an old gatekeeper cut him to his face: that is meat thrown to a starving tiger. Here is how he worked the problem when no option was clean — what he prepared, what it cost, and what he admitted he owed.",
-     "reason": "同步中文两处修改：名号改为不依赖证据外包的“the lord of Wei”，并按E13/E14把“以肉投餒虎”移到折返之后（先辞决、行数里、復引车还，侯生才说此语）。",
-     "issues": [
-      "R1",
-      "R2"
-     ]
-    },
-    {
      "path": "sections.hook.0.zh",
-     "before": "魏安釐王二十年，秦军在长平歼灭赵军主力之后，进兵围住邯郸。魏王派将军晋鄙带十万众救赵，大军却没有走到邯郸——平原君的使者一批批赶到大梁，车盖接连不断，话一句比一句重：魏国答应的救兵至今不到，公子不是自命能急人之困吗？末了还添一句「獨不憐公子姊邪」。公子无忌的姐姐，正是平原君夫人。",
-     "after": "魏安釐王二十年，秦军在长平歼灭赵军主力之后，进兵围住邯郸。魏王派将军晋鄙带十万众救赵，大军却没有走到邯郸（据简报转述）——平原君的使者一批批赶到大梁，车盖接连不断，话一句比一句重：魏国答应的救兵至今不到，公子不是自命能急人之困吗？末了还添一句「獨不憐公子姊邪」。公子无忌的姐姐，正是平原君夫人。",
-     "reason": "魏王止晋鄙、留军壁邺不见于证据包（E9只记“魏王使將軍晉鄙將十萬眾救趙”），属简报转述，补标注而不删事实。",
+     "before": "魏安釐王二十年，秦军在长平歼灭赵军主力之后，进兵围住邯郸。魏王派将军晋鄙带十万众救赵，大军却没有走到邯郸（据简报转述）——平原君的使者一批批赶到大梁，车盖接连不断，话一句比一句重：魏国答应的救兵至今不到，公子不是自命能急人之困吗？末了还添一句「獨不憐公子姊邪」。公子无忌的姐姐，正是平原君夫人。",
+     "after": "魏安釐王二十年，秦军在长平歼灭赵军主力之后，进兵围住邯郸。魏王派将军晋鄙带十万众救赵，大军却没有走到邯郸（据简报转述）——平原君的使者一批批赶到大梁，车盖接连不断，话一句比一句重：邯郸旦暮之间就要降秦，而魏国答应的救兵至今不到，公子不是自命能急人之困吗？末了还添一句「獨不憐公子姊邪」。公子无忌的姐姐，正是平原君夫人。",
+     "reason": "补回 E11「今邯鄲旦暮降秦而魏救不至」中被抹去的“邯郸旦暮降秦”一层，保持使者原话的重心。",
      "issues": [
-      "R3"
+      "S1"
      ]
     },
     {
      "path": "sections.hook.0.en",
-     "before": "In the twentieth year of King Anxi of Wei, after Qin had annihilated Zhao's main force at Changping, its armies pressed on and encircled Handan. The king of Wei sent General Jin Bi with a hundred thousand troops to relieve Zhao, but the army never reached the city. Instead, envoys from Lord Pingyuan arrived in Daliang one after another — caps of office and carriage canopies in an unbroken line — each message harsher than the last: the relief Wei had promised still had not come, and was Lord Xinling not the man who prided himself on rushing to others in distress? The last message added a barb: \"And have you no pity for your own sister?\" Lord Xinling's elder sister was Lord Pingyuan's wife.",
-     "after": "In the twentieth year of King Anxi of Wei, after Qin had annihilated Zhao's main force at Changping, its armies pressed on and encircled Handan. The king of Wei sent General Jin Bi with a hundred thousand troops to relieve Zhao, but the army never reached the city (retold from the briefing). Instead, envoys from Lord Pingyuan arrived in Daliang one after another — caps of office and carriage canopies in an unbroken line — each message harsher than the last: the relief Wei had promised still had not come, and was Lord Xinling not the man who prided himself on rushing to others in distress? The last message added a barb: \"And have you no pity for your own sister?\" Lord Xinling's elder sister was Lord Pingyuan's wife.",
-     "reason": "同步中文的简报转述标注。",
+     "before": "In the twentieth year of King Anxi of Wei, after Qin had annihilated Zhao's main force at Changping, its armies pressed on and encircled Handan. The king of Wei sent General Jin Bi with a hundred thousand troops to relieve Zhao, but the army never reached the city (retold from the briefing). Instead, envoys from Lord Pingyuan arrived in Daliang one after another — caps of office and carriage canopies in an unbroken line — each message harsher than the last: the relief Wei had promised still had not come, and was Lord Xinling not the man who prided himself on rushing to others in distress? The last message added a barb: \"And have you no pity for your own sister?\" Lord Xinling's elder sister was Lord Pingyuan's wife.",
+     "after": "In the twentieth year of King Anxi of Wei, after Qin had annihilated Zhao's main force at Changping, its armies pressed on and encircled Handan. The king of Wei sent General Jin Bi with a hundred thousand troops to relieve Zhao, but the army never reached the city (retold from the briefing). Instead, envoys from Lord Pingyuan arrived in Daliang one after another — caps of office and carriage canopies in an unbroken line — each message harsher than the last: Handan was within days of surrendering to Qin, and the relief Wei had promised still had not come: was Lord Xinling not the man who prided himself on rushing to others in distress? The last message added a barb: \"And have you no pity for your own sister?\" Lord Xinling's elder sister was Lord Pingyuan's wife.",
+     "reason": "与中文同步补入 E11「今邯鄲旦暮降秦而魏救不至」的邯郸旦暮降秦一层。",
      "issues": [
-      "R3"
+      "S1"
      ]
     },
     {
      "path": "sections.hook.1.zh",
-     "before": "更麻烦的是，魏王不肯再发兵，而公子手里只有三千门客，没有一兵一卒。他拿定的主意近乎送死：带上门客去秦军里拼个同归于尽。出城之前，他去向一个看城门的老人告别。",
-     "after": "更麻烦的是，魏王不肯再发兵（据简报转述），而公子手里只有三千门客，没有一兵一卒。他拿定的主意近乎送死：带上门客去秦军里拼个同归于尽。出城之前，他去向一个看城门的老人告别。",
-     "reason": "证据包（E13/E14）不载魏王拒绝发兵，属未逐字核对的简报转述，补标注。",
+     "before": "更麻烦的是，魏王不肯再发兵（据简报转述），而公子手里只有三千门客，没有兵权。他拿定的主意近乎送死：带上门客去秦军里拼个同归于尽。出城之前，他去向一个看城门的老人告别。",
+     "after": "更麻烦的是，魏王未再发兵（据简报转述），而公子手里只有三千门客，未得国政之任。他决意赴秦军而死。出城之前，他去向一个看城门的老人告别。",
+     "reason": "“不肯”带动机推断，改为中性“未再发兵”并保留简报转述标注；“没有兵权”改用 E3「不敢任公子以國政」支持的“未得国政之任”；删“拼个同归于尽”的意图描写，收窄为 E13「欲死秦軍」支持的“决意赴秦军而死”。",
      "issues": [
-      "R4"
+      "S2"
      ]
     },
     {
      "path": "sections.hook.1.en",
-     "before": "Worse still, the king of Wei refused to send any more troops, and Lord Xinling had three thousand retainers but not a single soldier. The plan he settled on amounted to suicide: take the retainers and fight the Qin army to mutual destruction. Before leaving the city, he went to say goodbye to an old man who kept one of the gates.",
-     "after": "Worse still, the king of Wei refused to send any more troops (retold from the briefing), and Lord Xinling had three thousand retainers but not a single soldier. The plan he settled on amounted to suicide: take the retainers and fight the Qin army to mutual destruction. Before leaving the city, he went to say goodbye to an old man who kept one of the gates.",
-     "reason": "同步中文的简报转述标注。",
+     "before": "Worse still, the king of Wei refused to send any more troops (retold from the briefing), and Lord Xinling had three thousand retainers but no military authority of his own. The plan he settled on amounted to suicide: take the retainers and fight the Qin army to mutual destruction. Before leaving the city, he went to say goodbye to an old man who kept one of the gates.",
+     "after": "Worse still, the king of Wei sent no further troops (retold from the briefing), and Lord Xinling had three thousand retainers but no appointment to the governance of the state. The plan he settled on was to go and die at the Qin army. Before leaving the city, he went to say goodbye to an old man who kept one of the gates.",
+     "reason": "与中文同步：去掉动机推断“refused”、把“没有兵权”改为 E3 支持的无国政之任、删去“同归于尽”的意图，收窄为“赴秦军而死”。",
      "issues": [
-      "R4"
+      "S2"
      ]
     },
     {
-     "path": "sections.hook.1.zh",
-     "before": "更麻烦的是，魏王不肯再发兵（据简报转述），而公子手里只有三千门客，没有一兵一卒。他拿定的主意近乎送死：带上门客去秦军里拼个同归于尽。出城之前，他去向一个看城门的老人告别。",
-     "after": "更麻烦的是，魏王不肯再发兵（据简报转述），而公子手里只有三千门客，没有兵权。他拿定的主意近乎送死：带上门客去秦军里拼个同归于尽。出城之前，他去向一个看城门的老人告别。",
-     "reason": "“没有一兵一卒”是夸张，证据只有“致食客三千人”（E2）及“不敢任公子以國政”（E3）；“没有兵权”与E3一致且不夸大。",
+     "path": "sections.context.1.zh",
+     "before": "一种解释是，这件事两面都算数：公子的信息能力得到验证，代价也记在账上——「是後魏王畏公子之賢能，不敢任公子以國政」。他越能干，魏王越不敢把国政交给他。等到邯郸告急，他连调动一支偏师的资格都没有，手里只剩人，没有权。",
+     "after": "一种解释是，这件事两面都算数：公子的信息能力得到验证，代价也记在账上——「是後魏王畏公子之賢能，不敢任公子以國政」。他越能干，魏王越不敢把国政交给他。等到邯郸告急，他未被任以国政，调兵无从谈起（作者推断）。",
+     "reason": "E3 只有「不敢任公子以國政」，“偏师”“只剩人没有权”是外推，删去并按证据收窄，同时按规则标明为作者推断。",
      "issues": [
-      "R5"
+      "S3"
      ]
     },
     {
-     "path": "sections.hook.1.en",
-     "before": "Worse still, the king of Wei refused to send any more troops (retold from the briefing), and Lord Xinling had three thousand retainers but not a single soldier. The plan he settled on amounted to suicide: take the retainers and fight the Qin army to mutual destruction. Before leaving the city, he went to say goodbye to an old man who kept one of the gates.",
-     "after": "Worse still, the king of Wei refused to send any more troops (retold from the briefing), and Lord Xinling had three thousand retainers but no military authority of his own. The plan he settled on amounted to suicide: take the retainers and fight the Qin army to mutual destruction. Before leaving the city, he went to say goodbye to an old man who kept one of the gates.",
-     "reason": "同步中文“没有兵权”，与E3“不敢任公子以國政”一致。",
+     "path": "sections.context.1.en",
+     "before": "Read the episode both ways. His intelligence was proven — and the price went straight onto the ledger: \"From then on the king of Wei feared Lord Xinling's ability and dared not entrust him with the government of the state.\" The more capable he appeared, the less his king would hand him. By the time Handan cried for help he could not command even a detachment: plenty of people, no authority at all.",
+     "after": "Read the episode both ways. His intelligence was proven — and the price went straight onto the ledger: \"From then on the king of Wei feared Lord Xinling's ability and dared not entrust him with the government of the state.\" The more capable he appeared, the less his king would hand him. By the time Handan cried for help he held no charge of the governance of the state, and raising troops was out of the question (the author's inference).",
+     "reason": "与中文同步：删去“偏师”外推，收窄为 E3「不敢任公子以國政」支持的说法，并标明为作者推断。",
      "issues": [
-      "R5"
+      "S3"
      ]
     },
     {
-     "path": "sections.context.2.zh",
-     "before": "公子敬的另一个人在夷门。侯嬴年七十，家贫，做大梁夷门的守门人。公子要厚赠，他不肯受，说自己「脩身絜行數十年，終不以監門困故而受公子財」。公子于是置酒大会宾客，空出车左的上位，亲自驾车去迎。侯生穿着破旧衣冠，径直上车坐了上座，不让，公子执辔愈恭。到家引他坐上座、遍赞宾客，满座皆惊。",
-     "after": "公子敬重的另一个人，在夷门。侯嬴年七十，家贫，做大梁夷门的守门人。公子要厚赠，他不肯受，说自己「脩身絜行數十年，終不以監門困故而受公子財」。公子于是置酒大会宾客，空出车左的上位，亲自驾车去迎。侯生穿着破旧衣冠，径直上车坐了上座，不让，公子执辔愈恭。到家引他坐上座、遍赞宾客，满座皆惊。",
-     "reason": "原文“公子敬的”是脱字病句；补“重”与逗号，含义与英文既有句“The other man Lord Xinling honored kept the Yimen”一致，英文无需改动。",
+     "path": "sections.story.1.zh",
+     "before": "那天他出城，路过夷门，见到侯生，把要去秦军送死的打算讲了，辞决而行。侯生只说一句「公子勉之矣，老臣不能從」。车行数里，公子心不快——这是《史记》的叙述用语——想的是自己待侯生不薄，天下莫不闻，如今将死，对方竟无一言半辞相送。他「復引車還，問侯生」。",
+     "after": "那天他出城，路过夷门，见到侯生，把要去秦军送死的打算讲了，辞决而行。侯生只说一句「公子勉之矣，老臣不能從」。车行数里，公子心不快——这是《史记》的叙述用语——说：「吾所以待侯生者備矣，天下莫不聞，今吾且死而侯生曾無一言半辭送我，我豈有所失哉？」他「復引車還，問侯生」。",
+     "reason": "E13 是「心不快，曰：『吾所以待侯生者備矣……我豈有所失哉？』」，公子说的是出口之言，改回直引，引文为证据逐字片段，不再写成心理活动。",
      "issues": [
-      "R6"
+      "S4"
      ]
     },
     {
-     "path": "sections.story.0.zh",
-     "before": "平原君的使者在大梁把话说绝：救兵不到，公子的高义安在。公子能做的第一件事仍是求魏王，魏王不肯松口，宾客辩士轮番劝说也没用（此节据简报转述）。剩下能动的只有他自己：约百余乘车骑，打算带门客直入秦军，与赵俱死。",
-     "after": "平原君的使者在大梁把话说绝：救兵不到，公子的高义安在。公子能做的第一件事仍是求魏王，魏王不肯松口，宾客辩士轮番劝说也没用（此句据简报转述）。剩下能动的只有他自己：约百余乘车骑，打算带门客直入秦军，与赵俱死。",
-     "reason": "把标注范围明确限定到所在那一句，避免读者误以为覆盖后面的“约百余乘车骑”一句。",
+     "path": "sections.story.1.en",
+     "before": "That day he rode out, passed the Yimen gate, stopped to see Hou Ying and told him the whole plan — going to die at the Qin army — then took his leave and set off. Hou Ying said only: \"Push on, my lord; this old servant cannot follow you.\" A few li on, the lord felt a gnawing unhappiness — the narrator's own phrase — reasoning that he had treated Hou Ying handsomely, as all the world knew, and now, going to his death, the old man had not half a word to see him off. Had he fallen short somewhere? So he \"turned his carriage around and went back to question Hou Ying.\"",
+     "after": "That day he rode out, passed the Yimen gate, stopped to see Hou Ying and told him the whole plan — going to die at the Qin army — then took his leave and set off. Hou Ying said only: \"Push on, my lord; this old servant cannot follow you.\" A few li on, the lord felt a gnawing unhappiness — the narrator's own phrase — and said: \"I have treated Hou Ying handsomely in every way, as all the world knows; now I am going to my death, and Hou Ying has not half a word to say in seeing me off. Have I fallen short somewhere?\" So he \"turned his carriage around and went back to question Hou Ying.\"",
+     "reason": "与中文同步，把内心独白改回 E13 所记的直接引语（英译），不再作心理实录。",
      "issues": [
-      "R7"
+      "S4"
      ]
     },
     {
-     "path": "sections.story.0.zh",
-     "before": "平原君的使者在大梁把话说绝：救兵不到，公子的高义安在。公子能做的第一件事仍是求魏王，魏王不肯松口，宾客辩士轮番劝说也没用（此句据简报转述）。剩下能动的只有他自己：约百余乘车骑，打算带门客直入秦军，与赵俱死。",
-     "after": "平原君的使者在大梁把话说绝：救兵不到，公子的高义安在。公子能做的第一件事仍是求魏王，魏王不肯松口，宾客辩士轮番劝说也没用（此句据简报转述）。剩下能动的只有他自己：约百余乘车骑，打算带门客直入秦军，与赵俱死（此句据简报转述）。",
-     "reason": "“约百余乘车骑，欲赴秦军”属简报转述（证据包无载），在该句句末单独补标注，与前句标注各管一句。",
+     "path": "sections.story.8.zh",
+     "before": "魏王怒公子盗兵符、矫杀晋鄙，公子自己清楚。退秦存赵之后，他让将领把军队带回魏国，自己与门客留在赵国。这场救赵从头到尾没有魏王的授权，收尾也就回不去魏国的朝堂。",
+     "after": "魏王怒公子盗兵符、矫杀晋鄙，公子自己清楚。退秦存赵之后，他让将领把军队带回魏国，自己与门客留在赵国。这场救赵中盗符夺军、矫杀晋鄙的一段没有魏王的授权，收尾也就回不去魏国的朝堂。",
+     "reason": "E9 明载「魏王使將軍晉鄙將十萬眾救趙」，最初出兵是奉王命；无授权的只是 E25「魏王怒公子之盜其兵符，矯殺晉鄙」这一段，故删“从头到尾”并收窄。",
      "issues": [
-      "R7"
+      "S5"
      ]
     },
     {
-     "path": "sections.story.0.en",
-     "before": "Lord Pingyuan's envoys left nothing to the imagination in Daliang: with no relief army in sight, where was the lord's famed righteousness? The first thing Lord Xinling could do was still to appeal to the king. The king would not budge, and neither the retainers nor the professional persuaders sent to argue the case changed his mind (this episode is retold from the briefing, not quoted from the source). That left only himself: roughly a hundred chariots and horsemen, intending to lead his retainers straight into the Qin army and die with Zhao.",
-     "after": "Lord Pingyuan's envoys left nothing to the imagination in Daliang: with no relief army in sight, where was the lord's famed righteousness? The first thing Lord Xinling could do was still to appeal to the king. The king would not budge, and neither the retainers nor the professional persuaders sent to argue the case changed his mind (this detail is retold from the briefing, not quoted from the source). That left only himself: roughly a hundred chariots and horsemen, intending to lead his retainers straight into the Qin army and die with Zhao.",
-     "reason": "同步中文：把标注限定到所在那一句，覆盖范围与中文一致。",
+     "path": "sections.story.8.en",
+     "before": "The king of Wei was furious that his tally had been stolen and Jin Bi killed on a forged order, and Lord Xinling knew it. Having driven off Qin and saved Zhao, he sent the generals back to Wei with the army and stayed behind in Zhao with his retainers. From first to last the rescue of Zhao had carried no royal authorization, so its ending kept him out of the Wei court altogether.",
+     "after": "The king of Wei was furious that his tally had been stolen and Jin Bi killed on a forged order, and Lord Xinling knew it. Having driven off Qin and saved Zhao, he sent the generals back to Wei with the army and stayed behind in Zhao with his retainers. The part of the rescue of Zhao in which he stole the tally, seized the army and killed Jin Bi carried no royal authorization, so its ending kept him out of the Wei court altogether.",
+     "reason": "与中文同步：按 E9、E25 把“从头到尾无授权”收窄为矫符夺军、杀将这一段。",
      "issues": [
-      "R7"
+      "S5"
      ]
     },
     {
-     "path": "sections.story.0.en",
-     "before": "Lord Pingyuan's envoys left nothing to the imagination in Daliang: with no relief army in sight, where was the lord's famed righteousness? The first thing Lord Xinling could do was still to appeal to the king. The king would not budge, and neither the retainers nor the professional persuaders sent to argue the case changed his mind (this detail is retold from the briefing, not quoted from the source). That left only himself: roughly a hundred chariots and horsemen, intending to lead his retainers straight into the Qin army and die with Zhao.",
-     "after": "Lord Pingyuan's envoys left nothing to the imagination in Daliang: with no relief army in sight, where was the lord's famed righteousness? The first thing Lord Xinling could do was still to appeal to the king. The king would not budge, and neither the retainers nor the professional persuaders sent to argue the case changed his mind (this detail is retold from the briefing, not quoted from the source). That left only himself: roughly a hundred chariots and horsemen, intending to lead his retainers straight into the Qin army and die with Zhao (this detail, too, is retold from the briefing, not quoted from the source).",
-     "reason": "同步中文：为“约百余乘车骑赴死”一句单独补简报转述标注。",
+     "path": "sections.limits.0.zh",
+     "before": "先说史源。本篇只有一个来源——《史记·魏公子列传》的一处记述，没有旁证可对。文中的密语与对话，如侯嬴屏人间语献计、朱亥答话，是史家的记述，未必逐字。公子的「心不快」「意驕矜」「立自責」都是叙述用语，不是实录的心理。纪年照原文写魏安釐王二十年，不换算公元。",
+     "after": "先说史源。本篇只有一个来源——《史记·魏公子列传》的一处记述，没有旁证可对。文中的密语与对话，如侯嬴献窃符之计、朱亥答话，是史家的记述，未必逐字。公子的「心不快」「意驕矜」「立自責」都是叙述用语，不是实录的心理。纪年照原文写魏安釐王二十年，不换算公元。",
+     "reason": "E15 未记“屏人”“间语”，删去该证据外细节，只保留证据支持的献窃符之计。",
      "issues": [
-      "R7"
+      "S6"
      ]
     },
     {
-     "path": "sections.story.2.zh",
-     "before": "这一折返是全篇的转折。侯生当面把话挑明：「今有難，無他端而欲赴秦軍，譬若以肉投餒虎，何功之有哉」——有难不去解决，只去拼命，等于拿肉喂饿虎，白送，还要门客何用。他还说，正因为知道公子待他厚，此去而不相送，公子必会「恨之復返」。他等的就是这一返。",
-     "after": "这一折返是全篇的转折。侯生当面把话挑明：「今有難，無他端而欲赴秦軍，譬若以肉投餒虎，何功之有哉」——没有别的办法，只想冲进秦军，等于拿肉喂饿虎，白送，还要门客何用。他还说，正因为知道公子待他厚，此去而不相送，公子必会「恨之復返」。他等的就是这一返。",
-     "reason": "「無他端」意为别无手段、没有别的办法，不是“有难不去解决”；改为与原文相合的释义。",
+     "path": "sections.limits.0.en",
+     "before": "Start with the sources. This piece rests on a single one: one account in the \"Hereditary House of Lord Wei\" in the Records of the Grand Historian, with no corroboration to set against it. The whispered schemes and dialogue — Hou Ying's secret counsel, Zhu Hai's reply — are the historian's rendering and need not be verbatim. The lord's \"unease,\" \"self-congratulation,\" and \"blaming himself\" are narrative labels, not recorded psychology. The year is given as the twentieth of King Anxi of Wei, as the source has it, with no conversion to the common era.",
+     "after": "Start with the sources. This piece rests on a single one: one account in the \"Hereditary House of Lord Wei\" in the Records of the Grand Historian, with no corroboration to set against it. The whispered schemes and dialogue — Hou Ying's plan to steal the tally, Zhu Hai's reply — are the historian's rendering and need not be verbatim. The lord's \"unease,\" \"self-congratulation,\" and \"blaming himself\" are narrative labels, not recorded psychology. The year is given as the twentieth of King Anxi of Wei, as the source has it, with no conversion to the common era.",
+     "reason": "与中文同步删去证据包没有的“屏人间语”细节，改为 E15 支持的献窃符之计。",
      "issues": [
-      "R8"
+      "S6"
      ]
     },
     {
-     "path": "sections.story.2.zh",
-     "before": "这一折返是全篇的转折。侯生当面把话挑明：「今有難，無他端而欲赴秦軍，譬若以肉投餒虎，何功之有哉」——没有别的办法，只想冲进秦军，等于拿肉喂饿虎，白送，还要门客何用。他还说，正因为知道公子待他厚，此去而不相送，公子必会「恨之復返」。他等的就是这一返。",
-     "after": "这一折返是全篇的转折。侯生当面把话挑明：「今有難，無他端而欲赴秦軍，譬若以肉投餒虎，何功之有哉」——没有别的办法，只想冲进秦军，等于拿肉喂饿虎，白送，还要门客何用。他还说，正因为知道公子待他厚，此去而不相送，公子必会「恨之復返」。作者推断：他料到公子会折返。",
-     "reason": "原文只记侯生事后说“以是知公子恨之復返也”，未写他设局等待；改为明确标为作者解释的表述。",
+     "path": "sections.story.3.en",
+     "before": "Hou Ying's plan: the tally that authorized Jin Bi to move troops — a tiger tally — was normally kept in the king of Wei's bedchamber, and Lady Ruji, the king's favorite, came and went there and was able to steal it. Her father had been murdered; for three years she had sought revenge, and from the king on down no one could get it for her. She had wept to Lord Xinling, who sent a retainer to cut off her enemy's head and presented it to her respectfully. The source has her ready to die for Lord Xinling and to refuse him nothing; only \"she had no way to repay him.\" If the lord would but ask, she would certainly agree. Then, with the tiger tally in hand, seize Jin Bi's army, relieve Zhao in the north and drive Qin back in the west: \"that is an achievement to rank with the Five Hegemons.\"",
+     "after": "Hou Ying's plan: the tally that authorized Jin Bi to move troops — a tiger tally — was normally kept in the king of Wei's bedchamber, and Lady Ruji, the king's favorite, came and went there and was able to steal it. Her father had been murdered; for three years she had sought revenge. She had wept to Lord Xinling, who sent a retainer to cut off her enemy's head and presented it to her respectfully. The source has her ready to die for Lord Xinling and to refuse him nothing; only \"she had no way to repay him.\" If the lord would but ask, she would certainly agree. Then, with the tiger tally in hand, seize Jin Bi's army, relieve Zhao in the north and drive Qin back in the west: \"that is an achievement to rank with the Five Hegemons.\"",
+     "reason": "该从句在中文对应句中没有对应表述，构成中英事实不一致；按最小修改与“只能删除、收窄”的规则从英文删除，使两种语言一致（E15 的「自王以下欲求報其父仇，莫能得」未在中文保留，故不在英文单方面保留）。",
      "issues": [
-      "R8"
+      "S7"
      ]
     },
     {
-     "path": "sections.story.2.en",
-     "before": "That turn is the pivot of the whole story. Hou Ying put it to his face: \"With disaster upon you and no plan at all, you mean to throw yourself at the Qin army — that is like throwing meat to a starving tiger. What would it accomplish?\" Nothing gained, and the retainers squandered besides. He added that he had counted on exactly this: knowing how well the lord treated him, going to die without so much as a parting word would make the lord \"resent it and come back.\" The return was what he was waiting for.",
-     "after": "That turn is the pivot of the whole story. Hou Ying put it to his face: \"With disaster upon you and no plan at all, you mean to throw yourself at the Qin army — that is like throwing meat to a starving tiger. What would it accomplish?\" Nothing gained, and the retainers squandered besides. He added that he had counted on exactly this: knowing how well the lord treated him, going to die without so much as a parting word would make the lord \"resent it and come back.\" The author's reading: he had foreseen that the lord would turn back.",
-     "reason": "同步中文：把“他等的就是这一返”的预谋断言改为标明作者解释的说法。",
+     "path": "sections.limits.1.en",
+     "before": "The detail most worth doubting: the figure of \"eighty thousand picked men\" appears here alone, with no corroboration; how the tallies were verified in Jin Bi's camp and how the affair wound up after the killing of the general go unrecorded; Hou Ying's motive in cutting his own throat, and Lady Ruji's fate after stealing the tally, come down to an act and a single sentence, with nothing further. In addition, several key turns retold here — the king sending men to stop Jin Bi and hold the army at Ye in wait-and-see, the lord gathering chariots to go and die against Qin, Lady Ruji stealing the tally, Jin Bi growing suspicious when the tallies matched — rest on extracts that have not been checked word for word, and are retold rather than quoted.",
+     "after": "The detail most worth doubting: the figure of \"eighty thousand picked men\" appears here alone, with no corroboration; how the tallies were verified in Jin Bi's camp and how the affair wound up after the killing of the general go unrecorded; Hou Ying's motive in cutting his own throat, and Lady Ruji's fate after stealing the tally, come down to an act and a single sentence, with nothing further. In addition, several key turns retold here — the king sending men to stop Jin Bi and hold the army in wait-and-see, the lord gathering chariots to go and die against Qin, Lady Ruji stealing the tally, Jin Bi growing suspicious when the tallies matched — rest on extracts that have not been checked word for word, and are retold rather than quoted.",
+     "reason": "地名 Ye（邺）不见于证据包，中文也无此信息，删去以保持中英一致，不添证据外的地名。",
      "issues": [
-      "R8"
-     ]
-    },
-    {
-     "path": "sections.analysis.1.zh",
-     "before": "第二处是把坏情况写进计划。侯生提醒将在外、主令有所不受，于是朱亥随行、袖中藏椎，晋鄙听则已，不听则击。作者推断，这一步的难处不在敢不敢：公子听后的反应是流泪说必杀晋鄙，自己并非怕死。他明知要欠自己这方一笔债——杀本国宿将、盗王符、绝于魏王——仍然把方案走完。原文没有写他权衡的内心，能记的只有这句答话。",
-     "after": "第二处是把坏情况写进计划。侯生提醒将在外、主令有所不受，于是朱亥随行、袖中藏椎，晋鄙听则已，不听则击。作者推断，这一步的难处不在敢不敢：公子听后的反应是流泪说必杀晋鄙，自己并非怕死。从结果看，他欠了自己这方一笔债——杀本国宿将、盗王符、绝于魏王——仍然把方案走完。原文未写他事前是否权衡，能记的只有这句答话。",
-     "reason": "“明知”与本段末“原文没有写他权衡的内心”矛盾且属拟构心理；改为只陈述结果，并把末句对齐为“未写他事前是否权衡”。",
-     "issues": [
-      "R9"
-     ]
-    },
-    {
-     "path": "sections.analysis.1.en",
-     "before": "The second undignified spot is writing the bad case into the plan. Hou Ying's reminder that a general in the field need not accept every order put Zhu Hai at his side with a mallet up his sleeve: if Jin Bi complied, well; if not, strike. The author's inference: the hard part here was not daring. The lord's response on hearing the plan was tears — he said Jin Bi had to be killed, and that he was not afraid to die. He knew he was taking on a debt to his own side — killing his country's veteran commander, stealing the king's tally, breaking with the king — and he went through with it anyway. The source records no inner deliberation; the only thing on the record is that answer.",
-     "after": "The second undignified spot is writing the bad case into the plan. Hou Ying's reminder that a general in the field need not accept every order put Zhu Hai at his side with a mallet up his sleeve: if Jin Bi complied, well; if not, strike. The author's inference: the hard part here was not daring. The lord's response on hearing the plan was tears — he said Jin Bi had to be killed, and that he was not afraid to die. In the outcome he took on a debt to his own side — killing his country's veteran commander, stealing the king's tally, breaking with the king — and he went through with it anyway. The source records no inner deliberation; the only thing on the record is that answer.",
-     "reason": "同步中文：删除“明知”的内心拟构，只说结果上欠下这笔债。",
-     "issues": [
-      "R9"
-     ]
-    },
-    {
-     "path": "sections.analysis.1.en",
-     "before": "The second undignified spot is writing the bad case into the plan. Hou Ying's reminder that a general in the field need not accept every order put Zhu Hai at his side with a mallet up his sleeve: if Jin Bi complied, well; if not, strike. The author's inference: the hard part here was not daring. The lord's response on hearing the plan was tears — he said Jin Bi had to be killed, and that he was not afraid to die. In the outcome he took on a debt to his own side — killing his country's veteran commander, stealing the king's tally, breaking with the king — and he went through with it anyway. The source records no inner deliberation; the only thing on the record is that answer.",
-     "after": "The second undignified spot is writing the bad case into the plan. Hou Ying's reminder that a general in the field need not accept every order put Zhu Hai at his side with a mallet up his sleeve: if Jin Bi complied, well; if not, strike. The author's inference: the hard part here was not daring. The lord's response on hearing the plan was tears — he said Jin Bi had to be killed, and that he was not afraid to die. In the outcome he took on a debt to his own side — killing his country's veteran commander, stealing the king's tally, breaking with the king — and he went through with it anyway. Whether he weighed this beforehand goes unrecorded; the only thing on the record is that answer.",
-     "reason": "同步中文“原文未写他事前是否权衡”，消除前后矛盾。",
-     "issues": [
-      "R9"
-     ]
-    },
-    {
-     "path": "sections.analysis.2.zh",
-     "before": "第三处是事后的账。门客那句「於趙則有功矣，於魏則未為忠臣也」把两边算清：功劳是赵国的，亏欠是魏国的。他的做法不是辩解，而是立自责，随后遣军归魏、自己留赵，用离开把这笔债认下来。一种解释是，这套不居功、认亏欠的动作，正是他在赵国能被以礼相待的原因——功劳让出去，别人才接得住。",
-     "after": "第三处是事后的账。门客那句「於趙則有功矣，於魏則未為忠臣也」把两边算清：功劳是赵国的，亏欠是魏国的。他的做法不是辩解，而是立自责，随后遣军归魏、自己留赵，用离开把这笔债认下来。一种解释是，这套不居功、认亏欠的动作，正是赵王、平原君以高规格相迎他的原因——功劳让出去，别人才接得住。",
-     "reason": "证据只记迎接时的礼遇（E23“趙王及平原君自迎公子於界，平原君負籣矢為公子先引”），未记其留赵后的待遇；收窄为有据的迎接一事，且保留“一种解释是”的作者标记。",
-     "issues": [
-      "R10"
-     ]
-    },
-    {
-     "path": "sections.analysis.2.en",
-     "before": "The third is the accounting afterward. The retainer's words — \"a service to Zhao, but not the act of a loyal minister to Wei\" — keep both columns straight: the credit belongs to Zhao, the debt to Wei. His response was not to argue but to blame himself on the spot, then send the army home and stay in Zhao, acknowledging the debt through departure. One reading: that refusal to claim credit, and the willingness to own what he owed, is exactly why Zhao could still receive him with full honors — give the credit away, and others can bear to accept it.",
-     "after": "The third is the accounting afterward. The retainer's words — \"a service to Zhao, but not the act of a loyal minister to Wei\" — keep both columns straight: the credit belongs to Zhao, the debt to Wei. His response was not to argue but to blame himself on the spot, then send the army home and stay in Zhao, acknowledging the debt through departure. One reading: that refusal to claim credit, and the willingness to own what he owed, is exactly why the king of Zhao and Lord Pingyuan received him with full honors at the border — give the credit away, and others can bear to accept it.",
-     "reason": "同步中文：把无据的“留赵后被以礼相待”收窄为E23所载的边界相迎，保留“One reading”标记。",
-     "issues": [
-      "R10"
-     ]
-    },
-    {
-     "path": "sections.limits.1.ev",
-     "before": [
-      "SJ0771-E22",
-      "SJ0771-E20",
-      "SJ0771-E16"
-     ],
-     "after": [
-      "SJ0771-E22",
-      "SJ0771-E20",
-      "SJ0771-E15"
-     ],
-     "reason": "SJ0771-E16 不存在于证据包（E15与E17之间跳号），程序检查也报 unknown evidence id；删去不存在的编号，改引实际存在、且支撑本段内容的条目：E22（「得選兵八萬人」）、E20（侯生自刭）、E15（如姬窃符及其后续未载）。",
-     "issues": [
-      "R11",
-      "C12"
+      "S8"
      ]
     }
    ],
    "edits_failed": [],
    "dispositions": [
     {
-     "issue": "R1",
+     "issue": "S1",
      "action": "fixed",
-     "reason": "时序已改正。E13记初见时侯生只说「公子勉之矣，老臣不能從」，公子「行數里，心不快……復引車還，問侯生」，此后E14才说「譬若以肉投餒虎」。dek改为“出城后折返夷门，被一个守门老人当面点破”，英文同步为“after riding out and turning back at the Yimen gate, an old gatekeeper cut him to his face”。"
+     "reason": "已修：hook.0 中英都补上“邯郸旦暮之间就要降秦”一层，依据 E11「今邯鄲旦暮降秦而魏救不至，安在公子能急人之困也」，不再只写救兵不至。"
     },
     {
-     "issue": "R2",
+     "issue": "S2",
      "action": "fixed",
-     "reason": "证据包全部条目只称“公子”，无“信陵君”；dek改“魏公子”（英文改“the lord of Wei”）。“不敢”属动机推断（其止晋鄙壁邺仅见简报），改“按兵不动”／“held his troops back”，只留行动事实。"
+     "reason": "已修三处：“不肯再发兵”改中性“未再发兵”（保留简报转述标注）；“没有兵权”改为 E3「是後魏王畏公子之賢能，不敢任公子以國政」支持的“未得国政之任”；“拼个同归于尽”超出 E13「具告所以欲死秦軍狀」，删为“决意赴秦军而死”。中英同步。"
     },
     {
-     "issue": "R3",
+     "issue": "S3",
      "action": "fixed",
-     "reason": "E9只记「魏王使將軍晉鄙將十萬眾救趙」，不载大军未到邯郸；该断言已在句末补“（据简报转述）”，英文同步标注，不再以纯record呈现。"
+     "reason": "已修：E3 只有「不敢任公子以國政」，无“偏师”“只剩人没有权”之说，已删去外推并改写为“未被任以国政，调兵无从谈起（作者推断）”，英译同步标注 the author's inference。"
     },
     {
-     "issue": "R4",
+     "issue": "S4",
      "action": "fixed",
-     "reason": "E13/E14不载魏王拒绝再发兵；已在该断言后补“（据简报转述）”，英文同步为“(retold from the briefing)”。"
+     "reason": "已修：E13 作「公子行數里，心不快，曰：『吾所以待侯生者備矣，天下莫不聞，今吾且死而侯生曾無一言半辭送我，我豈有所失哉？』」，是出口之言而非心理；已改回直引逐字原文，英文同步改为直接引语。"
     },
     {
-     "issue": "R5",
+     "issue": "S5",
      "action": "fixed",
-     "reason": "证据只有E2「致食客三千人」与E3「不敢任公子以國政」；“没有一兵一卒”改为“没有兵权”（英文“no military authority of his own”），与E3相合且不夸张。"
+     "reason": "已修：E9「魏王使將軍晉鄙將十萬眾救趙」证明最初是奉王命出兵，“从头到尾没有授权”与证据矛盾；已收窄为 E25「魏王怒公子之盜其兵符，矯殺晉鄙」所指的盗符夺军、矫杀晋鄙一段，中英同步。"
     },
     {
-     "issue": "R6",
+     "issue": "S6",
      "action": "fixed",
-     "reason": "“公子敬的另一个人在夷门”改为“公子敬重的另一个人，在夷门”；英文原句“The other man Lord Xinling honored kept the Yimen”本已表达此意，故英文不动。"
+     "reason": "已修：E15 只记「嬴聞晉鄙之兵符常在王臥內……則得虎符奪晉鄙軍」的献计，无“屏人”“间语”，且该细节在《史记》中属公子行为；已删去，改为“侯嬴献窃符之计”，中英同步。"
     },
     {
-     "issue": "R7",
+     "issue": "S7",
      "action": "fixed",
-     "reason": "“约百余乘车骑，欲赴秦军”属简报转述（证据包无载），原标注覆盖不明。现两句各自带“（此句据简报转述）”，英文两处也各自标注，覆盖范围明确。"
+     "reason": "已修：英文的“from the king on down no one could get it for her”在中文对应句无对应内容，违反中英同步；E15 虽有「如姬資之三年，自王以下欲求報其父仇，莫能得」，但中文未载此层，按最小修改与只能删除/收窄的规则从英文删除该从句，两语言事实一致。"
     },
     {
-     "issue": "R8",
+     "issue": "S8",
      "action": "fixed",
-     "reason": "「無他端」改释为“没有别的办法，只想冲进秦军”；“他等的就是这一返”改为“作者推断：他料到公子会折返”，英文同步为“The author's reading: he had foreseen that the lord would turn back.”，不再把作者推断写成人物预谋史实。"
-    },
-    {
-     "issue": "R9",
-     "action": "fixed",
-     "reason": "“他明知要欠……”改为“从结果看，他欠了……”，并把“原文没有写他权衡的内心”改为“原文未写他事前是否权衡”，消除段内自相矛盾；英文同步为“In the outcome he took on a debt…”与“Whether he weighed this beforehand goes unrecorded”。"
-    },
-    {
-     "issue": "R10",
-     "action": "fixed",
-     "reason": "证据只记迎接礼遇（E23「趙王及平原君自迎公子於界，平原君負籣矢為公子先引」），未记留赵后待遇；已收窄为“赵王、平原君以高规格相迎他的原因”，且保留“一种解释是”的作者标记，英文同步收窄。"
-    },
-    {
-     "issue": "R11",
-     "action": "fixed",
-     "reason": "SJ0771-E16 不在证据包中（E15与E17之间编号跳空），已从 sections.limits.1.ev 删除，改引实际存在的 SJ0771-E15（如姬窃符、其后续未载），E22、E20 保留。"
-    },
-    {
-     "issue": "C12",
-     "action": "fixed",
-     "reason": "程序检查报 limits[1] unknown evidence id SJ0771-E16，与R11同一问题：已在 ev_changes 中把 sections.limits.1.ev 改为 [SJ0771-E22, SJ0771-E20, SJ0771-E15]，全部为证据包中存在的编号。"
+     "reason": "已修：地名“at Ye（邺）”不见于证据包，中文“魏王使人止晋鄙留军观望”亦无地点，已删除“at Ye”，不添证据外地名，中英一致。"
     }
    ],
    "checker_after": [
@@ -420,133 +275,129 @@
      "limits[1] numbers differ zh[] en[80000]"
     ]
    ],
-   "content_sha256_after": "f7b67f15c9efd147c6c6c969ced349aa7b7feb3372d99454fcb46b8f49c8aabe",
+   "content_sha256_after": "18c991c2cc919e6c7acda3c4d0c70f2f786f095f49e10bd1c7cc5ce399e1c59c",
    "review_after": {
     "issues": [
      {
-      "section": "dek",
+      "section": "hook",
       "para": 0,
       "severity": "fix",
-      "problem": "「魏王按兵不动」与证据相反：E9 明载「魏王使將軍晉鄙將十萬眾救趙」，魏王是先出兵后止进，不是按兵不动",
-      "suggestion": "改为「魏王遣晋鄙救赵而中途止进」或与正文一致的转述口径"
+      "problem": "「秦军在长平歼灭赵军主力」强于证据原文；[SJ0771-E9] 只作「秦昭王已破趙長平軍」，「歼灭主力」是后世常识外推",
+      "suggestion": "改为「秦军击破赵长平军之后」"
+     },
+     {
+      "section": "hook",
+      "para": 0,
+      "severity": "fix",
+      "problem": "「大军却没有走到邯郸（据简报转述）」不见于证据包；[SJ0771-E9] 仅记「魏王使將軍晉鄙將十萬眾救趙」，止军不进之事证据包无载",
+      "suggestion": "保留「（据简报转述）」标注，并把具体说法改成「救军留驻不进（据简报转述）」，与 limits 清单一一对应"
      },
      {
       "section": "hook",
       "para": 0,
       "severity": "note",
-      "problem": "「在长平歼灭赵军主力」超出证据：E9 只作「已破趙長平軍」，无「歼灭」「主力」之说",
-      "suggestion": "改为「在长平击破赵军之后」"
-     },
-     {
-      "section": "hook",
-      "para": 0,
-      "severity": "note",
-      "problem": "「大军却没有走到邯郸」证据包无此记载（已标转述，但「据简报转述」的来源在证据包中不存在）",
-      "suggestion": "保留转述标注但注明系转述、证据包未载"
+      "problem": "「公子无忌」之名不见于证据包，证据包只称「魏公子」",
+      "suggestion": "首次出现时写作「魏公子（无忌）」或注明名字系通行称谓"
      },
      {
       "section": "hook",
       "para": 1,
-      "severity": "note",
-      "problem": "「拼个同归于尽」是演绎：E13 只记「欲死秦軍」，无同归于尽之意",
-      "suggestion": "改为「带门客直入秦军、赴死」"
+      "severity": "fix",
+      "problem": "「魏王未再发兵（据简报转述）」证据包无载；证据包中魏王的动作只有使晋鄙救赵一处",
+      "suggestion": "改为「魏王未再发兵、使人止晋鄙（据简报转述）」或删去，仅保留 limits 中的存疑清单"
      },
      {
       "section": "context",
-      "para": 1,
+      "para": 0,
       "severity": "note",
-      "problem": "「他连调动一支偏师的资格都没有，手里只剩人，没有权」超出 E3「不敢任公子以國政」的具体度，虽标 interpretation 仍写得像事实",
-      "suggestion": "限定为「国政不由他经手，手中无兵权」"
+      "problem": "「和魏王下棋」不准确，[SJ0771-E3] 原文为「公子與魏王博」，博是六博类博戏",
+      "suggestion": "改为「和魏王博戏」"
+     },
+     {
+      "section": "story",
+      "para": 0,
+      "severity": "fix",
+      "problem": "「宾客辩士轮番劝说也没用」「约百余乘车骑，打算带门客直入秦军，与赵俱死」均不在证据包；[SJ0771-E13] 只有「欲死秦軍」",
+      "suggestion": "两句均保留「（据简报转述）」标注，并把「约百余乘车骑」删去或降为「带门客赴秦军」"
      },
      {
       "section": "story",
       "para": 5,
       "severity": "fix",
-      "problem": "「到邺」的地点不见于证据包任何条目（E22 只记椎杀晋鄙、勒兵下令，无地名）",
-      "suggestion": "删去「到邺」，改为「到了晋鄙军中」"
+      "problem": "「合符之后，晋鄙起了疑心，不肯交权」不在证据包；[SJ0771-E22] 从计策直接写到「朱亥袖四十斤鐵椎，椎殺晉鄙」，中间过程无载",
+      "suggestion": "保留「（此节据简报转述）」标注，或改为「晋鄙是否交兵权，原文未记」"
      },
      {
       "section": "story",
       "para": 8,
-      "severity": "note",
-      "problem": "「收尾也就回不去魏国的朝堂」是作者推断，E25 只记「公子亦自知也」「公子獨與客留趙」",
-      "suggestion": "改为「自知见罪于魏王，遂留赵不归」或标为推断"
+      "severity": "fix",
+      "problem": "「收尾也就回不去魏国的朝堂」是因果推断却标为 record；[SJ0771-E25] 只记「使將將其軍歸魏，而公子獨與客留趙」",
+      "suggestion": "改为「此后他与客留在赵国，未再回魏」或在句前加「作者推断」"
      },
      {
       "section": "analysis",
-      "para": 2,
+      "para": 0,
       "severity": "fix",
-      "problem": "因果倒置：赵王、平原君边界亲迎（E23）发生在门客劝谏、公子自责（E24）和遣军留赵（E25）之前，不能说自责、认亏欠是受高规格相迎的原因",
-      "suggestion": "改为「迎在前、自责留赵在后」，或把这层解释限定为「其不居功的姿态与事后自责相呼应」"
+      "problem": "「他是在几个都不干净的选项里排序：求魏王（走不通）、只身赴死（无用）、矫令夺军（伤本国）」把写成他曾权衡选项；且「矫令夺军」是侯生所献，非他已备的选项。本节下文自己也承认「原文未写他事前是否权衡」",
+      "suggestion": "改为「摆在面前的是几个都不干净的做法」，并把「矫令夺军」注明为侯生所献"
      },
      {
       "section": "limits",
       "para": 0,
-      "severity": "note",
-      "problem": "「侯嬴屏人间语献计」中的「屏人间语」不见于证据包（E15 无此叙述），limits 段自身也应只说证据包内有的",
-      "suggestion": "删去「屏人间语」，只说「侯生献计、朱亥答话系史家记述」"
+      "severity": "fix",
+      "problem": "「《史记·魏公子列传》的一处记述」不实：本篇实引该传多处（E2–E25）",
+      "suggestion": "改为「只有一个来源——《史记·魏公子列传》一篇，无旁证可对」"
      },
      {
       "section": "limits",
       "para": 1,
       "severity": "note",
-      "problem": "把「魏王使人止晋鄙留军观望」「如姬盗出兵符」列为本文转述的段落，但正文实际只写「魏王不肯再发兵」「大军没走到邯郸」和侯生献计，未叙述止晋鄙与盗符过程",
-      "suggestion": "与正文口径对齐，只列正文出现过的转述项"
+      "problem": "「本文转述的几处关键过程……所据摘录未通过逐字核对」披露得当，但正文各处标注不统一（「据简报转述」「此句据简报转述」「此节据简报转述」）",
+      "suggestion": "统一为「（据转述，未逐字核对）」一种标注"
      }
     ],
     "unsupported_claims": [
-     "dek：「魏王按兵不动」——E9 明载魏王曾遣晋鄙将十万众救赵，与此相抵",
-     "「秦军在长平歼灭赵军主力」——证据仅作「破趙長平軍」，无歼灭、主力之说",
-     "「到邺」——证据包无邺地记载",
-     "「大军却没有走到邯郸」——证据包未载晋鄙军止于何地",
-     "「他连调动一支偏师的资格都没有」——E3 只说不敢任以国政",
-     "「收尾也就回不去魏国的朝堂」——推断，E25 只记公子自知、留赵",
-     "「这套不居功、认亏欠的动作，正是赵王、平原君以高规格相迎他的原因」——时序上迎（E23）在自责（E24）留赵（E25）之前，因果不成立"
+     "「大军却没有走到邯郸」/ dek「大军未至」：证据包只记魏王使晋鄙将十万众救赵，未记其留军不进（正文已标「据简报转述」）",
+     "「魏王未再发兵」「魏王使人止晋鄙留军观望」：证据包无载（正文已标转述）",
+     "「宾客辩士轮番劝说也没用」：证据包无载",
+     "「约百余乘车骑，打算带门客直入秦军，与赵俱死」：证据包只作「欲死秦軍」，无车骑数目",
+     "「如姬盗出兵符」：[SJ0771-E15] 只记侯生献计「力能竊之」，盗符的事实证据包无载（limits 已列）",
+     "「晋鄙起了疑心，不肯交权」：证据包无载，[SJ0771-E22] 直接记椎杀",
+     "「秦军在长平歼灭赵军主力」：[SJ0771-E9] 只作「破趙長平軍」",
+     "「公子无忌」之名：证据包只称「魏公子」",
+     "「收尾也就回不去魏国的朝堂」：因果结论，证据包只记「公子獨與客留趙」"
     ],
     "invented_inner_life": [
-     "「他拿定的主意近乎送死：带上门客去秦军里拼个同归于尽」——原文只记「欲死秦軍」的行动意向，无此内心定夺",
-     "「想的是自己待侯生不薄，天下莫不闻，如今将死，对方竟无一言半辞相送」——原文是公子口中说出的话（「吾所以待侯生者備矣……」），并非叙述者的心理描写，应作引语处理",
-     "「哭的是非杀本国老将不可，不是怕死」——属对 E18 引语的解释性改写，宜标明系据其答话所作解读"
+     "「他是在几个都不干净的选项里排序：求魏王（走不通）、只身赴死（无用）、矫令夺军（伤本国）」——原文未写公子事前权衡过这些选项，且「矫令夺军」本是侯生所献",
+     "「作者推断：他料到公子会折返」虽已标注，但紧接着用「正因为知道公子待他厚……公子必会『恨之復返』」把侯生自陈的推断过程扩写为事前预料，宜收在「侯生自陈」范围内"
     ],
     "quote_mismatches": [],
-    "overall": "引语与人物、纪年基本准确，但存在三处硬伤：dek「魏王按兵不动」与原文出兵相抵、正文「到邺」地名无据、结尾把先迎后责的两件事写成因果，另有若干把推断写成史实的表述需加限定。",
-    "_content_sha256": "f7b67f15c9efd147c6c6c969ced349aa7b7feb3372d99454fcb46b8f49c8aabe"
+    "overall": "引语与人名、纪年、数字均与证据包吻合，主要问题是若干「据简报转述」的过程（止晋鄙、约车骑、盗符、晋鄙起疑）和「歼灭主力」「一处记述」两处措辞超出证据，且 analysis 首句把选项权衡写成事实，建议按最小修改订正后可用。",
+    "_content_sha256": "18c991c2cc919e6c7acda3c4d0c70f2f786f095f49e10bd1c7cc5ce399e1c59c"
    },
    "parity_after": {
     "issues": [
      {
-      "path": "title",
+      "path": "sections.context.2",
       "severity": "fix",
-      "problem": "The English title is truncated: it drops the second half of the Chinese title, 「一个不肯白送的人」 (the man who refused a free throwaway / refused to give it away for nothing). The English covers only 'Turning Back at the Yimen Gate: The Year Handan Was Besieged'.",
-      "suggestion": "Append the missing element, e.g. 'Turning Back at the Yimen Gate: The Year Handan Was Besieged, and the Man Who Would Not Give It Away Free'."
-     },
-     {
-      "path": "sections.context.0",
-      "severity": "fix",
-      "problem": "The English adds facts not present in the Chinese: 'The king set down the game and reached for his ministers. Lord Xinling stopped him' and 'the game resumed' (the Chinese only says beacon fires alarmed the border and the lord said it was the Zhao king hunting, later confirmed). The English also expands '门客中有人能得赵王阴事' into 'and that whatever the Zhao king did, the man reported back to him'.",
-      "suggestion": "Delete 'The king set down the game and reached for his ministers. Lord Xinling stopped him:' and 'and the game resumed', and reduce the last clause to 'a man who could ferret out the king of Zhao's private business' — or add the same details to the Chinese."
+      "problem": "English adds \"— testing his host —\" after Hou Ying climbs into the seat of honor, attributing a deliberate testing motive to him; the Chinese only describes the behavior (径直上车坐了上座，不让) and states no such intent.",
+      "suggestion": "Delete \"— testing his host —\" (or say only \"without yielding the seat\")."
      },
      {
       "path": "sections.context.2",
       "severity": "note",
-      "problem": "English adds small details absent from the Chinese: identifying the Yimen as 'the eastern gate of Daliang', 'called on him', 'and when everyone was seated', 'with his carriage and escort', and interpreting Hou Ying's not yielding the seat as 'testing his host'.",
-      "suggestion": "Trim these additions (e.g. drop '— testing his host', 'and when everyone was seated') or add the same details to the Chinese."
+      "problem": "English adds details absent from Chinese: \"the eastern gate of Daliang\" (ZH only says 夷门 / 大梁夷门), \"called on him\" before the gift, \"when everyone was seated\", and \"with his carriage and escort\".",
+      "suggestion": "Trim to the Chinese scope, e.g. \"kept the Yimen, a gate of Daliang\" and \"wanted to make him a handsome gift\"."
      },
      {
-      "path": "sections.story.1",
+      "path": "sections.context.0",
       "severity": "note",
-      "problem": "English adds the question 'Had he fallen short somewhere?' and the phrase 'reasoning that', which the Chinese sentence does not contain (it ends at '对方竟无一言半辞相送').",
-      "suggestion": "Remove 'Had he fallen short somewhere?' (and optionally 'reasoning that'), or add the equivalent question to the Chinese."
-     },
-     {
-      "path": "sections.story.3",
-      "severity": "note",
-      "problem": "English adds 'and from the king on down no one could get it for her' to the story of Lady Ruji's father's murder, which the Chinese does not state; and renders 「顧未有路耳」 as 'she had no way to repay him' where the Chinese says only that she had no avenue to act.",
-      "suggestion": "Drop 'and from the king on down no one could get it for her', and render the quote as 'she had no way to do it' / 'no avenue had opened for her'."
+      "problem": "The causal 以致 (\"so that / resulting in\") before 食客三千人 is rendered as \"until he had three thousand retainers\", turning a result into a time sequence.",
+      "suggestion": "Read as \"so that he had three thousand retainers\"."
      }
     ],
-    "overall": "The English matches the Chinese closely in facts, quotes, dates and hedges throughout, with one truncated title and a few small narrative additions in the Hou Ying and Lady Ruji passages that should be trimmed or mirrored.",
-    "_content_sha256": "f7b67f15c9efd147c6c6c969ced349aa7b7feb3372d99454fcb46b8f49c8aabe"
+    "overall": "The English edition matches the Chinese in facts, dates, numbers, names and quotations throughout; the only discrepancies are minor added glosses in the Hou Ying carriage episode and one causal-to-temporal slip.",
+    "_content_sha256": "18c991c2cc919e6c7acda3c4d0c70f2f786f095f49e10bd1c7cc5ce399e1c59c"
    },
    "carried_over": []
   },
@@ -557,166 +408,227 @@
      "id": "R1",
      "source": "review",
      "severity": "fix",
-     "where": "dek.0",
-     "problem": "「魏王按兵不动」与证据相反：E9 明载「魏王使將軍晉鄙將十萬眾救趙」，魏王是先出兵后止进，不是按兵不动",
-     "suggestion": "改为「魏王遣晋鄙救赵而中途止进」或与正文一致的转述口径"
+     "where": "hook.0",
+     "problem": "「秦军在长平歼灭赵军主力」强于证据原文；[SJ0771-E9] 只作「秦昭王已破趙長平軍」，「歼灭主力」是后世常识外推",
+     "suggestion": "改为「秦军击破赵长平军之后」"
     },
     {
      "id": "R2",
      "source": "review",
      "severity": "fix",
-     "where": "story.5",
-     "problem": "「到邺」的地点不见于证据包任何条目（E22 只记椎杀晋鄙、勒兵下令，无地名）",
-     "suggestion": "删去「到邺」，改为「到了晋鄙军中」"
+     "where": "hook.0",
+     "problem": "「大军却没有走到邯郸（据简报转述）」不见于证据包；[SJ0771-E9] 仅记「魏王使將軍晉鄙將十萬眾救趙」，止军不进之事证据包无载",
+     "suggestion": "保留「（据简报转述）」标注，并把具体说法改成「救军留驻不进（据简报转述）」，与 limits 清单一一对应"
     },
     {
      "id": "R3",
      "source": "review",
      "severity": "fix",
-     "where": "analysis.2",
-     "problem": "因果倒置：赵王、平原君边界亲迎（E23）发生在门客劝谏、公子自责（E24）和遣军留赵（E25）之前，不能说自责、认亏欠是受高规格相迎的原因",
-     "suggestion": "改为「迎在前、自责留赵在后」，或把这层解释限定为「其不居功的姿态与事后自责相呼应」"
+     "where": "hook.1",
+     "problem": "「魏王未再发兵（据简报转述）」证据包无载；证据包中魏王的动作只有使晋鄙救赵一处",
+     "suggestion": "改为「魏王未再发兵、使人止晋鄙（据简报转述）」或删去，仅保留 limits 中的存疑清单"
     },
     {
-     "id": "P4",
-     "source": "parity",
+     "id": "R4",
+     "source": "review",
      "severity": "fix",
-     "where": "title",
-     "problem": "The English title is truncated: it drops the second half of the Chinese title, 「一个不肯白送的人」 (the man who refused a free throwaway / refused to give it away for nothing). The English covers only 'Turning Back at the Yimen Gate: The Year Handan Was Besieged'.",
-     "suggestion": "Append the missing element, e.g. 'Turning Back at the Yimen Gate: The Year Handan Was Besieged, and the Man Who Would Not Give It Away Free'."
+     "where": "story.0",
+     "problem": "「宾客辩士轮番劝说也没用」「约百余乘车骑，打算带门客直入秦军，与赵俱死」均不在证据包；[SJ0771-E13] 只有「欲死秦軍」",
+     "suggestion": "两句均保留「（据简报转述）」标注，并把「约百余乘车骑」删去或降为「带门客赴秦军」"
     },
     {
-     "id": "P5",
+     "id": "R5",
+     "source": "review",
+     "severity": "fix",
+     "where": "story.5",
+     "problem": "「合符之后，晋鄙起了疑心，不肯交权」不在证据包；[SJ0771-E22] 从计策直接写到「朱亥袖四十斤鐵椎，椎殺晉鄙」，中间过程无载",
+     "suggestion": "保留「（此节据简报转述）」标注，或改为「晋鄙是否交兵权，原文未记」"
+    },
+    {
+     "id": "R6",
+     "source": "review",
+     "severity": "fix",
+     "where": "story.8",
+     "problem": "「收尾也就回不去魏国的朝堂」是因果推断却标为 record；[SJ0771-E25] 只记「使將將其軍歸魏，而公子獨與客留趙」",
+     "suggestion": "改为「此后他与客留在赵国，未再回魏」或在句前加「作者推断」"
+    },
+    {
+     "id": "R7",
+     "source": "review",
+     "severity": "fix",
+     "where": "analysis.0",
+     "problem": "「他是在几个都不干净的选项里排序：求魏王（走不通）、只身赴死（无用）、矫令夺军（伤本国）」把写成他曾权衡选项；且「矫令夺军」是侯生所献，非他已备的选项。本节下文自己也承认「原文未写他事前是否权衡」",
+     "suggestion": "改为「摆在面前的是几个都不干净的做法」，并把「矫令夺军」注明为侯生所献"
+    },
+    {
+     "id": "R8",
+     "source": "review",
+     "severity": "fix",
+     "where": "limits.0",
+     "problem": "「《史记·魏公子列传》的一处记述」不实：本篇实引该传多处（E2–E25）",
+     "suggestion": "改为「只有一个来源——《史记·魏公子列传》一篇，无旁证可对」"
+    },
+    {
+     "id": "P9",
      "source": "parity",
      "severity": "fix",
-     "where": "sections.context.0",
-     "problem": "The English adds facts not present in the Chinese: 'The king set down the game and reached for his ministers. Lord Xinling stopped him' and 'the game resumed' (the Chinese only says beacon fires alarmed the border and the lord said it was the Zhao king hunting, later confirmed). The English also expands '门客中有人能得赵王阴事' into 'and that whatever the Zhao king did, the man reported back to him'.",
-     "suggestion": "Delete 'The king set down the game and reached for his ministers. Lord Xinling stopped him:' and 'and the game resumed', and reduce the last clause to 'a man who could ferret out the king of Zhao's private business' — or add the same details to the Chinese."
+     "where": "sections.context.2",
+     "problem": "English adds \"— testing his host —\" after Hou Ying climbs into the seat of honor, attributing a deliberate testing motive to him; the Chinese only describes the behavior (径直上车坐了上座，不让) and states no such intent.",
+     "suggestion": "Delete \"— testing his host —\" (or say only \"without yielding the seat\")."
     }
    ],
    "edits_applied": [
     {
-     "path": "dek.zh",
-     "before": "魏安釐王二十年，秦军围邯郸，魏王按兵不动。魏公子准备带门客去送死，出城后折返夷门，被一个守门老人当面点破：那是拿肉投餒虎。本文看他如何在没有干净选项时准备、付代价、认亏欠。",
-     "after": "魏安釐王二十年，秦军围邯郸，魏王遣晋鄙救赵，大军未至（据简报转述）。魏公子准备带门客去送死，出城后折返夷门，被一个守门老人当面点破：那是拿肉投餒虎。本文看他如何在没有干净选项时准备、付代价、认亏欠。",
-     "reason": "E9 明载魏王使晋鄙将十万众救赵，是先出兵后止进；删去与证据相反的“按兵不动”，改为与正文 hook.0 一致的转述口径",
+     "path": "sections.hook.0.zh",
+     "before": "魏安釐王二十年，秦军在长平歼灭赵军主力之后，进兵围住邯郸。魏王派将军晋鄙带十万众救赵，大军却没有走到邯郸（据简报转述）——平原君的使者一批批赶到大梁，车盖接连不断，话一句比一句重：邯郸旦暮之间就要降秦，而魏国答应的救兵至今不到，公子不是自命能急人之困吗？末了还添一句「獨不憐公子姊邪」。公子无忌的姐姐，正是平原君夫人。",
+     "after": "魏安釐王二十年，秦军击破赵长平军之后，进兵围住邯郸。魏王派将军晋鄙带十万众救赵，大军却没有走到邯郸（据简报转述）——平原君的使者一批批赶到大梁，车盖接连不断，话一句比一句重：邯郸旦暮之间就要降秦，而魏国答应的救兵至今不到，公子不是自命能急人之困吗？末了还添一句「獨不憐公子姊邪」。公子无忌的姐姐，正是平原君夫人。",
+     "reason": "证据 [SJ0771-E9] 只作「秦昭王已破趙長平軍」，改为「击破赵长平军」，删去外推的「歼灭主力」。",
      "issues": [
       "R1"
      ]
     },
     {
-     "path": "dek.en",
-     "before": "In the twentieth year of King Anxi of Wei, Qin's armies closed around Handan and the king of Wei held his troops back. The lord of Wei was set on marching his retainers to their deaths; after riding out and turning back at the Yimen gate, an old gatekeeper cut him to his face: that is meat thrown to a starving tiger. Here is how he worked the problem when no option was clean — what he prepared, what it cost, and what he admitted he owed.",
-     "after": "In the twentieth year of King Anxi of Wei, Qin's armies closed around Handan and the king of Wei sent General Jin Bi to relieve Zhao, but the army never reached the city (retold from the briefing). The lord of Wei was set on marching his retainers to their deaths; after riding out and turning back at the Yimen gate, an old gatekeeper cut him to his face: that is meat thrown to a starving tiger. Here is how he worked the problem when no option was clean — what he prepared, what it cost, and what he admitted he owed.",
-     "reason": "英文与中文同步：改为先出兵救赵、大军未至的转述口径，与 E9 及正文一致",
+     "path": "sections.hook.0.en",
+     "before": "In the twentieth year of King Anxi of Wei, after Qin had annihilated Zhao's main force at Changping, its armies pressed on and encircled Handan. The king of Wei sent General Jin Bi with a hundred thousand troops to relieve Zhao, but the army never reached the city (retold from the briefing). Instead, envoys from Lord Pingyuan arrived in Daliang one after another — caps of office and carriage canopies in an unbroken line — each message harsher than the last: Handan was within days of surrendering to Qin, and the relief Wei had promised still had not come: was Lord Xinling not the man who prided himself on rushing to others in distress? The last message added a barb: \"And have you no pity for your own sister?\" Lord Xinling's elder sister was Lord Pingyuan's wife.",
+     "after": "In the twentieth year of King Anxi of Wei, after Qin had broken Zhao's army at Changping, its armies pressed on and encircled Handan. The king of Wei sent General Jin Bi with a hundred thousand troops to relieve Zhao, but the army never reached the city (retold from the briefing). Instead, envoys from Lord Pingyuan arrived in Daliang one after another — caps of office and carriage canopies in an unbroken line — each message harsher than the last: Handan was within days of surrendering to Qin, and the relief Wei had promised still had not come: was Lord Xinling not the man who prided himself on rushing to others in distress? The last message added a barb: \"And have you no pity for your own sister?\" Lord Xinling's elder sister was Lord Pingyuan's wife.",
+     "reason": "与中文同步：annihilated Zhao's main force 强于证据，改为 broke Zhao's army，对应「已破趙長平軍」。",
      "issues": [
       "R1"
+     ]
+    },
+    {
+     "path": "sections.hook.0.zh",
+     "before": "魏安釐王二十年，秦军击破赵长平军之后，进兵围住邯郸。魏王派将军晋鄙带十万众救赵，大军却没有走到邯郸（据简报转述）——平原君的使者一批批赶到大梁，车盖接连不断，话一句比一句重：邯郸旦暮之间就要降秦，而魏国答应的救兵至今不到，公子不是自命能急人之困吗？末了还添一句「獨不憐公子姊邪」。公子无忌的姐姐，正是平原君夫人。",
+     "after": "魏安釐王二十年，秦军击破赵长平军之后，进兵围住邯郸。魏王派将军晋鄙带十万众救赵，救军留驻不进（据简报转述）——平原君的使者一批批赶到大梁，车盖接连不断，话一句比一句重：邯郸旦暮之间就要降秦，而魏国答应的救兵至今不到，公子不是自命能急人之困吗？末了还添一句「獨不憐公子姊邪」。公子无忌的姐姐，正是平原君夫人。",
+     "reason": "证据 [SJ0771-E9] 只记「魏王使將軍晉鄙將十萬眾救趙」，止军不进之事证据包无载；按建议改为「救军留驻不进」并保留转述标注，与 limits.1 存疑清单中的「魏王使人止晋鄙留军观望」对应。",
+     "issues": [
+      "R2"
+     ]
+    },
+    {
+     "path": "sections.hook.0.en",
+     "before": "In the twentieth year of King Anxi of Wei, after Qin had broken Zhao's army at Changping, its armies pressed on and encircled Handan. The king of Wei sent General Jin Bi with a hundred thousand troops to relieve Zhao, but the army never reached the city (retold from the briefing). Instead, envoys from Lord Pingyuan arrived in Daliang one after another — caps of office and carriage canopies in an unbroken line — each message harsher than the last: Handan was within days of surrendering to Qin, and the relief Wei had promised still had not come: was Lord Xinling not the man who prided himself on rushing to others in distress? The last message added a barb: \"And have you no pity for your own sister?\" Lord Xinling's elder sister was Lord Pingyuan's wife.",
+     "after": "In the twentieth year of King Anxi of Wei, after Qin had broken Zhao's army at Changping, its armies pressed on and encircled Handan. The king of Wei sent General Jin Bi with a hundred thousand troops to relieve Zhao, but the relief army halted and did not advance (retold from the briefing). Instead, envoys from Lord Pingyuan arrived in Daliang one after another — caps of office and carriage canopies in an unbroken line — each message harsher than the last: Handan was within days of surrendering to Qin, and the relief Wei had promised still had not come: was Lord Xinling not the man who prided himself on rushing to others in distress? The last message added a barb: \"And have you no pity for your own sister?\" Lord Xinling's elder sister was Lord Pingyuan's wife.",
+     "reason": "与中文同步：never reached the city 改为 halted and did not advance（留驻不进），保留转述标注。",
+     "issues": [
+      "R2"
+     ]
+    },
+    {
+     "path": "sections.hook.1.zh",
+     "before": "更麻烦的是，魏王未再发兵（据简报转述），而公子手里只有三千门客，未得国政之任。他决意赴秦军而死。出城之前，他去向一个看城门的老人告别。",
+     "after": "更麻烦的是，魏王未再发兵、使人止晋鄙（据简报转述），而公子手里只有三千门客，未得国政之任。他决意赴秦军而死。出城之前，他去向一个看城门的老人告别。",
+     "reason": "按建议第一项补齐与 limits.1 清单对应的转述内容并保留标注；证据包中魏王的动作只有 [SJ0771-E9]「魏王使將軍晉鄙將十萬眾救趙」一处，故该句只作有标注的简报转述，不作无标注断言。",
+     "issues": [
+      "R3"
+     ]
+    },
+    {
+     "path": "sections.hook.1.en",
+     "before": "Worse still, the king of Wei sent no further troops (retold from the briefing), and Lord Xinling had three thousand retainers but no appointment to the governance of the state. The plan he settled on was to go and die at the Qin army. Before leaving the city, he went to say goodbye to an old man who kept one of the gates.",
+     "after": "Worse still, the king of Wei sent no further troops and sent men to halt Jin Bi (retold from the briefing), and Lord Xinling had three thousand retainers but no appointment to the governance of the state. The plan he settled on was to go and die at the Qin army. Before leaving the city, he went to say goodbye to an old man who kept one of the gates.",
+     "reason": "与中文同步：补上使人止晋鄙的转述并保留标注。",
+     "issues": [
+      "R3"
+     ]
+    },
+    {
+     "path": "sections.story.0.zh",
+     "before": "平原君的使者在大梁把话说绝：救兵不到，公子的高义安在。公子能做的第一件事仍是求魏王，魏王不肯松口，宾客辩士轮番劝说也没用（此句据简报转述）。剩下能动的只有他自己：约百余乘车骑，打算带门客直入秦军，与赵俱死（此句据简报转述）。",
+     "after": "平原君的使者在大梁把话说绝：救兵不到，公子的高义安在。公子能做的第一件事仍是求魏王，魏王不肯松口，宾客辩士轮番劝说也没用（此句据简报转述）。剩下能动的只有他自己：带门客赴秦军，与赵俱死（此句据简报转述）。",
+     "reason": "删去证据包无载的数字「约百余乘车骑」，按建议降为「带门客赴秦军」；与 [SJ0771-E13]「欲死秦軍」相合，且保留原「（此句据简报转述）」标注。",
+     "issues": [
+      "R4"
+     ]
+    },
+    {
+     "path": "sections.story.0.en",
+     "before": "Lord Pingyuan's envoys left nothing to the imagination in Daliang: with no relief army in sight, where was the lord's famed righteousness? The first thing Lord Xinling could do was still to appeal to the king. The king would not budge, and neither the retainers nor the professional persuaders sent to argue the case changed his mind (this detail is retold from the briefing, not quoted from the source). That left only himself: roughly a hundred chariots and horsemen, intending to lead his retainers straight into the Qin army and die with Zhao (this detail, too, is retold from the briefing, not quoted from the source).",
+     "after": "Lord Pingyuan's envoys left nothing to the imagination in Daliang: with no relief army in sight, where was the lord's famed righteousness? The first thing Lord Xinling could do was still to appeal to the king. The king would not budge, and neither the retainers nor the professional persuaders sent to argue the case changed his mind (this detail is retold from the briefing, not quoted from the source). That left only himself: leading his retainers to go and die against the Qin army (this detail, too, is retold from the briefing, not quoted from the source).",
+     "reason": "与中文同步删去 roughly a hundred chariots and horsemen，只留带门客赴秦军而死，保留转述标注。",
+     "issues": [
+      "R4"
      ]
     },
     {
      "path": "sections.story.5.zh",
-     "before": "到邺，公子矫魏王令代晋鄙。合符之后，晋鄙起了疑心，不肯交权（此节据简报转述）。朱亥袖中四十斤铁椎，椎杀晋鄙。公子遂将晋鄙军，随即勒兵下令：「父子俱在軍中，父歸；兄弟俱在軍中，兄歸；獨子無兄弟，歸養。」得选兵八万人，进兵击秦军。",
-     "after": "到了晋鄙军中，公子矫魏王令代晋鄙。合符之后，晋鄙起了疑心，不肯交权（此节据简报转述）。朱亥袖中四十斤铁椎，椎杀晋鄙。公子遂将晋鄙军，随即勒兵下令：「父子俱在軍中，父歸；兄弟俱在軍中，兄歸；獨子無兄弟，歸養。」得选兵八万人，进兵击秦军。",
-     "reason": "证据包无“邺”这一地名（E22 只记椎杀晋鄙、勒兵下令），改为证据支持的说法",
+     "before": "到了晋鄙军中，公子矫魏王令代晋鄙。合符之后，晋鄙起了疑心，不肯交权（此节据简报转述）。朱亥袖中四十斤铁椎，椎杀晋鄙。公子遂将晋鄙军，随即勒兵下令：「父子俱在軍中，父歸；兄弟俱在軍中，兄歸；獨子無兄弟，歸養。」得选兵八万人，进兵击秦军。",
+     "after": "到了晋鄙军中，公子矫魏王令代晋鄙。合符之后，晋鄙不肯交权（此节据简报转述）。朱亥袖中四十斤铁椎，椎杀晋鄙。公子遂将晋鄙军，随即勒兵下令：「父子俱在軍中，父歸；兄弟俱在軍中，兄歸；獨子無兄弟，歸養。」得选兵八万人，进兵击秦军。",
+     "reason": "按建议保留「（此节据简报转述）」标注，同时删去证据包无载的心理归因「起了疑心」；[SJ0771-E22] 从计策直接写到「朱亥袖四十斤鐵椎，椎殺晉鄙」，中间只留行为层面的「不肯交权」。",
      "issues": [
-      "R2"
+      "R5"
      ]
     },
     {
      "path": "sections.story.5.en",
-     "before": "At Ye, Lord Xinling announced that he came on the king's orders to replace Jin Bi. The tallies matched, but Jin Bi grew suspicious and refused to hand over his command (this episode is retold from the briefing). Zhu Hai produced a forty-catty iron mallet from his sleeve and killed him. Lord Xinling then took command of Jin Bi's army and immediately issued an order to the troops: \"Fathers and sons both serving: the father goes home. Brothers both serving: the elder goes home. An only son with no brothers: go home and support your parents.\" He selected eighty thousand men and advanced against the Qin army.",
-     "after": "At Jin Bi's camp, Lord Xinling announced that he came on the king's orders to replace Jin Bi. The tallies matched, but Jin Bi grew suspicious and refused to hand over his command (this episode is retold from the briefing). Zhu Hai produced a forty-catty iron mallet from his sleeve and killed him. Lord Xinling then took command of Jin Bi's army and immediately issued an order to the troops: \"Fathers and sons both serving: the father goes home. Brothers both serving: the elder goes home. An only son with no brothers: go home and support your parents.\" He selected eighty thousand men and advanced against the Qin army.",
-     "reason": "英文同步删除证据中没有的地名 Ye，改为晋鄙军中",
+     "before": "At Jin Bi's camp, Lord Xinling announced that he came on the king's orders to replace Jin Bi. The tallies matched, but Jin Bi grew suspicious and refused to hand over his command (this episode is retold from the briefing). Zhu Hai produced a forty-catty iron mallet from his sleeve and killed him. Lord Xinling then took command of Jin Bi's army and immediately issued an order to the troops: \"Fathers and sons both serving: the father goes home. Brothers both serving: the elder goes home. An only son with no brothers: go home and support your parents.\" He selected eighty thousand men and advanced against the Qin army.",
+     "after": "At Jin Bi's camp, Lord Xinling announced that he came on the king's orders to replace Jin Bi. The tallies matched, but Jin Bi refused to hand over his command (this episode is retold from the briefing). Zhu Hai produced a forty-catty iron mallet from his sleeve and killed him. Lord Xinling then took command of Jin Bi's army and immediately issued an order to the troops: \"Fathers and sons both serving: the father goes home. Brothers both serving: the elder goes home. An only son with no brothers: go home and support your parents.\" He selected eighty thousand men and advanced against the Qin army.",
+     "reason": "与中文同步删去 grew suspicious 这一证据包无载的动机归因，保留转述标注。",
      "issues": [
-      "R2"
+      "R5"
      ]
     },
     {
-     "path": "sections.limits.1.zh",
-     "before": "细节上更该存疑的是：「得選兵八萬人」这个数字只此一处，无旁证；邺军中合符如何校验、杀将之后如何收场，原文没有记载；侯生自刭的动机、如姬盗符之后的下落，原文只写行为和一句话，没有更多交代。此外，本文转述的几处关键过程——魏王使人止晋鄙留军观望、公子约车骑欲赴秦军、如姬盗出兵符、晋鄙合符起疑——所据摘录未通过逐字核对，只作转述，不引原文。",
-     "after": "细节上更该存疑的是：「得選兵八萬人」这个数字只此一处，无旁证；晋鄙军中合符如何校验、杀将之后如何收场，原文没有记载；侯生自刭的动机、如姬盗符之后的下落，原文只写行为和一句话，没有更多交代。此外，本文转述的几处关键过程——魏王使人止晋鄙留军观望、公子约车骑欲赴秦军、如姬盗出兵符、晋鄙合符起疑——所据摘录未通过逐字核对，只作转述，不引原文。",
-     "reason": "同一处无据地名，一并删去，保持全篇口径一致",
+     "path": "sections.story.8.zh",
+     "before": "魏王怒公子盗兵符、矫杀晋鄙，公子自己清楚。退秦存赵之后，他让将领把军队带回魏国，自己与门客留在赵国。这场救赵中盗符夺军、矫杀晋鄙的一段没有魏王的授权，收尾也就回不去魏国的朝堂。",
+     "after": "魏王怒公子盗兵符、矫杀晋鄙，公子自己清楚。退秦存赵之后，他让将领把军队带回魏国，自己与门客留在赵国。这场救赵中盗符夺军、矫杀晋鄙的一段没有魏王的授权，作者推断，收尾也就回不去魏国的朝堂。",
+     "reason": "[SJ0771-E25] 只记「使將將其軍歸魏，而公子獨與客留趙」，回不去朝堂是因果推断；按建议在句中加「作者推断」标明为作者的解释。",
      "issues": [
-      "R2"
+      "R6"
      ]
     },
     {
-     "path": "sections.limits.1.en",
-     "before": "The detail most worth doubting: the figure of \"eighty thousand picked men\" appears here alone, with no corroboration; how the tallies were verified at the Ye camp and how the affair wound up after the killing of the general go unrecorded; Hou Ying's motive in cutting his own throat, and Lady Ruji's fate after stealing the tally, come down to an act and a single sentence, with nothing further. In addition, several key turns retold here — the king sending men to stop Jin Bi and hold the army at Ye in wait-and-see, the lord gathering chariots to go and die against Qin, Lady Ruji stealing the tally, Jin Bi growing suspicious when the tallies matched — rest on extracts that have not been checked word for word, and are retold rather than quoted.",
-     "after": "The detail most worth doubting: the figure of \"eighty thousand picked men\" appears here alone, with no corroboration; how the tallies were verified in Jin Bi's camp and how the affair wound up after the killing of the general go unrecorded; Hou Ying's motive in cutting his own throat, and Lady Ruji's fate after stealing the tally, come down to an act and a single sentence, with nothing further. In addition, several key turns retold here — the king sending men to stop Jin Bi and hold the army at Ye in wait-and-see, the lord gathering chariots to go and die against Qin, Lady Ruji stealing the tally, Jin Bi growing suspicious when the tallies matched — rest on extracts that have not been checked word for word, and are retold rather than quoted.",
-     "reason": "英文同步删去无据地名 Ye",
+     "path": "sections.story.8.en",
+     "before": "The king of Wei was furious that his tally had been stolen and Jin Bi killed on a forged order, and Lord Xinling knew it. Having driven off Qin and saved Zhao, he sent the generals back to Wei with the army and stayed behind in Zhao with his retainers. The part of the rescue of Zhao in which he stole the tally, seized the army and killed Jin Bi carried no royal authorization, so its ending kept him out of the Wei court altogether.",
+     "after": "The king of Wei was furious that his tally had been stolen and Jin Bi killed on a forged order, and Lord Xinling knew it. Having driven off Qin and saved Zhao, he sent the generals back to Wei with the army and stayed behind in Zhao with his retainers. The part of the rescue of Zhao in which he stole the tally, seized the army and killed Jin Bi carried no royal authorization; the author's inference is that its ending kept him out of the Wei court altogether.",
+     "reason": "与中文同步，把因果推断标为 the author's inference。",
      "issues": [
-      "R2"
+      "R6"
      ]
     },
     {
-     "path": "uncertainty_note.en",
-     "before": "This piece rests on a single historical source (one account in the \"Hereditary House of Lord Wei\" in the Records of the Grand Historian). The whispered schemes and dialogue are the historian's rendering and need not be verbatim; \"unease,\" \"self-congratulation,\" and \"blaming himself\" are narrative labels rather than recorded psychology; years are not converted to the common era; \"eighty thousand picked men\" appears in this one place with no corroboration; how the tallies were verified and how the affair ended at the Ye camp are unrecorded in the source; Hou Ying's motive for cutting his own throat and Lady Ruji's story after stealing the tally are given only as an act and a single sentence. Several key processes retold here (the king stopping Jin Bi, the lord gathering chariots to go and die, Lady Ruji stealing the tally, Jin Bi growing suspicious at the matching of the tallies) rest on extracts that have not been verified word for word, and are retold here without quotation.",
-     "after": "This piece rests on a single historical source (one account in the \"Hereditary House of Lord Wei\" in the Records of the Grand Historian). The whispered schemes and dialogue are the historian's rendering and need not be verbatim; \"unease,\" \"self-congratulation,\" and \"blaming himself\" are narrative labels rather than recorded psychology; years are not converted to the common era; \"eighty thousand picked men\" appears in this one place with no corroboration; how the tallies were verified and how the affair ended in Jin Bi's camp are unrecorded in the source; Hou Ying's motive for cutting his own throat and Lady Ruji's story after stealing the tally are given only as an act and a single sentence. Several key processes retold here (the king stopping Jin Bi, the lord gathering chariots to go and die, Lady Ruji stealing the tally, Jin Bi growing suspicious at the matching of the tallies) rest on extracts that have not been verified word for word, and are retold here without quotation.",
-     "reason": "英文同步删去无据地名 Ye",
+     "path": "sections.analysis.0.zh",
+     "before": "把整件事拆开看，公子一次也不是在好与坏之间挑，他是在几个都不干净的选项里排序：求魏王（走不通）、只身赴死（无用）、矫令夺军（伤本国）。作者推断，侯生那句「以肉投餒虎」的作用，是逼他把勇气换成方案。作者提出的反事实：若他不折返，多半带着百余乘门客死在秦军阵前，邯郸未必得救，也不会有后来那支进兵的军队。",
+     "after": "把整件事拆开看，公子一次也不是在好与坏之间挑，摆在面前的是几个都不干净的做法：求魏王（走不通）、只身赴死（无用）、矫令夺军（侯生所献，伤本国）。作者推断，侯生那句「以肉投餒虎」的作用，是逼他把勇气换成方案。作者提出的反事实：若他不折返，多半带着百余乘门客死在秦军阵前，邯郸未必得救，也不会有后来那支进兵的军队。",
+     "reason": "不再写成他曾权衡排序（本节下文自承「原文未写他事前是否权衡」），改为「摆在面前的是几个都不干净的做法」；并按建议注明「矫令夺军」是侯生所献（[SJ0771-E15]「則得虎符奪晉鄙軍」）。",
      "issues": [
-      "R2"
+      "R7"
      ]
     },
     {
-     "path": "sections.analysis.2.zh",
-     "before": "第三处是事后的账。门客那句「於趙則有功矣，於魏則未為忠臣也」把两边算清：功劳是赵国的，亏欠是魏国的。他的做法不是辩解，而是立自责，随后遣军归魏、自己留赵，用离开把这笔债认下来。一种解释是，这套不居功、认亏欠的动作，正是赵王、平原君以高规格相迎他的原因——功劳让出去，别人才接得住。",
-     "after": "第三处是事后的账。门客那句「於趙則有功矣，於魏則未為忠臣也」把两边算清：功劳是赵国的，亏欠是魏国的。他的做法不是辩解，而是立自责，随后遣军归魏、自己留赵，用离开把这笔债认下来。一种解释是，他不居功的姿态与事后自责相呼应：赵王、平原君边界亲迎在前，门客劝谏、公子自责、留赵在后。",
-     "reason": "E23 的边界亲迎发生在 E24 的劝谏自责和 E25 的留赵之前，原句因果倒置；改为时间顺序并限定为作者的一种解释",
+     "path": "sections.analysis.0.en",
+     "before": "Take the whole affair apart and the lord is never choosing between good and bad; he is ranking options that are all dirty: appeal to the king (a dead end), go die alone (useless), forge an order and seize the army (wound his own state). The author's inference is that Hou Ying's line about throwing meat to a starving tiger is what forced him to trade courage for a plan. The author's counterfactual: had he not turned back, he would most likely have died with his hundred-odd chariots of retainers in front of the Qin lines, Handan might never have been relieved, and there would have been no army marching against Qin afterward.",
+     "after": "Take the whole affair apart and the lord is never choosing between good and bad; what stood before him were courses of action that were all dirty: appeal to the king (a dead end), go die alone (useless), forge an order and seize the army (proposed by Hou Ying; a wound to his own state). The author's inference is that Hou Ying's line about throwing meat to a starving tiger is what forced him to trade courage for a plan. The author's counterfactual: had he not turned back, he would most likely have died with his hundred-odd chariots of retainers in front of the Qin lines, Handan might never have been relieved, and there would have been no army marching against Qin afterward.",
+     "reason": "与中文同步：去掉他曾排序权衡的写法，并注明夺军之计出自侯生。",
      "issues": [
-      "R3"
+      "R7"
      ]
     },
     {
-     "path": "sections.analysis.2.en",
-     "before": "The third is the accounting afterward. The retainer's words — \"a service to Zhao, but not the act of a loyal minister to Wei\" — keep both columns straight: the credit belongs to Zhao, the debt to Wei. His response was not to argue but to blame himself on the spot, then send the army home and stay in Zhao, acknowledging the debt through departure. One reading: that refusal to claim credit, and the willingness to own what he owed, is exactly why the king of Zhao and Lord Pingyuan received him with full honors at the border — give the credit away, and others can bear to accept it.",
-     "after": "The third is the accounting afterward. The retainer's words — \"a service to Zhao, but not the act of a loyal minister to Wei\" — keep both columns straight: the credit belongs to Zhao, the debt to Wei. His response was not to argue but to blame himself on the spot, then send the army home and stay in Zhao, acknowledging the debt through departure. One reading: his refusal to claim credit chimes with the self-blame that followed — the welcome at the border came first, and the retainer's rebuke, the self-reproach, and staying in Zhao came after.",
-     "reason": "英文同步纠正因果倒置，改为亲迎在前、劝谏自责留赵在后，并保留作者解释标记",
+     "path": "sections.limits.0.zh",
+     "before": "先说史源。本篇只有一个来源——《史记·魏公子列传》的一处记述，没有旁证可对。文中的密语与对话，如侯嬴献窃符之计、朱亥答话，是史家的记述，未必逐字。公子的「心不快」「意驕矜」「立自責」都是叙述用语，不是实录的心理。纪年照原文写魏安釐王二十年，不换算公元。",
+     "after": "先说史源。本篇只有一个来源——《史记·魏公子列传》一篇，无旁证可对。文中的密语与对话，如侯嬴献窃符之计、朱亥答话，是史家的记述，未必逐字。公子的「心不快」「意驕矜」「立自責」都是叙述用语，不是实录的心理。纪年照原文写魏安釐王二十年，不换算公元。",
+     "reason": "本篇实引该传多处（E2–E25），「一处记述」不实；按建议改为「一篇，无旁证可对」。",
      "issues": [
-      "R3"
+      "R8"
      ]
     },
     {
-     "path": "title.en",
-     "before": "Turning Back at the Yimen Gate: The Year Handan Was Besieged",
-     "after": "Turning Back at the Yimen Gate: The Year Handan Was Besieged, and the Man Who Would Not Give It Away Free",
-     "reason": "补回中文标题被漏译的后半“一个不肯白送的人”，恢复双语对等",
+     "path": "sections.limits.0.en",
+     "before": "Start with the sources. This piece rests on a single one: one account in the \"Hereditary House of Lord Wei\" in the Records of the Grand Historian, with no corroboration to set against it. The whispered schemes and dialogue — Hou Ying's plan to steal the tally, Zhu Hai's reply — are the historian's rendering and need not be verbatim. The lord's \"unease,\" \"self-congratulation,\" and \"blaming himself\" are narrative labels, not recorded psychology. The year is given as the twentieth of King Anxi of Wei, as the source has it, with no conversion to the common era.",
+     "after": "Start with the sources. This piece rests on a single source: the \"Hereditary House of Lord Wei\" in the Records of the Grand Historian, with no corroboration to set against it. The whispered schemes and dialogue — Hou Ying's plan to steal the tally, Zhu Hai's reply — are the historian's rendering and need not be verbatim. The lord's \"unease,\" \"self-congratulation,\" and \"blaming himself\" are narrative labels, not recorded psychology. The year is given as the twentieth of King Anxi of Wei, as the source has it, with no conversion to the common era.",
+     "reason": "与中文同步：one account 改为单一来源即该传一篇，去掉「一处记述」的说法。",
      "issues": [
-      "P4"
+      "R8"
      ]
     },
     {
-     "path": "sections.context.0.en",
-     "before": "Lord Xinling's standing in Wei rested half on his retainers. The Grand Historian writes that \"he was humane and humble toward men of talent, treating every scholar, worthy or not, with courtesy and respect,\" never presuming on wealth and rank — until he had three thousand retainers and men of ability from a radius of several thousand li competed to attach themselves to him. They were not mere pageantry. One day, while he was playing a board game with the king of Wei, beacon fires on the northern frontier signaled a Zhao raid about to cross the border. The king set down the game and reached for his ministers. Lord Xinling stopped him: the king of Zhao is out hunting, nothing more, he said, and the game resumed. Word later came from the north confirming exactly that. Asked how he knew, he explained that among his retainers was a man who could ferret out the king of Zhao's private business, and that whatever the Zhao king did, the man reported back to him.",
-     "after": "Lord Xinling's standing in Wei rested half on his retainers. The Grand Historian writes that \"he was humane and humble toward men of talent, treating every scholar, worthy or not, with courtesy and respect,\" never presuming on wealth and rank — until he had three thousand retainers and men of ability from a radius of several thousand li competed to attach themselves to him. They were not mere pageantry. One day, while he was playing a board game with the king of Wei, beacon fires on the northern frontier signaled a Zhao raid about to cross the border. The lord said the king of Zhao was out hunting, nothing more. Word later came from the north confirming exactly that. Asked how he knew, he explained that among his retainers was a man who could ferret out the king of Zhao's private business, and that whatever the Zhao king did, the man reported back to him.",
-     "reason": "删去中文没有的增写情节（释博、召大臣、公子止王、复博），使英文与中文转述范围一致",
+     "path": "sections.context.2.en",
+     "before": "The other man Lord Xinling honored kept the Yimen — the eastern gate of Daliang. Hou Ying was seventy, poor, and gatekeeper there. Lord Xinling called on him and wanted to make him a handsome gift, but he would not accept: he had \"kept himself and his conduct clean for decades,\" he said, \"and would not take the lord's money just because a gatekeeper's life left him poor.\" So Lord Xinling laid on a feast for his assembled guests, and when everyone was seated he drove out himself with his carriage and escort, leaving the seat of honor at the left of the carriage empty, to fetch Hou Ying in person. The old man turned up in his shabby clothes and worn cap, climbed straight into the seat of honor without yielding it — testing his host — while Lord Xinling held the reins ever more respectfully. At home he seated Hou Ying in the place of honor and introduced him one by one to the assembled guests. The whole company was astonished.",
+     "after": "The other man Lord Xinling honored kept the Yimen — the eastern gate of Daliang. Hou Ying was seventy, poor, and gatekeeper there. Lord Xinling called on him and wanted to make him a handsome gift, but he would not accept: he had \"kept himself and his conduct clean for decades,\" he said, \"and would not take the lord's money just because a gatekeeper's life left him poor.\" So Lord Xinling laid on a feast for his assembled guests, and when everyone was seated he drove out himself with his carriage and escort, leaving the seat of honor at the left of the carriage empty, to fetch Hou Ying in person. The old man turned up in his shabby clothes and worn cap, climbed straight into the seat of honor without yielding it while Lord Xinling held the reins ever more respectfully. At home he seated Hou Ying in the place of honor and introduced him one by one to the assembled guests. The whole company was astonished.",
+     "reason": "英文多出 testing his host，把试探动机加给侯生，中文只记行为「径直上车坐了上座，不让」；按建议删除该短语，两语一致。",
      "issues": [
-      "P5"
-     ]
-    },
-    {
-     "path": "sections.context.0.en",
-     "before": "Lord Xinling's standing in Wei rested half on his retainers. The Grand Historian writes that \"he was humane and humble toward men of talent, treating every scholar, worthy or not, with courtesy and respect,\" never presuming on wealth and rank — until he had three thousand retainers and men of ability from a radius of several thousand li competed to attach themselves to him. They were not mere pageantry. One day, while he was playing a board game with the king of Wei, beacon fires on the northern frontier signaled a Zhao raid about to cross the border. The lord said the king of Zhao was out hunting, nothing more. Word later came from the north confirming exactly that. Asked how he knew, he explained that among his retainers was a man who could ferret out the king of Zhao's private business, and that whatever the Zhao king did, the man reported back to him.",
-     "after": "Lord Xinling's standing in Wei rested half on his retainers. The Grand Historian writes that \"he was humane and humble toward men of talent, treating every scholar, worthy or not, with courtesy and respect,\" never presuming on wealth and rank — until he had three thousand retainers and men of ability from a radius of several thousand li competed to attach themselves to him. They were not mere pageantry. One day, while he was playing a board game with the king of Wei, beacon fires on the northern frontier signaled a Zhao raid about to cross the border. The lord said the king of Zhao was out hunting, nothing more. Word later came from the north confirming exactly that. Asked how he knew, he explained that among his retainers was a man who could ferret out the king of Zhao's private business.",
-     "reason": "收窄为中文“门客中有人能得赵王阴事”所对应的表述，删去扩写的“客辄以报臣”一层",
-     "issues": [
-      "P5"
-     ]
-    },
-    {
-     "path": "sections.analysis.2.ev",
-     "before": [
-      "SJ0771-E24",
-      "SJ0771-E25"
-     ],
-     "after": [
-      "SJ0771-E23",
-      "SJ0771-E24",
-      "SJ0771-E25"
-     ],
-     "reason": "改写后明确提到 E23 的赵王、平原君边界亲迎，需把 SJ0771-E23 加入该段证据",
-     "issues": [
-      "R3"
+      "P9"
      ]
     }
    ],
@@ -725,27 +637,47 @@
     {
      "issue": "R1",
      "action": "fixed",
-     "reason": "改好了什么：dek 中与证据相反的“魏王按兵不动”改为“魏王遣晋鄙救赵，大军未至（据简报转述）”，英文同步改为 sent General Jin Bi to relieve Zhao, but the army never reached the city。依据 E9「魏王使將軍晉鄙將十萬眾救趙」，魏王是出兵后止进，不是按兵不动；止进细节按正文口径标注为简报转述。"
+     "reason": "已把「歼灭赵军主力」收窄为「击破赵长平军」，与 [SJ0771-E9]「秦昭王已破趙長平軍」逐字对应；英文同步改为 broke Zhao's army at Changping。"
     },
     {
      "issue": "R2",
      "action": "fixed",
-     "reason": "改好了什么：删去证据包中不存在的地名“邺/Ye”，story.5 改为“到了晋鄙军中/At Jin Bi's camp”，limits.1 与 uncertainty_note 中的同一地名一并同步更正。E22 只记「朱亥袖四十斤鐵椎，椎殺晉鄙，公子遂將晉鄙軍。勒兵下令軍中曰……」，无任何地名。"
+     "reason": "证据 [SJ0771-E9] 仅记「魏王使將軍晉鄙將十萬眾救趙」，未记大军行程；已按建议改为「救军留驻不进（据简报转述）」并保留标注，与 limits.1 的「魏王使人止晋鄙留军观望」转述条目对应，英文同步。"
     },
     {
      "issue": "R3",
      "action": "fixed",
-     "reason": "改好了什么：原句把边界亲迎说成自责、认亏欠的结果，属因果倒置。E23 的「趙王及平原君自迎公子於界」在 E24 的门客劝谏、公子「立自責」和 E25 的「公子獨與客留趙」之前。改为“亲迎在前、劝谏自责留赵在后”的作者一种解释，并把 SJ0771-E23 加入该段 ev。"
+     "reason": "证据包中魏王的动作只有 [SJ0771-E9]「魏王使將軍晉鄙將十萬眾救趙」一处，故不作无标注断言；按建议改为「魏王未再发兵、使人止晋鄙（据简报转述）」，保留转述标注并与 limits.1 清单一致，英文同步。"
     },
     {
-     "issue": "P4",
+     "issue": "R4",
      "action": "fixed",
-     "reason": "改好了什么：英文标题补回中文标题后半“一个不肯白送的人”，改为 …and the Man Who Would Not Give It Away Free，恢复标题双语对等。"
+     "reason": "两处均保留「（据简报转述）」标注（劝说一句原文已有标注），并删去证据包无载的「约百余乘车骑」，降为「带门客赴秦军，与赵俱死」，与 [SJ0771-E13]「具告所以欲死秦軍狀」相合；英文同步删去 roughly a hundred chariots and horsemen。"
     },
     {
-     "issue": "P5",
+     "issue": "R5",
      "action": "fixed",
-     "reason": "改好了什么：删去英文超出中文的增写（The king set down the game and reached for his ministers / Lord Xinling stopped him / the game resumed），并把“whatever the Zhao king did, the man reported back to him”收窄为“a man who could ferret out the king of Zhao's private business”，与中文“门客中有人能得赵王阴事”一一对应。"
+     "reason": "按建议第一项保留「（此节据简报转述）」标注，另删去证据包无载的心理归因「起了疑心 / grew suspicious」，只留行为层面的「不肯交权」；[SJ0771-E22] 从「朱亥袖四十斤鐵椎，椎殺晉鄙」直书，合符与交权的中间过程确无载，故不作实录。"
+    },
+    {
+     "issue": "R6",
+     "action": "fixed",
+     "reason": "[SJ0771-E25] 只记「使將將其軍歸魏，而公子獨與客留趙」，回不去魏国朝堂属因果推断；按建议在句中加「作者推断」明确标为作者的解释，英文同步加 the author's inference is that。"
+    },
+    {
+     "issue": "R7",
+     "action": "fixed",
+     "reason": "改为「摆在面前的是几个都不干净的做法」，不再写成他曾排序权衡（与本节「原文未写他事前是否权衡」一致）；「矫令夺军」注明为侯生所献——[SJ0771-E15]「則得虎符奪晉鄙軍，北救趙而西卻秦」是侯生之计，非公子自备的选项。英文同步。"
+    },
+    {
+     "issue": "R8",
+     "action": "fixed",
+     "reason": "本篇实引《史记·魏公子列传》多处（E2、E3、E4–E8、E9、E11、E13–E25），「一处记述」不实；已按建议改为「《史记·魏公子列传》一篇，无旁证可对」，英文同步为 a single source: the Hereditary House of Lord Wei…。"
+    },
+    {
+     "issue": "P9",
+     "action": "fixed",
+     "reason": "英文多出「— testing his host —」，把试探动机加给侯生，中文只记行为「径直上车坐了上座，不让」，两种语言不一致；按建议从英文删除。注：[SJ0771-E5] 有「不讓，欲以觀公子」，但中文正文未作此断言，为保持中英一致两语均只记行为，不单方面引入该动机。"
     }
    ],
    "checker_after": [
@@ -759,10 +691,6 @@
     ],
     [
      "CHECK",
-     "story[0] numbers differ zh[] en[100]"
-    ],
-    [
-     "CHECK",
      "limits[0] numbers differ zh[20] en[]"
     ],
     [
@@ -770,243 +698,118 @@
      "limits[1] numbers differ zh[] en[80000]"
     ]
    ],
-   "content_sha256_after": "5948a54f0006556d14a4913946b6ac6eb308591b17b6b1d42a17090eb2ec1ac6",
+   "content_sha256_after": "8911ffd1a8c52cdb55f9491a45aba73b8b3ca9b1b6c552615e226fffd7844717",
    "review_after": {
     "issues": [
      {
-      "section": "dek",
-      "para": 0,
-      "severity": "note",
-      "problem": "「大军未至」证据包未载，仅标注「据简报转述」；证据（SJ0771-E9）只写「魏王使將軍晉鄙將十萬眾救趙」，未写其行至何处",
-      "suggestion": "改为「魏王遣晋鄙救赵，军行未进（据简报转述）」，或删去具体行程断言"
-     },
-     {
-      "section": "hook",
-      "para": 0,
-      "severity": "note",
-      "problem": "「平原君的使者一批批赶到大梁」——E11 只说「冠蓋相屬於魏」，未指明地点为大梁；「话一句比一句重」属渲染",
-      "suggestion": "改为「平原君的使者冠盖相属于魏」，删去「大梁」与递进渲染"
-     },
-     {
-      "section": "hook",
+      "section": "analysis",
       "para": 0,
       "severity": "fix",
-      "problem": "把使者之辞概括为「魏国答应的救兵至今不到」，原文重心是「今邯鄲旦暮降秦而魏救不至」——邯郸旦暮降秦这一层被抹去",
-      "suggestion": "补上「邯郸旦暮之间就要降秦，而魏国救兵不至」"
-     },
-     {
-      "section": "hook",
-      "para": 1,
-      "severity": "fix",
-      "problem": "「魏王不肯再发兵」证据包无（虽标简报转述）；「手里只有三千门客，没有兵权」中「没有兵权」是推断，证据只说「不敢任公子以國政」；「拼个同归于尽」超出 E13「欲死秦軍」的记述，添了意图",
-      "suggestion": "改为「魏王未再发兵（据简报转述），公子手中只有门客，无国政之任；他决意赴秦军而死」"
-     },
-     {
-      "section": "context",
-      "para": 0,
-      "severity": "note",
-      "problem": "「公子无忌在魏国的名声，一半来自养客」是作者判断，非史实陈述",
-      "suggestion": "改为「一种说法是，他的名声大半来自养客」或删去「一半」的量化"
-     },
-     {
-      "section": "context",
-      "para": 1,
-      "severity": "fix",
-      "problem": "「他连调动一支偏师的资格都没有，手里只剩人，没有权」写成事实，证据（SJ0771-E3）只有「不敢任公子以國政」，具体到「偏师」是作者外推",
-      "suggestion": "改为「他未被任以国政，调兵无从谈起（作者推断）」"
-     },
-     {
-      "section": "context",
-      "para": 3,
-      "severity": "note",
-      "problem": "「他还推荐过一位屠者朱亥」承接「侯生后来把话说穿」，暗示先后时间；E7、E8 同为侯生自陈，证据未给先后顺序",
-      "suggestion": "删去「后来」，或改为「同一段自陈里他还推荐了屠者朱亥」"
+      "problem": "「多半带着百余乘门客死在秦军阵前」：证据包（SJ0771-E13/E14）只说「欲死秦军状」「赴秦军」，没有任何车骑数量记载，「百余乘」是证据包外的数字，且出现在未标注「据简报转述」的句子里；limits 节的免责说明也未覆盖这一处。",
+      "suggestion": "删去「百余乘」，改为「带着门客死在秦军阵前」，或在句末补「（车骑之数据简报转述，未核）」。"
      },
      {
       "section": "story",
-      "para": 0,
-      "severity": "note",
-      "problem": "「宾客辩士轮番劝说」「约百余乘车骑……与赵俱死」均非证据包内容，仅标简报转述；但后文分析段把「百余乘」当作事实复用",
-      "suggestion": "在分析段的「百余乘」后同样加「据简报转述」，或统一删去具体乘数"
-     },
-     {
-      "section": "story",
-      "para": 1,
+      "para": 4,
       "severity": "fix",
-      "problem": "把公子出口之言改写成内心活动：原文是「公子……心不快，曰：『吾所以待侯生者備矣……』」，稿件写成「想的是自己待侯生不薄……」；且「心不快」是司马迁叙述用语，稿件既承认是叙述用语，又把其后自言当心理实录",
-      "suggestion": "改为「心不快，说：『吾所以待侯生者備矣……我豈有所失哉？』」"
-     },
-     {
-      "section": "story",
-      "para": 8,
-      "severity": "block",
-      "problem": "「这场救赵从头到尾没有魏王的授权」与证据矛盾：E9 明载魏王遣晋鄙将十万众救赵，最初是奉王命出兵，无授权的只是矫符夺军、杀将",
-      "suggestion": "改为「夺军救赵这一段没有魏王的授权」，删「从头到尾」"
-     },
-     {
-      "section": "story",
-      "para": 8,
-      "severity": "note",
-      "problem": "「用离开把这笔债认下来」「收尾也就回不去魏国的朝堂」是动机与因果解释，E25 只写魏王怒、公子使将归军、独与客留赵",
-      "suggestion": "加「作者解释」字样，或改为「他遣军归魏、自己留赵（原文未言动机）」"
+      "problem": "把「侯生说自己老不能从」放进献计场景。据 SJ0771-E13，「公子勉之矣，老臣不能從」是侯生在夷门辞决时说的，不是在此处（E17–E20 的献计与约定）说的；此处唯一与「不能从」相关的安排是 SJ0771-E20「請數公子行日……北鄉自剄，以送公子」。",
+      "suggestion": "改为「侯生此前已说过老臣不能从，这里只请数着公子的行程，到晋鄙军那天『北鄉自剄，以送公子』」。"
      },
      {
       "section": "analysis",
-      "para": 0,
-      "severity": "note",
-      "problem": "「公子一次也不是在好与坏之间挑，他是在几个都不干净的选项里排序」以事实口吻描述公子的权衡过程，原文未记其如何权衡",
-      "suggestion": "句首加「作者推断」，与下文体例一致"
+      "para": 2,
+      "severity": "fix",
+      "problem": "「用离开把这笔债认下来」把留赵的动机写成史实。SJ0771-E25 只写「使將將其軍歸魏，而公子獨與客留趙」，未写他留赵是为了认债；本段虽标 interpretation，但此句未标「作者推断」，与同稿其他推断的标注方式不一致。",
+      "suggestion": "改为「用离开把这笔债认下来（作者推断，原文只写留赵这一行为）」。"
      },
      {
-      "section": "analysis",
+      "section": "hook",
       "para": 1,
       "severity": "note",
-      "problem": "「杀本国宿将、盗王符、绝于魏王」中「绝于魏王」超出证据：E25 只说「魏王怒」，未写绝",
-      "suggestion": "改为「招魏王之怒」"
+      "problem": "「出城之前，他去向一个看城门的老人告别」与 SJ0771-E13「行過夷門，見侯生……辭決而行」略有出入：原文是他出行途中经过夷门时见侯生，不是出城前专程告别。",
+      "suggestion": "改为「出城路上经过夷门，他顺道去看一个看城门的老人，辞决而行」。"
+     },
+     {
+      "section": "hook",
+      "para": 0,
+      "severity": "note",
+      "problem": "「公子无忌」之名不见于证据包任何一处（SJ0771-E1 至 E25 通称「公子」「魏公子」），属于证据包外信息。",
+      "suggestion": "首现处改为「公子无忌（证据包仅称『公子』）」或径称「魏公子」。"
      },
      {
       "section": "limits",
-      "para": 0,
-      "severity": "fix",
-      "problem": "「如侯嬴屏人间语献计」是证据包没有的细节：E15 未记「屏人」「间语」，且《史记》中「屏人間語」是公子屏退左右问计的行为，此处把细节和归属都安到侯嬴头上",
-      "suggestion": "删去「屏人间语」，改为「如侯嬴献窃符之计、朱亥答话，是史家的记述，未必逐字」"
+      "para": 1,
+      "severity": "note",
+      "problem": "「侯生自刭的动机……原文只写行为和一句话」表述偏重：SJ0771-E20 明写「北鄉自剄，以送公子」，即原文给出了他自陈的目的（送公子），只是无从核实。",
+      "suggestion": "改为「侯生自刭，原文只有一句『以送公子』的自陈，别无交代」。"
      }
     ],
     "unsupported_claims": [
-     "「大军却没有走到邯郸」（证据包未载，仅标据简报转述）",
-     "「魏王不肯再发兵」（证据包未载，仅标据简报转述）",
-     "「公子手里……没有兵权」（证据只说不敢任以国政）",
-     "「他连调动一支偏师的资格都没有」（外推，证据无）",
-     "「宾客辩士轮番劝说也没用」（证据包未载，仅标据简报转述）",
-     "「约百余乘车骑，打算带门客直入秦军，与赵俱死」（证据包未载，仅标据简报转述；分析段复用「百余乘」时未再标注）",
-     "「合符之后，晋鄙起了疑心，不肯交权」（证据包未载，仅标据简报转述）",
-     "「这场救赵从头到尾没有魏王的授权」（与 SJ0771-E9 矛盾）",
-     "「侯嬴屏人间语献计」（证据包无此细节，且归属可疑）",
-     "「平原君的使者一批批赶到大梁」（原文只说「相屬於魏」，未指大梁）"
+     "「百余乘门客」（analysis 第1段）：证据包无车骑百余乘的任何记载",
+     "「公子无忌」之名（hook 第1段、标题语境）：证据包只称「公子」",
+     "「救军留驻不进」「魏王未再发兵、使人止晋鄙」「宾客辩士轮番劝说也没用」「与赵俱死」「公子矫令代晋鄙、晋鄙合符不肯交权」：证据包不支持，但稿中均已标「据简报转述」并在 limits 节披露，故不计为问题（仅提醒其中「与赵俱死」一句 SJ0771-E13 只证「欲死秦军状」，未证「与赵俱死」）"
     ],
     "invented_inner_life": [
-     "「他拿定的主意近乎送死：带上门客去秦军里拼个同归于尽」——把「欲死秦軍」写成带具体意图的决意",
-     "「想的是自己待侯生不薄，天下莫不闻，如今将死，对方竟无一言半辞相送」——原文是公子说出的话（曰），非内心描写",
-     "「用离开把这笔债认下来」——为留赵补出「认债」动机，原文未写",
-     "「公子一次也不是在好与坏之间挑，他是在几个都不干净的选项里排序」——为公子补出权衡框架，原文未写"
+     "「用离开把这笔债认下来」（analysis 第2段）：把留赵写成认债的动机，原文未写",
+     "「他料到公子会折返」（story 第2段）：已标「作者推断」，但 SJ0771-E14「以是知公子恨之復返也」确为侯生自陈其预判，尚有据，仅提醒"
     ],
-    "quote_mismatches": [
-     "story 段把公子自述「吾所以待侯生者備矣，天下莫不聞，今吾且死而侯生曾無一言半辭送我，我豈有所失哉」改写为「想的是……」的转述，由引语变为叙述者的心理代言",
-     "hook 段把平原君责让之辞「今邯鄲旦暮降秦而魏救不至，安在公子能急人之困也」缩成「魏国答应的救兵至今不到，公子不是自命能急人之困吗」，漏「邯郸旦暮降秦」这一层"
-    ],
-    "overall": "引语逐字核对基本无误、史源与不确定性交代诚实，主要问题是把简报转述与作者推断（尤其「从头到尾没有魏王的授权」一句与证据直接矛盾、「侯嬴屏人间语」为证据外细节）混入事实叙述，需按标注体例收紧。",
-    "_content_sha256": "5948a54f0006556d14a4913946b6ac6eb308591b17b6b1d42a17090eb2ec1ac6"
+    "quote_mismatches": [],
+    "overall": "引语与人名、数字除「百余乘」一处无据外均与证据包逐字相符，转述部分标注完整，需修的是杜撰的车骑数字、侯生「不能從」的时序错置和一处未标注的动机解释。",
+    "_content_sha256": "8911ffd1a8c52cdb55f9491a45aba73b8b3ca9b1b6c552615e226fffd7844717"
    },
    "parity_after": {
     "issues": [
      {
-      "path": "sections.story.3",
-      "severity": "fix",
-      "problem": "English adds a fact not in the Chinese: \"from the king on down no one could get it for her\" (i.e., the king and all below tried and failed to avenge her father). The Chinese only says she was unable to take revenge for three years.",
-      "suggestion": "Delete \"and from the king on down no one could get it for her\", or add the equivalent to the Chinese line."
-     },
-     {
-      "path": "sections.limits.1",
-      "severity": "fix",
-      "problem": "English adds the place name \"at Ye\" (\"hold the army at Ye in wait-and-see\"); the Chinese only says 魏王使人止晋鄙留军观望 with no location.",
-      "suggestion": "Drop \"at Ye\", or add 驻于邺 (or 邺) to the Chinese."
-     },
-     {
-      "path": "sections.story.1",
-      "severity": "note",
-      "problem": "English adds the self-question \"Had he fallen short somewhere?\", a doubt not stated in the Chinese (which goes straight from the grievance to turning back).",
-      "suggestion": "Delete the sentence, or add the matching doubt (自己是否有所失) to the Chinese."
-     },
-     {
       "path": "sections.context.2",
       "severity": "note",
-      "problem": "English adds two elements absent from the Chinese: the gloss \"the eastern gate of Daliang\" for the Yimen, and the intent \"testing his host\" after \"without yielding it\" (Chinese only 不让).",
-      "suggestion": "Trim to \"kept the Yimen\" and \"without yielding it\", or add the gloss/testing intent to the Chinese."
+      "problem": "EN adds that Lord Xinling 'called on him' before offering the gift; ZH only says 公子要厚赠，他不肯受 (he wanted to make a handsome gift and Hou Ying refused), with no visit mentioned.",
+      "suggestion": "Drop 'called on him and' so EN reads: 'Lord Xinling wanted to make him a handsome gift, but he would not accept...' (or add the visit to ZH if intended)."
      },
      {
-      "path": "sections.hook.0",
+      "path": "sections.story.3",
       "severity": "note",
-      "problem": "English adds \"caps of office\" to the procession image; the Chinese has only 车盖接连不断 (carriage canopies in an unbroken line).",
-      "suggestion": "Change to \"carriage canopies in an unbroken line\"."
+      "problem": "The quoted line 顧未有路耳 (she had no avenue/way to do so) is rendered in EN as 'she had no way to repay him,' shifting the sense from 'no means of serving him' to 'no way of repaying him.'",
+      "suggestion": "Render as: only 'she had no way to do so' (or 'no means of serving him yet')."
      }
     ],
-    "overall": "The two editions agree on all facts, dates, numbers, names, quotations, attributions and hedges; the only mismatches are a few details the English adds that the Chinese does not have (two of them factual: the failed search for Lady Ruji's father's killer and the location \"at Ye\").",
-    "_content_sha256": "5948a54f0006556d14a4913946b6ac6eb308591b17b6b1d42a17090eb2ec1ac6"
+    "overall": "The English edition faithfully carries all facts, figures, quotations and hedges of the Chinese original, with only two trivial paraphrasing slips noted and no missing or truncated content.",
+    "_content_sha256": "8911ffd1a8c52cdb55f9491a45aba73b8b3ca9b1b6c552615e226fffd7844717"
    },
    "carried_over": []
   }
  ],
- "final_content_sha256": "5948a54f0006556d14a4913946b6ac6eb308591b17b6b1d42a17090eb2ec1ac6",
+ "seeded_issues": 8,
+ "final_content_sha256": "8911ffd1a8c52cdb55f9491a45aba73b8b3ca9b1b6c552615e226fffd7844717",
  "remaining": [
   {
    "id": "R1",
    "source": "review",
    "severity": "fix",
-   "where": "hook.0",
-   "problem": "把使者之辞概括为「魏国答应的救兵至今不到」，原文重心是「今邯鄲旦暮降秦而魏救不至」——邯郸旦暮降秦这一层被抹去",
-   "suggestion": "补上「邯郸旦暮之间就要降秦，而魏国救兵不至」"
+   "where": "analysis.0",
+   "problem": "「多半带着百余乘门客死在秦军阵前」：证据包（SJ0771-E13/E14）只说「欲死秦军状」「赴秦军」，没有任何车骑数量记载，「百余乘」是证据包外的数字，且出现在未标注「据简报转述」的句子里；limits 节的免责说明也未覆盖这一处。",
+   "suggestion": "删去「百余乘」，改为「带着门客死在秦军阵前」，或在句末补「（车骑之数据简报转述，未核）」。"
   },
   {
    "id": "R2",
    "source": "review",
    "severity": "fix",
-   "where": "hook.1",
-   "problem": "「魏王不肯再发兵」证据包无（虽标简报转述）；「手里只有三千门客，没有兵权」中「没有兵权」是推断，证据只说「不敢任公子以國政」；「拼个同归于尽」超出 E13「欲死秦軍」的记述，添了意图",
-   "suggestion": "改为「魏王未再发兵（据简报转述），公子手中只有门客，无国政之任；他决意赴秦军而死」"
+   "where": "story.4",
+   "problem": "把「侯生说自己老不能从」放进献计场景。据 SJ0771-E13，「公子勉之矣，老臣不能從」是侯生在夷门辞决时说的，不是在此处（E17–E20 的献计与约定）说的；此处唯一与「不能从」相关的安排是 SJ0771-E20「請數公子行日……北鄉自剄，以送公子」。",
+   "suggestion": "改为「侯生此前已说过老臣不能从，这里只请数着公子的行程，到晋鄙军那天『北鄉自剄，以送公子』」。"
   },
   {
    "id": "R3",
    "source": "review",
    "severity": "fix",
-   "where": "context.1",
-   "problem": "「他连调动一支偏师的资格都没有，手里只剩人，没有权」写成事实，证据（SJ0771-E3）只有「不敢任公子以國政」，具体到「偏师」是作者外推",
-   "suggestion": "改为「他未被任以国政，调兵无从谈起（作者推断）」"
-  },
-  {
-   "id": "R4",
-   "source": "review",
-   "severity": "fix",
-   "where": "story.1",
-   "problem": "把公子出口之言改写成内心活动：原文是「公子……心不快，曰：『吾所以待侯生者備矣……』」，稿件写成「想的是自己待侯生不薄……」；且「心不快」是司马迁叙述用语，稿件既承认是叙述用语，又把其后自言当心理实录",
-   "suggestion": "改为「心不快，说：『吾所以待侯生者備矣……我豈有所失哉？』」"
-  },
-  {
-   "id": "R5",
-   "source": "review",
-   "severity": "block",
-   "where": "story.8",
-   "problem": "「这场救赵从头到尾没有魏王的授权」与证据矛盾：E9 明载魏王遣晋鄙将十万众救赵，最初是奉王命出兵，无授权的只是矫符夺军、杀将",
-   "suggestion": "改为「夺军救赵这一段没有魏王的授权」，删「从头到尾」"
-  },
-  {
-   "id": "R6",
-   "source": "review",
-   "severity": "fix",
-   "where": "limits.0",
-   "problem": "「如侯嬴屏人间语献计」是证据包没有的细节：E15 未记「屏人」「间语」，且《史记》中「屏人間語」是公子屏退左右问计的行为，此处把细节和归属都安到侯嬴头上",
-   "suggestion": "删去「屏人间语」，改为「如侯嬴献窃符之计、朱亥答话，是史家的记述，未必逐字」"
-  },
-  {
-   "id": "P7",
-   "source": "parity",
-   "severity": "fix",
-   "where": "sections.story.3",
-   "problem": "English adds a fact not in the Chinese: \"from the king on down no one could get it for her\" (i.e., the king and all below tried and failed to avenge her father). The Chinese only says she was unable to take revenge for three years.",
-   "suggestion": "Delete \"and from the king on down no one could get it for her\", or add the equivalent to the Chinese line."
-  },
-  {
-   "id": "P8",
-   "source": "parity",
-   "severity": "fix",
-   "where": "sections.limits.1",
-   "problem": "English adds the place name \"at Ye\" (\"hold the army at Ye in wait-and-see\"); the Chinese only says 魏王使人止晋鄙留军观望 with no location.",
-   "suggestion": "Drop \"at Ye\", or add 驻于邺 (or 邺) to the Chinese."
+   "where": "analysis.2",
+   "problem": "「用离开把这笔债认下来」把留赵的动机写成史实。SJ0771-E25 只写「使將將其軍歸魏，而公子獨與客留趙」，未写他留赵是为了认债；本段虽标 interpretation，但此句未标「作者推断」，与同稿其他推断的标注方式不一致。",
+   "suggestion": "改为「用离开把这笔债认下来（作者推断，原文只写留赵这一行为）」。"
   }
  ],
  "final_reviewed": true,
  "outcome": "pending_review",
  "model_calls": 6,
- "model_wall_s": 951.0,
- "edits_total": 37,
- "finished_at": 1793375425.6962996
+ "model_wall_s": 1146.7,
+ "edits_total": 31,
+ "finished_at": 1793379549.6867244
 }
