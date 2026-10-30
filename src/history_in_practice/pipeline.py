@@ -117,6 +117,8 @@ def run_model_steps(c, pack, outdir: Path, call=llm.call, timeouts=None) -> tupl
         for attempt in (1, 2):
             r = call(prompt if attempt == 1 else prompt + retry_suffix, timeout_s=timeout)
             m = {k: v for k, v in r.items() if k != "text"}; m.update(step=name, attempt=attempt, candidate=c["candidate_id"])
+            with open(outdir / "calls.jsonl", "a", encoding="utf-8") as log:      # append-only: survives reruns
+                log.write(json.dumps(dict(m, at=time.time()), ensure_ascii=False) + "\n")
             (outdir / f"{name}.a{attempt}.raw.txt").write_text(r["text"], encoding="utf-8")
             try:
                 obj = llm.parse_json(r["text"]) if r["rc"] == 0 and not r["killed"] else None

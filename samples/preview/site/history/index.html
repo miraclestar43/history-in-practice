@@ -99,7 +99,8 @@ function renderStory(o){
   }
   const r = o.reflection, q = el("section",{id:"s-reflection"});
   q.append(el("h2",{},L.q), el("p",{},r.scenario[lang]), el("p",{class:"question"},r.question[lang]), el("p",{class:"small"},L.stop));
-  const d = el("details"); d.append(el("summary",{},L.ex));
+  const d = el("details",{id:"example"}); d.append(el("summary",{},L.ex));
+  if (location.hash === "#example") d.open = true;     // deep link straight to the example answer
   for (const [k,lab] of [["assumptions",L.as],["steps",L.st],["alternative",L.alt]]){ const p=el("p"); p.append(el("strong",{},lab+(lang==="zh"?"：":": ")), document.createTextNode(r.example[k][lang])); d.append(p); }
   q.append(d); w.append(q);
   const u = el("section",{id:"s-sources"}); u.append(el("h2",{},L.unc), el("p",{class:"small"},o.uncertainty_note[lang]), el("h2",{},L.src));
@@ -108,6 +109,7 @@ function renderStory(o){
   for (const m of o.further_reading){ const li=el("li"); li.append(el("a",{href:m.url,rel:"noopener"},m.title), document.createTextNode(" — "+m.what[lang]+" ("+m.access[lang]+")")); ul.append(li);} u.append(ul);
   w.append(u, el("p",{class:"small"}, o.edition_id+" · rev "+o.revision));
   app.replaceChildren(w);
+  if (location.hash === "#example") document.getElementById("example")?.scrollIntoView();
 }
 function switchLang(k, o, focus){
   const keep = currentSection(); lang = k; localStorage.setItem("hip-lang", k);
