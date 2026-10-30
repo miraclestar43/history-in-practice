@@ -1,0 +1,117 @@
+{
+ "candidate_id": "cand-20261030-franklin-1787",
+ "category": "us",
+ "steps": [],
+ "sources": {
+  "U2-ELLIOT": "evidence_usable",
+  "U2-FRANK": "evidence_usable"
+ },
+ "dedup": [
+  "distinct",
+  ""
+ ],
+ "episode_id": "ep-cand-20261030-franklin-1787",
+ "model_calls": [
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 333.2,
+   "prompt_bytes": 24860,
+   "prompt_chars": 19779,
+   "out_bytes": 14628,
+   "out_chars": 7625,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "draft_zh",
+   "attempt": 1,
+   "candidate": "cand-20261030-franklin-1787",
+   "json_ok": true
+  },
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 323.7,
+   "prompt_bytes": 32634,
+   "prompt_chars": 24955,
+   "out_bytes": 5144,
+   "out_chars": 2884,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "review_zh",
+   "attempt": 1,
+   "candidate": "cand-20261030-franklin-1787",
+   "json_ok": true
+  },
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 359.6,
+   "prompt_bytes": 33439,
+   "prompt_chars": 26084,
+   "out_bytes": 15339,
+   "out_chars": 15307,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "en",
+   "attempt": 1,
+   "candidate": "cand-20261030-franklin-1787",
+   "json_ok": true
+  }
+ ],
+ "length": {
+  "zh_chars": 2659,
+  "en_words": 2250,
+  "basis": "body + question + example; excludes sources and read-more"
+ },
+ "reading_minutes": {
+  "zh": 8,
+  "en": 11,
+  "basis": "estimate: 320 zh chars/min, 200 en words/min"
+ },
+ "findings": [
+  [
+   "BLOCK",
+   "context[1] zh quote not in cited evidence: 「再开一次会，写一部更好的」"
+  ],
+  [
+   "BLOCK",
+   "story[2] zh quote not in cited evidence: 「模棱两可」"
+  ],
+  [
+   "CHECK",
+   "story[2] numbers differ zh[17] en[10, 17]"
+  ],
+  [
+   "BLOCK",
+   "story[3] zh quote not in cited evidence: 「每四万人不超过一名」"
+  ],
+  [
+   "BLOCK",
+   "story[4] zh quote not in cited evidence: 「要不要有一个全国政府」"
+  ],
+  [
+   "BLOCK",
+   "story[4] zh quote not in cited evidence: 「该方案是会议中各州一致的行动」"
+  ],
+  [
+   "BLOCK",
+   "analysis[0] zh quote not in cited evidence: 「签字」"
+  ],
+  [
+   "BLOCK",
+   "analysis[0] zh quote not in cited evidence: 「出席各州一致」"
+  ],
+  [
+   "BLOCK",
+   "analysis[1] zh quote not in cited evidence: 「方案是对的」"
+  ],
+  [
+   "BLOCK",
+   "analysis[1] zh quote not in cited evidence: 「一致」"
+  ],
+  [
+   "FIX",
+   "today[0] may repeat the open-question scenario"
+  ]
+ ],
+ "outcome": "pending_review",
+ "reason": "checker BLOCK; 3 review issues rated fix/block; ",
+ "wall_s": 1016.7
+}

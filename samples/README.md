@@ -23,6 +23,7 @@
 
 | 候选 | 类别 | 标题 | 中文 | 英文 | 摘录 | 模型结果 | 编辑修改 | BLOCK/FIX |
 |---|---|---|---|---|---|---|---|---|
+| [franklin-1787](auto/cand-20261030-franklin-1787/article.zh.md) · [EN](auto/cand-20261030-franklin-1787/article.en.md) | 美国史 | 看不出是升是落：1787年9月17日，签字前的最后一讲 | 3107 字 · 约 10 分钟 | 2279 words · ~11 min | 24 | pending_review | 12 | 0 |
 | [jingxing](auto/cand-20261030-jingxing/article.zh.md) · [EN](auto/cand-20261030-jingxing/article.en.md) | 中国古代 | 井陉口前，那条没人听的计 | 2863 字 · 约 9 分钟 | 2385 words · ~12 min | 10 | pending_review | 30 | 0 |
 | [lian-lin](auto/cand-20261030-lian-lin/article.zh.md) · [EN](auto/cand-20261030-lian-lin/article.en.md) | 中国古代 | 位次之争：廉颇的委屈与那根荆条 | 2859 字 · 约 9 分钟 | 2500 words · ~12 min | 17 | pending_review | 34 | 0 |
 | [shackleton-ocean-camp](auto/cand-20261030-shackleton-ocean-camp/article.zh.md) · [EN](auto/cand-20261030-shackleton-ocean-camp/article.en.md) | 世界史 | 走六英里，进一英里 | 2837 字 · 约 9 分钟 | 2279 words · ~11 min | 18 | checked（旧规则；审稿 11 条 fix，按现行规则为 pending_review，已重排） | 39 | 0 |
