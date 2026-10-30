@@ -1,0 +1,11 @@
+{
+ "timezone": "America/Los_Angeles",
+ "prepare_time": "20:00",
+ "send_time": "07:30",
+ "rotation": ["china_ancient", "world", "china_modern", "us"],
+ "inventory": {"target_days": 14, "alert_below_days": 7},
+ "site": {"base_url": "https://starhub.vip", "allowed_paths": ["history/", "data/history/"], "link": "/history/?story={id}&lang={lang}"},
+ "email": {"html_budget_bytes": 92160, "from_display": "每日一鉴"},
+ "hermes": {"concurrency": 1, "timeouts_s": {"draft_zh": 1800, "review_zh": 1200, "en": 2100}, "story_budget_s": 5400, "max_output_bytes": 200000},
+ "length_reference": {"zh_chars": [2800, 3600], "en_words": [1800, 2200], "basis": "body + question + example; per language ~10 min; reference only"}
+}
