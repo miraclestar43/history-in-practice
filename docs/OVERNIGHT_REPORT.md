@@ -42,13 +42,13 @@ How they were made: real Hermes runs through the isolated runner (expand Chinese
 | `registry` | Immutable episode IDs, `parent_event`, alias / 繁简 / QID-redirect normalisation, source-span overlap, CJK bigram FTS + `instr`, active-status coverage, unique core span, rebuild from content | tests (13 dedup cases ported) |
 | `llm` + `hermes_isolated` | Project-level isolated Hermes call (0 tools, no SOUL/memory/AGENTS), prompt on stdin, process-group timeout, live output cap | real (all model calls tonight) + tests with a fake runner |
 | `checks` | Evidence IDs, classical quotes (繁简) and English quotes (verbatim) against cited excerpts, English numbers absent from Chinese = BLOCK, structure | real + tests |
-| `render` | One object → email HTML/text, site JSON + index, GitHub Markdown; `content_sha256` over both languages, Q&A and sources | real |
+| `render` | One object → email HTML/text, site JSON + index, GitHub Markdown; `content_sha256` over both languages, Q&A and sources; unscheduled inventory gets email + preview JSON but never enters the public index | real |
 | `state` | SQLite edition state machine, frozen content, per-recipient deliveries keyed by salted hash, `recover()` turns `sending` into `unknown` | tests |
 | `mailer` | One SMTP sender (SMTPS/STARTTLS), per-recipient `accepted / failed / unknown`, stable Message-ID, send gate | local (SMTPS fixture) |
 | `site_export` | Allow-listed export (`history/`, `data/history/`), live check by JSON + revision + recomputed hash + both languages | local fixtures; real site pending |
 | `publish` | schedule by rotation → archive to `content/` → commit website copy → verify live → email; resumes in-flight editions | local end-to-end test |
-| `pipeline` | candidate → fetch → evidence → admission → registry → Hermes ×3 → assemble → checks → inventory or pending | real (2 candidates) + mock tests |
-| `cli` | `doctor --probe`, `prepare`, `prepare-queue`, `check`, `render`, `export-site`, `verify-site`, `send`, `retry-send`, `publish-today`, `status`, `inventory`, `recover`, `registry-rebuild` | real for doctor/render/export/prepare-queue |
+| `pipeline` | candidate → fetch → evidence → admission → registry → Hermes ×3 → assemble → checks → inventory or pending; resumes from saved step outputs; append-only `calls.jsonl`; provider refusal → pending without retry; review severity `fix`/`block` → pending | real (queue runs tonight, see §1) + mock tests |
+| `cli` | `doctor --probe`, `prepare`, `prepare-queue`, `check`, `render`, `export-site`, `verify-site`, `send`, `retry-send`, `publish-today`, `status`, `inventory`, `recover`, `requeue`, `admit [--from-pending]`, `registry-rebuild` | real for doctor/render/export/prepare-queue/requeue/admit |
 
 Website: `deploy/website_test/0001-*.patch` adds `history/`, `data/history/` and one nav link (1 line in `index.html`, original line endings kept). Committed on a local branch in `data/website_test` (git-ignored); **not pushed**, because a pushed branch could trigger a Cloudflare preview build whose deploy command is unverified.
 
@@ -79,6 +79,17 @@ Legend: **real** = ran for real on the Pi (real Hermes model, real network fetch
 `.venv/bin/python -m unittest discover -s tests` → 39 tests, all passing at the last checkpoint.
 
 ## 5. Model timings
+
+All numbers below are computed from saved call records by `validation/overnight_stats.py` (sample stages from `samples/model_timings*.json`, automated candidates from `data/drafts/*/calls.jsonl`). Rerun it to refresh.
+
+<!-- STATS -->
+
+Observations:
+
+- **A normal call takes 2–5 minutes.** Chinese drafting is the slowest step (about 4–4.5 minutes); review and English take 2–4 minutes each. One automated article is therefore about 10–16 minutes of model time when nothing goes wrong, roughly 4–6 articles an hour at concurrency 1.
+- **Invalid JSON is the main waste.** About one long call in five returned JSON that did not parse (bracket mismatch or a trailing comma). One retry fixed every case, at the cost of one more full call.
+- **One stall.** The English-tightening call for sample A ran 19 minutes with no output and was stopped. Per-call timeouts stay at 20–30 minutes; a shorter English timeout (about 10 minutes) would have saved most of that.
+- **Provider refusals are instant.** MiMo rejected both Mao Zedong drafting calls in about 6 seconds ("rejected because it was considered high risk"). The pipeline now records this as a refusal and moves the candidate to pending without retrying. The prompts were not reworded to get around the filter.
 
 ## 6. Recovery and run commands
 

@@ -10,6 +10,8 @@ def ref(o, path):
     parts = path.split(".")
     if parts[0] == "sections":
         sec = next(s for s in o["sections"] if s["id"] == parts[1])
+        if parts[2] == "paras":                 # whole paragraph list (insert/delete/reorder), logged before/after
+            return sec, "paras"
         return (sec["heading"], parts[3]) if parts[2] == "heading" else (sec["paras"][int(parts[2])], parts[3])
     cur = o
     for k in parts[:-1]: cur = cur[k]
