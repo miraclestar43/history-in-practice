@@ -1,0 +1,1907 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-auto-20261030-qsg437-1",
+ "edition_id": "cand-auto-20261030-qsg437-1",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "3c1ea04",
+ "started_at": 1793402167.0194197,
+ "base_source": "samples/auto/cand-auto-20261030-qsg437-1/final/article.json",
+ "base_content_sha256": "772bc770235e495b3648b71d93ee189e8709113dbfddd71e3969a6e769bdc7e8",
+ "evidence_sha256": "03dc7c3ff1b559cc84f0e05e4a36d49c82f77bed51ccd94147c0c6949208720b",
+ "model_record_sha256": null,
+ "prior_record_sha256": "bddf6b874cc2c3656fd2b8aac19d41baf92612fcaa463ee5e5df307ec91cb96a",
+ "attempt": "attempt-2",
+ "inherited": [
+  {
+   "id": "P1",
+   "model_id": "C2-49",
+   "source": "final-editor previous attempt",
+   "where": "",
+   "problem": "checker: today[0] may repeat the open-question scenario",
+   "suggestion": null
+  }
+ ],
+ "contamination": [
+  {
+   "id": "K1",
+   "brief_line": "注意：以下摘录的锚点未通过逐字核对，已删除；简报中引用它们的句子也已删除，不得写入相关内容：QSG4371-E12、QSG4371-E2、QSG4371-E4、QSG4371-E6。",
+   "dropped_ids": [
+    "QSG4371-E12",
+    "QSG4371-E2",
+    "QSG4371-E4",
+    "QSG4371-E6"
+   ]
+  }
+ ],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.hook.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "正文称传文记这场争执“只用了两句话”（英文 just two sentences），但随后引出的证据只是一句话（三个分句）。描述与所引原文不符。",
+   "evidence": [
+    {
+     "id": "QSG4371-E3",
+     "quote": "會海軍衙門奏請修京通鐵路，臺諫爭陳鐵路之害，請停辦"
+    }
+   ],
+   "proposed": "改为“只用了一句话”（英文 a single sentence），或删去句数。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "所引原文实为一句（三个分句），将“两句话”改为“一句话”，英文 just two sentences 改为 a single sentence。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.analysis.0",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "“这六条成不成立”（do these six points hold）把「利」的总数断定为六条。证据只摘录到「利六」，并不能证明议奏只有六条。story.0 自己也承认“本文所据摘录列到「利六」”，两处前后不一。被剔除的证据中可能还有后续条目（见 K1）。",
+   "evidence": [
+    {
+     "id": "QSG4371-E11",
+     "quote": "太原旺煤鐵，運行便則開採必多，利六"
+    }
+   ],
+   "proposed": "改为“这些逐条的「利」成不成立”（do these itemized benefits hold）。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "摘录只到「利六」，不能断定总数为六。“这六条”改为“这些逐条的「利」”，英文改为 these itemized benefits，与 story.0 的保留意见一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.analysis.1",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "“避敌、避坟庐这两条恰好是对着「害」字去答的”用“恰好”写成了确定的对应关系。证据只记台谏“爭陳鐵路之害”，没记是哪些害；story.1、limits.0 也说明传文未录。此处等于把推断写成了定论。",
+   "evidence": [
+    {
+     "id": "QSG4371-E3",
+     "quote": "臺諫爭陳鐵路之害"
+    },
+    {
+     "id": "QSG4371-E9",
+     "quote": "內處腹地，無慮引敵，利一；原野廣漠，墳廬易避，利二"
+    }
+   ],
+   "proposed": "改为“避敌、避坟庐这两条或许是对着「害」字去答的（传文未记台谏所指何害）”。英文相应改为 may answer…, though the biography does not record which harms were meant。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "传文未记台谏所指何害，原文用“恰好”写成了定论。现改为“或许是对着「害」字去答的”，并补注“传文未记台谏所指何害”，英文同步改为 may answer… though the biography does not record which harms were meant。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.limits.2",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "“那六条「利」”（those six benefits）同样把「利」的总数断定为六，证据不足，理由同 F2。",
+   "evidence": [
+    {
+     "id": "QSG4371-E11",
+     "quote": "利六"
+    }
+   ],
+   "proposed": "改为“那些「利」”或“摘录中的利一至利六”（those numbered benefits）。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "同 F2，证据不足以断定「利」只有六条。“那六条「利」”改为“那些「利」”，英文 those six benefits 改为 those numbered benefits。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.today.0",
+   "category": "style",
+   "severity": "note",
+   "problem": "today.0 已经给出“公开排目标优先级、把理由写成可逐条检验的清单”的做法，reflection.question 又把同样的内容作为开放问题提问，两处重复，削弱了提问的开放性。另外“那六条编号的利”沿用了“六条”的说法，理由同 F2。",
+   "evidence": [],
+   "proposed": "today.0 保留做法要点即可，或把 reflection.question 改为追问 today.0 未涉及的取舍。“那六条”改为“那些编号的”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "P1",
+   "problem": "checker: today[0] may repeat the open-question scenario",
+   "origin": "inherited final-editor previous attempt C2-49",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "",
+   "disposition": "duplicate",
+   "same_as": "F5",
+   "rationale": "today.0 与 reflection.question 确有重复：两者都是公开排目标优先级、把理由改写成逐条检验的清单。这属于文风问题，已作为 F5 列出。"
+  },
+  {
+   "id": "C1-7",
+   "path": "",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "checker: today[0] may repeat the open-question scenario",
+   "origin": "checker",
+   "disposition": "fixed",
+   "rationale": "today.0 原以“团队在几套方案之间争执不下”开头，与 reflection.scenario 中三方僵持、拿不出压倒性数据的情境重复。现将开头改为通用的“写一份提案或评审材料时”。其余内容不变：先公开排出目标优先级，再写成可逐条检验的清单。中英文同步修改，段落仍为 modern，ev 为空，没有加入证据包以外的事实。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V2-V1",
+   "path": "sections.analysis.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "利一的原文是「無慮引敵」，意思是不必担心铁路把敌人引进来，不是“避敌”。中文“避敌”和英文 \"avoiding the enemy\" 都改变了原意，也与 story.1 中正确的转述（“不至于引敌”/\"will not draw in an enemy\"）不一致。",
+   "evidence": [
+    {
+     "id": "QSG4371-E9",
+     "quote": "內處腹地，無慮引敵，利一"
+    }
+   ],
+   "proposed": "中文“避敌、避坟庐这两条”改为“不至引敌、坟庐易避这两条”；英文 \"avoiding the enemy and sparing graves and houses\" 改为 \"not drawing in the enemy and easily avoiding graves and houses\"。",
+   "origin": "final-editor verify round 2"
+  },
+  {
+   "id": "C2-9",
+   "path": "",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "checker: today[0] may repeat the open-question scenario",
+   "origin": "checker"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.hook.0.zh",
+   "before": "要不要修京通铁路，朝中有了争执。《清史稿·张之洞传》记下这场争执只用了两句话：「會海軍衙門奏請修京通鐵路，臺諫爭陳鐵路之害，請停辦」。海军衙门主张修，台谏争陈铁路之害、请停办——至于害具体是哪几条，主张修的一方又答了什么，传文都没有抄录，只留下一个「請停辦」的收口。",
+   "after": "要不要修京通铁路，朝中有了争执。《清史稿·张之洞传》记下这场争执只用了一句话：「會海軍衙門奏請修京通鐵路，臺諫爭陳鐵路之害，請停辦」。海军衙门主张修，台谏争陈铁路之害、请停办——至于害具体是哪几条，主张修的一方又答了什么，传文都没有抄录，只留下一个「請停辦」的收口。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.hook.0.en",
+   "before": "The proposed Beijing-Tongzhou railway drew opposition at court. The Draft History of the Qing takes just two sentences over the dispute (here and throughout, quotations from the Chinese are our own translations): \"When the Naval Office petitioned to build the Beijing-Tongzhou railway, the remonstrating officials pressed the harms of railways and asked that the project be halted.\" The Naval Office stood for building; the censors and remonstrating officials - the Qing court's remonstrance officials - pressed the harms and asked for a stop. Which harms, and what the other side answered, the biography never copies down. It closes on the bare \"asked that the project be halted.\"",
+   "after": "The proposed Beijing-Tongzhou railway drew opposition at court. The Draft History of the Qing takes a single sentence over the dispute (here and throughout, quotations from the Chinese are our own translations): \"When the Naval Office petitioned to build the Beijing-Tongzhou railway, the remonstrating officials pressed the harms of railways and asked that the project be halted.\" The Naval Office stood for building; the censors and remonstrating officials - the Qing court's remonstrance officials - pressed the harms and asked for a stop. Which harms, and what the other side answered, the biography never copies down. It closes on the bare \"asked that the project be halted.\"",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.zh",
+   "before": "作者的一种读法是，这份议奏包含三个部分：排目标次序（通土货、厚民生最大，征兵转饷次之），列逐条的「利」并编号，落实到官职（北路直隶总督、南路湖广总督、河南巡抚为副）。作者认为，这样写可能把争论从“有没有害”引向“这六条成不成立、这三位督抚之职扛不扛得动”。",
+   "after": "作者的一种读法是，这份议奏包含三个部分：排目标次序（通土货、厚民生最大，征兵转饷次之），列逐条的「利」并编号，落实到官职（北路直隶总督、南路湖广总督、河南巡抚为副）。作者认为，这样写可能把争论从“有没有害”引向“这些逐条的「利」成不成立、这三位督抚之职扛不扛得动”。",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "before": "One reading is that the memorial has three components: a ranking of goals (moving goods and enriching livelihoods greatest, raising troops and forwarding supplies next); a numbered, item-by-item list of benefits; and responsibility assigned to offices (north to the Governor-General of Zhili, south to the Governor-General of Huguang, the Governor of Henan as deputy). In the author's view, writing it this way may steer the argument away from \"is it harmful\" toward \"do these six points hold, and can these three offices carry them.\"",
+   "after": "One reading is that the memorial has three components: a ranking of goals (moving goods and enriching livelihoods greatest, raising troops and forwarding supplies next); a numbered, item-by-item list of benefits; and responsibility assigned to offices (north to the Governor-General of Zhili, south to the Governor-General of Huguang, the Governor of Henan as deputy). In the author's view, writing it this way may steer the argument away from \"is it harmful\" toward \"do these itemized benefits hold, and can these three offices carry them.\"",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.zh",
+   "before": "一种解释是，「厚民生」排在「徵兵、轉餉」之前，是把争议最小、也最难被驳倒的目标放在最前面：台谏说的是「鐵路之害」，而避敌、避坟庐这两条恰好是对着「害」字去答的。作者推断这种写法出于策略考虑，传文没有写他的思考过程，此处是作者的解释。",
+   "after": "一种解释是，「厚民生」排在「徵兵、轉餉」之前，是把争议最小、也最难被驳倒的目标放在最前面：台谏说的是「鐵路之害」，而避敌、避坟庐这两条或许是对着「害」字去答的（传文未记台谏所指何害）。作者推断这种写法出于策略考虑，传文没有写他的思考过程，此处是作者的解释。",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.en",
+   "before": "One reading: putting \"enriching livelihoods\" before \"raising troops and forwarding supplies\" sets the least contested, hardest-to-topple goal at the front. The censors spoke of \"the harms of railways,\" and the two points about avoiding the enemy and sparing graves and houses answer precisely at the word \"harms.\" The author infers that this drafting is tactical; the biography records no thought process, so this is the author's interpretation.",
+   "after": "One reading: putting \"enriching livelihoods\" before \"raising troops and forwarding supplies\" sets the least contested, hardest-to-topple goal at the front. The censors spoke of \"the harms of railways,\" and the two points about avoiding the enemy and sparing graves and houses may answer the word \"harms,\" though the biography does not record which harms were meant. The author infers that this drafting is tactical; the biography records no thought process, so this is the author's interpretation.",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.limits.2.zh",
+   "before": "再次，传文没有记议奏所提线路的工期、用款、拆迁或争议后续，本文不替他补写；「得旨報可」只是准奏，不等于已经开工，更不等于办成。本文也不把原文没有的公元年份换算出来，更不会说他事先知道结果——他写下那六条「利」的时候，看到的只是清单，不是成绩单。",
+   "after": "再次，传文没有记议奏所提线路的工期、用款、拆迁或争议后续，本文不替他补写；「得旨報可」只是准奏，不等于已经开工，更不等于办成。本文也不把原文没有的公元年份换算出来，更不会说他事先知道结果——他写下那些「利」的时候，看到的只是清单，不是成绩单。",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.limits.2.en",
+   "before": "Third, the biography records no schedule, outlay, relocations, or aftermath of the dispute for the proposed line, and this article does not fill them in. \"Approved by rescript\" is approval, not the start of work, still less a finished line. This article also converts no Common Era years the original does not have, and will not say he knew the outcome in advance: when he wrote those six benefits, what lay before him was a checklist, not a report card.",
+   "after": "Third, the biography records no schedule, outlay, relocations, or aftermath of the dispute for the proposed line, and this article does not fill them in. \"Approved by rescript\" is approval, not the start of work, still less a finished line. This article also converts no Common Era years the original does not have, and will not say he knew the outcome in advance: when he wrote those numbered benefits, what lay before him was a checklist, not a report card.",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.today.0.zh",
+   "before": "当一个团队在几套方案之间争执不下时，照这份议奏的顺序，第一步不是互相挑毛病，而是把目标的优先级公开排出来——哪个目标最大、哪个次之，白纸黑字贴在最前面；然后把每个方案的利弊写成可以逐条检验的清单，像那六条编号的“利”一样，每条都能被追问“成不成立”。",
+   "after": "写一份提案或评审材料时，可以借用这份议奏的顺序：开头不急着罗列优劣，而是先把目标的优先级公开排出来——哪个目标最大、哪个次之，白纸黑字放在最前面；然后把理由写成可以逐条检验的清单，像那六条编号的“利”一样，每条都能被追问“成不成立”。",
+   "issues": [
+    "C1-7"
+   ]
+  },
+  {
+   "path": "sections.today.0.en",
+   "before": "When a team is deadlocked among several plans, following this memorial's order, the first step is not to pick holes in one another but to publish the ranking of goals - which goal is greatest, which next, in black and white at the front - and then write each proposal's case as a checklist testable point by point, like those six numbered benefits, each open to the challenge: \"does this hold?\"",
+   "after": "When drafting a proposal or a review document, you can borrow this memorial's order: rather than opening with a list of pros and cons, first publish the ranking of goals - which goal is greatest, which next, in black and white at the front - and then write the case as a checklist testable point by point, like those six numbered benefits, each open to the challenge: \"does this hold?\"",
+   "issues": [
+    "C1-7"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F4"
+   ],
+   "changes_applied": 8,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[4] numbers differ zh[] en[10000]"
+    ],
+    [
+     "FIX",
+     "today[0] may repeat the open-question scenario"
+    ]
+   ],
+   "content_sha256_after": "45ae85682b01661daa6c01012170bb88535c16596f2839b7f8ef306c928293f6",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.0",
+      "category": "style",
+      "severity": "note",
+      "problem": "英文稿 \"the censors and remonstrating officials - the Qing court's remonstrance officials\" 重复解释，读起来累赘。前一句引文已用 \"remonstrating officials\" 译「臺諫」。",
+      "evidence": [
+       {
+        "id": "QSG4371-E3",
+        "quote": "臺諫爭陳鐵路之害，請停辦"
+       }
+      ],
+      "proposed": "改为 \"the Naval Office stood for building; the censors (the court's remonstrance officials) pressed the harms and asked for a stop.\""
+     }
+    ],
+    "overall": "定稿各字段的事实、引文、归属与解释标注都有证据支持，中英一致，没有发现需要修改的事实问题，仅有一处英文文风可选择性精简。",
+    "_content_sha256": "45ae85682b01661daa6c01012170bb88535c16596f2839b7f8ef306c928293f6"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "C1-7"
+   ],
+   "changes_applied": 2,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[4] numbers differ zh[] en[10000]"
+    ],
+    [
+     "FIX",
+     "today[0] may repeat the open-question scenario"
+    ]
+   ],
+   "content_sha256_after": "c2c21a8a38caa599ea679681135841b09a2d5f158457c7d34d31ebaec2f0976e",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.analysis.1",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "利一的原文是「無慮引敵」，意思是不必担心铁路把敌人引进来，不是“避敌”。中文“避敌”和英文 \"avoiding the enemy\" 都改变了原意，也与 story.1 中正确的转述（“不至于引敌”/\"will not draw in an enemy\"）不一致。",
+      "evidence": [
+       {
+        "id": "QSG4371-E9",
+        "quote": "內處腹地，無慮引敵，利一"
+       }
+      ],
+      "proposed": "中文“避敌、避坟庐这两条”改为“不至引敌、坟庐易避这两条”；英文 \"avoiding the enemy and sparing graves and houses\" 改为 \"not drawing in the enemy and easily avoiding graves and houses\"。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.hook.0",
+      "category": "style",
+      "severity": "note",
+      "problem": "英文 \"the censors and remonstrating officials - the Qing court's remonstrance officials\" 把同一群人说了两遍，读来冗赘。中文只写“台谏”。",
+      "evidence": [
+       {
+        "id": "QSG4371-E3",
+        "quote": "臺諫爭陳鐵路之害，請停辦"
+       }
+      ],
+      "proposed": "改为 \"the censors and remonstrance officials (taijian) pressed the harms and asked for a stop.\""
+     }
+    ],
+    "overall": "定稿整体有证据支撑，引文都能在证据中逐字找到，推断也都标为解释，中英文对应完整；只需修正 analysis.1 中对「無慮引敵」的误述（“避敌”），另有一处英文冗赘可顺手改。",
+    "_content_sha256": "c2c21a8a38caa599ea679681135841b09a2d5f158457c7d34d31ebaec2f0976e"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "chronology",
+     "causality",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "chronology",
+     "causality",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.2",
+    "checked": [
+     "facts",
+     "chronology",
+     "quotes",
+     "inner_life",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4"
+    ]
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.hook.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "正文称传文记这场争执“只用了两句话”（英文 just two sentences），但随后引出的证据只是一句话（三个分句）。描述与所引原文不符。",
+    "evidence": [
+     {
+      "id": "QSG4371-E3",
+      "quote": "會海軍衙門奏請修京通鐵路，臺諫爭陳鐵路之害，請停辦"
+     }
+    ],
+    "proposed": "改为“只用了一句话”（英文 a single sentence），或删去句数。"
+   },
+   {
+    "id": "F2",
+    "path": "sections.analysis.0",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "“这六条成不成立”（do these six points hold）把「利」的总数断定为六条。证据只摘录到「利六」，并不能证明议奏只有六条。story.0 自己也承认“本文所据摘录列到「利六」”，两处前后不一。被剔除的证据中可能还有后续条目（见 K1）。",
+    "evidence": [
+     {
+      "id": "QSG4371-E11",
+      "quote": "太原旺煤鐵，運行便則開採必多，利六"
+     }
+    ],
+    "proposed": "改为“这些逐条的「利」成不成立”（do these itemized benefits hold）。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.analysis.1",
+    "category": "interpretation_label",
+    "severity": "fix",
+    "problem": "“避敌、避坟庐这两条恰好是对着「害」字去答的”用“恰好”写成了确定的对应关系。证据只记台谏“爭陳鐵路之害”，没记是哪些害；story.1、limits.0 也说明传文未录。此处等于把推断写成了定论。",
+    "evidence": [
+     {
+      "id": "QSG4371-E3",
+      "quote": "臺諫爭陳鐵路之害"
+     },
+     {
+      "id": "QSG4371-E9",
+      "quote": "內處腹地，無慮引敵，利一；原野廣漠，墳廬易避，利二"
+     }
+    ],
+    "proposed": "改为“避敌、避坟庐这两条或许是对着「害」字去答的（传文未记台谏所指何害）”。英文相应改为 may answer…, though the biography does not record which harms were meant。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.limits.2",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "“那六条「利」”（those six benefits）同样把「利」的总数断定为六，证据不足，理由同 F2。",
+    "evidence": [
+     {
+      "id": "QSG4371-E11",
+      "quote": "利六"
+     }
+    ],
+    "proposed": "改为“那些「利」”或“摘录中的利一至利六”（those numbered benefits）。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.today.0",
+    "category": "style",
+    "severity": "note",
+    "problem": "today.0 已经给出“公开排目标优先级、把理由写成可逐条检验的清单”的做法，reflection.question 又把同样的内容作为开放问题提问，两处重复，削弱了提问的开放性。另外“那六条编号的利”沿用了“六条”的说法，理由同 F2。",
+    "evidence": [],
+    "proposed": "today.0 保留做法要点即可，或把 reflection.question 改为追问 today.0 未涉及的取舍。“那六条”改为“那些编号的”。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "P1",
+    "verdict": "duplicate",
+    "same_as": "F5",
+    "rationale": "today.0 与 reflection.question 确有重复：两者都是公开排目标优先级、把理由改写成逐条检验的清单。这属于文风问题，已作为 F5 列出。",
+    "evidence": []
+   }
+  ]
+ },
+ "final_content_sha256": "c2c21a8a38caa599ea679681135841b09a2d5f158457c7d34d31ebaec2f0976e",
+ "open_issues": [
+  "V2-V1",
+  "C2-9"
+ ],
+ "outcome": "pending_review",
+ "failure": null,
+ "finished_at": 1793402359.369312,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 57.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13106,
+    "output_tokens": 6350
+   },
+   "cost_estimate_usd": 0.231856
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 22.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13275,
+    "output_tokens": 3011
+   },
+   "cost_estimate_usd": 0.166428
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 51.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 12267,
+    "output_tokens": 6033
+   },
+   "cost_estimate_usd": 0.218804
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 8.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 12298,
+    "output_tokens": 793
+   },
+   "cost_estimate_usd": 0.11425199999999999
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 52.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 12256,
+    "output_tokens": 6170
+   },
+   "cost_estimate_usd": 0.221456
+  }
+ ],
+ "elapsed_min": 3.2,
+ "model_wall_min": 3.2
+}

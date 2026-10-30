@@ -14,7 +14,7 @@ A daily bilingual history story, grounded in sources and connected to everyday d
 
 ## 当前状态：实现开发中（overnight 2026-10-30）
 
-尚未部署、未启用定时任务、未发送真实邮件。稳定化（发布等待与逾期、轮换覆盖、发信校验、编辑阶段、候选供给）与真实运行结果见 [docs/STABILIZATION_REPORT.md](docs/STABILIZATION_REPORT.md)；overnight 过程见 [docs/OVERNIGHT_REPORT.md](docs/OVERNIGHT_REPORT.md)（顶部有更正）。
+尚未部署、未启用定时任务、未发送真实邮件。第三轮（审核 schema 与截止时间修复、Pi 本机 Claude Code CLI 运行验证、具名终审编辑 `hip final-edit`、9 篇待审稿全部经终审入库、覆盖 6 天）见 [docs/FINAL_EDITOR_REPORT.md](docs/FINAL_EDITOR_REPORT.md)。稳定化（发布等待与逾期、轮换覆盖、发信校验、编辑阶段、候选供给）与真实运行结果见 [docs/STABILIZATION_REPORT.md](docs/STABILIZATION_REPORT.md)；overnight 过程见 [docs/OVERNIGHT_REPORT.md](docs/OVERNIGHT_REPORT.md)（顶部有更正）。
 
 当前库存按轮换只有 0 天可排：1 篇可排、9 篇待处理、5 篇样稿待批准。原因和需要人决定的事见稳定化报告第 6 节。
 

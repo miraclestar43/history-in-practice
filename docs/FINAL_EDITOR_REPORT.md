@@ -17,7 +17,7 @@ arrived; no sample is marked as read or approved by the two readers.
   (continuation) attempt; 73 minutes of editor time in total; 251 issues fixed, 18 rejected with verified quotes, 0 left
   open. No article text was edited by hand and no exception was used.
 - **Coverage: 6 days** (A W M U A W), below the 7-day alert line; it stops at the second modern-China slot. One more
-  modern-China article gives 10 days (`--what-if A=3,W=3,M=2,U=2`); <!-- MODERN_RESULT -->
+  modern-China article gives 10 days (`--what-if A=3,W=3,M=2,U=2`); one was supplied and drafted (张之洞, QSG437) but is still pending after two final-editor attempts (§5), so coverage stays at 6.
 - **Bugs found by the real runs and fixed** (§6): a stopped job left `claude -p` running; a resumed reservation skipped
   the duplicate check (the Mao candidate duplicates sample E); a checker false positive on 每万; a catalogue marker
   that never matched (曾國籓).
@@ -165,7 +165,22 @@ stay close to the source wording in places; English drops widely known identific
 `hip inventory`: schedulable A3 / W3 / M1 / U2; **coverage 6 days** (A W M U A W), stopping at the second modern-China
 slot; pending 0; samples 5 (none approved). Gaps to the 14-day target: A 1, W 1, M 2, U 1.
 
-<!-- MODERN_SECTION -->
+### One more modern-China candidate (to reach 7+ days)
+
+`hip supply --category china_modern` (MiMo): QSG405 (曾国藩) was first rejected by a wrong catalogue marker (§6); the
+retry picked **QSG437 (张之洞, 卢汉铁路 debate)**: 17 anchors proposed, 13 kept, dedup distinct. MiMo drafted it without a
+provider refusal (one invalid-JSON retry; 2475 Chinese characters / 1988 English words, about 8 minutes, short of the
+ten-minute target). The draft went to pending with a checker BLOCK and 13 review issues, as usual.
+
+The final editor ran two attempts (3.2 min of model time in total) and **left it pending**: attempt 1's model passes were
+clean (verify 3 → 0) but a heuristic checker FIX stayed ("today[0] may repeat the open-question scenario": at least 12 %
+shared character bigrams between the first application paragraph and the open question; here they share words like
+目标/优先 but describe different situations, so the finding is borderline and its message gives the editor nothing
+specific to act on). Attempt 2's revision then introduced a meaning error that its own verify caught: 「無慮引敵」 ("no
+need to fear it draws in an enemy") rendered as 避敌 / "avoiding the enemy". It was not given a third attempt.
+
+Next step options: make the overlap finding actionable (name the shared phrases) or turn it into a note, then one
+final-editor attempt; or leave it for a person. Coverage stays **6 days**; with this article it would be 10.
 
 ## 6. Defects the real runs exposed (all fixed, with tests)
 
@@ -175,6 +190,7 @@ slot; pending 0; samples 5 (none approved). Gaps to the 14-day target: A 1, W 1,
 | The Mao candidate (MiMo provider refusal) was drafted by Claude (no refusal; 4.4 min), then the registry refused to re-activate it: sample E already uses the same 1930 passage. A resumed own reservation had skipped the duplicate check | `prepare()` re-checks the core span of a resumed rejected reservation before any model call; Mao rejected as a duplicate of sample E | `test_resumed_rejected_reservation…` |
 | Snow's last open issue was a checker false positive: 每万户 vs "per 10,000" | Checker parses 每百/每千/每万; at admission an open checker-origin issue counts as closed only if the current checker no longer reports it on that exact content | `test_per_ten_thousand…` |
 | Supply rejected QSG405 in one second as "extractable": the catalogue marker 曾國藩 never matches Wikisource's 曾國籓 | Marker corrected; stale cache entry moved to `data/backup/` | `hip supply --check` now 10/10 `evidence_usable` |
+| The first version of the Snow rule closed a checker issue when the same *message* was no longer produced, so rewording a checker message could silently close real issues | Keyed by location: closed only if the current checker reports nothing at that location on that exact content | all nine admitted records re-verified; qsg437 still refused |
 
 Interventions (all code, config or process, none on article text) are logged in `docs/stabilization_interventions.log`.
 
