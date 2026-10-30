@@ -10,11 +10,19 @@ def load(p):
 groups = {"stage 1 (short samples)": load("samples/model_timings.json"),
           "stage 2 (ten-minute expansion)": load("samples/model_timings_v2.json"),
           "stage 3 (English tightening)": load("samples/model_timings_v3.json")}
+def load_calls(path):
+    """calls.jsonl rows; rows written before json_ok was logged (fixed 2026-10-30) get it inferred:
+    an attempt is valid iff it is the last attempt of its step and that step's output file exists."""
+    rows = [json.loads(l) for l in path.read_text().splitlines() if l.strip()]
+    for i, x in enumerate(rows):
+        if "json_ok" not in x:
+            later = any(y["step"] == x["step"] for y in rows[i + 1:])
+            x["json_ok"] = (not later) and (path.parent / f"{x['step']}.json").exists(); x["json_ok_inferred"] = True
+    return rows
+
 auto = []
 for r in sorted((ROOT / "data/drafts").glob("*/calls.jsonl")):
-    for line in r.read_text().splitlines():
-        if line.strip():
-            auto.append(json.loads(line))
+    auto += load_calls(r)
 groups["automated candidates"] = auto
 tot_calls = tot_wall = 0
 for name, calls in groups.items():
@@ -28,7 +36,7 @@ print()
 print("| Candidate | Calls | Model time | Steps (wall s) | Invalid JSON | Refusals |")
 print("|---|---|---|---|---|---|")
 for r in sorted((ROOT / "data/drafts").glob("*/calls.jsonl")):
-    calls = [json.loads(l) for l in r.read_text().splitlines() if l.strip()]
+    calls = load_calls(r)
     steps = " · ".join(f"{c.get('step')} {c.get('wall_s', 0):.0f}" for c in calls)
     print(f"| {r.parent.name.replace('cand-20261030-', '')} | {len(calls)} | {sum(c.get('wall_s', 0) for c in calls)/60:.1f} min | {steps} | "
           f"{sum(1 for c in calls if not c.get('json_ok') and not c.get('provider_refusal'))} | {sum(1 for c in calls if c.get('provider_refusal'))} |")

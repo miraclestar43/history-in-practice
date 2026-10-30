@@ -114,6 +114,8 @@ class Pipeline(unittest.TestCase):
         r = self.prep(CANDIDATE, fake_call_factory()); self.assertEqual(r["outcome"], "checked", r)
         self.assertEqual(pipeline.inventory(self.db)["by_category"], {"china_ancient": 1})
         self.assertRegex(r["code_rev"], r"^([0-9a-f]{7,}|unknown)$")       # which code judged it
+        log = [json.loads(l) for l in (Path(self.td.name) / CANDIDATE["candidate_id"] / "calls.jsonl").read_text().splitlines()]
+        self.assertEqual([(x["step"], x["json_ok"]) for x in log], [("draft_zh", True), ("review_zh", True), ("en", True)])
 
     def test_missing_source_goes_pending_and_others_continue(self):
         bad = json.loads(json.dumps(CANDIDATE)); bad["candidate_id"] = "cand-bad"; bad["excerpts"][0][2] = "不存在的锚点"
@@ -149,6 +151,8 @@ class Pipeline(unittest.TestCase):
     def test_provider_refusal_goes_pending_without_retry(self):
         refusing_call.n = 0; r = self.prep(CANDIDATE, refusing_call)
         self.assertEqual(r["outcome"], "pending_review"); self.assertIn("provider refusal", r["reason"]); self.assertEqual(refusing_call.n, 1)
+        log = [json.loads(l) for l in (Path(self.td.name) / CANDIDATE["candidate_id"] / "calls.jsonl").read_text().splitlines()]
+        self.assertTrue(log[0]["provider_refusal"]); self.assertFalse(log[0]["json_ok"])        # logged after parsing
 
     def test_model_timeout_goes_pending_without_second_full_timeout(self):
         call = fake_call_factory(timeout=True); r = self.prep(CANDIDATE, call)

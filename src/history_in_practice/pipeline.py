@@ -129,8 +129,6 @@ def run_model_steps(c, pack, outdir: Path, call=llm.call, timeouts=None) -> tupl
         for attempt in (1, 2):
             r = call(prompt if attempt == 1 else prompt + retry_suffix, timeout_s=timeout)
             m = {k: v for k, v in r.items() if k != "text"}; m.update(step=name, attempt=attempt, candidate=c["candidate_id"])
-            with open(outdir / "calls.jsonl", "a", encoding="utf-8") as log:      # append-only: survives reruns
-                log.write(json.dumps(dict(m, at=time.time()), ensure_ascii=False) + "\n")
             (outdir / f"{name}.a{attempt}.raw.txt").write_text(r["text"], encoding="utf-8")
             try:
                 obj = llm.parse_json(r["text"]) if r["rc"] == 0 and not r["killed"] else None
@@ -139,9 +137,12 @@ def run_model_steps(c, pack, outdir: Path, call=llm.call, timeouts=None) -> tupl
             m["json_ok"] = obj is not None
             txt = r["text"].strip()
             if obj is None and len(txt) < 400 and REFUSAL.search(txt):
-                m["provider_refusal"] = txt[:200]; metrics.append(m)
-                return None          # a content refusal will not change on retry
+                m["provider_refusal"] = txt[:200]
+            with open(outdir / "calls.jsonl", "a", encoding="utf-8") as log:      # append-only, after parsing: survives reruns
+                log.write(json.dumps(dict(m, at=time.time()), ensure_ascii=False) + "\n")
             metrics.append(m)
+            if "provider_refusal" in m:
+                return None          # a content refusal will not change on retry
             if obj is not None:
                 (outdir / f"{name}.json").write_text(json.dumps(obj, ensure_ascii=False, indent=1), encoding="utf-8")
                 return obj
