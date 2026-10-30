@@ -1,12 +1,14 @@
 """hip — History in Practice command line.
 
   hip doctor                         environment, isolation probe, config (no secret values)
-  hip prepare CANDIDATE.json [--mock-llm]
+  hip prepare CANDIDATE.json
   hip check ARTICLE.json EVIDENCE.json
   hip render ARTICLE.json... --out DIR        email html/txt/.eml (fictional To), site data, markdown
   hip export-site ARTICLE.json... --site-root DIR
   hip verify-site ARTICLE.json --base-url URL
   hip send ARTICLE.json --dry-run | --local-smtp HOST:PORT [--recipients-file F] | --real
+  hip prepare-queue [--max-articles N --budget-minutes M]   (config/candidates/*.json, file lock)
+  hip publish-today [--date YYYY-MM-DD]                      (schedule -> archive -> site -> verify -> email)
   hip status | hip inventory | hip recover
   hip retry-send ARTICLE.json --real|--local-smtp HOST:PORT   (retries `failed` only, never `unknown`)
   hip registry-rebuild CONTENT.json...
@@ -14,7 +16,7 @@
 from __future__ import annotations
 import argparse, json, os, subprocess, sys
 from pathlib import Path
-from . import config, state, registry, checks, render, pipeline, site_export, mailer, llm
+from . import config, state, registry, checks, render, pipeline, site_export, mailer, llm, publish
 from .config import REPO, data_dir
 
 
@@ -50,13 +52,13 @@ def cmd_doctor(a):
             out["isolation_ok"] = p["tool_count"] == 0 and not p["soul_text_in_prompt"] and not p["memory_store_loaded"]
         except Exception as e:
             out["isolation_probe"] = f"failed: {type(e).__name__}"; out["isolation_ok"] = False
+    logs = data_dir() / "logs"; size = sum(f.stat().st_size for f in logs.rglob("*") if f.is_file()) if logs.exists() else 0
+    cache = data_dir() / "source_cache"; csize = sum(f.stat().st_size for f in cache.rglob("*") if f.is_file()) if cache.exists() else 0
+    out["disk"] = {"logs_mb": round(size / 1e6, 1), "source_cache_mb": round(csize / 1e6, 1),
+                   "warnings": [w for w, bad in (("logs over 200 MB: rotate", size > 200e6), ("source cache over 2 GB: prune", csize > 2e9)) if bad]}
     d = db(); out["state"] = state.summary(d); out["inventory"] = pipeline.inventory(d)
     print(json.dumps(out, ensure_ascii=False, indent=1))
     return 0 if out.get("isolation_ok", True) and out["opencc"] else 1
-
-
-def _mock_call(prompt, timeout_s=0, **_):
-    raise SystemExit("--mock-llm needs a fixture; see tests/test_pipeline.py")
 
 
 def cmd_prepare(a):
@@ -126,6 +128,27 @@ def _send(a, retry=False):
     return 0 if all(r["status"] in ("accepted",) or r.get("action", "").startswith("skipped") for r in rep) else 3
 
 
+def cmd_prepare_queue(a):
+    import time
+    d = db(); t0 = time.monotonic(); done = []
+    with publish.lock("prepare"):
+        for p in sorted((REPO / "config/candidates").glob("*.json")):
+            c = pipeline.load_candidate(p)
+            if state.get(d, c["candidate_id"]):
+                continue
+            if len(done) >= a.max_articles or (time.monotonic() - t0) / 60 > a.budget_minutes:
+                break
+            rep = pipeline.prepare(c, d)
+            done.append({"candidate": c["candidate_id"], "outcome": rep.get("outcome"), "reason": rep.get("reason", "")[:200], "wall_s": rep.get("wall_s")})
+    print(json.dumps({"processed": done, "inventory": pipeline.inventory(d)}, ensure_ascii=False, indent=1)); return 0
+
+
+def cmd_publish_today(a):
+    with publish.lock("publish"):
+        rep = publish.publish_today(db(), config.load_runtime(), date=a.date)
+    print(json.dumps(rep, ensure_ascii=False, indent=1)); return 0 if rep.get("outcome") in ("complete", "waiting") else 4
+
+
 def cmd_status(a):
     d = db(); s = state.summary(d)
     s["recent"] = [dict(zip(("edition_id", "status", "category", "reason"), r)) for r in
@@ -164,6 +187,9 @@ def main(argv=None):
         p.add_argument("--local-smtp"); p.add_argument("--security", default="ssl", choices=["ssl", "starttls", "plain"])
         p.add_argument("--recipients-file"); p.add_argument("--out"); p.add_argument("--base-url", default="https://starhub.vip")
         p.set_defaults(f=(lambda a, r=retry: _send(a, r)))
+    p = sp.add_parser("prepare-queue"); p.add_argument("--max-articles", type=int, default=3); p.add_argument("--budget-minutes", type=float, default=150)
+    p.set_defaults(f=cmd_prepare_queue)
+    p = sp.add_parser("publish-today"); p.add_argument("--date"); p.set_defaults(f=cmd_publish_today)
     for name, f in (("status", cmd_status), ("inventory", cmd_inventory), ("recover", cmd_recover)):
         sp.add_parser(name).set_defaults(f=f)
     p = sp.add_parser("registry-rebuild"); p.add_argument("content", nargs="+"); p.add_argument("--db"); p.set_defaults(f=cmd_registry_rebuild)

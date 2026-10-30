@@ -1,0 +1,18 @@
+# TEMPLATE — not installed or enabled. Publishes today's scheduled edition:
+# archive -> site export/commit -> verify live JSON (content_sha256) -> email.
+# Requires EMAIL_SEND_ENABLED=true in the private runtime env; otherwise it
+# stops after the site step and reports.
+[Unit]
+Description=History in Practice: publish and send today's edition
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/history-in-practice
+ExecStartPre=%h/history-in-practice/bin/hip recover
+ExecStart=%h/history-in-practice/bin/hip publish-today
+TimeoutStartSec=45min
+Nice=5
+LimitAS=2G
+StandardOutput=append:%h/history-in-practice/data/logs/send.log
+StandardError=append:%h/history-in-practice/data/logs/send.log

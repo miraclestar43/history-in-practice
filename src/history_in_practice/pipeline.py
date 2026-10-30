@@ -34,7 +34,7 @@ def fetch_sources(c, cache: Path, refresh=False) -> dict:
         else:
             r = src_mod.fetch(s, cache)
             meta.write_text(json.dumps(r, ensure_ascii=False, indent=1))
-        r.update(ref=s.get("ref"), title=s.get("title"), basis=s.get("basis"))
+        r.update(ref=s.get("ref"), title=s.get("title"), basis=s.get("basis"), cjk=s.get("cjk", False))
         out[s["id"]] = r
     return out
 

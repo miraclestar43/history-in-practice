@@ -59,4 +59,10 @@ def parse_json(text: str):
     i, j = s.find("{"), s.rfind("}")
     if i < 0 or j < i:
         raise ValueError("no JSON object in model output")
-    return json.loads(s[i:j + 1])
+    body = s[i:j + 1]
+    try:
+        return json.loads(body)
+    except ValueError:
+        # common model slip: trailing comma before ] or } (e.g. `}, ]`); strict parse failed, so try once more
+        import re
+        return json.loads(re.sub(r",\s*([\]}])", r"\1", body))

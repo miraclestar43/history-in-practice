@@ -21,7 +21,11 @@ def parse_json(text):
     if s.startswith("```"):
         s = s.split("\n", 1)[1].rsplit("```", 1)[0]
     i, j = s.find("{"), s.rfind("}")
-    return json.loads(s[i:j+1])
+    try:
+        return json.loads(s[i:j+1])
+    except ValueError:
+        import re
+        return json.loads(re.sub(r",\s*([\]}])", r"\1", s[i:j+1]))   # trailing-comma slip
 
 def step(story, name, prompt, outdir, timeout_s):
     r = run_hermes.call(prompt, timeout_s=timeout_s)

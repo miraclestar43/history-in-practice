@@ -1,0 +1,10 @@
+# TEMPLATE — not enabled. 07:30 America/Los_Angeles (Pi system time zone is Chicago).
+[Unit]
+Description=History in Practice: daily publish and send
+
+[Timer]
+OnCalendar=*-*-* 07:30:00 America/Los_Angeles
+Persistent=true
+
+[Install]
+WantedBy=timers.target

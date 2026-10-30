@@ -1,0 +1,20 @@
+# TEMPLATE — not installed or enabled. Review before `systemctl --user link`.
+# Builds inventory: runs queued candidates through the automated pipeline.
+# One article can take ~10–25 min of model time; this is a BATCH job, so the
+# timeout is a whole-batch budget, not a single-article one.
+[Unit]
+Description=History in Practice: prepare inventory (batch)
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/history-in-practice
+ExecStart=%h/history-in-practice/bin/hip prepare-queue --max-articles 3 --budget-minutes 150
+TimeoutStartSec=3h
+Nice=10
+IOSchedulingClass=idle
+# The Pi's user cgroup has no memory controller (MemoryMax is silently ignored),
+# so cap address space instead; the pipeline streams its inputs.
+LimitAS=3G
+StandardOutput=append:%h/history-in-practice/data/logs/prepare.log
+StandardError=append:%h/history-in-practice/data/logs/prepare.log

@@ -12,24 +12,31 @@ A daily bilingual history story, grounded in sources and connected to everyday d
 - 可追溯出处与带说明的延伸阅读，让感兴趣的人继续读。
 - 长期每日更新、事件级去重、GitHub 永久归档；提前准备合格库存，内容质量优先。
 
-## 当前状态：样稿与技术验证阶段
+## 当前状态：实现开发中（overnight 2026-10-30）
 
-尚未实现或部署自动化服务，也未发送邮件。
+尚未部署、未启用定时任务、未发送真实邮件。进展与验证结果见 [docs/OVERNIGHT_REPORT.md](docs/OVERNIGHT_REPORT.md)。
 
-1. [完整方案 v2.3（用户阅读目标澄清）](docs/PLAN.md)
-2. [内容体验与长期编辑要求](docs/EDITORIAL_BRIEF.md)
-3. [四篇双语样稿、证据映射与本地预览](samples/README.md)
-4. 评审记录：[Fable](docs/reviews/FABLE_REVIEW.md) → [ChatGPT](docs/reviews/CHATGPT_REVIEW.md) → [Opus 修订与验证](docs/reviews/OPUS_VALIDATION.md)
-5. [Claude Opus：后续分阶段实施](prompts/02_OPUS_IMPLEMENT.md)
+- [完整方案](docs/PLAN.md) · [最新用户要求](docs/USER_REQUIREMENTS_20261030.md) · [编辑规范](docs/EDITORIAL_BRIEF.md) · [发信配置](docs/EMAIL_SETUP.md)
+- [四篇样稿（中英各约十分钟目标）与预览](samples/README.md)
+- 评审：[Fable](docs/reviews/FABLE_REVIEW.md) → [ChatGPT](docs/reviews/CHATGPT_REVIEW.md) → [Opus 验证](docs/reviews/OPUS_VALIDATION.md)
 
-下一步：两位读者阅读样稿并反馈 → 用户决定是否进入自动供稿流水线实施。
+## 代码
 
-运行环境计划：Raspberry Pi、Hermes（经项目级隔离调用器，不用 `hermes -z`）、Python、SQLite、systemd、SMTP，以及 [StarHub](https://starhub.vip/) 现有静态网站。`validation/` 下是本阶段的验证脚本，不是生产代码。
+| 位置 | 内容 |
+|---|---|
+| `src/history_in_practice/` | 包：来源取回与分级、证据摘录、episode 注册表与去重、Hermes 隔离调用、校验、同源渲染、SQLite 状态与恢复、网站导出与上线核对、SMTP 发信、自动供稿流水线、CLI |
+| `bin/hip` | 命令行入口（用项目 `.venv`） |
+| `config/` | 公开配置、别名表、候选题（`candidates/`）、私密配置模板 `runtime.env.example` |
+| `tests/` | `unittest`，含本地 SMTPS、站点回退、去重、进程树超时等关键行为 |
+| `deploy/systemd/` | 未启用的 user unit 模板 |
+| `deploy/website_test/` | StarHub 栏目改动的补丁（未推送到网站仓库） |
+| `validation/` | 前期验证脚本与样稿生成脚本 |
 
-## 最新用户要求与今夜任务
+```bash
+python3 -m venv .venv && .venv/bin/pip install opencc-python-reimplemented   # 一次
+bin/hip doctor --probe                       # 环境、Hermes 隔离探针、私密配置（只显示是否已设置）
+.venv/bin/python -m unittest discover -s tests
+bin/hip render samples/*/article.json --out /tmp/hip-preview
+```
 
-- [单语言各十分钟与自然英文要求](docs/USER_REQUIREMENTS_20261030.md)
-- [Pi Claude overnight 持续实施](prompts/03_OVERNIGHT_OPUS.md)
-- [专用发信地址与明早配置](docs/EMAIL_SETUP.md)
-
-已有四篇样稿是旧时长规格的基线，需按新目标扩充并重验；保留已有实现和证据，不从头重建。任务文件推送不代表 Pi 会话已自动启动。
+私密配置在仓库外：`~/.config/history-in-practice/runtime.env`（权限 600）。真实收件人、密钥只在那里，不进 Git、PR、预览或模型输入。

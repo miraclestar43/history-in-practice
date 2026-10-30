@@ -1,0 +1,10 @@
+# TEMPLATE — not enabled. 20:00 America/Los_Angeles; avoids 22:00 and 07:00 LA news-intel jobs.
+[Unit]
+Description=History in Practice: nightly inventory preparation
+
+[Timer]
+OnCalendar=*-*-* 20:00:00 America/Los_Angeles
+Persistent=true
+
+[Install]
+WantedBy=timers.target

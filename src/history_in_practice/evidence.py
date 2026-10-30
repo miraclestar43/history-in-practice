@@ -41,7 +41,7 @@ def build(spec_rows, sources: dict, cache: Path) -> tuple[dict, list[str]]:
         src = sources.get(sid)
         if not src or src.get("status") != "evidence_usable":
             errors.append(f"{eid}: source {sid} not evidence_usable ({src.get('status') if src else 'missing'})"); continue
-        cjk = str(src.get("ref", "")).startswith(CJK_ADAPTER_HINT) or sid.startswith(("A-", "C-QSJS", "C-YMTXL"))
+        cjk = bool(src.get("cjk")) or str(src.get("ref", "")).startswith(CJK_ADAPTER_HINT) or sid.startswith(("A-", "C-QSJS", "C-YMTXL"))
         text = normalise((cache / f"{sid}.txt").read_text(encoding="utf-8"), cjk)
         res, err = cut(text, a, b)
         if err:

@@ -109,6 +109,8 @@ def send_edition(db, obj, html, text, runtime, *, mode="real", smtp_cfg=None, re
         rcpts = runtime.recipients
         cfg = {"host": runtime.get("SMTP_HOST"), "port": runtime.get("SMTP_PORT", "465"), "security": runtime.get("SMTP_SECURITY", "ssl"),
                "username": runtime.get("SMTP_USERNAME"), "password": runtime.get("SMTP_PASSWORD")}
+        if runtime.get("SMTP_TLS_INSECURE_LOCAL") == "true" and cfg["host"] in LOCAL_HOSTS:   # test fixtures only
+            ctx = ssl.create_default_context(); ctx.check_hostname = False; ctx.verify_mode = ssl.CERT_NONE; cfg["ssl_context"] = ctx
         sender, reply_to = runtime.get("EMAIL_FROM"), runtime.get("EMAIL_REPLY_TO")
     elif mode == "local-test":
         if not smtp_cfg or smtp_cfg["host"] not in LOCAL_HOSTS:
