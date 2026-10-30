@@ -167,7 +167,7 @@ def cmd_admit(a):
         eid = o.get("episode_id") or cur["episode_id"]
         registry.set_status(d, eid, "checked")
         state.transition(d, o["edition_id"], "prepared", note="editor pass on pending draft", path=str(Path(a.article).resolve()))
-        state.transition(d, o["edition_id"], "checked", note="admitted after editor pass", content_sha256=o["content_sha256"])
+        state.transition(d, o["edition_id"], "checked", note="admitted after editor pass", content_sha256=o["content_sha256"], reason="")
         print(json.dumps({"admitted": True, "edition_id": o["edition_id"], "episode_id": eid, "from": "pending_review", "stats": st}, ensure_ascii=False)); return 0
     if cur:
         print(json.dumps({"admitted": False, "reason": f"already known: {cur['status']}"}, ensure_ascii=False)); return 0

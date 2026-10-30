@@ -29,6 +29,7 @@ class Admit(unittest.TestCase):
             rc, out = hip("requeue", ed, "--reason", "again", data=td); self.assertEqual(rc, 1)
             rc, out = hip("admit", art, ev, "--from-pending", data=td); self.assertEqual(rc, 0); self.assertTrue(out["admitted"])
             rc, inv = hip("inventory", data=td); self.assertEqual((inv["days"], inv["pending"]), (1, 0))
+            rc, st = hip("status", data=td); self.assertEqual(st["recent"][0]["reason"], "")      # stale pending reason cleared
 
 
 if __name__ == "__main__":
