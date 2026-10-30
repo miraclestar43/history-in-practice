@@ -33,15 +33,17 @@ def call(prompt: str, timeout_s: float = 900, model: str | None = None, python: 
         for t in th: t.start()
         p.stdin.write(data); p.stdin.close()
         killed = None
-        while p.poll() is None:
-            if over.is_set(): killed = "stdout_cap"
-            elif time.monotonic() - t0 > timeout_s: killed = "timeout"
-            if killed:
+        try:
+            while p.poll() is None:
+                if over.is_set(): killed = "stdout_cap"
+                elif time.monotonic() - t0 > timeout_s: killed = "timeout"
+                if killed: break
+                time.sleep(0.2)
+        finally:                                    # also on SystemExit/KeyboardInterrupt: never leave the runner running
+            if p.poll() is None:
                 os.killpg(p.pid, signal.SIGTERM)
                 try: p.wait(10)
                 except subprocess.TimeoutExpired: os.killpg(p.pid, signal.SIGKILL); p.wait()
-                break
-            time.sleep(0.2)
         for t in th: t.join(5)
         wall = time.monotonic() - t0
     text = out.decode("utf-8", errors="replace")

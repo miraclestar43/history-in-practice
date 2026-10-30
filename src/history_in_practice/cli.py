@@ -531,6 +531,8 @@ def main(argv=None):
     p.set_defaults(f=cmd_admit)
     p = sp.add_parser("registry-rebuild"); p.add_argument("content", nargs="+"); p.add_argument("--db"); p.set_defaults(f=cmd_registry_rebuild)
     a = ap.parse_args(argv)
+    import signal as _sig                              # systemd stop/timeout sends SIGTERM: unwind so model children are killed
+    _sig.signal(_sig.SIGTERM, lambda *_: sys.exit(143))
     state.recover(db()) if a.cmd not in ("doctor",) else None
     return a.f(a)
 

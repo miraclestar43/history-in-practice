@@ -144,19 +144,22 @@ def call(prompt: str, timeout_s: float = 1800, *, system: str = SYSTEM, model: s
         except BrokenPipeError:
             pass
         killed = None
-        while p.poll() is None:
-            if over.is_set():
-                killed = "stdout_cap"
-            elif time.monotonic() - t0 > timeout_s:
-                killed = "timeout"
-            if killed:
+        try:
+            while p.poll() is None:
+                if over.is_set():
+                    killed = "stdout_cap"
+                elif time.monotonic() - t0 > timeout_s:
+                    killed = "timeout"
+                if killed:
+                    break
+                time.sleep(0.2)
+        finally:                                       # also on SystemExit/KeyboardInterrupt: never leave the CLI running
+            if p.poll() is None:
                 os.killpg(p.pid, signal.SIGTERM)
                 try:
                     p.wait(15)
                 except subprocess.TimeoutExpired:
                     os.killpg(p.pid, signal.SIGKILL); p.wait()
-                break
-            time.sleep(0.2)
         for t in th:
             t.join(5)
         wall = time.monotonic() - t0

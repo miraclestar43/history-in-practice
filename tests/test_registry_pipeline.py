@@ -116,6 +116,14 @@ class Pipeline(unittest.TestCase):
     def prep(self, c, call):
         return pipeline.prepare(c, self.db, call=call, workdir=Path(self.td.name) / c["candidate_id"], cache=self.cache)
 
+    def test_resumed_rejected_reservation_whose_span_was_taken_is_a_duplicate_without_model_calls(self):
+        call = fake_call_factory(); self.prep(CANDIDATE, call)
+        eid = f"ep-{CANDIDATE['candidate_id']}"; core = self.db.execute("SELECT core_span FROM episode WHERE episode_id=?", (eid,)).fetchone()[0]
+        registry.set_status(self.db, eid, "rejected")                         # e.g. after a provider refusal
+        self.db.execute("INSERT INTO episode(episode_id,status,core_span,spans,persons) VALUES('ep-other','checked',?,'[]','[]')", (core,))
+        n = len(call.calls); r = self.prep(CANDIDATE, call)
+        self.assertEqual(r["outcome"], "rejected"); self.assertIn("ep-other", r["reason"]); self.assertEqual(len(call.calls), n)
+
     def test_good_candidate_reaches_inventory(self):
         r = self.prep(CANDIDATE, fake_call_factory()); self.assertEqual(r["outcome"], "pending_review", r)
         self.assertIn("awaiting editor stage", r["reason"])                       # clean drafts still need the editor stage

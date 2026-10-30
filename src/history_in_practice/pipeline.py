@@ -188,6 +188,10 @@ def prepare(c, db, *, call=llm.call, workdir: Path | None = None, cache: Path | 
     ep = dict(c["episode"], spans=evidence.spans(pack, c.get("core_excerpts")), title=c.get("title_hint", cid), category=c["category"],
               episode_id=f"ep-{cid}")
     mine = db.execute("SELECT status FROM episode WHERE episode_id=?", (ep["episode_id"],)).fetchone()
+    taken = db.execute("SELECT episode_id FROM episode WHERE episode_id!=? AND status IN ('reserved','prepared','checked','scheduled','published') "
+                       "AND core_span=(SELECT core_span FROM episode WHERE episode_id=?)", (ep["episode_id"], ep["episode_id"])).fetchone() if mine else None
+    if mine and mine[0] == "rejected" and taken:      # the span was taken by another edition since: duplicate, no model calls
+        return pend(f"duplicate: core span now used by {taken[0]}", status="rejected")
     if mine:                                   # resumed after a crash: our own reservation, not a duplicate
         eid, verdict = ep["episode_id"], ("distinct", f"resumed own reservation ({mine[0]})")
     else:
