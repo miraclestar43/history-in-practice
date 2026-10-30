@@ -15,7 +15,7 @@ review threshold: unresolved drafts stay ``pending_review``.
 from __future__ import annotations
 import copy, hashlib, json, time
 from pathlib import Path
-from . import checks, render, llm, state, registry
+from . import checks, render, llm, state, registry, schemas
 from .config import REPO
 from .pipeline import PROMPTS, REFUSAL, CODE_REV, _evidence_block
 
@@ -82,13 +82,15 @@ def parity_view(o) -> str:
 
 
 class Caller:
-    """One logged model call with a single retry on invalid JSON; refusals are not retried."""
+    """One logged model call with a single retry on invalid JSON or an invalid schema; refusals are not retried.
+    A parseable object that fails its schema (e.g. a review without an `issues` list) is a failed step, not a result."""
     def __init__(self, outdir: Path, cid: str, call=None):
         self.outdir, self.cid, self.call, self.metrics = outdir, cid, call or llm.call, []
 
-    def __call__(self, name, prompt, timeout, retry_suffix):
+    def __call__(self, name, prompt, timeout, retry_suffix, validate=None):
+        suffix = retry_suffix
         for attempt in (1, 2):
-            r = self.call(prompt if attempt == 1 else prompt + retry_suffix, timeout_s=timeout)
+            r = self.call(prompt if attempt == 1 else prompt + suffix, timeout_s=timeout)
             m = {k: v for k, v in r.items() if k != "text"}; m.update(step=name, attempt=attempt, candidate=self.cid)
             (self.outdir / f"{name}.a{attempt}.raw.txt").write_text(r["text"], encoding="utf-8")
             try:
@@ -98,6 +100,12 @@ class Caller:
             m["json_ok"] = obj is not None
             if obj is None and len(r["text"].strip()) < 400 and REFUSAL.search(r["text"]):
                 m["provider_refusal"] = r["text"].strip()[:200]
+            if obj is not None and validate is not None:
+                bad = validate(obj)
+                m["schema_ok"] = not bad
+                if bad:
+                    m["schema_problems"] = bad[:5]; obj = None
+                    suffix = retry_suffix + "\n[Schema problems in the previous reply: " + "; ".join(bad[:5]) + "]"
             with open(self.outdir / "calls.jsonl", "a", encoding="utf-8") as log:
                 log.write(json.dumps(dict(m, at=time.time()), ensure_ascii=False) + "\n")
             self.metrics.append(m)
@@ -110,11 +118,13 @@ class Caller:
 
 
 def collect_issues(review: dict | None, parity: dict | None, findings: list) -> list[dict]:
+    """Every fix/block finding: the review's typed issues AND its separate fact arrays (unsupported claims,
+    invented inner life, quote mismatches), parity fixes, checker BLOCK/FIX. Callers pass only schema-valid reviews."""
     out = []
-    for i in (review or {}).get("issues", []):
-        if i.get("severity") in ("fix", "block"):
-            out.append({"id": f"R{len(out) + 1}", "source": "review", "severity": i["severity"],
-                        "where": f"{i.get('section')}.{i.get('para')}", "problem": i.get("problem"), "suggestion": i.get("suggestion")})
+    for i in schemas.review_issues(review or {"issues": []}):
+        out.append({"id": f"R{len(out) + 1}", "source": "review", "severity": i["severity"],
+                    "where": f"{i.get('section')}.{i.get('para')}" if i.get("section") is not None else "(location not given)",
+                    "problem": i.get("problem"), "suggestion": i.get("suggestion"), **({"kind": i["kind"]} if i.get("kind") else {})})
     for i in (parity or {}).get("issues", []):
         if i.get("severity") == "fix":
             out.append({"id": f"P{len(out) + 1}", "source": "parity", "severity": "fix", "where": i.get("path"),
@@ -172,13 +182,34 @@ def apply_edits(o: dict, ev_ids: set, edits: list, ev_changes: list) -> tuple[li
 def reviews(o, ev, caller: Caller, tag: str) -> tuple[dict | None, dict | None]:
     evb = _evidence_block(ev); h = o["content_sha256"]
     rv = caller(f"rereview_{tag}", f"{(PROMPTS / 'review_zh.md').read_text()}\n\n【证据包】\n{evb}\n\n【稿件】\n{json.dumps(zh_view(o), ensure_ascii=False)}",
-                TIMEOUTS["review"], "\n\n[只输出一个合法 JSON 对象。]")
+                TIMEOUTS["review"], "\n\n[只输出一个合法 JSON 对象。]", validate=schemas.review)
     pv = caller(f"parity_{tag}", f"{(PROMPTS / 'parity_en.md').read_text()}\n\n<fields>\n{parity_view(o)}\n</fields>",
-                TIMEOUTS["parity"], "\n\n[Reply with one valid JSON object only.]")
-    for x in (rv, pv):
+                TIMEOUTS["parity"], "\n\n[Reply with one valid JSON object only.]", validate=schemas.parity)
+    for x, sch in ((rv, schemas.REVIEW_SCHEMA), (pv, schemas.PARITY_SCHEMA)):
         if x is not None:
-            x["_content_sha256"] = h
+            x["_content_sha256"] = h; x["_schema"] = sch
     return rv, pv
+
+
+def model_view(x: dict | None) -> dict | None:
+    """A stored review without the locally added `_` tags (what the model actually returned)."""
+    return None if x is None else {k: v for k, v in x.items() if not k.startswith("_")}
+
+
+def valid_final(last: dict) -> list[str]:
+    """Problems with the final review/parity of a record: present, schema-valid, produced under the current schema."""
+    p = []
+    for k, v, sch in (("review_after", schemas.review, schemas.REVIEW_SCHEMA), ("parity_after", schemas.parity, schemas.PARITY_SCHEMA)):
+        x = last.get(k)
+        if x is None:
+            p.append(f"{k} missing"); continue
+        if x.get("_schema") != sch:
+            p.append(f"{k} predates {sch} (legacy record, judged before strict schema checks"
+                     + ("; its separate fact arrays were not counted" if k == "review_after" else "") + "); re-review or final edit required")
+        bad = v(model_view(x))
+        if bad:
+            p.append(f"{k} is not a valid review: " + "; ".join(bad[:3]))
+    return p
 
 
 def edit(draft_dir: Path, call=None, max_rounds: int = MAX_ROUNDS) -> dict:
@@ -188,11 +219,16 @@ def edit(draft_dir: Path, call=None, max_rounds: int = MAX_ROUNDS) -> dict:
     render.finalize(o); original = copy.deepcopy(o)
     caller = Caller(d, cid, call); ev_ids = {e["id"] for e in ev["excerpts"]}
     review = json.loads((d / "review_zh.json").read_text()) if (d / "review_zh.json").exists() else None
+    initial_invalid = schemas.review(review) if review is not None else []
+    if initial_invalid:
+        review = None                                  # invalid initial review: ignored, never treated as clean
     if review is not None:
         review["_content_sha256"] = "model draft (zh) before English and assembly"
     findings, _ = checks.check(o, ev)
     record = {"candidate_id": cid, "editor": EDITOR_NAME, "code_rev": CODE_REV, "started_at": time.time(),
-              "evidence_sha256": sha(ev), "original_content_sha256": o["content_sha256"], "rounds": []}
+              "evidence_sha256": sha(ev), "original_content_sha256": o["content_sha256"], "rounds": [],
+              "review_schema": schemas.REVIEW_SCHEMA, "parity_schema": schemas.PARITY_SCHEMA,
+              **({"initial_review_invalid": initial_invalid} if initial_invalid else {})}
     issues = collect_issues(review, None, findings)
     seed = d / "seed_issues.json"                      # a later attempt starts from the previous attempt's open issues
     if seed.exists():
@@ -204,7 +240,7 @@ def edit(draft_dir: Path, call=None, max_rounds: int = MAX_ROUNDS) -> dict:
             break
         prompt = (f"{(PROMPTS / 'edit_zh_en.md').read_text()}\n\n【证据包】\n{_evidence_block(ev)}\n\n【稿件】\n{article_view(o)}\n\n"
                   f"【待处理问题】\n{json.dumps(issues, ensure_ascii=False, indent=1)}")
-        out = caller(f"edit_r{rnd}", prompt, TIMEOUTS["edit"], "\n\n[只输出一个合法 JSON 对象。]")
+        out = caller(f"edit_r{rnd}", prompt, TIMEOUTS["edit"], "\n\n[只输出一个合法 JSON 对象。]", validate=schemas.edit)
         rec = {"round": rnd, "issues_in": issues}
         if out is None:
             rec["error"] = "editor model returned no usable JSON"; record["rounds"].append(rec); break
@@ -230,7 +266,7 @@ def edit(draft_dir: Path, call=None, max_rounds: int = MAX_ROUNDS) -> dict:
                                  "content_sha256_after": o["content_sha256"]})
         issues = collect_issues(rv, pv, findings) if rv is not None and pv is not None else [{"id": "X", "problem": "review failed"}]
     last = record["rounds"][-1]
-    final_reviewed = last.get("content_sha256_after") == o["content_sha256"] and last.get("review_after") and last.get("parity_after")
+    final_reviewed = last.get("content_sha256_after") == o["content_sha256"] and not valid_final(last)
     remaining = issues if final_reviewed else (issues or [{"id": "X", "source": "editor", "severity": "fix", "problem": "final content was not re-reviewed"}])
     record.update(final_content_sha256=o["content_sha256"], remaining=remaining, final_reviewed=bool(final_reviewed),
                   outcome="admissible" if final_reviewed and not remaining else "pending_review",
@@ -254,25 +290,51 @@ def verify_record(o: dict, ev: dict, record: dict) -> list[str]:
     for k in ("review_after", "parity_after"):
         if (last.get(k) or {}).get("_content_sha256") != o["content_sha256"]:
             problems.append(f"{k} not bound to the final content")
+    problems += valid_final(last)                     # judged on the review itself, never on a non-empty dict
     return problems
+
+
+def final_issues(o: dict, ev: dict, record: dict) -> list[dict]:
+    """Issues recomputed from the record's final bound review + parity + checker (not trusted from `remaining`)."""
+    last = (record.get("rounds") or [{}])[-1]
+    rv, pv = model_view(last.get("review_after")), model_view(last.get("parity_after"))
+    if schemas.review(rv) or schemas.parity(pv):
+        return [{"id": "X", "source": "editor", "severity": "fix", "problem": "final review or parity invalid"}]
+    f, _ = checks.check(o, ev)
+    return collect_issues(rv, pv, f)
 
 
 def admit_with_record(db, article_path: Path, evidence_path: Path, record: dict, exception: str | None = None) -> dict:
     """Admit an edited pending draft into schedulable inventory, bound to its record."""
+    if record.get("record_type") == "final_editor":
+        from . import final_edit
+        return final_edit.admit(db, article_path, evidence_path, record, exception=exception)
     o = json.loads(Path(article_path).read_text(encoding="utf-8")); ev = json.loads(Path(evidence_path).read_text(encoding="utf-8"))
     hard = verify_record(o, ev, record)               # never overridable
     f, _ = checks.check(o, ev)
     if checks.blocked(f):
         hard.append("checker BLOCK on the final article")
-    soft = [f"remaining {i.get('source', '?')} issue {i.get('id')}: {str(i.get('problem'))[:120]}" for i in record.get("remaining") or []]
-    soft += [f"checker FIX: {m[:120]}" for lvl, m in f if lvl == "FIX"]
-    if hard or (soft and not exception):
+    rem = list(record.get("remaining") or [])
+    if not hard:                                      # recomputed from the bound final review: a record cannot omit findings
+        seen = {str(i.get("problem")) for i in rem}
+        rem += [i for i in final_issues(o, ev, record) if str(i.get("problem")) not in seen and i.get("source") != "checker"]
+    open_ = [(str(i.get("id")), f"remaining {i.get('source', '?')} issue {i.get('id')}: {str(i.get('problem'))[:120]}") for i in rem]
+    open_ += [(f"checker:{k}", f"checker FIX checker:{k}: {m[:120]}") for k, (lvl, m) in enumerate(f) if lvl == "FIX"]
+    if isinstance(exception, str):
+        hard.append("a whole-article exception is not accepted: name each open issue (--exception ID=REASON, one per issue)")
+        exception = None
+    exception = {k: v for k, v in (exception or {}).items() if str(v).strip()}
+    soft = [msg for iid, msg in open_ if iid not in exception]
+    unknown = sorted(set(exception) - {iid for iid, _ in open_})
+    if unknown:
+        hard.append(f"exception names issues that are not open: {unknown}")
+    if hard or soft:
         return {"admitted": False, "edition_id": o["edition_id"], "problems": hard + soft,
-                "hint": "" if hard else "remaining FIX-level issues: fix them, or pass --exception REASON for a named, human-approved exception"}
+                "hint": "" if hard else "open FIX-level issues: fix them (final editor), or name a reason per issue with --exception ID=REASON"}
     cur = state.get(db, o["edition_id"])
     if not cur or cur["status"] != "pending_review":
         return {"admitted": False, "edition_id": o["edition_id"], "problems": [f"edition status is {cur['status'] if cur else 'unknown'}, not pending_review"]}
-    approval = f"exception: {exception}" if exception else "editor-record"
+    approval = ("exception: " + "; ".join(f"{k}={v}" for k, v in sorted(exception.items()))) if exception else "editor-record"
     eid = o.get("episode_id") or cur["episode_id"]
     registry.set_status(db, eid, "checked")
     state.transition(db, o["edition_id"], "prepared", note="editor record verified", path=str(Path(article_path).resolve()))

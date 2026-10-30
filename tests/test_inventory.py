@@ -62,5 +62,17 @@ class Inventory(unittest.TestCase):
         self.assertEqual(i["coverage_days"], 0); self.assertTrue(i["alert"]); self.assertEqual(sum(i["gaps_to_target"].values()), 14)
 
 
+class Arithmetic(unittest.TestCase):
+    """STABILIZATION_REVIEW §3: the report's what-if numbers come from the same function as `hip inventory`."""
+    def test_review_scenarios(self):
+        from history_in_practice.pipeline import rotation_days
+        rot = ["china_ancient", "world", "china_modern", "us"]
+        n = lambda a, w, m, u: dict(zip(rot, (a, w, m, u)))
+        self.assertEqual(len(rotation_days(n(1, 2, 2, 1), rot, "china_ancient")), 4)     # report had said 2
+        self.assertEqual(len(rotation_days(n(3, 4, 3, 3), rot, "china_ancient")), 12)    # report had said ~10
+        self.assertEqual(len(rotation_days(n(3, 3, 3, 3), rot, "china_ancient")), 12)
+        self.assertEqual(len(rotation_days(n(0, 1, 0, 0), rot, "china_ancient")), 0)
+        self.assertEqual(rotation_days(n(1, 1, 0, 1), rot, "world"), ["world"])          # starts mid-rotation, stops at modern
+
 if __name__ == "__main__":
     unittest.main()

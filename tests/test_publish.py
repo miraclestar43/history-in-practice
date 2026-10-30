@@ -181,6 +181,93 @@ class PublishFlow(unittest.TestCase):
         self.assertEqual(r["outcome"], "skipped"); self.assertIn("world", r["reason"])
         self.assertEqual(self.state.get(self.db, "sample-B")["status"], "checked")
 
+    # --- the send deadline is re-checked after waits, fetches and between recipients ---------------------------
+
+    def moving(self, date, hm):
+        """A clock that advances with every injected sleep (and can be advanced by a fetch)."""
+        h, m = map(int, hm.split(":")); t = {"now": datetime.fromisoformat(date).replace(hour=h, minute=m, tzinfo=LA)}
+        from datetime import timedelta
+        def sleep(s): self.slept.append(s); t["now"] += timedelta(seconds=s)
+        def advance(s): t["now"] += timedelta(seconds=s)
+        return (lambda: t["now"]), sleep, advance
+
+    def run_moving(self, rt, date, clock, sleep, fetch):
+        return self.publish.publish_today(self.db, rt, date=date, fetch=fetch, clock=clock, sleep=sleep)
+
+    def test_sleep_never_runs_past_the_deadline_and_late_live_does_not_send(self):
+        import smtp_fixture
+        srv = smtp_fixture.start(tls=True)
+        try:
+            clock, sleep, _ = self.moving("2026-11-02", "10:59")
+            r = self.run_moving(self.mail_rt(srv), "2026-11-02", clock, sleep, self.served(stale_first=1))
+            self.assertEqual(self.slept, [60])                       # first backoff is 60 s; the window had exactly 60 s
+            # live at exactly 11:00:00 is still within the deadline (now > deadline is late) -> sends
+            self.assertEqual(r["outcome"], "complete"); self.assertEqual(len(srv.messages), 2)
+        finally:
+            srv.shutdown(); srv.server_close()
+
+    def test_review_scenario_1059_30_stale_then_live_after_deadline_is_not_sent(self):
+        """10:59:30 stale -> (old code: sleep 60 -> 11:00:30 live -> sent). Now the wait is clamped to 30 s, and a
+        sleep that overshoots the deadline (as real sleeps can) stops the loop: overdue, nothing sent."""
+        import smtp_fixture
+        from datetime import timedelta
+        srv = smtp_fixture.start(tls=True)
+        try:
+            t = {"now": datetime.fromisoformat("2026-11-02").replace(hour=10, minute=59, second=30, tzinfo=LA)}
+            def slp(s): self.slept.append(s); t["now"] += timedelta(seconds=s + 30)      # oversleeps by 30 s
+            r = self.publish.publish_today(self.db, self.mail_rt(srv), date="2026-11-02", fetch=self.served(stale_first=1),
+                                           clock=lambda: t["now"], sleep=slp)
+            self.assertEqual(self.slept, [30.0])                     # clamped to the remaining window, not the 60 s backoff
+            self.assertEqual(r["live_checks"], 1)                    # no fetch started after the deadline
+            self.assertEqual(r["outcome"], "overdue"); self.assertEqual(len(srv.messages), 0)
+            self.assertEqual(self.state.get(self.db, "sample-A")["status"], "overdue")
+        finally:
+            srv.shutdown(); srv.server_close()
+
+    def test_fetch_crossing_deadline_records_live_but_sends_nothing(self):
+        import smtp_fixture
+        srv = smtp_fixture.start(tls=True)
+        try:
+            clock, sleep, advance = self.moving("2026-11-02", "10:58")
+            inner = self.served(stale_first=1); n = {"i": 0}
+            def slow_fetch(url, timeout=20):
+                if url.endswith("index.json"):
+                    n["i"] += 1
+                    if n["i"] == 2:
+                        advance(90)                                 # 10:59 + 90 s: the successful fetch returns at 11:00:30
+                return inner(url, timeout)
+            r = self.run_moving(self.mail_rt(srv), "2026-11-02", clock, sleep, slow_fetch)
+            self.assertEqual(r["outcome"], "overdue"); self.assertIn("went live", r["reason"])
+            self.assertEqual(len(srv.messages), 0); self.assertEqual(self.state.get(self.db, "sample-A")["status"], "overdue")
+            notes = [x[0] for x in self.db.execute("SELECT to_status FROM transition WHERE edition_id='sample-A' ORDER BY id")]
+            self.assertIn("site_live", notes)                       # the site did go live: recorded, not hidden
+            r2 = self.run_moving(self.mail_rt(srv), "2026-11-02", clock, sleep, self.served())
+            self.assertEqual(len(srv.messages), 0)                   # rerun later that day: still nothing sent
+        finally:
+            srv.shutdown(); srv.server_close()
+
+    def test_deadline_between_recipients_keeps_first_result_and_sends_no_more(self):
+        import smtp_fixture
+        srv = smtp_fixture.start(tls=True)
+        try:
+            clock, sleep, advance = self.moving("2026-11-02", "10:59")
+            from history_in_practice import mailer
+            real = mailer.send_one
+            def slow_send(cfg, msg, rcpt, timeout=30):
+                out = real(cfg, msg, rcpt, timeout); advance(120); return out   # first SMTP exchange ends at 11:01
+            mailer.send_one = slow_send
+            try:
+                r = self.run_moving(self.mail_rt(srv), "2026-11-02", clock, sleep, self.served())
+            finally:
+                mailer.send_one = real
+            self.assertEqual(r["outcome"], "overdue"); self.assertEqual(len(srv.messages), 1)
+            st = sorted(d["status"] for d in r["deliveries"]); self.assertEqual(st, ["accepted", "not_started_deadline"])
+            acc = self.db.execute("SELECT status FROM delivery WHERE edition_id='sample-A'").fetchall()
+            self.assertEqual([a[0] for a in acc], ["accepted"])     # the accepted one stays accepted; the other has no send record
+            self.assertEqual(self.state.get(self.db, "sample-A")["status"], "overdue")
+        finally:
+            srv.shutdown(); srv.server_close()
+
 
 if __name__ == "__main__":
     unittest.main()

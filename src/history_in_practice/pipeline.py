@@ -8,7 +8,7 @@ review, record bound to the final content) before it can be admitted as
 from __future__ import annotations
 import json, time
 from pathlib import Path
-from . import sources as src_mod, evidence, registry, render, checks, llm, state
+from . import sources as src_mod, evidence, registry, render, checks, llm, state, schemas
 from .config import REPO, data_dir, load_project
 
 PROMPTS = Path(__file__).with_name("prompts")
@@ -119,9 +119,9 @@ def run_model_steps(c, pack, outdir: Path, call=llm.call, timeouts=None) -> tupl
     ev = _evidence_block(pack); metrics = []
     style = (PROMPTS / "style_zh.md").read_text(encoding="utf-8")
 
-    def step(name, prompt, timeout, retry_suffix):
+    def step(name, prompt, timeout, retry_suffix, validate):
         saved = outdir / f"{name}.json"
-        if saved.exists():          # resume after a crash: never re-call the model for a step already done
+        if saved.exists() and not validate(json.loads(saved.read_text(encoding="utf-8"))):   # resume: reuse only a valid saved step
             metrics.append({"step": name, "candidate": c["candidate_id"], "reused": True, "json_ok": True, "wall_s": 0.0})
             return json.loads(saved.read_text(encoding="utf-8"))
         for attempt in (1, 2):
@@ -136,6 +136,11 @@ def run_model_steps(c, pack, outdir: Path, call=llm.call, timeouts=None) -> tupl
             txt = r["text"].strip()
             if obj is None and len(txt) < 400 and REFUSAL.search(txt):
                 m["provider_refusal"] = txt[:200]
+            if obj is not None:                       # parseable is not enough: the step's schema must hold
+                bad = validate(obj); m["schema_ok"] = not bad
+                if bad:
+                    m["schema_problems"] = bad[:5]; obj = None
+                    retry_suffix = retry_suffix + "\n[Schema problems: " + "; ".join(bad[:5]) + "]"
             with open(outdir / "calls.jsonl", "a", encoding="utf-8") as log:      # append-only, after parsing: survives reruns
                 log.write(json.dumps(dict(m, at=time.time()), ensure_ascii=False) + "\n")
             metrics.append(m)
@@ -149,13 +154,13 @@ def run_model_steps(c, pack, outdir: Path, call=llm.call, timeouts=None) -> tupl
         return None
 
     zh = step("draft_zh", f"{style}\n\n{(PROMPTS/'draft_zh_long.md').read_text()}\n\n【编辑简报】\n{c['brief']}\n\n【证据包】\n{ev}",
-              t["draft_zh"], "\n\n[上一次输出不是合法 JSON。只输出一个合法 JSON 对象。]")
+              t["draft_zh"], "\n\n[上一次输出不是合法 JSON。只输出一个合法 JSON 对象。]", schemas.draft_zh)
     if zh is None:
         return None, None, None, metrics
     review = step("review_zh", f"{(PROMPTS/'review_zh.md').read_text()}\n\n【证据包】\n{ev}\n\n【稿件】\n{json.dumps(zh, ensure_ascii=False)}",
-                  t["review_zh"], "\n\n[只输出一个合法 JSON 对象。]")
+                  t["review_zh"], "\n\n[只输出一个合法 JSON 对象。]", schemas.review)
     en = step("en", f"{(PROMPTS/'translate_en_long.md').read_text()}\n\n{ev}\n\n<article_zh>\n{json.dumps(zh, ensure_ascii=False)}\n</article_zh>",
-              t["en"], "\n\n[Reply with one valid JSON object only.]")
+              t["en"], "\n\n[Reply with one valid JSON object only.]", schemas.draft_en)
     return zh, review, en, metrics
 
 
@@ -220,12 +225,13 @@ def prepare(c, db, *, call=llm.call, workdir: Path | None = None, cache: Path | 
     report.update(length=obj["length"], reading_minutes=obj["reading_minutes"], findings=findings)
     # The evidence review's "fix" findings were substantive in practice (reversed meanings, feints written as
     # real retreats, invented times), so anything above "note" sends the draft to the pending queue.
-    blocking_review = [i for i in (review or {}).get("issues", []) if i.get("severity") in ("block", "fix")]
+    blocking_review = schemas.review_issues(review) if review is not None else []      # typed issues + separate fact arrays
     (out / "article.json").write_text(json.dumps(obj, ensure_ascii=False, indent=1), encoding="utf-8")
     state.transition(db, cid, "prepared", note="model draft assembled", episode_id=eid, category=c["category"], path=str(out / "article.json"))
     if checks.blocked(findings) or blocking_review or review is None:
         why = ("checker BLOCK; " if checks.blocked(findings) else "") + (f"{len(blocking_review)} review issues rated fix/block; " if blocking_review else "") + ("" if review is not None else next((f"provider refusal at review_zh: {m['provider_refusal']} (another reviewer model or a person must review; do not reword to evade)"
-                                         for m in metrics if m.get("step") == "review_zh" and m.get("provider_refusal")), "review missing"))
+                                         for m in metrics if m.get("step") == "review_zh" and m.get("provider_refusal")),
+                                        "review missing or invalid (schema)" if any(m.get("schema_problems") for m in metrics if m.get("step") == "review_zh") else "review missing"))
         state.transition(db, cid, "pending_review", note=why, reason=why)
         registry.set_status(db, eid, "prepared")
         report.update(outcome="pending_review", reason=why, wall_s=round(time.monotonic() - t0, 1))
@@ -241,6 +247,16 @@ def prepare(c, db, *, call=llm.call, workdir: Path | None = None, cache: Path | 
 def _schedulable(approval, origin) -> bool:
     """Python mirror of state.SCHEDULABLE_SQL."""
     return bool(approval) and ((origin or "pipeline") != "sample" or str(approval).startswith("sample-approved"))
+
+
+def rotation_days(counts: dict, rot: list, start: str) -> list[str]:
+    """The categories the rotation fills, day by day from `start`, until a category runs out.
+    The single coverage calculation: `hip inventory` and the report's what-if scenarios both use it."""
+    i0 = rot.index(start) if start in rot else 0
+    left, seq = dict(counts), []
+    while len(seq) < 366 and left.get(rot[(i0 + len(seq)) % len(rot)], 0) > 0:
+        c = rot[(i0 + len(seq)) % len(rot)]; left[c] -= 1; seq.append(c)
+    return seq
 
 
 def inventory(db, today: str | None = None) -> dict:
@@ -262,9 +278,7 @@ def inventory(db, today: str | None = None) -> dict:
                 awaiting[cat] += 1
     future = sorted(d for _, _, st, _, _, d in rows if st in IN_FLIGHT and d and d >= today)
     start = next_category(db); i0 = rot.index(start) if start in rot else 0
-    left, seq = dict(ok), []
-    while len(seq) < 366 and left.get(rot[(i0 + len(seq)) % len(rot)], 0) > 0:
-        c = rot[(i0 + len(seq)) % len(rot)]; left[c] -= 1; seq.append(c)
+    seq = rotation_days(ok, rot, start)
     need = {c: 0 for c in rot}
     for k in range(max(0, target - len(future))):
         need[rot[(i0 + k) % len(rot)]] += 1

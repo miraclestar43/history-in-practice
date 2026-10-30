@@ -65,7 +65,13 @@ class EditorStage(unittest.TestCase):
         a = editor.admit_with_record(self.db, self.wd / "edited.json", self.wd / "evidence.json", rec)
         self.assertFalse(a["admitted"]); self.assertIn("exception", a["hint"])
         a = editor.admit_with_record(self.db, self.wd / "edited.json", self.wd / "evidence.json", rec, exception="editor-in-chief accepts R1 wording")
-        self.assertTrue(a["admitted"]); self.assertTrue(state.get(self.db, CANDIDATE["candidate_id"])["approval"].startswith("exception: "))
+        self.assertFalse(a["admitted"]); self.assertIn("whole-article exception", " ".join(a["problems"]))   # no blanket exceptions
+        ids = [i["id"] for i in rec["remaining"]]
+        a = editor.admit_with_record(self.db, self.wd / "edited.json", self.wd / "evidence.json", rec, exception={"NOPE": "x"})
+        self.assertFalse(a["admitted"]); self.assertIn("not open", " ".join(a["problems"]))
+        a = editor.admit_with_record(self.db, self.wd / "edited.json", self.wd / "evidence.json", rec,
+                                     exception={i: "owner accepts this wording" for i in ids})
+        self.assertTrue(a["admitted"], a); self.assertTrue(state.get(self.db, CANDIDATE["candidate_id"])["approval"].startswith("exception: "))
 
     def test_record_does_not_cover_later_changes_or_other_evidence(self):
         call = scripted(self.good_edit()); self.prep(call); rec = editor.edit(self.wd, call=call)

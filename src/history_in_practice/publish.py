@@ -14,6 +14,10 @@ bounded backoff (project.json "site_wait") until the send deadline; a run that
 still waits exits non-zero and the retry timer resumes it later the same day.
 Past the deadline, or on a later day, an unfinished edition becomes `overdue`
 (alerted, never sent late) and the rotation continues with a new edition.
+The deadline is re-checked after every wait and every fetch (a sleep never
+runs past it), before email starts, and before each recipient's send: a
+recipient whose SMTP exchange began before the deadline keeps its actual
+result (accepted/failed/unknown); no new send starts after it.
 A commit made while SITE_PUSH_ENABLED was false is pushed on a later run once
 pushing is enabled (site_publication.status records committed/pushed).
 """
@@ -52,11 +56,18 @@ def today_la() -> str:
     return now_la().date().isoformat()
 
 
+def deadline_at(date: str, tz) -> datetime:
+    hh, mm = map(int, load_project().get("send_deadline", "11:00").split(":"))
+    return datetime.fromisoformat(date).replace(hour=hh, minute=mm, tzinfo=tz)
+
+
 def past_deadline(date: str, now: datetime) -> bool:
     """True when `now` (tz-aware, LA) is after the send deadline of `date`."""
-    hh, mm = map(int, load_project().get("send_deadline", "11:00").split(":"))
-    dl = datetime.fromisoformat(date).replace(hour=hh, minute=mm, tzinfo=now.tzinfo)
-    return now > dl
+    return now > deadline_at(date, now.tzinfo)
+
+
+def seconds_left(date: str, now: datetime) -> float:
+    return (deadline_at(date, now.tzinfo) - now).total_seconds()
 
 
 def expire_stale(db, today: str, now: datetime) -> list[str]:
@@ -146,19 +157,31 @@ def push_pending(db, ed, site_repo: Path) -> str:
     return row[0] if row else "unknown"
 
 
-def wait_live(obj, base, fetch, *, deadline_ok, sleep=time.sleep) -> tuple[bool, list[str], int]:
-    """Bounded backoff on the live check; stops early once past the deadline."""
+def wait_live(obj, base, fetch, *, remaining, sleep=time.sleep) -> tuple[bool, list[str], int]:
+    """Bounded backoff on the live check. `remaining()` = seconds to the send deadline: no wait runs past it
+    and no new check starts after it. The caller re-checks the deadline after the last fetch."""
     sched = load_project().get("site_wait", {}).get("backoff_s", [60, 120, 240, 300, 300, 300])
     ok, problems = site_export.verify(obj, base, fetch=fetch); tries = 1
     for delay in sched:
-        if ok or not deadline_ok():
+        left = remaining()
+        if ok or left <= 0:
             break
-        sleep(delay); ok, problems = site_export.verify(obj, base, fetch=fetch); tries += 1
+        sleep(min(delay, left))
+        if remaining() < 0:
+            break
+        ok, problems = site_export.verify(obj, base, fetch=fetch); tries += 1
     return ok, problems, tries
 
 
 def publish_today(db, runtime, *, date: str | None = None, fetch=site_export.http_fetch, clock=None, sleep=time.sleep) -> dict:
     clock = clock or now_la; now = clock(); date = date or now.date().isoformat(); rep = {"date": date}
+
+    def late(why):                                   # crossed the deadline inside this run: overdue now, never sent late
+        cur = state.get(db, rep["edition_id"])
+        if cur["status"] in IN_FLIGHT:
+            state.transition(db, rep["edition_id"], "overdue", note=why[:500], reason=why[:2000])
+        rep.update(outcome="overdue", reason=why)
+        return rep
     stale = expire_stale(db, date, now)
     if stale:
         rep["overdue"] = stale                       # alerted, never sent late
@@ -187,12 +210,15 @@ def publish_today(db, runtime, *, date: str | None = None, fetch=site_export.htt
         if pub == "committed":
             rep.update(outcome="waiting", reason="site commit is local only: SITE_PUSH_ENABLED is false; enable it and rerun to push"); return rep
         ok, problems, tries = wait_live(obj, runtime.get("SITE_BASE_URL", "https://starhub.vip"), fetch,
-                                        deadline_ok=lambda: not past_deadline(date, clock()), sleep=sleep)
+                                        remaining=lambda: seconds_left(date, clock()), sleep=sleep)
         rep["live_checks"] = tries
+        if ok:
+            state.transition(db, ed["edition_id"], "site_live", note="verified content_sha256"); ed = state.get(db, ed["edition_id"])
+        if past_deadline(date, clock()):            # the wait or the last fetch crossed the deadline
+            return late(f"site {'went live' if ok else 'not live'} only after the {date} send deadline; email not sent")
         if not ok:
             rep.update(outcome="waiting", reason=f"live check failed after {tries} tries: " + "; ".join(problems) +
                        "; the retry timer resumes before the deadline, then it becomes overdue"); return rep
-        state.transition(db, ed["edition_id"], "site_live", note="verified content_sha256"); ed = state.get(db, ed["edition_id"])
     if ed["status"] == "site_live":
         state.transition(db, ed["edition_id"], "email_pending"); ed = state.get(db, ed["edition_id"])
     if ed["status"] == "email_pending":
@@ -201,14 +227,22 @@ def publish_today(db, runtime, *, date: str | None = None, fetch=site_export.htt
         problems = mailer.validate_config(runtime)
         if problems:
             rep.update(outcome="waiting", reason="email configuration incomplete: " + "; ".join(problems)); return rep
+        if past_deadline(date, clock()):
+            return late(f"past the {date} send deadline before email started; nothing sent")
         out = data_dir() / "outbox"; render.build([dict(obj)], out, runtime.get("SITE_BASE_URL", "https://starhub.vip"))
         html = (out / "email" / f"{obj['edition_id']}.html").read_text(encoding="utf-8"); text = (out / "email" / f"{obj['edition_id']}.txt").read_text(encoding="utf-8")
-        rep["deliveries"] = mailer.send_edition(db, obj, html, text, runtime, mode="real")
+        rep["deliveries"] = mailer.send_edition(db, obj, html, text, runtime, mode="real",
+                                                may_start=lambda: not past_deadline(date, clock()))
         done = state.delivery_complete(db, obj["edition_id"], obj["revision"])
         rep["expected_recipients"] = state.expected_count(db, obj["edition_id"], obj["revision"])
         if done:
             state.transition(db, ed["edition_id"], "complete")
-        rep["outcome"] = "complete" if done else "partial"
+            rep["outcome"] = "complete"
+        elif any(d["status"] == "not_started_deadline" for d in rep["deliveries"]):
+            acc = sum(d["status"] == "accepted" for d in rep["deliveries"])
+            return late(f"send deadline passed during sending: {acc} accepted before it, the rest not sent (recorded per recipient)")
+        else:
+            rep["outcome"] = "partial"
     return rep
 
 

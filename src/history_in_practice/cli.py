@@ -361,7 +361,10 @@ def cmd_admit(a):
     if cur and cur["status"] == "pending_review":
         if not a.record:
             print(json.dumps({"admitted": False, "reason": "pending draft: --record EDITOR_RECORD.json required (run `hip edit`)"}, ensure_ascii=False)); return 1
-        r = editor.admit_with_record(d, Path(a.article), Path(a.evidence), _load(a.record), exception=a.exception)
+        exc = dict(x.split("=", 1) for x in a.exception if "=" in x) if a.exception else None
+        if a.exception and any("=" not in x for x in a.exception):
+            exc = " ".join(a.exception)                # refused downstream: a whole-article exception
+        r = editor.admit_with_record(d, Path(a.article), Path(a.evidence), _load(a.record), exception=exc)
         print(json.dumps(r, ensure_ascii=False, indent=1)); return 0 if r.get("admitted") else 1
     if cur:
         print(json.dumps({"admitted": False, "reason": f"already known: {cur['status']}"}, ensure_ascii=False)); return 0
@@ -407,6 +410,16 @@ def cmd_status(a):
 
 
 def cmd_inventory(a):
+    if a.what_if:                      # arithmetic only: counts you name, not editions that exist or are approved
+        rot = config.load_project()["rotation"]; ab = {c[0].upper() if c != "china_modern" else "M": c for c in rot}
+        ab.update({"A": "china_ancient", "W": "world", "M": "china_modern", "U": "us"})
+        counts = {c: 0 for c in rot}
+        for part in a.what_if.split(","):
+            k, n = part.split("="); counts[ab.get(k.strip(), k.strip())] += int(n)
+        start = a.start or rot[0]; seq = pipeline.rotation_days(counts, rot, start)
+        print(json.dumps({"what_if": counts, "start": start, "coverage_days": len(seq), "sequence": seq,
+                          "stops_at": rot[(rot.index(start) + len(seq)) % len(rot)],
+                          "basis": "hypothetical counts; same rotation_days() as `hip inventory`"}, ensure_ascii=False, indent=1)); return 0
     inv = pipeline.inventory(db()); print(json.dumps(inv, ensure_ascii=False, indent=1)); return 1 if inv["alert"] else 0
 
 
@@ -451,10 +464,13 @@ def main(argv=None):
     p = sp.add_parser("nightly"); p.add_argument("--max-articles", type=int, default=2); p.add_argument("--budget-minutes", type=float, default=150)
     p.add_argument("--min-candidates", type=int, default=2); p.set_defaults(f=cmd_nightly)
     p = sp.add_parser("approve-sample"); p.add_argument("edition"); p.add_argument("--reason", required=True); p.set_defaults(f=cmd_approve_sample)
-    for name, f in (("status", cmd_status), ("inventory", cmd_inventory), ("recover", cmd_recover)):
+    for name, f in (("status", cmd_status), ("recover", cmd_recover)):
         sp.add_parser(name).set_defaults(f=f)
+    p = sp.add_parser("inventory"); p.add_argument("--what-if", help="hypothetical counts, e.g. A=1,W=2,M=2,U=1"); p.add_argument("--start")
+    p.set_defaults(f=cmd_inventory)
     p = sp.add_parser("requeue"); p.add_argument("edition"); p.add_argument("--reason", required=True); p.set_defaults(f=cmd_requeue)
-    p = sp.add_parser("admit"); p.add_argument("article"); p.add_argument("evidence"); p.add_argument("--record"); p.add_argument("--exception")
+    p = sp.add_parser("admit"); p.add_argument("article"); p.add_argument("evidence"); p.add_argument("--record")
+    p.add_argument("--exception", action="append", metavar="ISSUE_ID=REASON", help="per-issue owner exception; repeat once per open issue")
     p.add_argument("--as-sample", action="store_true"); p.add_argument("--from-pending", action="store_true", help="kept for compatibility; implied")
     p.set_defaults(f=cmd_admit)
     p = sp.add_parser("registry-rebuild"); p.add_argument("content", nargs="+"); p.add_argument("--db"); p.set_defaults(f=cmd_registry_rebuild)

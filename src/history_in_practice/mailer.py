@@ -141,10 +141,12 @@ def _quiet_close(s):
 
 
 def send_edition(db, obj, html, text, runtime, *, mode="real", smtp_cfg=None, recipients=None, domain="read.starhub.vip",
-                 manual_test=False) -> list[dict]:
+                 manual_test=False, may_start=None) -> list[dict]:
     """Send one edition to each frozen expected recipient once. Returns a report without addresses.
     manual_test=True is the explicit one-off real test (`hip send-test`): allowed while
-    EMAIL_SEND_ENABLED is false, but only with a complete configuration."""
+    EMAIL_SEND_ENABLED is false, but only with a complete configuration.
+    may_start() is checked before each recipient (the send deadline): once it is False no new SMTP
+    exchange starts; recipients already sent keep their recorded result."""
     if mode == "real":
         if not runtime.send_enabled and not manual_test:
             raise SendDisabled("EMAIL_SEND_ENABLED is not true; refusing to send (use `hip send-test` for a one-off test)")
@@ -178,6 +180,8 @@ def send_edition(db, obj, html, text, runtime, *, mode="real", smtp_cfg=None, re
         st, attempts = state.delivery_status(db, eid, rev, key)
         if st in ("accepted", "unknown", "sending"):
             report.append({"recipient": label, "status": st, "action": "skipped (already " + st + ")"}); continue
+        if may_start is not None and not may_start():
+            report.append({"recipient": label, "status": "not_started_deadline", "action": "not sent: send deadline passed"}); continue
         mid = message_id(eid, rev, key, domain)
         state.set_delivery(db, eid, rev, key, label, "sending", message_id=mid, bump=True)
         status, detail = send_one(cfg, build_message(obj, html, text, sender, r, mid, reply_to), r)
