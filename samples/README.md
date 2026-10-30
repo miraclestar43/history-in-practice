@@ -17,19 +17,21 @@
 - 英文 B、C、D 约 10–11 分钟。A 的英文偏长（约 13 分钟），已排入一次“只压缩措辞、不删事实”的模型精简；结果见 `docs/OVERNIGHT_REPORT.md`。
 - A 只有一个来源基础：《史记》系统，《汉书》据其改写；文中已披露。C 的美国教育者抗议信只见于容闳书中转载，文中已注明。
 
-## 自动供稿：进入库存的文章
+## 自动供稿文章与当前状态
 
-`hip prepare-queue` 跑出的候选，经编辑修改后用 `hip admit --from-pending` 进入库存（未排期、未发布）。“模型结果”是自动流程本身给出的结论；`pending_review` 表示按规则不能直接入库，必须人工改。
+`hip prepare-queue` 跑出的候选，经编辑阶段处理。“模型结果”是流水线本身的结论；“当前状态”取自最新一次编辑记录（`editor_record.json`）：只有最终正文经过绑定的复审与英文一致性检查、没有剩余问题，才算入库。2026-10-30 稳定化后，夜里人工编辑入库的七篇都重新复审，详见 `docs/STABILIZATION_REPORT.md`。
 
-| 候选 | 类别 | 标题 | 中文 | 英文 | 摘录 | 模型结果 | 编辑修改 | BLOCK/FIX |
+| 候选 | 类别 | 标题 | 中文 | 英文 | 摘录 | 模型结果 | 编辑修改（人工 + 最近一次自动） | 当前状态 |
 |---|---|---|---|---|---|---|---|---|
-| [darwin-wallace](auto/cand-20261030-darwin-wallace/article.zh.md) · [EN](auto/cand-20261030-darwin-wallace/article.en.md) | 世界史 | 同一个想法，两份手稿：1858年林奈学会的一次安排 | 2546 字 · 约 8 分钟 | 1886 words · ~9 min | 22 | pending_review | 10 | 0 |
-| [franklin-1787](auto/cand-20261030-franklin-1787/article.zh.md) · [EN](auto/cand-20261030-franklin-1787/article.en.md) | 美国史 | 看不出是升是落：1787年9月17日，签字前的最后一讲 | 3107 字 · 约 10 分钟 | 2279 words · ~11 min | 24 | pending_review | 12 | 0 |
-| [jingxing](auto/cand-20261030-jingxing/article.zh.md) · [EN](auto/cand-20261030-jingxing/article.en.md) | 中国古代 | 井陉口前，那条没人听的计 | 2863 字 · 约 9 分钟 | 2385 words · ~12 min | 10 | pending_review | 30 | 0 |
-| [lian-lin](auto/cand-20261030-lian-lin/article.zh.md) · [EN](auto/cand-20261030-lian-lin/article.en.md) | 中国古代 | 位次之争：廉颇的委屈与那根荆条 | 2859 字 · 约 9 分钟 | 2500 words · ~12 min | 17 | pending_review | 34 | 0 |
-| [shackleton-ocean-camp](auto/cand-20261030-shackleton-ocean-camp/article.zh.md) · [EN](auto/cand-20261030-shackleton-ocean-camp/article.en.md) | 世界史 | 走六英里，进一英里 | 2837 字 · 约 9 分钟 | 2279 words · ~11 min | 18 | checked（旧规则；审稿 11 条 fix，按现行规则为 pending_review，已重排） | 39 | 0 |
-| [snow-water-companies](auto/cand-20261030-snow-water-companies/article.zh.md) · [EN](auto/cand-20261030-snow-water-companies/article.en.md) | 世界史 | 同一条街上的两根水管 | 3012 字 · 约 9 分钟 | 2232 words · ~11 min | 12 | checked（旧规则；审稿 13 条 fix，按现行规则为 pending_review，已重排） | 14 | 0 |
-| [washington-resigns](auto/cand-20261030-washington-resigns/article.zh.md) · [EN](auto/cand-20261030-washington-resigns/article.en.md) | 美国史 | 鞠躬的人与脱帽的人：1783年的一次权力交还 | 2936 字 · 约 9 分钟 | 2424 words · ~12 min | 18 | pending_review | 33 | 0 |
+| [darwin-wallace](auto/cand-20261030-darwin-wallace/article.zh.md) · [EN](auto/cand-20261030-darwin-wallace/article.en.md) | 世界史 | 同一个想法，两份手稿：1858年林奈学会的一次安排 | 2617 字 · 约 8 分钟 | 1900 words · ~10 min | 22 | pending_review | 20 | **待处理：2 个未解决问题** |
+| [franklin-1787](auto/cand-20261030-franklin-1787/article.zh.md) · [EN](auto/cand-20261030-franklin-1787/article.en.md) | 美国史 | 看不出是升是落：1787年9月17日，签字前的最后一讲 | 3072 字 · 约 10 分钟 | 2259 words · ~11 min | 24 | pending_review | 29 | **待处理：2 个未解决问题** |
+| [jingxing](auto/cand-20261030-jingxing/article.zh.md) · [EN](auto/cand-20261030-jingxing/article.en.md) | 中国古代 | 井陉口前，那条没人听的计 | 2876 字 · 约 9 分钟 | 2392 words · ~12 min | 10 | pending_review | 39 | **待处理：2 个未解决问题** |
+| [lian-lin](auto/cand-20261030-lian-lin/article.zh.md) · [EN](auto/cand-20261030-lian-lin/article.en.md) | 中国古代 | 位次之争：廉颇的委屈与那根荆条 | 2854 字 · 约 9 分钟 | 2516 words · ~13 min | 17 | pending_review | 52 | **待处理：5 个未解决问题** |
+| [shackleton-ocean-camp](auto/cand-20261030-shackleton-ocean-camp/article.zh.md) · [EN](auto/cand-20261030-shackleton-ocean-camp/article.en.md) | 世界史 | 走六英里，进一英里 | 2824 字 · 约 9 分钟 | 2271 words · ~11 min | 18 | checked（旧规则；审稿 11 条 fix，按现行规则为 pending_review，已重排） | 44 | **待处理：2 个未解决问题** |
+| [snow-water-companies](auto/cand-20261030-snow-water-companies/article.zh.md) · [EN](auto/cand-20261030-snow-water-companies/article.en.md) | 世界史 | 同一条街上的两根水管 | 3010 字 · 约 9 分钟 | 2232 words · ~11 min | 12 | checked（旧规则；审稿 13 条 fix，按现行规则为 pending_review，已重排） | 16 | **已入库（编辑记录绑定最终正文）** |
+| [washington-resigns](auto/cand-20261030-washington-resigns/article.zh.md) · [EN](auto/cand-20261030-washington-resigns/article.en.md) | 美国史 | 鞠躬的人与脱帽的人：1783年的一次权力交还 | 2953 字 · 约 9 分钟 | 2431 words · ~12 min | 18 | pending_review | 53 | **待处理：4 个未解决问题** |
+| [auto: qsg412-1](auto/cand-auto-20261030-qsg412-1/article.zh.md) · [EN](auto/cand-auto-20261030-qsg412-1/article.en.md) | 中国近现代 | 停不下来的西征：光绪元年的一笔账 | 2807 字 · 约 9 分钟 | 2509 words · ~13 min | 21 | - | 0 | **待处理：3 个未解决问题** |
+| [auto: sj077-1](auto/cand-auto-20261030-sj077-1/article.zh.md) · [EN](auto/cand-auto-20261030-sj077-1/article.en.md) | 中国古代 | 折返夷门：邯郸被围那年，一个不肯白送的人 | 2807 字 · 约 9 分钟 | 2883 words · ~14 min | 21 | - | 23 | **待处理：5 个未解决问题** |
 
 - 编辑修改数包含整段重写（记为一条，前后全文都在 `editor_log.json`）。
 - 最初的候选证据包只有 8–10 条摘录，初稿只有 6–7 分钟；从同一批已缓存的来源补足摘录后，重写到 9 分钟左右。之后的候选（廉蔺、富兰克林、达尔文与华莱士）在跑模型前就补足了摘录。

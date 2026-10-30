@@ -53,9 +53,13 @@ def auto_rows():
         n_fix = sum(1 for i in rv.get("issues", []) if i.get("severity") in ("fix", "block"))
         if outcome == "checked" and n_fix:      # judged by the pre-rule code in queue 2
             outcome = f"checked（旧规则；审稿 {n_fix} 条 fix，按现行规则为 pending_review，已重排）"
-        out.append(f"| [{cid.replace('cand-20261030-', '')}](auto/{cid}/article.zh.md) · [EN](auto/{cid}/article.en.md) | {CAT[o['category']]} | {o['title']['zh']} | "
+        er = json.loads((d.parent / "editor_record.json").read_text()) if (d.parent / "editor_record.json").exists() else {}
+        now = ("已入库（编辑记录绑定最终正文）" if er.get("outcome") == "admissible" else
+               f"待处理：{len(er.get('remaining', []))} 个未解决问题" if er else "（无编辑记录）")
+        nedits = len(log) + sum(x.get("edits_total", 0) for x in [er])
+        out.append(f"| [{cid.replace('cand-20261030-', '').replace('cand-auto-20261030-', 'auto: ')}](auto/{cid}/article.zh.md) · [EN](auto/{cid}/article.en.md) | {CAT[o['category']]} | {o['title']['zh']} | "
                    f"{o['length']['zh_chars']} 字 · 约 {o['reading_minutes']['zh']} 分钟 | {o['length']['en_words']} words · ~{o['reading_minutes']['en']} min | "
-                   f"{len(ev['excerpts'])} | {outcome} | {len(log)} | {sum(1 for l, _ in f if l in ('BLOCK', 'FIX'))} |")
+                   f"{len(ev['excerpts'])} | {outcome} | {nedits} | **{now}** |")
     return out
 
 
@@ -76,11 +80,11 @@ def write():
 - 英文 B、C、D 约 10–11 分钟。A 的英文偏长（约 13 分钟），已排入一次“只压缩措辞、不删事实”的模型精简；结果见 `docs/OVERNIGHT_REPORT.md`。
 - A 只有一个来源基础：《史记》系统，《汉书》据其改写；文中已披露。C 的美国教育者抗议信只见于容闳书中转载，文中已注明。
 
-## 自动供稿：进入库存的文章
+## 自动供稿文章与当前状态
 
-`hip prepare-queue` 跑出的候选，经编辑修改后用 `hip admit --from-pending` 进入库存（未排期、未发布）。“模型结果”是自动流程本身给出的结论；`pending_review` 表示按规则不能直接入库，必须人工改。
+`hip prepare-queue` 跑出的候选，经编辑阶段处理。“模型结果”是流水线本身的结论；“当前状态”取自最新一次编辑记录（`editor_record.json`）：只有最终正文经过绑定的复审与英文一致性检查、没有剩余问题，才算入库。2026-10-30 稳定化后，夜里人工编辑入库的七篇都重新复审，详见 `docs/STABILIZATION_REPORT.md`。
 
-| 候选 | 类别 | 标题 | 中文 | 英文 | 摘录 | 模型结果 | 编辑修改 | BLOCK/FIX |
+| 候选 | 类别 | 标题 | 中文 | 英文 | 摘录 | 模型结果 | 编辑修改（人工 + 最近一次自动） | 当前状态 |
 |---|---|---|---|---|---|---|---|---|
 {chr(10).join(arows)}
 

@@ -14,10 +14,12 @@ A daily bilingual history story, grounded in sources and connected to everyday d
 
 ## 当前状态：实现开发中（overnight 2026-10-30）
 
-尚未部署、未启用定时任务、未发送真实邮件。进展与验证结果见 [docs/OVERNIGHT_REPORT.md](docs/OVERNIGHT_REPORT.md)。
+尚未部署、未启用定时任务、未发送真实邮件。稳定化（发布等待与逾期、轮换覆盖、发信校验、编辑阶段、候选供给）与真实运行结果见 [docs/STABILIZATION_REPORT.md](docs/STABILIZATION_REPORT.md)；overnight 过程见 [docs/OVERNIGHT_REPORT.md](docs/OVERNIGHT_REPORT.md)（顶部有更正）。
+
+当前库存按轮换只有 0 天可排：1 篇可排、9 篇待处理、5 篇样稿待批准。原因和需要人决定的事见稳定化报告第 6 节。
 
 - [完整方案](docs/PLAN.md) · [最新用户要求](docs/USER_REQUIREMENTS_20261030.md) · [编辑规范](docs/EDITORIAL_BRIEF.md) · [发信配置](docs/EMAIL_SETUP.md)
-- [五篇样稿、七篇自动供稿文章（中英各约十分钟目标）与预览](samples/README.md)
+- [五篇样稿、九篇自动供稿文章（含待处理）与预览](samples/README.md)
 - 评审：[Fable](docs/reviews/FABLE_REVIEW.md) → [ChatGPT](docs/reviews/CHATGPT_REVIEW.md) → [Opus 验证](docs/reviews/OPUS_VALIDATION.md)
 
 ## 代码

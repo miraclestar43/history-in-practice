@@ -221,8 +221,9 @@ def edit(draft_dir: Path, call=None, max_rounds: int = MAX_ROUNDS) -> dict:
         rec["carried_over"] = carried
         fresh = collect_issues(rv, pv, findings)
         issues = [dict(i, id=f"{i['id']}'") for i in carried] + fresh   # carried ids get a prime so they stay distinct
-        if not applied:
-            break                                   # no progress possible this round
+        resolved = len(rec["issues_in"]) - len(carried)
+        if not applied and not resolved:
+            break                                   # no edit and nothing resolved: no progress possible
     if not record["rounds"]:                         # nothing flagged: still bind a review to the final content
         rv, pv = reviews(o, ev, caller, "r0"); findings, _ = checks.check(o, ev)
         record["rounds"].append({"round": 0, "issues_in": [], "review_after": rv, "parity_after": pv, "checker_after": findings,

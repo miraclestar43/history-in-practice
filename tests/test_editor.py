@@ -103,5 +103,12 @@ class EditorStage(unittest.TestCase):
         self.assertEqual(rec2["seeded_issues"], len(rec["remaining"])); self.assertGreaterEqual(len([r for r in rec2["rounds"] if r["round"]]), 1)
         self.assertTrue(rec2["rounds"][0]["issues_in"][0]["id"].startswith("S"))
 
+    def test_evidenced_rejection_counts_as_progress_and_new_issues_get_a_round(self):
+        rej = {"edits": [], "dispositions": [{"issue": "R1", "action": "rejected", "reason": "E1 原文「平遂至修武降漢」支持现写法"}]}
+        call = scripted(rej, rereview_issues=[{"severity": "fix", "section": "story", "para": 0, "problem": "另一个问题"}])
+        self.prep(call); rec = editor.edit(self.wd, call=call)
+        self.assertEqual(rec["rounds"][0]["carried_over"], [])                      # rejected with a reason: resolved
+        self.assertEqual(len([r for r in rec["rounds"] if r["round"]]), 2)          # the new issue still gets a round
+
 if __name__ == "__main__":
     unittest.main()

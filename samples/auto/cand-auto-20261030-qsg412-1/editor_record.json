@@ -1,10 +1,10 @@
 {
- "candidate_id": "attempt-2",
+ "candidate_id": "attempt-3",
  "editor": "hermes-isolated editor (prompts/edit_zh_en.md)",
- "code_rev": "a61c045",
- "started_at": 1793379549.7223604,
+ "code_rev": "e0fa34d",
+ "started_at": 1793387707.525031,
  "evidence_sha256": "b0e102ba14bf56f7d0e399992cac96efc095ddc8ad5b4c8dc6f043ac3c40fafc",
- "original_content_sha256": "ba69d7fc4625735da2a4b86540c9d36c13a3573fe411a2e2cf8585bb67ad38fc",
+ "original_content_sha256": "aa5af855548c29aeeee135b6e2091dec674992fea62f441bc19dd9967007ee03",
  "rounds": [
   {
    "round": 1,
@@ -16,7 +16,7 @@
      "where": "story.0",
      "problem": "「赞成一方在史料里只留下这一句判断」与证据不符：E3记有论者一方的整段理由（岁糜数百万此漏卮、竭天下力赡西军无以待不虞、宜徇英人议许帕夏自立称籓），且与本文开头段引用的正是这些理由，自相矛盾；未记具体论据的只是李鸿章个人",
      "suggestion": "改为：传记未记鸿章本人的具体论据，赞成一方的理由在史料中仅存「论者多言」一段概述",
-     "seeded_from": "R1"
+     "seeded_from": "S1"
     },
     {
      "id": "S2",
@@ -25,7 +25,7 @@
      "where": "limits.1",
      "problem": "列举纪年「光绪元年、二年、三年、六年」漏掉四年，正文「四年正月，宗棠条上新疆建行省事宜」用到四年",
      "suggestion": "改为「原文纪年用光绪元年、二年、三年、四年、六年」",
-     "seeded_from": "R2"
+     "seeded_from": "S2"
     },
     {
      "id": "S3",
@@ -34,72 +34,26 @@
      "where": "sections.analysis.4",
      "problem": "The English sentence ends with a truncated phrase: \"the foreigners began to tell the story about\" — the verb has no object, so the claim (外国乃稍稍传说之, that foreigners began spreading word of him/it) is left incomplete.",
      "suggestion": "Change to \"the foreigners began to spread the word about him.\"",
-     "seeded_from": "P3"
+     "seeded_from": "S3"
     }
    ],
-   "edits_applied": [
-    {
-     "path": "sections.story.0.zh",
-     "before": "海防一派的主张写得直白：西征是填不满的漏卮，海上一旦有事将无以应对，不如许帕夏自立为国、向中国称籓，把力量全数转去海防。传记说「鴻章言之尤力」，却没有记下他的具体论据；赞成一方在史料里只留下这一句判断。",
-     "after": "海防一派的主张写得直白：西征是填不满的漏卮，海上一旦有事将无以应对，不如许帕夏自立为国、向中国称籓，把力量全数转去海防。传记说「鴻章言之尤力」，却没有记下鸿章本人的具体论据；赞成一方的理由在史料里仅存「論者多言」一段概述。",
-     "reason": "证据E3记有「論者多言」一整段赞成理由，只有李鸿章个人论据未记，故收窄为只缺鸿章本人论据，并将仅存的概述标为逐字片段。",
-     "issues": [
-      "S1"
-     ]
-    },
-    {
-     "path": "sections.story.0.en",
-     "before": "The coastal-defense case was stated flatly: the expedition was a vessel with a hole in it, and if trouble came at sea there would be nothing to meet it with. Better to let Pasha set up a tributary state and turn every resource to the coast. The biography says \"Li Hongzhang pressed this hardest of all,\" but records none of his specific arguments; for that side of the debate, one judgment is all the record preserves.",
-     "after": "The coastal-defense case was stated flatly: the expedition was a vessel with a hole in it, and if trouble came at sea there would be nothing to meet it with. Better to let Pasha set up a tributary state and turn every resource to the coast. The biography says \"Li Hongzhang pressed this hardest of all,\" but records none of Li Hongzhang's own specific arguments; for that side of the debate, the record preserves only one summary paragraph of the proponents' case.",
-     "reason": "与中文同步：只有鸿章本人论据未记，赞成一方理由以一段概述存世。",
-     "issues": [
-      "S1"
-     ]
-    },
-    {
-     "path": "sections.limits.1.zh",
-     "before": "数字一律照录原文，无法核实口径与范围：岁糜数百万没有说明是常年军费还是协饷缺口，降缠回万余等同样如此。原文纪年用光绪元年、二年、三年、六年，本文不换算公元；明年正月和议成的明年，指前文所记年份的下一年。另需点明：帕夏畏俄逼是原文的表述，本文转述时已注明出自传记。至于下一节的替代选择与两段现代场景，都是作者为说明判断方法所加，不见于史料。",
-     "after": "数字一律照录原文，无法核实口径与范围：岁糜数百万没有说明是常年军费还是协饷缺口，降缠回万余等同样如此。原文纪年用光绪元年、二年、三年、四年、六年，本文不换算公元；明年正月和议成的明年，指前文所记年份的下一年。另需点明：帕夏畏俄逼是原文的表述，本文转述时已注明出自传记。至于下一节的替代选择与两段现代场景，都是作者为说明判断方法所加，不见于史料。",
-     "reason": "正文用到「四年正月」（E12），纪年列举须补上四年。",
-     "issues": [
-      "S2"
-     ]
-    },
-    {
-     "path": "sections.limits.1.en",
-     "before": "Numbers are reproduced as written and their basis cannot be verified: \"several million a year\" is not identified as standing military spending or as a shortfall in provincial remittances, and \"more than ten thousand\" who submitted is likewise unqualified. Dates stay in the original — the first, second, third and sixth years of Guangxu — and are not converted; \"the first month of the following year\" means the year after the one just named. One more point: \"Pasha feared Russian pressure\" is the source's own phrasing, flagged here as the biography's. The alternative option below and the two modern scenes are the author's additions, made to show a method of judgment, and appear nowhere in the record.",
-     "after": "Numbers are reproduced as written and their basis cannot be verified: \"several million a year\" is not identified as standing military spending or as a shortfall in provincial remittances, and \"more than ten thousand\" who submitted is likewise unqualified. Dates stay in the original — the first, second, third, fourth and sixth years of Guangxu — and are not converted; \"the first month of the following year\" means the year after the one just named. One more point: \"Pasha feared Russian pressure\" is the source's own phrasing, flagged here as the biography's. The alternative option below and the two modern scenes are the author's additions, made to show a method of judgment, and appear nowhere in the record.",
-     "reason": "与中文同步补上第四年，对应正文 the fourth year。",
-     "issues": [
-      "S2"
-     ]
-    },
-    {
-     "path": "sections.analysis.4.en",
-     "before": "After the victories, opinion abroad shifted. The empire had been at peace so long that its armaments had gone slack, and the overseas powers, talking of wealth and strength among themselves, still whispered that China was frail even after it had put down one great crisis after another. Once Zuo had dealt with Pasha, the foreigners began to tell the story about. On his first arrival in the capital, a church tower in the Inner City overlooked the palace, and popular rumor said the Marquis Zuo would have it torn down; he posted a proclamation to explain, and the talk stopped.",
-     "after": "After the victories, opinion abroad shifted. The empire had been at peace so long that its armaments had gone slack, and the overseas powers, talking of wealth and strength among themselves, still whispered that China was frail even after it had put down one great crisis after another. Once Zuo had dealt with Pasha, the foreigners began to spread the word about him. On his first arrival in the capital, a church tower in the Inner City overlooked the palace, and popular rumor said the Marquis Zuo would have it torn down; he posted a proclamation to explain, and the talk stopped.",
-     "reason": "补全谓语宾语，使英文与中文「外国乃稍稍传说之」对应（外国开始传颂此事/其人）。",
-     "issues": [
-      "S3"
-     ]
-    }
-   ],
+   "edits_applied": [],
    "edits_failed": [],
    "dispositions": [
     {
      "issue": "S1",
-     "action": "fixed",
-     "reason": "证据E3原文为「論者多言……宜徇英人議，許帕夏自立為國稱籓，罷西征，專力海防。鴻章言之尤力。」赞成一方的理由（岁糜数百万、竭天下力赡西军、宜徇英人议）确有整段记载，仅李鸿章本人论据未记。已改为「赞成一方的理由在史料里仅存「論者多言」一段概述」，英文同步。"
+     "action": "rejected",
+     "reason": "该问题所指的原句「赞成一方在史料里只留下这一句判断」在现稿中并不存在，story.0 现有文字已是建议写法：「传记说「鴻章言之尤力」，却没有记下鸿章本人的具体论据；赞成一方的理由在史料里仅存「論者多言」一段概述。」这与证据 E3 原文一致：「論者多言自高宗定新疆，歲糜數百萬，此漏卮也。今至竭天下力贍西軍，無以待不虞，尤失計。宜徇英人議，許帕夏自立為國稱籓，罷西征，專力海防。鴻章言之尤力。」即赞成一方的理由确只存「論者多言」一段概述，而未记具体论据的仅李鸿章一人，故现写法成立，无需改动。"
     },
     {
      "issue": "S2",
-     "action": "fixed",
-     "reason": "正文依据E12「四年正月，條上新疆建行省事宜」用到四年，纪年列举漏列，已补为「元年、二年、三年、四年、六年」，英文同步。"
+     "action": "rejected",
+     "reason": "该问题所指的漏列并不存在，limits.1 现文已作「原文纪年用光绪元年、二年、三年、四年、六年」，含四年，与正文「四年正月，宗棠条上新疆建行省事宜」用到的年份一致。证据 E12 原文即「四年正月，條上新疆建行省事宜」，现写法照录该年纪年并与之相符，故无需改动。"
     },
     {
      "issue": "S3",
-     "action": "fixed",
-     "reason": "原句 the foreigners began to tell the story about 缺宾语，无法承载E22「及宗棠平帕夏，外國乃稍稍傳說之」的意思；改为 the foreigners began to spread the word about him，中文「外国乃稍稍传说之」已完整，无需改动。"
+     "action": "rejected",
+     "reason": "该问题所指的截断句 \"the foreigners began to tell the story about\" 在现稿中并不存在，analysis.4.en 现文结尾为 \"Once Zuo had dealt with Pasha, the foreigners began to spread the word about him.\"，动词已有宾语、句意完整。该句对应证据 E22 原文「及宗棠平帕夏，外國乃稍稍傳說之。」，「之」即指帕夏其人其事，现译文 spread the word about him 与原文逐字所指一致，故无需改动。"
     }
    ],
    "checker_after": [
@@ -113,31 +67,56 @@
     ]
    ],
    "content_sha256_after": "aa5af855548c29aeeee135b6e2091dec674992fea62f441bc19dd9967007ee03",
-   "review_after": null,
-   "parity_after": {
+   "review_after": {
     "issues": [
      {
-      "path": "sections.analysis.3",
+      "section": "context",
+      "para": 1,
       "severity": "fix",
-      "problem": "The English adds a factual gloss on the nature of the old garrison abuses — \"men on the army rolls who could not also farm\" — which has no counterpart in the Chinese; the ZH only says he \"set out the abuses of the old garrisons inside and outside the pass\" without describing them.",
-      "suggestion": "Delete \"— men on the army rolls who could not also farm —\" so the sentence reads \"the abuses of the old garrisons inside and outside the pass — and proposed dividing the two\"."
+      "problem": "「乌鲁木齐也在其口头计划之内」把原文「且言將代取烏魯木齊」的「代取」（俄称代清取）改成了俄国自己要占乌鲁木齐，含义变味",
+      "suggestion": "改为「且言将代清取乌鲁木齐（原文作『代取』）」"
      },
      {
-      "path": "sections.analysis.4",
-      "severity": "fix",
-      "problem": "The English adds \"talking of wealth and strength among themselves\" as what the overseas powers discussed; the Chinese says only 海外诸国…仍私议以为脆弱 (privately judged China frail), with no mention of wealth and strength.",
-      "suggestion": "Drop \"talking of wealth and strength among themselves, \" so it reads \"and the overseas powers still whispered that China was frail…\"."
-     },
-     {
-      "path": "sections.context.0",
+      "section": "context",
+      "para": 1,
       "severity": "note",
-      "problem": "The English inserts \"— a title, roughly governor —\" explaining that Pasha is a title; the Chinese gives no such explanation and uses 帕夏 unadorned. A translator's term gloss rather than a content mismatch.",
-      "suggestion": "Optionally drop \"— a title, roughly governor —\"; otherwise no change needed."
+      "problem": "「到光绪元年，伊犁已在俄国手中」为按叙述顺序推得，证据未记俄取伊犁的具体时间（仅『當是時』）",
+      "suggestion": "改为「在此之前俄已取伊犁（原文未记具体年月）」"
+     },
+     {
+      "section": "story",
+      "para": 0,
+      "severity": "fix",
+      "problem": "「海上一旦有事将无以应对」改写了引文所据的「無以待不虞」，原文泛指不虞（不测），未限定海上",
+      "suggestion": "改为「天下之力尽耗于西军，一旦有不虞之事将无以应对」"
+     },
+     {
+      "section": "story",
+      "para": 7,
+      "severity": "note",
+      "problem": "顺序与原文不合：原文是伯克胡里纳白彦虎攻汉城、大军至遁走俄在前，西四城相继下在后，稿中把遁走俄放在西四城下之后",
+      "suggestion": "按原文改为「伯克胡里、白彦虎遁走俄，西四城相继下」"
+     },
+     {
+      "section": "analysis",
+      "para": 4,
+      "severity": "note",
+      "problem": "「他后来初入京师」的『后来』是加写的时间；原文「其初入京師」未记年月，且该条写的是民间讙言与示谕止之，与「外国改观」不是同一件事",
+      "suggestion": "删去「后来」，并另起一句标明此为传记另一则记事，与外国改观分开"
      }
     ],
-    "overall": "The English edition tracks the Chinese closely on all facts, dates, numbers, names, quotations and hedges, with only two small explanatory additions in the analysis section and one term gloss needing trimming.",
+    "unsupported_claims": [
+     "「到光绪元年，伊犁已在俄国手中」——证据只说『當是時』俄取伊犁，未记时间",
+     "「乌鲁木齐也在其口头计划之内」——原文为『將代取』，非俄自取之计划",
+     "「海上一旦有事将无以应对」——原文仅作『無以待不虞』",
+     "「他后来初入京师」——原文未记此事时间"
+    ],
+    "invented_inner_life": [],
+    "quote_mismatches": [],
+    "overall": "引语与主要时地人名均与《清史稿·左宗棠传》相符，史实与作者推断分界清楚，仅有上述转述失真与语序、时间补写的小问题，修改后可用。",
     "_content_sha256": "aa5af855548c29aeeee135b6e2091dec674992fea62f441bc19dd9967007ee03"
-   }
+   },
+   "parity_after": null
   }
  ],
  "seeded_issues": 3,
@@ -150,7 +129,7 @@
    "where": "story.0",
    "problem": "「赞成一方在史料里只留下这一句判断」与证据不符：E3记有论者一方的整段理由（岁糜数百万此漏卮、竭天下力赡西军无以待不虞、宜徇英人议许帕夏自立称籓），且与本文开头段引用的正是这些理由，自相矛盾；未记具体论据的只是李鸿章个人",
    "suggestion": "改为：传记未记鸿章本人的具体论据，赞成一方的理由在史料中仅存「论者多言」一段概述",
-   "seeded_from": "R1"
+   "seeded_from": "S1"
   },
   {
    "id": "S2",
@@ -159,7 +138,7 @@
    "where": "limits.1",
    "problem": "列举纪年「光绪元年、二年、三年、六年」漏掉四年，正文「四年正月，宗棠条上新疆建行省事宜」用到四年",
    "suggestion": "改为「原文纪年用光绪元年、二年、三年、四年、六年」",
-   "seeded_from": "R2"
+   "seeded_from": "S2"
   },
   {
    "id": "S3",
@@ -168,13 +147,13 @@
    "where": "sections.analysis.4",
    "problem": "The English sentence ends with a truncated phrase: \"the foreigners began to tell the story about\" — the verb has no object, so the claim (外国乃稍稍传说之, that foreigners began spreading word of him/it) is left incomplete.",
    "suggestion": "Change to \"the foreigners began to spread the word about him.\"",
-   "seeded_from": "P3"
+   "seeded_from": "S3"
   }
  ],
  "final_reviewed": false,
  "outcome": "pending_review",
  "model_calls": 3,
- "model_wall_s": 343.2,
- "edits_total": 5,
- "finished_at": 1793379892.9234045
+ "model_wall_s": 245.1,
+ "edits_total": 0,
+ "finished_at": 1793387952.667476
 }

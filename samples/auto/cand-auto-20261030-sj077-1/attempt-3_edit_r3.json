@@ -1,0 +1,53 @@
+{
+ "edits": [
+  {
+   "path": "sections.analysis.0.zh",
+   "find": "求魏王（走不通）、只身赴死（无用）",
+   "replace": "求魏王（走不通，据简报转述）、赴秦军而死（侯生斥为「以肉投餒虎」）",
+   "issues": [
+    "R1"
+   ],
+   "reason": "原句把权衡过的选项写成事实且丢失简报标注，又与dek“准备带门客去送死”、E14“尚安事客”矛盾；改为证据支持的说法：求魏王一条补回“据简报转述”，赴死一条改为率门客赴秦军、由侯生斥为「以肉投餒虎」（E14逐字片段）"
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "find": "appeal to the king (a dead end), go die alone (useless)",
+   "replace": "appeal to the king (a dead end, retold from the briefing), ride to die at the Qin army (which Hou Ying called throwing meat to a starving tiger)",
+   "issues": [
+    "R1"
+   ],
+   "reason": "英文同步修改：补回简报标注，删去“alone”（他是率门客赴秦军），赴死选项改为侯生斥责的说法，不加引号以免冒充原文引语"
+  },
+  {
+   "path": "sections.story.8.zh",
+   "find": "，作者推断，收尾也就回不去魏国的朝堂。",
+   "replace": "。",
+   "issues": [
+    "R2"
+   ],
+   "reason": "该段kind=record，而E25只写“公子亦自知也……使將將其軍歸魏，而公子獨與客留趙”，未写“回不去朝堂”；删去推断之辞，结论收回原文范围（自知、遣军归魏、留赵）"
+  },
+  {
+   "path": "sections.story.8.en",
+   "find": "; the author's inference is that its ending kept him out of the Wei court altogether",
+   "replace": ".",
+   "issues": [
+    "R2"
+   ],
+   "reason": "英文同步删除同一推断，只保留E25逐字支持的内容"
+  }
+ ],
+ "ev_changes": [],
+ "dispositions": [
+  {
+   "issue": "R1",
+   "action": "fixed",
+   "reason": "已按建议处理：删去“只身”（E14“尚安事客”与dek“准备带门客去送死”都表明他本是率门客赴秦军），赴死选项改写为“赴秦军而死（侯生斥为「以肉投餒虎」）”，其中「以肉投餒虎」为E14逐字片段；“求魏王（走不通）”补回“据简报转述”标注，因证据包无求魏王发兵之记载（对应hook.1、story.0的转述标注）。中英同步修改。"
+  },
+  {
+   "issue": "R2",
+   "action": "fixed",
+   "reason": "采用建议的第二条路径：该段kind=record而E25原文止于“魏王怒公子之盜其兵符，矯殺晉鄙，公子亦自知也。……使將將其軍歸魏，而公子獨與客留趙”，并无“回不去魏国的朝堂”之说；已删除该推断句，结论收回原文范围（他自知、遣军归魏、自己留赵），kind与ev保持不变（E25本就支撑该段内容）。中英同步修改。"
+  }
+ ]
+}
