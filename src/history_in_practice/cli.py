@@ -19,8 +19,10 @@
   hip status | hip inventory | hip recover
   hip retry-send ARTICLE.json --real|--local-smtp HOST:PORT   (retries `failed` only, never `unknown`)
   hip requeue EDITION --reason TEXT        (checked -> pending, e.g. after a stricter rule)
-  hip admit ARTICLE.json EVIDENCE.json --record EDITOR_RECORD.json [--exception REASON]
-                                           (record must match the article and evidence; remaining FIX needs a named exception)
+  hip final-edit EDITION [EDITION ...]     named final editor (Pi-local Claude Code CLI, subscription); admits only via a verified record
+  hip admit ARTICLE.json EVIDENCE.json --record RECORD.json [--exception ISSUE_ID=REASON ...]
+                                           (record must match the article and evidence; each open FIX needs its own named reason;
+                                            final-editor records accept no exceptions)
   hip admit ARTICLE.json EVIDENCE.json --as-sample   (register a sample: never schedulable until `hip approve-sample`)
   hip approve-sample EDITION --reason TEXT
   hip registry-rebuild CONTENT.json...
@@ -307,6 +309,37 @@ def cmd_edit_queue(a):
     print(json.dumps({"edited": out, "inventory": pipeline.inventory(d)}, ensure_ascii=False, indent=1)); return 0
 
 
+def _final_one(d, cid: str) -> dict:
+    from . import final_edit
+    cur = state.get(d, cid)
+    if not cur or cur["status"] != "pending_review":
+        return {"edition": cid, "outcome": "skipped", "reason": f"status {cur['status'] if cur else 'unknown'}"}
+    rec = final_edit.run(cid, d)
+    res = {"edition": cid, "outcome": rec["outcome"], "elapsed_min": rec.get("elapsed_min"), "open_issues": rec.get("open_issues"),
+           "failure": rec.get("failure") or rec.get("reason"), "edits": len(rec.get("edits", [])), "issues": len(rec.get("issues", []))}
+    if rec["outcome"] == "admissible":
+        out = final_edit.OUT_ROOT / cid / "final"
+        res.update(final_edit.admit(d, out / "article.json", out / "evidence.json", rec))
+        res["outcome"] = "admitted" if res.get("admitted") else "pending_review"
+    elif rec["outcome"] == "pending_review":
+        why = f"final editor: {len(rec.get('open_issues') or [])} open issue(s)" + (f"; {rec['failure']}" if rec.get("failure") else "")
+        state.transition(d, cid, "prepared", note=why); state.transition(d, cid, "pending_review", note=why, reason=why)
+    return res
+
+
+def cmd_final_edit(a):
+    """Named final editor (Pi-local Claude Code CLI) on pending editions; admits only through a verified record."""
+    d = db(); out = []
+    with publish.lock("prepare"):
+        for cid in a.editions:
+            try:
+                out.append(_final_one(d, cid))
+            except Exception as e:
+                out.append({"edition": cid, "outcome": "error", "reason": f"{type(e).__name__}: {e}"[:300]})
+    print(json.dumps({"final_edit": out, "inventory": pipeline.inventory(d)}, ensure_ascii=False, indent=1))
+    return 0 if all(r.get("outcome") == "admitted" for r in out) else 2
+
+
 def cmd_rereview(a):
     """Admitted edition without a bound review (e.g. a manual editor pass): requeue, then run the editor stage
     with zero edit rounds; it is re-admitted only if the fresh review and parity check of its current content are clean."""
@@ -461,6 +494,7 @@ def main(argv=None):
     p.set_defaults(f=cmd_edit_queue)
     p = sp.add_parser("rereview"); p.add_argument("edition"); p.add_argument("--rounds", type=int, default=0)
     p.add_argument("--article", help="re-review this file (e.g. after a manual editor pass) instead of the stored version"); p.set_defaults(f=cmd_rereview)
+    p = sp.add_parser("final-edit"); p.add_argument("editions", nargs="+"); p.set_defaults(f=cmd_final_edit)
     p = sp.add_parser("nightly"); p.add_argument("--max-articles", type=int, default=2); p.add_argument("--budget-minutes", type=float, default=150)
     p.add_argument("--min-candidates", type=int, default=2); p.set_defaults(f=cmd_nightly)
     p = sp.add_parser("approve-sample"); p.add_argument("edition"); p.add_argument("--reason", required=True); p.set_defaults(f=cmd_approve_sample)
