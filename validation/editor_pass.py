@@ -1,5 +1,6 @@
-"""Editor pass on an automated draft: apply logged edits, re-finalize, re-check,
-copy the result into samples/auto/<candidate>/ (git) for review and `hip admit`.
+"""Manual editor pass on an automated draft: apply logged edits, re-finalize, re-check,
+copy the result into samples/auto/<candidate>/ (git). The result is NOT admissible by
+itself: `hip rereview EDITION --article FILE` binds a fresh review + parity check to it.
 usage: editor_pass.py <draft_dir> <edits.json>"""
 import json, shutil, sys
 from pathlib import Path
@@ -18,7 +19,7 @@ def main(draft_dir, edits_file):
         else:
             r[k] = e["new"]
         log.append({"path": e["path"], "before": before, "after": r[k], "reason": e["reason"]})
-    o["revision"] = 1; o["status"] = "checked"; render.finalize(o)
+    o["revision"] = 1; o["status"] = "edited-manually"; render.finalize(o)      # not admissible by itself: see below
     ev = json.loads((d / "evidence.json").read_text()); f, st = checks.check(o, ev)
     out = ROOT / "samples/auto" / d.name; out.mkdir(parents=True, exist_ok=True)
     (out / "article.json").write_text(json.dumps(o, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -28,7 +29,11 @@ def main(draft_dir, edits_file):
     for name in ("draft_zh.json", "review_zh.json", "en.json", "report.json"):
         if (d / name).exists(): shutil.copy(d / name, out / ("model_" + name))
     (out / "article.zh.md").write_text(render.markdown(o, "zh"), encoding="utf-8"); (out / "article.en.md").write_text(render.markdown(o, "en"), encoding="utf-8")
-    print(json.dumps({"edits": len(log), "length": o["length"], "minutes": o["reading_minutes"], "blocking": [x for x in f if x[0] in ("BLOCK", "FIX")]}, ensure_ascii=False))
+    blocking = [x for x in f if x[0] in ("BLOCK", "FIX")]
+    print(json.dumps({"edits": len(log), "length": o["length"], "minutes": o["reading_minutes"], "blocking": blocking,
+                      "next": ("fix the BLOCK/FIX findings first" if blocking else
+                               f"bin/hip rereview {o['edition_id']} --article {out / 'article.json'}  (fresh review + parity bound to this file; admits only if clean)")},
+                     ensure_ascii=False))
 
 if __name__ == "__main__":
     main(sys.argv[1], sys.argv[2])

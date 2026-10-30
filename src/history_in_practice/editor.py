@@ -82,8 +82,8 @@ def parity_view(o) -> str:
 
 class Caller:
     """One logged model call with a single retry on invalid JSON; refusals are not retried."""
-    def __init__(self, outdir: Path, cid: str, call=llm.call):
-        self.outdir, self.cid, self.call, self.metrics = outdir, cid, call, []
+    def __init__(self, outdir: Path, cid: str, call=None):
+        self.outdir, self.cid, self.call, self.metrics = outdir, cid, call or llm.call, []
 
     def __call__(self, name, prompt, timeout, retry_suffix):
         for attempt in (1, 2):
@@ -180,7 +180,7 @@ def reviews(o, ev, caller: Caller, tag: str) -> tuple[dict | None, dict | None]:
     return rv, pv
 
 
-def edit(draft_dir: Path, call=llm.call, max_rounds: int = MAX_ROUNDS) -> dict:
+def edit(draft_dir: Path, call=None, max_rounds: int = MAX_ROUNDS) -> dict:
     """Run the editor on a pending draft directory. Writes edited.json + editor_record.json; returns the record."""
     d = Path(draft_dir); cid = d.name
     o = json.loads((d / "article.json").read_text(encoding="utf-8")); ev = json.loads((d / "evidence.json").read_text(encoding="utf-8"))

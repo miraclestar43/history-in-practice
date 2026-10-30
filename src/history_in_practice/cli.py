@@ -12,7 +12,7 @@
   hip supply [--category C] [--max N] | --check    catalogue -> model proposal -> anchors verified -> new candidate file
   hip prepare-queue [--max-articles N --budget-minutes M]   (config/candidates/*.json, file lock)
   hip edit EDITION | hip edit-queue [--max N]       editor stage: bounded edit rounds -> re-review + English parity -> admit or stay pending
-  hip rereview EDITION                              bind a fresh review + parity check to an admitted edition's current content
+  hip rereview EDITION [--article FILE]             bind a fresh review + parity check to an edition's current (or given) content
   hip nightly                                       supply (if few candidates) -> prepare-queue -> edit-queue, one batch budget
   hip publish-today [--date YYYY-MM-DD]             (schedule -> archive -> site -> bounded live wait -> email); exit 0 complete,
                                                    3 partial, 4 skipped, 5 waiting, 6 overdue
@@ -217,12 +217,14 @@ def _evidence_for(article_path: Path) -> Path:
     return m
 
 
-def _workdir(d, cid: str) -> Path | None:
-    """Fresh editor attempt dir seeded from the latest version of the draft (previous attempt > admitted path > model draft)."""
+def _workdir(d, cid: str, article: Path | None = None) -> Path | None:
+    """Fresh editor attempt dir seeded from: an explicit article file (manual edit) > previous attempt > admitted path > model draft."""
     root = data_dir() / "editor" / cid; prev = sorted(root.glob("attempt-*"), key=lambda p: int(p.name.split("-")[1])) if root.exists() else []
     w = root / f"attempt-{len(prev) + 1}"; w.mkdir(parents=True, exist_ok=True)
     draft = data_dir() / "drafts" / cid; cur = state.get(d, cid)
-    if prev and (prev[-1] / "edited.json").exists():
+    if article:
+        src_art = Path(article); src_ev, src_rv = _evidence_for(src_art), None
+    elif prev and (prev[-1] / "edited.json").exists():
         src_art, src_ev, src_rv = prev[-1] / "edited.json", prev[-1] / "evidence.json", None
     elif cur and cur.get("path") and Path(cur["path"]).exists() and Path(cur["path"]).parent != draft:
         src_art = Path(cur["path"]); src_ev, src_rv = _evidence_for(src_art), None
@@ -249,11 +251,11 @@ def _publish_attempt(w: Path, cid: str, record: dict) -> Path:
     return out
 
 
-def _edit_one(d, cid: str, max_rounds=editor.MAX_ROUNDS) -> dict:
+def _edit_one(d, cid: str, max_rounds=editor.MAX_ROUNDS, article: Path | None = None) -> dict:
     cur = state.get(d, cid)
     if not cur or cur["status"] != "pending_review":
         return {"edition": cid, "outcome": "skipped", "reason": f"status {cur['status'] if cur else 'unknown'}"}
-    w = _workdir(d, cid)
+    w = _workdir(d, cid, article)
     if not w:
         return {"edition": cid, "outcome": "skipped", "reason": "no draft to edit"}
     rec = editor.edit(w, max_rounds=max_rounds)
@@ -311,7 +313,7 @@ def cmd_rereview(a):
         if cur["status"] == "checked":
             state.transition(d, a.edition, "pending_review", note="requeued for editor re-review", reason="requeued for editor re-review")
             if cur.get("episode_id"): registry.set_status(d, cur["episode_id"], "prepared")
-        r = _edit_one(d, a.edition, max_rounds=a.rounds)
+        r = _edit_one(d, a.edition, max_rounds=a.rounds, article=Path(a.article) if a.article else None)
     print(json.dumps(r, ensure_ascii=False, indent=1)); return 0 if r.get("outcome") == "admitted" else 2
 
 
@@ -439,7 +441,8 @@ def main(argv=None):
     p = sp.add_parser("edit"); p.add_argument("edition"); p.set_defaults(f=cmd_edit)
     p = sp.add_parser("edit-queue"); p.add_argument("--max", type=int, default=3); p.add_argument("--budget-minutes", type=float, default=120)
     p.set_defaults(f=cmd_edit_queue)
-    p = sp.add_parser("rereview"); p.add_argument("edition"); p.add_argument("--rounds", type=int, default=0); p.set_defaults(f=cmd_rereview)
+    p = sp.add_parser("rereview"); p.add_argument("edition"); p.add_argument("--rounds", type=int, default=0)
+    p.add_argument("--article", help="re-review this file (e.g. after a manual editor pass) instead of the stored version"); p.set_defaults(f=cmd_rereview)
     p = sp.add_parser("nightly"); p.add_argument("--max-articles", type=int, default=2); p.add_argument("--budget-minutes", type=float, default=150)
     p.add_argument("--min-candidates", type=int, default=2); p.set_defaults(f=cmd_nightly)
     p = sp.add_parser("approve-sample"); p.add_argument("edition"); p.add_argument("--reason", required=True); p.set_defaults(f=cmd_approve_sample)
