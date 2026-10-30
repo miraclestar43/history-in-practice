@@ -36,7 +36,9 @@ def main(story):
         log.append({"path": e["path"], "before": before, "after": r[k], "reason": e["reason"]})
     if spec.get("translated_quote_marks"):
         # English-source story: 「」 is reserved for verbatim Chinese; translations use “”
-        def fix(s): return s.replace("「", "“").replace("」", "”")
+        keep = set(spec.get("keep_corner_quotes", []))
+        import re as _re
+        def fix(s): return _re.sub(r"「([^」]*)」", lambda m: m.group(0) if m.group(1) in keep else "“" + m.group(1) + "”", s)
         for s in o["sections"]:
             for p_ in s["paras"]: p_["zh"] = fix(p_["zh"])
         for k in ("scenario", "question"): o["reflection"][k]["zh"] = fix(o["reflection"][k]["zh"])

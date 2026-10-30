@@ -85,6 +85,13 @@ def check(o: dict, ev: dict):
             drift = {x for x in en_digits - nz if x >= 10 and str(x) not in p["zh"]}
             if drift: find.append(("BLOCK", f"{where} English has number(s) {sorted(drift)} not present in Chinese"))
     r = o["reflection"]
+    if today:   # editorial: the model tends to reuse the open question's scenario as a "today" example
+        from .registry import bigrams
+        sc = set(bigrams(r["scenario"]["zh"] + r["question"]["zh"]).split())
+        for i, p in enumerate(today["paras"]):
+            pb = set(bigrams(p["zh"]).split())
+            if pb and len(pb & sc) / max(1, min(len(pb), len(sc))) >= 0.12:
+                find.append(("FIX", f"today[{i}] may repeat the open-question scenario"))
     for k in ("scenario", "question"):
         for lang in ("zh", "en"):
             if not r[k][lang].strip(): find.append(("BLOCK", f"reflection.{k}.{lang} empty"))

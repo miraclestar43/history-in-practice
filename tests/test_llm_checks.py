@@ -42,6 +42,13 @@ class Runner(unittest.TestCase):
         self.assertLess(time.monotonic() - t, 20)
 
 
+class ParseJSON(unittest.TestCase):
+    def test_trailing_comma_slip_is_repaired_but_garbage_is_not(self):
+        self.assertEqual(llm.parse_json('noise {"a": [1, 2, ], "b": {"c": 1, }, } tail')["a"], [1, 2])
+        with self.assertRaises(ValueError):
+            llm.parse_json("no json here")
+
+
 class Checker(unittest.TestCase):
     def setUp(self):
         self.o = json.loads((ROOT / "samples/C/article.json").read_text())
@@ -62,6 +69,11 @@ class Checker(unittest.TestCase):
         o = copy.deepcopy(self.o); p = o["sections"][2]["paras"][1]
         p["en"] += ' Yung wrote that Woo "had never once visited a single school in New England".'
         f, _ = checks.check(o, self.ev); self.assertTrue(checks.blocked(f)); self.assertTrue(any("not verbatim" in m for _, m in f))
+
+    def test_today_scene_repeating_the_question_is_flagged(self):
+        o = copy.deepcopy(self.o); today = [s for s in o["sections"] if s["id"] == "today"][0]
+        today["paras"][0]["zh"] = o["reflection"]["scenario"]["zh"]
+        f, _ = checks.check(o, self.ev); self.assertTrue(any("repeat the open-question" in m for _, m in f))
 
     def test_number_drift_flagged(self):
         o = copy.deepcopy(self.o); p = o["sections"][1]["paras"][0]

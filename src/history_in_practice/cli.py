@@ -125,7 +125,7 @@ def _send(a, retry=False):
     else:
         raise SystemExit("choose --dry-run, --local-smtp HOST:PORT or --real")
     print(json.dumps(rep, ensure_ascii=False, indent=1))
-    return 0 if all(r["status"] in ("accepted",) or r.get("action", "").startswith("skipped") for r in rep) else 3
+    return 0 if all(r["status"] == "accepted" for r in rep) else 3     # unknown/failed (even if skipped) need attention
 
 
 def cmd_prepare_queue(a):
