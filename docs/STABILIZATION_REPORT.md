@@ -130,8 +130,10 @@ The overnight claim that these seven were "in inventory" was therefore premature
 **Coverage: 0 days.** The rotation starts with `china_ancient`, which has no schedulable edition. Gaps to 14 days: A 4, W 3, M 3, U 3. The alert is on. 9 drafts are pending, and the catalogue holds 10 entries for future supply.
 
 **Reaching 7 days quickly** (the alert threshold) needs one of these:
-- **Approve samples.** If you approve the five samples after reading them, coverage becomes 2 days: A, W, M (C), U, then a second A is missing.
-- **Close the pending drafts.** A person or a named editor closes the open issues on the pending drafts (2–5 each, all listed in the records). With samples approved, that could give roughly A3/W4/M3/U3, about 10 days.
+- **Approve samples.** If you approve the five samples after reading them, coverage becomes ~~2 days~~ **4 days** (corrected 2026-10-30, STABILIZATION_REVIEW §3): Snow + B give W2, C + E give M2, so A1/W2/M2/U1 fills A, W, M, U, then a second A is missing. (`hip inventory --what-if A=1,W=2,M=2,U=1` → 4.)
+- **Close the pending drafts.** A person or a named editor closes the open issues on the pending drafts (2–5 each, all listed in the records). With samples approved, that could give roughly A3/W4/M3/U3: ~~about 10 days~~ **12 days** (corrected; `--what-if A=3,W=4,M=3,U=3` → 12: three full rotations, then a fourth A is missing).
+
+> Correction note: both figures above were hand-computed and wrong. They are now produced by `pipeline.rotation_days()`, the same function `hip inventory` uses (`hip inventory --what-if ...`), with regression tests. They are arithmetic on the counts named, not a claim that samples are approved or that pending drafts will be admitted. Snow has since been returned to pending (legacy record; see docs/FINAL_EDITOR_REPORT.md).
 - **Keep supplying.** Supply continues nightly: about 30–90 minutes of model time per candidate, with today's convergence rate of 1 in 9.
 
 ## 6. What still needs a person
