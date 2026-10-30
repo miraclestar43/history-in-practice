@@ -100,7 +100,7 @@ def fake_call_factory(zh_ok=True, timeout=False):
 class Pipeline(unittest.TestCase):
     def setUp(self):
         self.td = tempfile.TemporaryDirectory(); self.cache = Path(self.td.name) / "cache"; self.cache.mkdir()
-        shutil.copy(ROOT / "data/source_cache/A-SJ56.txt", self.cache / "A-SJ56.txt")
+        shutil.copy(ROOT / "tests/fixtures/A-SJ56.txt", self.cache / "A-SJ56.txt")      # public-domain Shiji text, committed
         (self.cache / "A-SJ56.meta.json").write_text(json.dumps({"status": "evidence_usable", "source_id": "A-SJ56"}))
         self.db = state.connect(Path(self.td.name) / "s.sqlite"); registry.init(self.db, ALIASES)
 
