@@ -15,6 +15,18 @@ from .config import REPO, data_dir, load_project
 
 PROMPTS = Path(__file__).with_name("prompts")
 import re as _re
+import subprocess as _sp
+
+
+def _code_rev() -> str:
+    """Git revision of the code this process loaded (a long-running queue keeps old code)."""
+    try:
+        return _sp.run(["git", "-C", str(REPO), "rev-parse", "--short", "HEAD"], capture_output=True, text=True, timeout=5).stdout.strip() or "unknown"
+    except Exception:
+        return "unknown"
+
+
+CODE_REV = _code_rev()                         # evaluated once, at import time
 REFUSAL = _re.compile(r"rejected because it was considered high risk|content (?:policy|filter)|cannot (?:help|assist) with|I can't (?:help|assist)", _re.I)
 
 
@@ -153,7 +165,7 @@ def prepare(c, db, *, call=llm.call, workdir: Path | None = None, cache: Path | 
     cid = c["candidate_id"]; t0 = time.monotonic()
     out = Path(workdir or data_dir() / "drafts" / cid); out.mkdir(parents=True, exist_ok=True)
     cache = Path(cache or data_dir() / "source_cache"); cache.mkdir(parents=True, exist_ok=True)
-    report = {"candidate_id": cid, "category": c["category"], "steps": []}
+    report = {"candidate_id": cid, "category": c["category"], "steps": [], "code_rev": CODE_REV}
 
     def pend(reason, status="pending_review"):
         state.transition(db, cid, status, note=reason[:500], reason=reason[:2000]) if state.get(db, cid) is None or \

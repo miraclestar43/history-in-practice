@@ -113,6 +113,7 @@ class Pipeline(unittest.TestCase):
     def test_good_candidate_reaches_inventory(self):
         r = self.prep(CANDIDATE, fake_call_factory()); self.assertEqual(r["outcome"], "checked", r)
         self.assertEqual(pipeline.inventory(self.db)["by_category"], {"china_ancient": 1})
+        self.assertRegex(r["code_rev"], r"^([0-9a-f]{7,}|unknown)$")       # which code judged it
 
     def test_missing_source_goes_pending_and_others_continue(self):
         bad = json.loads(json.dumps(CANDIDATE)); bad["candidate_id"] = "cand-bad"; bad["excerpts"][0][2] = "不存在的锚点"
