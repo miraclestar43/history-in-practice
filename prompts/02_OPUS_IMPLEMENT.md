@@ -1,6 +1,6 @@
 # 给 Claude Opus：按最终评审结论分阶段实施
 
-这是实施阶段的 prompt。**只有 Fable 评审和 ChatGPT 再评审已完成、用户已要求进入实施时才执行。** 当前仓库初始化并不等于要求立即部署或发送邮件。
+用户已要求 Pi Claude overnight 继续实施。**先读取并执行 `prompts/03_OVERNIGHT_OPUS.md` 和 `docs/USER_REQUIREMENTS_20261030.md`；它们取代旧的样稿长度与停工点。中文各约十分钟，英文也各约十分钟，译文自然地道。** 本文件其余已验证技术约束继续适用；今夜不发真实邮件、不部署、不启用生产投递 timer、不合并 main。
 
 仓库：https://github.com/miraclestar43/history-in-practice
 

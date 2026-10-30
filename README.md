@@ -1,6 +1,6 @@
 # History in Practice｜每日一鉴
 
-每天约十分钟：一个有依据、值得读的历史故事，一个与生活有关的判断问题。
+中文约十分钟，英文也约十分钟：一个有依据、值得读的历史故事，一个与生活有关的判断问题。
 
 A daily bilingual history story, grounded in sources and connected to everyday decisions.
 
@@ -16,7 +16,7 @@ A daily bilingual history story, grounded in sources and connected to everyday d
 
 尚未实现或部署自动化服务，也未发送邮件。
 
-1. [完整方案 v2.2](docs/PLAN.md)
+1. [完整方案 v2.3（用户阅读目标澄清）](docs/PLAN.md)
 2. [内容体验与长期编辑要求](docs/EDITORIAL_BRIEF.md)
 3. [四篇双语样稿、证据映射与本地预览](samples/README.md)
 4. 评审记录：[Fable](docs/reviews/FABLE_REVIEW.md) → [ChatGPT](docs/reviews/CHATGPT_REVIEW.md) → [Opus 修订与验证](docs/reviews/OPUS_VALIDATION.md)
@@ -25,3 +25,11 @@ A daily bilingual history story, grounded in sources and connected to everyday d
 下一步：两位读者阅读样稿并反馈 → 用户决定是否进入自动供稿流水线实施。
 
 运行环境计划：Raspberry Pi、Hermes（经项目级隔离调用器，不用 `hermes -z`）、Python、SQLite、systemd、SMTP，以及 [StarHub](https://starhub.vip/) 现有静态网站。`validation/` 下是本阶段的验证脚本，不是生产代码。
+
+## 最新用户要求与今夜任务
+
+- [单语言各十分钟与自然英文要求](docs/USER_REQUIREMENTS_20261030.md)
+- [Pi Claude overnight 持续实施](prompts/03_OVERNIGHT_OPUS.md)
+- [专用发信地址与明早配置](docs/EMAIL_SETUP.md)
+
+已有四篇样稿是旧时长规格的基线，需按新目标扩充并重验；保留已有实现和证据，不从头重建。任务文件推送不代表 Pi 会话已自动启动。
