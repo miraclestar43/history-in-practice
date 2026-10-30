@@ -40,6 +40,10 @@ if __name__ == "__main__":
     r, t = main(); print("\n".join(r)); print(); print("\n".join(t))
 
 
+import sqlite3
+DB = sqlite3.connect(ROOT / "data/hip.sqlite")
+
+
 def auto_rows():
     """Automated candidates that went through the pipeline and an editor pass (samples/auto/<cid>/)."""
     out = []
@@ -56,6 +60,12 @@ def auto_rows():
         er = json.loads((d.parent / "editor_record.json").read_text()) if (d.parent / "editor_record.json").exists() else {}
         now = ("已入库（编辑记录绑定最终正文）" if er.get("outcome") == "admissible" else
                f"待处理：{len(er.get('remaining', []))} 个未解决问题" if er else "（无编辑记录）")
+        fin = d.parent / "final"
+        if (fin / "final_editor_record.json").exists():          # named final editor (Pi Claude) supersedes the MiMo editor stage
+            fr = json.loads((fin / "final_editor_record.json").read_text()); n_att = len(list(fin.glob("attempt-*_final_editor_record.json")))
+            st = DB.execute("SELECT status FROM edition WHERE edition_id=?", (cid,)).fetchone()
+            now = (f"已入库：具名终审编辑 Pi Claude，{n_att} 次，记录绑定定稿（[定稿中文](auto/{cid}/final/article.zh.md) · [EN](auto/{cid}/final/article.en.md)）"
+                   if st and st[0] == "checked" else f"终审编辑后仍待处理：{len(fr.get('open_issues') or [])} 个问题")
         nedits = len(log) + sum(x.get("edits_total", 0) for x in [er])
         out.append(f"| [{cid.replace('cand-20261030-', '').replace('cand-auto-20261030-', 'auto: ')}](auto/{cid}/article.zh.md) · [EN](auto/{cid}/article.en.md) | {CAT[o['category']]} | {o['title']['zh']} | "
                    f"{o['length']['zh_chars']} 字 · 约 {o['reading_minutes']['zh']} 分钟 | {o['length']['en_words']} words · ~{o['reading_minutes']['en']} min | "
@@ -82,7 +92,7 @@ def write():
 
 ## 自动供稿文章与当前状态
 
-`hip prepare-queue` 跑出的候选，经编辑阶段处理。“模型结果”是流水线本身的结论；“当前状态”取自最新一次编辑记录（`editor_record.json`）：只有最终正文经过绑定的复审与英文一致性检查、没有剩余问题，才算入库。2026-10-30 稳定化后，夜里人工编辑入库的七篇都重新复审，详见 `docs/STABILIZATION_REPORT.md`。
+`hip prepare-queue` 跑出的候选，经编辑阶段处理。“模型结果”是流水线本身的结论；“当前状态”取自最新记录。2026-10-30 第三轮起，MiMo 负责候选与初稿，**Pi 本机 Claude Code CLI 作为具名终审编辑**（`hip final-edit`）：通读全文与完整证据、逐段列问题、逐条修复或引证据驳回、中英同步，再对定稿独立复核；记录绑定定稿与证据 hash、编辑身份、逐项理由与耗时。定稿在 `auto/<候选>/final/`，详见 `docs/FINAL_EDITOR_REPORT.md`。左列链接是 MiMo 阶段的稿子，入库的是定稿。
 
 | 候选 | 类别 | 标题 | 中文 | 英文 | 摘录 | 模型结果 | 编辑修改（人工 + 最近一次自动） | 当前状态 |
 |---|---|---|---|---|---|---|---|---|
