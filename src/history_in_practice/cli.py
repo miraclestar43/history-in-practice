@@ -226,6 +226,9 @@ def _workdir(d, cid: str, article: Path | None = None) -> Path | None:
         src_art = Path(article); src_ev, src_rv = _evidence_for(src_art), None
     elif prev and (prev[-1] / "edited.json").exists():
         src_art, src_ev, src_rv = prev[-1] / "edited.json", prev[-1] / "evidence.json", None
+        rec = prev[-1] / "editor_record.json"
+        if rec.exists():                               # carry the open issues into this attempt
+            (w / "seed_issues.json").write_text(json.dumps(_load(rec).get("remaining", []), ensure_ascii=False, indent=1), encoding="utf-8")
     elif cur and cur.get("path") and Path(cur["path"]).exists() and Path(cur["path"]).parent != draft:
         src_art = Path(cur["path"]); src_ev, src_rv = _evidence_for(src_art), None
     elif (draft / "article.json").exists():

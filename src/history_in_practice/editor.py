@@ -193,6 +193,11 @@ def edit(draft_dir: Path, call=None, max_rounds: int = MAX_ROUNDS) -> dict:
     record = {"candidate_id": cid, "editor": EDITOR_NAME, "code_rev": CODE_REV, "started_at": time.time(),
               "evidence_sha256": sha(ev), "original_content_sha256": o["content_sha256"], "rounds": []}
     issues = collect_issues(review, None, findings)
+    seed = d / "seed_issues.json"                      # a later attempt starts from the previous attempt's open issues
+    if seed.exists():
+        prior = json.loads(seed.read_text(encoding="utf-8"))
+        issues = [dict(i, id=f"S{k + 1}", seeded_from=i.get("id")) for k, i in enumerate(prior) if i.get("source") != "checker"] + issues
+        record["seeded_issues"] = len(issues) - len(collect_issues(review, None, findings))
     for rnd in range(1, max_rounds + 1):
         if not issues:
             break

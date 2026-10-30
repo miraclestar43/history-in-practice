@@ -93,5 +93,15 @@ class EditorStage(unittest.TestCase):
         self.assertEqual(rec["outcome"], "pending_review"); self.assertIn("新问题", json.dumps(rec["remaining"], ensure_ascii=False))
 
 
+    def test_second_attempt_is_seeded_with_the_open_issues(self):
+        call = scripted({"edits": [], "dispositions": []}); self.prep(call); rec = editor.edit(self.wd, call=call)
+        self.assertEqual(rec["outcome"], "pending_review")
+        w2 = self.wd.parent / "attempt-2"; w2.mkdir()
+        shutil.copy(self.wd / "edited.json", w2 / "article.json"); shutil.copy(self.wd / "evidence.json", w2 / "evidence.json")
+        (w2 / "seed_issues.json").write_text(json.dumps(rec["remaining"], ensure_ascii=False))
+        rec2 = editor.edit(w2, call=scripted(self.good_edit()))
+        self.assertEqual(rec2["seeded_issues"], len(rec["remaining"])); self.assertGreaterEqual(len([r for r in rec2["rounds"] if r["round"]]), 1)
+        self.assertTrue(rec2["rounds"][0]["issues_in"][0]["id"].startswith("S"))
+
 if __name__ == "__main__":
     unittest.main()
