@@ -11,8 +11,10 @@ Fail-closed rules:
   provider switches; `preflight()` refuses unless `claude auth status` reports
   authMethod "claude.ai". `--bare` is never used: it ignores the subscription
   login and would require an API key.
-* Isolated. `--safe-mode` (no CLAUDE.md, memory, skills, plugins, hooks, MCP),
-  `--tools ""` (no built-in tools), `--disallowedTools mcp__*`,
+* Isolated. `--safe-mode` (no CLAUDE.md, memory, user skills/plugins, hooks, MCP),
+  `--disable-slash-commands` (no bundled skills/commands), built-in plugins off in
+  the dedicated settings.json (`enabledPlugins`), `--tools ""` (no tools at all, so the
+  built-in agent types the CLI still lists cannot be invoked), `--disallowedTools mcp__*`,
   `--strict-mcp-config`, `--no-session-persistence`, an empty temporary working
   directory, a dedicated CLAUDE_CONFIG_DIR. The CLI's own `system/init` event is
   checked on every call: any tool, MCP server, plugin or API-key source -> the
@@ -65,6 +67,23 @@ def auth_status(extra_env: dict | None = None) -> dict:
     return {k: d.get(k) for k in ("loggedIn", "authMethod", "apiProvider", "subscriptionType", "configDirectory")}
 
 
+def login_expiry() -> dict:
+    """Days until the stored login's refresh token expires (timestamps only; never reads out a token)."""
+    try:
+        d = json.loads((Path(CONFIG_DIR) / ".credentials.json").read_text())["claudeAiOauth"]
+    except (OSError, ValueError, KeyError):
+        return {}
+    r = d.get("refreshTokenExpiresAt")
+    return {"access_expires_h": round((d.get("expiresAt", 0) / 1000 - time.time()) / 3600, 1),
+            "refresh_expires_days": round((r / 1000 - time.time()) / 86400, 1) if r else None}
+
+
+def warnings() -> list[str]:
+    e = login_expiry().get("refresh_expires_days")
+    return [f"Claude login for the final editor expires in {e} days: owner re-runs `claude auth login` with CLAUDE_CONFIG_DIR={CONFIG_DIR}"] \
+        if e is not None and e < 7 else []
+
+
 def preflight(extra_env: dict | None = None) -> list[str]:
     """Problems that must stop a final-editor run (empty = ready)."""
     if not Path(CLAUDE).exists():
@@ -96,7 +115,9 @@ def isolation_problems(init: dict | None) -> list[str]:
     if init.get("mcp_servers"):
         p.append(f"MCP servers present: {[m.get('name') for m in init['mcp_servers']][:8]}")
     if init.get("plugins"):
-        p.append(f"plugins present: {[x.get('name') for x in init['plugins']][:8]}")
+        p.append(f"plugins present: {[x.get('name') for x in init['plugins']][:8]} (disable them in the dedicated settings.json enabledPlugins)")
+    if init.get("skills") or init.get("slash_commands"):
+        p.append(f"skills/commands present: {len(init.get('skills') or [])}/{len(init.get('slash_commands') or [])}")
     if init.get("apiKeySource") not in (None, "none"):
         p.append(f"apiKeySource is {init.get('apiKeySource')!r} (not the subscription login)")
     return p
@@ -107,7 +128,7 @@ def call(prompt: str, timeout_s: float = 1800, *, system: str = SYSTEM, model: s
     """Same contract as llm.call (rc, killed, wall_s, text, byte counts) plus `meta` (init + result metadata, no secrets)."""
     data = prompt.encode("utf-8")
     argv = [CLAUDE, "-p", "--output-format", "stream-json", "--verbose", "--safe-mode", "--tools", "",
-            "--disallowedTools", "mcp__*", "--strict-mcp-config", "--no-session-persistence", "--permission-prompts", "none",
+            "--disallowedTools", "mcp__*", "--strict-mcp-config", "--no-session-persistence", "--permission-prompts", "none", "--disable-slash-commands",
             "--setting-sources", "user", "--model", model or MODEL, "--system-prompt", system] + (["--effort", effort] if effort else [])
     with tempfile.TemporaryDirectory(prefix="hip-claude-") as wd:
         t0 = time.monotonic()
@@ -150,6 +171,7 @@ def call(prompt: str, timeout_s: float = 1800, *, system: str = SYSTEM, model: s
         elif ev.get("type") == "result":
             result = ev
     meta = {"cli_version": (init or {}).get("claude_code_version"), "model": (init or {}).get("model"),
+            "plugins": [x.get("name") for x in (init or {}).get("plugins") or []], "skills": len((init or {}).get("skills") or []),
             "apiKeySource": (init or {}).get("apiKeySource"), "tools": (init or {}).get("tools"),
             "mcp_servers": [m.get("name") for m in (init or {}).get("mcp_servers") or []],
             "permissionMode": (init or {}).get("permissionMode")}
