@@ -11,9 +11,16 @@ Safety:
   NOT "delivered to inbox").
 * Message-ID is stable per (edition, revision, recipient) so a manual resend
   after an `unknown` can be recognised as a duplicate by the reader's client.
+* Before any real send the whole configuration is validated (validate_config):
+  non-empty, well-formed, duplicate-free recipients; complete SMTP settings;
+  a From address; and a Reply-To, because the footer asks readers to reply and
+  the From address has no mailbox. Problems never include addresses.
+* The expected recipient set is frozen per edition on first send; completion
+  means every frozen recipient is `accepted` (state.delivery_complete), not
+  "every row returned this time".
 """
 from __future__ import annotations
-import hashlib, smtplib, socket, ssl
+import hashlib, re, smtplib, socket, ssl
 from email.message import EmailMessage
 from email.utils import formataddr, parseaddr, formatdate
 from email.header import Header
@@ -24,6 +31,38 @@ LOCAL_HOSTS = {"127.0.0.1", "::1", "localhost"}
 
 class SendDisabled(RuntimeError):
     pass
+
+
+class ConfigIncomplete(RuntimeError):
+    pass
+
+
+ADDR = re.compile(r"^[^@\s,;<>]+@[^@\s,;<>]+\.[A-Za-z]{2,}$")
+
+
+def validate_config(runtime) -> list[str]:
+    """Problems that must stop a real send. Never echoes addresses or secrets."""
+    p = []
+    rc = runtime.recipients
+    if not rc:
+        p.append("EMAIL_RECIPIENTS is empty")
+    bad = sum(1 for r in rc if not ADDR.match(r))
+    if bad:
+        p.append(f"EMAIL_RECIPIENTS: {bad} malformed address(es)")
+    if len({r.lower() for r in rc}) != len(rc):
+        p.append("EMAIL_RECIPIENTS: duplicate address(es)")
+    for k in ("SMTP_HOST", "SMTP_USERNAME", "SMTP_PASSWORD", "EMAIL_FROM", "EMAIL_REPLY_TO"):
+        if not runtime.get(k):
+            p.append(f"{k} is not set" + (" (the footer asks readers to reply; From has no mailbox)" if k == "EMAIL_REPLY_TO" else ""))
+    if not str(runtime.get("SMTP_PORT", "465")).isdigit():
+        p.append("SMTP_PORT is not a number")
+    if runtime.get("SMTP_SECURITY", "ssl") not in ("ssl", "starttls"):
+        p.append("SMTP_SECURITY must be ssl or starttls for real sending")
+    for k in ("EMAIL_FROM", "EMAIL_REPLY_TO"):
+        v = parseaddr(runtime.get(k))[1]
+        if runtime.get(k) and not ADDR.match(v):
+            p.append(f"{k} is not a valid address")
+    return p
 
 
 def message_id(edition_id: str, revision: int, rkey: str, domain: str) -> str:
@@ -101,11 +140,17 @@ def _quiet_close(s):
         except Exception: pass
 
 
-def send_edition(db, obj, html, text, runtime, *, mode="real", smtp_cfg=None, recipients=None, domain="read.starhub.vip") -> list[dict]:
-    """Send one edition to each recipient once. Returns a report without addresses."""
+def send_edition(db, obj, html, text, runtime, *, mode="real", smtp_cfg=None, recipients=None, domain="read.starhub.vip",
+                 manual_test=False) -> list[dict]:
+    """Send one edition to each frozen expected recipient once. Returns a report without addresses.
+    manual_test=True is the explicit one-off real test (`hip send-test`): allowed while
+    EMAIL_SEND_ENABLED is false, but only with a complete configuration."""
     if mode == "real":
-        if not runtime.send_enabled:
-            raise SendDisabled("EMAIL_SEND_ENABLED is not true; refusing to send")
+        if not runtime.send_enabled and not manual_test:
+            raise SendDisabled("EMAIL_SEND_ENABLED is not true; refusing to send (use `hip send-test` for a one-off test)")
+        problems = validate_config(runtime)
+        if problems:
+            raise ConfigIncomplete("; ".join(problems))
         rcpts = runtime.recipients
         cfg = {"host": runtime.get("SMTP_HOST"), "port": runtime.get("SMTP_PORT", "465"), "security": runtime.get("SMTP_SECURITY", "ssl"),
                "username": runtime.get("SMTP_USERNAME"), "password": runtime.get("SMTP_PASSWORD")}
@@ -118,8 +163,17 @@ def send_edition(db, obj, html, text, runtime, *, mode="real", smtp_cfg=None, re
         rcpts, cfg, sender, reply_to = list(recipients or []), smtp_cfg, smtp_cfg.get("from", "test@example.invalid"), ""
     else:
         raise ValueError(mode)
+    if not rcpts:
+        raise ConfigIncomplete("no recipients; nothing would be sent")
     rev = obj["revision"]; eid = obj["edition_id"]; report = []
-    for r in rcpts:
+    state.freeze_recipients(db, eid, rev, rcpts)
+    expected = state.expected_keys(db, eid, rev); present = {state.recipient_key(r): r for r in rcpts}
+    for k in sorted(expected - present.keys()):             # frozen but removed from config since: cannot complete
+        lab = db.execute("SELECT recipient_label FROM edition_recipient WHERE edition_id=? AND revision=? AND recipient_key=?", (eid, rev, k)).fetchone()[0]
+        report.append({"recipient": lab, "status": "missing_from_config", "action": "not sent; edition stays incomplete"})
+    for k in sorted(present.keys() - expected):             # added after freezing: next edition
+        report.append({"recipient": state.recipient_label(present[k]), "status": "not_in_frozen_set", "action": "not sent for this edition"})
+    for r in [present[k] for k in present if k in expected]:
         key, label = state.recipient_key(r), state.recipient_label(r)
         st, attempts = state.delivery_status(db, eid, rev, key)
         if st in ("accepted", "unknown", "sending"):

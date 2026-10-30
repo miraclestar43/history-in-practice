@@ -1,11 +1,9 @@
 """Automated supply: candidate -> sources -> evidence -> admission -> registry
 -> Hermes (zh draft, evidence review, natural English) -> assemble -> checks ->
-inventory (`checked`) or pending queue (`pending_review`, with reasons).
-
-Default is automatic; nothing here waits for a human. Exceptions go to the
-pending queue and other candidates continue. Automated `checked` means "passed
-the deterministic checks and the model review with no blocking issue", which
-is weaker than editor-reviewed; reports say so explicitly.
+`pending_review` with reasons. Every draft then goes through the editor stage
+(editor.py: bounded edit rounds, re-review of the final Chinese, English parity
+review, record bound to the final content) before it can be admitted as
+`checked`; nothing here marks a draft schedulable on its own.
 """
 from __future__ import annotations
 import json, time
@@ -230,18 +228,55 @@ def prepare(c, db, *, call=llm.call, workdir: Path | None = None, cache: Path | 
         state.transition(db, cid, "pending_review", note=why, reason=why)
         registry.set_status(db, eid, "prepared")
         report.update(outcome="pending_review", reason=why, wall_s=round(time.monotonic() - t0, 1))
-    else:
-        state.transition(db, cid, "checked", note="automated gates passed", content_sha256=obj["content_sha256"])
-        registry.set_status(db, eid, "checked")
-        report.update(outcome="checked", wall_s=round(time.monotonic() - t0, 1))
+    else:                                   # clean drafts still need the editor stage: post-assembly re-review + English parity
+        why = "awaiting editor stage: no blocking issues, final content and English not yet re-reviewed"
+        state.transition(db, cid, "pending_review", note=why, reason=why)
+        registry.set_status(db, eid, "prepared")
+        report.update(outcome="pending_review", reason=why, wall_s=round(time.monotonic() - t0, 1))
     (out / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
     return report
 
 
-def inventory(db) -> dict:
-    rows = db.execute("SELECT category, count(*) FROM edition WHERE status IN ('checked','scheduled') GROUP BY category").fetchall()
-    cats = dict(rows); total = sum(cats.values()); cfg = load_project().get("inventory", {})
-    return {"by_category": cats, "days": total, "target_days": cfg.get("target_days", 14),
-            "alert": total < cfg.get("alert_below_days", 7),
-            "missing_categories": [k for k in load_project().get("rotation", []) if not cats.get(k)],
-            "pending": db.execute("SELECT count(*) FROM edition WHERE status='pending_review'").fetchone()[0]}
+def _schedulable(approval, origin) -> bool:
+    """Python mirror of state.SCHEDULABLE_SQL."""
+    return bool(approval) and ((origin or "pipeline") != "sample" or str(approval).startswith("sample-approved"))
+
+
+def inventory(db, today: str | None = None) -> dict:
+    """Inventory as the rotation will consume it. Only approved `checked` editions count toward coverage;
+    samples need an explicit sample approval; pending drafts and unprocessed candidates are listed, never counted."""
+    from .publish import next_category, today_la, IN_FLIGHT
+    cfg = load_project(); rot = cfg.get("rotation", []); inv = cfg.get("inventory", {})
+    target, alert_below = inv.get("target_days", 14), inv.get("alert_below_days", 7)
+    today = today or today_la()
+    rows = db.execute("SELECT edition_id, category, status, approval, origin, edition_date FROM edition").fetchall()
+    ok = {c: 0 for c in rot}; awaiting = {c: 0 for c in rot}; samples = {"total": 0, "approved": 0}
+    for eid, cat, st, appr, origin, d in rows:
+        if (origin or ("sample" if eid.startswith("sample-") else "pipeline")) == "sample" and st == "checked":
+            samples["total"] += 1; samples["approved"] += _schedulable(appr, "sample")
+        if st == "checked" and cat in ok:
+            if _schedulable(appr, origin):
+                ok[cat] += 1
+            else:
+                awaiting[cat] += 1
+    future = sorted(d for _, _, st, _, _, d in rows if st in IN_FLIGHT and d and d >= today)
+    start = next_category(db); i0 = rot.index(start) if start in rot else 0
+    left, seq = dict(ok), []
+    while len(seq) < 366 and left.get(rot[(i0 + len(seq)) % len(rot)], 0) > 0:
+        c = rot[(i0 + len(seq)) % len(rot)]; left[c] -= 1; seq.append(c)
+    need = {c: 0 for c in rot}
+    for k in range(max(0, target - len(future))):
+        need[rot[(i0 + k) % len(rot)]] += 1
+    gaps = {c: max(0, need[c] - ok[c]) for c in rot}
+    cov = len(future) + len(seq)
+    cands = sum(1 for p in (REPO / "config/candidates").glob("*.json")
+                if not db.execute("SELECT 1 FROM edition WHERE edition_id=?", (json.loads(p.read_text(encoding="utf-8")).get("candidate_id"),)).fetchone())
+    return {"coverage_days": cov, "target_days": target, "alert": cov < alert_below, "next_category": start,
+            "scheduled_ahead": len(future), "coverage_sequence": seq[:target],
+            "schedulable_by_category": ok, "schedulable_total": sum(ok.values()),
+            "awaiting_approval_by_category": {c: n for c, n in awaiting.items() if n},
+            "samples": samples, "gaps_to_target": {c: n for c, n in gaps.items() if n},
+            "missing_categories": [c for c in rot if not ok[c]],
+            "pending": db.execute("SELECT count(*) FROM edition WHERE status='pending_review'").fetchone()[0],
+            "candidates_unprocessed": cands,
+            "basis": "coverage = consecutive days the rotation can fill from next_category with approved checked editions, plus editions already scheduled ahead"}

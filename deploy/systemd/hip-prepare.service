@@ -1,7 +1,10 @@
 # TEMPLATE — not installed or enabled. Review before `systemctl --user link`.
-# Builds inventory: runs queued candidates through the automated pipeline.
-# One article can take ~10–25 min of model time; this is a BATCH job, so the
-# timeout is a whole-batch budget, not a single-article one.
+# Builds inventory in one batch: tops up candidates from the source catalogue
+# when fewer than 2 are waiting (hip supply), runs new candidates through the
+# pipeline (hip prepare-queue), then the editor stage (hip edit-queue: bounded
+# edit rounds + re-review + English parity; admits only bound, clean drafts).
+# One article is ~15–40 min of model time; the timeout is a whole-batch budget.
+# Exit 1 = inventory coverage below the alert threshold (systemd shows failed).
 [Unit]
 Description=History in Practice: prepare inventory (batch)
 After=network-online.target
@@ -9,7 +12,7 @@ After=network-online.target
 [Service]
 Type=oneshot
 WorkingDirectory=%h/history-in-practice
-ExecStart=%h/history-in-practice/bin/hip prepare-queue --max-articles 3 --budget-minutes 150
+ExecStart=%h/history-in-practice/bin/hip nightly --max-articles 2 --budget-minutes 150 --min-candidates 2
 TimeoutStartSec=3h
 Nice=10
 IOSchedulingClass=idle

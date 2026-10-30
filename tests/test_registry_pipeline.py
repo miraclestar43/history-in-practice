@@ -1,7 +1,7 @@
 import json, shutil, sqlite3, sys, tempfile, unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from history_in_practice import registry, state, pipeline, evidence
+from history_in_practice import registry, state, pipeline, evidence, editor
 
 ROOT = Path(__file__).resolve().parents[1]
 ALIASES = json.loads((ROOT / "config/aliases.json").read_text())
@@ -91,7 +91,13 @@ def fake_call_factory(zh_ok=True, timeout=False):
         calls.append(timeout_s)
         if timeout:
             return {"rc": -15, "killed": "timeout", "wall_s": timeout_s, "prompt_bytes": len(prompt), "prompt_chars": len(prompt), "out_bytes": 0, "out_chars": 0, "stderr": "", "text": ""}
-        text = json.dumps(zh if "【编辑简报】" in prompt else ({"issues": [], "overall": "ok"} if "事实审稿人" in prompt else en), ensure_ascii=False)
+        if "事实编辑" in prompt:
+            out = {"edits": [], "dispositions": []}
+        elif "English edition says the same" in prompt or "事实审稿人" in prompt:
+            out = {"issues": [], "overall": "ok"}
+        else:
+            out = zh if "【编辑简报】" in prompt else en
+        text = json.dumps(out, ensure_ascii=False)
         return {"rc": 0, "killed": None, "wall_s": 0.1, "prompt_bytes": len(prompt), "prompt_chars": len(prompt), "out_bytes": len(text), "out_chars": len(text), "stderr": "", "text": text}
     call.calls = calls
     return call
@@ -111,16 +117,22 @@ class Pipeline(unittest.TestCase):
         return pipeline.prepare(c, self.db, call=call, workdir=Path(self.td.name) / c["candidate_id"], cache=self.cache)
 
     def test_good_candidate_reaches_inventory(self):
-        r = self.prep(CANDIDATE, fake_call_factory()); self.assertEqual(r["outcome"], "checked", r)
-        self.assertEqual(pipeline.inventory(self.db)["by_category"], {"china_ancient": 1})
+        r = self.prep(CANDIDATE, fake_call_factory()); self.assertEqual(r["outcome"], "pending_review", r)
+        self.assertIn("awaiting editor stage", r["reason"])                       # clean drafts still need the editor stage
+        self.assertEqual(pipeline.inventory(self.db)["schedulable_total"], 0)
+        wd = Path(self.td.name) / CANDIDATE["candidate_id"]
+        rec = editor.edit(wd, call=fake_call_factory()); self.assertEqual(rec["outcome"], "admissible", rec["remaining"])
+        self.assertEqual([x["round"] for x in rec["rounds"]], [0])                # no issues: one review + parity bound to the content
+        a = editor.admit_with_record(self.db, wd / "edited.json", wd / "evidence.json", rec); self.assertTrue(a["admitted"], a)
+        self.assertEqual(pipeline.inventory(self.db)["schedulable_by_category"]["china_ancient"], 1)
         self.assertRegex(r["code_rev"], r"^([0-9a-f]{7,}|unknown)$")       # which code judged it
         log = [json.loads(l) for l in (Path(self.td.name) / CANDIDATE["candidate_id"] / "calls.jsonl").read_text().splitlines()]
-        self.assertEqual([(x["step"], x["json_ok"]) for x in log], [("draft_zh", True), ("review_zh", True), ("en", True)])
+        self.assertEqual([(x["step"], x["json_ok"]) for x in log], [("draft_zh", True), ("review_zh", True), ("en", True), ("rereview_r0", True), ("parity_r0", True)])
 
     def test_missing_source_goes_pending_and_others_continue(self):
         bad = json.loads(json.dumps(CANDIDATE)); bad["candidate_id"] = "cand-bad"; bad["excerpts"][0][2] = "不存在的锚点"
         self.assertEqual(self.prep(bad, fake_call_factory())["outcome"], "pending_review")
-        self.assertEqual(self.prep(CANDIDATE, fake_call_factory())["outcome"], "checked")
+        self.assertEqual(self.prep(CANDIDATE, fake_call_factory())["outcome"], "pending_review")
 
     def test_duplicate_candidate_rejected(self):
         self.prep(CANDIDATE, fake_call_factory())
@@ -131,7 +143,7 @@ class Pipeline(unittest.TestCase):
         call = fake_call_factory(); wd = Path(self.td.name) / CANDIDATE["candidate_id"]
         pipeline.run_model_steps(CANDIDATE, {"sources": {}, "excerpts": []}, wd if wd.mkdir(parents=True, exist_ok=True) is None else wd, call=call)
         n = len(call.calls); self.assertEqual(n, 3)
-        r = self.prep(CANDIDATE, call); self.assertEqual(r["outcome"], "checked"); self.assertEqual(len(call.calls), n)   # no new model calls
+        r = self.prep(CANDIDATE, call); self.assertEqual(r["outcome"], "pending_review"); self.assertEqual(len(call.calls), n)   # no new model calls
 
     def test_list_valued_fields_are_coerced(self):
         o = pipeline.merge({"title": ["a", "b"], "dek": "d", "sections": [], "reflection": {"type": "t", "scenario": "s", "question": "q",

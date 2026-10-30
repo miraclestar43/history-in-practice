@@ -30,9 +30,27 @@ EMAIL_REPLY_TO=REPLACE_WITH_PRIVATE_REPLY_ADDRESS
 EMAIL_SEND_ENABLED=false
 ```
 
-字段名为建议，实施后须与程序一致。文件例如 `~/.config/history-in-practice/runtime.env`，权限 0600，repo 外；检查配置只显示变量是否设置，不显示值。发送开关关闭时必须没有真实网络发信，即使已有凭据。
+文件在 `~/.config/history-in-practice/runtime.env`，权限 0600，repo 外；`bin/hip doctor` 只显示变量是否设置，并在 `email_config_problems` 列出缺项（不显示地址或密钥）。
 
-今夜可完成 multipart text/plain + text/html、SMTP TLS、逐收件人状态、稳定 Message-ID、未知结果处理与本地 SMTP 测试。保存 .eml/HTML 预览时使用虚构地址。
+**Reply-To 是必填项。** 邮件页脚写着“反馈：直接回复本邮件”“想暂停接收？直接回复这封邮件写‘暂停’”，而 `history@read.starhub.vip` 没有收件箱。因此 `EMAIL_REPLY_TO` 必须是一个你会查看的真实地址；未设置时程序拒绝任何真实发信（`hip doctor` 会提示）。
+
+真实发信前，程序会校验：收件人非空、格式正确、无重复；SMTP 主机、端口、加密方式、用户名、密钥齐全；From 与 Reply-To 是有效地址。任一项缺失都不会“发送成功”，而是停下并报原因。每期第一次发送时冻结预期收件人集合（只存哈希），只有集合中每一位都被 SMTP 接收，这一期才算完成。
+
+## 第一封真实测试（不打开正式发信开关）
+
+`EMAIL_SEND_ENABLED` 保持 `false`，定时器保持未启用。用专门的一次性测试入口：
+
+```bash
+bin/hip doctor                                      # email_config_problems 必须为空
+bin/hip send-test samples/D/article.json --confirm-real-email
+```
+
+- 它只在显式加 `--confirm-real-email` 时发送；使用独立的测试期次号（`sample-D-test-时间戳`），标题前加“【测试】”，不影响正式期次的发送状态。
+- 发给私密配置中的全部收件人（目前两位）。命令返回每位收件人的 SMTP 结果；`accepted` 只表示服务器接收，不代表进了收件箱。
+- 然后人工确认：Gmail 与 QQ 都收到；不在垃圾箱；邮件头 SPF/DKIM 通过；中英文排版正常；**在其中一封上点“回复”，确认回复到了 Reply-To 地址**。
+- 都正常后，才把 `EMAIL_SEND_ENABLED=true` 写进私密配置，并按 `deploy/systemd/README.md` 启用定时器。
+
+`hip send ARTICLE --real` 是正式发信入口，仍受 `EMAIL_SEND_ENABLED` 约束；开关为 false 时它会拒绝并返回非零，不会让人误以为已发出。
 
 ## 官方依据
 

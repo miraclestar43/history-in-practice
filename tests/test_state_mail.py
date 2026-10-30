@@ -68,6 +68,42 @@ class MailState(unittest.TestCase):
             mailer.send_edition(self.db, OBJ, self.html, self.text, None, mode="local-test",
                                 smtp_cfg={"host": "smtp.resend.com", "port": 465}, recipients=FAKE)
 
+    def full_rt(self, **kv):
+        base = {"EMAIL_SEND_ENABLED": "true", "SMTP_HOST": "127.0.0.1", "SMTP_PORT": str(self.srv.server_address[1]), "SMTP_SECURITY": "ssl",
+                "SMTP_TLS_INSECURE_LOCAL": "true", "SMTP_USERNAME": "u", "SMTP_PASSWORD": "p", "EMAIL_FROM": "每日一鉴 <history@read.starhub.vip>",
+                "EMAIL_REPLY_TO": "feedback@example.com", "EMAIL_RECIPIENTS": "r1@example.com,r2@example.com"}
+        return config.Runtime(base | kv)
+
+    def test_incomplete_config_and_empty_recipients_never_report_success(self):
+        for bad, needle in (({"EMAIL_RECIPIENTS": ""}, "empty"), ({"EMAIL_RECIPIENTS": "a@example.com,bogus"}, "malformed"),
+                            ({"EMAIL_RECIPIENTS": "a@example.com,A@example.com"}, "duplicate"), ({"EMAIL_REPLY_TO": ""}, "REPLY_TO"),
+                            ({"SMTP_PASSWORD": ""}, "SMTP_PASSWORD"), ({"EMAIL_FROM": "nobody"}, "EMAIL_FROM")):
+            with self.assertRaises(mailer.ConfigIncomplete) as cm:
+                mailer.send_edition(self.db, OBJ, self.html, self.text, self.full_rt(**bad), mode="real")
+            self.assertIn(needle, str(cm.exception)); self.assertNotIn("example.com", str(cm.exception).replace("example.com>", ""))
+        with self.assertRaises(mailer.ConfigIncomplete):
+            mailer.send_edition(self.db, OBJ, self.html, self.text, None, mode="local-test", smtp_cfg=client_cfg(self.srv.server_address[1]), recipients=[])
+        self.assertFalse(state.delivery_complete(self.db, OBJ["edition_id"], OBJ["revision"]))       # nothing frozen: never complete
+        self.assertEqual(len(self.srv.messages), 0)
+
+    def test_completion_is_over_the_frozen_expected_set(self):
+        rep = mailer.send_edition(self.db, OBJ, self.html, self.text, self.full_rt(), mode="real")
+        self.assertEqual([r["status"] for r in rep], ["accepted", "accepted"])
+        self.assertTrue(state.delivery_complete(self.db, OBJ["edition_id"], OBJ["revision"]))
+        state.freeze_recipients(self.db, "other", 1, ["a@example.com", "b@example.com"])
+        state.set_delivery(self.db, "other", 1, state.recipient_key("a@example.com"), "a", "accepted")
+        self.assertFalse(state.delivery_complete(self.db, "other", 1))                                # one of two frozen accepted
+
+    def test_manual_test_send_works_while_disabled_but_needs_full_config(self):
+        rt = self.full_rt(EMAIL_SEND_ENABLED="false")
+        with self.assertRaises(mailer.SendDisabled):
+            mailer.send_edition(self.db, OBJ, self.html, self.text, rt, mode="real")
+        rep = mailer.send_edition(self.db, OBJ, self.html, self.text, rt, mode="real", manual_test=True)
+        self.assertEqual([r["status"] for r in rep], ["accepted", "accepted"])
+        with self.assertRaises(mailer.ConfigIncomplete):
+            mailer.send_edition(self.db, OBJ, self.html, self.text, self.full_rt(EMAIL_SEND_ENABLED="false", EMAIL_REPLY_TO=""), mode="real", manual_test=True)
+        m = message_from_bytes(self.srv.messages[0][1]); self.assertEqual(m["Reply-To"], "feedback@example.com")
+
     def test_connect_failure_is_failed_not_unknown(self):
         cfg = client_cfg(1)   # nothing listens on port 1
         rep = mailer.send_edition(self.db, OBJ, self.html, self.text, None, mode="local-test", smtp_cfg=cfg, recipients=FAKE[:1])

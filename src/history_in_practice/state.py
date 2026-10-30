@@ -7,6 +7,12 @@ Rules that matter (tested in tests/test_state_mail.py):
   salted SHA-256 of the address; the address itself is never stored.
 * `recover()` after a crash turns `sending` into `unknown`. `unknown` is never
   retried automatically: SMTP may already have accepted the message.
+* The expected recipient set is frozen (salted keys) when an edition enters
+  `email_pending`; it is complete only when every frozen key is `accepted`.
+* An in-flight edition whose date has passed becomes `overdue` (terminal,
+  alerted): stale email is never sent automatically on a later day.
+* `approval` records why a `checked` edition may be scheduled (editor record,
+  pipeline gates, named exception, approved sample); `origin` is pipeline/sample.
 """
 from __future__ import annotations
 import hashlib, json, sqlite3, time
@@ -17,14 +23,16 @@ ALLOWED = {
     "pending_review": {"prepared", "rejected"},
     "prepared": {"checked", "pending_review", "rejected"},
     "checked": {"scheduled", "archived", "pending_review", "rejected"},
-    "scheduled": {"archived", "checked"},
-    "archived": {"site_committed"},
-    "site_committed": {"site_live", "site_committed"},
-    "site_live": {"email_pending"},
-    "email_pending": {"complete", "email_pending"},
-    "complete": set(), "rejected": set(),
+    "scheduled": {"archived", "checked", "overdue"},
+    "archived": {"site_committed", "overdue"},
+    "site_committed": {"site_live", "site_committed", "overdue"},
+    "site_live": {"email_pending", "overdue"},
+    "email_pending": {"complete", "email_pending", "overdue"},
+    "complete": set(), "rejected": set(), "overdue": set(),
 }
 DELIVERY_FINAL = {"accepted"}
+# A `checked` edition may be scheduled only with a recorded approval; samples additionally need an explicit sample approval.
+SCHEDULABLE_SQL = "(COALESCE(approval,'') != '' AND (COALESCE(origin,'pipeline') != 'sample' OR approval LIKE 'sample-approved%'))"
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS edition(
@@ -36,6 +44,9 @@ CREATE TABLE IF NOT EXISTS transition(
 CREATE TABLE IF NOT EXISTS site_publication(
   edition_id TEXT, revision INTEGER, content_sha256 TEXT, commit_ref TEXT, status TEXT,
   detail TEXT, at REAL, PRIMARY KEY(edition_id, revision));
+CREATE TABLE IF NOT EXISTS edition_recipient(
+  edition_id TEXT, revision INTEGER, recipient_key TEXT, recipient_label TEXT, frozen_at REAL,
+  PRIMARY KEY(edition_id, revision, recipient_key));
 CREATE TABLE IF NOT EXISTS delivery(
   edition_id TEXT, revision INTEGER, recipient_key TEXT, recipient_label TEXT, message_id TEXT,
   status TEXT NOT NULL, attempts INTEGER NOT NULL DEFAULT 0, last_error TEXT, updated_at REAL,
@@ -52,6 +63,11 @@ def connect(path: Path) -> sqlite3.Connection:
     db = sqlite3.connect(str(path), isolation_level=None, timeout=30)
     db.execute("PRAGMA journal_mode=WAL"); db.execute("PRAGMA foreign_keys=ON")
     db.executescript(SCHEMA)
+    have = {r[1] for r in db.execute("PRAGMA table_info(edition)")}
+    for col in ("approval", "origin"):                      # migration for databases created before 2026-10-30 stabilisation
+        if col not in have:
+            db.execute(f"ALTER TABLE edition ADD COLUMN {col} TEXT")
+    db.execute("UPDATE edition SET origin='sample' WHERE origin IS NULL AND edition_id LIKE 'sample-%'")
     return db
 
 
@@ -109,6 +125,33 @@ def set_delivery(db, edition_id, revision, key, label, status, message_id=None, 
                   message_id=COALESCE(excluded.message_id, delivery.message_id),
                   attempts=delivery.attempts + ?, last_error=excluded.last_error, updated_at=excluded.updated_at""",
                (edition_id, revision, key, label, message_id, status, 1 if bump else 0, error, time.time(), 1 if bump else 0))
+
+
+def freeze_recipients(db, edition_id, revision, addresses: list[str]) -> int:
+    """Record the expected recipient set once (keys only). Later calls keep the first set."""
+    if db.execute("SELECT 1 FROM edition_recipient WHERE edition_id=? AND revision=?", (edition_id, revision)).fetchone():
+        return expected_count(db, edition_id, revision)
+    now = time.time()
+    for a in addresses:
+        db.execute("INSERT OR IGNORE INTO edition_recipient VALUES(?,?,?,?,?)", (edition_id, revision, recipient_key(a), recipient_label(a), now))
+    return expected_count(db, edition_id, revision)
+
+
+def expected_keys(db, edition_id, revision) -> set[str]:
+    return {r[0] for r in db.execute("SELECT recipient_key FROM edition_recipient WHERE edition_id=? AND revision=?", (edition_id, revision))}
+
+
+def expected_count(db, edition_id, revision) -> int:
+    return len(expected_keys(db, edition_id, revision))
+
+
+def delivery_complete(db, edition_id, revision) -> bool:
+    """True only if a non-empty expected set was frozen and every member is `accepted`."""
+    exp = expected_keys(db, edition_id, revision)
+    if not exp:
+        return False
+    ok = {r[0] for r in db.execute("SELECT recipient_key FROM delivery WHERE edition_id=? AND revision=? AND status='accepted'", (edition_id, revision))}
+    return exp <= ok
 
 
 def recover(db) -> list[str]:
