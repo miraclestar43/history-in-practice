@@ -70,6 +70,13 @@ CANDIDATE = {
     "single_basis_disclosed": True, "brief": "测试"}
 
 
+def refusing_call(prompt, timeout_s=0, **kw):
+    refusing_call.n += 1
+    return {"rc": 0, "killed": None, "wall_s": 6.0, "prompt_bytes": len(prompt), "prompt_chars": len(prompt), "out_bytes": 60, "out_chars": 60,
+            "stderr": "", "text": "The request was rejected because it was considered high risk"}
+refusing_call.n = 0
+
+
 def fake_call_factory(zh_ok=True, timeout=False):
     zh = {"title": "陈平降汉", "dek": "d", "sections": [{"id": i, "heading": i, "paras": [{"t": "陈平降汉。", "kind": "record", "ev": ["T-E1"]}]} for i in ("hook", "context", "story", "analysis")] +
           [{"id": "today", "heading": "t", "paras": [{"t": "现代一", "kind": "modern", "ev": []}, {"t": "现代二", "kind": "modern", "ev": []}]},
@@ -116,6 +123,31 @@ class Pipeline(unittest.TestCase):
         self.prep(CANDIDATE, fake_call_factory())
         dup = json.loads(json.dumps(CANDIDATE)); dup["candidate_id"] = "cand-dup"; dup["episode"]["persons"] = ["陳平"]
         self.assertEqual(self.prep(dup, fake_call_factory())["outcome"], "rejected")
+
+    def test_rerun_after_crash_reuses_saved_model_outputs(self):
+        call = fake_call_factory(); wd = Path(self.td.name) / CANDIDATE["candidate_id"]
+        pipeline.run_model_steps(CANDIDATE, {"sources": {}, "excerpts": []}, wd if wd.mkdir(parents=True, exist_ok=True) is None else wd, call=call)
+        n = len(call.calls); self.assertEqual(n, 3)
+        r = self.prep(CANDIDATE, call); self.assertEqual(r["outcome"], "checked"); self.assertEqual(len(call.calls), n)   # no new model calls
+
+    def test_list_valued_fields_are_coerced(self):
+        o = pipeline.merge({"title": ["a", "b"], "dek": "d", "sections": [], "reflection": {"type": "t", "scenario": "s", "question": "q",
+                            "example": {"assumptions": ["x", "y"], "steps": "s", "alternative": "a"}}, "uncertainty_note": "u"},
+                           {"title": "T", "sections": [], "reflection": {}, "uncertainty_note": "U"})
+        self.assertEqual(o["reflection"]["example"]["assumptions"]["zh"], "x\ny"); self.assertEqual(o["title"]["zh"], "a\nb")
+
+    def test_review_fix_issue_sends_to_pending(self):
+        base = fake_call_factory()
+        def call(prompt, timeout_s=0, **kw):
+            r = base(prompt, timeout_s=timeout_s)
+            if "事实审稿人" in prompt:
+                r["text"] = json.dumps({"issues": [{"severity": "fix", "section": "story", "para": 0, "problem": "反了"}], "overall": "x"}, ensure_ascii=False)
+            return r
+        r = self.prep(CANDIDATE, call); self.assertEqual(r["outcome"], "pending_review"); self.assertIn("fix/block", r["reason"])
+
+    def test_provider_refusal_goes_pending_without_retry(self):
+        refusing_call.n = 0; r = self.prep(CANDIDATE, refusing_call)
+        self.assertEqual(r["outcome"], "pending_review"); self.assertIn("provider refusal", r["reason"]); self.assertEqual(refusing_call.n, 1)
 
     def test_model_timeout_goes_pending_without_second_full_timeout(self):
         call = fake_call_factory(timeout=True); r = self.prep(CANDIDATE, call)

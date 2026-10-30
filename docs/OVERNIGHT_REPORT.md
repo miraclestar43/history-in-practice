@@ -6,6 +6,31 @@
 
 ## 2. Samples and previews
 
+Entry point: `samples/README.md` (tables generated from the files). All four samples are `status: sample`, revision 2, with no BLOCK or FIX findings.
+
+| Sample | Chinese (incl. Q&A) | English (incl. Q&A) | Evidence | Email HTML |
+|---|---|---|---|---|
+| A 中国古代 · 韩信、陈平、范增：项羽留不住的三个人 | 2,673 字 · ~8 min | 2,682 words · ~13 min | 20 excerpts, one basis (Shiji), disclosed | 41 KB |
+| B 世界史 · 拆掉水泵把手，宽街的霍乱就停了吗？ | 2,668 字 · ~8 min | 2,272 words · ~11 min | 20 excerpts, Snow + parish committee | 37 KB |
+| C 中国近现代 · 快要毕业时，一百个留学生被叫回国 | 2,534 字 · ~8 min | 2,192 words · ~11 min | 23 excerpts, Yung Wing + Qing history + 1917 alumni record | 39 KB |
+| D 美国史 · 欠饷是真的，匿名信也是真的：华盛顿在纽堡站在哪里 | 2,554 字 · ~8 min | 2,002 words · ~10 min | 17 excerpts, Shaw + JCC 24 + Washington text | 36 KB |
+
+Reading time is an estimate at 320 Chinese characters and 200 English words per minute.
+
+- **Chinese runs short:** every Chinese version is a little under the 2,800-character reference. It was not padded; extend only if real reading times come out short.
+- **English A runs long:** its English-only tightening call stalled (§5), so it keeps the corrected long version.
+
+Previews:
+
+| Preview | Location |
+|---|---|
+| Email | `samples/preview/email/sample-X.html`, `.txt`, `.reader1.eml` (fictional `example.invalid` recipients) |
+| Site | `samples/preview/site/` (serve with `python3 -I validation/preview_server.py 18767 samples/preview/site`) |
+| Screenshots | `samples/preview/screenshots/` (desktop and mobile, zh and en, list, two error states, StarHub nav entry) |
+| GitHub-readable | `samples/X/article.zh.md`, `samples/X/article.en.md` |
+
+How they were made: real Hermes runs through the isolated runner (expand Chinese → evidence review → natural English), then editor fixes by Claude, every one logged in `samples/X/editor_log_v2.json`. **Not** written by hand and labelled as automation; also **not** fully automatic, since each sample needed 14–23 logged editor changes.
+
 ## 3. Code
 
 `src/history_in_practice/` (stdlib + `opencc-python-reimplemented`), CLI `bin/hip`:
@@ -84,3 +109,18 @@ To rebuild the registry from committed content after losing SQLite: `bin/hip reg
 7. **Timers**: only after the above, follow `deploy/systemd/README.md`.
 
 ## 8. Not done / open issues
+
+1. **No real email, no deployment, no timers.** By instruction. Resend, the DNS records and the key come first (§7).
+2. **Inventory is far below 14 days.** See §1 for tonight's count. Each automated article costs about 10 minutes of model time. Automated drafts that pass the gates still contain errors a reviewer would catch, and the samples needed 14–23 logged editor changes each. Until reader feedback says otherwise, plan on an editor pass before scheduling, or accept a lower bar knowingly.
+3. **Sample A's English is about 13 minutes** (estimated), longer than the other three. The tightening call stalled. Rerun it with `python3 -I validation/tighten_en.py A`, or trim by hand.
+4. **Chinese length runs about 8 minutes** (2,534–2,673 characters), under the 2,800-character reference. It was deliberately not padded; calibrate with real readers first.
+5. **Hermes behaviour.**
+   - About 1 in 5 long calls returned invalid JSON. Retry or the trailing-comma fallback recovered every one, but that leaves no slack.
+   - One call stalled for 19 minutes with no output.
+   - Keep per-call timeouts of 20–30 minutes and the per-article budget; consider a shorter English-only timeout (10 minutes) since English calls normally take 2–4 minutes.
+6. **Isolated runner depends on Hermes internals** (`AIAgent` constructor arguments). Rerun `bin/hip doctor --probe` after any Hermes upgrade.
+7. **Production news-intel still calls `hermes -z … -t "" --ignore-rules`**, which enables 29 tools with auto-approval. That is outside this project and was not changed; it is the user's decision.
+8. **Website change is a local patch**, not a PR on `website_test`. Deliberately unpushed: a pushed branch could trigger a Cloudflare preview build whose deploy command is unverified.
+9. **Translation mapping for dedup.** Spans are compared within the one configured edition of each work. A translation must be mapped to the original work's reference before it can be compared. Same-episode retellings from a different work and without a QID only reach `review`.
+10. **Log rotation** is a size warning in `hip doctor`, not automatic rotation.
+11. **Real email-client rendering** (Gmail, QQ Mail, Apple Mail) is untested; only the HTML size and structure are verified.

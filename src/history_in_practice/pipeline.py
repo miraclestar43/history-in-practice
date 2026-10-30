@@ -14,6 +14,8 @@ from . import sources as src_mod, evidence, registry, render, checks, llm, state
 from .config import REPO, data_dir, load_project
 
 PROMPTS = Path(__file__).with_name("prompts")
+import re as _re
+REFUSAL = _re.compile(r"rejected because it was considered high risk|content (?:policy|filter)|cannot (?:help|assist) with|I can't (?:help|assist)", _re.I)
 
 
 def load_candidate(path: Path) -> dict:
@@ -62,7 +64,32 @@ def _evidence_block(pack):
         f"[{e['id']}] 来源：{pack['sources'][e['source_id']]['title']}；位置：{e['locator']}\n{e['display']}" for e in pack["excerpts"]) + "\n</evidence>"
 
 
+def _s(v):
+    """Model output sometimes returns a list where a string is expected."""
+    if isinstance(v, list):
+        return "\n".join(_s(x) for x in v)
+    return "" if v is None else str(v)
+
+
+def _normalise(d):
+    if not isinstance(d, dict):
+        return d
+    for k in ("title", "dek", "uncertainty_note"):
+        if k in d: d[k] = _s(d[k])
+    for s in d.get("sections", []):
+        s["heading"] = _s(s.get("heading"))
+        for p in s.get("paras", []):
+            p["t"] = _s(p.get("t"))
+    r = d.get("reflection", {})
+    for k in ("type", "scenario", "question"):
+        if k in r: r[k] = _s(r[k])
+    for k, v in list(r.get("example", {}).items()):
+        r["example"][k] = _s(v)
+    return d
+
+
 def merge(zh, en):
+    zh, en = _normalise(zh), _normalise(en)
     o = {"title": {"zh": zh["title"], "en": en.get("title", "")}, "dek": {"zh": zh["dek"], "en": en.get("dek", "")}, "sections": []}
     ens = {s["id"]: s for s in en.get("sections", [])}
     for s in zh["sections"]:
@@ -83,6 +110,10 @@ def run_model_steps(c, pack, outdir: Path, call=llm.call, timeouts=None) -> tupl
     style = (PROMPTS / "style_zh.md").read_text(encoding="utf-8")
 
     def step(name, prompt, timeout, retry_suffix):
+        saved = outdir / f"{name}.json"
+        if saved.exists():          # resume after a crash: never re-call the model for a step already done
+            metrics.append({"step": name, "candidate": c["candidate_id"], "reused": True, "json_ok": True, "wall_s": 0.0})
+            return json.loads(saved.read_text(encoding="utf-8"))
         for attempt in (1, 2):
             r = call(prompt if attempt == 1 else prompt + retry_suffix, timeout_s=timeout)
             m = {k: v for k, v in r.items() if k != "text"}; m.update(step=name, attempt=attempt, candidate=c["candidate_id"])
@@ -91,7 +122,12 @@ def run_model_steps(c, pack, outdir: Path, call=llm.call, timeouts=None) -> tupl
                 obj = llm.parse_json(r["text"]) if r["rc"] == 0 and not r["killed"] else None
             except ValueError:
                 obj = None
-            m["json_ok"] = obj is not None; metrics.append(m)
+            m["json_ok"] = obj is not None
+            txt = r["text"].strip()
+            if obj is None and len(txt) < 400 and REFUSAL.search(txt):
+                m["provider_refusal"] = txt[:200]; metrics.append(m)
+                return None          # a content refusal will not change on retry
+            metrics.append(m)
             if obj is not None:
                 (outdir / f"{name}.json").write_text(json.dumps(obj, ensure_ascii=False, indent=1), encoding="utf-8")
                 return obj
@@ -131,8 +167,13 @@ def prepare(c, db, *, call=llm.call, workdir: Path | None = None, cache: Path | 
     reasons = admission(c, fetched, pack, errors)
     if reasons:
         return pend("; ".join(reasons))
-    ep = dict(c["episode"], spans=evidence.spans(pack, c.get("core_excerpts")), title=c.get("title_hint", cid), category=c["category"])
-    eid, verdict = registry.reserve(db, ep)
+    ep = dict(c["episode"], spans=evidence.spans(pack, c.get("core_excerpts")), title=c.get("title_hint", cid), category=c["category"],
+              episode_id=f"ep-{cid}")
+    mine = db.execute("SELECT status FROM episode WHERE episode_id=?", (ep["episode_id"],)).fetchone()
+    if mine:                                   # resumed after a crash: our own reservation, not a duplicate
+        eid, verdict = ep["episode_id"], ("distinct", f"resumed own reservation ({mine[0]})")
+    else:
+        eid, verdict = registry.reserve(db, ep)
     report["dedup"] = verdict
     if verdict[0] == "duplicate":
         return pend(f"duplicate: {verdict[1]}", status="rejected")
@@ -143,21 +184,34 @@ def prepare(c, db, *, call=llm.call, workdir: Path | None = None, cache: Path | 
     report["model_calls"] = metrics
     if zh is None or en is None:
         registry.set_status(db, eid, "rejected")
-        return pend("model step failed: " + ", ".join(f"{m['step']} rc={m['rc']} killed={m['killed']} json={m['json_ok']}" for m in metrics))
+        refusals = [m for m in metrics if m.get("provider_refusal")]
+        if refusals:
+            return pend(f"provider refusal at {refusals[0]['step']}: {refusals[0]['provider_refusal']} (needs another model or an editor; do not reword to evade)")
+        return pend("model step failed: " + ", ".join(f"{m['step']} rc={m.get('rc')} killed={m.get('killed')} json={m['json_ok']}" for m in metrics))
     obj = merge(zh, en)
     obj.update(schema_version="0.2", edition_id=cid, episode_id=eid, status="checked", edition_date=c.get("planned_date", "unscheduled"),
                category=c["category"], revision=1, correction_note=None, single_basis_disclosed=bool(c.get("single_basis_disclosed")),
                preheader=c.get("preheader", {"zh": obj["dek"]["zh"], "en": obj["dek"]["en"]}),
                sources=[{"id": sid, "citation": v["title"], "url": v.get("url"), "link_label": "source", "basis": v.get("basis")} for sid, v in pack["sources"].items()],
                further_reading=c.get("further_reading", []), episode={k: v for k, v in ep.items() if k not in ("title", "category")})
+    for s in obj["sections"]:          # modern scenes cannot quote history: 「」 there is emphasis, not quotation
+        for para in s["paras"]:
+            if para["kind"] == "modern":
+                para["zh"] = para["zh"].replace("「", "“").replace("」", "”")
+    for k in ("scenario", "question"):
+        obj["reflection"][k]["zh"] = obj["reflection"][k]["zh"].replace("「", "“").replace("」", "”")
+    for k in obj["reflection"]["example"]:
+        obj["reflection"]["example"][k]["zh"] = obj["reflection"]["example"][k]["zh"].replace("「", "“").replace("」", "”")
     render.finalize(obj)
     findings, stats = checks.check(obj, pack)
     report.update(length=obj["length"], reading_minutes=obj["reading_minutes"], findings=findings)
-    blocking_review = [i for i in (review or {}).get("issues", []) if i.get("severity") == "block"]
+    # The evidence review's "fix" findings were substantive in practice (reversed meanings, feints written as
+    # real retreats, invented times), so anything above "note" sends the draft to the pending queue.
+    blocking_review = [i for i in (review or {}).get("issues", []) if i.get("severity") in ("block", "fix")]
     (out / "article.json").write_text(json.dumps(obj, ensure_ascii=False, indent=1), encoding="utf-8")
     state.transition(db, cid, "prepared", note="model draft assembled", episode_id=eid, category=c["category"], path=str(out / "article.json"))
     if checks.blocked(findings) or blocking_review or review is None:
-        why = ("checker BLOCK; " if checks.blocked(findings) else "") + (f"{len(blocking_review)} blocking review issues; " if blocking_review else "") + ("review missing" if review is None else "")
+        why = ("checker BLOCK; " if checks.blocked(findings) else "") + (f"{len(blocking_review)} review issues rated fix/block; " if blocking_review else "") + ("review missing" if review is None else "")
         state.transition(db, cid, "pending_review", note=why, reason=why)
         registry.set_status(db, eid, "prepared")
         report.update(outcome="pending_review", reason=why, wall_s=round(time.monotonic() - t0, 1))

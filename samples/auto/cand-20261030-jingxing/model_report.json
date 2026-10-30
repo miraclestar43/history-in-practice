@@ -1,0 +1,79 @@
+{
+ "candidate_id": "cand-20261030-jingxing",
+ "category": "china_ancient",
+ "steps": [],
+ "sources": {
+  "A-SJ92": "evidence_usable"
+ },
+ "dedup": [
+  "distinct",
+  "resumed own reservation (prepared)"
+ ],
+ "episode_id": "ep-cand-20261030-jingxing",
+ "model_calls": [
+  {
+   "step": "draft_zh",
+   "candidate": "cand-20261030-jingxing",
+   "reused": true,
+   "json_ok": true,
+   "wall_s": 0.0
+  },
+  {
+   "step": "review_zh",
+   "candidate": "cand-20261030-jingxing",
+   "reused": true,
+   "json_ok": true,
+   "wall_s": 0.0
+  },
+  {
+   "step": "en",
+   "candidate": "cand-20261030-jingxing",
+   "reused": true,
+   "json_ok": true,
+   "wall_s": 0.0
+  }
+ ],
+ "length": {
+  "zh_chars": 2920,
+  "en_words": 2443,
+  "basis": "body + question + example; excludes sources and read-more"
+ },
+ "reading_minutes": {
+  "zh": 9,
+  "en": 12,
+  "basis": "estimate: 320 zh chars/min, 200 en words/min"
+ },
+ "findings": [
+  [
+   "CHECK",
+   "context[2] numbers differ zh[] en[10]"
+  ],
+  [
+   "BLOCK",
+   "analysis[0] zh quote not in cited evidence: 「避而不击则诸侯谓吾怯」"
+  ],
+  [
+   "CHECK",
+   "analysis[1] numbers differ zh[2000] en[2000, 10000]"
+  ],
+  [
+   "BLOCK",
+   "analysis[2] zh quote not in cited evidence: 「为什么背水」"
+  ],
+  [
+   "BLOCK",
+   "analysis[2] zh quote not in cited evidence: 「那条计当初为什么没被采纳」"
+  ],
+  [
+   "BLOCK",
+   "limits[1] zh quote not in cited evidence: 「若成安君听足下计，若信者亦已为禽」"
+  ],
+  [
+   "FIX",
+   "today[0] may repeat the open-question scenario"
+  ]
+ ],
+ "outcome": "pending_review",
+ "reason": "checker BLOCK; ",
+ "wall_s": 0.0
+}

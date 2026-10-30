@@ -139,7 +139,10 @@ def cmd_prepare_queue(a):
                 continue
             if len(done) >= a.max_articles or (time.monotonic() - t0) / 60 > a.budget_minutes:
                 break
-            rep = pipeline.prepare(c, d)
+            try:
+                rep = pipeline.prepare(c, d)
+            except Exception as e:             # one bad candidate must not stop the queue
+                rep = {"outcome": "error", "reason": f"{type(e).__name__}: {e}"[:300], "wall_s": round(time.monotonic() - t0, 1)}
             done.append({"candidate": c["candidate_id"], "outcome": rep.get("outcome"), "reason": rep.get("reason", "")[:200], "wall_s": rep.get("wall_s")})
     print(json.dumps({"processed": done, "inventory": pipeline.inventory(d)}, ensure_ascii=False, indent=1)); return 0
 
@@ -158,8 +161,15 @@ def cmd_admit(a):
         print(json.dumps({"admitted": False, "reason": "checker BLOCK", "findings": f}, ensure_ascii=False, indent=1)); return 1
     if not o.get("episode"):
         print(json.dumps({"admitted": False, "reason": "article has no episode metadata"}, ensure_ascii=False)); return 1
-    if state.get(d, o["edition_id"]):
-        print(json.dumps({"admitted": False, "reason": f"already known: {state.get(d, o['edition_id'])['status']}"}, ensure_ascii=False)); return 0
+    cur = state.get(d, o["edition_id"])
+    if cur and cur["status"] == "pending_review" and a.from_pending:
+        eid = o.get("episode_id") or cur["episode_id"]
+        registry.set_status(d, eid, "checked")
+        state.transition(d, o["edition_id"], "prepared", note="editor pass on pending draft", path=str(Path(a.article).resolve()))
+        state.transition(d, o["edition_id"], "checked", note="admitted after editor pass", content_sha256=o["content_sha256"])
+        print(json.dumps({"admitted": True, "edition_id": o["edition_id"], "episode_id": eid, "from": "pending_review", "stats": st}, ensure_ascii=False)); return 0
+    if cur:
+        print(json.dumps({"admitted": False, "reason": f"already known: {cur['status']}"}, ensure_ascii=False)); return 0
     eid, v = registry.reserve(d, dict(o["episode"], episode_id=o.get("episode_id"), title=o["title"]["zh"], category=o["category"]), status="checked")
     if not eid:
         print(json.dumps({"admitted": False, "reason": f"{v[0]}: {v[1]}"}, ensure_ascii=False)); return 1
@@ -211,7 +221,8 @@ def main(argv=None):
     p = sp.add_parser("publish-today"); p.add_argument("--date"); p.set_defaults(f=cmd_publish_today)
     for name, f in (("status", cmd_status), ("inventory", cmd_inventory), ("recover", cmd_recover)):
         sp.add_parser(name).set_defaults(f=f)
-    p = sp.add_parser("admit"); p.add_argument("article"); p.add_argument("evidence"); p.set_defaults(f=cmd_admit)
+    p = sp.add_parser("admit"); p.add_argument("article"); p.add_argument("evidence"); p.add_argument("--from-pending", action="store_true")
+    p.set_defaults(f=cmd_admit)
     p = sp.add_parser("registry-rebuild"); p.add_argument("content", nargs="+"); p.add_argument("--db"); p.set_defaults(f=cmd_registry_rebuild)
     a = ap.parse_args(argv)
     state.recover(db()) if a.cmd not in ("doctor",) else None
