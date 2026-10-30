@@ -17,6 +17,20 @@
 - 英文 B、C、D 约 10–11 分钟。A 的英文偏长（约 13 分钟），已排入一次“只压缩措辞、不删事实”的模型精简；结果见 `docs/OVERNIGHT_REPORT.md`。
 - A 只有一个来源基础：《史记》系统，《汉书》据其改写；文中已披露。C 的美国教育者抗议信只见于容闳书中转载，文中已注明。
 
+## 自动供稿：进入库存的文章
+
+`hip prepare-queue` 跑出的候选，经编辑修改后用 `hip admit --from-pending` 进入库存（未排期、未发布）。“模型结果”是自动流程本身给出的结论；`pending_review` 表示按规则不能直接入库，必须人工改。
+
+| 候选 | 类别 | 标题 | 中文 | 英文 | 摘录 | 模型结果 | 编辑修改 | BLOCK/FIX |
+|---|---|---|---|---|---|---|---|---|
+| [jingxing](auto/cand-20261030-jingxing/article.zh.md) · [EN](auto/cand-20261030-jingxing/article.en.md) | 中国古代 | 井陉口前，那条没人听的计 | 2863 字 · 约 9 分钟 | 2385 words · ~12 min | 10 | pending_review | 30 | 0 |
+| [shackleton-ocean-camp](auto/cand-20261030-shackleton-ocean-camp/article.zh.md) · [EN](auto/cand-20261030-shackleton-ocean-camp/article.en.md) | 世界史 | 走六英里，进一英里 | 2837 字 · 约 9 分钟 | 2279 words · ~11 min | 18 | checked（旧规则；审稿 11 条 fix，按现行规则为 pending_review，已重排） | 39 | 0 |
+| [snow-water-companies](auto/cand-20261030-snow-water-companies/article.zh.md) · [EN](auto/cand-20261030-snow-water-companies/article.en.md) | 世界史 | 同一条街上的两根水管 | 3012 字 · 约 9 分钟 | 2232 words · ~11 min | 12 | checked（旧规则；审稿 13 条 fix，按现行规则为 pending_review，已重排） | 14 | 0 |
+| [washington-resigns](auto/cand-20261030-washington-resigns/article.zh.md) · [EN](auto/cand-20261030-washington-resigns/article.en.md) | 美国史 | 鞠躬的人与脱帽的人：1783年的一次权力交还 | 2936 字 · 约 9 分钟 | 2424 words · ~12 min | 18 | pending_review | 33 | 0 |
+
+- 编辑修改数包含整段重写（记为一条，前后全文都在 `editor_log.json`）。
+- 最初的候选证据包只有 8–10 条摘录，初稿只有 6–7 分钟；从同一批已缓存的来源补足摘录后，重写到 9 分钟左右。之后的候选（廉蔺、富兰克林、达尔文与华莱士）在跑模型前就补足了摘录。
+
 ## 怎么做的（真实运行，不是手写冒充自动化）
 
 1. **第一版**：短篇，见 git 历史 `831f8e6`。

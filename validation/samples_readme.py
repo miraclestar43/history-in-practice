@@ -40,8 +40,27 @@ if __name__ == "__main__":
     r, t = main(); print("\n".join(r)); print(); print("\n".join(t))
 
 
+def auto_rows():
+    """Automated candidates that went through the pipeline and an editor pass (samples/auto/<cid>/)."""
+    out = []
+    for d in sorted((ROOT / "samples/auto").glob("cand-*/article.json")):
+        o = json.loads(d.read_text()); render.finalize(o); ev = json.loads((d.parent / "evidence.json").read_text())
+        f, _ = checks.check(o, ev)
+        log = json.loads((d.parent / "editor_log.json").read_text()) if (d.parent / "editor_log.json").exists() else []
+        rep = json.loads((d.parent / "model_report.json").read_text()) if (d.parent / "model_report.json").exists() else {}
+        cid = d.parent.name; outcome = rep.get("outcome", "-")
+        rv = json.loads((d.parent / "model_review_zh.json").read_text()) if (d.parent / "model_review_zh.json").exists() else {}
+        n_fix = sum(1 for i in rv.get("issues", []) if i.get("severity") in ("fix", "block"))
+        if outcome == "checked" and n_fix:      # judged by the pre-rule code in queue 2
+            outcome = f"checked（旧规则；审稿 {n_fix} 条 fix，按现行规则为 pending_review，已重排）"
+        out.append(f"| [{cid.replace('cand-20261030-', '')}](auto/{cid}/article.zh.md) · [EN](auto/{cid}/article.en.md) | {CAT[o['category']]} | {o['title']['zh']} | "
+                   f"{o['length']['zh_chars']} 字 · 约 {o['reading_minutes']['zh']} 分钟 | {o['length']['en_words']} words · ~{o['reading_minutes']['en']} min | "
+                   f"{len(ev['excerpts'])} | {outcome} | {len(log)} | {sum(1 for l, _ in f if l in ('BLOCK', 'FIX'))} |")
+    return out
+
+
 def write():
-    rows, trows = main()
+    rows, trows = main(); arows = auto_rows()
     text = f"""# 四篇双语样稿（第二版，2026-10-30 overnight）
 
 用户最新目标：**中文完整阅读约十分钟，英文完整阅读也约十分钟**（不是双语合计）。本目录是按这个目标扩充后的四篇样稿，附证据映射、开放问题与示例、延伸阅读，以及邮件与网页本地预览。它们是**样稿，不是正式期次**（`status: sample`，revision 2），未发布、未发信；日期是假定排期。
@@ -56,6 +75,17 @@ def write():
 - 中文四篇都在 2,500–2,700 字，比 2,800 字的参考下限略短，约 8 分钟。按要求没有为凑字数扩写；若两位读者实读明显短于十分钟，再补有依据的背景。
 - 英文 B、C、D 约 10–11 分钟。A 的英文偏长（约 13 分钟），已排入一次“只压缩措辞、不删事实”的模型精简；结果见 `docs/OVERNIGHT_REPORT.md`。
 - A 只有一个来源基础：《史记》系统，《汉书》据其改写；文中已披露。C 的美国教育者抗议信只见于容闳书中转载，文中已注明。
+
+## 自动供稿：进入库存的文章
+
+`hip prepare-queue` 跑出的候选，经编辑修改后用 `hip admit --from-pending` 进入库存（未排期、未发布）。“模型结果”是自动流程本身给出的结论；`pending_review` 表示按规则不能直接入库，必须人工改。
+
+| 候选 | 类别 | 标题 | 中文 | 英文 | 摘录 | 模型结果 | 编辑修改 | BLOCK/FIX |
+|---|---|---|---|---|---|---|---|---|
+{chr(10).join(arows)}
+
+- 编辑修改数包含整段重写（记为一条，前后全文都在 `editor_log.json`）。
+- 最初的候选证据包只有 8–10 条摘录，初稿只有 6–7 分钟；从同一批已缓存的来源补足摘录后，重写到 9 分钟左右。之后的候选（廉蔺、富兰克林、达尔文与华莱士）在跑模型前就补足了摘录。
 
 ## 怎么做的（真实运行，不是手写冒充自动化）
 
