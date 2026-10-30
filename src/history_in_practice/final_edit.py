@@ -235,8 +235,23 @@ def contamination(cid: str, ev: dict) -> list[dict]:
     return []
 
 
+def prior_final(cid: str) -> dict | None:
+    """The previous final-editor attempt's record, if any: a later attempt continues from its text and open issues."""
+    p = OUT_ROOT / cid / "final" / "final_editor_record.json"
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
+
+
+def carried_issues(prior: dict) -> list[dict]:
+    open_ids = set(prior.get("open_issues") or [])
+    return [{"id": f"P{k + 1}", "model_id": i["id"], "source": "final-editor previous attempt", "where": i.get("path"),
+             "problem": i.get("problem"), "suggestion": i.get("proposed")}
+            for k, i in enumerate(x for x in prior.get("issues") or [] if x["id"] in open_ids)]
+
+
 def base_paths(cid: str, db) -> tuple[Path, Path] | None:
     d = OUT_ROOT / cid
+    if (d / "final" / "article.json").exists():           # continue from the previous final-editor attempt
+        return d / "final" / "article.json", d / "final" / "evidence.json"
     if (d / "article.json").exists() and (d / "evidence.json").exists():
         return d / "article.json", d / "evidence.json"
     cur = state.get(db, cid)
@@ -271,13 +286,16 @@ def run(cid: str, db, *, call=None, max_rounds: int = MAX_ROUNDS) -> dict:
     (w / "base_article.json").write_text(json.dumps(base, ensure_ascii=False, indent=1), encoding="utf-8")
     (w / "evidence.json").write_text(json.dumps(ev, ensure_ascii=False, indent=1), encoding="utf-8")
     paths = [p for p, _, _ in editor.fields(o)]
-    inh, cont = inherited_issues(cid, o, ev), contamination(cid, ev)
+    prior = prior_final(cid)
+    inh = carried_issues(prior) if prior else inherited_issues(cid, o, ev)   # MiMo issues were all decided in the first attempt
+    cont = contamination(cid, ev)
     t0 = time.time(); caller = editor.Caller(w, cid, call)
     rec = {"record_type": "final_editor", "schema": RECORD_SCHEMA, "candidate_id": cid, "edition_id": o["edition_id"],
            "editor": dict(EDITOR, model=claude_cli.MODEL, cli_version=claude_cli.version() if call is claude_cli.call else "test-double"),
            "code_rev": CODE_REV, "started_at": t0, "base_source": str(src[0].relative_to(REPO)) if src[0].is_relative_to(REPO) else str(src[0]),
            "base_content_sha256": base["content_sha256"], "evidence_sha256": editor.sha(ev),
            "model_record_sha256": editor.sha(json.loads(_latest_model_record(cid).read_text())) if _latest_model_record(cid) else None,
+           "prior_record_sha256": editor.sha(prior) if prior else None, "attempt": w.name,
            "inherited": inh, "contamination": cont, "issues": [], "edits": [], "rounds": []}
     ctx = (f"\n\n【遗留问题】\n{json.dumps(inh, ensure_ascii=False, indent=1)}\n\n【已知污染】\n{json.dumps(cont, ensure_ascii=False, indent=1)}"
            f"\n\n【必须覆盖的字段路径】\n{json.dumps(paths, ensure_ascii=False)}")
@@ -370,6 +388,7 @@ def _finish(rec, w, o, cid, caller, failure, issues=None) -> dict:
     out = OUT_ROOT / cid / "final"; out.mkdir(parents=True, exist_ok=True)
     shutil.copy(w / "final_article.json", out / "article.json"); shutil.copy(w / "evidence.json", out / "evidence.json")
     shutil.copy(w / "base_article.json", out / "base_article.json"); shutil.copy(w / "final_editor_record.json", out / "final_editor_record.json")
+    shutil.copy(w / "final_editor_record.json", out / f"{w.name}_final_editor_record.json")      # every attempt's record stays in git
     for f in w.glob("*.json"):
         if f.name.startswith(("audit", "revise_", "verify_")):
             shutil.copy(f, out / f"{w.name}_{f.name}")

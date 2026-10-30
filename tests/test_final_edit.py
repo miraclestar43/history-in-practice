@@ -133,6 +133,33 @@ class FinalEditor(unittest.TestCase):
         a = final_edit.admit(self.db, out / "article.json", out / "evidence.json", rec, exception="owner says fine"); self.assertFalse(a["admitted"])
         a = editor.admit_with_record(self.db, out / "article.json", out / "evidence.json", rec); self.assertTrue(a["admitted"], a)   # dispatches
 
+    def test_second_attempt_continues_from_the_previous_final_text_and_its_open_issues(self):
+        always = lambda k: [{"id": "1", "path": "sections.story.0", "category": "inner_life", "severity": "fix", "problem": "无证据的动机", "evidence": []}]
+        story = self.o["sections"][2]["paras"][0]; n = {"k": 0}
+        def fix_all(prompt):                                  # a different text each time (an identical text is not a change)
+            todo = json.loads(prompt.rsplit("【问题清单】", 1)[1].split("\n\n[", 1)[0]); n["k"] += 1
+            return {"changes": [{"path": "sections.story.0.zh", "text": story["zh"] + "删" * n["k"], "issues": [t["id"] for t in todo]},
+                                {"path": "sections.story.0.en", "text": story["en"] + " cut" * n["k"], "issues": [t["id"] for t in todo]}],
+                    "dispositions": [{"issue": t["id"], "action": "fixed", "rationale": "删去无据内容"} for t in todo]}
+        rec1 = final_edit.run(CID, self.db, call=self.script(revise=fix_all, verify_issues=always))
+        self.assertEqual(rec1["outcome"], "pending_review")
+        def audit2(prompt):                                   # judges whatever it inherits
+            inh = json.loads(prompt.split("【遗留问题】\n", 1)[1].split("\n\n【已知污染】", 1)[0])
+            return {"fields": self.fields(), "issues": [], "inherited": [{"id": i["id"], "verdict": "valid", "rationale": "成立"} for i in inh]}
+        base = self.script(revise=fix_all)
+        def call(prompt, timeout_s=0, **kw):
+            if "【遗留问题】" in prompt and "【问题清单】" not in prompt:
+                return reply(audit2(prompt))
+            return base(prompt, timeout_s)
+        rec2 = final_edit.run(CID, self.db, call=call)
+        self.assertEqual(rec2["base_content_sha256"], rec1["final_content_sha256"])          # continues from attempt 1's text
+        self.assertEqual([i["model_id"] for i in rec2["inherited"]], rec1["open_issues"])    # with attempt 1's open issues
+        self.assertEqual(rec2["prior_record_sha256"], editor.sha(rec1))
+        out = final_edit.OUT_ROOT / CID / "final"
+        self.assertTrue((out / "attempt-1_final_editor_record.json").exists() and (out / "attempt-2_final_editor_record.json").exists())
+        self.assertEqual(rec2["outcome"], "admissible", rec2["open_issues"])
+        a = final_edit.admit(self.db, out / "article.json", out / "evidence.json", rec2); self.assertTrue(a["admitted"], a)
+
     def test_real_cli_is_never_called_without_a_subscription_login(self):
         old = claude_cli.CONFIG_DIR; claude_cli.CONFIG_DIR = self.td.name + "/empty-config"
         try:
