@@ -433,9 +433,12 @@ def verify_final_record(o: dict, ev: dict, rec: dict, base: dict | None) -> list
     elif any(i.get("severity") in ("fix", "block") and f"V{len(rec['rounds'])}-{i['id']}" not in
              {x["id"] for x in rec.get("issues", []) if x.get("disposition") in ("fixed", "rejected")} for i in last.get("issues", [])):
         p.append("final verify pass raised fix/block issues that are not closed")
+    f_now, _ = checks.check(o, ev); now = {m for _, m in f_now}
     for i in rec.get("issues") or []:
         if i.get("severity") not in ("fix", "block"):
             continue
+        if i.get("origin") == "checker" and i.get("disposition") is None and i["problem"].removeprefix("checker: ") not in now:
+            continue                     # deterministic finding no longer produced on this exact content (checker corrected)
         d = i.get("disposition")
         if d == "rejected" and not (i.get("evidence") and all(quote_ok(ev, c) for c in i["evidence"])):
             p.append(f"issue {i['id']} rejected without a verifiable evidence quote")

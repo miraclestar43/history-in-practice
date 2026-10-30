@@ -57,6 +57,13 @@ class Checker(unittest.TestCase):
     def test_sample_passes(self):
         f, _ = checks.check(self.o, self.ev); self.assertFalse(checks.blocked(f), f)
 
+    def test_per_ten_thousand_matches_english_10000(self):
+        from history_in_practice.checks import numbers
+        self.assertIn(10000, numbers("表九的户数、死亡数和每万户死亡数", "zh"))      # Snow limits[2]: was a false "drift"
+        self.assertIn(10000, numbers("deaths per 10,000 houses", "en"))
+        self.assertIn(1000, numbers("每千人", "zh"))
+        self.assertNotIn(10000, numbers("每万一千", "zh"))     # 每 followed by a full numeral run is not "per ten thousand"
+
     def test_record_paragraph_without_evidence_blocks(self):
         o = copy.deepcopy(self.o); o["sections"][2]["paras"][0]["ev"] = []
         self.assertTrue(checks.blocked(checks.check(o, self.ev)[0]))

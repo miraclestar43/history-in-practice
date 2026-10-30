@@ -45,6 +45,7 @@ def numbers(text, lang):
     ns = {int(x.replace(",", "")) for x in re.findall(r"\d[\d,]*", text)}
     if lang == "zh":
         ns |= {cn_to_int(m) for m in re.findall(r"[一二两三四五六七八九十百千万]{2,}", text.replace("十十", "")) if cn_to_int(m) >= 10} | ({10} if "十十" in text else set())
+        ns |= {{"百": 100, "千": 1000, "万": 10000}[u] for u in re.findall(r"每([百千万])(?![一二两三四五六七八九十百千万])", text)}   # 每万户 = per 10,000
     else:
         ns |= en_number_words(text)
     return ns
