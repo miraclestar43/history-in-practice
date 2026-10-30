@@ -80,8 +80,24 @@ def cmd_doctor(a):
 
 
 def cmd_prepare(a):
-    c = pipeline.load_candidate(a.candidate)
-    rep = pipeline.prepare(c, db())
+    c = pipeline.load_candidate(a.candidate); d = db(); call, drafter = pipeline.llm.call, "MiMo (hermes-isolated)"
+    if a.drafter == "claude":
+        # Owner decision 2026-10-30: when MiMo's provider refuses a normal history topic, the Pi-local Claude CLI
+        # drafts under the same prompts, evidence pack and checks. Only for recorded refusals; MiMo stays the default.
+        from . import claude_cli
+        cur = state.get(d, c["candidate_id"])
+        if not cur or "provider refusal" not in (cur.get("reason") or ""):
+            print(json.dumps({"prepared": False, "reason": "--drafter claude is only for candidates with a recorded MiMo provider refusal"})); return 1
+        pre = claude_cli.preflight()
+        if pre:
+            print(json.dumps({"prepared": False, "reason": "; ".join(pre)})); return 1
+        w = data_dir() / "drafts" / c["candidate_id"]; keep = w / "mimo-refused"
+        if w.exists():                                   # keep the refused MiMo attempts; the new drafter writes fresh files
+            keep.mkdir(exist_ok=True)
+            for f in list(w.glob("*.raw.txt")) + list(w.glob("calls.jsonl")) + list(w.glob("report.json")):
+                shutil.move(str(f), keep / f.name)
+        call = claude_cli.call; drafter = f"Pi Claude ({claude_cli.MODEL}, {claude_cli.version()}) after MiMo provider refusal"
+    rep = pipeline.prepare(c, d, call=call, drafter=drafter)
     print(json.dumps({k: v for k, v in rep.items() if k != "findings"} | {"findings": rep.get("findings", [])[:20]}, ensure_ascii=False, indent=1))
     return 0 if rep.get("outcome") == "checked" else 2
 
@@ -314,8 +330,13 @@ def _final_one(d, cid: str) -> dict:
     cur = state.get(d, cid)
     if not cur or cur["status"] != "pending_review":
         return {"edition": cid, "outcome": "skipped", "reason": f"status {cur['status'] if cur else 'unknown'}"}
+    n = len(list((data_dir() / "final_edit" / cid).glob("attempt-*"))) if (data_dir() / "final_edit" / cid).exists() else 0
+    if n >= final_edit.MAX_ATTEMPTS:
+        return {"edition": cid, "outcome": "skipped", "reason": f"{n} final-editor attempts used (max {final_edit.MAX_ATTEMPTS}); needs a person"}
     rec = final_edit.run(cid, d)
-    res = {"edition": cid, "outcome": rec["outcome"], "elapsed_min": rec.get("elapsed_min"), "open_issues": rec.get("open_issues"),
+    if rec["outcome"] == "pending_review" and not rec.get("failure") and n + 1 < final_edit.MAX_ATTEMPTS:
+        rec = final_edit.run(cid, d)                     # one continuation attempt from the previous final text
+    res = {"edition": cid, "attempts": len(list((data_dir() / "final_edit" / cid).glob("attempt-*"))), "outcome": rec["outcome"], "elapsed_min": rec.get("elapsed_min"), "open_issues": rec.get("open_issues"),
            "failure": rec.get("failure") or rec.get("reason"), "edits": len(rec.get("edits", [])), "issues": len(rec.get("issues", []))}
     if rec["outcome"] == "admissible":
         out = final_edit.OUT_ROOT / cid / "final"
@@ -470,7 +491,8 @@ def main(argv=None):
     ap = argparse.ArgumentParser(prog="hip", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sp = ap.add_subparsers(dest="cmd", required=True)
     p = sp.add_parser("doctor"); p.add_argument("--probe", action="store_true"); p.set_defaults(f=cmd_doctor)
-    p = sp.add_parser("prepare"); p.add_argument("candidate"); p.set_defaults(f=cmd_prepare)
+    p = sp.add_parser("prepare"); p.add_argument("candidate"); p.add_argument("--drafter", choices=["mimo", "claude"], default="mimo")
+    p.set_defaults(f=cmd_prepare)
     p = sp.add_parser("check"); p.add_argument("article"); p.add_argument("evidence"); p.set_defaults(f=cmd_check)
     p = sp.add_parser("render"); p.add_argument("articles", nargs="+"); p.add_argument("--out", required=True)
     p.add_argument("--base-url", default="https://starhub.vip"); p.set_defaults(f=cmd_render)

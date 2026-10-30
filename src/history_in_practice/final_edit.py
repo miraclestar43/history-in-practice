@@ -31,6 +31,7 @@ CATEGORIES = {"facts", "attribution", "chronology", "causality", "quotes", "inne
 CHECKS = {"facts", "attribution", "chronology", "causality", "quotes", "inner_life", "interpretation_label", "parity"}
 TIMEOUTS = {"audit": 1800, "revise": 1800, "verify": 1500}
 MAX_ROUNDS = int(load_project().get("final_editor", {}).get("max_rounds", 2))
+MAX_ATTEMPTS = int(load_project().get("final_editor", {}).get("max_attempts", 2))
 OUT_ROOT = REPO / "samples/auto"            # git-tracked outputs (tests point this at a temp dir)
 CANDIDATE_DIR = REPO / "config/candidates"
 EDITOR = {"name": "Pi Claude", "role": "named final editor", "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
@@ -201,11 +202,13 @@ def _latest_model_record(cid: str) -> Path | None:
 def inherited_issues(cid: str, o: dict, ev: dict) -> list[dict]:
     """Open MiMo-stage issues: the record's `remaining` plus everything its final review raised (fact arrays included)."""
     rp = _latest_model_record(cid)
-    if not rp:
-        return []
-    rec = json.loads(rp.read_text(encoding="utf-8")); last = (rec.get("rounds") or [{}])[-1]
-    rv, pv = editor.model_view(last.get("review_after")), editor.model_view(last.get("parity_after"))
-    found = list(rec.get("remaining") or [])
+    if rp:
+        rec = json.loads(rp.read_text(encoding="utf-8")); last = (rec.get("rounds") or [{}])[-1]
+        rv, pv = editor.model_view(last.get("review_after")), editor.model_view(last.get("parity_after"))
+        found = list(rec.get("remaining") or [])
+    else:                                              # no editor stage yet: the pipeline's initial review
+        dr = data_dir() / "drafts" / cid / "review_zh.json"
+        rv, pv, found = (json.loads(dr.read_text(encoding="utf-8")) if dr.exists() else None), None, []
     if rv is not None and not schemas.review(rv):
         found += editor.collect_issues(rv, pv if pv is not None and not schemas.parity(pv) else None, [])
     out, seen = [], set()

@@ -164,12 +164,12 @@ def run_model_steps(c, pack, outdir: Path, call=llm.call, timeouts=None) -> tupl
     return zh, review, en, metrics
 
 
-def prepare(c, db, *, call=llm.call, workdir: Path | None = None, cache: Path | None = None) -> dict:
+def prepare(c, db, *, call=llm.call, workdir: Path | None = None, cache: Path | None = None, drafter: str = "MiMo (hermes-isolated)") -> dict:
     """Run one candidate end to end. Returns a report dict; never raises for content problems."""
     cid = c["candidate_id"]; t0 = time.monotonic()
     out = Path(workdir or data_dir() / "drafts" / cid); out.mkdir(parents=True, exist_ok=True)
     cache = Path(cache or data_dir() / "source_cache"); cache.mkdir(parents=True, exist_ok=True)
-    report = {"candidate_id": cid, "category": c["category"], "steps": [], "code_rev": CODE_REV}
+    report = {"candidate_id": cid, "category": c["category"], "steps": [], "code_rev": CODE_REV, "drafter": drafter}
 
     def pend(reason, status="pending_review"):
         state.transition(db, cid, status, note=reason[:500], reason=reason[:2000]) if state.get(db, cid) is None or \
