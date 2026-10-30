@@ -17,7 +17,7 @@ A daily bilingual history story, grounded in sources and connected to everyday d
 尚未部署、未启用定时任务、未发送真实邮件。进展与验证结果见 [docs/OVERNIGHT_REPORT.md](docs/OVERNIGHT_REPORT.md)。
 
 - [完整方案](docs/PLAN.md) · [最新用户要求](docs/USER_REQUIREMENTS_20261030.md) · [编辑规范](docs/EDITORIAL_BRIEF.md) · [发信配置](docs/EMAIL_SETUP.md)
-- [四篇样稿（中英各约十分钟目标）与预览](samples/README.md)
+- [五篇样稿、七篇自动供稿文章（中英各约十分钟目标）与预览](samples/README.md)
 - 评审：[Fable](docs/reviews/FABLE_REVIEW.md) → [ChatGPT](docs/reviews/CHATGPT_REVIEW.md) → [Opus 验证](docs/reviews/OPUS_VALIDATION.md)
 
 ## 代码
@@ -30,13 +30,14 @@ A daily bilingual history story, grounded in sources and connected to everyday d
 | `tests/` | `unittest`，含本地 SMTPS、站点回退、去重、进程树超时等关键行为 |
 | `deploy/systemd/` | 未启用的 user unit 模板 |
 | `deploy/website_test/` | StarHub 栏目改动的补丁（未推送到网站仓库） |
-| `validation/` | 前期验证脚本与样稿生成脚本 |
+| `validation/` | 前期验证脚本、样稿生成、编辑修改（`editor_pass.py`）与统计脚本 |
+| `samples/auto/` | 自动供稿文章：模型原始输出、编辑修改记录、证据与成稿 |
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install opencc-python-reimplemented   # 一次
 bin/hip doctor --probe                       # 环境、Hermes 隔离探针、私密配置（只显示是否已设置）
 .venv/bin/python -m unittest discover -s tests
-bin/hip render samples/*/article.json --out /tmp/hip-preview
+bin/hip render samples/[A-E]/article.json samples/auto/cand-*/article.json --out /tmp/hip-preview
 ```
 
 私密配置在仓库外：`~/.config/history-in-practice/runtime.env`（权限 600）。真实收件人、密钥只在那里，不进 Git、PR、预览或模型输入。
