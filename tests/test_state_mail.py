@@ -96,5 +96,16 @@ class EditionState(unittest.TestCase):
             self.assertFalse(rt.send_enabled)
 
 
+
+class RenderInventory(unittest.TestCase):
+    def test_unscheduled_article_renders_but_stays_out_of_public_index(self):
+        o = json.loads((ROOT / "samples/B/article.json").read_text()); o.update(edition_id="inv-1", edition_date="unscheduled")
+        with tempfile.TemporaryDirectory() as td:
+            out = Path(td); render.build([dict(OBJ), o], out, "https://starhub.vip")
+            self.assertTrue((out / "email/inv-1.html").exists())
+            self.assertTrue((out / "site/data/history/unscheduled/inv-1.json").exists())
+            ids = [i["edition_id"] for i in json.loads((out / "site/data/history/index.json").read_text())["items"]]
+            self.assertEqual(ids, [OBJ["edition_id"]])
+
 if __name__ == "__main__":
     unittest.main()

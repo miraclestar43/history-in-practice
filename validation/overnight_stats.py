@@ -24,3 +24,11 @@ for name, calls in groups.items():
     longest = max((c.get("wall_s", 0) for c in calls), default=0)
     print(f"{name}: {len(calls)} calls, {wall:.0f} s total, longest {longest:.0f} s, invalid/no JSON {bad} (refusals {ref}, killed/stopped {stalled})")
 print(f"ALL: {tot_calls} model calls, {tot_wall/60:.1f} min of model time")
+print()
+print("| Candidate | Calls | Model time | Steps (wall s) | Invalid JSON | Refusals |")
+print("|---|---|---|---|---|---|")
+for r in sorted((ROOT / "data/drafts").glob("*/calls.jsonl")):
+    calls = [json.loads(l) for l in r.read_text().splitlines() if l.strip()]
+    steps = " · ".join(f"{c.get('step')} {c.get('wall_s', 0):.0f}" for c in calls)
+    print(f"| {r.parent.name.replace('cand-20261030-', '')} | {len(calls)} | {sum(c.get('wall_s', 0) for c in calls)/60:.1f} min | {steps} | "
+          f"{sum(1 for c in calls if not c.get('json_ok') and not c.get('provider_refusal'))} | {sum(1 for c in calls if c.get('provider_refusal'))} |")

@@ -146,9 +146,13 @@ def build(objs, out: Path, base):
         finalize(o)
         (out/f"email/{o['edition_id']}.html").write_text(email_html(o, base), encoding="utf-8")
         (out/f"email/{o['edition_id']}.txt").write_text(email_text(o, base), encoding="utf-8")
+        public = {k: v for k, v in o.items() if k not in ("evidence_map", "preheader", "editor_log")}
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(o.get("edition_date", ""))):
+            # inventory not yet scheduled: preview JSON only, never listed in the public index
+            p = out/f"site/data/history/unscheduled/{o['edition_id']}.json"; p.parent.mkdir(parents=True, exist_ok=True)
+            p.write_text(json.dumps(public, ensure_ascii=False, indent=1), encoding="utf-8"); continue
         y, m, d = o["edition_date"].split("-")
         p = out/f"site/data/history/{y}/{m}/{d}-{o['edition_id']}.json"; p.parent.mkdir(parents=True, exist_ok=True)
-        public = {k: v for k, v in o.items() if k not in ("evidence_map", "preheader", "editor_log")}
         p.write_text(json.dumps(public, ensure_ascii=False, indent=1), encoding="utf-8")
         index.append({"edition_id": o["edition_id"], "revision": o["revision"], "edition_date": o["edition_date"], "category": o["category"],
                       "title": o["title"], "dek": o["dek"], "reading_minutes": o["reading_minutes"], "content_sha256": o["content_sha256"],
