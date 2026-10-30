@@ -31,7 +31,27 @@ systemd: `deploy/systemd/hip-{prepare,send}.{service,timer}` templates, LA time 
 
 ## 4. Verification
 
-Legend: **real** = ran for real on the Pi (real Hermes model, real network fetch, real files); **local** = local simulation with fixtures (local SMTPS server, fake site); **implemented** = code exists and unit-tested but not exercised end to end; **pending config** = blocked on an outside account or permission.
+Legend: **real** = ran for real on the Pi (real Hermes model, real network fetch, real files); **local** = local simulation with fixtures (local SMTPS server, fake site); **implemented** = code exists and is unit-tested but not exercised end to end; **pending config** = blocked on an outside account or permission.
+
+| What | How | Result | Class |
+|---|---|---|---|
+| Hermes isolation | `hip doctor --probe`: real Hermes entry point, `chat` replaced, no model call | 0 tools, no SOUL, no memory, no cwd AGENTS canary | real |
+| Hermes calls | 32 calls tonight through the isolated runner (12 stage 1 earlier, 14 stage 2, 1 tightening, 2×3 candidates) | see §5 | real |
+| Runner bounds | fake runner: valid, error exit, empty output, hang with a grandchild, 5 MB flood | timeout kills the whole process group; output cap stops the flood while running | local (`tests/test_llm_checks.py`) |
+| Sources | 31 documents fetched and classified per document | challenge (ctext, Founders), 403 (loc.gov), 404, site fallback (starhub), reachable-but-irrelevant all detected | real (`validation/fetch_results.json`) + local (`tests/test_sources.py`) |
+| Evidence | 80 excerpts for the samples, plus 21 for the candidates, cut by anchors | every quote is an exact span; missing anchors and unusable sources are refused | real + local |
+| Dedup | retitle, English names, 繁体, aliases only, other category, QID redirect, missing QID, prepared-not-published duplicate, racing insert, same parent event / different episode, same person-year-place / different decision, other-work paraphrase → review, rebuild from content | all pass | local (`tests/test_registry_pipeline.py`) |
+| Checks | missing evidence id, unknown id, invented English quote, English number absent from Chinese, today-scene repeating the question | BLOCK/FIX as designed; all four samples pass | local + real |
+| Pipeline | mock model: good candidate → inventory; missing source → pending while others continue; duplicate → rejected; model timeout → pending without a second full timeout | all pass | local |
+| Publish flow | temp content dir + temp website git repo + live check served from it + local SMTPS: stop after archive → resume without rewriting; only allow-listed files committed, `articles.html` untouched; one recipient refused → partial → retry sends only that one; stale live copy blocks email; no ready edition in rotation category → skip | all pass | local (`tests/test_publish.py`) |
+| Site verification | 200 homepage fallback, old revision, same id/title with changed body (hash), missing English | all rejected | local (`tests/test_site_verify.py`) |
+| SMTP | CLI `hip send --local-smtp` against local SMTPS with 3 fictional recipients | run 1: accepted / failed (RCPT 550) / unknown (drop during DATA); run 2: only the failed one resent, unknown not resent; exit 3 while any is not accepted | local (`data/logs/local_smtp_demo.txt`) |
+| Email size | rendered long samples | HTML 37–42 KB, text 27–32 KB (budget 90 KB) | real render; **real client display not tested** |
+| Site page | headless Firefox screenshots of the history page, tabs, mobile, errors; local StarHub copy with the new nav link | renders; fallback and missing story show an error banner | local |
+| Real email delivery | — | not attempted (no Resend account/key; sending disabled) | pending config |
+| Cloudflare deployment | — | not attempted; website change kept as a local patch | pending config |
+
+`.venv/bin/python -m unittest discover -s tests` → 39 tests, all passing at the last checkpoint.
 
 ## 5. Model timings
 

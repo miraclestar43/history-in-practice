@@ -11,6 +11,7 @@
   hip publish-today [--date YYYY-MM-DD]                      (schedule -> archive -> site -> verify -> email)
   hip status | hip inventory | hip recover
   hip retry-send ARTICLE.json --real|--local-smtp HOST:PORT   (retries `failed` only, never `unknown`)
+  hip admit ARTICLE.json EVIDENCE.json     (editor-reviewed article -> checks -> registry -> inventory)
   hip registry-rebuild CONTENT.json...
 """
 from __future__ import annotations
@@ -149,6 +150,24 @@ def cmd_publish_today(a):
     print(json.dumps(rep, ensure_ascii=False, indent=1)); return 0 if rep.get("outcome") in ("complete", "waiting") else 4
 
 
+def cmd_admit(a):
+    """Admit an editor-reviewed article into inventory: checks -> registry -> `checked`."""
+    o = _load(a.article); ev = _load(a.evidence); render.finalize(o); d = db()
+    f, st = checks.check(o, ev)
+    if checks.blocked(f):
+        print(json.dumps({"admitted": False, "reason": "checker BLOCK", "findings": f}, ensure_ascii=False, indent=1)); return 1
+    if not o.get("episode"):
+        print(json.dumps({"admitted": False, "reason": "article has no episode metadata"}, ensure_ascii=False)); return 1
+    if state.get(d, o["edition_id"]):
+        print(json.dumps({"admitted": False, "reason": f"already known: {state.get(d, o['edition_id'])['status']}"}, ensure_ascii=False)); return 0
+    eid, v = registry.reserve(d, dict(o["episode"], episode_id=o.get("episode_id"), title=o["title"]["zh"], category=o["category"]), status="checked")
+    if not eid:
+        print(json.dumps({"admitted": False, "reason": f"{v[0]}: {v[1]}"}, ensure_ascii=False)); return 1
+    state.transition(d, o["edition_id"], "prepared", note="editor-reviewed article", episode_id=eid, category=o["category"], path=str(Path(a.article).resolve()))
+    state.transition(d, o["edition_id"], "checked", note="admitted via hip admit", content_sha256=o["content_sha256"])
+    print(json.dumps({"admitted": True, "edition_id": o["edition_id"], "episode_id": eid, "stats": st}, ensure_ascii=False)); return 0
+
+
 def cmd_status(a):
     d = db(); s = state.summary(d)
     s["recent"] = [dict(zip(("edition_id", "status", "category", "reason"), r)) for r in
@@ -192,6 +211,7 @@ def main(argv=None):
     p = sp.add_parser("publish-today"); p.add_argument("--date"); p.set_defaults(f=cmd_publish_today)
     for name, f in (("status", cmd_status), ("inventory", cmd_inventory), ("recover", cmd_recover)):
         sp.add_parser(name).set_defaults(f=f)
+    p = sp.add_parser("admit"); p.add_argument("article"); p.add_argument("evidence"); p.set_defaults(f=cmd_admit)
     p = sp.add_parser("registry-rebuild"); p.add_argument("content", nargs="+"); p.add_argument("--db"); p.set_defaults(f=cmd_registry_rebuild)
     a = ap.parse_args(argv)
     state.recover(db()) if a.cmd not in ("doctor",) else None
