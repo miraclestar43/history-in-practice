@@ -19,12 +19,15 @@
 - news-intel：https://github.com/miraclestar43/news-intel 。Pi 用户提供的配置为 `LLM_PROVIDER=hermes_cli`、`HERMES_BIN=/home/star/.local/bin/hermes`，直连 HTTP 参数为空。以安全 smoke test 核实，不输出 `.env` 或 Hermes 凭据。
 - 现有调用为 `hermes -z <prompt> -t "" --ignore-rules`，工具关闭。独立获取并缓存史料，不能指望这个调用自行研究资料。检查当前版本实际支持的参数和输出方式。
 - 网站：https://github.com/miraclestar43/website_test ，域名 https://starhub.vip/ 。源码看起来主要是静态 HTML/JSON；确认实际 Cloudflare 资源、生产分支和发布配置，不假设一定是某种 Worker。优先最小范围增加栏目，不重构整个网站。
-- 邮件授权、准确收件人和发送时间从用户确认或明确配置取得；不能根据人名猜地址。默认排期建议 America/Los_Angeles 07:30，未确认前标为建议。
+- 邮件授权、准确收件人和发送时间从用户确认或明确配置取得；不能根据人名猜地址。默认排期建议 America/Los_Angeles 07:30 发送、前一晚 20:00 准备，未确认前标为建议。缺失输入清单见 `docs/PLAN.md` §2.6。
+- 已核实的约束（2026-10-30，见 `docs/PLAN.md` §2 与 `docs/reviews/FABLE_REVIEW.md`）：Hermes v0.14.0，模型 mimo-v2.6-pro，一次性生成约 5 字/秒（404 字 78 秒）；`-z` 会加载 cwd 的 AGENTS.md，子进程 cwd 必须是空目录并同时传 `-t ""`、`--ignore-rules`；单次超时按 600–900 s、整篇 45 分钟设计；prompt ≤ 120 KB、输出上限 ≥ 80,000 字符；Pi 系统时区是 America/Chicago，OnCalendar 必须带 `America/Los_Angeles` 后缀并避开 22:00 与 07:00 LA 的 news-intel 任务。
+- 已核实的网站行为：starhub.vip 对任何路径返回 200 + 首页 HTML，`*.html` 308 跳转到无扩展名路径，HTML 含 Cloudflare 注入脚本。发布核对只能用 `data/history/*.json` 的 `edition_id` + `revision`；链接统一 `/history/?story=<id>&lang=zh|en`；`articles.html` 是口令保护的私人库，新栏目与它完全隔离。
+- 史料来源：ctext.org 对脚本返回验证页，不能程序化取证；zh/en Wikisource、Wikipedia REST、Wikidata 可达。先核实 marxists.org 中文文库、Founders Online、Gutenberg、LacusCurtius 的可达性，再写进 `config/sources.yaml`。
 
 ## 分阶段执行
 
-1. **样稿与预览**：四类各一篇完整中英样稿，至少一篇中国近现代或毛泽东相关题材。附关键事实证据、邮件 HTML / text 预览和网站预览。先把阅读质量做出来，反馈纳入后再扩展。
-2. **核心流水线**：完成证据包、受限 Hermes adapter、结构化内容、审核门槛、事件去重、同源渲染、SQLite 状态、CLI 和有预算的重试。执行端到端 dry run 与关键故障测试。
+1. **样稿与预览**：四个候选先通过 `docs/EDITORIAL_BRIEF.md` 的“故事骨架”门槛，只用白名单来源建证据包并记录人工分钟数；再写四类各一篇完整中英样稿（中文约 1,400–1,800 字，英文约 800–1,000 词），至少一篇中国近现代或毛泽东相关题材，四篇的 `reflection.type` 互不相同。附关键事实证据、邮件 HTML / text 预览和网站预览。先把阅读质量做出来，反馈纳入后再扩展。可参考 `docs/reviews/FABLE_REVIEW.md` §7 的提纲，但其中事实均未核实。
+2. **核心流水线**：完成白名单语料库适配器与选题侦察任务、每周人工批准的队列、受限 Hermes adapter、结构化内容、审核门槛、Wikidata + FTS5 事件去重、同源渲染、SQLite 状态、CLI 和有预算的重试。执行端到端 dry run，报告每次模型调用的真实耗时与字节数，以及关键故障测试（超限 prompt 被拒、cwd 诱饵 AGENTS.md 未被注入、同事件换标题/语言/类别被拒）。
 3. **归档与发布**：同一正式内容生成 JSON、可在 GitHub 浏览的中英文 Markdown、索引、邮件和网页。网站导出限制为允许路径，保留网站其他功能。跟踪两个 repo 提交与线上 revision，确保发布中断能恢复。
 4. **接入邮件和网站**：配置具备授权的发信账号、分别跟踪两位收件人。网站确认正式内容可读后再发邮件。按最终用户授权范围完成集成；遇到必要权限/输入缺失时集中说明。
 5. **Pi 运行与七天观察**：独立 systemd 配置，错开 news-intel，测量长文调用耗时，准备库存，验证恢复、夏令时和各渠道状态。已授权范围内持续推进，别反复请求相同许可。

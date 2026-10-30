@@ -16,13 +16,14 @@ A daily bilingual history story, grounded in sources and connected to everyday d
 
 本仓库目前只有规划与评审任务，尚未实现或部署自动化服务，也未发送邮件。
 
-1. [完整方案 v2](docs/PLAN.md)
+1. [完整方案 v2.1](docs/PLAN.md)
 2. [内容体验与长期编辑要求](docs/EDITORIAL_BRIEF.md)
 3. [Claude Fable：评审与修订任务](prompts/01_FABLE_REVIEW.md)
 4. [Claude Opus：最终评审后分阶段实施](prompts/02_OPUS_IMPLEMENT.md)
+5. [Fable 评审结果（2026-10-30）](docs/reviews/FABLE_REVIEW.md)
 
-工作顺序：Fable 评审并提交修订 → ChatGPT 再评审 → 用户要求进入实施 → Opus 实施。
+工作顺序：Fable 评审并提交修订（已完成）→ ChatGPT 再评审 → 用户要求进入实施 → Opus 实施。
 
 运行环境计划采用 Raspberry Pi、Hermes CLI（现有 MiMo 配置）、Python、SQLite、systemd、SMTP，以及 [StarHub](https://starhub.vip/) 现有静态网站结构。
 
-参考已有项目：[news-intel](https://github.com/miraclestar43/news-intel)。具体能力与部署配置需在实施阶段按当前代码和环境核实。
+参考已有项目：[news-intel](https://github.com/miraclestar43/news-intel)。Hermes 调用方式、实测耗时、Pi 时区与线上部署行为已在 2026-10-30 核实并记录于 `docs/PLAN.md` §2；发信账号、收件人、Cloudflare 配置等仍待实施阶段确认。
