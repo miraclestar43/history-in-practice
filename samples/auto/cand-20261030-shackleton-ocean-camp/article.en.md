@@ -14,31 +14,43 @@ But how to reach land? The surface was loose, wet snow, and loads had to be ferr
 
 The plan he began with was far grander: "the Transcontinental party will set out on their 1800-mile journey at once," he wrote, "in the hope of accomplishing the march across the Pole and reaching the Ross Sea base in five months." Eighteen hundred miles, the Pole, a base on the far side of the continent. Once the ice had crushed Endurance, the task became something else entirely: get the whole party onto land. [S-E1][S-E2]
 
+The ship had been locked in the ice for 281 days and had drifted more than 570 miles to the north-west. When they left her he worked out where they stood. They were 346 miles from Paulet Island, "the nearest point where there is any possibility of finding food and shelter." A small hut built there by the Swedish expedition in 1902 held stores left by the Argentine relief ship, and he knew those stores well: he had bought them himself in London on behalf of the Argentine Government. The nearest barrier to the west was about 180 miles away, but a party going there would still be about 360 miles from Paulet Island, and "there would be no means of sustaining life on the barrier." [S-E9]
+
+## From Dump Camp to Ocean Camp
+
 At a place they named Dump Camp, the equipment went through a severe weeding-out. He decided to issue each man a complete new set of Burberrys — Burberry coats — and underclothing, along with a supply of new socks. At the same time he fixed the rule: "personal gear must not exceed two pounds per man," which meant nothing but bare necessaries would go on the march. In his words, they could not afford to cumber themselves with unnecessary weight. [S-E3][S-E4]
-
-The weeding-out reached small personal things too; more on that below.
-
-## Four Days of Marching, Then Camp
-
-When they abandoned the ship he wrote: the ship was crushed beyond all hope of ever being righted; they were alive and well, and had stores and equipment to meet the work in front of them. After the sentence about the task he added one more line: "It is hard to write what I feel." [S-E2]
-
-Then came the counting and culling. In his words, they could not afford to carry unnecessary gear, and the equipment was sorted through with a heavy hand. He issued every man a full new set of outer clothing and underclothing, plus new socks. [S-E3]
-
-The rule that followed was hard-edged: personal gear must not exceed two pounds per man. Nothing beyond bare necessaries was to be taken. He wrote it as an order, not a suggestion. [S-E4]
 
 And so the detail that stays with you: "sovereigns were thrown away and photographs were kept." He tore the fly-leaf out of the Bible the Queen had given to the ship, the page with her own writing on it. [S-E4][S-E5]
 
-The arithmetic of the march made ugly reading. Over one day's going they gained about one mile in a direct line. The detours forced on them meant the ground actually travelled was at least two miles. And the relays — loads ferried back and forth — pushed the day's marching up to six miles. Six parts of footwork bought one part of position. [S-E6]
+The real weight was the boats. Each of them, with its gear and the sledges beneath it, weighed more than a ton. "The sledges were the point of weakness." It seemed almost hopeless, he wrote, to keep them from smashing under their loads on rough pressure-ice "which stretched ahead of us for probably 300 miles." [S-E10]
+
+The first day's method was the relay. A pioneer party with picks and shovels broke a road through the pressure-ridges for the sledges carrying the boats. The seven dog teams "took their sledges forward for half a mile, then went back for the other sledges." Worsley took charge of the two boats, "with fifteen men hauling, and these also had to be relayed." They crossed two opening cracks with killer whales pushing their snouts through, and by 5 p.m. they had covered a mile, north-north-west. [S-E10][S-E11]
+
+The arithmetic of the march made ugly reading. They had gained about one mile in a direct line; the detours made the ground actually covered at least two miles, and the relays pushed the day's marching up to six. Some of the dog teams had covered at least ten miles. That night they camped on flat ice that "proved to be young and salty." The killers were blowing all night, and at 2 a.m. a crack opened about 20 feet from the camp. The ice was thin enough for the killers to break through, he wrote, "but there was no other camping-ground within our reach and we had to take the risk." [S-E6][S-E12]
+
+The next morning "the snow was falling so heavily that we could not see more than a few score yards ahead, and I decided not to strike camp. A path over the shattered floes would be hard to find, and to get the boats into a position of peril might be disastrous." Men went back to Dump Camp for wood and blubber for the fire. When the weather cleared a little, he and Worsley went prospecting to the west and found a large floe that offered a fairly good road for at least another mile to the north-west. After lunch they struck camp. [S-E13]
+
+The afternoon went better. Two dog teams were hitched to the cutter and "started off in splendid style. They needed to be helped only once; indeed fourteen dogs did as well or even better than eighteen men." A dozen men with picks and shovels could cut a road through a ridge about 14 feet high in ten minutes and leave a smooth, or comparatively smooth, path behind them. [S-E14]
+
+The overall account did not change. Through wet, deep snow, with constant halts to cut a road, they "managed to march the best part of a mile towards our goal, though the relays and the deviations again made the actual distance travelled nearer six miles." Seeing that the men were all exhausted, he had the tents pitched in the lee of the two boats. While they were at it, a sailor found a little pool of thawed snow on a sail lying in one of the boats: just a sip each. He quoted what one man wrote in his diary: "One has seen and tasted cleaner, but seldom more opportunely found water." [S-E15]
 
 The next day, after four days of hard effort, broke cold and still, with the same wet snow. In the clearing light he could see the situation plainly. With the surface as loose as it was, and given how little they had to show for four days of strenuous effort, they would never get any great distance. And there was a second possibility to weigh: leads might open close to them, which would let them row north-west to where they might find land. The two considerations pointed one way. He decided to find a more solid floe, camp there, and stay until conditions were more favourable for a second attempt to escape from their icy prison. [S-E7]
 
 Tents and everything else were moved to a thick, heavy old floe about one and a half miles from the wreck, and there they made their camp. They called it Ocean Camp. [S-E7]
 
+Shifting the two boats there took the utmost effort. The surface was terrible, like nothing any of them had seen before: "We were sinking at times up to our hips, and everywhere the snow was two feet deep." [S-E16]
+
+Once in camp, "I decided to conserve our valuable sledging rations, which would be so necessary for the inevitable boat journey, as much as possible, and to subsist almost entirely on seals and penguins." A party went back to Dump Camp for clothing, tobacco and whatever else they could find, but heavy snow and the thaw had swallowed a good many of the things left there. [S-E17]
+
+This floating lump of ice, about a mile square at first and later splitting into smaller and smaller pieces, was their home for nearly two months. In that time they went back again and again to the wreck and retrieved clothing, food "and some few articles of personal value which in our light-hearted optimism we had thought to leave miles behind us on our dash across the moving ice to safety." [S-E18]
+
 Later they moved camp again, to a place they called Patience Camp, and lived there for nearly three and a half months. [S-E7][S-E8]
 
 ## Making a Stop That Carries a Next Step
 
-Read the decision one way and what matters is not that he stopped, but how he wrote the stop. He did not frame it as a declaration that they were finished with moving. He framed it as a second attempt to be made once conditions grew more favourable: the camp went onto a more solid floe, and the reasoning carried a specific hope — leads opening nearby, boats in the water, land somewhere to the north-west. Waiting therefore had an object and a trigger; it was not simply lying down. The author's inference is that this way of writing the decision is what let the party bank its strength, instead of buying one mile of position with six miles of walking, day after day. [S-E6][S-E7]
+One reading, and it is the author's, is that Ocean Camp was not the first time he chose to stop. On the march's second morning, with snow too thick to see a path, he decided not to strike camp; when it cleared in the afternoon and a good floe turned up, they moved on. Both decisions weighed the same things: could a road be found, and was it worth taking the boats into danger to use it? What set Ocean Camp apart is that this time he wrote the waiting down as a plan. The camp went onto a more solid floe, the reasoning carried a specific hope (leads opening nearby, boats in the water, land to the north-west), and a second attempt was to follow once conditions improved. [S-E13][S-E7]
+
+One more thing is worth noticing, and again it is the author's reading. Shackleton later called the first plan, the dash across the moving ice to safety, a piece of "light-hearted optimism". Once they stopped, they could go back to the wreck again and again for clothing, food and the things they had left behind, and they switched to seals and penguins so that the sledging rations could be kept for the boat journey ahead. In his account, stopping was not only a halt to the drain; it was time to gather their resources again. [S-E18][S-E17]
 
 A second reading, and it is the author's, concerns the standard behind the choices. Gold coins were of no use on the ice; the photographs and a page with the Queen's handwriting could not buy anything either, yet those were the things kept. He gives no reason in these passages. Perhaps the limit screened only for weight; perhaps it was personal preference. Both go beyond what he wrote. [S-E4][S-E5]
 
@@ -52,9 +64,9 @@ Then there are alternatives the author raises for the sake of argument; nothing 
 
 ## Where These Claims Stop
 
-Everything in this piece comes from Shackleton's own narrative, read here through the OCR text of the 1920 printing: the account of a participant who led the party, parts of which read like a contemporary diary. No other member's diary has been brought in for comparison. What the rest of the camp thought, and whether anyone questioned the decision, is not in the evidence, and this piece does not put feelings in their mouths.
+Everything in this piece comes from Shackleton's own narrative, read here through the OCR text of the 1920 printing: the account of a participant who led the party, parts of which read like a contemporary diary. No other member's diary has been brought in for comparison. What the rest of the camp thought, and whether anyone questioned the decision, is not in the evidence, and this piece does not put feelings in their mouths. The line about the sip of water comes from an unnamed member's diary, as quoted by Shackleton.
 
-The text is machine-read, and it carries errors. Quotations are taken only from clean stretches; a few damaged words are reproduced without quotation marks. All the figures — 1,800 miles, two pounds, one mile, six miles, one and a half miles, three and a half months — come from his account and have not been checked against any other record. Nor does this piece tell the story of the rescue that followed; that falls outside the evidence gathered here.
+The text is machine-read, and it carries errors. Quotations are taken only from clean stretches; a few damaged words are reproduced without quotation marks. All the figures — 1,800 miles, 281 days, 346 miles, two pounds, a ton, one mile, six miles, one and a half miles, two months, three and a half months — come from his account and have not been checked against any other record. Nor does this piece tell the story of the rescue that followed; that falls outside the evidence gathered here.
 
 ## Think about it
 
