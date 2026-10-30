@@ -24,6 +24,7 @@
 | 候选 | 类别 | 标题 | 中文 | 英文 | 摘录 | 模型结果 | 编辑修改 | BLOCK/FIX |
 |---|---|---|---|---|---|---|---|---|
 | [jingxing](auto/cand-20261030-jingxing/article.zh.md) · [EN](auto/cand-20261030-jingxing/article.en.md) | 中国古代 | 井陉口前，那条没人听的计 | 2863 字 · 约 9 分钟 | 2385 words · ~12 min | 10 | pending_review | 30 | 0 |
+| [lian-lin](auto/cand-20261030-lian-lin/article.zh.md) · [EN](auto/cand-20261030-lian-lin/article.en.md) | 中国古代 | 位次之争：廉颇的委屈与那根荆条 | 2859 字 · 约 9 分钟 | 2500 words · ~12 min | 17 | pending_review | 34 | 0 |
 | [shackleton-ocean-camp](auto/cand-20261030-shackleton-ocean-camp/article.zh.md) · [EN](auto/cand-20261030-shackleton-ocean-camp/article.en.md) | 世界史 | 走六英里，进一英里 | 2837 字 · 约 9 分钟 | 2279 words · ~11 min | 18 | checked（旧规则；审稿 11 条 fix，按现行规则为 pending_review，已重排） | 39 | 0 |
 | [snow-water-companies](auto/cand-20261030-snow-water-companies/article.zh.md) · [EN](auto/cand-20261030-snow-water-companies/article.en.md) | 世界史 | 同一条街上的两根水管 | 3012 字 · 约 9 分钟 | 2232 words · ~11 min | 12 | checked（旧规则；审稿 13 条 fix，按现行规则为 pending_review，已重排） | 14 | 0 |
 | [washington-resigns](auto/cand-20261030-washington-resigns/article.zh.md) · [EN](auto/cand-20261030-washington-resigns/article.en.md) | 美国史 | 鞠躬的人与脱帽的人：1783年的一次权力交还 | 2936 字 · 约 9 分钟 | 2424 words · ~12 min | 18 | pending_review | 33 | 0 |

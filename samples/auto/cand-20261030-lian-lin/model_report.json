@@ -1,0 +1,90 @@
+{
+ "candidate_id": "cand-20261030-lian-lin",
+ "category": "china_ancient",
+ "steps": [],
+ "sources": {
+  "A2-SJ81": "evidence_usable"
+ },
+ "dedup": [
+  "distinct",
+  ""
+ ],
+ "episode_id": "ep-cand-20261030-lian-lin",
+ "model_calls": [
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 203.1,
+   "prompt_bytes": 13174,
+   "prompt_chars": 4965,
+   "out_bytes": 15643,
+   "out_chars": 6488,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "draft_zh",
+   "attempt": 1,
+   "candidate": "cand-20261030-lian-lin",
+   "json_ok": false
+  },
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 280.3,
+   "prompt_bytes": 13249,
+   "prompt_chars": 5000,
+   "out_bytes": 14679,
+   "out_chars": 6344,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "draft_zh",
+   "attempt": 2,
+   "candidate": "cand-20261030-lian-lin",
+   "json_ok": true
+  },
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 166.7,
+   "prompt_bytes": 22498,
+   "prompt_chars": 9434,
+   "out_bytes": 5046,
+   "out_chars": 2422,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "review_zh",
+   "attempt": 1,
+   "candidate": "cand-20261030-lian-lin",
+   "json_ok": true
+  },
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 170.1,
+   "prompt_bytes": 23303,
+   "prompt_chars": 10563,
+   "out_bytes": 17002,
+   "out_chars": 17002,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "en",
+   "attempt": 1,
+   "candidate": "cand-20261030-lian-lin",
+   "json_ok": true
+  }
+ ],
+ "length": {
+  "zh_chars": 2800,
+  "en_words": 2717,
+  "basis": "body + question + example; excludes sources and read-more"
+ },
+ "reading_minutes": {
+  "zh": 9,
+  "en": 14,
+  "basis": "estimate: 320 zh chars/min, 200 en words/min"
+ },
+ "findings": [
+  [
+   "BLOCK",
+   "limits[0] zh quote not in cited evidence: 「趙惠文王時」"
+  ]
+ ],
+ "outcome": "pending_review",
+ "reason": "checker BLOCK; 5 review issues rated fix/block; ",
+ "wall_s": 820.3
+}
