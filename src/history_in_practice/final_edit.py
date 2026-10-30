@@ -226,10 +226,12 @@ def contamination(cid: str, ev: dict) -> list[dict]:
         c = json.loads(p.read_text(encoding="utf-8"))
         if c.get("candidate_id") != cid:
             continue
-        all_ids = {e[0] for e in c.get("excerpts", [])}
-        dropped = all_ids - kept
-        lines = [l.strip() for l in str(c.get("brief", "")).splitlines() if any(re.search(rf"\b{re.escape(d)}\b", l) for d in dropped)]
-        return [{"id": f"K{k + 1}", "brief_line": l, "dropped_ids": sorted(d for d in dropped if d in l)} for k, l in enumerate(lines)]
+        out = []                                   # ids the brief cites that are not in the pack (the candidate file keeps only survivors)
+        for line in str(c.get("brief", "")).splitlines():
+            gone = sorted(set(re.findall(r"[A-Za-z0-9]+-E\d+", line)) - kept)
+            if gone:
+                out.append({"id": f"K{len(out) + 1}", "brief_line": line.strip(), "dropped_ids": gone})
+        return out
     return []
 
 
