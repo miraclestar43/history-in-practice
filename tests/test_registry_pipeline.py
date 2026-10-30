@@ -166,6 +166,16 @@ class Pipeline(unittest.TestCase):
         log = [json.loads(l) for l in (Path(self.td.name) / CANDIDATE["candidate_id"] / "calls.jsonl").read_text().splitlines()]
         self.assertTrue(log[0]["provider_refusal"]); self.assertFalse(log[0]["json_ok"])        # logged after parsing
 
+    def test_refusal_at_review_is_named_not_review_missing(self):
+        base = fake_call_factory()
+        def call(prompt, timeout_s=0, **kw):
+            r = base(prompt, timeout_s=timeout_s)
+            if "事实审稿人" in prompt:
+                r["text"] = "The request was rejected because it was considered high risk"
+            return r
+        r = self.prep(CANDIDATE, call)
+        self.assertEqual(r["outcome"], "pending_review"); self.assertIn("provider refusal at review_zh", r["reason"])
+
     def test_model_timeout_goes_pending_without_second_full_timeout(self):
         call = fake_call_factory(timeout=True); r = self.prep(CANDIDATE, call)
         self.assertEqual(r["outcome"], "pending_review"); self.assertEqual(len(call.calls), 1)

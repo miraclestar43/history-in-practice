@@ -224,7 +224,8 @@ def prepare(c, db, *, call=llm.call, workdir: Path | None = None, cache: Path | 
     (out / "article.json").write_text(json.dumps(obj, ensure_ascii=False, indent=1), encoding="utf-8")
     state.transition(db, cid, "prepared", note="model draft assembled", episode_id=eid, category=c["category"], path=str(out / "article.json"))
     if checks.blocked(findings) or blocking_review or review is None:
-        why = ("checker BLOCK; " if checks.blocked(findings) else "") + (f"{len(blocking_review)} review issues rated fix/block; " if blocking_review else "") + ("review missing" if review is None else "")
+        why = ("checker BLOCK; " if checks.blocked(findings) else "") + (f"{len(blocking_review)} review issues rated fix/block; " if blocking_review else "") + ("" if review is not None else next((f"provider refusal at review_zh: {m['provider_refusal']} (another reviewer model or a person must review; do not reword to evade)"
+                                         for m in metrics if m.get("step") == "review_zh" and m.get("provider_refusal")), "review missing"))
         state.transition(db, cid, "pending_review", note=why, reason=why)
         registry.set_status(db, eid, "prepared")
         report.update(outcome="pending_review", reason=why, wall_s=round(time.monotonic() - t0, 1))

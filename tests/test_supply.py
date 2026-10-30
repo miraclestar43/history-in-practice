@@ -35,7 +35,7 @@ class Supply(unittest.TestCase):
     def model(self, excerpts, persons=("陈平",)):
         prop = {"title_hint": "陈平的六出奇计", "question_type": "相信谁",
                 "episode": {"persons": list(persons), "year_from": -205, "year_to": -200, "place": "荥阳", "action": "陈平献计离间项羽君臣"},
-                "excerpts": excerpts, "core": ["E2"], "brief": "类别：中国古代。有记录的骨架：陈平投汉 (E1)；献计 (E2)。", "preheader": {"zh": "z", "en": "e"}}
+                "excerpts": excerpts, "core": ["E2"], "brief": "类别：中国古代。有记录的骨架：陈平投汉 (E1)；献计 (E2)。\n一句只有被删摘录支持的话 (E90)。\n结尾 (E2)。", "preheader": {"zh": "z", "en": "e"}}
         def call(prompt, timeout_s=0, **kw):
             t = json.dumps(prop, ensure_ascii=False)
             return {"rc": 0, "killed": None, "wall_s": 0.1, "prompt_bytes": len(prompt), "prompt_chars": len(prompt), "out_bytes": len(t),
@@ -55,6 +55,7 @@ class Supply(unittest.TestCase):
         self.assertIn("occurs 0 times", reasons["E90"]); self.assertEqual(reasons["E91"], "anchor too short"); self.assertIn("overlaps", reasons["E92"])
         c = json.loads(Path(rec["path"]).read_text())
         self.assertEqual(c["core_excerpts"], ["T561-E2"]); self.assertIn("(T561-E1)", c["brief"]); self.assertIn("T561-E90", c["brief"])
+        self.assertNotIn("一句只有被删摘录支持的话", c["brief"]); self.assertIn("结尾 (T561-E2)", c["brief"]); self.assertEqual(rec["brief_lines_removed"], 1)
         self.assertTrue(c["single_basis_disclosed"]); self.assertEqual(c["provenance"]["catalogue_id"], "T56")
         log = supply.attempts(); self.assertEqual(log[-1]["outcome"], "candidate")
 

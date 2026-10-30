@@ -156,7 +156,12 @@ def propose(entry: dict, db, *, call=llm.call, cache: Path | None = None, date: 
         rec.update(outcome="rejected", reason="; ".join(problems)); _log(rec); return rec
     brief = re.sub(r"\bE(\d+)\b", lambda mm: f"{prefix}-E{mm.group(1)}", str(prop.get("brief", "")))
     if dropped:
-        brief += "\n注意：以下摘录的锚点未通过逐字核对，已删除，不得使用其内容：" + "、".join(f"{prefix}-{d['id']}" for d in dropped) + "。"
+        # Lines that cite a dropped excerpt would hand the drafter facts with no evidence behind them
+        # (seen in the first real run: 11 review issues traced to such lines). Remove those lines, keep a note.
+        gone = {f"{prefix}-{d['id']}" for d in dropped}
+        lines = brief.splitlines(); kept = [l for l in lines if not any(re.search(rf"{re.escape(g)}(?!\d)", l) for g in gone)]
+        rec["brief_lines_removed"] = len(lines) - len(kept)
+        brief = "\n".join(kept) + "\n注意：以下摘录的锚点未通过逐字核对，已删除；简报中引用它们的句子也已删除，不得写入相关内容：" + "、".join(sorted(gone)) + "。"
     cand = {"candidate_id": cid, "category": entry["category"], "title_hint": prop.get("title_hint", ""),
             "question_type": prop.get("question_type", ""), "single_basis_disclosed": True,
             "episode": {"persons": ep["persons"], "year_from": int(ep["year_from"]), "year_to": int(ep["year_to"]), "place": ep["place"],

@@ -1,5 +1,7 @@
 # Overnight report — 2026-10-30 (Pi, Claude Opus)
 
+> **Corrections after review (2026-10-30, see `docs/reviews/POST_OVERNIGHT_REVIEW.md` and `docs/STABILIZATION_REPORT.md`):** the "12 days" below was 12 *articles*; under the A→W→M→U rotation they covered only 10 consecutive days, and under the stricter admission rules introduced afterwards none of them is schedulable until re-reviewed or (for samples) approved. Step 7.6 below could not work as written (`hip send --real` refuses while `EMAIL_SEND_ENABLED=false`), and Reply-To is required, not optional. The corrected steps are in `docs/EMAIL_SETUP.md` and the stabilisation report.
+
 Branch `impl/overnight-20261030`, mirrored to the PR #1 branch `review/fable-2026-10-30`. Nothing was merged, deployed, scheduled or emailed.
 
 ## 1. Summary
@@ -17,7 +19,7 @@ Entry points: `samples/README.md`, plus email and site previews (§2).
 
 - **Seven** articles are now in inventory after a logged editor pass and `hip admit --from-pending`.
 - **One** (Mao) is pending: the provider refused it, and it was not retried or reworded.
-- Inventory is **12 days**, counting the five samples: china_ancient 3, china_modern 2, us 3, world 4. The target is 14.
+- Inventory was **12 articles** (counting the five samples): china_ancient 3, china_modern 2, us 3, world 4. *(Correction: that is 10 consecutive days under the rotation, not 12; see the note at the top.)* The target is 14.
 
 **The main finding: no automated draft was publishable as it came out.**
 
@@ -254,13 +256,13 @@ bin/hip registry-rebuild content/**/*.json samples/*/article.json samples/auto/c
    - Create a key limited to sending, and to that domain if offered.
    - Put it only in `~/.config/history-in-practice/runtime.env` as `SMTP_PASSWORD=`. The file stays mode 600.
    - Keep `EMAIL_SEND_ENABLED=false` until a manual test send.
-3. **Optional Reply-To:** set `EMAIL_REPLY_TO=` in the same private file if replies should reach a real inbox. The From address has no mailbox.
+3. **Reply-To (required, corrected):** set `EMAIL_REPLY_TO=` to an address you read. The footer asks readers to reply, and the From address has no mailbox; real sending now refuses without it.
 4. **Recipients:** already in the private file (2 addresses). Nothing to add unless they change.
 5. **Website:**
    - Confirm how starhub.vip deploys: Cloudflare Workers or Pages, production branch, build command.
    - Then decide whether to push `deploy/website_test/0001-*.patch` as a website PR.
    - Set `SITE_REPO_PATH` (a clean working copy) in the private file. Leave `SITE_PUSH_ENABLED` unset until you approve automatic site commits.
-6. **First real test:** only after steps 1–3, run `bin/hip send samples/D/article.json --real`. Then check both inboxes (Gmail and QQ), spam folders, SPF/DKIM, and the layout in each language.
+6. **First real test (corrected):** only after steps 1–3, run `bin/hip send-test samples/D/article.json --confirm-real-email`. It works while `EMAIL_SEND_ENABLED=false` and uses a separate test edition. Then check both inboxes (Gmail and QQ), spam folders, SPF/DKIM, the layout in each language, and reply once to confirm the Reply-To path. *(The original step, `hip send --real`, refuses while the flag is false.)*
 7. **Timers:** only after the above, follow `deploy/systemd/README.md`.
 
 ## 8. Not done / open issues
@@ -271,7 +273,7 @@ bin/hip registry-rebuild content/**/*.json samples/*/article.json samples/auto/c
    - The errors tonight were mostly plausible specifics the evidence did not contain, sometimes ones the editor brief itself introduced (dates, ship names).
    - Until reader feedback says otherwise, plan on a human or Claude editor pass before scheduling. The alternative is to accept a lower bar knowingly.
 3. **Candidate evidence packs need about 15–25 excerpts** for a ten-minute piece. Write anchors before running the model; it is cheaper than rewriting afterwards.
-4. **Inventory is 12 of the 14-day target**, counting the five samples, which are `status: sample`. Without the samples it is 7.
+4. **Inventory was 12 articles, which is 10 days of rotation coverage** (corrected), counting the five samples, which are `status: sample`. Without the samples it was 7 articles.
 5. **Chinese samples A–E are about 8 minutes**, under the 2,800-character reference. They were deliberately not padded; calibrate with real readers first. The automated articles are 9–10 minutes.
 6. **Sample A's English is about 13 minutes.** The tightening call stalled. Rerun `python3 -I validation/tighten_en.py A`, or trim by hand.
 7. **Hermes behaviour:**
