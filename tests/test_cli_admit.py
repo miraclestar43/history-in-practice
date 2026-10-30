@@ -19,6 +19,17 @@ class Admit(unittest.TestCase):
             rc, out = hip("admit", str(p), ev, data=td); self.assertEqual(rc, 1); self.assertIn("duplicate", out["reason"])
             rc, inv = hip("inventory", data=td); self.assertEqual(inv["days"], 1)
 
+    def test_requeue_then_readmit_from_pending(self):
+        with tempfile.TemporaryDirectory() as td:
+            art, ev = str(ROOT / "samples/D/article.json"), str(ROOT / "samples/evidence_D.json")
+            ed = json.loads(Path(art).read_text())["edition_id"]
+            hip("admit", art, ev, data=td)
+            rc, out = hip("requeue", ed, "--reason", "stricter review rule", data=td); self.assertEqual(rc, 0)
+            rc, inv = hip("inventory", data=td); self.assertEqual((inv["days"], inv["pending"]), (0, 1))
+            rc, out = hip("requeue", ed, "--reason", "again", data=td); self.assertEqual(rc, 1)
+            rc, out = hip("admit", art, ev, "--from-pending", data=td); self.assertEqual(rc, 0); self.assertTrue(out["admitted"])
+            rc, inv = hip("inventory", data=td); self.assertEqual((inv["days"], inv["pending"]), (1, 0))
+
 
 if __name__ == "__main__":
     unittest.main()

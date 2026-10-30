@@ -11,6 +11,7 @@
   hip publish-today [--date YYYY-MM-DD]                      (schedule -> archive -> site -> verify -> email)
   hip status | hip inventory | hip recover
   hip retry-send ARTICLE.json --real|--local-smtp HOST:PORT   (retries `failed` only, never `unknown`)
+  hip requeue EDITION --reason TEXT        (checked -> pending, e.g. after a stricter rule)
   hip admit ARTICLE.json EVIDENCE.json     (editor-reviewed article -> checks -> registry -> inventory)
   hip registry-rebuild CONTENT.json...
 """
@@ -178,6 +179,16 @@ def cmd_admit(a):
     print(json.dumps({"admitted": True, "edition_id": o["edition_id"], "episode_id": eid, "stats": st}, ensure_ascii=False)); return 0
 
 
+def cmd_requeue(a):
+    """Send a `checked` (not yet scheduled) edition back to the pending queue, with a reason."""
+    d = db(); cur = state.get(d, a.edition)
+    if not cur or cur["status"] != "checked":
+        print(json.dumps({"requeued": False, "reason": f"status is {cur['status'] if cur else 'unknown'}"})); return 1
+    state.transition(d, a.edition, "pending_review", note=a.reason, reason=a.reason)
+    if cur.get("episode_id"): registry.set_status(d, cur["episode_id"], "prepared")
+    print(json.dumps({"requeued": True, "edition": a.edition}, ensure_ascii=False)); return 0
+
+
 def cmd_status(a):
     d = db(); s = state.summary(d)
     s["recent"] = [dict(zip(("edition_id", "status", "category", "reason"), r)) for r in
@@ -221,6 +232,7 @@ def main(argv=None):
     p = sp.add_parser("publish-today"); p.add_argument("--date"); p.set_defaults(f=cmd_publish_today)
     for name, f in (("status", cmd_status), ("inventory", cmd_inventory), ("recover", cmd_recover)):
         sp.add_parser(name).set_defaults(f=f)
+    p = sp.add_parser("requeue"); p.add_argument("edition"); p.add_argument("--reason", required=True); p.set_defaults(f=cmd_requeue)
     p = sp.add_parser("admit"); p.add_argument("article"); p.add_argument("evidence"); p.add_argument("--from-pending", action="store_true")
     p.set_defaults(f=cmd_admit)
     p = sp.add_parser("registry-rebuild"); p.add_argument("content", nargs="+"); p.add_argument("--db"); p.set_defaults(f=cmd_registry_rebuild)
