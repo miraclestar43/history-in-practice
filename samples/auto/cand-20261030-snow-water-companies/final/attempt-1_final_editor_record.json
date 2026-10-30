@@ -1,0 +1,2302 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-20261030-snow-water-companies",
+ "edition_id": "cand-20261030-snow-water-companies",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "215a6b1",
+ "started_at": 1793398173.4677677,
+ "base_source": "samples/auto/cand-20261030-snow-water-companies/article.json",
+ "base_content_sha256": "6da9051085b8aa1a58b7755db4f084b32e068476f693a8c74d034f56c5e3d517",
+ "evidence_sha256": "4ccea7584d5cee6907d126adb9cbf29b5ae53b34c94eb8fbc1bf9a580d61126a",
+ "model_record_sha256": "3f116fb4f0f74ecdf31b1fd8e60531891e71987f8f8fd682ddec96b21f174ac6",
+ "prior_record_sha256": null,
+ "attempt": "attempt-1",
+ "inherited": [
+  {
+   "id": "M1",
+   "model_id": "R1",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[invented_inner_life] analysis/para1：'斯诺选了更费事的路'——证据只写他实际如何逐户查水（W-E6、W-E11），未写他考虑过并放弃了其他方案",
+   "suggestion": ""
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.context.0",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "中文写成新公司“撤掉伦敦桥的水厂”，把撤除的主体定为南华克和沃克斯霍尔公司。证据用的是被动语态，没有说明由谁撤除。英文版保留了被动语态，中英不一致。",
+   "evidence": [
+    {
+     "id": "W-E10",
+     "quote": "The water works at London Bridge were abolished, and the united company derived their supply from the Thames at Battersea Fields"
+    }
+   ],
+   "proposed": "改为“伦敦桥的水厂被撤除，合并后的公司改从……取水”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文改为被动语态“伦敦桥的水厂被撤除，合并后的公司改从……取水”，不再把撤除主体定为新公司，与证据和英文一致；英文原样保留。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.context.2",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "证据原文是“可能”来自霍乱病人的东西（might have come）。中文“霍乱病人排出的任何东西”和英文“whatever had come from cholera patients”都去掉了这层保留，把可能性写成了已然。",
+   "evidence": [
+    {
+     "id": "W-E4",
+     "quote": "whatever might have come from the cholera patients"
+    }
+   ],
+   "proposed": "中文改为“以及可能来自霍乱病人的任何东西”；英文改为“whatever might have come from cholera patients”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中英文都恢复“可能”的保留：中文“可能来自霍乱病人的任何东西”，英文“whatever might have come from cholera patients”。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.story.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "证据只说获准抄录“其他一些”住址（others），没有说获准抄录其余全部。中文“其余的”和英文“the rest”都说过头了。",
+   "evidence": [
+    {
+     "id": "W-E11",
+     "quote": "I was kindly permitted to take a copy of others"
+    }
+   ],
+   "proposed": "中文改为“另一些获准抄录”；英文改为“he was allowed to copy others”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "“其余的”/“the rest”收窄为“另一些”/“others”，与证据一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.story.2",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "中文写的是登记“发病所在房屋”的供水，英文只写“the house in every fatal case”，丢掉了“发病所在”这一限定。另外英文没有写明只针对霍乱死亡。",
+   "evidence": [
+    {
+     "id": "W-E11",
+     "quote": "make a return of the water supply of the house in which the attack took place, in all cases of death from cholera"
+    }
+   ],
+   "proposed": "英文改为“to return the water supply of the house in which the attack took place, in every death from cholera”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文补上“发病所在房屋”和“霍乱死亡”两个限定：改为“the house in which the attack took place, in every death from cholera”。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.story.2",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "本段是 record 段，末句“变成了官方登记里的一栏”/“became a column in the official returns”是作者的概括，未加标注。证据只说登记员“被要求”填报，而且这项规定是“将于”8月26日后执行，并没有记录它实际成了官方报表中的一栏。",
+   "evidence": [
+    {
+     "id": "W-E11",
+     "quote": "the Registrars of all the south districts of London were requested to make a return of the water supply"
+    },
+    {
+     "id": "W-E11",
+     "quote": "This order was to take place after the 26th August"
+    }
+   ],
+   "proposed": "删去末句，或改为标明的解读：“作者认为，一个人在街上查出的苗头由此进入了官方登记的要求之中。”",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去中英文末句未标注的作者概括，因为证据没有记录它成了官方报表中的一栏。同时把规定的生效改为“定于8月26日以后才实行”/“was to take effect”，反映证据中的预定语气。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F6",
+   "path": "sections.story.7",
+   "category": "causality",
+   "severity": "fix",
+   "problem": "作者把肯宁顿的“38户对4户”与表九的死亡率并列，称“方向一致”。但肯宁顿数字只是死亡户的计数，证据没有给出两家公司在肯宁顿各自的供水户数，不能当作率来比较。这层推断需要说明缺少分母。",
+   "evidence": [
+    {
+     "id": "W-E11",
+     "quote": "thirty-eight of the houses in which these deaths occurred were supplied with"
+    }
+   ],
+   "proposed": "在中英文加一句：“肯宁顿的数字只是死亡户数，证据未给出两家在当地各有多少供水户，不能直接当作死亡率比较。”",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中英文补充说明：肯宁顿的数字只是死亡户数，证据没有给出两家在当地的供水户数，不能直接当作死亡率比较。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F7",
+   "path": "sections.analysis.1",
+   "category": "inner_life",
+   "severity": "fix",
+   "problem": "“斯诺选了更费事的路”/“Snow took the more laborious road”暗示他权衡过、并放弃了按区平均或贫富对比的方案。证据只记录了他实际怎么做以及他的决心，没有写他考虑过替代方案。",
+   "evidence": [
+    {
+     "id": "W-E5",
+     "quote": "I resolved to spare no exertion"
+    }
+   ],
+   "proposed": "中文改为“斯诺实际走的是更费事的路”，英文改为“What Snow actually did was more laborious”，避免暗示他曾比较、放弃其他方案。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "改为“斯诺实际走的是更费事的路”/“What Snow actually did was more laborious”，不再暗示他曾比较并放弃替代方案。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F8",
+   "path": "sections.analysis.2",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“此后每一例死亡都要记下供水”/“every death came with its water supply recorded”有两处过度概括：一是证据只涉及伦敦南部各区的霍乱死亡，不是所有死亡；二是证据只说登记员“被要求”填报、规定“将于”8月26日后执行，没有记录实际执行情况。",
+   "evidence": [
+    {
+     "id": "W-E11",
+     "quote": "the Registrars of all the south districts of London were requested to make a return of the water supply of the house in which the attack took place, in all cases of death from cholera."
+    }
+   ],
+   "proposed": "中文改为“伦敦南部各区的登记员随后被要求为每一例霍乱死亡填报发病房屋的供水”；英文相应改为“registrars in the south districts were asked to return the water supply for every cholera death”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“登记办法随之改变，此后每一例死亡都要记下供水”。改为伦敦南部各区登记员被要求为每一例霍乱死亡填报发病房屋的供水，不再声称已经实际执行，也不扩大到所有死亡。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F9",
+   "path": "sections.limits.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“提出学说、做调查、编统计的是同一个人”与证据不完全相符。死者住址来自登记总署（部分刊于每周公报），8月26日后的供水信息由各区登记员填报，并非全部由斯诺一人收集。",
+   "evidence": [
+    {
+     "id": "W-E11",
+     "quote": "to be supplied with the addresses of persons dying of cholera"
+    },
+    {
+     "id": "W-E11",
+     "quote": "Some of these addresses were published in the Weekly Returns"
+    }
+   ],
+   "proposed": "补一句：“死者住址来自登记总署，8月26日后的供水信息由登记员填报；但本篇读到的统计和论证都经斯诺之手整理。”",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "补充说明住址来自登记总署、8月26日后的供水信息要求由登记员填报，并指出本篇读到的统计和论证经斯诺整理。“编统计”改为“整理统计”。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F10",
+   "path": "sections.limits.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "证据说按周交租的工人家庭的水费“一律由房东或其代理人缴纳”，住户对“这件事”（用哪家公司）一无所知；并没有说他们不知道水费由谁交。紧接着的“‘选择’往往不在喝水的人手里”是作者的推断，未加标注。",
+   "evidence": [
+    {
+     "id": "W-E6",
+     "quote": "the rates are invariably paid by the landlord or his agent, who often lives at a distance, and the residents know nothing about the matter"
+    }
+   ],
+   "proposed": "中文改为“按周交租的工人家庭水费由房东缴纳，住户对用哪家公司的水一无所知”，并把末句标为“作者认为”。英文相应改为“did not even know which company supplied them”，末句前加“One reading is that”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "改为水费一律由房东或其代理人缴纳、住户对用哪家公司一无所知，不再说他们不知道水费由谁交。末句在中文标为“作者认为”，英文加“One reading is that”。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "M1",
+   "problem": "[invented_inner_life] analysis/para1：'斯诺选了更费事的路'——证据只写他实际如何逐户查水（W-E6、W-E11），未写他考虑过并放弃了其他方案",
+   "origin": "inherited mimo-review R1",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F7",
+   "rationale": "与 F7 相同。“选了更费事的路”暗示斯诺权衡并放弃过其他方案。证据只记录他的决心和实际做法，没有写他考虑过替代方案。"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.story.6",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "中文先列了三组数字，紧接着写“前者的死亡率是后者的八到九倍”。按顺序读，“后者”会被理解为伦敦其余地区，而315对59只有约5倍，与原意不符。英文版明确写的是南华克和沃克斯霍尔公司对兰贝斯公司，中英不一致。",
+   "evidence": [
+    {
+     "id": "W-E8",
+     "quote": "The mortality in the houses supplied by the Southwark and Vauxhall Company was therefore between eight and nine times as great as in the houses supplied by the Lambeth Company"
+    }
+   ],
+   "proposed": "改为：“他的结论是，南华克和沃克斯霍尔公司供水户的死亡率是兰贝斯公司供水户的八到九倍。”",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "中文结论句中的“前者……后者”容易被理解为与伦敦其余地区比较。现明确写为南华克和沃克斯霍尔公司供水户对兰贝斯公司供水户，与英文及证据原文一致。英文原本无误，按同步规则给出原文。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V2",
+   "path": "sections.story.7",
+   "category": "causality",
+   "severity": "fix",
+   "problem": "本段已承认肯宁顿的38对4不能当作死亡率比较。但表九的315对37覆盖的是两家公司的全部供水户，证据并未说明这些房屋都在混供街道上。因此“同一片街区里的两组人家不该分得这么开”这一推论，缺少一组同街区的率来支撑。另外，“这层推理是作者补的”与证据不符：斯诺本人已论证两组在房屋、人口和周围物质条件上没有差别，并据此推出供水的作用，并非只讲供水与死亡的对应。",
+   "evidence": [
+    {
+     "id": "W-E8",
+     "quote": "in the population supplied by the Southwark and Vauxhall Company, in that supplied by the Lambeth Company, and in the rest of London"
+    },
+    {
+     "id": "W-E4",
+     "quote": "As there is no difference whatever, either in the houses or the people receiving the supply of the two Water Companies, or in any of the physical conditions with which they are surrounded"
+    }
+   ],
+   "proposed": "把最后两句改为：“斯诺据此认为，既然两组在房屋、人口和周围条件上没有差别，差距只能来自水；不过证据中的表九并未限定在混供街道，肯宁顿的数字又不是死亡率，所以这一步仍依赖斯诺‘两组没有差别’的断言。”英文同步修改。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "删除两处说法：一是缺乏同街区死亡率支撑的“同一片街区里的两组人家不该分得这么开”，二是与证据不符的“这层推理是作者补的”。改为如实转述斯诺的论证：两组在房屋、人口和物质条件上无差别，因此差距指向供水。同时注明表九未限定在混供街道、肯宁顿数字不是死亡率，这一步仍依赖斯诺的断言。ev 补入 W-E4。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V2-V1",
+   "path": "reflection.example.steps",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "中文版把“同一条街”加引号并归给斯诺（“斯诺的‘同一条街’”），像是在引用斯诺原话，但证据中没有这个说法。英文版写作 Snow's single street，没有加引号。",
+   "evidence": [
+    {
+     "id": "W-E2",
+     "quote": "the pipes of both companies going down every street"
+    },
+    {
+     "id": "W-E4",
+     "quote": "In many cases a single house has a supply different from that on either side."
+    }
+   ],
+   "proposed": "去掉引号，改为“相当于斯诺在同一批街道里所做的比较”。",
+   "origin": "final-editor verify round 2"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.context.0.zh",
+   "before": "先看水从哪里来。1832年到1849年间，伦敦的供水变动很多：南华克公司与南伦敦公司合并，成立南华克和沃克斯霍尔公司，撤掉伦敦桥的水厂，改从沃克斯霍尔桥上游约半英里、巴特西原野一带的泰晤士河取水；兰贝斯公司则一直在亨格福德市场对面取水。",
+   "after": "先看水从哪里来。1832年到1849年间，伦敦的供水变动很多：南华克公司与南伦敦公司合并，成立南华克和沃克斯霍尔公司；伦敦桥的水厂被撤除，合并后的公司改从沃克斯霍尔桥上游约半英里、巴特西原野一带的泰晤士河取水；兰贝斯公司则一直在亨格福德市场对面取水。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.context.2.zh",
+   "before": "在斯诺看来，这个格局再理想不过。两家公司都给富人也给穷人供水，大房子小房子都有；他断言，接这家水和接那家水的人，在房屋、人口和周围的一切物质条件上都没有任何差别，因此想不出比这更能彻底检验供水作用的实验——它是环境“现成摆在观察者面前”的。规模也大得惊人：不少于三十万人，不分男女老幼、职业身份，从体面人家到赤贫者，在没有选择、多数也不知情的情况下分成了两组：一组的水里有伦敦的污水，以及霍乱病人排出的任何东西；另一组的水没有这类污物。",
+   "after": "在斯诺看来，这个格局再理想不过。两家公司都给富人也给穷人供水，大房子小房子都有；他断言，接这家水和接那家水的人，在房屋、人口和周围的一切物质条件上都没有任何差别，因此想不出比这更能彻底检验供水作用的实验——它是环境“现成摆在观察者面前”的。规模也大得惊人：不少于三十万人，不分男女老幼、职业身份，从体面人家到赤贫者，在没有选择、多数也不知情的情况下分成了两组：一组的水里有伦敦的污水，以及可能来自霍乱病人的任何东西；另一组的水没有这类污物。",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.context.2.en",
+   "before": "To Snow the arrangement could hardly have been better. \"Each Company supplies both rich and poor, both large houses and small\", he wrote, and since there was \"no difference whatever\" in the houses, the people or their physical surroundings, no experiment could have been devised that would more thoroughly test the effect of water supply on cholera \"than this, which circumstances placed ready made before the observer.\" It was enormous, too: \"No fewer than three hundred thousand people of both Sexes, of every age and occupation, and of every rank and station, from gentlefolks down to the very poor, were divided into two groups without their choice, and, in most cases, without their knowledge\" — one group drinking water that carried the sewage of London and whatever had come from cholera patients, the other water free of it.",
+   "after": "To Snow the arrangement could hardly have been better. \"Each Company supplies both rich and poor, both large houses and small\", he wrote, and since there was \"no difference whatever\" in the houses, the people or their physical surroundings, no experiment could have been devised that would more thoroughly test the effect of water supply on cholera \"than this, which circumstances placed ready made before the observer.\" It was enormous, too: \"No fewer than three hundred thousand people of both Sexes, of every age and occupation, and of every rank and station, from gentlefolks down to the very poor, were divided into two groups without their choice, and, in most cases, without their knowledge\" — one group drinking water that carried the sewage of London and whatever might have come from cholera patients, the other water free of it.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.1.zh",
+   "before": "1854年，他从一份名单入手。他向登记总署申请，拿到了两家公司混供地区霍乱死者的住址：一部分刊登在每周公报上，其余的获准抄录。8月中旬，他先查兰贝斯的两个分区——肯宁顿第一区和第二区。到8月12日，这两个分区共死亡44人；他查出其中38户由南华克和沃克斯霍尔公司供水，4户由兰贝斯公司供水，另有2户用自家院里的水井，不接任何一家公司的水。",
+   "after": "1854年，他从一份名单入手。他向登记总署申请，拿到了两家公司混供地区霍乱死者的住址：一部分刊登在每周公报上，另一些获准抄录。8月中旬，他先查兰贝斯的两个分区——肯宁顿第一区和第二区。到8月12日，这两个分区共死亡44人；他查出其中38户由南华克和沃克斯霍尔公司供水，4户由兰贝斯公司供水，另有2户用自家院里的水井，不接任何一家公司的水。",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.story.1.en",
+   "before": "In 1854 he started from a list. He asked the General Register Office for the addresses of people who had died of cholera in the districts where the two supplies were intermingled; some had been printed in the Weekly Returns, and he was allowed to copy the rest. About the middle of August he began with two sub-districts of Lambeth, Kennington first part and Kennington second part. There had been 44 deaths there down to 12 August. Of the houses where they occurred, he found 38 supplied by the Southwark and Vauxhall Company, 4 by the Lambeth Company, and 2 with pump-wells on the premises and no company supply at all.",
+   "after": "In 1854 he started from a list. He asked the General Register Office for the addresses of people who had died of cholera in the districts where the two supplies were intermingled; some had been printed in the Weekly Returns, and he was allowed to copy others. About the middle of August he began with two sub-districts of Lambeth, Kennington first part and Kennington second part. There had been 44 deaths there down to 12 August. Of the houses where they occurred, he found 38 supplied by the Southwark and Vauxhall Company, 4 by the Lambeth Company, and 2 with pump-wells on the premises and no company supply at all.",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.story.2.zh",
+   "before": "他一弄清这些数字，就告诉了法尔医生（Dr. Farr）。斯诺记下法尔对结果“深受触动”，并在法尔的建议下，伦敦南部各区的登记员被要求在每一例霍乱死亡中登记发病所在房屋的供水。这项规定从8月26日以后才执行，所以斯诺决定把自己的调查一直做到这一天，好让整场疫情的事实都有据可查。一个人在街上查出的苗头，就这样变成了官方登记里的一栏。",
+   "after": "他一弄清这些数字，就告诉了法尔医生（Dr. Farr）。斯诺记下法尔对结果“深受触动”，并在法尔的建议下，伦敦南部各区的登记员被要求在每一例霍乱死亡中登记发病所在房屋的供水。这项规定定于8月26日以后才实行，所以斯诺决定把自己的调查一直做到这一天，好让整场疫情的事实都有据可查。",
+   "issues": [
+    "F4",
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.story.2.en",
+   "before": "As soon as he had these particulars he passed them to Dr Farr, who, Snow wrote, \"was much struck with the result\". At Farr's suggestion the registrars of all the south districts of London were asked to return the water supply of the house in every fatal case. The order took effect only after 26 August, so Snow resolved to carry his own inquiry down to that date, \"so that the facts might be ascertained for the whole course of the epidemic.\" What one man had found on the street became a column in the official returns.",
+   "after": "As soon as he had these particulars he passed them to Dr Farr, who, Snow wrote, \"was much struck with the result\". At Farr's suggestion the registrars of all the south districts of London were asked to return the water supply of the house in which the attack took place, in every death from cholera. The order was to take effect only after 26 August, so Snow resolved to carry his own inquiry down to that date, \"so that the facts might be ascertained for the whole course of the epidemic.\"",
+   "issues": [
+    "F4",
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.story.7.zh",
+   "before": "作者的解读：两组数字方向一致。肯宁顿的38户对4户，来自同一片混供街区；表里的315对37，覆盖两家公司的供水户，而伦敦其余地区的59恰好落在两者之间。接兰贝斯水的人家，死亡率比全城其余地方还低；接南华克和沃克斯霍尔水的人家，高出好几倍。如果是街区或空气在起作用，同一片街区里的两组人家不该分得这么开。这层推理是作者补的；斯诺本人的论证集中在供水与死亡的对应上。",
+   "after": "作者的解读：两组数字方向一致。肯宁顿的38户对4户，来自同一片混供街区；不过肯宁顿的数字只是死亡户数，证据未给出两家在当地各有多少供水户，不能直接当作死亡率比较。表里的315对37，覆盖两家公司的供水户，而伦敦其余地区的59恰好落在两者之间。接兰贝斯水的人家，死亡率比全城其余地方还低；接南华克和沃克斯霍尔水的人家，高出好几倍。如果是街区或空气在起作用，同一片街区里的两组人家不该分得这么开。这层推理是作者补的；斯诺本人的论证集中在供水与死亡的对应上。",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.story.7.en",
+   "before": "The author's reading: the two sets of figures point the same way. Kennington's 38 houses against 4 came from the same intermixed streets; the table's 315 against 37 covers the houses each company supplied, with the rest of London's 59 falling between them. Houses on Lambeth water died at a lower rate than the rest of the city, houses on Southwark and Vauxhall water at several times it. If the neighbourhood or the air were doing the killing, two sets of houses in the same streets should not have split so far apart. That step is the author's; Snow's own argument rested on the correspondence between the water and the deaths.",
+   "after": "The author's reading: the two sets of figures point the same way. Kennington's 38 houses against 4 came from the same intermixed streets, though these are only counts of houses with deaths: the evidence does not say how many houses each company supplied there, so they cannot be compared directly as death rates. The table's 315 against 37 covers the houses each company supplied, with the rest of London's 59 falling between them. Houses on Lambeth water died at a lower rate than the rest of the city, houses on Southwark and Vauxhall water at several times it. If the neighbourhood or the air were doing the killing, two sets of houses in the same streets should not have split so far apart. That step is the author's; Snow's own argument rested on the correspondence between the water and the deaths.",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.zh",
+   "before": "另一种做法（作者设想的替代方案，不是史实）：只比较各区的平均死亡率，或者拿富区和穷区对比。那样贫富、住房、职业都会混进来，水的作用就分不清了。斯诺选了更费事的路——挨家查死者住址、查水、必要时装瓶回家化验——换来的是在同一批街道里比较两种水。",
+   "after": "另一种做法（作者设想的替代方案，不是史实）：只比较各区的平均死亡率，或者拿富区和穷区对比。那样贫富、住房、职业都会混进来，水的作用就分不清了。斯诺实际走的是更费事的路——挨家查死者住址、查水、必要时装瓶回家化验——换来的是在同一批街道里比较两种水。",
+   "issues": [
+    "F7"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.en",
+   "before": "Another approach, and this is the author's counterfactual rather than history, would have been to compare average death rates by district, or rich districts against poor ones. Wealth, housing and occupation would then have crowded in, and the effect of the water would have been hard to separate out. Snow took the more laborious road — death addresses, house by house, water carried home in phials — and in return got a comparison of two waters within the same streets.",
+   "after": "Another approach, and this is the author's counterfactual rather than history, would have been to compare average death rates by district, or rich districts against poor ones. Wealth, housing and occupation would then have crowded in, and the effect of the water would have been hard to separate out. What Snow actually did was more laborious — death addresses, house by house, water carried home in phials — and in return he got a comparison of two waters within the same streets.",
+   "issues": [
+    "F7"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.zh",
+   "before": "还有一点容易被忽略（作者的解读）：斯诺没有等调查全部做完才开口。他在肯宁顿查出头一批数字，就交给了法尔；登记办法随之改变，此后每一例死亡都要记下供水。早期的结果先被用来改进收集证据的办法。",
+   "after": "还有一点容易被忽略（作者的解读）：斯诺没有等调查全部做完才开口。他在肯宁顿查出头一批数字，就交给了法尔；在法尔的建议下，伦敦南部各区的登记员随后被要求为每一例霍乱死亡填报发病房屋的供水。早期的结果先被用来改进收集证据的办法。",
+   "issues": [
+    "F8"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.en",
+   "before": "One more point is easy to miss, and it is the author's reading. Snow did not wait for the inquiry to be finished before speaking. Once he had the first figures from Kennington he passed them to Farr, the registration practice changed, and from then on every death came with its water supply recorded. The early result went first into improving how the evidence was gathered.",
+   "after": "One more point is easy to miss, and it is the author's reading. Snow did not wait for the inquiry to be finished before speaking. Once he had the first figures from Kennington he passed them to Farr, and at Farr's suggestion registrars in the south districts were asked to return the water supply of the house for every cholera death. The early result went first into improving how the evidence was gathered.",
+   "issues": [
+    "F8"
+   ]
+  },
+  {
+   "path": "sections.limits.0.zh",
+   "before": "必须说清楚：本篇所有数字与叙述都出自斯诺本人的书和表格，本篇的证据里没有当时卫生部门或第三方的独立核查。提出学说、做调查、编统计的是同一个人，这不意味着数据有错，但意味着我们读到的是一方的记录。",
+   "after": "必须说清楚：本篇所有数字与叙述都出自斯诺本人的书和表格，本篇的证据里没有当时卫生部门或第三方的独立核查。死者住址来自登记总署，8月26日以后的供水信息按要求应由各区登记员填报；但本篇读到的统计和论证都经斯诺之手整理。提出学说、做调查、整理统计的是同一个人，这不意味着数据有错，但意味着我们读到的是一方的记录。",
+   "issues": [
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.limits.0.en",
+   "before": "Plainly: every figure and every account in this piece comes from Snow's own book and his own tables, and the evidence used here contains no independent check by a health authority or anyone else at the time. When the same man proposes the doctrine, conducts the inquiry and compiles the statistics, that does not make the data wrong, but it does mean we are reading one side's record.",
+   "after": "Plainly: every figure and every account in this piece comes from Snow's own book and his own tables, and the evidence used here contains no independent check by a health authority or anyone else at the time. The addresses of the dead came from the General Register Office, and after 26 August the registrars were asked to return the water supply; but the statistics and the argument we read here were all put together by Snow. When the same man proposes the doctrine, conducts the inquiry and presents the statistics, that does not make the data wrong, but it does mean we are reading one side's record.",
+   "issues": [
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.limits.1.zh",
+   "before": "其次，“两组人没有任何差别”是斯诺的断言，不是随机分组的结果。哪栋房子接哪家水，由当年的房主或住户决定，并非抽签；这种选择会不会和房租、房龄、地段有关，本篇的证据无法回答，这是作者提出的疑问。斯诺自己的调查也显示，按周交租的工人家庭连水费由谁交都不清楚——“选择”往往不在喝水的人手里。",
+   "after": "其次，“两组人没有任何差别”是斯诺的断言，不是随机分组的结果。哪栋房子接哪家水，由当年的房主或住户决定，并非抽签；这种选择会不会和房租、房龄、地段有关，本篇的证据无法回答，这是作者提出的疑问。斯诺自己的调查也显示，按周交租的工人家庭，水费一律由房东或其代理人缴纳，住户对用哪家公司的水一无所知。作者认为，“选择”往往不在喝水的人手里。",
+   "issues": [
+    "F10"
+   ]
+  },
+  {
+   "path": "sections.limits.1.en",
+   "before": "Second, \"no difference whatever\" between the groups is Snow's assertion, not the product of random assignment. Which company a house took was decided by the owner or occupier, not drawn by lot; whether that choice tracked rents, the age of the houses or their location is a question the evidence here cannot answer, and it is the author's question, not Snow's. His own inquiry shows that working families on weekly rents did not even know who paid their water rates. The choice was often not in the hands of the people drinking the water.",
+   "after": "Second, \"no difference whatever\" between the groups is Snow's assertion, not the product of random assignment. Which company a house took was decided by the owner or occupier, not drawn by lot; whether that choice tracked rents, the age of the houses or their location is a question the evidence here cannot answer, and it is the author's question, not Snow's. His own inquiry shows that for working families on weekly rents the rates were paid by the landlord or his agent, and the residents did not even know which company supplied them. One reading is that the choice was often not in the hands of the people drinking the water.",
+   "issues": [
+    "F10"
+   ]
+  },
+  {
+   "path": "sections.story.6.zh",
+   "before": "疫情头七周的结果，他整理成一张表。南华克和沃克斯霍尔公司供水40,046户，霍乱死亡1,263人；兰贝斯公司供水26,107户，死亡98人；伦敦其余地区256,423户，死亡1,422人。折算成每10,000户的死亡数，分别是315、37和59。他的结论是，前者的死亡率是后者的八到九倍。",
+   "after": "疫情头七周的结果，他整理成一张表。南华克和沃克斯霍尔公司供水40,046户，霍乱死亡1,263人；兰贝斯公司供水26,107户，死亡98人；伦敦其余地区256,423户，死亡1,422人。折算成每10,000户的死亡数，分别是315、37和59。他的结论是，南华克和沃克斯霍尔公司供水户的死亡率是兰贝斯公司供水户的八到九倍。",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.story.7.zh",
+   "before": "作者的解读：两组数字方向一致。肯宁顿的38户对4户，来自同一片混供街区；不过肯宁顿的数字只是死亡户数，证据未给出两家在当地各有多少供水户，不能直接当作死亡率比较。表里的315对37，覆盖两家公司的供水户，而伦敦其余地区的59恰好落在两者之间。接兰贝斯水的人家，死亡率比全城其余地方还低；接南华克和沃克斯霍尔水的人家，高出好几倍。如果是街区或空气在起作用，同一片街区里的两组人家不该分得这么开。这层推理是作者补的；斯诺本人的论证集中在供水与死亡的对应上。",
+   "after": "作者的解读：两组数字方向一致。肯宁顿的38户对4户，来自同一片混供街区；不过肯宁顿的数字只是死亡户数，证据未给出两家在当地各有多少供水户，不能直接当作死亡率比较。表里的315对37，覆盖两家公司的供水户，而伦敦其余地区的59恰好落在两者之间。接兰贝斯水的人家，死亡率比全城其余地方还低；接南华克和沃克斯霍尔水的人家，高出好几倍。斯诺的论证是：既然两组在房屋、人口和周围的物质条件上没有任何差别，这样的差距就指向供水。不过，证据中的表九并未限定在混供街道，肯宁顿的数字又不是死亡率，所以这一步仍依赖斯诺“两组没有任何差别”的断言。",
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.story.7.en",
+   "before": "The author's reading: the two sets of figures point the same way. Kennington's 38 houses against 4 came from the same intermixed streets, though these are only counts of houses with deaths: the evidence does not say how many houses each company supplied there, so they cannot be compared directly as death rates. The table's 315 against 37 covers the houses each company supplied, with the rest of London's 59 falling between them. Houses on Lambeth water died at a lower rate than the rest of the city, houses on Southwark and Vauxhall water at several times it. If the neighbourhood or the air were doing the killing, two sets of houses in the same streets should not have split so far apart. That step is the author's; Snow's own argument rested on the correspondence between the water and the deaths.",
+   "after": "The author's reading: the two sets of figures point the same way. Kennington's 38 houses against 4 came from the same intermixed streets, though these are only counts of houses with deaths: the evidence does not say how many houses each company supplied there, so they cannot be compared directly as death rates. The table's 315 against 37 covers the houses each company supplied, with the rest of London's 59 falling between them. Houses on Lambeth water died at a lower rate than the rest of the city, houses on Southwark and Vauxhall water at several times it. Snow's argument was that, since there was no difference whatever between the two groups in their houses, the people or their physical surroundings, a gap like this pointed to the water supply. But Table IX in the evidence is not limited to the intermixed streets, and the Kennington figures are not death rates, so that step still rests on Snow's assertion that the two groups did not differ.",
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.story.7.ev",
+   "before": [
+    "W-E11",
+    "W-E8"
+   ],
+   "after": [
+    "W-E11",
+    "W-E8",
+    "W-E4"
+   ],
+   "issues": [
+    "V1-V2"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "F10"
+   ],
+   "changes_applied": 17,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[6] numbers differ zh[37, 59, 98, 315, 1263, 1422, 10000, 26107, 40046, 256423] en[17, 37, 59, 98, 315, 1263, 1422, 10000, 26107, 40046, 256423]"
+    ]
+   ],
+   "content_sha256_after": "0c4990a84756617e8b90d04e4a225d495e8e70f7854bf480391ecc41b5bb289b",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.story.6",
+      "category": "parity",
+      "severity": "fix",
+      "problem": "中文先列了三组数字，紧接着写“前者的死亡率是后者的八到九倍”。按顺序读，“后者”会被理解为伦敦其余地区，而315对59只有约5倍，与原意不符。英文版明确写的是南华克和沃克斯霍尔公司对兰贝斯公司，中英不一致。",
+      "evidence": [
+       {
+        "id": "W-E8",
+        "quote": "The mortality in the houses supplied by the Southwark and Vauxhall Company was therefore between eight and nine times as great as in the houses supplied by the Lambeth Company"
+       }
+      ],
+      "proposed": "改为：“他的结论是，南华克和沃克斯霍尔公司供水户的死亡率是兰贝斯公司供水户的八到九倍。”"
+     },
+     {
+      "id": "V2",
+      "path": "sections.story.7",
+      "category": "causality",
+      "severity": "fix",
+      "problem": "本段已承认肯宁顿的38对4不能当作死亡率比较。但表九的315对37覆盖的是两家公司的全部供水户，证据并未说明这些房屋都在混供街道上。因此“同一片街区里的两组人家不该分得这么开”这一推论，缺少一组同街区的率来支撑。另外，“这层推理是作者补的”与证据不符：斯诺本人已论证两组在房屋、人口和周围物质条件上没有差别，并据此推出供水的作用，并非只讲供水与死亡的对应。",
+      "evidence": [
+       {
+        "id": "W-E8",
+        "quote": "in the population supplied by the Southwark and Vauxhall Company, in that supplied by the Lambeth Company, and in the rest of London"
+       },
+       {
+        "id": "W-E4",
+        "quote": "As there is no difference whatever, either in the houses or the people receiving the supply of the two Water Companies, or in any of the physical conditions with which they are surrounded"
+       }
+      ],
+      "proposed": "把最后两句改为：“斯诺据此认为，既然两组在房屋、人口和周围条件上没有差别，差距只能来自水；不过证据中的表九并未限定在混供街道，肯宁顿的数字又不是死亡率，所以这一步仍依赖斯诺‘两组没有差别’的断言。”英文同步修改。"
+     }
+    ],
+    "overall": "引文均逐字核对无误，数字、日期与证据一致；需修正两处：story.6中文“前者/后者”指代错位（与英文不一致），以及story.7把表九数据推到“同一街区”并误把斯诺已有的推理归为作者补充。",
+    "_content_sha256": "0c4990a84756617e8b90d04e4a225d495e8e70f7854bf480391ecc41b5bb289b"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1",
+    "V1-V2"
+   ],
+   "changes_applied": 4,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[6] numbers differ zh[37, 59, 98, 315, 1263, 1422, 10000, 26107, 40046, 256423] en[17, 37, 59, 98, 315, 1263, 1422, 10000, 26107, 40046, 256423]"
+    ]
+   ],
+   "content_sha256_after": "afa28cdca850dd2ff11c728c8acb406a246798503eb71d0ebce546ba61fbec16",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "reflection.example.steps",
+      "category": "quotes",
+      "severity": "fix",
+      "problem": "中文版把“同一条街”加引号并归给斯诺（“斯诺的‘同一条街’”），像是在引用斯诺原话，但证据中没有这个说法。英文版写作 Snow's single street，没有加引号。",
+      "evidence": [
+       {
+        "id": "W-E2",
+        "quote": "the pipes of both companies going down every street"
+       },
+       {
+        "id": "W-E4",
+        "quote": "In many cases a single house has a supply different from that on either side."
+       }
+      ],
+      "proposed": "去掉引号，改为“相当于斯诺在同一批街道里所做的比较”。"
+     }
+    ],
+    "overall": "定稿史实、数字、引文与解释标注总体可靠，中英文一致；只有 reflection.example.steps 中文版的一处引号把非原文表述归给了斯诺，需要小改。",
+    "_content_sha256": "afa28cdca850dd2ff11c728c8acb406a246798503eb71d0ebce546ba61fbec16"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4",
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F7"
+    ]
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F8"
+    ]
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F9"
+    ]
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F10"
+    ]
+   },
+   {
+    "path": "sections.limits.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.context.0",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "中文写成新公司“撤掉伦敦桥的水厂”，把撤除的主体定为南华克和沃克斯霍尔公司。证据用的是被动语态，没有说明由谁撤除。英文版保留了被动语态，中英不一致。",
+    "evidence": [
+     {
+      "id": "W-E10",
+      "quote": "The water works at London Bridge were abolished, and the united company derived their supply from the Thames at Battersea Fields"
+     }
+    ],
+    "proposed": "改为“伦敦桥的水厂被撤除，合并后的公司改从……取水”。"
+   },
+   {
+    "id": "F2",
+    "path": "sections.context.2",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "证据原文是“可能”来自霍乱病人的东西（might have come）。中文“霍乱病人排出的任何东西”和英文“whatever had come from cholera patients”都去掉了这层保留，把可能性写成了已然。",
+    "evidence": [
+     {
+      "id": "W-E4",
+      "quote": "whatever might have come from the cholera patients"
+     }
+    ],
+    "proposed": "中文改为“以及可能来自霍乱病人的任何东西”；英文改为“whatever might have come from cholera patients”。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.story.1",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "证据只说获准抄录“其他一些”住址（others），没有说获准抄录其余全部。中文“其余的”和英文“the rest”都说过头了。",
+    "evidence": [
+     {
+      "id": "W-E11",
+      "quote": "I was kindly permitted to take a copy of others"
+     }
+    ],
+    "proposed": "中文改为“另一些获准抄录”；英文改为“he was allowed to copy others”。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.story.2",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "中文写的是登记“发病所在房屋”的供水，英文只写“the house in every fatal case”，丢掉了“发病所在”这一限定。另外英文没有写明只针对霍乱死亡。",
+    "evidence": [
+     {
+      "id": "W-E11",
+      "quote": "make a return of the water supply of the house in which the attack took place, in all cases of death from cholera"
+     }
+    ],
+    "proposed": "英文改为“to return the water supply of the house in which the attack took place, in every death from cholera”。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.story.2",
+    "category": "interpretation_label",
+    "severity": "fix",
+    "problem": "本段是 record 段，末句“变成了官方登记里的一栏”/“became a column in the official returns”是作者的概括，未加标注。证据只说登记员“被要求”填报，而且这项规定是“将于”8月26日后执行，并没有记录它实际成了官方报表中的一栏。",
+    "evidence": [
+     {
+      "id": "W-E11",
+      "quote": "the Registrars of all the south districts of London were requested to make a return of the water supply"
+     },
+     {
+      "id": "W-E11",
+      "quote": "This order was to take place after the 26th August"
+     }
+    ],
+    "proposed": "删去末句，或改为标明的解读：“作者认为，一个人在街上查出的苗头由此进入了官方登记的要求之中。”"
+   },
+   {
+    "id": "F6",
+    "path": "sections.story.7",
+    "category": "causality",
+    "severity": "fix",
+    "problem": "作者把肯宁顿的“38户对4户”与表九的死亡率并列，称“方向一致”。但肯宁顿数字只是死亡户的计数，证据没有给出两家公司在肯宁顿各自的供水户数，不能当作率来比较。这层推断需要说明缺少分母。",
+    "evidence": [
+     {
+      "id": "W-E11",
+      "quote": "thirty-eight of the houses in which these deaths occurred were supplied with"
+     }
+    ],
+    "proposed": "在中英文加一句：“肯宁顿的数字只是死亡户数，证据未给出两家在当地各有多少供水户，不能直接当作死亡率比较。”"
+   },
+   {
+    "id": "F7",
+    "path": "sections.analysis.1",
+    "category": "inner_life",
+    "severity": "fix",
+    "problem": "“斯诺选了更费事的路”/“Snow took the more laborious road”暗示他权衡过、并放弃了按区平均或贫富对比的方案。证据只记录了他实际怎么做以及他的决心，没有写他考虑过替代方案。",
+    "evidence": [
+     {
+      "id": "W-E5",
+      "quote": "I resolved to spare no exertion"
+     }
+    ],
+    "proposed": "中文改为“斯诺实际走的是更费事的路”，英文改为“What Snow actually did was more laborious”，避免暗示他曾比较、放弃其他方案。"
+   },
+   {
+    "id": "F8",
+    "path": "sections.analysis.2",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“此后每一例死亡都要记下供水”/“every death came with its water supply recorded”有两处过度概括：一是证据只涉及伦敦南部各区的霍乱死亡，不是所有死亡；二是证据只说登记员“被要求”填报、规定“将于”8月26日后执行，没有记录实际执行情况。",
+    "evidence": [
+     {
+      "id": "W-E11",
+      "quote": "the Registrars of all the south districts of London were requested to make a return of the water supply of the house in which the attack took place, in all cases of death from cholera."
+     }
+    ],
+    "proposed": "中文改为“伦敦南部各区的登记员随后被要求为每一例霍乱死亡填报发病房屋的供水”；英文相应改为“registrars in the south districts were asked to return the water supply for every cholera death”。"
+   },
+   {
+    "id": "F9",
+    "path": "sections.limits.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“提出学说、做调查、编统计的是同一个人”与证据不完全相符。死者住址来自登记总署（部分刊于每周公报），8月26日后的供水信息由各区登记员填报，并非全部由斯诺一人收集。",
+    "evidence": [
+     {
+      "id": "W-E11",
+      "quote": "to be supplied with the addresses of persons dying of cholera"
+     },
+     {
+      "id": "W-E11",
+      "quote": "Some of these addresses were published in the Weekly Returns"
+     }
+    ],
+    "proposed": "补一句：“死者住址来自登记总署，8月26日后的供水信息由登记员填报；但本篇读到的统计和论证都经斯诺之手整理。”"
+   },
+   {
+    "id": "F10",
+    "path": "sections.limits.1",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "证据说按周交租的工人家庭的水费“一律由房东或其代理人缴纳”，住户对“这件事”（用哪家公司）一无所知；并没有说他们不知道水费由谁交。紧接着的“‘选择’往往不在喝水的人手里”是作者的推断，未加标注。",
+    "evidence": [
+     {
+      "id": "W-E6",
+      "quote": "the rates are invariably paid by the landlord or his agent, who often lives at a distance, and the residents know nothing about the matter"
+     }
+    ],
+    "proposed": "中文改为“按周交租的工人家庭水费由房东缴纳，住户对用哪家公司的水一无所知”，并把末句标为“作者认为”。英文相应改为“did not even know which company supplied them”，末句前加“One reading is that”。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "M1",
+    "verdict": "duplicate",
+    "same_as": "F7",
+    "rationale": "与 F7 相同。“选了更费事的路”暗示斯诺权衡并放弃过其他方案。证据只记录他的决心和实际做法，没有写他考虑过替代方案。",
+    "evidence": [
+     {
+      "id": "W-E5",
+      "quote": "I was desirous of making the investigation myself"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "afa28cdca850dd2ff11c728c8acb406a246798503eb71d0ebce546ba61fbec16",
+ "open_issues": [
+  "V2-V1"
+ ],
+ "outcome": "pending_review",
+ "failure": null,
+ "finished_at": 1793398463.6857562,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 105.1,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15850,
+    "output_tokens": 12096
+   },
+   "cost_estimate_usd": 0.36872800000000006
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 55.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 17961,
+    "output_tokens": 7518
+   },
+   "cost_estimate_usd": 0.294056
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 59.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15379,
+    "output_tokens": 6751
+   },
+   "cost_estimate_usd": 0.25806
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 22.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16227,
+    "output_tokens": 2505
+   },
+   "cost_estimate_usd": 0.17992399999999997
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 48.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15499,
+    "output_tokens": 5687
+   },
+   "cost_estimate_usd": 0.23774
+  }
+ ],
+ "elapsed_min": 4.8,
+ "model_wall_min": 4.8
+}

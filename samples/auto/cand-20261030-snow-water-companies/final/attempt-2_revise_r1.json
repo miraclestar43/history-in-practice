@@ -1,0 +1,60 @@
+{
+ "changes": [
+  {
+   "path": "reflection.example.steps.zh",
+   "text": "先写清两批人的差别可能来自哪里：除了流程，还有哪些因素能解释结果差异\n挑一个最要命的替代解释，找一条能压住它的证据——例如同一类客户里的对比，相当于斯诺在同一批混供街道里所做的比较\n只用你确信无误的数据做比较，不引用可疑的细目；把差距换算成直白的说法（比如“前者是后者的几倍”），别急着上复杂模型\n给行动设一条线：差距达到多少、替代解释压住到什么程度，就改；达不到就继续观察，但写下复查时间",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "reflection.example.steps.en",
+   "text": "Write down first where the differences between the two groups could come from: besides the process itself, what else could explain the gap in results?\nPick the most dangerous rival explanation and find one piece of evidence that pins it down — a comparison within the same class of customer, the equivalent of Snow's comparison within the same intermixed streets.\nCompare only data you are confident in; skip suspect breakdowns, and turn the gap into plain language (one runs at several times the rate of the other) before reaching for a complicated model.\nSet a line for action: how large the gap must be and how well the rival explanations must be pinned down before you switch. Below the line, keep watching — and write down the date to look again.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.story.3.zh",
+   "text": "他把调查扩展到兰贝斯、南华克和纽因顿其他混供的分区，结果与肯宁顿“非常相似”。有些病人发病后被送进济贫院或别处，他就去查发病时所住那栋房子的水，而不是他们后来被送去的地方。",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.3.en",
+   "text": "He carried the inquiry over the other intermixed sub-districts of Lambeth, Southwark and Newington, \"with a result very similar to that already given\". Where a patient had been moved to a workhouse or anywhere else after the attack began, he asked about the water of the house where the person had been living when it started, not the place they had been moved to.",
+   "issues": [
+    "F2"
+   ]
+  }
+ ],
+ "dispositions": [
+  {
+   "issue": "F1",
+   "action": "fixed",
+   "rationale": "中文删去了加在“同一条街”上的引号，因为它看起来像斯诺原话，但证据中没有这个说法。现改为不加引号的“相当于斯诺在同一批混供街道里所做的比较”。英文的 Snow's single street 改为 Snow's comparison within the same intermixed streets，与斯诺调查覆盖多个混供分区的事实一致。",
+   "evidence": [
+    {
+     "id": "W-E12",
+     "quote": "I pursued my inquiry over the various other sub-districts of Lambeth, Southwark, and Newington"
+    },
+    {
+     "id": "W-E4",
+     "quote": "In many cases a single house has a supply different from that on either side."
+    }
+   ]
+  },
+  {
+   "issue": "F2",
+   "action": "fixed",
+   "rationale": "证据只说病人发病后被送往济贫院或别处，斯诺查的是发病时所住房屋的供水，并没有说这些人死在被送去的地方。因此删去“死在哪里 / where they died”，中文改为“他们后来被送去的地方”，英文改为“the place they had been moved to”。",
+   "evidence": [
+    {
+     "id": "W-E12",
+     "quote": "In cases where persons had been removed to a workhouse or any other place, after the attack of cholera had commenced, I inquired the water supply of the house where the individuals were living when the attack took place."
+    }
+   ]
+  }
+ ]
+}

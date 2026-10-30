@@ -1,0 +1,2995 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-20261030-shackleton-ocean-camp",
+ "edition_id": "cand-20261030-shackleton-ocean-camp",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "215a6b1",
+ "started_at": 1793398688.3130844,
+ "base_source": "samples/auto/cand-20261030-shackleton-ocean-camp/article.json",
+ "base_content_sha256": "583414719ca720602ce79f3d3f377870519ea6c464fa9cefdd86850b1bf03ca8",
+ "evidence_sha256": "2f27ceea809585428ca2a3b87c7d998573be856048dcd64f6dddadf0b8b2cfcf",
+ "model_record_sha256": "6a4351505063bf4a2d30b3e86d2da6d9ede352116f8b0739f53fb486924d835c",
+ "prior_record_sha256": null,
+ "attempt": "attempt-1",
+ "inherited": [
+  {
+   "id": "M1",
+   "model_id": "R1",
+   "source": "mimo-review",
+   "where": "analysis.2",
+   "problem": "『金币在冰上派不上用场，照片和一页有亲笔字的扉页也换不来什么』把弃留的理由写成陈述，证据只记 sovereigns were thrown away and photographs were kept，未给理由；虽后文补『他没有说明原因』，首句仍像史实",
+   "suggestion": "首句改为『金币被扔掉、照片和扉页被留下，他没有说明原因』"
+  },
+  {
+   "id": "M2",
+   "model_id": "P2",
+   "source": "mimo-parity",
+   "where": "sections.context.0",
+   "problem": "The English names the ship (\"Once the ice had crushed Endurance\"), but the Chinese only says 船被压毁 with no ship name anywhere in the text.",
+   "suggestion": "Add the ship's name in Chinese (e.g. 船被压毁之后 → 「坚忍号」被压毁之后) or drop \"Endurance\" from the English."
+  },
+  {
+   "id": "M3",
+   "model_id": "R2",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] 『下午开路顺利得多』中的“下午”：证据只写午饭后拔营，未写凿路发生在下午",
+   "suggestion": ""
+  },
+  {
+   "id": "M4",
+   "model_id": "R3",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] 『光是把两条船挪过去』即搬往海洋营那一次：S-E16 未说明是哪次搬运",
+   "suggestion": ""
+  },
+  {
+   "id": "M5",
+   "model_id": "R4",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] 『金币在冰上派不上用场，照片和一页有亲笔字的扉页也换不来什么』：证据包未给弃留金币与照片的任何理由",
+   "suggestion": ""
+  },
+  {
+   "id": "M6",
+   "model_id": "R5",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] 『两次决定看的是同样的东西：……值不值得把船带进去冒险』：这套权衡标准是作者归纳，原文未写他这样权衡（段首已标“作者推断”）",
+   "suggestion": ""
+  },
+  {
+   "id": "M7",
+   "model_id": "R6",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[invented_inner_life] 『两次决定看的是同样的东西：眼前这段路找不找得到、值不值得把船带进去冒险』——他心中的权衡标准原文未写（段首已标“作者推断”，未伪装成史实）",
+   "suggestion": ""
+  },
+  {
+   "id": "M8",
+   "model_id": "R7",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[invented_inner_life] 『也许那道上限筛的只是重量，也许只是个人偏好』——对其动机的猜测，原文无一字（文中自陈“超出了他写下的内容”，属明示假设）",
+   "suggestion": ""
+  },
+  {
+   "id": "M9",
+   "model_id": "R8",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[invented_inner_life] 『比如把队伍分成两支……或者先派少数人轻装去试水道』——这些备选方案原文全无（文中已注明“他没有写自己考虑过这些”，属作者补充，非其内心）",
+   "suggestion": ""
+  },
+  {
+   "id": "M10",
+   "model_id": "R9",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[quote_mismatches] 『喝过更干净的水』与原文 “One has seen and tasted cleaner” 不完全对应：原文是“见过、尝过”更干净的（水），译文只作“喝过”",
+   "suggestion": ""
+  },
+  {
+   "id": "M11",
+   "model_id": "R10",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[quote_mismatches] 『用他的原话，负担不起多余的重量』以“原话”引出的却是中文转述，原句为 We could not afford to cumber ourselves with unnecessary weight",
+   "suggestion": ""
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.context.0",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "英文写出船名 Endurance。证据包中任何地方都没有船名，中文也没有，因此同时构成中英不一致。",
+   "evidence": [],
+   "proposed": "英文把 \"Once the ice had crushed Endurance\" 改为 \"Once the ice had crushed the ship\"；中文保持不变。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文的船名 Endurance 改为 the ship。证据中没有船名，改后与中文一致；中文原文照录，没有改动。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "path": "sections.context.0",
+   "id": "F2",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "英文补了一句 \"a base on the far side of the continent\"。证据只说 Ross Sea base，没有说基地在大陆另一侧；中文也没有这句，构成中英不一致。",
+   "evidence": [
+    {
+     "id": "S-E1",
+     "quote": "reaching the Ross Sea base in five months"
+    }
+   ],
+   "proposed": "删去 \"Eighteen hundred miles, the Pole, a base on the far side of the continent.\"，或改为 \"Eighteen hundred miles, the Pole, the Ross Sea base.\"",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去英文中“a base on the far side of the continent”整句。证据只写了 Ross Sea base，中文也没有这句。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.story.0",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "「同时定下规矩」/\"At the same time\" 把两磅规矩写成与抛弃营的装备筛选同时发生。S-E4 没有说明这条命令下达的时间和地点。",
+   "evidence": [
+    {
+     "id": "S-E4",
+     "quote": "The order was that personal gear must not exceed two pounds per man"
+    }
+   ],
+   "proposed": "中文把「同时定下规矩」改为「他还定下规矩」；英文把 \"At the same time he fixed the rule\" 改为 \"He also fixed the rule\"。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "「同时定下规矩」/At the same time 改为「他还定下规矩」/He also fixed the rule。证据没有说明这条命令下达的时间。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.story.0",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "中文用「用他的原话」引出的是中文转述，读者会误以为是逐字原文。",
+   "evidence": [
+    {
+     "id": "S-E4",
+     "quote": "We could not afford to cumber ourselves with unnecessary weight."
+    }
+   ],
+   "proposed": "中文改为「照他的说法，他们负担不起多余的重量」，或直接引原文：「We could not afford to cumber ourselves with unnecessary weight」。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "「用他的原话」改为「照他的说法」，表明后面是转述，不是逐字原文。英文也相应改为 As he put it。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.story.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "把 Burberrys 释为「外衣」/\"Burberry coats\"。证据只写 Burberrys，没有说明是什么衣物。",
+   "evidence": [
+    {
+     "id": "S-E3",
+     "quote": "a complete new set of Burberrys and underclothing"
+    }
+   ],
+   "proposed": "中文删去「外衣」，写作「一整套全新的 Burberrys 和内衣」；英文删去 \"— Burberry coats —\"。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去「外衣」和“— Burberry coats —”的释义，只保留证据原词 Burberrys。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F6",
+   "path": "sections.story.6",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "「下午开路顺利得多」/\"The afternoon went better\" 有两处无据：一是把 S-E14 的凿路定在第二天下午，二是写成比此前顺利。证据只写了午饭后拔营，S-E14 本身没有时间标记，也没有和此前作比较。",
+   "evidence": [
+    {
+     "id": "S-E13",
+     "quote": "after lunch we struck camp"
+    }
+   ],
+   "proposed": "中文改为「开路时有过顺利的时候」；英文改为 \"At one stage the work went well.\" 不写具体时段，也不作比较。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "「下午开路顺利得多」改为「开路时有过顺利的时候」/At one stage the work went well。不再写具体时段，也不与此前作比较。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F7",
+   "path": "sections.story.10",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "「光是把两条船挪过去」/\"Shifting the two boats there\" 把 S-E16 定为搬往海洋营的那一次。证据没有说明是哪一次搬运。",
+   "evidence": [
+    {
+     "id": "S-E16",
+     "quote": "It was with the utmost difficulty that we shifted our two boats."
+    }
+   ],
+   "proposed": "中文改为「他记下挪动两条船的艰难」；英文改为 \"He recorded how hard it was to shift the two boats\"。两处都去掉指向海洋营的「过去」/\"there\"。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "改为「他记下挪动两条船的艰难」/He recorded how hard it was to shift the two boats，不再把这次搬运指认为搬往海洋营。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F8",
+   "path": "sections.story.11",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "「扎营后」/\"Once in camp\" 把节省口粮的决定定在海洋营扎营之后。S-E17 没有给出时间。",
+   "evidence": [
+    {
+     "id": "S-E17",
+     "quote": "I decided to conserve our valuable sledging rations"
+    }
+   ],
+   "proposed": "删去「扎营后」和 \"Once in camp,\"，或改为「他还决定」/\"He also decided\"。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去「扎营后」/Once in camp，改为「他还决定」/He also decided；英文引文从 to conserve 开始，与证据逐字一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F9",
+   "path": "sections.analysis.0",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "「午后天晴，探到一块好走的浮冰」/\"when it cleared in the afternoon and a good floe turned up\" 顺序不对。证据中天晴、探路在前，午饭后才拔营，并没有说天晴发生在午后。",
+   "evidence": [
+    {
+     "id": "S-E13",
+     "quote": "Then, as the weather cleared, Worsley and I made a prospect to the west"
+    },
+    {
+     "id": "S-E13",
+     "quote": "after lunch we struck camp"
+    }
+   ],
+   "proposed": "中文改为「天晴一些后探到一块好走的浮冰，午饭后又继续走」；英文改为 \"when it cleared and a good floe turned up, they moved on after lunch\"。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "顺序改为先天晴、探到浮冰，午饭后才继续走，删去“午后天晴”的说法。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F10",
+   "path": "sections.analysis.1",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "把「轻松的乐观」写成沙克尔顿对整个冲刺计划的评语。原文中这个词修饰的是当初打算把物品丢在身后这件事，不是整个计划。",
+   "evidence": [
+    {
+     "id": "S-E18",
+     "quote": "which in our light-hearted optimism we had thought to leave miles behind us on our dash across the moving ice to safety"
+    }
+   ],
+   "proposed": "中文改为「沙克尔顿后来说，当初是怀着“轻松的乐观”，才打算把那些东西丢在几英里之外」；英文相应改为 \"Shackleton later said it was in 'light-hearted optimism' that they had thought to leave those things miles behind.\"",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "「轻松的乐观」改为只修饰当初打算丢下私人物品这件事，不再写成对整个冲刺计划的评语。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F11",
+   "path": "sections.analysis.1",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "末句「在这份记述里，停下……也是把资源重新收拢的时间」/\"In his account, stopping was...\" 把作者的解读说成沙克尔顿记述中的观点。证据里没有这一判断。",
+   "evidence": [],
+   "proposed": "中文改为「作者认为，停下不只是不再消耗，也是把资源重新收拢的时间」；英文改为 \"On this reading, stopping was...\"。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "末句的“在这份记述里/In his account”改为「作者认为」/On this reading，明确这是作者的解读。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F12",
+   "path": "sections.analysis.2",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "首句「金币在冰上派不上用场，照片……也换不来什么」/\"Gold coins were of no use on the ice\" 写成陈述句，读来像史实或他本人的理由。证据只记了弃留，没有给出任何理由。",
+   "evidence": [
+    {
+     "id": "S-E5",
+     "quote": "So sovereigns were thrown away and photographs were kept."
+    }
+   ],
+   "proposed": "中文首句改为「金币被扔掉、照片被留下，他没有说明原因。作者的推测是：在冰上，金币和照片都换不来什么」；英文同步改写。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "首句改为先陈述弃留事实，说明他没有给出原因，再把“换不来什么”明确标为作者的推测。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F13",
+   "path": "sections.analysis.2",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "「后两者被留下了」/\"those were the things kept\" 把扉页也算作被留下。证据只说他撕下了扉页，句子到此截断，没有写扉页的去向。",
+   "evidence": [
+    {
+     "id": "S-E5",
+     "quote": "I tore the fly-leaf out of the Bible that Queen Alexandra had given to the ship"
+    }
+   ],
+   "proposed": "中文改为「照片被留下，扉页被撕了下来」；英文改为 \"the photographs were kept and the fly-leaf torn out\"。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "不再把扉页算作被留下：改为扉页被撕下，记述没有写它的去向。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F14",
+   "path": "sections.today.0",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "现代场景直接引用了证据原句（中文「任务是让全体队员抵达陆地」、英文 \"The task is to reach land with all the members of the Expedition\"），违反现代场景不得引用证据的规定。",
+   "evidence": [],
+   "proposed": "删去引句，改为「像开头那个一句话的新任务一样」/\"as the new task at the start of this piece did\"。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去现代场景中的证据引句，改为「像本文开头那个一句话的新任务一样」/what the new task at the start of this piece did。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "M1",
+   "path": "analysis.2",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "『金币在冰上派不上用场，照片和一页有亲笔字的扉页也换不来什么』把弃留的理由写成陈述，证据只记 sovereigns were thrown away and photographs were kept，未给理由；虽后文补『他没有说明原因』，首句仍像史实",
+   "origin": "inherited mimo-review R1",
+   "audit_rationale": "首句以陈述语气写出弃留理由，证据只记弃留本身，没有理由。该问题已作为 F12 列出。",
+   "disposition": "fixed",
+   "rationale": "与 F12 是同一问题，已在 analysis.2 的同一处改写中修正：首句只陈述弃留，理由标为作者推测。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "M2",
+   "problem": "The English names the ship (\"Once the ice had crushed Endurance\"), but the Chinese only says 船被压毁 with no ship name anywhere in the text.",
+   "origin": "inherited mimo-parity P2",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.context.0",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "船名 Endurance 不在证据包中，同时造成中英不一致。处理方式应是删去英文中的船名，而不是在中文里补上。"
+  },
+  {
+   "id": "M3",
+   "problem": "[unsupported_claims] 『下午开路顺利得多』中的“下午”：证据只写午饭后拔营，未写凿路发生在下午",
+   "origin": "inherited mimo-review R2",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F6",
+   "rationale": "S-E14 没有时间标记，「下午」无据。"
+  },
+  {
+   "id": "M4",
+   "problem": "[unsupported_claims] 『光是把两条船挪过去』即搬往海洋营那一次：S-E16 未说明是哪次搬运",
+   "origin": "inherited mimo-review R3",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F7",
+   "rationale": "S-E16 没有说明是哪一次搬运。"
+  },
+  {
+   "id": "M5",
+   "problem": "[unsupported_claims] 『金币在冰上派不上用场，照片和一页有亲笔字的扉页也换不来什么』：证据包未给弃留金币与照片的任何理由",
+   "origin": "inherited mimo-review R4",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F12",
+   "rationale": "与 M1 是同一处问题。"
+  },
+  {
+   "id": "M6",
+   "path": "(location not given)",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "[unsupported_claims] 『两次决定看的是同样的东西：……值不值得把船带进去冒险』：这套权衡标准是作者归纳，原文未写他这样权衡（段首已标“作者推断”）",
+   "origin": "inherited mimo-review R5",
+   "disposition": "rejected",
+   "rationale": "该段已标明为作者推断。第一次决定所依据的「路找不找得到、船是否会陷入险境」直接见于原文；海洋营的理由同样见于原文。",
+   "evidence": [
+    {
+     "id": "S-E13",
+     "quote": "A path over the shattered floes would be hard to find, and to get the boats into a position of peril might be disastrous."
+    },
+    {
+     "id": "S-E7",
+     "quote": "it would be impossible to proceed for any great distance"
+    }
+   ],
+   "decided_in": "audit"
+  },
+  {
+   "id": "M7",
+   "path": "(location not given)",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "[invented_inner_life] 『两次决定看的是同样的东西：眼前这段路找不找得到、值不值得把船带进去冒险』——他心中的权衡标准原文未写（段首已标“作者推断”，未伪装成史实）",
+   "origin": "inherited mimo-review R6",
+   "disposition": "rejected",
+   "rationale": "理由同 M6：段首已标明是作者推断，所归纳的两条标准都有原文依据，没有把内心活动冒充为史实。",
+   "evidence": [
+    {
+     "id": "S-E13",
+     "quote": "A path over the shattered floes would be hard to find, and to get the boats into a position of peril might be disastrous."
+    }
+   ],
+   "decided_in": "audit"
+  },
+  {
+   "id": "M8",
+   "path": "(location not given)",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "[invented_inner_life] 『也许那道上限筛的只是重量，也许只是个人偏好』——对其动机的猜测，原文无一字（文中自陈“超出了他写下的内容”，属明示假设）",
+   "origin": "inherited mimo-review R7",
+   "disposition": "rejected",
+   "rationale": "文中明确写了「他在这几段里没有说明原因」「两种说法都超出了他写下的内容」，属于标明为假设的推测，没有当作事实陈述。原文确实只记弃留。",
+   "evidence": [
+    {
+     "id": "S-E5",
+     "quote": "So sovereigns were thrown away and photographs were kept."
+    }
+   ],
+   "decided_in": "audit"
+  },
+  {
+   "id": "M9",
+   "path": "(location not given)",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "[invented_inner_life] 『比如把队伍分成两支……或者先派少数人轻装去试水道』——这些备选方案原文全无（文中已注明“他没有写自己考虑过这些”，属作者补充，非其内心）",
+   "origin": "inherited mimo-review R8",
+   "disposition": "rejected",
+   "rationale": "文中已注明「作者提出的替代选择（他没有写自己考虑过这些）」，没有归为沙克尔顿的内心考虑。原文记载的只是他实际做出的决定。",
+   "evidence": [
+    {
+     "id": "S-E7",
+     "quote": "I decided to find a more solid floe and there camp"
+    }
+   ],
+   "decided_in": "audit"
+  },
+  {
+   "id": "M10",
+   "path": "(location not given)",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "[quote_mismatches] 『喝过更干净的水』与原文 “One has seen and tasted cleaner” 不完全对应：原文是“见过、尝过”更干净的（水），译文只作“喝过”",
+   "origin": "inherited mimo-review R9",
+   "disposition": "rejected",
+   "rationale": "story.7 的中文没有用「」标为逐字引语，而是以「他引了一位队员日记里的话」引出的中文译述，意思与原句一致（更干净的见过、尝过，但很少有来得这么是时候的），不构成冒充原文。",
+   "evidence": [
+    {
+     "id": "S-E15",
+     "quote": "One has seen and tasted cleaner, but seldom more opportunely found water."
+    }
+   ],
+   "decided_in": "audit"
+  },
+  {
+   "id": "M11",
+   "problem": "[quote_mismatches] 『用他的原话，负担不起多余的重量』以“原话”引出的却是中文转述，原句为 We could not afford to cumber ourselves with unnecessary weight",
+   "origin": "inherited mimo-review R10",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F4",
+   "rationale": "以「原话」引出中文转述，会误导读者以为是逐字原文。"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.analysis.1",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "证据中，靠海豹和企鹅过活、保留雪橇口粮是沙克尔顿本人的决定。文中写成「他们还决定」/\"They also chose\"，把决定者泛化成了全队。story.11 已经正确写作「他还决定」，两处说法不一致。",
+   "evidence": [
+    {
+     "id": "S-E17",
+     "quote": "I decided to conserve our valuable sledging rations, which would be so necessary for the inevitable boat journey, as much as possible, and to subsist almost entirely on seals and penguins."
+    }
+   ],
+   "proposed": "zh：「他们还决定几乎全靠海豹和企鹅过活」改为「他还决定让大家几乎全靠海豹和企鹅过活」；en：\"They also chose to live almost entirely on seals and penguins\" 改为 \"He also decided they would live almost entirely on seals and penguins\"。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "证据中这是沙克尔顿本人的决定（I decided）。中文改为「他还决定让大家几乎全靠海豹和企鹅过活」，英文改为 \"He also decided they would live...\"，与 story.11 的说法一致。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V2",
+   "path": "sections.limits.1",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "「此后获救的过程」/\"the rescue that followed\" 断言后来发生了获救。证据包只写到「目标是抵达陆地」和进驻耐心营，没有任何关于获救的内容。同一句话又声明这部分在证据范围之外，前后自相矛盾。",
+   "evidence": [
+    {
+     "id": "S-E2",
+     "quote": "The task is to reach land with all the members of the Expedition."
+    },
+    {
+     "id": "S-E8",
+     "quote": "Our new home, which we were to occupy for nearly three and a half months, we called “‘ Patience Camp"
+    }
+   ],
+   "proposed": "zh：「本篇也不写此后获救的过程」改为「本篇也不写耐心营之后的经过」；en：\"the story of the rescue that followed\" 改为 \"what happened after Patience Camp\"。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "证据包只写到耐心营，没有关于获救的记载。原文断言有过获救，这一点证据不支持。中文改为「本篇也不写耐心营之后的经过」，英文同步改为 \"what happened after Patience Camp\"。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V3",
+   "path": "uncertainty_note",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "与 V2 相同。「此后的获救过程」/\"The rescue that followed\" 断言了证据包没有记载的获救。",
+   "evidence": [
+    {
+     "id": "S-E2",
+     "quote": "The task is to reach land with all the members of the Expedition."
+    }
+   ],
+   "proposed": "zh：「本篇不涉及此后的获救过程」改为「本篇不涉及耐心营之后的经过」；en：\"The rescue that followed is not covered here.\" 改为 \"What happened after Patience Camp is not covered here.\"",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "问题与 V1-V2 相同。中文改为「本篇不涉及耐心营之后的经过」，英文改为 \"What happened after Patience Camp is not covered here.\"，不再断言证据中没有记载的获救。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V2-V1",
+   "path": "sections.analysis.0",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "文中说两次决定“看的是同样的东西：眼前这段路找不找得到、值不值得把船带进去冒险”（en: Both decisions weighed the same things）。这一说法只符合不拔营那次（S-E13）的理由。海洋营决定的记述（S-E7）给出的理由是：雪面松软、四天成果太少、附近可能开出水道。S-E7 没有提到找路，也没有提到让船陷入危险。这里把一次决定的理由安到了另一次决定上，“作者推断”的标签也不能补上这一点。",
+   "evidence": [
+    {
+     "id": "S-E13",
+     "quote": "A path over the shattered floes would be hard to find, and to get the boats into a position of peril might be disastrous."
+    },
+    {
+     "id": "S-E7",
+     "quote": "with the present loose surface, and considering how little result we had to show for all our strenuous efforts of the past four days, it would be impossible to proceed for any great distance"
+    }
+   ],
+   "proposed": "改为“两次决定都在衡量眼前的路还能不能走下去”（en: \"Both decisions turned on whether the way ahead could be made\"）。或者删去“值不值得把船带进去冒险”及对应英文 \"and was it worth taking the boats into danger to use it\"。",
+   "origin": "final-editor verify round 2"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.context.0.en",
+   "before": "The plan he began with was far grander: \"the Transcontinental party will set out on their 1800-mile journey at once,\" he wrote, \"in the hope of accomplishing the march across the Pole and reaching the Ross Sea base in five months.\" Eighteen hundred miles, the Pole, a base on the far side of the continent. Once the ice had crushed Endurance, the task became something else entirely: get the whole party onto land.",
+   "after": "The plan he began with was far grander: \"the Transcontinental party will set out on their 1800-mile journey at once,\" he wrote, \"in the hope of accomplishing the march across the Pole and reaching the Ross Sea base in five months.\" Once the ice had crushed the ship, the task became something else entirely: get the whole party onto land.",
+   "issues": [
+    "F1",
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.0.zh",
+   "before": "在被他们称为抛弃营的地方，装备经历了一次大幅筛选。他决定给每人发一整套全新的 Burberry 外衣和内衣，再加新袜子；同时定下规矩：个人物品不得超过两磅，除了最必需的东西，一律不上路。用他的原话，负担不起多余的重量。",
+   "after": "在被他们称为抛弃营的地方，装备经历了一次大幅筛选。他决定给每人发一整套全新的 Burberrys 和内衣，再加新袜子；他还定下规矩：个人物品不得超过两磅，除了最必需的东西，一律不上路。照他的说法，他们负担不起多余的重量。",
+   "issues": [
+    "F3",
+    "F4",
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.story.0.en",
+   "before": "At a place they named Dump Camp, the equipment went through a severe weeding-out. He decided to issue each man a complete new set of Burberrys — Burberry coats — and underclothing, along with a supply of new socks. At the same time he fixed the rule: \"personal gear must not exceed two pounds per man,\" which meant nothing but bare necessaries would go on the march. In his words, they could not afford to cumber themselves with unnecessary weight.",
+   "after": "At a place they named Dump Camp, the equipment went through a severe weeding-out. He decided to issue each man a complete new set of Burberrys and underclothing, along with a supply of new socks. He also fixed the rule: \"personal gear must not exceed two pounds per man,\" which meant nothing but bare necessaries would go on the march. As he put it, they could not afford to cumber themselves with unnecessary weight.",
+   "issues": [
+    "F3",
+    "F4",
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.story.6.zh",
+   "before": "下午开路顺利得多。两组狗拉着小艇出发，只需帮一次手；他写道，十四条狗干得和十八个人一样好，甚至更好。十二个人用镐和铲，十分钟就能在一道约14英尺高的冰脊上凿出一条还算平整的路。",
+   "after": "开路时有过顺利的时候。两组狗拉着小艇出发，只需帮一次手；他写道，十四条狗干得和十八个人一样好，甚至更好。十二个人用镐和铲，十分钟就能在一道约14英尺高的冰脊上凿出一条还算平整的路。",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.story.6.en",
+   "before": "The afternoon went better. Two dog teams were hitched to the cutter and \"started off in splendid style. They needed to be helped only once; indeed fourteen dogs did as well or even better than eighteen men.\" A dozen men with picks and shovels could cut a road through a ridge about 14 feet high in ten minutes and leave a smooth, or comparatively smooth, path behind them.",
+   "after": "At one stage the work went well. Two dog teams were hitched to the cutter and \"started off in splendid style. They needed to be helped only once; indeed fourteen dogs did as well or even better than eighteen men.\" A dozen men with picks and shovels could cut a road through a ridge about 14 feet high in ten minutes and leave a smooth, or comparatively smooth, path behind them.",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.story.10.zh",
+   "before": "光是把两条船挪过去就费尽了力气。雪面糟透了，他们从没见过这样的冰面：人有时陷到齐臀深，到处的雪都有两英尺厚。",
+   "after": "他记下挪动两条船的艰难。雪面糟透了，他们从没见过这样的冰面：人有时陷到齐臀深，到处的雪都有两英尺厚。",
+   "issues": [
+    "F7"
+   ]
+  },
+  {
+   "path": "sections.story.10.en",
+   "before": "Shifting the two boats there took the utmost effort. The surface was terrible, like nothing any of them had seen before: \"We were sinking at times up to our hips, and everywhere the snow was two feet deep.\"",
+   "after": "He recorded how hard it was to shift the two boats. The surface was terrible, like nothing any of them had seen before: \"We were sinking at times up to our hips, and everywhere the snow was two feet deep.\"",
+   "issues": [
+    "F7"
+   ]
+  },
+  {
+   "path": "sections.story.11.zh",
+   "before": "扎营后，他决定尽量省下宝贵的雪橇口粮，留给那趟必然要来的小艇航行，平时几乎全靠海豹和企鹅过活。他派人回抛弃营搜罗衣物、烟草之类，可几天大雪，加上融化下陷，留在那里的许多东西已经不见了。",
+   "after": "他还决定尽量省下宝贵的雪橇口粮，留给那趟必然要来的小艇航行，平时几乎全靠海豹和企鹅过活。他派人回抛弃营搜罗衣物、烟草之类，可几天大雪，加上融化下陷，留在那里的许多东西已经不见了。",
+   "issues": [
+    "F8"
+   ]
+  },
+  {
+   "path": "sections.story.11.en",
+   "before": "Once in camp, \"I decided to conserve our valuable sledging rations, which would be so necessary for the inevitable boat journey, as much as possible, and to subsist almost entirely on seals and penguins.\" A party went back to Dump Camp for clothing, tobacco and whatever else they could find, but heavy snow and the thaw had swallowed a good many of the things left there.",
+   "after": "He also decided, in his words, \"to conserve our valuable sledging rations, which would be so necessary for the inevitable boat journey, as much as possible, and to subsist almost entirely on seals and penguins.\" A party went back to Dump Camp for clothing, tobacco and whatever else they could find, but heavy snow and the thaw had swallowed a good many of the things left there.",
+   "issues": [
+    "F8"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.zh",
+   "before": "一种解释是（作者推断），海洋营不是他第一次决定停下。行军第二天早上，雪大得看不清路，他就决定不拔营；午后天晴，探到一块好走的浮冰，又继续走。两次决定看的是同样的东西：眼前这段路找不找得到、值不值得把船带进去冒险。海洋营的不同在于，这一次他把等待写成了一个计划：营地选在更结实的浮冰上，理由里挂着一个具体的指望——附近可能开出水道，那时可以划船去找陆地——等条件更有利，再做第二次尝试。",
+   "after": "一种解释是（作者推断），海洋营不是他第一次决定停下。行军第二天早上，雪大得看不清路，他就决定不拔营；天晴一些后探到一块好走的浮冰，午饭后又继续走。两次决定看的是同样的东西：眼前这段路找不找得到、值不值得把船带进去冒险。海洋营的不同在于，这一次他把等待写成了一个计划：营地选在更结实的浮冰上，理由里挂着一个具体的指望——附近可能开出水道，那时可以划船去找陆地——等条件更有利，再做第二次尝试。",
+   "issues": [
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "before": "One reading, and it is the author's, is that Ocean Camp was not the first time he chose to stop. On the march's second morning, with snow too thick to see a path, he decided not to strike camp; when it cleared in the afternoon and a good floe turned up, they moved on. Both decisions weighed the same things: could a road be found, and was it worth taking the boats into danger to use it? What set Ocean Camp apart is that this time he wrote the waiting down as a plan. The camp went onto a more solid floe, the reasoning carried a specific hope (leads opening nearby, boats in the water, land to the north-west), and a second attempt was to follow once conditions improved.",
+   "after": "One reading, and it is the author's, is that Ocean Camp was not the first time he chose to stop. On the march's second morning, with snow too thick to see a path, he decided not to strike camp; when it cleared and a good floe turned up, they moved on after lunch. Both decisions weighed the same things: could a road be found, and was it worth taking the boats into danger to use it? What set Ocean Camp apart is that this time he wrote the waiting down as a plan. The camp went onto a more solid floe, the reasoning carried a specific hope (leads opening nearby, boats in the water, land to the north-west), and a second attempt was to follow once conditions improved.",
+   "issues": [
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.zh",
+   "before": "还有一处值得注意（作者的解读）：沙克尔顿后来用“轻松的乐观”来形容最初那场冲过移动冰面奔向安全的打算。停下之后，他们反而能一趟趟回到沉船边，捞回衣物、食物和当初丢下的东西，又改吃海豹和企鹅，把雪橇口粮留给后面的小艇航行。在这份记述里，停下不只是不再消耗，也是把资源重新收拢的时间。",
+   "after": "还有一处值得注意（作者的解读）：停下之后，他们反而能一趟趟回到沉船附近，捞回衣物、食物和少数私人物品；沙克尔顿后来说，那些私人物品当初是怀着“轻松的乐观”，才打算在冲过移动冰面奔向安全时丢在几英里之外的。他们还决定几乎全靠海豹和企鹅过活，把雪橇口粮留给后面的小艇航行。作者认为，停下不只是不再消耗，也是把资源重新收拢的时间。",
+   "issues": [
+    "F10",
+    "F11"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.en",
+   "before": "One more thing is worth noticing, and again it is the author's reading. Shackleton later called the first plan, the dash across the moving ice to safety, a piece of \"light-hearted optimism\". Once they stopped, they could go back to the wreck again and again for clothing, food and the things they had left behind, and they switched to seals and penguins so that the sledging rations could be kept for the boat journey ahead. In his account, stopping was not only a halt to the drain; it was time to gather their resources again.",
+   "after": "One more thing is worth noticing, and again it is the author's reading. Once they stopped, they could go back to the wreck again and again and retrieve clothing, food and some few articles of personal value; Shackleton later said it was in \"light-hearted optimism\" that they had thought to leave those articles miles behind on their dash across the moving ice to safety. They also chose to live almost entirely on seals and penguins so that the sledging rations could be kept for the boat journey ahead. On this reading, stopping was not only a halt to the drain; it was time to gather their resources again.",
+   "issues": [
+    "F10",
+    "F11"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.zh",
+   "before": "另一种解释是关于取舍的标准（作者推断）：金币在冰上派不上用场，照片和一页有亲笔字的扉页也换不来什么，但后两者被留下了。他在这几段里没有说明原因；也许那道上限筛的只是重量，也许只是个人偏好，两种说法都超出了他写下的内容。",
+   "after": "另一种解释是关于取舍的标准（作者推断）：金币被扔掉、照片被留下，他在这几段里没有说明原因；扉页则被他撕了下来，这段记述没有写它的去向。作者的推测是：在冰上，金币和照片都换不来什么，但照片被留下了。也许那道上限筛的只是重量，也许只是个人偏好，两种说法都超出了他写下的内容。",
+   "issues": [
+    "F12",
+    "F13",
+    "M1"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.en",
+   "before": "A second reading, and it is the author's, concerns the standard behind the choices. Gold coins were of no use on the ice; the photographs and a page with the Queen's handwriting could not buy anything either, yet those were the things kept. He gives no reason in these passages. Perhaps the limit screened only for weight; perhaps it was personal preference. Both go beyond what he wrote.",
+   "after": "A second reading, and it is the author's, concerns the standard behind the choices. The sovereigns were thrown away and the photographs were kept, and he gives no reason in these passages; the fly-leaf was torn out, and the passage does not say what became of it. The author's guess is that on the ice neither the gold coins nor the photographs could buy anything, yet the photographs were kept. Perhaps the limit screened only for weight; perhaps it was personal preference. Both go beyond what he wrote.",
+   "issues": [
+    "F12",
+    "F13",
+    "M1"
+   ]
+  },
+  {
+   "path": "sections.today.0.zh",
+   "before": "场景一：一个创业团队的融资没谈成，原计划已经不成立。负责人第一次全员会上最有用的，也许就是像那句“任务是让全体队员抵达陆地”一样，用一句话说清新的目标：现在要做到什么，怎么算做到。",
+   "after": "场景一：一个创业团队的融资没谈成，原计划已经不成立。负责人第一次全员会上最有用的，也许就是像本文开头那个一句话的新任务一样，用一句话说清新的目标：现在要做到什么，怎么算做到。",
+   "issues": [
+    "F14"
+   ]
+  },
+  {
+   "path": "sections.today.0.en",
+   "before": "Scenario one: a start-up's fundraising has fallen through and the original plan no longer stands. At the first all-hands meeting, the most useful thing the founder can do may be what that line did, \"The task is to reach land with all the members of the Expedition\": state the new goal in one sentence, what has to be achieved now and how you will know.",
+   "after": "Scenario one: a start-up's fundraising has fallen through and the original plan no longer stands. At the first all-hands meeting, the most useful thing the founder can do may be what the new task at the start of this piece did: state the new goal in one sentence, what has to be achieved now and how you will know.",
+   "issues": [
+    "F14"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.zh",
+   "before": "还有一处值得注意（作者的解读）：停下之后，他们反而能一趟趟回到沉船附近，捞回衣物、食物和少数私人物品；沙克尔顿后来说，那些私人物品当初是怀着“轻松的乐观”，才打算在冲过移动冰面奔向安全时丢在几英里之外的。他们还决定几乎全靠海豹和企鹅过活，把雪橇口粮留给后面的小艇航行。作者认为，停下不只是不再消耗，也是把资源重新收拢的时间。",
+   "after": "还有一处值得注意（作者的解读）：停下之后，他们反而能一趟趟回到沉船附近，捞回衣物、食物和少数私人物品；沙克尔顿后来说，那些私人物品当初是怀着“轻松的乐观”，才打算在冲过移动冰面奔向安全时丢在几英里之外的。他还决定让大家几乎全靠海豹和企鹅过活，把雪橇口粮留给后面的小艇航行。作者认为，停下不只是不再消耗，也是把资源重新收拢的时间。",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.en",
+   "before": "One more thing is worth noticing, and again it is the author's reading. Once they stopped, they could go back to the wreck again and again and retrieve clothing, food and some few articles of personal value; Shackleton later said it was in \"light-hearted optimism\" that they had thought to leave those articles miles behind on their dash across the moving ice to safety. They also chose to live almost entirely on seals and penguins so that the sledging rations could be kept for the boat journey ahead. On this reading, stopping was not only a halt to the drain; it was time to gather their resources again.",
+   "after": "One more thing is worth noticing, and again it is the author's reading. Once they stopped, they could go back to the wreck again and again and retrieve clothing, food and some few articles of personal value; Shackleton later said it was in \"light-hearted optimism\" that they had thought to leave those articles miles behind on their dash across the moving ice to safety. He also decided they would live almost entirely on seals and penguins so that the sledging rations could be kept for the boat journey ahead. On this reading, stopping was not only a halt to the drain; it was time to gather their resources again.",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.limits.1.zh",
+   "before": "文本是 OCR，有讹字，引用只取清晰片段，个别有讹字的词不加引号照抄。主要数字——1800英里、281天、346英里、两磅、一吨、一英里、六英里、一英里半、两个月、三个半月——都出自他的记述，未与别的记录核对。本篇也不写此后获救的过程，那部分不在这份证据包的覆盖范围内。",
+   "after": "文本是 OCR，有讹字，引用只取清晰片段，个别有讹字的词不加引号照抄。主要数字——1800英里、281天、346英里、两磅、一吨、一英里、六英里、一英里半、两个月、三个半月——都出自他的记述，未与别的记录核对。本篇也不写耐心营之后的经过，那部分不在这份证据包的覆盖范围内。",
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.limits.1.en",
+   "before": "The text is machine-read, and it carries errors. Quotations are taken only from clean stretches; a few damaged words are reproduced without quotation marks. The main figures — 1,800 miles, 281 days, 346 miles, two pounds, a ton, one mile, six miles, one and a half miles, two months, three and a half months — come from his account and have not been checked against any other record. Nor does this piece tell the story of the rescue that followed; that falls outside the evidence gathered here.",
+   "after": "The text is machine-read, and it carries errors. Quotations are taken only from clean stretches; a few damaged words are reproduced without quotation marks. The main figures — 1,800 miles, 281 days, 346 miles, two pounds, a ton, one mile, six miles, one and a half miles, two months, three and a half months — come from his account and have not been checked against any other record. Nor does this piece tell what happened after Patience Camp; that falls outside the evidence gathered here.",
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "uncertainty_note.zh",
+   "before": "全部来自沙克尔顿本人的叙述（本篇用1920年印本的 OCR 文本），是当事人、领导者的记述，没有其他队员的日记作对照；OCR 有讹字，引用只取清晰片段；文中数字均出自该记述，未经独立核对；本篇不涉及此后的获救过程。",
+   "after": "全部来自沙克尔顿本人的叙述（本篇用1920年印本的 OCR 文本），是当事人、领导者的记述，没有其他队员的日记作对照；OCR 有讹字，引用只取清晰片段；文中数字均出自该记述，未经独立核对；本篇不涉及耐心营之后的经过。",
+   "issues": [
+    "V1-V3"
+   ]
+  },
+  {
+   "path": "uncertainty_note.en",
+   "before": "Everything here comes from Shackleton's own narrative (this piece uses the OCR text of the 1920 printing): the account of the participant who led the party, with no other member's diary for comparison. The OCR carries errors, and quotations are drawn only from clean stretches. Every figure in the piece comes from that account and has not been independently verified. The rescue that followed is not covered here.",
+   "after": "Everything here comes from Shackleton's own narrative (this piece uses the OCR text of the 1920 printing): the account of the participant who led the party, with no other member's diary for comparison. The OCR carries errors, and quotations are drawn only from clean stretches. Every figure in the piece comes from that account and has not been independently verified. What happened after Patience Camp is not covered here.",
+   "issues": [
+    "V1-V3"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "F10",
+    "F11",
+    "F12",
+    "F13",
+    "F14",
+    "M1"
+   ],
+   "changes_applied": 17,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[4] numbers differ zh[2, 20] en[2, 10, 20]"
+    ],
+    [
+     "CHECK",
+     "story[6] numbers differ zh[12, 14, 18] en[10, 14, 18]"
+    ]
+   ],
+   "content_sha256_after": "d92568986854bf04f315f5f2f988e7075b204521513d1451bfb0c618086c1b1a",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.9",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.10",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.11",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.12",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.13",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.analysis.1",
+      "category": "attribution",
+      "severity": "fix",
+      "problem": "证据中，靠海豹和企鹅过活、保留雪橇口粮是沙克尔顿本人的决定。文中写成「他们还决定」/\"They also chose\"，把决定者泛化成了全队。story.11 已经正确写作「他还决定」，两处说法不一致。",
+      "evidence": [
+       {
+        "id": "S-E17",
+        "quote": "I decided to conserve our valuable sledging rations, which would be so necessary for the inevitable boat journey, as much as possible, and to subsist almost entirely on seals and penguins."
+       }
+      ],
+      "proposed": "zh：「他们还决定几乎全靠海豹和企鹅过活」改为「他还决定让大家几乎全靠海豹和企鹅过活」；en：\"They also chose to live almost entirely on seals and penguins\" 改为 \"He also decided they would live almost entirely on seals and penguins\"。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.limits.1",
+      "category": "unsupported",
+      "severity": "fix",
+      "problem": "「此后获救的过程」/\"the rescue that followed\" 断言后来发生了获救。证据包只写到「目标是抵达陆地」和进驻耐心营，没有任何关于获救的内容。同一句话又声明这部分在证据范围之外，前后自相矛盾。",
+      "evidence": [
+       {
+        "id": "S-E2",
+        "quote": "The task is to reach land with all the members of the Expedition."
+       },
+       {
+        "id": "S-E8",
+        "quote": "Our new home, which we were to occupy for nearly three and a half months, we called “‘ Patience Camp"
+       }
+      ],
+      "proposed": "zh：「本篇也不写此后获救的过程」改为「本篇也不写耐心营之后的经过」；en：\"the story of the rescue that followed\" 改为 \"what happened after Patience Camp\"。"
+     },
+     {
+      "id": "V3",
+      "path": "uncertainty_note",
+      "category": "unsupported",
+      "severity": "fix",
+      "problem": "与 V2 相同。「此后的获救过程」/\"The rescue that followed\" 断言了证据包没有记载的获救。",
+      "evidence": [
+       {
+        "id": "S-E2",
+        "quote": "The task is to reach land with all the members of the Expedition."
+       }
+      ],
+      "proposed": "zh：「本篇不涉及此后的获救过程」改为「本篇不涉及耐心营之后的经过」；en：\"The rescue that followed is not covered here.\" 改为 \"What happened after Patience Camp is not covered here.\""
+     },
+     {
+      "id": "V4",
+      "path": "sections.context.heading",
+      "category": "style",
+      "severity": "note",
+      "problem": "标题写了「两磅的规矩」，但 context 两段讲的是原计划和弃船时所处的位置。两磅规矩实际出现在 story.0。",
+      "evidence": [],
+      "proposed": "可把标题改为「原计划与所处位置」/\"The Original Plan, and Where They Stood\"，也可保持不改。"
+     }
+    ],
+    "overall": "定稿的引语都逐字来自证据，数字、时序和解释标注基本可靠。需要修正两处：分析段把沙克尔顿本人的口粮决定写成了全队的决定；边界说明和不确定性注释中提到了证据之外的「获救」。",
+    "_content_sha256": "d92568986854bf04f315f5f2f988e7075b204521513d1451bfb0c618086c1b1a"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1",
+    "V1-V2",
+    "V1-V3"
+   ],
+   "changes_applied": 6,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[4] numbers differ zh[2, 20] en[2, 10, 20]"
+    ],
+    [
+     "CHECK",
+     "story[6] numbers differ zh[12, 14, 18] en[10, 14, 18]"
+    ]
+   ],
+   "content_sha256_after": "c795b1c5b596252b1e79a841de94c453a8ad685fde4e82f30e0a03ed534da33f",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.9",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.10",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.11",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.12",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.13",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.analysis.0",
+      "category": "attribution",
+      "severity": "fix",
+      "problem": "文中说两次决定“看的是同样的东西：眼前这段路找不找得到、值不值得把船带进去冒险”（en: Both decisions weighed the same things）。这一说法只符合不拔营那次（S-E13）的理由。海洋营决定的记述（S-E7）给出的理由是：雪面松软、四天成果太少、附近可能开出水道。S-E7 没有提到找路，也没有提到让船陷入危险。这里把一次决定的理由安到了另一次决定上，“作者推断”的标签也不能补上这一点。",
+      "evidence": [
+       {
+        "id": "S-E13",
+        "quote": "A path over the shattered floes would be hard to find, and to get the boats into a position of peril might be disastrous."
+       },
+       {
+        "id": "S-E7",
+        "quote": "with the present loose surface, and considering how little result we had to show for all our strenuous efforts of the past four days, it would be impossible to proceed for any great distance"
+       }
+      ],
+      "proposed": "改为“两次决定都在衡量眼前的路还能不能走下去”（en: \"Both decisions turned on whether the way ahead could be made\"）。或者删去“值不值得把船带进去冒险”及对应英文 \"and was it worth taking the boats into danger to use it\"。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.context.heading",
+      "category": "style",
+      "severity": "note",
+      "problem": "小标题写的是“原计划与两磅的规矩”，但 context 部分两段只讲原计划和弃船时的位置。两磅的规定出现在 story.0，标题与内容对不上。",
+      "evidence": [],
+      "proposed": "改为“原计划与眼下的处境”（en: \"The Original Plan, and Where They Stood\"）。"
+     }
+    ],
+    "overall": "定稿的史实、引文和中英对应基本经得起证据核对。需要修改的是 analysis.0：它把不拔营那次的理由（找路、船的风险）安到了海洋营决定上。另有一个小标题与内容不符的文风提示。",
+    "_content_sha256": "c795b1c5b596252b1e79a841de94c453a8ad685fde4e82f30e0a03ed534da33f"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1",
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3",
+     "F4",
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.9",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.10",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F7"
+    ]
+   },
+   {
+    "path": "sections.story.11",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F8"
+    ]
+   },
+   {
+    "path": "sections.story.12",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.13",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F9"
+    ]
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F10",
+     "F11"
+    ]
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F12",
+     "F13"
+    ]
+   },
+   {
+    "path": "sections.analysis.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": [
+     "F14"
+    ]
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.context.0",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "英文写出船名 Endurance。证据包中任何地方都没有船名，中文也没有，因此同时构成中英不一致。",
+    "evidence": [],
+    "proposed": "英文把 \"Once the ice had crushed Endurance\" 改为 \"Once the ice had crushed the ship\"；中文保持不变。"
+   },
+   {
+    "path": "sections.context.0",
+    "id": "F2",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "英文补了一句 \"a base on the far side of the continent\"。证据只说 Ross Sea base，没有说基地在大陆另一侧；中文也没有这句，构成中英不一致。",
+    "evidence": [
+     {
+      "id": "S-E1",
+      "quote": "reaching the Ross Sea base in five months"
+     }
+    ],
+    "proposed": "删去 \"Eighteen hundred miles, the Pole, a base on the far side of the continent.\"，或改为 \"Eighteen hundred miles, the Pole, the Ross Sea base.\""
+   },
+   {
+    "id": "F3",
+    "path": "sections.story.0",
+    "category": "chronology",
+    "severity": "fix",
+    "problem": "「同时定下规矩」/\"At the same time\" 把两磅规矩写成与抛弃营的装备筛选同时发生。S-E4 没有说明这条命令下达的时间和地点。",
+    "evidence": [
+     {
+      "id": "S-E4",
+      "quote": "The order was that personal gear must not exceed two pounds per man"
+     }
+    ],
+    "proposed": "中文把「同时定下规矩」改为「他还定下规矩」；英文把 \"At the same time he fixed the rule\" 改为 \"He also fixed the rule\"。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.story.0",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "中文用「用他的原话」引出的是中文转述，读者会误以为是逐字原文。",
+    "evidence": [
+     {
+      "id": "S-E4",
+      "quote": "We could not afford to cumber ourselves with unnecessary weight."
+     }
+    ],
+    "proposed": "中文改为「照他的说法，他们负担不起多余的重量」，或直接引原文：「We could not afford to cumber ourselves with unnecessary weight」。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.story.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "把 Burberrys 释为「外衣」/\"Burberry coats\"。证据只写 Burberrys，没有说明是什么衣物。",
+    "evidence": [
+     {
+      "id": "S-E3",
+      "quote": "a complete new set of Burberrys and underclothing"
+     }
+    ],
+    "proposed": "中文删去「外衣」，写作「一整套全新的 Burberrys 和内衣」；英文删去 \"— Burberry coats —\"。"
+   },
+   {
+    "id": "F6",
+    "path": "sections.story.6",
+    "category": "chronology",
+    "severity": "fix",
+    "problem": "「下午开路顺利得多」/\"The afternoon went better\" 有两处无据：一是把 S-E14 的凿路定在第二天下午，二是写成比此前顺利。证据只写了午饭后拔营，S-E14 本身没有时间标记，也没有和此前作比较。",
+    "evidence": [
+     {
+      "id": "S-E13",
+      "quote": "after lunch we struck camp"
+     }
+    ],
+    "proposed": "中文改为「开路时有过顺利的时候」；英文改为 \"At one stage the work went well.\" 不写具体时段，也不作比较。"
+   },
+   {
+    "id": "F7",
+    "path": "sections.story.10",
+    "category": "chronology",
+    "severity": "fix",
+    "problem": "「光是把两条船挪过去」/\"Shifting the two boats there\" 把 S-E16 定为搬往海洋营的那一次。证据没有说明是哪一次搬运。",
+    "evidence": [
+     {
+      "id": "S-E16",
+      "quote": "It was with the utmost difficulty that we shifted our two boats."
+     }
+    ],
+    "proposed": "中文改为「他记下挪动两条船的艰难」；英文改为 \"He recorded how hard it was to shift the two boats\"。两处都去掉指向海洋营的「过去」/\"there\"。"
+   },
+   {
+    "id": "F8",
+    "path": "sections.story.11",
+    "category": "chronology",
+    "severity": "fix",
+    "problem": "「扎营后」/\"Once in camp\" 把节省口粮的决定定在海洋营扎营之后。S-E17 没有给出时间。",
+    "evidence": [
+     {
+      "id": "S-E17",
+      "quote": "I decided to conserve our valuable sledging rations"
+     }
+    ],
+    "proposed": "删去「扎营后」和 \"Once in camp,\"，或改为「他还决定」/\"He also decided\"。"
+   },
+   {
+    "id": "F9",
+    "path": "sections.analysis.0",
+    "category": "chronology",
+    "severity": "fix",
+    "problem": "「午后天晴，探到一块好走的浮冰」/\"when it cleared in the afternoon and a good floe turned up\" 顺序不对。证据中天晴、探路在前，午饭后才拔营，并没有说天晴发生在午后。",
+    "evidence": [
+     {
+      "id": "S-E13",
+      "quote": "Then, as the weather cleared, Worsley and I made a prospect to the west"
+     },
+     {
+      "id": "S-E13",
+      "quote": "after lunch we struck camp"
+     }
+    ],
+    "proposed": "中文改为「天晴一些后探到一块好走的浮冰，午饭后又继续走」；英文改为 \"when it cleared and a good floe turned up, they moved on after lunch\"。"
+   },
+   {
+    "id": "F10",
+    "path": "sections.analysis.1",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "把「轻松的乐观」写成沙克尔顿对整个冲刺计划的评语。原文中这个词修饰的是当初打算把物品丢在身后这件事，不是整个计划。",
+    "evidence": [
+     {
+      "id": "S-E18",
+      "quote": "which in our light-hearted optimism we had thought to leave miles behind us on our dash across the moving ice to safety"
+     }
+    ],
+    "proposed": "中文改为「沙克尔顿后来说，当初是怀着“轻松的乐观”，才打算把那些东西丢在几英里之外」；英文相应改为 \"Shackleton later said it was in 'light-hearted optimism' that they had thought to leave those things miles behind.\""
+   },
+   {
+    "id": "F11",
+    "path": "sections.analysis.1",
+    "category": "interpretation_label",
+    "severity": "fix",
+    "problem": "末句「在这份记述里，停下……也是把资源重新收拢的时间」/\"In his account, stopping was...\" 把作者的解读说成沙克尔顿记述中的观点。证据里没有这一判断。",
+    "evidence": [],
+    "proposed": "中文改为「作者认为，停下不只是不再消耗，也是把资源重新收拢的时间」；英文改为 \"On this reading, stopping was...\"。"
+   },
+   {
+    "id": "F12",
+    "path": "sections.analysis.2",
+    "category": "interpretation_label",
+    "severity": "fix",
+    "problem": "首句「金币在冰上派不上用场，照片……也换不来什么」/\"Gold coins were of no use on the ice\" 写成陈述句，读来像史实或他本人的理由。证据只记了弃留，没有给出任何理由。",
+    "evidence": [
+     {
+      "id": "S-E5",
+      "quote": "So sovereigns were thrown away and photographs were kept."
+     }
+    ],
+    "proposed": "中文首句改为「金币被扔掉、照片被留下，他没有说明原因。作者的推测是：在冰上，金币和照片都换不来什么」；英文同步改写。"
+   },
+   {
+    "id": "F13",
+    "path": "sections.analysis.2",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "「后两者被留下了」/\"those were the things kept\" 把扉页也算作被留下。证据只说他撕下了扉页，句子到此截断，没有写扉页的去向。",
+    "evidence": [
+     {
+      "id": "S-E5",
+      "quote": "I tore the fly-leaf out of the Bible that Queen Alexandra had given to the ship"
+     }
+    ],
+    "proposed": "中文改为「照片被留下，扉页被撕了下来」；英文改为 \"the photographs were kept and the fly-leaf torn out\"。"
+   },
+   {
+    "id": "F14",
+    "path": "sections.today.0",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "现代场景直接引用了证据原句（中文「任务是让全体队员抵达陆地」、英文 \"The task is to reach land with all the members of the Expedition\"），违反现代场景不得引用证据的规定。",
+    "evidence": [],
+    "proposed": "删去引句，改为「像开头那个一句话的新任务一样」/\"as the new task at the start of this piece did\"。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "M1",
+    "verdict": "valid",
+    "same_as": "F12",
+    "rationale": "首句以陈述语气写出弃留理由，证据只记弃留本身，没有理由。该问题已作为 F12 列出。",
+    "evidence": [
+     {
+      "id": "S-E5",
+      "quote": "So sovereigns were thrown away and photographs were kept."
+     }
+    ]
+   },
+   {
+    "id": "M2",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "船名 Endurance 不在证据包中，同时造成中英不一致。处理方式应是删去英文中的船名，而不是在中文里补上。",
+    "evidence": []
+   },
+   {
+    "id": "M3",
+    "verdict": "duplicate",
+    "same_as": "F6",
+    "rationale": "S-E14 没有时间标记，「下午」无据。",
+    "evidence": [
+     {
+      "id": "S-E13",
+      "quote": "after lunch we struck camp"
+     }
+    ]
+   },
+   {
+    "id": "M4",
+    "verdict": "duplicate",
+    "same_as": "F7",
+    "rationale": "S-E16 没有说明是哪一次搬运。",
+    "evidence": [
+     {
+      "id": "S-E16",
+      "quote": "It was with the utmost difficulty that we shifted our two boats."
+     }
+    ]
+   },
+   {
+    "id": "M5",
+    "verdict": "duplicate",
+    "same_as": "F12",
+    "rationale": "与 M1 是同一处问题。",
+    "evidence": []
+   },
+   {
+    "id": "M6",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "该段已标明为作者推断。第一次决定所依据的「路找不找得到、船是否会陷入险境」直接见于原文；海洋营的理由同样见于原文。",
+    "evidence": [
+     {
+      "id": "S-E13",
+      "quote": "A path over the shattered floes would be hard to find, and to get the boats into a position of peril might be disastrous."
+     },
+     {
+      "id": "S-E7",
+      "quote": "it would be impossible to proceed for any great distance"
+     }
+    ]
+   },
+   {
+    "id": "M7",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "理由同 M6：段首已标明是作者推断，所归纳的两条标准都有原文依据，没有把内心活动冒充为史实。",
+    "evidence": [
+     {
+      "id": "S-E13",
+      "quote": "A path over the shattered floes would be hard to find, and to get the boats into a position of peril might be disastrous."
+     }
+    ]
+   },
+   {
+    "id": "M8",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "文中明确写了「他在这几段里没有说明原因」「两种说法都超出了他写下的内容」，属于标明为假设的推测，没有当作事实陈述。原文确实只记弃留。",
+    "evidence": [
+     {
+      "id": "S-E5",
+      "quote": "So sovereigns were thrown away and photographs were kept."
+     }
+    ]
+   },
+   {
+    "id": "M9",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "文中已注明「作者提出的替代选择（他没有写自己考虑过这些）」，没有归为沙克尔顿的内心考虑。原文记载的只是他实际做出的决定。",
+    "evidence": [
+     {
+      "id": "S-E7",
+      "quote": "I decided to find a more solid floe and there camp"
+     }
+    ]
+   },
+   {
+    "id": "M10",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "story.7 的中文没有用「」标为逐字引语，而是以「他引了一位队员日记里的话」引出的中文译述，意思与原句一致（更干净的见过、尝过，但很少有来得这么是时候的），不构成冒充原文。",
+    "evidence": [
+     {
+      "id": "S-E15",
+      "quote": "One has seen and tasted cleaner, but seldom more opportunely found water."
+     }
+    ]
+   },
+   {
+    "id": "M11",
+    "verdict": "duplicate",
+    "same_as": "F4",
+    "rationale": "以「原话」引出中文转述，会误导读者以为是逐字原文。",
+    "evidence": [
+     {
+      "id": "S-E4",
+      "quote": "We could not afford to cumber ourselves with unnecessary weight."
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "c795b1c5b596252b1e79a841de94c453a8ad685fde4e82f30e0a03ed534da33f",
+ "open_issues": [
+  "V2-V1"
+ ],
+ "outcome": "pending_review",
+ "failure": null,
+ "finished_at": 1793399024.3391957,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 95.7,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 17923,
+    "output_tokens": 11319
+   },
+   "cost_estimate_usd": 0.369772
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 56.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 19391,
+    "output_tokens": 7503
+   },
+   "cost_estimate_usd": 0.305196
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 100.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15761,
+    "output_tokens": 11966
+   },
+   "cost_estimate_usd": 0.36541599999999996
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 14.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16702,
+    "output_tokens": 1932
+   },
+   "cost_estimate_usd": 0.17226400000000003
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 69.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15771,
+    "output_tokens": 8467
+   },
+   "cost_estimate_usd": 0.295516
+  }
+ ],
+ "elapsed_min": 5.6,
+ "model_wall_min": 5.6
+}

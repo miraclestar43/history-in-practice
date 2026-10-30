@@ -1,0 +1,2794 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-20261030-washington-resigns",
+ "edition_id": "cand-20261030-washington-resigns",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "675bf4b",
+ "started_at": 1793399596.4894478,
+ "base_source": "samples/auto/cand-20261030-washington-resigns/article.json",
+ "base_content_sha256": "21a190ee1c1f1cea79660c34d3014b2b90bd03a445e8204fa8383befaeef0876",
+ "evidence_sha256": "f6e35ee70844c1f18cb2f1efa8d0270e01c518ac869da265000492846e28fd40",
+ "model_record_sha256": "7e256fd8cbe60cd0af9448416b6b413a6cbb6e40559fb5e4de57df22582c82ee",
+ "prior_record_sha256": null,
+ "attempt": "attempt-1",
+ "inherited": [
+  {
+   "id": "M1",
+   "model_id": "R1",
+   "source": "mimo-review",
+   "where": "context.1",
+   "problem": "“埃勒里则应本人要求把反对改成了赞成”——U-E12原文为“Ellery, no changed into ay at the request of the Member”，未说明是谁的请求，不能确定是埃勒里“本人要求”",
+   "suggestion": "改为“埃勒里的反对票后来改为赞成（日志记为‘应一位议员的请求’，未注明是谁提出）”"
+  },
+  {
+   "id": "M2",
+   "model_id": "R2",
+   "source": "mimo-review",
+   "where": "context.2",
+   "problem": "“议定的接见次序一共三条”与下一段“后三条”自相矛盾；U-E2与U-E14合起来是六条（1–3入场就座，4–6讲话与交接）",
+   "suggestion": "改为“接见次序共六条，前三条管入场与就座”"
+  },
+  {
+   "id": "M3",
+   "model_id": "R3",
+   "source": "mimo-review",
+   "where": "context.1",
+   "problem": "“到了23日接见当天上午，国会还议决立即写信”——U-E16只记23日议决发信，未写是上午",
+   "suggestion": "删“上午”，改为“到了23日接见当天，国会还议决……”"
+  },
+  {
+   "id": "M4",
+   "model_id": "R4",
+   "source": "mimo-review",
+   "where": "analysis.2",
+   "problem": "“接见当天上午，它还在写信催缺席的州派人来”——同上，证据未给出时段",
+   "suggestion": "删“上午”"
+  },
+  {
+   "id": "M5",
+   "model_id": "R5",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] 23日接见当天‘上午’国会发信（证据未记时段）",
+   "suggestion": ""
+  },
+  {
+   "id": "M6",
+   "model_id": "R6",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] 埃勒里‘应本人要求’改票（证据只写‘at the request of the Member’，主语不明）",
+   "suggestion": ""
+  },
+  {
+   "id": "M7",
+   "model_id": "R7",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] ‘有议员动议’提出七州是否有权接受辞职的问题（证据只留问题与表决记录）",
+   "suggestion": ""
+  },
+  {
+   "id": "M8",
+   "model_id": "R8",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[invented_inner_life] “埃勒里则应本人要求把反对改成了赞成”（把改票归因于埃勒里本人的意愿，原文未写）",
+   "suggestion": ""
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.context.1",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "中文“埃勒里则应本人要求把反对改成了赞成”和英文“at his own request”都把改票的请求者写成埃勒里本人。证据只写“at the request of the Member”，没有写明这位议员是谁。",
+   "evidence": [
+    {
+     "id": "U-E12",
+     "quote": "Ellery, no changed into ay at the request of the Member"
+    }
+   ],
+   "proposed": "中文改为“埃勒里的反对票记为‘应该议员请求’改成了赞成”；英文改为“Ellery's no was recorded as 'changed into ay at the request of the Member'”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中英文都不再说是埃勒里本人提出改票请求。现在只照录日志的写法，并注明日志没有写明是哪位议员。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.context.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“23日接见当天上午”和“on the morning of the audience”中的“上午”没有证据支持。证据只记23日的议决，没有给出时段。",
+   "evidence": [
+    {
+     "id": "U-E4",
+     "quote": "TUESDAY, DECEMBER 23, 1783"
+    }
+   ],
+   "proposed": "删去“上午”和“on the morning of”，改为“23日接见当天”和“on the day of the audience itself, the 23rd”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“上午”和“on the morning of”，改为“23日接见当天”和“on the day of the audience itself”。证据只有日期，没有时段。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.context.1",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "“有议员动议先问一个问题”和“a motion asked a prior question”写了一项动议及其提出者。证据只有这个问题本身和部分表决名单，没有记载动议，也没有说明是谁提出的。",
+   "evidence": [
+    {
+     "id": "U-E11",
+     "quote": "Is it the sense of Congress that seven states in Congress Assembled are competent to receive the resignation of a Commander in Chief?"
+    }
+   ],
+   "proposed": "中文改为“同一天，日志记下一个付诸表决的问题”；英文改为“The same day, the journal records a question put to the vote”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“有议员动议”和“a motion”，改为日志记下一个付诸表决的问题。证据没有记载动议或提出者。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.context.2",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“议定的接见次序一共三条”和“ran to three clauses”与证据不符。议定稿共六条（1–3条加4–6条），本段说三条，下一段又说“后三条”，前后矛盾。",
+   "evidence": [
+    {
+     "id": "U-E2",
+     "quote": "1. The President and members are to be seated and covered"
+    },
+    {
+     "id": "U-E14",
+     "quote": "6. The President having finished"
+    }
+   ],
+   "proposed": "中文改为“议定的接见次序共六条，前三条管入场与就座”；英文改为“The agreed order ran to six clauses; the first three covered entry and seating”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "改为共六条、前三条管入场与就座，与下一段“后三条”衔接，也与证据的编号1到6一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.context.2",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "英文“announced to the secretary by a messenger, who would then introduce the General”中，“who”在语法上指向 messenger。证据写明引入将军的是秘书。中文写法正确，英文与之不一致。",
+   "evidence": [
+    {
+     "id": "U-E2",
+     "quote": "announced by the messenger to the secretary, who is thereupon to introduce the General"
+    }
+   ],
+   "proposed": "英文改为“…announced by a messenger to the secretary, and the secretary would then introduce the General…”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文改为由传信人通报秘书，再由秘书引入将军，消除了 who 的指代歧义，与证据和中文一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F6",
+   "path": "sections.story.1",
+   "category": "inner_life",
+   "severity": "fix",
+   "problem": "英文多出一句“The President did not rush to fill the silence”。这是对议长态度的推测，证据只记“after a pause”，中文也没有这句话，同时构成中英不一致。",
+   "evidence": [
+    {
+     "id": "U-E5",
+     "quote": "the President, after a pause, informed him"
+    }
+   ],
+   "proposed": "删去英文“The President did not rush to fill the silence; the silence itself was entered into the official account alongside the words.”这一句。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去英文中推测议长态度的那一句，并把 let a pause go by 改为 paused，与中文一致。中文原文无此句，照原样给出。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F7",
+   "path": "sections.story.6",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "本段 kind=record，但“副本是这番说法的留档”和“kept on file”写成了事实。证据只记副本与委任状一并交给议长，没有记载副本是否归档。",
+   "evidence": [
+    {
+     "id": "U-E9",
+     "quote": "delivered to the President his commission, with a copy of his address"
+    }
+   ],
+   "proposed": "中文改为“副本是这番说法的书面文本”；英文删去“kept on file”，或明确标为作者推断。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文改为“副本是这番说法的书面文本”，英文删去 kept on file，不再断言副本已归档。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F8",
+   "path": "sections.story.7",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“次日照章执行”和“executed to the letter”与证据有出入。议定稿第6条写由秘书从将军手中接收委任状，日志却记将军把委任状交给了议长。这一处推断所依据的事实前提不成立。",
+   "evidence": [
+    {
+     "id": "U-E14",
+     "quote": "receive the commiBoion from the General"
+    },
+    {
+     "id": "U-E9",
+     "quote": "He then advanced and delivered to the President his commission"
+    }
+   ],
+   "proposed": "中文改为“次日按议定次序进行（日志称“According to order”）”；英文删去“to the letter”。如需要，可注明委任状的接收人与第6条字面不同。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "“照章执行”和 to the letter 改为“按议定次序进行”和 followed，并注明委任状实际交给议长，与议定稿第6条写的由秘书接收不一致。同一句中“文字随凭证入档”也缺乏证据，一并改为讲稿副本随凭证一并交出。ev 增补 U-E14。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F9",
+   "path": "sections.analysis.0",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "本段 kind=interpretation，但正文没有解释标记。“高低位差被明确保留”和“kept deliberately visible”带有意图判断，被写成了事实。另外，“现场没有临时调整的记录”忽略了第6条（秘书接收委任状）与实际交给议长之间的差异，见 F8。",
+   "evidence": [
+    {
+     "id": "U-E3",
+     "quote": "which they are to return by uncovering without bowing"
+    },
+    {
+     "id": "U-E14",
+     "quote": "receive the commiBoion from the General"
+    }
+   ],
+   "proposed": "段首加“作者认为”和“As the author reads it”；删去“明确”和“deliberately”；删去“现场没有临时调整的记录”和“with no record of last-minute adjustment”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "段首加上作者解释标记；删去“明确”和 deliberately；删去“现场没有临时调整的记录”及对应英文，因为委任状的接收人与第6条不一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F10",
+   "path": "sections.analysis.2",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“接见当天上午”和“on the very morning of the audience”中的“上午”没有证据支持，证据未给出时段。",
+   "evidence": [
+    {
+     "id": "U-E4",
+     "quote": "TUESDAY, DECEMBER 23, 1783"
+    }
+   ],
+   "proposed": "删去“上午”，英文改为“on the very day of the audience”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“上午”，英文改为 on the very day of the audience。证据只有日期，没有时段。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F11",
+   "path": "sections.context.3",
+   "category": "style",
+   "severity": "note",
+   "problem": "英文“are bracketed insertions The editors note”中，insertions 后缺少句号。",
+   "evidence": [],
+   "proposed": "在 insertions 后补句号。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F12",
+   "path": "uncertainty_note",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "中英文都写“全部事实来自”12月22日和23日的记录，但正文也用到了12月20日的来信、议决和七州表决。limits.0 写的是“12月20日至23日”，两处不一致。",
+   "evidence": [
+    {
+     "id": "U-E10",
+     "quote": "Resolved, That his Excellency the Commander in Chief be admitted to a public audience, on Tuesday next, at twelve o'clock."
+    }
+   ],
+   "proposed": "在括号内补上12月20日的来信、议决与七州表决（英文同步补“the letter, resolution and vote of December 20”）。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中英文括号内都补上12月20日的来信、议决和关于七州权限的表决，与正文及 limits.0 的范围一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F13",
+   "path": "sections.context.3",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "中文写“由秘书宣布肃静”，英文“silence was to be ordered if necessary”省去了执行者秘书，中英不一致。",
+   "evidence": [
+    {
+     "id": "U-E14",
+     "quote": "silence is to be ordered by the secretary, if necessary"
+    }
+   ],
+   "proposed": "英文改为“silence was to be ordered by the secretary if necessary”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文补上执行者，改为 ordered by the secretary if necessary，与中文和证据一致。同时补上原文漏掉的句号。中文原样给出。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "M1",
+   "path": "context.1",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "“埃勒里则应本人要求把反对改成了赞成”——U-E12原文为“Ellery, no changed into ay at the request of the Member”，未说明是谁的请求，不能确定是埃勒里“本人要求”",
+   "origin": "inherited mimo-review R1",
+   "audit_rationale": "证据只写“the Member”，没有写明请求者是谁，正文写成埃勒里本人的要求属于过度断定。修改方案已列为 F1。",
+   "disposition": "fixed",
+   "rationale": "与F1是同一个问题，已在 sections.context.1 中按F1的方案一并修改。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "M2",
+   "problem": "“议定的接见次序一共三条”与下一段“后三条”自相矛盾；U-E2与U-E14合起来是六条（1–3入场就座，4–6讲话与交接）",
+   "origin": "inherited mimo-review R2",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "context.2",
+   "disposition": "duplicate",
+   "same_as": "F4",
+   "rationale": "议定稿共六条，正文“一共三条”有误，并与下一段“后三条”矛盾。"
+  },
+  {
+   "id": "M3",
+   "problem": "“到了23日接见当天上午，国会还议决立即写信”——U-E16只记23日议决发信，未写是上午",
+   "origin": "inherited mimo-review R3",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "context.1",
+   "disposition": "duplicate",
+   "same_as": "F2",
+   "rationale": "证据没有给出“上午”这一时段。"
+  },
+  {
+   "id": "M4",
+   "problem": "“接见当天上午，它还在写信催缺席的州派人来”——同上，证据未给出时段",
+   "origin": "inherited mimo-review R4",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "analysis.2",
+   "disposition": "duplicate",
+   "same_as": "F10",
+   "rationale": "analysis.2 中同样写了没有证据的“上午”。"
+  },
+  {
+   "id": "M5",
+   "problem": "[unsupported_claims] 23日接见当天‘上午’国会发信（证据未记时段）",
+   "origin": "inherited mimo-review R5",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F2",
+   "rationale": "即“上午”无据的问题，出现在 context.1，analysis.2 的同类问题见 F10。"
+  },
+  {
+   "id": "M6",
+   "problem": "[unsupported_claims] 埃勒里‘应本人要求’改票（证据只写‘at the request of the Member’，主语不明）",
+   "origin": "inherited mimo-review R6",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "即“应本人要求”的主语不明问题。"
+  },
+  {
+   "id": "M7",
+   "problem": "[unsupported_claims] ‘有议员动议’提出七州是否有权接受辞职的问题（证据只留问题与表决记录）",
+   "origin": "inherited mimo-review R7",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F3",
+   "rationale": "证据只记了问题与表决，没有记载动议及其提出者。"
+  },
+  {
+   "id": "M8",
+   "problem": "[invented_inner_life] “埃勒里则应本人要求把反对改成了赞成”（把改票归因于埃勒里本人的意愿，原文未写）",
+   "origin": "inherited mimo-review R8",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "即把改票归因于埃勒里本人的问题。"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.context.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "证据只收录了点名表决的一部分（U-E12 标为 part of the yeas and nays），也没有给出表决结果。正文写“名单上列出的议员几乎都投赞成”/“Nearly every member listed voted ay”，读者会理解为整份名单的投票情况，超出了证据范围。",
+   "evidence": [
+    {
+     "id": "U-E12",
+     "quote": "Partridge, no Ellery, no changed into ay at the request of the Member Howell, ay Mifflin, ay"
+    }
+   ],
+   "proposed": "改为“在本篇所见的部分名单中，除帕特里奇投反对外均为赞成……”/“In the portion of the roll call cited here, every member voted ay except Partridge…”。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "证据只收录了点名表决的一部分。原文“名单上列出的议员几乎都投赞成”已改为“在本篇所见的部分名单中，除帕特里奇投反对外均为赞成”，并补充说明这段摘录没有显示表决结果。中英两版同步修改。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V2",
+   "path": "sections.story.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“According to order”的意思是“依照（20日的）议决”，不是“按议定次序”。证据本身也显示实际经过与议定稿不完全一致：议定稿第6条规定由秘书接收委任状，日志记载的是交给议长。因此“接见按议定次序进行”/“the audience proceeded in the agreed order”属于过度断言，日志转述也被误译成“按既定次序”。",
+   "evidence": [
+    {
+     "id": "U-E5",
+     "quote": "According to order, his Excellency the Commander in Chief was admitted to a public audience"
+    },
+    {
+     "id": "U-E9",
+     "quote": "He then advanced and delivered to the President his commission"
+    },
+    {
+     "id": "U-E14",
+     "quote": "receive the commiBoion from the General"
+    }
+   ],
+   "proposed": "改为“第二天，12月23日，星期二，接见如期举行。日志写道：依照议决（according to order），总司令获准公开接见。”英文相应删去 “in the agreed order”。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "“According to order”的意思是依照议决，不是“按议定次序”。实际交接方式（委任状交给议长）也和议定稿第6条（由秘书接收）不一致。因此删去“按议定次序进行”和“按既定次序”的说法，改为“如期举行”和“依照议决”。英文改为逐字引用原句。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V3",
+   "path": "sections.story.6",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "英文“The journal closes the entry in one line”断言这一句是当日条目的结尾。证据片段 U-E9 并未显示条目在此结束，该句话本身也没有句号收尾。这句在中文版中也没有对应。",
+   "evidence": [
+    {
+     "id": "U-E9",
+     "quote": "He then advanced and delivered to the President his commission, with a copy of his address"
+    }
+   ],
+   "proposed": "改为“The journal records it in one line:”，或删去该句，与中文保持一致。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "证据看不出这句话是当日条目的结尾。英文“closes the entry”已改为“records it in one line”。中文版本来就没有对应的断言，内容不变，按中英同步的规则一并列出。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V4",
+   "path": "sections.limits.1",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "“日志印本用方括号和删改标出议定稿的修改”中，关于印本用删改符号标注修改的说法，在证据中找不到依据。证据只说明这是带方括号改动的草稿，方括号内为博迪诺笔迹。",
+   "evidence": [
+    {
+     "id": "U-E14",
+     "quote": "draft with bracketed changes; OCR garbled in places"
+    },
+    {
+     "id": "U-E15",
+     "quote": "the words in brackets being in the writing of Elias Boudinot"
+    }
+   ],
+   "proposed": "改为“日志印本以方括号标出议定稿中博迪诺笔迹的字样；OCR 文本无法判断原稿另有哪些删改，本篇只转述方括号中的字样。”英文同步修改。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "已删去“印本用删改标出修改”这一无据说法。现在只写印本以方括号标出改动、方括号内的字据编者注为博迪诺笔迹，并说明OCR文本无法判断原稿是否另有删改。中英两版同步修改。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V5",
+   "path": "uncertainty_note",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "与 V4 相同：“议定稿的删改在OCR文本中只能看到方括号内的字样”/“not what was struck out”暗示印本有明确的删除标记，证据未提供这一点。",
+   "evidence": [
+    {
+     "id": "U-E14",
+     "quote": "draft with bracketed changes; OCR garbled in places"
+    }
+   ],
+   "proposed": "改为“议定稿的改动在本篇所据的OCR文本中只能确认方括号内的字样（据编者注为博迪诺笔迹），其他删改无法判断。”英文同步修改。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "与V1-V4同理，删去暗示印本有明确删除标记的说法。改为：OCR文本只能确认方括号内的字样（据编者注为博迪诺笔迹），其他删改无法判断。中英两版同步修改。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V2-V1",
+   "path": "sections.context.1",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "中文版把原文的 the Member 译成带引号的“该议员”。“该”在中文里指前文提到的人，读者会理解为埃勒里本人，这与紧接着的“没有写明这位议员是谁”自相矛盾。英文版的 \"the Member\" 并没有指认任何人，中英两版因此不一致。",
+   "evidence": [
+    {
+     "id": "U-E12",
+     "quote": "Ellery, no changed into ay at the request of the Member"
+    }
+   ],
+   "proposed": "把“应‘该议员’的请求”改为“应‘the Member’（一位议员）的请求”，或改为“应某位议员的请求”，保留后半句“日志没有写明是哪位议员”。",
+   "origin": "final-editor verify round 2"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.context.1.zh",
+   "before": "这时的国会人很少。同一天，有议员动议先问一个问题：七个州出席的国会，是否有权接受总司令的辞职？日志留下了点名表决：名单上列出的议员几乎都投赞成，帕特里奇投了反对，埃勒里则应本人要求把反对改成了赞成。22日的出席记录是马萨诸塞、罗得岛、宾夕法尼亚、特拉华、马里兰、弗吉尼亚和北卡罗来纳七个州，另有新罕布什尔和南卡罗来纳各一名议员。到了23日接见当天上午，国会还议决立即写信给新罕布什尔、康涅狄格、纽约、新泽西、南卡罗来纳和佐治亚六个州的行政长官，催他们的代表马上到会：国会在此开会期间，出席的从未超过七个州，其中多数只有两名代表，而批准正式和约等几件要务都需要至少九个州同意。",
+   "after": "这时的国会人很少。同一天，日志记下一个付诸表决的问题：七个州出席的国会，是否有权接受总司令的辞职？日志留下了点名表决：名单上列出的议员几乎都投赞成，帕特里奇投了反对；埃勒里的反对票，日志记为应“该议员”的请求改成了赞成，没有写明这位议员是谁。22日的出席记录是马萨诸塞、罗得岛、宾夕法尼亚、特拉华、马里兰、弗吉尼亚和北卡罗来纳七个州，另有新罕布什尔和南卡罗来纳各一名议员。到了23日接见当天，国会还议决立即写信给新罕布什尔、康涅狄格、纽约、新泽西、南卡罗来纳和佐治亚六个州的行政长官，催他们的代表马上到会：国会在此开会期间，出席的从未超过七个州，其中多数只有两名代表，而批准正式和约等几件要务都需要至少九个州同意。",
+   "issues": [
+    "F1",
+    "M1",
+    "F2",
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.context.1.en",
+   "before": "Congress was thin at the time. The same day, a motion asked a prior question: \"Is it the sense of Congress that seven states in Congress Assembled are competent to receive the resignation of a Commander in Chief?\" The journal kept the roll call. Nearly every member listed voted ay; Partridge voted no, and Ellery's no was changed into ay at his own request. On the 22nd the states present were Massachusetts, Rhode Island, Pennsylvania, Delaware, Maryland, Virginia and North Carolina, with one member each from New Hampshire and South Carolina. And on the morning of the audience itself, the 23rd, Congress resolved to write at once to the executives of New Hampshire, Connecticut, New York, New Jersey, South Carolina and Georgia, demanding the immediate attendance of their delegates: during the sitting at this place there had never been more than seven states represented, most of them by only two delegates, and the ratification of the definitive treaty, among other matters, required the assent of at least nine states.",
+   "after": "Congress was thin at the time. The same day, the journal records a question put to the vote: \"Is it the sense of Congress that seven states in Congress Assembled are competent to receive the resignation of a Commander in Chief?\" The journal kept the roll call. Nearly every member listed voted ay; Partridge voted no, and Ellery's no was recorded as \"changed into ay at the request of the Member\"; the journal does not say which member. On the 22nd the states present were Massachusetts, Rhode Island, Pennsylvania, Delaware, Maryland, Virginia and North Carolina, with one member each from New Hampshire and South Carolina. And on the day of the audience itself, the 23rd, Congress resolved to write at once to the executives of New Hampshire, Connecticut, New York, New Jersey, South Carolina and Georgia, demanding the immediate attendance of their delegates: during the sitting at this place there had never been more than seven states represented, most of them by only two delegates, and the ratification of the definitive treaty, among other matters, required the assent of at least nine states.",
+   "issues": [
+    "F1",
+    "M1",
+    "F2",
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.context.2.zh",
+   "before": "议定的接见次序一共三条。第一条：议长与议员就座，并且戴着帽子，秘书立于议长身旁。第二条：将军到达时，由传信人通报秘书，秘书随即引入将军及其随行副官进入会议厅。第三条：将军由秘书引导至座位，落座，两侧各立一名副官，秘书回到自己的位置。坐着的、戴帽的、站着的、入场的，各有各的位置。",
+   "after": "议定的接见次序共六条，前三条管入场与就座。第一条：议长与议员就座，并且戴着帽子，秘书立于议长身旁。第二条：将军到达时，由传信人通报秘书，秘书随即引入将军及其随行副官进入会议厅。第三条：将军由秘书引导至座位，落座，两侧各立一名副官，秘书回到自己的位置。坐着的、戴帽的、站着的、入场的，各有各的位置。",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.context.2.en",
+   "before": "The agreed order of the audience ran to three clauses. First, the President and the members were to sit, covered — that is, wearing their hats — with the secretary standing at the President's side. Second, the General's arrival was to be announced to the secretary by a messenger, who would then introduce the General, attended by his aides, into the Hall of Congress. Third, the secretary would conduct the General to a chair and he would be seated, an aide standing on either side of him, while the secretary resumed his own place. Sitters, hat-wearers, standers, entrants: everyone had an assigned position.",
+   "after": "The agreed order ran to six clauses; the first three covered entry and seating. First, the President and the members were to sit, covered — that is, wearing their hats — with the secretary standing at the President's side. Second, the General's arrival was to be announced by a messenger to the secretary, and the secretary would then introduce the General, attended by his aides, into the Hall of Congress. Third, the secretary would conduct the General to a chair and he would be seated, an aide standing on either side of him, while the secretary resumed his own place. Sitters, hat-wearers, standers, entrants: everyone had an assigned position.",
+   "issues": [
+    "F4",
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.context.3.en",
+   "before": "The last three clauses dealt with the speech and the handover. After a proper time for the spectators to settle, silence was to be ordered if necessary, and the President was to address the General in set words: \"Sir, The United States in Congress assembled are prepared to receive your communications.\" The General would rise, speak and sit again; the President would deliver the answer of Congress, which the General was to receive standing; and the secretary would hand him a copy of the answer and receive the commission, after which the General would take his leave. The draft as printed carries changes. In the sentence about the commission and the copy of the address, the text has the copy of the address going to his aide to be presented to the secretary; both \"[his Commission and a]\" and \"[to the President]\" are bracketed insertions The editors note that the report is in the writing of Elbridge Gerry, \"the words in brackets being in the writing of Elias Boudinot\".",
+   "after": "The last three clauses dealt with the speech and the handover. After a proper time for the spectators to settle, silence was to be ordered by the secretary if necessary, and the President was to address the General in set words: \"Sir, The United States in Congress assembled are prepared to receive your communications.\" The General would rise, speak and sit again; the President would deliver the answer of Congress, which the General was to receive standing; and the secretary would hand him a copy of the answer and receive the commission, after which the General would take his leave. The draft as printed carries changes. In the sentence about the commission and the copy of the address, the text has the copy of the address going to his aide to be presented to the secretary; both \"[his Commission and a]\" and \"[to the President]\" are bracketed insertions. The editors note that the report is in the writing of Elbridge Gerry, \"the words in brackets being in the writing of Elias Boudinot\".",
+   "issues": [
+    "F13"
+   ]
+  },
+  {
+   "path": "sections.story.1.en",
+   "before": "Once he was seated, silence was ordered, and the President let a pause go by before telling him that the United States in Congress assembled were prepared to receive his communications. The journal puts it this way: \"the President, after a pause, informed him, that the United States in Congress assembled, were prepared to receive his communications\". The pause made it into the record. The President did not rush to fill the silence; the silence itself was entered into the official account alongside the words. Then the General rose and spoke.",
+   "after": "Once he was seated, silence was ordered, and the President paused before telling him that the United States in Congress assembled were prepared to receive his communications. The journal puts it this way: \"the President, after a pause, informed him, that the United States in Congress assembled, were prepared to receive his communications\". The pause made it into the record. Then the General rose and spoke.",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.story.6.zh",
+   "before": "说完，他走上前，把委任状和讲稿副本一并交给议长。委任状是权力的凭证，副本是这番说法的留档，两件东西一次交清。议定稿这一步留有方括号改动的痕迹，日志记下的结果是：由他本人走上前，交到议长手里。",
+   "after": "说完，他走上前，把委任状和讲稿副本一并交给议长。委任状是权力的凭证，副本是这番说法的书面文本，两件东西一次交清。议定稿这一步留有方括号改动的痕迹，日志记下的结果是：由他本人走上前，交到议长手里。",
+   "issues": [
+    "F7"
+   ]
+  },
+  {
+   "path": "sections.story.6.en",
+   "before": "With that, he stepped forward and placed his commission, together with a copy of his address, in the President's hands. The journal closes the entry in one line: \"He then advanced and delivered to the President his commission, with a copy of his address\". The commission was the token of authority; the copy was the account of it, kept on file. Two objects, delivered at once. The draft at this step carries bracketed changes; what the journal records is that he himself stepped forward and put the commission into the President's hands.",
+   "after": "With that, he stepped forward and placed his commission, together with a copy of his address, in the President's hands. The journal closes the entry in one line: \"He then advanced and delivered to the President his commission, with a copy of his address\". The commission was the token of authority; the copy was the written text of what he had said. Two objects, delivered at once. The draft at this step carries bracketed changes; what the journal records is that he himself stepped forward and put the commission into the President's hands.",
+   "issues": [
+    "F7"
+   ]
+  },
+  {
+   "path": "sections.story.7.zh",
+   "before": "作者推断，这套流程的要害在于它不依赖任何人相信谁的品格：仪式前一日成文，次日照章执行，凭证当场易手，文字随凭证入档。一个人是否忠诚，一场仪式无法证明；但权力是否已归位，可以在这一天被记成白纸黑字。这是作者对记录方式的解释，日志本身并未陈述其用意。",
+   "after": "作者推断，这套流程的要害在于它不依赖任何人相信谁的品格：仪式前一日成文，次日按议定次序进行，凭证当场易手，讲稿副本随凭证一并交出。（据日志，委任状是交给议长的，而议定稿第6条写的是由秘书接收，两者并不完全一致。）一个人是否忠诚，一场仪式无法证明；但权力是否已归位，可以在这一天被记成白纸黑字。这是作者对记录方式的解释，日志本身并未陈述其用意。",
+   "issues": [
+    "F8"
+   ]
+  },
+  {
+   "path": "sections.story.7.en",
+   "before": "The author's inference is that the point of the procedure was that it depended on nobody's character. The order was written the day before, executed to the letter the next day, the token changed hands on the spot, and the words went into the archive along with it. A man's loyalty cannot be proven by a ceremony. Whether power has been put back where it belongs, however, can be entered in black and white on a particular day. That is an interpretation of how the record was made; the journal itself states no such intention.",
+   "after": "The author's inference is that the point of the procedure was that it depended on nobody's character. The order was written the day before and followed the next day, the token changed hands on the spot, and a copy of the address was handed over along with it. (The journal has the commission delivered to the President, whereas clause 6 of the draft has the secretary receiving it, so the two do not match exactly.) A man's loyalty cannot be proven by a ceremony. Whether power has been put back where it belongs, however, can be entered in black and white on a particular day. That is an interpretation of how the record was made; the journal itself states no such intention.",
+   "issues": [
+    "F8"
+   ]
+  },
+  {
+   "path": "sections.story.7.ev",
+   "before": [
+    "U-E2",
+    "U-E9"
+   ],
+   "after": [
+    "U-E2",
+    "U-E9",
+    "U-E14"
+   ],
+   "issues": [
+    "F8"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.zh",
+   "before": "把这次交还和一般的口头表态分开看，可以看出三件事同时在进行。其一，次序是事先写定的：22日议定，23日执行，现场没有临时调整的记录。其二，礼节是不对称的：将军起身致辞和退场时鞠躬，国会以脱帽回礼，站着的鞠躬、坐着的回礼，高低位差被明确保留。其三，交出的是实物——委任状，外加讲稿副本。仪式、姿态、凭证三者叠加，才构成这一次有记录的权力交还。",
+   "after": "作者认为，把这次交还和一般的口头表态分开看，可以看出三件事同时在进行。其一，次序是事先写定的：22日议定，23日执行。其二，礼节是不对称的：将军起身致辞和退场时鞠躬，国会以脱帽回礼，站着的鞠躬、坐着的回礼，高低位差被保留了下来。其三，交出的是实物——委任状，外加讲稿副本。仪式、姿态、凭证三者叠加，才构成这一次有记录的权力交还。",
+   "issues": [
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "before": "Set this handover beside an ordinary spoken one and three things are happening at once. First, the sequence was fixed in advance: agreed on the twenty-second, carried out on the twenty-third, with no record of last-minute adjustment. Second, the etiquette was asymmetric: the General was to bow when he rose to speak and when he withdrew, and Congress to answer by uncovering: the standing man bowed, the seated body answered. The vertical distance between them was kept deliberately visible. Third, what changed hands was physical: the commission, plus a copy of the address. Ceremony, posture, and token together make up this documented transfer of power.",
+   "after": "As the author reads it, setting this handover beside an ordinary spoken one shows three things happening at once. First, the sequence was fixed in advance: agreed on the twenty-second, carried out on the twenty-third. Second, the etiquette was asymmetric: the General was to bow when he rose to speak and when he withdrew, and Congress to answer by uncovering: the standing man bowed, the seated body answered. The vertical distance between them was kept visible. Third, what changed hands was physical: the commission, plus a copy of the address. Ceremony, posture, and token together make up this documented transfer of power.",
+   "issues": [
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.zh",
+   "before": "还有一层（作者的解读）：接受这份辞呈的国会，就“七个州是否有权接受”专门表决过一次——出席的只有七个州；接见当天上午，它还在写信催缺席的州派人来。在这样的时候，一套事先写定、公开执行、当场留档的程序，也许正替一个人手不齐的机构撑住了分量。日志没有把这几件事联系起来，这是作者的连接。",
+   "after": "还有一层（作者的解读）：接受这份辞呈的国会，就“七个州是否有权接受”专门表决过一次——出席的只有七个州；接见当天，它还在写信催缺席的州派人来。在这样的时候，一套事先写定、公开执行、当场留档的程序，也许正替一个人手不齐的机构撑住了分量。日志没有把这几件事联系起来，这是作者的连接。",
+   "issues": [
+    "F10"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.en",
+   "before": "There is another layer, and it is the author's reading. The Congress receiving this resignation took a formal vote on whether seven states were competent to receive it: only seven states were present; on the very morning of the audience it was still writing to absent states to send their delegates. At such a moment a procedure written in advance, carried out in public and recorded on the spot may have lent weight to a body short of hands. The journal does not connect these things; the connection is the author's.",
+   "after": "There is another layer, and it is the author's reading. The Congress receiving this resignation took a formal vote on whether seven states were competent to receive it: only seven states were present; on the very day of the audience it was still writing to absent states to send their delegates. At such a moment a procedure written in advance, carried out in public and recorded on the spot may have lent weight to a body short of hands. The journal does not connect these things; the connection is the author's.",
+   "issues": [
+    "F10"
+   ]
+  },
+  {
+   "path": "uncertainty_note.zh",
+   "before": "全部事实来自《大陆会议日志》第25卷的官方记录（1783年12月22日议定的接见次序、12月23日的接见与华盛顿讲话文本）。没有在场者私人记述可对照，人物心情与现场反应不可知；议长答词未收入本篇证据包，本篇不引用；带括号改动的是接见次序的议定稿；材料经OCR识别，存在讹字，引文只取清晰片段；议定稿的删改在OCR文本中只能看到方括号内的字样。",
+   "after": "全部事实来自《大陆会议日志》第25卷的官方记录（1783年12月20日的来信、议决与关于七州权限的表决，12月22日议定的接见次序，12月23日的接见与华盛顿讲话文本）。没有在场者私人记述可对照，人物心情与现场反应不可知；议长答词未收入本篇证据包，本篇不引用；带括号改动的是接见次序的议定稿；材料经OCR识别，存在讹字，引文只取清晰片段；议定稿的删改在OCR文本中只能看到方括号内的字样。",
+   "issues": [
+    "F12"
+   ]
+  },
+  {
+   "path": "uncertainty_note.en",
+   "before": "All facts come from the official Journals of the Continental Congress, volume 25 (the order of audience agreed on December 22, 1783; the audience and Washington's address of December 23). No private account by anyone present was available for comparison, so mood and reaction in the room are unknowable; the President's reply is not in this article's evidence pack and is not quoted here; the draft bearing bracketed changes is the protocol of the order of audience; the material was captured by OCR from a facsimile and contains misreadings, so quotations take only clean stretches; in the draft protocol the OCR shows only the bracketed insertions, not what was struck out.",
+   "after": "All facts come from the official Journals of the Continental Congress, volume 25 (the letter, resolution and vote on whether seven states were competent, of December 20, 1783; the order of audience agreed on December 22; the audience and Washington's address of December 23). No private account by anyone present was available for comparison, so mood and reaction in the room are unknowable; the President's reply is not in this article's evidence pack and is not quoted here; the draft bearing bracketed changes is the protocol of the order of audience; the material was captured by OCR from a facsimile and contains misreadings, so quotations take only clean stretches; in the draft protocol the OCR shows only the bracketed insertions, not what was struck out.",
+   "issues": [
+    "F12"
+   ]
+  },
+  {
+   "path": "sections.context.1.zh",
+   "before": "这时的国会人很少。同一天，日志记下一个付诸表决的问题：七个州出席的国会，是否有权接受总司令的辞职？日志留下了点名表决：名单上列出的议员几乎都投赞成，帕特里奇投了反对；埃勒里的反对票，日志记为应“该议员”的请求改成了赞成，没有写明这位议员是谁。22日的出席记录是马萨诸塞、罗得岛、宾夕法尼亚、特拉华、马里兰、弗吉尼亚和北卡罗来纳七个州，另有新罕布什尔和南卡罗来纳各一名议员。到了23日接见当天，国会还议决立即写信给新罕布什尔、康涅狄格、纽约、新泽西、南卡罗来纳和佐治亚六个州的行政长官，催他们的代表马上到会：国会在此开会期间，出席的从未超过七个州，其中多数只有两名代表，而批准正式和约等几件要务都需要至少九个州同意。",
+   "after": "这时的国会人很少。同一天，日志记下一个付诸表决的问题：七个州出席的国会，是否有权接受总司令的辞职？日志留下了点名表决：在本篇所见的部分名单中，除帕特里奇投了反对外，其余议员均为赞成；其中埃勒里的反对票，日志记为应“该议员”的请求改成了赞成，没有写明这位议员是谁。这段摘录没有显示表决结果。22日的出席记录是马萨诸塞、罗得岛、宾夕法尼亚、特拉华、马里兰、弗吉尼亚和北卡罗来纳七个州，另有新罕布什尔和南卡罗来纳各一名议员。到了23日接见当天，国会还议决立即写信给新罕布什尔、康涅狄格、纽约、新泽西、南卡罗来纳和佐治亚六个州的行政长官，催他们的代表马上到会：国会在此开会期间，出席的从未超过七个州，其中多数只有两名代表，而批准正式和约等几件要务都需要至少九个州同意。",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.context.1.en",
+   "before": "Congress was thin at the time. The same day, the journal records a question put to the vote: \"Is it the sense of Congress that seven states in Congress Assembled are competent to receive the resignation of a Commander in Chief?\" The journal kept the roll call. Nearly every member listed voted ay; Partridge voted no, and Ellery's no was recorded as \"changed into ay at the request of the Member\"; the journal does not say which member. On the 22nd the states present were Massachusetts, Rhode Island, Pennsylvania, Delaware, Maryland, Virginia and North Carolina, with one member each from New Hampshire and South Carolina. And on the day of the audience itself, the 23rd, Congress resolved to write at once to the executives of New Hampshire, Connecticut, New York, New Jersey, South Carolina and Georgia, demanding the immediate attendance of their delegates: during the sitting at this place there had never been more than seven states represented, most of them by only two delegates, and the ratification of the definitive treaty, among other matters, required the assent of at least nine states.",
+   "after": "Congress was thin at the time. The same day, the journal records a question put to the vote: \"Is it the sense of Congress that seven states in Congress Assembled are competent to receive the resignation of a Commander in Chief?\" The journal kept the roll call. In the portion of the roll call cited here, every member voted ay except Partridge, who voted no; Ellery's no was recorded as \"changed into ay at the request of the Member\", and the journal does not say which member. This excerpt does not show the result of the vote. On the 22nd the states present were Massachusetts, Rhode Island, Pennsylvania, Delaware, Maryland, Virginia and North Carolina, with one member each from New Hampshire and South Carolina. And on the day of the audience itself, the 23rd, Congress resolved to write at once to the executives of New Hampshire, Connecticut, New York, New Jersey, South Carolina and Georgia, demanding the immediate attendance of their delegates: during the sitting at this place there had never been more than seven states represented, most of them by only two delegates, and the ratification of the definitive treaty, among other matters, required the assent of at least nine states.",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.story.0.zh",
+   "before": "第二天，12月23日，星期二，接见按议定次序进行。日志的写法很省：按既定次序，总司令获准入内，举行公开接见。",
+   "after": "第二天，12月23日，星期二，接见如期举行。日志的写法很省：依照议决，总司令获准举行公开接见。",
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.story.0.en",
+   "before": "The next day, Tuesday, December 23, the audience proceeded in the agreed order. The journal is spare about it: according to order, the Commander in Chief was admitted to a public audience.",
+   "after": "The next day, Tuesday, December 23, the audience took place as scheduled. The journal is spare about it: \"According to order, his Excellency the Commander in Chief was admitted to a public audience\".",
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.story.6.en",
+   "before": "With that, he stepped forward and placed his commission, together with a copy of his address, in the President's hands. The journal closes the entry in one line: \"He then advanced and delivered to the President his commission, with a copy of his address\". The commission was the token of authority; the copy was the written text of what he had said. Two objects, delivered at once. The draft at this step carries bracketed changes; what the journal records is that he himself stepped forward and put the commission into the President's hands.",
+   "after": "With that, he stepped forward and placed his commission, together with a copy of his address, in the President's hands. The journal records it in one line: \"He then advanced and delivered to the President his commission, with a copy of his address\". The commission was the token of authority; the copy was the written text of what he had said. Two objects, delivered at once. The draft at this step carries bracketed changes; what the journal records is that he himself stepped forward and put the commission into the President's hands.",
+   "issues": [
+    "V1-V3"
+   ]
+  },
+  {
+   "path": "sections.limits.1.zh",
+   "before": "另有三处技术性保留。第一，议长的答词没有收进本篇证据包，本篇不予引用。第二，这份材料取自影印本的OCR识别，存在讹字，本篇英文引文只取清晰片段，可疑拼写一律留在引号之外。第三，日志印本用方括号和删改标出议定稿的修改；OCR文本只能看出方括号里的字，看不出删去的是哪些，本篇只转述方括号中的字样。",
+   "after": "另有三处技术性保留。第一，议长的答词没有收进本篇证据包，本篇不予引用。第二，这份材料取自影印本的OCR识别，存在讹字，本篇英文引文只取清晰片段，可疑拼写一律留在引号之外。第三，日志印本以方括号标出议定稿中的改动字样，据编者注，方括号里的字出自博迪诺之手；本篇所据的OCR文本无法判断原稿另有哪些删改，本篇只转述方括号中的字样。",
+   "issues": [
+    "V1-V4"
+   ]
+  },
+  {
+   "path": "sections.limits.1.en",
+   "before": "Three technical reservations follow. First, the President's reply is not in this article's evidence pack and is not quoted. Second, the material comes from OCR of a facsimile and contains misreadings, so the English quotations here take only clean stretches, with doubtful spellings left outside the quotation marks. Third, the printed journal marks revisions to the draft protocol with brackets and deletions; the OCR text shows the bracketed words but not which words were struck out, so this piece reports only what is in the brackets.",
+   "after": "Three technical reservations follow. First, the President's reply is not in this article's evidence pack and is not quoted. Second, the material comes from OCR of a facsimile and contains misreadings, so the English quotations here take only clean stretches, with doubtful spellings left outside the quotation marks. Third, the printed journal marks changes to the draft protocol with brackets, and according to the editors' note the bracketed words are in Boudinot's writing; the OCR text this piece relies on cannot show whether the draft carries any other deletions or revisions, so this piece reports only what is in the brackets.",
+   "issues": [
+    "V1-V4"
+   ]
+  },
+  {
+   "path": "uncertainty_note.zh",
+   "before": "全部事实来自《大陆会议日志》第25卷的官方记录（1783年12月20日的来信、议决与关于七州权限的表决，12月22日议定的接见次序，12月23日的接见与华盛顿讲话文本）。没有在场者私人记述可对照，人物心情与现场反应不可知；议长答词未收入本篇证据包，本篇不引用；带括号改动的是接见次序的议定稿；材料经OCR识别，存在讹字，引文只取清晰片段；议定稿的删改在OCR文本中只能看到方括号内的字样。",
+   "after": "全部事实来自《大陆会议日志》第25卷的官方记录（1783年12月20日的来信、议决与关于七州权限的表决，12月22日议定的接见次序，12月23日的接见与华盛顿讲话文本）。没有在场者私人记述可对照，人物心情与现场反应不可知；议长答词未收入本篇证据包，本篇不引用；带括号改动的是接见次序的议定稿；材料经OCR识别，存在讹字，引文只取清晰片段；议定稿的改动在本篇所据的OCR文本中只能确认方括号内的字样（据编者注为博迪诺笔迹），其他删改无法判断。",
+   "issues": [
+    "V1-V5"
+   ]
+  },
+  {
+   "path": "uncertainty_note.en",
+   "before": "All facts come from the official Journals of the Continental Congress, volume 25 (the letter, resolution and vote on whether seven states were competent, of December 20, 1783; the order of audience agreed on December 22; the audience and Washington's address of December 23). No private account by anyone present was available for comparison, so mood and reaction in the room are unknowable; the President's reply is not in this article's evidence pack and is not quoted here; the draft bearing bracketed changes is the protocol of the order of audience; the material was captured by OCR from a facsimile and contains misreadings, so quotations take only clean stretches; in the draft protocol the OCR shows only the bracketed insertions, not what was struck out.",
+   "after": "All facts come from the official Journals of the Continental Congress, volume 25 (the letter, resolution and vote on whether seven states were competent, of December 20, 1783; the order of audience agreed on December 22; the audience and Washington's address of December 23). No private account by anyone present was available for comparison, so mood and reaction in the room are unknowable; the President's reply is not in this article's evidence pack and is not quoted here; the draft bearing bracketed changes is the protocol of the order of audience; the material was captured by OCR from a facsimile and contains misreadings, so quotations take only clean stretches; in the draft protocol, the OCR text this piece relies on confirms only the bracketed words (in Boudinot's writing, according to the editors' note), and any other deletions or revisions cannot be determined.",
+   "issues": [
+    "V1-V5"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "F10",
+    "F12",
+    "F13",
+    "M1"
+   ],
+   "changes_applied": 17,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "analysis[0] numbers differ zh[22, 23] en[20]"
+    ]
+   ],
+   "content_sha256_after": "679b4f3f36908134c8396b872fe03c337a18bdb3e956cc0c9ea9707bd5481b76",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.context.1",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "证据只收录了点名表决的一部分（U-E12 标为 part of the yeas and nays），也没有给出表决结果。正文写“名单上列出的议员几乎都投赞成”/“Nearly every member listed voted ay”，读者会理解为整份名单的投票情况，超出了证据范围。",
+      "evidence": [
+       {
+        "id": "U-E12",
+        "quote": "Partridge, no Ellery, no changed into ay at the request of the Member Howell, ay Mifflin, ay"
+       }
+      ],
+      "proposed": "改为“在本篇所见的部分名单中，除帕特里奇投反对外均为赞成……”/“In the portion of the roll call cited here, every member voted ay except Partridge…”。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.story.0",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "“According to order”的意思是“依照（20日的）议决”，不是“按议定次序”。证据本身也显示实际经过与议定稿不完全一致：议定稿第6条规定由秘书接收委任状，日志记载的是交给议长。因此“接见按议定次序进行”/“the audience proceeded in the agreed order”属于过度断言，日志转述也被误译成“按既定次序”。",
+      "evidence": [
+       {
+        "id": "U-E5",
+        "quote": "According to order, his Excellency the Commander in Chief was admitted to a public audience"
+       },
+       {
+        "id": "U-E9",
+        "quote": "He then advanced and delivered to the President his commission"
+       },
+       {
+        "id": "U-E14",
+        "quote": "receive the commiBoion from the General"
+       }
+      ],
+      "proposed": "改为“第二天，12月23日，星期二，接见如期举行。日志写道：依照议决（according to order），总司令获准公开接见。”英文相应删去 “in the agreed order”。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.story.6",
+      "category": "unsupported",
+      "severity": "fix",
+      "problem": "英文“The journal closes the entry in one line”断言这一句是当日条目的结尾。证据片段 U-E9 并未显示条目在此结束，该句话本身也没有句号收尾。这句在中文版中也没有对应。",
+      "evidence": [
+       {
+        "id": "U-E9",
+        "quote": "He then advanced and delivered to the President his commission, with a copy of his address"
+       }
+      ],
+      "proposed": "改为“The journal records it in one line:”，或删去该句，与中文保持一致。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.limits.1",
+      "category": "unsupported",
+      "severity": "fix",
+      "problem": "“日志印本用方括号和删改标出议定稿的修改”中，关于印本用删改符号标注修改的说法，在证据中找不到依据。证据只说明这是带方括号改动的草稿，方括号内为博迪诺笔迹。",
+      "evidence": [
+       {
+        "id": "U-E14",
+        "quote": "draft with bracketed changes; OCR garbled in places"
+       },
+       {
+        "id": "U-E15",
+        "quote": "the words in brackets being in the writing of Elias Boudinot"
+       }
+      ],
+      "proposed": "改为“日志印本以方括号标出议定稿中博迪诺笔迹的字样；OCR 文本无法判断原稿另有哪些删改，本篇只转述方括号中的字样。”英文同步修改。"
+     },
+     {
+      "id": "V5",
+      "path": "uncertainty_note",
+      "category": "unsupported",
+      "severity": "fix",
+      "problem": "与 V4 相同：“议定稿的删改在OCR文本中只能看到方括号内的字样”/“not what was struck out”暗示印本有明确的删除标记，证据未提供这一点。",
+      "evidence": [
+       {
+        "id": "U-E14",
+        "quote": "draft with bracketed changes; OCR garbled in places"
+       }
+      ],
+      "proposed": "改为“议定稿的改动在本篇所据的OCR文本中只能确认方括号内的字样（据编者注为博迪诺笔迹），其他删改无法判断。”英文同步修改。"
+     }
+    ],
+    "overall": "定稿整体证据扎实，引语逐字无误，解释段均已标注。需修正五处：部分点名名单的概括、“according to order”的误读、英文中无据的“条目结尾”说法，以及关于印本删改标记的无据表述。",
+    "_content_sha256": "679b4f3f36908134c8396b872fe03c337a18bdb3e956cc0c9ea9707bd5481b76"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1",
+    "V1-V2",
+    "V1-V3",
+    "V1-V4",
+    "V1-V5"
+   ],
+   "changes_applied": 9,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "analysis[0] numbers differ zh[22, 23] en[20]"
+    ]
+   ],
+   "content_sha256_after": "87ef608700a6551b309f077a9dd9dd8e5b981442c9c097d0066e38f0927d57a5",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.context.1",
+      "category": "attribution",
+      "severity": "fix",
+      "problem": "中文版把原文的 the Member 译成带引号的“该议员”。“该”在中文里指前文提到的人，读者会理解为埃勒里本人，这与紧接着的“没有写明这位议员是谁”自相矛盾。英文版的 \"the Member\" 并没有指认任何人，中英两版因此不一致。",
+      "evidence": [
+       {
+        "id": "U-E12",
+        "quote": "Ellery, no changed into ay at the request of the Member"
+       }
+      ],
+      "proposed": "把“应‘该议员’的请求”改为“应‘the Member’（一位议员）的请求”，或改为“应某位议员的请求”，保留后半句“日志没有写明是哪位议员”。"
+     }
+    ],
+    "overall": "定稿史实、引文和解释标注总体可靠，英文引语均逐字出自证据；仅 context.1 中文“该议员”的译法造成指代矛盾，需小改后即可发布。",
+    "_content_sha256": "87ef608700a6551b309f077a9dd9dd8e5b981442c9c097d0066e38f0927d57a5"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "chronology",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1",
+     "F2",
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4",
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.context.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F11",
+     "F13"
+    ]
+   },
+   {
+    "path": "sections.context.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "chronology",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F7"
+    ]
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F8"
+    ]
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F9"
+    ]
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F10"
+    ]
+   },
+   {
+    "path": "sections.analysis.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": [
+     "F12"
+    ]
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.context.1",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "中文“埃勒里则应本人要求把反对改成了赞成”和英文“at his own request”都把改票的请求者写成埃勒里本人。证据只写“at the request of the Member”，没有写明这位议员是谁。",
+    "evidence": [
+     {
+      "id": "U-E12",
+      "quote": "Ellery, no changed into ay at the request of the Member"
+     }
+    ],
+    "proposed": "中文改为“埃勒里的反对票记为‘应该议员请求’改成了赞成”；英文改为“Ellery's no was recorded as 'changed into ay at the request of the Member'”。"
+   },
+   {
+    "id": "F2",
+    "path": "sections.context.1",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“23日接见当天上午”和“on the morning of the audience”中的“上午”没有证据支持。证据只记23日的议决，没有给出时段。",
+    "evidence": [
+     {
+      "id": "U-E4",
+      "quote": "TUESDAY, DECEMBER 23, 1783"
+     }
+    ],
+    "proposed": "删去“上午”和“on the morning of”，改为“23日接见当天”和“on the day of the audience itself, the 23rd”。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.context.1",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "“有议员动议先问一个问题”和“a motion asked a prior question”写了一项动议及其提出者。证据只有这个问题本身和部分表决名单，没有记载动议，也没有说明是谁提出的。",
+    "evidence": [
+     {
+      "id": "U-E11",
+      "quote": "Is it the sense of Congress that seven states in Congress Assembled are competent to receive the resignation of a Commander in Chief?"
+     }
+    ],
+    "proposed": "中文改为“同一天，日志记下一个付诸表决的问题”；英文改为“The same day, the journal records a question put to the vote”。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.context.2",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“议定的接见次序一共三条”和“ran to three clauses”与证据不符。议定稿共六条（1–3条加4–6条），本段说三条，下一段又说“后三条”，前后矛盾。",
+    "evidence": [
+     {
+      "id": "U-E2",
+      "quote": "1. The President and members are to be seated and covered"
+     },
+     {
+      "id": "U-E14",
+      "quote": "6. The President having finished"
+     }
+    ],
+    "proposed": "中文改为“议定的接见次序共六条，前三条管入场与就座”；英文改为“The agreed order ran to six clauses; the first three covered entry and seating”。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.context.2",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "英文“announced to the secretary by a messenger, who would then introduce the General”中，“who”在语法上指向 messenger。证据写明引入将军的是秘书。中文写法正确，英文与之不一致。",
+    "evidence": [
+     {
+      "id": "U-E2",
+      "quote": "announced by the messenger to the secretary, who is thereupon to introduce the General"
+     }
+    ],
+    "proposed": "英文改为“…announced by a messenger to the secretary, and the secretary would then introduce the General…”。"
+   },
+   {
+    "id": "F6",
+    "path": "sections.story.1",
+    "category": "inner_life",
+    "severity": "fix",
+    "problem": "英文多出一句“The President did not rush to fill the silence”。这是对议长态度的推测，证据只记“after a pause”，中文也没有这句话，同时构成中英不一致。",
+    "evidence": [
+     {
+      "id": "U-E5",
+      "quote": "the President, after a pause, informed him"
+     }
+    ],
+    "proposed": "删去英文“The President did not rush to fill the silence; the silence itself was entered into the official account alongside the words.”这一句。"
+   },
+   {
+    "id": "F7",
+    "path": "sections.story.6",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "本段 kind=record，但“副本是这番说法的留档”和“kept on file”写成了事实。证据只记副本与委任状一并交给议长，没有记载副本是否归档。",
+    "evidence": [
+     {
+      "id": "U-E9",
+      "quote": "delivered to the President his commission, with a copy of his address"
+     }
+    ],
+    "proposed": "中文改为“副本是这番说法的书面文本”；英文删去“kept on file”，或明确标为作者推断。"
+   },
+   {
+    "id": "F8",
+    "path": "sections.story.7",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“次日照章执行”和“executed to the letter”与证据有出入。议定稿第6条写由秘书从将军手中接收委任状，日志却记将军把委任状交给了议长。这一处推断所依据的事实前提不成立。",
+    "evidence": [
+     {
+      "id": "U-E14",
+      "quote": "receive the commiBoion from the General"
+     },
+     {
+      "id": "U-E9",
+      "quote": "He then advanced and delivered to the President his commission"
+     }
+    ],
+    "proposed": "中文改为“次日按议定次序进行（日志称“According to order”）”；英文删去“to the letter”。如需要，可注明委任状的接收人与第6条字面不同。"
+   },
+   {
+    "id": "F9",
+    "path": "sections.analysis.0",
+    "category": "interpretation_label",
+    "severity": "fix",
+    "problem": "本段 kind=interpretation，但正文没有解释标记。“高低位差被明确保留”和“kept deliberately visible”带有意图判断，被写成了事实。另外，“现场没有临时调整的记录”忽略了第6条（秘书接收委任状）与实际交给议长之间的差异，见 F8。",
+    "evidence": [
+     {
+      "id": "U-E3",
+      "quote": "which they are to return by uncovering without bowing"
+     },
+     {
+      "id": "U-E14",
+      "quote": "receive the commiBoion from the General"
+     }
+    ],
+    "proposed": "段首加“作者认为”和“As the author reads it”；删去“明确”和“deliberately”；删去“现场没有临时调整的记录”和“with no record of last-minute adjustment”。"
+   },
+   {
+    "id": "F10",
+    "path": "sections.analysis.2",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“接见当天上午”和“on the very morning of the audience”中的“上午”没有证据支持，证据未给出时段。",
+    "evidence": [
+     {
+      "id": "U-E4",
+      "quote": "TUESDAY, DECEMBER 23, 1783"
+     }
+    ],
+    "proposed": "删去“上午”，英文改为“on the very day of the audience”。"
+   },
+   {
+    "id": "F11",
+    "path": "sections.context.3",
+    "category": "style",
+    "severity": "note",
+    "problem": "英文“are bracketed insertions The editors note”中，insertions 后缺少句号。",
+    "evidence": [],
+    "proposed": "在 insertions 后补句号。"
+   },
+   {
+    "id": "F12",
+    "path": "uncertainty_note",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "中英文都写“全部事实来自”12月22日和23日的记录，但正文也用到了12月20日的来信、议决和七州表决。limits.0 写的是“12月20日至23日”，两处不一致。",
+    "evidence": [
+     {
+      "id": "U-E10",
+      "quote": "Resolved, That his Excellency the Commander in Chief be admitted to a public audience, on Tuesday next, at twelve o'clock."
+     }
+    ],
+    "proposed": "在括号内补上12月20日的来信、议决与七州表决（英文同步补“the letter, resolution and vote of December 20”）。"
+   },
+   {
+    "id": "F13",
+    "path": "sections.context.3",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "中文写“由秘书宣布肃静”，英文“silence was to be ordered if necessary”省去了执行者秘书，中英不一致。",
+    "evidence": [
+     {
+      "id": "U-E14",
+      "quote": "silence is to be ordered by the secretary, if necessary"
+     }
+    ],
+    "proposed": "英文改为“silence was to be ordered by the secretary if necessary”。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "M1",
+    "verdict": "valid",
+    "same_as": "",
+    "rationale": "证据只写“the Member”，没有写明请求者是谁，正文写成埃勒里本人的要求属于过度断定。修改方案已列为 F1。",
+    "evidence": [
+     {
+      "id": "U-E12",
+      "quote": "changed into ay at the request of the Member"
+     }
+    ]
+   },
+   {
+    "id": "M2",
+    "verdict": "duplicate",
+    "same_as": "F4",
+    "rationale": "议定稿共六条，正文“一共三条”有误，并与下一段“后三条”矛盾。",
+    "evidence": [
+     {
+      "id": "U-E14",
+      "quote": "5. The aid"
+     }
+    ]
+   },
+   {
+    "id": "M3",
+    "verdict": "duplicate",
+    "same_as": "F2",
+    "rationale": "证据没有给出“上午”这一时段。",
+    "evidence": []
+   },
+   {
+    "id": "M4",
+    "verdict": "duplicate",
+    "same_as": "F10",
+    "rationale": "analysis.2 中同样写了没有证据的“上午”。",
+    "evidence": []
+   },
+   {
+    "id": "M5",
+    "verdict": "duplicate",
+    "same_as": "F2",
+    "rationale": "即“上午”无据的问题，出现在 context.1，analysis.2 的同类问题见 F10。",
+    "evidence": []
+   },
+   {
+    "id": "M6",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "即“应本人要求”的主语不明问题。",
+    "evidence": []
+   },
+   {
+    "id": "M7",
+    "verdict": "duplicate",
+    "same_as": "F3",
+    "rationale": "证据只记了问题与表决，没有记载动议及其提出者。",
+    "evidence": [
+     {
+      "id": "U-E11",
+      "quote": "Is it the sense of Congress"
+     }
+    ]
+   },
+   {
+    "id": "M8",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "即把改票归因于埃勒里本人的问题。",
+    "evidence": []
+   }
+  ]
+ },
+ "final_content_sha256": "87ef608700a6551b309f077a9dd9dd8e5b981442c9c097d0066e38f0927d57a5",
+ "open_issues": [
+  "V2-V1"
+ ],
+ "outcome": "pending_review",
+ "failure": null,
+ "finished_at": 1793399918.1028163,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 84.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 17018,
+    "output_tokens": 9641
+   },
+   "cost_estimate_usd": 0.328972
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 68.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 18647,
+    "output_tokens": 8940
+   },
+   "cost_estimate_usd": 0.32798400000000005
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 82.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15539,
+    "output_tokens": 9578
+   },
+   "cost_estimate_usd": 0.31588000000000005
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 32.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 17104,
+    "output_tokens": 4169
+   },
+   "cost_estimate_usd": 0.22022
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 53.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15695,
+    "output_tokens": 6420
+   },
+   "cost_estimate_usd": 0.253968
+  }
+ ],
+ "elapsed_min": 5.4,
+ "model_wall_min": 5.4
+}
