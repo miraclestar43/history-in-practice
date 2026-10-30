@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>每日一鉴 · History in Practice</title>
+<style>
+:root{--bg:#faf8f4;--fg:#24221f;--muted:#6f6a62;--line:#e3ddd2;--accent:#7a5c3e;--card:#fff;--note:#f3eee6}
+@media (prefers-color-scheme:dark){:root{--bg:#171614;--fg:#e9e5de;--muted:#a39d93;--line:#34312c;--accent:#d2a679;--card:#1f1d1a;--note:#29261f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17.5px/1.8 -apple-system,"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Microsoft YaHei",Helvetica,Arial,sans-serif}
+header.site{border-bottom:1px solid var(--line);padding:10px 20px;font-size:14px;display:flex;gap:16px;align-items:center}
+header.site a{color:var(--muted);text-decoration:none}
+main{max-width:720px;margin:0 auto;padding:24px 20px 80px}
+h1{font-family:Georgia,"Songti SC","Noto Serif CJK SC",serif;font-size:1.75rem;line-height:1.35;margin:.4em 0 .3em}
+h2{font-size:1.05rem;color:var(--accent);margin:2em 0 .5em;letter-spacing:.02em}
+.meta{color:var(--muted);font-size:14px}
+.dek{color:var(--muted);font-size:1.05rem}
+.modern{background:var(--note);padding:10px 14px;border-radius:6px}
+.tabs{display:flex;gap:6px;margin:18px 0 6px}
+.tabs button{font:inherit;font-size:15px;padding:4px 14px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;cursor:pointer}
+.tabs button[aria-selected=true]{border-color:var(--accent);color:var(--accent);font-weight:600}
+.tabs button:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.question{font-weight:600;border-left:3px solid var(--accent);padding-left:12px}
+details{border-top:1px dashed var(--line);margin-top:22px;padding-top:10px}
+summary{cursor:pointer;color:var(--accent)}
+.small{font-size:14px;color:var(--muted);line-height:1.7}
+ol.src,ul.more{font-size:14px;color:var(--muted);line-height:1.7;padding-left:1.3em}
+a{color:var(--accent)}
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 18px}
+.filters button{font:inherit;font-size:14px;padding:2px 12px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;cursor:pointer}
+.filters button[aria-pressed=true]{border-color:var(--accent);color:var(--accent)}
+.item{padding:14px 0;border-bottom:1px solid var(--line)}
+.item a{font-size:1.1rem;text-decoration:none}
+.error{border:1px solid #b55;padding:12px;border-radius:6px}
+</style>
+</head>
+<body>
+<header class="site"><a href="/">StarHub</a><a href="./">每日一鉴</a></header>
+<main id="app" aria-live="polite"><p class="small">加载中…</p></main>
+<script>
+"use strict";
+const CAT = {china_ancient:["中国古代","Ancient China"],world:["世界史","World History"],china_modern:["中国近现代","Modern China"],us:["美国史","U.S. History"]};
+const T = {zh:{q:"想一想",ex:"一个参考思路",as:"假设",st:"可以怎么做",alt:"另一种合理选择",unc:"出处与不确定性",src:"本篇依据",more:"想再读一点",min:"分钟（估算）",all:"全部",back:"← 全部文章",stop:"先停十秒，想想你会怎么做。"},
+           en:{q:"Think about it",ex:"One possible approach",as:"Assumptions",st:"What you could do",alt:"Another reasonable choice",unc:"Sources and uncertainty",src:"Sources",more:"Read more",min:"min (estimate)",all:"All",back:"← All stories",stop:"Pause for ten seconds and decide what you would do."}};
+const app = document.getElementById("app");
+const params = new URLSearchParams(location.search);
+let lang = params.get("lang") || localStorage.getItem("hip-lang") || "zh";
+if (!["zh","en"].includes(lang)) lang = "zh";
+const el = (tag, attrs={}, text) => { const n=document.createElement(tag); for (const [k,v] of Object.entries(attrs)) n.setAttribute(k,v); if (text!==undefined) n.textContent=text; return n; };
+
+async function getJSON(rel){
+  const r = await fetch(new URL(rel, location.href), {cache:"no-cache"});
+  const ct = r.headers.get("content-type") || "";
+  if (!r.ok) throw new Error("HTTP " + r.status + " · " + rel);
+  if (!ct.includes("json")) throw new Error("不是 JSON（可能是站点回退到首页）/ not JSON: " + rel);
+  return r.json();
+}
+function fail(err){ app.replaceChildren(el("div",{class:"error",role:"alert"},"内容加载失败 / Failed to load: " + err.message)); }
+
+function renderList(index){
+  const wrap = el("div"); wrap.append(el("h1",{},"每日一鉴 · History in Practice"));
+  const f = el("div",{class:"filters",role:"group","aria-label":"类别"}); let active = params.get("cat") || "";
+  const list = el("div");
+  const draw = () => { list.replaceChildren(); for (const it of index.items.filter(i => !active || i.category===active)){
+      const d = el("div",{class:"item"}); const a = el("a",{href:"?story="+encodeURIComponent(it.edition_id)+"&lang="+lang}, it.title[lang]);
+      d.append(a, el("div",{class:"meta"}, it.edition_date+" · "+CAT[it.category][lang==="zh"?0:1]+" · "+it.reading_minutes[lang]+" "+T[lang].min), el("div",{class:"small"}, it.dek[lang]));
+      list.append(d);} };
+  for (const [k,label] of [["",T[lang].all], ...Object.entries(CAT).map(([k,v])=>[k,v[lang==="zh"?0:1]])]){
+    const b = el("button",{type:"button","aria-pressed":String(k===active)},label);
+    b.onclick = () => { active=k; f.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b))); draw(); };
+    f.append(b);
+  }
+  wrap.append(f, list); app.replaceChildren(wrap); draw();
+}
+
+function currentSection(){
+  for (const s of app.querySelectorAll("section[id]")) if (s.getBoundingClientRect().bottom > 80) return s.id;
+  return null;
+}
+function renderStory(o){
+  document.documentElement.lang = lang==="zh" ? "zh-CN" : "en";
+  document.title = o.title[lang] + " · " + (lang==="zh"?"每日一鉴":"History in Practice");
+  const L = T[lang], w = el("article");
+  w.append(el("a",{href:"./?lang="+lang,class:"small"},L.back));
+  const tabs = el("div",{class:"tabs",role:"tablist","aria-label":"语言 / Language"});
+  for (const [k,label] of [["zh","中文"],["en","English"]]){
+    const b = el("button",{type:"button",role:"tab","aria-selected":String(k===lang),tabindex:k===lang?"0":"-1"},label);
+    b.onclick = () => switchLang(k, o);
+    b.onkeydown = ev => { if (ev.key==="ArrowRight"||ev.key==="ArrowLeft"){ ev.preventDefault(); switchLang(lang==="zh"?"en":"zh", o, true);} };
+    tabs.append(b);
+  }
+  w.append(tabs, el("div",{class:"meta"}, o.edition_date+" · "+CAT[o.category][lang==="zh"?0:1]+" · "+o.reading_minutes[lang]+" "+L.min));
+  w.append(el("h1",{},o.title[lang]), el("p",{class:"dek"},o.dek[lang]));
+  for (const s of o.sections){
+    const sec = el("section",{id:"s-"+s.id}); sec.append(el("h2",{},s.heading[lang]));
+    for (const p of s.paras) sec.append(el("p", p.kind==="modern"?{class:"modern"}:{}, p[lang]));
+    w.append(sec);
+  }
+  const r = o.reflection, q = el("section",{id:"s-reflection"});
+  q.append(el("h2",{},L.q), el("p",{},r.scenario[lang]), el("p",{class:"question"},r.question[lang]), el("p",{class:"small"},L.stop));
+  const d = el("details"); d.append(el("summary",{},L.ex));
+  for (const [k,lab] of [["assumptions",L.as],["steps",L.st],["alternative",L.alt]]){ const p=el("p"); p.append(el("strong",{},lab+(lang==="zh"?"：":": ")), document.createTextNode(r.example[k][lang])); d.append(p); }
+  q.append(d); w.append(q);
+  const u = el("section",{id:"s-sources"}); u.append(el("h2",{},L.unc), el("p",{class:"small"},o.uncertainty_note[lang]), el("h2",{},L.src));
+  const ol = el("ol",{class:"src"}); for (const s of o.sources){ const li=el("li",{},s.citation+" "); if (s.url){ const a=el("a",{href:s.url,rel:"noopener"},s.link_label||"link"); li.append(a);} ol.append(li);} u.append(ol);
+  u.append(el("h2",{},L.more)); const ul=el("ul",{class:"more"});
+  for (const m of o.further_reading){ const li=el("li"); li.append(el("a",{href:m.url,rel:"noopener"},m.title), document.createTextNode(" — "+m.what[lang]+" ("+m.access[lang]+")")); ul.append(li);} u.append(ul);
+  w.append(u, el("p",{class:"small"}, o.edition_id+" · rev "+o.revision));
+  app.replaceChildren(w);
+}
+function switchLang(k, o, focus){
+  const keep = currentSection(); lang = k; localStorage.setItem("hip-lang", k);
+  const u = new URL(location.href); u.searchParams.set("lang", k); history.replaceState(null,"",u);
+  renderStory(o);
+  if (keep) document.getElementById(keep)?.scrollIntoView();
+  if (focus) app.querySelector('[role=tab][aria-selected=true]')?.focus();
+}
+(async () => {
+  try {
+    const index = await getJSON("../data/history/index.json");
+    const id = params.get("story");
+    if (!id) return renderList(index);
+    const it = index.items.find(i => i.edition_id === id);
+    if (!it) throw new Error("没有这篇 / not found: " + id);
+    const o = await getJSON("../" + it.path);
+    if (o.revision !== it.revision) throw new Error("版本不一致 / revision mismatch");
+    renderStory(o);
+  } catch (err) { fail(err); }
+})();
+</script>
+</body>
+</html>

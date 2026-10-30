@@ -1,0 +1,13 @@
+PASS | retitled same episode | want=duplicate got=duplicate | same source passage + person as ep-000001
+PASS | English edition | want=duplicate got=duplicate | same source passage + person as ep-000001
+PASS | traditional characters | want=duplicate got=duplicate | same source passage + person as ep-000001
+PASS | alias only (亚父/项王/汉王), other category | want=duplicate got=duplicate | same source passage + person as ep-000001
+PASS | QID missing, same passage | want=duplicate got=duplicate | same source passage + person as ep-000001
+PASS | QID redirect | want=duplicate got=duplicate | same event QID as ep-000003
+PASS | same parent expedition, different episode | want=distinct got=distinct | 
+PASS | same episode retold from a different work, paraphrased | want=review got=review | same people/place/time and similar action as ep-000001
+PASS | same person/year/place, different decision | want=distinct got=distinct | same people/place/time as ep-000001 but different source passage and action
+PASS | duplicate of a prepared (unpublished) item | want=duplicate got=duplicate | same source passage + person as ep-000004
+PASS | racing insert on same core passage | want=rejected got=rejected | UNIQUE constraint failed: episode.primary_anchor
+PASS | rebuild from exported JSON gives same verdicts | want=same got=same | 
+PASS | recall '陈平': unicode61=0 trigram=0 bigram=2 instr=2 | want=bigram>0 and instr>0 got=ok | sqlite 3.40.1
