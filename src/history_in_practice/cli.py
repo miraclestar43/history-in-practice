@@ -273,7 +273,8 @@ def cmd_supply(a):
     d = db()
     if a.check:
         print(json.dumps(supply.check_catalogue(), ensure_ascii=False, indent=1)); return 0
-    inv = pipeline.inventory(d, verify=True); rot = config.load_project()["rotation"]
+    from . import mix
+    inv = pipeline.inventory(d, verify=True); rot = list(mix.GROUP)
     cats = [a.category] if a.category else sorted(rot, key=lambda c: (-inv["gaps_to_target"].get(c, 0), inv["schedulable_by_category"].get(c, 0)))
     out = []
     with publish.lock("prepare"):
@@ -564,7 +565,8 @@ def cmd_nightly(a):
     with publish.lock("prepare"):
         inv = pipeline.inventory(d, verify=True)
         if inv["candidates_unprocessed"] < a.min_candidates:
-            rot = config.load_project()["rotation"]
+            from . import mix
+            rot = list(mix.GROUP)                        # supply follows the mix plan's actual gaps, not equal counts
             cats = sorted(rot, key=lambda c: (-inv["gaps_to_target"].get(c, 0), inv["schedulable_by_category"].get(c, 0)))
             rep["supply"] = [{k: v for k, v in supply.propose(supply.pick_entry(c), d).items() if k not in ("raw", "dropped")}
                              for c in cats[: a.min_candidates - inv["candidates_unprocessed"]] if supply.pick_entry(c)]
@@ -701,16 +703,36 @@ def cmd_status(a):
 
 def cmd_inventory(a):
     if a.what_if:                      # arithmetic only: counts you name, not editions that exist or are approved
-        rot = config.load_project()["rotation"]; ab = {c[0].upper() if c != "china_modern" else "M": c for c in rot}
-        ab.update({"A": "china_ancient", "W": "world", "M": "china_modern", "U": "us"})
-        counts = {c: 0 for c in rot}
+        from . import mix
+        ab = {"A": "china_ancient", "W": "world", "M": "china_modern", "U": "us"}; counts = {c: 0 for c in mix.GROUP}
         for part in a.what_if.split(","):
             k, n = part.split("="); counts[ab.get(k.strip(), k.strip())] += int(n)
-        start = a.start or rot[0]; seq = pipeline.rotation_days(counts, rot, start)
-        print(json.dumps({"what_if": counts, "start": start, "coverage_days": len(seq), "sequence": seq,
-                          "stops_at": rot[(rot.index(start) + len(seq)) % len(rot)],
-                          "basis": "hypothetical counts; same rotation_days() as `hip inventory`"}, ensure_ascii=False, indent=1)); return 0
+        pool = [mix.item(f"{c}-{i}", c, None, i) for c, n in counts.items() for i in range(n)]
+        start = int(a.start or 0); seq = mix.plan(pool, len(pool), start)
+        print(json.dumps({"what_if": counts, "start_position": start, "coverage_days": len(seq), "sequence": [x["category"] for x in seq],
+                          "basis": "hypothetical counts; same mix.plan() as `hip inventory` (themes/regions unknown here)"}, ensure_ascii=False, indent=1)); return 0
     inv = pipeline.inventory(db(), verify=True); print(json.dumps(inv, ensure_ascii=False, indent=1)); return 1 if inv["alert"] else 0
+
+
+def cmd_plan(a):
+    """Read-only preview of the next N editions the mix would schedule (category, region, themes, why). Nothing is persisted
+    unless --commit (scheduling persists the plan itself when it runs); never schedules, publishes or sends."""
+    from . import mix
+    d = db(); inv = pipeline.inventory(d, verify=True); pos = publish.position(d)
+    pool = []
+    for eid, c, upd in d.execute("SELECT edition_id, category, updated_at FROM edition WHERE status='checked'").fetchall():
+        if c in mix.GROUP and eid not in inv.get("not_currently_eligible", {}) and pipeline._schedulable(*d.execute(
+                "SELECT approval, origin FROM edition WHERE edition_id=?", (eid,)).fetchone()):
+            o = pipeline._article_at(d, eid); pool.append(mix.item(eid, c, o, upd or 0) | {"minutes": (o or {}).get("reading_minutes")})
+    seq = mix.plan(pool, a.n, pos, history=pipeline.mix_history(d))
+    if a.commit:
+        mix.persist(d, pos, seq, "committed by hip plan --commit")
+    cn = {"china_ancient": "中国古代", "china_modern": "中国近现代", "world": "世界", "us": "美国"}
+    print(json.dumps({"read_only": not a.commit, "next_position": pos, "china_of_planned": sum(x["group"] == "china" for x in seq), "planned": len(seq),
+                      "plan": [{"#": k + 1, "edition": x["edition_id"], "category": cn[x["category"]], "region": x["region"], "themes": x["tags"],
+                                "title": x["title"], "minutes": x.get("minutes"), "why": x["reason"]} for k, x in enumerate(seq)],
+                      "note": "拟排不等于已发布；不启用定时任务。"}, ensure_ascii=False, indent=1))
+    return 0 if len(seq) >= a.n else 1
 
 
 def cmd_recover(a):
@@ -757,6 +779,7 @@ def main(argv=None):
     p.set_defaults(f=cmd_edit_queue)
     p = sp.add_parser("rereview"); p.add_argument("edition"); p.add_argument("--rounds", type=int, default=0)
     p.add_argument("--article", help="re-review this file (e.g. after a manual editor pass) instead of the stored version"); p.set_defaults(f=cmd_rereview)
+    p = sp.add_parser("plan"); p.add_argument("-n", type=int, default=7); p.add_argument("--commit", action="store_true"); p.set_defaults(f=cmd_plan)
     p = sp.add_parser("context-review"); p.add_argument("editions", nargs="+"); p.set_defaults(f=cmd_context_review)
     p = sp.add_parser("final-edit"); p.add_argument("editions", nargs="+")
     p.add_argument("--extra-attempt", metavar="REASON", help="owner-directed: allow ONE attempt beyond max_attempts; the reason is recorded")

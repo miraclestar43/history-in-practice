@@ -206,8 +206,8 @@ class PublishFlow(unittest.TestCase):
     def test_no_schedulable_edition_in_category_skips_and_unapproved_sample_is_not_used(self):
         self.add("sample-B", "B", "world", approval=None, origin="sample")
         self.run_day(self.rt(), "2026-11-02")
-        r = self.run_day(self.rt(), "2026-11-03")                                                           # next category 'world': only an unapproved sample
-        self.assertEqual(r["outcome"], "skipped"); self.assertIn("world", r["reason"])
+        r = self.run_day(self.rt(), "2026-11-03")                                                           # only an unapproved sample left
+        self.assertEqual(r["outcome"], "skipped"); self.assertIn("no eligible edition", r["reason"])
         self.assertEqual(self.state.get(self.db, "sample-B")["status"], "checked")
 
     # --- the send deadline is re-checked after waits, fetches and between recipients ---------------------------

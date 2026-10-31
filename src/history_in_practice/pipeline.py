@@ -282,17 +282,18 @@ SHORT_MIN = 8          # reading minutes below which an edition is flagged as a 
 
 
 def inventory(db, today: str | None = None, verify: bool = False) -> dict:
-    """Inventory as the rotation will consume it. Only approved `checked` editions count toward coverage;
+    """Inventory as the editorial mix (mix.py: ~4 China / 3 elsewhere per 7) will consume it. Only approved `checked` editions count;
     samples need an explicit sample approval; pending drafts and unprocessed candidates are listed, never counted.
     verify=True (the CLI): an edition counts only if it is editorially admitted *now* (final_edit.current_eligibility:
     final-editor record and clean source-context review bound to its content and evidence); the rest are listed under
     not_currently_eligible. Short items (zh or en under SHORT_MIN reading minutes) are flagged, still counted."""
-    from .publish import next_category, today_la, IN_FLIGHT
-    cfg = load_project(); rot = cfg.get("rotation", []); inv = cfg.get("inventory", {})
+    from .publish import today_la, IN_FLIGHT, position
+    from . import mix
+    cfg = load_project(); rot = list(mix.GROUP); inv = cfg.get("inventory", {})
     target, alert_below = inv.get("target_days", 14), inv.get("alert_below_days", 7)
     today = today or today_la()
     rows = db.execute("SELECT edition_id, category, status, approval, origin, edition_date FROM edition").fetchall()
-    ok = {c: 0 for c in rot}; awaiting = {c: 0 for c in rot}; samples = {"total": 0, "approved": 0}; inelig, short = {}, []
+    ok = {c: 0 for c in rot}; awaiting = {c: 0 for c in rot}; samples = {"total": 0, "approved": 0}; inelig, short = {}, []; pool = []
     for eid, cat, st, appr, origin, d in rows:
         if (origin or ("sample" if eid.startswith("sample-") else "pipeline")) == "sample" and st == "checked":
             samples["total"] += 1; samples["approved"] += _schedulable(appr, "sample")
@@ -306,21 +307,24 @@ def inventory(db, today: str | None = None, verify: bool = False) -> dict:
                     rm = (o or {}).get("reading_minutes") or {}
                     if min(rm.get("zh", 99), rm.get("en", 99)) < SHORT_MIN:
                         short.append({"edition": eid, "reading_minutes": rm})
+                else:
+                    o = _article_at(db, eid)
                 ok[cat] += 1
+                pool.append(mix.item(eid, cat, o, db.execute("SELECT updated_at FROM edition WHERE edition_id=?", (eid,)).fetchone()[0] or 0))
             else:
                 awaiting[cat] += 1
     future = sorted(d for _, _, st, _, _, d in rows if st in IN_FLIGHT and d and d >= today)
-    start = next_category(db); i0 = rot.index(start) if start in rot else 0
-    seq = rotation_days(ok, rot, start)
-    need = {c: 0 for c in rot}
-    for k in range(max(0, target - len(future))):
-        need[rot[(i0 + k) % len(rot)]] += 1
+    pos = position(db)
+    seq = mix.plan(pool, max(target, len(pool)), pos, history=mix_history(db))
+    need = mix.needs(max(0, target - len(future)), pos)
     gaps = {c: max(0, need[c] - ok[c]) for c in rot}
     cov = len(future) + len(seq)
+    china7 = sum(1 for x in seq[:7] if x["group"] == "china")
     cands = sum(1 for p in (REPO / "config/candidates").glob("*.json")
                 if not db.execute("SELECT 1 FROM edition WHERE edition_id=?", (json.loads(p.read_text(encoding="utf-8")).get("candidate_id"),)).fetchone())
-    return {"coverage_days": cov, "target_days": target, "alert": cov < alert_below, "next_category": start,
-            "scheduled_ahead": len(future), "coverage_sequence": seq[:target],
+    return {"coverage_days": cov, "target_days": target, "alert": cov < alert_below, "next_category": seq[0]["category"] if seq else None,
+            "scheduled_ahead": len(future), "coverage_sequence": [x["category"] for x in seq[:target]],
+            "mix": {"pattern": mix.PATTERN, "next_position": pos, "china_in_next_7": china7, "next_7": [x["edition_id"] for x in seq[:7]]},
             "schedulable_by_category": ok, "schedulable_total": sum(ok.values()),
             "awaiting_approval_by_category": {c: n for c, n in awaiting.items() if n},
             "samples": samples, "gaps_to_target": {c: n for c, n in gaps.items() if n},
@@ -328,4 +332,21 @@ def inventory(db, today: str | None = None, verify: bool = False) -> dict:
             "pending": db.execute("SELECT count(*) FROM edition WHERE status='pending_review'").fetchone()[0],
             "candidates_unprocessed": cands,
             **({"verified": True, "not_currently_eligible": inelig, "short_items": short} if verify else {"verified": False}),
-            "basis": "coverage = consecutive days the rotation can fill from next_category with approved checked editions, plus editions already scheduled ahead"}
+            "basis": "coverage = editions already scheduled ahead + the length of the plan (mix.plan: ~4 China / 3 elsewhere per 7, soft, "
+                     "China kept within 3-5 per trailing 7) that currently eligible inventory can fill; gaps = what that plan's next target_days want"}
+
+
+def _article_at(db, eid):
+    r = db.execute("SELECT path FROM edition WHERE edition_id=?", (eid,)).fetchone()
+    try:
+        return json.loads(Path(r[0]).read_text(encoding="utf-8")) if r and r[0] else None
+    except (OSError, ValueError):
+        return None
+
+
+def mix_history(db) -> list[dict]:
+    """Editions already scheduled/published, in order (the plan continues from them)."""
+    from . import mix
+    rows = db.execute("SELECT edition_id, category FROM edition WHERE status IN ('scheduled','archived','site_committed','site_live',"
+                      "'email_pending','complete','overdue') AND edition_date IS NOT NULL ORDER BY edition_date, edition_id").fetchall()
+    return [mix.item(e, c, _article_at(db, e)) for e, c in rows]

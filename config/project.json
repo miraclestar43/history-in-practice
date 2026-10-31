@@ -70,8 +70,28 @@
     "note": "attempts are genuine editorial attempts (health failures not counted), counted since the last demotion from checked; each continues from the previous final text and open issues; a new attempt starts only if the job deadline leaves min_minutes_per_attempt; after max_attempts the draft stays pending. Thresholds are never relaxed."
   },
   "context_review": {
-    "before_cjk": 1200, "after_cjk": 4000, "before_latin": 2500, "after_latin": 8000,
-    "cap_cjk": 60000, "cap_latin": 150000, "timeout_s": 1500,
+    "before_cjk": 1200,
+    "after_cjk": 4000,
+    "before_latin": 2500,
+    "after_latin": 8000,
+    "cap_cjk": 60000,
+    "cap_latin": 150000,
+    "timeout_s": 1500,
     "note": "normalised characters around each excerpt (more after than before), one bounded search round for long sources; see context.py"
-  }
+  },
+  "mix": {
+    "pattern": [
+      "china",
+      "other",
+      "china",
+      "other",
+      "china",
+      "other",
+      "china"
+    ],
+    "min_china_per_7": 3,
+    "max_china_per_7": 5,
+    "note": "owner decision 2026-10-31 (docs/ADDENDUM_READER_FEEDBACK_20261031.md): ~4 China (ancient+modern) / 3 elsewhere per 7, soft target; see mix.py. Replaces the equal rotation below, which is kept only as the list of categories."
+  },
+  "rotation_legacy_note": "rotation is no longer used for scheduling (mix.py); kept for old reports"
 }

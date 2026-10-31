@@ -5,7 +5,7 @@ from history_in_practice import state, pipeline
 
 
 class Inventory(unittest.TestCase):
-    """Coverage = consecutive days the rotation (A, W, M, U) can fill from next_category with approved editions."""
+    """Coverage = days the editorial mix (mix.py: ~4 China / 3 elsewhere per 7, soft) can fill with approved editions."""
 
     def setUp(self):
         self.td = tempfile.TemporaryDirectory(); os.environ["HIP_DATA_DIR"] = self.td.name
@@ -27,20 +27,22 @@ class Inventory(unittest.TestCase):
     def inv(self):
         return pipeline.inventory(self.db, today="2026-11-01")
 
-    def test_reported_twelve_articles_cover_only_ten_days(self):
+    def test_china_led_mix_four_of_seven_and_gaps_follow_the_plan(self):
         self.add("china_ancient", 3); self.add("world", 4); self.add("china_modern", 2); self.add("us", 3)
-        i = self.inv()
-        self.assertEqual(i["schedulable_total"], 12); self.assertEqual(i["coverage_days"], 10)   # day 11 needs a third modern
-        self.assertEqual(i["gaps_to_target"], {"china_ancient": 1, "china_modern": 1})           # A4/W4/M3/U3 for 14 days
-        self.assertEqual(i["coverage_sequence"][:4], ["china_ancient", "world", "china_modern", "us"])
+        i = self.inv(); seq = i["coverage_sequence"]
+        self.assertEqual(i["schedulable_total"], 12)
+        self.assertEqual(i["mix"]["china_in_next_7"], 4)                                         # ~4 China / 3 elsewhere
+        self.assertEqual(seq[:7], ["china_ancient", "world", "china_modern", "us", "china_ancient", "world", "china_modern"])
+        # 5 China, 7 other: once China runs out, "elsewhere" stands in only while every window of 7 keeps >= 3 China
+        self.assertEqual(i["coverage_days"], 11)
+        self.assertEqual(i["gaps_to_target"], {"china_ancient": 1, "china_modern": 2})            # 14 days want 8 China: A4 M4, W4 U2
 
-    def test_other_rotation_start_points(self):
+    def test_scheduled_ahead_and_position(self):
         self.add("china_ancient", 3); self.add("world", 4); self.add("china_modern", 2); self.add("us", 3)
-        self.add("china_ancient", 1, status="scheduled", date="2026-11-02")      # one already scheduled ahead -> next is world
+        self.add("china_ancient", 1, status="scheduled", date="2026-11-02")      # position 1 next -> an "other" slot
         i = self.inv()
-        self.assertEqual(i["next_category"], "world"); self.assertEqual(i["scheduled_ahead"], 1)
-        # from W: W M U A W M U A W (9 days), then a 3rd modern is needed; plus the edition already scheduled ahead
-        self.assertEqual(i["coverage_days"], 1 + 9)
+        self.assertEqual(i["mix"]["next_position"], 1); self.assertEqual(i["scheduled_ahead"], 1)
+        self.assertIn(i["next_category"], ("world", "us"))
         self.add("us", 1, status="scheduled", date="2026-10-20")                 # in the past: not counted as ahead
         self.assertEqual(self.inv()["scheduled_ahead"], 1)
 
@@ -54,7 +56,7 @@ class Inventory(unittest.TestCase):
         self.assertEqual(i["schedulable_by_category"], {"china_ancient": 1, "world": 1, "china_modern": 0, "us": 0})
         self.assertEqual(i["samples"], {"total": 3, "approved": 1}); self.assertEqual(i["pending"], 2)
         self.assertEqual(i["awaiting_approval_by_category"], {"world": 2, "us": 1})
-        self.assertEqual(i["coverage_days"], 2); self.assertTrue(i["alert"])
+        self.assertEqual(i["coverage_days"], 2); self.assertTrue(i["alert"])          # A then W
         self.assertIn("china_modern", i["missing_categories"])
 
     def test_empty_inventory(self):
@@ -62,17 +64,38 @@ class Inventory(unittest.TestCase):
         self.assertEqual(i["coverage_days"], 0); self.assertTrue(i["alert"]); self.assertEqual(sum(i["gaps_to_target"].values()), 14)
 
 
-class Arithmetic(unittest.TestCase):
-    """STABILIZATION_REVIEW §3: the report's what-if numbers come from the same function as `hip inventory`."""
-    def test_review_scenarios(self):
-        from history_in_practice.pipeline import rotation_days
-        rot = ["china_ancient", "world", "china_modern", "us"]
-        n = lambda a, w, m, u: dict(zip(rot, (a, w, m, u)))
-        self.assertEqual(len(rotation_days(n(1, 2, 2, 1), rot, "china_ancient")), 4)     # report had said 2
-        self.assertEqual(len(rotation_days(n(3, 4, 3, 3), rot, "china_ancient")), 12)    # report had said ~10
-        self.assertEqual(len(rotation_days(n(3, 3, 3, 3), rot, "china_ancient")), 12)
-        self.assertEqual(len(rotation_days(n(0, 1, 0, 0), rot, "china_ancient")), 0)
-        self.assertEqual(rotation_days(n(1, 1, 0, 1), rot, "world"), ["world"])          # starts mid-rotation, stops at modern
+class Mix(unittest.TestCase):
+    """mix.plan: deterministic, ~4/7 China, alternates ancient/modern, varies themes/regions, bounded substitution."""
+    def items(self, spec):
+        from history_in_practice import mix
+        return [mix.item(f"{c}-{k}", c, {"tags": tags, "title": {"zh": f"{c}-{k}"}}, k) for k, (c, tags) in enumerate(spec)]
+
+    def test_pattern_alternation_and_variation(self):
+        from history_in_practice import mix
+        pool = self.items([("china_ancient", ["战争与冲突"]), ("china_ancient", ["经济与金融"]), ("china_modern", ["教育"]),
+                           ("china_modern", ["外交"]), ("world", ["科学与技术"]), ("world", ["政治与治理"]), ("us", ["企业与商业"])])
+        seq = mix.plan(pool, 7, 0)
+        self.assertEqual([x["group"] for x in seq], ["china", "other"] * 3 + ["china"])
+        cats = [x["category"] for x in seq if x["group"] == "china"]
+        self.assertEqual(cats, ["china_ancient", "china_modern", "china_ancient", "china_modern"])   # ancient/modern alternate
+        self.assertEqual(seq, mix.plan(list(reversed(pool)), 7, 0))                                  # deterministic
+        self.assertTrue(all(x["reason"] for x in seq))
+
+    def test_substitution_keeps_china_within_band_then_stops(self):
+        from history_in_practice import mix
+        seq = mix.plan(self.items([("world", [])] * 10), 10, 0)
+        self.assertEqual(len(seq), 4)                     # at most 4 elsewhere in any 7 (China >= 3)
+        self.assertTrue(seq[0]["reason"].startswith("替补"))
+        seq = mix.plan(self.items([("china_modern", [])] * 10), 10, 0)
+        self.assertEqual(len(seq), 5)                     # at most 5 China in any 7
+
+    def test_persisted_plan_is_reused(self):
+        from history_in_practice import mix
+        db = state.connect(Path(tempfile.mkdtemp()) / "p.sqlite")
+        seq = mix.plan(self.items([("china_ancient", []), ("world", [])]), 2, 0)
+        mix.persist(db, 0, seq, "t"); self.assertEqual([x["edition_id"] for x in mix.stored(db, 0)], [x["edition_id"] for x in seq])
+        mix.mark_used(db, 0, seq[0]["edition_id"]); self.assertEqual(mix.stored(db, 0)[0]["status"], "used")
+        mix.persist(db, 0, [], "re-plan"); self.assertEqual([x["status"] for x in mix.stored(db, 0)], ["used"])   # used rows are history
 
 if __name__ == "__main__":
     unittest.main()

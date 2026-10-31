@@ -13,7 +13,7 @@ Asynchronous deploys: after the site commit, the live check is retried with
 bounded backoff (project.json "site_wait") until the send deadline; a run that
 still waits exits non-zero and the retry timer resumes it later the same day.
 Past the deadline, or on a later day, an unfinished edition becomes `overdue`
-(alerted, never sent late) and the rotation continues with a new edition.
+(alerted, never sent late) and the mix plan continues with a new edition.
 The deadline is re-checked after every wait and every fetch (a sleep never
 runs past it), before email starts, and before each recipient's send: a
 recipient whose SMTP exchange began before the deadline keeps its actual
@@ -81,27 +81,43 @@ def expire_stale(db, today: str, now: datetime) -> list[str]:
     return out
 
 
+def position(db) -> int:
+    """Pattern position of the next edition = editions already scheduled or published (TEST editions are not editions)."""
+    return db.execute("SELECT count(*) FROM edition WHERE status IN ('archived','site_committed','site_live','email_pending','complete','scheduled','overdue')").fetchone()[0]
+
+
 def next_category(db) -> str:
-    rot = load_project()["rotation"]
-    n = db.execute("SELECT count(*) FROM edition WHERE status IN ('archived','site_committed','site_live','email_pending','complete','scheduled','overdue')").fetchone()[0]
-    return rot[n % len(rot)]
+    """Category of the edition the stored/derived plan would use next (kept for messages)."""
+    from .pipeline import inventory
+    return inventory(db, verify=True).get("next_category") or "none"
 
 
 def schedule(db, date: str) -> dict | None:
-    """Pick the oldest checked edition in the rotation's category. None = skip + alert."""
+    """The edition for this date: an in-flight one (resume), else the stored plan's next position if still eligible, else a
+    fresh mix plan from this position (persisted; see mix.py). None = skip + alert."""
     cur = db.execute("SELECT edition_id FROM edition WHERE edition_date=? AND status IN "
                      "('scheduled','archived','site_committed','site_live','email_pending','complete')", (date,)).fetchone()   # resume in-flight
     if cur:
         return state.get(db, cur[0])
-    cat = next_category(db)
     from .final_edit import current_eligibility
-    row = None
-    for (eid,) in db.execute("SELECT edition_id FROM edition WHERE status='checked' AND category=? AND " + SCHEDULABLE_SQL + " ORDER BY updated_at",
-                             (cat,)).fetchall():
-        if not current_eligibility(db, eid)[0]:          # admitted *now*: final-editor record + clean context review
-            row = (eid,); break
-    if not row:
-        return None
+    from . import mix
+    from .pipeline import mix_history, _article_at
+    pos = position(db); planned = mix.stored(db, pos); row = None
+    if planned and planned[0]["position"] == pos and planned[0]["status"] == "planned":
+        eid = planned[0]["edition_id"]; cur = state.get(db, eid)
+        if cur and cur["status"] == "checked" and not current_eligibility(db, eid)[0]:
+            row, cat = (eid,), cur["category"]               # the stored plan: retries and resumes reuse it
+    if not row:                                             # no plan, or its next pick is no longer eligible: re-plan from here
+        pool = []
+        for eid, c, upd in db.execute("SELECT edition_id, category, updated_at FROM edition WHERE status='checked' AND " + SCHEDULABLE_SQL).fetchall():
+            if c in mix.GROUP and not current_eligibility(db, eid)[0]:       # admitted *now*: final-editor record + clean context review
+                pool.append(mix.item(eid, c, _article_at(db, eid), upd or 0))
+        seq = mix.plan(pool, max(14, len(pool)), pos, history=mix_history(db))
+        if not seq:
+            return None
+        mix.persist(db, pos, seq, "re-planned at scheduling" if planned else "planned at scheduling")
+        row, cat = (seq[0]["edition_id"],), seq[0]["category"]
+    mix.mark_used(db, pos, row[0])
     num = db.execute("SELECT count(*) FROM edition WHERE status NOT IN ('checked','prepared','pending_review','rejected','overdue')").fetchone()[0] + 1
     state.transition(db, row[0], "scheduled", note=f"scheduled for {date} ({cat}) as #{num}", edition_date=date)
     return state.get(db, row[0]) | {"edition_number": num}
@@ -196,7 +212,7 @@ def publish_today(db, runtime, *, date: str | None = None, fetch=site_export.htt
         rep.update(outcome="overdue", reason=f"past the {date} send deadline; nothing scheduled or sent late"); return rep
     ed = schedule(db, date)
     if not ed:
-        rep.update(outcome="skipped", reason=f"no checked edition in category {next_category(db)}; alert maintainer"); return rep
+        rep.update(outcome="skipped", reason=f"no eligible edition for plan position {position(db)} (mix: ~4 China / 3 elsewhere per 7); alert maintainer"); return rep
     rep["edition_id"] = ed["edition_id"]
     if ed["status"] == "complete":
         rep.update(outcome="complete", reason="already complete; nothing resent"); return rep
