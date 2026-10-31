@@ -323,11 +323,31 @@ def awaiting_context(cid: str) -> bool:
     base = json.loads((d / "base_article.json").read_text(encoding="utf-8")) if (d / "base_article.json").exists() else None
     if verify_final_record(copy.deepcopy(o), json.loads((d / "evidence.json").read_text(encoding="utf-8")), prior, base):
         return False                                   # the same verification admission uses, not the record's own outcome field
+    if operator_issues(cid, o):
+        return False                                   # an editorial request on this text needs an attempt first
     cp = d / "context_review.json"
     if not cp.exists():
         return True
     c = json.loads(cp.read_text(encoding="utf-8"))
     return not (c.get("content_sha256") == o["content_sha256"] and c.get("outcome") in ("clean", "needs_work"))
+
+
+def write_operator_issues(cid: str, problems: list[str], reason: str) -> Path:
+    """A recorded editorial request (e.g. "the Chinese is much thinner than the English") for the next attempt, bound to
+    the current final text; the final editor must judge it like any inherited issue (valid -> fix, invalid -> quote)."""
+    d = OUT_ROOT / cid / "final"; o = json.loads((d / "article.json").read_text(encoding="utf-8")); render.finalize(o)
+    rec = {"content_sha256": o["content_sha256"], "reason": reason, "at": time.time(),
+           "issues": [{"id": f"O{k + 1}", "source": "operator request", "where": "", "problem": x, "suggestion": None} for k, x in enumerate(problems)]}
+    (d / "operator_issues.json").write_text(json.dumps(rec, ensure_ascii=False, indent=1), encoding="utf-8")
+    return d / "operator_issues.json"
+
+
+def operator_issues(cid: str, o: dict) -> list[dict]:
+    p = OUT_ROOT / cid / "final" / "operator_issues.json"
+    if not p.exists():
+        return []
+    rec = json.loads(p.read_text(encoding="utf-8"))
+    return rec["issues"] if rec.get("content_sha256") == o["content_sha256"] else []
 
 
 def run_context(cid: str, *, call=None, cache: Path | None = None) -> dict:
@@ -393,6 +413,7 @@ def run(cid: str, db, *, call=None, max_rounds: int = MAX_ROUNDS, operator_note:
     inh = carried_issues(prior, o, ev) if prior else inherited_issues(cid, o, ev)   # MiMo issues were all decided in the first attempt
     if cx:                                             # source-context findings on this base text, with the evidence they added
         inh += [dict(i, id=f"X{k + 1}") for k, i in enumerate(cx[2])]
+    inh += operator_issues(cid, base)                  # recorded editorial requests bound to this base text
     cont = contamination(cid, ev)
     t0 = time.time(); caller = editor.Caller(w, cid, call)
     rec = {"record_type": "final_editor", "schema": RECORD_SCHEMA, "candidate_id": cid, "edition_id": o["edition_id"],

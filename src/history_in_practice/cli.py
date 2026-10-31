@@ -82,7 +82,7 @@ def cmd_doctor(a):
     out["disk"] = {"logs_mb": round(size / 1e6, 1), "source_cache_mb": round(csize / 1e6, 1),
                    "warnings": [w for w, bad in (("logs over 200 MB: rotate", size > 200e6), ("source cache over 2 GB: prune", csize > 2e9)) if bad]}
     out["email_config_problems"] = mailer.validate_config(rt)
-    d = db(); out["state"] = state.summary(d); out["inventory"] = pipeline.inventory(d)
+    d = db(); out["state"] = state.summary(d); out["inventory"] = pipeline.inventory(d, verify=True)
     out["alerts"] = ([f"{n} overdue edition(s): not sent late; check `hip status`" for n in [d.execute("SELECT count(*) FROM edition WHERE status='overdue'").fetchone()[0]] if n]
                      + (["inventory coverage below alert threshold"] if out["inventory"]["alert"] else []))
     print(json.dumps(out, ensure_ascii=False, indent=1))
@@ -250,7 +250,7 @@ def cmd_prepare_queue(a):
             except Exception as e:             # one bad candidate must not stop the queue
                 rep = {"outcome": "error", "reason": f"{type(e).__name__}: {e}"[:300], "wall_s": round(time.monotonic() - t0, 1)}
             done.append({"candidate": c["candidate_id"], "outcome": rep.get("outcome"), "reason": rep.get("reason", "")[:200], "wall_s": rep.get("wall_s")})
-    print(json.dumps({"processed": done, "inventory": pipeline.inventory(d)}, ensure_ascii=False, indent=1)); return 0
+    print(json.dumps({"processed": done, "inventory": pipeline.inventory(d, verify=True)}, ensure_ascii=False, indent=1)); return 0
 
 
 def cmd_publish_today(a):
@@ -263,7 +263,7 @@ def cmd_supply(a):
     d = db()
     if a.check:
         print(json.dumps(supply.check_catalogue(), ensure_ascii=False, indent=1)); return 0
-    inv = pipeline.inventory(d); rot = config.load_project()["rotation"]
+    inv = pipeline.inventory(d, verify=True); rot = config.load_project()["rotation"]
     cats = [a.category] if a.category else sorted(rot, key=lambda c: (-inv["gaps_to_target"].get(c, 0), inv["schedulable_by_category"].get(c, 0)))
     out = []
     with publish.lock("prepare"):
@@ -372,7 +372,7 @@ def cmd_edit_queue(a):
     d = db()
     with publish.lock("prepare"):
         out = _edit_queue(d, a.max, a.budget_minutes)
-    print(json.dumps({"edited": out, "inventory": pipeline.inventory(d)}, ensure_ascii=False, indent=1)); return 0
+    print(json.dumps({"edited": out, "inventory": pipeline.inventory(d, verify=True)}, ensure_ascii=False, indent=1)); return 0
 
 
 def _final_one(d, cid: str, extra: str | None = None, deadline: float | None = None) -> dict:
@@ -456,7 +456,7 @@ def cmd_context_review(a):
             if cx.get("outcome") == "needs_work" and cur["status"] == "checked":
                 _demote(d, cid, cur, ("context review: " + "; ".join(cx.get("blocking") or []))[:2000]); r["requeued"] = True
             out.append(r)
-    print(json.dumps({"context_review": out, "inventory": pipeline.inventory(d)}, ensure_ascii=False, indent=1))
+    print(json.dumps({"context_review": out, "inventory": pipeline.inventory(d, verify=True)}, ensure_ascii=False, indent=1))
     return 0 if all(r["outcome"] == "clean" for r in out) else 2
 
 
@@ -469,7 +469,7 @@ def cmd_final_edit(a):
                 out.append(_final_one(d, cid, a.extra_attempt))
             except Exception as e:
                 out.append({"edition": cid, "outcome": "error", "reason": f"{type(e).__name__}: {e}"[:300]})
-    print(json.dumps({"final_edit": out, "inventory": pipeline.inventory(d)}, ensure_ascii=False, indent=1))
+    print(json.dumps({"final_edit": out, "inventory": pipeline.inventory(d, verify=True)}, ensure_ascii=False, indent=1))
     return 0 if all(r.get("outcome") == "admitted" for r in out) else 2
 
 
@@ -552,7 +552,7 @@ def cmd_nightly(a):
     import time as _t
     d = db(); t0 = _t.monotonic(); rep = {}
     with publish.lock("prepare"):
-        inv = pipeline.inventory(d)
+        inv = pipeline.inventory(d, verify=True)
         if inv["candidates_unprocessed"] < a.min_candidates:
             rot = config.load_project()["rotation"]
             cats = sorted(rot, key=lambda c: (-inv["gaps_to_target"].get(c, 0), inv["schedulable_by_category"].get(c, 0)))
@@ -571,7 +571,7 @@ def cmd_nightly(a):
             rep["prepare"].append({"candidate": c["candidate_id"], "outcome": r.get("outcome"), "reason": str(r.get("reason", ""))[:200]})
         rep["claude_redraft"] = _claude_redrafts(d, 1)
         rep["final_edit"], rep["health"] = _final_queue(d, a.max_articles + 1, max(0, a.budget_minutes - (_t.monotonic() - t0) / 60))
-    rep["inventory"] = pipeline.inventory(d)
+    rep["inventory"] = pipeline.inventory(d, verify=True)
     print(json.dumps(rep, ensure_ascii=False, indent=1))
     return 4 if rep["health"]["final_editor"] != "ok" else 1 if rep["inventory"]["alert"] else 0
 
@@ -659,7 +659,10 @@ def cmd_requeue(a):
     d = db(); cur = state.get(d, a.edition)
     if not cur or cur["status"] != "checked":
         print(json.dumps({"requeued": False, "reason": f"status is {cur['status'] if cur else 'unknown'}"})); return 1
-    _demote(d, a.edition, cur, a.reason)
+    if a.issue:
+        from . import final_edit
+        final_edit.write_operator_issues(a.edition, a.issue, a.reason)
+    _demote(d, a.edition, cur, ("requeued: " + a.reason) if not a.reason.startswith(FINAL_EDITABLE) else a.reason)
     print(json.dumps({"requeued": True, "edition": a.edition}, ensure_ascii=False)); return 0
 
 
@@ -683,7 +686,7 @@ def cmd_inventory(a):
         print(json.dumps({"what_if": counts, "start": start, "coverage_days": len(seq), "sequence": seq,
                           "stops_at": rot[(rot.index(start) + len(seq)) % len(rot)],
                           "basis": "hypothetical counts; same rotation_days() as `hip inventory`"}, ensure_ascii=False, indent=1)); return 0
-    inv = pipeline.inventory(db()); print(json.dumps(inv, ensure_ascii=False, indent=1)); return 1 if inv["alert"] else 0
+    inv = pipeline.inventory(db(), verify=True); print(json.dumps(inv, ensure_ascii=False, indent=1)); return 1 if inv["alert"] else 0
 
 
 def cmd_recover(a):
@@ -741,7 +744,9 @@ def main(argv=None):
         sp.add_parser(name).set_defaults(f=f)
     p = sp.add_parser("inventory"); p.add_argument("--what-if", help="hypothetical counts, e.g. A=1,W=2,M=2,U=1"); p.add_argument("--start")
     p.set_defaults(f=cmd_inventory)
-    p = sp.add_parser("requeue"); p.add_argument("edition"); p.add_argument("--reason", required=True); p.set_defaults(f=cmd_requeue)
+    p = sp.add_parser("requeue"); p.add_argument("edition"); p.add_argument("--reason", required=True)
+    p.add_argument("--issue", action="append", default=[], help="an editorial request for the next final-editor attempt (recorded, bound to the current text)")
+    p.set_defaults(f=cmd_requeue)
     p = sp.add_parser("admit"); p.add_argument("article"); p.add_argument("evidence"); p.add_argument("--record")
     p.add_argument("--exception", action="append", metavar="ISSUE_ID=REASON", help="per-issue owner exception; repeat once per open issue")
     p.add_argument("--as-sample", action="store_true"); p.add_argument("--from-pending", action="store_true", help="kept for compatibility; implied")

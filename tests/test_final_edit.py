@@ -302,6 +302,33 @@ class FinalEditor(unittest.TestCase):
         self.db.execute("INSERT INTO transition(edition_id,from_status,to_status,at,note) VALUES(?,?,?,?,?)", (CID, "checked", "pending_review", _t.time() + 1, "t"))
         self.assertEqual(final_edit.attempts_used(CID, self.db), 0); self.assertEqual(final_edit.attempts_used(CID), final_edit.MAX_ATTEMPTS)
 
+    def test_operator_request_goes_to_the_next_attempt_not_straight_to_readmission(self):
+        rec, a = self.run_admit(self.script()); self.assertTrue(a["admitted"], a)
+        self.assertFalse(final_edit.awaiting_context(CID))                       # reviewed and admitted
+        (final_edit.OUT_ROOT / CID / "final" / "context_review.json").unlink()
+        self.assertTrue(final_edit.awaiting_context(CID))
+        final_edit.write_operator_issues(CID, ["中文比英文单薄：按证据补足背景与经过"], "short zh")
+        self.assertFalse(final_edit.awaiting_context(CID))                       # the request needs an attempt first
+        seen = {}
+        base = self.script()
+        def call(prompt, timeout_s=0, **kw):
+            if "【遗留问题】\n" in prompt and "【问题清单】" not in prompt and "【阅读范围】" not in prompt:
+                seen["inh"] = json.loads(prompt.split("【遗留问题】\n", 1)[1].split("\n\n【已知污染】", 1)[0])
+            return base(prompt, timeout_s)
+        final_edit.run(CID, self.db, call=call)
+        self.assertIn("O1", [i["id"] for i in seen["inh"]]); self.assertIn("单薄", seen["inh"][-1]["problem"])
+
+    def test_verified_inventory_counts_only_editions_admitted_now(self):
+        rec, a = self.run_admit(self.script()); self.assertTrue(a["admitted"], a)
+        cat = state.get(self.db, CID)["category"]
+        inv = pipeline.inventory(self.db, verify=True)
+        self.assertEqual(inv["schedulable_by_category"][cat], 1); self.assertEqual(inv["not_currently_eligible"], {})
+        (final_edit.OUT_ROOT / CID / "final" / "context_review.json").unlink()                # e.g. never context-reviewed
+        inv = pipeline.inventory(self.db, verify=True)
+        self.assertEqual(inv["schedulable_by_category"][cat], 0)
+        self.assertIn("no source-context review for this content", inv["not_currently_eligible"][CID])
+        self.assertEqual(pipeline.inventory(self.db)["schedulable_by_category"][cat], 1)     # the unverified count would inflate
+
 
 if __name__ == "__main__":
     unittest.main()

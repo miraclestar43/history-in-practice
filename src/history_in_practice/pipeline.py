@@ -278,20 +278,34 @@ def rotation_days(counts: dict, rot: list, start: str) -> list[str]:
     return seq
 
 
-def inventory(db, today: str | None = None) -> dict:
+SHORT_MIN = 8          # reading minutes below which an edition is flagged as a short item (not a readiness criterion)
+
+
+def inventory(db, today: str | None = None, verify: bool = False) -> dict:
     """Inventory as the rotation will consume it. Only approved `checked` editions count toward coverage;
-    samples need an explicit sample approval; pending drafts and unprocessed candidates are listed, never counted."""
+    samples need an explicit sample approval; pending drafts and unprocessed candidates are listed, never counted.
+    verify=True (the CLI): an edition counts only if it is editorially admitted *now* (final_edit.current_eligibility:
+    final-editor record and clean source-context review bound to its content and evidence); the rest are listed under
+    not_currently_eligible. Short items (zh or en under SHORT_MIN reading minutes) are flagged, still counted."""
     from .publish import next_category, today_la, IN_FLIGHT
     cfg = load_project(); rot = cfg.get("rotation", []); inv = cfg.get("inventory", {})
     target, alert_below = inv.get("target_days", 14), inv.get("alert_below_days", 7)
     today = today or today_la()
     rows = db.execute("SELECT edition_id, category, status, approval, origin, edition_date FROM edition").fetchall()
-    ok = {c: 0 for c in rot}; awaiting = {c: 0 for c in rot}; samples = {"total": 0, "approved": 0}
+    ok = {c: 0 for c in rot}; awaiting = {c: 0 for c in rot}; samples = {"total": 0, "approved": 0}; inelig, short = {}, []
     for eid, cat, st, appr, origin, d in rows:
         if (origin or ("sample" if eid.startswith("sample-") else "pipeline")) == "sample" and st == "checked":
             samples["total"] += 1; samples["approved"] += _schedulable(appr, "sample")
         if st == "checked" and cat in ok:
             if _schedulable(appr, origin):
+                if verify:
+                    from .final_edit import current_eligibility
+                    probs, o = current_eligibility(db, eid)
+                    if probs:
+                        inelig[eid] = probs[:3]; continue
+                    rm = (o or {}).get("reading_minutes") or {}
+                    if min(rm.get("zh", 99), rm.get("en", 99)) < SHORT_MIN:
+                        short.append({"edition": eid, "reading_minutes": rm})
                 ok[cat] += 1
             else:
                 awaiting[cat] += 1
@@ -313,4 +327,5 @@ def inventory(db, today: str | None = None) -> dict:
             "missing_categories": [c for c in rot if not ok[c]],
             "pending": db.execute("SELECT count(*) FROM edition WHERE status='pending_review'").fetchone()[0],
             "candidates_unprocessed": cands,
+            **({"verified": True, "not_currently_eligible": inelig, "short_items": short} if verify else {"verified": False}),
             "basis": "coverage = consecutive days the rotation can fill from next_category with approved checked editions, plus editions already scheduled ahead"}
