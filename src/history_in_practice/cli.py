@@ -477,8 +477,13 @@ def _final_one(d, cid: str, extra: str | None = None, deadline: float | None = N
             pend("context review: " + "; ".join(cx.get("blocking") or [])[:400])
             continue                                   # its additions and findings go into the next attempt
         n = final_edit.attempts_used(cid, d)
+        if extra and n == allowed and allowed == final_edit.MAX_ATTEMPTS + 1:
+            added = final_edit.evidence_added_since_last_attempt(cid)
+            if added:                                  # the editor passed the text; the context review then expanded the
+                allowed += 1                           # evidence: one more owner-directed attempt with that new input (max + 2)
+                res["evidence_added"] = added
         if n >= allowed:
-            res.setdefault("reason", f"{n} final-editor attempts used (max {final_edit.MAX_ATTEMPTS}{' + 1 owner-directed' if extra else ''}); needs a person")
+            res.setdefault("reason", f"{n} final-editor attempts used (max {final_edit.MAX_ATTEMPTS}{' + ' + str(max(allowed, n) - final_edit.MAX_ATTEMPTS) + ' owner-directed' if extra else ''}); needs a person")
             res["stopped"] = f"{n} attempts used"
             if not runs:
                 res["outcome"] = "skipped"
@@ -836,7 +841,7 @@ def main(argv=None):
     p = sp.add_parser("plan"); p.add_argument("-n", type=int, default=7); p.add_argument("--commit", action="store_true"); p.set_defaults(f=cmd_plan)
     p = sp.add_parser("context-review"); p.add_argument("editions", nargs="+"); p.set_defaults(f=cmd_context_review)
     p = sp.add_parser("final-edit"); p.add_argument("editions", nargs="+")
-    p.add_argument("--extra-attempt", metavar="REASON", help="owner-directed: allow ONE attempt beyond max_attempts; the reason is recorded")
+    p.add_argument("--extra-attempt", metavar="REASON", help="owner-directed: allow ONE attempt beyond max_attempts (one more only if the final editor passed the text and the context review then added evidence it has not seen); the reason is recorded")
     p.set_defaults(f=cmd_final_edit)
     p = sp.add_parser("nightly"); p.add_argument("--max-articles", type=int, default=2); p.add_argument("--budget-minutes", type=float, default=150)
     p.add_argument("--min-candidates", type=int, default=2); p.set_defaults(f=cmd_nightly)

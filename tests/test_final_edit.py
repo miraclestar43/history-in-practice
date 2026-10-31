@@ -299,8 +299,17 @@ class FinalEditor(unittest.TestCase):
         self.assertEqual([r["step"] for r in res["runs"]], ["final edit"] * final_edit.MAX_ATTEMPTS)   # all attempts in one run
         self.assertEqual(res["outcome"], "pending_review"); self.assertEqual(state.get(self.db, CID)["status"], "pending_review")
         self.assertEqual(cli._final_one(self.db, CID)["outcome"], "skipped")                            # exhausted; fact threshold unchanged
+        res = cli._final_one(self.db, CID, "owner: one more")                                          # one owner-directed attempt
+        self.assertEqual(len(res["runs"]), 1); self.assertEqual(cli._final_one(self.db, CID, "owner")["outcome"], "skipped")
+        from unittest import mock
+        with mock.patch.object(final_edit, "evidence_added_since_last_attempt", lambda cid: ["X-E99"]):
+            res = cli._final_one(self.db, CID, "owner: new evidence")                                  # new input: exactly one more
+            self.assertEqual(len(res["runs"]), 1); self.assertEqual(res["evidence_added"], ["X-E99"])
+            res = cli._final_one(self.db, CID, "owner: again")                                         # hard cap max + 2
+            self.assertEqual(res["outcome"], "skipped"); self.assertIn("+ 2 owner-directed", res["reason"])
+        self.assertEqual(final_edit.attempts_used(CID, self.db), final_edit.MAX_ATTEMPTS + 2)
         self.db.execute("INSERT INTO transition(edition_id,from_status,to_status,at,note) VALUES(?,?,?,?,?)", (CID, "checked", "pending_review", _t.time() + 1, "t"))
-        self.assertEqual(final_edit.attempts_used(CID, self.db), 0); self.assertEqual(final_edit.attempts_used(CID), final_edit.MAX_ATTEMPTS)
+        self.assertEqual(final_edit.attempts_used(CID, self.db), 0); self.assertEqual(final_edit.attempts_used(CID), final_edit.MAX_ATTEMPTS + 2)
 
     def test_operator_request_goes_to_the_next_attempt_not_straight_to_readmission(self):
         rec, a = self.run_admit(self.script()); self.assertTrue(a["admitted"], a)

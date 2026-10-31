@@ -313,6 +313,24 @@ def carried_context(cid: str, o: dict, ev: dict) -> tuple[dict, dict, list] | No
     return rec, new, context.issues_for_editor(rec)
 
 
+def evidence_added_since_last_attempt(cid: str) -> list[str]:
+    """Excerpt ids the latest context review added to the evidence, for a text the final editor *passed*
+    (verify_final_record clean): the next attempt has genuinely new input, not a retry of identical inputs."""
+    d = OUT_ROOT / cid / "final"; prior = prior_final(cid)
+    if not prior or prior.get("failure") or not (d / "article.json").exists() or not (d / "evidence.json").exists():
+        return []
+    o = json.loads((d / "article.json").read_text(encoding="utf-8")); render.finalize(o)
+    ev = json.loads((d / "evidence.json").read_text(encoding="utf-8"))
+    base = json.loads((d / "base_article.json").read_text(encoding="utf-8")) if (d / "base_article.json").exists() else None
+    if verify_final_record(copy.deepcopy(o), ev, prior, base):
+        return []
+    cc = carried_context(cid, o, ev)
+    if not cc:
+        return []
+    have = {e["id"] for e in ev["excerpts"]}
+    return [x["id"] for x in cc[1]["excerpts"] if x["id"] not in have]
+
+
 def awaiting_context(cid: str) -> bool:
     """The latest final-editor record verifies for the current final text (verify_final_record, as at admission) and no
     completed context review of that exact text exists yet."""
