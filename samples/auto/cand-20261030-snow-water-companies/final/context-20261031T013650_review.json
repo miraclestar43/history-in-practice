@@ -1,0 +1,595 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-20261030-snow-water-companies",
+ "content_sha256": "4ed0451f223adbcf7c7a7cbfd64ce1a4115558d089fde0e9a2f173b429d5600d",
+ "evidence_in_sha256": "4ccea7584d5cee6907d126adb9cbf29b5ae53b34c94eb8fbc1bf9a580d61126a",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793428610.8069015,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.7",
+   "lang": "zh",
+   "sentence": "不过肯宁顿的数字只是死亡户数，证据未给出两家在当地各有多少供水户，不能直接当作死亡率比较。"
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.7",
+   "lang": "en",
+   "sentence": "Kennington's 38 houses against 4 came from the same intermixed streets, though these are only counts of houses with deaths: the evidence does not say how many houses each company supplied there, so they cannot be compared directly as death rates."
+  },
+  {
+   "id": "A3",
+   "path": "sections.limits.2",
+   "lang": "zh",
+   "sentence": "化验部分只写定性的差别。"
+  }
+ ],
+ "search": null,
+ "units": {
+  "B-SNOW": {
+   "title": "John Snow, On the Mode of Communication of Cholera, 2nd ed. (1855), archive.org OCR",
+   "url": "https://archive.org/download/b28985266/b28985266_djvu.txt",
+   "ref": "b28985266",
+   "evidence_text_sha256": "3a5e9a7f3527b373c9f0d2235e3156654d8d31026bb83d2e27621a3e42296072",
+   "cache_sha256": "3a5e9a7f3527b373c9f0d2235e3156654d8d31026bb83d2e27621a3e42296072",
+   "cjk": false,
+   "source_chars": 374908,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     111655,
+     154586
+    ],
+    [
+     156204,
+     167319
+    ]
+   ],
+   "chars_reviewed": 54046
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 74.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 8190
+  }
+ ],
+ "finished_at": 1793428686.2850852,
+ "elapsed_min": 1.3,
+ "review": {
+  "episode": [
+   {
+    "source_id": "B-SNOW",
+    "outcome": "斯诺把调查一直做到8月26日；此后由各区登记员填报供水，登记总署公布到10月14日的数据。数据与他的结果一致：第二个七周里，南华克和沃克斯霍尔公司供水户的死亡率仍约为兰贝斯公司供水户的五倍。全程按每万人计是153对26，兰贝斯供水户的情况好于伦敦整体，但不如北区和中区。",
+    "quote": "the second seven weeks of the epidemic, the population supplied by the Southwark and Yauxhall Company con- tinued to suffer nearly five times the mortality of that supplied with water by the Lambeth Company.",
+    "in_evidence": false
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "B-SNOW",
+    "start": "A return had been made to Parliament of the entire number",
+    "end": "supplied only by the Southwark and Vauxhall Com- pany",
+    "why": "两点影响稿件。一是斯诺明说议会报表没有分区的供水户数，这直接支持A1/A2。二是部分地区的调查由Whiting医生完成，并非全部出自斯诺之手，与limits.0的说法有关。"
+   },
+   {
+    "source_id": "B-SNOW",
+    "start": "According to a return which was made to Parliament",
+    "end": "as amongst those having the purer water from Thames Ditton.",
+    "why": "疫情头四周的结果是每万户71对5，相差十四倍。表九的户数基数来自1853年的议会报表。"
+   },
+   {
+    "source_id": "B-SNOW",
+    "start": "As the epidemic advanced, the disproportion",
+    "end": "by all the usual means of its communication.",
+    "why": "斯诺自己说明，随着疫情推进两组差距缩小，并解释了原因。这是理解‘八到九倍’只是中途结果所必需的限定。"
+   },
+   {
+    "source_id": "B-SNOW",
+    "start": "and it will be remarked that the cus- tomers of the Lambeth Company continued",
+    "end": "they agree entirely with the results of my inquiry respecting the earlier part of the epidemic given above.",
+    "why": "交代了法尔建议的登记员填报确实执行了，也说明了它的局限（有未查明的个案），以及它与斯诺结果吻合。"
+   },
+   {
+    "source_id": "B-SNOW",
+    "start": "Now 2,353 deaths in 40,046 houses",
+    "end": "except the north and central groups.",
+    "why": "这是事件的结局：第二个七周约五倍，全程每万人153对26。兰贝斯供水户并非低于伦敦所有地区。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.7",
+    "lang": "zh",
+    "sentence": "不过肯宁顿的数字只是死亡户数，证据未给出两家在当地各有多少供水户，不能直接当作死亡率比较。",
+    "verdict": "supported",
+    "source_ids": [
+     "B-SNOW"
+    ],
+    "scope": "B-SNOW 阅读范围 111655–154586 与 156204–167319；斯诺本人说明分区供水户数未见于报表",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "but as the number of houses which they supplied in particular districts was not stated"
+    },
+    "fix": "可保留。也可加一句：斯诺自己也说报表没有分区户数。"
+   },
+   {
+    "id": "A2",
+    "path": "sections.story.7",
+    "lang": "en",
+    "sentence": "Kennington's 38 houses against 4 came from the same intermixed streets, though these are only counts of houses with deaths: the evidence does not say how many houses each company supplied there, so they cannot be compared directly as death rates.",
+    "verdict": "supported",
+    "source_ids": [
+     "B-SNOW"
+    ],
+    "scope": "B-SNOW 阅读范围两段；斯诺明言分区户数未列出",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "but as the number of houses which they supplied in particular districts was not stated"
+    },
+    "fix": "可保留，宜改为“Snow notes the returns did not state…”。"
+   },
+   {
+    "id": "A3",
+    "path": "sections.limits.2",
+    "lang": "zh",
+    "sentence": "化验部分只写定性的差别。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "B-SNOW"
+    ],
+    "scope": "编辑方法说明，不涉及来源是否记载",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "Indeed, the difference in appearance on adding nitrate of silver to the two kinds of water was so great"
+    },
+    "fix": "无需修改。"
+   },
+   {
+    "id": "N1",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "本篇的证据里没有当时卫生部门或第三方的独立核查……但本篇读到的统计和论证都经斯诺之手整理。",
+    "verdict": "contradicted",
+    "source_ids": [
+     "B-SNOW"
+    ],
+    "scope": "B-SNOW 156204–167319（表十及其说明）",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "The Registrar General published the returns of the water supply, which he had obtained from the District Registrars, down to 14th October, in a table which is subjoined."
+    },
+    "fix": "改为：8月26日后由各区登记员填报、登记总署公布的供水数据，斯诺称与他的结果“完全一致”，这可视为部分的官方佐证。另注明部分地区由Whiting医生调查。"
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "the evidence used here contains no independent check by a health authority or anyone else at the time … but the statistics and the argument we read here were all put together by Snow.",
+    "verdict": "contradicted",
+    "source_ids": [
+     "B-SNOW"
+    ],
+    "scope": "B-SNOW 156204–167319",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "they agree entirely with the results of my inquiry respecting the earlier part of the epidemic given above."
+    },
+    "fix": "同N1。补充Registrar General的表十，以及Whiting医生的参与。"
+   },
+   {
+    "id": "N3",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "本篇证据中没有当时卫生部门或他人的独立核查",
+    "verdict": "contradicted",
+    "source_ids": [
+     "B-SNOW"
+    ],
+    "scope": "B-SNOW 156204–167319",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "The Registrar General published the returns of the water supply, which he had obtained from the District Registrars, down to 14th October"
+    },
+    "fix": "改为：登记总署后来公布的分区登记员数据与斯诺结果一致，但同样经斯诺转引。"
+   },
+   {
+    "id": "N4",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "the evidence here contains no independent check by a health authority or anyone else at the time.",
+    "verdict": "contradicted",
+    "source_ids": [
+     "B-SNOW"
+    ],
+    "scope": "B-SNOW 156204–167319",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "The Registrar General published the returns of the water supply, which he had obtained from the District Registrars, down to 14th October"
+    },
+    "fix": "同N3。"
+   },
+   {
+    "id": "N5",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "这种选择会不会和房租、房龄、地段有关，本篇的证据无法回答",
+    "verdict": "supported",
+    "source_ids": [
+     "B-SNOW"
+    ],
+    "scope": "B-SNOW 阅读范围两段：只有斯诺的总体断言，没有按房屋统计房租、房龄的数据",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "Each Company supplies both rich and poor, both large houses and small"
+    },
+    "fix": "可保留。也可提到斯诺举的Waterloo Road 1st：那里居民极贫，却以兰贝斯供水为主，死亡很少。"
+   },
+   {
+    "id": "N6",
+    "path": "sections.limits.1",
+    "lang": "en",
+    "sentence": "whether that choice tracked rents, the age of the houses or their location is a question the evidence here cannot answer",
+    "verdict": "supported",
+    "source_ids": [
+     "B-SNOW"
+    ],
+    "scope": "同N5",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "Each Company supplies both rich and poor, both large houses and small"
+    },
+    "fix": "同N5。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.story.6",
+    "problem": "稿件把头七周“八到九倍”写成调查的结论。原文随后说明差距在疫情后期缩小：第二个七周约五倍，头四周则是十四倍。中途数字被当成了结局。",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "As the epidemic advanced, the disproportion between the number of cases in houses supplied by the Southwark and Vauxhall Company and those supplied by the Lam- beth Company, became not quite so great, although it continued very striking."
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.story.7",
+    "problem": "“兰贝斯供水户死亡率比全城其余地方还低”只适用于头七周。全程表十一显示，它好于伦敦整体，但不如北区和中区。",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "greater than every group of districts, except the north and central groups."
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.limits.0",
+    "problem": "稿件称没有独立核查、统计全经斯诺之手。原文显示：登记员填报已执行并由登记总署公布，结果与斯诺一致；部分地区由Whiting医生调查。",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "I was fortunate enough to obtain the assistance of a medical man, Mr. John Joseph Whiting, L.A.C., to make inquiry in Bermondsey"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.analysis.2",
+    "problem": "稿件止于登记员“被要求”填报，漏掉了紧接着的结果：填报得以执行，但部分个案供水未查明，结果仍与斯诺一致。",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "the water supply remained unascertained in a number of cases"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "A1–A3成立或无关。主要问题是两处截断：一是把头七周的“八到九倍”当成结局，漏掉后期约五倍、全程153对26的结果；二是称“无独立核查”，与登记总署公布的分区数据相矛盾，须修改limits.0、uncertainty_note与story.6。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.7",
+   "lang": "zh",
+   "sentence": "不过肯宁顿的数字只是死亡户数，证据未给出两家在当地各有多少供水户，不能直接当作死亡率比较。",
+   "verdict": "supported",
+   "source_ids": [
+    "B-SNOW"
+   ],
+   "scope": "B-SNOW 阅读范围 111655–154586 与 156204–167319；斯诺本人说明分区供水户数未见于报表",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "but as the number of houses which they supplied in particular districts was not stated"
+   },
+   "fix": "可保留。也可加一句：斯诺自己也说报表没有分区户数。",
+   "unit_status": {
+    "B-SNOW": "windows"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.7",
+   "lang": "en",
+   "sentence": "Kennington's 38 houses against 4 came from the same intermixed streets, though these are only counts of houses with deaths: the evidence does not say how many houses each company supplied there, so they cannot be compared directly as death rates.",
+   "verdict": "supported",
+   "source_ids": [
+    "B-SNOW"
+   ],
+   "scope": "B-SNOW 阅读范围两段；斯诺明言分区户数未列出",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "but as the number of houses which they supplied in particular districts was not stated"
+   },
+   "fix": "可保留，宜改为“Snow notes the returns did not state…”。",
+   "unit_status": {
+    "B-SNOW": "windows"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.limits.2",
+   "lang": "zh",
+   "sentence": "化验部分只写定性的差别。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "B-SNOW"
+   ],
+   "scope": "编辑方法说明，不涉及来源是否记载",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "Indeed, the difference in appearance on adding nitrate of silver to the two kinds of water was so great"
+   },
+   "fix": "无需修改。",
+   "unit_status": {
+    "B-SNOW": "windows"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "本篇的证据里没有当时卫生部门或第三方的独立核查……但本篇读到的统计和论证都经斯诺之手整理。",
+   "verdict": "contradicted",
+   "source_ids": [
+    "B-SNOW"
+   ],
+   "scope": "B-SNOW 156204–167319（表十及其说明）",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "The Registrar General published the returns of the water supply, which he had obtained from the District Registrars, down to 14th October, in a table which is subjoined."
+   },
+   "fix": "改为：8月26日后由各区登记员填报、登记总署公布的供水数据，斯诺称与他的结果“完全一致”，这可视为部分的官方佐证。另注明部分地区由Whiting医生调查。",
+   "unit_status": {
+    "B-SNOW": "windows"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "the evidence used here contains no independent check by a health authority or anyone else at the time … but the statistics and the argument we read here were all put together by Snow.",
+   "verdict": "contradicted",
+   "source_ids": [
+    "B-SNOW"
+   ],
+   "scope": "B-SNOW 156204–167319",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "they agree entirely with the results of my inquiry respecting the earlier part of the epidemic given above."
+   },
+   "fix": "同N1。补充Registrar General的表十，以及Whiting医生的参与。",
+   "unit_status": {
+    "B-SNOW": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "本篇证据中没有当时卫生部门或他人的独立核查",
+   "verdict": "contradicted",
+   "source_ids": [
+    "B-SNOW"
+   ],
+   "scope": "B-SNOW 156204–167319",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "The Registrar General published the returns of the water supply, which he had obtained from the District Registrars, down to 14th October"
+   },
+   "fix": "改为：登记总署后来公布的分区登记员数据与斯诺结果一致，但同样经斯诺转引。",
+   "unit_status": {
+    "B-SNOW": "windows"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "the evidence here contains no independent check by a health authority or anyone else at the time.",
+   "verdict": "contradicted",
+   "source_ids": [
+    "B-SNOW"
+   ],
+   "scope": "B-SNOW 156204–167319",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "The Registrar General published the returns of the water supply, which he had obtained from the District Registrars, down to 14th October"
+   },
+   "fix": "同N3。",
+   "unit_status": {
+    "B-SNOW": "windows"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "这种选择会不会和房租、房龄、地段有关，本篇的证据无法回答",
+   "verdict": "supported",
+   "source_ids": [
+    "B-SNOW"
+   ],
+   "scope": "B-SNOW 阅读范围两段：只有斯诺的总体断言，没有按房屋统计房租、房龄的数据",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "Each Company supplies both rich and poor, both large houses and small"
+   },
+   "fix": "可保留。也可提到斯诺举的Waterloo Road 1st：那里居民极贫，却以兰贝斯供水为主，死亡很少。",
+   "unit_status": {
+    "B-SNOW": "windows"
+   }
+  },
+  {
+   "id": "N6",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "whether that choice tracked rents, the age of the houses or their location is a question the evidence here cannot answer",
+   "verdict": "supported",
+   "source_ids": [
+    "B-SNOW"
+   ],
+   "scope": "同N5",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "Each Company supplies both rich and poor, both large houses and small"
+   },
+   "fix": "同N5。",
+   "unit_status": {
+    "B-SNOW": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.story.6",
+   "problem": "稿件把头七周“八到九倍”写成调查的结论。原文随后说明差距在疫情后期缩小：第二个七周约五倍，头四周则是十四倍。中途数字被当成了结局。",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "As the epidemic advanced, the disproportion between the number of cases in houses supplied by the Southwark and Vauxhall Company and those supplied by the Lam- beth Company, became not quite so great, although it continued very striking."
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.story.7",
+   "problem": "“兰贝斯供水户死亡率比全城其余地方还低”只适用于头七周。全程表十一显示，它好于伦敦整体，但不如北区和中区。",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "greater than every group of districts, except the north and central groups."
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.limits.0",
+   "problem": "稿件称没有独立核查、统计全经斯诺之手。原文显示：登记员填报已执行并由登记总署公布，结果与斯诺一致；部分地区由Whiting医生调查。",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "I was fortunate enough to obtain the assistance of a medical man, Mr. John Joseph Whiting, L.A.C., to make inquiry in Bermondsey"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.analysis.2",
+   "problem": "稿件止于登记员“被要求”填报，漏掉了紧接着的结果：填报得以执行，但部分个案供水未查明，结果仍与斯诺一致。",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "the water supply remained unascertained in a number of cases"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "B-SNOW",
+   "outcome": "斯诺把调查一直做到8月26日；此后由各区登记员填报供水，登记总署公布到10月14日的数据。数据与他的结果一致：第二个七周里，南华克和沃克斯霍尔公司供水户的死亡率仍约为兰贝斯公司供水户的五倍。全程按每万人计是153对26，兰贝斯供水户的情况好于伦敦整体，但不如北区和中区。",
+   "quote": "the second seven weeks of the epidemic, the population supplied by the Southwark and Yauxhall Company con- tinued to suffer nearly five times the mortality of that supplied with water by the Lambeth Company.",
+   "in_evidence": false
+  }
+ ],
+ "additions": [
+  {
+   "id": "W-E13",
+   "source_id": "B-SNOW",
+   "offset": 146655,
+   "chars": 862,
+   "why": "两点影响稿件。一是斯诺明说议会报表没有分区的供水户数，这直接支持A1/A2。二是部分地区的调查由Whiting医生完成，并非全部出自斯诺之手，与limits.0的说法有关。"
+  },
+  {
+   "id": "W-E14",
+   "source_id": "B-SNOW",
+   "offset": 149511,
+   "chars": 724,
+   "why": "疫情头四周的结果是每万户71对5，相差十四倍。表九的户数基数来自1853年的议会报表。"
+  },
+  {
+   "id": "W-E15",
+   "source_id": "B-SNOW",
+   "offset": 153364,
+   "chars": 806,
+   "why": "斯诺自己说明，随着疫情推进两组差距缩小，并解释了原因。这是理解‘八到九倍’只是中途结果所必需的限定。"
+  },
+  {
+   "id": "W-E16",
+   "source_id": "B-SNOW",
+   "offset": 159322,
+   "chars": 1101,
+   "why": "交代了法尔建议的登记员填报确实执行了，也说明了它的局限（有未查明的个案），以及它与斯诺结果吻合。"
+  },
+  {
+   "id": "W-E17",
+   "source_id": "B-SNOW",
+   "offset": 161318,
+   "chars": 1859,
+   "why": "这是事件的结局：第二个七周约五倍，全程每万人153对26。兰贝斯供水户并非低于伦敦所有地区。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "1ef45b7faca1ea7b3348a5688d13f6062d3d47479730934fa13b20081f4ef364",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.limits.0.zh: contradicted — 本篇的证据里没有当时卫生部门或第三方的独立核查……但本篇读到的统计和论证都经斯诺之手整理。",
+  "sections.limits.0.en: contradicted — the evidence used here contains no independent check by a health authority or an",
+  "uncertainty_note.zh: contradicted — 本篇证据中没有当时卫生部门或他人的独立核查",
+  "uncertainty_note.en: contradicted — the evidence here contains no independent check by a health authority or anyone ",
+  "sections.story.6: 稿件把头七周“八到九倍”写成调查的结论。原文随后说明差距在疫情后期缩小：第二个七周约五倍，头四周则是十四倍。中途数字被当成了结局。",
+  "sections.limits.0: 稿件称没有独立核查、统计全经斯诺之手。原文显示：登记员填报已执行并由登记总署公布，结果与斯诺一致；部分地区由Whiting医生调查。",
+  "evidence must be expanded first: 5 addition(s) ['W-E13', 'W-E14', 'W-E15', 'W-E16', 'W-E17']"
+ ]
+}

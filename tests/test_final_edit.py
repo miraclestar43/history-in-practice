@@ -344,6 +344,14 @@ class FinalEditor(unittest.TestCase):
         self.assertIn("no source-context review for this content", final_edit.send_problems(self.db, arch))
         self.assertIn("no source-context review for this content", final_edit.send_problems(self.db, o))
 
+    def test_editor_prompts_forbid_inventing_what_the_full_source_lacks(self):
+        # 2026-10-31: most context-review blockers were "原文未载/书中未写年份/no account survives" written by the final
+        # editor, who sees only the evidence pack. Audit and verify must flag them; revise must not add them.
+        for name in ("final_audit.md", "final_verify.md"):
+            t = (pipeline.PROMPTS / name).read_text()
+            self.assertIn("来源未载类断言", t); self.assertIn("你看到的是证据包，不是完整来源", t)
+        self.assertIn("证据包没有不等于来源没有", (pipeline.PROMPTS / "final_revise.md").read_text())
+
 
 if __name__ == "__main__":
     unittest.main()
