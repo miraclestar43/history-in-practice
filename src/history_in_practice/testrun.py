@@ -16,13 +16,19 @@
   accepted, is unknown or is sending; each renewal is recorded.
 * Site before send: the live preview's index + edition JSON must match the test object
   (site_export.verify: revision, content_sha256, recomputed hash) before any email starts.
+* Source admission: at prepare, at the start of send and again before each recipient, the source
+  must be admitted *now* (final_edit.current_eligibility: edition state, admitted path, revision and
+  hash, final-editor record re-verified against article/evidence/base, approval naming the record)
+  and still be the article this test was made from. A requeue or any change blocks unsent
+  recipients; accepted/unknown rows stay as recorded. Demotions from `checked` take the same
+  publish lock as `send`, so the check cannot go stale between a recipient's check and its send.
 """
 from __future__ import annotations
 import json, re, time
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
-from . import render, site_export, mailer, state
+from . import render, site_export, mailer, state, final_edit
 
 MAX_WINDOW_H = 12
 TZ = ZoneInfo("America/Los_Angeles")
@@ -80,8 +86,18 @@ def _log(db, test_id, event, **kw):
     db.execute("UPDATE test_run SET history=? WHERE test_id=?", (json.dumps(h, ensure_ascii=False), test_id))
 
 
-def create_or_load(db, test_id: str, src_path: Path, *, site_base: str, window_hours: float, now: float | None = None) -> tuple[dict, dict]:
-    """Return (record, test object). Creates the record once; afterwards it must match."""
+def source_problems(db, edition_id: str, src_sha: str, src_path: Path | None = None) -> list[str]:
+    """Current admission of the test's source, re-verified from the canonical records (see module doc)."""
+    p, o = final_edit.current_eligibility(db, edition_id, src_path)
+    if o is not None and o["content_sha256"] != src_sha:
+        p.append(f"admitted content of {edition_id} is {o['content_sha256'][:12]}, not the {src_sha[:12]} this test was made from")
+    return p
+
+
+def create_or_load(db, test_id: str, src_path: Path, *, site_base: str, window_hours: float, now: float | None = None,
+                   check_admission: bool = True) -> tuple[dict, dict]:
+    """Return (record, test object). Creates the record once; afterwards it must match.
+    check_admission=False only for read-only actions (status, verify-site, renew-window)."""
     if not ID_RE.match(test_id):
         raise TestRunError("test id must look like test-YYYYMMDD-short-name")
     if not 0 < window_hours <= MAX_WINDOW_H:
@@ -89,6 +105,10 @@ def create_or_load(db, test_id: str, src_path: Path, *, site_base: str, window_h
     src = json.loads(Path(src_path).read_text(encoding="utf-8"))
     if src.get("status") == "test":
         raise TestRunError("source is already a test object")
+    if check_admission:
+        sp = source_problems(db, src.get("edition_id", "?"), src.get("content_sha256", ""), src_path)
+        if sp:
+            raise TestRunError("source is not currently admitted: " + "; ".join(sp[:5]))
     now = time.time() if now is None else now
     rec = get(db, test_id)
     if rec:
@@ -158,6 +178,10 @@ def send(db, rec, test: dict, runtime, *, base: str, out: Path, fetch=site_expor
     if not window_open(rec, clock()):
         _log(db, rec["test_id"], "send_refused", why="window closed")
         return {"sent": False, "reason": "test window is closed (renew only if nothing was sent)"}
+    sp = source_problems(db, rec["source_edition"], rec["source_sha256"])
+    if sp:
+        _log(db, rec["test_id"], "send_refused", why="source not currently admitted", problems=sp[:5])
+        return {"sent": False, "reason": "source is not currently admitted: " + "; ".join(sp[:3])}
     ok, problems = verify_site(db, rec, test, fetch=fetch)
     if not ok:
         return {"sent": False, "reason": "site preview does not serve this test object: " + "; ".join(problems[:3])}
@@ -168,7 +192,15 @@ def send(db, rec, test: dict, runtime, *, base: str, out: Path, fetch=site_expor
     render.build([dict(test)], out, base)
     html = (out / "email" / f"{test['edition_id']}.html").read_text(encoding="utf-8")
     text = (out / "email" / f"{test['edition_id']}.txt").read_text(encoding="utf-8")
-    rep = mailer.send_edition(db, test, html, text, runtime, mode="real", manual_test=True, may_start=lambda: window_open(rec, clock()))
+    def may_start():                               # before each recipient: window, then the source's current admission
+        if not window_open(rec, clock()):
+            return False
+        sp = source_problems(db, rec["source_edition"], rec["source_sha256"])
+        if sp:
+            _log(db, rec["test_id"], "recipient_blocked", why="source not currently admitted", problems=sp[:5])
+            return "source not currently admitted: " + "; ".join(sp[:2])
+        return True
+    rep = mailer.send_edition(db, test, html, text, runtime, mode="real", manual_test=True, may_start=may_start)
     done = state.delivery_complete(db, test["edition_id"], test["revision"])
     _log(db, rec["test_id"], "send", all_accepted=done, statuses=[r["status"] for r in rep])
     return {"sent": True, "all_accepted": done, "report": rep, "deliveries": deliveries(db, test["edition_id"], test["revision"])}

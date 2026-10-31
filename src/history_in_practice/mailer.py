@@ -146,7 +146,8 @@ def send_edition(db, obj, html, text, runtime, *, mode="real", smtp_cfg=None, re
     manual_test=True is the explicit one-off real test (`hip test-edition send`): allowed while
     EMAIL_SEND_ENABLED is false, but only with a complete configuration.
     may_start() is checked before each recipient (the send deadline): once it is False no new SMTP
-    exchange starts; recipients already sent keep their recorded result."""
+    exchange starts; recipients already sent keep their recorded result. A str return is a named
+    refusal (status not_started_blocked) rather than the deadline."""
     if mode == "real":
         if not runtime.send_enabled and not manual_test:
             raise SendDisabled("EMAIL_SEND_ENABLED is not true; refusing to send (use `hip test-edition send` for a one-off test)")
@@ -180,7 +181,10 @@ def send_edition(db, obj, html, text, runtime, *, mode="real", smtp_cfg=None, re
         st, attempts = state.delivery_status(db, eid, rev, key)
         if st in ("accepted", "unknown", "sending"):
             report.append({"recipient": label, "status": st, "action": "skipped (already " + st + ")"}); continue
-        if may_start is not None and not may_start():
+        go = True if may_start is None else may_start()
+        if isinstance(go, str):                       # a named refusal (e.g. the TEST source is no longer admitted)
+            report.append({"recipient": label, "status": "not_started_blocked", "action": "not sent: " + go}); continue
+        if not go:
             report.append({"recipient": label, "status": "not_started_deadline", "action": "not sent: send deadline passed"}); continue
         mid = message_id(eid, rev, key, domain)
         state.set_delivery(db, eid, rev, key, label, "sending", message_id=mid, bump=True)

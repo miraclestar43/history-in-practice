@@ -209,9 +209,12 @@ def cmd_test_edition(a):
     rec = testrun.get(d, a.test_id)
     if not rec:
         raise SystemExit(f"no test {a.test_id}; run `hip test-edition prepare` first")
-    rec, test = testrun.create_or_load(d, a.test_id, Path(rec["source_path"]), site_base=rec["site_base"] or "", window_hours=1)
+    rec, test = testrun.create_or_load(d, a.test_id, Path(rec["source_path"]), site_base=rec["site_base"] or "", window_hours=1,
+                                       check_admission=False)   # send re-checks admission itself, under the publish lock
     if a.action == "status":
+        sp = testrun.source_problems(d, rec["source_edition"], rec["source_sha256"])
         print(json.dumps({k: v for k, v in rec.items() if k != "source_path"} | {"window_open": testrun.window_open(rec),
+                          "source_admitted_now": not sp, "source_problems": sp,
                           "deliveries": testrun.deliveries(d, a.test_id, test["revision"])}, ensure_ascii=False, indent=1)); return 0
     if a.action == "verify-site":
         ok, problems = testrun.verify_site(d, rec, test)
@@ -420,8 +423,7 @@ def cmd_rereview(a):
         print(json.dumps({"edition": a.edition, "error": f"status {cur['status'] if cur else 'unknown'}"})); return 1
     with publish.lock("prepare"):
         if cur["status"] == "checked":
-            state.transition(d, a.edition, "pending_review", note="requeued for editor re-review", reason="requeued for editor re-review")
-            if cur.get("episode_id"): registry.set_status(d, cur["episode_id"], "prepared")
+            _demote(d, a.edition, cur, "requeued for editor re-review")
         r = _edit_one(d, a.edition, max_rounds=a.rounds, article=Path(a.article) if a.article else None)
     print(json.dumps(r, ensure_ascii=False, indent=1)); return 0 if r.get("outcome") == "admitted" else 2
 
@@ -583,13 +585,20 @@ def cmd_approve_sample(a):
     print(json.dumps({"approved": True, "edition": a.edition}, ensure_ascii=False)); return 0
 
 
+def _demote(d, eid, cur, reason):
+    """checked -> pending_review under the publish lock, so a TEST send (which re-checks its source's admission before each
+    recipient under that lock) can never act on a check made just before a requeue."""
+    with publish.lock("publish"):
+        state.transition(d, eid, "pending_review", note=reason, reason=reason)
+        if cur.get("episode_id"): registry.set_status(d, cur["episode_id"], "prepared")
+
+
 def cmd_requeue(a):
     """Send a `checked` (not yet scheduled) edition back to the pending queue, with a reason."""
     d = db(); cur = state.get(d, a.edition)
     if not cur or cur["status"] != "checked":
         print(json.dumps({"requeued": False, "reason": f"status is {cur['status'] if cur else 'unknown'}"})); return 1
-    state.transition(d, a.edition, "pending_review", note=a.reason, reason=a.reason)
-    if cur.get("episode_id"): registry.set_status(d, cur["episode_id"], "prepared")
+    _demote(d, a.edition, cur, a.reason)
     print(json.dumps({"requeued": True, "edition": a.edition}, ensure_ascii=False)); return 0
 
 

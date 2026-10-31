@@ -492,6 +492,38 @@ def verify_final_record(o: dict, ev: dict, rec: dict, base: dict | None) -> list
     return p
 
 
+ADMITTED = ("checked", "scheduled", "archived", "site_committed", "site_live", "email_pending", "complete")
+
+
+def current_eligibility(db, edition_id: str, article_path: Path | None = None) -> tuple[list[str], dict | None]:
+    """Is this edition editorially admitted *now*? Re-verifies from the canonical records, never from a status field in
+    the JSON handed in: edition state is admitted; the file is the edition's admitted path with the state's revision and
+    content hash; the final-editor record next to it verifies against that article, its evidence and base article
+    (verify_final_record, as at admission); and the state's approval names that record. Returns (problems, article)."""
+    cur = state.get(db, edition_id)
+    if not cur:
+        return [f"{edition_id} is not a registered edition"], None
+    if cur["status"] not in ADMITTED:
+        return [f"{edition_id} is {cur['status']}, not admitted" + (f" ({cur['reason'][:120]})" if cur.get("reason") else "")], None
+    if not cur.get("path") or not Path(cur["path"]).exists():
+        return [f"{edition_id}: admitted article file missing"], None
+    path = Path(cur["path"]).resolve()
+    if article_path is not None and Path(article_path).resolve() != path:
+        return [f"{article_path} is not the admitted article of {edition_id} ({path})"], None
+    o = json.loads(path.read_text(encoding="utf-8")); render.finalize(o); p = []
+    if o.get("edition_id") != edition_id or o.get("revision") != cur["revision"] or o["content_sha256"] != cur["content_sha256"]:
+        p.append("article file differs from the admitted edition (id, revision or content hash)")
+    d = path.parent; files = {n: d / f"{n}.json" for n in ("final_editor_record", "evidence", "base_article")}
+    if not files["final_editor_record"].exists() or not files["evidence"].exists():
+        return p + ["no final-editor record and evidence next to the admitted article"], o
+    rec = json.loads(files["final_editor_record"].read_text(encoding="utf-8")); ev = json.loads(files["evidence"].read_text(encoding="utf-8"))
+    base = json.loads(files["base_article"].read_text(encoding="utf-8")) if files["base_article"].exists() else None
+    p += verify_final_record(json.loads(json.dumps(o)), ev, rec, base)
+    if not str(cur.get("approval") or "").endswith(f"record {editor.sha(rec)[:12]}"):
+        p.append("the admission does not name this final-editor record")
+    return p, o
+
+
 def admit(db, article_path: Path, evidence_path: Path, rec: dict, exception=None) -> dict:
     o = json.loads(Path(article_path).read_text(encoding="utf-8")); ev = json.loads(Path(evidence_path).read_text(encoding="utf-8"))
     bp = Path(article_path).parent / "base_article.json"
