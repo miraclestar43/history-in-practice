@@ -33,6 +33,11 @@ class PublishFlow(unittest.TestCase):
         subprocess.run(["git", "-C", str(self.site), "push", "-q", "-u", "origin", "main"], check=True)
         self.add("sample-A", "A", "china_ancient")
         self.slept = []
+        from history_in_practice import final_edit           # these flow fixtures have no final-editor records: eligibility is a switch
+        self.ineligible = set(); old = (final_edit.current_eligibility, final_edit.send_problems)
+        final_edit.current_eligibility = lambda db, eid, *a, **k: (["fixture: not eligible"] if eid in self.ineligible else [], None)
+        final_edit.send_problems = lambda db, o, *a, **k: ["fixture: not eligible"] if o["edition_id"] in self.ineligible else []
+        self.addCleanup(lambda: (setattr(final_edit, "current_eligibility", old[0]), setattr(final_edit, "send_problems", old[1])))
 
     def add(self, eid, s, cat, approval="editor-record", origin="pipeline"):
         art = self.t / "drafts" / f"{eid}.json"; art.parent.mkdir(parents=True, exist_ok=True)
@@ -96,6 +101,30 @@ class PublishFlow(unittest.TestCase):
             r4 = self.run_day(self.mail_rt(srv), "2026-11-02", "08:30")
             self.assertEqual(r4["outcome"], "complete"); self.assertEqual(len(srv.messages), n + 1)       # only the failed one resent
             self.assertEqual(self.state.get(self.db, "sample-A")["status"], "complete")
+        finally:
+            srv.shutdown(); srv.server_close()
+
+    def test_ineligible_edition_is_never_scheduled_and_eligibility_is_rechecked_before_each_recipient(self):
+        self.ineligible.add("sample-A")                                        # e.g. its context review is no longer clean
+        r = self.run_day(self.rt(), "2026-11-02")
+        self.assertEqual(r["outcome"], "skipped"); self.assertEqual(self.state.get(self.db, "sample-A")["status"], "checked")
+        self.ineligible.clear()
+        self.run_day(self.rt(), "2026-11-02")                                     # archived + site, waiting for email
+        import smtp_fixture
+        srv = smtp_fixture.start(tls=True)
+        try:
+            self.ineligible.add("sample-A")
+            r = self.run_day(self.mail_rt(srv), "2026-11-02")
+            self.assertEqual(r["outcome"], "waiting"); self.assertIn("not currently eligible", r["reason"]); self.assertEqual(srv.messages, [])
+            from history_in_practice import final_edit
+            calls = {"n": 0}; self.ineligible.clear()
+            def flips(db, o, *a, **k):                                           # eligible for the first recipient, then requeued
+                calls["n"] += 1
+                return [] if calls["n"] <= 2 else ["requeued: context review"]
+            final_edit.send_problems = flips
+            r = self.run_day(self.mail_rt(srv), "2026-11-02")
+            self.assertEqual([d["status"] for d in r["deliveries"]], ["accepted", "not_started_blocked"])
+            self.assertEqual(len(srv.messages), 1)
         finally:
             srv.shutdown(); srv.server_close()
 

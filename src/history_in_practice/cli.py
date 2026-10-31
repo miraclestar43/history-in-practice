@@ -172,8 +172,18 @@ def _send(a, retry=False):
             import ssl; ctx = ssl.create_default_context(); ctx.check_hostname = False; ctx.verify_mode = ssl.CERT_NONE; cfg["ssl_context"] = ctx
         rep = mailer.send_edition(d, o, html, text, None, mode="local-test", smtp_cfg=cfg, recipients=rcpts)
     elif a.real:
+        from . import final_edit
+        if not config.load_runtime().send_enabled:
+            print(json.dumps({"sent": False, "reason": "EMAIL_SEND_ENABLED is not true; refusing to send (use `hip test-edition send` for a one-off test)"},
+                             ensure_ascii=False)); return 2
+        sp = final_edit.send_problems(d, o)
+        if sp:
+            print(json.dumps({"sent": False, "reason": "not currently eligible to send: " + "; ".join(sp[:4])}, ensure_ascii=False)); return 2
+        def may_start():
+            sp = final_edit.send_problems(d, o)
+            return True if not sp else "not currently eligible: " + "; ".join(sp[:2])
         try:
-            rep = mailer.send_edition(d, o, html, text, config.load_runtime(), mode="real")
+            rep = mailer.send_edition(d, o, html, text, config.load_runtime(), mode="real", may_start=may_start)
         except (mailer.SendDisabled, mailer.ConfigIncomplete) as e:
             print(json.dumps({"sent": False, "reason": str(e)}, ensure_ascii=False)); return 2
     else:

@@ -603,10 +603,18 @@ def current_eligibility(db, edition_id: str, article_path: Path | None = None, c
     path = Path(cur["path"]).resolve()
     if article_path is not None and Path(article_path).resolve() != path:
         return [f"{article_path} is not the admitted article of {edition_id} ({path})"], None
-    o = json.loads(path.read_text(encoding="utf-8")); render.finalize(o); p = []
+    if cur["status"] != "checked":                       # scheduled or later: the path is the archived copy; re-verify its source
+        return [], None
+    return admitted_file_problems(path, cur, cache)
+
+
+def admitted_file_problems(path: Path, cur: dict, cache: Path | None = None) -> tuple[list[str], dict | None]:
+    """The admission evidence of one admitted article file, re-verified (see current_eligibility)."""
+    edition_id = cur["edition_id"]
+    o = json.loads(Path(path).read_text(encoding="utf-8")); render.finalize(o); p = []
     if o.get("edition_id") != edition_id or o.get("revision") != cur["revision"] or o["content_sha256"] != cur["content_sha256"]:
         p.append("article file differs from the admitted edition (id, revision or content hash)")
-    d = path.parent; files = {n: d / f"{n}.json" for n in ("final_editor_record", "evidence", "base_article")}
+    d = Path(path).parent; files = {n: d / f"{n}.json" for n in ("final_editor_record", "evidence", "base_article")}
     if (cur.get("origin") or "pipeline") == "sample" and str(cur.get("approval") or "").startswith("sample-approved"):
         evp = d / "evidence.json" if (d / "evidence.json").exists() else REPO / "samples" / f"evidence_{d.name}.json"
         if not evp.exists():
@@ -627,6 +635,36 @@ def current_eligibility(db, edition_id: str, article_path: Path | None = None, c
 def _context_of(article_path: Path) -> dict | None:
     p = Path(article_path).parent / "context_review.json"
     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
+
+
+SEND_BODY_KEYS = ("title", "dek", "sections", "reflection", "uncertainty_note", "sources", "further_reading", "category")
+
+
+def send_problems(db, o: dict, cache: Path | None = None) -> list[str]:
+    """May this exact object be emailed for real? (`hip send/retry-send --real`, scheduled publication.) A checked edition
+    must be eligible now (current_eligibility) and be that admitted content; an archived/published copy must carry
+    admitted_from (written by publish.archive) whose source file still verifies (record + clean context review, with the
+    approval recorded at admission) and whose body equals this object's. TEST objects go only through test-edition."""
+    if o.get("status") == "test":
+        return ["TEST objects are sent only by `hip test-edition send` (its own admission and window checks)"]
+    cur = state.get(db, o.get("edition_id"))
+    if not cur:
+        return [f"{o.get('edition_id')} is not a registered edition"]
+    af = o.get("admitted_from")
+    if not af:
+        p, src = current_eligibility(db, o["edition_id"], cache=cache)
+        if src is not None and render.finalize(json.loads(json.dumps(o)))["content_sha256"] != src["content_sha256"]:
+            p.append("this object is not the admitted content of the edition")
+        return p or ([] if src is not None else [f"{o['edition_id']} has no verifiable admitted content (status {cur['status']})"])
+    if cur["status"] not in ADMITTED:
+        return [f"{o['edition_id']} is {cur['status']}, not admitted"]
+    src_cur = dict(cur, path=af["path"], content_sha256=af["content_sha256"], revision=af.get("revision", cur["revision"]), approval=af.get("approval"))
+    if not Path(af["path"]).exists():
+        return ["admitted source file missing: " + af["path"]]
+    p, src = admitted_file_problems(Path(af["path"]), src_cur, cache)
+    if src is not None:
+        p += [f"{k} differs from the admitted article" for k in SEND_BODY_KEYS if src.get(k) != o.get(k)]
+    return p
 
 
 def admit(db, article_path: Path, evidence_path: Path, rec: dict, exception=None, cache: Path | None = None) -> dict:

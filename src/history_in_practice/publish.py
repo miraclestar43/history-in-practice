@@ -94,8 +94,12 @@ def schedule(db, date: str) -> dict | None:
     if cur:
         return state.get(db, cur[0])
     cat = next_category(db)
-    row = db.execute("SELECT edition_id FROM edition WHERE status='checked' AND category=? AND " + SCHEDULABLE_SQL + " ORDER BY updated_at LIMIT 1",
-                     (cat,)).fetchone()
+    from .final_edit import current_eligibility
+    row = None
+    for (eid,) in db.execute("SELECT edition_id FROM edition WHERE status='checked' AND category=? AND " + SCHEDULABLE_SQL + " ORDER BY updated_at",
+                             (cat,)).fetchall():
+        if not current_eligibility(db, eid)[0]:          # admitted *now*: final-editor record + clean context review
+            row = (eid,); break
     if not row:
         return None
     num = db.execute("SELECT count(*) FROM edition WHERE status NOT IN ('checked','prepared','pending_review','rejected','overdue')").fetchone()[0] + 1
@@ -109,7 +113,10 @@ def content_dir() -> Path:
 
 def archive(db, ed: dict, content_root: Path | None = None) -> Path:
     o = json.loads(Path(ed["path"]).read_text(encoding="utf-8"))
-    o.update(edition_date=ed["edition_date"], status="published")
+    src = render.finalize(json.loads(json.dumps(o)))
+    o.update(edition_date=ed["edition_date"], status="published",
+             admitted_from={"path": str(Path(ed["path"]).resolve()), "content_sha256": src["content_sha256"], "revision": ed["revision"],
+                            "approval": ed.get("approval")})           # send_problems re-verifies this source before every recipient
     render.finalize(o)
     y, m, d = ed["edition_date"].split("-")
     root = Path(content_root or content_dir()) / y / m; root.mkdir(parents=True, exist_ok=True)
@@ -231,8 +238,17 @@ def publish_today(db, runtime, *, date: str | None = None, fetch=site_export.htt
             return late(f"past the {date} send deadline before email started; nothing sent")
         out = data_dir() / "outbox"; render.build([dict(obj)], out, runtime.get("SITE_BASE_URL", "https://starhub.vip"))
         html = (out / "email" / f"{obj['edition_id']}.html").read_text(encoding="utf-8"); text = (out / "email" / f"{obj['edition_id']}.txt").read_text(encoding="utf-8")
-        rep["deliveries"] = mailer.send_edition(db, obj, html, text, runtime, mode="real",
-                                                may_start=lambda: not past_deadline(date, clock()))
+        from .final_edit import send_problems
+        sp = send_problems(db, obj)
+        if sp:
+            rep.update(outcome="waiting", reason="edition not currently eligible to send: " + "; ".join(sp[:3])); return rep
+
+        def may_start():                               # before each recipient: deadline, then current eligibility
+            if past_deadline(date, clock()):
+                return False
+            sp = send_problems(db, obj)
+            return True if not sp else "not currently eligible: " + "; ".join(sp[:2])
+        rep["deliveries"] = mailer.send_edition(db, obj, html, text, runtime, mode="real", may_start=may_start)
         done = state.delivery_complete(db, obj["edition_id"], obj["revision"])
         rep["expected_recipients"] = state.expected_count(db, obj["edition_id"], obj["revision"])
         if done:

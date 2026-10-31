@@ -9,7 +9,7 @@ sys.path.insert(0, str(Path(__file__).parent)); sys.path.insert(0, str(Path(__fi
 import smtp_fixture
 from history_in_practice import testrun, state, render, editor, context
 ROOT = Path(__file__).resolve().parents[1]
-REAL = ROOT / "samples/auto/cand-20261030-snow-water-companies/final"
+REAL = ROOT / "tests/fixtures/admitted_final"          # pinned copy of the Snow final as first admitted (the live sample is being repaired)
 TID = "test-20261030-snow"
 
 

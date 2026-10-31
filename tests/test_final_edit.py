@@ -329,6 +329,21 @@ class FinalEditor(unittest.TestCase):
         self.assertIn("no source-context review for this content", inv["not_currently_eligible"][CID])
         self.assertEqual(pipeline.inventory(self.db)["schedulable_by_category"][cat], 1)     # the unverified count would inflate
 
+    def test_send_gate_for_admitted_and_archived_copies(self):
+        rec, a = self.run_admit(self.script()); self.assertTrue(a["admitted"], a)
+        out = final_edit.OUT_ROOT / CID / "final"; o = json.loads((out / "article.json").read_text()); render.finalize(o)
+        self.assertEqual(final_edit.send_problems(self.db, o), [])
+        test = dict(o, status="test"); self.assertIn("test-edition", final_edit.send_problems(self.db, test)[0])
+        cur = state.get(self.db, CID)
+        arch = dict(o, status="published", edition_date="2026-11-02",
+                    admitted_from={"path": str((out / "article.json").resolve()), "content_sha256": o["content_sha256"], "revision": 1, "approval": cur["approval"]})
+        self.assertEqual(final_edit.send_problems(self.db, arch), [])
+        bad = json.loads(json.dumps(arch)); bad["sections"][0]["paras"][0]["zh"] += "改。"
+        self.assertIn("sections differs from the admitted article", final_edit.send_problems(self.db, bad))
+        (out / "context_review.json").unlink()                                   # stale/missing context review
+        self.assertIn("no source-context review for this content", final_edit.send_problems(self.db, arch))
+        self.assertIn("no source-context review for this content", final_edit.send_problems(self.db, o))
+
 
 if __name__ == "__main__":
     unittest.main()
