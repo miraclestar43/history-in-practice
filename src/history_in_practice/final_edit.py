@@ -508,6 +508,79 @@ def run(cid: str, db, *, call=None, max_rounds: int = MAX_ROUNDS, operator_note:
     return _finish(rec, w, o, cid, caller, None, issues)
 
 
+LOCAL_FIX_MAX_FIELDS = 4          # e.g. one sentence's field in zh + en, plus a neighbouring field for a transition
+
+
+def local_fix(cid: str, db, changes: list, issue_ids: list[str], reason: str, *, call=None) -> dict:
+    """A recorded *local* fix of open final-editor issues (owner rule 2026-10-31): small, evidence-backed wording or
+    attribution corrections, not a whole-article retry. Allowed only for open fix issues of the latest record that carry
+    a verifiable evidence quote, and only on the fields those issues name (zh/en text, <= LOCAL_FIX_MAX_FIELDS). The
+    change is appended to the same record's edit log (so admission still replays base -> final), then a fresh full
+    verify pass runs on the exact new text; anything it raises stays open. Runs in localfix-* (not counted as an
+    attempt; attempt counts are untouched). Context review and admission follow as usual."""
+    call = call or claude_cli.call
+    if call is claude_cli.call:
+        pre = claude_cli.preflight()
+        if pre:
+            return {"candidate_id": cid, "outcome": "not_run", "reason": "; ".join(pre)}
+    out = OUT_ROOT / cid / "final"; rec = prior_final(cid)
+    if not rec or rec.get("failure") or rec.get("outcome") != "pending_review":
+        return {"candidate_id": cid, "outcome": "refused", "reason": "local fix needs a completed final-editor record with open issues"}
+    o = json.loads((out / "article.json").read_text(encoding="utf-8")); render.finalize(o)
+    ev = json.loads((out / "evidence.json").read_text(encoding="utf-8"))
+    if rec.get("final_content_sha256") != o["content_sha256"] or rec.get("evidence_sha256") != editor.sha(ev):
+        return {"candidate_id": cid, "outcome": "refused", "reason": "article/evidence differ from the latest record"}
+    issues = {i["id"]: i for i in rec["issues"]}; problems = []
+    for k in issue_ids:
+        i = issues.get(k)
+        if not i or k not in (rec.get("open_issues") or []):
+            problems.append(f"{k}: not an open issue of the latest record")
+        elif not (i.get("evidence") and all(quote_ok(ev, c) for c in i["evidence"])):
+            problems.append(f"{k}: no verifiable evidence quote (not a clear-basis local fix)")
+    allowed = {issues[k].get("path") for k in issue_ids if k in issues}
+    fields = {c.get("path") for c in changes}
+    if len(fields) > LOCAL_FIX_MAX_FIELDS:
+        problems.append(f"{len(fields)} fields changed (> {LOCAL_FIX_MAX_FIELDS}): use an attempt, not a local fix")
+    for c in changes:
+        base_path, _, lang = str(c.get("path")).rpartition(".")
+        if lang not in ("zh", "en") or base_path not in allowed:
+            problems.append(f"{c.get('path')}: outside the fields the issues name {sorted(allowed)}")
+    if problems:
+        return {"candidate_id": cid, "outcome": "refused", "reason": "; ".join(problems)}
+    root = data_dir() / "final_edit" / cid; w = root / f"localfix-{rec['attempt']}-{len(list(root.glob('localfix-*'))) + 1}"
+    w.mkdir(parents=True, exist_ok=True)
+    applied, failed = apply_changes(o, ev, [dict(c, issues=list(issue_ids)) for c in changes])
+    if failed or not applied:
+        return {"candidate_id": cid, "outcome": "refused", "reason": f"changes did not apply: {failed or 'no change'}"}
+    render.finalize(o); rec = copy.deepcopy(rec); rec["edits"] += applied
+    for k in issue_ids:
+        issues[k].update(disposition="fixed", decided_in=w.name, rationale=f"local fix: {reason}")
+    paths = [p for p, _, _ in editor.fields(o)]; caller = editor.Caller(w, cid, call); rnd = len(rec["rounds"]) + 1
+    findings, _ = checks.check(o, ev)
+    r = {"round": rnd, "local_fix": {"by": "operator (owner rule 2026-10-31: small evidence-backed fixes)", "reason": reason,
+                                     "issues": list(issue_ids), "at": time.time(), "dir": w.name},
+         "issues_in": list(issue_ids), "changes_applied": len(applied), "changes_failed": [], "still_open": [], "checker_after": findings,
+         "content_sha256_after": o["content_sha256"]}
+    ver = caller(f"verify_r{rnd}", f"{(PROMPTS / 'final_verify.md').read_text()}\n\n{_view(o, ev)}\n\n【必须覆盖的字段路径】\n{json.dumps(paths, ensure_ascii=False)}",
+                 TIMEOUTS["verify"], "\n\n[Reply with one valid JSON object only, matching the schema.]", validate=verify_schema(paths))
+    rec.setdefault("local_fixes", []).append(r["local_fix"] | {"edits": applied})
+    rec["calls_before_local_fix"] = (rec.get("calls_before_local_fix") or []) + (rec.get("calls") or [])
+    (w / "base_article.json").write_text((out / "base_article.json").read_text(encoding="utf-8"), encoding="utf-8")
+    (w / "evidence.json").write_text(json.dumps(ev, ensure_ascii=False, indent=1), encoding="utf-8")
+    if ver is None:
+        rec["rounds"].append(r); return _finish(rec, w, o, cid, caller, f"local-fix verify failed: " + _why(caller), issues)
+    ver["_content_sha256"] = o["content_sha256"]; r["verify"] = ver
+    for i in ver["issues"]:
+        if i["severity"] in ("fix", "block"):
+            vid = f"V{rnd}-{i['id']}"; issues[vid] = dict(i, id=vid, origin=f"final-editor verify after local fix (round {rnd})")
+    for lvl, msg in findings:
+        if lvl in ("BLOCK", "FIX"):
+            k = f"C{rnd}-{len(issues) + 1}"; issues[k] = {"id": k, "path": "", "category": "unsupported", "severity": lvl.lower(),
+                                                          "problem": f"checker: {msg}", "origin": "checker"}
+    rec["rounds"].append(r)
+    return _finish(rec, w, o, cid, caller, None, issues)
+
+
 def _why(caller) -> str:
     m = caller.metrics[-1] if caller.metrics else {}
     return str(m.get("provider_refusal") or (m.get("meta") or {}).get("error") or m.get("schema_problems") or m.get("killed") or "no usable JSON")[:300]

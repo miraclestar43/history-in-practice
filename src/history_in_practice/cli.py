@@ -148,6 +148,18 @@ def cmd_export_site(a):
     print(json.dumps({"written": written}, ensure_ascii=False, indent=1)); return 0
 
 
+def cmd_local_fix(a):
+    """Owner rule 2026-10-31: a small, evidence-backed wording/attribution fix of named open final-editor issues, recorded
+    in the same record and re-verified (full verify pass, then context review and admission as usual). Not an attempt:
+    max_attempts still limits whole-article retries, and no further attempt is started here."""
+    from . import final_edit
+    d = db(); r = final_edit.local_fix(a.edition, d, _load(a.changes), a.issue, a.reason)
+    res = {"local_fix": {k: r.get(k) for k in ("outcome", "reason", "open_issues", "final_content_sha256", "failure")}}
+    if r.get("outcome") == "admissible":
+        res["after"] = _final_one(d, a.edition)          # context review of the new text, then admission; attempts stay capped
+    print(json.dumps(res, ensure_ascii=False, indent=1)); return 0 if (res.get("after") or {}).get("outcome") == "admitted" else 2
+
+
 def cmd_site_preview(a):
     """TEST preview only: list admitted editions as reader samples (样稿) and attach dated notices (e.g. Snow 待修订) to
     items already listed. Each sample is re-verified as admitted *now* (final-editor record + clean context review bound to
@@ -809,6 +821,9 @@ def main(argv=None):
     p = sp.add_parser("render"); p.add_argument("articles", nargs="+"); p.add_argument("--out", required=True)
     p.add_argument("--base-url", default="https://starhub.vip"); p.set_defaults(f=cmd_render)
     p = sp.add_parser("export-site"); p.add_argument("articles", nargs="+"); p.add_argument("--site-root", required=True); p.set_defaults(f=cmd_export_site)
+    p = sp.add_parser("local-fix", help="recorded small evidence-backed fix of named open final-editor issues (not an attempt)")
+    p.add_argument("edition"); p.add_argument("--issue", action="append", required=True); p.add_argument("--changes", required=True, metavar="CHANGES.json")
+    p.add_argument("--reason", required=True); p.set_defaults(f=cmd_local_fix)
     p = sp.add_parser("site-preview", help="TEST preview: add admitted reader samples and dated notices (never emails)")
     p.add_argument("--site-root", required=True); p.add_argument("--sample", action="append", default=[], metavar="EDITION_ID")
     p.add_argument("--notice", action="append", default=[], metavar="EDITION_ID=NOTICE.json"); p.add_argument("--date", help="preview date (LA)")

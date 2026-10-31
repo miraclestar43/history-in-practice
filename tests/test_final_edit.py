@@ -353,6 +353,34 @@ class FinalEditor(unittest.TestCase):
         self.assertIn("no source-context review for this content", final_edit.send_problems(self.db, arch))
         self.assertIn("no source-context review for this content", final_edit.send_problems(self.db, o))
 
+    def test_local_fix_is_scoped_recorded_reverified_and_not_an_attempt(self):
+        out = final_edit.OUT_ROOT / CID / "final"
+        ev0 = json.loads(json.dumps(self.ev)); e = ev0["excerpts"][0]
+        issue = {"id": "1", "path": "sections.story.0", "category": "attribution", "severity": "fix", "problem": "把朋友的理由写成了他的判断",
+                 "evidence": [{"id": e["id"], "quote": e["quote"][:8]}], "proposed": "改归属"}
+        story0 = self.o["sections"][2]["paras"][0]; n = {"k": 0}
+        def fix_all(prompt):
+            todo = json.loads(prompt.rsplit("【问题清单】", 1)[1].split("\n\n[", 1)[0]); n["k"] += 1
+            return {"changes": [{"path": "sections.story.0.zh", "text": story0["zh"] + "删" * n["k"], "issues": [x["id"] for x in todo]}],
+                    "dispositions": [{"issue": x["id"], "action": "fixed", "rationale": "删"} for x in todo]}
+        rec = final_edit.run(CID, self.db, call=self.script(revise=fix_all, verify_issues=lambda k: [issue]))
+        self.assertEqual(rec["outcome"], "pending_review"); open_id = rec["open_issues"][-1]; n0 = final_edit.attempts_used(CID)
+        story = json.loads((out / "article.json").read_text())["sections"][2]["paras"][0]
+        clean = self.script(verify_issues=lambda k: [])
+        r = final_edit.local_fix(CID, self.db, [{"path": "sections.hook.0.zh", "text": "改"}], [open_id], "t", call=clean)
+        self.assertEqual(r["outcome"], "refused"); self.assertIn("outside the fields", r["reason"])          # only the named field          # only the named field
+        r = final_edit.local_fix(CID, self.db, [{"path": "sections.story.0.zh", "text": story["zh"] + "（归属已改）"},
+                                                {"path": "sections.story.0.en", "text": story["en"] + " (attribution fixed)"}], [open_id], "t", call=clean)
+        self.assertEqual(r["outcome"], "admissible", r.get("open_issues")); self.assertEqual(final_edit.attempts_used(CID), n0)
+        self.assertEqual(r["local_fixes"][0]["issues"], [open_id]); self.assertEqual(len(r["local_fixes"][0]["edits"]), 2)
+        o = json.loads((out / "article.json").read_text())
+        self.assertEqual(final_edit.verify_final_record(o, json.loads((out / "evidence.json").read_text()), r,
+                                                        json.loads((out / "base_article.json").read_text())), [])   # replays base -> final
+        self.assertTrue(final_edit.awaiting_context(CID))                         # context review still due on the new text
+        final_edit.run_context(CID, call=clean)
+        a = final_edit.admit(self.db, out / "article.json", out / "evidence.json", r); self.assertTrue(a["admitted"], a)
+        self.assertEqual(final_edit.local_fix(CID, self.db, [], [open_id], "again", call=clean)["outcome"], "refused")
+
     def test_editor_prompts_forbid_inventing_what_the_full_source_lacks(self):
         # 2026-10-31: most context-review blockers were "原文未载/书中未写年份/no account survives" written by the final
         # editor, who sees only the evidence pack. Audit and verify must flag them; revise must not add them.
