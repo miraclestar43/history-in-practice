@@ -3,8 +3,8 @@
  "schema": "context-review/v1",
  "mode": "article",
  "edition_id": "cand-book-20261031-hushi-baihua",
- "content_sha256": "ee6e7e10c82bad6ae55d9167fc6cca9b56aa453daf342b801831afb52879ab5d",
- "evidence_in_sha256": "cd30b7995084fe913bd91532a83997fec606091d45a4cd255cd94fa85d69941a",
+ "content_sha256": "b4e3a16327846f9d01d889c21f0863e1c92c30a36d4028bdaf5b9d2bb9ac2766",
+ "evidence_in_sha256": "8905ceca763fd9736b8895e4ab63e054811d1401232135d97b078378066566b5",
  "reviewer": {
   "name": "Pi Claude",
   "role": "named final editor (source-context review)",
@@ -35,15 +35,8 @@
    "extra_cap": 0.3
   }
  },
- "started_at": 1793479238.3884988,
- "flagged": [
-  {
-   "id": "A1",
-   "path": "sections.story.9",
-   "lang": "zh",
-   "sentence": "另一位是研究古典音韵学的教授，也是古文大家，他没有写文章，却写去小批评大捧场的长信，也在《新青年》发表，声势为之一振。"
-  }
- ],
+ "started_at": 1793489067.7880285,
+ "flagged": [],
  "search": null,
  "units": {
   "S-BK-HUSHI": {
@@ -69,151 +62,275 @@
   {
    "step": "context_r1",
    "attempt": 1,
-   "wall_s": 37.0,
+   "wall_s": 49.8,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
    "killed": null,
    "provider_refusal": null,
-   "output_tokens": 3606
+   "output_tokens": 5326
   }
  ],
- "finished_at": 1793479275.726334,
- "elapsed_min": 0.6,
+ "finished_at": 1793489118.0616434,
+ "elapsed_min": 0.8,
  "review": {
   "episode": [
    {
     "source_id": "S-BK-HUSHI",
-    "outcome": "Hu's attempts at vernacular poetry were published in New Youth. The broader movement won what he called a partial victory in schools, through the 1920 Ministry of Education order. Hu nonetheless said he remained dissatisfied, because after forty years the vernacular had still not become a complete instrument of education and literature.",
-    "quote": "因此在我们的斗争中，至少获得了部分的胜利。其中重要的部分就是以白话文为教育的工具。……但是上述这些成就，对我这位原始运动策划人来说，我还是感觉到不满意。",
-    "in_evidence": true
-   },
-   {
-    "source_id": "S-BK-HUSHI",
-    "outcome": "The poetry debate ended with Hu deciding to stop writing old-style verse and to write only vernacular poems. He named his next collection Experiments (尝试集) before he had written many of the poems.",
-    "quote": "所以在一九一六年七月底八月初，我就决定不再写旧诗词，而专门用活的语言文字来写白话诗了。在我还没有写出几首白话诗之前，我已决定把我下一个诗集定名为《尝试集》了",
+    "outcome": "胡适说，五四以后学生刊物全用白话；1920年教育部通令小学一、二年级教材改用白话。他称之为“部分的胜利”，但仍不满意：四十年来白话文没有成为完全的教育与文学工具。",
+    "quote": "因此在我们的斗争中，至少获得了部分的胜利。其中重要的部分就是以白话文为教育的工具。",
     "in_evidence": true
    }
   ],
-  "additions": [],
-  "claims": [
+  "additions": [
    {
-    "id": "A1",
-    "path": "sections.story.9",
-    "lang": "zh",
-    "sentence": "另一位是研究古典音韵学的教授，也是古文大家，他没有写文章，却写去小批评大捧场的长信，也在《新青年》发表，声势为之一振。",
-    "verdict": "not_a_source_claim",
-    "source_ids": [
-     "S-BK-HUSHI"
-    ],
-    "scope": "Chapter 7 of the reading range, the passage on 钱玄同's response. The sentence narrates what 钱玄同 actually did (he wrote no article). It does not say the source is silent on anything, and the source states this explicitly.",
-    "quote": {
-     "source_id": "S-BK-HUSHI",
-     "quote": "钱玄同教授则没有写什么文章，但是他却向独秀和我写了些小批评大捧场的长信，支持我们的观点。这些信也在《新青年》上发表了。"
-    },
-    "fix": "Keep the sentence. Consider naming 钱玄同 directly and noting that he was a student of 章太炎, which the source also records. Leaving him anonymous makes it harder for readers to follow."
-   },
+    "source_id": "S-BK-HUSHI",
+    "start": "这个诗集的名字也明显地表示出我是受杜威实验主义的影响",
+    "end": "这剩下的一部分，也正是我那时建议要用一段实际试验来加以证明或反证的。",
+    "why": "胡适本人明确说，《尝试集》的命名和白话诗试验来自杜威实验主义，是用实际试验来证明或反证一个假设。analysis.1“为什么是试验”把这一点当作“作者推断”，缺了当事人自己的这层解释。"
+   }
+  ],
+  "claims": [
    {
     "id": "N1",
     "path": "uncertainty_note",
     "lang": "zh",
-    "sentence": "注中所记之事（如1956年胡适在哈佛讲演时格里德的反应）是唐德刚的记述，本文未另行核验。",
+    "sentence": "但本文依据的只是经胡适转引、再经英译与回译的文本，未核对原件。",
     "verdict": "supported",
     "source_ids": [
      "S-BK-HUSHI"
     ],
-    "scope": "This describes our own verification, not what the source records. We consulted only this one book, and Tang's note [5] is the only place this event appears. The sentence must not be rewritten as 'no one at the time verified this'.",
-    "quote": {
-     "source_id": "S-BK-HUSHI",
-     "quote": "一九五六年当他以这一论调在哈佛大学讲演时（笔者至今尚保存一份那时的录音带），那时尚在哈佛读书，后来曾为他作传的格里德（JeromeB.Grieder）博士简直就嗤之以鼻。"
-    },
-    "fix": "Keep it. It is worth adding that Tang says he still holds a recording of that lecture, so readers know the event rests on a witness who kept a tape, not on unsupported hearsay."
-   },
-   {
-    "id": "N2",
-    "path": "sections.limits.0",
-    "lang": "zh",
-    "sentence": "因此这是当事人多年后的自述，不是当时的独立记录；梅光迪、任鸿隽的反应和话语，都经胡适转述，本文不推测他们的内心。",
-    "verdict": "supported",
-    "source_ids": [
-     "S-BK-HUSHI"
-    ],
-    "scope": "The full reading range of chapters 7–8 and Tang's note [1]. The text is Hu's retrospective oral account. Mei's and Ren's words appear only as Hu's paraphrases or quotations; no independent text from either of them is in the reading range.",
+    "scope": "本文实际查阅的文件：仅《胡适口述自传》这一本书（第七、八章及唐德刚注）；未查阅日记、书信原件。这里说的是本文自己没有核对，没有断言他人未核查。",
     "quote": {
      "source_id": "S-BK-HUSHI",
      "quote": "不过这经过胡先生自己手订的英文稿与《逼上梁山》的原文，多少也有点出入，所以笔者还是把它翻译回来了。"
     },
-    "fix": "Keep it, but add a qualification: the retrospective account quotes contemporaneous material such as the 6 July 1916 diary and the 26 July letter, though those quotations still reach us only through Hu (see context_issues)."
+    "fix": "保留。措辞已限定为“本文未核对”，不要扩写成“无人核查”。"
+   },
+   {
+    "id": "N2",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "This article relies only on those texts as Hu quoted them, then translated into English and back again, and has not checked the originals.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "同 N1：仅限本文查阅的这一本书。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "不过这经过胡先生自己手订的英文稿与《逼上梁山》的原文，多少也有点出入，所以笔者还是把它翻译回来了。"
+    },
+    "fix": "保留。"
+   },
+   {
+    "id": "N3",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "这些都是唐德刚的记述，本文未另行核验。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "唐德刚注〔3〕〔5〕〔6〕；本文没有另查格里德或1956年哈佛讲演的录音等材料。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "一九五六年当他以这一论调在哈佛大学讲演时（笔者至今尚保存一份那时的录音带）"
+    },
+    "fix": "保留。这是本文自身核查范围的说明，不是对来源的否定断言。"
+   },
+   {
+    "id": "N4",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "These are Tang's accounts and were not checked separately here.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "同 N3。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "那时尚在哈佛读书，后来曾为他作传的格里德（JeromeB.Grieder）博士简直就嗤之以鼻。"
+    },
+    "fix": "保留。"
+   },
+   {
+    "id": "N5",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "朋友们的话都经他转述",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章正文中梅光迪、任鸿隽的言论，均以胡适回忆和引信的形式出现；限于本书。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "任君的信上则说：“白话自有白话用处（如作小说、演说等），然不能用之于诗！”"
+    },
+    "fix": "保留。可写明“在本书中”。"
+   },
+   {
+    "id": "N6",
+    "path": "sections.story.2",
+    "lang": "zh",
+    "sentence": "这两处日期并不完全吻合，本文照录胡适的说法。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章“九条”日记与凯约嘉湖来信两段。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "就在我记录上述九条的同时，我又收到一封从绮色佳的来信"
+    },
+    "fix": "保留。两处日期都出自胡适本人的叙述，不吻合属实。"
    }
   ],
   "context_issues": [
    {
-    "path": "sections.limits.0",
-    "problem": "Calling the source simply 'many years later, not a contemporaneous record' blurs the fact that Hu quotes and cites his July 1916 diary and letters in the memoir. Readers could wrongly conclude that the nine propositions and the letter wording are entirely later recollection. The text should separate the periods: contemporaneous diary and letters, versus later oral retelling and back-translation.",
+    "path": "uncertainty_note",
+    "problem": "章节归属有误。凯约嘉湖、钟文鳌、梅光迪、《尝试集》、“刍议”、陈独秀响应等经过都在第七章《文学革命的结胎时期》；第八章只含1920年通令、“部分的胜利”和“新诗大有成就”等结局。唐德刚关于节译、回译的说明是第七章注〔1〕，指的是“本章”即第七章。稿件写“第八章”“这一章”“同一章”，混淆了章节，也把回译说明套到了第八章的结局材料上。",
     "quote": {
      "source_id": "S-BK-HUSHI",
-     "quote": "以上九条是记载在我一九一六年七月六日的日记之中，很确切地表达了我对策动中国文学革命的中心思想。"
+     "quote": "原载《传记文学》第三十四卷第一期第七章文学革命的结胎时期"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "uncertainty_note",
+    "problem": "“胡适本人在同一章则说「四十年来的新诗更是大有成就」”一句：这句话出自第八章，与唐德刚“白话诗则未必”的注〔6〕（第七章）不在同一章。应改为“在下一章（第八章）”。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "第八章从文学革命到文艺复兴"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.analysis.1",
+    "problem": "把“以试验检验命题”标为作者推断，没有交代胡适本人已明说《尝试集》之名和这场试验来自杜威实验主义，第八章还把整个文学革命当作实验主义思想程序的例证。读者会误以为这一解读是本文首创。应注明胡适自己的说法，推断部分只限于本文新增的观点。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "这个诗集的名字也明显地表示出我是受杜威实验主义的影响，把实验主义的哲学理论应用到文学改良运动上面来。"
     },
     "severity": "note"
    }
   ],
   "search": [],
-  "overall": "The draft already covers the endings and key responses: the 1920 order, the partial victory, Hu's dissatisfaction, Hu's reply to the 'not vernacular enough' criticism, and 钱玄同's response. A1 is a narrated fact, not a claim about source silence. The negative 'not checked here' statement accurately describes our own verification scope. The only remaining point is a light qualification that the source contains quotations from the 1916 diary and letters."
+  "overall": "结局（1920年通令、“部分的胜利”、仍不满意）已在证据包内，本文自身核查范围的说明属实；须修正 uncertainty_note 的章节归属（主体在第七章，结局在第八章），并建议补上胡适自述的实验主义来源。"
  },
  "claims": [
-  {
-   "id": "A1",
-   "path": "sections.story.9",
-   "lang": "zh",
-   "sentence": "另一位是研究古典音韵学的教授，也是古文大家，他没有写文章，却写去小批评大捧场的长信，也在《新青年》发表，声势为之一振。",
-   "verdict": "not_a_source_claim",
-   "source_ids": [
-    "S-BK-HUSHI"
-   ],
-   "scope": "Chapter 7 of the reading range, the passage on 钱玄同's response. The sentence narrates what 钱玄同 actually did (he wrote no article). It does not say the source is silent on anything, and the source states this explicitly.",
-   "quote": {
-    "source_id": "S-BK-HUSHI",
-    "quote": "钱玄同教授则没有写什么文章，但是他却向独秀和我写了些小批评大捧场的长信，支持我们的观点。这些信也在《新青年》上发表了。"
-   },
-   "fix": "Keep the sentence. Consider naming 钱玄同 directly and noting that he was a student of 章太炎, which the source also records. Leaving him anonymous makes it harder for readers to follow.",
-   "unit_status": {
-    "S-BK-HUSHI": "windows"
-   }
-  },
   {
    "id": "N1",
    "path": "uncertainty_note",
    "lang": "zh",
-   "sentence": "注中所记之事（如1956年胡适在哈佛讲演时格里德的反应）是唐德刚的记述，本文未另行核验。",
+   "sentence": "但本文依据的只是经胡适转引、再经英译与回译的文本，未核对原件。",
    "verdict": "supported",
    "source_ids": [
     "S-BK-HUSHI"
    ],
-   "scope": "This describes our own verification, not what the source records. We consulted only this one book, and Tang's note [5] is the only place this event appears. The sentence must not be rewritten as 'no one at the time verified this'.",
+   "scope": "本文实际查阅的文件：仅《胡适口述自传》这一本书（第七、八章及唐德刚注）；未查阅日记、书信原件。这里说的是本文自己没有核对，没有断言他人未核查。",
    "quote": {
     "source_id": "S-BK-HUSHI",
-    "quote": "一九五六年当他以这一论调在哈佛大学讲演时（笔者至今尚保存一份那时的录音带），那时尚在哈佛读书，后来曾为他作传的格里德（JeromeB.Grieder）博士简直就嗤之以鼻。"
+    "quote": "不过这经过胡先生自己手订的英文稿与《逼上梁山》的原文，多少也有点出入，所以笔者还是把它翻译回来了。"
    },
-   "fix": "Keep it. It is worth adding that Tang says he still holds a recording of that lecture, so readers know the event rests on a witness who kept a tape, not on unsupported hearsay.",
+   "fix": "保留。措辞已限定为“本文未核对”，不要扩写成“无人核查”。",
    "unit_status": {
     "S-BK-HUSHI": "windows"
    }
   },
   {
    "id": "N2",
-   "path": "sections.limits.0",
-   "lang": "zh",
-   "sentence": "因此这是当事人多年后的自述，不是当时的独立记录；梅光迪、任鸿隽的反应和话语，都经胡适转述，本文不推测他们的内心。",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "This article relies only on those texts as Hu quoted them, then translated into English and back again, and has not checked the originals.",
    "verdict": "supported",
    "source_ids": [
     "S-BK-HUSHI"
    ],
-   "scope": "The full reading range of chapters 7–8 and Tang's note [1]. The text is Hu's retrospective oral account. Mei's and Ren's words appear only as Hu's paraphrases or quotations; no independent text from either of them is in the reading range.",
+   "scope": "同 N1：仅限本文查阅的这一本书。",
    "quote": {
     "source_id": "S-BK-HUSHI",
     "quote": "不过这经过胡先生自己手订的英文稿与《逼上梁山》的原文，多少也有点出入，所以笔者还是把它翻译回来了。"
    },
-   "fix": "Keep it, but add a qualification: the retrospective account quotes contemporaneous material such as the 6 July 1916 diary and the 26 July letter, though those quotations still reach us only through Hu (see context_issues).",
+   "fix": "保留。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "这些都是唐德刚的记述，本文未另行核验。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "唐德刚注〔3〕〔5〕〔6〕；本文没有另查格里德或1956年哈佛讲演的录音等材料。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "一九五六年当他以这一论调在哈佛大学讲演时（笔者至今尚保存一份那时的录音带）"
+   },
+   "fix": "保留。这是本文自身核查范围的说明，不是对来源的否定断言。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "These are Tang's accounts and were not checked separately here.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "同 N3。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "那时尚在哈佛读书，后来曾为他作传的格里德（JeromeB.Grieder）博士简直就嗤之以鼻。"
+   },
+   "fix": "保留。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "朋友们的话都经他转述",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章正文中梅光迪、任鸿隽的言论，均以胡适回忆和引信的形式出现；限于本书。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "任君的信上则说：“白话自有白话用处（如作小说、演说等），然不能用之于诗！”"
+   },
+   "fix": "保留。可写明“在本书中”。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N6",
+   "path": "sections.story.2",
+   "lang": "zh",
+   "sentence": "这两处日期并不完全吻合，本文照录胡适的说法。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章“九条”日记与凯约嘉湖来信两段。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "就在我记录上述九条的同时，我又收到一封从绮色佳的来信"
+   },
+   "fix": "保留。两处日期都出自胡适本人的叙述，不吻合属实。",
    "unit_status": {
     "S-BK-HUSHI": "windows"
    }
@@ -221,11 +338,29 @@
  ],
  "context_issues": [
   {
-   "path": "sections.limits.0",
-   "problem": "Calling the source simply 'many years later, not a contemporaneous record' blurs the fact that Hu quotes and cites his July 1916 diary and letters in the memoir. Readers could wrongly conclude that the nine propositions and the letter wording are entirely later recollection. The text should separate the periods: contemporaneous diary and letters, versus later oral retelling and back-translation.",
+   "path": "uncertainty_note",
+   "problem": "章节归属有误。凯约嘉湖、钟文鳌、梅光迪、《尝试集》、“刍议”、陈独秀响应等经过都在第七章《文学革命的结胎时期》；第八章只含1920年通令、“部分的胜利”和“新诗大有成就”等结局。唐德刚关于节译、回译的说明是第七章注〔1〕，指的是“本章”即第七章。稿件写“第八章”“这一章”“同一章”，混淆了章节，也把回译说明套到了第八章的结局材料上。",
    "quote": {
     "source_id": "S-BK-HUSHI",
-    "quote": "以上九条是记载在我一九一六年七月六日的日记之中，很确切地表达了我对策动中国文学革命的中心思想。"
+    "quote": "原载《传记文学》第三十四卷第一期第七章文学革命的结胎时期"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "uncertainty_note",
+   "problem": "“胡适本人在同一章则说「四十年来的新诗更是大有成就」”一句：这句话出自第八章，与唐德刚“白话诗则未必”的注〔6〕（第七章）不在同一章。应改为“在下一章（第八章）”。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "第八章从文学革命到文艺复兴"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.analysis.1",
+   "problem": "把“以试验检验命题”标为作者推断，没有交代胡适本人已明说《尝试集》之名和这场试验来自杜威实验主义，第八章还把整个文学革命当作实验主义思想程序的例证。读者会误以为这一解读是本文首创。应注明胡适自己的说法，推断部分只限于本文新增的观点。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "这个诗集的名字也明显地表示出我是受杜威实验主义的影响，把实验主义的哲学理论应用到文学改良运动上面来。"
    },
    "severity": "note"
   }
@@ -233,20 +368,26 @@
  "episode": [
   {
    "source_id": "S-BK-HUSHI",
-   "outcome": "Hu's attempts at vernacular poetry were published in New Youth. The broader movement won what he called a partial victory in schools, through the 1920 Ministry of Education order. Hu nonetheless said he remained dissatisfied, because after forty years the vernacular had still not become a complete instrument of education and literature.",
-   "quote": "因此在我们的斗争中，至少获得了部分的胜利。其中重要的部分就是以白话文为教育的工具。……但是上述这些成就，对我这位原始运动策划人来说，我还是感觉到不满意。",
-   "in_evidence": true
-  },
-  {
-   "source_id": "S-BK-HUSHI",
-   "outcome": "The poetry debate ended with Hu deciding to stop writing old-style verse and to write only vernacular poems. He named his next collection Experiments (尝试集) before he had written many of the poems.",
-   "quote": "所以在一九一六年七月底八月初，我就决定不再写旧诗词，而专门用活的语言文字来写白话诗了。在我还没有写出几首白话诗之前，我已决定把我下一个诗集定名为《尝试集》了",
+   "outcome": "胡适说，五四以后学生刊物全用白话；1920年教育部通令小学一、二年级教材改用白话。他称之为“部分的胜利”，但仍不满意：四十年来白话文没有成为完全的教育与文学工具。",
+   "quote": "因此在我们的斗争中，至少获得了部分的胜利。其中重要的部分就是以白话文为教育的工具。",
    "in_evidence": true
   }
  ],
- "additions": [],
+ "additions": [
+  {
+   "id": "HS-E41",
+   "source_id": "S-BK-HUSHI",
+   "offset": 107350,
+   "chars": 295,
+   "why": "胡适本人明确说，《尝试集》的命名和白话诗试验来自杜威实验主义，是用实际试验来证明或反证一个假设。analysis.1“为什么是试验”把这一点当作“作者推断”，缺了当事人自己的这层解释。"
+  }
+ ],
  "additions_failed": [],
- "evidence_sha256": "cd30b7995084fe913bd91532a83997fec606091d45a4cd255cd94fa85d69941a",
- "outcome": "clean",
- "blocking": []
+ "evidence_sha256": "5d71c930c4586dff87cead6fc01c38d07bc448e17f58629699ca3e1d4dfac0c9",
+ "outcome": "needs_work",
+ "blocking": [
+  "uncertainty_note: 章节归属有误。凯约嘉湖、钟文鳌、梅光迪、《尝试集》、“刍议”、陈独秀响应等经过都在第七章《文学革命的结胎时期》；第八章只含1920年通令、“部分的胜利”和“新诗大有成就”等结局。唐德刚关于节译、回译的",
+  "uncertainty_note: “胡适本人在同一章则说「四十年来的新诗更是大有成就」”一句：这句话出自第八章，与唐德刚“白话诗则未必”的注〔6〕（第七章）不在同一章。应改为“在下一章（第八章）”。",
+  "evidence must be expanded first: 1 addition(s) ['HS-E41']"
+ ]
 }
