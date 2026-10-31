@@ -33,7 +33,7 @@ from .pipeline import PROMPTS, CODE_REV, _evidence_block
 from .textnorm import t2s
 
 RECORD_SCHEMA = "final-editor/v1"
-CATEGORIES = {"facts", "attribution", "chronology", "causality", "quotes", "inner_life", "interpretation_label", "parity", "unsupported", "style"}
+CATEGORIES = {"facts", "attribution", "chronology", "causality", "quotes", "inner_life", "interpretation_label", "parity", "unsupported", "readability", "style"}
 CHECKS = {"facts", "attribution", "chronology", "causality", "quotes", "inner_life", "interpretation_label", "parity"}
 TIMEOUTS = {"audit": 1800, "revise": 1800, "verify": 1500}
 MAX_ROUNDS = int(load_project().get("final_editor", {}).get("max_rounds", 2))
@@ -87,7 +87,7 @@ def _issue_problems(iss, prefix) -> list[str]:
             p.append(f"{prefix}[{k}].category {i.get('category')!r} unknown")
         if i.get("severity") not in ("block", "fix", "note"):
             p.append(f"{prefix}[{k}].severity {i.get('severity')!r} unknown")
-        if i.get("severity") == "note" and i.get("category") != "style":
+        if i.get("severity") == "note" and i.get("category") not in ("style", "readability"):
             p.append(f"{prefix}[{k}]: a {i.get('category')} issue cannot be a note")
         if not isinstance(i.get("evidence", []), list):
             p.append(f"{prefix}[{k}].evidence must be a list")

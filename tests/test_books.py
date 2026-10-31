@@ -3,7 +3,7 @@ text-layer PDFs (bounded pdftotext, 1-based page locations, scanned -> needs_ocr
 EPUB spine order and stable locations, untrusted-input refusals (ZIP names/bombs, DRM, entity declarations),
 book text -> evidence excerpt -> book location, catalogue leads (dedupe, never evidence) and acquisition caps.
 The real-file run is recorded in docs/AFK_TEST_AND_BOOKS_REPORT.md."""
-import io, json, sys, tempfile, unittest, zipfile
+import io, json, sys, tempfile, unittest, urllib.parse, zipfile
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from history_in_practice import books, evidence
@@ -204,6 +204,39 @@ class Fork(Acquire):
         self.assertEqual(rec["git_blob"], books.git_blob_sha(body))
         with self.assertRaises(books.BookError):
             books.fork_file("me/fork", "a" * 40, tree, "missing.pdf")
+
+
+class Markdown(Acquire):
+    SUMMARY = "# Summary\n\n[前言](卷一/前言.md)\n\n# 卷一\n\n- [第十章 后](卷一/第十章后.md)\n- [第二章 前](卷一/第二章前.md)\n\n# 卷二\n\n- [第一章](卷二/第一章.md)\n"
+
+    def test_summary_order_is_reading_order_not_filesystem_order(self):
+        o = books.summary_order(self.SUMMARY)
+        self.assertEqual([e["path"] for e in o], ["卷一/前言.md", "卷一/第十章后.md", "卷一/第二章前.md", "卷二/第一章.md"])
+        self.assertEqual([e["part"] for e in o], [None, "卷一", "卷一", "卷二"])
+
+    def test_markup_is_stripped_and_cjk_lines_join(self):
+        md = "# 第一章\n\n<div class='x'>正文**第一**段，\n接下一行。</div>\n\n![图](a.png)\n> 引文[链接](http://x)\n\n```\nrm -rf /\n```\n<!-- 注释 -->\n---\n- 列表项"
+        self.assertEqual(books.md_text(md), [("h", "第一章"), ("p", "正文第一段，接下一行。"), ("p", "引文链接"), ("p", "列表项")])
+
+    def test_fetch_md_book_verifies_blobs_and_keeps_locations(self):
+        files = {"src/SUMMARY.md": self.SUMMARY.encode(), "src/卷一/第二章前.md": "## 第二章 前\n\n甲乙。\n\n丙丁。".encode(),
+                 "src/卷一/第十章后.md": "## 第十章\n\n戊己。".encode()}
+        tree = [{"path": k, "type": "blob", "sha": books.git_blob_sha(v), "size": len(v)} for k, v in files.items()]
+        class R(io.BytesIO):
+            def __enter__(self): return self
+            def __exit__(self, *a): pass
+        def op(req, timeout=0):
+            path = urllib.parse.unquote(req.full_url.split("/abc/", 1)[1]); return R(files[path])
+        td = Path(tempfile.mkdtemp())
+        res = books.fetch_md_book("me/book", "abc", tree, "src/SUMMARY.md", lambda e: e["part"] == "卷一", td, opener=op)
+        self.assertEqual([c["path"] for c in res["chapters"]], ["src/卷一/第十章后.md", "src/卷一/第二章前.md"])     # SUMMARY order
+        b = books.parse_md_book(res["chapters"])
+        p = next(x for x in b["paragraphs"] if x["text"] == "丙丁。")
+        self.assertEqual(p["loc"], {"file": "src/卷一/第二章前.md", "chapter": "第二章 前", "para": 2})
+        self.assertIn("Markdown src/卷一/第二章前.md", books.locator(b, p["loc"]))
+        files["src/卷一/第二章前.md"] = b"tampered"                                                            # not the pinned blob
+        with self.assertRaisesRegex(books.BookError, "not Git blob"):
+            books.fetch_md_book("me/book", "abc", tree, "src/SUMMARY.md", lambda e: e["part"] == "卷一", td, opener=op)
 
 
 if __name__ == "__main__":

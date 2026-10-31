@@ -23,7 +23,7 @@ from xml.etree import ElementTree as ET
 from . import evidence
 from .textnorm import t2s
 
-LIMITS = {"max_files": 10, "max_file_bytes": 50 * 2**20, "max_total_bytes": 200 * 2**20,     # phase 2 (2026-10-31): 10 files; same byte caps
+LIMITS = {"max_files": 15, "max_file_bytes": 50 * 2**20, "max_total_bytes": 200 * 2**20,     # phase 3 (2026-10-31): 15 files; byte caps unchanged
           "zip_members": 3000, "zip_member_bytes": 30 * 2**20, "zip_total_bytes": 300 * 2**20, "zip_ratio": 200}
 UA = "history-in-practice-books/0.1 (+https://github.com/miraclestar43/history-in-practice)"
 BLOCK = {"p", "h1", "h2", "h3", "h4", "h5", "h6", "li", "blockquote", "dd", "dt", "pre", "td", "th", "div", "section", "tr", "table", "ul", "ol"}
@@ -320,6 +320,101 @@ def parse_epub(data: bytes) -> dict:
             "norm_sha256": hashlib.sha256(norm.encode()).hexdigest()}
 
 
+# ------------------------------------------------------------------ Markdown (chaptered books, e.g. mdBook src/SUMMARY.md)
+
+MD = {"max_chapter_bytes": 2 * 2**20, "max_book_bytes": 20 * 2**20}
+_SUMMARY_LINK = re.compile(r"^\s*(?:[-*+]\s+)?\[([^\]]+)\]\(([^)\s]+\.md)\)\s*$")
+
+
+def summary_order(summary: str) -> list[dict]:
+    """mdBook SUMMARY.md -> [{title, path, part}] in reading order (part = the latest '# ' heading). Never filesystem order."""
+    out, part = [], None
+    for line in summary.splitlines():
+        if line.startswith("# ") and line.strip() != "# Summary":
+            part = line[2:].strip(); continue
+        m = _SUMMARY_LINK.match(line)
+        if m:
+            out.append({"title": m.group(1).strip(), "path": urllib.parse.unquote(m.group(2)), "part": part})
+    return out
+
+
+def md_text(md: str) -> list[tuple[str, str]]:
+    """Untrusted Markdown/HTML -> [(kind, text)] with kind 'h' (heading) or 'p'. Strips code fences, HTML tags/comments,
+    images, link targets, emphasis and list/quote markers; keeps the visible words. Nothing is executed or fetched."""
+    md = re.sub(r"<!--.*?-->", "", md, flags=re.S)
+    md = re.sub(r"```.*?```", "", md, flags=re.S)
+    out, buf = [], []
+    def flush():
+        txt = " ".join(buf).strip(); buf.clear()
+        if txt:
+            out.append(("p", txt))
+    for raw in md.splitlines():
+        line = raw.strip()
+        if not line or re.fullmatch(r"[-*_]{3,}", line):
+            flush(); continue
+        h = re.match(r"^#{1,6}\s+(.*)$", line)
+        line = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", line)                    # images
+        line = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", line)                # links -> text
+        line = re.sub(r"<[^>]+>", "", line)                                      # inline HTML
+        line = re.sub(r"^\s*(?:[-*+]|\d+\.|>)\s+", "", line)
+        line = re.sub(r"(\*\*|__|\*|_|`)", "", line).strip()
+        line = html.unescape(line)
+        if h:
+            flush()
+            if line.lstrip("#").strip():
+                out.append(("h", line.lstrip("#").strip()))
+            continue
+        if line:
+            buf.append(line)
+    flush()
+    joined = []
+    for kind, txt in out:                                       # CJK lines in one paragraph join without spaces
+        joined.append((kind, re.sub(r"(?<=[一-鿿，。；：！？、“”「」])\s+(?=[一-鿿，。；：！？、“”「」])", "", txt)))
+    return joined
+
+
+def parse_md_book(chapters: list[dict]) -> dict:
+    """chapters: [{path, title, part, text}] in SUMMARY order -> book with locations {file, chapter, para}."""
+    paras, heads = [], []
+    for ch in chapters:
+        heads.append({"title": f"{ch.get('part') or ''} {ch['title']}".strip(), "file": ch["path"], "first_para": len(paras)})
+        k = 0
+        for kind, txt in md_text(ch["text"]):
+            paras.append({"loc": {"file": ch["path"], "chapter": ch["title"], "para": k}, "chapter": len(heads) - 1, "text": txt, "kind": kind}); k += 1
+    norm = "\n\n".join(p["text"] for p in paras)
+    return {"format": "markdown", "chapters": heads, "paragraphs": paras, "norm_sha256": hashlib.sha256(norm.encode()).hexdigest()}
+
+
+def fetch_md_book(repo: str, commit: str, tree: list[dict], summary_path: str, want, dest: Path, *, opener=None) -> dict:
+    """SUMMARY.md + the chapters `want(entry)` selects, each from the pinned commit and verified against its Git blob hash.
+    Writes dest/<path> and dest/manifest.json (repo, commit, path, blob, bytes, sha256). Bounded by MD caps."""
+    op = opener or urllib.request.urlopen; dest = Path(dest); dest.mkdir(parents=True, exist_ok=True); man = {"repo": repo, "commit": commit, "files": []}
+    base = posixpath.dirname(summary_path)
+    def get(path):
+        x = next((e for e in tree if e.get("path") == path and e.get("type") == "blob"), None)
+        if not x:
+            raise BookError(f"{path} is not a blob in {repo}@{commit[:12]}")
+        if x["size"] > MD["max_chapter_bytes"] or sum(f["bytes"] for f in man["files"]) + x["size"] > MD["max_book_bytes"]:
+            raise BookError(f"{path}: Markdown size caps exceeded")
+        with op(urllib.request.Request(f"https://raw.githubusercontent.com/{repo}/{commit}/{urllib.parse.quote(path)}", headers={"User-Agent": UA}), timeout=60) as r:
+            body = r.read(x["size"] + 1)
+        if git_blob_sha(body) != x["sha"]:
+            raise BookError(f"{path}: bytes are not Git blob {x['sha'][:12]}")
+        f = dest / path; f.parent.mkdir(parents=True, exist_ok=True); f.write_bytes(body)
+        man["files"].append({"path": path, "git_blob": x["sha"], "bytes": len(body), "sha256": hashlib.sha256(body).hexdigest()})
+        return body.decode("utf-8")
+    order = summary_order(get(summary_path))
+    picked = [e for e in order if want(e)]
+    for e in picked:
+        e["path"] = posixpath.normpath(posixpath.join(base, e["path"]))
+        if e["path"].startswith(".."):
+            raise BookError(f"chapter path escapes the book: {e['path']}")
+        e["text"] = get(e["path"])
+    man["order"] = [{k: e[k] for k in ("title", "path", "part")} for e in picked]
+    (dest / "manifest.json").write_text(json.dumps(man, ensure_ascii=False, indent=1), encoding="utf-8")
+    return {"manifest": man, "chapters": picked}
+
+
 # ------------------------------------------------------------------ PDF (text layer only; scanned files are flagged, not OCRed)
 
 PDF = {"max_pages": 2000, "timeout_s": 180, "mem_bytes": 1536 * 2**20, "cpu_s": 300, "min_page_chars": 30, "text_page_share": 0.6}
@@ -427,6 +522,8 @@ def locator(book: dict, loc: dict) -> str:
     if "spine" in loc:
         ch = next((c for c in reversed(book["chapters"]) if c["spine"] <= loc["spine"]), None)
         return f"EPUB spine {loc['spine']} ({loc['href']}{', ' + ch['title'][:40] if ch else ''}), paragraph {loc['para']}"
+    if "file" in loc:
+        return f"Markdown {loc['file']} (chapter {loc['chapter']}), paragraph {loc['para']}"
     if "page" in loc:
         ch = next((c for c in reversed(book["chapters"]) if c["first_para"] <= next((k for k, p in enumerate(book["paragraphs"]) if p["loc"] == loc), 0)), None)
         return f"PDF page {loc['page']} (1-based file page index; printed page labels not verified), paragraph {loc['para']}" + (f", {ch['title'][:40]}" if ch else "")
