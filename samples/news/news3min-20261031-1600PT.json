@@ -1,0 +1,131 @@
+{
+ "schema": "news3min/v0-prototype",
+ "snapshot_id": "news3min-20261031-1600PT",
+ "revision": 1,
+ "language": "zh",
+ "intended_edition_date": "2026-10-31",
+ "timezone": "America/Los_Angeles",
+ "as_of": "2026-10-31T16:00:00-07:00",
+ "window": {
+  "start": "2026-10-30T16:00:00-07:00",
+  "end": "2026-10-31T16:00:00-07:00"
+ },
+ "label": {
+  "zh": "截至 2026年10月31日 16:00（洛杉矶时间）· 过去24小时要闻",
+  "en": "As of 16:00 Los Angeles time, 31 October 2026 · the past 24 hours"
+ },
+ "status": "ready",
+ "status_note": "Prototype sample for owner feedback (prompts/08 §6). Not sent anywhere; no production timer or Telegram change.",
+ "provenance": {
+  "news_intel_checkout": "~/pi-news-intel main @ f97b73c (production checkout, opened read-only)",
+  "news_intel_db": "data/news-intel.db opened with mode=ro; latest raw item fetched 2026-10-31T23:00:10Z",
+  "selection": "editorial selection by the operator (Claude) from news-intel events in the window, by importance and variety rather than final_score: the score ranks phone/gadget items above a 5,000-death Ebola outbreak (see audit). Not yet an automated news-intel export.",
+  "text": "written from the cited source headlines/excerpts stored by news-intel; every fact traces to a listed source; no fact from outside these sources"
+ },
+ "items": [
+  {
+   "headline": "刚果（金）埃博拉疫情死亡超过5,000人",
+   "what": "英国广播公司（BBC）报道，刚果民主共和国这次埃博拉疫情已造成5,000多人死亡，是该国最致命的一次；政府数据显示，感染人数超过1万。",
+   "why": "这是该国最致命的一次埃博拉疫情，感染和死亡人数仍在统计中，后续蔓延值得关注。",
+   "why_kind": "interpretation",
+   "qualifiers": "数字来自刚果（金）政府数据（据BBC）。",
+   "sources": [
+    {
+     "name": "BBC News — World",
+     "url": "https://www.bbc.co.uk/news/articles/cj5ynryyep2yo",
+     "published_at": "2026-10-31T15:16:20Z"
+    }
+   ],
+   "news_intel_event_ids": [
+    "E-20261031-0225"
+   ]
+  },
+  {
+   "headline": "币安约63亿美元被盗，称已垫付约九成损失",
+   "what": "全球最大加密货币交易所币安说，一名运维工程师的笔记本电脑被入侵，攻击者借此提交了未经授权的提现；区块链分析机构TRM Labs称，10月29日约20分钟内被转走价值约63.6亿美元的加密货币，是有记录以来最大的一起。币安周六表示，已用公司资金补上约90%的损失。",
+   "why": "BBC报道称朝鲜黑客是头号嫌疑；若属实，说明这类攻击的能力和规模都在上升。",
+   "why_kind": "reported",
+   "qualifiers": "嫌疑对象尚属指控，未经证实；“补上九成”是币安自己的说法（路透社报道，经Techmeme转载）。",
+   "sources": [
+    {
+     "name": "IT之家",
+     "url": "https://www.ithome.com/1/020/463.htm",
+     "published_at": "2026-10-31T05:22:44Z"
+    },
+    {
+     "name": "BBC News — World",
+     "url": "https://www.bbc.co.uk/news/articles/ck9dz3v7z7v3o",
+     "published_at": "2026-10-31T02:12:19Z"
+    },
+    {
+     "name": "Techmeme（转载路透社）",
+     "url": "https://www.techmeme.com/261031/p9",
+     "published_at": "2026-10-31T15:45:01Z"
+    }
+   ],
+   "news_intel_event_ids": [
+    "E-20261031-0074",
+    "E-20261031-0042",
+    "E-20261031-0228"
+   ]
+  },
+  {
+   "headline": "AI热潮遇冷：OpenAI下调融资目标，美股科技股大跌",
+   "what": "据英国《金融时报》援引知情人士，OpenAI把最新一轮融资目标从300亿美元降到约200亿美元，估值从1.4万亿美元降到约1.25万亿美元。10月30日，纳斯达克综合指数录得6月以来最大单日跌幅，英特尔和Reddit股价都跌了约29%。",
+   "why": "投资者开始怀疑AI基础设施的巨额投入能否回本；经济研究机构凯投宏观指出，四家科技巨头的资本支出已占标普500成分股总资本支出的三分之一以上。",
+   "why_kind": "reported",
+   "qualifiers": "融资数字来自匿名消息来源，尚未得到OpenAI确认。",
+   "sources": [
+    {
+     "name": "IT之家（据《金融时报》）",
+     "url": "https://www.ithome.com/1/020/478.htm",
+     "published_at": "2026-10-31T06:54:56Z"
+    },
+    {
+     "name": "IT之家（据路透社）",
+     "url": "https://www.ithome.com/1/020/613.htm",
+     "published_at": "2026-10-31T13:30:27Z"
+    }
+   ],
+   "news_intel_event_ids": [
+    "E-20261031-0094",
+    "E-20261031-0017",
+    "E-20261031-0204"
+   ]
+  },
+  {
+   "headline": "存储芯片厂商利润首次超过美国五大科技公司",
+   "what": "据日经亚洲引用的QUICK FactSet数据，AI推高了存储芯片需求，铠侠、三星、SK海力士、美光、闪迪五家公司上个季度的营业利润合计约32万亿日元，是去年同期的10倍，首次超过谷歌母公司、微软、亚马逊、Meta和苹果的合计（约25万亿日元）。",
+   "why": "这说明AI热潮的利润正流向卖“铲子”的芯片供应商；同一天，美股却在担心AI投入能否回本。",
+   "why_kind": "interpretation",
+   "qualifiers": "苹果尚未公布财报，计入的是市场预测值；美光的统计季度为6月至8月。",
+   "sources": [
+    {
+     "name": "IT之家（据日经亚洲）",
+     "url": "https://www.ithome.com/1/020/617.htm",
+     "published_at": "2026-10-31T13:46:12Z"
+    }
+   ],
+   "news_intel_event_ids": [
+    "E-20261031-0208"
+   ]
+  },
+  {
+   "headline": "山东海阳核电三期开工",
+   "what": "国家电投山东海阳核电三期工程10月31日开工，5、6号机组采用国产CAP1000三代非能动压水堆，单台功率提高到130万千瓦。",
+   "why": "“非能动”指失去全部电源后，可依靠重力和自然循环在72小时内自动维持堆芯冷却，不需要人工操作。",
+   "why_kind": "reported",
+   "qualifiers": "",
+   "sources": [
+    {
+     "name": "IT之家",
+     "url": "https://www.ithome.com/1/020/591.htm",
+     "published_at": "2026-10-31T11:30:36Z"
+    }
+   ],
+   "news_intel_event_ids": [
+    "E-20261031-0182"
+   ]
+  }
+ ]
+}

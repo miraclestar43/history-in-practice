@@ -95,5 +95,51 @@ class Preview(unittest.TestCase):
         with self.assertRaises(site_export.ExportError): site_export.preview(self.root, [o])
 
 
+class ReadMoreLinks(unittest.TestCase):
+    """2026-10-31: a read-more item without a URL rendered as a link to /history/null. Only http(s) URLs are links."""
+    def test_missing_url_is_plain_text_everywhere(self):
+        o = frozen(); o["further_reading"] = [{"title": "某书第八章", "url": None, "what": {"zh": "原书", "en": "the book"},
+                                               "access": {"zh": "纸书", "en": "print"}}]
+        render.finalize(o)
+        for out in (render.email_html(o, "https://x"), render.email_text(o, "https://x"), render.markdown(o, "zh"), render.markdown(o, "en")):
+            self.assertNotIn("None", out); self.assertNotIn("null", out); self.assertIn("某书第八章", out)
+        self.assertNotIn("](None)", render.markdown(o, "zh"))
+        tpl = (ROOT / "src/history_in_practice/templates/history_index.html").read_text()
+        self.assertIn("okUrl(m.url) ? el(\"a\"", tpl.replace("'", '"'))
+        self.assertTrue(render.web_url("https://example.org/x")); self.assertFalse(render.web_url(None)); self.assertFalse(render.web_url("null"))
+
+
+def fake_news(as_of="2026-11-02T07:00:00-08:00", status="ready", n=3):
+    """Fictional snapshot: invented headlines and example.org links; contacts no one."""
+    return {"schema": "news3min/v0-prototype", "snapshot_id": "fake", "revision": 1, "status": status, "as_of": as_of,
+            "label": {"zh": "截至 07:00（洛杉矶时间）· 过去24小时要闻（虚构测试）", "en": "fake"},
+            "items": [{"headline": f"虚构新闻{i}", "what": "某地发生了某事。", "why": "这是测试。", "why_kind": "interpretation",
+                       "qualifiers": "测试限定。", "sources": [{"name": "Example", "url": f"https://example.org/{i}"}]} for i in range(n)]}
+
+
+class NewsModule(unittest.TestCase):
+    """prompts/08: an optional 3-minute news module in the reading email; stale or unsafe news is never shown as fresh."""
+    NOW = "2026-11-02T07:30:00-08:00"
+
+    def test_fresh_snapshot_adds_anchored_news_before_the_story(self):
+        o = frozen(); h = render.email_html(o, "https://x", news=fake_news(), now_iso=self.NOW)
+        self.assertEqual(render.news_problems(fake_news(), self.NOW), [])
+        self.assertIn('href="#news"', h); self.assertIn('href="#story"', h); self.assertIn('id="news"', h); self.assertIn('id="story"', h)
+        self.assertLess(h.index("虚构新闻0"), h.index('id="story"')); self.assertIn("解读：这是测试。", h); self.assertIn("https://example.org/2", h)
+
+    def test_stale_degraded_or_unsourced_news_is_replaced_by_a_short_note(self):
+        o = frozen()
+        stale = fake_news(as_of="2026-10-31T07:00:00-07:00"); degraded = fake_news(status="degraded"); few = fake_news(n=1)
+        nolink = fake_news(); nolink["items"][0]["sources"] = [{"name": "X", "url": None}]
+        for bad in (stale, degraded, few, nolink):
+            self.assertTrue(render.news_problems(bad, self.NOW))
+            h = render.email_html(o, "https://x", news=bad, now_iso=self.NOW)
+            self.assertIn("新闻简报暂缺", h); self.assertNotIn("虚构新闻1", h); self.assertIn('id="story"', h)   # the story still goes out
+
+    def test_without_news_the_email_is_unchanged(self):
+        o = frozen(); self.assertEqual(render.email_html(o, "https://x"), render.email_html(o, "https://x", news=None))
+        self.assertNotIn('id="news"', render.email_html(o, "https://x"))
+
+
 if __name__ == "__main__":
     unittest.main()

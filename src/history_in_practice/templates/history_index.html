@@ -57,6 +57,7 @@ const PENDING = {zh:"待修订（",en:"Under revision ("};
 const noticeBox = n => { const b = el("div",{class:"pending",role:"note"}); b.append(el("strong",{},PENDING[lang]+n.at+(lang==="zh"?"）":")")), el("p",{},n[lang])); return b; };
 const rank = it => it.sample ? 0 : (it.notice ? 2 : 1);   // samples first; items under revision last, never recommended
 let ITEM = null;
+const okUrl = x => typeof x === "string" && /^https?:\/\/[^\s]+$/.test(x);
 const app = document.getElementById("app");
 const params = new URLSearchParams(location.search);
 let lang = params.get("lang") || localStorage.getItem("hip-lang") || "zh";
@@ -132,10 +133,14 @@ function renderStory(o){
   if (location.hash === "#example") d.open = true;     // deep link straight to the example answer
   for (const [k,lab] of [["assumptions",L.as],["steps",L.st],["alternative",L.alt]]){ const p=el("p"); p.append(el("strong",{},lab+(lang==="zh"?"：":": ")), document.createTextNode(r.example[k][lang])); d.append(p); }
   q.append(d); w.append(q);
-  const u = el("section",{id:"s-sources"}); u.append(el("h2",{},L.unc), el("p",{class:"small"},o.uncertainty_note[lang]), el("h2",{},L.src));
-  const ol = el("ol",{class:"src"}); for (const s of o.sources){ const li=el("li",{},s.citation+" "); if (s.url){ const a=el("a",{href:s.url,rel:"noopener"},s.link_label||"link"); li.append(a);} ol.append(li);} u.append(ol);
-  u.append(el("h2",{},L.more)); const ul=el("ul",{class:"more"});
-  for (const m of o.further_reading){ const li=el("li"); li.append(el("a",{href:m.url,rel:"noopener"},m.title), document.createTextNode(" — "+m.what[lang]+" ("+m.access[lang]+")")); ul.append(li);} u.append(ul);
+  // end notes: source limits and sources in one expandable block; read-more stays visible.
+  // Only verified http(s) URLs become links; an item without one is plain text (never "null").
+  const u = el("section",{id:"s-sources"}), notes = el("details",{id:"s-notes"});
+  if (location.hash === "#notes") notes.open = true;
+  notes.append(el("summary",{},L.unc), el("p",{class:"small"},o.uncertainty_note[lang]), el("h2",{},L.src));
+  const ol = el("ol",{class:"src"}); for (const s of o.sources){ const li=el("li",{},s.citation+" "); if (okUrl(s.url)){ const a=el("a",{href:s.url,rel:"noopener"},s.link_label||"link"); li.append(a);} ol.append(li);} notes.append(ol);
+  u.append(notes, el("h2",{},L.more)); const ul=el("ul",{class:"more"});
+  for (const m of o.further_reading){ const li=el("li"); li.append(okUrl(m.url) ? el("a",{href:m.url,rel:"noopener"},m.title) : el("span",{},m.title), document.createTextNode(" — "+m.what[lang]+" ("+m.access[lang]+")")); ul.append(li);} u.append(ul);
   w.append(u, el("p",{class:"small"}, o.edition_id+" · rev "+o.revision));
   app.replaceChildren(w);
   if (location.hash === "#example") document.getElementById("example")?.scrollIntoView();

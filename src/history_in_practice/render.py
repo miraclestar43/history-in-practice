@@ -35,6 +35,10 @@ TEST_NOTE = {"zh": "测试邮件：用于检查排版与投递，不是正式的
 ZH_CPM, EN_WPM = 320, 200   # reading-rate assumptions for the per-language estimate
 e = lambda s: html.escape(s or "", quote=True)
 
+def web_url(u) -> bool:
+    """Only a real http(s) URL becomes a link; a missing one (None) is shown as plain text, never as "None"/"null"."""
+    return isinstance(u, str) and bool(re.fullmatch(r"https?://\S+", u))
+
 def canonical(obj) -> str:
     keep = {k: obj[k] for k in ("edition_id","revision","title","dek","sections","reflection","uncertainty_note","sources","further_reading")}
     return json.dumps(keep, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
@@ -63,7 +67,57 @@ def link(obj, lang, base):
     return f"{base}/history/?story={obj['edition_id']}&lang={lang}"
 
 # ---------------- email ----------------
-def email_html(obj, base):
+NEWS_SCHEMA = "news3min/v0-prototype"
+NEWS_MAX_AGE_H = 26
+
+
+def news_problems(snap: dict | None, now_iso: str | None = None) -> list[str]:
+    """Consumer-side check of a frozen 3-minute news snapshot (prompts/08 §4). Any problem means the edition goes out
+    without news and says so briefly; a stale, degraded or unsourced snapshot is never shown as today's news."""
+    from datetime import datetime, timezone
+    if not snap:
+        return ["no snapshot"]
+    p = []
+    if snap.get("schema") != NEWS_SCHEMA: p.append(f"schema {snap.get('schema')!r}")
+    if snap.get("status") != "ready": p.append(f"status {snap.get('status')!r}")
+    items = snap.get("items") or []
+    if not 3 <= len(items) <= 5: p.append(f"{len(items)} items (3-5 expected)")
+    for i, it in enumerate(items):
+        if not (it.get("headline") and it.get("what")): p.append(f"item {i + 1}: headline/what missing")
+        if not any(web_url(s.get("url")) for s in it.get("sources") or []): p.append(f"item {i + 1}: no source link")
+    try:
+        as_of = datetime.fromisoformat(snap["as_of"]); now = datetime.fromisoformat(now_iso) if now_iso else datetime.now(timezone.utc)
+        age = (now - as_of).total_seconds() / 3600
+        if age > NEWS_MAX_AGE_H or age < -0.1: p.append(f"as_of {snap['as_of']} is {age:.1f} h from now (max {NEWS_MAX_AGE_H} h)")
+    except (KeyError, ValueError, TypeError):
+        p.append("as_of missing or not ISO")
+    return p
+
+
+def news_minutes(snap: dict) -> int:
+    t = "".join(it.get(k, "") for it in snap.get("items") or [] for k in ("headline", "what", "why", "qualifiers"))
+    return max(1, round(len(re.findall(r"[一-鿿]", t)) / ZH_CPM))
+
+
+def news_html(snap: dict | None, ok: bool) -> str:
+    h = f'<h2 id="news" style="font-size:19px;color:#1d1d1f;margin:6px 0 4px;">今日新闻 · 约 {news_minutes(snap) if ok else 1} 分钟</h2>'
+    if not ok:
+        return h + '<p style="font-size:15px;line-height:1.8;color:#55524d;margin:0 0 24px;">今天的新闻简报暂缺（没有及时、可核对来源的版本），下面直接进入今日故事。</p>'
+    out = [h, f'<p style="font-size:13px;color:#8a857d;margin:0 0 14px;">{e(snap["label"]["zh"])}</p>']
+    for i, it in enumerate(snap["items"]):
+        why = ("解读：" if it.get("why_kind") == "interpretation" else "为什么值得知道：") + it["why"] if it.get("why") else ""
+        srcs = " · ".join(f'<a href="{e(s["url"])}" style="color:{ACCENT};">{e(s["name"])}</a>' if web_url(s.get("url")) else e(s["name"])
+                          for s in it.get("sources") or [])
+        out.append(f'<p style="font-size:16px;line-height:1.8;margin:0 0 4px;color:#1d1d1f;"><b>{i + 1}. {e(it["headline"])}</b></p>'
+                   f'<p style="font-size:15px;line-height:1.85;margin:0 0 4px;color:#24221f;">{e(it["what"])}</p>'
+                   + (f'<p style="font-size:15px;line-height:1.85;margin:0 0 4px;color:#3a3732;">{e(why)}</p>' if why else "")
+                   + (f'<p style="font-size:13px;line-height:1.7;margin:0 0 4px;color:#8a857d;">{e(it["qualifiers"])}</p>' if it.get("qualifiers") else "")
+                   + f'<p style="font-size:13px;line-height:1.7;margin:0 0 16px;color:#8a857d;">来源：{srcs}</p>')
+    out.append('<hr style="border:none;border-top:1px solid #d8d2c8;margin:8px 0 22px;">')
+    return "\n".join(out)
+
+
+def email_html(obj, base, news: dict | None = None, now_iso: str | None = None):
     def block(lang):
         L = LBL[lang]; out = []
         out.append(f'<h1 style="font-family:Georgia,\'Songti SC\',serif;font-size:26px;line-height:1.35;margin:8px 0 6px;color:#1d1d1f;">{e(obj["title"][lang])}</h1>')
@@ -93,7 +147,8 @@ def email_html(obj, base):
         out.append("</ol>")
         out.append(f'<h3 style="font-size:15px;color:#55524d;margin:18px 0 6px;">{L["more"]}</h3><ul style="font-size:13px;line-height:1.7;color:#55524d;padding-left:20px;margin:0;">')
         for m in obj["further_reading"]:
-            out.append(f'<li><a href="{e(m["url"])}" style="color:{ACCENT};">{e(m["title"])}</a> — {e(m["what"][lang])} <span style="color:#8a857d;">({e(m["access"][lang])})</span></li>')
+            title = f'<a href="{e(m["url"])}" style="color:{ACCENT};">{e(m["title"])}</a>' if web_url(m.get("url")) else e(m["title"])
+            out.append(f'<li>{title} — {e(m["what"][lang])} <span style="color:#8a857d;">({e(m["access"][lang])})</span></li>')
         out.append("</ul>")
         return "\n".join(out)
     cz, ce = CAT[obj["category"]]
@@ -107,6 +162,12 @@ def email_html(obj, base):
             f'{LBL["zh"]["edition"]} {e(obj["edition_id"])} · rev {obj["revision"]} · {e(obj["edition_date"])} · '
             f'<a href="{e(link(obj,"zh",base))}" style="color:{ACCENT};">{e(link(obj,"zh",base))}</a><br>{LBL["zh"]["feedback"]} {LBL["zh"]["pause"]}</p>')
     pre = e(obj["preheader"]["zh"])
+    nav = newsblock = ""
+    if news is not None:                     # one reading edition, two modules (prompts/08 §1); same text goes to the web copy
+        ok = not news_problems(news, now_iso)
+        nav = (f'<p style="font-size:14px;margin:10px 0 18px;"><a href="#news" style="color:{ACCENT};">今日新闻 · 约 {news_minutes(news) if ok else 1} 分钟</a>'
+               f' · <a href="#story" style="color:{ACCENT};">今日故事 · 约 {obj["reading_minutes"]["zh"]} 分钟</a></p>')
+        newsblock = news_html(news, ok)
     if obj.get("status") == "test":
         head = (f'<p style="font-size:14px;line-height:1.7;margin:0 0 16px;padding:10px 14px;border:2px solid #b5542f;color:#7a2e12;border-radius:4px;">'
                 f'<b>测试 TEST</b> · {e(TEST_NOTE["zh"])}<br>{e(TEST_NOTE["en"])}</p>') + head
@@ -117,6 +178,7 @@ def email_html(obj, base):
 <table role="presentation" width="640" cellpadding="0" cellspacing="0" style="max-width:640px;width:100%;background:#ffffff;border:1px solid #ece7de;">
 <tr><td style="padding:28px 30px 34px;font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',Helvetica,Arial,sans-serif;">
 {head}
+{nav}{newsblock}<a id="story"></a>
 {block("zh")}
 {btn}
 <p style="font-size:13px;color:#8a857d;margin:0;letter-spacing:.04em;">{LBL["en"]["col"]}｜{e(dotted(obj["edition_date"]) or obj["edition_date"])} · {ce}</p>
@@ -133,7 +195,7 @@ def email_text(obj, base):
                 f"{L['assume']}: {r['example']['assumptions'][lang]}", f"{L['steps']}: {r['example']['steps'][lang]}",
                 f"{L['alt']}: {r['example']['alternative'][lang]}", "", f"== {L['unc']} ==", obj["uncertainty_note"][lang], "", f"== {L['src']} =="]
         out += [f"[{i+1}] {s['citation']} {s.get('url') or ''}".strip() for i, s in enumerate(obj["sources"])]
-        out += ["", f"== {L['more']} =="] + [f"- {m['title']}: {m['what'][lang]} ({m['access'][lang]}) {m['url']}" for m in obj["further_reading"]]
+        out += ["", f"== {L['more']} =="] + [f"- {m['title']}: {m['what'][lang]} ({m['access'][lang]})" + (f" {m['url']}" if web_url(m.get("url")) else "") for m in obj["further_reading"]]
         return "\n".join(out)
     test = [f"【测试 TEST】{TEST_NOTE['zh']}", TEST_NOTE["en"], ""] if obj.get("status") == "test" else []
     return "\n".join(test + [f"{LBL['zh']['col']}｜{dotted(obj['edition_date']) or obj['edition_date']} · {CAT[obj['category']][0]}", "", block("zh"), "",
@@ -154,7 +216,7 @@ def markdown(obj, lang):
             f"- **{L['alt']}**: {r['example']['alternative'][lang]}", "", "</details>", "",
             f"## {L['unc']}", "", obj["uncertainty_note"][lang], "", f"## {L['src']}", ""]
     out += [f"{i+1}. {s['citation']}" + (f" — <{s['url']}>" if s.get("url") else "") for i, s in enumerate(obj["sources"])]
-    out += ["", f"## {L['more']}", ""] + [f"- [{m['title']}]({m['url']}) — {m['what'][lang]} ({m['access'][lang]})" for m in obj["further_reading"]]
+    out += ["", f"## {L['more']}", ""] + [(f"- [{m['title']}]({m['url']})" if web_url(m.get("url")) else f"- {m['title']}") + f" — {m['what'][lang]} ({m['access'][lang]})" for m in obj["further_reading"]]
     out += ["", "---", "", ("证据编号 [X-En] 对应同目录 evidence 文件中的逐字摘录。" if lang == "zh" else "Evidence ids [X-En] map to verbatim excerpts in the evidence file.")]
     return "\n".join(out) + "\n"
 
