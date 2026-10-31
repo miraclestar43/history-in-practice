@@ -5,7 +5,7 @@ The owner has NOT sent the preceding RUNNING_QUEUE_REVIEW handoff. This instruct
 
 ## Objective
 
-The project is “没事儿多读书”: stories the reader wants to open, understands and learns from. The next deliverable is ONE approachable Chinese story, not completion of the Snow investigation or repair of every old draft.
+The project is “没事儿多读书”: stories the reader wants to open, understands and learns from. The next deliverable is ONE fresh, approachable Chinese story that is not an overfamiliar textbook retelling, not completion of the Snow investigation or repair of every old draft.
 
 The owner explicitly prefers Chinese history and finds foreign personal/geographical names harder to retain. Snow is intrinsically a data-heavy investigative case; repeated editing cannot make it the right first example for this reader. Accept this selection feedback rather than trying to persuade the reader to like that case.
 
@@ -18,22 +18,23 @@ The owner explicitly prefers Chinese history and finds foreign personal/geograph
 - No additional real TEST email or resend is requested.
 - Finish/checkpoint the current live model job safely, then put the Chinese sample ahead of unstarted bulk repairs. Do not wait for all chains or all inventory items to finish before showing one readable example.
 
-## 2. Default sample: Lian Po and Lin Xiangru
+## 2. Select a fresh Chinese episode, excluding textbook retellings
 
-Use the existing final article cand-20261030-lian-lin as the starting point, after checking its actual current evidence and admission/context record. The owner's progress report listed it as admitted; that is not permission to skip verifying the exact working version.
+The owner explicitly REJECTED the proposed Lian Po / Lin Xiangru example: it is a familiar middle-school textbook story and offers too little novelty. Do not use it, its reconciliation, or a retitled/alternate-angle version as this sample. Being already admitted is not a reason to override the owner's selection feedback.
 
-The inspected title was “位次之争：廉颇的委屈与那根荆条”. Its current opening still introduces 渑池、赵惠文王、阳晋、缪贤、和氏璧 and a side episode about fleeing to Yan in quick succession. Familiar Chinese subject matter alone does not solve overload.
+The selection principle is **accessible cultural background + an unfamiliar specific episode**. Accessible does not mean already known, and novelty does not require obscure names or a grand unfamiliar historical setting.
 
-Focus the new version on ONE episode: the conflict over rank and the eventual reconciliation.
-- Establish who Lian Po and Lin Xiangru are and why their relative rank matters in a few plain sentences.
-- Follow the grievance, public threat, avoidance/response, the reasoning recorded in the source and the resolution.
-- Only introduce the necessary background to that conflict. Do not retell both the full jade-return episode and the Mianchi meeting or a minor character's life story as prerequisites.
-- Remove unnecessary dates, place names, ranks and secondary names from the foreground, retaining any detail needed to understand the event accurately.
-- Explain ancient terms briefly in ordinary Chinese. Keep names and references stable.
-- Possible title direction, subject to source support: “蔺相如一再退让，为什么廉颇反而服了？” It is an editorial suggestion, not a required claim or a promise of the answer.
-- Applications may address respect, cooperation, contribution and when to stand firm or yield, but must arise from the event rather than make every story a workplace-management lesson.
+- Avoid defaulting to familiar schoolbook/common anthology stories such as 负荆请罪、完璧归赵、田忌赛马、卧薪尝胆. Changing a title or bolting on a workplace lesson does not make the same episode new.
+- A familiar historical person is fine if this particular documented experience, decision or conflict is less familiar. Ordinary people and modest episodes are equally welcome.
+- Search the ALREADY available Chinese ancient/modern sources and actual ingested books for a concrete episode, not another list of books or a famous person's life summary.
+- Prefer a clearly traceable incident with few essential actors, a situation understandable without specialized knowledge, and an interesting action/change/result.
+- Keep the scope broad: governance/institutions, commerce/economics, science, diplomacy, work and ordinary life, biography; no war emphasis. Do not force an ancient-vs-modern quota on this one sample.
+- Privately compare a small number of source-grounded candidates and choose one yourself. Do not stop at a candidate list or ask the owner to select before writing.
+- Internally record why the specific episode is likely less familiar and what is new to learn. This is an editorial judgment, not a factual claim that nobody has heard it.
+- Read the complete relevant episode and its conclusion before drafting, verify context, avoid invented motives/dialogue and retain valid evidence/admission checks.
+- A ready but overfamiliar article need not be used. Preparing one suitable fresh episode is preferable to polishing the rejected story.
 
-If this exact article is genuinely blocked by unresolved evidence, select another ALREADY suitable Chinese story with few central characters and little statistical dependence. Give a concrete reason and continue; do not return to Snow as the default fallback or restart a broad topic search.
+Do not restart a bulk acquisition project or return to Snow as the fallback. Deliver one fresh, approachable Chinese story.
 
 ## 3. Write for the reader's experience
 
