@@ -1,0 +1,2244 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-book-20261031-hushi-baihua",
+ "edition_id": "cand-book-20261031-hushi-baihua",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "d3c2d98",
+ "started_at": 1793467467.9807398,
+ "base_source": "samples/auto/cand-book-20261031-hushi-baihua/final/article.json",
+ "base_content_sha256": "4e89159edef02a22a2e6017b904ede904b9150ed9a2e178560870f3bafd6935f",
+ "evidence_sha256": "d8786b7bb1060a2283d90c6b7256e1a3e8ffabd84e72e9a30c5a3a8fdb66acbb",
+ "operator_note": null,
+ "model_record_sha256": null,
+ "prior_record_sha256": "deb8ff5e7d167cf331b03c85cd17744c211de544a8f6bb2ee89da7f5a9f22bd4",
+ "attempt": "attempt-3",
+ "context_review_sha256": null,
+ "inherited": [
+  {
+   "id": "P1",
+   "model_id": "V2-V4",
+   "source": "final-editor previous attempt",
+   "where": "sections.analysis.2",
+   "problem": "末句“并非本文所据材料的记载 / not something recorded in the material this piece relies on”是在断言完整来源没有写什么，而证据包并不是全书。况且证据确实记载了陈独秀自己表述的“胡首举义旗、陈高张大旗作声援”的分工，这样写容易让读者误以为来源对此毫无记载。只需标明这是作者的推断即可。",
+   "suggestion": "中文改为“……的配合，是作者从先后次序读出的一种可能，属本文的推断。”，删去“并非本文所据材料的记载”。英文改为“…is a possibility the author reads in the sequence — this article's inference.”"
+  },
+  {
+   "id": "P2",
+   "model_id": "V2-V5",
+   "source": "final-editor previous attempt",
+   "where": "uncertainty_note",
+   "problem": "末半句“都不是本文所据材料的记述 / neither is drawn from the material this piece relies on”属于关于来源没写什么的断言。前文已分别标明这些段落是“作者推断”和“虚构场景”，这半句对读者理解没有必要。",
+   "suggestion": "删去中文“都不是本文所据材料的记述”和英文“; neither is drawn from the material this piece relies on”，保留“是作者推断”“是为今日读者虚构的场景”。"
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.analysis.2",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "末句“并非本文所据材料的记载 / not something recorded in the material this piece relies on”是在断言完整来源没写什么。本文只依据证据包，无法替全书作此断言。而且证据确实记载了陈独秀本人表述的分工：胡适首举义旗，陈高张大旗声援。这样写会误导读者，以为来源对此毫无记载。真正属于推断的只是“刻意配合”这一层，应标为本文的推断。",
+   "evidence": [
+    {
+     "id": "HS-E25",
+     "quote": "他自己则高张大旗为他的朋友作声援"
+    }
+   ],
+   "proposed": "中文改为“……的配合，是作者从先后次序读出的一种可能，属本文的推断。”英文改为“…is a possibility the author reads in the sequence — this article's inference.”",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去关于所据材料未记载此事的断言。陈独秀本人表述的分工有证据可依，已保留为转述；“刻意配合”这一层改标为本文的推断，中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "uncertainty_note",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "末半句“都不是本文所据材料的记述 / neither is drawn from the material this piece relies on”属于来源未载类断言。前文已分别标明这些段落是作者推断、虚构场景，这半句对读者理解没有必要。",
+   "evidence": [],
+   "proposed": "删去中文“，都不是本文所据材料的记述”和英文“; neither is drawn from the material this piece relies on”，保留“是作者推断”“是为今日读者虚构的场景”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去中文“都不是本文所据材料的记述”和英文对应半句，保留“作者推断”“虚构场景”的标注，中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.analysis.0",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "英文“accidents matter more than any monistic cause”漏掉了限定词“往往”，把胡适“往往更重要”的说法写成了绝对判断。中文保留了“往往”，中英不一致。",
+   "evidence": [
+    {
+     "id": "HS-E9",
+     "quote": "意外事件往往比"
+    }
+   ],
+   "proposed": "英文改为“accidents often matter more than any monistic cause”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文补回限定词 often，与中文“往往”及证据一致；中文原文未改，按规则一并给出。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.context.1",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文用引号标出“the question of China's writing”和“how to make our classical written language easier to teach”，但两者都是中文题目的译文。读者会误以为是英文原文。全文其他处都注明了“in our translation”，此处没有标明。",
+   "evidence": [
+    {
+     "id": "HS-E6",
+     "quote": "如何可使吾国文言易于教授"
+    }
+   ],
+   "proposed": "在英文中注明为译述，如“Hu on, in our translation, how to make our classical written language easier to teach”，或去掉引号改为转述。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文去掉两处引号，并注明 in our translation，避免读者误以为是英文原文；中文未改，一并给出。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.context.2",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文“half-dead language”加了引号，却没有说明这是译文，读者会以为是英文原话。",
+   "evidence": [
+    {
+     "id": "HS-E7",
+     "quote": "半死的语言"
+    }
+   ],
+   "proposed": "改为“called the classical written language — in our translation — a half-dead language”，或注明“translated from the Chinese”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文 half-dead language 去掉引号并注明为译述；中文未改，一并给出。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F6",
+   "path": "sections.story.9",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文“not vernacular enough”加了引号，却没有标明是译述，像是在冒充赵元任的英文原话。",
+   "evidence": [
+    {
+     "id": "HS-E26",
+     "quote": "不够白"
+    }
+   ],
+   "proposed": "改为“Zhao Yuanren often said, in our translation, that Hu's vernacular poems and essays were not vernacular enough …”，或去掉引号。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文 not vernacular enough 去掉引号并注明为译述；中文未改，一并给出。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F7",
+   "path": "uncertainty_note",
+   "category": "readability",
+   "severity": "note",
+   "problem": "“标为 interpretation／modern 的段落”用的是编辑内部的段落类型标签，读者在正文中未必看得到这些标签，难以对应到具体段落。",
+   "evidence": [],
+   "proposed": "改为“文中注明为作者推断的段落”“设想的今日场景”，不使用内部标签名。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F8",
+   "path": "sections.story.0",
+   "category": "readability",
+   "severity": "note",
+   "problem": "中文首次出现任鸿隽时只写“在康乃尔的任鸿隽”，没有交代他是胡适的朋友，与本事的关系不清。英文写了“Another Cornell friend”。",
+   "evidence": [
+    {
+     "id": "HS-E10",
+     "quote": "当时在康乃尔的另一位中国朋友任鸿隽"
+    }
+   ],
+   "proposed": "中文改为“当时在康乃尔的另一位中国朋友任鸿隽”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "P1",
+   "problem": "末句“并非本文所据材料的记载 / not something recorded in the material this piece relies on”是在断言完整来源没有写什么，而证据包并不是全书。况且证据确实记载了陈独秀自己表述的“胡首举义旗、陈高张大旗作声援”的分工，这样写容易让读者误以为来源对此毫无记载。只需标明这是作者的推断即可。",
+   "origin": "inherited final-editor previous attempt V2-V4",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.analysis.2",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "问题成立：末句断言完整来源未载，且证据记有陈独秀自述的分工。已列为F1。"
+  },
+  {
+   "id": "P2",
+   "problem": "末半句“都不是本文所据材料的记述 / neither is drawn from the material this piece relies on”属于关于来源没写什么的断言。前文已分别标明这些段落是“作者推断”和“虚构场景”，这半句对读者理解没有必要。",
+   "origin": "inherited final-editor previous attempt V2-V5",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "uncertainty_note",
+   "disposition": "duplicate",
+   "same_as": "F2",
+   "rationale": "问题成立：这半句属于来源未载类断言，对读者理解没有必要。已列为F2。"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.analysis.3",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "胡适原话是“至少获得了部分的胜利”，这是一个保底式的肯定。稿件中文用“但他称之为‘部分的胜利’”构成转折，英文写成“Yet he called it only a partial victory”，把“至少”改成了“只”，方向与原文相反，削弱了胡适自己的评价。",
+   "evidence": [
+    {
+     "id": "HS-E30",
+     "quote": "因此在我们的斗争中，至少获得了部分的胜利。其中重要的部分就是以白话文为教育的工具。"
+    }
+   ],
+   "proposed": "中文改为：他说这场斗争“至少获得了部分的胜利”，其中重要的部分是以白话为教育工具。英文改为：He said the struggle had won at least a partial victory, the important part being the vernacular as the instrument of education. 同时删去“Yet”“only”及中文的“但”。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "胡适原话“至少获得了部分的胜利”是保底式肯定。原稿中文的“但他称之为”构成转折，英文的“Yet … only a partial victory”把“至少”译成了“只”，方向与原文相反。现在删去“但”“Yet”“only”。中文改为直接转述其原话“至少获得了部分的胜利”，英文相应改为 at least a partial victory，中英一致。其余句子未改动。",
+   "decided_in": "revise_r2"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.analysis.2.zh",
+   "before": "另一种解释是关于措辞的分工：他把“革命”换成“改良”，把结论降格为“刍议”，自己承担温和的发表风险；陈独秀随后把它高举为“文学革命”，由更激进的人去举旗。据胡适转述，陈独秀坦白说首举义旗的是胡适，他自己高张大旗作声援。这种“一人放低、一人举高”的配合，是作者从先后次序读出的一种可能，并非本文所据材料的记载。",
+   "after": "另一种解释是关于措辞的分工：他把“革命”换成“改良”，把结论降格为“刍议”，自己承担温和的发表风险；陈独秀随后把它高举为“文学革命”，由更激进的人去举旗。据胡适转述，陈独秀坦白说首举义旗的是胡适，他自己高张大旗作声援。这种“一人放低、一人举高”的配合，是作者从先后次序读出的一种可能，属本文的推断。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.en",
+   "before": "A second reading concerns the division of labour over words. He swapped revolution for reform and demoted his conclusion to a humble opinion, taking on himself the risk of publishing moderately; Chen Duxiu then raised it as literary revolution, and a more radical man carried the flag. By Hu's report, Chen said frankly that the banner was Hu's and that he himself was raising it high in support. This doubling — one man lowering the volume, one raising it — is a possibility the author reads in the sequence, not something recorded in the material this piece relies on.",
+   "after": "A second reading concerns the division of labour over words. He swapped revolution for reform and demoted his conclusion to a humble opinion, taking on himself the risk of publishing moderately; Chen Duxiu then raised it as literary revolution, and a more radical man carried the flag. By Hu's report, Chen said frankly that the banner was Hu's and that he himself was raising it high in support. This doubling — one man lowering the volume, one raising it — is a possibility the author reads in the sequence; it is this article's inference.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "uncertainty_note.zh",
+   "before": "本文只有胡适晚年口述一种来源，且经节译、手订与回译；梅光迪、任鸿隽的言行均为胡适转述，胡适对动机的说明是事后自述，唐德刚的注释属评论而非史实。凡标为 interpretation 的段落是作者推断，标为 modern 的段落是为今日读者虚构的场景，都不是本文所据材料的记述。",
+   "after": "本文只有胡适晚年口述一种来源，且经节译、手订与回译；梅光迪、任鸿隽的言行均为胡适转述，胡适对动机的说明是事后自述，唐德刚的注释属评论而非史实。凡标为 interpretation 的段落是作者推断，标为 modern 的段落是为今日读者虚构的场景。",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "uncertainty_note.en",
+   "before": "This piece rests on a single source: Hu Shi's oral memoir in later life, itself abridged, revised in his own hand and translated back. Mei Guangdi's and Ren Hongjun's words and deeds reach us only through Hu's retelling; Hu's explanations of motive are retrospective; and Tang Degang's notes are commentary rather than fact. Paragraphs marked interpretation are the author's inferences, paragraphs marked modern are scenarios invented for readers today; neither is drawn from the material this piece relies on.",
+   "after": "This piece rests on a single source: Hu Shi's oral memoir in later life, itself abridged, revised in his own hand and translated back. Mei Guangdi's and Ren Hongjun's words and deeds reach us only through Hu's retelling; Hu's explanations of motive are retrospective; and Tang Degang's notes are commentary rather than fact. Paragraphs marked interpretation are the author's inferences, and paragraphs marked modern are scenarios invented for readers today.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "before": "Hu's own explanation of how it all happened is that he opposed single-cause theories of history. He used to joke that accidents matter more than any monistic cause — economics, lust, God and the rest: those single causes explain everything that has ever happened, and precisely because they explain everything, they explain nothing. In this episode he explicitly called the farewell poem a small accident, and said that a chain of small accidents had gradually forced him into his position; placing the leaflet and the dispute that followed the near-capsize on the lake in that chain is this article's own grouping. Reading a chain of small accidents as the push behind his position is Hu's own view of history, not a finding of this article.",
+   "after": "Hu's own explanation of how it all happened is that he opposed single-cause theories of history. He used to joke that accidents often matter more than any monistic cause — economics, lust, God and the rest: those single causes explain everything that has ever happened, and precisely because they explain everything, they explain nothing. In this episode he explicitly called the farewell poem a small accident, and said that a chain of small accidents had gradually forced him into his position; placing the leaflet and the dispute that followed the near-capsize on the lake in that chain is this article's own grouping. Reading a chain of small accidents as the push behind his position is Hu's own view of history, not a finding of this article.",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.context.1.en",
+   "before": "After the note was sent, he regretted it. Zhong was a kind man with a sincere wish to reform Chinese customs and writing; the rudeness was uncalled for, and Hu reproached himself before his friends. Then a further thought: if men like Zhong are not qualified to discuss such questions, then the qualified should do the work — set out what is feasible and what is not, and examine both. He took it up with Zhao Yuanren, who had entered Cornell with him in 1910. They agreed to make \"the question of China's writing\" the literature section's topic for the annual meeting of the Chinese Students' Association in the East, and split it: Zhao on whether the Chinese script could adopt an alphabetic system and how to proceed; Hu on \"how to make our classical written language easier to teach.\"",
+   "after": "After the note was sent, he regretted it. Zhong was a kind man with a sincere wish to reform Chinese customs and writing; the rudeness was uncalled for, and Hu reproached himself before his friends. Then a further thought: if men like Zhong are not qualified to discuss such questions, then the qualified should do the work — set out what is feasible and what is not, and examine both. He took it up with Zhao Yuanren, who had entered Cornell with him in 1910. They agreed to make the question of China's writing (in our translation) the literature section's topic for the annual meeting of the Chinese Students' Association in the East, and split it: Zhao on whether the Chinese script could adopt an alphabetic system and how to proceed; Hu on, in our translation, how to make our classical written language easier to teach.",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.context.2.en",
+   "before": "Hu's paper called the classical written language a \"half-dead language.\" Some words live, some have died: gou, \"dog,\" is still in use; quan, the old word for the same animal, is not. \"Ride a horse\" is everyday speech; the classical equivalent is a dead phrase. So the teaching of a living language and of a half-dead one must be very different business. Looking back, he said his doctrine — vernacular alive, classical half-dead — had begun in this period.",
+   "after": "Hu's paper called the classical written language — in our translation — a half-dead language. Some words live, some have died: gou, \"dog,\" is still in use; quan, the old word for the same animal, is not. \"Ride a horse\" is everyday speech; the classical equivalent is a dead phrase. So the teaching of a living language and of a half-dead one must be very different business. Looking back, he said his doctrine — vernacular alive, classical half-dead — had begun in this period.",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.story.9.en",
+   "before": "It appeared in New Youth in January 1917 and stirred a great response. Two Peking University professors took it seriously. Chen Duxiu, an unbending revolutionary, answered with \"On Literary Revolution,\" publicly backing a literary revolution and saying frankly that the banner had been raised by his friend Hu Shi; he himself was raising the banner high in his friend's support. Qian Xuantong, professor of classical phonology, a master of ancient prose and a disciple of the great scholar Zhang Taiyan, wrote no article but sent Chen and Hu long letters — small criticisms, great praise — also printed in New Youth; that so eminent a classicist should sympathize buoyed their cause. Zhao Yuanren often said that Hu's vernacular poems and essays were \"not vernacular enough,\" not the genuine spoken style ordinary people used. Hu admitted it: like a woman who had bound her feet for forty, or even twenty, years, however much she loosened the bindings she would never recover natural feet.",
+   "after": "It appeared in New Youth in January 1917 and stirred a great response. Two Peking University professors took it seriously. Chen Duxiu, an unbending revolutionary, answered with \"On Literary Revolution,\" publicly backing a literary revolution and saying frankly that the banner had been raised by his friend Hu Shi; he himself was raising the banner high in his friend's support. Qian Xuantong, professor of classical phonology, a master of ancient prose and a disciple of the great scholar Zhang Taiyan, wrote no article but sent Chen and Hu long letters — small criticisms, great praise — also printed in New Youth; that so eminent a classicist should sympathize buoyed their cause. Zhao Yuanren often said, in our translation, that Hu's vernacular poems and essays were not vernacular enough, not the genuine spoken style ordinary people used. Hu admitted it: like a woman who had bound her feet for forty, or even twenty, years, however much she loosened the bindings she would never recover natural feet.",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.analysis.3.zh",
+   "before": "结局也可以交代一笔。胡适自述，运动约四年就在学校教育上基本成功：1920年北京政府教育部通令，国民小学一、二年级教材一律改用白话，旧教材分期废除。但他称之为“部分的胜利”，重要的部分是以白话为教育工具；他同时说，1919年的学生运动把文化运动变成了政治运动，对文艺复兴运动是一种“干扰”，虽则对传播白话文功不可没。",
+   "after": "结局也可以交代一笔。胡适自述，运动约四年就在学校教育上基本成功：1920年北京政府教育部通令，国民小学一、二年级教材一律改用白话，旧教材分期废除。他说这场斗争“至少获得了部分的胜利”，其中重要的部分是以白话为教育工具；他同时说，1919年的学生运动把文化运动变成了政治运动，对文艺复兴运动是一种“干扰”，虽则对传播白话文功不可没。",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.analysis.3.en",
+   "before": "The outcome can be set down too. By Hu's account, in only about four years the effort to replace the classical language with the vernacular in the schools had all but succeeded: in 1920 the Ministry of Education of the Beijing government ordered that all first- and second-year textbooks in the national primary schools be written entirely in the vernacular, with the old textbooks abolished in stages. Yet he called it only a partial victory; the important part was making the vernacular the instrument of education. He also said the student movement of 1919 had been an interruption to the Renaissance movement, turning a cultural movement into a political one, though it did much to spread the vernacular.",
+   "after": "The outcome can be set down too. By Hu's account, in only about four years the effort to replace the classical language with the vernacular in the schools had all but succeeded: in 1920 the Ministry of Education of the Beijing government ordered that all first- and second-year textbooks in the national primary schools be written entirely in the vernacular, with the old textbooks abolished in stages. He said the struggle had won at least a partial victory, the important part being the vernacular as the instrument of education. He also said the student movement of 1919 had been an interruption to the Renaissance movement, turning a cultural movement into a political one, though it did much to spread the vernacular.",
+   "issues": [
+    "V1-V1"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6"
+   ],
+   "changes_applied": 8,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[8] numbers differ zh[11, 1916] en[1916]"
+    ],
+    [
+     "CHECK",
+     "today[0] numbers differ zh[] en[10, 12]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[6, 8, 11, 26, 1915, 1916, 1917] en[6, 8, 26, 100, 1915, 1916, 1917]"
+    ]
+   ],
+   "content_sha256_after": "3f14e41310783623bff9596073d2ebb941dd16e6c6d55c5f41051bbddfa13e3d",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.story.9",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.analysis.3",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "胡适原话是“至少获得了部分的胜利”，这是一个保底式的肯定。稿件中文用“但他称之为‘部分的胜利’”构成转折，英文写成“Yet he called it only a partial victory”，把“至少”改成了“只”，方向与原文相反，削弱了胡适自己的评价。",
+      "evidence": [
+       {
+        "id": "HS-E30",
+        "quote": "因此在我们的斗争中，至少获得了部分的胜利。其中重要的部分就是以白话文为教育的工具。"
+       }
+      ],
+      "proposed": "中文改为：他说这场斗争“至少获得了部分的胜利”，其中重要的部分是以白话为教育工具。英文改为：He said the struggle had won at least a partial victory, the important part being the vernacular as the instrument of education. 同时删去“Yet”“only”及中文的“但”。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.story.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“绮色佳”首次出现时没有说明它与康乃尔的关系。不熟悉背景的读者不知道它就是康乃尔所在的小城，后文的“凯约嘉湖”也因此难以定位。",
+      "evidence": [
+       {
+        "id": "HS-E10",
+        "quote": "所以我在从绮色佳去纽约的火车上"
+       },
+       {
+        "id": "HS-E16",
+        "quote": "〔绮色佳〕凯约嘉湖上划船"
+       }
+      ],
+      "proposed": "首次出现处改为“绮色佳（康乃尔所在的小城）”。英文 Ithaca 可同样加注 home of Cornell。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.story.8",
+      "category": "readability",
+      "severity": "note",
+      "problem": "稿件写“文章誊了三份”，后面只列出两份的去向，读者会追问第三份去了哪里。",
+      "evidence": [
+       {
+        "id": "HS-E24",
+        "quote": "我一共复写了三份。一份给由我自己做主编的《中国留美学生季报》发表。……另一份则寄给当时一份新杂志《新青年》。"
+       }
+      ],
+      "proposed": "改为“文章复写了三份，其中一份交给……，另一份寄给……”。英文改为 Of the three copies, one went to…, another to…。不补写第三份的去向。"
+     },
+     {
+      "id": "V4",
+      "path": "uncertainty_note",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“标为 interpretation 的段落”“标为 modern 的段落”用的是编辑系统内部的标签，读者在正文里看不到这些标记，无法据此辨认哪些段落是推断、哪些是虚构场景。",
+      "evidence": [],
+      "proposed": "改为：文中写明“作者推断”“一种解释”的段落是作者的推断；“今天怎么用”和“思考”部分是为今日读者虚构的场景。英文作相应修改。"
+     }
+    ],
+    "overall": "定稿的事实、引语与归属基本都有证据支持，需修正 analysis.3 中把“至少获得部分的胜利”写成“只是部分胜利”的偏差，另有三处易读性小注，修改后可发。",
+    "_content_sha256": "3f14e41310783623bff9596073d2ebb941dd16e6c6d55c5f41051bbddfa13e3d"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1"
+   ],
+   "changes_applied": 2,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[8] numbers differ zh[11, 1916] en[1916]"
+    ],
+    [
+     "CHECK",
+     "today[0] numbers differ zh[] en[10, 12]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[6, 8, 11, 26, 1915, 1916, 1917] en[6, 8, 26, 100, 1915, 1916, 1917]"
+    ]
+   ],
+   "content_sha256_after": "083fae741d514083bc75b8928b3bc3e0a4e62f2d88a64167900b02f3c993c2f1",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.9",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.story.4",
+      "category": "readability",
+      "severity": "note",
+      "problem": "中文“另一位哈佛朋友梅光迪”沿用了原文措辞。紧接在任鸿隽之后，读者容易误以为任鸿隽也在哈佛；英文“his other friend at Harvard”同样有这个歧义。实际上任在康乃尔，梅在哈佛。",
+      "evidence": [
+       {
+        "id": "HS-E16",
+        "quote": "而是另一位哈佛朋友梅君，路见不平来拔刀相助"
+       },
+       {
+        "id": "HS-E19",
+        "quote": "康乃尔的任君和哈佛的梅君大发雷霆"
+       }
+      ],
+      "proposed": "中文改为“更有意思的是在哈佛的梅光迪路见不平”；英文改为“More interesting was the letter that followed from Mei, at Harvard, riding to the rescue…”"
+     },
+     {
+      "id": "V2",
+      "path": "sections.limits.2",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“1956年胡适在哈佛大学以这一论调讲演”紧跟在“反对胡适的人觉得他居功太多”之后，读者分不清“这一论调”指什么。证据中它指胡适一辈子坚持的那套说法（白话文运动起于朋友间的偶然事件），不是“居功太多”这一批评。",
+      "evidence": [
+       {
+        "id": "HS-E28",
+        "quote": "适之先生一辈子都坚持着这个论调。反对他的人就觉得他居功太多。一九五六年当他以这一论调在哈佛大学讲演时"
+       }
+      ],
+      "proposed": "改为“唐德刚也记下：胡适一辈子坚持这套关于运动起因的说法，反对他的人觉得他居功太多；1956年胡适在哈佛大学以此讲演时……”；英文相应改为“Hu held to this account all his life; Tang records that his opponents felt he claimed too much credit, and when Hu gave it in a 1956 lecture at Harvard…”"
+     },
+     {
+      "id": "V3",
+      "path": "uncertainty_note",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“标为 interpretation／modern 的段落”用的是读者看不到的内部段落类型标签，普通读者无法据此辨认是哪些段落。",
+      "evidence": [],
+      "proposed": "中文改为“凡文中写明‘作者推断’‘一种解释’的段落是作者推断，‘设想’‘虚构场景’部分是为今日读者虚构的场景”；英文同步改为“Passages flagged as the author's inference or a possible reading are inferences, and the scenarios introduced as hypothetical are invented for readers today.”"
+     }
+    ],
+    "overall": "定稿的事实、引语、时序、归属与中英对应均有证据支持；推断已标明，现代场景未冒充记录，开头易读性合格；仅有三处易读性小问题，建议顺手修改。",
+    "_content_sha256": "083fae741d514083bc75b8928b3bc3e0a4e62f2d88a64167900b02f3c993c2f1"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F8"
+    ]
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.9",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.analysis.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2",
+     "F7"
+    ]
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.analysis.2",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "末句“并非本文所据材料的记载 / not something recorded in the material this piece relies on”是在断言完整来源没写什么。本文只依据证据包，无法替全书作此断言。而且证据确实记载了陈独秀本人表述的分工：胡适首举义旗，陈高张大旗声援。这样写会误导读者，以为来源对此毫无记载。真正属于推断的只是“刻意配合”这一层，应标为本文的推断。",
+    "evidence": [
+     {
+      "id": "HS-E25",
+      "quote": "他自己则高张大旗为他的朋友作声援"
+     }
+    ],
+    "proposed": "中文改为“……的配合，是作者从先后次序读出的一种可能，属本文的推断。”英文改为“…is a possibility the author reads in the sequence — this article's inference.”"
+   },
+   {
+    "id": "F2",
+    "path": "uncertainty_note",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "末半句“都不是本文所据材料的记述 / neither is drawn from the material this piece relies on”属于来源未载类断言。前文已分别标明这些段落是作者推断、虚构场景，这半句对读者理解没有必要。",
+    "evidence": [],
+    "proposed": "删去中文“，都不是本文所据材料的记述”和英文“; neither is drawn from the material this piece relies on”，保留“是作者推断”“是为今日读者虚构的场景”。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.analysis.0",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "英文“accidents matter more than any monistic cause”漏掉了限定词“往往”，把胡适“往往更重要”的说法写成了绝对判断。中文保留了“往往”，中英不一致。",
+    "evidence": [
+     {
+      "id": "HS-E9",
+      "quote": "意外事件往往比"
+     }
+    ],
+    "proposed": "英文改为“accidents often matter more than any monistic cause”。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.context.1",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文用引号标出“the question of China's writing”和“how to make our classical written language easier to teach”，但两者都是中文题目的译文。读者会误以为是英文原文。全文其他处都注明了“in our translation”，此处没有标明。",
+    "evidence": [
+     {
+      "id": "HS-E6",
+      "quote": "如何可使吾国文言易于教授"
+     }
+    ],
+    "proposed": "在英文中注明为译述，如“Hu on, in our translation, how to make our classical written language easier to teach”，或去掉引号改为转述。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.context.2",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文“half-dead language”加了引号，却没有说明这是译文，读者会以为是英文原话。",
+    "evidence": [
+     {
+      "id": "HS-E7",
+      "quote": "半死的语言"
+     }
+    ],
+    "proposed": "改为“called the classical written language — in our translation — a half-dead language”，或注明“translated from the Chinese”。"
+   },
+   {
+    "id": "F6",
+    "path": "sections.story.9",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文“not vernacular enough”加了引号，却没有标明是译述，像是在冒充赵元任的英文原话。",
+    "evidence": [
+     {
+      "id": "HS-E26",
+      "quote": "不够白"
+     }
+    ],
+    "proposed": "改为“Zhao Yuanren often said, in our translation, that Hu's vernacular poems and essays were not vernacular enough …”，或去掉引号。"
+   },
+   {
+    "id": "F7",
+    "path": "uncertainty_note",
+    "category": "readability",
+    "severity": "note",
+    "problem": "“标为 interpretation／modern 的段落”用的是编辑内部的段落类型标签，读者在正文中未必看得到这些标签，难以对应到具体段落。",
+    "evidence": [],
+    "proposed": "改为“文中注明为作者推断的段落”“设想的今日场景”，不使用内部标签名。"
+   },
+   {
+    "id": "F8",
+    "path": "sections.story.0",
+    "category": "readability",
+    "severity": "note",
+    "problem": "中文首次出现任鸿隽时只写“在康乃尔的任鸿隽”，没有交代他是胡适的朋友，与本事的关系不清。英文写了“Another Cornell friend”。",
+    "evidence": [
+     {
+      "id": "HS-E10",
+      "quote": "当时在康乃尔的另一位中国朋友任鸿隽"
+     }
+    ],
+    "proposed": "中文改为“当时在康乃尔的另一位中国朋友任鸿隽”。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "P1",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "问题成立：末句断言完整来源未载，且证据记有陈独秀自述的分工。已列为F1。",
+    "evidence": [
+     {
+      "id": "HS-E25",
+      "quote": "那首举义旗号召文学革命的是他的朋友胡适"
+     }
+    ]
+   },
+   {
+    "id": "P2",
+    "verdict": "duplicate",
+    "same_as": "F2",
+    "rationale": "问题成立：这半句属于来源未载类断言，对读者理解没有必要。已列为F2。",
+    "evidence": []
+   }
+  ]
+ },
+ "final_content_sha256": "083fae741d514083bc75b8928b3bc3e0a4e62f2d88a64167900b02f3c993c2f1",
+ "open_issues": [],
+ "outcome": "admissible",
+ "failure": null,
+ "finished_at": 1793467904.3017433,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 139.5,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 30547,
+    "output_tokens": 16374
+   },
+   "cost_estimate_usd": 0.571864
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 34.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 30333,
+    "output_tokens": 4375
+   },
+   "cost_estimate_usd": 0.330172
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 116.3,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 29395,
+    "output_tokens": 13580
+   },
+   "cost_estimate_usd": 0.506768
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 10.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 29225,
+    "output_tokens": 1067
+   },
+   "cost_estimate_usd": 0.255148
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 135.7,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 29407,
+    "output_tokens": 15633
+   },
+   "cost_estimate_usd": 0.5479240000000001
+  }
+ ],
+ "elapsed_min": 7.3,
+ "model_wall_min": 7.3
+}

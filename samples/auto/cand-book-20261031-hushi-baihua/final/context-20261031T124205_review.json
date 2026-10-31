@@ -1,0 +1,375 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-book-20261031-hushi-baihua",
+ "content_sha256": "2c026539574d4f0fe495cff31986c7046f876edf069a9e3698ca037741337992",
+ "evidence_in_sha256": "0dd80244e4b8ab297cf604612f4bd3ff22bdcdb576c3cf6f0476cfda5e24b1c6",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793468525.2443128,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.9",
+   "lang": "zh",
+   "sentence": "另一位是研究古典音韵学的教授，也是古文大家，他没有写文章，却写去小批评大捧场的长信，也在《新青年》发表，声势为之一振。"
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-BK-HUSHI": {
+   "title": "胡适口述，唐德刚译注《胡适口述自传》，中国文史出版社 2020（PDF 文字层；第八章“从文学革命到文艺复兴”）",
+   "url": "https://raw.githubusercontent.com/miraclestar43/bo-guan-yue-qu/1b0d81a1ada44c920d5c19798447616127cec825/13-%E4%BA%BA%E7%89%A9%E4%BC%A0%E8%AE%B0/%E8%83%A1%E9%80%82%E5%8F%A3%E8%BF%B0%E8%87%AA%E4%BC%A0.pdf",
+   "ref": "book:BK-HUSHI-KS",
+   "evidence_text_sha256": "11a8350c0f89bc7fe786a0d88fefbd19620d0e8ed664ec3ed375b2caceb630ec",
+   "cache_sha256": "11a8350c0f89bc7fe786a0d88fefbd19620d0e8ed664ec3ed375b2caceb630ec",
+   "cjk": true,
+   "source_chars": 198290,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     98706,
+     124007
+    ]
+   ],
+   "chars_reviewed": 25301
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 51.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 5386
+  }
+ ],
+ "finished_at": 1793468577.3800836,
+ "elapsed_min": 0.9,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-BK-HUSHI",
+    "outcome": "在胡适的自述里，运动的收尾是1920年教育部通令小学低年级教材改用白话，他称之为“部分的胜利”；但他紧接着说自己仍不满意，白话文四十年来没有成为完全的教育和文学工具，并把原因归于执政者的保守和文白夹杂的教科书。",
+    "quote": "因此在我们的斗争中，至少获得了部分的胜利。其中重要的部分就是以白话文为教育的工具。",
+    "in_evidence": true
+   },
+   {
+    "source_id": "S-BK-HUSHI",
+    "outcome": "关于诗的争论，在胡适这一方以他的决定收尾：不再写旧诗词，专写白话诗，并预先把诗集定名为《尝试集》。",
+    "quote": "所以在一九一六年七月底八月初，我就决定不再写旧诗词，而专门用活的语言文字来写白话诗了。",
+    "in_evidence": true
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-BK-HUSHI",
+    "start": "那年的夏季我去俄亥俄州",
+    "end": "做个英文记录",
+    "why": "七月六日日记里的九条，按胡适的说法，是记下他与任鸿隽、唐钺、杨铨等人在绮色佳讨论中的几个项目，同时也总结了他自己的主张。story.3 只写“他在日记里写下九条主张”，补上这段可以交代九条的来历：它们来自朋友间的讨论，不是独自写成的。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.9",
+    "lang": "zh",
+    "sentence": "另一位是研究古典音韵学的教授，也是古文大家，他没有写文章，却写去小批评大捧场的长信，也在《新青年》发表，声势为之一振。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章“二孤独的文学实验”中陈独秀、钱玄同响应一段",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "钱玄同教授则没有写什么文章，但是他却向独秀和我写了些小批评大捧场的长信，支持我们的观点。这些信也在《新青年》上发表了。"
+    },
+    "fix": "这句叙述的是人物的作为，不是关于来源有无记载的断言，内容与来源一致。建议补出姓名“钱玄同”（来源明写），并按来源写明长信是写给陈独秀和胡适的。"
+   },
+   {
+    "id": "N1",
+    "path": "sections.analysis.0",
+    "lang": "zh",
+    "sentence": "本文把那张传单也放进这一串，这是本文的归并。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章开头钟文鳌传单一段至“一革命的导火线”一节（阅读窗口98706–124007）",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "下面我要讲的故事便是一连串发生的几件小小的事件。"
+    },
+    "fix": "可以保留。胡适列举的“一连串小小的事件”从“革命的导火线”一节、送别诗开始；传单一事他没有称作意外事件，所以说“本文的归并”是准确的。"
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "因此这是当事人多年后的自述，不是当时的独立记录；梅光迪、任鸿隽的反应和话语，都经胡适转述，本文不推测他们的内心。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章全文（阅读窗口内），以及唐德刚注〔1〕",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "以上九条是记载在我一九一六年七月六日的日记之中"
+    },
+    "fix": "判断本身成立，但宜补一句：口述中引用了他1916年的日记和致任鸿隽的信（如七月二十六日信）。这些当时的文字同样经胡适本人选录和转述。这样读者不会误以为当时没有任何书面记录。"
+   },
+   {
+    "id": "N3",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "注中所记之事（如1956年胡适在哈佛讲演时格里德的反应）是唐德刚的记述，本文未另行核验。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "唐德刚注〔5〕",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "一九五六年当他以这一论调在哈佛大学讲演时（笔者至今尚保存一份那时的录音带）"
+    },
+    "fix": "“本文未另行核验”是对本刊自身工作的说明，属实，可以保留。可补充：唐德刚自称保存有这次讲演的录音带，但本文没有查阅这份录音。"
+   },
+   {
+    "id": "N4",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "the events he records (such as Grieder's reaction to Hu's 1956 Harvard lecture) are his testimony, not checked here.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "唐德刚注〔5〕",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "笔者至今尚保存一份那时的录音带"
+    },
+    "fix": "与中文版同步：可以注明唐德刚自称保存有讲演录音带，本文未查阅。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "dek",
+    "problem": "“他把主张写得温和，陈独秀却替他把旗子举高成‘革命’”容易让读者以为“革命”一说出自陈独秀。来源显示，胡适自己早在诗和信里常用“文学革命”，1916年作的词里还高呼“文学革命何疑”；温和的措辞只是他第一次向国内发表时的策略。today.1 也有同样的倾向。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "“文学革命”一词在我的诗和信里都时常提到，在朋友们给我的信中也时常提起。"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.context.1",
+    "problem": "这段停在两人分工上，没有交代结果：两篇论文都已宣读，赵元任后来成为国语罗马字的主要编制人。这个结局已在 HS-E31，但段落没有引用。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "我二人的论文都在中国学生会中宣读了。"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.story.3",
+    "problem": "九条被写成胡适独自写下的主张。来源说这些是他与任、唐、杨在绮色佳讨论后，在日记里记下的讨论项目。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "在这两次访问之后，我在日记里记着我们讨论中的几个项目。"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "稿件对结局的处理基本完整：部分胜利与不满意都已写入，待核断言A1是对人物作为的叙述，与来源一致。主要改进是在 limits 中注明口述引用了1916年的日记和书信，并修正 dek 中“革命”一说仿佛始于陈独秀的暗示。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.9",
+   "lang": "zh",
+   "sentence": "另一位是研究古典音韵学的教授，也是古文大家，他没有写文章，却写去小批评大捧场的长信，也在《新青年》发表，声势为之一振。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章“二孤独的文学实验”中陈独秀、钱玄同响应一段",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "钱玄同教授则没有写什么文章，但是他却向独秀和我写了些小批评大捧场的长信，支持我们的观点。这些信也在《新青年》上发表了。"
+   },
+   "fix": "这句叙述的是人物的作为，不是关于来源有无记载的断言，内容与来源一致。建议补出姓名“钱玄同”（来源明写），并按来源写明长信是写给陈独秀和胡适的。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.analysis.0",
+   "lang": "zh",
+   "sentence": "本文把那张传单也放进这一串，这是本文的归并。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章开头钟文鳌传单一段至“一革命的导火线”一节（阅读窗口98706–124007）",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "下面我要讲的故事便是一连串发生的几件小小的事件。"
+   },
+   "fix": "可以保留。胡适列举的“一连串小小的事件”从“革命的导火线”一节、送别诗开始；传单一事他没有称作意外事件，所以说“本文的归并”是准确的。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "因此这是当事人多年后的自述，不是当时的独立记录；梅光迪、任鸿隽的反应和话语，都经胡适转述，本文不推测他们的内心。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章全文（阅读窗口内），以及唐德刚注〔1〕",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "以上九条是记载在我一九一六年七月六日的日记之中"
+   },
+   "fix": "判断本身成立，但宜补一句：口述中引用了他1916年的日记和致任鸿隽的信（如七月二十六日信）。这些当时的文字同样经胡适本人选录和转述。这样读者不会误以为当时没有任何书面记录。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "注中所记之事（如1956年胡适在哈佛讲演时格里德的反应）是唐德刚的记述，本文未另行核验。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "唐德刚注〔5〕",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "一九五六年当他以这一论调在哈佛大学讲演时（笔者至今尚保存一份那时的录音带）"
+   },
+   "fix": "“本文未另行核验”是对本刊自身工作的说明，属实，可以保留。可补充：唐德刚自称保存有这次讲演的录音带，但本文没有查阅这份录音。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "the events he records (such as Grieder's reaction to Hu's 1956 Harvard lecture) are his testimony, not checked here.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "唐德刚注〔5〕",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "笔者至今尚保存一份那时的录音带"
+   },
+   "fix": "与中文版同步：可以注明唐德刚自称保存有讲演录音带，本文未查阅。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "dek",
+   "problem": "“他把主张写得温和，陈独秀却替他把旗子举高成‘革命’”容易让读者以为“革命”一说出自陈独秀。来源显示，胡适自己早在诗和信里常用“文学革命”，1916年作的词里还高呼“文学革命何疑”；温和的措辞只是他第一次向国内发表时的策略。today.1 也有同样的倾向。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "“文学革命”一词在我的诗和信里都时常提到，在朋友们给我的信中也时常提起。"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.context.1",
+   "problem": "这段停在两人分工上，没有交代结果：两篇论文都已宣读，赵元任后来成为国语罗马字的主要编制人。这个结局已在 HS-E31，但段落没有引用。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "我二人的论文都在中国学生会中宣读了。"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.story.3",
+   "problem": "九条被写成胡适独自写下的主张。来源说这些是他与任、唐、杨在绮色佳讨论后，在日记里记下的讨论项目。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "在这两次访问之后，我在日记里记着我们讨论中的几个项目。"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-BK-HUSHI",
+   "outcome": "在胡适的自述里，运动的收尾是1920年教育部通令小学低年级教材改用白话，他称之为“部分的胜利”；但他紧接着说自己仍不满意，白话文四十年来没有成为完全的教育和文学工具，并把原因归于执政者的保守和文白夹杂的教科书。",
+   "quote": "因此在我们的斗争中，至少获得了部分的胜利。其中重要的部分就是以白话文为教育的工具。",
+   "in_evidence": true
+  },
+  {
+   "source_id": "S-BK-HUSHI",
+   "outcome": "关于诗的争论，在胡适这一方以他的决定收尾：不再写旧诗词，专写白话诗，并预先把诗集定名为《尝试集》。",
+   "quote": "所以在一九一六年七月底八月初，我就决定不再写旧诗词，而专门用活的语言文字来写白话诗了。",
+   "in_evidence": true
+  }
+ ],
+ "additions": [
+  {
+   "id": "HS-E39",
+   "source_id": "S-BK-HUSHI",
+   "offset": 104198,
+   "chars": 198,
+   "why": "七月六日日记里的九条，按胡适的说法，是记下他与任鸿隽、唐钺、杨铨等人在绮色佳讨论中的几个项目，同时也总结了他自己的主张。story.3 只写“他在日记里写下九条主张”，补上这段可以交代九条的来历：它们来自朋友间的讨论，不是独自写成的。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "cd30b7995084fe913bd91532a83997fec606091d45a4cd255cd94fa85d69941a",
+ "outcome": "needs_work",
+ "blocking": [
+  "evidence must be expanded first: 1 addition(s) ['HS-E39']"
+ ]
+}

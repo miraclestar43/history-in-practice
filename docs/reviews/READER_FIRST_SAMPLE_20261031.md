@@ -36,3 +36,44 @@ Process: the full episode and its ending (pp. 86–96, plus the context review's
 4. a recorded reader-first restructure request (`data/hushi_reader_issue.txt`), checked again from scratch.
 
 No approval is carried over across a rewrite.
+
+## Result (2026-10-31 15:41 CDT)
+
+**Status:** admitted.
+- Attempts used: 3, plus 2 owner-directed. The second extra attempt was allowed only because the context review had added evidence the editor hadn't seen (HS-E39).
+- Then one **local fix**, authorized by the owner and *not* counted as an attempt:
+  - Issue V2-V1, hook.1: the article said "按胡适的说法，难处在于…". In the source, this is 胡适 setting out *his friends'* objections in order (HS-E20, "我开始用的战术是把他们反对我的原因排个队").
+  - Fixed in zh and en.
+  - The translator's 〔〕 insertions ("为攻克这最后一个堡垒", "在中国诗词中") were deliberately *not* attributed to 胡适.
+- After the fix:
+  - a fresh full verify pass on the exact new text found no open issues;
+  - the context review was clean;
+  - approval record ed344b7aec47, content_sha256 ee6e7e10…;
+  - `current_eligibility` re-verified: no problems.
+
+The checks so far are model checks: the final editor, the deterministic checker and the context review. **No reader has approved this story yet.**
+
+### Before (the first final-editor version) → after (reader-first revision)
+
+| | Before | After |
+|---|---|---|
+| First sentence | Gives away the ending: "1916年七月底八月初…胡适给自己定了一条规矩：不再写旧诗词…叫《尝试集》" | Opens on the tension: "一群在美国读书的中国朋友，为中国文学该怎样改革争论了一年多。1916年7月，湖上一场几乎翻船的风雨…争论最后收缩到一个问题上：诗能不能用白话写。" |
+| Opening background | The leaflet side story first, with 清华学生监督处, 钟文鳌, and 美东中国学生会文学股 | The main conflict first; the leaflet is compressed into the context section; those institution names are gone |
+| Secondary names (zh body, mentions) | 钟文鳌 1, 赵元任 3, 陈衡哲 1, 钱玄同 1, 白璧德 2, 爱默生 1, 剑桥 1, 绮色佳 2, 唐德刚 9 | 钟文鳌, 陈衡哲, 钱玄同, 白璧德, 爱默生 and 剑桥 removed; 赵元任 1, 绮色佳 1, 唐德刚 6 |
+| Main cast | 胡适, 梅光迪, 任鸿隽, 陈独秀 | Same four, each introduced with their role on first mention |
+| Limits section | 3 paragraphs, 584 chars, including the 元明之辨 note and a counterfactual disclaimer | 3 paragraphs, 330 chars |
+| Length / estimate | 4,788 zh chars, 3,526 en words; ≈15 / 18 min | 4,840 zh chars, 3,549 en words; ≈15 / 18 min |
+
+**Not achieved:** the ~10-minute target. The revision moved and replaced material rather than cutting it. The reading estimates use 320 zh chars/min and 200 en words/min, and count the body plus the question and the example.
+
+### Test-site preview
+
+- **Where:** branch `hip-test-20261030` of the website_test repo (preview only; `main` is unchanged).
+- **What's on it:**
+  - a homepage card "没事儿多读书", plus a short "读书" nav link;
+  - the story directory with 胡适 first, marked 推荐 · 样稿;
+  - Snow last, with a dated 待修订 notice. The sent revision 1 is byte-identical (sha256 809c603d…).
+- **Live check:**
+  - the served JSON hash matches and was recomputed;
+  - phone viewport 390 px (headless Firefox, iPhone user agent): home → card → list → zh/en story, with no horizontal overflow and no load errors.
+- **Known issue (pre-existing):** the homepage's top nav is too crowded on phones ("Contact" was already cut off). The card is the working entry.
