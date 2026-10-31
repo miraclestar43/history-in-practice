@@ -186,7 +186,7 @@ def email_html(obj, base, news: dict | None = None, now_iso: str | None = None):
 {foot}
 </td></tr></table></td></tr></table></body></html>'''
 
-def email_text(obj, base):
+def email_text(obj, base, news: dict | None = None, now_iso: str | None = None):
     def block(lang):
         L = LBL[lang]; r = obj["reflection"]; out = [obj["title"][lang], obj["dek"][lang], ""]
         for s in obj["sections"]:
@@ -198,7 +198,19 @@ def email_text(obj, base):
         out += ["", f"== {L['more']} =="] + [f"- {m['title']}: {m['what'][lang]} ({m['access'][lang]})" + (f" {m['url']}" if web_url(m.get("url")) else "") for m in obj["further_reading"]]
         return "\n".join(out)
     test = [f"【测试 TEST】{TEST_NOTE['zh']}", TEST_NOTE["en"], ""] if obj.get("status") == "test" else []
-    return "\n".join(test + [f"{LBL['zh']['col']}｜{dotted(obj['edition_date']) or obj['edition_date']} · {CAT[obj['category']][0]}", "", block("zh"), "",
+    nw = []
+    if news is not None:
+        if news_problems(news, now_iso):
+            nw = ["== 今日新闻 ==", "今天的新闻简报暂缺（没有及时、可核对来源的版本），下面直接进入今日故事。", ""]
+        else:
+            nw = [f"== 今日新闻 · 约 {news_minutes(news)} 分钟 ==", news["label"]["zh"], ""]
+            for i, it in enumerate(news["items"]):
+                nw += [f"{i + 1}. {it['headline']}", it["what"]]
+                if it.get("why"): nw.append(("解读：" if it.get("why_kind") == "interpretation" else "为什么值得知道：") + it["why"])
+                if it.get("qualifiers"): nw.append(it["qualifiers"])
+                nw += ["来源：" + "；".join(s["name"] + (f" {s['url']}" if web_url(s.get("url")) else "") for s in it.get("sources") or []), ""]
+            nw += ["=" * 20, "== 今日故事 ==", ""]
+    return "\n".join(test + nw + [f"{LBL['zh']['col']}｜{dotted(obj['edition_date']) or obj['edition_date']} · {CAT[obj['category']][0]}", "", block("zh"), "",
                       f"在网页阅读：{link(obj,'zh',base)}", f"Read in English: {link(obj,'en',base)}", "=" * 40, "", block("en"), "",
                       f"{obj['edition_id']} rev {obj['revision']} · {LBL['zh']['feedback']} {LBL['zh']['pause']}"])
 

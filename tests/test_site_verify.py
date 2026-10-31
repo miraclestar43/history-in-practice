@@ -139,6 +139,10 @@ class NewsModule(unittest.TestCase):
     def test_without_news_the_email_is_unchanged(self):
         o = frozen(); self.assertEqual(render.email_html(o, "https://x"), render.email_html(o, "https://x", news=None))
         self.assertNotIn('id="news"', render.email_html(o, "https://x"))
+        self.assertEqual(render.email_text(o, "https://x"), render.email_text(o, "https://x", news=None))
+        txt = render.email_text(o, "https://x", news=fake_news(), now_iso=self.NOW); self.assertIn("1. 虚构新闻0", txt)
+        self.assertLess(txt.index("虚构新闻2"), txt.index("== 今日故事 =="))
+        self.assertIn("新闻简报暂缺", render.email_text(o, "https://x", news=fake_news(status="degraded"), now_iso=self.NOW))
 
 
 if __name__ == "__main__":

@@ -179,11 +179,21 @@ def cmd_local_fix(a):
     in the same record and re-verified (full verify pass, then context review and admission as usual). Not an attempt:
     max_attempts still limits whole-article retries, and no further attempt is started here."""
     from . import final_edit
-    d = db(); r = final_edit.local_fix(a.edition, d, _load(a.changes), a.issue, a.reason)
+    d = db(); ops = [dict(zip(("path", "problem"), x.split("|", 1))) for x in a.operator_issue]
+    r = final_edit.local_fix(a.edition, d, _load(a.changes), a.issue, a.reason, operator_issues=ops)
     res = {"local_fix": {k: r.get(k) for k in ("outcome", "reason", "open_issues", "final_content_sha256", "failure")}}
-    if r.get("outcome") == "admissible":
-        res["after"] = _final_one(d, a.edition)          # context review of the new text, then admission; attempts stay capped
-    print(json.dumps(res, ensure_ascii=False, indent=1)); return 0 if (res.get("after") or {}).get("outcome") == "admitted" else 2
+    # Only the context review of the new text and admission follow. Never a whole-article attempt: on 2026-10-31 handing
+    # off to _final_one here started unrequested attempts after a revision's demotion had reset the allowance.
+    if r.get("outcome") == "admissible" and final_edit.awaiting_context(a.edition):
+        cx = final_edit.run_context(a.edition)
+        res["context_review"] = {"outcome": cx.get("outcome"), "blocking": (cx.get("blocking") or [])[:8],
+                                 "additions": [x["id"] for x in cx.get("additions") or []]}
+        if cx.get("outcome") == "clean":
+            out = final_edit.OUT_ROOT / a.edition / "final"
+            res["admission"] = final_edit.admit(d, out / "article.json", out / "evidence.json",
+                                                json.loads((out / "final_editor_record.json").read_text(encoding="utf-8")))
+    res["status"] = state.get(d, a.edition)["status"]
+    print(json.dumps(res, ensure_ascii=False, indent=1)); return 0 if res["status"] == "checked" else 2
 
 
 def cmd_site_preview(a):
@@ -851,7 +861,8 @@ def main(argv=None):
     p.add_argument("edition"); p.add_argument("article", metavar="NEW_ARTICLE.json"); p.add_argument("--reason", required=True)
     p.set_defaults(f=cmd_revise_base)
     p = sp.add_parser("local-fix", help="recorded small evidence-backed fix of named open final-editor issues (not an attempt)")
-    p.add_argument("edition"); p.add_argument("--issue", action="append", required=True); p.add_argument("--changes", required=True, metavar="CHANGES.json")
+    p.add_argument("edition"); p.add_argument("--issue", action="append", default=[]); p.add_argument("--changes", required=True, metavar="CHANGES.json")
+    p.add_argument("--operator-issue", action="append", default=[], metavar="FIELD_PATH|PROBLEM", help="an owner-instructed wording fix of one field (recorded; basis = the owner instruction)")
     p.add_argument("--reason", required=True); p.set_defaults(f=cmd_local_fix)
     p = sp.add_parser("site-preview", help="TEST preview: add admitted reader samples and dated notices (never emails)")
     p.add_argument("--site-root", required=True); p.add_argument("--sample", action="append", default=[], metavar="EDITION_ID")

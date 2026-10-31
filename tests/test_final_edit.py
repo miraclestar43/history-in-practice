@@ -381,6 +381,38 @@ class FinalEditor(unittest.TestCase):
         a = final_edit.admit(self.db, out / "article.json", out / "evidence.json", r); self.assertTrue(a["admitted"], a)
         self.assertEqual(final_edit.local_fix(CID, self.db, [], [open_id], "again", call=clean)["outcome"], "refused")
 
+    def test_local_fix_command_never_starts_a_whole_article_attempt(self):
+        # 2026-10-31: the CLI handed off to the queue loop after a local fix, and a revision's demotion had reset the
+        # allowance, so unrequested attempts started. Now: context review + admission only.
+        from history_in_practice import cli
+        from unittest import mock
+        import argparse, io, contextlib
+        e = self.ev["excerpts"][0]
+        issue = {"id": "1", "path": "sections.story.0", "category": "attribution", "severity": "fix", "problem": "归属",
+                 "evidence": [{"id": e["id"], "quote": e["quote"][:8]}], "proposed": "改"}
+        story0 = self.o["sections"][2]["paras"][0]; n = {"k": 0}
+        def fix_all(prompt):
+            todo = json.loads(prompt.rsplit("【问题清单】", 1)[1].split("\n\n[", 1)[0]); n["k"] += 1
+            return {"changes": [{"path": "sections.story.0.zh", "text": story0["zh"] + "删" * n["k"], "issues": [x["id"] for x in todo]}],
+                    "dispositions": [{"issue": x["id"], "action": "fixed", "rationale": "删"} for x in todo]}
+        rec = final_edit.run(CID, self.db, call=self.script(revise=fix_all, verify_issues=lambda k: [issue])); open_id = rec["open_issues"][-1]
+        out = final_edit.OUT_ROOT / CID / "final"; story = json.loads((out / "article.json").read_text())["sections"][2]["paras"][0]
+        hook = json.loads((out / "article.json").read_text())["sections"][0]["paras"][0]
+        ch = Path(tempfile.mkdtemp()) / "ch.json"
+        ch.write_text(json.dumps([{"path": "sections.story.0.zh", "text": story["zh"] + "（改）"},
+                                  {"path": "sections.hook.0.zh", "text": hook["zh"] + "（删去成语释义）"}], ensure_ascii=False))
+        self._patch_cli(self.script(verify_issues=lambda k: []))
+        a = argparse.Namespace(edition=CID, issue=[open_id], changes=str(ch), reason="t", operator_issue=["sections.hook.0|owner: drop the idiom gloss"])
+        n_before = final_edit.attempts_used(CID)
+        with mock.patch.object(final_edit, "run", side_effect=AssertionError("no whole-article attempt")), \
+             mock.patch.object(final_edit, "run_context", return_value={"outcome": "needs_work", "blocking": ["x"]}), \
+             mock.patch.object(cli, "db", return_value=self.db), contextlib.redirect_stdout(io.StringIO()):
+            rc = cli.cmd_local_fix(a)
+        self.assertEqual(rc, 2); self.assertEqual(final_edit.attempts_used(CID), n_before)
+        r = final_edit.prior_final(CID); self.assertEqual(r["outcome"], "admissible")
+        ops = [i for i in r["issues"] if i["id"].startswith("OP")]
+        self.assertEqual([(i["path"], i["disposition"]) for i in ops], [("sections.hook.0", "fixed")])
+
     def test_owner_authorized_revision_archives_rev1_and_readmits_rev2_after_one_attempt(self):
         from history_in_practice import cli
         rec, a = self.run_admit(self.script()); self.assertTrue(a["admitted"], a)

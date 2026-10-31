@@ -544,7 +544,7 @@ def run(cid: str, db, *, call=None, max_rounds: int = MAX_ROUNDS, operator_note:
 LOCAL_FIX_MAX_FIELDS = 4          # e.g. one sentence's field in zh + en, plus a neighbouring field for a transition
 
 
-def local_fix(cid: str, db, changes: list, issue_ids: list[str], reason: str, *, call=None) -> dict:
+def local_fix(cid: str, db, changes: list, issue_ids: list[str], reason: str, *, call=None, operator_issues: list[dict] | None = None) -> dict:
     """A recorded *local* fix of open final-editor issues (owner rule 2026-10-31): small, evidence-backed wording or
     attribution corrections, not a whole-article retry. Allowed only for open fix issues of the latest record that carry
     a verifiable evidence quote, and only on the fields those issues name (zh/en text, <= LOCAL_FIX_MAX_FIELDS). The
@@ -564,8 +564,19 @@ def local_fix(cid: str, db, changes: list, issue_ids: list[str], reason: str, *,
     if rec.get("final_content_sha256") != o["content_sha256"] or rec.get("evidence_sha256") != editor.sha(ev):
         return {"candidate_id": cid, "outcome": "refused", "reason": "article/evidence differ from the latest record"}
     issues = {i["id"]: i for i in rec["issues"]}; problems = []
+    for k, x in enumerate(operator_issues or []):        # owner-instructed wording fixes: the basis is the owner's instruction
+        if not (x.get("path") and x.get("problem")):
+            problems.append("operator issue needs FIELD_PATH|PROBLEM"); continue
+        oid = f"OP{len([i for i in issues if str(i).startswith('OP')]) + 1}"
+        issues[oid] = {"id": oid, "path": x["path"], "category": "readability", "severity": "fix", "problem": x["problem"],
+                       "origin": "operator: owner instruction (local fix)", "evidence": []}
+        issue_ids = list(issue_ids) + [oid]
+    if not issue_ids:
+        problems.append("name at least one open issue or operator issue")
     for k in issue_ids:
         i = issues.get(k)
+        if str(k).startswith("OP"):
+            continue
         if not i or k not in (rec.get("open_issues") or []):
             problems.append(f"{k}: not an open issue of the latest record")
         elif not (i.get("evidence") and all(quote_ok(ev, c) for c in i["evidence"])):
