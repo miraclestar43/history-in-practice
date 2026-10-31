@@ -7,8 +7,11 @@
   hip export-site ARTICLE.json... --site-root DIR
   hip verify-site ARTICLE.json --base-url URL
   hip send ARTICLE.json --dry-run | --local-smtp HOST:PORT [--recipients-file F] | --real
-  hip send-test ARTICLE.json --confirm-real-email   one-off REAL test to the configured recipients (works while
-                                                   EMAIL_SEND_ENABLED=false; full config required; separate test edition id)
+  hip test-edition prepare ARTICLE.json --test-id test-YYYYMMDD-name --site-base PREVIEW_URL [--site-root DIR] [--window-hours H]
+  hip test-edition verify-site|status|send --test-id ID [--confirm-real-email]
+                                   one tracked TEST (persisted identity, TEST labels, bounded window, live preview verified
+                                   before email, frozen recipients, no resend of accepted/unknown); works while
+                                   EMAIL_SEND_ENABLED=false; never touches rotation, coverage or publication state
   hip supply [--category C] [--max N] | --check    catalogue -> model proposal -> anchors verified -> new candidate file
   hip prepare-queue [--max-articles N --budget-minutes M]   (config/candidates/*.json, file lock)
   hip edit EDITION | hip edit-queue [--max N]       editor stage: bounded edit rounds -> re-review + English parity -> admit or stay pending
@@ -166,23 +169,53 @@ def _send(a, retry=False):
 
 
 def cmd_send_test(a):
-    """One-off real test: separate edition id, '【测试】' subject, allowed while EMAIL_SEND_ENABLED=false."""
-    if not a.confirm_real_email:
-        raise SystemExit("this sends REAL email to the configured recipients; add --confirm-real-email")
-    import time as _t
-    o = _load(a.article); render.finalize(o)
-    o = dict(o, edition_id=f"{o['edition_id']}-test-{_t.strftime('%Y%m%d%H%M%S')}", title=dict(o["title"], zh="【测试】" + o["title"]["zh"]))
-    render.finalize(o); out = data_dir() / "outbox-test"; render.build([dict(o)], out, a.base_url)
-    html = (out / "email" / f"{o['edition_id']}.html").read_text(encoding="utf-8"); text = (out / "email" / f"{o['edition_id']}.txt").read_text(encoding="utf-8")
-    d = db()
-    try:
-        rep = mailer.send_edition(d, o, html, text, config.load_runtime(), mode="real", manual_test=True)
-    except (mailer.SendDisabled, mailer.ConfigIncomplete) as e:
-        print(json.dumps({"sent": False, "reason": str(e)}, ensure_ascii=False)); return 2
-    done = state.delivery_complete(d, o["edition_id"], o["revision"])
-    print(json.dumps({"test_edition": o["edition_id"], "all_accepted": done, "deliveries": rep,
-                      "next": "check both inboxes and spam folders; reply once to confirm the Reply-To path"}, ensure_ascii=False, indent=1))
-    return 0 if done else 3
+    raise SystemExit("send-test made a new timestamped identity on every run and is retired; use "
+                     "`hip test-edition prepare|verify-site|send|status --test-id test-YYYYMMDD-name` (one persisted test identity)")
+
+
+def cmd_test_edition(a):
+    """One tracked TEST: persisted identity, labelled copy of an admitted article, site preview verified before any email."""
+    from . import testrun
+    d = db(); testrun.init(d); out = data_dir() / "outbox-test" / a.test_id
+    if a.action == "prepare":
+        if not a.article:
+            raise SystemExit("prepare needs ARTICLE")
+        rec, test = testrun.create_or_load(d, a.test_id, Path(a.article).resolve(), site_base=a.site_base or "", window_hours=a.window_hours)
+        render.build([dict(test)], out, rec["site_base"] or "https://starhub.vip")
+        (out / "test_article.json").write_text(json.dumps(test, ensure_ascii=False, indent=1), encoding="utf-8")
+        for i, r in enumerate(FICTIONAL):                         # preview .eml with fictional recipients only
+            html = (out / "email" / f"{a.test_id}.html").read_text(encoding="utf-8"); text = (out / "email" / f"{a.test_id}.txt").read_text(encoding="utf-8")
+            m = mailer.build_message(test, html, text, "每日一鉴 <history@read.starhub.vip>", r,
+                                     mailer.message_id(a.test_id, test["revision"], state.recipient_key(r), "read.starhub.vip"), reply_to="reply@example.invalid")
+            (out / "email" / f"{a.test_id}.reader{i+1}.eml").write_bytes(bytes(m))
+        written = site_export.export([test], Path(a.site_root)) if a.site_root else []
+        print(json.dumps({"test_id": a.test_id, "source": rec["source_edition"], "source_sha256": rec["source_sha256"],
+                          "test_sha256": test["content_sha256"], "revision": test["revision"], "site_base": rec["site_base"],
+                          "window_expires_la": testrun.datetime.fromtimestamp(rec["window_expires"], testrun.TZ).isoformat(timespec="minutes"),
+                          "html_bytes": len((out / "email" / f"{a.test_id}.html").read_bytes()), "reading_minutes": test["reading_minutes"],
+                          "length": test["length"], "out": str(out), "site_written": written}, ensure_ascii=False, indent=1))
+        return 0
+    rec = testrun.get(d, a.test_id)
+    if not rec:
+        raise SystemExit(f"no test {a.test_id}; run `hip test-edition prepare` first")
+    rec, test = testrun.create_or_load(d, a.test_id, Path(rec["source_path"]), site_base=rec["site_base"] or "", window_hours=1)
+    if a.action == "status":
+        print(json.dumps({k: v for k, v in rec.items() if k != "source_path"} | {"window_open": testrun.window_open(rec),
+                          "deliveries": testrun.deliveries(d, a.test_id, test["revision"])}, ensure_ascii=False, indent=1)); return 0
+    if a.action == "verify-site":
+        ok, problems = testrun.verify_site(d, rec, test)
+        print(json.dumps({"ok": ok, "problems": problems, "site_base": rec["site_base"]}, ensure_ascii=False, indent=1)); return 0 if ok else 1
+    if a.action == "renew-window":
+        rec = testrun.renew_window(d, a.test_id, a.window_hours)
+        print(json.dumps({"window_expires": rec["window_expires"]})); return 0
+    if a.action == "send":
+        if not a.confirm_real_email:
+            raise SystemExit("this sends REAL email to the configured recipients; add --confirm-real-email")
+        with publish.lock("publish"):
+            rep = testrun.send(d, rec, test, config.load_runtime(), base=rec["site_base"], out=out)
+        print(json.dumps(rep, ensure_ascii=False, indent=1))
+        return 0 if rep.get("all_accepted") else (2 if not rep.get("sent") else 3)
+    raise SystemExit(a.action)
 
 
 def cmd_prepare_queue(a):
@@ -506,8 +539,13 @@ def main(argv=None):
     p = sp.add_parser("prepare-queue"); p.add_argument("--max-articles", type=int, default=3); p.add_argument("--budget-minutes", type=float, default=150)
     p.set_defaults(f=cmd_prepare_queue)
     p = sp.add_parser("publish-today"); p.add_argument("--date"); p.set_defaults(f=cmd_publish_today)
-    p = sp.add_parser("send-test"); p.add_argument("article"); p.add_argument("--confirm-real-email", action="store_true")
-    p.add_argument("--base-url", default="https://starhub.vip"); p.set_defaults(f=cmd_send_test)
+    p = sp.add_parser("send-test"); p.add_argument("rest", nargs="*"); p.add_argument("--confirm-real-email", action="store_true")
+    p.set_defaults(f=cmd_send_test)
+    p = sp.add_parser("test-edition"); p.add_argument("action", choices=["prepare", "status", "verify-site", "send", "renew-window"])
+    p.add_argument("article", nargs="?"); p.add_argument("--test-id", required=True); p.add_argument("--site-base")
+    p.add_argument("--site-root", help="website working copy to export the test page into (prepare only)")
+    p.add_argument("--window-hours", type=float, default=6); p.add_argument("--confirm-real-email", action="store_true")
+    p.set_defaults(f=cmd_test_edition)
     p = sp.add_parser("supply"); p.add_argument("--category"); p.add_argument("--max", type=int, default=1); p.add_argument("--check", action="store_true")
     p.set_defaults(f=cmd_supply)
     p = sp.add_parser("edit"); p.add_argument("edition"); p.add_argument("--rounds", type=int, help="override editor.max_rounds for this attempt")

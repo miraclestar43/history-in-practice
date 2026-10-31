@@ -17,6 +17,8 @@ LBL = {"zh": dict(col="每日一鉴", today="今天可以怎么用", q="想一�
                   unc="Sources and uncertainty", min="min", read_web="Read on the web", read_en="", pause="", feedback="", edition="Edition",
                   stop="Pause for ten seconds and decide what you would do.")}
 ACCENT = "#7a5c3e"
+TEST_NOTE = {"zh": "测试邮件：用于检查排版与投递，不是正式的一期；每日订阅尚未开始，之后不会自动收到下一期。",
+             "en": "TEST: this checks layout and delivery. It is not an official edition; the daily subscription has not started."}
 ZH_CPM, EN_WPM = 320, 200   # reading-rate assumptions for the per-language estimate
 e = lambda s: html.escape(s or "", quote=True)
 
@@ -92,6 +94,9 @@ def email_html(obj, base):
             f'{LBL["zh"]["edition"]} {e(obj["edition_id"])} · rev {obj["revision"]} · {e(obj["edition_date"])} · '
             f'<a href="{e(link(obj,"zh",base))}" style="color:{ACCENT};">{e(link(obj,"zh",base))}</a><br>{LBL["zh"]["feedback"]} {LBL["zh"]["pause"]}</p>')
     pre = e(obj["preheader"]["zh"])
+    if obj.get("status") == "test":
+        head = (f'<p style="font-size:14px;line-height:1.7;margin:0 0 16px;padding:10px 14px;border:2px solid #b5542f;color:#7a2e12;border-radius:4px;">'
+                f'<b>测试 TEST</b> · {e(TEST_NOTE["zh"])}<br>{e(TEST_NOTE["en"])}</p>') + head
     return f'''<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(obj["title"]["zh"])}</title></head>
 <body style="margin:0;padding:0;background:#faf8f4;">
 <div style="display:none;max-height:0;overflow:hidden;">{pre}</div>
@@ -117,7 +122,8 @@ def email_text(obj, base):
         out += [f"[{i+1}] {s['citation']} {s.get('url') or ''}".strip() for i, s in enumerate(obj["sources"])]
         out += ["", f"== {L['more']} =="] + [f"- {m['title']}: {m['what'][lang]} ({m['access'][lang]}) {m['url']}" for m in obj["further_reading"]]
         return "\n".join(out)
-    return "\n".join([f"{LBL['zh']['col']} · {obj['edition_date']} · {CAT[obj['category']][0]}", "", block("zh"), "",
+    test = [f"【测试 TEST】{TEST_NOTE['zh']}", TEST_NOTE["en"], ""] if obj.get("status") == "test" else []
+    return "\n".join(test + [f"{LBL['zh']['col']} · {obj['edition_date']} · {CAT[obj['category']][0]}", "", block("zh"), "",
                       f"在网页阅读：{link(obj,'zh',base)}", f"Read in English: {link(obj,'en',base)}", "=" * 40, "", block("en"), "",
                       f"{obj['edition_id']} rev {obj['revision']} · {LBL['zh']['feedback']} {LBL['zh']['pause']}"])
 
@@ -156,7 +162,7 @@ def build(objs, out: Path, base):
         p.write_text(json.dumps(public, ensure_ascii=False, indent=1), encoding="utf-8")
         index.append({"edition_id": o["edition_id"], "revision": o["revision"], "edition_date": o["edition_date"], "category": o["category"],
                       "title": o["title"], "dek": o["dek"], "reading_minutes": o["reading_minutes"], "content_sha256": o["content_sha256"],
-                      "path": f"data/history/{y}/{m}/{d}-{o['edition_id']}.json"})
+                      "path": f"data/history/{y}/{m}/{d}-{o['edition_id']}.json", **({"test": True} if o.get("status") == "test" else {})})
     index.sort(key=lambda x: x["edition_date"], reverse=True)
     (out/"site/data/history/index.json").write_text(json.dumps({"schema_version": "0.2", "items": index}, ensure_ascii=False, indent=1), encoding="utf-8")
     tpl = Path(__file__).with_name("templates")/"history_index.html"

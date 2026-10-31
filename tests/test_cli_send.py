@@ -35,18 +35,10 @@ class CliSend(unittest.TestCase):
         self.assertEqual(rc, 2); self.assertFalse(out["sent"]); self.assertIn("EMAIL_SEND_ENABLED", out["reason"])
         self.assertEqual(len(self.srv.messages), 0)
 
-    def test_one_off_test_needs_confirmation_and_complete_config(self):
-        rc, out, err = self.hip("send-test", ART); self.assertNotEqual(rc, 0); self.assertIn("--confirm-real-email", err)
-        rc, out, _ = self.hip("send-test", ART, "--confirm-real-email", EMAIL_REPLY_TO="")
-        self.assertEqual(rc, 2); self.assertIn("EMAIL_REPLY_TO", out["reason"]); self.assertEqual(len(self.srv.messages), 0)
-        rc, out, _ = self.hip("send-test", ART, "--confirm-real-email", EMAIL_RECIPIENTS="")
-        self.assertEqual(rc, 2); self.assertIn("empty", out["reason"])
-        rc, out, _ = self.hip("send-test", ART, "--confirm-real-email")
-        self.assertEqual(rc, 0, out); self.assertTrue(out["all_accepted"]); self.assertTrue(out["test_edition"].startswith("sample-D-test-"))
-        self.assertEqual(len(self.srv.messages), 2)
-        m = message_from_bytes(self.srv.messages[0][1])
-        self.assertEqual(m["Reply-To"], "feedback@example.com"); self.assertIn("-test-", m["X-HIP-Edition"])
-        self.assertNotIn("example.com", json.dumps(out).replace("feedback@example.com", ""))          # no addresses in the report
+    def test_one_off_test_moved_to_test_edition(self):
+        rc, out, err = self.hip("send-test", ART, "--confirm-real-email"); self.assertNotEqual(rc, 0); self.assertIn("test-edition", err)
+        rc, out, _ = self.hip("send", ART, "--real", EMAIL_RECIPIENTS=""); self.assertEqual(rc, 2)
+        self.assertEqual(len(self.srv.messages), 0)          # full flow: tests/test_testrun.py
 
 
 if __name__ == "__main__":

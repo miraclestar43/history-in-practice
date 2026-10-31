@@ -143,13 +143,13 @@ def _quiet_close(s):
 def send_edition(db, obj, html, text, runtime, *, mode="real", smtp_cfg=None, recipients=None, domain="read.starhub.vip",
                  manual_test=False, may_start=None) -> list[dict]:
     """Send one edition to each frozen expected recipient once. Returns a report without addresses.
-    manual_test=True is the explicit one-off real test (`hip send-test`): allowed while
+    manual_test=True is the explicit one-off real test (`hip test-edition send`): allowed while
     EMAIL_SEND_ENABLED is false, but only with a complete configuration.
     may_start() is checked before each recipient (the send deadline): once it is False no new SMTP
     exchange starts; recipients already sent keep their recorded result."""
     if mode == "real":
         if not runtime.send_enabled and not manual_test:
-            raise SendDisabled("EMAIL_SEND_ENABLED is not true; refusing to send (use `hip send-test` for a one-off test)")
+            raise SendDisabled("EMAIL_SEND_ENABLED is not true; refusing to send (use `hip test-edition send` for a one-off test)")
         problems = validate_config(runtime)
         if problems:
             raise ConfigIncomplete("; ".join(problems))

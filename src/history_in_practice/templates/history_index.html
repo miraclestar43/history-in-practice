@@ -33,6 +33,7 @@ a{color:var(--accent)}
 .item{padding:14px 0;border-bottom:1px solid var(--line)}
 .item a{font-size:1.1rem;text-decoration:none}
 .error{border:1px solid #b55;padding:12px;border-radius:6px}
+.test{border:2px solid #b5542f;color:#b5542f;padding:8px 12px;border-radius:6px;font-size:14px;margin:10px 0}
 </style>
 </head>
 <body>
@@ -43,6 +44,8 @@ a{color:var(--accent)}
 const CAT = {china_ancient:["中国古代","Ancient China"],world:["世界史","World History"],china_modern:["中国近现代","Modern China"],us:["美国史","U.S. History"]};
 const T = {zh:{q:"想一想",ex:"一个参考思路",as:"假设",st:"可以怎么做",alt:"另一种合理选择",unc:"出处与不确定性",src:"本篇依据",more:"想再读一点",min:"分钟（估算）",all:"全部",back:"← 全部文章",stop:"先停十秒，想想你会怎么做。"},
            en:{q:"Think about it",ex:"One possible approach",as:"Assumptions",st:"What you could do",alt:"Another reasonable choice",unc:"Sources and uncertainty",src:"Sources",more:"Read more",min:"min (estimate)",all:"All",back:"← All stories",stop:"Pause for ten seconds and decide what you would do."}};
+const TEST = {zh:"测试页面：用于检查排版与链接，不是正式发布的一期；每日订阅尚未开始。",en:"TEST page: for checking layout and links. Not an official edition; the daily subscription has not started."};
+const testNote = () => el("p",{class:"test",role:"note"},"测试 TEST · "+TEST[lang]);
 const app = document.getElementById("app");
 const params = new URLSearchParams(location.search);
 let lang = params.get("lang") || localStorage.getItem("hip-lang") || "zh";
@@ -64,6 +67,7 @@ function renderList(index){
   const list = el("div");
   const draw = () => { list.replaceChildren(); for (const it of index.items.filter(i => !active || i.category===active)){
       const d = el("div",{class:"item"}); const a = el("a",{href:"?story="+encodeURIComponent(it.edition_id)+"&lang="+lang}, it.title[lang]);
+      if (it.test) d.append(testNote());
       d.append(a, el("div",{class:"meta"}, it.edition_date+" · "+CAT[it.category][lang==="zh"?0:1]+" · "+it.reading_minutes[lang]+" "+T[lang].min), el("div",{class:"small"}, it.dek[lang]));
       list.append(d);} };
   for (const [k,label] of [["",T[lang].all], ...Object.entries(CAT).map(([k,v])=>[k,v[lang==="zh"?0:1]])]){
@@ -83,6 +87,7 @@ function renderStory(o){
   document.title = o.title[lang] + " · " + (lang==="zh"?"每日一鉴":"History in Practice");
   const L = T[lang], w = el("article");
   w.append(el("a",{href:"./?lang="+lang,class:"small"},L.back));
+  if (o.status === "test") w.append(testNote());
   const tabs = el("div",{class:"tabs",role:"tablist","aria-label":"语言 / Language"});
   for (const [k,label] of [["zh","中文"],["en","English"]]){
     const b = el("button",{type:"button",role:"tab","aria-selected":String(k===lang),tabindex:k===lang?"0":"-1"},label);
