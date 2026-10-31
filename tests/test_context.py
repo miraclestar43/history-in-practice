@@ -37,7 +37,11 @@ class Base(unittest.TestCase):
     def review(self, o, script, ev=None):
         calls = []
         def call(prompt, timeout_s=0, **kw):
-            calls.append(prompt); return reply(script(prompt, len(calls)))
+            calls.append(prompt)
+            obj = script(prompt, len(calls))
+            # These fixtures focus on claim dispositions; include the required episode array.
+            obj.setdefault("episode", [])
+            return reply(obj)
         rec, new = context.review(o, ev or self.ev, self.cache, self.td / "out", call=call, cid="cand-t")
         return rec, new, calls
 
@@ -152,6 +156,58 @@ class Binding(Base):
         (self.cache / "S-T.txt").write_text(SRC + "後記。", encoding="utf-8")
         self.assertIn("source S-T changed or missing since the context review", context.record_problems(rec, o, self.ev, self.cache))
         self.assertEqual(context.record_problems(None, o, self.ev, self.cache), ["no source-context review for this content"])
+
+
+class SourceCheckWordingAndSchema(unittest.TestCase):
+    def test_snow_independent_check_claims_are_triaged_in_limits_and_note(self):
+        zh = "本篇证据中没有当时卫生部门或他人的独立核查。"
+        en = "The evidence used here contains no independent check by a health authority or anyone else at the time."
+        o = article(zh, en=en)
+        o["sections"][0]["id"] = "limits"
+        o["uncertainty_note"] = {"zh": zh, "en": en}
+        got = {(f["path"], f["lang"]) for f in context.absence_claims(o)}
+        self.assertEqual(got, {("sections.limits.0", "zh"), ("sections.limits.0", "en"),
+                               ("uncertainty_note", "zh"), ("uncertainty_note", "en")})
+
+    def test_positive_official_returns_and_unrelated_negation_are_not_absence(self):
+        o = article("登记员的后续报表得到公布。", "他没有回答。",
+                    en="The later returns were published. Grant did not stop.")
+        self.assertEqual(context.absence_claims(o), [])
+
+    def test_further_reading_what_and_access_are_not_outside_the_review(self):
+        o = article("正常叙事。")
+        o["further_reading"] = [{"what": {"zh": "没有第三方核查。", "en": ""},
+                                 "access": {"zh": "", "en": "No independent verification is available."}}]
+        self.assertEqual({f["path"] for f in context.absence_claims(o)},
+                         {"further_reading.0.what", "further_reading.0.access"})
+
+    def test_empty_or_partial_review_is_invalid_even_when_no_claim_is_flagged(self):
+        validate = context.reply_schema([], {}, {}, False)
+        for bad in ({}, {"claims": []}, {"claims": [], "context_issues": []}):
+            with self.subTest(reply=bad):
+                self.assertTrue(validate(bad))
+
+    def test_non_object_rows_and_duplicate_verdicts_are_invalid(self):
+        validate = context.reply_schema([{"id": "A1"}], {"S": {}}, {}, False)
+        base = {"episode": [], "additions": [], "claims": [], "context_issues": []}
+        for key in base:
+            bad = dict(base, **{key: [None]})
+            with self.subTest(field=key):
+                self.assertTrue(validate(bad))
+        claim = {"id": "A1", "verdict": "not_a_source_claim"}
+        self.assertTrue(validate(dict(base, claims=[claim, dict(claim)])))
+
+    def test_supported_verdict_requires_known_source_identifiers(self):
+        validate = context.reply_schema([{"id": "A1"}], {"S": {}}, {}, False)
+        base = {"episode": [], "additions": [], "context_issues": []}
+        for source_ids in ("S", ["unread-source"], [], [None]):
+            claim = {"id": "A1", "verdict": "supported", "scope": "specified unit", "source_ids": source_ids}
+            with self.subTest(source_ids=source_ids):
+                self.assertTrue(validate(dict(base, claims=[claim])))
+
+    def test_explicit_review_with_no_findings_remains_valid(self):
+        self.assertEqual(context.reply_schema([], {}, {}, False)(
+            {"episode": [], "additions": [], "claims": [], "context_issues": []}), [])
 
 
 if __name__ == "__main__":
