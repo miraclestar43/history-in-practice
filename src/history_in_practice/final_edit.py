@@ -590,7 +590,8 @@ def current_eligibility(db, edition_id: str, article_path: Path | None = None, c
     the JSON handed in: edition state is admitted; the file is the edition's admitted path with the state's revision and
     content hash; the final-editor record next to it verifies against that article, its evidence and base article
     (verify_final_record, as at admission); a clean source-context review is bound to that content and evidence
-    (context.record_problems, as at admission); and the state's approval names that record. Returns (problems, article)."""
+    (context.record_problems, as at admission); and the state's approval names that record. An owner-approved sample
+    (approve-sample) needs no final-editor record but the same clean context review. Returns (problems, article)."""
     cur = state.get(db, edition_id)
     if not cur:
         return [f"{edition_id} is not a registered edition"], None
@@ -605,6 +606,12 @@ def current_eligibility(db, edition_id: str, article_path: Path | None = None, c
     if o.get("edition_id") != edition_id or o.get("revision") != cur["revision"] or o["content_sha256"] != cur["content_sha256"]:
         p.append("article file differs from the admitted edition (id, revision or content hash)")
     d = path.parent; files = {n: d / f"{n}.json" for n in ("final_editor_record", "evidence", "base_article")}
+    if (cur.get("origin") or "pipeline") == "sample" and str(cur.get("approval") or "").startswith("sample-approved"):
+        evp = d / "evidence.json" if (d / "evidence.json").exists() else REPO / "samples" / f"evidence_{d.name}.json"
+        if not evp.exists():
+            return p + ["approved sample: evidence pack missing"], o       # owner approval replaces the final-editor record,
+        ev = json.loads(evp.read_text(encoding="utf-8"))                     # not the source-context gate
+        return p + context.record_problems(_context_of(path), o, ev, cache), o
     if not files["final_editor_record"].exists() or not files["evidence"].exists():
         return p + ["no final-editor record and evidence next to the admitted article"], o
     rec = json.loads(files["final_editor_record"].read_text(encoding="utf-8")); ev = json.loads(files["evidence"].read_text(encoding="utf-8"))

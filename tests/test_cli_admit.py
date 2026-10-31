@@ -21,8 +21,9 @@ class Admit(unittest.TestCase):
             rc, inv = hip("inventory", data=td)
             self.assertEqual((inv["schedulable_total"], inv["samples"]["total"], inv["samples"]["approved"]), (0, 1, 0))
             rc, out = hip("approve-sample", "sample-D", "--reason", "read and approved by both readers", data=td); self.assertEqual(rc, 0)
-            rc, inv = hip("inventory", data=td)
-            self.assertEqual((inv["schedulable_total"], inv["samples"]["approved"]), (1, 1))
+            rc, inv = hip("inventory", data=td)                                   # approved, but no source-context review yet:
+            self.assertEqual((inv["schedulable_total"], inv["samples"]["approved"]), (0, 1))
+            self.assertIn("no source-context review for this content", inv["not_currently_eligible"]["sample-D"])
 
     def test_pending_draft_needs_an_editor_record(self):
         with tempfile.TemporaryDirectory() as td:
