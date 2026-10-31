@@ -29,6 +29,9 @@
   hip admit ARTICLE.json EVIDENCE.json --as-sample   (register a sample: never schedulable until `hip approve-sample`)
   hip approve-sample EDITION --reason TEXT
   hip registry-rebuild CONTENT.json...
+  hip books import-catalogue --path BOOKS.json [--source NAME]     catalogue metadata -> discovery leads (never evidence)
+  hip books ingest --book ID [--sid S] [--must-contain X ...] [--verified NOTE]   parsed TXT/EPUB -> source cache + location map
+  hip books locate --book ID --text NEEDLE                          stable location (EPUB spine/para, TXT offset) of a passage
 """
 from __future__ import annotations
 import argparse, json, os, subprocess, sys
@@ -510,6 +513,33 @@ def cmd_nightly(a):
     return 4 if rep["health"]["final_editor"] != "ok" else 1 if rep["inventory"]["alert"] else 0
 
 
+def cmd_books(a):
+    """Book intake pilot (see books.py). Book files, parsed text and the discovery DB stay under data/books (not in Git)."""
+    from . import books
+    root = data_dir() / "books"
+    if a.action == "import-catalogue":
+        items = json.loads(Path(a.path).read_text(encoding="utf-8"))
+        rep = books.import_catalogue(books.catalogue_db(root / "discovery.sqlite"), items, a.source or Path(a.path).name)
+        print(json.dumps(rep, ensure_ascii=False, indent=1)); return 0
+    man = json.loads((root / "manifest.json").read_text(encoding="utf-8")); f = next(x for x in man["files"] if x["book_id"] == a.book)
+    b = books.parse(root / "files" / f["path"])
+    if b["file_sha256"] != f["file_sha256"]:
+        raise SystemExit("file changed since acquisition (sha256 mismatch)")
+    if a.action == "ingest":
+        meta = {k: f.get(k) for k in ("title", "author", "translator", "year", "language", "genre", "license_basis", "url")} | {
+            "must_contain": a.must_contain or [], "verified": bool(a.verified), "verified_note": a.verified}
+        rep = books.to_source(b, a.sid or f["book_id"], data_dir() / "source_cache", meta, cjk=f.get("language") == "zh")
+        print(json.dumps({k: rep[k] for k in ("source_id", "status", "missing_markers", "text_sha256", "format")} |
+                         {"paragraphs": len(b["paragraphs"]), "chapters": len(b["chapters"])}, ensure_ascii=False, indent=1)); return 0
+    if a.action == "locate":
+        cjk = f.get("language") == "zh"; needle = books.evidence.normalise(a.text, cjk); out = []
+        for p in b["paragraphs"]:
+            if needle and needle in books.evidence.normalise(p["text"], cjk):
+                out.append({"location": books.locator(b, p["loc"]), "loc": p["loc"], "text": p["text"][:300]})
+        print(json.dumps(out[:5], ensure_ascii=False, indent=1)); return 0 if out else 1
+    raise SystemExit(a.action)
+
+
 def cmd_admit(a):
     """Admit an article into inventory. Pending drafts need an editor record bound to this exact content and evidence;
     remaining FIX-level issues need a named --exception. --as-sample registers a sample that is never schedulable
@@ -645,6 +675,10 @@ def main(argv=None):
     p.add_argument("--exception", action="append", metavar="ISSUE_ID=REASON", help="per-issue owner exception; repeat once per open issue")
     p.add_argument("--as-sample", action="store_true"); p.add_argument("--from-pending", action="store_true", help="kept for compatibility; implied")
     p.set_defaults(f=cmd_admit)
+    p = sp.add_parser("books"); p.add_argument("action", choices=["import-catalogue", "ingest", "locate"])
+    p.add_argument("--path"); p.add_argument("--source"); p.add_argument("--book"); p.add_argument("--sid")
+    p.add_argument("--must-contain", action="append"); p.add_argument("--verified", metavar="NOTE", help="who/how the edition was verified")
+    p.add_argument("--text"); p.set_defaults(f=cmd_books)
     p = sp.add_parser("registry-rebuild"); p.add_argument("content", nargs="+"); p.add_argument("--db"); p.set_defaults(f=cmd_registry_rebuild)
     a = ap.parse_args(argv)
     import signal as _sig                              # systemd stop/timeout sends SIGTERM: unwind so model children are killed

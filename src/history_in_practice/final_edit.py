@@ -471,9 +471,10 @@ def verify_final_record(o: dict, ev: dict, rec: dict, base: dict | None) -> list
     for i in rec.get("issues") or []:
         if i.get("severity") not in ("fix", "block"):
             continue
-        if i.get("origin") == "checker" and i.get("disposition") is None and i["problem"].removeprefix("checker: ").split()[0] not in now_at:
-            continue                     # the checker no longer reports anything at that location on this exact content
-                                         # (keyed by location, so rewording a checker message cannot close an issue)
+        checker_derived = i.get("origin") == "checker" or str(i.get("problem", "")).startswith("checker: ")   # incl. carried from a previous attempt
+        if checker_derived and i["problem"].removeprefix("checker: ").split()[0] not in now_at:
+            continue                     # the deterministic checker no longer reports anything at that location on this exact
+                                         # content, whatever the model labelled it (keyed by location, so rewording cannot close it)
         d = i.get("disposition")
         if d == "rejected" and not (i.get("evidence") and all(quote_ok(ev, c) for c in i["evidence"])):
             p.append(f"issue {i['id']} rejected without a verifiable evidence quote")

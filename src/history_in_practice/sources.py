@@ -43,6 +43,8 @@ def _adapter_url(src: dict) -> str:
         return f"https://archive.org/download/{ref}/{ref}_djvu.txt"
     if a == "html":
         return ref
+    if a == "book_file":
+        raise ValueError(f"book source {src['id']} is not in the cache: run `hip books ingest` (book files are never fetched here)")
     raise ValueError(a)
 
 def _to_text(adapter: str, ctype: str, body: bytes) -> str:

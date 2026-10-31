@@ -194,6 +194,19 @@ class FinalEditor(unittest.TestCase):
         finally:
             claude_cli.preflight, cli._final_one = old_pre, old_one
 
+    def test_carried_checker_issue_closes_only_when_the_checker_is_silent_at_that_location(self):
+        rec, a = self.run_admit(self.script()); self.assertTrue(a["admitted"], a)
+        out = final_edit.OUT_ROOT / CID / "final"; o = json.loads((out / "article.json").read_text()); ev = json.loads((out / "evidence.json").read_text())
+        base = json.loads((out / "base_article.json").read_text())
+        carried = {"id": "P9", "origin": "inherited final-editor previous attempt C2-9", "severity": "fix", "disposition": "duplicate",
+                   "same_as": "NOPE", "problem": "checker: today[0] repeats the open-question scenario: shared phrases 「x」"}
+        r2 = dict(rec, issues=rec["issues"] + [carried])
+        self.assertEqual(final_edit.verify_final_record(o, ev, r2, base), [])           # checker silent at today[0]: closed
+        o2 = json.loads(json.dumps(o)); today = next(s for s in o2["sections"] if s["id"] == "today")
+        rep = "你要先把几个目标的先后次序公开写出来，再把每条理由改写成可以逐条检验的清单"
+        today["paras"][0]["zh"] = rep + "。"; o2["reflection"]["scenario"]["zh"] = "小组争论时，" + rep + "。"; render.finalize(o2)
+        self.assertTrue(any("today[0]" in x or "P9" in x for x in final_edit.verify_final_record(o2, ev, dict(r2, final_content_sha256=o2["content_sha256"]), base)))
+
 
 if __name__ == "__main__":
     unittest.main()
