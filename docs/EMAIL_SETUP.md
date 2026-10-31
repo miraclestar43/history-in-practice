@@ -2,7 +2,7 @@
 
 此文件不包含真实收件人或凭据。
 
-建议使用 Resend，验证子域 `read.starhub.vip` 后，以 `每日一鉴 <history@read.starhub.vip>` 为 From。这是专用发信身份，不要求先注册 Gmail 或购买完整收件邮箱。
+建议使用 Resend，验证子域 `read.starhub.vip` 后，以 `没事儿多读书 <history@read.starhub.vip>` 为 From（显示名由代码统一为栏目名）。这是专用发信身份，不要求先注册 Gmail 或购买完整收件邮箱。
 
 截至 2026-10-30，Resend 官方免费发信配额为每月 3,000 封、每日 100 封；两人每日一封约每月 60–62 封，预计在配额内。额度和条款以开户时官方页面为准；不得自动启用付费、超额计费或非必要功能。
 
@@ -24,7 +24,7 @@ SMTP_PORT=465
 SMTP_SECURITY=ssl
 SMTP_USERNAME=resend
 SMTP_PASSWORD=REPLACE_WITH_SENDING_KEY
-EMAIL_FROM=每日一鉴 <history@read.starhub.vip>
+EMAIL_FROM=没事儿多读书 <history@read.starhub.vip>
 EMAIL_RECIPIENTS=reader1@example.invalid,reader2@example.invalid
 EMAIL_REPLY_TO=REPLACE_WITH_PRIVATE_REPLY_ADDRESS
 EMAIL_SEND_ENABLED=false

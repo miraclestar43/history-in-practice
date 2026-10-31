@@ -71,15 +71,15 @@ def message_id(edition_id: str, revision: int, rkey: str, domain: str) -> str:
 
 
 def build_message(obj: dict, html: str, text: str, sender: str, to: str, msg_id: str, reply_to: str = "") -> EmailMessage:
+    from .render import BRAND, headline
     m = EmailMessage()
     name, addr = parseaddr(sender)
+    name = BRAND if addr else name                     # display name is the column name; the address stays the configured one
     m["From"] = formataddr((str(Header(name, "utf-8")), addr)) if name else addr
     m["To"] = to
     if reply_to:
         m["Reply-To"] = reply_to
-    num = obj.get("edition_number")
-    prefix = f"每日一鉴 #{num:03d}｜" if isinstance(num, int) else "每日一鉴｜"
-    m["Subject"] = prefix + obj["title"]["zh"]
+    m["Subject"] = headline(obj, "zh")                  # 没事儿多读书｜YYYY.MM.DD｜title (edition date, America/Los_Angeles)
     m["Message-ID"] = msg_id
     m["Date"] = formatdate(localtime=False)
     m["X-HIP-Edition"] = f"{obj['edition_id']} r{obj['revision']} {obj.get('content_sha256', '')[:12]}"

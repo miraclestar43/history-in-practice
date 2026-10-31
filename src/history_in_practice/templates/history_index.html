@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>每日一鉴 · History in Practice</title>
+<title>没事儿多读书</title>
 <style>
 :root{--bg:#faf8f4;--fg:#24221f;--muted:#6f6a62;--line:#e3ddd2;--accent:#7a5c3e;--card:#fff;--note:#f3eee6}
 @media (prefers-color-scheme:dark){:root{--bg:#171614;--fg:#e9e5de;--muted:#a39d93;--line:#34312c;--accent:#d2a679;--card:#1f1d1a;--note:#29261f}}
@@ -37,7 +37,7 @@ a{color:var(--accent)}
 </style>
 </head>
 <body>
-<header class="site"><a href="/">StarHub</a><a href="./">每日一鉴</a></header>
+<header class="site"><a href="/">StarHub</a><a href="./">没事儿多读书</a></header>
 <main id="app" aria-live="polite"><p class="small">加载中…</p></main>
 <script>
 "use strict";
@@ -62,7 +62,7 @@ async function getJSON(rel){
 function fail(err){ app.replaceChildren(el("div",{class:"error",role:"alert"},"内容加载失败 / Failed to load: " + err.message)); }
 
 function renderList(index){
-  const wrap = el("div"); wrap.append(el("h1",{},"每日一鉴 · History in Practice"));
+  const wrap = el("div"); wrap.append(el("h1",{},"没事儿多读书"));
   const f = el("div",{class:"filters",role:"group","aria-label":"类别"}); let active = params.get("cat") || "";
   const list = el("div");
   const draw = () => { list.replaceChildren(); for (const it of index.items.filter(i => !active || i.category===active)){
@@ -84,7 +84,7 @@ function currentSection(){
 }
 function renderStory(o){
   document.documentElement.lang = lang==="zh" ? "zh-CN" : "en";
-  document.title = o.title[lang] + " · " + (lang==="zh"?"每日一鉴":"History in Practice");
+  document.title = ["没事儿多读书", /^\d{4}-\d{2}-\d{2}$/.test(o.edition_date||"") ? o.edition_date.replace(/-/g,".") : "", o.title[lang]].filter(Boolean).join("｜");
   const L = T[lang], w = el("article");
   w.append(el("a",{href:"./?lang="+lang,class:"small"},L.back));
   if (o.status === "test") w.append(testNote());

@@ -8,11 +8,24 @@ from pathlib import Path
 
 CAT = {"china_ancient": ("中国古代", "Ancient China"), "world": ("世界史", "World History"),
        "china_modern": ("中国近现代", "Modern China"), "us": ("美国史", "U.S. History")}
-LBL = {"zh": dict(col="每日一鉴", today="今天可以怎么用", q="想一想", ex="一个参考思路", assume="假设", steps="可以怎么做",
+BRAND = "没事儿多读书"          # column name (owner decision 2026-10-31, docs/ADDENDUM_READER_FEEDBACK_20261031.md); was 每日一鉴
+
+
+def dotted(date) -> str:
+    """YYYY-MM-DD (America/Los_Angeles edition date) -> YYYY.MM.DD; empty if the object has no real date."""
+    return str(date).replace("-", ".") if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(date or "")) else ""
+
+
+def headline(obj, lang="zh") -> str:
+    """没事儿多读书｜YYYY.MM.DD｜title (the date segment is omitted when the object has no edition date)."""
+    return "｜".join(x for x in (BRAND, dotted(obj.get("edition_date")), obj["title"][lang]) if x)
+
+
+LBL = {"zh": dict(col=BRAND, today="今天可以怎么用", q="想一想", ex="一个参考思路", assume="假设", steps="可以怎么做",
                   alt="另一种合理选择", src="本篇依据", more="想再读一点", unc="出处与不确定性", min="分钟", read_web="在网页阅读",
                   read_en="Read in English", pause="想暂停接收？直接回复这封邮件写“暂停”，维护者会在配置中停发。", feedback="反馈：直接回复本邮件。",
                   edition="期次", stop="先停十秒，想想你会怎么做。"),
-       "en": dict(col="History in Practice", today="Using it today", q="Think about it", ex="One possible approach", assume="Assumptions",
+       "en": dict(col=BRAND, today="Using it today", q="Think about it", ex="One possible approach", assume="Assumptions",
                   steps="What you could do", alt="Another reasonable choice", src="Sources", more="Read more",
                   unc="Sources and uncertainty", min="min", read_web="Read on the web", read_en="", pause="", feedback="", edition="Edition",
                   stop="Pause for ten seconds and decide what you would do.")}
@@ -84,7 +97,7 @@ def email_html(obj, base):
         out.append("</ul>")
         return "\n".join(out)
     cz, ce = CAT[obj["category"]]
-    head = (f'<p style="font-size:13px;color:#8a857d;margin:0;letter-spacing:.04em;">{LBL["zh"]["col"]} · {e(obj["edition_date"])} · {cz} · '
+    head = (f'<p style="font-size:13px;color:#8a857d;margin:0;letter-spacing:.04em;">{LBL["zh"]["col"]}｜{e(dotted(obj["edition_date"]) or obj["edition_date"])} · {cz} · '
             f'中文约 {obj["reading_minutes"]["zh"]} 分钟 · English ~{obj["reading_minutes"]["en"]} min（估算）</p>')
     btn = (f'<table role="presentation" cellpadding="0" cellspacing="0" style="margin:34px 0;"><tr>'
            f'<td style="background:{ACCENT};border-radius:4px;"><a href="{e(link(obj,"zh",base))}" style="display:inline-block;padding:10px 18px;color:#fff;text-decoration:none;font-size:15px;">{LBL["zh"]["read_web"]}</a></td>'
@@ -106,7 +119,7 @@ def email_html(obj, base):
 {head}
 {block("zh")}
 {btn}
-<p style="font-size:13px;color:#8a857d;margin:0;letter-spacing:.04em;">{LBL["en"]["col"]} · {e(obj["edition_date"])} · {ce}</p>
+<p style="font-size:13px;color:#8a857d;margin:0;letter-spacing:.04em;">{LBL["en"]["col"]}｜{e(dotted(obj["edition_date"]) or obj["edition_date"])} · {ce}</p>
 {block("en")}
 {foot}
 </td></tr></table></td></tr></table></body></html>'''
@@ -123,7 +136,7 @@ def email_text(obj, base):
         out += ["", f"== {L['more']} =="] + [f"- {m['title']}: {m['what'][lang]} ({m['access'][lang]}) {m['url']}" for m in obj["further_reading"]]
         return "\n".join(out)
     test = [f"【测试 TEST】{TEST_NOTE['zh']}", TEST_NOTE["en"], ""] if obj.get("status") == "test" else []
-    return "\n".join(test + [f"{LBL['zh']['col']} · {obj['edition_date']} · {CAT[obj['category']][0]}", "", block("zh"), "",
+    return "\n".join(test + [f"{LBL['zh']['col']}｜{dotted(obj['edition_date']) or obj['edition_date']} · {CAT[obj['category']][0]}", "", block("zh"), "",
                       f"在网页阅读：{link(obj,'zh',base)}", f"Read in English: {link(obj,'en',base)}", "=" * 40, "", block("en"), "",
                       f"{obj['edition_id']} rev {obj['revision']} · {LBL['zh']['feedback']} {LBL['zh']['pause']}"])
 

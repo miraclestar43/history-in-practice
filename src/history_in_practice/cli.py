@@ -1,4 +1,4 @@
-"""hip — History in Practice command line.
+"""hip — 没事儿多读书 (history-in-practice) command line.
 
   hip doctor                         environment, isolation probe, config (no secret values)
   hip prepare CANDIDATE.json
@@ -135,7 +135,7 @@ def cmd_render(a):
         html = (out / "email" / f"{o['edition_id']}.html").read_text(encoding="utf-8")
         text = (out / "email" / f"{o['edition_id']}.txt").read_text(encoding="utf-8")
         for i, r in enumerate(FICTIONAL):
-            m = mailer.build_message(o, html, text, "每日一鉴 <history@read.starhub.vip>", r,
+            m = mailer.build_message(o, html, text, "没事儿多读书 <history@read.starhub.vip>", r,
                                      mailer.message_id(o["edition_id"], o["revision"], state.recipient_key(r), "read.starhub.vip"))
             (out / "email" / f"{o['edition_id']}.reader{i+1}.eml").write_bytes(bytes(m))
         print(json.dumps({"edition": o["edition_id"], "html_bytes": len(html.encode()), "text_bytes": len(text.encode()),
@@ -209,7 +209,7 @@ def cmd_test_edition(a):
         (out / "test_article.json").write_text(json.dumps(test, ensure_ascii=False, indent=1), encoding="utf-8")
         for i, r in enumerate(FICTIONAL):                         # preview .eml with fictional recipients only
             html = (out / "email" / f"{a.test_id}.html").read_text(encoding="utf-8"); text = (out / "email" / f"{a.test_id}.txt").read_text(encoding="utf-8")
-            m = mailer.build_message(test, html, text, "每日一鉴 <history@read.starhub.vip>", r,
+            m = mailer.build_message(test, html, text, "没事儿多读书 <history@read.starhub.vip>", r,
                                      mailer.message_id(a.test_id, test["revision"], state.recipient_key(r), "read.starhub.vip"), reply_to="reply@example.invalid")
             (out / "email" / f"{a.test_id}.reader{i+1}.eml").write_bytes(bytes(m))
         written = site_export.export([test], Path(a.site_root)) if a.site_root else []

@@ -1,4 +1,4 @@
-# History in Practice｜每日一鉴
+# 没事儿多读书（repository history-in-practice；原名“每日一鉴 / History in Practice”）
 
 版本：v2.3（用户阅读目标澄清），2026-10-30（America/Los_Angeles）  
 状态：ChatGPT 再评审的必要修订已落实；四篇样稿、证据映射、邮件/网页本地预览与技术验证已完成（见 `samples/` 与 `docs/reviews/OPUS_VALIDATION.md`）。未部署、未启用定时任务、未发送邮件。用户已要求 overnight 继续实施；最新范围见 `prompts/03_OVERNIGHT_OPUS.md`，不因等待读者反馈或邮件账号停下独立工作。

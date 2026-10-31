@@ -1,4 +1,4 @@
-# History in Practice｜每日一鉴
+# 没事儿多读书（repository: history-in-practice；原名“每日一鉴”）
 
 中文约十分钟，英文也约十分钟：一个有依据、值得读的历史故事，一个与生活有关的判断问题。
 
