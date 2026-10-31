@@ -57,6 +57,10 @@ def cmd_doctor(a):
     from .textnorm import HAVE_OPENCC
     out["opencc"] = HAVE_OPENCC
     out["hermes_python"] = os.path.exists(llm.HERMES_PY)
+    from . import claude_cli
+    hp = data_dir() / "health" / "final_editor.json"
+    out["final_editor"] = {"preflight_problems": claude_cli.preflight(), "warnings": claude_cli.warnings(),
+                           "last_nightly_health": json.loads(hp.read_text()) if hp.exists() else None}
     rt = config.load_runtime()
     out["runtime_env"] = {"path_exists": bool(rt.path and rt.path.exists()), "insecure_permissions": rt.insecure_permissions,
                           "keys": rt.describe(), "send_enabled": rt.send_enabled}
@@ -82,25 +86,29 @@ def cmd_doctor(a):
     return 0 if out.get("isolation_ok", True) and out["opencc"] else 1
 
 
+def _prepare_claude(d, c) -> dict:
+    """Owner decision 2026-10-30: when MiMo's provider refuses a normal history topic, the Pi-local Claude CLI
+    drafts under the same prompts, evidence pack and checks. Only for recorded refusals; MiMo stays the default."""
+    from . import claude_cli
+    cur = state.get(d, c["candidate_id"])
+    if not cur or "provider refusal" not in (cur.get("reason") or ""):
+        return {"outcome": "not_run", "reason": "--drafter claude is only for candidates with a recorded MiMo provider refusal"}
+    pre = claude_cli.preflight()
+    if pre:
+        return {"outcome": "not_run", "reason": "; ".join(pre)}
+    w = data_dir() / "drafts" / c["candidate_id"]; keep = w / "mimo-refused"
+    if w.exists():                                   # keep the refused MiMo attempts; the new drafter writes fresh files
+        keep.mkdir(exist_ok=True)
+        for f in list(w.glob("*.raw.txt")) + list(w.glob("calls.jsonl")) + list(w.glob("report.json")):
+            shutil.move(str(f), keep / f.name)
+    return pipeline.prepare(c, d, call=claude_cli.call, drafter=f"Pi Claude ({claude_cli.MODEL}, {claude_cli.version()}) after MiMo provider refusal")
+
+
 def cmd_prepare(a):
-    c = pipeline.load_candidate(a.candidate); d = db(); call, drafter = pipeline.llm.call, "MiMo (hermes-isolated)"
-    if a.drafter == "claude":
-        # Owner decision 2026-10-30: when MiMo's provider refuses a normal history topic, the Pi-local Claude CLI
-        # drafts under the same prompts, evidence pack and checks. Only for recorded refusals; MiMo stays the default.
-        from . import claude_cli
-        cur = state.get(d, c["candidate_id"])
-        if not cur or "provider refusal" not in (cur.get("reason") or ""):
-            print(json.dumps({"prepared": False, "reason": "--drafter claude is only for candidates with a recorded MiMo provider refusal"})); return 1
-        pre = claude_cli.preflight()
-        if pre:
-            print(json.dumps({"prepared": False, "reason": "; ".join(pre)})); return 1
-        w = data_dir() / "drafts" / c["candidate_id"]; keep = w / "mimo-refused"
-        if w.exists():                                   # keep the refused MiMo attempts; the new drafter writes fresh files
-            keep.mkdir(exist_ok=True)
-            for f in list(w.glob("*.raw.txt")) + list(w.glob("calls.jsonl")) + list(w.glob("report.json")):
-                shutil.move(str(f), keep / f.name)
-        call = claude_cli.call; drafter = f"Pi Claude ({claude_cli.MODEL}, {claude_cli.version()}) after MiMo provider refusal"
-    rep = pipeline.prepare(c, d, call=call, drafter=drafter)
+    c = pipeline.load_candidate(a.candidate); d = db()
+    rep = _prepare_claude(d, c) if a.drafter == "claude" else pipeline.prepare(c, d, drafter="MiMo (hermes-isolated)")
+    if rep.get("outcome") == "not_run":
+        print(json.dumps({"prepared": False, "reason": rep["reason"]}, ensure_ascii=False)); return 1
     print(json.dumps({k: v for k, v in rep.items() if k != "findings"} | {"findings": rep.get("findings", [])[:20]}, ensure_ascii=False, indent=1))
     return 0 if rep.get("outcome") == "checked" else 2
 
@@ -358,15 +366,20 @@ def cmd_edit_queue(a):
     print(json.dumps({"edited": out, "inventory": pipeline.inventory(d)}, ensure_ascii=False, indent=1)); return 0
 
 
-def _final_one(d, cid: str) -> dict:
+def _final_one(d, cid: str, extra: str | None = None) -> dict:
+    """extra: an owner-directed reason for ONE attempt beyond max_attempts (recorded in the hash-bound record);
+    never used by the nightly queue."""
     from . import final_edit
     cur = state.get(d, cid)
     if not cur or cur["status"] != "pending_review":
         return {"edition": cid, "outcome": "skipped", "reason": f"status {cur['status'] if cur else 'unknown'}"}
-    n = len(list((data_dir() / "final_edit" / cid).glob("attempt-*"))) if (data_dir() / "final_edit" / cid).exists() else 0
-    if n >= final_edit.MAX_ATTEMPTS:
-        return {"edition": cid, "outcome": "skipped", "reason": f"{n} final-editor attempts used (max {final_edit.MAX_ATTEMPTS}); needs a person"}
-    rec = final_edit.run(cid, d)
+    n = final_edit.attempts_used(cid)
+    if n >= final_edit.MAX_ATTEMPTS + (1 if extra else 0):
+        return {"edition": cid, "outcome": "skipped", "reason": f"{n} final-editor attempts used (max {final_edit.MAX_ATTEMPTS}"
+                f"{' + 1 owner-directed' if extra else ''}); needs a person"}
+    rec = final_edit.run(cid, d, operator_note=f"extra attempt beyond max_attempts: {extra}" if n >= final_edit.MAX_ATTEMPTS else None)
+    if rec["outcome"] == "not_run" or final_edit.health_failure(rec.get("failure")):
+        return {"edition": cid, "outcome": "health", "reason": rec.get("reason") or rec.get("failure")}   # stays pending; attempt not counted
     if rec["outcome"] == "pending_review" and not rec.get("failure") and n + 1 < final_edit.MAX_ATTEMPTS:
         rec = final_edit.run(cid, d)                     # one continuation attempt from the previous final text
     res = {"edition": cid, "attempts": len(list((data_dir() / "final_edit" / cid).glob("attempt-*"))), "outcome": rec["outcome"], "elapsed_min": rec.get("elapsed_min"), "open_issues": rec.get("open_issues"),
@@ -375,6 +388,8 @@ def _final_one(d, cid: str) -> dict:
         out = final_edit.OUT_ROOT / cid / "final"
         res.update(final_edit.admit(d, out / "article.json", out / "evidence.json", rec))
         res["outcome"] = "admitted" if res.get("admitted") else "pending_review"
+    elif final_edit.health_failure(rec.get("failure")):
+        res["outcome"] = "health"
     elif rec["outcome"] == "pending_review":
         why = f"final editor: {len(rec.get('open_issues') or [])} open issue(s)" + (f"; {rec['failure']}" if rec.get("failure") else "")
         state.transition(d, cid, "prepared", note=why); state.transition(d, cid, "pending_review", note=why, reason=why)
@@ -387,7 +402,7 @@ def cmd_final_edit(a):
     with publish.lock("prepare"):
         for cid in a.editions:
             try:
-                out.append(_final_one(d, cid))
+                out.append(_final_one(d, cid, a.extra_attempt))
             except Exception as e:
                 out.append({"edition": cid, "outcome": "error", "reason": f"{type(e).__name__}: {e}"[:300]})
     print(json.dumps({"final_edit": out, "inventory": pipeline.inventory(d)}, ensure_ascii=False, indent=1))
@@ -408,8 +423,67 @@ def cmd_rereview(a):
     print(json.dumps(r, ensure_ascii=False, indent=1)); return 0 if r.get("outcome") == "admitted" else 2
 
 
+FINAL_EDITABLE = EDITABLE + ("final editor:",)
+
+
+def _health_write(h: dict):
+    p = data_dir() / "health" / "final_editor.json"; p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(h, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
+def _final_queue(d, max_n, budget_min) -> tuple[list, dict]:
+    """Nightly editor stage: the Pi-local Claude final editor on pending drafts (MiMo edit rounds are no longer run).
+    A failed preflight or a runtime health failure (subscription limit, auth) stops the queue and leaves drafts pending."""
+    import time as _t
+    from . import claude_cli, final_edit
+    t0 = _t.time(); out = []
+    pre = claude_cli.preflight()
+    health = {"checked_at": round(t0), "final_editor": "unavailable" if pre else "ok", "problems": pre, "warnings": claude_cli.warnings()}
+    if not pre:
+        rows = d.execute("SELECT edition_id, COALESCE(reason,'') FROM edition WHERE status='pending_review' ORDER BY updated_at").fetchall()
+        for cid, why in rows:
+            if len(out) >= max_n or (_t.time() - t0) / 60 > budget_min:
+                break
+            if not why.startswith(FINAL_EDITABLE) or final_edit.attempts_used(cid) >= final_edit.MAX_ATTEMPTS:
+                continue                 # refusals (see _claude_redrafts), duplicates and exhausted drafts are not edited here
+            try:
+                r = _final_one(d, cid)
+            except Exception as e:
+                r = {"edition": cid, "outcome": "error", "reason": f"{type(e).__name__}: {e}"[:300]}
+            out.append(r)
+            if r.get("outcome") == "health":
+                health.update(final_editor="degraded", problems=[str(r.get("reason"))[:300]]); break
+    _health_write(health)
+    return out, health
+
+
+def _claude_redrafts(d, max_n) -> list:
+    """Candidates whose MiMo draft hit a recorded provider refusal get ONE Pi Claude draft under the same prompts,
+    evidence and checks (owner decision 2026-10-30). No rewording of the refused prompt, no second redraft."""
+    from . import claude_cli
+    out = []
+    if claude_cli.preflight():
+        return out
+    for p in sorted((REPO / "config/candidates").glob("*.json")):
+        if len(out) >= max_n:
+            break
+        c = pipeline.load_candidate(p); cur = state.get(d, c["candidate_id"])
+        if not cur or cur["status"] != "pending_review" or "provider refusal" not in (cur.get("reason") or ""):
+            continue
+        if (data_dir() / "drafts" / c["candidate_id"] / "mimo-refused").exists():
+            continue
+        try:
+            r = _prepare_claude(d, c)
+        except Exception as e:
+            r = {"outcome": "error", "reason": f"{type(e).__name__}: {e}"[:300]}
+        out.append({"candidate": c["candidate_id"], "outcome": r.get("outcome"), "reason": str(r.get("reason", ""))[:200]})
+    return out
+
+
 def cmd_nightly(a):
-    """One batch: top up candidates (if fewer than --min-candidates), prepare, then edit. Budgeted; never schedules or sends."""
+    """One batch: top up candidates (if fewer than --min-candidates), MiMo prepares drafts, one Claude redraft for recorded
+    MiMo refusals, then the Pi-local Claude final editor admits or leaves pending. Never schedules, publishes or sends.
+    Exit: 0 ok; 1 inventory below the alert threshold; 4 final editor unavailable/degraded (drafts stay pending)."""
     import time as _t
     d = db(); t0 = _t.monotonic(); rep = {}
     with publish.lock("prepare"):
@@ -429,9 +503,11 @@ def cmd_nightly(a):
             except Exception as e:
                 r = {"outcome": "error", "reason": f"{type(e).__name__}: {e}"[:300]}
             rep["prepare"].append({"candidate": c["candidate_id"], "outcome": r.get("outcome"), "reason": str(r.get("reason", ""))[:200]})
-        rep["edit"] = _edit_queue(d, a.max_articles, max(0, a.budget_minutes - (_t.monotonic() - t0) / 60))
+        rep["claude_redraft"] = _claude_redrafts(d, 1)
+        rep["final_edit"], rep["health"] = _final_queue(d, a.max_articles + 1, max(0, a.budget_minutes - (_t.monotonic() - t0) / 60))
     rep["inventory"] = pipeline.inventory(d)
-    print(json.dumps(rep, ensure_ascii=False, indent=1)); return 1 if rep["inventory"]["alert"] else 0
+    print(json.dumps(rep, ensure_ascii=False, indent=1))
+    return 4 if rep["health"]["final_editor"] != "ok" else 1 if rep["inventory"]["alert"] else 0
 
 
 def cmd_admit(a):
@@ -554,7 +630,9 @@ def main(argv=None):
     p.set_defaults(f=cmd_edit_queue)
     p = sp.add_parser("rereview"); p.add_argument("edition"); p.add_argument("--rounds", type=int, default=0)
     p.add_argument("--article", help="re-review this file (e.g. after a manual editor pass) instead of the stored version"); p.set_defaults(f=cmd_rereview)
-    p = sp.add_parser("final-edit"); p.add_argument("editions", nargs="+"); p.set_defaults(f=cmd_final_edit)
+    p = sp.add_parser("final-edit"); p.add_argument("editions", nargs="+")
+    p.add_argument("--extra-attempt", metavar="REASON", help="owner-directed: allow ONE attempt beyond max_attempts; the reason is recorded")
+    p.set_defaults(f=cmd_final_edit)
     p = sp.add_parser("nightly"); p.add_argument("--max-articles", type=int, default=2); p.add_argument("--budget-minutes", type=float, default=150)
     p.add_argument("--min-candidates", type=int, default=2); p.set_defaults(f=cmd_nightly)
     p = sp.add_parser("approve-sample"); p.add_argument("edition"); p.add_argument("--reason", required=True); p.set_defaults(f=cmd_approve_sample)

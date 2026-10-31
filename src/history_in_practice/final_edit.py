@@ -32,6 +32,28 @@ CHECKS = {"facts", "attribution", "chronology", "causality", "quotes", "inner_li
 TIMEOUTS = {"audit": 1800, "revise": 1800, "verify": 1500}
 MAX_ROUNDS = int(load_project().get("final_editor", {}).get("max_rounds", 2))
 MAX_ATTEMPTS = int(load_project().get("final_editor", {}).get("max_attempts", 2))
+# Runtime health failures (subscription limit, auth, CLI missing or killed by the runtime) are not editorial outcomes:
+# they stop the queue, leave the edition pending and do not use up one of its MAX_ATTEMPTS.
+HEALTH_MARKERS = ("usage limit", "rate limit", "rate_limit", "limit reached", "overloaded", "authentication", "not logged in",
+                  "oauth", "api error", "api_error", "credit balance", "subscription", "not installed", "isolation")
+
+
+def health_failure(text) -> bool:
+    t = str(text or "").lower()
+    return any(m in t for m in HEALTH_MARKERS)
+
+
+def attempts_used(cid: str) -> int:
+    """Final-editor attempts that count toward MAX_ATTEMPTS (runtime health failures excluded)."""
+    root = data_dir() / "final_edit" / cid; n = 0
+    for a in (root.glob("attempt-*") if root.exists() else []):
+        r = a / "final_editor_record.json"
+        if r.exists() and health_failure(json.loads(r.read_text(encoding="utf-8")).get("failure")):
+            continue
+        n += 1
+    return n
+
+
 OUT_ROOT = REPO / "samples/auto"            # git-tracked outputs (tests point this at a temp dir)
 CANDIDATE_DIR = REPO / "config/candidates"
 EDITOR = {"name": "Pi Claude", "role": "named final editor", "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
@@ -244,11 +266,23 @@ def prior_final(cid: str) -> dict | None:
     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
 
 
-def carried_issues(prior: dict) -> list[dict]:
+def carried_issues(prior: dict, o: dict | None = None, ev: dict | None = None) -> list[dict]:
+    """Open issues of the previous attempt. A checker-origin issue gets the current checker message at the same
+    location on the text being edited (e.g. the specific shared phrases), so the editor sees what to change."""
     open_ids = set(prior.get("open_issues") or [])
-    return [{"id": f"P{k + 1}", "model_id": i["id"], "source": "final-editor previous attempt", "where": i.get("path"),
-             "problem": i.get("problem"), "suggestion": i.get("proposed")}
-            for k, i in enumerate(x for x in prior.get("issues") or [] if x["id"] in open_ids)]
+    now = {}
+    if o is not None and ev is not None:
+        for lvl, m in checks.check(o, ev)[0]:
+            if lvl in ("BLOCK", "FIX"):
+                now.setdefault(m.split()[0], f"checker: {m}")
+    out = []
+    for k, i in enumerate(x for x in prior.get("issues") or [] if x["id"] in open_ids):
+        prob = i.get("problem")
+        if i.get("origin") == "checker":
+            prob = now.get(str(prob).removeprefix("checker: ").split()[0], prob)
+        out.append({"id": f"P{k + 1}", "model_id": i["id"], "source": "final-editor previous attempt", "where": i.get("path"),
+                    "problem": prob, "suggestion": i.get("proposed")})
+    return out
 
 
 def base_paths(cid: str, db) -> tuple[Path, Path] | None:
@@ -272,7 +306,7 @@ def _view(o, ev, extra: str = "") -> str:
     return f"【证据包】\n{_evidence_block(ev)}\n\n【稿件】\n{editor.article_view(o)}{extra}"
 
 
-def run(cid: str, db, *, call=None, max_rounds: int = MAX_ROUNDS) -> dict:
+def run(cid: str, db, *, call=None, max_rounds: int = MAX_ROUNDS, operator_note: str | None = None) -> dict:
     """Final-edit one pending edition. Writes samples/auto/<cid>/final/ (git) and returns the record."""
     call = call or claude_cli.call
     if call is claude_cli.call:
@@ -290,13 +324,13 @@ def run(cid: str, db, *, call=None, max_rounds: int = MAX_ROUNDS) -> dict:
     (w / "evidence.json").write_text(json.dumps(ev, ensure_ascii=False, indent=1), encoding="utf-8")
     paths = [p for p, _, _ in editor.fields(o)]
     prior = prior_final(cid)
-    inh = carried_issues(prior) if prior else inherited_issues(cid, o, ev)   # MiMo issues were all decided in the first attempt
+    inh = carried_issues(prior, o, ev) if prior else inherited_issues(cid, o, ev)   # MiMo issues were all decided in the first attempt
     cont = contamination(cid, ev)
     t0 = time.time(); caller = editor.Caller(w, cid, call)
     rec = {"record_type": "final_editor", "schema": RECORD_SCHEMA, "candidate_id": cid, "edition_id": o["edition_id"],
            "editor": dict(EDITOR, model=claude_cli.MODEL, cli_version=claude_cli.version() if call is claude_cli.call else "test-double"),
            "code_rev": CODE_REV, "started_at": t0, "base_source": str(src[0].relative_to(REPO)) if src[0].is_relative_to(REPO) else str(src[0]),
-           "base_content_sha256": base["content_sha256"], "evidence_sha256": editor.sha(ev),
+           "base_content_sha256": base["content_sha256"], "evidence_sha256": editor.sha(ev), "operator_note": operator_note,
            "model_record_sha256": editor.sha(json.loads(_latest_model_record(cid).read_text())) if _latest_model_record(cid) else None,
            "prior_record_sha256": editor.sha(prior) if prior else None, "attempt": w.name,
            "inherited": inh, "contamination": cont, "issues": [], "edits": [], "rounds": []}

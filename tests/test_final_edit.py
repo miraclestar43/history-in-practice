@@ -168,6 +168,32 @@ class FinalEditor(unittest.TestCase):
             claude_cli.CONFIG_DIR = old
         self.assertEqual(rec["outcome"], "not_run"); self.assertRegex(rec["reason"], "not logged in|not installed")
 
+    def test_subscription_limit_is_a_health_failure_not_an_attempt(self):
+        def limited(prompt, timeout_s=0, **kw):
+            r = reply({}); r.update(text="", meta={"model": "claude-opus-5-5", "error": "Claude AI usage limit reached|1793430000", "is_error": True})
+            return r
+        rec = final_edit.run(CID, self.db, call=limited)
+        self.assertEqual(rec["outcome"], "pending_review"); self.assertTrue(final_edit.health_failure(rec["failure"]), rec["failure"])
+        self.assertEqual(final_edit.attempts_used(CID), 0)                     # the edition keeps both editorial attempts
+        self.assertFalse(final_edit.health_failure("schema: issues[0].path missing"))
+
+    def test_nightly_queue_stops_and_reports_health(self):
+        from history_in_practice import cli
+        old_pre, old_one = claude_cli.preflight, cli._final_one
+        try:
+            claude_cli.preflight = lambda *a, **k: ["not logged in (config X)"]
+            cli._final_one = lambda d, cid: self.fail("final editor called without a passing preflight")
+            out, h = cli._final_queue(self.db, 3, 60)
+            self.assertEqual((out, h["final_editor"]), ([], "unavailable"))
+            hp = Path(os.environ["HIP_DATA_DIR"]) / "health/final_editor.json"; self.assertEqual(json.loads(hp.read_text())["final_editor"], "unavailable")
+            claude_cli.preflight = lambda *a, **k: []; calls = []
+            cli._final_one = lambda d, cid: calls.append(cid) or {"edition": cid, "outcome": "health", "reason": "Claude AI usage limit reached"}
+            out, h = cli._final_queue(self.db, 3, 60)
+            self.assertEqual(calls, [CID]); self.assertEqual(h["final_editor"], "degraded")
+            self.assertEqual(state.get(self.db, CID)["status"], "pending_review")
+        finally:
+            claude_cli.preflight, cli._final_one = old_pre, old_one
+
 
 if __name__ == "__main__":
     unittest.main()

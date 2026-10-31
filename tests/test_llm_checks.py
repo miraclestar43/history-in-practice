@@ -80,12 +80,37 @@ class Checker(unittest.TestCase):
     def test_today_scene_repeating_the_question_is_flagged(self):
         o = copy.deepcopy(self.o); today = [s for s in o["sections"] if s["id"] == "today"][0]
         today["paras"][0]["zh"] = o["reflection"]["scenario"]["zh"]
-        f, _ = checks.check(o, self.ev); self.assertTrue(any("repeat the open-question" in m for _, m in f))
+        f, _ = checks.check(o, self.ev); self.assertTrue(any(lvl == "FIX" and "repeats the open-question" in m for lvl, m in f))
 
     def test_number_drift_flagged(self):
         o = copy.deepcopy(self.o); p = o["sections"][1]["paras"][0]
         p["en"] = p["en"].replace("120", "102")
         f, _ = checks.check(o, self.ev); self.assertTrue(any("numbers differ" in m for _, m in f))
+
+
+class ScenarioOverlap(unittest.TestCase):
+    """today[] vs the open question: concrete repeated wording is a FIX naming the phrases; topical resemblance is a CHECK."""
+    def setUp(self):
+        import json as _j
+        d = Path(__file__).resolve().parents[1] / "samples/auto/cand-auto-20261030-qsg437-1/final/"
+        self.o = _j.loads((d / "article.json").read_text()); self.ev = _j.loads((d / "evidence.json").read_text())
+        self.today = next(s for s in self.o["sections"] if s["id"] == "today")
+
+    def found(self):
+        from history_in_practice import checks
+        return [f for f in checks.check(self.o, self.ev)[0] if f[1].startswith("today[0]")]
+
+    def test_genuine_duplication_is_a_fix_that_names_the_shared_phrases(self):
+        f = self.found()
+        self.assertEqual(f[0][0], "FIX"); self.assertIn("「把目标的优先级公开排出来」", f[0][1])
+
+    def test_resemblance_without_repeated_wording_is_only_a_check(self):
+        self.today["paras"][0]["zh"] = "写提案时，先公开说明哪个目标最要紧、哪个其次，再把理由列成一条条能被追问的检验项。"
+        f = self.found(); self.assertTrue(all(level == "CHECK" for level, _ in f), f)
+
+    def test_unrelated_paragraph_is_silent(self):
+        self.today["paras"][0]["zh"] = "铁路的账要算清楚：每一段由谁出钱、何时验收、出了问题向谁追责。"
+        self.assertEqual(self.found(), [])
 
 
 if __name__ == "__main__":

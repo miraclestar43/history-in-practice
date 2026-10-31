@@ -50,6 +50,25 @@ def numbers(text, lang):
         ns |= en_number_words(text)
     return ns
 
+OVERLAP_SIGNAL, OVERLAP_HIGH, OVERLAP_PHRASE = 0.12, 0.25, 6
+
+
+def shared_phrases(a: str, b: str, min_len: int = 4) -> list[str]:
+    """Maximal runs of Chinese text (simplified, punctuation removed) that occur in both a and b, longest first."""
+    from .textnorm import t2s
+    clean = lambda x: "".join(re.findall(r"[一-鿿A-Za-z0-9]+", t2s(x)))
+    a, b = clean(a), clean(b); out, i = [], 0
+    while i < len(a):
+        k = 0
+        while i + k < len(a) and a[i:i + k + 1] in b:
+            k += 1
+        if k >= min_len:
+            out.append(a[i:i + k]); i += k
+        else:
+            i += 1
+    return sorted(set(out), key=lambda x: (-len(x), x))
+
+
 def check(o: dict, ev: dict):
     """Return (findings, stats); findings are (level, message), level in BLOCK|FIX|CHECK."""
     ex = {e["id"]: e for e in ev["excerpts"]}
@@ -88,11 +107,18 @@ def check(o: dict, ev: dict):
     r = o["reflection"]
     if today:   # editorial: the model tends to reuse the open question's scenario as a "today" example
         from .registry import bigrams
-        sc = set(bigrams(r["scenario"]["zh"] + r["question"]["zh"]).split())
+        sq = r["scenario"]["zh"] + r["question"]["zh"]; sc = set(bigrams(sq).split())
         for i, p in enumerate(today["paras"]):
             pb = set(bigrams(p["zh"]).split())
-            if pb and len(pb & sc) / max(1, min(len(pb), len(sc))) >= 0.12:
-                find.append(("FIX", f"today[{i}] may repeat the open-question scenario"))
+            ratio = len(pb & sc) / max(1, min(len(pb), len(sc))) if pb else 0
+            if ratio < OVERLAP_SIGNAL:
+                continue
+            ph = shared_phrases(p["zh"], sq)
+            shown = "".join(f"「{x}」" for x in ph[:4]) or "none of 4+ characters"
+            # lexical similarity is a signal; concrete repeated wording is what the editor must change
+            dup = any(len(x) >= OVERLAP_PHRASE for x in ph) or (ratio >= OVERLAP_HIGH and len(ph) >= 2)
+            find.append(("FIX" if dup else "CHECK", f"today[{i}] {'repeats' if dup else 'resembles'} the open-question scenario: "
+                                                   f"shared phrases {shown}; bigram overlap {ratio:.2f}"))
     for k in ("scenario", "question"):
         for lang in ("zh", "en"):
             if not r[k][lang].strip(): find.append(("BLOCK", f"reflection.{k}.{lang} empty"))
