@@ -160,6 +160,7 @@ class Cli(unittest.TestCase):
         m = message_from_bytes(self.smtp.messages[0][1], policy=policy.default)
         self.assertIn("【测试】", m["Subject"]); self.assertIn(TID, m["X-HIP-Edition"])
         self.assertRegex(m["Subject"], r"^没事儿多读书｜\d{4}\.\d{2}\.\d{2}｜【测试】")                  # column｜edition date (LA)｜title
+        self.assertEqual(m["List-Unsubscribe"], "<mailto:feedback@example.com?subject=%E6%9A%82%E5%81%9C>")    # subject 暂停
         self.assertEqual(m["From"].addresses[0].display_name, "没事儿多读书"); self.assertEqual(m["From"].addresses[0].addr_spec, "history@read.starhub.vip")
         body = m.get_body(("plain",)).get_content(); self.assertIn("测试 TEST", body); self.assertIn(self.base + "/history/?story=" + TID, body)
         rc, out, _ = self.hip("test-edition", "send", "--test-id", TID, "--confirm-real-email")

@@ -79,6 +79,9 @@ def build_message(obj: dict, html: str, text: str, sender: str, to: str, msg_id:
     m["To"] = to
     if reply_to:
         m["Reply-To"] = reply_to
+        ra = parseaddr(reply_to)[1]
+        if ra:                                          # matches the footer's "reply 暂停 to pause"; mailto only (no tracking endpoint)
+            m["List-Unsubscribe"] = f"<mailto:{ra}?subject=%E6%9A%82%E5%81%9C>"
     m["Subject"] = headline(obj, "zh")                  # 没事儿多读书｜YYYY.MM.DD｜title (edition date, America/Los_Angeles)
     m["Message-ID"] = msg_id
     m["Date"] = formatdate(localtime=False)
