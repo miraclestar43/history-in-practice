@@ -1,0 +1,91 @@
+# Eight Hundred Miles for Help: A Crew List and Its Trade-offs on Elephant Island
+
+*Full rations for five weeks, one small boat, six places. The leader had to talk the whole party into a voyage whose perils were extreme, veto a proposal to take a sick man along, and hand the stranded party over to the man staying behind before the boat pulled away.*
+
+unscheduled · World History · cand-auto-20261030-south-el-1 rev 1
+
+## The Situation
+
+On Elephant Island the food would last the whole party five weeks at full ration. Cut back, it could be spread over three months, and would probably be supplemented to some extent by seals and sea-elephants — but the leader dared not count on that with full confidence. The animals seemed to have deserted the beach and winter was near. Their stocks included three seals and two and a half skins with the blubber attached, and they were mainly dependent on blubber for fuel. After a preliminary survey of the situation, he decided the party must be limited to one hot meal a day. [SOUTH-EL1-E2]
+
+Beyond the food, the men's condition was also a worry. Privation and exposure had left their mark on the party, and the health and mental condition of several men were causing serious anxiety. One man's feet, frostbitten during the boat journey, were in a bad way, and the two doctors feared an operation would be necessary. [SOUTH-EL1-E1]
+
+One way out remained: take a boat for help, and do it now. The account leaves no room to maneuver — "That conclusion was forced upon me". The conclusion was forced on him. [SOUTH-EL1-E3]
+
+## The Destination
+
+The destination was South Georgia. It lay over eight hundred miles off, but inside the belt of the west winds, and whalers could be counted on at any of the whaling stations on its east coast. Provided the sea was clear of ice and the boat survived the great seas, a boat party might make the voyage and be back with relief within a month. [SOUTH-EL1-E4]
+
+The hazards of the ocean were plain, but the leader had priced the worst case. At worst the venture would add nothing to the risks of the men left on the island — there would be fewer mouths to feed through the winter — and the boat needed no more than a month's provisions for six, "for if we did not make South Georgia in that time we were sure to go under". And one consideration weighed with him: there was no chance at all of any search being made for them on Elephant Island. [SOUTH-EL1-E5]
+
+The case had to be argued to the whole party in some detail, since everyone knew the journey's perils were extreme, and the risk was justified only by their urgent need of assistance. In mid-May the ocean south of Cape Horn is known to be the most tempestuous storm-swept area of water in the world: unsettled weather, dull overcast skies, gales almost unceasing. One reading is that he did not present the voyage as the best option, only the necessary one. [SOUTH-EL1-E6]
+
+## Before and After Setting Out
+
+Who went and who stayed began with two men who asked to come. Worsley and Wild both realized the attempt must be made, and both asked to accompany him. The leader told Wild at once that he must stay — to hold the party together during the absence and, if the rescue failed, to take the men to Deception Island in the spring. His reason for taking Worsley was practical: "a very high opinion of his accuracy and quickness as a navigator, and especially in the snapping and working out of positions in difficult circumstances". [SOUTH-EL1-E7][SOUTH-EL1-E8]
+
+Four more were needed. He called for volunteers while admitting, honestly, that he already knew his choices — "I pretty well knew which of the people I would select". Crean had been slated to stay behind as Wild's right-hand man, but he begged so hard for a place in the boat that, after consulting Wild, the leader promised to take him. The criteria were stated openly: some were not fit for the work the boat would demand, and others, not seasoned sailors, would be of little use aboard. [SOUTH-EL1-E9][SOUTH-EL1-E10][SOUTH-EL1-E11]
+
+One proposal was to take Blackborrow, the man with the frostbitten feet, so that he could have shelter and warmth as quickly as possible. The leader vetoed it. The record gives survival reasoning: fit men would find it hard enough to live in the boat, and a sick man lying helpless in the bottom could not be expected to survive the heavy weather they were sure to encounter. [SOUTH-EL1-E12]
+
+The list closed at six: Worsley, Crean, McNeish, McCarthy, Vincent, and the leader himself. The leader called the carpenter and asked whether he could do anything to make the boat more seaworthy; the carpenter's first question was whether he was going along, and hearing "Yes," he seemed quite pleased. He was over fifty and not altogether fit. [SOUTH-EL1-E13][SOUTH-EL1-E14]
+
+What was put together was a patched-up affair, but it provided a base for a canvas covering. The canvas came frozen stiff; it had to be cut and then thawed over the blubber stove foot by foot before it could be sewn into a cover, then nailed and screwed into position. The cover did lend the boat an appearance of safety, but the leader felt uneasy that "it bore a strong likeness to stage scenery" — a wall that looks like granite and is in fact no better than canvas and lath. As events proved, the covering served its purpose well. [SOUTH-EL1-E15]
+
+The pack might close at any time. With that decision made, the leader spent the rest of the day looking over the boat, gear and stores, and discussing plans with Worsley and Wild. The last night on the solid ground of Elephant Island was cold and uncomfortable. Before casting off, the leader went ashore for a final word with Wild, who remained in full command: directions for what to do if no help came, and then, in his words, "I practically left the whole situation and scope of action and decision to his own judgment". He told Wild he trusted the party to him and said goodbye to the men. With the jib set and the painter cut, they stood away to the north-east. Those left behind made a pathetic little group on the beach, grim heights at their backs and the sea seething at their feet — but they waved and gave three hearty cheers. [SOUTH-EL1-E16][SOUTH-EL1-E17][SOUTH-EL1-E18]
+
+Life aboard wore men down in details. Cooking needed three: one to hold the lamp, two to guard the aluminium pot, which had to be lifted clear of the Primus stove whenever a lurch threatened disaster; the lamp needed shielding from water, since spray came over the bows and the flimsy decking was by no means watertight. All of it happened in the cramped space beneath the decking, men lying or kneeling and wedging themselves against cases and ballast — uncomfortable, though without the decking they could not have cooked at all. On the morning of the sixth day the boat lost her resiliency and stopped rising to the seas, weighed down by ice that had formed overnight: more log than boat. The spare oars, frozen to her sides, went overboard, two kept for inshore work. Two fur sleeping-bags followed — soaked through, probably forty pounds each, frozen stiff. With three men in the watch below, it was better to turn into a wet bag just vacated by another man than to thaw a frozen one with body heat. Four bags were left: three in use, one held back in case a man broke down for good. [SOUTH-EL1-E19][SOUTH-EL1-E20]
+
+About 11 a.m. one day the painter parted and the sea-anchor went — the only means of keeping the boat's head up to the seas without the risk of hoisting sail in a gale, lost along with the valuable rope. She suddenly fell off into the trough of the sea and drifted to leeward. They beat the ice off the frozen canvas and hoisted it, trusting it to hold. One reckoning showed over 380 miles done, getting on for half-way to South Georgia. It looked as though they were going to get through. [SOUTH-EL1-E21][SOUTH-EL1-E22]
+
+At one point came a wave beyond anything the leader had met in twenty-six years at sea — a mighty upheaval of the ocean, quite apart from the white-capped seas that had been their tireless enemies for many days. He shouted for everyone to hold on: "It's got us!" The boat was lifted and flung forward like a cork, half-full of water and shuddering under the blow; the men baled with the energy of men fighting for life, and after ten minutes of uncertainty felt her renew her life beneath them. Vincent had for the past week ceased to be an active member of the crew, and the leader could not easily account for his collapse: physically one of the strongest men in the boat, young, with service on North Sea trawlers, he should have borne hardship better than McCarthy, who was not so strong but always happy. The daily water allowance was cut to half a pint a man. The lumps of ice taken aboard were long gone, and the breaker had been slightly stove in during loading, letting in some sea-water, so the brackish water sharpened the thirst; the leader would not raise the allowance or let anyone draw against the morrow's, however he was begged — should the wind turn unfavourable, it might drive them away from the island and lengthen the voyage by many days. Lack of water, the account adds, is the severest privation men can be condemned to endure. [SOUTH-EL1-E23][SOUTH-EL1-E24][SOUTH-EL1-E25]
+
+## The Reckoning
+
+Read together, these decisions suggest one explanation: what made the plan speakable was the arithmetic of the worst case. The boat party carried a month's provisions; if they failed, they failed. The men left behind would have fewer mouths to feed through the winter. The worst case was calculated as adding nothing to the risks of the men left on the island. The author infers that when every option is grim, people will follow not necessarily the more hopeful road, but the one that costs its losses honestly and does not shift them onto comrades. [SOUTH-EL1-E5]
+
+The refusal of the sick man is the least comfortable paragraph to read, yet the record offers survival reasoning rather than a moral stance: fit men would find it hard enough to live in the boat, and a sick man lying helpless in the bottom would not survive the heavy weather. The author infers that the difficulty of such a trade-off lies less in the decision itself than in having to give reasons for it: a proposal was made and vetoed, and the account sets down why. The original does not say whether those reasons were put to the whole party; if they were, the cost would at least have been visible to everyone rather than borne by one person quietly set aside — but that is an unverified conjecture. [SOUTH-EL1-E12]
+
+One more detail catches the eye: he asked for volunteers while already knowing his choices. One alternative would have been simply to name names and skip the formality. But the sequence in the record — spell out the danger and the reasons, ask for willingness, then settle the list — may make the list read as consensus rather than assignment. That is only one reading; the original gives no reason for the arrangement. [SOUTH-EL1-E9][SOUTH-EL1-E6]
+
+## How It Works Today
+
+> Small teams short of resources, with no outside rescue coming, face the same question. A remote station of a few people, supplies good for another stretch of time, communications down, the next resupply date unknown: does everyone stay and endure, or does someone go out and risk seeking help? Start with the worst case: does sending people out make matters worse for those who stay? How far can rations be cut, and how much longer would that let them hold out?
+
+> The second problem is the handover before departure. A leader must hand over two things at once: the fallback if the attempt fails — no word by a certain point, then switch plans — and the scope of judgment on the ground. Steps without judgment leave those behind waiting for instructions on everything; "use your own judgment" without spelling out what failure looks like leaves responsibility hanging in mid-air.
+
+## Limits and Doubts
+
+This record rests on exactly one historical source: a first-person account written after the fact by one of those involved. Its dialogue is reported, not transcribed — the words entrusting the party to Wild, Crean's plea for a place in the boat — and need not be verbatim. The leader's statement that his confidence grew as he looked at the men is retrospective self-description, not a verifiable record of his state of mind at the time. [SOUTH-EL1-E3][SOUTH-EL1-E17][SOUTH-EL1-E10][SOUTH-EL1-E13]
+
+Two blanks stay blank. Why Vincent collapsed, the leader himself says he could not easily account for, and this piece supplies no psychology for him. The quoted passages give no calendar year, so none is supplied here; the only day count kept in the text is the sixth day out, which the original states explicitly, and the month follows the original; distances, rations and water figures follow the original: over eight hundred miles, over three hundred and eighty miles, half a pint. The source is a scanned, text-recognized print, with occasional garbled words; quotations follow it as printed. [SOUTH-EL1-E24][SOUTH-EL1-E20][SOUTH-EL1-E22][SOUTH-EL1-E25][SOUTH-EL1-E4]
+
+## Think about it
+
+A five-person team with only four months of payroll left in the bank and no revenue until the product ships; two of the five are the only ones who can negotiate with the outside world. Do you send someone out to raise money and open channels — and who goes, who stays?
+
+**When every option is bad, what kind of worst-case arithmetic makes people willing to follow? And does spelling it out too clearly risk frightening everyone off the attempt?**
+
+<details><summary>One possible approach</summary>
+
+- **Assumptions**: Five people; cash for four months; no outside funding will arrive uninvited; two can negotiate externally while three keep the product moving; failure means losing everything invested.
+- **What you could do**: Compute the worst case first: the person who goes adds nothing to the burn of those who stay, and in fact removes one salary's worth of cost. Set a hard time limit and a supply cap for the trip (say, a month, carrying only a month of expenses), with silence past the deadline counted as failure. State plainly that the risk is justified only by the urgent need for help. Ask for volunteers in the open, with the choices already thought through. Before leaving, hand over the fallback for failure, and delegate real judgment to the person staying behind.
+- **Another reasonable choice**: One alternative the author raises: send nobody out, and have everyone take contract work to keep cash flowing. The gain is that no one is pulled off the front line in the short term; the cost is that no one opens an outside channel, and after four months there is still no help.
+
+</details>
+
+## Sources and uncertainty
+
+The whole piece rests on a single source — one participant's first-person account written afterwards. Dialogue and psychology are reported rather than transcribed, need not be verbatim, and cannot be verified; the only day count used is the sixth day out, as stated in the original, months follow the original, and the quoted passages give no calendar year, so none is supplied; distances, rations and water figures follow the original wording; the source is a scanned print in OCR, with individual words occasionally garbled, and quotations follow it as printed.
+
+## Sources
+
+1. Ernest Shackleton, South (1920 printing), archive.org OCR — <https://archive.org/download/southstoryshack00shac/southstoryshack00shac_djvu.txt>
+
+## Read more
+
+- [Ernest Shackleton, South (1920 printing), archive.org OCR](https://archive.org/details/southstoryshack00shac) — The source this piece is based on. (Free online, English)
+
+---
+
+Evidence ids [X-En] map to verbatim excerpts in the evidence file.

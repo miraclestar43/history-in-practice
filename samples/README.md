@@ -1,6 +1,6 @@
 # 双语样稿与自动供稿文章（2026-10-30 overnight）
 
-用户最新目标：**中文完整阅读约十分钟，英文完整阅读也约十分钟**（不是双语合计）。本目录有五篇样稿（A–D 由 Hermes 起草、经编辑修改；E 因模型服务拒绝而由 Claude 撰写）和七篇自动供稿文章（`auto/`），附证据映射、开放问题与示例、延伸阅读，以及邮件与网页本地预览。样稿是**样稿，不是正式期次**（`status: sample`），自动供稿文章在库存中、未排期；都未发布、未发信，样稿日期是假定排期。
+用户最新目标：**中文完整阅读约十分钟，英文完整阅读也约十分钟**（不是双语合计）。本目录有五篇样稿（A–D 由 Hermes 起草、经编辑修改；E 因模型服务拒绝而由 Claude 撰写）和 14 篇自动供稿文章（`auto/`），附证据映射、开放问题与示例、延伸阅读，以及邮件与网页本地预览。样稿是**样稿，不是正式期次**（`status: sample`），自动供稿文章在库存中、未排期；都未发布、未发信，样稿日期是假定排期。
 
 ## 一览
 
@@ -32,6 +32,18 @@
 | [washington-resigns](auto/cand-20261030-washington-resigns/article.zh.md) · [EN](auto/cand-20261030-washington-resigns/article.en.md) | 美国史 | 鞠躬的人与脱帽的人：1783年的一次权力交还 | 2953 字 · 约 9 分钟 | 2431 words · ~12 min | 18 | pending_review | 53 | **已入库：具名终审编辑 Pi Claude，2 次，记录绑定定稿（[定稿中文](auto/cand-20261030-washington-resigns/final/article.zh.md) · [EN](auto/cand-20261030-washington-resigns/final/article.en.md)）** |
 | [auto: qsg412-1](auto/cand-auto-20261030-qsg412-1/article.zh.md) · [EN](auto/cand-auto-20261030-qsg412-1/article.en.md) | 中国近现代 | 停不下来的西征：光绪元年的一笔账 | 2807 字 · 约 9 分钟 | 2509 words · ~13 min | 21 | - | 0 | **已入库：具名终审编辑 Pi Claude，1 次，记录绑定定稿（[定稿中文](auto/cand-auto-20261030-qsg412-1/final/article.zh.md) · [EN](auto/cand-auto-20261030-qsg412-1/final/article.en.md)）** |
 | [auto: sj077-1](auto/cand-auto-20261030-sj077-1/article.zh.md) · [EN](auto/cand-auto-20261030-sj077-1/article.en.md) | 中国古代 | 折返夷门：邯郸被围那年，一个不肯白送的人 | 2807 字 · 约 9 分钟 | 2883 words · ~14 min | 21 | - | 23 | **已入库：具名终审编辑 Pi Claude，2 次，记录绑定定稿（[定稿中文](auto/cand-auto-20261030-sj077-1/final/article.zh.md) · [EN](auto/cand-auto-20261030-sj077-1/final/article.en.md)）** |
+
+### nightly 产出（MiMo 初稿 → Pi Claude 终审，无 MiMo 编辑循环）
+
+MiMo 初稿后直接交终审编辑的稿子：qsg437 是第三轮遗留，其余四篇来自 2026-10-30 两批 `hip nightly`（每批按库存缺口提两个候选，终审最多 2 次，超出的“人工追加”记录在绑定记录里）。定稿就是入库稿；“待处理”是事后抽查发现问题后退回的。详见 `docs/AFK_TEST_AND_BOOKS_REPORT.md` §4。
+
+| 候选 | 类别 | 标题 | 中文 | 英文 | 摘录 | 终审次数 | 程序检查 FIX/BLOCK | 当前状态 |
+|---|---|---|---|---|---|---|---|---|
+| [auto: grant67-1](auto/cand-auto-20261030-grant67-1/final/article.zh.md) · [EN](auto/cand-auto-20261030-grant67-1/final/article.en.md) | 美国史 | 写到一半才想起的两条 | 3045 字 · 约 10 分钟 | 2644 words · ~13 min | 24 | 3（含 1 次人工追加） | 0 | **已入库** |
+| [auto: qsg412-2](auto/cand-auto-20261030-qsg412-2/final/article.zh.md) · [EN](auto/cand-auto-20261030-qsg412-2/final/article.en.md) | 中国近现代 | 「不可許」要写成条目：伊犁交涉中的一次说服 | 2030 字 · 约 6 分钟 | 2005 words · ~10 min | 18 | 3（含 1 次人工追加） | 0 | **已入库** |
+| [auto: qsg437-1](auto/cand-auto-20261030-qsg437-1/final/article.zh.md) · [EN](auto/cand-auto-20261030-qsg437-1/final/article.en.md) | 中国近现代 | 先排目标，再谈利害：一份铁路议奏的顺序 | 2444 字 · 约 8 分钟 | 2054 words · ~10 min | 13 | 3（含 1 次人工追加） | 0 | **已入库** |
+| [auto: sj065-1](auto/cand-auto-20261030-sj065-1/final/article.zh.md) · [EN](auto/cand-auto-20261030-sj065-1/final/article.en.md) | 中国古代 | 辞婚：一次被安排的试探与吴起离开魏国 | 2501 字 · 约 8 分钟 | 2386 words · ~12 min | 24 | 2（无人值守） | 0 | **待处理（post-admission spot check: zh says the source does not record the Lu ruler's response, but）** |
+| [auto: south-el-1](auto/cand-auto-20261030-south-el-1/final/article.zh.md) · [EN](auto/cand-auto-20261030-south-el-1/final/article.en.md) | 世界史 | 去八百英里外求援：象岛上的一次名单与取舍 | 2984 字 · 约 9 分钟 | 2413 words · ~12 min | 25 | 2（无人值守） | 0 | **已入库** |
 
 - 编辑修改数包含整段重写（记为一条，前后全文都在 `editor_log.json`）。
 - 最初的候选证据包只有 8–10 条摘录，初稿只有 6–7 分钟；从同一批已缓存的来源补足摘录后，重写到 9 分钟左右。之后的候选（廉蔺、富兰克林、达尔文与华莱士）在跑模型前就补足了摘录。

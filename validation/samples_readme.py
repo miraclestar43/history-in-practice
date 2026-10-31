@@ -73,11 +73,31 @@ def auto_rows():
     return out
 
 
+def nightly_rows():
+    """`hip nightly` output: MiMo draft, then the Pi Claude final editor directly (samples/auto/<cid>/final/ only)."""
+    out = []
+    for f in sorted((ROOT / "samples/auto").glob("cand-*/final/article.json")):
+        d = f.parent.parent
+        if (d / "article.json").exists():
+            continue
+        o = json.loads(f.read_text()); ev = json.loads((f.parent / "evidence.json").read_text()); fc, _ = checks.check(o, ev)
+        att = sorted(f.parent.glob("attempt-*_final_editor_record.json")); rec = json.loads((f.parent / "final_editor_record.json").read_text())
+        extra = sum(1 for a in att if json.loads(a.read_text()).get("operator_note"))
+        st = DB.execute("SELECT status, COALESCE(reason,'') FROM edition WHERE edition_id=?", (d.name,)).fetchone() or ("?", "")
+        now = ("已入库" if st[0] == "checked" else f"待处理（{st[1][:90]}）")
+        tags = "·".join(o.get("tags") or json.loads((f.parent / "base_article.json").read_text()).get("tags") or []) or "—"
+        out.append(f"| [{d.name.replace('cand-auto-20261030-', 'auto: ')}](auto/{d.name}/final/article.zh.md) · [EN](auto/{d.name}/final/article.en.md) | {CAT[o['category']]} | {o['title']['zh']} | "
+                   f"{o['length']['zh_chars']} 字 · 约 {o['reading_minutes']['zh']} 分钟 | {o['length']['en_words']} words · ~{o['reading_minutes']['en']} min | "
+                   f"{len(ev['excerpts'])} | {len(att)}{f'（含 {extra} 次人工追加）' if extra else '（无人值守）'} | "
+                   f"{sum(1 for x in fc if x[0] in ('FIX', 'BLOCK'))} | **{now}** |")
+    return out
+
+
 def write():
-    rows, trows = main(); arows = auto_rows()
+    rows, trows = main(); arows = auto_rows(); nrows = nightly_rows()
     text = f"""# 双语样稿与自动供稿文章（2026-10-30 overnight）
 
-用户最新目标：**中文完整阅读约十分钟，英文完整阅读也约十分钟**（不是双语合计）。本目录有五篇样稿（A–D 由 Hermes 起草、经编辑修改；E 因模型服务拒绝而由 Claude 撰写）和七篇自动供稿文章（`auto/`），附证据映射、开放问题与示例、延伸阅读，以及邮件与网页本地预览。样稿是**样稿，不是正式期次**（`status: sample`），自动供稿文章在库存中、未排期；都未发布、未发信，样稿日期是假定排期。
+用户最新目标：**中文完整阅读约十分钟，英文完整阅读也约十分钟**（不是双语合计）。本目录有五篇样稿（A–D 由 Hermes 起草、经编辑修改；E 因模型服务拒绝而由 Claude 撰写）和 {len(arows) + len(nrows)} 篇自动供稿文章（`auto/`），附证据映射、开放问题与示例、延伸阅读，以及邮件与网页本地预览。样稿是**样稿，不是正式期次**（`status: sample`），自动供稿文章在库存中、未排期；都未发布、未发信，样稿日期是假定排期。
 
 ## 一览
 
@@ -97,6 +117,14 @@ def write():
 | 候选 | 类别 | 标题 | 中文 | 英文 | 摘录 | 模型结果 | 编辑修改（人工 + 最近一次自动） | 当前状态 |
 |---|---|---|---|---|---|---|---|---|
 {chr(10).join(arows)}
+
+### nightly 产出（MiMo 初稿 → Pi Claude 终审，无 MiMo 编辑循环）
+
+MiMo 初稿后直接交终审编辑的稿子：qsg437 是第三轮遗留，其余四篇来自 2026-10-30 两批 `hip nightly`（每批按库存缺口提两个候选，终审最多 2 次，超出的“人工追加”记录在绑定记录里）。定稿就是入库稿；“待处理”是事后抽查发现问题后退回的。详见 `docs/AFK_TEST_AND_BOOKS_REPORT.md` §4。
+
+| 候选 | 类别 | 标题 | 中文 | 英文 | 摘录 | 终审次数 | 程序检查 FIX/BLOCK | 当前状态 |
+|---|---|---|---|---|---|---|---|---|
+{chr(10).join(nrows)}
 
 - 编辑修改数包含整段重写（记为一条，前后全文都在 `editor_log.json`）。
 - 最初的候选证据包只有 8–10 条摘录，初稿只有 6–7 分钟；从同一批已缓存的来源补足摘录后，重写到 9 分钟左右。之后的候选（廉蔺、富兰克林、达尔文与华莱士）在跑模型前就补足了摘录。
