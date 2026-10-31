@@ -17,11 +17,17 @@ method), base and final content hashes, evidence hash, the full edit log (replay
 article), every issue with origin / disposition / rationale / evidence, the audit and verify coverage,
 per-call timings and token use, and elapsed time. admit() re-checks all of it; there is no exception
 path. A record never claims historical infallibility: sources stay linked and corrections stay possible.
+
+Admission also needs a clean source-context review (context.py) of the exact final content and evidence: the
+excerpts read inside their source, every "the source does not say" sentence judged against the reviewed text.
+A non-clean review is carried into the next attempt: its additions become the evidence pack and its findings
+inherited issues (carried_context). Attempts are bounded (final_editor.max_attempts) and counted since the
+edition was last demoted from `checked`.
 """
 from __future__ import annotations
 import copy, json, re, shutil, time
 from pathlib import Path
-from . import checks, render, state, registry, editor, schemas, claude_cli
+from . import checks, render, state, registry, editor, schemas, claude_cli, context
 from .config import REPO, data_dir, load_project
 from .pipeline import PROMPTS, CODE_REV, _evidence_block
 from .textnorm import t2s
@@ -31,7 +37,8 @@ CATEGORIES = {"facts", "attribution", "chronology", "causality", "quotes", "inne
 CHECKS = {"facts", "attribution", "chronology", "causality", "quotes", "inner_life", "interpretation_label", "parity"}
 TIMEOUTS = {"audit": 1800, "revise": 1800, "verify": 1500}
 MAX_ROUNDS = int(load_project().get("final_editor", {}).get("max_rounds", 2))
-MAX_ATTEMPTS = int(load_project().get("final_editor", {}).get("max_attempts", 2))
+MAX_ATTEMPTS = int(load_project().get("final_editor", {}).get("max_attempts", 3))
+MIN_ATTEMPT_MIN = float(load_project().get("final_editor", {}).get("min_minutes_per_attempt", 20))   # do not start an attempt with less job time left
 # Runtime health failures (subscription limit, auth, CLI missing or killed by the runtime) are not editorial outcomes:
 # they stop the queue, leave the edition pending and do not use up one of its MAX_ATTEMPTS.
 HEALTH_MARKERS = ("usage limit", "rate limit", "rate_limit", "limit reached", "overloaded", "authentication", "not logged in",
@@ -43,12 +50,16 @@ def health_failure(text) -> bool:
     return any(m in t for m in HEALTH_MARKERS)
 
 
-def attempts_used(cid: str) -> int:
-    """Final-editor attempts that count toward MAX_ATTEMPTS (runtime health failures excluded)."""
+def attempts_used(cid: str, db=None) -> int:
+    """Final-editor attempts that count toward MAX_ATTEMPTS: runtime health failures excluded, and (with db) only
+    attempts since the edition was last demoted from `checked` (a requeue after admission starts a new allowance)."""
     root = data_dir() / "final_edit" / cid; n = 0
+    since = (db.execute("SELECT max(at) FROM transition WHERE edition_id=? AND from_status='checked' AND to_status='pending_review'",
+                        (cid,)).fetchone()[0] if db is not None else None) or 0
     for a in (root.glob("attempt-*") if root.exists() else []):
         r = a / "final_editor_record.json"
-        if r.exists() and health_failure(json.loads(r.read_text(encoding="utf-8")).get("failure")):
+        rec = json.loads(r.read_text(encoding="utf-8")) if r.exists() else {}
+        if health_failure(rec.get("failure")) or (rec.get("started_at") or a.stat().st_mtime) < since:
             continue
         n += 1
     return n
@@ -285,6 +296,58 @@ def carried_issues(prior: dict, o: dict | None = None, ev: dict | None = None) -
     return out
 
 
+def carried_context(cid: str, o: dict, ev: dict) -> tuple[dict, dict, list] | None:
+    """A non-clean article-mode context review of exactly this base text: (record, evidence incl. its additions, issues).
+    The expanded pack must keep every original excerpt unchanged."""
+    d = OUT_ROOT / cid / "final"; rp, ep = d / "context_review.json", d / "context_evidence.json"
+    if not rp.exists():
+        return None
+    rec = json.loads(rp.read_text(encoding="utf-8"))
+    if rec.get("mode") != "article" or rec.get("outcome") != "needs_work" or rec.get("content_sha256") != o["content_sha256"] \
+            or rec.get("evidence_in_sha256") != editor.sha(ev):
+        return None
+    new = json.loads(ep.read_text(encoding="utf-8")) if ep.exists() else ev
+    old = {e["id"]: e for e in ev["excerpts"]}
+    if editor.sha(new) != rec.get("evidence_sha256") or any(old[i] != next((x for x in new["excerpts"] if x["id"] == i), None) for i in old):
+        return None
+    return rec, new, context.issues_for_editor(rec)
+
+
+def awaiting_context(cid: str) -> bool:
+    """The latest final-editor record verifies for the current final text (verify_final_record, as at admission) and no
+    completed context review of that exact text exists yet."""
+    d = OUT_ROOT / cid / "final"; prior = prior_final(cid)
+    if not prior or prior.get("failure") or not (d / "article.json").exists() or not (d / "evidence.json").exists():
+        return False
+    o = json.loads((d / "article.json").read_text(encoding="utf-8")); render.finalize(o)
+    base = json.loads((d / "base_article.json").read_text(encoding="utf-8")) if (d / "base_article.json").exists() else None
+    if verify_final_record(copy.deepcopy(o), json.loads((d / "evidence.json").read_text(encoding="utf-8")), prior, base):
+        return False                                   # the same verification admission uses, not the record's own outcome field
+    cp = d / "context_review.json"
+    if not cp.exists():
+        return True
+    c = json.loads(cp.read_text(encoding="utf-8"))
+    return not (c.get("content_sha256") == o["content_sha256"] and c.get("outcome") in ("clean", "needs_work"))
+
+
+def run_context(cid: str, *, call=None, cache: Path | None = None) -> dict:
+    """Article-mode source-context review of the current final text (samples/auto/<cid>/final). Writes
+    context_review.json (+ context_evidence.json when it cut additions) next to the article and returns the record."""
+    d = OUT_ROOT / cid / "final"
+    o = json.loads((d / "article.json").read_text(encoding="utf-8")); ev = json.loads((d / "evidence.json").read_text(encoding="utf-8"))
+    render.finalize(o)
+    rec, new_ev = context.review(o, ev, Path(cache or data_dir() / "source_cache"), data_dir() / "context" / cid / time.strftime("%Y%m%dT%H%M%S"),
+                                 call=call, cid=cid)
+    if rec.get("outcome") in ("clean", "needs_work"):
+        (d / "context_review.json").write_text(json.dumps(rec, ensure_ascii=False, indent=1), encoding="utf-8")
+        ce = d / "context_evidence.json"
+        if rec.get("additions"):
+            ce.write_text(json.dumps(new_ev, ensure_ascii=False, indent=1), encoding="utf-8")
+        elif ce.exists():
+            ce.unlink()
+    return rec
+
+
 def base_paths(cid: str, db) -> tuple[Path, Path] | None:
     d = OUT_ROOT / cid
     if (d / "final" / "article.json").exists():           # continue from the previous final-editor attempt
@@ -320,11 +383,16 @@ def run(cid: str, db, *, call=None, max_rounds: int = MAX_ROUNDS, operator_note:
     w = root / f"attempt-{n}"; w.mkdir(parents=True, exist_ok=True)
     o = json.loads(src[0].read_text(encoding="utf-8")); ev = json.loads(src[1].read_text(encoding="utf-8"))
     render.finalize(o); base = copy.deepcopy(o)
+    cx = carried_context(cid, o, ev)
+    if cx:
+        ev = cx[1]
     (w / "base_article.json").write_text(json.dumps(base, ensure_ascii=False, indent=1), encoding="utf-8")
     (w / "evidence.json").write_text(json.dumps(ev, ensure_ascii=False, indent=1), encoding="utf-8")
     paths = [p for p, _, _ in editor.fields(o)]
     prior = prior_final(cid)
     inh = carried_issues(prior, o, ev) if prior else inherited_issues(cid, o, ev)   # MiMo issues were all decided in the first attempt
+    if cx:                                             # source-context findings on this base text, with the evidence they added
+        inh += [dict(i, id=f"X{k + 1}") for k, i in enumerate(cx[2])]
     cont = contamination(cid, ev)
     t0 = time.time(); caller = editor.Caller(w, cid, call)
     rec = {"record_type": "final_editor", "schema": RECORD_SCHEMA, "candidate_id": cid, "edition_id": o["edition_id"],
@@ -333,6 +401,7 @@ def run(cid: str, db, *, call=None, max_rounds: int = MAX_ROUNDS, operator_note:
            "base_content_sha256": base["content_sha256"], "evidence_sha256": editor.sha(ev), "operator_note": operator_note,
            "model_record_sha256": editor.sha(json.loads(_latest_model_record(cid).read_text())) if _latest_model_record(cid) else None,
            "prior_record_sha256": editor.sha(prior) if prior else None, "attempt": w.name,
+           "context_review_sha256": editor.sha(cx[0]) if cx else None,
            "inherited": inh, "contamination": cont, "issues": [], "edits": [], "rounds": []}
     ctx = (f"\n\n【遗留问题】\n{json.dumps(inh, ensure_ascii=False, indent=1)}\n\n【已知污染】\n{json.dumps(cont, ensure_ascii=False, indent=1)}"
            f"\n\n【必须覆盖的字段路径】\n{json.dumps(paths, ensure_ascii=False)}")
@@ -495,11 +564,12 @@ def verify_final_record(o: dict, ev: dict, rec: dict, base: dict | None) -> list
 ADMITTED = ("checked", "scheduled", "archived", "site_committed", "site_live", "email_pending", "complete")
 
 
-def current_eligibility(db, edition_id: str, article_path: Path | None = None) -> tuple[list[str], dict | None]:
+def current_eligibility(db, edition_id: str, article_path: Path | None = None, cache: Path | None = None) -> tuple[list[str], dict | None]:
     """Is this edition editorially admitted *now*? Re-verifies from the canonical records, never from a status field in
     the JSON handed in: edition state is admitted; the file is the edition's admitted path with the state's revision and
     content hash; the final-editor record next to it verifies against that article, its evidence and base article
-    (verify_final_record, as at admission); and the state's approval names that record. Returns (problems, article)."""
+    (verify_final_record, as at admission); a clean source-context review is bound to that content and evidence
+    (context.record_problems, as at admission); and the state's approval names that record. Returns (problems, article)."""
     cur = state.get(db, edition_id)
     if not cur:
         return [f"{edition_id} is not a registered edition"], None
@@ -519,16 +589,23 @@ def current_eligibility(db, edition_id: str, article_path: Path | None = None) -
     rec = json.loads(files["final_editor_record"].read_text(encoding="utf-8")); ev = json.loads(files["evidence"].read_text(encoding="utf-8"))
     base = json.loads(files["base_article"].read_text(encoding="utf-8")) if files["base_article"].exists() else None
     p += verify_final_record(json.loads(json.dumps(o)), ev, rec, base)
+    p += context.record_problems(_context_of(path), o, ev, cache)
     if not str(cur.get("approval") or "").endswith(f"record {editor.sha(rec)[:12]}"):
         p.append("the admission does not name this final-editor record")
     return p, o
 
 
-def admit(db, article_path: Path, evidence_path: Path, rec: dict, exception=None) -> dict:
+def _context_of(article_path: Path) -> dict | None:
+    p = Path(article_path).parent / "context_review.json"
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
+
+
+def admit(db, article_path: Path, evidence_path: Path, rec: dict, exception=None, cache: Path | None = None) -> dict:
     o = json.loads(Path(article_path).read_text(encoding="utf-8")); ev = json.loads(Path(evidence_path).read_text(encoding="utf-8"))
     bp = Path(article_path).parent / "base_article.json"
     base = json.loads(bp.read_text(encoding="utf-8")) if bp.exists() else None
     problems = verify_final_record(o, ev, rec, base)
+    render.finalize(o); problems += context.record_problems(_context_of(article_path), o, ev, cache)
     if exception:
         problems.append("exceptions are not accepted for final-editor records: every issue is fixed or rejected with evidence")
     cur = state.get(db, o["edition_id"])

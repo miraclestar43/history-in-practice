@@ -104,12 +104,15 @@ def _prepare_claude(d, c) -> dict:
         keep.mkdir(exist_ok=True)
         for f in list(w.glob("*.raw.txt")) + list(w.glob("calls.jsonl")) + list(w.glob("report.json")):
             shutil.move(str(f), keep / f.name)
-    return pipeline.prepare(c, d, call=claude_cli.call, drafter=f"Pi Claude ({claude_cli.MODEL}, {claude_cli.version()}) after MiMo provider refusal")
+    return pipeline.prepare(c, d, call=claude_cli.call, drafter=f"Pi Claude ({claude_cli.MODEL}, {claude_cli.version()}) after MiMo provider refusal",
+                            context_call=claude_cli.call)
 
 
 def cmd_prepare(a):
     c = pipeline.load_candidate(a.candidate); d = db()
-    rep = _prepare_claude(d, c) if a.drafter == "claude" else pipeline.prepare(c, d, drafter="MiMo (hermes-isolated)")
+    from . import claude_cli
+    rep = _prepare_claude(d, c) if a.drafter == "claude" else pipeline.prepare(c, d, drafter="MiMo (hermes-isolated)",
+                                                                                context_call=None if claude_cli.preflight() else claude_cli.call)
     if rep.get("outcome") == "not_run":
         print(json.dumps({"prepared": False, "reason": rep["reason"]}, ensure_ascii=False)); return 1
     print(json.dumps({k: v for k, v in rep.items() if k != "findings"} | {"findings": rep.get("findings", [])[:20]}, ensure_ascii=False, indent=1))
@@ -372,34 +375,89 @@ def cmd_edit_queue(a):
     print(json.dumps({"edited": out, "inventory": pipeline.inventory(d)}, ensure_ascii=False, indent=1)); return 0
 
 
-def _final_one(d, cid: str, extra: str | None = None) -> dict:
-    """extra: an owner-directed reason for ONE attempt beyond max_attempts (recorded in the hash-bound record);
-    never used by the nightly queue."""
+def _final_one(d, cid: str, extra: str | None = None, deadline: float | None = None) -> dict:
+    """Final-edit one pending edition: up to final_editor.max_attempts genuine attempts (counted since its last demotion
+    from `checked`), each continuing from the previous final text and its open issues. An attempt that ends admissible
+    gets a source-context review of that exact text; only a clean review lets it be admitted, otherwise the review's
+    additions and findings go into the next attempt. A new attempt starts only if the job's deadline (time.time()) leaves
+    final_editor.min_minutes_per_attempt. Health failures (subscription, auth, CLI) stop at once and are not counted.
+    extra: an owner-directed reason for ONE attempt beyond max_attempts (recorded in the hash-bound record); never used
+    by the nightly queue."""
+    import time as _t
     from . import final_edit
     cur = state.get(d, cid)
     if not cur or cur["status"] != "pending_review":
         return {"edition": cid, "outcome": "skipped", "reason": f"status {cur['status'] if cur else 'unknown'}"}
-    n = final_edit.attempts_used(cid)
-    if n >= final_edit.MAX_ATTEMPTS + (1 if extra else 0):
-        return {"edition": cid, "outcome": "skipped", "reason": f"{n} final-editor attempts used (max {final_edit.MAX_ATTEMPTS}"
-                f"{' + 1 owner-directed' if extra else ''}); needs a person"}
-    rec = final_edit.run(cid, d, operator_note=f"extra attempt beyond max_attempts: {extra}" if n >= final_edit.MAX_ATTEMPTS else None)
-    if rec["outcome"] == "not_run" or final_edit.health_failure(rec.get("failure")):
-        return {"edition": cid, "outcome": "health", "reason": rec.get("reason") or rec.get("failure")}   # stays pending; attempt not counted
-    if rec["outcome"] == "pending_review" and not rec.get("failure") and n + 1 < final_edit.MAX_ATTEMPTS:
-        rec = final_edit.run(cid, d)                     # one continuation attempt from the previous final text
-    res = {"edition": cid, "attempts": len(list((data_dir() / "final_edit" / cid).glob("attempt-*"))), "outcome": rec["outcome"], "elapsed_min": rec.get("elapsed_min"), "open_issues": rec.get("open_issues"),
-           "failure": rec.get("failure") or rec.get("reason"), "edits": len(rec.get("edits", [])), "issues": len(rec.get("issues", []))}
-    if rec["outcome"] == "admissible":
-        out = final_edit.OUT_ROOT / cid / "final"
-        res.update(final_edit.admit(d, out / "article.json", out / "evidence.json", rec))
-        res["outcome"] = "admitted" if res.get("admitted") else "pending_review"
-    elif final_edit.health_failure(rec.get("failure")):
-        res["outcome"] = "health"
-    elif rec["outcome"] == "pending_review":
-        why = f"final editor: {len(rec.get('open_issues') or [])} open issue(s)" + (f"; {rec['failure']}" if rec.get("failure") else "")
-        state.transition(d, cid, "prepared", note=why); state.transition(d, cid, "pending_review", note=why, reason=why)
+    allowed = final_edit.MAX_ATTEMPTS + (1 if extra else 0); runs = []; res = {"edition": cid, "outcome": "pending_review", "runs": runs}
+
+    def pend(why):
+        state.transition(d, cid, "prepared", note=why[:500]); state.transition(d, cid, "pending_review", note=why[:500], reason=why[:2000])
+        res.update(outcome="pending_review", reason=why)
+
+    while True:
+        if deadline is not None and deadline - _t.time() < final_edit.MIN_ATTEMPT_MIN * 60:
+            res["stopped"] = "job deadline: not enough time left for another step"; break
+        if final_edit.awaiting_context(cid):            # the final editor passed this exact text: only its context review is due
+            cx = final_edit.run_context(cid)
+            runs.append({"step": "context review", "outcome": cx.get("outcome"), "elapsed_min": cx.get("elapsed_min"),
+                         "blocking": (cx.get("blocking") or [])[:5], "additions": [a["id"] for a in cx.get("additions") or []]})
+            if cx.get("outcome") in ("not_run", "failed"):
+                pend(f"context review: not completed ({str(cx.get('failure'))[:200]})")
+                if final_edit.health_failure(cx.get("failure")):
+                    res["outcome"] = "health"
+                break
+            if cx["outcome"] == "clean":
+                out = final_edit.OUT_ROOT / cid / "final"
+                rec = json.loads((out / "final_editor_record.json").read_text(encoding="utf-8"))
+                res.update(final_edit.admit(d, out / "article.json", out / "evidence.json", rec))
+                res["outcome"] = "admitted" if res.get("admitted") else "pending_review"
+                if not res.get("admitted"):
+                    pend("final editor: admission refused: " + "; ".join(res.get("problems", []))[:300])
+                break
+            pend("context review: " + "; ".join(cx.get("blocking") or [])[:400])
+            continue                                   # its additions and findings go into the next attempt
+        n = final_edit.attempts_used(cid, d)
+        if n >= allowed:
+            res.setdefault("reason", f"{n} final-editor attempts used (max {final_edit.MAX_ATTEMPTS}{' + 1 owner-directed' if extra else ''}); needs a person")
+            res["stopped"] = f"{n} attempts used"
+            if not runs:
+                res["outcome"] = "skipped"
+            break
+        rec = final_edit.run(cid, d, operator_note=f"extra attempt beyond max_attempts: {extra}" if n >= final_edit.MAX_ATTEMPTS else None)
+        if rec["outcome"] == "not_run" or final_edit.health_failure(rec.get("failure")):
+            return {"edition": cid, "outcome": "health", "reason": rec.get("reason") or rec.get("failure"), "runs": runs}   # not counted
+        runs.append({"step": "final edit", "attempt": rec.get("attempt"), "outcome": rec["outcome"], "elapsed_min": rec.get("elapsed_min"),
+                     "open_issues": rec.get("open_issues"), "edits": len(rec.get("edits", [])), "issues": len(rec.get("issues", [])),
+                     "failure": rec.get("failure")})
+        res.update(attempts=final_edit.attempts_used(cid, d), elapsed_min=rec.get("elapsed_min"), open_issues=rec.get("open_issues"))
+        if final_edit.awaiting_context(cid):
+            continue                                   # the record verifies: next, its context review
+        pend(f"final editor: {len(rec.get('open_issues') or [])} open issue(s)" + (f"; {rec['failure']}" if rec.get("failure") else ""))
+        if rec.get("failure"):
+            break                                      # a failed step, not an editorial outcome: no further attempt now
     return res
+
+
+def cmd_context_review(a):
+    """Source-context review of admitted or final-edited editions (context.py). An admitted edition whose review is not
+    clean is demoted to pending_review (publish lock) so the final editor handles the findings; a clean one stays admitted
+    and now satisfies the admission gate. Records go to samples/auto/<cid>/final/context_review.json."""
+    from . import final_edit
+    d = db(); out = []
+    with publish.lock("prepare"):
+        for cid in a.editions:
+            cur = state.get(d, cid)
+            if not cur or cur["status"] not in ("checked", "pending_review") or not (final_edit.OUT_ROOT / cid / "final" / "article.json").exists():
+                out.append({"edition": cid, "outcome": "skipped", "reason": f"status {cur['status'] if cur else 'unknown'} or no final text"}); continue
+            cx = final_edit.run_context(cid)
+            r = {"edition": cid, "outcome": cx.get("outcome"), "elapsed_min": cx.get("elapsed_min"), "blocking": (cx.get("blocking") or [])[:6],
+                 "flagged": len(cx.get("flagged") or []), "additions": [x["id"] for x in cx.get("additions") or []],
+                 "units": {s: m.get("status") for s, m in (cx.get("units") or {}).items()}, "failure": cx.get("failure")}
+            if cx.get("outcome") == "needs_work" and cur["status"] == "checked":
+                _demote(d, cid, cur, ("context review: " + "; ".join(cx.get("blocking") or []))[:2000]); r["requeued"] = True
+            out.append(r)
+    print(json.dumps({"context_review": out, "inventory": pipeline.inventory(d)}, ensure_ascii=False, indent=1))
+    return 0 if all(r["outcome"] == "clean" for r in out) else 2
 
 
 def cmd_final_edit(a):
@@ -428,7 +486,7 @@ def cmd_rereview(a):
     print(json.dumps(r, ensure_ascii=False, indent=1)); return 0 if r.get("outcome") == "admitted" else 2
 
 
-FINAL_EDITABLE = EDITABLE + ("final editor:",)
+FINAL_EDITABLE = EDITABLE + ("final editor:", "context review:", "post-admission", "requeued")
 
 
 def _health_write(h: dict):
@@ -449,10 +507,12 @@ def _final_queue(d, max_n, budget_min) -> tuple[list, dict]:
         for cid, why in rows:
             if len(out) >= max_n or (_t.time() - t0) / 60 > budget_min:
                 break
-            if not why.startswith(FINAL_EDITABLE) or final_edit.attempts_used(cid) >= final_edit.MAX_ATTEMPTS:
+            if not why.startswith(FINAL_EDITABLE) or final_edit.attempts_used(cid, d) >= final_edit.MAX_ATTEMPTS:
                 continue                 # refusals (see _claude_redrafts), duplicates and exhausted drafts are not edited here
+            if t0 + budget_min * 60 - _t.time() < final_edit.MIN_ATTEMPT_MIN * 60:
+                break
             try:
-                r = _final_one(d, cid)
+                r = _final_one(d, cid, deadline=t0 + budget_min * 60)
             except Exception as e:
                 r = {"edition": cid, "outcome": "error", "reason": f"{type(e).__name__}: {e}"[:300]}
             out.append(r)
@@ -504,7 +564,8 @@ def cmd_nightly(a):
             if state.get(d, c["candidate_id"]) or len(rep["prepare"]) >= a.max_articles or (_t.monotonic() - t0) / 60 > a.budget_minutes:
                 continue
             try:
-                r = pipeline.prepare(c, d)
+                from . import claude_cli
+                r = pipeline.prepare(c, d, context_call=None if claude_cli.preflight() else claude_cli.call)
             except Exception as e:
                 r = {"outcome": "error", "reason": f"{type(e).__name__}: {e}"[:300]}
             rep["prepare"].append({"candidate": c["candidate_id"], "outcome": r.get("outcome"), "reason": str(r.get("reason", ""))[:200]})
@@ -669,6 +730,7 @@ def main(argv=None):
     p.set_defaults(f=cmd_edit_queue)
     p = sp.add_parser("rereview"); p.add_argument("edition"); p.add_argument("--rounds", type=int, default=0)
     p.add_argument("--article", help="re-review this file (e.g. after a manual editor pass) instead of the stored version"); p.set_defaults(f=cmd_rereview)
+    p = sp.add_parser("context-review"); p.add_argument("editions", nargs="+"); p.set_defaults(f=cmd_context_review)
     p = sp.add_parser("final-edit"); p.add_argument("editions", nargs="+")
     p.add_argument("--extra-attempt", metavar="REASON", help="owner-directed: allow ONE attempt beyond max_attempts; the reason is recorded")
     p.set_defaults(f=cmd_final_edit)

@@ -164,8 +164,12 @@ def run_model_steps(c, pack, outdir: Path, call=llm.call, timeouts=None) -> tupl
     return zh, review, en, metrics
 
 
-def prepare(c, db, *, call=llm.call, workdir: Path | None = None, cache: Path | None = None, drafter: str = "MiMo (hermes-isolated)") -> dict:
-    """Run one candidate end to end. Returns a report dict; never raises for content problems."""
+def prepare(c, db, *, call=llm.call, workdir: Path | None = None, cache: Path | None = None, drafter: str = "MiMo (hermes-isolated)",
+            context_call=None) -> dict:
+    """Run one candidate end to end. Returns a report dict; never raises for content problems.
+    context_call: the reviewer for the pre-draft source-context step (context.review on the pack: how the episode ends
+    in the source, additions cut from the reviewed text). Callers pass claude_cli.call; None skips it (tests). The
+    article-mode review before admission is required either way."""
     cid = c["candidate_id"]; t0 = time.monotonic()
     out = Path(workdir or data_dir() / "drafts" / cid); out.mkdir(parents=True, exist_ok=True)
     cache = Path(cache or data_dir() / "source_cache"); cache.mkdir(parents=True, exist_ok=True)
@@ -202,6 +206,17 @@ def prepare(c, db, *, call=llm.call, workdir: Path | None = None, cache: Path | 
     if verdict[0] == "review":
         return pend(f"possible duplicate: {verdict[1]}")
     report["episode_id"] = eid
+    if context_call is not None:
+        from . import context
+        crec, cpack = context.review(None, pack, cache, out / "context", call=context_call, cid=cid)
+        (out / "context_pre_draft.json").write_text(json.dumps(crec, ensure_ascii=False, indent=1), encoding="utf-8")
+        report["context_pre_draft"] = {"outcome": crec.get("outcome"), "additions": [a["id"] for a in crec.get("additions") or []],
+                                       "failure": crec.get("failure"), "elapsed_min": crec.get("elapsed_min")}
+        if crec.get("outcome") == "prepared":
+            pack = cpack; note = context.brief_note(crec)
+            (out / "evidence.json").write_text(json.dumps(pack, ensure_ascii=False, indent=1), encoding="utf-8")
+            if note:
+                c = dict(c, brief=(c.get("brief") or "") + "\n" + note)
     zh, review, en, metrics = run_model_steps(c, pack, out, call=call)
     report["model_calls"] = metrics
     if zh is None or en is None:

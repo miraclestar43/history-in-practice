@@ -28,7 +28,7 @@ def cut(text: str, start: str, end: str, max_len=2500):
     i = text.find(start)
     if i < 0:
         return None, "start anchor not found"
-    j = text.find(end, i + len(start) - len(end))
+    j = text.find(end, max(0, i + len(start) - len(end)))      # a negative start would search from the END of the text
     if j < 0 or j - i > max_len:
         return None, "end anchor not found within limit"
     return (i, text[i:j + len(end)]), None

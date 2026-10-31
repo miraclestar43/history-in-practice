@@ -65,6 +65,13 @@
   "final_editor": {
     "max_rounds": 2,
     "runtime": "claude_cli (official Claude Code CLI on the Pi, claude.ai subscription)",
-    "max_attempts": 2
+    "max_attempts": 3,
+    "min_minutes_per_attempt": 20,
+    "note": "attempts are genuine editorial attempts (health failures not counted), counted since the last demotion from checked; each continues from the previous final text and open issues; a new attempt starts only if the job deadline leaves min_minutes_per_attempt; after max_attempts the draft stays pending. Thresholds are never relaxed."
+  },
+  "context_review": {
+    "before_cjk": 1200, "after_cjk": 4000, "before_latin": 2500, "after_latin": 8000,
+    "cap_cjk": 60000, "cap_latin": 150000, "timeout_s": 1500,
+    "note": "normalised characters around each excerpt (more after than before), one bounded search round for long sources; see context.py"
   }
 }

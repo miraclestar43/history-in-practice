@@ -7,7 +7,7 @@ from email import message_from_bytes, policy
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent)); sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 import smtp_fixture
-from history_in_practice import testrun, state, render, editor
+from history_in_practice import testrun, state, render, editor, context
 ROOT = Path(__file__).resolve().parents[1]
 REAL = ROOT / "samples/auto/cand-20261030-snow-water-companies/final"
 TID = "test-20261030-snow"
@@ -18,6 +18,12 @@ def admitted_copy(td: Path, db) -> Path:
     this test's database exactly as final_edit.admit leaves it (path, revision, content hash, approval naming the record)."""
     d = td / "final"; shutil.copytree(REAL, d)
     o = json.loads((d / "article.json").read_text()); rec = json.loads((d / "final_editor_record.json").read_text())
+    ev = json.loads((d / "evidence.json").read_text())                 # LABELLED FIXTURE context record (no source units): the
+    (d / "context_review.json").write_text(json.dumps({                # context review itself is tested in test_context.py
+        "record_type": "context_review", "schema": context.SCHEMA, "mode": "article", "fixture": True, "edition_id": o["edition_id"],
+        "content_sha256": o["content_sha256"], "evidence_in_sha256": editor.sha(ev), "evidence_sha256": editor.sha(ev), "outcome": "clean",
+        "blocking": [], "units": {}, "claims": [dict(f, verdict="supported", scope="fixture", source_ids=[]) for f in context.absence_claims(o)]},
+        ensure_ascii=False))
     for s in ("pending_review", "prepared"):
         state.transition(db, o["edition_id"], s)
     state.transition(db, o["edition_id"], "checked", path=str(d / "article.json"), content_sha256=o["content_sha256"], revision=o["revision"],
