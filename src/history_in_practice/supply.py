@@ -94,6 +94,10 @@ def attempts() -> list[dict]:
     return [json.loads(l) for l in p.read_text(encoding="utf-8").splitlines() if l.strip()] if p.exists() else []
 
 
+# Theme tags (owner, 2026-10-30): breadth across the four rotation slots; war is one theme among many, no quota.
+TAGS = ("历史", "政治与治理", "外交", "经济与金融", "企业与商业", "科学与技术", "人物传记", "社会与日常生活", "教育", "文化", "战争与冲突")
+
+
 def pick_entry(category: str) -> dict | None:
     tried = {}
     for a in attempts():
@@ -164,6 +168,7 @@ def propose(entry: dict, db, *, call=llm.call, cache: Path | None = None, date: 
         brief = "\n".join(kept) + "\n注意：以下摘录的锚点未通过逐字核对，已删除；简报中引用它们的句子也已删除，不得写入相关内容：" + "、".join(sorted(gone)) + "。"
     cand = {"candidate_id": cid, "category": entry["category"], "title_hint": prop.get("title_hint", ""),
             "question_type": prop.get("question_type", ""), "single_basis_disclosed": True,
+            "tags": [t for t in (prop.get("tags") or []) if t in TAGS][:3],
             "episode": {"persons": ep["persons"], "year_from": int(ep["year_from"]), "year_to": int(ep["year_to"]), "place": ep["place"],
                         "action": ep["action"], "parent_event": ep.get("parent_event")},
             "sources": [spec], "excerpts": rows, "core_excerpts": core, "brief": brief,

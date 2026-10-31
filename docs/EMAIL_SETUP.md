@@ -42,13 +42,14 @@ EMAIL_SEND_ENABLED=false
 
 ```bash
 bin/hip doctor                                      # email_config_problems 必须为空
-bin/hip send-test samples/D/article.json --confirm-real-email
+bin/hip test-edition status --test-id test-20261030-snow-water
+bin/hip test-edition send --test-id test-20261030-snow-water --confirm-real-email
 ```
 
-- 它只在显式加 `--confirm-real-email` 时发送；使用独立的测试期次号（`sample-D-test-时间戳`），标题前加“【测试】”，不影响正式期次的发送状态。
+- 2026-10-30 起，旧的 `send-test`（每次生成带时间戳的新测试号）已停用。`test-edition` 使用一个持久的测试身份：已入库文章的带“【测试】/[TEST]”标签副本、有界发送窗口、发信前先核对网站预览上线的 JSON（revision 与 content_sha256），收件人集合首次发送时冻结，已 accepted 或 unknown 的收件人不会重发；不占用正式期次、轮换与覆盖。窗口过期且尚未发出任何一封时，可用 `renew-window` 续期。
 - 发给私密配置中的全部收件人（目前两位）。命令返回每位收件人的 SMTP 结果；`accepted` 只表示服务器接收，不代表进了收件箱。
 - 然后人工确认：Gmail 与 QQ 都收到；不在垃圾箱；邮件头 SPF/DKIM 通过；中英文排版正常；**在其中一封上点“回复”，确认回复到了 Reply-To 地址**。
-- 都正常后，才把 `EMAIL_SEND_ENABLED=true` 写进私密配置，并按 `deploy/systemd/README.md` 启用定时器。
+- 都正常后，是否把 `EMAIL_SEND_ENABLED=true` 写进私密配置、是否按 `deploy/systemd/README.md` 启用定时器，由用户另行决定；测试成功本身不是启用定时器的授权（2026-10-30 AFK 指令）。
 
 `hip send ARTICLE --real` 是正式发信入口，仍受 `EMAIL_SEND_ENABLED` 约束；开关为 false 时它会拒绝并返回非零，不会让人误以为已发出。
 

@@ -89,7 +89,8 @@ class Checker(unittest.TestCase):
 
 
 class ScenarioOverlap(unittest.TestCase):
-    """today[] vs the open question: concrete repeated wording is a FIX naming the phrases; topical resemblance is a CHECK."""
+    """today[] vs the open question: concrete repeated wording is a FIX naming the phrases; topical resemblance is a CHECK.
+    (Built on the qsg437 final article; the duplicated wording is set here, since the final editor removed the original.)"""
     def setUp(self):
         import json as _j
         d = Path(__file__).resolve().parents[1] / "samples/auto/cand-auto-20261030-qsg437-1/final/"
@@ -101,6 +102,8 @@ class ScenarioOverlap(unittest.TestCase):
         return [f for f in checks.check(self.o, self.ev)[0] if f[1].startswith("today[0]")]
 
     def test_genuine_duplication_is_a_fix_that_names_the_shared_phrases(self):
+        self.o["reflection"]["question"]["zh"] = "你会怎么把目标的优先级公开排出来，并把每一方的理由改写成可以逐条检验的清单？"
+        self.today["paras"][0]["zh"] = "写提案时，先把目标的优先级公开排出来，再把理由写成可以逐条检验的清单。"
         f = self.found()
         self.assertEqual(f[0][0], "FIX"); self.assertIn("「把目标的优先级公开排出来」", f[0][1])
 

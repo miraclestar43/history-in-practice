@@ -1,10 +1,14 @@
 # TEMPLATE — not installed or enabled. Review before `systemctl --user link`.
 # Builds inventory in one batch: tops up candidates from the source catalogue
 # when fewer than 2 are waiting (hip supply), runs new candidates through the
-# pipeline (hip prepare-queue), then the editor stage (hip edit-queue: bounded
-# edit rounds + re-review + English parity; admits only bound, clean drafts).
+# pipeline (MiMo drafts), gives recorded MiMo refusals one Pi Claude draft, then
+# the Pi-local Claude Code final editor (subscription login in its dedicated config;
+# preflight first, no API fallback) admits only verified, record-bound articles.
 # One article is ~15–40 min of model time; the timeout is a whole-batch budget.
-# Exit 1 = inventory coverage below the alert threshold (systemd shows failed).
+# Exit 1 = coverage below the alert threshold; exit 4 = final editor unavailable or
+# degraded (drafts stay pending; see data/health/final_editor.json, `hip doctor`).
+# Validated 2026-10-30 as a transient unit with these limits (LimitAS=3G, Nice=10):
+# validation/claude_runtime_check.py 10/10 and one real `hip nightly` batch.
 [Unit]
 Description=History in Practice: prepare inventory (batch)
 After=network-online.target
