@@ -1,3 +1,5 @@
+> **Priority superseded by the owner (2026-10-31):** See [07_READER_FIRST_CHINESE_SAMPLE.md](../../prompts/07_READER_FIRST_CHINESE_SAMPLE.md). The owner had not sent this handoff and explicitly chose to park Snow and produce one readable Chinese story first. Snow repair, arithmetic work and its notice must not block that deliverable. Technical findings below are retained as history, not current task ordering.
+
 # Running repair queue review: publish the known-error notice separately
 
 Date: 2026-10-31 (America/Los_Angeles).
