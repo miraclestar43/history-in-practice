@@ -42,12 +42,16 @@ VERDICTS = ("supported", "contradicted", "unnecessary", "unresolved", "needs_sea
 REVIEWER = {"name": "Pi Claude", "role": "named final editor (source-context review)", "runtime": "official Claude Code CLI on raspberrypi51"}
 
 ZH_ABS = re.compile(r"(没有|沒有|未曾|并未|並未|不曾|未|无|無|只字未)(记载|記載|记录|記錄|写到|寫到|写明|寫明|写|寫|提到|提及|提|交代|說明|说明|说起|說|说|"
-                    r"给出|給出|留下|讲|講|载|載|记|記)|不得而知|不详|不詳|未详|未詳|无从(得知|知道|知晓|判断|考证|查考)|止于|止於|只记|只記|只写|只寫|只说|只說")
+                    r"给出|給出|留下|讲|講|载|載|记|記)|不得而知|不详|不詳|未详|未詳|无从(得知|知道|知晓|判断|考证|查考)|止于|止於|只记|只記|只写|只寫|只说|只說|"
+                    r"(?:没有|沒有|未经|未經|未获|未獲|缺少|缺乏|不存在|并无|並無)[^。！？\n]{0,40}"
+                    r"(?:独立|獨立|第三方|外部|卫生部门|衛生部門)[^。！？\n]{0,24}(?:核查|核验|核驗|复核|複核|验证|驗證|审计|審計)")
 EN_ABS = re.compile(r"\b(does|do|did)\s+not\s+(say|record|mention|explain|state|tell|give|report|describe|specify|indicate|note|show|survive|reveal|name)\b|"
                     r"\b(doesn't|don't|didn't)\s+(say|record|mention|explain|state|tell|give|report|describe|specify|name)\b|\bsilent\b|\bno record\b|"
                     r"\bnot recorded\b|\bunrecorded\b|\bnot known\b|\bunknown\b|\bwe (do not|don't|cannot|can't) know\b|\bnot stated\b|\bnowhere\b|"
                     r"\bstops (at|before|short)\b|\bonly (records|says|gives|mentions|notes|reports)\b|\bleaves? (it |this )?(open|unclear|unsaid)\b|"
-                    r"\bno (account|mention|explanation)\b|\bwithout (saying|recording|explaining)\b", re.I)
+                    r"\bno (account|mention|explanation)\b|\bwithout (saying|recording|explaining)\b|"
+                    r"\b(?:no|without|lacks?|lacked|never)\b[^.!?\n]{0,80}\b(?:independent|external|third[- ]party|health authorit\w*)\b"
+                    r"[^.!?\n]{0,45}\b(?:check\w*|verif\w*|audit\w*|review\w*|confirm\w*)\b", re.I)
 
 
 def _sha(b: bytes) -> str:
@@ -64,7 +68,7 @@ def absence_claims(o: dict) -> list[dict]:
     out = []
     rows = [(p, zh, en) for p, zh, en in editor.fields(o)]
     for k, f in enumerate(o.get("further_reading") or []):
-        for key in ("note", "why", "description"):
+        for key in ("note", "why", "description", "what", "access"):
             v = f.get(key) if isinstance(f, dict) else None
             if isinstance(v, dict):
                 rows.append((f"further_reading.{k}.{key}", v.get("zh", ""), v.get("en", "")))
@@ -212,12 +216,21 @@ def reply_schema(flagged: list, meta: dict, texts: dict, allow_search: bool):
         if not isinstance(obj, dict):
             return ["not a JSON object"]
         p = []
+        # Missing fields are not a successful empty review. In particular, a detector miss
+        # must not let {} become a clean record with no context review at all.
         for k in ("episode", "additions", "claims", "context_issues"):
-            if not isinstance(obj.get(k, []), list):
-                p.append(f"'{k}' must be a list")
+            if k not in obj or not isinstance(obj[k], list):
+                p.append(f"'{k}' is required and must be a list")
+            elif any(not isinstance(item, dict) for item in obj[k]):
+                p.append(f"'{k}' entries must be objects")
         if p:
             return p
-        got = {c.get("id") for c in obj.get("claims", []) if isinstance(c, dict)}
+        claim_ids = [c.get("id") for c in obj["claims"]]
+        if any(not isinstance(i, str) or not i.strip() for i in claim_ids):
+            return ["claim ids must be non-empty strings"]
+        if len(set(claim_ids)) != len(claim_ids):
+            p.append("duplicate claim ids")
+        got = set(claim_ids)
         if ids - got:
             p.append(f"flagged claims without a verdict: {sorted(ids - got)[:6]}")
         for c in obj.get("claims", []):
@@ -227,8 +240,12 @@ def reply_schema(flagged: list, meta: dict, texts: dict, allow_search: bool):
                 p.append(f"claim {c['id']}: needs_search is not available in this round (use unresolved)")
             if c["verdict"] == "contradicted" and not quote_in_units(c.get("quote"), meta, texts):
                 p.append(f"claim {c['id']}: contradicted needs a verbatim quote from the reviewed text")
-            if c["verdict"] == "supported" and not (str(c.get("scope", "")).strip() and c.get("source_ids")):
-                p.append(f"claim {c['id']}: supported needs scope and source_ids")
+            if c["verdict"] == "supported":
+                source_ids = c.get("source_ids")
+                if not (isinstance(c.get("scope"), str) and c["scope"].strip()
+                        and isinstance(source_ids, list) and source_ids
+                        and all(isinstance(s, str) and s in meta for s in source_ids)):
+                    p.append(f"claim {c['id']}: supported needs scope and known source_ids")
         for i in obj.get("context_issues", []):
             if isinstance(i, dict) and i.get("severity") == "fix" and not quote_in_units(i.get("quote"), meta, texts):
                 p.append(f"context issue at {i.get('path')}: needs a verbatim quote from the reviewed text")
@@ -320,6 +337,8 @@ def review(o: dict | None, ev: dict, cache: Path, outdir: Path, *, call=None, ci
         claims.append(c)
     blocking = [f"{c['path']}.{c.get('lang')}: {c['verdict']} — {str(c.get('sentence'))[:80]}" for c in claims if c["verdict"] not in OK_VERDICTS]
     blocking += [f"{i.get('path')}: {str(i.get('problem'))[:100]}" for i in rep.get("context_issues", []) if isinstance(i, dict) and i.get("severity") == "fix"]
+    if mode == "article" and failed:
+        blocking.append("context evidence additions failed: " + "; ".join(str(x) for x in failed)[:400])
     if mode == "article" and added:
         blocking.append(f"evidence must be expanded first: {len(added)} addition(s) {[a['id'] for a in added]}")
     rec.update(review=rep, claims=claims, context_issues=rep.get("context_issues", []), episode=rep.get("episode", []),
