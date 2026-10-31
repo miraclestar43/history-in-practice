@@ -12,31 +12,65 @@
   "cli_version": "2.1.308 (Claude Code)",
   "model_reported": "claude-opus-5-5"
  },
- "code_rev": "0cce3d9",
- "started_at": 1793414934.1575015,
+ "code_rev": "1be00e0",
+ "started_at": 1793427855.1347768,
  "base_source": "samples/auto/cand-auto-20261030-sj065-1/final/article.json",
- "base_content_sha256": "09121969a3afa74846de26c9fdddb21028c91fd6b6309e41df00fc0aacad45b9",
- "evidence_sha256": "d0787643728304a9d13e04d2dd554020edf9cb489a15a5ce2b162e5d5a5e17fa",
+ "base_content_sha256": "f722d4558c2bf772efdd45b6e1dda1008230b4dbab2888a305eabb850326cfd9",
+ "evidence_sha256": "9101c2145b547e762c8cf363c18a7a0c4399e0201d672e8027bf617600528779",
  "operator_note": null,
  "model_record_sha256": null,
- "prior_record_sha256": "78bf65247941d4aff5ff716846c79ec15e0c1da20e81fa16706f63e2bbfd483e",
- "attempt": "attempt-2",
+ "prior_record_sha256": "696cfc72f2709a069763ded8afed9dacb251e11cffabf70ec3ad07e6c61c0137",
+ "attempt": "attempt-3",
+ "context_review_sha256": "e0fe4611dc4806781302eb368763d1218016e8cff6a15c1f351ed8cf642b8b63",
  "inherited": [
   {
-   "id": "P1",
-   "model_id": "V2-V1",
-   "source": "final-editor previous attempt",
+   "id": "X1",
+   "source": "context review",
    "where": "sections.context.1",
-   "problem": "英文把进言者写成“a courtier”（朝臣）。证据只标明这是鲁人进谗，没有说明进言者的身份。中文“鲁国有人”是准确的，中英因此不一致。",
-   "suggestion": "把“a courtier described him to the ruler of Lu”改为“someone in Lu described him to the ruler of Lu”。"
+   "problem": "来源上下文核查（zh）「这里所据的原文止于这段进言，没有记载鲁君听后如何处置。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SJ065〕：「魯君疑之，謝吳起。」",
+   "suggestion": "改为：鲁君听后起疑，辞退了吴起。"
   },
   {
-   "id": "P2",
-   "model_id": "V2-V2",
-   "source": "final-editor previous attempt",
-   "where": "sections.limits.1",
-   "problem": "英文“the clearing of laws and orders”容易被理解为废除法令。这与原文“明法審令”（申明法令、审慎号令）的意思相反，也与中文及 story.7 的英文译法不一致。",
-   "suggestion": "改为“the clarifying of laws and the careful framing of orders”。"
+   "id": "X2",
+   "source": "context review",
+   "where": "sections.context.1",
+   "problem": "来源上下文核查（en）「The text relied on here ends with this speech and records nothing of how the ruler of Lu responded.」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SJ065〕：「魯君疑之，謝吳起。」",
+   "suggestion": "Replace with: The ruler of Lu, now suspicious, dismissed Wu Qi."
+  },
+  {
+   "id": "X3",
+   "source": "context review",
+   "where": "sections.context.2",
+   "problem": "来源上下文核查（zh）「原文没有写吴起对这次被疑的反应，本文也不替他补写。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SJ065〕：「吳起於是聞魏文侯賢，欲事之。」",
+   "suggestion": "改为：被辞退后，吴起听说魏文侯贤明，转而投奔魏国。原文没有写他的心理，本文也不补写。"
+  },
+  {
+   "id": "X4",
+   "source": "context review",
+   "where": "sections.context.2",
+   "problem": "来源上下文核查（en）「The source records no reaction from Wu Qi to this suspicion, and this article will not write one for him.」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SJ065〕：「吳起於是聞魏文侯賢，欲事之。」",
+   "suggestion": "Say that, once dismissed, he heard Marquis Wen of Wei was worthy and sought to serve him; the source gives no inner reaction."
+  },
+  {
+   "id": "X5",
+   "source": "context review",
+   "where": "sections.context.1",
+   "problem": "来源上下文核查：把截断处当作原文终点，漏掉了紧接的结局：鲁君辞退吴起。。来源原文〔S-SJ065〕：「魯君疑之，謝吳起。」",
+   "suggestion": null
+  },
+  {
+   "id": "X6",
+   "source": "context review",
+   "where": "sections.context.2",
+   "problem": "来源上下文核查：称原文未写吴起的反应，实际原文写了他转投魏文侯。这也影响“上一次被疑”与本次去魏的对照：两次被疑都以被弃或离开告终。。来源原文〔S-SJ065〕：「吳起於是聞魏文侯賢，欲事之。」",
+   "suggestion": null
+  },
+  {
+   "id": "X7",
+   "source": "context review",
+   "where": "",
+   "problem": "证据包已按来源上下文补入摘录 SJ0651-E26；请据此检查叙事、结局与因果是否完整准确",
+   "suggestion": null
   }
  ],
  "contamination": [
@@ -52,260 +86,256 @@
   {
    "id": "F1",
    "path": "sections.context.1",
-   "category": "parity",
+   "category": "facts",
    "severity": "fix",
-   "problem": "英文写“a courtier described him to the ruler of Lu”，把进言者明确为朝臣。证据没有说明进言者的身份，中文“鲁国有人”更准确，中英因此不一致。",
-   "evidence": [],
-   "proposed": "改为“someone in Lu described him to the ruler of Lu”。",
+   "problem": "中文「这里所据的原文止于这段进言，没有记载鲁君听后如何处置」和英文「The text relied on here ends with this speech and records nothing of how the ruler of Lu responded」都与证据相反。原文紧接着就记载鲁君起疑并辞退了吴起。",
+   "evidence": [
+    {
+     "id": "SJ0651-E26",
+     "quote": "魯君疑之，謝吳起。"
+    }
+   ],
+   "proposed": "中文末句改为：鲁君听后起疑，辞退了吴起。英文末句改为：The ruler of Lu, now suspicious, dismissed Wu Qi.",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "英文把“a courtier”改为“someone in Lu”，不再指明进言者身份，与中文“鲁国有人”一致；中文未改，按同步规则一并给出全文。",
+   "rationale": "删去“原文止于这段进言、未载鲁君如何处置”的错误说法，改为据E26记述鲁君起疑并辞退吴起；中英同步修改，并在ev中补入E26。",
    "decided_in": "revise_r1"
   },
   {
-   "path": "sections.context.0",
    "id": "F2",
+   "path": "sections.context.2",
    "category": "facts",
    "severity": "fix",
-   "problem": "英文“the philosopher Zengzi”给曾子加了“philosopher”的身份，这一点证据中没有，中文也没有。",
+   "problem": "中文「原文没有写吴起对这次被疑的反应」和英文「The source records no reaction from Wu Qi to this suspicion」与证据不符。原文记载吴起被辞退后听说魏文侯贤明，想去事奉他。这正是从鲁国到魏国的转折，下文 story.0 的「后来，魏文侯问李克」因此缺少衔接。",
    "evidence": [
     {
-     "id": "SJ0651-E1",
-     "quote": "嘗學於曾子"
+     "id": "SJ0651-E26",
+     "quote": "吳起於是聞魏文侯賢，欲事之。"
     }
    ],
-   "proposed": "删去“the philosopher”，改为“He had studied under Zengzi”。",
+   "proposed": "中文末句改为：被辞退后，吴起听说魏文侯贤明，想去事奉他；原文没有写他的心理，本文也不补写。英文改为：Once dismissed, he heard that Marquis Wen of Wei was worthy and sought to serve him; the source gives no inner reaction, and this article will not supply one.",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "删去证据和中文都没有的“the philosopher”，改为“He had studied under Zengzi”；中文未改，一并给出全文。",
+   "rationale": "删去“原文没有写吴起对这次被疑的反应”的错误说法，改为据E26记述吴起被辞退后听说魏文侯贤明、想去事奉他，并保留不补写心理的说明。这样也补上了从鲁到魏的转折。中英同步修改，ev补入E26。",
    "decided_in": "revise_r1"
   },
   {
    "id": "F3",
-   "path": "sections.story.1",
+   "path": "sections.limits.1",
    "category": "facts",
    "severity": "fix",
-   "problem": "英文“sucked the poison from it”添加了“poison”。原文只写“吮之”，中文也只说“吮吸患处”。",
-   "evidence": [
-    {
-     "id": "SJ0651-E6",
-     "quote": "卒有病疽者，起為吮之"
-    }
-   ],
-   "proposed": "改为“Wu Qi sucked the abscess himself”。",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "删去原文没有的“poison”，改为“Wu Qi sucked the carbuncle himself”。沿用本段已有的“carbuncle”，保持用词一致；中文未改，一并给出全文。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F4",
-   "path": "sections.story.2",
-   "category": "style",
-   "severity": "note",
-   "problem": "英文同一处地名一会儿写“Xihe”，一会儿写“West River”，读者可能看不出两者是同一个“西河”。",
-   "evidence": [
-    {
-     "id": "SJ0651-E8",
-     "quote": "武侯浮西河而下"
-    }
-   ],
-   "proposed": "统一写法，例如“drifting down the Xi He (West River)”。",
-   "origin": "final-editor audit"
-  },
-  {
-   "id": "F5",
-   "path": "sections.story.5",
-   "category": "style",
-   "severity": "note",
-   "problem": "“说了一句很轻的话 / something very light”是作者的评价，但写在 record 段里。",
-   "evidence": [
-    {
-     "id": "SJ0651-E17",
-     "quote": "起易去也"
-    }
-   ],
-   "proposed": "改为“公叔的仆人说：「起易去也。」”，删去“很轻”。",
-   "origin": "final-editor audit"
-  },
-  {
-   "id": "F6",
-   "path": "sections.story.7",
-   "category": "facts",
-   "severity": "fix",
-   "problem": "英文“wanted him dead”把“害”强化成了“要他死”。原文只写“欲害”，中文“想害他”是准确的，中英不一致。",
+   "problem": "中文「能确认的是……此外的细节本文不再补写」和英文「Beyond these the article adds nothing」只列出改革和征伐两项。但 story.7 还依据证据叙述了贵戚作乱、伏王尸、射中王尸、夷宗七十余家。这样的边界说明与正文实际所写不一致，会误导读者。",
    "evidence": [
     {
      "id": "SJ0651-E23",
-     "quote": "故楚之貴戚盡欲害吳起"
-    }
-   ],
-   "proposed": "改为“Every nobleman of royal blood wanted to do him harm”。",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "把“wanted him dead”改为“wanted to do him harm”，与原文“欲害”及中文“想害他”一致；中文未改，一并给出全文。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F7",
-   "path": "sections.limits.0",
-   "category": "interpretation_label",
-   "severity": "fix",
-   "problem": "本段称“本文不替吴起补写心理活动 / does not invent Wu Qi's inner life”，但 analysis.1 推测了他的心理（“可能判断解释已经无用”）。虽然那里标了推断，这里的绝对说法与正文不符。",
-   "evidence": [],
-   "proposed": "改为“除明确标为作者推断之处外，本文不替吴起补写心理活动”，英文同步修改。",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "把绝对说法收窄为“除明确标为作者推断之处外”，承认 analysis.1 中已标注的心理推断。中英文同步修改。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F8",
-   "path": "sections.limits.1",
-   "category": "parity",
-   "severity": "fix",
-   "problem": "英文“the clearing of laws and orders”容易被读成“废除法令”，与原文“明法審令”的意思相反，也与中文及 story.7 英文的“clear laws and careful orders”不一致。",
-   "evidence": [
+     "quote": "吳起走之王尸而伏之"
+    },
     {
-     "id": "SJ0651-E21",
-     "quote": "明法審令"
+     "id": "SJ0651-E24",
+     "quote": "坐射起而夷宗死者七十餘家"
     }
    ],
-   "proposed": "改为“the clarifying of laws and the careful framing of orders”。",
+   "proposed": "在可确认的记述中补列：悼王死后宗室大臣作乱攻起、起伏王尸、射者并中王尸、事后夷宗七十余家。中英文同步修改。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "把容易误读为废除法令的“the clearing of laws and orders”改为“the clarifying of laws and the careful framing of orders”，与原文“明法審令”、中文及 story.7 一致；中文未改，一并给出全文。",
+   "rationale": "边界说明原来只列出改革与征伐，现补列正文已据证据叙述的内容：宗室大臣作乱攻起、伏王尸、射者并中王尸、夷宗七十余家，使边界说明与story.7一致。中英同步修改，ev补入E23、E24。",
    "decided_in": "revise_r1"
   },
   {
-   "id": "P1",
-   "problem": "英文把进言者写成“a courtier”（朝臣）。证据只标明这是鲁人进谗，没有说明进言者的身份。中文“鲁国有人”是准确的，中英因此不一致。",
-   "origin": "inherited final-editor previous attempt V2-V1",
+   "id": "X1",
+   "problem": "来源上下文核查（zh）「这里所据的原文止于这段进言，没有记载鲁君听后如何处置。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SJ065〕：「魯君疑之，謝吳起。」",
+   "origin": "inherited context review None",
    "severity": "fix",
    "category": "unsupported",
    "path": "sections.context.1",
    "disposition": "duplicate",
    "same_as": "F1",
-   "rationale": "成立。证据没有说明进言者的身份，英文“a courtier”超出了证据，并与中文“鲁国有人”不一致。"
+   "rationale": "问题成立。原文记有鲁君辞退吴起，现写法称未记载，与证据矛盾。"
   },
   {
-   "id": "P2",
-   "problem": "英文“the clearing of laws and orders”容易被理解为废除法令。这与原文“明法審令”（申明法令、审慎号令）的意思相反，也与中文及 story.7 的英文译法不一致。",
-   "origin": "inherited final-editor previous attempt V2-V2",
+   "id": "X2",
+   "problem": "来源上下文核查（en）「The text relied on here ends with this speech and records nothing of how the ruler of Lu responded.」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SJ065〕：「魯君疑之，謝吳起。」",
+   "origin": "inherited context review None",
    "severity": "fix",
    "category": "unsupported",
-   "path": "sections.limits.1",
+   "path": "sections.context.1",
    "disposition": "duplicate",
-   "same_as": "F8",
-   "rationale": "成立。原文是“明法審令”，意思是申明法令、审慎号令；“clearing”容易被理解为废除，并与 story.7 英文译法不一致。"
+   "same_as": "F1",
+   "rationale": "与 X1 是同一问题的英文版，已并入 F1。"
+  },
+  {
+   "id": "X3",
+   "problem": "来源上下文核查（zh）「原文没有写吴起对这次被疑的反应，本文也不替他补写。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SJ065〕：「吳起於是聞魏文侯賢，欲事之。」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.context.2",
+   "disposition": "duplicate",
+   "same_as": "F2",
+   "rationale": "问题成立。原文记有吴起转而欲事魏文侯，现写法称原文未写其反应。"
+  },
+  {
+   "id": "X4",
+   "problem": "来源上下文核查（en）「The source records no reaction from Wu Qi to this suspicion, and this article will not write one for him.」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SJ065〕：「吳起於是聞魏文侯賢，欲事之。」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.context.2",
+   "disposition": "duplicate",
+   "same_as": "F2",
+   "rationale": "与 X3 是同一问题的英文版，已并入 F2。"
+  },
+  {
+   "id": "X5",
+   "problem": "来源上下文核查：把截断处当作原文终点，漏掉了紧接的结局：鲁君辞退吴起。。来源原文〔S-SJ065〕：「魯君疑之，謝吳起。」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.context.1",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "同样指出稿件把截断处当作原文终点、漏掉鲁君辞退吴起，与 F1 相同。"
+  },
+  {
+   "id": "X6",
+   "problem": "来源上下文核查：称原文未写吴起的反应，实际原文写了他转投魏文侯。这也影响“上一次被疑”与本次去魏的对照：两次被疑都以被弃或离开告终。。来源原文〔S-SJ065〕：「吳起於是聞魏文侯賢，欲事之。」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.context.2",
+   "disposition": "duplicate",
+   "same_as": "F2",
+   "rationale": "同样指出原文写了吴起转投魏文侯，与 F2 相同。"
+  },
+  {
+   "id": "X7",
+   "path": "",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "证据包已按来源上下文补入摘录 SJ0651-E26；请据此检查叙事、结局与因果是否完整准确",
+   "origin": "inherited context review None",
+   "audit_rationale": "已据补入的 E26 通查全文：context.1 与 context.2 需要修改（F1、F2）；其余叙事、结局与因果未见与 E26 冲突。另查【已知污染】K1：正文没有使用 SJ0651-E9 的内容。story.2 所说「只节引其结尾」有 E10 支持，该段以「由此觀之」开头、以「」」收尾，可见是一段话的结尾。",
+   "disposition": "fixed",
+   "rationale": "已据补入的E26通查全文。context.1中“未载鲁君处置”和context.2中“未载吴起反应”两处与E26冲突，已随F1、F2修正，并补上了鲁到魏的衔接。其余叙事、结局与因果未见与E26冲突。",
+   "decided_in": "revise_r1"
   },
   {
    "id": "V1-V1",
-   "path": "sections.analysis.2",
-   "category": "facts",
+   "path": "sections.analysis.0",
+   "category": "parity",
    "severity": "fix",
-   "problem": "稿件把「在德不在險」一番话的场景写成“西河边”（en: beside the West River）。证据记载这番对话发生在武侯浮西河而下的船上、河中流处，吴起也说“舟中之人”，并不在河边。",
+   "problem": "中文段末有“（作者解释）”，标签覆盖到最后一句“他的举动正如仆人所料，落进了别人按这一判断画好的框里”。英文只在 One explanation 一句带解释标记，结尾的解释性判断“stepped into a frame drawn around that reading of his character”没有标签，中英标注范围不一致。",
    "evidence": [
     {
-     "id": "SJ0651-E8",
-     "quote": "武侯浮西河而下，中流，顧而謂吳起曰"
-    },
-    {
-     "id": "SJ0651-E10",
-     "quote": "舟中之人盡為敵國也"
+     "id": "SJ0651-E20",
+     "quote": "於是吳起見公主之賤魏相，果辭魏武侯"
     }
    ],
-   "proposed": "zh 改为“浮西河时舟中那番「在德不在險」”；en 改为 \"the words he spoke on the boat in midstream of the West River\"。",
+   "proposed": "在英文段末补上“(The author's interpretation.)”，与中文一致。",
    "origin": "final-editor verify round 1",
    "disposition": "fixed",
-   "rationale": "中文原写“西河边那番”，英文原写“beside the West River”，与证据所记场景不符。证据记载这番对话发生在武侯浮西河而下、行至河中流时的船上，吴起本人也说到舟中之人。现将中文改为“浮西河时舟中那番「在德不在險」”，英文同步改为“on the boat in midstream of the West River”。另在 ev 中补入 SJ0651-E8，以支持对场景的描述。",
+   "rationale": "在英文段末补上“(The author's interpretation.)”。这样英文的解释标注覆盖到末句“stepped into a frame drawn around that reading of his character”，与中文段末“（作者解释）”的范围一致。中文字段内容未改，按中英同步规则一并给出完整文字。",
    "decided_in": "revise_r2"
   }
  ],
  "edits": [
   {
+   "path": "sections.context.1.zh",
+   "before": "胜仗之后，鲁国有人在鲁君面前这样描述他：为人猜忍；年轻时家累千金，外出求官不成，散尽家财，被乡党笑话，他杀掉三十多个讥讽自己的人，从卫国郭门向东出走；与母亲诀别时啮臂立誓，不做卿相不回卫国；后来母亲去世，他始终没有回去，曾子因此与他断绝关系。进言者还算了另一笔账：鲁国是小国，有了战胜之名，诸侯就要图谋鲁国；鲁卫是兄弟之国，用吴起等于抛弃卫国。这里所据的原文止于这段进言，没有记载鲁君听后如何处置。",
+   "after": "胜仗之后，鲁国有人在鲁君面前这样描述他：为人猜忍；年轻时家累千金，外出求官不成，散尽家财，被乡党笑话，他杀掉三十多个讥讽自己的人，从卫国郭门向东出走；与母亲诀别时啮臂立誓，不做卿相不回卫国；后来母亲去世，他始终没有回去，曾子因此与他断绝关系。进言者还算了另一笔账：鲁国是小国，有了战胜之名，诸侯就要图谋鲁国；鲁卫是兄弟之国，用吴起等于抛弃卫国。鲁君听后起疑，辞退了吴起。",
+   "issues": [
+    "F1",
+    "X7"
+   ]
+  },
+  {
    "path": "sections.context.1.en",
-   "before": "After the victory, a courtier described him to the ruler of Lu like this: a suspicious, ruthless man. In his youth his family was worth a fortune; he went off seeking office, failed, and ran through the family fortune, until his neighbors laughed at him. He then killed more than thirty of those who had mocked him and went out eastward through the outer gate of Wey's city wall. Parting from his mother, he bit his arm and swore he would not return to Wey until he became a high minister or chancellor. She died, and he never went back, whereupon Zengzi broke with him. The speech then turned to the arithmetic: Lu is a small state, and once it carries the name of a victory, the other lords will begin to plot against Lu. Lu and Wey are brother states; to employ Wu Qi is to abandon Wey. The text relied on here ends with this speech and records nothing of how the ruler of Lu responded.",
-   "after": "After the victory, someone in Lu described him to the ruler of Lu like this: a suspicious, ruthless man. In his youth his family was worth a fortune; he went off seeking office, failed, and ran through the family fortune, until his neighbors laughed at him. He then killed more than thirty of those who had mocked him and went out eastward through the outer gate of Wey's city wall. Parting from his mother, he bit his arm and swore he would not return to Wey until he became a high minister or chancellor. She died, and he never went back, whereupon Zengzi broke with him. The speech then turned to the arithmetic: Lu is a small state, and once it carries the name of a victory, the other lords will begin to plot against Lu. Lu and Wey are brother states; to employ Wu Qi is to abandon Wey. The text relied on here ends with this speech and records nothing of how the ruler of Lu responded.",
+   "before": "After the victory, someone in Lu described him to the ruler of Lu like this: a suspicious, ruthless man. In his youth his family was worth a fortune; he went off seeking office, failed, and ran through the family fortune, until his neighbors laughed at him. He then killed more than thirty of those who had mocked him and went out eastward through the outer gate of Wey's city wall. Parting from his mother, he bit his arm and swore he would not return to Wey until he became a high minister or chancellor. She died, and he never went back, whereupon Zengzi broke with him. The speech then turned to the arithmetic: Lu is a small state, and once it carries the name of a victory, the other lords will begin to plot against Lu. Lu and Wey are brother states; to employ Wu Qi is to abandon Wey. The text relied on here ends with this speech and records nothing of how the ruler of Lu responded.",
+   "after": "After the victory, someone in Lu described him to the ruler of Lu like this: a suspicious, ruthless man. In his youth his family was worth a fortune; he went off seeking office, failed, and ran through the family fortune, until his neighbors laughed at him. He then killed more than thirty of those who had mocked him and went out eastward through the outer gate of Wey's city wall. Parting from his mother, he bit his arm and swore he would not return to Wey until he became a high minister or chancellor. She died, and he never went back, whereupon Zengzi broke with him. The speech then turned to the arithmetic: Lu is a small state, and once it carries the name of a victory, the other lords will begin to plot against Lu. Lu and Wey are brother states; to employ Wu Qi is to abandon Wey. The ruler of Lu, now suspicious, dismissed Wu Qi.",
    "issues": [
-    "F1"
+    "F1",
+    "X7"
    ]
   },
   {
-   "path": "sections.context.0.en",
-   "before": "Wu Qi was a man of the state of Wey (衛 — distinct from Wei 魏, the state he would later serve), devoted to the art of war. He had studied under the philosopher Zengzi and served the ruler of Lu. When Qi attacked Lu, Lu wanted him as commander; the trouble was that his wife was a woman of Qi, and Lu suspected him. To show that he had no bond with Qi, he killed his wife. Lu then made him commander, he marched against Qi, and he smashed its army.",
-   "after": "Wu Qi was a man of the state of Wey (衛 — distinct from Wei 魏, the state he would later serve), devoted to the art of war. He had studied under Zengzi and served the ruler of Lu. When Qi attacked Lu, Lu wanted him as commander; the trouble was that his wife was a woman of Qi, and Lu suspected him. To show that he had no bond with Qi, he killed his wife. Lu then made him commander, he marched against Qi, and he smashed its army.",
+   "path": "sections.context.1.ev",
+   "before": [
+    "SJ0651-E3"
+   ],
+   "after": [
+    "SJ0651-E3",
+    "SJ0651-E26"
+   ],
    "issues": [
-    "F2"
+    "F1",
+    "X7"
    ]
   },
   {
-   "path": "sections.story.1.en",
-   "before": "One soldier developed a carbuncle, and Wu Qi sucked the poison from it himself. The soldier's mother heard of this and wept. Someone asked her why she wept, when the general himself had tended her son's carbuncle. Her answer, given here in translation and paraphrase: it was not as they thought. Years ago Lord Wu had done the same for the boy's father, who then went into battle without turning on his heels and died at the enemy's hands. Now Lord Wu had done it again for her son, and she did not know where this child would meet his death. That was why she wept. In the author's reading, it is the most jarring stroke in the whole story: the way he won his men's hearts, and what that cost, are written in the same tears.",
-   "after": "One soldier developed a carbuncle, and Wu Qi sucked the carbuncle himself. The soldier's mother heard of this and wept. Someone asked her why she wept, when the general himself had tended her son's carbuncle. Her answer, given here in translation and paraphrase: it was not as they thought. Years ago Lord Wu had done the same for the boy's father, who then went into battle without turning on his heels and died at the enemy's hands. Now Lord Wu had done it again for her son, and she did not know where this child would meet his death. That was why she wept. In the author's reading, it is the most jarring stroke in the whole story: the way he won his men's hearts, and what that cost, are written in the same tears.",
+   "path": "sections.context.2.zh",
+   "before": "把这段进言拆开看，它没有否定吴起会打仗——否定的是他的“人”和用他的“账”：私德有亏，母死不归；小国担不起战胜之名。作者推断，这套说法的着力点，是把“他能不能打”换成了“我们要不起他”。原文没有写吴起对这次被疑的反应，本文也不替他补写。（作者解释）",
+   "after": "把这段进言拆开看，它没有否定吴起会打仗——否定的是他的“人”和用他的“账”：私德有亏，母死不归；小国担不起战胜之名。作者推断，这套说法的着力点，是把“他能不能打”换成了“我们要不起他”。（作者解释）被辞退后，吴起听说魏文侯贤明，想去事奉他；原文没有写他的心理，本文也不补写。",
+   "issues": [
+    "F2",
+    "X7"
+   ]
+  },
+  {
+   "path": "sections.context.2.en",
+   "before": "Notice what the speech never says: it does not deny that Wu Qi can fight. It attacks the man and the ledger of using him — a flaw in private character, no return home at his mother's death, a small state that cannot afford a reputation for victory. The author infers that the thrust of the speech is to swap one question for another: not can he win, but can we afford him. The source records no reaction from Wu Qi to this suspicion, and this article will not write one for him.",
+   "after": "Notice what the speech never says: it does not deny that Wu Qi can fight. It attacks the man and the ledger of using him — a flaw in private character, no return home at his mother's death, a small state that cannot afford a reputation for victory. The author infers that the thrust of the speech is to swap one question for another: not can he win, but can we afford him. (The author's interpretation.) Once dismissed, he heard that Marquis Wen of Wei was worthy and sought to serve him; the source gives no inner reaction, and this article will not supply one.",
+   "issues": [
+    "F2",
+    "X7"
+   ]
+  },
+  {
+   "path": "sections.context.2.ev",
+   "before": [],
+   "after": [
+    "SJ0651-E26"
+   ],
+   "issues": [
+    "F2",
+    "X7"
+   ]
+  },
+  {
+   "path": "sections.limits.1.zh",
+   "before": "吴起在楚的改革与身死，原文叙述简略：能确认的是明法审令、裁去不急之官、废公族疏远者，以及南平百越、北并陈蔡、却三晋、西伐秦这些记述，此外的细节本文不再补写。上文与下文中标注为作者推断、作者提出的替代选择，均属解释与反事实，用于讨论，不构成史实。",
+   "after": "吴起在楚的改革与身死，原文叙述简略：能确认的是明法审令、裁去不急之官、废公族疏远者，以及南平百越、北并陈蔡、却三晋、西伐秦这些记述；还有悼王死后宗室大臣作乱攻打吴起，吴起伏在王尸上，射刺他的人也射中了王尸，事后因此被灭宗的有七十余家。此外的细节本文不再补写。上文与下文中标注为作者推断、作者提出的替代选择，均属解释与反事实，用于讨论，不构成史实。",
    "issues": [
     "F3"
    ]
   },
   {
-   "path": "sections.story.7.en",
-   "before": "King Dao of Chu had long known his reputation and made him chancellor on arrival. Wu Qi laid down clear laws and careful orders, cut away the offices that were not needed, removed distant members of the royal clan, bent everything toward a strong army, and swept away the talk of the persuaders who argued for the vertical and horizontal alliances. Chu then pacified the Hundred Yue in the south, absorbed Chen and Cai in the north, repelled the Three Jin, and struck west against Qin. The other lords began to fear Chu's strength. Every nobleman of royal blood wanted him dead. When King Dao died, men of the royal house and the great ministers rose in revolt and attacked Wu Qi; he ran to the dead king's body and flung himself over it. Those hunting him shot and stabbed at Wu Qi — and hit the corpse of the king as well. Once the king was buried and the crown prince on the throne, the chief minister was ordered to execute everyone who had shot at Wu Qi and struck the royal body; more than seventy clans were destroyed for their part in it.",
-   "after": "King Dao of Chu had long known his reputation and made him chancellor on arrival. Wu Qi laid down clear laws and careful orders, cut away the offices that were not needed, removed distant members of the royal clan, bent everything toward a strong army, and swept away the talk of the persuaders who argued for the vertical and horizontal alliances. Chu then pacified the Hundred Yue in the south, absorbed Chen and Cai in the north, repelled the Three Jin, and struck west against Qin. The other lords began to fear Chu's strength. Every nobleman of royal blood wanted to do him harm. When King Dao died, men of the royal house and the great ministers rose in revolt and attacked Wu Qi; he ran to the dead king's body and flung himself over it. Those hunting him shot and stabbed at Wu Qi — and hit the corpse of the king as well. Once the king was buried and the crown prince on the throne, the chief minister was ordered to execute everyone who had shot at Wu Qi and struck the royal body; more than seventy clans were destroyed for their part in it.",
-   "issues": [
-    "F6"
-   ]
-  },
-  {
-   "path": "sections.limits.0.zh",
-   "before": "本篇只有一个史源：《史記·孫子吳起列傳》。吴起与田文的对话、士卒母亲的哭诉、公叔之仆的计策，都是史书中的叙述，未必是逐字实录；本文不替吴起补写心理活动。原文没有公元纪年，本文也不作换算。",
-   "after": "本篇只有一个史源：《史記·孫子吳起列傳》。吴起与田文的对话、士卒母亲的哭诉、公叔之仆的计策，都是史书中的叙述，未必是逐字实录；除明确标为作者推断之处外，本文不替吴起补写心理活动。原文没有公元纪年，本文也不作换算。",
-   "issues": [
-    "F7"
-   ]
-  },
-  {
-   "path": "sections.limits.0.en",
-   "before": "This piece rests on a single source: the \"Account of Sunzi and Wu Qi\" in Sima Qian's Records of the Grand Historian. The exchange between Wu Qi and Tian Wen, the weeping of the soldier's mother, and the servant's scheme are all narratives within that history and need not be verbatim transcripts. The article does not invent Wu Qi's inner life. The original gives no dates in the common era, and none have been calculated here.",
-   "after": "This piece rests on a single source: the \"Account of Sunzi and Wu Qi\" in Sima Qian's Records of the Grand Historian. The exchange between Wu Qi and Tian Wen, the weeping of the soldier's mother, and the servant's scheme are all narratives within that history and need not be verbatim transcripts. Except where explicitly marked as the author's inference, the article does not invent Wu Qi's inner life. The original gives no dates in the common era, and none have been calculated here.",
-   "issues": [
-    "F7"
-   ]
-  },
-  {
    "path": "sections.limits.1.en",
-   "before": "The account of Wu Qi's reforms in Chu and of his death is brief. What can be confirmed is the clearing of laws and orders, the cutting of unneeded offices, the removal of distant members of the royal clan, and the campaigns — south against the Hundred Yue, north absorbing Chen and Cai, repelling the Three Jin, west against Qin. Beyond these the article adds nothing. Wherever the text above or below marks a view as an authorial inference or an author's alternative, it is interpretation and counterfactual, offered for discussion, not history.",
-   "after": "The account of Wu Qi's reforms in Chu and of his death is brief. What can be confirmed is the clarifying of laws and the careful framing of orders, the cutting of unneeded offices, the removal of distant members of the royal clan, and the campaigns — south against the Hundred Yue, north absorbing Chen and Cai, repelling the Three Jin, west against Qin. Beyond these the article adds nothing. Wherever the text above or below marks a view as an authorial inference or an author's alternative, it is interpretation and counterfactual, offered for discussion, not history.",
+   "before": "The account of Wu Qi's reforms in Chu and of his death is brief. What can be confirmed is the clarifying of laws and the careful framing of orders, the cutting of unneeded offices, the removal of distant members of the royal clan, and the campaigns — south against the Hundred Yue, north absorbing Chen and Cai, repelling the Three Jin, west against Qin. Beyond these the article adds nothing. Wherever the text above or below marks a view as an authorial inference or an author's alternative, it is interpretation and counterfactual, offered for discussion, not history.",
+   "after": "The account of Wu Qi's reforms in Chu and of his death is brief. What can be confirmed is the clarifying of laws and the careful framing of orders, the cutting of unneeded offices, the removal of distant members of the royal clan, and the campaigns — south against the Hundred Yue, north absorbing Chen and Cai, repelling the Three Jin, west against Qin. Also on record: after King Dao died, men of the royal house and the great ministers rose and attacked Wu Qi; he lay over the king's body; those shooting at him struck the royal corpse as well; and afterward more than seventy clans were destroyed for it. Beyond these the article adds nothing. Wherever the text above or below marks a view as an authorial inference or an author's alternative, it is interpretation and counterfactual, offered for discussion, not history.",
    "issues": [
-    "F8"
+    "F3"
    ]
   },
   {
-   "path": "sections.analysis.2.zh",
-   "before": "司马迁在篇末的评语是：「吳起說武侯以形勢不如德，然行之於楚，以刻暴少恩亡其軀。」这句话把西河边那番「在德不在險」与他在楚的结局并置。它是史家的评断，本文只把它当作一段记述呈现；它不是吴起离开魏国那天能预见的答案。",
-   "after": "司马迁在篇末的评语是：「吳起說武侯以形勢不如德，然行之於楚，以刻暴少恩亡其軀。」这句话把浮西河时舟中那番「在德不在險」与他在楚的结局并置。它是史家的评断，本文只把它当作一段记述呈现；它不是吴起离开魏国那天能预见的答案。",
-   "issues": [
-    "V1-V1"
-   ]
-  },
-  {
-   "path": "sections.analysis.2.en",
-   "before": "Sima Qian closes the biography with this verdict, rendered here in translation: Wu Qi urged Marquis Wu that strength of position was no substitute for virtue, yet when he acted in Chu, cruelty and a want of kindness cost him his life — how sad. The line sets the words he spoke beside the West River against his end in Chu. It is the historian's judgment, and this article presents it only as a record — not as an answer Wu Qi could have seen coming on the day he left Wei.",
-   "after": "Sima Qian closes the biography with this verdict, rendered here in translation: Wu Qi urged Marquis Wu that strength of position was no substitute for virtue, yet when he acted in Chu, cruelty and a want of kindness cost him his life — how sad. The line sets the words he spoke on the boat in midstream of the West River against his end in Chu. It is the historian's judgment, and this article presents it only as a record — not as an answer Wu Qi could have seen coming on the day he left Wei.",
-   "issues": [
-    "V1-V1"
-   ]
-  },
-  {
-   "path": "sections.analysis.2.ev",
+   "path": "sections.limits.1.ev",
    "before": [
-    "SJ0651-E25",
-    "SJ0651-E10"
+    "SJ0651-E21",
+    "SJ0651-E22"
    ],
    "after": [
-    "SJ0651-E25",
-    "SJ0651-E8",
-    "SJ0651-E10"
+    "SJ0651-E21",
+    "SJ0651-E22",
+    "SJ0651-E23",
+    "SJ0651-E24"
    ],
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "before": "Step back and look at the design. It trades an unanswerable question — does he mean to stay? — for a visible act: does he accept the marriage? The servant's reading of Wu Qi is on the record — in translation, that he was a man of integrity and restraint who cherished his good name. That is the history's description of him, not a sketch invented here. One explanation for the scheme's success: Wu Qi, seeing the princess treat the chancellor so cheaply, declined the match. Agreeing to a marriage while the household he was visiting was being humiliated would not fit the name-cherishing character the servant attributed to him. He acted just as the servant had predicted, and stepped into a frame drawn around that reading of his character.",
+   "after": "Step back and look at the design. It trades an unanswerable question — does he mean to stay? — for a visible act: does he accept the marriage? The servant's reading of Wu Qi is on the record — in translation, that he was a man of integrity and restraint who cherished his good name. That is the history's description of him, not a sketch invented here. One explanation for the scheme's success: Wu Qi, seeing the princess treat the chancellor so cheaply, declined the match. Agreeing to a marriage while the household he was visiting was being humiliated would not fit the name-cherishing character the servant attributed to him. He acted just as the servant had predicted, and stepped into a frame drawn around that reading of his character. (The author's interpretation.)",
    "issues": [
     "V1-V1"
    ]
@@ -318,11 +348,9 @@
     "F1",
     "F2",
     "F3",
-    "F6",
-    "F7",
-    "F8"
+    "X7"
    ],
-   "changes_applied": 7,
+   "changes_applied": 9,
    "changes_failed": [],
    "still_open": [],
    "checker_after": [
@@ -335,7 +363,7 @@
      "today[1] resembles the open-question scenario: shared phrases 「能自证的事」「这是试探」; bigram overlap 0.14"
     ]
    ],
-   "content_sha256_after": "dbb77777f6cfec1641214686d401d622fec705049c13353f8befefb30cbeb50a",
+   "content_sha256_after": "d0e7174250b8dbe4ce6bf53136a762a3679f97ddc1e13717ee99ff6459b27837",
    "verify": {
     "fields": [
      {
@@ -616,7 +644,9 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": []
+      "issue_ids": [
+       "V1"
+      ]
      },
      {
       "path": "sections.analysis.1",
@@ -644,9 +674,7 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": [
-       "V1"
-      ]
+      "issue_ids": []
      },
      {
       "path": "sections.today.heading",
@@ -822,34 +850,30 @@
     "issues": [
      {
       "id": "V1",
-      "path": "sections.analysis.2",
-      "category": "facts",
+      "path": "sections.analysis.0",
+      "category": "parity",
       "severity": "fix",
-      "problem": "稿件把「在德不在險」一番话的场景写成“西河边”（en: beside the West River）。证据记载这番对话发生在武侯浮西河而下的船上、河中流处，吴起也说“舟中之人”，并不在河边。",
+      "problem": "中文段末有“（作者解释）”，标签覆盖到最后一句“他的举动正如仆人所料，落进了别人按这一判断画好的框里”。英文只在 One explanation 一句带解释标记，结尾的解释性判断“stepped into a frame drawn around that reading of his character”没有标签，中英标注范围不一致。",
       "evidence": [
        {
-        "id": "SJ0651-E8",
-        "quote": "武侯浮西河而下，中流，顧而謂吳起曰"
-       },
-       {
-        "id": "SJ0651-E10",
-        "quote": "舟中之人盡為敵國也"
+        "id": "SJ0651-E20",
+        "quote": "於是吳起見公主之賤魏相，果辭魏武侯"
        }
       ],
-      "proposed": "zh 改为“浮西河时舟中那番「在德不在險」”；en 改为 \"the words he spoke on the boat in midstream of the West River\"。"
+      "proposed": "在英文段末补上“(The author's interpretation.)”，与中文一致。"
      },
      {
       "id": "V2",
       "path": "reflection.example.assumptions",
       "category": "style",
       "severity": "note",
-      "problem": "zh 第二条“试探已经执行，且不止一次的可能”语句不通顺，读起来像残句；en 的 \"may well be run again\" 意思清楚。",
+      "problem": "中文第二条“试探已经执行，且不止一次的可能”语句不通顺，与英文“may well be run again”对应得不够清楚。",
       "evidence": [],
-      "proposed": "改为“试探已经执行，且可能不止一次”。"
+      "proposed": "改为“试探已经执行，而且可能不止一次”。"
      }
     ],
-    "overall": "定稿的事实、引语、归属和解释标注基本都有证据支持。只有一处场景地点表述（舟中误作西河边）需要小修，另有一处中文文风可以顺一下。",
-    "_content_sha256": "dbb77777f6cfec1641214686d401d622fec705049c13353f8befefb30cbeb50a"
+    "overall": "定稿史实、引文与时序均有证据支持，引语逐字无误，解释与反事实已标注；仅剩 analysis.0 英文解释标签范围与中文不一致需补齐，另有一处中文文风小瑕疵。",
+    "_content_sha256": "d0e7174250b8dbe4ce6bf53136a762a3679f97ddc1e13717ee99ff6459b27837"
    }
   },
   {
@@ -857,7 +881,7 @@
    "issues_in": [
     "V1-V1"
    ],
-   "changes_applied": 3,
+   "changes_applied": 1,
    "changes_failed": [],
    "still_open": [],
    "checker_after": [
@@ -870,7 +894,7 @@
      "today[1] resembles the open-question scenario: shared phrases 「能自证的事」「这是试探」; bigram overlap 0.14"
     ]
    ],
-   "content_sha256_after": "f722d4558c2bf772efdd45b6e1dda1008230b4dbab2888a305eabb850326cfd9",
+   "content_sha256_after": "0957c695ee61a4c16ca1e809489d902011423f4c49bb112e7a663c0a8579b0fa",
    "verify": {
     "fields": [
      {
@@ -1305,9 +1329,7 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": [
-       "V1"
-      ]
+      "issue_ids": []
      },
      {
       "path": "reflection.example.steps",
@@ -1352,19 +1374,9 @@
       "issue_ids": []
      }
     ],
-    "issues": [
-     {
-      "id": "V1",
-      "path": "reflection.example.assumptions",
-      "category": "style",
-      "severity": "note",
-      "problem": "中文第二条“试探已经执行，且不止一次的可能”缺少谓语，语句不通。英文“may well be run again”的意思是清楚的。",
-      "evidence": [],
-      "proposed": "改为“试探已经执行，且有可能不止一次”"
-     }
-    ],
-    "overall": "定稿逐字段核对后，事实、引语（均与证据逐字一致）、归属、时序、解释标注和中英对应都没有发现需要修正的问题，只有一处中文措辞可以顺一顺，可以发布。",
-    "_content_sha256": "f722d4558c2bf772efdd45b6e1dda1008230b4dbab2888a305eabb850326cfd9"
+    "issues": [],
+    "overall": "逐字段复核：事实、引文、归属、时序与中英对应均能在证据包中找到依据，推断与替代选择都已标注为作者解释，现代场景没有冒充记录，定稿可以发布。",
+    "_content_sha256": "0957c695ee61a4c16ca1e809489d902011423f4c49bb112e7a663c0a8579b0fa"
    }
   }
  ],
@@ -1377,9 +1389,6 @@
      "attribution",
      "chronology",
      "causality",
-     "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1391,8 +1400,6 @@
      "attribution",
      "chronology",
      "causality",
-     "quotes",
-     "inner_life",
      "interpretation_label",
      "parity"
     ],
@@ -1414,9 +1421,7 @@
      "attribution",
      "chronology",
      "causality",
-     "quotes",
      "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1425,9 +1430,7 @@
     "path": "sections.hook.1",
     "checked": [
      "facts",
-     "attribution",
      "causality",
-     "quotes",
      "inner_life",
      "interpretation_label",
      "parity"
@@ -1438,6 +1441,7 @@
     "path": "sections.context.heading",
     "checked": [
      "facts",
+     "chronology",
      "parity"
     ],
     "issue_ids": []
@@ -1451,12 +1455,9 @@
      "causality",
      "quotes",
      "inner_life",
-     "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F2"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.context.1",
@@ -1467,7 +1468,6 @@
      "causality",
      "quotes",
      "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": [
@@ -1479,18 +1479,21 @@
     "checked": [
      "facts",
      "attribution",
+     "chronology",
      "causality",
-     "quotes",
      "inner_life",
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F2"
+    ]
    },
    {
     "path": "sections.story.heading",
     "checked": [
      "facts",
+     "chronology",
      "parity"
     ],
     "issue_ids": []
@@ -1501,10 +1504,7 @@
      "facts",
      "attribution",
      "chronology",
-     "causality",
      "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1514,16 +1514,12 @@
     "checked": [
      "facts",
      "attribution",
-     "chronology",
-     "causality",
      "quotes",
      "inner_life",
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F3"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.story.2",
@@ -1531,15 +1527,10 @@
      "facts",
      "attribution",
      "chronology",
-     "causality",
      "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F4"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.story.3",
@@ -1547,10 +1538,8 @@
      "facts",
      "attribution",
      "chronology",
-     "causality",
      "quotes",
      "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1560,11 +1549,8 @@
     "checked": [
      "facts",
      "attribution",
-     "chronology",
-     "causality",
      "quotes",
      "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1575,15 +1561,11 @@
      "facts",
      "attribution",
      "chronology",
-     "causality",
      "quotes",
      "inner_life",
-     "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F5"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.story.6",
@@ -1592,9 +1574,7 @@
      "attribution",
      "chronology",
      "causality",
-     "quotes",
      "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1607,18 +1587,14 @@
      "chronology",
      "causality",
      "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F6"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.analysis.heading",
     "checked": [
-     "facts",
+     "causality",
      "interpretation_label",
      "parity"
     ],
@@ -1656,9 +1632,7 @@
      "facts",
      "attribution",
      "chronology",
-     "causality",
      "quotes",
-     "inner_life",
      "interpretation_label",
      "parity"
     ],
@@ -1677,7 +1651,6 @@
     "checked": [
      "facts",
      "quotes",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1687,7 +1660,6 @@
     "checked": [
      "facts",
      "quotes",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1709,22 +1681,18 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F7"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.limits.1",
     "checked": [
      "facts",
-     "attribution",
      "chronology",
-     "quotes",
      "interpretation_label",
      "parity"
     ],
     "issue_ids": [
-     "F8"
+     "F3"
     ]
    },
    {
@@ -1732,7 +1700,6 @@
     "checked": [
      "facts",
      "quotes",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1741,8 +1708,6 @@
     "path": "reflection.question",
     "checked": [
      "facts",
-     "quotes",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1751,8 +1716,6 @@
     "path": "reflection.example.assumptions",
     "checked": [
      "facts",
-     "quotes",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1761,8 +1724,6 @@
     "path": "reflection.example.steps",
     "checked": [
      "facts",
-     "quotes",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1771,7 +1732,6 @@
     "path": "reflection.example.alternative",
     "checked": [
      "facts",
-     "quotes",
      "interpretation_label",
      "parity"
     ],
@@ -1781,7 +1741,6 @@
     "path": "uncertainty_note",
     "checked": [
      "facts",
-     "attribution",
      "interpretation_label",
      "parity"
     ],
@@ -1792,138 +1751,151 @@
    {
     "id": "F1",
     "path": "sections.context.1",
-    "category": "parity",
-    "severity": "fix",
-    "problem": "英文写“a courtier described him to the ruler of Lu”，把进言者明确为朝臣。证据没有说明进言者的身份，中文“鲁国有人”更准确，中英因此不一致。",
-    "evidence": [],
-    "proposed": "改为“someone in Lu described him to the ruler of Lu”。"
-   },
-   {
-    "path": "sections.context.0",
-    "id": "F2",
     "category": "facts",
     "severity": "fix",
-    "problem": "英文“the philosopher Zengzi”给曾子加了“philosopher”的身份，这一点证据中没有，中文也没有。",
+    "problem": "中文「这里所据的原文止于这段进言，没有记载鲁君听后如何处置」和英文「The text relied on here ends with this speech and records nothing of how the ruler of Lu responded」都与证据相反。原文紧接着就记载鲁君起疑并辞退了吴起。",
     "evidence": [
      {
-      "id": "SJ0651-E1",
-      "quote": "嘗學於曾子"
+      "id": "SJ0651-E26",
+      "quote": "魯君疑之，謝吳起。"
      }
     ],
-    "proposed": "删去“the philosopher”，改为“He had studied under Zengzi”。"
+    "proposed": "中文末句改为：鲁君听后起疑，辞退了吴起。英文末句改为：The ruler of Lu, now suspicious, dismissed Wu Qi."
+   },
+   {
+    "id": "F2",
+    "path": "sections.context.2",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "中文「原文没有写吴起对这次被疑的反应」和英文「The source records no reaction from Wu Qi to this suspicion」与证据不符。原文记载吴起被辞退后听说魏文侯贤明，想去事奉他。这正是从鲁国到魏国的转折，下文 story.0 的「后来，魏文侯问李克」因此缺少衔接。",
+    "evidence": [
+     {
+      "id": "SJ0651-E26",
+      "quote": "吳起於是聞魏文侯賢，欲事之。"
+     }
+    ],
+    "proposed": "中文末句改为：被辞退后，吴起听说魏文侯贤明，想去事奉他；原文没有写他的心理，本文也不补写。英文改为：Once dismissed, he heard that Marquis Wen of Wei was worthy and sought to serve him; the source gives no inner reaction, and this article will not supply one."
    },
    {
     "id": "F3",
-    "path": "sections.story.1",
+    "path": "sections.limits.1",
     "category": "facts",
     "severity": "fix",
-    "problem": "英文“sucked the poison from it”添加了“poison”。原文只写“吮之”，中文也只说“吮吸患处”。",
-    "evidence": [
-     {
-      "id": "SJ0651-E6",
-      "quote": "卒有病疽者，起為吮之"
-     }
-    ],
-    "proposed": "改为“Wu Qi sucked the abscess himself”。"
-   },
-   {
-    "id": "F4",
-    "path": "sections.story.2",
-    "category": "style",
-    "severity": "note",
-    "problem": "英文同一处地名一会儿写“Xihe”，一会儿写“West River”，读者可能看不出两者是同一个“西河”。",
-    "evidence": [
-     {
-      "id": "SJ0651-E8",
-      "quote": "武侯浮西河而下"
-     }
-    ],
-    "proposed": "统一写法，例如“drifting down the Xi He (West River)”。"
-   },
-   {
-    "id": "F5",
-    "path": "sections.story.5",
-    "category": "style",
-    "severity": "note",
-    "problem": "“说了一句很轻的话 / something very light”是作者的评价，但写在 record 段里。",
-    "evidence": [
-     {
-      "id": "SJ0651-E17",
-      "quote": "起易去也"
-     }
-    ],
-    "proposed": "改为“公叔的仆人说：「起易去也。」”，删去“很轻”。"
-   },
-   {
-    "id": "F6",
-    "path": "sections.story.7",
-    "category": "facts",
-    "severity": "fix",
-    "problem": "英文“wanted him dead”把“害”强化成了“要他死”。原文只写“欲害”，中文“想害他”是准确的，中英不一致。",
+    "problem": "中文「能确认的是……此外的细节本文不再补写」和英文「Beyond these the article adds nothing」只列出改革和征伐两项。但 story.7 还依据证据叙述了贵戚作乱、伏王尸、射中王尸、夷宗七十余家。这样的边界说明与正文实际所写不一致，会误导读者。",
     "evidence": [
      {
       "id": "SJ0651-E23",
-      "quote": "故楚之貴戚盡欲害吳起"
-     }
-    ],
-    "proposed": "改为“Every nobleman of royal blood wanted to do him harm”。"
-   },
-   {
-    "id": "F7",
-    "path": "sections.limits.0",
-    "category": "interpretation_label",
-    "severity": "fix",
-    "problem": "本段称“本文不替吴起补写心理活动 / does not invent Wu Qi's inner life”，但 analysis.1 推测了他的心理（“可能判断解释已经无用”）。虽然那里标了推断，这里的绝对说法与正文不符。",
-    "evidence": [],
-    "proposed": "改为“除明确标为作者推断之处外，本文不替吴起补写心理活动”，英文同步修改。"
-   },
-   {
-    "id": "F8",
-    "path": "sections.limits.1",
-    "category": "parity",
-    "severity": "fix",
-    "problem": "英文“the clearing of laws and orders”容易被读成“废除法令”，与原文“明法審令”的意思相反，也与中文及 story.7 英文的“clear laws and careful orders”不一致。",
-    "evidence": [
+      "quote": "吳起走之王尸而伏之"
+     },
      {
-      "id": "SJ0651-E21",
-      "quote": "明法審令"
+      "id": "SJ0651-E24",
+      "quote": "坐射起而夷宗死者七十餘家"
      }
     ],
-    "proposed": "改为“the clarifying of laws and the careful framing of orders”。"
+    "proposed": "在可确认的记述中补列：悼王死后宗室大臣作乱攻起、起伏王尸、射者并中王尸、事后夷宗七十余家。中英文同步修改。"
    }
   ],
   "inherited": [
    {
-    "id": "P1",
+    "id": "X1",
     "verdict": "duplicate",
     "same_as": "F1",
-    "rationale": "成立。证据没有说明进言者的身份，英文“a courtier”超出了证据，并与中文“鲁国有人”不一致。",
-    "evidence": []
-   },
-   {
-    "id": "P2",
-    "verdict": "duplicate",
-    "same_as": "F8",
-    "rationale": "成立。原文是“明法審令”，意思是申明法令、审慎号令；“clearing”容易被理解为废除，并与 story.7 英文译法不一致。",
+    "rationale": "问题成立。原文记有鲁君辞退吴起，现写法称未记载，与证据矛盾。",
     "evidence": [
      {
-      "id": "SJ0651-E21",
-      "quote": "明法審令"
+      "id": "SJ0651-E26",
+      "quote": "魯君疑之，謝吳起。"
+     }
+    ]
+   },
+   {
+    "id": "X2",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "与 X1 是同一问题的英文版，已并入 F1。",
+    "evidence": [
+     {
+      "id": "SJ0651-E26",
+      "quote": "魯君疑之，謝吳起。"
+     }
+    ]
+   },
+   {
+    "id": "X3",
+    "verdict": "duplicate",
+    "same_as": "F2",
+    "rationale": "问题成立。原文记有吴起转而欲事魏文侯，现写法称原文未写其反应。",
+    "evidence": [
+     {
+      "id": "SJ0651-E26",
+      "quote": "吳起於是聞魏文侯賢，欲事之。"
+     }
+    ]
+   },
+   {
+    "id": "X4",
+    "verdict": "duplicate",
+    "same_as": "F2",
+    "rationale": "与 X3 是同一问题的英文版，已并入 F2。",
+    "evidence": [
+     {
+      "id": "SJ0651-E26",
+      "quote": "吳起於是聞魏文侯賢，欲事之。"
+     }
+    ]
+   },
+   {
+    "id": "X5",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "同样指出稿件把截断处当作原文终点、漏掉鲁君辞退吴起，与 F1 相同。",
+    "evidence": [
+     {
+      "id": "SJ0651-E26",
+      "quote": "謝吳起"
+     }
+    ]
+   },
+   {
+    "id": "X6",
+    "verdict": "duplicate",
+    "same_as": "F2",
+    "rationale": "同样指出原文写了吴起转投魏文侯，与 F2 相同。",
+    "evidence": [
+     {
+      "id": "SJ0651-E26",
+      "quote": "欲事之"
+     }
+    ]
+   },
+   {
+    "id": "X7",
+    "verdict": "valid",
+    "same_as": "",
+    "rationale": "已据补入的 E26 通查全文：context.1 与 context.2 需要修改（F1、F2）；其余叙事、结局与因果未见与 E26 冲突。另查【已知污染】K1：正文没有使用 SJ0651-E9 的内容。story.2 所说「只节引其结尾」有 E10 支持，该段以「由此觀之」开头、以「」」收尾，可见是一段话的结尾。",
+    "evidence": [
+     {
+      "id": "SJ0651-E26",
+      "quote": "魯君疑之，謝吳起。吳起於是聞魏文侯賢，欲事之。"
+     },
+     {
+      "id": "SJ0651-E10",
+      "quote": "由此觀之，在德不在險。"
      }
     ]
    }
   ]
  },
- "final_content_sha256": "f722d4558c2bf772efdd45b6e1dda1008230b4dbab2888a305eabb850326cfd9",
+ "final_content_sha256": "0957c695ee61a4c16ca1e809489d902011423f4c49bb112e7a663c0a8579b0fa",
  "open_issues": [],
  "outcome": "admissible",
  "failure": null,
- "finished_at": 1793415177.1217878,
+ "finished_at": 1793428111.9337387,
  "calls": [
   {
    "step": "audit",
    "attempt": 1,
-   "wall_s": 66.8,
+   "wall_s": 90.9,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1931,15 +1903,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 15294,
-    "output_tokens": 7684
+    "cache_creation_input_tokens": 16351,
+    "output_tokens": 10243
    },
-   "cost_estimate_usd": 0.27604
+   "cost_estimate_usd": 0.33567600000000003
   },
   {
    "step": "revise_r1",
    "attempt": 1,
-   "wall_s": 30.0,
+   "wall_s": 24.2,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1947,15 +1919,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 15394,
-    "output_tokens": 3938
+    "cache_creation_input_tokens": 15705,
+    "output_tokens": 3054
    },
-   "cost_estimate_usd": 0.20192
+   "cost_estimate_usd": 0.186728
   },
   {
    "step": "verify_r1",
    "attempt": 1,
-   "wall_s": 73.8,
+   "wall_s": 79.4,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1963,15 +1935,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 14250,
-    "output_tokens": 8269
+    "cache_creation_input_tokens": 14666,
+    "output_tokens": 8899
    },
-   "cost_estimate_usd": 0.279388
+   "cost_estimate_usd": 0.295316
   },
   {
    "step": "revise_r2",
    "attempt": 1,
-   "wall_s": 9.0,
+   "wall_s": 8.0,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1979,15 +1951,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 14543,
-    "output_tokens": 852
+    "cache_creation_input_tokens": 14925,
+    "output_tokens": 891
    },
-   "cost_estimate_usd": 0.133392
+   "cost_estimate_usd": 0.13722800000000002
   },
   {
    "step": "verify_r2",
    "attempt": 1,
-   "wall_s": 63.2,
+   "wall_s": 54.2,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1995,12 +1967,12 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 14272,
-    "output_tokens": 7446
+    "cache_creation_input_tokens": 14676,
+    "output_tokens": 6528
    },
-   "cost_estimate_usd": 0.263104
+   "cost_estimate_usd": 0.24797600000000003
   }
  ],
- "elapsed_min": 4.0,
- "model_wall_min": 4.0
+ "elapsed_min": 4.3,
+ "model_wall_min": 4.3
 }

@@ -356,8 +356,9 @@ def run_context(cid: str, *, call=None, cache: Path | None = None) -> dict:
     d = OUT_ROOT / cid / "final"
     o = json.loads((d / "article.json").read_text(encoding="utf-8")); ev = json.loads((d / "evidence.json").read_text(encoding="utf-8"))
     render.finalize(o)
-    rec, new_ev = context.review(o, ev, Path(cache or data_dir() / "source_cache"), data_dir() / "context" / cid / time.strftime("%Y%m%dT%H%M%S"),
-                                 call=call, cid=cid)
+    stamp = time.strftime("%Y%m%dT%H%M%S")
+    rec, new_ev = context.review(o, ev, Path(cache or data_dir() / "source_cache"), data_dir() / "context" / cid / stamp, call=call, cid=cid)
+    (d / f"context-{stamp}_review.json").write_text(json.dumps(rec, ensure_ascii=False, indent=1), encoding="utf-8")   # every review stays in git
     if rec.get("outcome") in ("clean", "needs_work"):
         (d / "context_review.json").write_text(json.dumps(rec, ensure_ascii=False, indent=1), encoding="utf-8")
         ce = d / "context_evidence.json"
