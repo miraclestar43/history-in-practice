@@ -55,7 +55,7 @@ const SAMPLE = {zh:"推荐 · 样稿：已通过模型事实核查与来源上�
 const sampleNote = () => el("p",{class:"sample",role:"note"},SAMPLE[lang]);
 const PENDING = {zh:"待修订（",en:"Under revision ("};
 const noticeBox = n => { const b = el("div",{class:"pending",role:"note"}); b.append(el("strong",{},PENDING[lang]+n.at+(lang==="zh"?"）":")")), el("p",{},n[lang])); return b; };
-const rank = it => it.sample ? 0 : (it.notice ? 2 : 1);   // samples first; items under revision last, never recommended
+const rank = it => it.notice ? 2 : (it.sample ? 0 : 1);   // samples first; anything with a notice last and never recommended
 let ITEM = null;
 const okUrl = x => typeof x === "string" && /^https?:\/\/[^\s]+$/.test(x);
 const app = document.getElementById("app");
@@ -82,7 +82,7 @@ function renderList(index){
   const list = el("div");
   const draw = () => { list.replaceChildren(); for (const it of index.items.filter(i => !active || i.category===active).sort((a,b) => rank(a)-rank(b))){
       const d = el("div",{class:"item"}); const a = el("a",{href:"?story="+encodeURIComponent(it.edition_id)+"&lang="+lang}, it.title[lang]);
-      if (it.sample) d.append(sampleNote());
+      if (it.sample && !it.notice) d.append(sampleNote());
       if (it.notice) d.append(noticeBox(it.notice));
       d.append(a, el("div",{class:"meta"}, it.edition_date+" · "+CAT[it.category][lang==="zh"?0:1]+" · "+it.reading_minutes[lang]+" "+T[lang].min), el("div",{class:"small"}, it.dek[lang]));
       list.append(d);} };
@@ -104,7 +104,7 @@ function renderStory(o){
   const L = T[lang], w = el("article");
   w.append(el("a",{href:"./?lang="+lang,class:"small"},L.back));
   if (o.status === "test") w.append(testNote());
-  if (o.status === "reader_sample") w.append(sampleNote());
+  if (o.status === "reader_sample" && !(ITEM && ITEM.notice)) w.append(sampleNote());
   if (ITEM && ITEM.notice && ITEM.notice.revision === o.revision) w.append(noticeBox(ITEM.notice));
   if (o.correction) {                                    // dated, versioned correction; the earlier revision stays readable
     const c = o.correction, box = el("div",{class:"corr",role:"note"});

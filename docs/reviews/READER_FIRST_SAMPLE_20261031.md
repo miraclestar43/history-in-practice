@@ -77,3 +77,35 @@ The checks so far are model checks: the final editor, the deterministic checker 
   - the served JSON hash matches and was recomputed;
   - phone viewport 390 px (headless Firefox, iPhone user agent): home → card → list → zh/en story, with no horizontal overflow and no load errors.
 - **Known issue (pre-existing):** the homepage's top nav is too crowded on phones ("Contact" was already cut off). The card is the working entry.
+
+## Revision 2: the reader-first abridgment (owner request, 2026-10-31 evening)
+
+**Status: pending_review. Not approved.** Revision 1 is archived intact (`samples/auto/cand-book-20261031-hushi-baihua/revisions/rev1/`). On the test site, revision 1 now carries a dated notice and is no longer recommended.
+
+| | rev 1 (approved 15:41) | rev 2 (current text) |
+|---|---|---|
+| Chinese body + question + example | 4,840 chars, ≈15 min | **3,019 chars, ≈9 min** (target 3,000–3,200) |
+| English | 3,549 words, ≈18 min | **2,166 words, ≈11 min** (target 1,800–2,000: over by ~170) |
+| Sections | hook 2 · context 3 · story 10 · analysis 4 · today 2 · limits 3 | hook 2 · context 2 · story 9 · analysis 3 · limits 1 (the "today" section is gone) |
+
+**What was cut or changed:**
+- **Opening:** now starts with the letter from Ithaca and the near-capsize, and states that 胡适 was not in the boat (HS-E38: he received a letter from Ithaca). It ends on the question "能不能用白话写诗？".
+- **Leaflet side story:** cut to a few lines.
+- **Literary-tools history:** two sentences.
+- **Nine diary points:** one paragraph, which sets up the timing.
+- **1920 education order:** kept as one closing line, with 胡适's own dissatisfaction.
+- **The 逼上梁山 dictionary gloss:** removed from the Chinese.
+- **Three modern scenes → one:** the "today" section is gone; one scene is merged into the question. The checker now allows this (owner decision; fact checks unchanged).
+- **Limits:** cut to one short line in the body; the rest is in the expandable end note.
+
+**How it was checked:**
+1. One owner-authorized whole-article attempt (attempt-6). The final editor raised 13 issues on my draft, for example: the dek said "stopped arguing"; a suggestion of collusion between 胡适 and 陈独秀 had no basis; "about four years" was overstated; May Fourth's "干扰" was missing. All were revised.
+2. Local fix of story.4 chronology ("最后" → "特别").
+3. Context review: needs work. The end note was too absolute, 胡适's own view of the new poetry was missing, and HS-E40 had to be added.
+4. **Incident:** the local-fix command then started whole-article attempts 7 and 8 that nobody requested. I stopped attempt 8 mid-run; fixed in bcdd788 with a test. Record: `revisions/incident_20261031_unrequested_attempts.json`.
+5. Local fix of attempt 7's text: story.3 attribution, plus your instruction to drop the Chinese idiom gloss, which attempt 7 had re-added. The final editor's fresh verification was clean.
+6. **Context review: needs work. Stopped here, per the owner rule.**
+   - **(a) Wrong chapter citation:** the episode is in chapter 7 《文学革命的结胎时期》; only the outcome is in chapter 8. Verified at source offsets 101,760 / 118,184. Revision 1 had the same error.
+   - **(b) HS-E41:** 胡适 himself ties the experiment, and the name 《尝试集》, to Dewey's experimentalism. The article presents that framing as the author's inference.
+
+**Next step (needs the owner):** one recorded fix: the chapter citation in `sources` and the end note, and re-attributing analysis.1's "experiment" framing to 胡适's own explanation (HS-E41). After that, one context review.
