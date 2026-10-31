@@ -74,9 +74,12 @@ def check(o: dict, ev: dict):
     ex = {e["id"]: e for e in ev["excerpts"]}
     find = []  # (level, msg)
     ids = [s["id"] for s in o["sections"]]
-    if ids != SECTIONS: find.append(("BLOCK", f"section ids {ids} != {SECTIONS}"))
+    # owner decision 2026-10-31 (reader feedback): the "today" section is optional — one modern scene may live in the
+    # open question instead — and holds one or two applications when present. Fact checks are unchanged.
+    if ids not in (SECTIONS, [x for x in SECTIONS if x != "today"]):
+        find.append(("BLOCK", f"section ids {ids} != {SECTIONS} (today optional)"))
     today = next((s for s in o["sections"] if s["id"] == "today"), None)
-    if today and len(today["paras"]) != 2: find.append(("FIX", "today should have exactly two applications"))
+    if today and not 1 <= len(today["paras"]) <= 2: find.append(("FIX", "today should have one or two applications"))
     for s in o["sections"]:
         for i, p in enumerate(s["paras"]):
             where = f"{s['id']}[{i}]"

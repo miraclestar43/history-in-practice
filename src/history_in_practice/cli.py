@@ -148,6 +148,32 @@ def cmd_export_site(a):
     print(json.dumps({"written": written}, ensure_ascii=False, indent=1)); return 0
 
 
+def cmd_revise_base(a):
+    """Owner-authorized whole-article revision of an admitted edition: archive the admitted revision, record the
+    authorization, demote, then exactly ONE final-editor attempt and ONE context review on the new text (no loop; prior
+    attempts are kept and not reset in the record). Admitted only if both pass; otherwise it stays pending with reasons."""
+    from . import final_edit
+    d = db(); r = final_edit.revise_base(a.edition, d, _load(a.article), a.reason)
+    if not r.get("revised"):
+        print(json.dumps(r, ensure_ascii=False, indent=1)); return 1
+    _demote(d, a.edition, state.get(d, a.edition), f"requeued: owner-authorized revision rev{r['to_revision']}: {a.reason}")
+    res = {"revision": r, "runs": []}
+    rec = final_edit.run(a.edition, d, operator_note=f"owner-authorized whole-article revision rev{r['to_revision']} "
+                                                     f"(one attempt; {r['attempts_before']} earlier attempts kept): {a.reason}")
+    res["runs"].append({"step": "final edit", "attempt": rec.get("attempt"), "outcome": rec.get("outcome"), "open_issues": rec.get("open_issues"),
+                        "failure": rec.get("failure")})
+    if final_edit.awaiting_context(a.edition):
+        cx = final_edit.run_context(a.edition)
+        res["runs"].append({"step": "context review", "outcome": cx.get("outcome"), "blocking": (cx.get("blocking") or [])[:8],
+                            "additions": [x["id"] for x in cx.get("additions") or []]})
+        if cx.get("outcome") == "clean":
+            out = final_edit.OUT_ROOT / a.edition / "final"
+            res["admission"] = final_edit.admit(d, out / "article.json", out / "evidence.json",
+                                                json.loads((out / "final_editor_record.json").read_text(encoding="utf-8")))
+    res["status"] = state.get(d, a.edition)["status"]
+    print(json.dumps(res, ensure_ascii=False, indent=1)); return 0 if res["status"] == "checked" else 2
+
+
 def cmd_local_fix(a):
     """Owner rule 2026-10-31: a small, evidence-backed wording/attribution fix of named open final-editor issues, recorded
     in the same record and re-verified (full verify pass, then context review and admission as usual). Not an attempt:
@@ -821,6 +847,9 @@ def main(argv=None):
     p = sp.add_parser("render"); p.add_argument("articles", nargs="+"); p.add_argument("--out", required=True)
     p.add_argument("--base-url", default="https://starhub.vip"); p.set_defaults(f=cmd_render)
     p = sp.add_parser("export-site"); p.add_argument("articles", nargs="+"); p.add_argument("--site-root", required=True); p.set_defaults(f=cmd_export_site)
+    p = sp.add_parser("revise-base", help="owner-authorized whole-article revision of an admitted edition: one attempt + one context review")
+    p.add_argument("edition"); p.add_argument("article", metavar="NEW_ARTICLE.json"); p.add_argument("--reason", required=True)
+    p.set_defaults(f=cmd_revise_base)
     p = sp.add_parser("local-fix", help="recorded small evidence-backed fix of named open final-editor issues (not an attempt)")
     p.add_argument("edition"); p.add_argument("--issue", action="append", required=True); p.add_argument("--changes", required=True, metavar="CHANGES.json")
     p.add_argument("--reason", required=True); p.set_defaults(f=cmd_local_fix)

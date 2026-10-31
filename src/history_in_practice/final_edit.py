@@ -313,6 +313,39 @@ def carried_context(cid: str, o: dict, ev: dict) -> tuple[dict, dict, list] | No
     return rec, new, context.issues_for_editor(rec)
 
 
+def revise_base(cid: str, db, new_article: dict, reason: str) -> dict:
+    """Owner-authorized whole-article revision of an admitted edition (e.g. the 2026-10-31 reader-first abridgment).
+    The admitted revision is archived intact (samples/auto/<cid>/revisions/rev<N>/: article, evidence, every record,
+    context review); the new text must be the next revision of the same edition, cite only evidence in the pack and pass
+    the deterministic checker without BLOCK. It becomes the base of the next final-editor attempt; the authorization is
+    recorded next to it. Nothing is admitted here: the caller demotes the edition and runs the usual checks once."""
+    cur = state.get(db, cid); out = OUT_ROOT / cid / "final"
+    problems, old = current_eligibility(db, cid)
+    if problems or old is None:
+        return {"revised": False, "reason": "only an edition admitted now can be revised: " + "; ".join(problems)[:300]}
+    o = copy.deepcopy(new_article); render.finalize(o)
+    ev = json.loads((out / "evidence.json").read_text(encoding="utf-8"))
+    p = []
+    if o.get("edition_id") != cid or o.get("revision") != old["revision"] + 1:
+        p.append(f"must be {cid} revision {old['revision'] + 1}")
+    findings, _ = checks.check(o, ev)
+    p += [f"checker BLOCK: {m}" for lvl, m in findings if lvl == "BLOCK"]
+    if p:
+        return {"revised": False, "reason": "; ".join(p)[:500]}
+    arch = OUT_ROOT / cid / "revisions" / f"rev{old['revision']}"
+    if arch.exists():
+        return {"revised": False, "reason": f"{arch} already exists"}
+    shutil.copytree(out, arch)
+    auth = {"edition_id": cid, "reason": reason, "at": time.time(), "by": "operator under owner authorization",
+            "from_revision": old["revision"], "from_content_sha256": old["content_sha256"], "from_approval": cur.get("approval"),
+            "to_revision": o["revision"], "to_base_content_sha256": o["content_sha256"], "archived": str(arch.relative_to(REPO)) if arch.is_relative_to(REPO) else str(arch),
+            "attempts_before": attempts_used(cid), "length": o["length"], "reading_minutes": o["reading_minutes"]}
+    (OUT_ROOT / cid / "revisions" / f"rev{o['revision']}_authorization.json").write_text(json.dumps(auth, ensure_ascii=False, indent=1), encoding="utf-8")
+    (out / "article.json").write_text(json.dumps(o, ensure_ascii=False, indent=1), encoding="utf-8")
+    (out / "article.zh.md").write_text(render.markdown(o, "zh"), encoding="utf-8"); (out / "article.en.md").write_text(render.markdown(o, "en"), encoding="utf-8")
+    return {"revised": True, **auth}
+
+
 def evidence_added_since_last_attempt(cid: str) -> list[str]:
     """Excerpt ids the latest context review added to the evidence, for a text the final editor *passed*
     (verify_final_record clean): the next attempt has genuinely new input, not a retry of identical inputs."""
@@ -777,5 +810,5 @@ def admit(db, article_path: Path, evidence_path: Path, rec: dict, exception=None
     registry.set_status(db, eid, "checked")
     state.transition(db, o["edition_id"], "prepared", note="final-editor record verified", path=str(Path(article_path).resolve()))
     state.transition(db, o["edition_id"], "checked", note=f"admitted: {approval}", content_sha256=o["content_sha256"], reason="",
-                     approval=approval, origin=cur.get("origin") or "pipeline")
+                     approval=approval, origin=cur.get("origin") or "pipeline", revision=o.get("revision") or cur["revision"])
     return {"admitted": True, "edition_id": o["edition_id"], "approval": approval}

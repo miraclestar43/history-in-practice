@@ -64,6 +64,15 @@ class Checker(unittest.TestCase):
         self.assertIn(1000, numbers("每千人", "zh"))
         self.assertNotIn(10000, numbers("每万一千", "zh"))     # 每 followed by a full numeral run is not "per ten thousand"
 
+    def test_today_is_optional_but_section_order_is_not(self):
+        # owner decision 2026-10-31: one modern scene may live in the open question; "today" may be omitted
+        o = copy.deepcopy(self.o); o["sections"] = [s for s in o["sections"] if s["id"] != "today"]
+        f, _ = checks.check(o, self.ev); self.assertFalse(checks.blocked(f), f)
+        o2 = copy.deepcopy(self.o); o2["sections"] = list(reversed(o2["sections"]))
+        self.assertTrue(checks.blocked(checks.check(o2, self.ev)[0]))
+        o3 = copy.deepcopy(self.o); t3 = next(s for s in o3["sections"] if s["id"] == "today"); t3["paras"] = t3["paras"][:1]
+        self.assertNotIn("today", " ".join(m for _, m in checks.check(o3, self.ev)[0]))
+
     def test_record_paragraph_without_evidence_blocks(self):
         o = copy.deepcopy(self.o); o["sections"][2]["paras"][0]["ev"] = []
         self.assertTrue(checks.blocked(checks.check(o, self.ev)[0]))

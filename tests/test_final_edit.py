@@ -381,6 +381,25 @@ class FinalEditor(unittest.TestCase):
         a = final_edit.admit(self.db, out / "article.json", out / "evidence.json", r); self.assertTrue(a["admitted"], a)
         self.assertEqual(final_edit.local_fix(CID, self.db, [], [open_id], "again", call=clean)["outcome"], "refused")
 
+    def test_owner_authorized_revision_archives_rev1_and_readmits_rev2_after_one_attempt(self):
+        from history_in_practice import cli
+        rec, a = self.run_admit(self.script()); self.assertTrue(a["admitted"], a)
+        out = final_edit.OUT_ROOT / CID / "final"; old = json.loads((out / "article.json").read_text()); render.finalize(old)
+        new = json.loads(json.dumps(old)); new["sections"][2]["paras"][0]["zh"] += "（删节）"
+        self.assertFalse(final_edit.revise_base(CID, self.db, new, "t")["revised"])                 # must be the next revision
+        new["revision"] = old["revision"] + 1
+        r = final_edit.revise_base(CID, self.db, new, "abridgment"); self.assertTrue(r["revised"], r)
+        arch = final_edit.OUT_ROOT / CID / "revisions" / f"rev{old['revision']}"
+        self.assertEqual(json.loads((arch / "article.json").read_text())["content_sha256"], old["content_sha256"])   # rev1 kept intact
+        self.assertTrue((arch / "final_editor_record.json").exists()); self.assertTrue((arch / "context_review.json").exists())
+        cli._demote(self.db, CID, state.get(self.db, CID), "requeued: owner-authorized revision")
+        rec2 = final_edit.run(CID, self.db, call=self.script(audit={"fields": self.fields(), "issues": [], "inherited": []}))
+        self.assertEqual(rec2["outcome"], "admissible", rec2.get("open_issues"))
+        self.assertTrue(final_edit.awaiting_context(CID)); final_edit.run_context(CID, call=self.script())
+        a2 = final_edit.admit(self.db, out / "article.json", out / "evidence.json", rec2); self.assertTrue(a2["admitted"], a2)
+        self.assertEqual(state.get(self.db, CID)["revision"], old["revision"] + 1)
+        self.assertEqual(final_edit.current_eligibility(self.db, CID)[0], [])
+
     def test_editor_prompts_forbid_inventing_what_the_full_source_lacks(self):
         # 2026-10-31: most context-review blockers were "原文未载/书中未写年份/no account survives" written by the final
         # editor, who sees only the evidence pack. Audit and verify must flag them; revise must not add them.
