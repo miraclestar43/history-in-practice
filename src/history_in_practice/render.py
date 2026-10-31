@@ -166,6 +166,9 @@ def build(objs, out: Path, base):
         (out/f"email/{o['edition_id']}.html").write_text(email_html(o, base), encoding="utf-8")
         (out/f"email/{o['edition_id']}.txt").write_text(email_text(o, base), encoding="utf-8")
         public = {k: v for k, v in o.items() if k not in ("evidence_map", "preheader", "editor_log")}
+        prev_json = None
+        if o.get("correction") and (o["correction"].get("previous") or {}).get("json"):
+            public = json.loads(json.dumps(public)); prev_json = public["correction"]["previous"].pop("json")
         if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(o.get("edition_date", ""))):
             # inventory not yet scheduled: preview JSON only, never listed in the public index
             p = out/f"site/data/history/unscheduled/{o['edition_id']}.json"; p.parent.mkdir(parents=True, exist_ok=True)
@@ -175,7 +178,11 @@ def build(objs, out: Path, base):
         p.write_text(json.dumps(public, ensure_ascii=False, indent=1), encoding="utf-8")
         index.append({"edition_id": o["edition_id"], "revision": o["revision"], "edition_date": o["edition_date"], "category": o["category"],
                       "title": o["title"], "dek": o["dek"], "reading_minutes": o["reading_minutes"], "content_sha256": o["content_sha256"],
-                      "path": f"data/history/{y}/{m}/{d}-{o['edition_id']}.json", **({"test": True} if o.get("status") == "test" else {})})
+                      "path": f"data/history/{y}/{m}/{d}-{o['edition_id']}.json", **({"test": True} if o.get("status") == "test" else {}),
+                      **({"corrected_at": o["correction"]["at"]} if o.get("correction") else {})})
+        if prev_json is not None:                                     # the superseded revision stays published, byte for byte
+            q = out/"site"/o["correction"]["previous"]["path"]; q.parent.mkdir(parents=True, exist_ok=True)
+            q.write_text(prev_json, encoding="utf-8")
     index.sort(key=lambda x: x["edition_date"], reverse=True)
     (out/"site/data/history/index.json").write_text(json.dumps({"schema_version": "0.2", "items": index}, ensure_ascii=False, indent=1), encoding="utf-8")
     tpl = Path(__file__).with_name("templates")/"history_index.html"

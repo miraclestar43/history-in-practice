@@ -139,6 +139,33 @@ def create_or_load(db, test_id: str, src_path: Path, *, site_base: str, window_h
     return rec, test
 
 
+def correction(db, test_id: str, corrected_src: Path, note: dict, *, at: str, site_root: Path | None = None) -> dict:
+    """A dated, versioned correction of an already-sent TEST: revision+1 built from the CURRENTLY admitted corrected source
+    (same labels), carrying {at, note zh/en, previous revision + hash + its exact JSON at a versioned path}. The sent
+    revision's record (test_sha256, source hash, deliveries) is never modified; nothing is emailed."""
+    rec = get(db, test_id)
+    if not rec:
+        raise TestRunError(f"no test {test_id}")
+    src = json.loads(Path(corrected_src).read_text(encoding="utf-8"))
+    sp = source_problems(db, src.get("edition_id", "?"), src.get("content_sha256", ""), Path(corrected_src))
+    if sp:
+        raise TestRunError("corrected source is not currently admitted: " + "; ".join(sp[:4]))
+    date = datetime.fromtimestamp(rec["created_at"], TZ).strftime("%Y-%m-%d")
+    prev_rev = 1 + sum(1 for h in rec["history"] if h["event"] == "correction_published")
+    new = make_test_obj(src, test_id, date); new["revision"] = prev_rev + 1
+    bp = body_problems(src, new)
+    if bp:
+        raise TestRunError("; ".join(bp))
+    y, m, d = date.split("-")
+    prev_path = f"data/history/{y}/{m}/{d}-{test_id}.r{prev_rev}.json"
+    new["correction"] = {"at": at, "note": note, "source_revision": src["revision"], "source_sha256": src["content_sha256"],
+                         "previous": {"revision": prev_rev, "content_sha256": rec["test_sha256"] if prev_rev == 1 else None, "path": prev_path}}
+    render.finalize(new)
+    out = {"test_id": test_id, "revision": new["revision"], "test_sha256": new["content_sha256"], "previous_revision": prev_rev, "previous_path": prev_path}
+    _log(db, test_id, "correction_published", **{k: v for k, v in out.items() if k != "test_id"}, at_la=at)
+    return new
+
+
 def window_open(rec, now: float | None = None) -> bool:
     now = time.time() if now is None else now
     return rec["window_opens"] <= now < rec["window_expires"]

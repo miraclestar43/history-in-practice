@@ -181,6 +181,29 @@ class Cli(unittest.TestCase):
         rc, out, _ = self.hip("test-edition", "renew-window", "--test-id", TID, "--window-hours", "1")
         self.assertNotEqual(rc, 0)
 
+    def test_correction_is_dated_versioned_and_keeps_the_sent_revision(self):
+        self.hip("test-edition", "prepare", self.art, "--test-id", TID, "--site-base", self.base, "--site-root", str(self.site))
+        rc, out, _ = self.hip("test-edition", "send", "--test-id", TID, "--confirm-real-email"); self.assertEqual(rc, 0); n = len(self.smtp.messages)
+        sent_file = next(self.site.rglob(f"*-{TID}.json")); sent_bytes = sent_file.read_bytes()
+        # a corrected source must be admitted now: requeue the original (stands in for "the old text is withdrawn") -> refused
+        self.hip("requeue", "cand-20261030-snow-water-companies", "--reason", "factual correction")
+        rc, out, err = self.hip("test-edition", "correct", self.art, "--test-id", TID, "--site-root", str(self.site), "--note-zh", "更正说明", "--note-en", "Correction note")
+        self.assertNotEqual(rc, 0); self.assertIn("not currently admitted", err)
+        db = sqlite3.connect(Path(self.td.name) / "data/hip.sqlite")
+        db.execute("UPDATE edition SET status='checked' WHERE edition_id='cand-20261030-snow-water-companies'"); db.commit()   # re-admitted (fixture)
+        rc, out, err = self.hip("test-edition", "correct", self.art, "--test-id", TID, "--site-root", str(self.site), "--note-zh", "更正说明",
+                                "--note-en", "Correction note", "--at", "2026-10-31T09:00-07:00")
+        self.assertEqual(rc, 0, err); self.assertEqual(out["revision"], 2); self.assertFalse(out["emailed"])
+        prev = self.site / out["previous"]["path"]; self.assertEqual(prev.read_bytes(), sent_bytes)              # sent revision kept byte for byte
+        cur = json.loads(sent_file.read_text()); self.assertEqual(cur["revision"], 2); self.assertEqual(cur["correction"]["at"], "2026-10-31T09:00-07:00")
+        self.assertNotIn("json", cur["correction"]["previous"]); self.assertEqual(cur["correction"]["previous"]["content_sha256"], json.loads(sent_bytes)["content_sha256"])
+        idx = json.loads((self.site / "data/history/index.json").read_text())["items"]
+        self.assertEqual([(i["revision"], i.get("corrected_at")) for i in idx if i["edition_id"] == TID], [(2, "2026-10-31T09:00-07:00")])
+        rc, st, _ = self.hip("test-edition", "status", "--test-id", TID)
+        self.assertEqual(sorted(d["status"] for d in st["deliveries"]), ["accepted", "accepted"]); self.assertEqual(len(self.smtp.messages), n)
+        self.assertEqual(st["test_sha256"], json.loads(sent_bytes)["content_sha256"])                              # the sent record is unchanged
+        rc, v, _ = self.hip("test-edition", "verify-correction", "--test-id", TID); self.assertEqual(rc, 0, v); self.assertTrue(v["ok"])
+
     def test_requeue_after_partial_send_blocks_the_rest_and_keeps_accepted(self):
         self.hip("test-edition", "prepare", self.art, "--test-id", TID, "--site-base", self.base, "--site-root", str(self.site))
         self.smtp.refuse_rcpt = {"r1@example.com"}

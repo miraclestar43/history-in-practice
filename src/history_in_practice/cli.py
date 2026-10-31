@@ -232,6 +232,31 @@ def cmd_test_edition(a):
     if a.action == "verify-site":
         ok, problems = testrun.verify_site(d, rec, test)
         print(json.dumps({"ok": ok, "problems": problems, "site_base": rec["site_base"]}, ensure_ascii=False, indent=1)); return 0 if ok else 1
+    if a.action == "correct":                         # dated, versioned correction page; never emails
+        if not (a.article and a.note_zh and a.note_en and a.site_root):
+            raise SystemExit("correct needs ARTICLE (the corrected admitted source), --note-zh, --note-en and --site-root")
+        at = a.at or testrun.datetime.now(testrun.TZ).isoformat(timespec="minutes")
+        new = testrun.correction(d, a.test_id, Path(a.article).resolve(), {"zh": a.note_zh, "en": a.note_en}, at=at)
+        y, m, dd = new["edition_date"].split("-"); cur_file = Path(a.site_root) / f"data/history/{y}/{m}/{dd}-{a.test_id}.json"
+        new["correction"]["previous"]["json"] = cur_file.read_text(encoding="utf-8")   # the revision readers saw, byte for byte
+        prev = json.loads(new["correction"]["previous"]["json"])
+        if prev.get("revision") != new["correction"]["previous"]["revision"]:
+            raise SystemExit(f"site copy is revision {prev.get('revision')}, expected {new['correction']['previous']['revision']}")
+        new["correction"]["previous"]["content_sha256"] = prev.get("content_sha256")
+        written = site_export.export([new], Path(a.site_root))
+        keep = json.loads(json.dumps(new)); keep["correction"]["previous"].pop("json", None)
+        (out / f"test_article.r{new['revision']}.json").parent.mkdir(parents=True, exist_ok=True)
+        (out / f"test_article.r{new['revision']}.json").write_text(json.dumps(keep, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(json.dumps({"test_id": a.test_id, "revision": new["revision"], "test_sha256": new["content_sha256"], "previous": keep["correction"]["previous"],
+                          "at": at, "written": written, "emailed": False}, ensure_ascii=False, indent=1)); return 0
+    if a.action == "verify-correction":
+        revs = sorted(out.glob("test_article.r*.json"), key=lambda f: int(f.stem.split(".r")[1]))
+        if not revs:
+            raise SystemExit("no correction recorded")
+        new = json.loads(revs[-1].read_text(encoding="utf-8"))
+        ok, problems = site_export.verify(new, a.site_base or rec["site_base"])
+        testrun._log(d, a.test_id, "correction_site_verify", ok=ok, revision=new["revision"], base=a.site_base or rec["site_base"], problems=problems[:5])
+        print(json.dumps({"ok": ok, "revision": new["revision"], "problems": problems}, ensure_ascii=False, indent=1)); return 0 if ok else 1
     if a.action == "renew-window":
         rec = testrun.renew_window(d, a.test_id, a.window_hours)
         print(json.dumps({"window_expires": rec["window_expires"]})); return 0
@@ -766,7 +791,8 @@ def main(argv=None):
     p = sp.add_parser("publish-today"); p.add_argument("--date"); p.set_defaults(f=cmd_publish_today)
     p = sp.add_parser("send-test"); p.add_argument("rest", nargs="*"); p.add_argument("--confirm-real-email", action="store_true")
     p.set_defaults(f=cmd_send_test)
-    p = sp.add_parser("test-edition"); p.add_argument("action", choices=["prepare", "status", "verify-site", "send", "renew-window"])
+    p = sp.add_parser("test-edition"); p.add_argument("action", choices=["prepare", "status", "verify-site", "send", "renew-window", "correct", "verify-correction"])
+    p.add_argument("--note-zh"); p.add_argument("--note-en"); p.add_argument("--at", help="correction time, America/Los_Angeles ISO minutes")
     p.add_argument("article", nargs="?"); p.add_argument("--test-id", required=True); p.add_argument("--site-base")
     p.add_argument("--site-root", help="website working copy to export the test page into (prepare only)")
     p.add_argument("--window-hours", type=float, default=6); p.add_argument("--confirm-real-email", action="store_true")

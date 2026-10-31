@@ -33,6 +33,7 @@ a{color:var(--accent)}
 .item{padding:14px 0;border-bottom:1px solid var(--line)}
 .item a{font-size:1.1rem;text-decoration:none}
 .error{border:1px solid #b55;padding:12px;border-radius:6px}
+.corr{border:2px solid #2f5b8a;color:#1f3d5c;padding:8px 12px;border-radius:6px;font-size:14px;margin:10px 0;line-height:1.7}
 .test{border:2px solid #b5542f;color:#b5542f;padding:8px 12px;border-radius:6px;font-size:14px;margin:10px 0}
 </style>
 </head>
@@ -88,6 +89,13 @@ function renderStory(o){
   const L = T[lang], w = el("article");
   w.append(el("a",{href:"./?lang="+lang,class:"small"},L.back));
   if (o.status === "test") w.append(testNote());
+  if (o.correction) {                                    // dated, versioned correction; the earlier revision stays readable
+    const c = o.correction, box = el("div",{class:"corr",role:"note"});
+    box.append(el("strong",{},(lang==="zh"?"更正（":"Correction (")+c.at+(lang==="zh"?"，第 ":", revision ")+o.revision+(lang==="zh"?" 版）":")")));
+    box.append(el("p",{},c.note[lang]));
+    if (c.previous) { const a = el("a",{href:"../"+c.previous.path},(lang==="zh"?"查看更正前的第 ":"Previous revision ")+c.previous.revision+(lang==="zh"?" 版（已发送的测试稿）":" (the TEST as sent)")); box.append(el("p",{},a)); }
+    w.append(box);
+  }
   const tabs = el("div",{class:"tabs",role:"tablist","aria-label":"语言 / Language"});
   for (const [k,label] of [["zh","中文"],["en","English"]]){
     const b = el("button",{type:"button",role:"tab","aria-selected":String(k===lang),tabindex:k===lang?"0":"-1"},label);
