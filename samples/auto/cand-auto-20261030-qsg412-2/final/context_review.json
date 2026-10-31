@@ -3,8 +3,8 @@
  "schema": "context-review/v1",
  "mode": "article",
  "edition_id": "cand-auto-20261030-qsg412-2",
- "content_sha256": "2f9682bb5446502770c41019f77745c249a43bf3e601f64453cc2c5faf187be1",
- "evidence_in_sha256": "16e98691592f2f549b7263a349f0248630e763aaecce04b8fb381d20a822c189",
+ "content_sha256": "3ee64882467592e25078bada27cd22440bc76071e6d60f39177b017814be026c",
+ "evidence_in_sha256": "03217a3d1e42be30075f229b5103eaf552189e07a133a6110f90cfb68b31cd12",
  "reviewer": {
   "name": "Pi Claude",
   "role": "named final editor (source-context review)",
@@ -35,49 +35,13 @@
    "extra_cap": 0.3
   }
  },
- "started_at": 1793437019.1143959,
+ "started_at": 1793464365.6960568,
  "flagged": [
   {
    "id": "A1",
-   "path": "sections.story.6",
-   "lang": "zh",
-   "sentence": "于是左宗棠自请出屯哈密，规复伊犁：金顺出精河为东路，张曜沿特克斯河为中路，锦棠经布鲁特游牧为西路，谭上连等分屯喀什噶尔、阿克苏、哈密为后路声援，合马步卒四万余人——原文只记这一合计数，未记实际投入兵力。"
-  },
-  {
-   "id": "A2",
-   "path": "sections.story.6",
-   "lang": "en",
-   "sentence": "The source gives only this combined figure and does not record how many troops were actually committed."
-  },
-  {
-   "id": "A3",
    "path": "sections.analysis.1",
    "lang": "zh",
    "sentence": "本文所据材料未记伊犁对峙时的钱粮，不能把两者写成同一时期。"
-  },
-  {
-   "id": "A4",
-   "path": "sections.analysis.2",
-   "lang": "zh",
-   "sentence": "史书没有记曾纪泽改约的具体内容，也没有把结果归在某一个人名下。"
-  },
-  {
-   "id": "A5",
-   "path": "sections.limits.1",
-   "lang": "zh",
-   "sentence": "但崇厚所定约的完整条款、曾纪泽改约的具体内容，原文未载，本文不补写。"
-  },
-  {
-   "id": "A6",
-   "path": "reflection.example.alternative",
-   "lang": "zh",
-   "sentence": "历史原文没有记下这类权衡，这里只是作者给的备选。"
-  },
-  {
-   "id": "A7",
-   "path": "uncertainty_note",
-   "lang": "zh",
-   "sentence": "崇厚约文与曾纪泽改约内容原文未载，不作补写。"
   }
  ],
  "search": null,
@@ -105,69 +69,30 @@
   {
    "step": "context_r1",
    "attempt": 1,
-   "wall_s": 69.6,
+   "wall_s": 51.0,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
    "killed": null,
    "provider_refusal": null,
-   "output_tokens": 7403
+   "output_tokens": 5304
   }
  ],
- "finished_at": 1793437089.1340775,
- "elapsed_min": 1.2,
+ "finished_at": 1793464417.018546,
+ "elapsed_min": 0.9,
  "review": {
   "episode": [
    {
     "source_id": "S-QSG412",
-    "outcome": "传文中，俄国因王师大出而增兵、以兵船震撼京师；左宗棠被召入都，由锦棠接替；俄国也慑于兵威，担心事态决裂。次年正月和议成，俄国交还伊犁，防海之军全部撤罢。",
+    "outcome": "Under the Ili negotiation thread, the court commended Zuo Zongtang's memorial, Chong Hou was punished and dismissed, and Zeng Jize was sent to revise the treaty. Zuo set out for Hami, Russia sent reinforcements, and the coast went on alert. Zuo was then recalled to the capital and replaced by Jintang. The thread ends with the history saying Russia feared an outright rupture; peace was concluded the next year, Ili was returned, and coastal defenses were stood down.",
     "quote": "七月，詔宗棠入都備顧問，以錦棠代之。而俄亦懾我兵威，恐事遂決裂。明年正月，和議成，交還伊犁，防海軍皆罷。",
     "in_evidence": true
    }
   ],
-  "additions": [
-   {
-    "source_id": "S-QSG412",
-    "start": "九年，松山陣歿",
-    "end": "以其兄子錦棠代之",
-    "why": "传文交代了锦棠的身份，他是刘松山之兄子，接替松山统老湘军。稿件写「原文仅作此称」，读者无从得知其来历。补上这一句可以准确交代此人，不必另加否定性说明。"
-   }
-  ],
+  "additions": [],
   "claims": [
    {
     "id": "A1",
-    "path": "sections.story.6",
-    "lang": "zh",
-    "sentence": "原文只记这一合计数，未记实际投入兵力。",
-    "verdict": "supported",
-    "source_ids": [
-     "S-QSG412"
-    ],
-    "scope": "《清史稿·左宗棠传》全文，重点是光绪四年至七年伊犁交涉段（「於是宗棠乃自請出屯哈密」至「防海軍皆罷」）。",
-    "quote": {
-     "source_id": "S-QSG412",
-     "quote": "合馬步卒四萬餘人"
-    },
-    "fix": "可以保留。若要精简，可改为「传中记三路及后路合马步卒四万余人」，不再另加否定句。"
-   },
-   {
-    "id": "A2",
-    "path": "sections.story.6",
-    "lang": "en",
-    "sentence": "The source gives only this combined figure and does not record how many troops were actually committed.",
-    "verdict": "supported",
-    "source_ids": [
-     "S-QSG412"
-    ],
-    "scope": "同 A1，全传通读，伊犁部署段之外没有其他兵力数字。",
-    "quote": {
-     "source_id": "S-QSG412",
-     "quote": "合馬步卒四萬餘人"
-    },
-    "fix": "同 A1。"
-   },
-   {
-    "id": "A3",
     "path": "sections.analysis.1",
     "lang": "zh",
     "sentence": "本文所据材料未记伊犁对峙时的钱粮，不能把两者写成同一时期。",
@@ -175,76 +100,12 @@
     "source_ids": [
      "S-QSG412"
     ],
-    "scope": "全传。借款一事明确系于「始西征」；伊犁对峙段（六年四月至明年正月）没有钱粮记载。「籌西事，尤以節兵裕餉為本謀」是泛论，没有系于伊犁时期。",
+    "scope": "《清史稿·左宗棠传》全文（0–7015）。光绪四年至七年伊犁交涉、出屯哈密一段（四年正月至明年正月和议成）没有钱粮记载。传文随后的「籌西事，尤以節兵裕餉為本謀」是对西事的总评，没有指明伊犁对峙时期；借款五百万、「出塞凡二十月」都属于更早收复新疆的西征。",
     "quote": {
      "source_id": "S-QSG412",
-     "quote": "籌西事，尤以節兵裕餉為本謀。始西征，慮各行省協助餉不時至"
+     "quote": "宗棠用兵善審機，不常其方略。籌西事，尤以節兵裕餉為本謀。始西征，慮各行省協助餉不時至"
     },
-    "fix": "可以保留，建议写成「传中『節兵裕餉』是对其筹西事的总评，具体借款系于西征之初，伊犁对峙段未记钱粮」。"
-   },
-   {
-    "id": "A4",
-    "path": "sections.analysis.2",
-    "lang": "zh",
-    "sentence": "史书没有记曾纪泽改约的具体内容，也没有把结果归在某一个人名下。",
-    "verdict": "supported",
-    "source_ids": [
-     "S-QSG412"
-    ],
-    "scope": "全传。曾纪泽只出现在「命曾紀澤使俄，更前約」一句；结果的原因写作「俄亦懾我兵威」，没有归于某人。",
-    "quote": {
-     "source_id": "S-QSG412",
-     "quote": "崇厚得罪去，命曾紀澤使俄，更前約"
-    },
-    "fix": "可以保留。但应同时说明传文把俄方「懾我兵威，恐事遂決裂」写在和议成之前，作为和议的背景或原因（见 context_issues）。"
-   },
-   {
-    "id": "A5",
-    "path": "sections.limits.1",
-    "lang": "zh",
-    "sentence": "但崇厚所定约的完整条款、曾纪泽改约的具体内容，原文未载，本文不补写。",
-    "verdict": "supported",
-    "source_ids": [
-     "S-QSG412"
-    ],
-    "scope": "全传。崇厚约只见三端、陬尔果斯河与帖克斯河、广设领事等，这些出自左宗棠奏疏的转述，不是完整约文；曾纪泽改约没有内容。",
-    "quote": {
-     "source_id": "S-QSG412",
-     "quote": "今崇厚又議畀俄陬爾果斯河及帖克斯河，是劃伊犁西南之地歸俄也"
-    },
-    "fix": "可以保留。可注明分界、商务两项是经左宗棠奏疏转述的。"
-   },
-   {
-    "id": "A6",
-    "path": "reflection.example.alternative",
-    "lang": "zh",
-    "sentence": "历史原文没有记下这类权衡，这里只是作者给的备选。",
-    "verdict": "supported",
-    "source_ids": [
-     "S-QSG412"
-    ],
-    "scope": "全传。朝议只记「為朝士所糾，議久不決」，没有记录主张认约、缩期或加复议条款之类的意见。",
-    "quote": {
-     "source_id": "S-QSG412",
-     "quote": "崇厚遽定約，為朝士所糾，議久不決"
-    },
-    "fix": "可以保留。"
-   },
-   {
-    "id": "A7",
-    "path": "uncertainty_note",
-    "lang": "zh",
-    "sentence": "崇厚约文与曾纪泽改约内容原文未载，不作补写。",
-    "verdict": "supported",
-    "source_ids": [
-     "S-QSG412"
-    ],
-    "scope": "同 A5。",
-    "quote": {
-     "source_id": "S-QSG412",
-     "quote": "俄以通商、分界、償款三端相要"
-    },
-    "fix": "建议改为「崇厚约文全文与曾纪泽改约内容原文未载」，因为传文已经记下三端要求和界务、商务两项。"
+    "fix": "可保留。如需更准确，可改为「传文对伊犁对峙期间的钱粮没有具体记载，只有『籌西事，尤以節兵裕餉為本謀』一句总评」，避免读者以为传文全无相关说法。"
    },
    {
     "id": "N1",
@@ -255,183 +116,120 @@
     "source_ids": [
      "S-QSG412"
     ],
-    "scope": "全传。拒绝金顺之后紧接「八月，錦棠會師曲會」，没有其他说明。",
+    "scope": "《清史稿·左宗棠传》全文。金顺请乘虚袭伊犁一事，传文只记左宗棠一句答语，没有记他的权衡过程。",
     "quote": {
      "source_id": "S-QSG412",
-     "quote": "宗棠曰：「不可。師不以正，彼有辭矣。」八月，錦棠會師曲會"
+     "quote": "時俄方與土耳其戰，金順請乘虛襲伊犁。宗棠曰：「不可。師不以正，彼有辭矣。」"
     },
-    "fix": "可以保留。"
+    "fix": "可保留。英文对应句同。"
    },
    {
     "id": "N2",
-    "path": "sections.hook.1",
+    "path": "sections.limits.1",
     "lang": "zh",
-    "sentence": "由西路统兵的锦棠（原文仅作此称，与东路统兵的金顺并非一人）接替。",
+    "sentence": "崇厚约的完整条款与曾纪泽改约的具体内容不在本文所据段落之内，本文不补写。",
     "verdict": "supported",
     "source_ids": [
      "S-QSG412"
     ],
-    "scope": "全传。传文称「錦棠」，不加姓，但同治九年条交代了他是刘松山之兄子。",
+    "scope": "《清史稿·左宗棠传》全文（已通读全篇，并非只读部分段落）。传文只记崇厚约的三端要求、畀俄两河之地、广设领事和索偿卢布五百万元，没有完整条款；曾纪泽改约只记「更前約」，没有具体内容。",
     "quote": {
      "source_id": "S-QSG412",
-     "quote": "九年，松山陣歿，以其兄子錦棠代之"
+     "quote": "崇厚得罪去，命曾紀澤使俄，更前約。"
     },
-    "fix": "改为「锦棠（传中记为刘松山之兄子，与金顺并非一人）」，用传文已有的身份信息代替「仅作此称」。"
+    "fix": "把「不在本文所据段落之内」改为「《左宗棠传》全篇未载」，以准确反映核查范围是全文。uncertainty_note 中英文同句一并修改。"
    },
    {
     "id": "N3",
-    "path": "sections.limits.1",
+    "path": "uncertainty_note",
     "lang": "zh",
-    "sentence": "「俄亦懾我兵威」与「和議成」在原文中是并置叙述，两者是否因果，未经证实。",
-    "verdict": "contradicted",
+    "sentence": "崇厚约文与曾纪泽改约内容不在本文所据段落之内，不作补写。",
+    "verdict": "supported",
     "source_ids": [
      "S-QSG412"
     ],
-    "scope": "全传伊犁段。",
+    "scope": "《清史稿·左宗棠传》全文",
     "quote": {
      "source_id": "S-QSG412",
-     "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
+     "quote": "俄以通商、分界、償款三端相要。崇厚遽定約，為朝士所糾，議久不決。"
     },
-    "fix": "改为「史书把俄方慑于兵威、恐事决裂写在和议成之前，呈现为促成和议的原因；这是史书的判断，本文没有用其他材料核验」。"
+    "fix": "改为「《左宗棠传》全篇未载崇厚约文全文与曾纪泽改约内容」。英文「lie outside the passages this piece draws on」相应改为「are not given anywhere in the biography」。"
    },
    {
     "id": "N4",
-    "path": "sections.limits.1",
-    "lang": "en",
-    "sentence": "That \"Russia was awed by our military might\" and that \"peace was concluded\" appear side by side in the source; whether one caused the other is unproven.",
-    "verdict": "contradicted",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "这是史书的判断，本文未用其他材料核验。",
+    "verdict": "supported",
     "source_ids": [
      "S-QSG412"
     ],
-    "scope": "同 N3。",
+    "scope": "这句说的是本文自身的取材范围，指本文只据一源，没有断言当时无人核查。传文中「俄亦懾我兵威，恐事遂決裂」确为史书叙述者的判断。",
     "quote": {
      "source_id": "S-QSG412",
-     "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
+     "quote": "而俄亦懾我兵威，恐事遂決裂。"
     },
-    "fix": "Say the history presents Russia's fear of a rupture as leading into the settlement; this is the history's own judgment, not independently checked here."
+    "fix": "可保留。此句在 limits.1 与 uncertainty_note 中重复出现，可只保留一两处。不得改写成「当时无人核查」一类的说法。"
    },
    {
     "id": "N5",
     "path": "uncertainty_note",
-    "lang": "zh",
-    "sentence": "「俄亦懾我兵威」与「和議成」是并置叙述，因果未经证实。",
-    "verdict": "contradicted",
+    "lang": "en",
+    "sentence": "this is the history's own judgment and has not been independently checked here.",
+    "verdict": "supported",
     "source_ids": [
      "S-QSG412"
     ],
-    "scope": "同 N3。",
+    "scope": "这句是对本文取材的自述，限定词「here」使范围准确。",
     "quote": {
      "source_id": "S-QSG412",
      "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
     },
-    "fix": "同 N3。"
+    "fix": "保留「here」的限定，不要扩展成「no independent verification exists」。"
    },
    {
     "id": "N6",
     "path": "sections.story.1",
     "lang": "zh",
     "sentence": "数字照史书所录，未经核实。",
-    "verdict": "not_a_source_claim",
+    "verdict": "supported",
     "source_ids": [
      "S-QSG412"
     ],
-    "scope": "本文核查流程说明。",
+    "scope": "这句说的是本文的处理方式。卢布五百万元出自左宗棠奏疏的转述，本文未另行核对。",
     "quote": {
      "source_id": "S-QSG412",
-     "quote": "則索償盧布五百萬元"
+     "quote": "及我索地，則索償盧布五百萬元"
     },
-    "fix": "可以保留。也可指出这是左宗棠奏中的说法，而不是史家另行核计的数字。"
-   },
-   {
-    "id": "N7",
-    "path": "sections.limits.0",
-    "lang": "zh",
-    "sentence": "成书于1928年，所述与当时档案未必一致。",
-    "verdict": "not_a_source_claim",
-    "source_ids": [
-     "S-QSG412"
-    ],
-    "scope": "泛化的不确定性说明，不是关于传文记载与否的断言。",
-    "quote": {
-     "source_id": "S-QSG412",
-     "quote": "此作品在全世界都属于公有领域"
-    },
-    "fix": "可以保留，但不要暗示存在已知的不一致。可改为「本文未对照档案」。"
+    "fix": "可保留。也可点明数字是奏疏所言、并非史官另记。limits.1「数字照录不核」同理。"
    }
   ],
   "context_issues": [
    {
-    "path": "sections.analysis.2",
-    "problem": "稿件称「俄亦懾我兵威」与和议成「只是并置叙述」，弱化了传文的因果框架。传文用「而……恐事遂決裂」接「明年正月，和議成」，把俄方畏惧决裂写成和议的背景和动因。应如实转述史书的判断，再说明本文未独立核验。",
+    "path": "uncertainty_note",
+    "problem": "英文写成「the cause of the peace settlement」、中文写成「呈现为和议成的原因」，比 limits.1 的「leading into」和 analysis.2 的措辞更强。传文只是把两件事前后并列，没有明言因果。",
     "quote": {
      "source_id": "S-QSG412",
-     "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成，交還伊犁，防海軍皆罷"
+     "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成，交還伊犁"
     },
-    "severity": "fix"
+    "severity": "note"
    },
    {
     "path": "sections.analysis.1",
-    "problem": "稿件写「左宗棠请借外债，诏拨款五百万、敕自借外国债五百万」，漏掉了中间沈葆桢反对这一转折。诏书是在异议之后力挺左宗棠的。",
+    "problem": "叙述借款时省略了沈葆桢反对借外债、朝廷随后下诏拨款并准借五百万这一转折，读者会以为借债请求直接获准。",
     "quote": {
      "source_id": "S-QSG412",
      "quote": "請一借貸外國。沈葆楨尼其議，詔曰：「宗棠以西事自任，國家何惜千萬金。"
     },
     "severity": "note"
-   },
-   {
-    "path": "sections.hook.1",
-    "problem": "锦棠的身份在传文中有交代（刘松山兄子），稿件用「原文仅作此称」，容易让读者以为来源没有提供任何信息。",
-    "quote": {
-     "source_id": "S-QSG412",
-     "quote": "以其兄子錦棠代之"
-    },
-    "severity": "note"
    }
   ],
   "search": [],
-  "overall": "来源为全文，结局（和议成、交还伊犁）已在证据包中。各条否定性断言在全传范围内基本成立。需要修改的是：稿件把「俄亦懾我兵威，恐事遂決裂」降格为「并置叙述」，涉及 analysis.2、limits.1、uncertainty_note，应如实转述史书的因果框架；锦棠的身份与借款时沈葆桢的异议可酌情补入。"
+  "overall": "已通读全文，伊犁交涉的结局（和议成、交还伊犁）已在证据中。A1 及其他否定性断言大体成立，但「不在本文所据段落之内」应改为「传文全篇未载」，uncertainty_note 中的因果措辞宜放缓。"
  },
  "claims": [
   {
    "id": "A1",
-   "path": "sections.story.6",
-   "lang": "zh",
-   "sentence": "于是左宗棠自请出屯哈密，规复伊犁：金顺出精河为东路，张曜沿特克斯河为中路，锦棠经布鲁特游牧为西路，谭上连等分屯喀什噶尔、阿克苏、哈密为后路声援，合马步卒四万余人——原文只记这一合计数，未记实际投入兵力。",
-   "verdict": "supported",
-   "source_ids": [
-    "S-QSG412"
-   ],
-   "scope": "《清史稿·左宗棠传》全文，重点是光绪四年至七年伊犁交涉段（「於是宗棠乃自請出屯哈密」至「防海軍皆罷」）。",
-   "quote": {
-    "source_id": "S-QSG412",
-    "quote": "合馬步卒四萬餘人"
-   },
-   "fix": "可以保留。若要精简，可改为「传中记三路及后路合马步卒四万余人」，不再另加否定句。",
-   "unit_status": {
-    "S-QSG412": "complete"
-   }
-  },
-  {
-   "id": "A2",
-   "path": "sections.story.6",
-   "lang": "en",
-   "sentence": "The source gives only this combined figure and does not record how many troops were actually committed.",
-   "verdict": "supported",
-   "source_ids": [
-    "S-QSG412"
-   ],
-   "scope": "同 A1，全传通读，伊犁部署段之外没有其他兵力数字。",
-   "quote": {
-    "source_id": "S-QSG412",
-    "quote": "合馬步卒四萬餘人"
-   },
-   "fix": "同 A1。",
-   "unit_status": {
-    "S-QSG412": "complete"
-   }
-  },
-  {
-   "id": "A3",
    "path": "sections.analysis.1",
    "lang": "zh",
    "sentence": "本文所据材料未记伊犁对峙时的钱粮，不能把两者写成同一时期。",
@@ -439,88 +237,12 @@
    "source_ids": [
     "S-QSG412"
    ],
-   "scope": "全传。借款一事明确系于「始西征」；伊犁对峙段（六年四月至明年正月）没有钱粮记载。「籌西事，尤以節兵裕餉為本謀」是泛论，没有系于伊犁时期。",
+   "scope": "《清史稿·左宗棠传》全文（0–7015）。光绪四年至七年伊犁交涉、出屯哈密一段（四年正月至明年正月和议成）没有钱粮记载。传文随后的「籌西事，尤以節兵裕餉為本謀」是对西事的总评，没有指明伊犁对峙时期；借款五百万、「出塞凡二十月」都属于更早收复新疆的西征。",
    "quote": {
     "source_id": "S-QSG412",
-    "quote": "籌西事，尤以節兵裕餉為本謀。始西征，慮各行省協助餉不時至"
+    "quote": "宗棠用兵善審機，不常其方略。籌西事，尤以節兵裕餉為本謀。始西征，慮各行省協助餉不時至"
    },
-   "fix": "可以保留，建议写成「传中『節兵裕餉』是对其筹西事的总评，具体借款系于西征之初，伊犁对峙段未记钱粮」。",
-   "unit_status": {
-    "S-QSG412": "complete"
-   }
-  },
-  {
-   "id": "A4",
-   "path": "sections.analysis.2",
-   "lang": "zh",
-   "sentence": "史书没有记曾纪泽改约的具体内容，也没有把结果归在某一个人名下。",
-   "verdict": "supported",
-   "source_ids": [
-    "S-QSG412"
-   ],
-   "scope": "全传。曾纪泽只出现在「命曾紀澤使俄，更前約」一句；结果的原因写作「俄亦懾我兵威」，没有归于某人。",
-   "quote": {
-    "source_id": "S-QSG412",
-    "quote": "崇厚得罪去，命曾紀澤使俄，更前約"
-   },
-   "fix": "可以保留。但应同时说明传文把俄方「懾我兵威，恐事遂決裂」写在和议成之前，作为和议的背景或原因（见 context_issues）。",
-   "unit_status": {
-    "S-QSG412": "complete"
-   }
-  },
-  {
-   "id": "A5",
-   "path": "sections.limits.1",
-   "lang": "zh",
-   "sentence": "但崇厚所定约的完整条款、曾纪泽改约的具体内容，原文未载，本文不补写。",
-   "verdict": "supported",
-   "source_ids": [
-    "S-QSG412"
-   ],
-   "scope": "全传。崇厚约只见三端、陬尔果斯河与帖克斯河、广设领事等，这些出自左宗棠奏疏的转述，不是完整约文；曾纪泽改约没有内容。",
-   "quote": {
-    "source_id": "S-QSG412",
-    "quote": "今崇厚又議畀俄陬爾果斯河及帖克斯河，是劃伊犁西南之地歸俄也"
-   },
-   "fix": "可以保留。可注明分界、商务两项是经左宗棠奏疏转述的。",
-   "unit_status": {
-    "S-QSG412": "complete"
-   }
-  },
-  {
-   "id": "A6",
-   "path": "reflection.example.alternative",
-   "lang": "zh",
-   "sentence": "历史原文没有记下这类权衡，这里只是作者给的备选。",
-   "verdict": "supported",
-   "source_ids": [
-    "S-QSG412"
-   ],
-   "scope": "全传。朝议只记「為朝士所糾，議久不決」，没有记录主张认约、缩期或加复议条款之类的意见。",
-   "quote": {
-    "source_id": "S-QSG412",
-    "quote": "崇厚遽定約，為朝士所糾，議久不決"
-   },
-   "fix": "可以保留。",
-   "unit_status": {
-    "S-QSG412": "complete"
-   }
-  },
-  {
-   "id": "A7",
-   "path": "uncertainty_note",
-   "lang": "zh",
-   "sentence": "崇厚约文与曾纪泽改约内容原文未载，不作补写。",
-   "verdict": "supported",
-   "source_ids": [
-    "S-QSG412"
-   ],
-   "scope": "同 A5。",
-   "quote": {
-    "source_id": "S-QSG412",
-    "quote": "俄以通商、分界、償款三端相要"
-   },
-   "fix": "建议改为「崇厚约文全文与曾纪泽改约内容原文未载」，因为传文已经记下三端要求和界务、商务两项。",
+   "fix": "可保留。如需更准确，可改为「传文对伊犁对峙期间的钱粮没有具体记载，只有『籌西事，尤以節兵裕餉為本謀』一句总评」，避免读者以为传文全无相关说法。",
    "unit_status": {
     "S-QSG412": "complete"
    }
@@ -534,69 +256,69 @@
    "source_ids": [
     "S-QSG412"
    ],
-   "scope": "全传。拒绝金顺之后紧接「八月，錦棠會師曲會」，没有其他说明。",
+   "scope": "《清史稿·左宗棠传》全文。金顺请乘虚袭伊犁一事，传文只记左宗棠一句答语，没有记他的权衡过程。",
    "quote": {
     "source_id": "S-QSG412",
-    "quote": "宗棠曰：「不可。師不以正，彼有辭矣。」八月，錦棠會師曲會"
+    "quote": "時俄方與土耳其戰，金順請乘虛襲伊犁。宗棠曰：「不可。師不以正，彼有辭矣。」"
    },
-   "fix": "可以保留。",
+   "fix": "可保留。英文对应句同。",
    "unit_status": {
     "S-QSG412": "complete"
    }
   },
   {
    "id": "N2",
-   "path": "sections.hook.1",
+   "path": "sections.limits.1",
    "lang": "zh",
-   "sentence": "由西路统兵的锦棠（原文仅作此称，与东路统兵的金顺并非一人）接替。",
+   "sentence": "崇厚约的完整条款与曾纪泽改约的具体内容不在本文所据段落之内，本文不补写。",
    "verdict": "supported",
    "source_ids": [
     "S-QSG412"
    ],
-   "scope": "全传。传文称「錦棠」，不加姓，但同治九年条交代了他是刘松山之兄子。",
+   "scope": "《清史稿·左宗棠传》全文（已通读全篇，并非只读部分段落）。传文只记崇厚约的三端要求、畀俄两河之地、广设领事和索偿卢布五百万元，没有完整条款；曾纪泽改约只记「更前約」，没有具体内容。",
    "quote": {
     "source_id": "S-QSG412",
-    "quote": "九年，松山陣歿，以其兄子錦棠代之"
+    "quote": "崇厚得罪去，命曾紀澤使俄，更前約。"
    },
-   "fix": "改为「锦棠（传中记为刘松山之兄子，与金顺并非一人）」，用传文已有的身份信息代替「仅作此称」。",
+   "fix": "把「不在本文所据段落之内」改为「《左宗棠传》全篇未载」，以准确反映核查范围是全文。uncertainty_note 中英文同句一并修改。",
    "unit_status": {
     "S-QSG412": "complete"
    }
   },
   {
    "id": "N3",
-   "path": "sections.limits.1",
+   "path": "uncertainty_note",
    "lang": "zh",
-   "sentence": "「俄亦懾我兵威」与「和議成」在原文中是并置叙述，两者是否因果，未经证实。",
-   "verdict": "contradicted",
+   "sentence": "崇厚约文与曾纪泽改约内容不在本文所据段落之内，不作补写。",
+   "verdict": "supported",
    "source_ids": [
     "S-QSG412"
    ],
-   "scope": "全传伊犁段。",
+   "scope": "《清史稿·左宗棠传》全文",
    "quote": {
     "source_id": "S-QSG412",
-    "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
+    "quote": "俄以通商、分界、償款三端相要。崇厚遽定約，為朝士所糾，議久不決。"
    },
-   "fix": "改为「史书把俄方慑于兵威、恐事决裂写在和议成之前，呈现为促成和议的原因；这是史书的判断，本文没有用其他材料核验」。",
+   "fix": "改为「《左宗棠传》全篇未载崇厚约文全文与曾纪泽改约内容」。英文「lie outside the passages this piece draws on」相应改为「are not given anywhere in the biography」。",
    "unit_status": {
     "S-QSG412": "complete"
    }
   },
   {
    "id": "N4",
-   "path": "sections.limits.1",
-   "lang": "en",
-   "sentence": "That \"Russia was awed by our military might\" and that \"peace was concluded\" appear side by side in the source; whether one caused the other is unproven.",
-   "verdict": "contradicted",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "这是史书的判断，本文未用其他材料核验。",
+   "verdict": "supported",
    "source_ids": [
     "S-QSG412"
    ],
-   "scope": "同 N3。",
+   "scope": "这句说的是本文自身的取材范围，指本文只据一源，没有断言当时无人核查。传文中「俄亦懾我兵威，恐事遂決裂」确为史书叙述者的判断。",
    "quote": {
     "source_id": "S-QSG412",
-    "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
+    "quote": "而俄亦懾我兵威，恐事遂決裂。"
    },
-   "fix": "Say the history presents Russia's fear of a rupture as leading into the settlement; this is the history's own judgment, not independently checked here.",
+   "fix": "可保留。此句在 limits.1 与 uncertainty_note 中重复出现，可只保留一两处。不得改写成「当时无人核查」一类的说法。",
    "unit_status": {
     "S-QSG412": "complete"
    }
@@ -604,18 +326,18 @@
   {
    "id": "N5",
    "path": "uncertainty_note",
-   "lang": "zh",
-   "sentence": "「俄亦懾我兵威」与「和議成」是并置叙述，因果未经证实。",
-   "verdict": "contradicted",
+   "lang": "en",
+   "sentence": "this is the history's own judgment and has not been independently checked here.",
+   "verdict": "supported",
    "source_ids": [
     "S-QSG412"
    ],
-   "scope": "同 N3。",
+   "scope": "这句是对本文取材的自述，限定词「here」使范围准确。",
    "quote": {
     "source_id": "S-QSG412",
     "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
    },
-   "fix": "同 N3。",
+   "fix": "保留「here」的限定，不要扩展成「no independent verification exists」。",
    "unit_status": {
     "S-QSG412": "complete"
    }
@@ -625,35 +347,16 @@
    "path": "sections.story.1",
    "lang": "zh",
    "sentence": "数字照史书所录，未经核实。",
-   "verdict": "not_a_source_claim",
+   "verdict": "supported",
    "source_ids": [
     "S-QSG412"
    ],
-   "scope": "本文核查流程说明。",
+   "scope": "这句说的是本文的处理方式。卢布五百万元出自左宗棠奏疏的转述，本文未另行核对。",
    "quote": {
     "source_id": "S-QSG412",
-    "quote": "則索償盧布五百萬元"
+    "quote": "及我索地，則索償盧布五百萬元"
    },
-   "fix": "可以保留。也可指出这是左宗棠奏中的说法，而不是史家另行核计的数字。",
-   "unit_status": {
-    "S-QSG412": "complete"
-   }
-  },
-  {
-   "id": "N7",
-   "path": "sections.limits.0",
-   "lang": "zh",
-   "sentence": "成书于1928年，所述与当时档案未必一致。",
-   "verdict": "not_a_source_claim",
-   "source_ids": [
-    "S-QSG412"
-   ],
-   "scope": "泛化的不确定性说明，不是关于传文记载与否的断言。",
-   "quote": {
-    "source_id": "S-QSG412",
-    "quote": "此作品在全世界都属于公有领域"
-   },
-   "fix": "可以保留，但不要暗示存在已知的不一致。可改为「本文未对照档案」。",
+   "fix": "可保留。也可点明数字是奏疏所言、并非史官另记。limits.1「数字照录不核」同理。",
    "unit_status": {
     "S-QSG412": "complete"
    }
@@ -661,29 +364,20 @@
  ],
  "context_issues": [
   {
-   "path": "sections.analysis.2",
-   "problem": "稿件称「俄亦懾我兵威」与和议成「只是并置叙述」，弱化了传文的因果框架。传文用「而……恐事遂決裂」接「明年正月，和議成」，把俄方畏惧决裂写成和议的背景和动因。应如实转述史书的判断，再说明本文未独立核验。",
+   "path": "uncertainty_note",
+   "problem": "英文写成「the cause of the peace settlement」、中文写成「呈现为和议成的原因」，比 limits.1 的「leading into」和 analysis.2 的措辞更强。传文只是把两件事前后并列，没有明言因果。",
    "quote": {
     "source_id": "S-QSG412",
-    "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成，交還伊犁，防海軍皆罷"
-   },
-   "severity": "fix"
-  },
-  {
-   "path": "sections.analysis.1",
-   "problem": "稿件写「左宗棠请借外债，诏拨款五百万、敕自借外国债五百万」，漏掉了中间沈葆桢反对这一转折。诏书是在异议之后力挺左宗棠的。",
-   "quote": {
-    "source_id": "S-QSG412",
-    "quote": "請一借貸外國。沈葆楨尼其議，詔曰：「宗棠以西事自任，國家何惜千萬金。"
+    "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成，交還伊犁"
    },
    "severity": "note"
   },
   {
-   "path": "sections.hook.1",
-   "problem": "锦棠的身份在传文中有交代（刘松山兄子），稿件用「原文仅作此称」，容易让读者以为来源没有提供任何信息。",
+   "path": "sections.analysis.1",
+   "problem": "叙述借款时省略了沈葆桢反对借外债、朝廷随后下诏拨款并准借五百万这一转折，读者会以为借债请求直接获准。",
    "quote": {
     "source_id": "S-QSG412",
-    "quote": "以其兄子錦棠代之"
+    "quote": "請一借貸外國。沈葆楨尼其議，詔曰：「宗棠以西事自任，國家何惜千萬金。"
    },
    "severity": "note"
   }
@@ -691,28 +385,14 @@
  "episode": [
   {
    "source_id": "S-QSG412",
-   "outcome": "传文中，俄国因王师大出而增兵、以兵船震撼京师；左宗棠被召入都，由锦棠接替；俄国也慑于兵威，担心事态决裂。次年正月和议成，俄国交还伊犁，防海之军全部撤罢。",
+   "outcome": "Under the Ili negotiation thread, the court commended Zuo Zongtang's memorial, Chong Hou was punished and dismissed, and Zeng Jize was sent to revise the treaty. Zuo set out for Hami, Russia sent reinforcements, and the coast went on alert. Zuo was then recalled to the capital and replaced by Jintang. The thread ends with the history saying Russia feared an outright rupture; peace was concluded the next year, Ili was returned, and coastal defenses were stood down.",
    "quote": "七月，詔宗棠入都備顧問，以錦棠代之。而俄亦懾我兵威，恐事遂決裂。明年正月，和議成，交還伊犁，防海軍皆罷。",
    "in_evidence": true
   }
  ],
- "additions": [
-  {
-   "id": "QSG4122-E21",
-   "source_id": "S-QSG412",
-   "offset": 3822,
-   "chars": 16,
-   "why": "传文交代了锦棠的身份，他是刘松山之兄子，接替松山统老湘军。稿件写「原文仅作此称」，读者无从得知其来历。补上这一句可以准确交代此人，不必另加否定性说明。"
-  }
- ],
+ "additions": [],
  "additions_failed": [],
  "evidence_sha256": "03217a3d1e42be30075f229b5103eaf552189e07a133a6110f90cfb68b31cd12",
- "outcome": "needs_work",
- "blocking": [
-  "sections.limits.1.zh: contradicted — 「俄亦懾我兵威」与「和議成」在原文中是并置叙述，两者是否因果，未经证实。",
-  "sections.limits.1.en: contradicted — That \"Russia was awed by our military might\" and that \"peace was concluded\" appe",
-  "uncertainty_note.zh: contradicted — 「俄亦懾我兵威」与「和議成」是并置叙述，因果未经证实。",
-  "sections.analysis.2: 稿件称「俄亦懾我兵威」与和议成「只是并置叙述」，弱化了传文的因果框架。传文用「而……恐事遂決裂」接「明年正月，和議成」，把俄方畏惧决裂写成和议的背景和动因。应如实转述史书的判断，再说明本文未独立核验。",
-  "evidence must be expanded first: 1 addition(s) ['QSG4122-E21']"
- ]
+ "outcome": "clean",
+ "blocking": []
 }

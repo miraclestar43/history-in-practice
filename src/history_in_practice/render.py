@@ -159,10 +159,19 @@ def markdown(obj, lang):
     return "\n".join(out) + "\n"
 
 def build(objs, out: Path, base):
-    (out/"email").mkdir(parents=True, exist_ok=True); (out/"site/history").mkdir(parents=True, exist_ok=True)
+    (out/"email").mkdir(parents=True, exist_ok=True); (out/"site/history").mkdir(parents=True, exist_ok=True); (out/"site/data/history").mkdir(parents=True, exist_ok=True)
     index = []
     for o in objs:
         finalize(o)
+        if o.get("status") == "reader_sample":
+            # reader sample on the TEST preview: an admitted article shown before any schedule; listed as 样稿, never emailed
+            public = {k: v for k, v in o.items() if k not in ("evidence_map", "preheader", "editor_log")}
+            rel = f"data/history/samples/{o['edition_id']}.json"; p = out/"site"/rel; p.parent.mkdir(parents=True, exist_ok=True)
+            p.write_text(json.dumps(public, ensure_ascii=False, indent=1), encoding="utf-8")
+            index.append({"edition_id": o["edition_id"], "revision": o["revision"], "edition_date": o["preview_date"], "category": o["category"],
+                          "title": o["title"], "dek": o["dek"], "reading_minutes": o["reading_minutes"], "content_sha256": o["content_sha256"],
+                          "path": rel, "sample": True})
+            continue
         (out/f"email/{o['edition_id']}.html").write_text(email_html(o, base), encoding="utf-8")
         (out/f"email/{o['edition_id']}.txt").write_text(email_text(o, base), encoding="utf-8")
         public = {k: v for k, v in o.items() if k not in ("evidence_map", "preheader", "editor_log")}

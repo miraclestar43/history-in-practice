@@ -12,92 +12,50 @@
   "cli_version": "2.1.308 (Claude Code)",
   "model_reported": "claude-opus-5-5"
  },
- "code_rev": "8645cae",
- "started_at": 1793436792.0714772,
+ "code_rev": "d3c2d98",
+ "started_at": 1793464020.4132216,
  "base_source": "samples/auto/cand-auto-20261030-qsg412-2/final/article.json",
- "base_content_sha256": "7aadd8a34cdb162487382597a98dd08ee0c8292dac005b289c865176e4e0f900",
- "evidence_sha256": "16e98691592f2f549b7263a349f0248630e763aaecce04b8fb381d20a822c189",
- "operator_note": null,
+ "base_content_sha256": "2f9682bb5446502770c41019f77745c249a43bf3e601f64453cc2c5faf187be1",
+ "evidence_sha256": "03217a3d1e42be30075f229b5103eaf552189e07a133a6110f90cfb68b31cd12",
+ "operator_note": "extra attempt beyond max_attempts: owner instruction 2026-10-31 (docs/reviews/SNOW_TEST_INCIDENT_20261031.md, user message): complete the factual repairs; one recorded attempt beyond max_attempts",
  "model_record_sha256": null,
- "prior_record_sha256": "19889b139c6995ea43e3cbceb5a4f1aebe24676702c53a2d73e3e1c865678c1e",
- "attempt": "attempt-6",
- "context_review_sha256": "7977210500a9b61d8bb365d576230d11735b7787f0054e0e43cd99bd027c8cb8",
+ "prior_record_sha256": "994d91d96fb7724eb1d6ff92248d73a9f8cf430c7c5f629baf6dddaab0edc3b4",
+ "attempt": "attempt-7",
+ "context_review_sha256": "939c0425ad331067a2de5fd38854385b2415d5d78b1005ca613b786320e486a4",
  "inherited": [
   {
    "id": "X1",
    "source": "context review",
-   "where": "sections.context.0",
-   "problem": "来源上下文核查（zh）「本文所据材料未录其名，也未写明他与伊犁之事的直接关系；」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG412〕：「帕夏既攻敗妥明降之，遂並有北路伊犁諸城，收其賦入」",
-   "suggestion": "删去此句，改为：帕夏本是安集延部的和硕伯克，曾吞并北路伊犁诸城并收其赋入；其后俄国以回众扰边为由出兵逐回，占了伊犁。"
+   "where": "sections.limits.1",
+   "problem": "来源上下文核查（zh）「「俄亦懾我兵威」与「和議成」在原文中是并置叙述，两者是否因果，未经证实。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG412〕：「而俄亦懾我兵威，恐事遂決裂。明年正月，和議成」",
+   "suggestion": "改为「史书把俄方慑于兵威、恐事决裂写在和议成之前，呈现为促成和议的原因；这是史书的判断，本文没有用其他材料核验」。"
   },
   {
    "id": "X2",
    "source": "context review",
-   "where": "sections.context.0",
-   "problem": "来源上下文核查（en）「The material used here does not give his name or spell out his direct connection to the Ili affair;」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG412〕：「帕夏既攻敗妥明降之，遂並有北路伊犁諸城，收其賦入」",
-   "suggestion": "Replace with: the Pasha, originally a beg of the Andijan, had taken over the northern Ili cities and collected their revenue; Russia then drove out the Muslim forces and seized Ili."
+   "where": "sections.limits.1",
+   "problem": "来源上下文核查（en）「That \"Russia was awed by our military might\" and that \"peace was concluded\" appear side by side in the source; whether one caused the other is unproven.」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG412〕：「而俄亦懾我兵威，恐事遂決裂。明年正月，和議成」",
+   "suggestion": "Say the history presents Russia's fear of a rupture as leading into the settlement; this is the history's own judgment, not independently checked here."
   },
   {
    "id": "X3",
    "source": "context review",
-   "where": "sections.story.6",
-   "problem": "来源上下文核查（zh）「于是左宗棠自请出屯哈密，规复伊犁：金顺出精河为东路，张曜沿特克斯河为中路，锦棠经布鲁特游牧为西路，谭上连等分屯喀什噶尔、阿克苏、哈密为后路声援，合马步卒四万余人——原文只记这一合计数，未记实际投入兵力。」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG412〕：「合馬步卒四萬餘人」",
-   "suggestion": "删去此半句。若要提示，可写「此为部署合计，其后和议成，未交战」。"
+   "where": "uncertainty_note",
+   "problem": "来源上下文核查（zh）「「俄亦懾我兵威」与「和議成」是并置叙述，因果未经证实。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG412〕：「而俄亦懾我兵威，恐事遂決裂。明年正月，和議成」",
+   "suggestion": "同 N3。"
   },
   {
    "id": "X4",
    "source": "context review",
-   "where": "sections.story.6",
-   "problem": "来源上下文核查（en）「The source gives only this combined figure and does not record how many troops were actually committed.」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG412〕：「合馬步卒四萬餘人」",
-   "suggestion": "Delete the sentence."
+   "where": "sections.analysis.2",
+   "problem": "来源上下文核查：稿件称「俄亦懾我兵威」与和议成「只是并置叙述」，弱化了传文的因果框架。传文用「而……恐事遂決裂」接「明年正月，和議成」，把俄方畏惧决裂写成和议的背景和动因。应如实转述史书的判断，再说明本文未独立核验。。来源原文〔S-QSG412〕：「而俄亦懾我兵威，恐事遂決裂。明年正月，和議成，交還伊犁，防海軍皆罷」",
+   "suggestion": null
   },
   {
    "id": "X5",
    "source": "context review",
-   "where": "sections.limits.1",
-   "problem": "来源上下文核查（zh）「崇厚所定约的完整条款、曾纪泽改约的具体内容、交还伊犁之外还议了什么，原文未载，本文不补写。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG412〕：「並請與俄議還伊犁、交叛人二事。詔遣全權大臣崇厚使俄。俄以通商、分界、償款三端相要」",
-   "suggestion": "改为：传文记有议题，即还伊犁、交叛人，以及俄方所提的通商、分界、偿款；崇厚约只录了偿款五百万卢布、割陬尔果斯河与帖克斯河一带、广设领事等要点，未载全文；曾纪泽改约的具体内容未载。"
-  },
-  {
-   "id": "X6",
-   "source": "context review",
-   "where": "reflection.example.alternative",
-   "problem": "来源上下文核查（zh）「历史原文没有记下这类权衡，这里只是作者给的备选。」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG412〕：「崇厚遽定約，為朝士所糾，議久不決」",
-   "suggestion": "删去前半句，保留「这是作者给的备选」。"
-  },
-  {
-   "id": "X7",
-   "source": "context review",
-   "where": "sections.hook.1",
-   "problem": "来源上下文核查（zh）「由西路统兵的锦棠（原文仅作此称，与东路统兵的金顺并非一人）接替。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG412〕：「九年，松山陣歿，以其兄子錦棠代之」",
-   "suggestion": "改为「刘松山之侄锦棠（即刘锦棠）」，删去「原文仅作此称」。"
-  },
-  {
-   "id": "X8",
-   "source": "context review",
-   "where": "sections.hook.1",
-   "problem": "来源上下文核查（en）「Jintang (as the source calls him; a different man from Jin Shun, who led the eastern column)」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG412〕：「九年，松山陣歿，以其兄子錦棠代之」",
-   "suggestion": "Say Liu Jintang, nephew of Liu Songshan, and drop \"as the source calls him\"."
-  },
-  {
-   "id": "X9",
-   "source": "context review",
-   "where": "sections.story.1",
-   "problem": "来源上下文核查（zh）「数字照史书所录，未经核实。」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG412〕：「則索償盧布五百萬元」",
-   "suggestion": "删去此句，保留 limits.1 中的统一说明。"
-  },
-  {
-   "id": "X10",
-   "source": "context review",
-   "where": "sections.context.0",
-   "problem": "来源上下文核查：稿件把帕夏写成只交代英、俄插手背景的人物。实际上传文先写他吞并北路伊犁诸城，紧接着写俄国「逐回，取伊犁」，因果链被截断了。。来源原文〔S-QSG412〕：「帕夏既攻敗妥明降之，遂並有北路伊犁諸城，收其賦入」",
-   "suggestion": null
-  },
-  {
-   "id": "X11",
-   "source": "context review",
    "where": "",
-   "problem": "证据包已按来源上下文补入摘录 QSG4122-E19, QSG4122-E20；请据此检查叙事、结局与因果是否完整准确",
+   "problem": "证据包已按来源上下文补入摘录 QSG4122-E21；请据此检查叙事、结局与因果是否完整准确",
    "suggestion": null
   }
  ],
@@ -105,432 +63,632 @@
  "issues": [
   {
    "id": "F1",
-   "path": "sections.context.0",
+   "path": "sections.hook.1",
    "category": "facts",
    "severity": "fix",
-   "problem": "中英文都称材料“未写明他与伊犁之事的直接关系”，并说这一句“只交代英、俄各自插手的背景”。补入的 E19 明确记载：帕夏攻败妥明后，“遂並有北路伊犁諸城，收其賦入”；随后俄国才“逐回，取伊犁”。现写法与证据相反。改写时须注意：证据中俄国出兵的理由是“以回數擾其邊境”，不能写成帕夏占伊犁直接导致俄国出兵。",
+   "problem": "“锦棠（原文仅作此称……）”/“as the source calls him”是关于完整来源的断言。证据显示传文交代了锦棠的来历：他是松山之兄子，九年接替阵亡的松山。",
+   "evidence": [
+    {
+     "id": "QSG4122-E21",
+     "quote": "九年，松山陣歿，以其兄子錦棠代之"
+    }
+   ],
+   "proposed": "删去括注“原文仅作此称”。中文改为“由松山之侄锦棠（九年接替阵亡的松山统兵）接替”，英文同步改为“Jintang, the nephew of Songshan, whom he had replaced on Songshan's death in battle in the ninth year”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“原文仅作此称／as the source calls him”这类关于来源的断言，改据证据交代锦棠是松山之侄，九年松山阵殁后接替松山。中英同步，并在 ev 中补入 E21。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.hook.1",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "锦棠在开头首次出现，没有说明他是谁、与本事有什么关系，只用“与金顺并非一人”来辨别。英文 Jintang 与 Jin Shun 字形相近，括注反而加重混淆，读者会以为出现了两三个人。",
+   "evidence": [
+    {
+     "id": "QSG4122-E21",
+     "quote": "以其兄子錦棠代之"
+    },
+    {
+     "id": "QSG4122-E12",
+     "quote": "錦棠經布魯特游牧為西路"
+    }
+   ],
+   "proposed": "首次出现时说明身份，例如“左宗棠麾下西路统兵、松山之侄锦棠”，并删去与金顺比较的括注。此后全文统一称“锦棠／Jintang”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "锦棠首次出现时即说明其身份（松山之侄）及其在本次部署中统西路，删去与金顺比较的括注，全文统一称锦棠／Jintang。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.hook.1",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文首次出现的引语（\"first take the matter up in negotiation...\"、\"set out from Suzhou with a coffin in his carriage\"）是译文，但正文没有任何标示，读者会当作原文。说明直到 limits.0 才出现。story.0–5 的英文引语情况相同。",
+   "evidence": [
+    {
+     "id": "QSG4122-E10",
+     "quote": "當先之以議論，委婉而用機，次決之以戰陣，堅忍而求勝"
+    }
+   ],
+   "proposed": "在首次引语处加“(in translation)”或“as the history puts it, in translation”，或在开头一句说明英文引语均为译述。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "在英文首次引语处注明出自史书、为译文，并说明全文英文引语均为译述；第二处引语也加了“(in translation)”。这一说明同样覆盖 story 各段的英文引语。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.hook.1",
+   "category": "readability",
+   "severity": "note",
+   "problem": "开头连续堆叠“四月、五月、七月、明年正月”等年号月份和多个人名，读者在此处还用不上，冲淡了“僵局如何被打破”这条主线。",
+   "evidence": [],
+   "proposed": "hook.1 只保留“上奏—获嘉许—改约—出屯哈密—和议成”的主线，具体月份移到 story.7–8。不删除任何事实。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F5",
+   "path": "sections.context.0",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "context 开头介绍帕夏，却没有先说明他是塞外回酋、据有新疆南北诸城而不受清廷控制。“和硕伯克”“南八城”也没有解释。不了解背景的读者说不清帕夏与清廷、伊犁是什么关系，也说不清为何俄国能借机取伊犁。",
    "evidence": [
     {
      "id": "QSG4122-E19",
-     "quote": "帕夏既攻敗妥明降之，遂並有北路伊犁諸城，收其賦入"
+     "quote": "塞外回酋曰帕夏"
     },
+    {
+     "id": "QSG4122-E19",
+     "quote": "遂並有北路伊犁諸城，收其賦入"
+    }
+   ],
+   "proposed": "首句改为“传中称为『帕夏』的塞外回酋，本是安集延部的一名首领（和硕伯克）”，并点明他据有新疆南北诸城。其余事实不变。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "首句改为先说明帕夏是塞外回酋，并解释和硕伯克是安集延部的首领，补出他畏俄逼迫而闯入边境，点明他据有南北诸城。“南八城”保留为传中称谓。其余事实不变。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F6",
+   "path": "sections.context.0",
+   "category": "causality",
+   "severity": "fix",
+   "problem": "史书直接写俄国“以回數擾其邊境”而出兵。稿件写成“以……为由”、英文写成“citing ... as the reason”，暗示这只是借口，改变了史书的说法。",
+   "evidence": [
     {
      "id": "QSG4122-E19",
      "quote": "俄以回數擾其邊境，遽引兵逐回，取伊犁"
     }
    ],
-   "proposed": "删去“本文所据材料未录其名，也未写明他与伊犁之事的直接关系；这一句只交代英、俄各自插手的背景”。改为：帕夏攻败据乌鲁木齐的妥明后，并有北路伊犁诸城，收其赋入；他通使结援英、俄……其后俄方以回众屡扰其边境为由，出兵逐回，占了伊犁。英文同步修改。",
+   "proposed": "中文改为“史书说，俄国因回众屡扰其边境，出兵逐回，占了伊犁”；英文改为“The history says that because Muslim forces repeatedly raided its border, Russia sent troops...”。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "删去“未写明他与伊犁之事的直接关系”及“只交代背景”的说法。改为据E19写明：帕夏攻败妥明后并有北路伊犁诸城、收其赋入。俄国出兵仍按证据写作“以回众屡扰其边境”，用“其时”承接，没有写成帕夏占伊犁导致俄国出兵。英文同步修改，ev补E19。",
+   "rationale": "把“以……为由／citing as the reason”改为照史书转述其因果：“史书说，俄国因回众屡扰其边境，出兵逐回”。中英同步。",
    "decided_in": "revise_r1"
   },
   {
-   "id": "F2",
-   "path": "sections.context.0",
-   "category": "readability",
+   "id": "F7",
+   "path": "sections.story.6",
+   "category": "facts",
    "severity": "fix",
-   "problem": "帕夏第一次出现时只写“能役使回众的首领”，没有交代他的出身，也没有说明他占据了哪些地方。读者看不出他与伊犁有什么关系，也就不明白俄国为何出兵、伊犁原本在谁手里。这正是本节标题“伊犁在谁手里”要回答的问题。",
+   "problem": "“原文只记这一合计数，未记实际投入兵力”/“does not record how many troops were actually committed”是关于完整来源的未载断言，读者理解也不需要。",
    "evidence": [
     {
-     "id": "QSG4122-E19",
-     "quote": "塞外回酋曰帕夏，本安集延部之和碩伯克也"
-    },
-    {
-     "id": "QSG4122-E19",
-     "quote": "據喀什噶爾，稍蠶食南八城"
+     "id": "QSG4122-E12",
+     "quote": "合馬步卒四萬餘人"
     }
    ],
-   "proposed": "首次出现时补一句身份：帕夏本是安集延部的和硕伯克，据喀什噶尔、蚕食南八城，又并有北路伊犁诸城。妥明等枝节可略，保留与伊犁有关的部分即可。",
+   "proposed": "删去这半句（中英同步）。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "帕夏首次出现处补入出身与据地：本是安集延部的和硕伯克，据喀什噶尔，稍蚕食南八城，又并有北路伊犁诸城。妥明只留一句，因为这一句是帕夏取得伊犁的前因。中英同步。",
+   "rationale": "删去“原文只记这一合计数，未记实际投入兵力”及对应英文，保留合计数。",
    "decided_in": "revise_r1"
   },
   {
-   "id": "F3",
-   "path": "sections.context.3",
-   "category": "readability",
-   "severity": "fix",
-   "problem": "“交叛人”在文中没有交代是谁，读者无从理解这项议题。英文 defectors（投诚者、变节者）与“叛人”含义不符。另外，按 E20，提出议还伊犁时新疆南北其余各城已经收复，本段没有交代这一背景，读者看不出为何此时只剩伊犁这一处问题。",
-   "evidence": [
-    {
-     "id": "QSG4122-E4",
-     "quote": "並請與俄議還伊犁、交叛人二事"
-    },
-    {
-     "id": "QSG4122-E20",
-     "quote": "伯克胡里既納白彥虎，乃效力攻漢城。大軍至，复遁走俄。西四城相繼下"
-    }
-   ],
-   "proposed": "中文补：叛人指收纳了白彦虎、兵败后遁入俄境的伯克胡里等人；其时南疆东、西四城已相继收复。英文把 defectors 改为 the rebels who had fled into Russia，并同步补入上述背景。",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "中文补入两点背景：其时南疆东、西四城已相继收复；“叛人”一项与伯克胡里收纳白彦虎、大军至后遁入俄境一事相关。英文把defectors改为the rebels who had fled into Russia，并同步补入上述背景。ev补E20。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F4",
+   "id": "F8",
    "path": "sections.analysis.2",
-   "category": "quotes",
+   "category": "causality",
    "severity": "fix",
-   "problem": "中文用引号标出原文「俄亦懾我兵威，恐事遂決裂」。英文却写成不带引号的转述，并沿用了史书的第一人称 our，读者会误以为这是作者本人的说法和立场。",
+   "problem": "史书用“而俄亦懾我兵威，恐事遂決裂”紧接“明年正月，和議成”，把俄方畏惧决裂写成和议的缘由。稿件称两者“只是并置叙述/merely set alongside”，削弱了史书自己的判断。",
+   "evidence": [
+    {
+     "id": "QSG4122-E15",
+     "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
+    }
+   ],
+   "proposed": "中文改为“史书在和议成之前写『俄亦懾我兵威，恐事遂決裂』，把俄方畏惧决裂呈现为促成和议的原因；这是史书的判断，本文未用其他材料核验”。英文同步。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "把“只是并置叙述”改为：史书把俄方畏惧决裂呈现为促成和议的原因，这是史书的判断，本文未另行核验。中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F9",
+   "path": "sections.analysis.2",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“史书没有记曾纪泽改约的具体内容，也没有把结果归在某一个人名下”/“gives no substance... does not attach the outcome to any one man's name”是关于完整来源的断言。而且史书确实把结果归因于“俄亦懾我兵威”。",
    "evidence": [
     {
      "id": "QSG4122-E15",
      "quote": "而俄亦懾我兵威，恐事遂決裂"
     }
    ],
-   "proposed": "英文改为：it says, in a phrase translated here, that \"Russia, too, was awed by our military might and feared an outright rupture\"。也可改用第三人称转述，写作 awed by the Qing forces。",
+   "proposed": "删去这一句；如需保留限定，改为“本文所据段落不涉及改约的具体内容”。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "英文改为标明出自史书的引号译述（in a phrase translated here），不再以作者口吻沿用our。中文原已用「」逐字引原文，按同步规则原样重给。",
+   "rationale": "删去关于史书没有记改约内容、没有把结果归于某人的断言；史书自己的归因已照实转述。",
    "decided_in": "revise_r1"
   },
   {
-   "id": "F5",
+   "id": "F10",
+   "path": "sections.limits.1",
+   "category": "causality",
+   "severity": "fix",
+   "problem": "“并置叙述，两者是否因果，未经证实”/“appear side by side... whether one caused the other is unproven”把史书自己给出的因果框架改称为并置。",
+   "evidence": [
+    {
+     "id": "QSG4122-E15",
+     "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
+    }
+   ],
+   "proposed": "中文改为“史书把俄方慑于兵威、恐事决裂写在和议成之前，呈现为促成和议的原因；这是史书的判断，本文未用其他材料核验”。英文改为“The history presents Russia's being awed and fearing a rupture as leading into the settlement; this is the history's own judgment and has not been checked against other material here”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "把“并置叙述、因果未经证实”改为照实转述史书的因果框架，并标明这是史书的判断、本文未另行核验。中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F11",
    "path": "sections.limits.1",
    "category": "facts",
    "severity": "fix",
-   "problem": "中英文都称“交还伊犁之外还议了什么，原文未载”。但证据记载了另外几项议题：左宗棠请议的交叛人，以及俄方所提的通商、分界、偿款三端。说“崇厚约的完整条款未载”成立，说“除伊犁外议了什么未载”不成立。",
+   "problem": "“崇厚所定约的完整条款、曾纪泽改约的具体内容，原文未载”/“are not in the source”是关于完整来源的断言。",
    "evidence": [
-    {
-     "id": "QSG4122-E4",
-     "quote": "並請與俄議還伊犁、交叛人二事"
-    },
     {
      "id": "QSG4122-E5",
      "quote": "俄以通商、分界、償款三端相要"
     }
    ],
-   "proposed": "改为：原文记有议题，即左宗棠所请的还伊犁、交叛人，以及俄方以通商、分界、偿款三端相要；崇厚所定约的完整条款与曾纪泽改约的具体内容原文未载，本文不补写。英文同步修改。",
+   "proposed": "中文改为“崇厚约的完整条款与曾纪泽改约的具体内容不在本文所据段落之内，本文不补写”。英文同步。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "删去“交还伊犁之外还议了什么原文未载”。改为写明原文所记议题：还伊犁、交叛人，以及通商、分界、偿款三端。未载的只限于崇厚约的完整条款和曾纪泽改约的具体内容。中英同步，ev补E4、E5。",
+   "rationale": "把“原文未载／not in the source”改为“不在本文所据段落之内”，只陈述本文依据的范围。",
    "decided_in": "revise_r1"
   },
   {
-   "id": "F6",
-   "path": "sections.story.8",
-   "category": "readability",
-   "severity": "note",
-   "problem": "中文这里写“诏宗棠入都”，其他各处都称“左宗棠”或“他”。同一人的称呼不统一。",
+   "id": "F12",
+   "path": "uncertainty_note",
+   "category": "causality",
+   "severity": "fix",
+   "problem": "“「俄亦懾我兵威」与「和議成」是并置叙述，因果未经证实”削弱了史书给出的因果说法，与 F10 同类。",
    "evidence": [
     {
      "id": "QSG4122-E15",
-     "quote": "詔宗棠入都備顧問"
+     "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
+    }
+   ],
+   "proposed": "中文改为“史书把俄方慑于兵威、恐事决裂呈现为和议成的原因，这是史书的判断，本文未另行核验”。英文同步。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "与 F10 同步，改为史书把俄方慑于兵威、恐事决裂呈现为和议成的原因，这是史书的判断，本文未另行核验。中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F13",
+   "path": "uncertainty_note",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“崇厚约文与曾纪泽改约内容原文未载”/“are not in the source”是关于完整来源的断言。",
+   "evidence": [],
+   "proposed": "中文改为“崇厚约文与曾纪泽改约内容不在本文所据段落之内，不作补写”。英文同步。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "把“原文未载／not in the source”改为“不在本文所据段落之内”。中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F14",
+   "path": "reflection.example.alternative",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“历史原文没有记下这类权衡”/“The historical source records no such weighing”是关于完整来源的未载断言，读者理解也不需要。",
+   "evidence": [],
+   "proposed": "删去这半句，保留“这里只是作者给的备选”。英文同步。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“历史原文没有记下这类权衡”及对应英文，只保留“作者给的备选”的说明。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F15",
+   "path": "sections.story.8",
+   "category": "readability",
+   "severity": "note",
+   "problem": "中文前文一直称“左宗棠”，此处忽然改称“宗棠”，与“锦棠”并列，易被误读为另一人。",
+   "evidence": [
+    {
+     "id": "QSG4122-E15",
+     "quote": "詔宗棠入都備顧問，以錦棠代之"
     }
    ],
    "proposed": "改为“诏左宗棠入都备顾问”。",
    "origin": "final-editor audit"
   },
   {
-   "id": "F7",
-   "path": "sections.story.3",
-   "category": "style",
-   "severity": "note",
-   "problem": "“想「欲藉通商深入腹地」”中，“想”与引文里的“欲”意思重复。",
-   "evidence": [
-    {
-     "id": "QSG4122-E8",
-     "quote": "欲藉通商深入腹地"
-    }
-   ],
-   "proposed": "删去“想”，写作“俄国政府广设领事，「欲藉通商深入腹地」”。",
-   "origin": "final-editor audit"
-  },
-  {
-   "id": "F8",
-   "path": "sections.hook.1",
+   "id": "F16",
+   "path": "sections.context.1",
    "category": "readability",
    "severity": "note",
-   "problem": "英文 Suzhou 指肃州，但英文读者通常会以为是江苏的苏州。context.1 和 story.7 也有同样问题。",
+   "problem": "“伊犁之变”与上一段俄国取伊犁的关系、肃州在部署中的作用都没有点明，读者不易接上上一段。",
    "evidence": [
     {
-     "id": "QSG4122-E13",
-     "quote": "宗棠輿櫬發肅州"
+     "id": "QSG4122-E3",
+     "quote": "而是時有伊犁之變，詔宗棠分兵屯肅州"
     }
    ],
-   "proposed": "首次出现时写作 Suzhou (Jiuquan, in Gansu)，或加注 Suzhou in Gansu，此后沿用 Suzhou。",
+   "proposed": "中文改为“俄取伊犁之后（传中称‘伊犁之变’），朝廷诏左宗棠分兵屯肃州”，不增加其他事实。",
    "origin": "final-editor audit"
   },
   {
    "id": "X1",
-   "problem": "来源上下文核查（zh）「本文所据材料未录其名，也未写明他与伊犁之事的直接关系；」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG412〕：「帕夏既攻敗妥明降之，遂並有北路伊犁諸城，收其賦入」",
-   "origin": "inherited context review None",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "sections.context.0",
-   "disposition": "duplicate",
-   "same_as": "F1",
-   "rationale": "成立。E19 明确记载帕夏并有北路伊犁诸城，现写法与证据矛盾。建议稿中“以回众扰边为由”与证据相符，不能写成帕夏导致俄国出兵。"
-  },
-  {
-   "id": "X2",
-   "problem": "来源上下文核查（en）「The material used here does not give his name or spell out his direct connection to the Ili affair;」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG412〕：「帕夏既攻敗妥明降之，遂並有北路伊犁諸城，收其賦入」",
-   "origin": "inherited context review None",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "sections.context.0",
-   "disposition": "duplicate",
-   "same_as": "F1",
-   "rationale": "英文版与 X1 是同一问题，F1 已覆盖中英文。"
-  },
-  {
-   "id": "X3",
-   "path": "sections.story.6",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "来源上下文核查（zh）「于是左宗棠自请出屯哈密，规复伊犁：金顺出精河为东路，张曜沿特克斯河为中路，锦棠经布鲁特游牧为西路，谭上连等分屯喀什噶尔、阿克苏、哈密为后路声援，合马步卒四万余人——原文只记这一合计数，未记实际投入兵力。」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG412〕：「合馬步卒四萬餘人」",
-   "origin": "inherited context review None",
-   "disposition": "rejected",
-   "rationale": "证据包中关于兵力只有部署合计数，“未记实际投入兵力”如实说明了材料的边界，并非多余或错误。建议改写成“未交战”，这在证据中没有记载，反而属于新增事实。",
-   "evidence": [
-    {
-     "id": "QSG4122-E12",
-     "quote": "合馬步卒四萬餘人"
-    }
-   ],
-   "decided_in": "audit"
-  },
-  {
-   "id": "X4",
-   "path": "sections.story.6",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "来源上下文核查（en）「The source gives only this combined figure and does not record how many troops were actually committed.」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG412〕：「合馬步卒四萬餘人」",
-   "origin": "inherited context review None",
-   "disposition": "rejected",
-   "rationale": "理由同 X3。英文这句限定与证据相符，可以保留。",
-   "evidence": [
-    {
-     "id": "QSG4122-E12",
-     "quote": "合馬步卒四萬餘人"
-    }
-   ],
-   "decided_in": "audit"
-  },
-  {
-   "id": "X5",
-   "problem": "来源上下文核查（zh）「崇厚所定约的完整条款、曾纪泽改约的具体内容、交还伊犁之外还议了什么，原文未载，本文不补写。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG412〕：「並請與俄議還伊犁、交叛人二事。詔遣全權大臣崇厚使俄。俄以通商、分界、償款三端相要」",
+   "problem": "来源上下文核查（zh）「「俄亦懾我兵威」与「和議成」在原文中是并置叙述，两者是否因果，未经证实。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG412〕：「而俄亦懾我兵威，恐事遂決裂。明年正月，和議成」",
    "origin": "inherited context review None",
    "severity": "fix",
    "category": "unsupported",
    "path": "sections.limits.1",
    "disposition": "duplicate",
-   "same_as": "F5",
-   "rationale": "成立。原文记有交叛人与通商、分界、偿款等议题。但建议稿把“偿款五百万卢布”“广设领事”直接说成崇厚约的条款，证据并未这样记载：E6 写的是“及我索地”时俄方索偿，E8 写的是俄政府的意图。所以按 F5 的较窄写法改。"
+   "same_as": "F10",
+   "rationale": "成立。史书用“而……恐事遂決裂”接“和議成”，给出了因果框架，limits.1 中文写成“并置叙述”削弱了它。"
   },
   {
-   "id": "X6",
-   "path": "reflection.example.alternative",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "来源上下文核查（zh）「历史原文没有记下这类权衡，这里只是作者给的备选。」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG412〕：「崇厚遽定約，為朝士所糾，議久不決」",
+   "id": "X2",
+   "problem": "来源上下文核查（en）「That \"Russia was awed by our military might\" and that \"peace was concluded\" appear side by side in the source; whether one caused the other is unproven.」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG412〕：「而俄亦懾我兵威，恐事遂決裂。明年正月，和議成」",
    "origin": "inherited context review None",
-   "disposition": "rejected",
-   "rationale": "证据只记载“议久不决”，没有记下认账而争取缩短期限之类的权衡。“历史原文没有记下这类权衡”是准确的界限说明，用来区分史实与作者的建议，应当保留。",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.limits.1",
+   "disposition": "duplicate",
+   "same_as": "F10",
+   "rationale": "与 X1 是同一处问题的英文版。"
+  },
+  {
+   "id": "X3",
+   "problem": "来源上下文核查（zh）「「俄亦懾我兵威」与「和議成」是并置叙述，因果未经证实。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG412〕：「而俄亦懾我兵威，恐事遂決裂。明年正月，和議成」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "uncertainty_note",
+   "disposition": "duplicate",
+   "same_as": "F12",
+   "rationale": "uncertainty_note 中的同一削弱写法。"
+  },
+  {
+   "id": "X4",
+   "problem": "来源上下文核查：稿件称「俄亦懾我兵威」与和议成「只是并置叙述」，弱化了传文的因果框架。传文用「而……恐事遂決裂」接「明年正月，和議成」，把俄方畏惧决裂写成和议的背景和动因。应如实转述史书的判断，再说明本文未独立核验。。来源原文〔S-QSG412〕：「而俄亦懾我兵威，恐事遂決裂。明年正月，和議成，交還伊犁，防海軍皆罷」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.analysis.2",
+   "disposition": "duplicate",
+   "same_as": "F8",
+   "rationale": "analysis.2 称“只是并置叙述”，弱化了传文的因果表述。"
+  },
+  {
+   "id": "X5",
+   "problem": "证据包已按来源上下文补入摘录 QSG4122-E21；请据此检查叙事、结局与因果是否完整准确",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "E21 交代了锦棠是松山之兄子，hook.1 的“原文仅作此称”因此不成立，应据此说明其身份。"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.hook.1",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "“六年四月……七月……九年松山阵殁”连排，读者会以为“九年”在“六年”之后，和锦棠在六年已统西路矛盾。两个年份其实属于不同的年号纪年，稿件没有区分，造成时序错乱的印象。中英文同样如此。",
    "evidence": [
     {
-     "id": "QSG4122-E5",
-     "quote": "為朝士所糾，議久不決"
+     "id": "QSG4122-E21",
+     "quote": "九年，松山陣歿，以其兄子錦棠代之"
+    },
+    {
+     "id": "QSG4122-E13",
+     "quote": "六年四月，宗棠輿櫬發肅州"
     }
    ],
-   "decided_in": "audit"
+   "proposed": "删去“九年”，改为“锦棠是松山之侄，此前松山阵殁，由他接替”。英文同步改为 \"who had earlier replaced Songshan after Songshan died in battle\"。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "从 hook.1 中删去“九年松山阵殁”和六年四月、五月、七月的连排。锦棠的来历移到 story.6，写成“松山阵殁后由他接替”，不带年份，因此不再与“六年”形成时序错觉。中英文同步修改；hook.1 的 ev 中去掉 E13 和 E21。",
+   "decided_in": "revise_r2"
   },
   {
-   "id": "X7",
+   "id": "V1-V2",
    "path": "sections.hook.1",
-   "category": "unsupported",
+   "category": "readability",
    "severity": "fix",
-   "problem": "来源上下文核查（zh）「由西路统兵的锦棠（原文仅作此称，与东路统兵的金顺并非一人）接替。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG412〕：「九年，松山陣歿，以其兄子錦棠代之」",
-   "origin": "inherited context review None",
-   "disposition": "rejected",
-   "rationale": "证据包中此人只作“錦棠”，所引“九年，松山陣歿，以其兄子錦棠代之”不在证据包内，即便如此，那句话也只写“錦棠”。“原文仅作此称”有据。改作“刘锦棠、刘松山之侄”则超出证据。",
+   "problem": "开头连续堆叠六年四月、五月、七月、九年、明年正月等年份，又插入锦棠、松山的承袭关系。松山第一次出现就没有说明身份，锦棠也只用名字，读者在开头还用不上这些信息，反而分不清人物。",
    "evidence": [
+    {
+     "id": "QSG4122-E21",
+     "quote": "松山陣歿，以其兄子錦棠代之"
+    },
     {
      "id": "QSG4122-E12",
      "quote": "錦棠經布魯特游牧為西路"
+    }
+   ],
+   "proposed": "hook.1 保留到“自请出屯哈密”和“明年正月，和议成，交还伊犁”。行程月份和锦棠的来历移到 story.6 或 story.8 锦棠首次出现处，写成“锦棠（统兵将领松山之侄，松山阵殁后代领其军）”。中英文同步修改。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "hook.1 只保留奏疏、获嘉许、曾纪泽改约、自请出屯哈密和交还伊犁几项。因为删去月份后“明年”失去参照，改为“此后和议成”。行程月份已在 story.7、story.8 中写到。锦棠的身份改在 story.6 他首次出现处括注，写为“松山之侄，松山阵殁后由他接替”；证据没有交代松山的职衔，所以不加“统兵将领”。story.6 的 ev 增加 E21。中英文同步修改。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V3",
+   "path": "sections.context.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“南北诸城都在他手里”超出证据。传文对南路只说“稍蠶食南八城”，北路是“並有北路伊犁諸城”，并未说南北诸城尽归帕夏。英文 \"holding cities both south and north\" 同样是一句没有必要的概括。",
+   "evidence": [
+    {
+     "id": "QSG4122-E19",
+     "quote": "據喀什噶爾，稍蠶食南八城"
     },
     {
-     "id": "QSG4122-E15",
-     "quote": "以錦棠代之"
+     "id": "QSG4122-E19",
+     "quote": "遂並有北路伊犁諸城，收其賦入"
     }
    ],
-   "decided_in": "audit"
-  },
-  {
-   "id": "X8",
-   "path": "sections.hook.1",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "来源上下文核查（en）「Jintang (as the source calls him; a different man from Jin Shun, who led the eastern column)」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG412〕：「九年，松山陣歿，以其兄子錦棠代之」",
-   "origin": "inherited context review None",
-   "disposition": "rejected",
-   "rationale": "理由同 X7。证据包内没有“刘”姓，也没有提到刘松山。",
-   "evidence": [
-    {
-     "id": "QSG4122-E15",
-     "quote": "以錦棠代之"
-    }
-   ],
-   "decided_in": "audit"
-  },
-  {
-   "id": "X9",
-   "path": "sections.story.1",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "来源上下文核查（zh）「数字照史书所录，未经核实。」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG412〕：「則索償盧布五百萬元」",
-   "origin": "inherited context review None",
-   "disposition": "rejected",
-   "rationale": "这句不是断言来源缺载什么，而是对史书所录数字的核实限定，与证据一致，中英文也对应。是否与 limits.1 重复属于文风问题，不构成事实错误。",
-   "evidence": [
-    {
-     "id": "QSG4122-E6",
-     "quote": "則索償盧布五百萬元"
-    }
-   ],
-   "decided_in": "audit"
-  },
-  {
-   "id": "X10",
-   "problem": "来源上下文核查：稿件把帕夏写成只交代英、俄插手背景的人物。实际上传文先写他吞并北路伊犁诸城，紧接着写俄国「逐回，取伊犁」，因果链被截断了。。来源原文〔S-QSG412〕：「帕夏既攻敗妥明降之，遂並有北路伊犁諸城，收其賦入」",
-   "origin": "inherited context review None",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "sections.context.0",
-   "disposition": "duplicate",
-   "same_as": "F1",
-   "rationale": "成立，指的是帕夏与伊犁之间的关系被截断。证据中俄国出兵的理由是回众扰边，改写时只能按先后叙述，不能写成帕夏导致俄国出兵的因果关系。"
-  },
-  {
-   "id": "X11",
-   "path": "",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "证据包已按来源上下文补入摘录 QSG4122-E19, QSG4122-E20；请据此检查叙事、结局与因果是否完整准确",
-   "origin": "inherited context review None",
-   "audit_rationale": "已据 E19、E20 复核。帕夏与伊犁的关系见 F1、F2；“叛人”的来由以及请议时新疆其余各城已经收复，见 F3。金顺请袭伊犁一事与 E20 一致，context.1 已标为“另记一事”，时序上没有问题。",
+   "proposed": "删去“南北诸城都在他手里”，英文删去 \", holding cities both south and north\"。",
+   "origin": "final-editor verify round 1",
    "disposition": "fixed",
-   "rationale": "已据E19、E20复核并改写。context.0补入帕夏出身及其并有伊犁诸城一事。context.3补入叛人的来由，以及请议时南疆各城已经收复。金顺请袭伊犁一事与E20一致，context.1已作“另记一事”处理，不改。",
-   "decided_in": "revise_r1"
+   "rationale": "删去中文“南北诸城都在他手里”和英文“, holding cities both south and north”。证据对南路只写“稍蠶食南八城”，对北路写“並有北路伊犁諸城”，不能概括为南北诸城尽归帕夏。",
+   "decided_in": "revise_r2"
   }
  ],
  "edits": [
   {
-   "path": "sections.context.0.zh",
-   "before": "先看这份奏疏落在什么样的局面里。传中所称的「帕夏」，是一位能役使回众的首领，他通使结援英、俄，购买兵械自备；英人暗中相助，想让他别立一国，用以屏障俄国。本文所据材料未录其名，也未写明他与伊犁之事的直接关系；这一句只交代英、俄各自插手的背景。俄方则因回众屡扰其边境，出兵逐回，占了伊犁，还说要代取乌鲁木齐。",
-   "after": "先看这份奏疏落在什么样的局面里。传中所称的「帕夏」，本是安集延部的和硕伯克，据喀什噶尔，稍蚕食南八城，又攻败据乌鲁木齐的妥明，遂并有北路伊犁诸城，收其赋入。他能役使回众，通使结援英、俄，购买兵械自备；英人暗中相助，想让他别立一国，用以屏障俄国。其时俄方以回众屡扰其边境为由，出兵逐回，占了伊犁，还说要代取乌鲁木齐。",
+   "path": "sections.hook.1.zh",
+   "before": "僵局之中，以西事自任的左宗棠上奏，逐条点出哪几处不可许，主张「先之以議論，委婉而用機，次決之以戰陣，堅忍而求勝」。奏上获嘉许，崇厚得罪去，朝廷命曾纪泽使俄改约；他于是自请出屯哈密。六年四月（原文年号纪年），他「輿櫬發肅州」，五月抵哈密。七月，他奉诏入都备顾问，由西路统兵的锦棠（原文仅作此称，与东路统兵的金顺并非一人）接替。明年正月，和议成，交还伊犁。",
+   "after": "僵局之中，以西事自任的左宗棠上奏，逐条点出哪几处不可许，主张「先之以議論，委婉而用機，次決之以戰陣，堅忍而求勝」。奏上获嘉许，崇厚得罪去，朝廷命曾纪泽使俄改约；他于是自请出屯哈密。六年四月（原文年号纪年），他「輿櫬發肅州」，五月抵哈密。七月，他奉诏入都备顾问，由锦棠接替。锦棠是松山之侄，九年松山阵殁后接替松山；在左宗棠此番的部署中，他统西路。明年正月，和议成，交还伊犁。",
+   "issues": [
+    "F1",
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "Into that deadlock stepped Zuo Zongtang, who had taken the western affairs upon himself, with a memorial. Item by item he named the terms that must not be accepted, and argued that one should \"first take the matter up in negotiation, tactful and alert to opportunity, then settle it on the field of battle, patient and set on victory.\" The throne commended it; Chong Hou was punished and dismissed, and the court sent Zeng Jize to Russia to revise the treaty. Zuo then asked leave to move his headquarters to Hami. In the fourth month of the sixth year (by the reign-year count used in the source) he \"set out from Suzhou with a coffin in his carriage,\" and reached Hami in the fifth month. In the seventh month he was summoned to the capital and Jintang (as the source calls him; a different man from Jin Shun, who led the eastern column), who led the western column, took his place. In the first month of the following year, peace was concluded and Ili was returned.",
+   "after": "Into that deadlock stepped Zuo Zongtang, who had taken the western affairs upon himself, with a memorial. Item by item he named the terms that must not be accepted, and argued — in the history's words, given here in translation, as are all English quotations in this piece — that one should \"first take the matter up in negotiation, tactful and alert to opportunity, then settle it on the field of battle, patient and set on victory.\" The throne commended it; Chong Hou was punished and dismissed, and the court sent Zeng Jize to Russia to revise the treaty. Zuo then asked leave to move his headquarters to Hami. In the fourth month of the sixth year (by the reign-year count used in the source) he \"set out from Suzhou with a coffin in his carriage\" (in translation), and reached Hami in the fifth month. In the seventh month he was summoned to the capital as an adviser, and Jintang took his place. Jintang was Songshan's nephew, who had replaced Songshan after Songshan died in battle in the ninth year; in Zuo's present deployment he led the western column. In the first month of the following year, peace was concluded and Ili was returned.",
    "issues": [
     "F1",
     "F2",
-    "X11"
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.hook.1.ev",
+   "before": [
+    "QSG4122-E10",
+    "QSG4122-E11",
+    "QSG4122-E12",
+    "QSG4122-E13",
+    "QSG4122-E15",
+    "QSG4122-E17"
+   ],
+   "after": [
+    "QSG4122-E10",
+    "QSG4122-E11",
+    "QSG4122-E12",
+    "QSG4122-E13",
+    "QSG4122-E15",
+    "QSG4122-E17",
+    "QSG4122-E21"
+   ],
+   "issues": [
+    "F1",
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.context.0.zh",
+   "before": "先看这份奏疏落在什么样的局面里。传中所称的「帕夏」，本是安集延部的和硕伯克，据喀什噶尔，稍蚕食南八城，又攻败据乌鲁木齐的妥明，遂并有北路伊犁诸城，收其赋入。他能役使回众，通使结援英、俄，购买兵械自备；英人暗中相助，想让他别立一国，用以屏障俄国。其时俄方以回众屡扰其边境为由，出兵逐回，占了伊犁，还说要代取乌鲁木齐。",
+   "after": "先看这份奏疏落在什么样的局面里。传中称为「帕夏」的塞外回酋，本是安集延部的一名首领（和硕伯克），因畏俄国逼迫而闯入边境。他据喀什噶尔，逐步蚕食南路诸城（传中称「南八城」），又攻败据乌鲁木齐的妥明，遂并有北路伊犁诸城，收其赋入，南北诸城都在他手里。他能役使回众，通使结援英、俄，购买兵械自备；英人暗中相助，想让他别立一国，用以屏障俄国。史书说，其时俄国因回众屡扰其边境，出兵逐回，占了伊犁，还说要代取乌鲁木齐。",
+   "issues": [
+    "F5",
+    "F6"
    ]
   },
   {
    "path": "sections.context.0.en",
-   "before": "Start with the situation the memorial landed in. The figure the biography calls the Pasha was a leader who could command the Muslim population; he sent envoys to seek support from Britain and Russia, and bought weapons to arm his own forces. The British backed him quietly, hoping to see him set up a separate state that would stand as a shield against Russia. The material used here does not give his name or spell out his direct connection to the Ili affair; this line serves only to show how Britain and Russia each had a hand in the region. Russia, for its part, because Muslim raiders repeatedly harassed its border, sent troops to drive them out, seized Ili, and announced that it would go on to take Urumqi on China's behalf.",
-   "after": "Start with the situation the memorial landed in. The figure the biography calls the Pasha had originally been a heshuo beg of the Andijan people. He seized Kashgar and gradually encroached on the eight southern cities. He then defeated Tuoming, who held Urumqi, and so took over the northern cities of Ili and collected their revenues. He could command the Muslim population, sent envoys to seek support from Britain and Russia, and bought weapons to arm his own forces. The British backed him quietly, hoping to see him set up a separate state that would stand as a shield against Russia. At that time Russia sent troops, citing repeated Muslim raids on its border as the reason. It drove the raiders out, seized Ili, and announced that it would go on to take Urumqi on China's behalf.",
+   "before": "Start with the situation the memorial landed in. The figure the biography calls the Pasha had originally been a heshuo beg of the Andijan people. He seized Kashgar and gradually encroached on the eight southern cities. He then defeated Tuoming, who held Urumqi, and so took over the northern cities of Ili and collected their revenues. He could command the Muslim population, sent envoys to seek support from Britain and Russia, and bought weapons to arm his own forces. The British backed him quietly, hoping to see him set up a separate state that would stand as a shield against Russia. At that time Russia sent troops, citing repeated Muslim raids on its border as the reason. It drove the raiders out, seized Ili, and announced that it would go on to take Urumqi on China's behalf.",
+   "after": "Start with the situation the memorial landed in. The figure the biography calls the Pasha was a Muslim chieftain from beyond the frontier, originally a heshuo beg — a local chief — of the Andijan people, who, fearing pressure from Russia, crossed into the frontier region. He seized Kashgar and gradually encroached on the southern cities (the biography's \"eight southern cities\"). He then defeated Tuoming, who held Urumqi, and so took over the northern cities of Ili and collected their revenues, holding cities both south and north. He could command the Muslim population, sent envoys to seek support from Britain and Russia, and bought weapons to arm his own forces. The British backed him quietly, hoping to see him set up a separate state that would stand as a shield against Russia. The history says that at that time, because Muslim forces repeatedly raided its border, Russia sent troops, drove them out, seized Ili, and announced that it would go on to take Urumqi on China's behalf.",
    "issues": [
-    "F1",
-    "F2",
-    "X11"
+    "F5",
+    "F6"
    ]
   },
   {
-   "path": "sections.context.0.ev",
-   "before": [
-    "QSG4122-E1",
-    "QSG4122-E2"
-   ],
-   "after": [
-    "QSG4122-E1",
-    "QSG4122-E2",
-    "QSG4122-E19"
-   ],
+   "path": "sections.story.6.zh",
+   "before": "奏上，上壮其言，嘉许之，崇厚得罪去，命曾纪泽使俄更前约。于是左宗棠自请出屯哈密，规复伊犁：金顺出精河为东路，张曜沿特克斯河为中路，锦棠经布鲁特游牧为西路，谭上连等分屯喀什噶尔、阿克苏、哈密为后路声援，合马步卒四万余人——原文只记这一合计数，未记实际投入兵力。",
+   "after": "奏上，上壮其言，嘉许之，崇厚得罪去，命曾纪泽使俄更前约。于是左宗棠自请出屯哈密，规复伊犁：金顺出精河为东路，张曜沿特克斯河为中路，锦棠经布鲁特游牧为西路，谭上连等分屯喀什噶尔、阿克苏、哈密为后路声援，合马步卒四万余人。",
    "issues": [
-    "F1",
-    "F2",
-    "X11"
+    "F7"
    ]
   },
   {
-   "path": "sections.context.3.zh",
-   "before": "四年正月，他条上新疆建行省事宜，并请与俄国议两件事：还伊犁、交叛人。朝廷诏遣全权大臣崇厚使俄。",
-   "after": "四年正月，他条上新疆建行省事宜，并请与俄国议两件事：还伊犁、交叛人。其时南疆东、西四城已相继收复；“叛人”一项，与传文前文所记一事相关：伯克胡里收纳白彦虎，大军至后又遁入俄境。朝廷诏遣全权大臣崇厚使俄。",
+   "path": "sections.story.6.en",
+   "before": "The memorial went up. The throne found the words stirring and commended them; Chong Hou was punished and dismissed, and Zeng Jize was sent to Russia to revise the earlier treaty. Thereupon Zuo volunteered to take the field at Hami and plan the recovery of Ili: Jin Shun would advance on Jinghe as the eastern column, Zhang Yao along the Tekes as the central column, and Jintang through the Burut grazing lands as the western column, while Tan Shanglian and others garrisoned Kashgar, Aksu, and Hami in support along the line of communications — more than forty thousand cavalry and infantry all told. The source gives only this combined figure and does not record how many troops were actually committed.",
+   "after": "The memorial went up. The throne found the words stirring and commended them; Chong Hou was punished and dismissed, and Zeng Jize was sent to Russia to revise the earlier treaty. Thereupon Zuo volunteered to take the field at Hami and plan the recovery of Ili: Jin Shun would advance on Jinghe as the eastern column, Zhang Yao along the Tekes as the central column, and Jintang through the Burut grazing lands as the western column, while Tan Shanglian and others garrisoned Kashgar, Aksu, and Hami in support along the line of communications — more than forty thousand cavalry and infantry all told.",
    "issues": [
-    "F3",
-    "X11"
+    "F7"
    ]
   },
   {
-   "path": "sections.context.3.en",
-   "before": "In the first month of the fourth year, he submitted a plan for turning Xinjiang into a regular province, and asked the court to negotiate two matters with Russia: the return of Ili, and the surrender of the defectors. The court sent Chong Hou, a plenipotentiary, to Russia.",
-   "after": "In the first month of the fourth year, he submitted a plan for turning Xinjiang into a regular province. He also asked the court to negotiate two matters with Russia: the return of Ili, and the handing over of the rebels who had fled into Russia. By then the eastern and western four cities of southern Xinjiang had been recovered in turn. The rebels item relates to an episode recorded earlier in the biography: Bek Quli took in Bai Yanhu, and when the main army arrived he fled into Russia. The court sent Chong Hou, a plenipotentiary, to Russia.",
+   "path": "sections.analysis.2.zh",
+   "before": "至于成败，史书记了和议成、交还伊犁；在此之前另称「俄亦懾我兵威，恐事遂決裂」，但这与和议成只是并置叙述。史书没有记曾纪泽改约的具体内容，也没有把结果归在某一个人名下。把这段读成主战就对、主和就错的教训，超出了材料能说的话。",
+   "after": "至于成败，史书记了和议成、交还伊犁；在此之前写「俄亦懾我兵威，恐事遂決裂」，把俄方畏惧决裂呈现为促成和议的原因；这是史书的判断，本文未用其他材料核验。把这段读成主战就对、主和就错的教训，超出了材料能说的话。",
    "issues": [
-    "F3",
-    "X11"
-   ]
-  },
-  {
-   "path": "sections.context.3.ev",
-   "before": [
-    "QSG4122-E4",
-    "QSG4122-E5"
-   ],
-   "after": [
-    "QSG4122-E4",
-    "QSG4122-E5",
-    "QSG4122-E20"
-   ],
-   "issues": [
-    "F3",
-    "X11"
+    "F8",
+    "F9"
    ]
   },
   {
    "path": "sections.analysis.2.en",
-   "before": "As for success and failure, the history records that peace was concluded and Ili returned; just before that, it says that Russia, too, was awed by our military might and feared an outright rupture, but this is merely set alongside the conclusion of peace. It gives no substance for Zeng Jize's revision of the treaty, and it does not attach the outcome to any one man's name. To read this episode as a lesson that the war party was right and the peace party wrong goes beyond what the material can support.",
-   "after": "As for success and failure, the history records that peace was concluded and Ili returned. Just before that, it says, in a phrase translated here, that \"Russia, too, was awed by our military might and feared an outright rupture,\" but this is merely set alongside the conclusion of peace. It gives no substance for Zeng Jize's revision of the treaty, and it does not attach the outcome to any one man's name. To read this episode as a lesson that the war party was right and the peace party wrong goes beyond what the material can support.",
+   "before": "As for success and failure, the history records that peace was concluded and Ili returned. Just before that, it says, in a phrase translated here, that \"Russia, too, was awed by our military might and feared an outright rupture,\" but this is merely set alongside the conclusion of peace. It gives no substance for Zeng Jize's revision of the treaty, and it does not attach the outcome to any one man's name. To read this episode as a lesson that the war party was right and the peace party wrong goes beyond what the material can support.",
+   "after": "As for success and failure, the history records that peace was concluded and Ili returned. Just before that, it says, in a phrase translated here, that \"Russia, too, was awed by our military might and feared an outright rupture,\" presenting Russia's fear of a rupture as what led to the settlement; this is the history's own judgment, and it has not been checked against other material here. To read this episode as a lesson that the war party was right and the peace party wrong goes beyond what the material can support.",
    "issues": [
-    "F4"
+    "F8",
+    "F9"
    ]
   },
   {
    "path": "sections.limits.1.zh",
-   "before": "编年照原文年号，不换算公元年份；数字照录不核：卢布五百万元、马步卒四万余人、出塞二十月。崇厚所定约的完整条款、曾纪泽改约的具体内容、交还伊犁之外还议了什么，原文未载，本文不补写。「俄亦懾我兵威」与「和議成」在原文中是并置叙述，两者是否因果，未经证实。",
-   "after": "编年照原文年号，不换算公元年份；数字照录不核：卢布五百万元、马步卒四万余人、出塞二十月。原文记有议题：左宗棠所请的还伊犁、交叛人，以及俄方以通商、分界、偿款三端相要；但崇厚所定约的完整条款、曾纪泽改约的具体内容，原文未载，本文不补写。「俄亦懾我兵威」与「和議成」在原文中是并置叙述，两者是否因果，未经证实。",
+   "before": "编年照原文年号，不换算公元年份；数字照录不核：卢布五百万元、马步卒四万余人、出塞二十月。原文记有议题：左宗棠所请的还伊犁、交叛人，以及俄方以通商、分界、偿款三端相要；但崇厚所定约的完整条款、曾纪泽改约的具体内容，原文未载，本文不补写。「俄亦懾我兵威」与「和議成」在原文中是并置叙述，两者是否因果，未经证实。",
+   "after": "编年照原文年号，不换算公元年份；数字照录不核：卢布五百万元、马步卒四万余人、出塞二十月。原文记有议题：左宗棠所请的还伊犁、交叛人，以及俄方以通商、分界、偿款三端相要；崇厚约的完整条款与曾纪泽改约的具体内容不在本文所据段落之内，本文不补写。史书把俄方慑于兵威、恐事决裂写在和议成之前，呈现为促成和议的原因；这是史书的判断，本文未用其他材料核验。",
    "issues": [
-    "F5"
+    "F10",
+    "F11"
    ]
   },
   {
    "path": "sections.limits.1.en",
-   "before": "Dates follow the reign years of the original and are not converted to Western years; figures are copied as given and not checked: five million rubles, more than forty thousand cavalry and infantry, twenty months beyond the passes. The full terms of Chong Hou's treaty, the substance of Zeng Jize's revision, and what else was negotiated besides the return of Ili are not in the source, and this piece does not fill them in. That \"Russia was awed by our military might\" and that \"peace was concluded\" appear side by side in the source; whether one caused the other is unproven.",
-   "after": "Dates follow the reign years of the original and are not converted to Western years. Figures are copied as given and not checked: five million rubles, more than forty thousand cavalry and infantry, twenty months beyond the passes. The source does record the agenda: the return of Ili and the handing over of the rebels, which Zuo requested, and Russia's three heads of demand, namely trade, borders, and indemnity. But the full terms of Chong Hou's treaty and the substance of Zeng Jize's revision are not in the source, and this piece does not fill them in. That \"Russia was awed by our military might\" and that \"peace was concluded\" appear side by side in the source; whether one caused the other is unproven.",
+   "before": "Dates follow the reign years of the original and are not converted to Western years. Figures are copied as given and not checked: five million rubles, more than forty thousand cavalry and infantry, twenty months beyond the passes. The source does record the agenda: the return of Ili and the handing over of the rebels, which Zuo requested, and Russia's three heads of demand, namely trade, borders, and indemnity. But the full terms of Chong Hou's treaty and the substance of Zeng Jize's revision are not in the source, and this piece does not fill them in. That \"Russia was awed by our military might\" and that \"peace was concluded\" appear side by side in the source; whether one caused the other is unproven.",
+   "after": "Dates follow the reign years of the original and are not converted to Western years. Figures are copied as given and not checked: five million rubles, more than forty thousand cavalry and infantry, twenty months beyond the passes. The source does record the agenda: the return of Ili and the handing over of the rebels, which Zuo requested, and Russia's three heads of demand, namely trade, borders, and indemnity. The full terms of Chong Hou's treaty and the substance of Zeng Jize's revision lie outside the passages this piece draws on, and this piece does not fill them in. The history presents Russia's being awed and fearing a rupture as leading into the settlement; this is the history's own judgment and has not been checked against other material here.",
    "issues": [
-    "F5"
+    "F10",
+    "F11"
    ]
   },
   {
-   "path": "sections.limits.1.ev",
+   "path": "uncertainty_note.zh",
+   "before": "本文只据《清史稿·左宗棠传》一个史源，成书于1928年，所述与当时档案未必一致；奏疏与对话是史书记述，未必逐字。编年照原文年号，数字照录不核；「俄亦懾我兵威」与「和議成」是并置叙述，因果未经证实；崇厚约文与曾纪泽改约内容原文未载，不作补写。",
+   "after": "本文只据《清史稿·左宗棠传》一个史源，成书于1928年，所述与当时档案未必一致；奏疏与对话是史书记述，未必逐字。编年照原文年号，数字照录不核；史书把俄方慑于兵威、恐事决裂呈现为和议成的原因，这是史书的判断，本文未另行核验；崇厚约文与曾纪泽改约内容不在本文所据段落之内，不作补写。",
+   "issues": [
+    "F12",
+    "F13"
+   ]
+  },
+  {
+   "path": "uncertainty_note.en",
+   "before": "This piece relies on a single source, the biography of Zuo Zongtang in the Draft History of the Qing, compiled in 1928, and its account may not match the archives of the time. The memorial and the dialogue are the history's renderings and may not be verbatim. Dates follow the original reign years; figures are copied as given and not checked. That \"Russia was awed by our military might\" and that \"peace was concluded\" appear side by side in the source, and the causal link is unproven. Chong Hou's treaty text and the substance of Zeng Jize's revision are not in the source and are not filled in here.",
+   "after": "This piece relies on a single source, the biography of Zuo Zongtang in the Draft History of the Qing, compiled in 1928, and its account may not match the archives of the time. The memorial and the dialogue are the history's renderings and may not be verbatim. Dates follow the original reign years; figures are copied as given and not checked. The history presents Russia's being awed by military might and fearing a rupture as the cause of the peace settlement; this is the history's own judgment and has not been independently checked here. Chong Hou's treaty text and the substance of Zeng Jize's revision lie outside the passages this piece draws on and are not filled in here.",
+   "issues": [
+    "F12",
+    "F13"
+   ]
+  },
+  {
+   "path": "reflection.example.alternative.zh",
+   "before": "另一种做法是作者提出的：认账止损，但争取缩短期限、加复议点或对等条款。历史原文没有记下这类权衡，这里只是作者给的备选。",
+   "after": "另一种做法是作者提出的：认账止损，但争取缩短期限、加复议点或对等条款。这里只是作者给的备选。",
+   "issues": [
+    "F14"
+   ]
+  },
+  {
+   "path": "reflection.example.alternative.en",
+   "before": "The other approach, the one the author suggests, is to accept the deal and cut losses while pressing for a shorter term, review points, or reciprocal clauses. The historical source records no such weighing; this is simply the alternative the author offers.",
+   "after": "The other approach, the one the author suggests, is to accept the deal and cut losses while pressing for a shorter term, review points, or reciprocal clauses. This is simply the alternative the author offers.",
+   "issues": [
+    "F14"
+   ]
+  },
+  {
+   "path": "sections.hook.1.zh",
+   "before": "僵局之中，以西事自任的左宗棠上奏，逐条点出哪几处不可许，主张「先之以議論，委婉而用機，次決之以戰陣，堅忍而求勝」。奏上获嘉许，崇厚得罪去，朝廷命曾纪泽使俄改约；他于是自请出屯哈密。六年四月（原文年号纪年），他「輿櫬發肅州」，五月抵哈密。七月，他奉诏入都备顾问，由锦棠接替。锦棠是松山之侄，九年松山阵殁后接替松山；在左宗棠此番的部署中，他统西路。明年正月，和议成，交还伊犁。",
+   "after": "僵局之中，以西事自任的左宗棠上奏，逐条点出哪几处不可许，主张「先之以議論，委婉而用機，次決之以戰陣，堅忍而求勝」。奏上获嘉许，崇厚得罪去，朝廷命曾纪泽使俄改约；他于是自请出屯哈密。此后和议成，交还伊犁。",
+   "issues": [
+    "V1-V1",
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "Into that deadlock stepped Zuo Zongtang, who had taken the western affairs upon himself, with a memorial. Item by item he named the terms that must not be accepted, and argued — in the history's words, given here in translation, as are all English quotations in this piece — that one should \"first take the matter up in negotiation, tactful and alert to opportunity, then settle it on the field of battle, patient and set on victory.\" The throne commended it; Chong Hou was punished and dismissed, and the court sent Zeng Jize to Russia to revise the treaty. Zuo then asked leave to move his headquarters to Hami. In the fourth month of the sixth year (by the reign-year count used in the source) he \"set out from Suzhou with a coffin in his carriage\" (in translation), and reached Hami in the fifth month. In the seventh month he was summoned to the capital as an adviser, and Jintang took his place. Jintang was Songshan's nephew, who had replaced Songshan after Songshan died in battle in the ninth year; in Zuo's present deployment he led the western column. In the first month of the following year, peace was concluded and Ili was returned.",
+   "after": "Into that deadlock stepped Zuo Zongtang, who had taken the western affairs upon himself, with a memorial. Item by item he named the terms that must not be accepted, and argued — in the history's words, given here in translation, as are all English quotations in this piece — that one should \"first take the matter up in negotiation, tactful and alert to opportunity, then settle it on the field of battle, patient and set on victory.\" The throne commended it; Chong Hou was punished and dismissed, and the court sent Zeng Jize to Russia to revise the treaty. Zuo then asked leave to move his headquarters to Hami. Afterward, peace was concluded and Ili was returned.",
+   "issues": [
+    "V1-V1",
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.hook.1.ev",
    "before": [
-    "QSG4122-E6",
+    "QSG4122-E10",
+    "QSG4122-E11",
     "QSG4122-E12",
+    "QSG4122-E13",
     "QSG4122-E15",
-    "QSG4122-E18"
+    "QSG4122-E17",
+    "QSG4122-E21"
    ],
    "after": [
-    "QSG4122-E4",
-    "QSG4122-E5",
-    "QSG4122-E6",
+    "QSG4122-E10",
+    "QSG4122-E11",
     "QSG4122-E12",
     "QSG4122-E15",
-    "QSG4122-E18"
+    "QSG4122-E17"
    ],
    "issues": [
-    "F5"
+    "V1-V1",
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.story.6.zh",
+   "before": "奏上，上壮其言，嘉许之，崇厚得罪去，命曾纪泽使俄更前约。于是左宗棠自请出屯哈密，规复伊犁：金顺出精河为东路，张曜沿特克斯河为中路，锦棠经布鲁特游牧为西路，谭上连等分屯喀什噶尔、阿克苏、哈密为后路声援，合马步卒四万余人。",
+   "after": "奏上，上壮其言，嘉许之，崇厚得罪去，命曾纪泽使俄更前约。于是左宗棠自请出屯哈密，规复伊犁：金顺出精河为东路，张曜沿特克斯河为中路，锦棠（松山之侄，松山阵殁后由他接替）经布鲁特游牧为西路，谭上连等分屯喀什噶尔、阿克苏、哈密为后路声援，合马步卒四万余人。",
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.story.6.en",
+   "before": "The memorial went up. The throne found the words stirring and commended them; Chong Hou was punished and dismissed, and Zeng Jize was sent to Russia to revise the earlier treaty. Thereupon Zuo volunteered to take the field at Hami and plan the recovery of Ili: Jin Shun would advance on Jinghe as the eastern column, Zhang Yao along the Tekes as the central column, and Jintang through the Burut grazing lands as the western column, while Tan Shanglian and others garrisoned Kashgar, Aksu, and Hami in support along the line of communications — more than forty thousand cavalry and infantry all told.",
+   "after": "The memorial went up. The throne found the words stirring and commended them; Chong Hou was punished and dismissed, and Zeng Jize was sent to Russia to revise the earlier treaty. Thereupon Zuo volunteered to take the field at Hami and plan the recovery of Ili: Jin Shun would advance on Jinghe as the eastern column, Zhang Yao along the Tekes as the central column, and Jintang — Songshan's nephew, who had taken Songshan's place after Songshan died in battle — through the Burut grazing lands as the western column, while Tan Shanglian and others garrisoned Kashgar, Aksu, and Hami in support along the line of communications — more than forty thousand cavalry and infantry all told.",
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.story.6.ev",
+   "before": [
+    "QSG4122-E11",
+    "QSG4122-E12"
+   ],
+   "after": [
+    "QSG4122-E11",
+    "QSG4122-E12",
+    "QSG4122-E21"
+   ],
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.context.0.zh",
+   "before": "先看这份奏疏落在什么样的局面里。传中称为「帕夏」的塞外回酋，本是安集延部的一名首领（和硕伯克），因畏俄国逼迫而闯入边境。他据喀什噶尔，逐步蚕食南路诸城（传中称「南八城」），又攻败据乌鲁木齐的妥明，遂并有北路伊犁诸城，收其赋入，南北诸城都在他手里。他能役使回众，通使结援英、俄，购买兵械自备；英人暗中相助，想让他别立一国，用以屏障俄国。史书说，其时俄国因回众屡扰其边境，出兵逐回，占了伊犁，还说要代取乌鲁木齐。",
+   "after": "先看这份奏疏落在什么样的局面里。传中称为「帕夏」的塞外回酋，本是安集延部的一名首领（和硕伯克），因畏俄国逼迫而闯入边境。他据喀什噶尔，逐步蚕食南路诸城（传中称「南八城」），又攻败据乌鲁木齐的妥明，遂并有北路伊犁诸城，收其赋入。他能役使回众，通使结援英、俄，购买兵械自备；英人暗中相助，想让他别立一国，用以屏障俄国。史书说，其时俄国因回众屡扰其边境，出兵逐回，占了伊犁，还说要代取乌鲁木齐。",
+   "issues": [
+    "V1-V3"
+   ]
+  },
+  {
+   "path": "sections.context.0.en",
+   "before": "Start with the situation the memorial landed in. The figure the biography calls the Pasha was a Muslim chieftain from beyond the frontier, originally a heshuo beg — a local chief — of the Andijan people, who, fearing pressure from Russia, crossed into the frontier region. He seized Kashgar and gradually encroached on the southern cities (the biography's \"eight southern cities\"). He then defeated Tuoming, who held Urumqi, and so took over the northern cities of Ili and collected their revenues, holding cities both south and north. He could command the Muslim population, sent envoys to seek support from Britain and Russia, and bought weapons to arm his own forces. The British backed him quietly, hoping to see him set up a separate state that would stand as a shield against Russia. The history says that at that time, because Muslim forces repeatedly raided its border, Russia sent troops, drove them out, seized Ili, and announced that it would go on to take Urumqi on China's behalf.",
+   "after": "Start with the situation the memorial landed in. The figure the biography calls the Pasha was a Muslim chieftain from beyond the frontier, originally a heshuo beg — a local chief — of the Andijan people, who, fearing pressure from Russia, crossed into the frontier region. He seized Kashgar and gradually encroached on the southern cities (the biography's \"eight southern cities\"). He then defeated Tuoming, who held Urumqi, and so took over the northern cities of Ili and collected their revenues. He could command the Muslim population, sent envoys to seek support from Britain and Russia, and bought weapons to arm his own forces. The British backed him quietly, hoping to see him set up a separate state that would stand as a shield against Russia. The history says that at that time, because Muslim forces repeatedly raided its border, Russia sent troops, drove them out, seized Ili, and announced that it would go on to take Urumqi on China's behalf.",
+   "issues": [
+    "V1-V3"
    ]
   }
  ],
@@ -541,11 +699,18 @@
     "F1",
     "F2",
     "F3",
-    "F4",
     "F5",
-    "X11"
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "F10",
+    "F11",
+    "F12",
+    "F13",
+    "F14"
    ],
-   "changes_applied": 10,
+   "changes_applied": 15,
    "changes_failed": [],
    "still_open": [],
    "checker_after": [
@@ -562,7 +727,7 @@
      "limits[1] numbers differ zh[20, 40000, 5000000] en[20, 40000]"
     ]
    ],
-   "content_sha256_after": "2f9682bb5446502770c41019f77745c249a43bf3e601f64453cc2c5faf187be1",
+   "content_sha256_after": "cb57b812e8e99695974e1675382f9712d39ea5d106fae9ac958f8fcc54258820",
    "verify": {
     "fields": [
      {
@@ -634,7 +799,9 @@
        "parity"
       ],
       "issue_ids": [
-       "V1"
+       "V1",
+       "V2",
+       "V6"
       ]
      },
      {
@@ -663,7 +830,9 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": []
+      "issue_ids": [
+       "V3"
+      ]
      },
      {
       "path": "sections.context.1",
@@ -705,7 +874,9 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": []
+      "issue_ids": [
+       "V4"
+      ]
      },
      {
       "path": "sections.story.heading",
@@ -775,7 +946,9 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": []
+      "issue_ids": [
+       "V5"
+      ]
      },
      {
       "path": "sections.story.4",
@@ -887,9 +1060,7 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": [
-       "V2"
-      ]
+      "issue_ids": []
      },
      {
       "path": "sections.analysis.2",
@@ -1078,34 +1249,728 @@
      {
       "id": "V1",
       "path": "sections.hook.1",
+      "category": "chronology",
+      "severity": "fix",
+      "problem": "“六年四月……七月……九年松山阵殁”连排，读者会以为“九年”在“六年”之后，和锦棠在六年已统西路矛盾。两个年份其实属于不同的年号纪年，稿件没有区分，造成时序错乱的印象。中英文同样如此。",
+      "evidence": [
+       {
+        "id": "QSG4122-E21",
+        "quote": "九年，松山陣歿，以其兄子錦棠代之"
+       },
+       {
+        "id": "QSG4122-E13",
+        "quote": "六年四月，宗棠輿櫬發肅州"
+       }
+      ],
+      "proposed": "删去“九年”，改为“锦棠是松山之侄，此前松山阵殁，由他接替”。英文同步改为 \"who had earlier replaced Songshan after Songshan died in battle\"。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.hook.1",
+      "category": "readability",
+      "severity": "fix",
+      "problem": "开头连续堆叠六年四月、五月、七月、九年、明年正月等年份，又插入锦棠、松山的承袭关系。松山第一次出现就没有说明身份，锦棠也只用名字，读者在开头还用不上这些信息，反而分不清人物。",
+      "evidence": [
+       {
+        "id": "QSG4122-E21",
+        "quote": "松山陣歿，以其兄子錦棠代之"
+       },
+       {
+        "id": "QSG4122-E12",
+        "quote": "錦棠經布魯特游牧為西路"
+       }
+      ],
+      "proposed": "hook.1 保留到“自请出屯哈密”和“明年正月，和议成，交还伊犁”。行程月份和锦棠的来历移到 story.6 或 story.8 锦棠首次出现处，写成“锦棠（统兵将领松山之侄，松山阵殁后代领其军）”。中英文同步修改。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.context.0",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "“南北诸城都在他手里”超出证据。传文对南路只说“稍蠶食南八城”，北路是“並有北路伊犁諸城”，并未说南北诸城尽归帕夏。英文 \"holding cities both south and north\" 同样是一句没有必要的概括。",
+      "evidence": [
+       {
+        "id": "QSG4122-E19",
+        "quote": "據喀什噶爾，稍蠶食南八城"
+       },
+       {
+        "id": "QSG4122-E19",
+        "quote": "遂並有北路伊犁諸城，收其賦入"
+       }
+      ],
+      "proposed": "删去“南北诸城都在他手里”，英文删去 \", holding cities both south and north\"。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.context.3",
       "category": "readability",
       "severity": "note",
-      "problem": "开头第二段连续堆叠六年四月、五月、七月、明年正月等年月。段中还在读者尚未认识「锦棠」「金顺」时插入括注，说明两人不是同一人，读者暂时用不上这些信息。开头讲清问题本身不受影响，但人物与年份过密。交接细节在 story.6 和 story.8 中已完整交代。",
+      "problem": "伯克胡里、白彦虎第一次出现，没有说明他们与帕夏的关系，读者不明白为什么他们是“叛人”。",
+      "evidence": [
+       {
+        "id": "QSG4122-E20",
+        "quote": "帕夏飲藥死，其子伯克胡里戕其弟，走喀什噶爾"
+       },
+       {
+        "id": "QSG4122-E19",
+        "quote": "白彥虎竄處烏城，仍隸帕夏"
+       }
+      ],
+      "proposed": "改为“帕夏死后，其子伯克胡里收纳了原隶帕夏、据乌鲁木齐的白彦虎……”，英文同步修改。"
+     },
+     {
+      "id": "V5",
+      "path": "sections.story.3",
+      "category": "style",
+      "severity": "note",
+      "problem": "“想「欲藉通商深入腹地」”中“想”与“欲”语义重复。",
+      "evidence": [
+       {
+        "id": "QSG4122-E8",
+        "quote": "欲藉通商深入腹地"
+       }
+      ],
+      "proposed": "改为“俄国政府广设领事，「欲藉通商深入腹地」”。"
+     },
+     {
+      "id": "V6",
+      "path": "sections.hook.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "英文把肃州译作 Suzhou（hook.1、context.1、story.7），易与江苏苏州混淆。",
+      "evidence": [
+       {
+        "id": "QSG4122-E13",
+        "quote": "宗棠輿櫬發肅州"
+       }
+      ],
+      "proposed": "英文首次出现处写作 \"Suzhou (in Gansu)\"，或统一译作 \"Suzhou (Jiuquan)\"，全文保持一致。"
+     }
+    ],
+    "overall": "定稿引文、归属和解释标注基本准确，需修正：hook.1 的“九年”年份造成时序误读，锦棠、松山的背景前置使开头过载；context.0 有一句超出证据的概括。其余为易读性和文风小问题。",
+    "_content_sha256": "cb57b812e8e99695974e1675382f9712d39ea5d106fae9ac958f8fcc54258820"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1",
+    "V1-V2",
+    "V1-V3"
+   ],
+   "changes_applied": 8,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[1] numbers differ zh[5000000] en[100]"
+    ],
+    [
+     "CHECK",
+     "analysis[1] numbers differ zh[20, 5000000] en[20]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[20, 40000, 5000000] en[20, 40000]"
+    ]
+   ],
+   "content_sha256_after": "3ee64882467592e25078bada27cd22440bc76071e6d60f39177b017814be026c",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.context.3",
+      "category": "readability",
+      "severity": "note",
+      "problem": "伯克胡里、白彦虎首次出现，稿件没有说明身份。读者不知道他们与前文的帕夏是什么关系，也就难以理解“叛人”一项从何而来。",
+      "evidence": [
+       {
+        "id": "QSG4122-E20",
+        "quote": "帕夏飲藥死，其子伯克胡里戕其弟，走喀什噶爾"
+       },
+       {
+        "id": "QSG4122-E19",
+        "quote": "白彥虎竄處烏城，仍隸帕夏"
+       }
+      ],
+      "proposed": "zh 改为“伯克胡里（帕夏之子）收纳白彦虎（曾据乌鲁木齐、隶属帕夏）”；en 相应改为“Bek Quli, the Pasha's son, took in Bai Yanhu, who had held Urumqi under the Pasha”。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.story.6",
+      "category": "readability",
+      "severity": "note",
+      "problem": "括注用“松山”来说明锦棠的来历，但全文没有交代松山是谁，读者仍然不清楚锦棠与本事的关系。",
+      "evidence": [
+       {
+        "id": "QSG4122-E21",
+        "quote": "九年，松山陣歿，以其兄子錦棠代之"
+       }
+      ],
+      "proposed": "括注改为“（统兵将领松山之侄，松山阵殁后接替其统兵）”；en 相应改为“nephew of the commander Songshan, whose troops he took over after Songshan died in battle”。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.story.8",
+      "category": "readability",
+      "severity": "note",
+      "problem": "全文其他地方都称“左宗棠”或“左”，此处改用“宗棠”。称呼不统一，容易让读者以为是另一个人。",
       "evidence": [
        {
         "id": "QSG4122-E15",
         "quote": "七月，詔宗棠入都備顧問，以錦棠代之"
        }
       ],
-      "proposed": "hook.1 可删去「七月……接替」一句及其括注，改为「此后他奉诏入都，明年正月和议成，交还伊犁」。锦棠与金顺的区分留到 story.6 首次列出三路时再说明。英文同步修改。"
+      "proposed": "zh 将“诏宗棠入都”改为“诏左宗棠入都”。"
      },
      {
-      "id": "V2",
-      "path": "sections.analysis.1",
-      "category": "readability",
+      "id": "V4",
+      "path": "sections.story.0",
+      "category": "style",
       "severity": "note",
-      "problem": "「拨款五百万」「借外国债五百万」没有交代单位，原文也未记单位。读者容易把它和 story.1 的「卢布五百万元」混为一类。",
+      "problem": "同一段内两次叙述“崇厚为朝士所纠、议久不决”，语义重复。",
       "evidence": [
        {
-        "id": "QSG4122-E17",
-        "quote": "為撥款五百萬，敕自借外國債五百萬"
+        "id": "QSG4122-E5",
+        "quote": "為朝士所糾，議久不決"
        }
       ],
-      "proposed": "在数字后加注「（原文未记单位）」，英文同步写作 \"five million (the source gives no unit)\"。不要补写具体币种。"
+      "proposed": "删去重复句，改为“约成之后，崇厚为朝士所纠，朝廷议久不决，事情悬在半空。”；en 同步删去重复句。"
+     },
+     {
+      "id": "V5",
+      "path": "sections.story.3",
+      "category": "style",
+      "severity": "note",
+      "problem": "“想「欲藉通商深入腹地」”中“想”与引文里的“欲”意思重复，读来拗口。",
+      "evidence": [
+       {
+        "id": "QSG4122-E8",
+        "quote": "欲藉通商深入腹地"
+       }
+      ],
+      "proposed": "改为“俄国政府广设领事，「欲藉通商深入腹地」”。"
      }
     ],
-    "overall": "逐字段核对后，事实、引文、归属、因果与中英对照均有证据支持，未发现需阻断或必须修改的问题；开头能让读者说清困境，只有两处易读性小问题可酌情调整。",
-    "_content_sha256": "2f9682bb5446502770c41019f77745c249a43bf3e601f64453cc2c5faf187be1"
+    "overall": "事实、引文、归因与因果标注均有证据支持，中英一致，没有需要拦截的问题；建议补足伯克胡里、白彦虎、松山的身份说明，统一“左宗棠”的称呼，并删去两处文字重复。",
+    "_content_sha256": "3ee64882467592e25078bada27cd22440bc76071e6d60f39177b017814be026c"
    }
   }
  ],
@@ -1175,7 +2040,10 @@
      "parity"
     ],
     "issue_ids": [
-     "F8"
+     "F1",
+     "F2",
+     "F3",
+     "F4"
     ]
    },
    {
@@ -1199,8 +2067,8 @@
      "parity"
     ],
     "issue_ids": [
-     "F1",
-     "F2"
+     "F5",
+     "F6"
     ]
    },
    {
@@ -1215,7 +2083,9 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F16"
+    ]
    },
    {
     "path": "sections.context.2",
@@ -1242,9 +2112,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F3"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.story.heading",
@@ -1308,9 +2176,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F7"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.story.4",
@@ -1352,7 +2218,9 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F7"
+    ]
    },
    {
     "path": "sections.story.7",
@@ -1381,14 +2249,13 @@
      "parity"
     ],
     "issue_ids": [
-     "F6"
+     "F15"
     ]
    },
    {
     "path": "sections.analysis.heading",
     "checked": [
      "facts",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1434,7 +2301,8 @@
      "parity"
     ],
     "issue_ids": [
-     "F4"
+     "F8",
+     "F9"
     ]
    },
    {
@@ -1450,7 +2318,6 @@
     "checked": [
      "facts",
      "quotes",
-     "inner_life",
      "parity"
     ],
     "issue_ids": []
@@ -1460,7 +2327,6 @@
     "checked": [
      "facts",
      "quotes",
-     "inner_life",
      "parity"
     ],
     "issue_ids": []
@@ -1496,14 +2362,14 @@
      "parity"
     ],
     "issue_ids": [
-     "F5"
+     "F10",
+     "F11"
     ]
    },
    {
     "path": "reflection.scenario",
     "checked": [
      "facts",
-     "inner_life",
      "parity"
     ],
     "issue_ids": []
@@ -1512,7 +2378,6 @@
     "path": "reflection.question",
     "checked": [
      "facts",
-     "inner_life",
      "parity"
     ],
     "issue_ids": []
@@ -1521,7 +2386,6 @@
     "path": "reflection.example.assumptions",
     "checked": [
      "facts",
-     "inner_life",
      "parity"
     ],
     "issue_ids": []
@@ -1530,7 +2394,6 @@
     "path": "reflection.example.steps",
     "checked": [
      "facts",
-     "inner_life",
      "parity"
     ],
     "issue_ids": []
@@ -1543,303 +2406,318 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F14"
+    ]
    },
    {
     "path": "uncertainty_note",
     "checked": [
      "facts",
      "attribution",
-     "chronology",
      "causality",
      "quotes",
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F12",
+     "F13"
+    ]
    }
   ],
   "issues": [
    {
     "id": "F1",
-    "path": "sections.context.0",
+    "path": "sections.hook.1",
     "category": "facts",
     "severity": "fix",
-    "problem": "中英文都称材料“未写明他与伊犁之事的直接关系”，并说这一句“只交代英、俄各自插手的背景”。补入的 E19 明确记载：帕夏攻败妥明后，“遂並有北路伊犁諸城，收其賦入”；随后俄国才“逐回，取伊犁”。现写法与证据相反。改写时须注意：证据中俄国出兵的理由是“以回數擾其邊境”，不能写成帕夏占伊犁直接导致俄国出兵。",
+    "problem": "“锦棠（原文仅作此称……）”/“as the source calls him”是关于完整来源的断言。证据显示传文交代了锦棠的来历：他是松山之兄子，九年接替阵亡的松山。",
+    "evidence": [
+     {
+      "id": "QSG4122-E21",
+      "quote": "九年，松山陣歿，以其兄子錦棠代之"
+     }
+    ],
+    "proposed": "删去括注“原文仅作此称”。中文改为“由松山之侄锦棠（九年接替阵亡的松山统兵）接替”，英文同步改为“Jintang, the nephew of Songshan, whom he had replaced on Songshan's death in battle in the ninth year”。"
+   },
+   {
+    "id": "F2",
+    "path": "sections.hook.1",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "锦棠在开头首次出现，没有说明他是谁、与本事有什么关系，只用“与金顺并非一人”来辨别。英文 Jintang 与 Jin Shun 字形相近，括注反而加重混淆，读者会以为出现了两三个人。",
+    "evidence": [
+     {
+      "id": "QSG4122-E21",
+      "quote": "以其兄子錦棠代之"
+     },
+     {
+      "id": "QSG4122-E12",
+      "quote": "錦棠經布魯特游牧為西路"
+     }
+    ],
+    "proposed": "首次出现时说明身份，例如“左宗棠麾下西路统兵、松山之侄锦棠”，并删去与金顺比较的括注。此后全文统一称“锦棠／Jintang”。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.hook.1",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文首次出现的引语（\"first take the matter up in negotiation...\"、\"set out from Suzhou with a coffin in his carriage\"）是译文，但正文没有任何标示，读者会当作原文。说明直到 limits.0 才出现。story.0–5 的英文引语情况相同。",
+    "evidence": [
+     {
+      "id": "QSG4122-E10",
+      "quote": "當先之以議論，委婉而用機，次決之以戰陣，堅忍而求勝"
+     }
+    ],
+    "proposed": "在首次引语处加“(in translation)”或“as the history puts it, in translation”，或在开头一句说明英文引语均为译述。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.hook.1",
+    "category": "readability",
+    "severity": "note",
+    "problem": "开头连续堆叠“四月、五月、七月、明年正月”等年号月份和多个人名，读者在此处还用不上，冲淡了“僵局如何被打破”这条主线。",
+    "evidence": [],
+    "proposed": "hook.1 只保留“上奏—获嘉许—改约—出屯哈密—和议成”的主线，具体月份移到 story.7–8。不删除任何事实。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.context.0",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "context 开头介绍帕夏，却没有先说明他是塞外回酋、据有新疆南北诸城而不受清廷控制。“和硕伯克”“南八城”也没有解释。不了解背景的读者说不清帕夏与清廷、伊犁是什么关系，也说不清为何俄国能借机取伊犁。",
     "evidence": [
      {
       "id": "QSG4122-E19",
-      "quote": "帕夏既攻敗妥明降之，遂並有北路伊犁諸城，收其賦入"
+      "quote": "塞外回酋曰帕夏"
      },
+     {
+      "id": "QSG4122-E19",
+      "quote": "遂並有北路伊犁諸城，收其賦入"
+     }
+    ],
+    "proposed": "首句改为“传中称为『帕夏』的塞外回酋，本是安集延部的一名首领（和硕伯克）”，并点明他据有新疆南北诸城。其余事实不变。"
+   },
+   {
+    "id": "F6",
+    "path": "sections.context.0",
+    "category": "causality",
+    "severity": "fix",
+    "problem": "史书直接写俄国“以回數擾其邊境”而出兵。稿件写成“以……为由”、英文写成“citing ... as the reason”，暗示这只是借口，改变了史书的说法。",
+    "evidence": [
      {
       "id": "QSG4122-E19",
       "quote": "俄以回數擾其邊境，遽引兵逐回，取伊犁"
      }
     ],
-    "proposed": "删去“本文所据材料未录其名，也未写明他与伊犁之事的直接关系；这一句只交代英、俄各自插手的背景”。改为：帕夏攻败据乌鲁木齐的妥明后，并有北路伊犁诸城，收其赋入；他通使结援英、俄……其后俄方以回众屡扰其边境为由，出兵逐回，占了伊犁。英文同步修改。"
+    "proposed": "中文改为“史书说，俄国因回众屡扰其边境，出兵逐回，占了伊犁”；英文改为“The history says that because Muslim forces repeatedly raided its border, Russia sent troops...”。"
    },
    {
-    "id": "F2",
-    "path": "sections.context.0",
-    "category": "readability",
+    "id": "F7",
+    "path": "sections.story.6",
+    "category": "facts",
     "severity": "fix",
-    "problem": "帕夏第一次出现时只写“能役使回众的首领”，没有交代他的出身，也没有说明他占据了哪些地方。读者看不出他与伊犁有什么关系，也就不明白俄国为何出兵、伊犁原本在谁手里。这正是本节标题“伊犁在谁手里”要回答的问题。",
+    "problem": "“原文只记这一合计数，未记实际投入兵力”/“does not record how many troops were actually committed”是关于完整来源的未载断言，读者理解也不需要。",
     "evidence": [
      {
-      "id": "QSG4122-E19",
-      "quote": "塞外回酋曰帕夏，本安集延部之和碩伯克也"
-     },
-     {
-      "id": "QSG4122-E19",
-      "quote": "據喀什噶爾，稍蠶食南八城"
+      "id": "QSG4122-E12",
+      "quote": "合馬步卒四萬餘人"
      }
     ],
-    "proposed": "首次出现时补一句身份：帕夏本是安集延部的和硕伯克，据喀什噶尔、蚕食南八城，又并有北路伊犁诸城。妥明等枝节可略，保留与伊犁有关的部分即可。"
+    "proposed": "删去这半句（中英同步）。"
    },
    {
-    "id": "F3",
-    "path": "sections.context.3",
-    "category": "readability",
-    "severity": "fix",
-    "problem": "“交叛人”在文中没有交代是谁，读者无从理解这项议题。英文 defectors（投诚者、变节者）与“叛人”含义不符。另外，按 E20，提出议还伊犁时新疆南北其余各城已经收复，本段没有交代这一背景，读者看不出为何此时只剩伊犁这一处问题。",
-    "evidence": [
-     {
-      "id": "QSG4122-E4",
-      "quote": "並請與俄議還伊犁、交叛人二事"
-     },
-     {
-      "id": "QSG4122-E20",
-      "quote": "伯克胡里既納白彥虎，乃效力攻漢城。大軍至，复遁走俄。西四城相繼下"
-     }
-    ],
-    "proposed": "中文补：叛人指收纳了白彦虎、兵败后遁入俄境的伯克胡里等人；其时南疆东、西四城已相继收复。英文把 defectors 改为 the rebels who had fled into Russia，并同步补入上述背景。"
-   },
-   {
-    "id": "F4",
+    "id": "F8",
     "path": "sections.analysis.2",
-    "category": "quotes",
+    "category": "causality",
     "severity": "fix",
-    "problem": "中文用引号标出原文「俄亦懾我兵威，恐事遂決裂」。英文却写成不带引号的转述，并沿用了史书的第一人称 our，读者会误以为这是作者本人的说法和立场。",
+    "problem": "史书用“而俄亦懾我兵威，恐事遂決裂”紧接“明年正月，和議成”，把俄方畏惧决裂写成和议的缘由。稿件称两者“只是并置叙述/merely set alongside”，削弱了史书自己的判断。",
+    "evidence": [
+     {
+      "id": "QSG4122-E15",
+      "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
+     }
+    ],
+    "proposed": "中文改为“史书在和议成之前写『俄亦懾我兵威，恐事遂決裂』，把俄方畏惧决裂呈现为促成和议的原因；这是史书的判断，本文未用其他材料核验”。英文同步。"
+   },
+   {
+    "id": "F9",
+    "path": "sections.analysis.2",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“史书没有记曾纪泽改约的具体内容，也没有把结果归在某一个人名下”/“gives no substance... does not attach the outcome to any one man's name”是关于完整来源的断言。而且史书确实把结果归因于“俄亦懾我兵威”。",
     "evidence": [
      {
       "id": "QSG4122-E15",
       "quote": "而俄亦懾我兵威，恐事遂決裂"
      }
     ],
-    "proposed": "英文改为：it says, in a phrase translated here, that \"Russia, too, was awed by our military might and feared an outright rupture\"。也可改用第三人称转述，写作 awed by the Qing forces。"
+    "proposed": "删去这一句；如需保留限定，改为“本文所据段落不涉及改约的具体内容”。"
    },
    {
-    "id": "F5",
+    "id": "F10",
+    "path": "sections.limits.1",
+    "category": "causality",
+    "severity": "fix",
+    "problem": "“并置叙述，两者是否因果，未经证实”/“appear side by side... whether one caused the other is unproven”把史书自己给出的因果框架改称为并置。",
+    "evidence": [
+     {
+      "id": "QSG4122-E15",
+      "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
+     }
+    ],
+    "proposed": "中文改为“史书把俄方慑于兵威、恐事决裂写在和议成之前，呈现为促成和议的原因；这是史书的判断，本文未用其他材料核验”。英文改为“The history presents Russia's being awed and fearing a rupture as leading into the settlement; this is the history's own judgment and has not been checked against other material here”。"
+   },
+   {
+    "id": "F11",
     "path": "sections.limits.1",
     "category": "facts",
     "severity": "fix",
-    "problem": "中英文都称“交还伊犁之外还议了什么，原文未载”。但证据记载了另外几项议题：左宗棠请议的交叛人，以及俄方所提的通商、分界、偿款三端。说“崇厚约的完整条款未载”成立，说“除伊犁外议了什么未载”不成立。",
+    "problem": "“崇厚所定约的完整条款、曾纪泽改约的具体内容，原文未载”/“are not in the source”是关于完整来源的断言。",
     "evidence": [
-     {
-      "id": "QSG4122-E4",
-      "quote": "並請與俄議還伊犁、交叛人二事"
-     },
      {
       "id": "QSG4122-E5",
       "quote": "俄以通商、分界、償款三端相要"
      }
     ],
-    "proposed": "改为：原文记有议题，即左宗棠所请的还伊犁、交叛人，以及俄方以通商、分界、偿款三端相要；崇厚所定约的完整条款与曾纪泽改约的具体内容原文未载，本文不补写。英文同步修改。"
+    "proposed": "中文改为“崇厚约的完整条款与曾纪泽改约的具体内容不在本文所据段落之内，本文不补写”。英文同步。"
    },
    {
-    "id": "F6",
-    "path": "sections.story.8",
-    "category": "readability",
-    "severity": "note",
-    "problem": "中文这里写“诏宗棠入都”，其他各处都称“左宗棠”或“他”。同一人的称呼不统一。",
+    "id": "F12",
+    "path": "uncertainty_note",
+    "category": "causality",
+    "severity": "fix",
+    "problem": "“「俄亦懾我兵威」与「和議成」是并置叙述，因果未经证实”削弱了史书给出的因果说法，与 F10 同类。",
     "evidence": [
      {
       "id": "QSG4122-E15",
-      "quote": "詔宗棠入都備顧問"
+      "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
+     }
+    ],
+    "proposed": "中文改为“史书把俄方慑于兵威、恐事决裂呈现为和议成的原因，这是史书的判断，本文未另行核验”。英文同步。"
+   },
+   {
+    "id": "F13",
+    "path": "uncertainty_note",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“崇厚约文与曾纪泽改约内容原文未载”/“are not in the source”是关于完整来源的断言。",
+    "evidence": [],
+    "proposed": "中文改为“崇厚约文与曾纪泽改约内容不在本文所据段落之内，不作补写”。英文同步。"
+   },
+   {
+    "id": "F14",
+    "path": "reflection.example.alternative",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“历史原文没有记下这类权衡”/“The historical source records no such weighing”是关于完整来源的未载断言，读者理解也不需要。",
+    "evidence": [],
+    "proposed": "删去这半句，保留“这里只是作者给的备选”。英文同步。"
+   },
+   {
+    "id": "F15",
+    "path": "sections.story.8",
+    "category": "readability",
+    "severity": "note",
+    "problem": "中文前文一直称“左宗棠”，此处忽然改称“宗棠”，与“锦棠”并列，易被误读为另一人。",
+    "evidence": [
+     {
+      "id": "QSG4122-E15",
+      "quote": "詔宗棠入都備顧問，以錦棠代之"
      }
     ],
     "proposed": "改为“诏左宗棠入都备顾问”。"
    },
    {
-    "id": "F7",
-    "path": "sections.story.3",
-    "category": "style",
-    "severity": "note",
-    "problem": "“想「欲藉通商深入腹地」”中，“想”与引文里的“欲”意思重复。",
-    "evidence": [
-     {
-      "id": "QSG4122-E8",
-      "quote": "欲藉通商深入腹地"
-     }
-    ],
-    "proposed": "删去“想”，写作“俄国政府广设领事，「欲藉通商深入腹地」”。"
-   },
-   {
-    "id": "F8",
-    "path": "sections.hook.1",
+    "id": "F16",
+    "path": "sections.context.1",
     "category": "readability",
     "severity": "note",
-    "problem": "英文 Suzhou 指肃州，但英文读者通常会以为是江苏的苏州。context.1 和 story.7 也有同样问题。",
+    "problem": "“伊犁之变”与上一段俄国取伊犁的关系、肃州在部署中的作用都没有点明，读者不易接上上一段。",
     "evidence": [
      {
-      "id": "QSG4122-E13",
-      "quote": "宗棠輿櫬發肅州"
+      "id": "QSG4122-E3",
+      "quote": "而是時有伊犁之變，詔宗棠分兵屯肅州"
      }
     ],
-    "proposed": "首次出现时写作 Suzhou (Jiuquan, in Gansu)，或加注 Suzhou in Gansu，此后沿用 Suzhou。"
+    "proposed": "中文改为“俄取伊犁之后（传中称‘伊犁之变’），朝廷诏左宗棠分兵屯肃州”，不增加其他事实。"
    }
   ],
   "inherited": [
    {
     "id": "X1",
     "verdict": "duplicate",
-    "same_as": "F1",
-    "rationale": "成立。E19 明确记载帕夏并有北路伊犁诸城，现写法与证据矛盾。建议稿中“以回众扰边为由”与证据相符，不能写成帕夏导致俄国出兵。",
+    "same_as": "F10",
+    "rationale": "成立。史书用“而……恐事遂決裂”接“和議成”，给出了因果框架，limits.1 中文写成“并置叙述”削弱了它。",
     "evidence": [
      {
-      "id": "QSG4122-E19",
-      "quote": "遂並有北路伊犁諸城，收其賦入"
+      "id": "QSG4122-E15",
+      "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
      }
     ]
    },
    {
     "id": "X2",
     "verdict": "duplicate",
-    "same_as": "F1",
-    "rationale": "英文版与 X1 是同一问题，F1 已覆盖中英文。",
+    "same_as": "F10",
+    "rationale": "与 X1 是同一处问题的英文版。",
     "evidence": [
      {
-      "id": "QSG4122-E19",
-      "quote": "遂並有北路伊犁諸城，收其賦入"
+      "id": "QSG4122-E15",
+      "quote": "而俄亦懾我兵威，恐事遂決裂"
      }
     ]
    },
    {
     "id": "X3",
-    "verdict": "invalid",
-    "rationale": "证据包中关于兵力只有部署合计数，“未记实际投入兵力”如实说明了材料的边界，并非多余或错误。建议改写成“未交战”，这在证据中没有记载，反而属于新增事实。",
+    "verdict": "duplicate",
+    "same_as": "F12",
+    "rationale": "uncertainty_note 中的同一削弱写法。",
     "evidence": [
      {
-      "id": "QSG4122-E12",
-      "quote": "合馬步卒四萬餘人"
+      "id": "QSG4122-E15",
+      "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
      }
     ]
    },
    {
     "id": "X4",
-    "verdict": "invalid",
-    "rationale": "理由同 X3。英文这句限定与证据相符，可以保留。",
+    "verdict": "duplicate",
+    "same_as": "F8",
+    "rationale": "analysis.2 称“只是并置叙述”，弱化了传文的因果表述。",
     "evidence": [
      {
-      "id": "QSG4122-E12",
-      "quote": "合馬步卒四萬餘人"
+      "id": "QSG4122-E15",
+      "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成，交還伊犁，防海軍皆罷"
      }
     ]
    },
    {
     "id": "X5",
     "verdict": "duplicate",
-    "same_as": "F5",
-    "rationale": "成立。原文记有交叛人与通商、分界、偿款等议题。但建议稿把“偿款五百万卢布”“广设领事”直接说成崇厚约的条款，证据并未这样记载：E6 写的是“及我索地”时俄方索偿，E8 写的是俄政府的意图。所以按 F5 的较窄写法改。",
-    "evidence": [
-     {
-      "id": "QSG4122-E5",
-      "quote": "俄以通商、分界、償款三端相要"
-     },
-     {
-      "id": "QSG4122-E4",
-      "quote": "交叛人二事"
-     }
-    ]
-   },
-   {
-    "id": "X6",
-    "verdict": "invalid",
-    "rationale": "证据只记载“议久不决”，没有记下认账而争取缩短期限之类的权衡。“历史原文没有记下这类权衡”是准确的界限说明，用来区分史实与作者的建议，应当保留。",
-    "evidence": [
-     {
-      "id": "QSG4122-E5",
-      "quote": "為朝士所糾，議久不決"
-     }
-    ]
-   },
-   {
-    "id": "X7",
-    "verdict": "invalid",
-    "rationale": "证据包中此人只作“錦棠”，所引“九年，松山陣歿，以其兄子錦棠代之”不在证据包内，即便如此，那句话也只写“錦棠”。“原文仅作此称”有据。改作“刘锦棠、刘松山之侄”则超出证据。",
-    "evidence": [
-     {
-      "id": "QSG4122-E12",
-      "quote": "錦棠經布魯特游牧為西路"
-     },
-     {
-      "id": "QSG4122-E15",
-      "quote": "以錦棠代之"
-     }
-    ]
-   },
-   {
-    "id": "X8",
-    "verdict": "invalid",
-    "rationale": "理由同 X7。证据包内没有“刘”姓，也没有提到刘松山。",
-    "evidence": [
-     {
-      "id": "QSG4122-E15",
-      "quote": "以錦棠代之"
-     }
-    ]
-   },
-   {
-    "id": "X9",
-    "verdict": "invalid",
-    "rationale": "这句不是断言来源缺载什么，而是对史书所录数字的核实限定，与证据一致，中英文也对应。是否与 limits.1 重复属于文风问题，不构成事实错误。",
-    "evidence": [
-     {
-      "id": "QSG4122-E6",
-      "quote": "則索償盧布五百萬元"
-     }
-    ]
-   },
-   {
-    "id": "X10",
-    "verdict": "duplicate",
     "same_as": "F1",
-    "rationale": "成立，指的是帕夏与伊犁之间的关系被截断。证据中俄国出兵的理由是回众扰边，改写时只能按先后叙述，不能写成帕夏导致俄国出兵的因果关系。",
+    "rationale": "E21 交代了锦棠是松山之兄子，hook.1 的“原文仅作此称”因此不成立，应据此说明其身份。",
     "evidence": [
      {
-      "id": "QSG4122-E19",
-      "quote": "帕夏既攻敗妥明降之，遂並有北路伊犁諸城"
-     },
-     {
-      "id": "QSG4122-E2",
-      "quote": "俄以回數擾其邊境"
-     }
-    ]
-   },
-   {
-    "id": "X11",
-    "verdict": "valid",
-    "same_as": "",
-    "rationale": "已据 E19、E20 复核。帕夏与伊犁的关系见 F1、F2；“叛人”的来由以及请议时新疆其余各城已经收复，见 F3。金顺请袭伊犁一事与 E20 一致，context.1 已标为“另记一事”，时序上没有问题。",
-    "evidence": [
-     {
-      "id": "QSG4122-E20",
-      "quote": "大軍至，复遁走俄。西四城相繼下"
+      "id": "QSG4122-E21",
+      "quote": "九年，松山陣歿，以其兄子錦棠代之"
      }
     ]
    }
   ]
  },
- "final_content_sha256": "2f9682bb5446502770c41019f77745c249a43bf3e601f64453cc2c5faf187be1",
+ "final_content_sha256": "3ee64882467592e25078bada27cd22440bc76071e6d60f39177b017814be026c",
  "open_issues": [],
  "outcome": "admissible",
  "failure": null,
- "finished_at": 1793437019.0227444,
+ "finished_at": 1793464365.620112,
  "calls": [
   {
    "step": "audit",
    "attempt": 1,
-   "wall_s": 113.1,
+   "wall_s": 108.3,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1847,15 +2725,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 17601,
-    "output_tokens": 12815
+    "cache_creation_input_tokens": 17161,
+    "output_tokens": 12425
    },
-   "cost_estimate_usd": 0.39711599999999997
+   "cost_estimate_usd": 0.38579600000000003
   },
   {
    "step": "revise_r1",
    "attempt": 1,
-   "wall_s": 43.4,
+   "wall_s": 52.2,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1863,15 +2741,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 16580,
-    "output_tokens": 5086
+    "cache_creation_input_tokens": 18573,
+    "output_tokens": 6619
    },
-   "cost_estimate_usd": 0.23436800000000002
+   "cost_estimate_usd": 0.280972
   },
   {
    "step": "verify_r1",
    "attempt": 1,
-   "wall_s": 70.4,
+   "wall_s": 86.6,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1879,12 +2757,44 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 15052,
-    "output_tokens": 7928
+    "cache_creation_input_tokens": 15729,
+    "output_tokens": 9814
    },
-   "cost_estimate_usd": 0.278984
+   "cost_estimate_usd": 0.32212
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 29.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16278,
+    "output_tokens": 3614
+   },
+   "cost_estimate_usd": 0.202512
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 68.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15493,
+    "output_tokens": 7964
+   },
+   "cost_estimate_usd": 0.28323200000000004
   }
  ],
- "elapsed_min": 3.8,
- "model_wall_min": 3.8
+ "elapsed_min": 5.8,
+ "model_wall_min": 5.8
 }

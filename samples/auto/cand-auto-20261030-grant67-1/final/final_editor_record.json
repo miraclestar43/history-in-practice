@@ -12,29 +12,29 @@
   "cli_version": "2.1.308 (Claude Code)",
   "model_reported": "claude-opus-5-5"
  },
- "code_rev": "356462c",
- "started_at": 1793434414.0474198,
+ "code_rev": "d3c2d98",
+ "started_at": 1793463328.9156249,
  "base_source": "samples/auto/cand-auto-20261030-grant67-1/final/article.json",
- "base_content_sha256": "fd82039212838c388f7415ea41186cef8f04cdc0ba7055c49d56f84852cd11f2",
- "evidence_sha256": "bc70aecb7787c210fc259c2222c2b7d171797cf3afac9d778bcb5868194c81e8",
- "operator_note": null,
+ "base_content_sha256": "d5eb0433c229187fcbd29906cfc3357dde73dbc812f899aa8929c8f3a8e2734a",
+ "evidence_sha256": "b2d2a8017ec013c00f23d7ffa3a89099b5681d519dcf6eb408f69293386ea705",
+ "operator_note": "extra attempt beyond max_attempts: owner instruction 2026-10-31 (docs/reviews/SNOW_TEST_INCIDENT_20261031.md, user message): complete the factual repairs; one recorded attempt beyond max_attempts",
  "model_record_sha256": null,
- "prior_record_sha256": "fd957072cd023b493da457514ed9b51b8714a7590836b807848d393aea0b6362",
- "attempt": "attempt-6",
- "context_review_sha256": "27522927376a7a7534643ddc40031fcdd161097e76ccbef2f22ad59c4163d898",
+ "prior_record_sha256": "000b1b8af87f1277e4dd6eebea924fab6b289f477bc5f9a25147f3c7eeaf95a6",
+ "attempt": "attempt-7",
+ "context_review_sha256": "6a3419b87f0495748849e83b3355daee71441d0ec3f39c9ca646fa04b6258705",
  "inherited": [
   {
    "id": "X1",
    "source": "context review",
    "where": "sections.context.0",
-   "problem": "来源上下文核查：稿件先写李派人护送信使穿越战线，再用“另据／Separately”写米德、谢里登同意停火两小时。原文的因果顺序正相反：先同意停火两小时，正因为时限只有两小时，按格兰特所走的路线来不及往返，李才派卫队护送信使穿越战线。稿件中“约定时间／time fixed”指的就是这两小时，现在的写法让读者看不出来。另外，稿件没有交代是李先举白旗，并主动请求暂停敌对行动。。来源原文〔S-GRANT67〕：「They, however, finally consented to a suspension of hostilities for two hours to give an opportunity of communicating with me in that time, if possible. It was found that, from the route I had taken, they would probably not be able to communicate with me and get an answer back within the time fixed」",
+   "problem": "来源上下文核查：稿件只写“李再次来信”后米德、谢里登犹豫是否停火，漏掉了起因：李打出白旗，并分别派人向两人请求停火。现写法让读者以为犹豫是针对那封信。李第二封信的内容（为交出军队请求会面）也没有交代。。来源原文〔S-GRANT67〕：「Lee, therefore, sent a flag to the rear to advise Meade and one to the front to Sheridan, saying that he had sent a message to me for the purpose of having a meeting to consult about the surrender of his army, and asked for a suspension of hostilities until I could be communicated with.」",
    "suggestion": null
   },
   {
    "id": "X2",
    "source": "context review",
    "where": "",
-   "problem": "证据包已按来源上下文补入摘录 GRANT671-E30；请据此检查叙事、结局与因果是否完整准确",
+   "problem": "证据包已按来源上下文补入摘录 GRANT671-E31, GRANT671-E32, GRANT671-E33, GRANT671-E34；请据此检查叙事、结局与因果是否完整准确",
    "suggestion": null
   }
  ],
@@ -42,188 +42,356 @@
  "issues": [
   {
    "id": "F1",
-   "path": "sections.context.0",
-   "category": "chronology",
+   "path": "sections.hook.0",
+   "category": "facts",
    "severity": "fix",
-   "problem": "原文顺序是：米德、谢里登起初犹豫，最终同意停火两小时；接着发现按格兰特所走的路线，信使无法在这一时限内往返；李因此派卫队护送信使穿过战线。稿件把护送一事放在前面，又用“另据／Separately”引出停火两小时，割断了两者的联系。读者因此看不出“约定时间／time fixed”就是这两小时。",
+   "problem": "括注“原文只写‘8日’”／“the source says only 'the 8th'”是对完整来源写了什么的断言。读者理解不需要它，而且它把开头塞进了一串推定说明。",
    "evidence": [
     {
-     "id": "GRANT671-E26",
-     "quote": "They, however, finally consented to a suspension of hostilities for two hours"
+     "id": "GRANT671-E1",
+     "quote": "On the 8th I had followed the Army of the Potomac in rear of Lee."
     },
     {
-     "id": "GRANT671-E4",
-     "quote": "It was found that, from the route I had taken, they would probably not be able to communicate with me and get an answer back within the time fixed"
-    },
-    {
-     "id": "GRANT671-E4",
-     "quote": "Lee, therefore, sent an escort"
+     "id": "GRANT671-E28",
+     "quote": "April 9th, 1865, 4.30 P.M."
     }
    ],
-   "proposed": "调整为原文顺序：先写米德、谢里登犹豫，最终同意停火两小时；再写在这一时限内信使按格兰特的路线来不及往返，因此李派人护送信使穿过自己的战线。删去“另据／Separately”。不要补入证据中没有的白旗等细节。",
+   "proposed": "删去关于原文只写“8日”的半句。可改为“1865年4月8日（据回忆录所录次日、即4月9日的电报推定）”，或直接只写“4月8日”。英文同步修改。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "按原文顺序重排：先写米德、谢里登犹豫，最终同意停火两小时；再写在这一时限内信使按格兰特的路线来不及往返，因此李派人护送信使穿过战线。删去“另据／Separately”，未补入其他细节。",
+   "rationale": "删去关于原文只写“8日”的断言，改为直接写1865年4月8日，并括注据回忆录所录次日、即1865年4月9日的电报推定；中英同步。",
    "decided_in": "revise_r1"
   },
   {
    "id": "F2",
-   "path": "sections.analysis.2",
-   "category": "causality",
+   "path": "sections.hook.0",
+   "category": "parity",
    "severity": "fix",
-   "problem": "句中“因为真正要办的事——交名册、办宣誓、放人回乡——都得靠对方的人去做”是以事实口吻写的因果判断，与证据不符。证据记载，宣誓遣散由格兰特指定的北军将领吉本、格里芬、梅里特执行，李的将领只是留下与之协商、以便利此事。名册也有一份交给格兰特指定的军官。另外，把叫停鸣炮说成“胜利方当天说的第一句话”与记载不符，叫停是在受降消息传开之后。",
+   "problem": "英文写 followed his Army of the Potomac，暗示格兰特直辖该军；证据只说 the Army of the Potomac。中文“随己方的波托马克军”没有这层含义，两版不一致。",
    "evidence": [
     {
-     "id": "GRANT671-E28",
-     "quote": "Generals Gibbon, Griffin and Merritt were designated by me to carry into effect the paroling of Lee′s troops"
-    },
-    {
-     "id": "GRANT671-E28",
-     "quote": "General Lee leaving Generals Longstreet, Gordon and Pendleton for them to confer with in order to facilitate this work"
-    },
-    {
-     "id": "GRANT671-E22",
-     "quote": "When news of the surrender first reached our lines"
+     "id": "GRANT671-E1",
+     "quote": "I had followed the Army of the Potomac in rear of Lee"
     }
    ],
-   "proposed": "改为“部分执行环节需要对方配合（如连、团长官为所部具结，李留下的将领协助宣誓遣散）”，并整句标为作者推断。“第一句话”改为“受降消息传开后的第一个表态”之类的说法，并保留“一种解释是”。",
+   "proposed": "英文改为 followed the Army of the Potomac。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "删去“真正要办的事都得靠对方的人去做”这一事实口吻的断言，改为明确标出的作者推断：只有部分执行环节需要对方配合，举出证据所载的连、团长官具结，以及李留下的将领与北军将领协商、协助宣誓遣散。把“当天说的第一句话”改为“受降消息传开后胜利方作出的表态”，保留“一种解释是”。ev 增补 E28。",
+   "rationale": "英文由 followed his Army of the Potomac 改为 followed the Army of the Potomac，与证据一致；中文保持原文，与英文含义相符。",
    "decided_in": "revise_r1"
   },
   {
    "id": "F3",
-   "path": "sections.hook.0",
-   "category": "style",
+   "path": "sections.context.0",
+   "category": "causality",
    "severity": "fix",
-   "problem": "易读性问题：开头只写“8日／On the 8th”，没有年月，也没有交代是哪场战争的哪个阶段。不了解背景的读者无法给事件定位。证据所录电报注明次日为1865年4月9日。",
+   "problem": "现写法是“李再次来信”之后，米德、谢里登犹豫是否停火，读者会以为两人犹豫是针对那封信。按证据，起因是李打出白旗，分别派人向米德和谢里登请求停火，等到联系上格兰特为止。文中也没有交代李第二封信的目的是为交出军队请求会面。另外，“怕这不是真心求和”里的“求和”在证据中没有对应，证据说的是商议投降的会面。",
    "evidence": [
     {
-     "id": "GRANT671-E28",
-     "quote": "April 9th, 1865"
+     "id": "GRANT671-E31",
+     "quote": "Lee, therefore, sent a flag to the rear to advise Meade and one to the front to Sheridan, saying that he had sent a message to me for the purpose of having a meeting to consult about the surrender of his army, and asked for a suspension of hostilities until I could be communicated with."
     },
     {
-     "id": "GRANT671-E1",
-     "quote": "On the 8th I had followed the Army of the Potomac in rear of Lee"
+     "id": "GRANT671-E32",
+     "quote": "I now request an interview in accordance with the offer contained in your letter of yesterday for that purpose."
+    },
+    {
+     "id": "GRANT671-E3",
+     "quote": "They were afraid it was not in good faith"
     }
    ],
-   "proposed": "首句改为“1865年4月8日（据原文所录电报推定月份与年份）”，或在首段注明会面在次日即1865年4月9日。不增加其他事实。",
+   "proposed": "改为：李再次致信格兰特，这次是为交出军队请求会面；同时他打出白旗，派人分别通知后方的米德和前方的谢里登，请求停火到联系上格兰特为止。两人起初对是否停火非常犹豫，怕对方并非诚意……把“真心求和”改为“诚意”。英文同步修改。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "首句补上1865年4月8日，并注明原文只写“8日”，月份和年份是据原文所录次日电报的日期1865年4月9日推定的。中英文同步，没有增加其他事实。",
+   "rationale": "补出李第二封信是为交出军队请求会面；写明停火请求来自李，他打出白旗，派人分别通知米德和谢里登，请求停火到联系上格兰特为止。由此交代两人犹豫的起因。把“真心求和”改为“并非诚意”。ev 增加 E31、E32；中英同步。",
    "decided_in": "revise_r1"
   },
   {
    "id": "F4",
    "path": "sections.context.1",
-   "category": "style",
+   "category": "readability",
    "severity": "note",
-   "problem": "易读性问题：约翰斯顿首次出现时没有任何身份说明，却写作“这位约翰斯顿／this Johnston”，仿佛前文已介绍过此人。证据只说他正从北卡罗来纳北上。",
+   "problem": "约翰斯顿第一次出现时没有交代身份，接着又称“这位约翰斯顿”，不了解背景的读者不知道他是谁。",
    "evidence": [
     {
      "id": "GRANT671-E7",
-     "quote": "they believed that Johnston was marching up from North Carolina now"
+     "quote": "Johnston was marching up from North Carolina now, and Lee was moving to join him"
     }
    ],
-   "proposed": "去掉“这位／this”，写作“他们相信约翰斯顿正率部从北卡罗来纳北上”。不补写证据以外的身份信息。",
+   "proposed": "按证据写成“他们相信，另一支由约翰斯顿率领、正从北卡罗来纳北上的力量将与李会合”，并去掉“这位”。不要补充证据以外的头衔。",
    "origin": "final-editor audit"
   },
   {
+   "id": "F5",
+   "path": "sections.story.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "本段只写格兰特心情由欢喜转为低落，没有写他自己说明的原因。读者容易自行补上动机，叫停鸣炮一节也因此缺少依据。格兰特的自述应照实转述，并标明是他的说法。",
+   "evidence": [
+    {
+     "id": "GRANT671-E33",
+     "quote": "I felt like anything rather than rejoicing at the downfall of a foe who had fought so long and valiantly, and had suffered so much for a cause, though that cause was, I believe, one of the worst for which a people ever fought"
+    }
+   ],
+   "proposed": "补一句：据格兰特自述，他不愿为一个久战、英勇、吃了许多苦的对手的失败而欢欣，尽管他认为对方所为的事业是最坏的之一。中英文同步。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "在 story.1 补入格兰特自述的心情低落原因，标明是他的说法，包括他对南方事业的评价；ev 增加 E33；中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
    "id": "X1",
-   "problem": "来源上下文核查：稿件先写李派人护送信使穿越战线，再用“另据／Separately”写米德、谢里登同意停火两小时。原文的因果顺序正相反：先同意停火两小时，正因为时限只有两小时，按格兰特所走的路线来不及往返，李才派卫队护送信使穿越战线。稿件中“约定时间／time fixed”指的就是这两小时，现在的写法让读者看不出来。另外，稿件没有交代是李先举白旗，并主动请求暂停敌对行动。。来源原文〔S-GRANT67〕：「They, however, finally consented to a suspension of hostilities for two hours to give an opportunity of communicating with me in that time, if possible. It was found that, from the route I had taken, they would probably not be able to communicate with me and get an answer back within the time fixed」",
+   "problem": "来源上下文核查：稿件只写“李再次来信”后米德、谢里登犹豫是否停火，漏掉了起因：李打出白旗，并分别派人向两人请求停火。现写法让读者以为犹豫是针对那封信。李第二封信的内容（为交出军队请求会面）也没有交代。。来源原文〔S-GRANT67〕：「Lee, therefore, sent a flag to the rear to advise Meade and one to the front to Sheridan, saying that he had sent a message to me for the purpose of having a meeting to consult about the surrender of his army, and asked for a suspension of hostilities until I could be communicated with.」",
    "origin": "inherited context review None",
    "severity": "fix",
    "category": "unsupported",
    "path": "sections.context.0",
    "disposition": "duplicate",
-   "same_as": "F1",
-   "rationale": "关于停火两小时与护送信使的先后和因果，问题成立，已列为F1。X1另称李先举白旗并主动请求停火，证据包中没有这一记载，不应据此补写。"
+   "same_as": "F3",
+   "rationale": "问题成立，与F3相同：米德、谢里登犹豫的直接起因是李派人请求停火，李第二封信的目的是为交出军队请求会面，稿件两处都没有交代。"
   },
   {
    "id": "X2",
    "path": "",
    "category": "unsupported",
    "severity": "fix",
-   "problem": "证据包已按来源上下文补入摘录 GRANT671-E30；请据此检查叙事、结局与因果是否完整准确",
+   "problem": "证据包已按来源上下文补入摘录 GRANT671-E31, GRANT671-E32, GRANT671-E33, GRANT671-E34；请据此检查叙事、结局与因果是否完整准确",
    "origin": "inherited context review None",
-   "disposition": "rejected",
-   "rationale": "对照E30，正文与之并不冲突。稿件写李另行写信接受条件，没有写双方共同签署，与E30纠正的流行误说一致。稿件也没有对条款文本的形成作出与E30相反的陈述，因此无需修改。",
+   "audit_rationale": "补入的四段摘录里：E31、E32 暴露了 context.0 的因果缺口（见F3）；E33 补出了格兰特心情低落的自述原因（见F5）。E34 只交代他随后决定回华盛顿，稿件没有涉及他离开的原因，不构成错误。",
+   "disposition": "fixed",
+   "rationale": "已按补入的摘录检查全稿。E31、E32 用于补全 context.0 的因果（同 F3）；E33 用于补全 story.1 中格兰特心情低落的原因（同 F5）。E34 只涉及格兰特随后回华盛顿的决定，稿件没有涉及这一内容，现有叙述不因此出错，故不改动。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "V1-V2",
+   "path": "sections.hook.1",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "本段要说明“为什么难”，但“具体的受降条文得由格兰特自己当场起草”与“但条文得由格兰特落笔写成”几乎同义重复。读者读完仍说不清难在哪里。证据中其实有更具体的说法：细节此前一个字都没谈过，格兰特落笔时连第一个词都不知道。",
    "evidence": [
     {
-     "id": "GRANT671-E30",
-     "quote": "The document in the form of a letter was signed only by General Grant"
+     "id": "GRANT671-E15",
+     "quote": "When I put my pen to the paper I did not know the first word that I should make use of in writing the terms"
     },
     {
-     "id": "GRANT671-E30",
-     "quote": "General Lee immediately wrote a letter accepting the terms and handed it to General Grant"
+     "id": "GRANT671-E16",
+     "quote": "No conversation, not one word, passed between General Lee and myself, either about private property, side arms, or kindred subjects"
     }
    ],
-   "decided_in": "audit"
+   "proposed": "改为：“作者认为，难处在于：基本条件已见于格兰特8日的信，李也说自己就是这样理解的；但细节此前一个字都没谈过，具体条文得由格兰特当场起草，他后来说落笔时连第一个词该写什么都不知道。”删去重复的“但条文得由格兰特落笔写成”。英文同步修改。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "删去与“当场起草”同义重复的“但条文得由格兰特落笔写成”，改为具体说明难处：私产、佩刀之类的问题此前两人一个字都没谈过，格兰特落笔时连第一个词都不知道。“没谈过”的范围按证据收窄为私产、佩刀及类似问题，没有扩大为一切细节。中英同步修改，并在 ev 中补入 E16。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V3",
+   "path": "sections.context.0",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "米德和谢里登第一次出现时，中文只写“后方的米德和前方的谢里登”，没有说明他们是格兰特一方（北军）的指挥官。不熟悉背景的读者分不清他们属于哪一边，也就难以理解他们为什么怀疑李有诈。英文写了 these two commanders on Grant's own side，中英文也因此不一致。",
+   "evidence": [
+    {
+     "id": "GRANT671-E31",
+     "quote": "Lee, therefore, sent a flag to the rear to advise Meade and one to the front to Sheridan"
+    },
+    {
+     "id": "GRANT671-E3",
+     "quote": "both of these commanders hesitated very considerably about suspending hostilities at all"
+    }
+   ],
+   "proposed": "中文改为“李于是派人分别通知北军后方的米德和前方的谢里登（两人都是格兰特一方的指挥官）”。英文可在首次出现时就说明，例如 Meade, in the Union rear, and Sheridan, at the front。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "中文在米德、谢里登首次出现处注明二人是北军、也就是格兰特一方的指挥官。英文把这一说明前移到首次出现处，并删去后文重复的说明，使中英一致。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V2-V1",
+   "path": "sections.hook.0",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "开头第一句先塞进一段关于年份推定的括注（“据回忆录所录次日、即1865年4月9日的电报推定”），读者此时还用不上这个信息。格兰特第一次出场只写“联邦一方的格兰特”，没说清他在本事中的角色：他是收李来信、决定是否会面并起草条件的人。李的来信是回复格兰特8日的去信，这一点也没交代，hook.1 的“格兰特8日的信”因此来得突兀。",
+   "evidence": [
+    {
+     "id": "GRANT671-E25",
+     "quote": "During the night I received Lee′s answer to my letter of the 8th, inviting an interview between the lines on the following morning."
+    },
+    {
+     "id": "GRANT671-E1",
+     "quote": "On the 8th I had followed the Army of the Potomac in rear of Lee."
+    }
+   ],
+   "proposed": "首句改为“1865年4月8日（年份推定见文末），联邦一方的将领格兰特——本文所据回忆录的作者，也是与李交涉的人——随波托马克军跟在李的后面追击”。“李来信提议会面”改为“当夜，李回复格兰特8日的去信，提议次日上午会面”。英文同步修改。",
+   "origin": "final-editor verify round 2"
+  },
+  {
+   "id": "V2-V3",
+   "path": "sections.context.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“北军后方的米德”（in the Union rear）不对。原文是李向自己后方派旗通知米德。米德所在的波托马克军正跟在李军后面追击，所以他在李军的后方，不在“北军后方”。",
+   "evidence": [
+    {
+     "id": "GRANT671-E31",
+     "quote": "Lee, therefore, sent a flag to the rear to advise Meade and one to the front to Sheridan"
+    },
+    {
+     "id": "GRANT671-E1",
+     "quote": "I had followed the Army of the Potomac in rear of Lee"
+    }
+   ],
+   "proposed": "中文改为“派人分别通知李军后方（追击中的波托马克军）的米德和前方的谢里登”。英文删去“, in the Union rear”，或改为“in Lee's rear”。",
+   "origin": "final-editor verify round 2"
   }
  ],
  "edits": [
   {
-   "path": "sections.context.0.zh",
-   "before": "格兰特回信拒绝会面之后，李再次来信，可这封信送得很费劲：由于格兰特所走的路线，这封信很可能无法在约定时间内送到他手里并带回答复，除非信使穿过南军战线。因此，李派人护送带信的军官穿过自己的战线，把信送到格兰特手里。另据格兰特记述，他这一方的两位指挥官米德和谢里登都对是否停火非常犹豫，怕这不是真心求和；而且李的北弗吉尼亚军团已无路可逃，除非用诡计脱身。不过他们最终同意停火两小时，以便在这段时间里设法与格兰特联络。",
-   "after": "格兰特回信拒绝会面之后，李再次来信。据格兰特记述，他这一方的两位指挥官米德和谢里登起初都对是否停火非常犹豫，怕这不是真心求和；而且李的北弗吉尼亚军团已无路可逃，除非用诡计脱身。不过他们最终同意停火两小时，以便在这段时间里设法与格兰特联络。可这封信送得很费劲：由于格兰特所走的路线，在这一约定的时限内，信使很可能无法把信送到他手里并带回答复，除非穿过南军战线。因此，李派人护送带信的军官穿过自己的战线，把信送到格兰特手里。",
-   "issues": [
-    "F1"
-   ]
-  },
-  {
-   "path": "sections.context.0.en",
-   "before": "After Grant's refusal, Lee wrote again, but this message was hard to deliver: from the route Grant had taken, it would probably not be possible to reach him and get an answer back within the time fixed unless the messenger passed through the rebel lines. Lee therefore sent an escort with the officer bearing the message through his own lines to Grant. Separately, Grant records that Meade and Sheridan, two commanders on his own side, both hesitated very considerably about suspending hostilities at all. They were afraid the overture was not in good faith; and Lee's Army of Northern Virginia was where it could not escape except by some deception. They finally consented, however, to a suspension of hostilities for two hours, to give an opportunity of communicating with Grant in that time if possible.",
-   "after": "After Grant's refusal, Lee wrote again. Grant records that Meade and Sheridan, two commanders on his own side, both hesitated very considerably about suspending hostilities at all. They were afraid the overture was not in good faith; and Lee's Army of Northern Virginia was where it could not escape except by some deception. They finally consented, however, to a suspension of hostilities for two hours, to give an opportunity of communicating with Grant in that time if possible. But the message was hard to deliver: from the route Grant had taken, it would probably not be possible to reach him and get an answer back within the time fixed unless the messenger passed through the rebel lines. Lee therefore sent an escort with the officer bearing the message through his own lines to Grant.",
-   "issues": [
-    "F1"
-   ]
-  },
-  {
-   "path": "sections.analysis.2.zh",
-   "before": "至于叫停鸣炮，一种解释是，受降条件里最后一项从不写在纸上：胜利方当天说的第一句话。作者提出的替代做法是，把收缴佩刀之类的要求当作威慑保留下来，让对方记住谁说了算；代价可能是执行阶段对方不愿配合，因为真正要办的事——交名册、办宣誓、放人回乡——都得靠对方的人去做。",
-   "after": "至于叫停鸣炮，一种解释是，受降条件里最后一项从不写在纸上：那是受降消息传开后胜利方作出的表态。作者提出的替代做法是，把收缴佩刀之类的要求当作威慑保留下来，让对方记住谁说了算。作者推断，代价可能是执行阶段对方不愿配合，因为部分执行环节需要对方配合——比如连队或团级长官要为所部具结，李留下的将领要与负责宣誓遣散的北军将领协商、协助此事。",
-   "issues": [
-    "F2"
-   ]
-  },
-  {
-   "path": "sections.analysis.2.en",
-   "before": "As for halting the salute, one reading is that the last clause of any surrender is never set on paper: it is the first thing the winning side says that day. The alternative the writer offers is to keep demands such as handing over side-arms on the books as a reminder of who is in charge. The cost might be an unwillingness to cooperate in the carrying out, because the things that genuinely have to be done — delivering the rolls, taking the paroles, sending the men home — depend on the other side's people doing them.",
-   "after": "As for halting the salute, one reading is that the last clause of any surrender is never set on paper: it is the stance the winning side takes once news of the surrender spreads. The alternative the writer offers is to keep demands such as handing over side-arms on the books as a reminder of who is in charge. The writer infers that the cost might be an unwillingness to cooperate in the carrying out, since parts of it needed the other side's cooperation — company or regimental commanders signing paroles for the men of their commands, and the generals Lee left behind conferring with the Union generals in charge of the paroling to help with that work.",
-   "issues": [
-    "F2"
-   ]
-  },
-  {
-   "path": "sections.analysis.2.ev",
-   "before": [
-    "GRANT671-E22",
-    "GRANT671-E14"
-   ],
-   "after": [
-    "GRANT671-E22",
-    "GRANT671-E14",
-    "GRANT671-E28"
-   ],
-   "issues": [
-    "F2"
-   ]
-  },
-  {
    "path": "sections.hook.0.zh",
-   "before": "8日，联邦一方的格兰特随己方的波托马克军跟在李的后面追击；李是南军北弗吉尼亚军团的统帅。格兰特正犯着重头痛，在路边一处离大部队有一段距离的农舍过夜，把脚泡进热水和芥末，手腕和后颈贴上芥末膏，指望天亮就能好。李来信提议会面，但按格兰特的说法，会面的目的并不是交出军队。格兰特的回信很干脆：他无权谈和，这样的会面不可能有好结果；和平的条件众所周知，南方只要放下武器，就能让和平早点到来，救下成千上万条人命和数以亿计尚未被毁的财产。",
-   "after": "1865年4月8日（原文只写“8日”，月份与年份据原文所录次日电报的日期1865年4月9日推定），联邦一方的格兰特随己方的波托马克军跟在李的后面追击；李是南军北弗吉尼亚军团的统帅。格兰特正犯着重头痛，在路边一处离大部队有一段距离的农舍过夜，把脚泡进热水和芥末，手腕和后颈贴上芥末膏，指望天亮就能好。李来信提议会面，但按格兰特的说法，会面的目的并不是交出军队。格兰特的回信很干脆：他无权谈和，这样的会面不可能有好结果；和平的条件众所周知，南方只要放下武器，就能让和平早点到来，救下成千上万条人命和数以亿计尚未被毁的财产。",
+   "before": "1865年4月8日（原文只写“8日”，月份与年份据原文所录次日电报的日期1865年4月9日推定），联邦一方的格兰特随己方的波托马克军跟在李的后面追击；李是南军北弗吉尼亚军团的统帅。格兰特正犯着重头痛，在路边一处离大部队有一段距离的农舍过夜，把脚泡进热水和芥末，手腕和后颈贴上芥末膏，指望天亮就能好。李来信提议会面，但按格兰特的说法，会面的目的并不是交出军队。格兰特的回信很干脆：他无权谈和，这样的会面不可能有好结果；和平的条件众所周知，南方只要放下武器，就能让和平早点到来，救下成千上万条人命和数以亿计尚未被毁的财产。",
+   "after": "1865年4月8日（据回忆录所录次日、即1865年4月9日的电报推定），联邦一方的格兰特随己方的波托马克军跟在李的后面追击；李是南军北弗吉尼亚军团的统帅。格兰特正犯着重头痛，在路边一处离大部队有一段距离的农舍过夜，把脚泡进热水和芥末，手腕和后颈贴上芥末膏，指望天亮就能好。李来信提议会面，但按格兰特的说法，会面的目的并不是交出军队。格兰特的回信很干脆：他无权谈和，这样的会面不可能有好结果；和平的条件众所周知，南方只要放下武器，就能让和平早点到来，救下成千上万条人命和数以亿计尚未被毁的财产。",
    "issues": [
-    "F3"
+    "F1",
+    "F2"
    ]
   },
   {
    "path": "sections.hook.0.en",
-   "before": "On the 8th Grant, on the Union side, followed his Army of the Potomac in pursuit, in rear of Lee, the commander of the Confederate Army of Northern Virginia. Grant was in the grip of a sick headache. He spent the night at a farmhouse on the road, some distance behind the main body of the army, bathing his feet in hot water and mustard and putting mustard plasters on his wrists and the back of his neck, hoping that by morning he would be cured. A letter from Lee proposed a meeting, but, as Grant tells it, for a different purpose from that of surrendering his army. Grant's answer was brisk. He had no authority to treat on the subject of peace, and the proposed meeting could lead to no good. The terms on which peace could be had, he wrote, were well understood: let the South lay down its arms, and the most desirable event would come sooner, sparing thousands of lives and hundreds of millions of property not yet destroyed.",
-   "after": "On April 8th, 1865 (the source says only \"the 8th\"; the month and year are inferred from the telegraph it reproduces from the following day, dated April 9th, 1865), Grant, on the Union side, followed his Army of the Potomac in pursuit, in rear of Lee, the commander of the Confederate Army of Northern Virginia. Grant was in the grip of a sick headache. He spent the night at a farmhouse on the road, some distance behind the main body of the army, bathing his feet in hot water and mustard and putting mustard plasters on his wrists and the back of his neck, hoping that by morning he would be cured. A letter from Lee proposed a meeting, but, as Grant tells it, for a different purpose from that of surrendering his army. Grant's answer was brisk. He had no authority to treat on the subject of peace, and the proposed meeting could lead to no good. The terms on which peace could be had, he wrote, were well understood: let the South lay down its arms, and the most desirable event would come sooner, sparing thousands of lives and hundreds of millions of property not yet destroyed.",
+   "before": "On April 8th, 1865 (the source says only \"the 8th\"; the month and year are inferred from the telegraph it reproduces from the following day, dated April 9th, 1865), Grant, on the Union side, followed his Army of the Potomac in pursuit, in rear of Lee, the commander of the Confederate Army of Northern Virginia. Grant was in the grip of a sick headache. He spent the night at a farmhouse on the road, some distance behind the main body of the army, bathing his feet in hot water and mustard and putting mustard plasters on his wrists and the back of his neck, hoping that by morning he would be cured. A letter from Lee proposed a meeting, but, as Grant tells it, for a different purpose from that of surrendering his army. Grant's answer was brisk. He had no authority to treat on the subject of peace, and the proposed meeting could lead to no good. The terms on which peace could be had, he wrote, were well understood: let the South lay down its arms, and the most desirable event would come sooner, sparing thousands of lives and hundreds of millions of property not yet destroyed.",
+   "after": "On April 8th, 1865 (inferred from the telegraph the memoirs reproduce from the following day, dated April 9th, 1865), Grant, on the Union side, followed the Army of the Potomac in pursuit, in rear of Lee, the commander of the Confederate Army of Northern Virginia. Grant was in the grip of a sick headache. He spent the night at a farmhouse on the road, some distance behind the main body of the army, bathing his feet in hot water and mustard and putting mustard plasters on his wrists and the back of his neck, hoping that by morning he would be cured. A letter from Lee proposed a meeting, but, as Grant tells it, for a different purpose from that of surrendering his army. Grant's answer was brisk. He had no authority to treat on the subject of peace, and the proposed meeting could lead to no good. The terms on which peace could be had, he wrote, were well understood: let the South lay down its arms, and the most desirable event would come sooner, sparing thousands of lives and hundreds of millions of property not yet destroyed.",
    "issues": [
-    "F3"
+    "F1",
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.context.0.zh",
+   "before": "格兰特回信拒绝会面之后，李再次来信。据格兰特记述，他这一方的两位指挥官米德和谢里登起初都对是否停火非常犹豫，怕这不是真心求和；而且李的北弗吉尼亚军团已无路可逃，除非用诡计脱身。不过他们最终同意停火两小时，以便在这段时间里设法与格兰特联络。可这封信送得很费劲：由于格兰特所走的路线，在这一约定的时限内，信使很可能无法把信送到他手里并带回答复，除非穿过南军战线。因此，李派人护送带信的军官穿过自己的战线，把信送到格兰特手里。",
+   "after": "格兰特回信拒绝会面之后，李再次致信格兰特，这次是为交出这支军队请求会面。据格兰特记述，李打出白旗时，格兰特正在赶往阿波马托克斯考特豪斯的路上，一时联系不上；李于是派人分别通知后方的米德和前方的谢里登，说他已给格兰特送信，要求会面商议交出军队，并请求停火，直到联系上格兰特为止。米德和谢里登这两位指挥官起初都对是否停火非常犹豫，怕对方并非诚意；而且李的北弗吉尼亚军团已无路可逃，除非用诡计脱身。不过他们最终同意停火两小时，以便在这段时间里设法与格兰特联络。可这封信送得很费劲：由于格兰特所走的路线，在这一约定的时限内，信使很可能无法把信送到他手里并带回答复，除非穿过南军战线。因此，李派人护送带信的军官穿过自己的战线，把信送到格兰特手里。",
+   "issues": [
+    "F3",
+    "X2"
+   ]
+  },
+  {
+   "path": "sections.context.0.en",
+   "before": "After Grant's refusal, Lee wrote again. Grant records that Meade and Sheridan, two commanders on his own side, both hesitated very considerably about suspending hostilities at all. They were afraid the overture was not in good faith; and Lee's Army of Northern Virginia was where it could not escape except by some deception. They finally consented, however, to a suspension of hostilities for two hours, to give an opportunity of communicating with Grant in that time if possible. But the message was hard to deliver: from the route Grant had taken, it would probably not be possible to reach him and get an answer back within the time fixed unless the messenger passed through the rebel lines. Lee therefore sent an escort with the officer bearing the message through his own lines to Grant.",
+   "after": "After Grant's refusal, Lee wrote to Grant again, this time requesting an interview with reference to the surrender of his army. Grant records that when Lee put out the white flag, Grant was moving towards Appomattox Court House and could not be communicated with immediately. Lee therefore sent a flag to the rear to advise Meade and one to the front to Sheridan, saying that he had sent a message to Grant for the purpose of having a meeting to consult about the surrender of his army, and asking for a suspension of hostilities until Grant could be communicated with. Meade and Sheridan, these two commanders on Grant's own side, both hesitated very considerably about suspending hostilities at all. They were afraid it was not in good faith; and Lee's Army of Northern Virginia was where it could not escape except by some deception. They finally consented, however, to a suspension of hostilities for two hours, to give an opportunity of communicating with Grant in that time if possible. But the message was hard to deliver: from the route Grant had taken, it would probably not be possible to reach him and get an answer back within the time fixed unless the messenger passed through the rebel lines. Lee therefore sent an escort with the officer bearing the message through his own lines to Grant.",
+   "issues": [
+    "F3",
+    "X2"
+   ]
+  },
+  {
+   "path": "sections.context.0.ev",
+   "before": [
+    "GRANT671-E2",
+    "GRANT671-E3",
+    "GRANT671-E4",
+    "GRANT671-E26"
+   ],
+   "after": [
+    "GRANT671-E2",
+    "GRANT671-E32",
+    "GRANT671-E31",
+    "GRANT671-E3",
+    "GRANT671-E4",
+    "GRANT671-E26"
+   ],
+   "issues": [
+    "F3",
+    "X2"
+   ]
+  },
+  {
+   "path": "sections.story.1.zh",
+   "before": "格兰特写明，他不知道李是什么心情。按他的描述，李神情庄重、喜怒不形于色，看不出是为战争终于结束而高兴，还是为结局难过而不肯表露。倒是他自己，收到信时满心欢喜，此刻却变得低落。",
+   "after": "格兰特写明，他不知道李是什么心情。按他的描述，李神情庄重、喜怒不形于色，看不出是为战争终于结束而高兴，还是为结局难过而不肯表露。倒是他自己，收到信时满心欢喜，此刻却变得低落。据格兰特自述，他绝无心为一个打了这么久、这么英勇、为其事业吃了这么多苦的对手的垮台而欢欣，尽管他认为那项事业是一个民族所曾为之而战的最坏事业之一。",
+   "issues": [
+    "F5",
+    "X2"
+   ]
+  },
+  {
+   "path": "sections.story.1.en",
+   "before": "Grant was explicit that he did not know what Lee was feeling. In Grant's description, Lee was a man of much dignity with an impassible face; it was impossible to say whether he was inwardly glad the end had finally come, or sad at the result and too manly to show it. Whatever his feelings, they were entirely concealed from Grant's observation. Grant's own were a different matter: jubilant on receipt of the letter, he now found them sad and depressed.",
+   "after": "Grant was explicit that he did not know what Lee was feeling. In Grant's description, Lee was a man of much dignity with an impassible face; it was impossible to say whether he was inwardly glad the end had finally come, or sad at the result and too manly to show it. Whatever his feelings, they were entirely concealed from Grant's observation. Grant's own were a different matter: jubilant on receipt of the letter, he now found them sad and depressed. As Grant himself explains it, he felt like anything rather than rejoicing at the downfall of a foe who had fought so long and valiantly and had suffered so much for a cause, though that cause was, he believed, one of the worst for which a people ever fought.",
+   "issues": [
+    "F5",
+    "X2"
+   ]
+  },
+  {
+   "path": "sections.story.1.ev",
+   "before": [
+    "GRANT671-E10"
+   ],
+   "after": [
+    "GRANT671-E10",
+    "GRANT671-E33"
+   ],
+   "issues": [
+    "F5",
+    "X2"
+   ]
+  },
+  {
+   "path": "sections.hook.1.zh",
+   "before": "后来李约见格兰特，按格兰特的记述，是为了拿到格兰特准备给他军队的条件。作者认为，难处在于具体的受降条文得由格兰特自己当场起草。基本条件已见于格兰特8日的信，李说自己就是这样理解的；但条文得由格兰特落笔写成。格兰特最后写下的那份条款里，有两处是落笔之后才想起来加进去的：军官的佩刀，以及军官的私马和私物。南军士兵自己的马骡则根本不在条文里：李问起时，格兰特先答以按条文不行，李表示明白，格兰特随后主动口头准许。",
+   "after": "后来李约见格兰特，按格兰特的记述，是为了拿到格兰特准备给他军队的条件。作者认为，难处在于：基本条件已见于格兰特8日的信，李也说自己就是这样理解的；但私产、佩刀之类的问题此前两人一个字都没谈过，具体条文得由格兰特当场起草，而他后来说，落笔时连第一个词该写什么都不知道。格兰特最后写下的那份条款里，有两处是落笔之后才想起来加进去的：军官的佩刀，以及军官的私马和私物。南军士兵自己的马骡则根本不在条文里：李问起时，格兰特先答以按条文不行，李表示明白，格兰特随后主动口头准许。",
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "Later Lee asked Grant for an interview, as Grant records, for the purpose of getting from him the terms he proposed to give Lee's army. In the writer's view, the difficulty was that the actual terms of surrender were Grant's to draft on the spot. The basic conditions had already appeared in Grant's letter of the 8th, and Lee said he had so understood it; but the written clauses were Grant's to set down. Two items in the terms he finally set down were afterthoughts, added only once his pen was already moving: the officers' side-arms, and the officers' private horses and effects. The horses and mules belonging to the Confederate enlisted men were not in the written terms at all: when Lee asked, Grant first answered that as written they could not be kept; Lee said that was clear, and Grant then offered on his own, verbally, to let the men take them home.",
+   "after": "Later Lee asked Grant for an interview, as Grant records, for the purpose of getting from him the terms he proposed to give Lee's army. In the writer's view, the difficulty was this: the basic conditions had already appeared in Grant's letter of the 8th, and Lee said he had so understood it; but not one word had passed between the two men about private property, side-arms or kindred subjects, and the actual terms were Grant's to draft on the spot — and when he put pen to paper, he later said, he did not know the first word he should use. Two items in the terms he finally set down were afterthoughts, added only once his pen was already moving: the officers' side-arms, and the officers' private horses and effects. The horses and mules belonging to the Confederate enlisted men were not in the written terms at all: when Lee asked, Grant first answered that as written they could not be kept; Lee said that was clear, and Grant then offered on his own, verbally, to let the men take them home.",
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.hook.1.ev",
+   "before": [
+    "GRANT671-E11",
+    "GRANT671-E12",
+    "GRANT671-E13",
+    "GRANT671-E15",
+    "GRANT671-E17",
+    "GRANT671-E18",
+    "GRANT671-E19",
+    "GRANT671-E27"
+   ],
+   "after": [
+    "GRANT671-E11",
+    "GRANT671-E12",
+    "GRANT671-E13",
+    "GRANT671-E15",
+    "GRANT671-E16",
+    "GRANT671-E17",
+    "GRANT671-E18",
+    "GRANT671-E19",
+    "GRANT671-E27"
+   ],
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.context.0.zh",
+   "before": "格兰特回信拒绝会面之后，李再次致信格兰特，这次是为交出这支军队请求会面。据格兰特记述，李打出白旗时，格兰特正在赶往阿波马托克斯考特豪斯的路上，一时联系不上；李于是派人分别通知后方的米德和前方的谢里登，说他已给格兰特送信，要求会面商议交出军队，并请求停火，直到联系上格兰特为止。米德和谢里登这两位指挥官起初都对是否停火非常犹豫，怕对方并非诚意；而且李的北弗吉尼亚军团已无路可逃，除非用诡计脱身。不过他们最终同意停火两小时，以便在这段时间里设法与格兰特联络。可这封信送得很费劲：由于格兰特所走的路线，在这一约定的时限内，信使很可能无法把信送到他手里并带回答复，除非穿过南军战线。因此，李派人护送带信的军官穿过自己的战线，把信送到格兰特手里。",
+   "after": "格兰特回信拒绝会面之后，李再次致信格兰特，这次是为交出这支军队请求会面。据格兰特记述，李打出白旗时，格兰特正在赶往阿波马托克斯考特豪斯的路上，一时联系不上；李于是派人分别通知北军后方的米德和前方的谢里登（两人都是格兰特一方的指挥官），说他已给格兰特送信，要求会面商议交出军队，并请求停火，直到联系上格兰特为止。米德和谢里登这两位指挥官起初都对是否停火非常犹豫，怕对方并非诚意；而且李的北弗吉尼亚军团已无路可逃，除非用诡计脱身。不过他们最终同意停火两小时，以便在这段时间里设法与格兰特联络。可这封信送得很费劲：由于格兰特所走的路线，在这一约定的时限内，信使很可能无法把信送到他手里并带回答复，除非穿过南军战线。因此，李派人护送带信的军官穿过自己的战线，把信送到格兰特手里。",
+   "issues": [
+    "V1-V3"
+   ]
+  },
+  {
+   "path": "sections.context.0.en",
+   "before": "After Grant's refusal, Lee wrote to Grant again, this time requesting an interview with reference to the surrender of his army. Grant records that when Lee put out the white flag, Grant was moving towards Appomattox Court House and could not be communicated with immediately. Lee therefore sent a flag to the rear to advise Meade and one to the front to Sheridan, saying that he had sent a message to Grant for the purpose of having a meeting to consult about the surrender of his army, and asking for a suspension of hostilities until Grant could be communicated with. Meade and Sheridan, these two commanders on Grant's own side, both hesitated very considerably about suspending hostilities at all. They were afraid it was not in good faith; and Lee's Army of Northern Virginia was where it could not escape except by some deception. They finally consented, however, to a suspension of hostilities for two hours, to give an opportunity of communicating with Grant in that time if possible. But the message was hard to deliver: from the route Grant had taken, it would probably not be possible to reach him and get an answer back within the time fixed unless the messenger passed through the rebel lines. Lee therefore sent an escort with the officer bearing the message through his own lines to Grant.",
+   "after": "After Grant's refusal, Lee wrote to Grant again, this time requesting an interview with reference to the surrender of his army. Grant records that when Lee put out the white flag, Grant was moving towards Appomattox Court House and could not be communicated with immediately. Lee therefore sent a flag to the rear to advise Meade, in the Union rear, and one to the front to Sheridan (both commanders on Grant's own side), saying that he had sent a message to Grant for the purpose of having a meeting to consult about the surrender of his army, and asking for a suspension of hostilities until Grant could be communicated with. Meade and Sheridan both hesitated very considerably about suspending hostilities at all. They were afraid it was not in good faith; and Lee's Army of Northern Virginia was where it could not escape except by some deception. They finally consented, however, to a suspension of hostilities for two hours, to give an opportunity of communicating with Grant in that time if possible. But the message was hard to deliver: from the route Grant had taken, it would probably not be possible to reach him and get an answer back within the time fixed unless the messenger passed through the rebel lines. Lee therefore sent an escort with the officer bearing the message through his own lines to Grant.",
+   "issues": [
+    "V1-V3"
    ]
   }
  ],
@@ -233,9 +401,11 @@
    "issues_in": [
     "F1",
     "F2",
-    "F3"
+    "F3",
+    "F5",
+    "X2"
    ],
-   "changes_applied": 7,
+   "changes_applied": 8,
    "changes_failed": [],
    "still_open": [],
    "checker_after": [
@@ -244,7 +414,7 @@
      "story[8] numbers differ zh[] en[100]"
     ]
    ],
-   "content_sha256_after": "d5eb0433c229187fcbd29906cfc3357dde73dbc812f899aa8929c8f3a8e2734a",
+   "content_sha256_after": "4bba53db9fcb22763c4b91dd065021c082fdddbc2e1d24d2eed3724c357932f3",
    "verify": {
     "fields": [
      {
@@ -301,7 +471,9 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": []
+      "issue_ids": [
+       "V1"
+      ]
      },
      {
       "path": "sections.hook.1",
@@ -315,7 +487,9 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": []
+      "issue_ids": [
+       "V2"
+      ]
      },
      {
       "path": "sections.context.heading",
@@ -343,7 +517,9 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": []
+      "issue_ids": [
+       "V3"
+      ]
      },
      {
       "path": "sections.context.1",
@@ -357,7 +533,9 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": []
+      "issue_ids": [
+       "V4"
+      ]
      },
      {
       "path": "sections.story.heading",
@@ -738,9 +916,665 @@
       "issue_ids": []
      }
     ],
-    "issues": [],
-    "overall": "定稿逐字段核对通过。事实、归属、时序和引语都能在证据包中找到依据，英文直接引语与原文逐字一致。推断均已标为作者解释，没有补写心理，中英文对应完整。开头交代了格兰特、李及其身份，难点也已说明，易读性无需修改。",
-    "_content_sha256": "d5eb0433c229187fcbd29906cfc3357dde73dbc812f899aa8929c8f3a8e2734a"
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "开篇第一句就插入一段关于年份如何推定的括注（据次日电报推定）。读者在开头用不上这一推理，阅读被打断。推定本身有据，标注也恰当。",
+      "evidence": [
+       {
+        "id": "GRANT671-E1",
+        "quote": "On the 8th I had followed the Army of the Potomac in rear of Lee"
+       },
+       {
+        "id": "GRANT671-E28",
+        "quote": "April 9th, 1865, 4.30 P.M."
+       }
+      ],
+      "proposed": "正文保留“1865年4月8日”，把括注中的推定依据移到 limits.2（该段已有电报日期说明）。中英文同步修改。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.hook.1",
+      "category": "readability",
+      "severity": "fix",
+      "problem": "本段要说明“为什么难”，但“具体的受降条文得由格兰特自己当场起草”与“但条文得由格兰特落笔写成”几乎同义重复。读者读完仍说不清难在哪里。证据中其实有更具体的说法：细节此前一个字都没谈过，格兰特落笔时连第一个词都不知道。",
+      "evidence": [
+       {
+        "id": "GRANT671-E15",
+        "quote": "When I put my pen to the paper I did not know the first word that I should make use of in writing the terms"
+       },
+       {
+        "id": "GRANT671-E16",
+        "quote": "No conversation, not one word, passed between General Lee and myself, either about private property, side arms, or kindred subjects"
+       }
+      ],
+      "proposed": "改为：“作者认为，难处在于：基本条件已见于格兰特8日的信，李也说自己就是这样理解的；但细节此前一个字都没谈过，具体条文得由格兰特当场起草，他后来说落笔时连第一个词该写什么都不知道。”删去重复的“但条文得由格兰特落笔写成”。英文同步修改。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.context.0",
+      "category": "readability",
+      "severity": "fix",
+      "problem": "米德和谢里登第一次出现时，中文只写“后方的米德和前方的谢里登”，没有说明他们是格兰特一方（北军）的指挥官。不熟悉背景的读者分不清他们属于哪一边，也就难以理解他们为什么怀疑李有诈。英文写了 these two commanders on Grant's own side，中英文也因此不一致。",
+      "evidence": [
+       {
+        "id": "GRANT671-E31",
+        "quote": "Lee, therefore, sent a flag to the rear to advise Meade and one to the front to Sheridan"
+       },
+       {
+        "id": "GRANT671-E3",
+        "quote": "both of these commanders hesitated very considerably about suspending hostilities at all"
+       }
+      ],
+      "proposed": "中文改为“李于是派人分别通知北军后方的米德和前方的谢里登（两人都是格兰特一方的指挥官）”。英文可在首次出现时就说明，例如 Meade, in the Union rear, and Sheridan, at the front。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.context.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "约翰斯顿首次出现时没有说明身份，紧接着又写“这位约翰斯顿”，读起来像在指一位读者应该已经认识的人。证据只显示北军认为李要去与他会合，没有给出他的身份。",
+      "evidence": [
+       {
+        "id": "GRANT671-E7",
+        "quote": "they believed that Johnston was marching up from North Carolina now, and Lee was moving to join him"
+       }
+      ],
+      "proposed": "中文改为“他们相信，约翰斯顿的部队正从北卡罗来纳北上，李则要去与之会合”，删去“这位约翰斯顿”，不补写证据之外的身份。英文把 to join this Johnston 改为 to join him。"
+     }
+    ],
+    "overall": "定稿事实、引文、归属、时序与解释标注均有证据支撑，中英基本一致，可以发布。发布前需修正开头“难在哪里”的同义重复，并在中文里补明米德、谢里登属于格兰特一方。",
+    "_content_sha256": "4bba53db9fcb22763c4b91dd065021c082fdddbc2e1d24d2eed3724c357932f3"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V2",
+    "V1-V3"
+   ],
+   "changes_applied": 5,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[8] numbers differ zh[] en[100]"
+    ]
+   ],
+   "content_sha256_after": "d40885f6c40816ecd830a2e632e27fbbbca74c102e43abfb9de588c58acb96d7",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.0",
+      "category": "readability",
+      "severity": "fix",
+      "problem": "开头第一句先塞进一段关于年份推定的括注（“据回忆录所录次日、即1865年4月9日的电报推定”），读者此时还用不上这个信息。格兰特第一次出场只写“联邦一方的格兰特”，没说清他在本事中的角色：他是收李来信、决定是否会面并起草条件的人。李的来信是回复格兰特8日的去信，这一点也没交代，hook.1 的“格兰特8日的信”因此来得突兀。",
+      "evidence": [
+       {
+        "id": "GRANT671-E25",
+        "quote": "During the night I received Lee′s answer to my letter of the 8th, inviting an interview between the lines on the following morning."
+       },
+       {
+        "id": "GRANT671-E1",
+        "quote": "On the 8th I had followed the Army of the Potomac in rear of Lee."
+       }
+      ],
+      "proposed": "首句改为“1865年4月8日（年份推定见文末），联邦一方的将领格兰特——本文所据回忆录的作者，也是与李交涉的人——随波托马克军跟在李的后面追击”。“李来信提议会面”改为“当夜，李回复格兰特8日的去信，提议次日上午会面”。英文同步修改。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.hook.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“格兰特8日的信”在前文没有出处。如果 V1 不改 hook.0，读者不知道这封信是什么。",
+      "evidence": [
+       {
+        "id": "GRANT671-E19",
+        "quote": "As they are substantially the same as those expressed in your letter of the 8th inst., they are accepted."
+       }
+      ],
+      "proposed": "如果 hook.0 未补，可改为“已见于格兰特8日写给李的信”。英文改为“Grant's letter to Lee of the 8th”。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.context.0",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "“北军后方的米德”（in the Union rear）不对。原文是李向自己后方派旗通知米德。米德所在的波托马克军正跟在李军后面追击，所以他在李军的后方，不在“北军后方”。",
+      "evidence": [
+       {
+        "id": "GRANT671-E31",
+        "quote": "Lee, therefore, sent a flag to the rear to advise Meade and one to the front to Sheridan"
+       },
+       {
+        "id": "GRANT671-E1",
+        "quote": "I had followed the Army of the Potomac in rear of Lee"
+       }
+      ],
+      "proposed": "中文改为“派人分别通知李军后方（追击中的波托马克军）的米德和前方的谢里登”。英文删去“, in the Union rear”，或改为“in Lee's rear”。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.context.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "约翰斯顿第一次出现时没有任何身份说明。读者不知道他是谁，也不知道李为什么要与他会合。",
+      "evidence": [
+       {
+        "id": "GRANT671-E7",
+        "quote": "They said they believed that Johnston was marching up from North Carolina now, and Lee was moving to join him"
+       }
+      ],
+      "proposed": "在不补造史实的前提下改为“他们相信，约翰斯顿（南军方面另一路人马的指挥者）正带兵从北卡罗来纳北上”。如不愿作此概括，至少把“这位约翰斯顿”改为“约翰斯顿所部”。"
+     }
+    ],
+    "overall": "定稿事实、引语与解释标注总体可靠。需修正 context.0 把米德误置于“北军后方”这一处方位错误；开头需精简年份括注，并交代格兰特的角色和8日去信，以通过易读性要求。",
+    "_content_sha256": "d40885f6c40816ecd830a2e632e27fbbbca74c102e43abfb9de588c58acb96d7"
    }
   }
  ],
@@ -751,11 +1585,7 @@
     "checked": [
      "facts",
      "attribution",
-     "chronology",
      "causality",
-     "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -769,7 +1599,6 @@
      "causality",
      "quotes",
      "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -795,7 +1624,8 @@
      "parity"
     ],
     "issue_ids": [
-     "F3"
+     "F1",
+     "F2"
     ]
    },
    {
@@ -833,7 +1663,7 @@
      "parity"
     ],
     "issue_ids": [
-     "F1"
+     "F3"
     ]
    },
    {
@@ -869,7 +1699,6 @@
      "causality",
      "quotes",
      "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -879,14 +1708,15 @@
     "checked": [
      "facts",
      "attribution",
-     "chronology",
      "causality",
      "quotes",
      "inner_life",
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F5"
+    ]
    },
    {
     "path": "sections.story.2",
@@ -894,10 +1724,8 @@
      "facts",
      "attribution",
      "chronology",
-     "causality",
      "quotes",
      "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -908,10 +1736,8 @@
      "facts",
      "attribution",
      "chronology",
-     "causality",
      "quotes",
      "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -921,11 +1747,7 @@
     "checked": [
      "facts",
      "attribution",
-     "chronology",
-     "causality",
      "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -939,7 +1761,6 @@
      "causality",
      "quotes",
      "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -953,7 +1774,6 @@
      "causality",
      "quotes",
      "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -964,10 +1784,7 @@
      "facts",
      "attribution",
      "chronology",
-     "causality",
      "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -981,7 +1798,6 @@
      "causality",
      "quotes",
      "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -999,10 +1815,7 @@
     "checked": [
      "facts",
      "attribution",
-     "chronology",
      "causality",
-     "quotes",
-     "inner_life",
      "interpretation_label",
      "parity"
     ],
@@ -1013,10 +1826,7 @@
     "checked": [
      "facts",
      "attribution",
-     "chronology",
      "causality",
-     "quotes",
-     "inner_life",
      "interpretation_label",
      "parity"
     ],
@@ -1027,16 +1837,11 @@
     "checked": [
      "facts",
      "attribution",
-     "chronology",
      "causality",
-     "quotes",
-     "inner_life",
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F2"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.today.heading",
@@ -1077,11 +1882,6 @@
     "checked": [
      "facts",
      "attribution",
-     "chronology",
-     "causality",
-     "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1091,11 +1891,7 @@
     "checked": [
      "facts",
      "attribution",
-     "chronology",
-     "causality",
-     "quotes",
      "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1106,10 +1902,7 @@
      "facts",
      "attribution",
      "chronology",
-     "causality",
      "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1160,11 +1953,7 @@
     "checked": [
      "facts",
      "attribution",
-     "chronology",
-     "causality",
-     "quotes",
      "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1173,146 +1962,135 @@
   "issues": [
    {
     "id": "F1",
-    "path": "sections.context.0",
-    "category": "chronology",
+    "path": "sections.hook.0",
+    "category": "facts",
     "severity": "fix",
-    "problem": "原文顺序是：米德、谢里登起初犹豫，最终同意停火两小时；接着发现按格兰特所走的路线，信使无法在这一时限内往返；李因此派卫队护送信使穿过战线。稿件把护送一事放在前面，又用“另据／Separately”引出停火两小时，割断了两者的联系。读者因此看不出“约定时间／time fixed”就是这两小时。",
+    "problem": "括注“原文只写‘8日’”／“the source says only 'the 8th'”是对完整来源写了什么的断言。读者理解不需要它，而且它把开头塞进了一串推定说明。",
     "evidence": [
      {
-      "id": "GRANT671-E26",
-      "quote": "They, however, finally consented to a suspension of hostilities for two hours"
+      "id": "GRANT671-E1",
+      "quote": "On the 8th I had followed the Army of the Potomac in rear of Lee."
      },
      {
-      "id": "GRANT671-E4",
-      "quote": "It was found that, from the route I had taken, they would probably not be able to communicate with me and get an answer back within the time fixed"
-     },
-     {
-      "id": "GRANT671-E4",
-      "quote": "Lee, therefore, sent an escort"
+      "id": "GRANT671-E28",
+      "quote": "April 9th, 1865, 4.30 P.M."
      }
     ],
-    "proposed": "调整为原文顺序：先写米德、谢里登犹豫，最终同意停火两小时；再写在这一时限内信使按格兰特的路线来不及往返，因此李派人护送信使穿过自己的战线。删去“另据／Separately”。不要补入证据中没有的白旗等细节。"
+    "proposed": "删去关于原文只写“8日”的半句。可改为“1865年4月8日（据回忆录所录次日、即4月9日的电报推定）”，或直接只写“4月8日”。英文同步修改。"
    },
    {
     "id": "F2",
-    "path": "sections.analysis.2",
-    "category": "causality",
+    "path": "sections.hook.0",
+    "category": "parity",
     "severity": "fix",
-    "problem": "句中“因为真正要办的事——交名册、办宣誓、放人回乡——都得靠对方的人去做”是以事实口吻写的因果判断，与证据不符。证据记载，宣誓遣散由格兰特指定的北军将领吉本、格里芬、梅里特执行，李的将领只是留下与之协商、以便利此事。名册也有一份交给格兰特指定的军官。另外，把叫停鸣炮说成“胜利方当天说的第一句话”与记载不符，叫停是在受降消息传开之后。",
+    "problem": "英文写 followed his Army of the Potomac，暗示格兰特直辖该军；证据只说 the Army of the Potomac。中文“随己方的波托马克军”没有这层含义，两版不一致。",
     "evidence": [
      {
-      "id": "GRANT671-E28",
-      "quote": "Generals Gibbon, Griffin and Merritt were designated by me to carry into effect the paroling of Lee′s troops"
-     },
-     {
-      "id": "GRANT671-E28",
-      "quote": "General Lee leaving Generals Longstreet, Gordon and Pendleton for them to confer with in order to facilitate this work"
-     },
-     {
-      "id": "GRANT671-E22",
-      "quote": "When news of the surrender first reached our lines"
+      "id": "GRANT671-E1",
+      "quote": "I had followed the Army of the Potomac in rear of Lee"
      }
     ],
-    "proposed": "改为“部分执行环节需要对方配合（如连、团长官为所部具结，李留下的将领协助宣誓遣散）”，并整句标为作者推断。“第一句话”改为“受降消息传开后的第一个表态”之类的说法，并保留“一种解释是”。"
+    "proposed": "英文改为 followed the Army of the Potomac。"
    },
    {
     "id": "F3",
-    "path": "sections.hook.0",
-    "category": "style",
+    "path": "sections.context.0",
+    "category": "causality",
     "severity": "fix",
-    "problem": "易读性问题：开头只写“8日／On the 8th”，没有年月，也没有交代是哪场战争的哪个阶段。不了解背景的读者无法给事件定位。证据所录电报注明次日为1865年4月9日。",
+    "problem": "现写法是“李再次来信”之后，米德、谢里登犹豫是否停火，读者会以为两人犹豫是针对那封信。按证据，起因是李打出白旗，分别派人向米德和谢里登请求停火，等到联系上格兰特为止。文中也没有交代李第二封信的目的是为交出军队请求会面。另外，“怕这不是真心求和”里的“求和”在证据中没有对应，证据说的是商议投降的会面。",
     "evidence": [
      {
-      "id": "GRANT671-E28",
-      "quote": "April 9th, 1865"
+      "id": "GRANT671-E31",
+      "quote": "Lee, therefore, sent a flag to the rear to advise Meade and one to the front to Sheridan, saying that he had sent a message to me for the purpose of having a meeting to consult about the surrender of his army, and asked for a suspension of hostilities until I could be communicated with."
      },
      {
-      "id": "GRANT671-E1",
-      "quote": "On the 8th I had followed the Army of the Potomac in rear of Lee"
+      "id": "GRANT671-E32",
+      "quote": "I now request an interview in accordance with the offer contained in your letter of yesterday for that purpose."
+     },
+     {
+      "id": "GRANT671-E3",
+      "quote": "They were afraid it was not in good faith"
      }
     ],
-    "proposed": "首句改为“1865年4月8日（据原文所录电报推定月份与年份）”，或在首段注明会面在次日即1865年4月9日。不增加其他事实。"
+    "proposed": "改为：李再次致信格兰特，这次是为交出军队请求会面；同时他打出白旗，派人分别通知后方的米德和前方的谢里登，请求停火到联系上格兰特为止。两人起初对是否停火非常犹豫，怕对方并非诚意……把“真心求和”改为“诚意”。英文同步修改。"
    },
    {
     "id": "F4",
     "path": "sections.context.1",
-    "category": "style",
+    "category": "readability",
     "severity": "note",
-    "problem": "易读性问题：约翰斯顿首次出现时没有任何身份说明，却写作“这位约翰斯顿／this Johnston”，仿佛前文已介绍过此人。证据只说他正从北卡罗来纳北上。",
+    "problem": "约翰斯顿第一次出现时没有交代身份，接着又称“这位约翰斯顿”，不了解背景的读者不知道他是谁。",
     "evidence": [
      {
       "id": "GRANT671-E7",
-      "quote": "they believed that Johnston was marching up from North Carolina now"
+      "quote": "Johnston was marching up from North Carolina now, and Lee was moving to join him"
      }
     ],
-    "proposed": "去掉“这位／this”，写作“他们相信约翰斯顿正率部从北卡罗来纳北上”。不补写证据以外的身份信息。"
+    "proposed": "按证据写成“他们相信，另一支由约翰斯顿率领、正从北卡罗来纳北上的力量将与李会合”，并去掉“这位”。不要补充证据以外的头衔。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.story.1",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "本段只写格兰特心情由欢喜转为低落，没有写他自己说明的原因。读者容易自行补上动机，叫停鸣炮一节也因此缺少依据。格兰特的自述应照实转述，并标明是他的说法。",
+    "evidence": [
+     {
+      "id": "GRANT671-E33",
+      "quote": "I felt like anything rather than rejoicing at the downfall of a foe who had fought so long and valiantly, and had suffered so much for a cause, though that cause was, I believe, one of the worst for which a people ever fought"
+     }
+    ],
+    "proposed": "补一句：据格兰特自述，他不愿为一个久战、英勇、吃了许多苦的对手的失败而欢欣，尽管他认为对方所为的事业是最坏的之一。中英文同步。"
    }
   ],
   "inherited": [
    {
     "id": "X1",
     "verdict": "duplicate",
-    "same_as": "F1",
-    "rationale": "关于停火两小时与护送信使的先后和因果，问题成立，已列为F1。X1另称李先举白旗并主动请求停火，证据包中没有这一记载，不应据此补写。",
+    "same_as": "F3",
+    "rationale": "问题成立，与F3相同：米德、谢里登犹豫的直接起因是李派人请求停火，李第二封信的目的是为交出军队请求会面，稿件两处都没有交代。",
     "evidence": [
      {
-      "id": "GRANT671-E26",
-      "quote": "They, however, finally consented to a suspension of hostilities for two hours"
+      "id": "GRANT671-E31",
+      "quote": "asked for a suspension of hostilities until I could be communicated with"
      },
      {
-      "id": "GRANT671-E4",
-      "quote": "within the time fixed"
+      "id": "GRANT671-E32",
+      "quote": "with reference to the surrender of this army"
      }
     ]
    },
    {
     "id": "X2",
-    "verdict": "invalid",
+    "verdict": "valid",
     "same_as": "",
-    "rationale": "对照E30，正文与之并不冲突。稿件写李另行写信接受条件，没有写双方共同签署，与E30纠正的流行误说一致。稿件也没有对条款文本的形成作出与E30相反的陈述，因此无需修改。",
+    "rationale": "补入的四段摘录里：E31、E32 暴露了 context.0 的因果缺口（见F3）；E33 补出了格兰特心情低落的自述原因（见F5）。E34 只交代他随后决定回华盛顿，稿件没有涉及他离开的原因，不构成错误。",
     "evidence": [
      {
-      "id": "GRANT671-E30",
-      "quote": "The document in the form of a letter was signed only by General Grant"
+      "id": "GRANT671-E33",
+      "quote": "I felt like anything rather than rejoicing at the downfall of a foe"
      },
      {
-      "id": "GRANT671-E30",
-      "quote": "General Lee immediately wrote a letter accepting the terms and handed it to General Grant"
+      "id": "GRANT671-E34",
+      "quote": "I determined to return to Washington at once"
      }
     ]
    }
   ]
  },
- "final_content_sha256": "d5eb0433c229187fcbd29906cfc3357dde73dbc812f899aa8929c8f3a8e2734a",
- "open_issues": [],
- "outcome": "admissible",
+ "final_content_sha256": "d40885f6c40816ecd830a2e632e27fbbbca74c102e43abfb9de588c58acb96d7",
+ "open_issues": [
+  "V2-V1",
+  "V2-V3"
+ ],
+ "outcome": "pending_review",
  "failure": null,
- "finished_at": 1793434779.6706765,
+ "finished_at": 1793463620.5104682,
  "calls": [
   {
    "step": "audit",
    "attempt": 1,
-   "wall_s": 101.7,
-   "json_ok": true,
-   "schema_ok": false,
-   "schema_problems": [
-    "issues[2].category 'readability' unknown",
-    "issues[3].category 'readability' unknown",
-    "issues[3]: a readability issue cannot be a note"
-   ],
-   "killed": null,
-   "tokens": {
-    "input_tokens": 2,
-    "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 20975,
-    "output_tokens": 11259
-   },
-   "cost_estimate_usd": 0.392988
-  },
-  {
-   "step": "audit",
-   "attempt": 2,
-   "wall_s": 85.8,
+   "wall_s": 76.6,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1320,15 +2098,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 21059,
-    "output_tokens": 9665
+    "cache_creation_input_tokens": 22393,
+    "output_tokens": 8623
    },
-   "cost_estimate_usd": 0.36178
+   "cost_estimate_usd": 0.35161200000000004
   },
   {
    "step": "revise_r1",
    "attempt": 1,
-   "wall_s": 31.6,
+   "wall_s": 31.4,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1336,36 +2114,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 20922,
-    "output_tokens": 3759
+    "cache_creation_input_tokens": 22599,
+    "output_tokens": 4051
    },
-   "cost_estimate_usd": 0.242564
+   "cost_estimate_usd": 0.26182
   },
   {
    "step": "verify_r1",
    "attempt": 1,
-   "wall_s": 83.0,
-   "json_ok": true,
-   "schema_ok": false,
-   "schema_problems": [
-    "issues[0].category 'readability' unknown",
-    "issues[0]: a readability issue cannot be a note",
-    "issues[1].category 'readability' unknown",
-    "issues[1]: a readability issue cannot be a note"
-   ],
-   "killed": null,
-   "tokens": {
-    "input_tokens": 2,
-    "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 20106,
-    "output_tokens": 9295
-   },
-   "cost_estimate_usd": 0.34675599999999995
-  },
-  {
-   "step": "verify_r1",
-   "attempt": 2,
-   "wall_s": 63.4,
+   "wall_s": 80.8,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1373,12 +2130,44 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 20209,
-    "output_tokens": 7092
+    "cache_creation_input_tokens": 21831,
+    "output_tokens": 9075
    },
-   "cost_estimate_usd": 0.30352
+   "cost_estimate_usd": 0.35615600000000003
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 23.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 22194,
+    "output_tokens": 2905
+   },
+   "cost_estimate_usd": 0.23565999999999998
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 79.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 21933,
+    "output_tokens": 8994
+   },
+   "cost_estimate_usd": 0.355352
   }
  ],
- "elapsed_min": 6.1,
- "model_wall_min": 6.1
+ "elapsed_min": 4.9,
+ "model_wall_min": 4.9
 }

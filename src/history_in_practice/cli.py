@@ -148,6 +148,30 @@ def cmd_export_site(a):
     print(json.dumps({"written": written}, ensure_ascii=False, indent=1)); return 0
 
 
+def cmd_site_preview(a):
+    """TEST preview only: list admitted editions as reader samples (样稿) and attach dated notices (e.g. Snow 待修订) to
+    items already listed. Each sample is re-verified as admitted *now* (final-editor record + clean context review bound to
+    its content); nothing is scheduled, archived or emailed, and existing edition files keep their bytes."""
+    from . import final_edit
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    d = db(); samples, refused = [], {}
+    for eid in a.sample:
+        problems, o = final_edit.current_eligibility(d, eid)
+        if problems or o is None:
+            refused[eid] = problems or ["not a checked edition"]; continue
+        o = json.loads(json.dumps(o)); o.update(status="reader_sample", preview_date=a.date or datetime.now(ZoneInfo("America/Los_Angeles")).date().isoformat())
+        o.pop("edition_date", None); samples.append(render.finalize(o))
+    if refused:
+        print(json.dumps({"refused": refused}, ensure_ascii=False, indent=1)); return 1
+    notices = {}
+    for spec in a.notice:
+        eid, f = spec.split("=", 1); notices[eid] = _load(f)
+    written = site_export.preview(Path(a.site_root), samples, notices)
+    print(json.dumps({"written": written, "samples": {o["edition_id"]: o["content_sha256"] for o in samples}, "notices": list(notices)},
+                     ensure_ascii=False, indent=1)); return 0
+
+
 def cmd_verify_site(a):
     ok, problems = site_export.verify(_load(a.article), a.base_url)
     print(json.dumps({"ok": ok, "problems": problems}, ensure_ascii=False, indent=1)); return 0 if ok else 1
@@ -780,6 +804,10 @@ def main(argv=None):
     p = sp.add_parser("render"); p.add_argument("articles", nargs="+"); p.add_argument("--out", required=True)
     p.add_argument("--base-url", default="https://starhub.vip"); p.set_defaults(f=cmd_render)
     p = sp.add_parser("export-site"); p.add_argument("articles", nargs="+"); p.add_argument("--site-root", required=True); p.set_defaults(f=cmd_export_site)
+    p = sp.add_parser("site-preview", help="TEST preview: add admitted reader samples and dated notices (never emails)")
+    p.add_argument("--site-root", required=True); p.add_argument("--sample", action="append", default=[], metavar="EDITION_ID")
+    p.add_argument("--notice", action="append", default=[], metavar="EDITION_ID=NOTICE.json"); p.add_argument("--date", help="preview date (LA)")
+    p.set_defaults(f=cmd_site_preview)
     p = sp.add_parser("verify-site"); p.add_argument("article"); p.add_argument("--base-url", required=True); p.set_defaults(f=cmd_verify_site)
     for name, retry in (("send", False), ("retry-send", True)):
         p = sp.add_parser(name); p.add_argument("article"); p.add_argument("--dry-run", action="store_true"); p.add_argument("--real", action="store_true")

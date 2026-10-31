@@ -35,6 +35,10 @@ a{color:var(--accent)}
 .error{border:1px solid #b55;padding:12px;border-radius:6px}
 .corr{border:2px solid #2f5b8a;color:#1f3d5c;padding:8px 12px;border-radius:6px;font-size:14px;margin:10px 0;line-height:1.7}
 .test{border:2px solid #b5542f;color:#b5542f;padding:8px 12px;border-radius:6px;font-size:14px;margin:10px 0}
+.sample{border-left:3px solid var(--accent);background:var(--note);padding:6px 12px;border-radius:4px;font-size:14px;margin:8px 0;color:var(--fg)}
+.pending{border:2px solid #9a6b00;color:#7a5400;background:#fff8e6;padding:8px 12px;border-radius:6px;font-size:14px;margin:10px 0;line-height:1.7}
+@media (prefers-color-scheme:dark){.pending{background:#2b2410;color:#e0b85c;border-color:#c99a2e}}
+.langs{font-size:14px;margin:-4px 0 6px}
 </style>
 </head>
 <body>
@@ -47,6 +51,12 @@ const T = {zh:{q:"想一想",ex:"一个参考思路",as:"假设",st:"可以怎�
            en:{q:"Think about it",ex:"One possible approach",as:"Assumptions",st:"What you could do",alt:"Another reasonable choice",unc:"Sources and uncertainty",src:"Sources",more:"Read more",min:"min (estimate)",all:"All",back:"← All stories",stop:"Pause for ten seconds and decide what you would do."}};
 const TEST = {zh:"测试页面：用于检查排版与链接，不是正式发布的一期；每日订阅尚未开始。",en:"TEST page: for checking layout and links. Not an official edition; the daily subscription has not started."};
 const testNote = () => el("p",{class:"test",role:"note"},"测试 TEST · "+TEST[lang]);
+const SAMPLE = {zh:"推荐 · 样稿：已通过模型事实核查与来源上下文审核，尚待读者评价；不是正式发布的一期。",en:"Recommended · Sample: passed the model fact check and source-context review; awaiting reader feedback. Not an official edition."};
+const sampleNote = () => el("p",{class:"sample",role:"note"},SAMPLE[lang]);
+const PENDING = {zh:"待修订（",en:"Under revision ("};
+const noticeBox = n => { const b = el("div",{class:"pending",role:"note"}); b.append(el("strong",{},PENDING[lang]+n.at+(lang==="zh"?"）":")")), el("p",{},n[lang])); return b; };
+const rank = it => it.sample ? 0 : (it.notice ? 2 : 1);   // samples first; items under revision last, never recommended
+let ITEM = null;
 const app = document.getElementById("app");
 const params = new URLSearchParams(location.search);
 let lang = params.get("lang") || localStorage.getItem("hip-lang") || "zh";
@@ -63,12 +73,16 @@ async function getJSON(rel){
 function fail(err){ app.replaceChildren(el("div",{class:"error",role:"alert"},"内容加载失败 / Failed to load: " + err.message)); }
 
 function renderList(index){
+  document.title = "没事儿多读书"; document.documentElement.lang = lang==="zh" ? "zh-CN" : "en";
   const wrap = el("div"); wrap.append(el("h1",{},"没事儿多读书"));
+  const other = lang==="zh" ? "en" : "zh"; const u = new URL(location.href); u.searchParams.set("lang", other);
+  wrap.append(el("p",{class:"langs"}), testNote()); wrap.querySelector(".langs").append(el("a",{href:u.search},other==="en"?"English":"中文"));
   const f = el("div",{class:"filters",role:"group","aria-label":"类别"}); let active = params.get("cat") || "";
   const list = el("div");
-  const draw = () => { list.replaceChildren(); for (const it of index.items.filter(i => !active || i.category===active)){
+  const draw = () => { list.replaceChildren(); for (const it of index.items.filter(i => !active || i.category===active).sort((a,b) => rank(a)-rank(b))){
       const d = el("div",{class:"item"}); const a = el("a",{href:"?story="+encodeURIComponent(it.edition_id)+"&lang="+lang}, it.title[lang]);
-      if (it.test) d.append(testNote());
+      if (it.sample) d.append(sampleNote());
+      if (it.notice) d.append(noticeBox(it.notice));
       d.append(a, el("div",{class:"meta"}, it.edition_date+" · "+CAT[it.category][lang==="zh"?0:1]+" · "+it.reading_minutes[lang]+" "+T[lang].min), el("div",{class:"small"}, it.dek[lang]));
       list.append(d);} };
   for (const [k,label] of [["",T[lang].all], ...Object.entries(CAT).map(([k,v])=>[k,v[lang==="zh"?0:1]])]){
@@ -89,6 +103,8 @@ function renderStory(o){
   const L = T[lang], w = el("article");
   w.append(el("a",{href:"./?lang="+lang,class:"small"},L.back));
   if (o.status === "test") w.append(testNote());
+  if (o.status === "reader_sample") w.append(sampleNote());
+  if (ITEM && ITEM.notice && ITEM.notice.revision === o.revision) w.append(noticeBox(ITEM.notice));
   if (o.correction) {                                    // dated, versioned correction; the earlier revision stays readable
     const c = o.correction, box = el("div",{class:"corr",role:"note"});
     box.append(el("strong",{},(lang==="zh"?"更正（":"Correction (")+c.at+(lang==="zh"?"，第 ":", revision ")+o.revision+(lang==="zh"?" 版）":")")));
@@ -103,7 +119,7 @@ function renderStory(o){
     b.onkeydown = ev => { if (ev.key==="ArrowRight"||ev.key==="ArrowLeft"){ ev.preventDefault(); switchLang(lang==="zh"?"en":"zh", o, true);} };
     tabs.append(b);
   }
-  w.append(tabs, el("div",{class:"meta"}, o.edition_date+" · "+CAT[o.category][lang==="zh"?0:1]+" · "+o.reading_minutes[lang]+" "+L.min));
+  w.append(tabs, el("div",{class:"meta"}, (o.edition_date||o.preview_date)+" · "+CAT[o.category][lang==="zh"?0:1]+" · "+o.reading_minutes[lang]+" "+L.min));
   w.append(el("h1",{},o.title[lang]), el("p",{class:"dek"},o.dek[lang]));
   for (const s of o.sections){
     const sec = el("section",{id:"s-"+s.id}); sec.append(el("h2",{},s.heading[lang]));
@@ -140,7 +156,7 @@ function switchLang(k, o, focus){
     if (!it) throw new Error("没有这篇 / not found: " + id);
     const o = await getJSON("../" + it.path);
     if (o.revision !== it.revision) throw new Error("版本不一致 / revision mismatch");
-    renderStory(o);
+    ITEM = it; renderStory(o);
   } catch (err) { fail(err); }
 })();
 </script>

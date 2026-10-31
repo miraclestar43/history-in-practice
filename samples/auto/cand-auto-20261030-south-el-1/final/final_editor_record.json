@@ -12,120 +12,50 @@
   "cli_version": "2.1.308 (Claude Code)",
   "model_reported": "claude-opus-5-5"
  },
- "code_rev": "8645cae",
- "started_at": 1793440345.0605245,
+ "code_rev": "d3c2d98",
+ "started_at": 1793464888.2023127,
  "base_source": "samples/auto/cand-auto-20261030-south-el-1/final/article.json",
- "base_content_sha256": "a0573a83df96cf0346f47ff5da7476c49b2b9220c8a88e3cf221aeb5bc4d3bed",
- "evidence_sha256": "a7d7f92e6b648b0b8f18ecc1d0d35599195e97f4d525ccba264c05669345b6da",
- "operator_note": null,
+ "base_content_sha256": "f14175236373f72a42a3fb9df64c8bae6beb7953817fbd75ffe77d031e8bafcd",
+ "evidence_sha256": "f51398db4e28f5773534d263667ad5e841f9bae5659aea601fb1a4567236e998",
+ "operator_note": "extra attempt beyond max_attempts: owner instruction 2026-10-31 (docs/reviews/SNOW_TEST_INCIDENT_20261031.md, user message): complete the factual repairs; one recorded attempt beyond max_attempts",
  "model_record_sha256": null,
- "prior_record_sha256": "e5239f3c0ac4be8786d68b4c5d598c72dbe09d6498622038147f554273794baa",
- "attempt": "attempt-5",
- "context_review_sha256": "87930d0dda7ab4caf9ab71addd1b602fca91ffa6e3ac1b4a0927f286565a3d46",
+ "prior_record_sha256": "d17a741f001a6f11c86907c14761ad4372d51252914db688a3d73af37223e374",
+ "attempt": "attempt-6",
+ "context_review_sha256": "851fb1923593fee5c484ba9cf9e84d35a0f392a0c98a6b57bafb4c630822a63b",
  "inherited": [
   {
    "id": "X1",
    "source": "context review",
-   "where": "sections.analysis.1",
-   "problem": "来源上下文核查（zh）「原文没有说这些理由是否当众向全队讲过；」：这句关于来源未载的断言没有必要，删去。来源原文〔S-SOUTH〕：「They suggested that I should take Blackborrow in order that he might have shelter and warmth as quickly ag possible, but I had to veto this idea.」",
-   "suggestion": "Delete this sentence and the unverified conjecture after it. Instead, state what the source does record: the proposal came from the two doctors (McIlroy and Macklin), and Shackleton vetoed it and gave his reasons."
+   "where": "sections.limits.1",
+   "problem": "来源上下文核查（zh）「所引片段未给公元年份，这里不做换算」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SOUTH〕：「We sailed from London on Friday, August 1, 1914」",
+   "suggestion": "来源里有年份：考察队于1914年8月1日从伦敦出发。可以写明这一点，或者删掉这句说明。不要推算航程年份，除非检索到原文明确写出。"
   },
   {
    "id": "X2",
    "source": "context review",
-   "where": "sections.analysis.1",
-   "problem": "来源上下文核查（en）「The original does not say whether those reasons were put to the whole party;」：这句关于来源未载的断言没有必要，删去。来源原文〔S-SOUTH〕：「They suggested that I should take Blackborrow in order that he might have shelter and warmth as quickly ag possible, but I had to veto this idea.」",
-   "suggestion": "Delete it along with the conjecture that follows. Say the proposal came from the two doctors."
+   "where": "sections.limits.1",
+   "problem": "来源上下文核查（en）「The quoted passages give no calendar year, so none is supplied here」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SOUTH〕：「We sailed from London on Friday, August 1, 1914」",
+   "suggestion": "与中文版同样修改。"
   },
   {
    "id": "X3",
    "source": "context review",
-   "where": "sections.analysis.2",
-   "problem": "来源上下文核查（zh）「这只是一种解释，原文没有说明他为什么这样安排。」：无法核实这句“未载”断言：删去，或改成只就已读范围准确表述的说法。来源原文〔S-SOUTH〕：「I decided to call for volunteers, although, as a matter of fact, I pretty well knew which of the people I would select.」",
-   "suggestion": "Can stay. Consider narrowing it to '这段记述没有说明……'."
+   "where": "uncertainty_note",
+   "problem": "来源上下文核查（zh）「所引片段未给公元年份，不做换算」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SOUTH〕：「We sailed from London on Friday, August 1, 1914」",
+   "suggestion": "改为注明1914年8月1日从伦敦出发，或者删去这句。英文版同步修改。"
   },
   {
    "id": "X4",
    "source": "context review",
-   "where": "sections.analysis.2",
-   "problem": "来源上下文核查（en）「This is only one reading, and the original gives no reason for the arrangement.」：无法核实这句“未载”断言：删去，或改成只就已读范围准确表述的说法。来源原文〔S-SOUTH〕：「I decided to call for volunteers, although, as a matter of fact, I pretty well knew which of the people I would select.」",
-   "suggestion": "Can stay. Consider narrowing it to 'this passage gives no reason'."
+   "where": "sections.analysis.0",
+   "problem": "来源上下文核查：只写留守二十二人熬了四个半月，没有交代他们最终被智利 Yelcho 号救出。最坏情形账的实际结局被截断，读者无法知道留守者的下场。。来源原文〔S-SOUTH〕：「Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades.」",
+   "suggestion": null
   },
   {
    "id": "X5",
    "source": "context review",
-   "where": "sections.limits.0",
-   "problem": "来源上下文核查（zh）「作者说，南乔治亚航程的记述依据逐日写下的简略笔记，笔记通常只记距离、船位和天气，航程中的具体经过则来自记忆。」：无法核实这句“未载”断言：删去，或改成只就已读范围准确表述的说法。来源原文〔S-SOUTH〕：「The notes dealt usually with the bare facts of distances, positions, and weather, but our memories retained the incidents of the passing days」",
-   "suggestion": "Can stay."
-  },
-  {
-   "id": "X6",
-   "source": "context review",
-   "where": "sections.limits.1",
-   "problem": "来源上下文核查（zh）「所引片段未给公元年份，这里不做换算；」：这句关于来源未载的断言没有必要，删去。来源原文〔S-SOUTH〕：「We sailed from London on Friday, August 1, 1914」",
-   "suggestion": "Delete the 'no year given' statement. If a time frame is wanted, use what the source records: the expedition is titled 1914-1917 and sailed from London on August 1, 1914. Do not supply a year for the voyage itself unless it is verified."
-  },
-  {
-   "id": "X7",
-   "source": "context review",
-   "where": "sections.limits.1",
-   "problem": "来源上下文核查（en）「The quoted passages give no calendar year, so none is supplied;」：这句关于来源未载的断言没有必要，删去。来源原文〔S-SOUTH〕：「THE STORY OF SHACKLETON’S LAST EXPEDITION 1914-1917」",
-   "suggestion": "Same as N2."
-  },
-  {
-   "id": "X8",
-   "source": "context review",
-   "where": "uncertainty_note",
-   "problem": "来源上下文核查（zh）「对话与心理均为记述性内容，未必逐字、不可核实；」：这句关于来源未载的断言没有必要，删去。来源原文〔S-SOUTH〕：「This record of the voyage to South Georgia is based upon Scanty notes made day by day.」",
-   "suggestion": "Change '不可核实' to '本文未对照其他当事人的记录核实'. Keep '未必逐字'."
-  },
-  {
-   "id": "X9",
-   "source": "context review",
-   "where": "uncertainty_note",
-   "problem": "来源上下文核查（en）「Dialogue and psychology are reported rather than transcribed, need not be verbatim, and cannot be verified;」：这句关于来源未载的断言没有必要，删去。来源原文〔S-SOUTH〕：「This record of the voyage to South Georgia is based upon Scanty notes made day by day.」",
-   "suggestion": "Change 'cannot be verified' to 'have not been checked here against other participants' accounts'."
-  },
-  {
-   "id": "X10",
-   "source": "context review",
-   "where": "sections.limits.1",
-   "problem": "来源上下文核查（zh）「文森特为什么垮掉，队长自己说难以解释」：无法核实这句“未载”断言：删去，或改成只就已读范围准确表述的说法。来源原文〔S-SOUTH〕：「I could not easily account for his collapse」",
-   "suggestion": "Can stay."
-  },
-  {
-   "id": "X11",
-   "source": "context review",
-   "where": "sections.story.8",
-   "problem": "来源上下文核查：The draft goes straight from sighting South Georgia on May 8 to entering the bay on May 10. It leaves out that landing was impossible, that they had to stand off, and that a hurricane then drove them onto a dead lee shore where the boat was nearly lost. The draft cites E27 but does not use it. Readers will think the voyage was essentially over once land was sighted.。来源原文〔S-SOUTH〕：「to have attempted a landing at that time would have been suicidal」",
-   "suggestion": null
-  },
-  {
-   "id": "X12",
-   "source": "context review",
-   "where": "sections.story.8",
-   "problem": "来源上下文核查：The draft ends on the safe landing and drinking water, which makes the landing look like the rescue. They actually came ashore on the opposite side from the east-coast whaling stations, glaciers blocked the way inland, and an overland journey still lay ahead.。来源原文〔S-SOUTH〕：「It was obvious that these glaciers and the precipitous slopes of the mountains barred our way inland from the cove.」",
-   "suggestion": null
-  },
-  {
-   "id": "X13",
-   "source": "context review",
-   "where": "sections.analysis.0",
-   "problem": "来源上下文核查：The analysis rests on the worst-case reckoning for the men left behind, but the piece never tells readers that the source does give their outcome: twenty-two men held out on Elephant Island for four and a half months.。来源原文〔S-SOUTH〕：「twenty-two of my comrades eked out a bare existence for four and a half months」",
-   "suggestion": null
-  },
-  {
-   "id": "X14",
-   "source": "context review",
-   "where": "sections.story.2",
-   "problem": "来源上下文核查：The draft writes '有人提议' / 'One proposal was'. In the source, the proposal to take Blackborrow came from the two doctors, who were themselves staying on the island to care for the sick. The vague wording hides who made the proposal, and it is the basis for the unnecessary conjecture in analysis.1.。来源原文〔S-SOUTH〕：「McIlroy and Macklin were both anxious to. go but realized that their duty lay on the island with the sick men. They suggested that I should take Blackborrow」",
-   "suggestion": null
-  },
-  {
-   "id": "X15",
-   "source": "context review",
    "where": "",
-   "problem": "证据包已按来源上下文补入摘录 SOUTH-EL1-E35, SOUTH-EL1-E36, SOUTH-EL1-E37；请据此检查叙事、结局与因果是否完整准确",
+   "problem": "证据包已按来源上下文补入摘录 SOUTH-EL1-E38, SOUTH-EL1-E39, SOUTH-EL1-E40, SOUTH-EL1-E41；请据此检查叙事、结局与因果是否完整准确",
    "suggestion": null
   }
  ],
@@ -354,574 +284,384 @@
    "id": "F1",
    "path": "sections.hook.0",
    "category": "readability",
-   "severity": "note",
-   "problem": "开头先讲史源，再连续给出五个星期、三个月、三只海豹、两张半兽皮等数字，读者这时还不知道全队有多少人。“六个名额”占全队多大比例，读者无从判断。“谁遇到什么问题、为什么难”基本能读出来，但数字堆在前面，冲淡了这一点。",
+   "severity": "fix",
+   "problem": "开头先讲史源（《南方》作者的第一人称自述），然后才讲处境；全文开头一直没有说明这支队伍有多少人、最后几人出海、几人留下，读者说不清“谁遇到了问题”。同时开头堆了读者此时还用不上的存量细节（三只海豹、两张半兽皮）。",
    "evidence": [
     {
      "id": "SOUTH-EL1-E35",
      "quote": "twenty-two of my comrades eked out a bare existence for four and a half months"
-    }
-   ],
-   "proposed": "把史源说明移到后文或压缩成半句。先写“困在象岛、口粮有限、无人搜寻”。海豹、兽皮的存量可以后移到燃料一句。若要交代规模，可据序言写明留岛者为二十二人（放在后文亦可）。",
-   "origin": "final-editor audit"
-  },
-  {
-   "id": "F2",
-   "path": "sections.hook.2",
-   "category": "style",
-   "severity": "note",
-   "problem": "英文先引原句，紧接着又用几乎相同的话复述一遍（\"The conclusion was forced on him.\"），重复。",
-   "evidence": [
+    },
     {
-     "id": "SOUTH-EL1-E3",
-     "quote": "That conclusion was forced upon me"
+     "id": "SOUTH-EL1-E13",
+     "quote": "finally selected McNeish, McCarthy, and Vincent in addition to Worsley and Crean"
     }
    ],
-   "proposed": "删去英文末句的复述。",
-   "origin": "final-editor audit"
-  },
-  {
-   "id": "F3",
-   "path": "sections.story.1",
-   "category": "interpretation_label",
-   "severity": "fix",
-   "problem": "“老老实实写明”和 \"admitting, honestly\" 是作者对人物态度的评价。原文只写 as a matter of fact，没有自认坦白的意味。这里把作者的判断当成了记述。",
-   "evidence": [
-    {
-     "id": "SOUTH-EL1-E9",
-     "quote": "although, as a matter of fact, I pretty well knew which of the people I would select"
-    }
-   ],
-   "proposed": "改为“同时写明”和 \"while noting that\"，删去“老老实实”和 honestly。",
+   "proposed": "开头先写处境：队长沙克尔顿和他的队伍困在象岛，最后六人乘小船出海求援，二十二人留在岛上。史源说明后移一句。“三只海豹和两张半带脂肪的兽皮”可以移到口粮那句之后或者压缩，但“燃料主要靠海兽脂肪”要保留。英文同步。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "删去“老老实实”与 honestly，改为“同时写明”/“while noting that”。原文只是 as a matter of fact，不含自认坦白的态度评价。",
+   "rationale": "开头改为先写处境：沙克尔顿和队伍困在象岛，最后六人乘小船出海、二十二人留岛。人数依据E13的六人名单和E35的二十二人。史源说明后移一句。删去三只海豹、两张半兽皮的存量细节，保留燃料主要靠海兽脂肪。中英同步，ev补入E35、E13。",
    "decided_in": "revise_r1"
   },
   {
-   "id": "F4",
-   "path": "sections.story.1",
-   "category": "attribution",
+   "id": "F2",
+   "path": "sections.story.8",
+   "category": "causality",
    "severity": "fix",
-   "problem": "“挑人的标准也摆在明处”和 \"The criteria were stated openly\" 暗示这些标准曾向队员公开宣布。证据只是队长在记述中写下了这些考虑。",
+   "problem": "把“风向不利可能拖长航程”写成既是不增加配给的理由，也是拒绝预支第二天的水的理由。证据只把这个理由用于不增加配给，拒绝预支另写一句，没有附理由。这个合并的写法与已知污染 K26 的简报说法一致。",
    "evidence": [
     {
-     "id": "SOUTH-EL1-E11",
-     "quote": "Some were not fit enough for the work that would have to be done"
+     "id": "SOUTH-EL1-E25",
+     "quote": "allowance of water to be increased since an unfavourable wind might drive us away from the island"
+    },
+    {
+     "id": "SOUTH-EL1-E25",
+     "quote": "refusing to allow any one to anticipate the morrow"
     }
    ],
-   "proposed": "改为“记述里也写了挑人的考虑”和 \"The account also sets out his criteria\"。",
+   "proposed": "中文改为：队长不肯增加配给，因为万一风向不利，船可能被吹离海岛，航程拖长许多天；有人恳求预支第二天的水，他也坚决拒绝。英文同样把理由只挂在不增加配给上。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "把“挑人的标准也摆在明处”/“The criteria were stated openly”改为“记述里也写了挑人的考虑”/“The account also sets out his criteria”。证据只说明队长在记述中写下这些考虑，没有说向队员公开宣布过。",
+   "rationale": "把风向不利可能拖长航程这一理由只挂在不增加配给上；拒绝预支第二天的水另写一句，不附理由。中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.story.8",
+   "category": "readability",
+   "severity": "note",
+   "problem": "一段之内连续写了巨浪、文森特垮掉、限水、望见陆地、飓风、销钉、入湾、登陆、上岸后的处境，读者很难分清先后。",
+   "evidence": [],
+   "proposed": "按“航程中段（巨浪、文森特、限水）”“5月8日望见陆地至飓风”“5月10日入湾登陆”拆成三段，内容不删。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F4",
+   "path": "sections.analysis.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "只写了留守的二十二人熬了四个半月，没有交代他们最终获救。读者无法知道这笔“最坏情形账”的实际下场，这一段的结局被截断了。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E38",
+     "quote": "Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades"
+    },
+    {
+     "id": "SOUTH-EL1-E38",
+     "quote": "Captain Luis Pardo, who commanded the Yelcho on our last and successful venture"
+    }
+   ],
+   "proposed": "在“四个半月”之后补一句：据作者序言，经过多次尝试，最后由智利政府派出的Yelcho号把他们救出。保留“本文不据此推出因果评价”。英文同步。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "在四个半月之后补写据序言所载的结局：营救经过不止一次尝试，最终由智利政府直接促成，Luis Pardo指挥的Yelcho号完成最后一次、成功的营救。保留“本文不据此推出因果评价”。ev补入E38，中英同步。",
    "decided_in": "revise_r1"
   },
   {
    "id": "F5",
-   "path": "sections.story.2",
-   "category": "attribution",
+   "path": "sections.analysis.2",
+   "category": "facts",
    "severity": "fix",
-   "problem": "“有人提议”和 \"One proposal was\" 隐去了提议者。按证据，带布莱克博罗上船的提议出自两位医生，他们本人留岛照顾病号。",
-   "evidence": [
-    {
-     "id": "SOUTH-EL1-E29",
-     "quote": "McIlroy and Macklin were both anxious to. go"
-    },
-    {
-     "id": "SOUTH-EL1-E12",
-     "quote": "They suggested that I should take Blackborrow"
-    }
-   ],
-   "proposed": "改为“两位医生提议把双脚冻伤的布莱克博罗带上船……”，英文改为 \"The doctors suggested taking Blackborrow...\"。",
+   "problem": "“所引段落没有说明他为什么这样安排”是关于来源没写什么的否定断言。前面已经标明“这只是一种解释”，读者理解不需要这半句。",
+   "evidence": [],
+   "proposed": "删去后半句，改为“这只是本文的解释。”英文删去“and the passages quoted give no reason for the arrangement”。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "把“有人提议”/“One proposal was”改为“两位医生提议”/“The doctors suggested”。E12 中提议者是 They，紧接两位医生的语境。",
+   "rationale": "删去关于所引段落没有说明理由的否定断言，改为“这只是本文的解释”。英文同步。",
    "decided_in": "revise_r1"
   },
   {
    "id": "F6",
-   "path": "sections.story.3",
-   "category": "readability",
-   "severity": "note",
-   "problem": "麦克尼什、麦卡锡、文森特初次出现时没有任何身份说明。木匠又只以“木匠”出现，读者难以把他对上名单中的某个名字，容易以为是第七人。括号说明“他也在这六人之中”起到了部分补救作用。",
+   "path": "sections.limits.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“这套记录只有当事人一个史源”和“exactly one historical source”读起来像在断言这段历史只有这一份来源。这超出了证据包能支持的范围，应改为说明本文依据的范围。",
    "evidence": [
     {
-     "id": "SOUTH-EL1-E13",
-     "quote": "finally selected McNeish, McCarthy, and Vincent in addition to Worsley and Crean"
-    },
-    {
-     "id": "SOUTH-EL1-E14",
-     "quote": "I called the carpenter"
+     "id": "SOUTH-EL1-E34",
+     "quote": "This record of the voyage to South Georgia is based upon Scanty notes made day by day"
     }
    ],
-   "proposed": "保留括号说明，并注明证据未写木匠是名单中哪一位；不要补造身份。",
-   "origin": "final-editor audit"
+   "proposed": "改为“本文只依据沙克尔顿《南方》中他事后写下的第一人称自述”。英文改为“This piece relies only on Shackleton's first-person account in South, written after the fact”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "首句改为说明本文依据的范围，即只依据沙克尔顿《南方》中的事后第一人称自述，不再断言这段历史只有这一份来源。英文同步。",
+   "decided_in": "revise_r1"
   },
   {
    "id": "F7",
-   "path": "sections.story.8",
-   "category": "chronology",
+   "path": "sections.limits.1",
+   "category": "unsupported",
    "severity": "fix",
-   "problem": "正文从5月8日望见陆地直接跳到5月10日驶入海湾，漏掉了中间的险情：当时无法登陆，只能离岸停驶；随后遇到最猛的飓风，被推向海岸；风停后桅杆销钉脱落，此前若脱落则必死无疑。按现在的写法，读者会以为见到陆地后航程已无大碍。E27 未列入本段证据。",
+   "problem": "“所引片段未给公元年份，这里不做换算”沿用了已知污染K27中“原文没有公元年份”的说法。这类关于来源没写什么的断言读者不需要，而且来源里写有出发年份。删掉之后，“两处要留白”只剩文森特一处。",
    "evidence": [
     {
-     "id": "SOUTH-EL1-E36",
-     "quote": "to have attempted a landing at that time would have been suicidal"
-    },
-    {
-     "id": "SOUTH-EL1-E36",
-     "quote": "one of the worst hurricanes any of us had ever experienced"
-    },
-    {
-     "id": "SOUTH-EL1-E27",
-     "quote": "if it had gone nothing could have saved us"
+     "id": "SOUTH-EL1-E41",
+     "quote": "We sailed from London on Friday, August 1, 1914"
     }
    ],
-   "proposed": "在5月8日与5月10日之间补一两句：当时登陆无异自杀，只能离岸等天亮；次晨遇上他们经历过最猛的飓风之一，船被推向海岸，风向突变才脱身，随后发现锁桅杆的销钉脱落。同时把 E36、E27 列入本段证据。",
+   "proposed": "删去关于公元年份的这半句。中文开头改为“有一处要留白：”，英文开头改为“One blank stays blank.”，并删去“The quoted passages give no calendar year, so none is supplied here;”。不要推算航程年份。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "在5月8日望见陆地与5月10日入湾之间补写三点：当时登陆无异自杀，只能离岸停驶等天亮；次晨遇上他们经历过最猛的飓风之一，船被推向海岸；天黑后风向突变才脱身，随后锁桅杆的销钉脱落。另将 E36、E27 列入本段证据。没有加入证据以外的日期。",
+   "rationale": "删去“所引片段未给公元年份”的否定断言，开头改为“有一处要留白”，英文改为“One blank stays blank.”。未推算航程年份。",
    "decided_in": "revise_r1"
   },
   {
    "id": "F8",
-   "path": "sections.story.8",
-   "category": "facts",
+   "path": "uncertainty_note",
+   "category": "unsupported",
    "severity": "fix",
-   "problem": "正文以平安上岸、喝到淡水收尾，容易让人以为求援已经完成。证据写明，从小湾进入内陆的路被冰川和陡坡挡住，还得驶向海湾顶端；捕鲸站在东岸，此时援助尚未拿到。",
+   "problem": "中英文都写“所引片段未给公元年份，不做换算”，沿用了已知污染K27。来源里写有1914年出发，这类否定断言读者也不需要。",
    "evidence": [
     {
-     "id": "SOUTH-EL1-E37",
-     "quote": "barred our way inland from the cove"
-    },
-    {
-     "id": "SOUTH-EL1-E37",
-     "quote": "We must sail to the head of the sound."
-    },
-    {
-     "id": "SOUTH-EL1-E4",
-     "quote": "whaling-stations on the east coast"
+     "id": "SOUTH-EL1-E41",
+     "quote": "We sailed from London on Friday, August 1, 1914"
     }
    ],
-   "proposed": "结尾加一句：上岸并不等于求援成功。冰川和陡峭山坡挡住了从小湾进入内陆的路，他们还得驶向海湾顶端，而捕鲸站在东岸。",
+   "proposed": "中文删去“所引片段未给公元年份，不做换算”，英文删去“and the quoted passages give no calendar year, so none is supplied”。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "结尾补一句：上岸不等于求援成功。冰川和陡坡挡住了进入内陆的路，他们还须驶向海湾顶端，而捕鲸站在东岸。另将 E37、E4 列入本段证据。",
+   "rationale": "中英文都删去关于未给公元年份、不做换算的说法。",
    "decided_in": "revise_r1"
   },
   {
    "id": "F9",
-   "path": "sections.story.8",
-   "category": "readability",
-   "severity": "note",
-   "problem": "一段之内塞进了巨浪、文森特、限水、望见陆地、入湾、登岸，读者难以把握先后。",
-   "evidence": [],
-   "proposed": "拆成两到三段：海上磨难、限水，然后是望见陆地到登岸。",
-   "origin": "final-editor audit"
-  },
-  {
-   "id": "F10",
-   "path": "sections.analysis.0",
-   "category": "facts",
-   "severity": "fix",
-   "problem": "本段分析围绕留岛者的最坏情形展开，却没有告诉读者史源记下的结果：留岛的二十二人靠两条船作遮蔽熬过四个半月，远超当初一个月往返的预期。缺了这一点，读者无法检验这笔账。",
-   "evidence": [
-    {
-     "id": "SOUTH-EL1-E35",
-     "quote": "twenty-two of my comrades eked out a bare existence for four and a half months"
-    },
-    {
-     "id": "SOUTH-EL1-E4",
-     "quote": "be back with relief within a month"
-    }
-   ],
-   "proposed": "在本段或边界段补一句：据作者序言，留在象岛的二十二人熬了四个半月。不要据此推出因果评价。",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "在分析段补入作者序言所记：留岛二十二人勉强熬了四个半月，远超一个月内带援返回的预期。正文明确声明不据此作因果评价。另将 E35、E4 列入证据。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F11",
-   "path": "sections.analysis.1",
-   "category": "attribution",
-   "severity": "fix",
-   "problem": "“有人提了建议”和 \"a proposal was made\" 同样隐去了提议出自两位医生。随后的推测设想了一个“被悄悄放下的人”，这个场景在证据中没有依据。“原文没有说”是对全书的断言，超出了所引段落。按证据，否决是对医生提议的直接回应，理由至少是给了提议者的。",
-   "evidence": [
-    {
-     "id": "SOUTH-EL1-E12",
-     "quote": "They suggested that I should take Blackborrow"
-    },
-    {
-     "id": "SOUTH-EL1-E12",
-     "quote": "but I had to veto this idea"
-    },
-    {
-     "id": "SOUTH-EL1-E29",
-     "quote": "McIlroy and Macklin were both anxious to. go"
-    }
-   ],
-   "proposed": "改为“两位医生提了建议，被否掉了，记述里写明了否决的理由”。删去“原文没有说……未经证实的推测”这两句，中英文同步修改。",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "改为“两位医生提了建议，被否掉了，记述里写明了否决的理由”，中英文同步。删去关于原文未说明、以及“被悄悄放下的人”的两句无据推测。另将 E29 列入证据。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F12",
-   "path": "sections.analysis.2",
-   "category": "facts",
-   "severity": "fix",
-   "problem": "“原文没有说明他为什么这样安排”和 \"the original gives no reason\" 是对全书的断言，本文只读了摘录，无法核实。",
-   "evidence": [
-    {
-     "id": "SOUTH-EL1-E9",
-     "quote": "I decided to call for volunteers, although, as a matter of fact, I pretty well knew which of the people I would select"
-    }
-   ],
-   "proposed": "收窄为“所引段落没有说明他为什么这样安排”，英文改为 \"the passages quoted give no reason for the arrangement\"。",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "把对全书的断言收窄为“所引段落没有说明”/“the passages quoted give no reason”。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F13",
    "path": "uncertainty_note",
    "category": "facts",
    "severity": "fix",
-   "problem": "“不可核实”和 \"cannot be verified\" 说得过于绝对。本文只用了单一史源，能如实说的只是本文没有用其他记录核实。",
-   "evidence": [
-    {
-     "id": "SOUTH-EL1-E34",
-     "quote": "based upon Scanty notes made day by day"
-    }
-   ],
-   "proposed": "改为“本文未对照其他当事人的记录核实”，英文改为 \"have not been checked here against other participants' accounts\"。",
+   "problem": "“全文只有当事人一个史源”和“rests on a single source”与limits.0的问题相同，读起来像断言这段历史别无来源。",
+   "evidence": [],
+   "proposed": "改为“本文只依据沙克尔顿（当事人）事后的第一人称自述《南方》”。英文同步。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "把“不可核实”/“cannot be verified”改为“本文未对照其他当事人的记录核实”/“have not been checked here against other participants' accounts”，只陈述本文实际做过的范围。",
+   "rationale": "把“只有一个史源”改为“本文只依据沙克尔顿事后的第一人称自述《南方》”，说明的是本文的依据范围。英文同步。",
    "decided_in": "revise_r1"
-  },
-  {
-   "id": "F14",
-   "path": "sections.limits.0",
-   "category": "readability",
-   "severity": "note",
-   "problem": "同一段里先后用“当事人”“作者”“队长”指同一个人，读者可能以为说的是几个人；正文其余部分一直用“队长”。",
-   "evidence": [],
-   "proposed": "统一称“沙克尔顿”或“队长”，必要时注明“即作者本人”。",
-   "origin": "final-editor audit"
   },
   {
    "id": "X1",
-   "problem": "来源上下文核查（zh）「原文没有说这些理由是否当众向全队讲过；」：这句关于来源未载的断言没有必要，删去。来源原文〔S-SOUTH〕：「They suggested that I should take Blackborrow in order that he might have shelter and warmth as quickly ag possible, but I had to veto this idea.」",
+   "problem": "来源上下文核查（zh）「所引片段未给公元年份，这里不做换算」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SOUTH〕：「We sailed from London on Friday, August 1, 1914」",
    "origin": "inherited context review None",
    "severity": "fix",
    "category": "unsupported",
-   "path": "sections.analysis.1",
+   "path": "sections.limits.1",
    "disposition": "duplicate",
-   "same_as": "F11",
-   "rationale": "提议出自医生，后接的推测没有依据，“原文没有说”超出了摘录范围。"
+   "same_as": "F7",
+   "rationale": "来源中有1914年8月1日从伦敦出发的记载，中文“未给公元年份”的说法应删去。"
   },
   {
    "id": "X2",
-   "problem": "来源上下文核查（en）「The original does not say whether those reasons were put to the whole party;」：这句关于来源未载的断言没有必要，删去。来源原文〔S-SOUTH〕：「They suggested that I should take Blackborrow in order that he might have shelter and warmth as quickly ag possible, but I had to veto this idea.」",
+   "problem": "来源上下文核查（en）「The quoted passages give no calendar year, so none is supplied here」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SOUTH〕：「We sailed from London on Friday, August 1, 1914」",
    "origin": "inherited context review None",
    "severity": "fix",
    "category": "unsupported",
-   "path": "sections.analysis.1",
+   "path": "sections.limits.1",
    "disposition": "duplicate",
-   "same_as": "F11",
-   "rationale": "与 X1 是同一处的英文版本。"
+   "same_as": "F7",
+   "rationale": "英文与中文是同一处问题。"
   },
   {
    "id": "X3",
-   "problem": "来源上下文核查（zh）「这只是一种解释，原文没有说明他为什么这样安排。」：无法核实这句“未载”断言：删去，或改成只就已读范围准确表述的说法。来源原文〔S-SOUTH〕：「I decided to call for volunteers, although, as a matter of fact, I pretty well knew which of the people I would select.」",
+   "problem": "来源上下文核查（zh）「所引片段未给公元年份，不做换算」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SOUTH〕：「We sailed from London on Friday, August 1, 1914」",
    "origin": "inherited context review None",
    "severity": "fix",
    "category": "unsupported",
-   "path": "sections.analysis.2",
+   "path": "uncertainty_note",
    "disposition": "duplicate",
-   "same_as": "F12",
-   "rationale": "应收窄为“所引段落”。"
+   "same_as": "F8",
+   "rationale": "uncertainty_note中英文都重复了同一个无年份断言。"
   },
   {
    "id": "X4",
-   "problem": "来源上下文核查（en）「This is only one reading, and the original gives no reason for the arrangement.」：无法核实这句“未载”断言：删去，或改成只就已读范围准确表述的说法。来源原文〔S-SOUTH〕：「I decided to call for volunteers, although, as a matter of fact, I pretty well knew which of the people I would select.」",
-   "origin": "inherited context review None",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "sections.analysis.2",
-   "disposition": "duplicate",
-   "same_as": "F12",
-   "rationale": "与 X3 是同一处的英文版本。"
-  },
-  {
-   "id": "X5",
-   "path": "sections.limits.0",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "来源上下文核查（zh）「作者说，南乔治亚航程的记述依据逐日写下的简略笔记，笔记通常只记距离、船位和天气，航程中的具体经过则来自记忆。」：无法核实这句“未载”断言：删去，或改成只就已读范围准确表述的说法。来源原文〔S-SOUTH〕：「The notes dealt usually with the bare facts of distances, positions, and weather, but our memories retained the incidents of the passing days」",
-   "origin": "inherited context review None",
-   "disposition": "rejected",
-   "rationale": "现写法与证据逐项对应，有据可查。",
-   "evidence": [
-    {
-     "id": "SOUTH-EL1-E34",
-     "quote": "The notes dealt usually with the bare facts of distances, positions, and weather, but our memories retained the incidents of the passing days"
-    }
-   ],
-   "decided_in": "audit"
-  },
-  {
-   "id": "X6",
-   "path": "sections.limits.1",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "来源上下文核查（zh）「所引片段未给公元年份，这里不做换算；」：这句关于来源未载的断言没有必要，删去。来源原文〔S-SOUTH〕：「We sailed from London on Friday, August 1, 1914」",
-   "origin": "inherited context review None",
-   "disposition": "rejected",
-   "rationale": "现写法限定为“所引片段”，对证据包是准确的：摘录里的日期只有月日，没有年份。X6 所引的1914年不在证据包内，补入就是证据外事实。",
-   "evidence": [
-    {
-     "id": "SOUTH-EL1-E26",
-     "quote": "The morning of May 8 broke thick and stormy"
-    }
-   ],
-   "decided_in": "audit"
-  },
-  {
-   "id": "X7",
-   "path": "sections.limits.1",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "来源上下文核查（en）「The quoted passages give no calendar year, so none is supplied;」：这句关于来源未载的断言没有必要，删去。来源原文〔S-SOUTH〕：「THE STORY OF SHACKLETON’S LAST EXPEDITION 1914-1917」",
-   "origin": "inherited context review None",
-   "disposition": "rejected",
-   "rationale": "理由同 X6。所称 1914-1917 不在证据包内，英文限定为 the quoted passages，表述准确。",
-   "evidence": [
-    {
-     "id": "SOUTH-EL1-E26",
-     "quote": "The morning of May 8 broke thick and stormy"
-    }
-   ],
-   "decided_in": "audit"
-  },
-  {
-   "id": "X8",
-   "problem": "来源上下文核查（zh）「对话与心理均为记述性内容，未必逐字、不可核实；」：这句关于来源未载的断言没有必要，删去。来源原文〔S-SOUTH〕：「This record of the voyage to South Georgia is based upon Scanty notes made day by day.」",
-   "origin": "inherited context review None",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "uncertainty_note",
-   "disposition": "duplicate",
-   "same_as": "F13",
-   "rationale": "“不可核实”过于绝对，应改为本文未作核实。"
-  },
-  {
-   "id": "X9",
-   "problem": "来源上下文核查（en）「Dialogue and psychology are reported rather than transcribed, need not be verbatim, and cannot be verified;」：这句关于来源未载的断言没有必要，删去。来源原文〔S-SOUTH〕：「This record of the voyage to South Georgia is based upon Scanty notes made day by day.」",
-   "origin": "inherited context review None",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "uncertainty_note",
-   "disposition": "duplicate",
-   "same_as": "F13",
-   "rationale": "与 X8 是同一处的英文版本。"
-  },
-  {
-   "id": "X10",
-   "path": "sections.limits.1",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "来源上下文核查（zh）「文森特为什么垮掉，队长自己说难以解释」：无法核实这句“未载”断言：删去，或改成只就已读范围准确表述的说法。来源原文〔S-SOUTH〕：「I could not easily account for his collapse」",
-   "origin": "inherited context review None",
-   "disposition": "rejected",
-   "rationale": "现写法与证据原文一致。",
-   "evidence": [
-    {
-     "id": "SOUTH-EL1-E24",
-     "quote": "I could not easily account for his collapse"
-    }
-   ],
-   "decided_in": "audit"
-  },
-  {
-   "id": "X11",
-   "problem": "来源上下文核查：The draft goes straight from sighting South Georgia on May 8 to entering the bay on May 10. It leaves out that landing was impossible, that they had to stand off, and that a hurricane then drove them onto a dead lee shore where the boat was nearly lost. The draft cites E27 but does not use it. Readers will think the voyage was essentially over once land was sighted.。来源原文〔S-SOUTH〕：「to have attempted a landing at that time would have been suicidal」",
-   "origin": "inherited context review None",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "sections.story.8",
-   "disposition": "duplicate",
-   "same_as": "F7",
-   "rationale": "漏写5月8日至10日之间无法登陆、遭遇飓风的险情。"
-  },
-  {
-   "id": "X12",
-   "problem": "来源上下文核查：The draft ends on the safe landing and drinking water, which makes the landing look like the rescue. They actually came ashore on the opposite side from the east-coast whaling stations, glaciers blocked the way inland, and an overland journey still lay ahead.。来源原文〔S-SOUTH〕：「It was obvious that these glaciers and the precipitous slopes of the mountains barred our way inland from the cove.」",
-   "origin": "inherited context review None",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "sections.story.8",
-   "disposition": "duplicate",
-   "same_as": "F8",
-   "rationale": "上岸不等于求援完成，进入内陆的路受阻。"
-  },
-  {
-   "id": "X13",
-   "problem": "来源上下文核查：The analysis rests on the worst-case reckoning for the men left behind, but the piece never tells readers that the source does give their outcome: twenty-two men held out on Elephant Island for four and a half months.。来源原文〔S-SOUTH〕：「twenty-two of my comrades eked out a bare existence for four and a half months」",
+   "problem": "来源上下文核查：只写留守二十二人熬了四个半月，没有交代他们最终被智利 Yelcho 号救出。最坏情形账的实际结局被截断，读者无法知道留守者的下场。。来源原文〔S-SOUTH〕：「Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades.」",
    "origin": "inherited context review None",
    "severity": "fix",
    "category": "unsupported",
    "path": "sections.analysis.0",
    "disposition": "duplicate",
-   "same_as": "F10",
-   "rationale": "留岛者的结局有据，正文没有交代。"
+   "same_as": "F4",
+   "rationale": "analysis.0没有交代留守者最终由Yelcho号救出。"
   },
   {
-   "id": "X14",
-   "problem": "来源上下文核查：The draft writes '有人提议' / 'One proposal was'. In the source, the proposal to take Blackborrow came from the two doctors, who were themselves staying on the island to care for the sick. The vague wording hides who made the proposal, and it is the basis for the unnecessary conjecture in analysis.1.。来源原文〔S-SOUTH〕：「McIlroy and Macklin were both anxious to. go but realized that their duty lay on the island with the sick men. They suggested that I should take Blackborrow」",
-   "origin": "inherited context review None",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "sections.story.2",
-   "disposition": "duplicate",
-   "same_as": "F5",
-   "rationale": "提议者是两位医生，正文写成了“有人”。"
-  },
-  {
-   "id": "X15",
+   "id": "X5",
    "path": "",
    "category": "unsupported",
    "severity": "fix",
-   "problem": "证据包已按来源上下文补入摘录 SOUTH-EL1-E35, SOUTH-EL1-E36, SOUTH-EL1-E37；请据此检查叙事、结局与因果是否完整准确",
+   "problem": "证据包已按来源上下文补入摘录 SOUTH-EL1-E38, SOUTH-EL1-E39, SOUTH-EL1-E40, SOUTH-EL1-E41；请据此检查叙事、结局与因果是否完整准确",
    "origin": "inherited context review None",
-   "audit_rationale": "已据新补的 E35、E36、E37 核查。叙事缺口分别列为 F7（险情）、F8（登陆后受阻）、F10（留岛者结局）。",
-   "disposition": "rejected",
-   "rationale": "已核查新补的 E35、E36、E37，稿件已有据覆盖，无需再改。story.8 已写明望见陆地后无法登陆、离岸停驶、遭遇飓风；也写明上岸后冰川和陡坡挡住通往内陆的路，必须驶向湾顶，捕鲸站在东岸。analysis.0 已写明留岛二十二人熬了四个半月，并声明不据此作因果评价。相关段落的 ev 已列入 E35、E36、E37，叙事、结局与因果均与证据一致。",
-   "evidence": [
-    {
-     "id": "SOUTH-EL1-E36",
-     "quote": "to have attempted a landing at that time would have been suicidal"
-    },
-    {
-     "id": "SOUTH-EL1-E36",
-     "quote": "At 5 a.m. thewind shifted to the north-west and quickly increased to one of the worst hurricanes any of us had ever experienced"
-    },
-    {
-     "id": "SOUTH-EL1-E37",
-     "quote": "It was obvious that these glaciers and the precipitous slopes of the mountains barred our way inland from the cove. We must sail to the head of the sound."
-    },
-    {
-     "id": "SOUTH-EL1-E35",
-     "quote": "twenty-two of my comrades eked out a bare existence for four and a half months"
-    }
-   ],
-   "decided_in": "revise_r2"
-  },
-  {
-   "id": "V1-V1",
-   "path": "sections.analysis.1",
-   "category": "facts",
-   "severity": "fix",
-   "problem": "中文写“重病躺舱底的人”。原文只说 sick man，“重病”是对病情程度的加码，证据没有支持。英文写作 a sick man，中英因此不一致。",
-   "evidence": [
-    {
-     "id": "SOUTH-EL1-E12",
-     "quote": "I did not see how a sick man, lying helpless in the bottom of the boat, could possibly survive"
-    }
-   ],
-   "proposed": "把“重病躺舱底的人”改为“躺在舱底、动弹不得的病人”。",
-   "origin": "final-editor verify round 1",
+   "audit_rationale": "补入的摘录确实带来需要修改的地方：E38对应F4，E41对应F7和F8。E39和E40（丢舵、离Stromness走海路仍有150英里）不改变正文现有的判断：story.8已经据E37写明“上岸并不等于求援成功”，所以不另列问题。",
    "disposition": "fixed",
-   "rationale": "中文删去证据不支持的“重病”，改为“躺在舱底、动弹不得的病人”，与原文 a sick man, lying helpless 及英文一致。英文原已准确，保持不变并一并给出。",
-   "decided_in": "revise_r2"
-  },
-  {
-   "id": "V1-V2",
-   "path": "sections.context.1",
-   "category": "parity",
-   "severity": "fix",
-   "problem": "中文写“格外看重”，强化了原文 had weight with me 的程度。英文 weighed with him 没有这层强化，中英不一致。",
-   "evidence": [
-    {
-     "id": "SOUTH-EL1-E5",
-     "quote": "A consideration that had weight with me was that there was no chance at all of any search being made for us on Elephant Island"
-    }
-   ],
-   "proposed": "把“一条让他格外看重的考虑”改为“一条在他看来分量很重的考虑”，或改为“他看重的一条考虑”。",
-   "origin": "final-editor verify round 1",
-   "disposition": "fixed",
-   "rationale": "中文删去强化语“格外”，改为“还有一条他看重的考虑”，与原文 had weight with me 及英文 weighed with him 的程度一致。英文保持不变并一并给出。",
+   "rationale": "已逐条核对新补入的摘录。E38：analysis.0 已写明营救经过多次尝试，最终由智利政府直接促成，并由 Pardo 指挥的 Yelcho 号完成，与证据一致，不需改动。E41：正文和不确定性说明都没有“原文未给公元年份”之类的说法，与该证据不冲突，不需改动。E39、E40：登陆当晚丢舵，以及走海路离 Stromness 仍有150英里、另一条路是横越岛屿，这两点让“上岸不等于求援成功”更完整。因此在 story.8 中英文末尾各补一句，内容只限证据原文，并把 E39、E40 加入该段 ev。",
    "decided_in": "revise_r2"
   }
  ],
  "edits": [
   {
-   "path": "sections.story.1.zh",
-   "before": "还需要四个人。队长决定征求志愿者，同时老老实实写明：他心里其实基本知道会选谁——「I pretty well knew which of the people I would select」。他召集众人，说明计划，征求志愿者，许多人当即站了出来。克林（Crean）原本被安排留在岛上当怀尔德的帮手，他恳求随行，与怀尔德商量之后，队长答应带上他。挑人的标准也摆在明处：有人不够强壮，担不动船上的活；有人不是熟练水手，在船上派不上用场。",
-   "after": "还需要四个人。队长决定征求志愿者，同时写明：他心里其实基本知道会选谁——「I pretty well knew which of the people I would select」。他召集众人，说明计划，征求志愿者，许多人当即站了出来。克林（Crean）原本被安排留在岛上当怀尔德的帮手，他恳求随行，与怀尔德商量之后，队长答应带上他。记述里也写了挑人的考虑：有人不够强壮，担不动船上的活；有人不是熟练水手，在船上派不上用场。",
+   "path": "sections.hook.0.zh",
+   "before": "这份记述出自《南方》作者欧内斯特·沙克尔顿的第一人称自述，他是这支队伍的队长。经过一段乘船航程后，他和全队困在象岛：粮食有限，有人冻伤，而且象岛上根本不会有人来搜寻他们。口粮按足额只够全队吃五个星期。减量可以撑三个月，或许还能靠海豹和象海豹补一些，但沙克尔顿不敢把信心全押在这上面：海滩上的海兽似乎都走了，冬天近了。燃料主要靠海兽脂肪，存量里有三只海豹和两张半带脂肪的兽皮。初步估量形势后，他决定全队每天只吃一顿热食。",
+   "after": "队长欧内斯特·沙克尔顿和他的队伍困在象岛上，最后六人乘一条小船出海求援，二十二人留在岛上。下面的经过出自他在《南方》中的第一人称自述。经过一段乘船航程后，他们粮食有限，有人冻伤，而且象岛上根本不会有人来搜寻他们。口粮按足额只够全队吃五个星期。减量可以撑三个月，或许还能靠海豹和象海豹补一些。但沙克尔顿不敢把信心全押在这上面：海滩上的海兽似乎都走了，冬天近了。燃料主要靠海兽脂肪。初步估量形势后，他决定全队每天只吃一顿热食。",
    "issues": [
-    "F3",
-    "F4"
+    "F1"
    ]
   },
   {
-   "path": "sections.story.1.en",
-   "before": "Four more were needed. He decided to call for volunteers while admitting, honestly, that he already had a pretty good idea of his choices — \"I pretty well knew which of the people I would select\". He called the men together, explained his plan and asked for volunteers; many came forward at once. Crean had been slated to stay behind as Wild's right-hand man, but he begged so hard for a place in the boat that, after consulting Wild, the leader promised to take him. The criteria were stated openly: some were not fit for the work the boat would demand, and others, not seasoned sailors, would be of little use aboard.",
-   "after": "Four more were needed. He decided to call for volunteers while noting that he already had a pretty good idea of his choices — \"I pretty well knew which of the people I would select\". He called the men together, explained his plan and asked for volunteers; many came forward at once. Crean had been slated to stay behind as Wild's right-hand man, but he begged so hard for a place in the boat that, after consulting Wild, the leader promised to take him. The account also sets out his criteria: some were not fit for the work the boat would demand, and others, not seasoned sailors, would be of little use aboard.",
+   "path": "sections.hook.0.en",
+   "before": "This account comes from the first-person narrative of Ernest Shackleton, author of South and leader of this party. After a boat journey, he and his men were stranded on Elephant Island: food was limited, a man was frostbitten, and there was no chance at all of any search being made for them there. At full ration the food would last the whole party five weeks. Cut back, it could be spread over three months, and would probably be supplemented to some extent by seals and sea-elephants — but Shackleton dared not count on that with full confidence. The animals seemed to have deserted the beach and winter was near. They were mainly dependent on blubber for fuel, and their stocks included three seals and two and a half skins with the blubber attached. After a preliminary survey of the situation, he decided the party must be limited to one hot meal a day.",
+   "after": "Ernest Shackleton, leader of the party, and his men were stranded on Elephant Island; in the end six sailed for help in one small boat and twenty-two stayed on the island. What follows comes from his first-person account in South. After a boat journey, their food was limited, a man was frostbitten, and there was no chance at all of any search being made for them there. At full ration the food would last the whole party five weeks. Cut back, it could be spread over three months, and would probably be supplemented to some extent by seals and sea-elephants. But Shackleton dared not count on that with full confidence: the animals seemed to have deserted the beach and winter was near. They were mainly dependent on blubber for fuel. After a preliminary survey of the situation, he decided the party must be limited to one hot meal a day.",
    "issues": [
-    "F3",
-    "F4"
+    "F1"
    ]
   },
   {
-   "path": "sections.story.2.zh",
-   "before": "两位医生麦基尔罗伊（McIlroy）和麦克林（Macklin）都想随行，但明白自己的职责是留在岛上照顾病号。有人提议把双脚冻伤的布莱克博罗（Blackborrow）带上船，让他尽快得到温暖和庇护。队长否掉了这个提议。记录里给的理由是存活推断：健康的人在船上都难活；他看不出一个躺在舱底、动弹不得的病人，怎么可能熬过必定会遇到的坏天气。",
-   "after": "两位医生麦基尔罗伊（McIlroy）和麦克林（Macklin）都想随行，但明白自己的职责是留在岛上照顾病号。两位医生提议把双脚冻伤的布莱克博罗（Blackborrow）带上船，让他尽快得到温暖和庇护。队长否掉了这个提议。记录里给的理由是存活推断：健康的人在船上都难活；他看不出一个躺在舱底、动弹不得的病人，怎么可能熬过必定会遇到的坏天气。",
+   "path": "sections.hook.0.ev",
+   "before": [
+    "SOUTH-EL1-E2",
+    "SOUTH-EL1-E1",
+    "SOUTH-EL1-E5"
+   ],
+   "after": [
+    "SOUTH-EL1-E2",
+    "SOUTH-EL1-E1",
+    "SOUTH-EL1-E5",
+    "SOUTH-EL1-E35",
+    "SOUTH-EL1-E13"
+   ],
    "issues": [
-    "F5"
-   ]
-  },
-  {
-   "path": "sections.story.2.en",
-   "before": "The two doctors, McIlroy and Macklin, were both anxious to go but realized that their duty lay on the island with the sick men. One proposal was to take Blackborrow, the man with the frostbitten feet, so that he could have shelter and warmth as quickly as possible. The leader vetoed it. The record gives survival reasoning: fit men would find it hard enough to live in the boat, and he did not see how a sick man lying helpless in the bottom could possibly survive the heavy weather they were sure to encounter.",
-   "after": "The two doctors, McIlroy and Macklin, were both anxious to go but realized that their duty lay on the island with the sick men. The doctors suggested taking Blackborrow, the man with the frostbitten feet, so that he could have shelter and warmth as quickly as possible. The leader vetoed it. The record gives survival reasoning: fit men would find it hard enough to live in the boat, and he did not see how a sick man lying helpless in the bottom could possibly survive the heavy weather they were sure to encounter.",
-   "issues": [
-    "F5"
+    "F1"
    ]
   },
   {
    "path": "sections.story.8.zh",
-   "before": "航程中有一次，遇上了队长二十六年海上经历中从未见过的巨浪，与多日来那些白浪翻卷的大浪完全不同。他高喊大家抓紧。船被像软木塞一样抛起、向前甩出，灌进半船水，在重击下颤抖；所有人拼命用随手抓到的容器掏水，十分钟后才觉得船重新有了生命。文森特在过去一周已不再是积极的船员，队长写明难以解释他的垮掉——他是船上体格最强壮的人之一，年轻，在北海拖网船上干过，本该比麦卡锡更能吃苦，而麦卡锡没那么强壮，却总是乐呵呵的。淡水减到每人每天半品脱。带上船的冰块早已用完，装船时一只水桶在浪里被撞裂，渗进了一些海水，喝的水发咸，渴得更厉害；队长不肯增加配给，有人恳求预支第二天的水，也被拒绝：万一风向不利，船可能被吹离海岛，航程拖长许多天。原文感叹，缺水是人所能承受的最严酷的匮乏。5月8日中午12点30分，麦卡锡从云隙中望见南乔治亚的黑色悬崖，距离开象岛整十四天。5月10日，他们驶向一处队长认为必定是哈康国王湾（King Haakon Bay）的大海湾；风向转为从湾内吹出，他们在强风中抢风五次，才穿过礁石进入宽阔的湾口。暮色将近，他们转向海湾南岸一处有礁石护着的小湾。小船乘着涌浪触到海滩，几分钟后众人都平安上了岸；他们在脚边发现一条淡水溪流，随即跪下大口痛饮。",
-   "after": "航程中有一次，遇上了队长二十六年海上经历中从未见过的巨浪，与多日来那些白浪翻卷的大浪完全不同。他高喊大家抓紧。船被像软木塞一样抛起、向前甩出，灌进半船水，在重击下颤抖；所有人拼命用随手抓到的容器掏水，十分钟后才觉得船重新有了生命。文森特在过去一周已不再是积极的船员，队长写明难以解释他的垮掉——他是船上体格最强壮的人之一，年轻，在北海拖网船上干过，本该比麦卡锡更能吃苦，而麦卡锡没那么强壮，却总是乐呵呵的。淡水减到每人每天半品脱。带上船的冰块早已用完，装船时一只水桶在浪里被撞裂，渗进了一些海水，喝的水发咸，渴得更厉害；队长不肯增加配给，有人恳求预支第二天的水，也被拒绝：万一风向不利，船可能被吹离海岛，航程拖长许多天。原文感叹，缺水是人所能承受的最严酷的匮乏。5月8日中午12点30分，麦卡锡从云隙中望见南乔治亚的黑色悬崖，距离开象岛整十四天。但岩岸看似直落入海，夜色将近，天气征兆也不好，那时贸然登陆无异自杀，只能离岸停驶，等待天亮。次日清晨风向转为西北，迅速增强为他们所有人经历过的最猛的飓风之一，风浪把船推向海岸，他们无能为力。直到天黑后风向突然转变，他们才得以重新驶离海岸；大风刚缓，锁住桅杆的销钉就掉了出来——队长写道，飓风中它若脱落，谁也救不了他们。5月10日，他们驶向一处队长认为必定是哈康国王湾（King Haakon Bay）的大海湾；风向转为从湾内吹出，他们在强风中抢风五次，才穿过礁石进入宽阔的湾口。暮色将近，他们转向海湾南岸一处有礁石护着的小湾。小船乘着涌浪触到海滩，几分钟后众人都平安上了岸；他们在脚边发现一条淡水溪流，随即跪下大口痛饮。但上岸并不等于求援成功：冰川和陡峭的山坡挡住了从小湾进入内陆的路，他们还得驶向海湾顶端，而指望找到捕鲸人的捕鲸站在东岸。",
+   "before": "航程中有一次，遇上了队长二十六年海上经历中从未见过的巨浪，与多日来那些白浪翻卷的大浪完全不同。他高喊大家抓紧。船被像软木塞一样抛起、向前甩出，灌进半船水，在重击下颤抖；所有人拼命用随手抓到的容器掏水，十分钟后才觉得船重新有了生命。文森特在过去一周已不再是积极的船员，队长写明难以解释他的垮掉——他是船上体格最强壮的人之一，年轻，在北海拖网船上干过，本该比麦卡锡更能吃苦，而麦卡锡没那么强壮，却总是乐呵呵的。淡水减到每人每天半品脱。带上船的冰块早已用完，装船时一只水桶在浪里被撞裂，渗进了一些海水，喝的水发咸，渴得更厉害；队长不肯增加配给，有人恳求预支第二天的水，也被拒绝：万一风向不利，船可能被吹离海岛，航程拖长许多天。原文感叹，缺水是人所能承受的最严酷的匮乏。5月8日中午12点30分，麦卡锡从云隙中望见南乔治亚的黑色悬崖，距离开象岛整十四天。但岩岸看似直落入海，夜色将近，天气征兆也不好，那时贸然登陆无异自杀，只能离岸停驶，等待天亮。次日清晨风向转为西北，迅速增强为他们所有人经历过的最猛的飓风之一，风浪把船推向海岸，他们无能为力。直到天黑后风向突然转变，他们才得以重新驶离海岸；大风刚缓，锁住桅杆的销钉就掉了出来——队长写道，飓风中它若脱落，谁也救不了他们。5月10日，他们驶向一处队长认为必定是哈康国王湾（King Haakon Bay）的大海湾；风向转为从湾内吹出，他们在强风中抢风五次，才穿过礁石进入宽阔的湾口。暮色将近，他们转向海湾南岸一处有礁石护着的小湾。小船乘着涌浪触到海滩，几分钟后众人都平安上了岸；他们在脚边发现一条淡水溪流，随即跪下大口痛饮。但上岸并不等于求援成功：冰川和陡峭的山坡挡住了从小湾进入内陆的路，他们还得驶向海湾顶端，而指望找到捕鲸人的捕鲸站在东岸。",
+   "after": "航程中有一次，遇上了队长二十六年海上经历中从未见过的巨浪，与多日来那些白浪翻卷的大浪完全不同。他高喊大家抓紧。船被像软木塞一样抛起、向前甩出，灌进半船水，在重击下颤抖；所有人拼命用随手抓到的容器掏水，十分钟后才觉得船重新有了生命。文森特在过去一周已不再是积极的船员，队长写明难以解释他的垮掉——他是船上体格最强壮的人之一，年轻，在北海拖网船上干过，本该比麦卡锡更能吃苦，而麦卡锡没那么强壮，却总是乐呵呵的。淡水减到每人每天半品脱。带上船的冰块早已用完，装船时一只水桶在浪里被撞裂，渗进了一些海水，喝的水发咸，渴得更厉害。队长不肯增加配给，因为万一风向不利，船可能被吹离海岛，航程拖长许多天；有人恳求预支第二天的水，他也坚决拒绝。原文感叹，缺水是人所能承受的最严酷的匮乏。5月8日中午12点30分，麦卡锡从云隙中望见南乔治亚的黑色悬崖，距离开象岛整十四天。但岩岸看似直落入海，夜色将近，天气征兆也不好，那时贸然登陆无异自杀，只能离岸停驶，等待天亮。次日清晨风向转为西北，迅速增强为他们所有人经历过的最猛的飓风之一，风浪把船推向海岸，他们无能为力。直到天黑后风向突然转变，他们才得以重新驶离海岸；大风刚缓，锁住桅杆的销钉就掉了出来——队长写道，飓风中它若脱落，谁也救不了他们。5月10日，他们驶向一处队长认为必定是哈康国王湾（King Haakon Bay）的大海湾；风向转为从湾内吹出，他们在强风中抢风五次，才穿过礁石进入宽阔的湾口。暮色将近，他们转向海湾南岸一处有礁石护着的小湾。小船乘着涌浪触到海滩，几分钟后众人都平安上了岸；他们在脚边发现一条淡水溪流，随即跪下大口痛饮。但上岸并不等于求援成功：冰川和陡峭的山坡挡住了从小湾进入内陆的路，他们还得驶向海湾顶端，而指望找到捕鲸人的捕鲸站在东岸。",
    "issues": [
-    "F7",
-    "F8"
+    "F2"
    ]
   },
   {
    "path": "sections.story.8.en",
-   "before": "At one point came a wave beyond anything the leader had met in twenty-six years at sea — a mighty upheaval of the ocean, quite apart from the white-capped seas that had been their tireless enemies for many days. He shouted for everyone to hold on: \"It's got us!\" The boat was lifted and flung forward like a cork, half-full of water and shuddering under the blow; the men baled with the energy of men fighting for life, and after ten minutes of uncertainty felt her renew her life beneath them. Vincent had for the past week ceased to be an active member of the crew, and the leader could not easily account for his collapse: physically one of the strongest men in the boat, young, with service on North Sea trawlers, he should have borne hardship better than McCarthy, who was not so strong but always happy. The daily water allowance was cut to half a pint a man. The lumps of ice taken aboard were long gone, and the breaker had been slightly stove in during loading, letting in some sea-water, so the brackish water sharpened the thirst; the leader would not raise the allowance or let anyone draw against the morrow's, however he was begged — should the wind turn unfavourable, it might drive them away from the island and lengthen the voyage by many days. Lack of water, the account adds, is the severest privation men can be condemned to endure. At 12.30 p.m. on May 8, McCarthy caught a glimpse of the black cliffs of South Georgia through a rift in the clouds, just fourteen days after leaving Elephant Island. On May 10 they made for a big indentation the leader thought must be King Haakon Bay; with the wind blowing out of the bay, they tacked five times in the strong wind before getting through the reef into the wide mouth of the bay. With dusk approaching, they turned toward a small cove guarded by a reef on the south side of the bay. The boat ran in on a swell and touched the beach, and in a few minutes they were all safe ashore; finding a stream of fresh water almost at their feet, they were soon down on their knees drinking.",
-   "after": "At one point came a wave beyond anything the leader had met in twenty-six years at sea — a mighty upheaval of the ocean, quite apart from the white-capped seas that had been their tireless enemies for many days. He shouted for everyone to hold on: \"It's got us!\" The boat was lifted and flung forward like a cork, half-full of water and shuddering under the blow; the men baled with the energy of men fighting for life, and after ten minutes of uncertainty felt her renew her life beneath them. Vincent had for the past week ceased to be an active member of the crew, and the leader could not easily account for his collapse: physically one of the strongest men in the boat, young, with service on North Sea trawlers, he should have borne hardship better than McCarthy, who was not so strong but always happy. The daily water allowance was cut to half a pint a man. The lumps of ice taken aboard were long gone, and the breaker had been slightly stove in during loading, letting in some sea-water, so the brackish water sharpened the thirst; the leader would not raise the allowance or let anyone draw against the morrow's, however he was begged — should the wind turn unfavourable, it might drive them away from the island and lengthen the voyage by many days. Lack of water, the account adds, is the severest privation men can be condemned to endure. At 12.30 p.m. on May 8, McCarthy caught a glimpse of the black cliffs of South Georgia through a rift in the clouds, just fourteen days after leaving Elephant Island. But the rocky coast seemed to drop sheer to the sea, night was drawing near and the weather signs were unfavourable; to have attempted a landing then would have been suicidal, so they hauled off and hove to, waiting for dawn. Early the next morning the wind shifted to the north-west and quickly rose to one of the worst hurricanes any of them had ever experienced; wind and sea were driving them ashore, and they could do nothing. Only after dark did the wind suddenly shift and leave them free to make an offing again; almost as soon as the gale eased, the pin that locked the mast to the thwart fell out — had it gone during the hurricane, the leader writes, nothing could have saved them. On May 10 they made for a big indentation the leader thought must be King Haakon Bay; with the wind blowing out of the bay, they tacked five times in the strong wind before getting through the reef into the wide mouth of the bay. With dusk approaching, they turned toward a small cove guarded by a reef on the south side of the bay. The boat ran in on a swell and touched the beach, and in a few minutes they were all safe ashore; finding a stream of fresh water almost at their feet, they were soon down on their knees drinking. But landing was not the same as securing relief: glaciers and precipitous mountain slopes barred the way inland from the cove, they still had to sail to the head of the sound, and the whaling stations where whalers could be counted on lay on the east coast.",
+   "before": "At one point came a wave beyond anything the leader had met in twenty-six years at sea — a mighty upheaval of the ocean, quite apart from the white-capped seas that had been their tireless enemies for many days. He shouted for everyone to hold on: \"It's got us!\" The boat was lifted and flung forward like a cork, half-full of water and shuddering under the blow; the men baled with the energy of men fighting for life, and after ten minutes of uncertainty felt her renew her life beneath them. Vincent had for the past week ceased to be an active member of the crew, and the leader could not easily account for his collapse: physically one of the strongest men in the boat, young, with service on North Sea trawlers, he should have borne hardship better than McCarthy, who was not so strong but always happy. The daily water allowance was cut to half a pint a man. The lumps of ice taken aboard were long gone, and the breaker had been slightly stove in during loading, letting in some sea-water, so the brackish water sharpened the thirst; the leader would not raise the allowance or let anyone draw against the morrow's, however he was begged — should the wind turn unfavourable, it might drive them away from the island and lengthen the voyage by many days. Lack of water, the account adds, is the severest privation men can be condemned to endure. At 12.30 p.m. on May 8, McCarthy caught a glimpse of the black cliffs of South Georgia through a rift in the clouds, just fourteen days after leaving Elephant Island. But the rocky coast seemed to drop sheer to the sea, night was drawing near and the weather signs were unfavourable; to have attempted a landing then would have been suicidal, so they hauled off and hove to, waiting for dawn. Early the next morning the wind shifted to the north-west and quickly rose to one of the worst hurricanes any of them had ever experienced; wind and sea were driving them ashore, and they could do nothing. Only after dark did the wind suddenly shift and leave them free to make an offing again; almost as soon as the gale eased, the pin that locked the mast to the thwart fell out — had it gone during the hurricane, the leader writes, nothing could have saved them. On May 10 they made for a big indentation the leader thought must be King Haakon Bay; with the wind blowing out of the bay, they tacked five times in the strong wind before getting through the reef into the wide mouth of the bay. With dusk approaching, they turned toward a small cove guarded by a reef on the south side of the bay. The boat ran in on a swell and touched the beach, and in a few minutes they were all safe ashore; finding a stream of fresh water almost at their feet, they were soon down on their knees drinking. But landing was not the same as securing relief: glaciers and precipitous mountain slopes barred the way inland from the cove, they still had to sail to the head of the sound, and the whaling stations where whalers could be counted on lay on the east coast.",
+   "after": "At one point came a wave beyond anything the leader had met in twenty-six years at sea — a mighty upheaval of the ocean, quite apart from the white-capped seas that had been their tireless enemies for many days. He shouted for everyone to hold on: \"It's got us!\" The boat was lifted and flung forward like a cork, half-full of water and shuddering under the blow; the men baled with the energy of men fighting for life, and after ten minutes of uncertainty felt her renew her life beneath them. Vincent had for the past week ceased to be an active member of the crew, and the leader could not easily account for his collapse: physically one of the strongest men in the boat, young, with service on North Sea trawlers, he should have borne hardship better than McCarthy, who was not so strong but always happy. The daily water allowance was cut to half a pint a man. The lumps of ice taken aboard were long gone, and the breaker had been slightly stove in during loading, letting in some sea-water, so the brackish water sharpened the thirst. The leader would not raise the allowance, since an unfavourable wind might drive them away from the island and lengthen the voyage by many days; when he was begged to let anyone draw against the morrow's allowance, he firmly refused. Lack of water, the account adds, is the severest privation men can be condemned to endure. At 12.30 p.m. on May 8, McCarthy caught a glimpse of the black cliffs of South Georgia through a rift in the clouds, just fourteen days after leaving Elephant Island. But the rocky coast seemed to drop sheer to the sea, night was drawing near and the weather signs were unfavourable; to have attempted a landing then would have been suicidal, so they hauled off and hove to, waiting for dawn. Early the next morning the wind shifted to the north-west and quickly rose to one of the worst hurricanes any of them had ever experienced; wind and sea were driving them ashore, and they could do nothing. Only after dark did the wind suddenly shift and leave them free to make an offing again; almost as soon as the gale eased, the pin that locked the mast to the thwart fell out — had it gone during the hurricane, the leader writes, nothing could have saved them. On May 10 they made for a big indentation the leader thought must be King Haakon Bay; with the wind blowing out of the bay, they tacked five times in the strong wind before getting through the reef into the wide mouth of the bay. With dusk approaching, they turned toward a small cove guarded by a reef on the south side of the bay. The boat ran in on a swell and touched the beach, and in a few minutes they were all safe ashore; finding a stream of fresh water almost at their feet, they were soon down on their knees drinking. But landing was not the same as securing relief: glaciers and precipitous mountain slopes barred the way inland from the cove, they still had to sail to the head of the sound, and the whaling stations where whalers could be counted on lay on the east coast.",
    "issues": [
-    "F7",
-    "F8"
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.zh",
+   "before": "把这几个决定放在一起看，一种解释是：真正让这个方案说得出口的，是最坏情形那笔账。出海的人带一个月口粮，一个月到不了南乔治亚就必死无疑，而留下的人在冬天少了几张要吃饭的嘴；最坏情形被算成：也不会给留下的人增加风险。据作者序言，留在象岛的二十二人在那里勉强熬了四个半月，远超当初一个月内带援助返回的预期；本文不据此推出因果评价。本文推断，当所有选项都糟透时，人们愿意跟从的未必是更有希望的那条路，而可能是把代价算清楚、不把损失转嫁给同伴的那条路。",
+   "after": "把这几个决定放在一起看，一种解释是：真正让这个方案说得出口的，是最坏情形那笔账。出海的人带一个月口粮，一个月到不了南乔治亚就必死无疑，而留下的人在冬天少了几张要吃饭的嘴；最坏情形被算成：也不会给留下的人增加风险。据作者序言，留在象岛的二十二人在那里勉强熬了四个半月，远超当初一个月内带援助返回的预期。同一篇序言写道，营救经过不止一次尝试，最终由智利政府直接促成，帕尔多（Luis Pardo）指挥的耶尔乔号（Yelcho）完成了最后一次、成功的营救。本文不据此推出因果评价。本文推断，当所有选项都糟透时，人们愿意跟从的未必是更有希望的那条路，而可能是把代价算清楚、不把损失转嫁给同伴的那条路。",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "before": "Read together, these decisions suggest one explanation: what made the plan speakable was the arithmetic of the worst case. The boat party carried a month's provisions; if they did not make South Georgia within the month, they were sure to go under. The men left behind would have fewer mouths to feed through the winter. The worst case was calculated as adding nothing to the risks of the men left on the island. According to the author's preface, the twenty-two men left on Elephant Island eked out a bare existence there for four and a half months, far beyond the hoped-for return with relief within a month; this piece draws no causal verdict from that. This piece infers that when every option is grim, people will follow not necessarily the more hopeful road, but the one that costs its losses honestly and does not shift them onto comrades.",
+   "after": "Read together, these decisions suggest one explanation: what made the plan speakable was the arithmetic of the worst case. The boat party carried a month's provisions; if they did not make South Georgia within the month, they were sure to go under. The men left behind would have fewer mouths to feed through the winter. The worst case was calculated as adding nothing to the risks of the men left on the island. According to the author's preface, the twenty-two men left on Elephant Island eked out a bare existence there for four and a half months, far beyond the hoped-for return with relief within a month. The same preface says the relief took more than one attempt, and that the Chilean Government was directly responsible for the rescue, with the Yelcho under Captain Luis Pardo making the last and successful venture. This piece draws no causal verdict from that. This piece infers that when every option is grim, people will follow not necessarily the more hopeful road, but the one that costs its losses honestly and does not shift them onto comrades.",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.ev",
+   "before": [
+    "SOUTH-EL1-E5",
+    "SOUTH-EL1-E35",
+    "SOUTH-EL1-E4"
+   ],
+   "after": [
+    "SOUTH-EL1-E5",
+    "SOUTH-EL1-E35",
+    "SOUTH-EL1-E4",
+    "SOUTH-EL1-E38"
+   ],
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.zh",
+   "before": "还有一处值得留意：记述说他决定征求志愿者，同时心里基本知道会选谁。原文写明，他召集众人、说明计划、征求志愿者，许多人当即站了出来；但最终的人选仍由他选定。本文提出的一种替代做法是直接点名，省掉征求的形式。一种解释是：先向全队说明计划、详细讲清危险和理由，再征求志愿，可能让名单读起来更像共识而不是指派。这只是一种解释，所引段落没有说明他为什么这样安排。",
+   "after": "还有一处值得留意：记述说他决定征求志愿者，同时心里基本知道会选谁。原文写明，他召集众人、说明计划、征求志愿者，许多人当即站了出来；但最终的人选仍由他选定。本文提出的一种替代做法是直接点名，省掉征求的形式。一种解释是：先向全队说明计划、详细讲清危险和理由，再征求志愿，可能让名单读起来更像共识而不是指派。这只是本文的解释。",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.en",
+   "before": "One more detail catches the eye: the account says he decided to call for volunteers while already having a pretty good idea of his choices. The original states that he called the men together, explained his plan and asked for volunteers, and that many came forward at once; yet the final selection was still his. One alternative this piece raises would have been simply to name names and skip the formality. One reading is that explaining the plan and arguing the dangers and reasons to the party in detail before asking for volunteers may make the list read as consensus rather than assignment. This is only one reading, and the passages quoted give no reason for the arrangement.",
+   "after": "One more detail catches the eye: the account says he decided to call for volunteers while already having a pretty good idea of his choices. The original states that he called the men together, explained his plan and asked for volunteers, and that many came forward at once; yet the final selection was still his. One alternative this piece raises would have been simply to name names and skip the formality. One reading is that explaining the plan and arguing the dangers and reasons to the party in detail before asking for volunteers may make the list read as consensus rather than assignment. This is only this piece's reading.",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.limits.0.zh",
+   "before": "这套记录只有当事人一个史源，是他事后写下的第一人称自述。作者说，南乔治亚航程的记述依据逐日写下的简略笔记，笔记通常只记距离、船位和天气，航程中的具体经过则来自记忆。文中的对话都带有记述性质：把队伍托付给怀尔德的那句交代、克林恳求随行，都未必是逐字原话。队长自述看队员时信心在增加，那是回忆中的自我描述，不是当时可核实的心理记录。",
+   "after": "本文只依据沙克尔顿《南方》中他事后写下的第一人称自述。作者说，南乔治亚航程的记述依据逐日写下的简略笔记，笔记通常只记距离、船位和天气，航程中的具体经过则来自记忆。文中的对话都带有记述性质：把队伍托付给怀尔德的那句交代、克林恳求随行，都未必是逐字原话。队长自述看队员时信心在增加，那是回忆中的自我描述，不是当时可核实的心理记录。",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.limits.0.en",
+   "before": "This record rests on exactly one historical source: a first-person account written after the fact by one of those involved. The author says the account of the voyage to South Georgia is based on scanty notes made day by day, which usually dealt with the bare facts of distances, positions and weather, while the incidents themselves came from memory. Its dialogue is reported, not transcribed — the words entrusting the party to Wild, Crean's plea for a place in the boat — and need not be verbatim. The leader's statement that his confidence grew as he looked at the men is retrospective self-description, not a verifiable record of his state of mind at the time.",
+   "after": "This piece relies only on Shackleton's first-person account in South, written after the fact. The author says the account of the voyage to South Georgia is based on scanty notes made day by day, which usually dealt with the bare facts of distances, positions and weather, while the incidents themselves came from memory. Its dialogue is reported, not transcribed — the words entrusting the party to Wild, Crean's plea for a place in the boat — and need not be verbatim. The leader's statement that his confidence grew as he looked at the men is retrospective self-description, not a verifiable record of his state of mind at the time.",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.limits.1.zh",
+   "before": "还有两处要留白。文森特为什么垮掉，队长自己说难以解释，本文不替他补心理。所引片段未给公元年份，这里不做换算；正文的天数只用原文明确写出的出海第六天和离开象岛第十四天，日期照原文写5月8日、5月10日；距离、口粮、水的数字都照原文：八百多英里、三百八十多英里、半品脱。原文是扫描识别文本，个别字词有讹误，引文照原文写法。",
+   "after": "有一处要留白：文森特为什么垮掉，队长自己说难以解释，本文不替他补心理。正文的天数只用原文明确写出的出海第六天和离开象岛第十四天，日期照原文写5月8日、5月10日；距离、口粮、水的数字都照原文：八百多英里、三百八十多英里、半品脱。原文是扫描识别文本，个别字词有讹误，引文照原文写法。",
+   "issues": [
+    "F7"
+   ]
+  },
+  {
+   "path": "sections.limits.1.en",
+   "before": "Two blanks stay blank. Why Vincent collapsed, the leader himself says he could not easily account for, and this piece supplies no psychology for him. The quoted passages give no calendar year, so none is supplied here; the only day counts kept in the text are the sixth day out and the fourteenth day after leaving Elephant Island, both stated explicitly in the original, and dates follow the original: May 8 and May 10; distances, rations and water figures follow the original: over eight hundred miles, over three hundred and eighty miles, half a pint. The source is a scanned, text-recognized print, with occasional garbled words; quotations follow it as printed.",
+   "after": "One blank stays blank. Why Vincent collapsed, the leader himself says he could not easily account for, and this piece supplies no psychology for him. The only day counts kept in the text are the sixth day out and the fourteenth day after leaving Elephant Island, both stated explicitly in the original, and dates follow the original: May 8 and May 10; distances, rations and water figures follow the original: over eight hundred miles, over three hundred and eighty miles, half a pint. The source is a scanned, text-recognized print, with occasional garbled words; quotations follow it as printed.",
+   "issues": [
+    "F7"
+   ]
+  },
+  {
+   "path": "uncertainty_note.zh",
+   "before": "全文只有当事人一个史源（其事后的第一人称自述）；航程部分据其逐日简略笔记（多为距离、船位、天气）与回忆写成；对话与心理均为记述性内容，未必逐字，本文未对照其他当事人的记录核实；天数只用原文明确写出的出海第六天和离开象岛第十四天，日期照原文写5月8日、5月10日，所引片段未给公元年份，不做换算；距离、口粮、水的数字照原文写法；原文为扫描识别文本，个别字词有讹误，引文照原文。",
+   "after": "本文只依据沙克尔顿（当事人）事后的第一人称自述《南方》；航程部分据其逐日简略笔记（多为距离、船位、天气）与回忆写成；对话与心理均为记述性内容，未必逐字，本文未对照其他当事人的记录核实；天数只用原文明确写出的出海第六天和离开象岛第十四天，日期照原文写5月8日、5月10日；距离、口粮、水的数字照原文写法；原文为扫描识别文本，个别字词有讹误，引文照原文。",
+   "issues": [
+    "F8",
+    "F9"
+   ]
+  },
+  {
+   "path": "uncertainty_note.en",
+   "before": "The whole piece rests on a single source — one participant's first-person account written afterwards; the voyage section was written from scanty day-by-day notes (mostly distances, positions and weather) together with memory. Dialogue and psychology are reported rather than transcribed, need not be verbatim, and have not been checked here against other participants' accounts; the only day counts used are the sixth day out and the fourteenth day after leaving Elephant Island, as stated in the original, dates follow the original (May 8 and May 10), and the quoted passages give no calendar year, so none is supplied; distances, rations and water figures follow the original wording; the source is a scanned print in OCR, with individual words occasionally garbled, and quotations follow it as printed.",
+   "after": "This piece relies only on Shackleton's own first-person account, South, written afterwards by a participant; the voyage section was written from scanty day-by-day notes (mostly distances, positions and weather) together with memory. Dialogue and psychology are reported rather than transcribed, need not be verbatim, and have not been checked here against other participants' accounts; the only day counts used are the sixth day out and the fourteenth day after leaving Elephant Island, as stated in the original, and dates follow the original (May 8 and May 10); distances, rations and water figures follow the original wording; the source is a scanned print in OCR, with individual words occasionally garbled, and quotations follow it as printed.",
+   "issues": [
+    "F8",
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.story.8.zh",
+   "before": "航程中有一次，遇上了队长二十六年海上经历中从未见过的巨浪，与多日来那些白浪翻卷的大浪完全不同。他高喊大家抓紧。船被像软木塞一样抛起、向前甩出，灌进半船水，在重击下颤抖；所有人拼命用随手抓到的容器掏水，十分钟后才觉得船重新有了生命。文森特在过去一周已不再是积极的船员，队长写明难以解释他的垮掉——他是船上体格最强壮的人之一，年轻，在北海拖网船上干过，本该比麦卡锡更能吃苦，而麦卡锡没那么强壮，却总是乐呵呵的。淡水减到每人每天半品脱。带上船的冰块早已用完，装船时一只水桶在浪里被撞裂，渗进了一些海水，喝的水发咸，渴得更厉害。队长不肯增加配给，因为万一风向不利，船可能被吹离海岛，航程拖长许多天；有人恳求预支第二天的水，他也坚决拒绝。原文感叹，缺水是人所能承受的最严酷的匮乏。5月8日中午12点30分，麦卡锡从云隙中望见南乔治亚的黑色悬崖，距离开象岛整十四天。但岩岸看似直落入海，夜色将近，天气征兆也不好，那时贸然登陆无异自杀，只能离岸停驶，等待天亮。次日清晨风向转为西北，迅速增强为他们所有人经历过的最猛的飓风之一，风浪把船推向海岸，他们无能为力。直到天黑后风向突然转变，他们才得以重新驶离海岸；大风刚缓，锁住桅杆的销钉就掉了出来——队长写道，飓风中它若脱落，谁也救不了他们。5月10日，他们驶向一处队长认为必定是哈康国王湾（King Haakon Bay）的大海湾；风向转为从湾内吹出，他们在强风中抢风五次，才穿过礁石进入宽阔的湾口。暮色将近，他们转向海湾南岸一处有礁石护着的小湾。小船乘着涌浪触到海滩，几分钟后众人都平安上了岸；他们在脚边发现一条淡水溪流，随即跪下大口痛饮。但上岸并不等于求援成功：冰川和陡峭的山坡挡住了从小湾进入内陆的路，他们还得驶向海湾顶端，而指望找到捕鲸人的捕鲸站在东岸。",
+   "after": "航程中有一次，遇上了队长二十六年海上经历中从未见过的巨浪，与多日来那些白浪翻卷的大浪完全不同。他高喊大家抓紧。船被像软木塞一样抛起、向前甩出，灌进半船水，在重击下颤抖；所有人拼命用随手抓到的容器掏水，十分钟后才觉得船重新有了生命。文森特在过去一周已不再是积极的船员，队长写明难以解释他的垮掉——他是船上体格最强壮的人之一，年轻，在北海拖网船上干过，本该比麦卡锡更能吃苦，而麦卡锡没那么强壮，却总是乐呵呵的。淡水减到每人每天半品脱。带上船的冰块早已用完，装船时一只水桶在浪里被撞裂，渗进了一些海水，喝的水发咸，渴得更厉害。队长不肯增加配给，因为万一风向不利，船可能被吹离海岛，航程拖长许多天；有人恳求预支第二天的水，他也坚决拒绝。原文感叹，缺水是人所能承受的最严酷的匮乏。5月8日中午12点30分，麦卡锡从云隙中望见南乔治亚的黑色悬崖，距离开象岛整十四天。但岩岸看似直落入海，夜色将近，天气征兆也不好，那时贸然登陆无异自杀，只能离岸停驶，等待天亮。次日清晨风向转为西北，迅速增强为他们所有人经历过的最猛的飓风之一，风浪把船推向海岸，他们无能为力。直到天黑后风向突然转变，他们才得以重新驶离海岸；大风刚缓，锁住桅杆的销钉就掉了出来——队长写道，飓风中它若脱落，谁也救不了他们。5月10日，他们驶向一处队长认为必定是哈康国王湾（King Haakon Bay）的大海湾；风向转为从湾内吹出，他们在强风中抢风五次，才穿过礁石进入宽阔的湾口。暮色将近，他们转向海湾南岸一处有礁石护着的小湾。小船乘着涌浪触到海滩，几分钟后众人都平安上了岸；他们在脚边发现一条淡水溪流，随即跪下大口痛饮。但上岸并不等于求援成功：冰川和陡峭的山坡挡住了从小湾进入内陆的路，他们还得驶向海湾顶端，而指望找到捕鲸人的捕鲸站在东岸。登陆那晚，众人往岸上爬时詹姆斯·凯尔德号船尾重重撞击，舵被撞掉了，在海滩和够得着的岩石间仔细搜寻也没找到，这是严重的损失。小船又因割去舷板而变弱，走海路离斯特罗姆内斯（Stromness）捕鲸站仍有150英里；另一条路是尝试横越岛屿，而象岛上还有二十二人在等待只有他们才能带去的援救。",
+   "issues": [
+    "X5"
+   ]
+  },
+  {
+   "path": "sections.story.8.en",
+   "before": "At one point came a wave beyond anything the leader had met in twenty-six years at sea — a mighty upheaval of the ocean, quite apart from the white-capped seas that had been their tireless enemies for many days. He shouted for everyone to hold on: \"It's got us!\" The boat was lifted and flung forward like a cork, half-full of water and shuddering under the blow; the men baled with the energy of men fighting for life, and after ten minutes of uncertainty felt her renew her life beneath them. Vincent had for the past week ceased to be an active member of the crew, and the leader could not easily account for his collapse: physically one of the strongest men in the boat, young, with service on North Sea trawlers, he should have borne hardship better than McCarthy, who was not so strong but always happy. The daily water allowance was cut to half a pint a man. The lumps of ice taken aboard were long gone, and the breaker had been slightly stove in during loading, letting in some sea-water, so the brackish water sharpened the thirst. The leader would not raise the allowance, since an unfavourable wind might drive them away from the island and lengthen the voyage by many days; when he was begged to let anyone draw against the morrow's allowance, he firmly refused. Lack of water, the account adds, is the severest privation men can be condemned to endure. At 12.30 p.m. on May 8, McCarthy caught a glimpse of the black cliffs of South Georgia through a rift in the clouds, just fourteen days after leaving Elephant Island. But the rocky coast seemed to drop sheer to the sea, night was drawing near and the weather signs were unfavourable; to have attempted a landing then would have been suicidal, so they hauled off and hove to, waiting for dawn. Early the next morning the wind shifted to the north-west and quickly rose to one of the worst hurricanes any of them had ever experienced; wind and sea were driving them ashore, and they could do nothing. Only after dark did the wind suddenly shift and leave them free to make an offing again; almost as soon as the gale eased, the pin that locked the mast to the thwart fell out — had it gone during the hurricane, the leader writes, nothing could have saved them. On May 10 they made for a big indentation the leader thought must be King Haakon Bay; with the wind blowing out of the bay, they tacked five times in the strong wind before getting through the reef into the wide mouth of the bay. With dusk approaching, they turned toward a small cove guarded by a reef on the south side of the bay. The boat ran in on a swell and touched the beach, and in a few minutes they were all safe ashore; finding a stream of fresh water almost at their feet, they were soon down on their knees drinking. But landing was not the same as securing relief: glaciers and precipitous mountain slopes barred the way inland from the cove, they still had to sail to the head of the sound, and the whaling stations where whalers could be counted on lay on the east coast.",
+   "after": "At one point came a wave beyond anything the leader had met in twenty-six years at sea — a mighty upheaval of the ocean, quite apart from the white-capped seas that had been their tireless enemies for many days. He shouted for everyone to hold on: \"It's got us!\" The boat was lifted and flung forward like a cork, half-full of water and shuddering under the blow; the men baled with the energy of men fighting for life, and after ten minutes of uncertainty felt her renew her life beneath them. Vincent had for the past week ceased to be an active member of the crew, and the leader could not easily account for his collapse: physically one of the strongest men in the boat, young, with service on North Sea trawlers, he should have borne hardship better than McCarthy, who was not so strong but always happy. The daily water allowance was cut to half a pint a man. The lumps of ice taken aboard were long gone, and the breaker had been slightly stove in during loading, letting in some sea-water, so the brackish water sharpened the thirst. The leader would not raise the allowance, since an unfavourable wind might drive them away from the island and lengthen the voyage by many days; when he was begged to let anyone draw against the morrow's allowance, he firmly refused. Lack of water, the account adds, is the severest privation men can be condemned to endure. At 12.30 p.m. on May 8, McCarthy caught a glimpse of the black cliffs of South Georgia through a rift in the clouds, just fourteen days after leaving Elephant Island. But the rocky coast seemed to drop sheer to the sea, night was drawing near and the weather signs were unfavourable; to have attempted a landing then would have been suicidal, so they hauled off and hove to, waiting for dawn. Early the next morning the wind shifted to the north-west and quickly rose to one of the worst hurricanes any of them had ever experienced; wind and sea were driving them ashore, and they could do nothing. Only after dark did the wind suddenly shift and leave them free to make an offing again; almost as soon as the gale eased, the pin that locked the mast to the thwart fell out — had it gone during the hurricane, the leader writes, nothing could have saved them. On May 10 they made for a big indentation the leader thought must be King Haakon Bay; with the wind blowing out of the bay, they tacked five times in the strong wind before getting through the reef into the wide mouth of the bay. With dusk approaching, they turned toward a small cove guarded by a reef on the south side of the bay. The boat ran in on a swell and touched the beach, and in a few minutes they were all safe ashore; finding a stream of fresh water almost at their feet, they were soon down on their knees drinking. But landing was not the same as securing relief: glaciers and precipitous mountain slopes barred the way inland from the cove, they still had to sail to the head of the sound, and the whaling stations where whalers could be counted on lay on the east coast. On the night of the landing, as the James Caird bumped heavily astern while they scrambled ashore, the rudder was knocked off, and a careful search of the beach and the rocks within reach failed to find it — a serious loss. The boat had also been weakened by the cutting away of the topsides, and they were still 150 miles from Stromness whaling station by sea; the alternative was to attempt the crossing of the island, while twenty-two men on Elephant Island waited for the relief that only they could secure.",
+   "issues": [
+    "X5"
    ]
   },
   {
    "path": "sections.story.8.ev",
    "before": [
-    "SOUTH-EL1-E23",
-    "SOUTH-EL1-E24",
-    "SOUTH-EL1-E25",
-    "SOUTH-EL1-E26",
-    "SOUTH-EL1-E28",
-    "SOUTH-EL1-E32"
-   ],
-   "after": [
     "SOUTH-EL1-E23",
     "SOUTH-EL1-E24",
     "SOUTH-EL1-E25",
@@ -933,116 +673,22 @@
     "SOUTH-EL1-E37",
     "SOUTH-EL1-E4"
    ],
-   "issues": [
-    "F7",
-    "F8"
-   ]
-  },
-  {
-   "path": "sections.analysis.0.zh",
-   "before": "把这几个决定放在一起看，一种解释是：真正让这个方案说得出口的，是最坏情形那笔账。出海的人带一个月口粮，一个月到不了南乔治亚就必死无疑，而留下的人在冬天少了几张要吃饭的嘴；最坏情形被算成：也不会给留下的人增加风险。本文推断，当所有选项都糟透时，人们愿意跟从的未必是更有希望的那条路，而可能是把代价算清楚、不把损失转嫁给同伴的那条路。",
-   "after": "把这几个决定放在一起看，一种解释是：真正让这个方案说得出口的，是最坏情形那笔账。出海的人带一个月口粮，一个月到不了南乔治亚就必死无疑，而留下的人在冬天少了几张要吃饭的嘴；最坏情形被算成：也不会给留下的人增加风险。据作者序言，留在象岛的二十二人在那里勉强熬了四个半月，远超当初一个月内带援助返回的预期；本文不据此推出因果评价。本文推断，当所有选项都糟透时，人们愿意跟从的未必是更有希望的那条路，而可能是把代价算清楚、不把损失转嫁给同伴的那条路。",
-   "issues": [
-    "F10"
-   ]
-  },
-  {
-   "path": "sections.analysis.0.en",
-   "before": "Read together, these decisions suggest one explanation: what made the plan speakable was the arithmetic of the worst case. The boat party carried a month's provisions; if they did not make South Georgia within the month, they were sure to go under. The men left behind would have fewer mouths to feed through the winter. The worst case was calculated as adding nothing to the risks of the men left on the island. This piece infers that when every option is grim, people will follow not necessarily the more hopeful road, but the one that costs its losses honestly and does not shift them onto comrades.",
-   "after": "Read together, these decisions suggest one explanation: what made the plan speakable was the arithmetic of the worst case. The boat party carried a month's provisions; if they did not make South Georgia within the month, they were sure to go under. The men left behind would have fewer mouths to feed through the winter. The worst case was calculated as adding nothing to the risks of the men left on the island. According to the author's preface, the twenty-two men left on Elephant Island eked out a bare existence there for four and a half months, far beyond the hoped-for return with relief within a month; this piece draws no causal verdict from that. This piece infers that when every option is grim, people will follow not necessarily the more hopeful road, but the one that costs its losses honestly and does not shift them onto comrades.",
-   "issues": [
-    "F10"
-   ]
-  },
-  {
-   "path": "sections.analysis.0.ev",
-   "before": [
-    "SOUTH-EL1-E5"
-   ],
    "after": [
-    "SOUTH-EL1-E5",
-    "SOUTH-EL1-E35",
-    "SOUTH-EL1-E4"
+    "SOUTH-EL1-E23",
+    "SOUTH-EL1-E24",
+    "SOUTH-EL1-E25",
+    "SOUTH-EL1-E26",
+    "SOUTH-EL1-E36",
+    "SOUTH-EL1-E27",
+    "SOUTH-EL1-E28",
+    "SOUTH-EL1-E32",
+    "SOUTH-EL1-E37",
+    "SOUTH-EL1-E4",
+    "SOUTH-EL1-E40",
+    "SOUTH-EL1-E39"
    ],
    "issues": [
-    "F10"
-   ]
-  },
-  {
-   "path": "sections.analysis.1.zh",
-   "before": "拒绝病号上船那一条，读起来最不舒服，但记录里给的是存活推断，不是道德立场：健康的人在船上都难活，在他看来，重病躺舱底的人熬不过坏天气。本文推断，这种取舍的难处不在决定本身，而在它必须给出理由——有人提了建议，被否掉了，记述里写明了否决的理由。原文没有说这些理由是否当众向全队讲过；若是讲过，代价至少由全队一起看见，而不是由某个被悄悄放下的人独自承担，但这只是未经证实的推测。",
-   "after": "拒绝病号上船那一条，读起来最不舒服，但记录里给的是存活推断，不是道德立场：健康的人在船上都难活，在他看来，重病躺舱底的人熬不过坏天气。本文推断，这种取舍的难处不在决定本身，而在它必须给出理由——两位医生提了建议，被否掉了，记述里写明了否决的理由。",
-   "issues": [
-    "F11"
-   ]
-  },
-  {
-   "path": "sections.analysis.1.en",
-   "before": "The refusal of the sick man is the least comfortable paragraph to read, yet the record offers survival reasoning rather than a moral stance: fit men would find it hard enough to live in the boat, and in his view a sick man lying helpless in the bottom could not survive the heavy weather. This piece infers that the difficulty of such a trade-off lies less in the decision itself than in having to give reasons for it: a proposal was made and vetoed, and the account sets down why. The original does not say whether those reasons were put to the whole party; if they were, the cost would at least have been visible to everyone rather than borne by one person quietly set aside — but that is an unverified conjecture.",
-   "after": "The refusal of the sick man is the least comfortable paragraph to read, yet the record offers survival reasoning rather than a moral stance: fit men would find it hard enough to live in the boat, and in his view a sick man lying helpless in the bottom could not survive the heavy weather. This piece infers that the difficulty of such a trade-off lies less in the decision itself than in having to give reasons for it: the two doctors made a proposal, it was vetoed, and the account sets down why.",
-   "issues": [
-    "F11"
-   ]
-  },
-  {
-   "path": "sections.analysis.1.ev",
-   "before": [
-    "SOUTH-EL1-E12"
-   ],
-   "after": [
-    "SOUTH-EL1-E12",
-    "SOUTH-EL1-E29"
-   ],
-   "issues": [
-    "F11"
-   ]
-  },
-  {
-   "path": "sections.analysis.2.zh",
-   "before": "还有一处值得留意：记述说他决定征求志愿者，同时心里基本知道会选谁。原文写明，他召集众人、说明计划、征求志愿者，许多人当即站了出来；但最终的人选仍由他选定。本文提出的一种替代做法是直接点名，省掉征求的形式。一种解释是：先向全队说明计划、详细讲清危险和理由，再征求志愿，可能让名单读起来更像共识而不是指派。这只是一种解释，原文没有说明他为什么这样安排。",
-   "after": "还有一处值得留意：记述说他决定征求志愿者，同时心里基本知道会选谁。原文写明，他召集众人、说明计划、征求志愿者，许多人当即站了出来；但最终的人选仍由他选定。本文提出的一种替代做法是直接点名，省掉征求的形式。一种解释是：先向全队说明计划、详细讲清危险和理由，再征求志愿，可能让名单读起来更像共识而不是指派。这只是一种解释，所引段落没有说明他为什么这样安排。",
-   "issues": [
-    "F12"
-   ]
-  },
-  {
-   "path": "sections.analysis.2.en",
-   "before": "One more detail catches the eye: the account says he decided to call for volunteers while already having a pretty good idea of his choices. The original states that he called the men together, explained his plan and asked for volunteers, and that many came forward at once; yet the final selection was still his. One alternative this piece raises would have been simply to name names and skip the formality. One reading is that explaining the plan and arguing the dangers and reasons to the party in detail before asking for volunteers may make the list read as consensus rather than assignment. This is only one reading, and the original gives no reason for the arrangement.",
-   "after": "One more detail catches the eye: the account says he decided to call for volunteers while already having a pretty good idea of his choices. The original states that he called the men together, explained his plan and asked for volunteers, and that many came forward at once; yet the final selection was still his. One alternative this piece raises would have been simply to name names and skip the formality. One reading is that explaining the plan and arguing the dangers and reasons to the party in detail before asking for volunteers may make the list read as consensus rather than assignment. This is only one reading, and the passages quoted give no reason for the arrangement.",
-   "issues": [
-    "F12"
-   ]
-  },
-  {
-   "path": "uncertainty_note.zh",
-   "before": "全文只有当事人一个史源（其事后的第一人称自述）；航程部分据其逐日简略笔记（多为距离、船位、天气）与回忆写成；对话与心理均为记述性内容，未必逐字、不可核实；天数只用原文明确写出的出海第六天和离开象岛第十四天，日期照原文写5月8日、5月10日，所引片段未给公元年份，不做换算；距离、口粮、水的数字照原文写法；原文为扫描识别文本，个别字词有讹误，引文照原文。",
-   "after": "全文只有当事人一个史源（其事后的第一人称自述）；航程部分据其逐日简略笔记（多为距离、船位、天气）与回忆写成；对话与心理均为记述性内容，未必逐字，本文未对照其他当事人的记录核实；天数只用原文明确写出的出海第六天和离开象岛第十四天，日期照原文写5月8日、5月10日，所引片段未给公元年份，不做换算；距离、口粮、水的数字照原文写法；原文为扫描识别文本，个别字词有讹误，引文照原文。",
-   "issues": [
-    "F13"
-   ]
-  },
-  {
-   "path": "uncertainty_note.en",
-   "before": "The whole piece rests on a single source — one participant's first-person account written afterwards; the voyage section was written from scanty day-by-day notes (mostly distances, positions and weather) together with memory. Dialogue and psychology are reported rather than transcribed, need not be verbatim, and cannot be verified; the only day counts used are the sixth day out and the fourteenth day after leaving Elephant Island, as stated in the original, dates follow the original (May 8 and May 10), and the quoted passages give no calendar year, so none is supplied; distances, rations and water figures follow the original wording; the source is a scanned print in OCR, with individual words occasionally garbled, and quotations follow it as printed.",
-   "after": "The whole piece rests on a single source — one participant's first-person account written afterwards; the voyage section was written from scanty day-by-day notes (mostly distances, positions and weather) together with memory. Dialogue and psychology are reported rather than transcribed, need not be verbatim, and have not been checked here against other participants' accounts; the only day counts used are the sixth day out and the fourteenth day after leaving Elephant Island, as stated in the original, dates follow the original (May 8 and May 10), and the quoted passages give no calendar year, so none is supplied; distances, rations and water figures follow the original wording; the source is a scanned print in OCR, with individual words occasionally garbled, and quotations follow it as printed.",
-   "issues": [
-    "F13"
-   ]
-  },
-  {
-   "path": "sections.analysis.1.zh",
-   "before": "拒绝病号上船那一条，读起来最不舒服，但记录里给的是存活推断，不是道德立场：健康的人在船上都难活，在他看来，重病躺舱底的人熬不过坏天气。本文推断，这种取舍的难处不在决定本身，而在它必须给出理由——两位医生提了建议，被否掉了，记述里写明了否决的理由。",
-   "after": "拒绝病号上船那一条，读起来最不舒服，但记录里给的是存活推断，不是道德立场：健康的人在船上都难活，在他看来，躺在舱底、动弹不得的病人熬不过坏天气。本文推断，这种取舍的难处不在决定本身，而在它必须给出理由——两位医生提了建议，被否掉了，记述里写明了否决的理由。",
-   "issues": [
-    "V1-V1"
-   ]
-  },
-  {
-   "path": "sections.context.1.zh",
-   "before": "出海的风险明摆着。队长算过最坏情形：这趟冒险不会给留在岛上的人增加任何风险，冬天要吃饭的嘴也少了；船上只带六人一个月的口粮——「for if we did not make South Georgia in that time we were sure to go under」，一个月到不了南乔治亚，就是死路。还有一条让他格外看重的考虑：象岛上根本不会有任何搜寻队来找他们。",
-   "after": "出海的风险明摆着。队长算过最坏情形：这趟冒险不会给留在岛上的人增加任何风险，冬天要吃饭的嘴也少了；船上只带六人一个月的口粮——「for if we did not make South Georgia in that time we were sure to go under」，一个月到不了南乔治亚，就是死路。还有一条他看重的考虑：象岛上根本不会有任何搜寻队来找他们。",
-   "issues": [
-    "V1-V2"
+    "X5"
    ]
   }
  ],
@@ -1050,39 +696,34 @@
   {
    "round": 1,
    "issues_in": [
-    "F3",
+    "F1",
+    "F2",
     "F4",
     "F5",
+    "F6",
     "F7",
     "F8",
-    "F10",
-    "F11",
-    "F12",
-    "F13",
-    "X15"
+    "F9",
+    "X5"
    ],
-   "changes_applied": 17,
+   "changes_applied": 16,
    "changes_failed": [],
    "still_open": [
     {
-     "issue": "X15",
+     "issue": "X5",
      "open_because": "fixed without a change citing it",
      "claimed": {
-      "issue": "X15",
+      "issue": "X5",
       "action": "fixed",
-      "rationale": "已据新补的 E35、E36、E37 核查并修补：E36（与 E27）补入登陆前的险情（F7），E37 补入上岸后进入内陆受阻（F8），E35 补入留岛者熬了四个半月（F10）。相关段落的 ev 已同步更新。",
+      "rationale": "已据新补摘录检查全文。E38补入analysis.0，交代留守者获救的结局（见F4）。E41促使删去limits.1和uncertainty_note中关于公元年份的否定断言（见F7、F8）。E39、E40涉及丢舵和离Stromness走海路仍有150英里，不改变story.8据E37写出的“上岸并不等于求援成功”，因此不另作改动。",
       "evidence": [
        {
-        "id": "SOUTH-EL1-E36",
-        "quote": "There was nothing for it but to haul off till the following morning"
+        "id": "SOUTH-EL1-E38",
+        "quote": "Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades"
        },
        {
-        "id": "SOUTH-EL1-E37",
-        "quote": "We must sail to the head of the sound."
-       },
-       {
-        "id": "SOUTH-EL1-E35",
-        "quote": "eked out a bare existence for four and a half months"
+        "id": "SOUTH-EL1-E41",
+        "quote": "We sailed from London on Friday, August 1, 1914"
        }
       ]
      }
@@ -1098,7 +739,7 @@
      "today[0] resembles the open-question scenario: shared phrases 「最坏情形」「的小团队」; bigram overlap 0.17"
     ]
    ],
-   "content_sha256_after": "be96dac99b8e93b9f011869708438408c20f742024568e540e93ee0028dbc574",
+   "content_sha256_after": "4af170e295a3c44a0986525c673f1c87068dde70bf1d10ce2cb8378a1fd0bfa0",
    "verify": {
     "fields": [
      {
@@ -1155,9 +796,7 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": [
-       "V3"
-      ]
+      "issue_ids": []
      },
      {
       "path": "sections.hook.1",
@@ -1185,7 +824,9 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": []
+      "issue_ids": [
+       "V1"
+      ]
      },
      {
       "path": "sections.context.heading",
@@ -1227,9 +868,7 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": [
-       "V2"
-      ]
+      "issue_ids": []
      },
      {
       "path": "sections.context.2",
@@ -1383,9 +1022,7 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": [
-       "V4"
-      ]
+      "issue_ids": []
      },
      {
       "path": "sections.analysis.heading",
@@ -1427,9 +1064,7 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": [
-       "V1"
-      ]
+      "issue_ids": []
      },
      {
       "path": "sections.analysis.2",
@@ -1617,73 +1252,29 @@
     "issues": [
      {
       "id": "V1",
-      "path": "sections.analysis.1",
-      "category": "facts",
-      "severity": "fix",
-      "problem": "中文写“重病躺舱底的人”。原文只说 sick man，“重病”是对病情程度的加码，证据没有支持。英文写作 a sick man，中英因此不一致。",
-      "evidence": [
-       {
-        "id": "SOUTH-EL1-E12",
-        "quote": "I did not see how a sick man, lying helpless in the bottom of the boat, could possibly survive"
-       }
-      ],
-      "proposed": "把“重病躺舱底的人”改为“躺在舱底、动弹不得的病人”。"
-     },
-     {
-      "id": "V2",
-      "path": "sections.context.1",
-      "category": "parity",
-      "severity": "fix",
-      "problem": "中文写“格外看重”，强化了原文 had weight with me 的程度。英文 weighed with him 没有这层强化，中英不一致。",
-      "evidence": [
-       {
-        "id": "SOUTH-EL1-E5",
-        "quote": "A consideration that had weight with me was that there was no chance at all of any search being made for us on Elephant Island"
-       }
-      ],
-      "proposed": "把“一条让他格外看重的考虑”改为“一条在他看来分量很重的考虑”，或改为“他看重的一条考虑”。"
-     },
-     {
-      "id": "V3",
-      "path": "sections.hook.0",
-      "category": "readability",
+      "path": "sections.hook.2",
+      "category": "style",
       "severity": "note",
-      "problem": "开头段在读者还不清楚处境时，就连续给出五个星期、三个月、三只海豹、两张半兽皮等存量数字。燃料存量的细数对理解“谁遇到什么难题”帮助不大，读者也暂时用不上。",
+      "problem": "英文版在引出原文引语之后，又用一句几乎相同的话复述了一遍（\"That conclusion was forced upon me\". The conclusion was forced on him.），读起来重复。中文版的引语后接中文释义，属于正常写法。",
       "evidence": [
        {
-        "id": "SOUTH-EL1-E2",
-        "quote": "Our stocks included three seals and two and a half skins (with blubber attached)"
+        "id": "SOUTH-EL1-E3",
+        "quote": "That conclusion was forced upon me"
        }
       ],
-      "proposed": "开头只保留“足额口粮够五周、减量可撑三个月、每天一顿热食”。海豹与兽皮的具体存量可以后置，或并入后文；不要删掉“不敢完全指望海兽补给”这一限定。"
-     },
-     {
-      "id": "V4",
-      "path": "sections.story.8",
-      "category": "readability",
-      "severity": "note",
-      "problem": "本段把巨浪、文森特垮掉、限水、望见陆地、飓风、销钉、进湾登陆、登陆后的限定全部塞进一段，时间线不易追踪。事实与证据一致。",
-      "evidence": [
-       {
-        "id": "SOUTH-EL1-E26",
-        "quote": "at 12.30 p.m, through a rift in the clouds, McCarthy caught a glimpse of the black cliffs of South Georgia"
-       }
-      ],
-      "proposed": "不改动内容，在“5月8日中午”处和“5月10日”处分段，拆成三段。"
+      "proposed": "英文删去末句 \"The conclusion was forced on him.\"，只保留引语。"
      }
     ],
-    "overall": "定稿事实、引文与解释标注总体有证据支持。需修正两处措辞加码（analysis.1 的“重病”、context.1 的“格外”）；开头易读性可以通过，另有两处可选的易读性改进。",
-    "_content_sha256": "be96dac99b8e93b9f011869708438408c20f742024568e540e93ee0028dbc574"
+    "overall": "定稿各字段的事实、引语、时序和解释标注都能在证据包中找到依据，中英文一致，开头读者能看懂谁遇到了什么难题；只有一处英文重复属纯文风问题，可以通过。",
+    "_content_sha256": "4af170e295a3c44a0986525c673f1c87068dde70bf1d10ce2cb8378a1fd0bfa0"
    }
   },
   {
    "round": 2,
    "issues_in": [
-    "X15",
-    "V1-V1",
-    "V1-V2"
+    "X5"
    ],
-   "changes_applied": 2,
+   "changes_applied": 3,
    "changes_failed": [],
    "still_open": [],
    "checker_after": [
@@ -1696,7 +1287,7 @@
      "today[0] resembles the open-question scenario: shared phrases 「最坏情形」「的小团队」; bigram overlap 0.17"
     ]
    ],
-   "content_sha256_after": "f14175236373f72a42a3fb9df64c8bae6beb7953817fbd75ffe77d031e8bafcd",
+   "content_sha256_after": "caa9e448ee9ec558db1fe72de6abe649d0881f40ece56357d79bdf17f23131d3",
    "verify": {
     "fields": [
      {
@@ -1753,9 +1344,7 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": [
-       "V1"
-      ]
+      "issue_ids": []
      },
      {
       "path": "sections.hook.1",
@@ -1784,7 +1373,7 @@
        "parity"
       ],
       "issue_ids": [
-       "V2"
+       "V1"
       ]
      },
      {
@@ -1981,7 +1570,9 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": []
+      "issue_ids": [
+       "V2"
+      ]
      },
      {
       "path": "sections.analysis.heading",
@@ -2211,35 +1802,35 @@
     "issues": [
      {
       "id": "V1",
-      "path": "sections.hook.0",
-      "category": "readability",
-      "severity": "note",
-      "problem": "开头一段把燃料存量细节（三只海豹、两张半带脂肪的兽皮）和口粮数字堆在一起，读者此时还用不上这些细节。不过这段已经说清了谁、困在哪、难在哪，不影响理解开头。",
-      "evidence": [
-       {
-        "id": "SOUTH-EL1-E2",
-        "quote": "Our stocks included three seals and two and a half skins (with blubber attached)"
-       }
-      ],
-      "proposed": "可把“存量里有三只海豹和两张半带脂肪的兽皮”后移或删去，保留“燃料主要靠海兽脂肪”和“每天只吃一顿热食”的判断；英文同步。"
-     },
-     {
-      "id": "V2",
       "path": "sections.hook.2",
       "category": "style",
       "severity": "note",
-      "problem": "英文版先引原句，紧接着又写“The conclusion was forced on him.”，这句是照搬中文释义的结构，在英文里意思重复。",
+      "problem": "英文版先引原句，紧接着又用 \"The conclusion was forced on him.\" 复述一遍，意思重复。中文版的引文后接译文属于正常做法，英文版不需要再复述。",
       "evidence": [
        {
         "id": "SOUTH-EL1-E3",
         "quote": "That conclusion was forced upon me"
        }
       ],
-      "proposed": "删去英文末句“The conclusion was forced on him.”，只保留引文。"
+      "proposed": "英文删去末句 \"The conclusion was forced on him.\""
+     },
+     {
+      "id": "V2",
+      "path": "sections.story.8",
+      "category": "readability",
+      "severity": "note",
+      "problem": "这一段从巨浪一直写到登陆后丢舵、去斯特罗姆内斯还有150英里，串起十余个事件和多个日期，篇幅过长，读者不容易跟上时间线。各处事实本身都有证据支持。",
+      "evidence": [
+       {
+        "id": "SOUTH-EL1-E26",
+        "quote": "at 12.30 p.m, through a rift in the clouds, McCarthy caught a glimpse of the black cliffs of South Georgia"
+       }
+      ],
+      "proposed": "不删任何事实或限定，只在“5月8日中午……”前和“登陆那晚……”前分段，拆成航程途中、望见陆地到登陆、登陆后处境三段。"
      }
     ],
-    "overall": "定稿各字段的事实、归属、时序、引文、内心描写与解释标注均有证据支持，中英文一致，开头易读性达标；仅有一处开头数字偏密（易读性 note）和一处英文冗句（文风 note），可以发稿。",
-    "_content_sha256": "f14175236373f72a42a3fb9df64c8bae6beb7953817fbd75ffe77d031e8bafcd"
+    "overall": "定稿逐字段核对后，事实、引文、归属、因果、推断标注和中英对应均有证据支持，没有需要修正的问题；仅有两处可选的文风与易读性建议。",
+    "_content_sha256": "caa9e448ee9ec558db1fe72de6abe649d0881f40ece56357d79bdf17f23131d3"
    }
   }
  ],
@@ -2323,9 +1914,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F2"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.context.heading",
@@ -2411,10 +2000,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F3",
-     "F4"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.story.2",
@@ -2428,9 +2014,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F5"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.story.3",
@@ -2444,9 +2028,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F6"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.story.4",
@@ -2517,9 +2099,8 @@
      "parity"
     ],
     "issue_ids": [
-     "F7",
-     "F8",
-     "F9"
+     "F2",
+     "F3"
     ]
    },
    {
@@ -2543,7 +2124,7 @@
      "parity"
     ],
     "issue_ids": [
-     "F10"
+     "F4"
     ]
    },
    {
@@ -2558,9 +2139,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F11"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.analysis.2",
@@ -2575,7 +2154,7 @@
      "parity"
     ],
     "issue_ids": [
-     "F12"
+     "F5"
     ]
    },
    {
@@ -2591,8 +2170,6 @@
     "checked": [
      "facts",
      "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -2602,8 +2179,6 @@
     "checked": [
      "facts",
      "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -2629,7 +2204,7 @@
      "parity"
     ],
     "issue_ids": [
-     "F14"
+     "F6"
     ]
    },
    {
@@ -2644,15 +2219,15 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F7"
+    ]
    },
    {
     "path": "reflection.scenario",
     "checked": [
      "facts",
      "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -2662,8 +2237,6 @@
     "checked": [
      "facts",
      "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -2673,8 +2246,6 @@
     "checked": [
      "facts",
      "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -2684,7 +2255,6 @@
     "checked": [
      "facts",
      "quotes",
-     "inner_life",
      "interpretation_label",
      "parity"
     ],
@@ -2695,7 +2265,6 @@
     "checked": [
      "facts",
      "quotes",
-     "inner_life",
      "interpretation_label",
      "parity"
     ],
@@ -2714,7 +2283,8 @@
      "parity"
     ],
     "issue_ids": [
-     "F13"
+     "F8",
+     "F9"
     ]
    }
   ],
@@ -2723,393 +2293,203 @@
     "id": "F1",
     "path": "sections.hook.0",
     "category": "readability",
-    "severity": "note",
-    "problem": "开头先讲史源，再连续给出五个星期、三个月、三只海豹、两张半兽皮等数字，读者这时还不知道全队有多少人。“六个名额”占全队多大比例，读者无从判断。“谁遇到什么问题、为什么难”基本能读出来，但数字堆在前面，冲淡了这一点。",
+    "severity": "fix",
+    "problem": "开头先讲史源（《南方》作者的第一人称自述），然后才讲处境；全文开头一直没有说明这支队伍有多少人、最后几人出海、几人留下，读者说不清“谁遇到了问题”。同时开头堆了读者此时还用不上的存量细节（三只海豹、两张半兽皮）。",
     "evidence": [
      {
       "id": "SOUTH-EL1-E35",
       "quote": "twenty-two of my comrades eked out a bare existence for four and a half months"
-     }
-    ],
-    "proposed": "把史源说明移到后文或压缩成半句。先写“困在象岛、口粮有限、无人搜寻”。海豹、兽皮的存量可以后移到燃料一句。若要交代规模，可据序言写明留岛者为二十二人（放在后文亦可）。"
-   },
-   {
-    "id": "F2",
-    "path": "sections.hook.2",
-    "category": "style",
-    "severity": "note",
-    "problem": "英文先引原句，紧接着又用几乎相同的话复述一遍（\"The conclusion was forced on him.\"），重复。",
-    "evidence": [
-     {
-      "id": "SOUTH-EL1-E3",
-      "quote": "That conclusion was forced upon me"
-     }
-    ],
-    "proposed": "删去英文末句的复述。"
-   },
-   {
-    "id": "F3",
-    "path": "sections.story.1",
-    "category": "interpretation_label",
-    "severity": "fix",
-    "problem": "“老老实实写明”和 \"admitting, honestly\" 是作者对人物态度的评价。原文只写 as a matter of fact，没有自认坦白的意味。这里把作者的判断当成了记述。",
-    "evidence": [
-     {
-      "id": "SOUTH-EL1-E9",
-      "quote": "although, as a matter of fact, I pretty well knew which of the people I would select"
-     }
-    ],
-    "proposed": "改为“同时写明”和 \"while noting that\"，删去“老老实实”和 honestly。"
-   },
-   {
-    "id": "F4",
-    "path": "sections.story.1",
-    "category": "attribution",
-    "severity": "fix",
-    "problem": "“挑人的标准也摆在明处”和 \"The criteria were stated openly\" 暗示这些标准曾向队员公开宣布。证据只是队长在记述中写下了这些考虑。",
-    "evidence": [
-     {
-      "id": "SOUTH-EL1-E11",
-      "quote": "Some were not fit enough for the work that would have to be done"
-     }
-    ],
-    "proposed": "改为“记述里也写了挑人的考虑”和 \"The account also sets out his criteria\"。"
-   },
-   {
-    "id": "F5",
-    "path": "sections.story.2",
-    "category": "attribution",
-    "severity": "fix",
-    "problem": "“有人提议”和 \"One proposal was\" 隐去了提议者。按证据，带布莱克博罗上船的提议出自两位医生，他们本人留岛照顾病号。",
-    "evidence": [
-     {
-      "id": "SOUTH-EL1-E29",
-      "quote": "McIlroy and Macklin were both anxious to. go"
      },
-     {
-      "id": "SOUTH-EL1-E12",
-      "quote": "They suggested that I should take Blackborrow"
-     }
-    ],
-    "proposed": "改为“两位医生提议把双脚冻伤的布莱克博罗带上船……”，英文改为 \"The doctors suggested taking Blackborrow...\"。"
-   },
-   {
-    "id": "F6",
-    "path": "sections.story.3",
-    "category": "readability",
-    "severity": "note",
-    "problem": "麦克尼什、麦卡锡、文森特初次出现时没有任何身份说明。木匠又只以“木匠”出现，读者难以把他对上名单中的某个名字，容易以为是第七人。括号说明“他也在这六人之中”起到了部分补救作用。",
-    "evidence": [
      {
       "id": "SOUTH-EL1-E13",
       "quote": "finally selected McNeish, McCarthy, and Vincent in addition to Worsley and Crean"
-     },
-     {
-      "id": "SOUTH-EL1-E14",
-      "quote": "I called the carpenter"
      }
     ],
-    "proposed": "保留括号说明，并注明证据未写木匠是名单中哪一位；不要补造身份。"
+    "proposed": "开头先写处境：队长沙克尔顿和他的队伍困在象岛，最后六人乘小船出海求援，二十二人留在岛上。史源说明后移一句。“三只海豹和两张半带脂肪的兽皮”可以移到口粮那句之后或者压缩，但“燃料主要靠海兽脂肪”要保留。英文同步。"
    },
    {
-    "id": "F7",
+    "id": "F2",
     "path": "sections.story.8",
-    "category": "chronology",
+    "category": "causality",
     "severity": "fix",
-    "problem": "正文从5月8日望见陆地直接跳到5月10日驶入海湾，漏掉了中间的险情：当时无法登陆，只能离岸停驶；随后遇到最猛的飓风，被推向海岸；风停后桅杆销钉脱落，此前若脱落则必死无疑。按现在的写法，读者会以为见到陆地后航程已无大碍。E27 未列入本段证据。",
+    "problem": "把“风向不利可能拖长航程”写成既是不增加配给的理由，也是拒绝预支第二天的水的理由。证据只把这个理由用于不增加配给，拒绝预支另写一句，没有附理由。这个合并的写法与已知污染 K26 的简报说法一致。",
     "evidence": [
      {
-      "id": "SOUTH-EL1-E36",
-      "quote": "to have attempted a landing at that time would have been suicidal"
+      "id": "SOUTH-EL1-E25",
+      "quote": "allowance of water to be increased since an unfavourable wind might drive us away from the island"
      },
      {
-      "id": "SOUTH-EL1-E36",
-      "quote": "one of the worst hurricanes any of us had ever experienced"
-     },
-     {
-      "id": "SOUTH-EL1-E27",
-      "quote": "if it had gone nothing could have saved us"
+      "id": "SOUTH-EL1-E25",
+      "quote": "refusing to allow any one to anticipate the morrow"
      }
     ],
-    "proposed": "在5月8日与5月10日之间补一两句：当时登陆无异自杀，只能离岸等天亮；次晨遇上他们经历过最猛的飓风之一，船被推向海岸，风向突变才脱身，随后发现锁桅杆的销钉脱落。同时把 E36、E27 列入本段证据。"
+    "proposed": "中文改为：队长不肯增加配给，因为万一风向不利，船可能被吹离海岛，航程拖长许多天；有人恳求预支第二天的水，他也坚决拒绝。英文同样把理由只挂在不增加配给上。"
    },
    {
-    "id": "F8",
-    "path": "sections.story.8",
-    "category": "facts",
-    "severity": "fix",
-    "problem": "正文以平安上岸、喝到淡水收尾，容易让人以为求援已经完成。证据写明，从小湾进入内陆的路被冰川和陡坡挡住，还得驶向海湾顶端；捕鲸站在东岸，此时援助尚未拿到。",
-    "evidence": [
-     {
-      "id": "SOUTH-EL1-E37",
-      "quote": "barred our way inland from the cove"
-     },
-     {
-      "id": "SOUTH-EL1-E37",
-      "quote": "We must sail to the head of the sound."
-     },
-     {
-      "id": "SOUTH-EL1-E4",
-      "quote": "whaling-stations on the east coast"
-     }
-    ],
-    "proposed": "结尾加一句：上岸并不等于求援成功。冰川和陡峭山坡挡住了从小湾进入内陆的路，他们还得驶向海湾顶端，而捕鲸站在东岸。"
-   },
-   {
-    "id": "F9",
+    "id": "F3",
     "path": "sections.story.8",
     "category": "readability",
     "severity": "note",
-    "problem": "一段之内塞进了巨浪、文森特、限水、望见陆地、入湾、登岸，读者难以把握先后。",
+    "problem": "一段之内连续写了巨浪、文森特垮掉、限水、望见陆地、飓风、销钉、入湾、登陆、上岸后的处境，读者很难分清先后。",
     "evidence": [],
-    "proposed": "拆成两到三段：海上磨难、限水，然后是望见陆地到登岸。"
+    "proposed": "按“航程中段（巨浪、文森特、限水）”“5月8日望见陆地至飓风”“5月10日入湾登陆”拆成三段，内容不删。"
    },
    {
-    "id": "F10",
+    "id": "F4",
     "path": "sections.analysis.0",
     "category": "facts",
     "severity": "fix",
-    "problem": "本段分析围绕留岛者的最坏情形展开，却没有告诉读者史源记下的结果：留岛的二十二人靠两条船作遮蔽熬过四个半月，远超当初一个月往返的预期。缺了这一点，读者无法检验这笔账。",
+    "problem": "只写了留守的二十二人熬了四个半月，没有交代他们最终获救。读者无法知道这笔“最坏情形账”的实际下场，这一段的结局被截断了。",
     "evidence": [
      {
-      "id": "SOUTH-EL1-E35",
-      "quote": "twenty-two of my comrades eked out a bare existence for four and a half months"
+      "id": "SOUTH-EL1-E38",
+      "quote": "Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades"
      },
      {
-      "id": "SOUTH-EL1-E4",
-      "quote": "be back with relief within a month"
+      "id": "SOUTH-EL1-E38",
+      "quote": "Captain Luis Pardo, who commanded the Yelcho on our last and successful venture"
      }
     ],
-    "proposed": "在本段或边界段补一句：据作者序言，留在象岛的二十二人熬了四个半月。不要据此推出因果评价。"
+    "proposed": "在“四个半月”之后补一句：据作者序言，经过多次尝试，最后由智利政府派出的Yelcho号把他们救出。保留“本文不据此推出因果评价”。英文同步。"
    },
    {
-    "id": "F11",
-    "path": "sections.analysis.1",
-    "category": "attribution",
-    "severity": "fix",
-    "problem": "“有人提了建议”和 \"a proposal was made\" 同样隐去了提议出自两位医生。随后的推测设想了一个“被悄悄放下的人”，这个场景在证据中没有依据。“原文没有说”是对全书的断言，超出了所引段落。按证据，否决是对医生提议的直接回应，理由至少是给了提议者的。",
-    "evidence": [
-     {
-      "id": "SOUTH-EL1-E12",
-      "quote": "They suggested that I should take Blackborrow"
-     },
-     {
-      "id": "SOUTH-EL1-E12",
-      "quote": "but I had to veto this idea"
-     },
-     {
-      "id": "SOUTH-EL1-E29",
-      "quote": "McIlroy and Macklin were both anxious to. go"
-     }
-    ],
-    "proposed": "改为“两位医生提了建议，被否掉了，记述里写明了否决的理由”。删去“原文没有说……未经证实的推测”这两句，中英文同步修改。"
-   },
-   {
-    "id": "F12",
+    "id": "F5",
     "path": "sections.analysis.2",
     "category": "facts",
     "severity": "fix",
-    "problem": "“原文没有说明他为什么这样安排”和 \"the original gives no reason\" 是对全书的断言，本文只读了摘录，无法核实。",
-    "evidence": [
-     {
-      "id": "SOUTH-EL1-E9",
-      "quote": "I decided to call for volunteers, although, as a matter of fact, I pretty well knew which of the people I would select"
-     }
-    ],
-    "proposed": "收窄为“所引段落没有说明他为什么这样安排”，英文改为 \"the passages quoted give no reason for the arrangement\"。"
+    "problem": "“所引段落没有说明他为什么这样安排”是关于来源没写什么的否定断言。前面已经标明“这只是一种解释”，读者理解不需要这半句。",
+    "evidence": [],
+    "proposed": "删去后半句，改为“这只是本文的解释。”英文删去“and the passages quoted give no reason for the arrangement”。"
    },
    {
-    "id": "F13",
-    "path": "uncertainty_note",
+    "id": "F6",
+    "path": "sections.limits.0",
     "category": "facts",
     "severity": "fix",
-    "problem": "“不可核实”和 \"cannot be verified\" 说得过于绝对。本文只用了单一史源，能如实说的只是本文没有用其他记录核实。",
+    "problem": "“这套记录只有当事人一个史源”和“exactly one historical source”读起来像在断言这段历史只有这一份来源。这超出了证据包能支持的范围，应改为说明本文依据的范围。",
     "evidence": [
      {
       "id": "SOUTH-EL1-E34",
-      "quote": "based upon Scanty notes made day by day"
+      "quote": "This record of the voyage to South Georgia is based upon Scanty notes made day by day"
      }
     ],
-    "proposed": "改为“本文未对照其他当事人的记录核实”，英文改为 \"have not been checked here against other participants' accounts\"。"
+    "proposed": "改为“本文只依据沙克尔顿《南方》中他事后写下的第一人称自述”。英文改为“This piece relies only on Shackleton's first-person account in South, written after the fact”。"
    },
    {
-    "id": "F14",
-    "path": "sections.limits.0",
-    "category": "readability",
-    "severity": "note",
-    "problem": "同一段里先后用“当事人”“作者”“队长”指同一个人，读者可能以为说的是几个人；正文其余部分一直用“队长”。",
+    "id": "F7",
+    "path": "sections.limits.1",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "“所引片段未给公元年份，这里不做换算”沿用了已知污染K27中“原文没有公元年份”的说法。这类关于来源没写什么的断言读者不需要，而且来源里写有出发年份。删掉之后，“两处要留白”只剩文森特一处。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E41",
+      "quote": "We sailed from London on Friday, August 1, 1914"
+     }
+    ],
+    "proposed": "删去关于公元年份的这半句。中文开头改为“有一处要留白：”，英文开头改为“One blank stays blank.”，并删去“The quoted passages give no calendar year, so none is supplied here;”。不要推算航程年份。"
+   },
+   {
+    "id": "F8",
+    "path": "uncertainty_note",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "中英文都写“所引片段未给公元年份，不做换算”，沿用了已知污染K27。来源里写有1914年出发，这类否定断言读者也不需要。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E41",
+      "quote": "We sailed from London on Friday, August 1, 1914"
+     }
+    ],
+    "proposed": "中文删去“所引片段未给公元年份，不做换算”，英文删去“and the quoted passages give no calendar year, so none is supplied”。"
+   },
+   {
+    "id": "F9",
+    "path": "uncertainty_note",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“全文只有当事人一个史源”和“rests on a single source”与limits.0的问题相同，读起来像断言这段历史别无来源。",
     "evidence": [],
-    "proposed": "统一称“沙克尔顿”或“队长”，必要时注明“即作者本人”。"
+    "proposed": "改为“本文只依据沙克尔顿（当事人）事后的第一人称自述《南方》”。英文同步。"
    }
   ],
   "inherited": [
    {
     "id": "X1",
     "verdict": "duplicate",
-    "same_as": "F11",
-    "rationale": "提议出自医生，后接的推测没有依据，“原文没有说”超出了摘录范围。",
+    "same_as": "F7",
+    "rationale": "来源中有1914年8月1日从伦敦出发的记载，中文“未给公元年份”的说法应删去。",
     "evidence": [
      {
-      "id": "SOUTH-EL1-E12",
-      "quote": "They suggested that I should take Blackborrow"
+      "id": "SOUTH-EL1-E41",
+      "quote": "We sailed from London on Friday, August 1, 1914"
      }
     ]
    },
    {
     "id": "X2",
     "verdict": "duplicate",
-    "same_as": "F11",
-    "rationale": "与 X1 是同一处的英文版本。",
-    "evidence": []
+    "same_as": "F7",
+    "rationale": "英文与中文是同一处问题。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E41",
+      "quote": "We sailed from London on Friday, August 1, 1914"
+     }
+    ]
    },
    {
     "id": "X3",
     "verdict": "duplicate",
-    "same_as": "F12",
-    "rationale": "应收窄为“所引段落”。",
-    "evidence": []
+    "same_as": "F8",
+    "rationale": "uncertainty_note中英文都重复了同一个无年份断言。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E41",
+      "quote": "We sailed from London on Friday, August 1, 1914"
+     }
+    ]
    },
    {
     "id": "X4",
     "verdict": "duplicate",
-    "same_as": "F12",
-    "rationale": "与 X3 是同一处的英文版本。",
-    "evidence": []
+    "same_as": "F4",
+    "rationale": "analysis.0没有交代留守者最终由Yelcho号救出。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E38",
+      "quote": "Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades"
+     }
+    ]
    },
    {
     "id": "X5",
-    "verdict": "invalid",
-    "same_as": "",
-    "rationale": "现写法与证据逐项对应，有据可查。",
-    "evidence": [
-     {
-      "id": "SOUTH-EL1-E34",
-      "quote": "The notes dealt usually with the bare facts of distances, positions, and weather, but our memories retained the incidents of the passing days"
-     }
-    ]
-   },
-   {
-    "id": "X6",
-    "verdict": "invalid",
-    "same_as": "",
-    "rationale": "现写法限定为“所引片段”，对证据包是准确的：摘录里的日期只有月日，没有年份。X6 所引的1914年不在证据包内，补入就是证据外事实。",
-    "evidence": [
-     {
-      "id": "SOUTH-EL1-E26",
-      "quote": "The morning of May 8 broke thick and stormy"
-     }
-    ]
-   },
-   {
-    "id": "X7",
-    "verdict": "invalid",
-    "same_as": "",
-    "rationale": "理由同 X6。所称 1914-1917 不在证据包内，英文限定为 the quoted passages，表述准确。",
-    "evidence": [
-     {
-      "id": "SOUTH-EL1-E26",
-      "quote": "The morning of May 8 broke thick and stormy"
-     }
-    ]
-   },
-   {
-    "id": "X8",
-    "verdict": "duplicate",
-    "same_as": "F13",
-    "rationale": "“不可核实”过于绝对，应改为本文未作核实。",
-    "evidence": []
-   },
-   {
-    "id": "X9",
-    "verdict": "duplicate",
-    "same_as": "F13",
-    "rationale": "与 X8 是同一处的英文版本。",
-    "evidence": []
-   },
-   {
-    "id": "X10",
-    "verdict": "invalid",
-    "same_as": "",
-    "rationale": "现写法与证据原文一致。",
-    "evidence": [
-     {
-      "id": "SOUTH-EL1-E24",
-      "quote": "I could not easily account for his collapse"
-     }
-    ]
-   },
-   {
-    "id": "X11",
-    "verdict": "duplicate",
-    "same_as": "F7",
-    "rationale": "漏写5月8日至10日之间无法登陆、遭遇飓风的险情。",
-    "evidence": [
-     {
-      "id": "SOUTH-EL1-E36",
-      "quote": "to have attempted a landing at that time would have been suicidal"
-     }
-    ]
-   },
-   {
-    "id": "X12",
-    "verdict": "duplicate",
-    "same_as": "F8",
-    "rationale": "上岸不等于求援完成，进入内陆的路受阻。",
-    "evidence": [
-     {
-      "id": "SOUTH-EL1-E37",
-      "quote": "barred our way inland from the cove"
-     }
-    ]
-   },
-   {
-    "id": "X13",
-    "verdict": "duplicate",
-    "same_as": "F10",
-    "rationale": "留岛者的结局有据，正文没有交代。",
-    "evidence": [
-     {
-      "id": "SOUTH-EL1-E35",
-      "quote": "twenty-two of my comrades eked out a bare existence for four and a half months"
-     }
-    ]
-   },
-   {
-    "id": "X14",
-    "verdict": "duplicate",
-    "same_as": "F5",
-    "rationale": "提议者是两位医生，正文写成了“有人”。",
-    "evidence": [
-     {
-      "id": "SOUTH-EL1-E29",
-      "quote": "McIlroy and Macklin were both anxious to. go"
-     }
-    ]
-   },
-   {
-    "id": "X15",
     "verdict": "valid",
     "same_as": "",
-    "rationale": "已据新补的 E35、E36、E37 核查。叙事缺口分别列为 F7（险情）、F8（登陆后受阻）、F10（留岛者结局）。",
+    "rationale": "补入的摘录确实带来需要修改的地方：E38对应F4，E41对应F7和F8。E39和E40（丢舵、离Stromness走海路仍有150英里）不改变正文现有的判断：story.8已经据E37写明“上岸并不等于求援成功”，所以不另列问题。",
     "evidence": [
      {
       "id": "SOUTH-EL1-E37",
-      "quote": "We must sail to the head of the sound."
+      "quote": "We must sail to the head of the sound"
+     },
+     {
+      "id": "SOUTH-EL1-E39",
+      "quote": "We were still 150 miles away from Stromness whaling-station by sea"
      }
     ]
    }
   ]
  },
- "final_content_sha256": "f14175236373f72a42a3fb9df64c8bae6beb7953817fbd75ffe77d031e8bafcd",
+ "final_content_sha256": "caa9e448ee9ec558db1fe72de6abe649d0881f40ece56357d79bdf17f23131d3",
  "open_issues": [],
  "outcome": "admissible",
  "failure": null,
- "finished_at": 1793440718.1251285,
+ "finished_at": 1793465258.0427928,
  "calls": [
   {
    "step": "audit",
    "attempt": 1,
-   "wall_s": 168.5,
+   "wall_s": 162.9,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -3117,15 +2497,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 30295,
-    "output_tokens": 18782
+    "cache_creation_input_tokens": 30428,
+    "output_tokens": 18009
    },
-   "cost_estimate_usd": 0.618008
+   "cost_estimate_usd": 0.603612
   },
   {
    "step": "revise_r1",
    "attempt": 1,
-   "wall_s": 69.8,
+   "wall_s": 65.8,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -3133,15 +2513,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 25413,
-    "output_tokens": 9187
+    "cache_creation_input_tokens": 27012,
+    "output_tokens": 8833
    },
-   "cost_estimate_usd": 0.38705200000000006
+   "cost_estimate_usd": 0.392764
   },
   {
    "step": "verify_r1",
    "attempt": 1,
-   "wall_s": 60.4,
+   "wall_s": 46.6,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -3149,15 +2529,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 23335,
-    "output_tokens": 6726
+    "cache_creation_input_tokens": 24952,
+    "output_tokens": 5343
    },
-   "cost_estimate_usd": 0.32120800000000005
+   "cost_estimate_usd": 0.306484
   },
   {
    "step": "revise_r2",
    "attempt": 1,
-   "wall_s": 19.2,
+   "wall_s": 36.2,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -3165,15 +2545,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 23676,
-    "output_tokens": 2300
+    "cache_creation_input_tokens": 24687,
+    "output_tokens": 4099
    },
-   "cost_estimate_usd": 0.235416
+   "cost_estimate_usd": 0.279484
   },
   {
    "step": "verify_r2",
    "attempt": 1,
-   "wall_s": 55.0,
+   "wall_s": 58.2,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -3181,10 +2561,10 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 23339,
-    "output_tokens": 6454
+    "cache_creation_input_tokens": 25303,
+    "output_tokens": 6497
    },
-   "cost_estimate_usd": 0.31579999999999997
+   "cost_estimate_usd": 0.332372
   }
  ],
  "elapsed_min": 6.2,

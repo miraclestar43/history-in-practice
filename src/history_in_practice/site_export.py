@@ -39,6 +39,45 @@ def export(objs: list[dict], site_root: Path) -> list[str]:
     return written
 
 
+NOTICE_KINDS = ("under_revision",)
+
+
+def preview(site_root: Path, samples: list[dict], notices: dict[str, dict] | None = None) -> list[str]:
+    """Add reader samples (status "reader_sample", already re-verified as admitted by the caller) and dated notices to an
+    existing TEST preview, keeping every item already listed. Existing edition JSON files are never rewritten: a notice is
+    index metadata keyed to an edition *and revision* (a sent TEST keeps its bytes and hash). Returns written rel paths."""
+    import tempfile
+    ip = _safe_dest(site_root, "data/history/index.json")
+    index = json.loads(ip.read_text(encoding="utf-8")) if ip.exists() else {"schema_version": "0.2", "items": []}
+    for o in samples:
+        if o.get("status") != "reader_sample" or not o.get("preview_date"):
+            raise ExportError(f"{o.get('edition_id')}: not a sample object")
+    written = []
+    with tempfile.TemporaryDirectory() as td:
+        render.build([dict(o) for o in samples], Path(td), "https://starhub.vip")
+        new = json.loads((Path(td) / "site/data/history/index.json").read_text(encoding="utf-8"))["items"]
+        for f in sorted((Path(td) / "site").rglob("*")):
+            rel = f.relative_to(Path(td) / "site").as_posix()
+            if f.is_file() and (rel.startswith("data/history/samples/") or rel == "history/index.html"):
+                dest = _safe_dest(site_root, rel); dest.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(f, dest); written.append(rel)
+    ids = {x["edition_id"] for x in new}
+    items = [x for x in index["items"] if x["edition_id"] not in ids] + new
+    for eid, n in (notices or {}).items():
+        it = next((x for x in items if x["edition_id"] == eid), None)
+        if it is None:
+            raise ExportError(f"notice for {eid}: not listed on this site")
+        if n.get("kind") not in NOTICE_KINDS or not (n.get("zh") and n.get("en") and n.get("at")):
+            raise ExportError(f"notice for {eid}: needs kind in {NOTICE_KINDS}, at, zh, en")
+        if n.get("revision") != it["revision"]:
+            raise ExportError(f"notice for {eid}: revision {n.get('revision')} != listed revision {it['revision']}")
+        it["notice"] = {k: n[k] for k in ("kind", "at", "revision", "zh", "en")}
+    items.sort(key=lambda x: x["edition_date"], reverse=True)
+    ip.parent.mkdir(parents=True, exist_ok=True)
+    ip.write_text(json.dumps({"schema_version": index.get("schema_version", "0.2"), "items": items}, ensure_ascii=False, indent=1), encoding="utf-8")
+    return written + ["data/history/index.json"]
+
+
 def http_fetch(url: str, timeout=20) -> tuple[int, str, bytes]:
     req = urllib.request.Request(url, headers={"User-Agent": "history-in-practice-verify/0.3", "Cache-Control": "no-cache"})
     try:

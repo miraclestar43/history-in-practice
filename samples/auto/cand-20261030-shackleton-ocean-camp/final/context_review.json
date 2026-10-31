@@ -3,8 +3,8 @@
  "schema": "context-review/v1",
  "mode": "article",
  "edition_id": "cand-20261030-shackleton-ocean-camp",
- "content_sha256": "3a1e2c45e134318430c421166e0cd4c73522b31b2334f1e989e9f45a365261c7",
- "evidence_in_sha256": "d8dd19c2d101c3422b9aaf842ea525b99439258a75080243e3f07939cfb5047f",
+ "content_sha256": "7de08de7dd46de8738924287204a8f01d00b7662ecfc312f4ada88652cd19071",
+ "evidence_in_sha256": "c441a4f3cbeca85e3dbc95b5d081635425ce8489a6325d37c61a6b8b8a0334f0",
  "reviewer": {
   "name": "Pi Claude",
   "role": "named final editor (source-context review)",
@@ -35,39 +35,8 @@
    "extra_cap": 0.3
   }
  },
- "started_at": 1793432025.3695002,
- "flagged": [
-  {
-   "id": "A1",
-   "path": "sections.analysis.0",
-   "lang": "zh",
-   "sentence": "这段记述没有交代那是哪个营地，不能直接等同于前文所记的行军第一夜。"
-  },
-  {
-   "id": "A2",
-   "path": "sections.analysis.0",
-   "lang": "en",
-   "sentence": "the passage does not say which camp that was, and it should not simply be equated with the march's first night described earlier."
-  },
-  {
-   "id": "A3",
-   "path": "sections.analysis.2",
-   "lang": "zh",
-   "sentence": "扉页则被他撕了下来，这段记述没有写它的去向。"
-  },
-  {
-   "id": "A4",
-   "path": "sections.analysis.2",
-   "lang": "en",
-   "sentence": "In his words, \"A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas.\" The fly-leaf was torn out, and the passage does not say what became of it."
-  },
-  {
-   "id": "A5",
-   "path": "sections.analysis.3",
-   "lang": "zh",
-   "sentence": "作者提出的替代选择（他没有写自己考虑过这些）：比如把队伍分成两支，一支维持最低限度的探路，一支守营保存体力；"
-  }
- ],
+ "started_at": 1793462909.2582676,
+ "flagged": [],
  "search": null,
  "units": {
   "S-SOUTH": {
@@ -101,145 +70,36 @@
   {
    "step": "context_r1",
    "attempt": 1,
-   "wall_s": 68.0,
+   "wall_s": 62.0,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
    "killed": null,
    "provider_refusal": null,
-   "output_tokens": 7503
+   "output_tokens": 6507
   }
  ],
- "finished_at": 1793432094.1707559,
- "elapsed_min": 1.1,
+ "finished_at": 1793462971.7728689,
+ "elapsed_min": 1.0,
  "review": {
   "episode": [
    {
     "source_id": "S-SOUTH",
-    "outcome": "The first march ends after about four days. Shackleton camps the party on a thick old floe, Ocean Camp, which is their home for nearly two months while they salvage supplies from the wreck.",
-    "quote": "This floating lump of ice, about a mile square at first but later splitting into smaller and smaller fragments, was to be our home for nearly two months.",
+    "outcome": "海洋营之后的第二次行军（七天、直线七英里半）失败。因食物只够四十二天，全队再次在浮冰上扎营，取名耐心营，住了将近三个半月；部分人的消沉随即消散。",
+    "quote": "As we only had food for forty-two days there was no alternative, therefore, but to camp once more on the floe and to possess our souls with what patience we could till conditions should appear more favourable for a renewal of the attempt to escape.",
     "in_evidence": true
    },
    {
     "source_id": "S-SOUTH",
-    "outcome": "The second attempt fails after seven days and seven and a half miles. With food for only forty-two days they camp on the floe again at Patience Camp, where they stay nearly three and a half months, and the men's apathy soon passes.",
-    "quote": "Our new home, which we were to occupy for nearly three and a half months, we called “‘ Patience Camp.” 106 CHAPTER VII PATIENCE CAMP THE apathy which seemed to take possession of some of the men at the frustration of their hopes was soon dispelled.",
-    "in_evidence": true
+    "outcome": "海洋营本身的收尾：从耐心营回取物资和第三条船 Stancomb Wills 之后，水道张开，他们再也没能回到海洋营。原文说那里剩下的东西用处也不大。",
+    "quote": "We were never able to reach Ocean Camp again. Still, there was very little left there that would have been of use to us.",
+    "in_evidence": false
    }
   ],
-  "additions": [
-   {
-    "source_id": "S-SOUTH",
-    "start": "But about 7 p.m., after the tents were up,",
-    "end": "By 8 p.m. the camp had been pitched again.",
-    "why": "This is the first time the ice split on the night of 27 October, at the first camp beside the ship. It is what Shackleton's later phrase 'twice during the night at our first camp' refers to, and it corrects analysis.0's claim that the camp cannot be identified."
-   },
-   {
-    "source_id": "S-SOUTH",
-    "start": "At midnight I was pacing the ice,",
-    "end": "to the larger portion.",
-    "why": "This is the second split the same night (the crack at midnight). Together with the 7 p.m. split it confirms that the 'first camp' was the camp pitched after the ship was abandoned, not the first night of the march."
-   }
-  ],
+  "additions": [],
   "claims": [
    {
-    "id": "A1",
-    "path": "sections.analysis.0",
-    "lang": "zh",
-    "sentence": "这段记述没有交代那是哪个营地，不能直接等同于前文所记的行军第一夜。",
-    "verdict": "contradicted",
-    "source_ids": [
-     "S-SOUTH"
-    ],
-    "scope": "Ch. 4, from the night of 27 October after abandoning ship to the decision to march on 30 October (S-SOUTH 185304–224080)",
-    "quote": {
-     "source_id": "S-SOUTH",
-     "quote": "But about 7 p.m., after the tents were up, the ice we were occupying became involved in the pressure and started to split and smash beneath our feet."
-    },
-    "fix": "State it directly: the 'first camp' was the camp pitched on the floe beside the ship on the night it was abandoned (27 October). That night the ice split at 7 p.m., forcing a move, and a crack ran through the camp at midnight. This was before the march began, not the march's first night."
-   },
-   {
-    "id": "A2",
-    "path": "sections.analysis.0",
-    "lang": "en",
-    "sentence": "the passage does not say which camp that was, and it should not simply be equated with the march's first night described earlier.",
-    "verdict": "contradicted",
-    "source_ids": [
-     "S-SOUTH"
-    ],
-    "scope": "Ch. 4, night of 27 October through 30 October (S-SOUTH 185304–224080)",
-    "quote": {
-     "source_id": "S-SOUTH",
-     "quote": "I noticed suddenly a crack running across our floe right through the camp."
-    },
-    "fix": "Replace with: the 'first camp' was the camp pitched beside the wrecked ship on 27 October, where the ice split at 7 p.m. and again at midnight. It came before the march, so it is not the march's first night."
-   },
-   {
-    "id": "A3",
-    "path": "sections.analysis.2",
-    "lang": "zh",
-    "sentence": "扉页则被他撕了下来，这段记述没有写它的去向。",
-    "verdict": "supported",
-    "source_ids": [
-     "S-SOUTH"
-    ],
-    "scope": "Ch. 4, the passage on leaving Dump Camp (from 'I rather grudged the two pounds allowance' to the end of the suitcase paragraph), plus the rest of window 2 and window 3",
-    "quote": {
-     "source_id": "S-SOUTH",
-     "quote": "I tore the fly-leaf out of the Bible that Queen Alexandra had given to the ship, with her own writing in it,"
-    },
-    "fix": "Can stay as is. Optionally add that the passage does not say what happened to the Bible itself either."
-   },
-   {
-    "id": "A4",
-    "path": "sections.analysis.2",
-    "lang": "en",
-    "sentence": "In his words, \"A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas.\" The fly-leaf was torn out, and the passage does not say what became of it.",
-    "verdict": "supported",
-    "source_ids": [
-     "S-SOUTH"
-    ],
-    "scope": "Ch. 4, the passage on leaving Dump Camp, plus the rest of the read windows",
-    "quote": {
-     "source_id": "S-SOUTH",
-     "quote": "A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas."
-    },
-    "fix": "Can stay; the quotation is verbatim."
-   },
-   {
-    "id": "A5",
-    "path": "sections.analysis.3",
-    "lang": "zh",
-    "sentence": "作者提出的替代选择（他没有写自己考虑过这些）：比如把队伍分成两支，一支维持最低限度的探路，一支守营保存体力；",
-    "verdict": "unnecessary",
-    "source_ids": [
-     "S-SOUTH"
-    ],
-    "scope": "Read windows only, ch. 4–7. Splitting the party never appears, but the claim covers his whole narrative, which these windows do not.",
-    "quote": {
-     "source_id": "S-SOUTH",
-     "quote": "We will make an attempt to move."
-    },
-    "fix": "'作者提出的' already marks these as the author's ideas, so delete the parenthetical. If it is kept, narrow it to: '在海洋营决定前后的记述里，他只写了扎营等待与行军两种方案'."
-   },
-   {
     "id": "N1",
-    "path": "sections.analysis.3",
-    "lang": "en",
-    "sentence": "Then there are alternatives the author raises for the sake of argument; nothing suggests Shackleton weighed them himself.",
-    "verdict": "unnecessary",
-    "source_ids": [
-     "S-SOUTH"
-    ],
-    "scope": "Read windows only. The claim covers his whole narrative, which these windows do not.",
-    "quote": {
-     "source_id": "S-SOUTH",
-     "quote": "We will make an attempt to move."
-    },
-    "fix": "Delete 'nothing suggests Shackleton weighed them himself', or narrow it to: 'in the passages around the Ocean Camp decision he weighs only marching against camping to wait'."
-   },
-   {
-    "id": "N2",
     "path": "sections.limits.0",
     "lang": "zh",
     "sentence": "但营地里其他人是否同意海洋营的决定，证据里没有，本篇也不另替他们猜测心理。",
@@ -247,15 +107,15 @@
     "source_ids": [
      "S-SOUTH"
     ],
-    "scope": "The evidence pack, and the ch. 5 opening in the read range (from the end of the march to the setting up of Ocean Camp)",
+    "scope": "S-SOUTH 阅读窗口 185304–224080（第4章弃船至第5章海洋营开头），以及 252317–264553（第6章末至第7章耐心营）。这些段落记了队员疲惫、失望、消沉，但没有写他们对海洋营决定是否赞同。",
     "quote": {
      "source_id": "S-SOUTH",
      "quote": "I decided to find a more solid floe and there camp until condi- tions were more favourable"
     },
-    "fix": "Can stay."
+    "fix": "可保留，表述为“沙克尔顿的叙述没有记下其他队员对这一决定的态度”。"
    },
    {
-    "id": "N3",
+    "id": "N2",
     "path": "sections.limits.0",
     "lang": "en",
     "sentence": "Whether anyone else in the camp agreed with the Ocean Camp decision is not in the evidence, and this piece does not put further feelings in their mouths.",
@@ -263,179 +123,161 @@
     "source_ids": [
      "S-SOUTH"
     ],
-    "scope": "The evidence pack, and the ch. 5 opening in the read range",
+    "scope": "同 N1",
     "quote": {
      "source_id": "S-SOUTH",
      "quote": "I decided to find a more solid floe and there camp until condi- tions were more favourable"
     },
-    "fix": "Can stay."
+    "fix": "同 N1"
    },
    {
-    "id": "N4",
-    "path": "sections.limits.1",
+    "id": "N3",
+    "path": "sections.limits.0",
     "lang": "zh",
-    "sentence": "本篇也不写耐心营之后的经过，那部分不在这份证据包的覆盖范围内。",
-    "verdict": "not_a_source_claim",
+    "sentence": "文中那句“喝过更干净的水”出自一位未具名队员的日记，是经沙克尔顿转引的。",
+    "verdict": "supported",
     "source_ids": [
      "S-SOUTH"
     ],
-    "scope": "This describes the coverage of the evidence pack and the piece, not what the source records",
+    "scope": "S-SOUTH 第5章开头（海洋营前最后一段行军）",
     "quote": {
      "source_id": "S-SOUTH",
-     "quote": "Our new home, which we were to occupy for nearly three and a half months, we called"
+     "quote": "as one man wrote in his diary, “ One has seen and tasted cleaner, but seldom more opportunely found water.”"
     },
-    "fix": "No change needed."
+    "fix": "保留。"
+   },
+   {
+    "id": "N4",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "本篇的全部过程都出自沙克尔顿本人的叙述……没有取得其他队员的日记作对照。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "这是对本篇证据范围的说明：证据包只有 S-SOUTH 一个来源。需要注意，沙克尔顿书中本身转引了多位未具名队员的日记，阅读范围内有多处。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "My efforts were not m vain, as one man states in his diary:"
+    },
+    "fix": "改为“本篇未单独查阅其他队员的日记；书中转引的个别未具名队员日记片段，也经由沙克尔顿的选择”，避免读者误以为书中完全没有他人视角。"
+   },
+   {
+    "id": "N5",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "是当事人、领导者的记述，没有其他队员的日记作对照",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "同 N4",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "as one man wrote in his diary"
+    },
+    "fix": "改为“本篇未另行查阅其他队员日记作对照（书中仅转引个别未具名队员日记）”。"
+   },
+   {
+    "id": "N6",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "主要数字……都出自他的记述，未与别的记录核对。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "本篇实际查阅的文件只有 S-SOUTH。这是对本篇工作范围的说明，不是对历史上是否有人核查的断言。另外，1800英里是计划中的行程，不是实测数字。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "the Transcontinental party will set out on their 1800-mile journey at once"
+    },
+    "fix": "写成“本篇未拿其他记录核对这些数字”。可注明1800英里是原计划的预定行程，而非实际测量。"
+   },
+   {
+    "id": "N7",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "文中数字均出自该记述，未经独立核对",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "同 N6。原句“未经独立核对”有歧义，读者可能理解为从来没有人独立核查过。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "the total drift through all observed positions has been 1186 miles"
+    },
+    "fix": "改为“本篇未与其他记录核对”，不要写成泛化的“未经独立核对”。"
+   },
+   {
+    "id": "N8",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "Every figure in the piece comes from that account and has not been independently verified.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "同 N6/N7",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "the total drift through all observed positions has been 1186 miles"
+    },
+    "fix": "改为 \"...and this piece has not checked them against any other record.\""
+   },
+   {
+    "id": "N9",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "本篇也不写耐心营之后的经过，那部分不在这份证据包的覆盖范围内。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "证据包最后一条是 S-E8（耐心营命名）。阅读范围 252317–264553 里其实还有耐心营期间的内容（射杀狗、回海洋营取 Stancomb Wills 等），但这些不在证据包内。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "Our new home, which we were to occupy for nearly three and a half months, we called “‘ Patience Camp.”"
+    },
+    "fix": "可保留。注意这只是本篇的取材范围，书中对后续经过有完整记述。"
    }
   ],
   "context_issues": [
    {
-    "path": "sections.analysis.0",
-    "problem": "The piece says the location of the 'first camp' is unclear and tells readers not to identify it. The read range shows it was the camp beside the ship on 27 October, where the ice split twice. That is exactly why abandoning the march would 'minimize the peril of the ice splitting under us', so leaving it vague weakens the argument.",
+    "path": "sections.story.4",
+    "problem": "“头几天里有一天”写得含糊。按原文顺序，直线一英里、实走六英里、扎在年轻咸冰上，都是行军第一天的事，与同段的“行军第一夜”是同一天。",
     "quote": {
      "source_id": "S-SOUTH",
-     "quote": "I had the camp moved to a bigger floe about 200 yds. away, just beyond the bow of the ship."
-    },
-    "severity": "fix"
-   },
-   {
-    "path": "sections.story.13",
-    "problem": "The piece goes straight from 'retreat half a mile and camp' to 'camp on the floe again', which reads as if Patience Camp was where they retreated to. It leaves out that a crack formed in the night and they moved hurriedly about a mile and a half east before stopping for good.",
-    "quote": {
-     "source_id": "S-SOUTH",
-     "quote": "During the night a crack formed right across the floe, so we hurriedly shifted to a strong old floe about a mile and a half to the east of our present position."
+     "quote": "by 5 p.m. had covered a mile in a north-north- westerly direction"
     },
     "severity": "note"
    },
    {
-    "path": "sections.story.4",
-    "problem": "The paragraph starts 'on one of the first days' and then switches to 'the first night of the march'. In fact the six miles marched and the camp on young salty ice both belong to the first day of the march (30 October), so the timing is vague and the paragraph reads as two separate days.",
+    "path": "sections.story.8",
+    "problem": "“两方面的考虑合起来指向同一个决定”是编辑的归纳。原文只是并列两条理由（“Taking into account also”），没有写成“合起来指向”，宜标为解读或改得平实。",
     "quote": {
      "source_id": "S-SOUTH",
-     "quote": "At 3 p.m., after lunch, we got under way, leaving Dump Camp a mass of debris."
+     "quote": "Taking into account also the possibility of leads opening close to us"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.limits.0",
+    "problem": "“全部过程都出自沙克尔顿本人的叙述”这一说法基本成立，但书中还转引了其他队员的日记片段（如回取 Stancomb Wills 的记述）。限定语应准确，不宜让读者以为完全没有他人视角。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "Sir Ernest and Hussey sledged out to meet us with dixies of hot tea"
     },
     "severity": "note"
    }
   ],
   "search": [],
-  "overall": "The draft broadly matches the source, and the outcomes (Ocean Camp, Patience Camp) are in the evidence. Correct analysis.0's claim that the 'first camp' cannot be identified (it is contradicted by the source), and cut or narrow the broad absence claim in analysis.3."
+  "overall": "稿件已把第二次尝试失败、转入耐心营的结局补进 story.13，事件收尾正确，没有因截断而误导读者的正面叙述。需要修改的是 uncertainty_note 中“未经独立核对”“没有其他队员日记作对照”的泛化措辞：应限定为本篇只查阅了 S-SOUTH，并注明书中转引了个别队员日记。"
  },
  "claims": [
   {
-   "id": "A1",
-   "path": "sections.analysis.0",
-   "lang": "zh",
-   "sentence": "这段记述没有交代那是哪个营地，不能直接等同于前文所记的行军第一夜。",
-   "verdict": "contradicted",
-   "source_ids": [
-    "S-SOUTH"
-   ],
-   "scope": "Ch. 4, from the night of 27 October after abandoning ship to the decision to march on 30 October (S-SOUTH 185304–224080)",
-   "quote": {
-    "source_id": "S-SOUTH",
-    "quote": "But about 7 p.m., after the tents were up, the ice we were occupying became involved in the pressure and started to split and smash beneath our feet."
-   },
-   "fix": "State it directly: the 'first camp' was the camp pitched on the floe beside the ship on the night it was abandoned (27 October). That night the ice split at 7 p.m., forcing a move, and a crack ran through the camp at midnight. This was before the march began, not the march's first night.",
-   "unit_status": {
-    "S-SOUTH": "windows"
-   }
-  },
-  {
-   "id": "A2",
-   "path": "sections.analysis.0",
-   "lang": "en",
-   "sentence": "the passage does not say which camp that was, and it should not simply be equated with the march's first night described earlier.",
-   "verdict": "contradicted",
-   "source_ids": [
-    "S-SOUTH"
-   ],
-   "scope": "Ch. 4, night of 27 October through 30 October (S-SOUTH 185304–224080)",
-   "quote": {
-    "source_id": "S-SOUTH",
-    "quote": "I noticed suddenly a crack running across our floe right through the camp."
-   },
-   "fix": "Replace with: the 'first camp' was the camp pitched beside the wrecked ship on 27 October, where the ice split at 7 p.m. and again at midnight. It came before the march, so it is not the march's first night.",
-   "unit_status": {
-    "S-SOUTH": "windows"
-   }
-  },
-  {
-   "id": "A3",
-   "path": "sections.analysis.2",
-   "lang": "zh",
-   "sentence": "扉页则被他撕了下来，这段记述没有写它的去向。",
-   "verdict": "supported",
-   "source_ids": [
-    "S-SOUTH"
-   ],
-   "scope": "Ch. 4, the passage on leaving Dump Camp (from 'I rather grudged the two pounds allowance' to the end of the suitcase paragraph), plus the rest of window 2 and window 3",
-   "quote": {
-    "source_id": "S-SOUTH",
-    "quote": "I tore the fly-leaf out of the Bible that Queen Alexandra had given to the ship, with her own writing in it,"
-   },
-   "fix": "Can stay as is. Optionally add that the passage does not say what happened to the Bible itself either.",
-   "unit_status": {
-    "S-SOUTH": "windows"
-   }
-  },
-  {
-   "id": "A4",
-   "path": "sections.analysis.2",
-   "lang": "en",
-   "sentence": "In his words, \"A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas.\" The fly-leaf was torn out, and the passage does not say what became of it.",
-   "verdict": "supported",
-   "source_ids": [
-    "S-SOUTH"
-   ],
-   "scope": "Ch. 4, the passage on leaving Dump Camp, plus the rest of the read windows",
-   "quote": {
-    "source_id": "S-SOUTH",
-    "quote": "A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas."
-   },
-   "fix": "Can stay; the quotation is verbatim.",
-   "unit_status": {
-    "S-SOUTH": "windows"
-   }
-  },
-  {
-   "id": "A5",
-   "path": "sections.analysis.3",
-   "lang": "zh",
-   "sentence": "作者提出的替代选择（他没有写自己考虑过这些）：比如把队伍分成两支，一支维持最低限度的探路，一支守营保存体力；",
-   "verdict": "unnecessary",
-   "source_ids": [
-    "S-SOUTH"
-   ],
-   "scope": "Read windows only, ch. 4–7. Splitting the party never appears, but the claim covers his whole narrative, which these windows do not.",
-   "quote": {
-    "source_id": "S-SOUTH",
-    "quote": "We will make an attempt to move."
-   },
-   "fix": "'作者提出的' already marks these as the author's ideas, so delete the parenthetical. If it is kept, narrow it to: '在海洋营决定前后的记述里，他只写了扎营等待与行军两种方案'.",
-   "unit_status": {
-    "S-SOUTH": "windows"
-   }
-  },
-  {
    "id": "N1",
-   "path": "sections.analysis.3",
-   "lang": "en",
-   "sentence": "Then there are alternatives the author raises for the sake of argument; nothing suggests Shackleton weighed them himself.",
-   "verdict": "unnecessary",
-   "source_ids": [
-    "S-SOUTH"
-   ],
-   "scope": "Read windows only. The claim covers his whole narrative, which these windows do not.",
-   "quote": {
-    "source_id": "S-SOUTH",
-    "quote": "We will make an attempt to move."
-   },
-   "fix": "Delete 'nothing suggests Shackleton weighed them himself', or narrow it to: 'in the passages around the Ocean Camp decision he weighs only marching against camping to wait'.",
-   "unit_status": {
-    "S-SOUTH": "windows"
-   }
-  },
-  {
-   "id": "N2",
    "path": "sections.limits.0",
    "lang": "zh",
    "sentence": "但营地里其他人是否同意海洋营的决定，证据里没有，本篇也不另替他们猜测心理。",
@@ -443,18 +285,18 @@
    "source_ids": [
     "S-SOUTH"
    ],
-   "scope": "The evidence pack, and the ch. 5 opening in the read range (from the end of the march to the setting up of Ocean Camp)",
+   "scope": "S-SOUTH 阅读窗口 185304–224080（第4章弃船至第5章海洋营开头），以及 252317–264553（第6章末至第7章耐心营）。这些段落记了队员疲惫、失望、消沉，但没有写他们对海洋营决定是否赞同。",
    "quote": {
     "source_id": "S-SOUTH",
     "quote": "I decided to find a more solid floe and there camp until condi- tions were more favourable"
    },
-   "fix": "Can stay.",
+   "fix": "可保留，表述为“沙克尔顿的叙述没有记下其他队员对这一决定的态度”。",
    "unit_status": {
     "S-SOUTH": "windows"
    }
   },
   {
-   "id": "N3",
+   "id": "N2",
    "path": "sections.limits.0",
    "lang": "en",
    "sentence": "Whether anyone else in the camp agreed with the Ocean Camp decision is not in the evidence, and this piece does not put further feelings in their mouths.",
@@ -462,31 +304,145 @@
    "source_ids": [
     "S-SOUTH"
    ],
-   "scope": "The evidence pack, and the ch. 5 opening in the read range",
+   "scope": "同 N1",
    "quote": {
     "source_id": "S-SOUTH",
     "quote": "I decided to find a more solid floe and there camp until condi- tions were more favourable"
    },
-   "fix": "Can stay.",
+   "fix": "同 N1",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "文中那句“喝过更干净的水”出自一位未具名队员的日记，是经沙克尔顿转引的。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "S-SOUTH 第5章开头（海洋营前最后一段行军）",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "as one man wrote in his diary, “ One has seen and tasted cleaner, but seldom more opportunely found water.”"
+   },
+   "fix": "保留。",
    "unit_status": {
     "S-SOUTH": "windows"
    }
   },
   {
    "id": "N4",
-   "path": "sections.limits.1",
+   "path": "sections.limits.0",
    "lang": "zh",
-   "sentence": "本篇也不写耐心营之后的经过，那部分不在这份证据包的覆盖范围内。",
-   "verdict": "not_a_source_claim",
+   "sentence": "本篇的全部过程都出自沙克尔顿本人的叙述……没有取得其他队员的日记作对照。",
+   "verdict": "supported",
    "source_ids": [
     "S-SOUTH"
    ],
-   "scope": "This describes the coverage of the evidence pack and the piece, not what the source records",
+   "scope": "这是对本篇证据范围的说明：证据包只有 S-SOUTH 一个来源。需要注意，沙克尔顿书中本身转引了多位未具名队员的日记，阅读范围内有多处。",
    "quote": {
     "source_id": "S-SOUTH",
-    "quote": "Our new home, which we were to occupy for nearly three and a half months, we called"
+    "quote": "My efforts were not m vain, as one man states in his diary:"
    },
-   "fix": "No change needed.",
+   "fix": "改为“本篇未单独查阅其他队员的日记；书中转引的个别未具名队员日记片段，也经由沙克尔顿的选择”，避免读者误以为书中完全没有他人视角。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "是当事人、领导者的记述，没有其他队员的日记作对照",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "同 N4",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "as one man wrote in his diary"
+   },
+   "fix": "改为“本篇未另行查阅其他队员日记作对照（书中仅转引个别未具名队员日记）”。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N6",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "主要数字……都出自他的记述，未与别的记录核对。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "本篇实际查阅的文件只有 S-SOUTH。这是对本篇工作范围的说明，不是对历史上是否有人核查的断言。另外，1800英里是计划中的行程，不是实测数字。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "the Transcontinental party will set out on their 1800-mile journey at once"
+   },
+   "fix": "写成“本篇未拿其他记录核对这些数字”。可注明1800英里是原计划的预定行程，而非实际测量。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N7",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "文中数字均出自该记述，未经独立核对",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "同 N6。原句“未经独立核对”有歧义，读者可能理解为从来没有人独立核查过。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "the total drift through all observed positions has been 1186 miles"
+   },
+   "fix": "改为“本篇未与其他记录核对”，不要写成泛化的“未经独立核对”。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N8",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "Every figure in the piece comes from that account and has not been independently verified.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "同 N6/N7",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "the total drift through all observed positions has been 1186 miles"
+   },
+   "fix": "改为 \"...and this piece has not checked them against any other record.\"",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N9",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "本篇也不写耐心营之后的经过，那部分不在这份证据包的覆盖范围内。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "证据包最后一条是 S-E8（耐心营命名）。阅读范围 252317–264553 里其实还有耐心营期间的内容（射杀狗、回海洋营取 Stancomb Wills 等），但这些不在证据包内。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "Our new home, which we were to occupy for nearly three and a half months, we called “‘ Patience Camp.”"
+   },
+   "fix": "可保留。注意这只是本篇的取材范围，书中对后续经过有完整记述。",
    "unit_status": {
     "S-SOUTH": "windows"
    }
@@ -494,29 +450,29 @@
  ],
  "context_issues": [
   {
-   "path": "sections.analysis.0",
-   "problem": "The piece says the location of the 'first camp' is unclear and tells readers not to identify it. The read range shows it was the camp beside the ship on 27 October, where the ice split twice. That is exactly why abandoning the march would 'minimize the peril of the ice splitting under us', so leaving it vague weakens the argument.",
+   "path": "sections.story.4",
+   "problem": "“头几天里有一天”写得含糊。按原文顺序，直线一英里、实走六英里、扎在年轻咸冰上，都是行军第一天的事，与同段的“行军第一夜”是同一天。",
    "quote": {
     "source_id": "S-SOUTH",
-    "quote": "I had the camp moved to a bigger floe about 200 yds. away, just beyond the bow of the ship."
-   },
-   "severity": "fix"
-  },
-  {
-   "path": "sections.story.13",
-   "problem": "The piece goes straight from 'retreat half a mile and camp' to 'camp on the floe again', which reads as if Patience Camp was where they retreated to. It leaves out that a crack formed in the night and they moved hurriedly about a mile and a half east before stopping for good.",
-   "quote": {
-    "source_id": "S-SOUTH",
-    "quote": "During the night a crack formed right across the floe, so we hurriedly shifted to a strong old floe about a mile and a half to the east of our present position."
+    "quote": "by 5 p.m. had covered a mile in a north-north- westerly direction"
    },
    "severity": "note"
   },
   {
-   "path": "sections.story.4",
-   "problem": "The paragraph starts 'on one of the first days' and then switches to 'the first night of the march'. In fact the six miles marched and the camp on young salty ice both belong to the first day of the march (30 October), so the timing is vague and the paragraph reads as two separate days.",
+   "path": "sections.story.8",
+   "problem": "“两方面的考虑合起来指向同一个决定”是编辑的归纳。原文只是并列两条理由（“Taking into account also”），没有写成“合起来指向”，宜标为解读或改得平实。",
    "quote": {
     "source_id": "S-SOUTH",
-    "quote": "At 3 p.m., after lunch, we got under way, leaving Dump Camp a mass of debris."
+    "quote": "Taking into account also the possibility of leads opening close to us"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.limits.0",
+   "problem": "“全部过程都出自沙克尔顿本人的叙述”这一说法基本成立，但书中还转引了其他队员的日记片段（如回取 Stancomb Wills 的记述）。限定语应准确，不宜让读者以为完全没有他人视角。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "Sir Ernest and Hussey sledged out to meet us with dixies of hot tea"
    },
    "severity": "note"
   }
@@ -524,42 +480,20 @@
  "episode": [
   {
    "source_id": "S-SOUTH",
-   "outcome": "The first march ends after about four days. Shackleton camps the party on a thick old floe, Ocean Camp, which is their home for nearly two months while they salvage supplies from the wreck.",
-   "quote": "This floating lump of ice, about a mile square at first but later splitting into smaller and smaller fragments, was to be our home for nearly two months.",
+   "outcome": "海洋营之后的第二次行军（七天、直线七英里半）失败。因食物只够四十二天，全队再次在浮冰上扎营，取名耐心营，住了将近三个半月；部分人的消沉随即消散。",
+   "quote": "As we only had food for forty-two days there was no alternative, therefore, but to camp once more on the floe and to possess our souls with what patience we could till conditions should appear more favourable for a renewal of the attempt to escape.",
    "in_evidence": true
   },
   {
    "source_id": "S-SOUTH",
-   "outcome": "The second attempt fails after seven days and seven and a half miles. With food for only forty-two days they camp on the floe again at Patience Camp, where they stay nearly three and a half months, and the men's apathy soon passes.",
-   "quote": "Our new home, which we were to occupy for nearly three and a half months, we called “‘ Patience Camp.” 106 CHAPTER VII PATIENCE CAMP THE apathy which seemed to take possession of some of the men at the frustration of their hopes was soon dispelled.",
-   "in_evidence": true
+   "outcome": "海洋营本身的收尾：从耐心营回取物资和第三条船 Stancomb Wills 之后，水道张开，他们再也没能回到海洋营。原文说那里剩下的东西用处也不大。",
+   "quote": "We were never able to reach Ocean Camp again. Still, there was very little left there that would have been of use to us.",
+   "in_evidence": false
   }
  ],
- "additions": [
-  {
-   "id": "S-E26",
-   "source_id": "S-SOUTH",
-   "offset": 191364,
-   "chars": 687,
-   "why": "This is the first time the ice split on the night of 27 October, at the first camp beside the ship. It is what Shackleton's later phrase 'twice during the night at our first camp' refers to, and it corrects analysis.0's claim that the camp cannot be identified."
-  },
-  {
-   "id": "S-E27",
-   "source_id": "S-SOUTH",
-   "offset": 194330,
-   "chars": 385,
-   "why": "This is the second split the same night (the crack at midnight). Together with the 7 p.m. split it confirms that the 'first camp' was the camp pitched after the ship was abandoned, not the first night of the march."
-  }
- ],
+ "additions": [],
  "additions_failed": [],
  "evidence_sha256": "c441a4f3cbeca85e3dbc95b5d081635425ce8489a6325d37c61a6b8b8a0334f0",
- "outcome": "needs_work",
- "blocking": [
-  "sections.analysis.0.zh: contradicted — 这段记述没有交代那是哪个营地，不能直接等同于前文所记的行军第一夜。",
-  "sections.analysis.0.en: contradicted — the passage does not say which camp that was, and it should not simply be equate",
-  "sections.analysis.3.zh: unnecessary — 作者提出的替代选择（他没有写自己考虑过这些）：比如把队伍分成两支，一支维持最低限度的探路，一支守营保存体力；",
-  "sections.analysis.3.en: unnecessary — Then there are alternatives the author raises for the sake of argument; nothing ",
-  "sections.analysis.0: The piece says the location of the 'first camp' is unclear and tells readers not to identify it. The",
-  "evidence must be expanded first: 2 addition(s) ['S-E26', 'S-E27']"
- ]
+ "outcome": "clean",
+ "blocking": []
 }

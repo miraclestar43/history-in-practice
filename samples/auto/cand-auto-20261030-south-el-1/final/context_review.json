@@ -3,8 +3,8 @@
  "schema": "context-review/v1",
  "mode": "article",
  "edition_id": "cand-auto-20261030-south-el-1",
- "content_sha256": "f14175236373f72a42a3fb9df64c8bae6beb7953817fbd75ffe77d031e8bafcd",
- "evidence_in_sha256": "a7d7f92e6b648b0b8f18ecc1d0d35599195e97f4d525ccba264c05669345b6da",
+ "content_sha256": "caa9e448ee9ec558db1fe72de6abe649d0881f40ece56357d79bdf17f23131d3",
+ "evidence_in_sha256": "f51398db4e28f5773534d263667ad5e841f9bae5659aea601fb1a4567236e998",
  "reviewer": {
   "name": "Pi Claude",
   "role": "named final editor (source-context review)",
@@ -35,7 +35,7 @@
    "extra_cap": 0.3
   }
  },
- "started_at": 1793440718.2603717,
+ "started_at": 1793465258.1355746,
  "flagged": [
   {
    "id": "A1",
@@ -45,24 +45,18 @@
   },
   {
    "id": "A2",
-   "path": "sections.analysis.2",
-   "lang": "zh",
-   "sentence": "这只是一种解释，所引段落没有说明他为什么这样安排。"
-  },
-  {
-   "id": "A3",
    "path": "sections.today.0",
    "lang": "en",
    "sentence": "A remote station of a few people, supplies good for another stretch of time, communications down, the next resupply date unknown: does everyone stay and endure, or does someone go out and risk seeking help?"
   },
   {
-   "id": "A4",
+   "id": "A3",
    "path": "sections.today.1",
    "lang": "zh",
    "sentence": "只说“你看着办”却不讲失败的下场，责任就悬在半空。"
   },
   {
-   "id": "A5",
+   "id": "A4",
    "path": "sections.limits.0",
    "lang": "zh",
    "sentence": "作者说，南乔治亚航程的记述依据逐日写下的简略笔记，笔记通常只记距离、船位和天气，航程中的具体经过则来自记忆。"
@@ -83,70 +77,58 @@
    "spans": [
     [
      10745,
-     21586
+     27264
     ],
     [
      364526,
-     433248
+     441245
     ]
    ],
-   "chars_reviewed": 79563
+   "chars_reviewed": 93238
   }
  },
  "calls": [
   {
    "step": "context_r1",
    "attempt": 1,
-   "wall_s": 62.4,
+   "wall_s": 39.2,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
    "killed": null,
    "provider_refusal": null,
-   "output_tokens": 6610
+   "output_tokens": 4286
   }
  ],
- "finished_at": 1793440781.2650135,
- "elapsed_min": 1.1,
+ "finished_at": 1793465298.034282,
+ "elapsed_min": 0.7,
  "review": {
   "episode": [
    {
     "source_id": "S-SOUTH",
-    "outcome": "在阅读范围的第九章内，航程以小船驶入哈康国王湾南岸的小湾、六人全部安全上岸、找到淡水痛饮收尾；紧接着发现登陆时丢了舵，船也因割去舷板而变弱。",
-    "quote": "However, I made fast the line, and in a few minutes we were all safe on the beach, with the boat floating in the surging water just off the shore. We heard a gurgling sound that was sweet music in our ears, and, peering around, found a stream of fresh water almost at our feet.",
+    "outcome": "The James Caird runs into a small cove in King Haakon Bay and all six get safely ashore and drink fresh water. Landing is not the end of the search for help: the boat is weakened and Stromness is still 150 miles away by sea, so the account turns to crossing the island. The rudder lost at the landing later drifts back into the cove. On May 15 they sail to the head of the bay and land among hundreds of sea-elephants, which ends their food worries.",
+    "quote": "in a few minutes we were all safe on the beach, with the boat floating in the surging water just off the shore. We heard a gurgling sound that was sweet music in our ears, and, peering around, found a stream of fresh water almost at our feet.",
     "in_evidence": true
    },
    {
     "source_id": "S-SOUTH",
-    "outcome": "整件事的最终结局写在序言里：留在象岛的二十二人靠船屋勉强熬了四个半月，乌拉圭政府提供拖网船作第二次救援尝试，最终由智利政府派出、帕尔多船长指挥的 Yelcho 号在最后一次尝试中救出他们。",
-    "quote": "Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades. This southern Republic was unwearied in its efforts to make a successful rescue, and the gratitude of our whole party is due to them. I especially mention the sympathetic attitude of Admiral Mufioz Hurtado, head of the Chilian Navy, and Captain Luis Pardo, who commanded the Yelcho on our last and successful venture.",
-    "in_evidence": false
+    "outcome": "In the preface, the twenty-two men left on Elephant Island hold out for four and a half months. After several relief attempts, the Chilean Government's Yelcho, under Luis Pardo, completes the last and successful rescue.",
+    "quote": "Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades.",
+    "in_evidence": true
    }
   ],
   "additions": [
    {
     "source_id": "S-SOUTH",
-    "start": "This is also the opportunity for me to thank the Uruguayan",
-    "end": "who commanded the Yelcho on our last and successful venture.",
-    "why": "这是象岛留守者的最终结局：救援经历多次尝试，最后由智利的 Yelcho 号成功救出。稿件 analysis.0 只写他们熬了四个半月，没有交代他们获救，读者无法知道‘最坏情形账’的实际下场。"
+    "start": "Then a strange thing happened.",
+    "end": "Surely a remarkable salvage!",
+    "why": "The rudder lost on landing night drifted back into the cove on May 13 and was recovered. The draft stops at 'a serious loss' and never mentions the recovery, so readers will think the boat had no rudder from then on."
    },
    {
     "source_id": "S-SOUTH",
-    "start": "The final stage of the journey had still to be attempted.",
-    "end": "We must push on somehow.",
-    "why": "这是登陆后紧接着的转折：小船已因割去舷板而变弱，走海路离 Stromness 捕鲸站仍有150英里，唯一的替代办法是横越岛屿。这说明上岸并不是求援的终点。稿件结尾只提到要驶向湾顶，限定不完整。"
-   },
-   {
-    "source_id": "S-SOUTH",
-    "start": "We had previously discovered that",
-    "end": "This was a serious loss",
-    "why": "登陆时丢了舵，这是登陆当晚的直接后果，会影响读者对‘平安上岸’的理解。"
-   },
-   {
-    "source_id": "S-SOUTH",
-    "start": "We sailed from London on Friday, August 1, 1914",
-    "end": "the order for general mobilization.",
-    "why": "来源里写有公元年份（1914年出发），可以纠正稿件中‘未给公元年份’的说法。"
+    "start": "We rounded a high, glacier-worn bluff",
+    "end": "our anxieties with regard to food disappeared.",
+    "why": "The draft ends with 'they still had to sail to the head of the bay'. The reading range already has the result: on May 15 they reached the head of the bay and found plenty of sea-elephants, which ended the food shortage. This is the immediate next turn after the landing."
    }
   ],
   "claims": [
@@ -159,59 +141,43 @@
     "source_ids": [
      "S-SOUTH"
     ],
-    "scope": "第九章开头论证出海的段落",
+    "scope": "An interpretive statement, not a claim about whether the source records something. It is consistent with 'The risk was justified solely by our urgent need of assistance' (ch. IX).",
     "quote": {
      "source_id": "S-SOUTH",
      "quote": "The risk was justified solely by our urgent need of assistance."
     },
-    "fix": "这句是解读，不是关于来源有无记载的断言，可以保留；原文的依据见引文。"
+    "fix": "Keep it, labelled as interpretation."
    },
    {
     "id": "A2",
-    "path": "sections.analysis.2",
-    "lang": "zh",
-    "sentence": "这只是一种解释，所引段落没有说明他为什么这样安排。",
-    "verdict": "supported",
-    "source_ids": [
-     "S-SOUTH"
-    ],
-    "scope": "第九章选人段落（从 Four other men would be required 到 finally selected McNeish…），以及阅读范围内第九章其余部分；均未说明他为何先征求志愿者",
-    "quote": {
-     "source_id": "S-SOUTH",
-     "quote": "I decided to call for volunteers, although, as a matter of fact, I pretty well knew which of the people I would select."
-    },
-    "fix": "把范围改得更准确：‘记述在选人这一段没有说明他为什么这样安排’，不要只说‘所引段落’。"
-   },
-   {
-    "id": "A3",
     "path": "sections.today.0",
     "lang": "en",
     "sentence": "A remote station of a few people, supplies good for another stretch of time, communications down, the next resupply date unknown: does everyone stay and endure, or does someone go out and risk seeking help?",
     "verdict": "not_a_source_claim",
     "source_ids": [],
-    "scope": "现代类比段落",
+    "scope": "A modern hypothetical scenario that makes no claim about the source.",
     "quote": {
      "source_id": "S-SOUTH",
      "quote": "A boat journey in search of relief was necessary and must not be delayed."
     },
-    "fix": "无需修改。"
+    "fix": "No change needed."
    },
    {
-    "id": "A4",
+    "id": "A3",
     "path": "sections.today.1",
     "lang": "zh",
     "sentence": "只说“你看着办”却不讲失败的下场，责任就悬在半空。",
     "verdict": "not_a_source_claim",
     "source_ids": [],
-    "scope": "现代类比段落",
+    "scope": "Modern management advice that makes no claim about the source.",
     "quote": {
      "source_id": "S-SOUTH",
      "quote": "with directions as to his course of action in the event of our failure to bring relief"
     },
-    "fix": "无需修改。"
+    "fix": "No change needed."
    },
    {
-    "id": "A5",
+    "id": "A4",
     "path": "sections.limits.0",
     "lang": "zh",
     "sentence": "作者说，南乔治亚航程的记述依据逐日写下的简略笔记，笔记通常只记距离、船位和天气，航程中的具体经过则来自记忆。",
@@ -219,146 +185,84 @@
     "source_ids": [
      "S-SOUTH"
     ],
-    "scope": "第九章航程开头关于记录依据的段落",
+    "scope": "Chapter IX, the source-description paragraph at p.165. The original says 'usually' and the draft keeps 'usually', so the scope is accurate.",
     "quote": {
      "source_id": "S-SOUTH",
      "quote": "This record of the voyage to South Georgia is based upon Scanty notes made day by day. The notes dealt usually with the bare facts of distances, positions, and weather, but our memories retained the incidents of the passing days"
     },
-    "fix": "无需修改。"
+    "fix": "Keep."
    },
    {
     "id": "N1",
-    "path": "sections.limits.1",
+    "path": "uncertainty_note",
     "lang": "zh",
-    "sentence": "所引片段未给公元年份，这里不做换算",
-    "verdict": "contradicted",
+    "sentence": "本文未对照其他当事人的记录核实",
+    "verdict": "supported",
     "source_ids": [
      "S-SOUTH"
     ],
-    "scope": "序言（阅读范围10745–21586）",
+    "scope": "Describes what this piece actually checked: only one book, South, was consulted. It says nothing about whether anyone else verified the account at the time, so it should not be read as 'no independent check exists'.",
     "quote": {
      "source_id": "S-SOUTH",
-     "quote": "We sailed from London on Friday, August 1, 1914"
+     "quote": "This record of the voyage to South Georgia is based upon Scanty notes made day by day."
     },
-    "fix": "来源里有年份：考察队于1914年8月1日从伦敦出发。可以写明这一点，或者删掉这句说明。不要推算航程年份，除非检索到原文明确写出。"
+    "fix": "Keep the wording limited to 'this piece has not cross-checked', and do not extend it to 'no third party has ever verified'."
    },
    {
     "id": "N2",
     "path": "sections.limits.1",
-    "lang": "en",
-    "sentence": "The quoted passages give no calendar year, so none is supplied here",
-    "verdict": "contradicted",
+    "lang": "zh",
+    "sentence": "文森特为什么垮掉，队长自己说难以解释，本文不替他补心理。",
+    "verdict": "supported",
     "source_ids": [
      "S-SOUTH"
     ],
-    "scope": "序言",
+    "scope": "Chapter IX, the night after the great wave (around p.175). No other explanation appears in the reading range.",
     "quote": {
      "source_id": "S-SOUTH",
-     "quote": "We sailed from London on Friday, August 1, 1914"
+     "quote": "Vincent had for the past week ceased to be an active member of the crew, and I could not easily account for his collapse."
     },
-    "fix": "与中文版同样修改。"
+    "fix": "Keep."
    },
    {
     "id": "N3",
-    "path": "uncertainty_note",
+    "path": "sections.story.8",
     "lang": "zh",
-    "sentence": "所引片段未给公元年份，不做换算",
-    "verdict": "contradicted",
-    "source_ids": [
-     "S-SOUTH"
-    ],
-    "scope": "序言",
-    "quote": {
-     "source_id": "S-SOUTH",
-     "quote": "We sailed from London on Friday, August 1, 1914"
-    },
-    "fix": "改为注明1914年8月1日从伦敦出发，或者删去这句。英文版同步修改。"
-   },
-   {
-    "id": "N4",
-    "path": "uncertainty_note",
-    "lang": "zh",
-    "sentence": "对话与心理均为记述性内容，未必逐字，本文未对照其他当事人的记录核实",
+    "sentence": "文森特在过去一周已不再是积极的船员，队长写明难以解释他的垮掉",
     "verdict": "supported",
     "source_ids": [
      "S-SOUTH"
     ],
-    "scope": "本文的证据包只含 S-SOUTH 一个来源；这句话说的是本文自己的核查范围，不是说历史上无人核查",
-    "quote": {
-     "source_id": "S-SOUTH",
-     "quote": "This record of the voyage to South Georgia is based upon Scanty notes made day by day."
-    },
-    "fix": "保留，但措辞须限定为‘本文未’，不得改成‘没有任何独立核查’。英文版 have not been checked here 同此处理。"
-   },
-   {
-    "id": "N5",
-    "path": "sections.limits.1",
-    "lang": "zh",
-    "sentence": "文森特为什么垮掉，队长自己说难以解释",
-    "verdict": "supported",
-    "source_ids": [
-     "S-SOUTH"
-    ],
-    "scope": "第九章巨浪之后的段落",
+    "scope": "Same passage in Chapter IX as N2.",
     "quote": {
      "source_id": "S-SOUTH",
      "quote": "I could not easily account for his collapse"
     },
-    "fix": "无需修改。"
-   },
-   {
-    "id": "N6",
-    "path": "sections.limits.0",
-    "lang": "zh",
-    "sentence": "这套记录只有当事人一个史源",
-    "verdict": "supported",
-    "source_ids": [
-     "S-SOUTH"
-    ],
-    "scope": "本文使用的来源数量",
-    "quote": {
-     "source_id": "S-SOUTH",
-     "quote": "This record of the voyage to South Georgia is based upon Scanty notes made day by day."
-    },
-    "fix": "这是来源数量说明，宜写成‘本文只引用一个来源’。不要据此暗示当时无人核查，也不要暗示书中没有转述他人的记录。"
+    "fix": "Keep."
    }
   ],
   "context_issues": [
    {
-    "path": "sections.analysis.0",
-    "problem": "只写留守二十二人熬了四个半月，没有交代他们最终被智利 Yelcho 号救出。最坏情形账的实际结局被截断，读者无法知道留守者的下场。",
+    "path": "sections.story.8",
+    "problem": "The draft presents the lost rudder as a final outcome ('在海滩和够得着的岩石间仔细搜寻也没找到，这是严重的损失'). In the reading range the rudder drifted back into the cove on May 13 and was recovered. As written, the passage misleads readers.",
     "quote": {
      "source_id": "S-SOUTH",
-     "quote": "Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades."
+     "quote": "The rudder, with all the broad Atlantic to sail in and the coasts of two continents to search for a resting-place, came bobbing back into our cove."
     },
     "severity": "fix"
    },
    {
     "path": "sections.story.8",
-    "problem": "以登陆饮水收尾，并提到还需驶向湾顶。但紧接着原文写明小船因割去舷板而变弱、走海路离 Stromness 尚有150英里、只能考虑横越岛屿，登陆时还丢了舵。这些都没有交代。",
+    "problem": "The draft ends with 'they still had to sail to the head of the bay'. The reading range shows they reached it on May 15 and found plenty of sea-elephants, so the food problem was solved. Add a sentence, or explicitly say the account continues from there to the island crossing.",
     "quote": {
      "source_id": "S-SOUTH",
-     "quote": "We were still 150 miles away from Stromness whaling-station by sea. The alternative was to attempt the crossing of the island."
-    },
-    "severity": "note"
-   },
-   {
-    "path": "sections.hook.0",
-    "problem": "‘象岛上根本不会有人来搜寻他们’被写成客观事实，原文是沙克尔顿作决定时的一项考虑。",
-    "quote": {
-     "source_id": "S-SOUTH",
-     "quote": "A consideration that had weight with me was that there was no chance at all of any search being made for us on Elephant Island."
+     "quote": "There were hundreds of sea-elephants lying about, and our anxieties with regard to food disappeared."
     },
     "severity": "note"
    }
   ],
-  "search": [
-   "Yelcho",
-   "Stromness",
-   "Blackborrow",
-   "chloroform"
-  ],
-  "overall": "航程叙述与阅读范围基本一致。须补上序言中留守者获救的结局，并改正‘未给公元年份’的说法（序言写明1914年出发）；其余否定性说明范围准确，或属于解读，不是来源断言。"
+  "search": [],
+  "overall": "The draft covers the voyage's outcome and the rescue of the Elephant Island party fairly completely. One fix is required: the rudder was lost but recovered, and the draft wrongly leaves it as a lost-for-good outcome. The negative and limitation statements are accurately scoped."
  },
  "claims": [
   {
@@ -370,67 +274,48 @@
    "source_ids": [
     "S-SOUTH"
    ],
-   "scope": "第九章开头论证出海的段落",
+   "scope": "An interpretive statement, not a claim about whether the source records something. It is consistent with 'The risk was justified solely by our urgent need of assistance' (ch. IX).",
    "quote": {
     "source_id": "S-SOUTH",
     "quote": "The risk was justified solely by our urgent need of assistance."
    },
-   "fix": "这句是解读，不是关于来源有无记载的断言，可以保留；原文的依据见引文。",
+   "fix": "Keep it, labelled as interpretation.",
    "unit_status": {
     "S-SOUTH": "windows"
    }
   },
   {
    "id": "A2",
-   "path": "sections.analysis.2",
-   "lang": "zh",
-   "sentence": "这只是一种解释，所引段落没有说明他为什么这样安排。",
-   "verdict": "supported",
-   "source_ids": [
-    "S-SOUTH"
-   ],
-   "scope": "第九章选人段落（从 Four other men would be required 到 finally selected McNeish…），以及阅读范围内第九章其余部分；均未说明他为何先征求志愿者",
-   "quote": {
-    "source_id": "S-SOUTH",
-    "quote": "I decided to call for volunteers, although, as a matter of fact, I pretty well knew which of the people I would select."
-   },
-   "fix": "把范围改得更准确：‘记述在选人这一段没有说明他为什么这样安排’，不要只说‘所引段落’。",
-   "unit_status": {
-    "S-SOUTH": "windows"
-   }
-  },
-  {
-   "id": "A3",
    "path": "sections.today.0",
    "lang": "en",
    "sentence": "A remote station of a few people, supplies good for another stretch of time, communications down, the next resupply date unknown: does everyone stay and endure, or does someone go out and risk seeking help?",
    "verdict": "not_a_source_claim",
    "source_ids": [],
-   "scope": "现代类比段落",
+   "scope": "A modern hypothetical scenario that makes no claim about the source.",
    "quote": {
     "source_id": "S-SOUTH",
     "quote": "A boat journey in search of relief was necessary and must not be delayed."
    },
-   "fix": "无需修改。",
+   "fix": "No change needed.",
    "unit_status": {}
   },
   {
-   "id": "A4",
+   "id": "A3",
    "path": "sections.today.1",
    "lang": "zh",
    "sentence": "只说“你看着办”却不讲失败的下场，责任就悬在半空。",
    "verdict": "not_a_source_claim",
    "source_ids": [],
-   "scope": "现代类比段落",
+   "scope": "Modern management advice that makes no claim about the source.",
    "quote": {
     "source_id": "S-SOUTH",
     "quote": "with directions as to his course of action in the event of our failure to bring relief"
    },
-   "fix": "无需修改。",
+   "fix": "No change needed.",
    "unit_status": {}
   },
   {
-   "id": "A5",
+   "id": "A4",
    "path": "sections.limits.0",
    "lang": "zh",
    "sentence": "作者说，南乔治亚航程的记述依据逐日写下的简略笔记，笔记通常只记距离、船位和天气，航程中的具体经过则来自记忆。",
@@ -438,31 +323,31 @@
    "source_ids": [
     "S-SOUTH"
    ],
-   "scope": "第九章航程开头关于记录依据的段落",
+   "scope": "Chapter IX, the source-description paragraph at p.165. The original says 'usually' and the draft keeps 'usually', so the scope is accurate.",
    "quote": {
     "source_id": "S-SOUTH",
     "quote": "This record of the voyage to South Georgia is based upon Scanty notes made day by day. The notes dealt usually with the bare facts of distances, positions, and weather, but our memories retained the incidents of the passing days"
    },
-   "fix": "无需修改。",
+   "fix": "Keep.",
    "unit_status": {
     "S-SOUTH": "windows"
    }
   },
   {
    "id": "N1",
-   "path": "sections.limits.1",
+   "path": "uncertainty_note",
    "lang": "zh",
-   "sentence": "所引片段未给公元年份，这里不做换算",
-   "verdict": "contradicted",
+   "sentence": "本文未对照其他当事人的记录核实",
+   "verdict": "supported",
    "source_ids": [
     "S-SOUTH"
    ],
-   "scope": "序言（阅读范围10745–21586）",
+   "scope": "Describes what this piece actually checked: only one book, South, was consulted. It says nothing about whether anyone else verified the account at the time, so it should not be read as 'no independent check exists'.",
    "quote": {
     "source_id": "S-SOUTH",
-    "quote": "We sailed from London on Friday, August 1, 1914"
+    "quote": "This record of the voyage to South Georgia is based upon Scanty notes made day by day."
    },
-   "fix": "来源里有年份：考察队于1914年8月1日从伦敦出发。可以写明这一点，或者删掉这句说明。不要推算航程年份，除非检索到原文明确写出。",
+   "fix": "Keep the wording limited to 'this piece has not cross-checked', and do not extend it to 'no third party has ever verified'.",
    "unit_status": {
     "S-SOUTH": "windows"
    }
@@ -470,94 +355,37 @@
   {
    "id": "N2",
    "path": "sections.limits.1",
-   "lang": "en",
-   "sentence": "The quoted passages give no calendar year, so none is supplied here",
-   "verdict": "contradicted",
+   "lang": "zh",
+   "sentence": "文森特为什么垮掉，队长自己说难以解释，本文不替他补心理。",
+   "verdict": "supported",
    "source_ids": [
     "S-SOUTH"
    ],
-   "scope": "序言",
+   "scope": "Chapter IX, the night after the great wave (around p.175). No other explanation appears in the reading range.",
    "quote": {
     "source_id": "S-SOUTH",
-    "quote": "We sailed from London on Friday, August 1, 1914"
+    "quote": "Vincent had for the past week ceased to be an active member of the crew, and I could not easily account for his collapse."
    },
-   "fix": "与中文版同样修改。",
+   "fix": "Keep.",
    "unit_status": {
     "S-SOUTH": "windows"
    }
   },
   {
    "id": "N3",
-   "path": "uncertainty_note",
+   "path": "sections.story.8",
    "lang": "zh",
-   "sentence": "所引片段未给公元年份，不做换算",
-   "verdict": "contradicted",
-   "source_ids": [
-    "S-SOUTH"
-   ],
-   "scope": "序言",
-   "quote": {
-    "source_id": "S-SOUTH",
-    "quote": "We sailed from London on Friday, August 1, 1914"
-   },
-   "fix": "改为注明1914年8月1日从伦敦出发，或者删去这句。英文版同步修改。",
-   "unit_status": {
-    "S-SOUTH": "windows"
-   }
-  },
-  {
-   "id": "N4",
-   "path": "uncertainty_note",
-   "lang": "zh",
-   "sentence": "对话与心理均为记述性内容，未必逐字，本文未对照其他当事人的记录核实",
+   "sentence": "文森特在过去一周已不再是积极的船员，队长写明难以解释他的垮掉",
    "verdict": "supported",
    "source_ids": [
     "S-SOUTH"
    ],
-   "scope": "本文的证据包只含 S-SOUTH 一个来源；这句话说的是本文自己的核查范围，不是说历史上无人核查",
-   "quote": {
-    "source_id": "S-SOUTH",
-    "quote": "This record of the voyage to South Georgia is based upon Scanty notes made day by day."
-   },
-   "fix": "保留，但措辞须限定为‘本文未’，不得改成‘没有任何独立核查’。英文版 have not been checked here 同此处理。",
-   "unit_status": {
-    "S-SOUTH": "windows"
-   }
-  },
-  {
-   "id": "N5",
-   "path": "sections.limits.1",
-   "lang": "zh",
-   "sentence": "文森特为什么垮掉，队长自己说难以解释",
-   "verdict": "supported",
-   "source_ids": [
-    "S-SOUTH"
-   ],
-   "scope": "第九章巨浪之后的段落",
+   "scope": "Same passage in Chapter IX as N2.",
    "quote": {
     "source_id": "S-SOUTH",
     "quote": "I could not easily account for his collapse"
    },
-   "fix": "无需修改。",
-   "unit_status": {
-    "S-SOUTH": "windows"
-   }
-  },
-  {
-   "id": "N6",
-   "path": "sections.limits.0",
-   "lang": "zh",
-   "sentence": "这套记录只有当事人一个史源",
-   "verdict": "supported",
-   "source_ids": [
-    "S-SOUTH"
-   ],
-   "scope": "本文使用的来源数量",
-   "quote": {
-    "source_id": "S-SOUTH",
-    "quote": "This record of the voyage to South Georgia is based upon Scanty notes made day by day."
-   },
-   "fix": "这是来源数量说明，宜写成‘本文只引用一个来源’。不要据此暗示当时无人核查，也不要暗示书中没有转述他人的记录。",
+   "fix": "Keep.",
    "unit_status": {
     "S-SOUTH": "windows"
    }
@@ -565,29 +393,20 @@
  ],
  "context_issues": [
   {
-   "path": "sections.analysis.0",
-   "problem": "只写留守二十二人熬了四个半月，没有交代他们最终被智利 Yelcho 号救出。最坏情形账的实际结局被截断，读者无法知道留守者的下场。",
+   "path": "sections.story.8",
+   "problem": "The draft presents the lost rudder as a final outcome ('在海滩和够得着的岩石间仔细搜寻也没找到，这是严重的损失'). In the reading range the rudder drifted back into the cove on May 13 and was recovered. As written, the passage misleads readers.",
    "quote": {
     "source_id": "S-SOUTH",
-    "quote": "Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades."
+    "quote": "The rudder, with all the broad Atlantic to sail in and the coasts of two continents to search for a resting-place, came bobbing back into our cove."
    },
    "severity": "fix"
   },
   {
    "path": "sections.story.8",
-   "problem": "以登陆饮水收尾，并提到还需驶向湾顶。但紧接着原文写明小船因割去舷板而变弱、走海路离 Stromness 尚有150英里、只能考虑横越岛屿，登陆时还丢了舵。这些都没有交代。",
+   "problem": "The draft ends with 'they still had to sail to the head of the bay'. The reading range shows they reached it on May 15 and found plenty of sea-elephants, so the food problem was solved. Add a sentence, or explicitly say the account continues from there to the island crossing.",
    "quote": {
     "source_id": "S-SOUTH",
-    "quote": "We were still 150 miles away from Stromness whaling-station by sea. The alternative was to attempt the crossing of the island."
-   },
-   "severity": "note"
-  },
-  {
-   "path": "sections.hook.0",
-   "problem": "‘象岛上根本不会有人来搜寻他们’被写成客观事实，原文是沙克尔顿作决定时的一项考虑。",
-   "quote": {
-    "source_id": "S-SOUTH",
-    "quote": "A consideration that had weight with me was that there was no chance at all of any search being made for us on Elephant Island."
+    "quote": "There were hundreds of sea-elephants lying about, and our anxieties with regard to food disappeared."
    },
    "severity": "note"
   }
@@ -595,55 +414,38 @@
  "episode": [
   {
    "source_id": "S-SOUTH",
-   "outcome": "在阅读范围的第九章内，航程以小船驶入哈康国王湾南岸的小湾、六人全部安全上岸、找到淡水痛饮收尾；紧接着发现登陆时丢了舵，船也因割去舷板而变弱。",
-   "quote": "However, I made fast the line, and in a few minutes we were all safe on the beach, with the boat floating in the surging water just off the shore. We heard a gurgling sound that was sweet music in our ears, and, peering around, found a stream of fresh water almost at our feet.",
+   "outcome": "The James Caird runs into a small cove in King Haakon Bay and all six get safely ashore and drink fresh water. Landing is not the end of the search for help: the boat is weakened and Stromness is still 150 miles away by sea, so the account turns to crossing the island. The rudder lost at the landing later drifts back into the cove. On May 15 they sail to the head of the bay and land among hundreds of sea-elephants, which ends their food worries.",
+   "quote": "in a few minutes we were all safe on the beach, with the boat floating in the surging water just off the shore. We heard a gurgling sound that was sweet music in our ears, and, peering around, found a stream of fresh water almost at our feet.",
    "in_evidence": true
   },
   {
    "source_id": "S-SOUTH",
-   "outcome": "整件事的最终结局写在序言里：留在象岛的二十二人靠船屋勉强熬了四个半月，乌拉圭政府提供拖网船作第二次救援尝试，最终由智利政府派出、帕尔多船长指挥的 Yelcho 号在最后一次尝试中救出他们。",
-   "quote": "Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades. This southern Republic was unwearied in its efforts to make a successful rescue, and the gratitude of our whole party is due to them. I especially mention the sympathetic attitude of Admiral Mufioz Hurtado, head of the Chilian Navy, and Captain Luis Pardo, who commanded the Yelcho on our last and successful venture.",
-   "in_evidence": false
+   "outcome": "In the preface, the twenty-two men left on Elephant Island hold out for four and a half months. After several relief attempts, the Chilean Government's Yelcho, under Luis Pardo, completes the last and successful rescue.",
+   "quote": "Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades.",
+   "in_evidence": true
   }
  ],
  "additions": [
   {
-   "id": "SOUTH-EL1-E38",
+   "id": "SOUTH-EL1-E42",
    "source_id": "S-SOUTH",
-   "offset": 18623,
-   "chars": 641,
-   "why": "这是象岛留守者的最终结局：救援经历多次尝试，最后由智利的 Yelcho 号成功救出。稿件 analysis.0 只写他们熬了四个半月，没有交代他们获救，读者无法知道‘最坏情形账’的实际下场。"
+   "offset": 434501,
+   "chars": 464,
+   "why": "The rudder lost on landing night drifted back into the cove on May 13 and was recovered. The draft stops at 'a serious loss' and never mentions the recovery, so readers will think the boat had no rudder from then on."
   },
   {
-   "id": "SOUTH-EL1-E39",
+   "id": "SOUTH-EL1-E43",
    "source_id": "S-SOUTH",
-   "offset": 429698,
-   "chars": 812,
-   "why": "这是登陆后紧接着的转折：小船已因割去舷板而变弱，走海路离 Stromness 捕鲸站仍有150英里，唯一的替代办法是横越岛屿。这说明上岸并不是求援的终点。稿件结尾只提到要驶向湾顶，限定不完整。"
-  },
-  {
-   "id": "SOUTH-EL1-E40",
-   "source_id": "S-SOUTH",
-   "offset": 432881,
-   "chars": 364,
-   "why": "登陆时丢了舵，这是登陆当晚的直接后果，会影响读者对‘平安上岸’的理解。"
-  },
-  {
-   "id": "SOUTH-EL1-E41",
-   "source_id": "S-SOUTH",
-   "offset": 14825,
-   "chars": 308,
-   "why": "来源里写有公元年份（1914年出发），可以纠正稿件中‘未给公元年份’的说法。"
+   "offset": 440919,
+   "chars": 278,
+   "why": "The draft ends with 'they still had to sail to the head of the bay'. The reading range already has the result: on May 15 they reached the head of the bay and found plenty of sea-elephants, which ended the food shortage. This is the immediate next turn after the landing."
   }
  ],
  "additions_failed": [],
- "evidence_sha256": "f51398db4e28f5773534d263667ad5e841f9bae5659aea601fb1a4567236e998",
+ "evidence_sha256": "8cf1554a1cf541e155e449d03b715f110eeed96ba46819a5ed9f622fea251739",
  "outcome": "needs_work",
  "blocking": [
-  "sections.limits.1.zh: contradicted — 所引片段未给公元年份，这里不做换算",
-  "sections.limits.1.en: contradicted — The quoted passages give no calendar year, so none is supplied here",
-  "uncertainty_note.zh: contradicted — 所引片段未给公元年份，不做换算",
-  "sections.analysis.0: 只写留守二十二人熬了四个半月，没有交代他们最终被智利 Yelcho 号救出。最坏情形账的实际结局被截断，读者无法知道留守者的下场。",
-  "evidence must be expanded first: 4 addition(s) ['SOUTH-EL1-E38', 'SOUTH-EL1-E39', 'SOUTH-EL1-E40', 'SOUTH-EL1-E41']"
+  "sections.story.8: The draft presents the lost rudder as a final outcome ('在海滩和够得着的岩石间仔细搜寻也没找到，这是严重的损失'). In the readin",
+  "evidence must be expanded first: 2 addition(s) ['SOUTH-EL1-E42', 'SOUTH-EL1-E43']"
  ]
 }
