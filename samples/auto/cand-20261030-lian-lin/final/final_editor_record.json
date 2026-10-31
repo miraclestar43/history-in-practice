@@ -12,1024 +12,483 @@
   "cli_version": "2.1.308 (Claude Code)",
   "model_reported": "claude-opus-5-5"
  },
- "code_rev": "215a6b1",
- "started_at": 1793397768.270683,
- "base_source": "samples/auto/cand-20261030-lian-lin/article.json",
- "base_content_sha256": "4bcfa9173cf3b6642746059b8b62ab7964e4a515a684471f549253a60d593b29",
- "evidence_sha256": "8936fad054de59aaae6503720d959f0f756272e5d645662fa04c50061fc5cb27",
+ "code_rev": "2af9f62",
+ "started_at": 1793430816.3240056,
+ "base_source": "samples/auto/cand-20261030-lian-lin/final/article.json",
+ "base_content_sha256": "37971e470057898a2d281a94b7e14ce606a4eff575afd29378b4882255b1ae42",
+ "evidence_sha256": "1557749deb3e193ae541230e58acba6b464ab9a6ac34a5f03ae2c5a9fa23f16e",
+ "operator_note": null,
  "model_record_sha256": "5d3920a83acff1e1fe7ce8c54155178d212fce205c618f36ff726dd0c2484e0c",
- "prior_record_sha256": null,
- "attempt": "attempt-1",
+ "prior_record_sha256": "b1a6e897cf4757e7eed71461ecae973541b29f643becfecead1b40d2be363230",
+ "attempt": "attempt-2",
+ "context_review_sha256": "f108d203e77def67d4c86709727e1c88fb4450a4329d93b62f57309baafbefb4",
  "inherited": [
   {
-   "id": "M1",
-   "model_id": "R1",
-   "source": "mimo-review",
-   "where": "story.1",
-   "problem": "「召来管图籍的官员」——原文「召有司案圖」是有司（主管官员）查核地图，并非「管图籍的官员」",
-   "suggestion": "改为「召来主管官员查看地图」"
+   "id": "X1",
+   "source": "context review",
+   "where": "sections.limits.0",
+   "problem": "来源上下文核查（zh）「凡原文未写的人物心理，均以“一种解释是”“作者认为”标明为作者解释。」：这句关于来源未载的断言没有必要，删去。来源原文〔A2-SJ81〕：「相如度秦王特以詐詳爲予趙城，實不可得」",
+   "suggestion": "与 uncertainty_note 重复，建议删除。另外这句话并不完全成立：analysis.0“说明他不服的不只是排序，还有出身”、analysis.1“相如的避让也不是单纯的忍”都没有标注。若保留，须先补上这些标注。"
   },
   {
-   "id": "M2",
-   "model_id": "R2",
-   "source": "mimo-review",
-   "where": "story.3",
-   "problem": "「赵王认为相如功大」——原文「以相如功大，拜爲上卿」未写明出自赵王",
-   "suggestion": "改为「以相如功大，拜为上卿」"
+   "id": "X2",
+   "source": "context review",
+   "where": "sections.story.2",
+   "problem": "来源上下文核查：从廉颇送王至境直接跳到“终不能加胜于赵”，删去了渑池会的核心冲突：秦王令赵王鼓瑟，相如以死相逼迫使秦王击缻，叱退左右，又以咸阳回敬。删去后，相如“功大”拜上卿成了没有内容的结论；story.6 中“当廷呵斥他、羞辱他的群臣”也失去所指，读者容易误以为说的是秦廷献璧那一次。此前秦攻赵、赵王畏秦不欲行、由廉蔺二人力主赴会的背景也被省掉了。。来源原文〔A2-SJ81〕：「五歩之内，相如請得以頸血濺大王矣！」左右欲刃相如，相如張目叱之，左右皆靡。於是秦王不懌，爲一撃鮓。」",
+   "suggestion": null
   },
   {
-   "id": "M3",
-   "model_id": "R3",
-   "source": "mimo-review",
-   "where": "analysis.0",
-   "problem": "「说明他不服的不只是排序，还有出身」把作者推断写成结论，违反本文「未写心理均标注为解释」的自身体例",
-   "suggestion": "改为「或可读作：他不服的不只是排序，还有出身（作者解释）」"
+   "id": "X3",
+   "source": "context review",
+   "where": "sections.story.0",
+   "problem": "来源上下文核查：把“曲在趙/曲在秦”的权衡写成“《史记》记有这样的权衡”，没有交代这是相如被召见时对赵王的回答，也漏掉了他请缨“完璧歸趙”。analysis.2 沿用“《史记》所记的那段权衡”，读者会以为这是朝议或史家的判断，而不是相如本人的谋略。。来源原文〔A2-SJ81〕：「相如曰：「秦以城求璧而趙不許，曲在趙。趙予璧而秦不予趙城，曲在秦。均之二策，甯許以負秦曲。」」",
+   "suggestion": null
   },
   {
-   "id": "M4",
-   "model_id": "R4",
-   "source": "mimo-review",
-   "where": "analysis.1",
-   "problem": "「相如的避让也不是单纯的忍」「他把争执从谁功劳大，换成赵国还剩几个能用的人」是无标注的心理/动机判断，与 limits 段的体例声明矛盾",
-   "suggestion": "句前加「作者认为」或「一种解释是」"
-  },
-  {
-   "id": "M5",
-   "model_id": "P5",
-   "source": "mimo-parity",
-   "where": "sections.context.0",
-   "problem": "The English adds a claim not present in the Chinese sentence: after 'was raised to shangqing' it says 'his courage known to every state'. The ZH sentence only lists the Qi campaign, Yangjin and the promotion; the reputation-for-courage fact belongs to sections.hook.0, not here.",
-   "suggestion": "Delete 'his courage known to every state' (or add '以勇气闻名诸侯' to the ZH)."
-  },
-  {
-   "id": "M6",
-   "model_id": "R5",
-   "source": "mimo-review",
-   "where": "(location not given)",
-   "problem": "[unsupported_claims] 「赵王认为相如功大」——原文「以相如功大」未指明赵王",
-   "suggestion": ""
-  },
-  {
-   "id": "M7",
-   "model_id": "R6",
-   "source": "mimo-review",
-   "where": "(location not given)",
-   "problem": "[unsupported_claims] 「召来管图籍的官员」——有司非「管图籍」之官",
-   "suggestion": ""
-  },
-  {
-   "id": "M8",
-   "model_id": "R7",
-   "source": "mimo-review",
-   "where": "(location not given)",
-   "problem": "[unsupported_claims] 「位次之争没有耽误他们各自的活」——作者因果评语，原文无此说",
-   "suggestion": ""
-  },
-  {
-   "id": "M9",
-   "model_id": "R8",
-   "source": "mimo-review",
-   "where": "(location not given)",
-   "problem": "[unsupported_claims] 「一次认错没有改变廉颇的脾气」——作者概括，证据仅见事件先后",
-   "suggestion": ""
-  },
-  {
-   "id": "M10",
-   "model_id": "R9",
-   "source": "mimo-review",
-   "where": "(location not given)",
-   "problem": "[unsupported_claims] 「认错的动作出现过两次」——缪贤一次原文只记「從其計」，未写动作",
-   "suggestion": ""
-  },
-  {
-   "id": "M11",
-   "model_id": "R10",
-   "source": "mimo-review",
-   "where": "(location not given)",
-   "problem": "[unsupported_claims] 「缪贤举荐了相如」——节选正文无荐语，仅见于证据包位置标签",
-   "suggestion": ""
-  },
-  {
-   "id": "M12",
-   "model_id": "R11",
-   "source": "mimo-review",
-   "where": "(location not given)",
-   "problem": "[invented_inner_life] 相如的避让也不是单纯的忍。（无标注的动机判断）",
-   "suggestion": ""
-  },
-  {
-   "id": "M13",
-   "model_id": "R12",
-   "source": "mimo-review",
-   "where": "(location not given)",
-   "problem": "[invented_inner_life] 他不服的不只是排序，还有出身。（由「素賤人」推断心理，未标注为解释）",
-   "suggestion": ""
-  },
-  {
-   "id": "M14",
-   "model_id": "R13",
-   "source": "mimo-review",
-   "where": "(location not given)",
-   "problem": "[invented_inner_life] 他把争执从谁功劳大，换成赵国还剩几个能用的人。（无标注的动机/策略判断）",
-   "suggestion": ""
+   "id": "X4",
+   "source": "context review",
+   "where": "",
+   "problem": "证据包已按来源上下文补入摘录 L-E18, L-E19, L-E20；请据此检查叙事、结局与因果是否完整准确",
+   "suggestion": null
   }
  ],
  "contamination": [],
  "issues": [
   {
    "id": "F1",
-   "path": "sections.hook.0",
-   "category": "facts",
+   "path": "sections.story.0",
+   "category": "attribution",
    "severity": "fix",
-   "problem": "英文“Zhao's finest general”把「良將」拔高为最高级。中文“良将”与原文一致，英文与原文及中文都不符。",
+   "problem": "中文写“《史记》记有这样的权衡”，英文写“The Shiji records this weighing of options”。这样写像是史家或朝议的判断，但这段话是赵王召见相如时相如本人的回答。段落还漏掉了相如主动请缨、许诺“完璧归赵”这一环节。",
    "evidence": [
     {
-     "id": "L-E1",
-     "quote": "廉頗者，趙之良將也"
+     "id": "L-E20",
+     "quote": "王召見，問藺相如曰"
+    },
+    {
+     "id": "L-E20",
+     "quote": "相如曰：「秦以城求璧而趙不許，曲在趙。"
+    },
+    {
+     "id": "L-E20",
+     "quote": "臣請完璧歸趙"
     }
    ],
-   "proposed": "改为“a fine general of Zhao”",
+   "proposed": "改为：赵王召见相如问可否予璧，相如答：……「均之二策，甯許以負秦曲」。他又自请奉璧出使，许诺城不入则完璧归赵。中英文同改。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "英文“Zhao's finest general”改为“a fine general of Zhao”，与「良將」及中文“良将”一致。",
+   "rationale": "中英文都删去“《史记》记有这样的权衡”这一归属，改为赵王召见相如、相如作答。补入“秦彊而趙弱，不可不許”，以及相如自请奉璧、许诺城不入则完璧归赵的情节。ev 增加 L-E20。",
    "decided_in": "revise_r1"
   },
   {
    "id": "F2",
-   "path": "sections.hook.0",
-   "category": "unsupported",
+   "path": "sections.analysis.2",
+   "category": "attribution",
    "severity": "fix",
-   "problem": "英文给上卿加注“the highest ministerial rank”，又称“both held the top rank”。“最高”之说证据未载，中文也没有对应说法。",
-   "evidence": [],
-   "proposed": "删去“the highest ministerial rank”，并把“the top rank”改为“the rank of shangqing”",
+   "problem": "沿用“《史记》所记的那段权衡”（英文“The weighing of options recorded in the Shiji”），没有交代这是相如对赵王的答话，会让读者误判谋略出自谁。",
+   "evidence": [
+    {
+     "id": "L-E20",
+     "quote": "相如曰：「秦以城求璧而趙不許，曲在趙。"
+    }
+   ],
+   "proposed": "改为“相如答赵王时的那段权衡”（英文：the weighing Lin Xiangru offered the king）。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "删去“the highest ministerial rank”，“the top rank”改为“the rank of shangqing”。中文原本没有“最高”之说，未改动。",
+   "rationale": "中文改为“相如答赵王时的那段权衡”，英文同步改为 the weighing Lin Xiangru offered the king。ev 中以 L-E20 替换 L-E11。",
    "decided_in": "revise_r1"
   },
   {
    "id": "F3",
-   "path": "sections.context.0",
-   "category": "parity",
+   "path": "sections.story.1",
+   "category": "facts",
    "severity": "fix",
-   "problem": "英文多出“his courage known to every state”，中文本段没有对应内容。",
+   "problem": "完璧一事写到秦王送相如回国就结束了。证据所载的结局没有写进去：相如因此拜为上大夫，秦赵最终没有交换城与璧。缺了这一步，读者看不出相如由上大夫到上卿的升迁过程。",
    "evidence": [
     {
-     "id": "L-E1",
-     "quote": "以勇氣聞於諸侯"
+     "id": "L-E19",
+     "quote": "拜相如爲上大夫"
+    },
+    {
+     "id": "L-E19",
+     "quote": "秦亦不以城予趙，趙亦終不予秦璧"
     }
    ],
-   "proposed": "删去英文该短语，或在中文补“以勇气闻于诸侯”",
+   "proposed": "段末补一句：相如归国后，赵王以为贤，拜为上大夫；秦终不以城予赵，赵亦终不予秦璧。中英文同补。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "删去英文本段多出的“his courage known to every state”，与中文对齐。该事实已在 hook.0 中写到。",
+   "rationale": "在 story.1 段末补入结局：相如归国后拜为上大夫，秦赵最终没有交换城与璧。中英文同步，ev 增加 L-E19。",
    "decided_in": "revise_r1"
   },
   {
    "id": "F4",
-   "path": "sections.context.0",
+   "path": "sections.story.2",
    "category": "facts",
    "severity": "fix",
-   "problem": "「舍人」在英文中误拼为“shimen”，应为“sheren”。“living in the household”是证据之外的细节。",
+   "problem": "段落从廉颇送王至境直接跳到“终不能加胜于赵”，省掉了渑池会的核心冲突：秦王令赵王鼓瑟，相如以死相逼使秦王击缻，又张目叱退秦王左右，并以咸阳回敬十五城。会前的背景也被省掉：秦伐赵，赵王畏秦不欲行，廉、蔺力主赴会。这样一来，story.3 的“功大”没有了内容。",
    "evidence": [
     {
-     "id": "L-E2",
-     "quote": "爲趙宦者令繆賢舍人"
+     "id": "L-E18",
+     "quote": "趙王畏秦，欲毋行"
+    },
+    {
+     "id": "L-E18",
+     "quote": "王不行，示趙弱且怯也"
+    },
+    {
+     "id": "L-E18",
+     "quote": "相如張目叱之，左右皆靡"
+    },
+    {
+     "id": "L-E18",
+     "quote": "秦王爲趙王撃鮓"
+    },
+    {
+     "id": "L-E18",
+     "quote": "請以秦之咸陽爲趙王壽"
     }
    ],
-   "proposed": "改为“a sheren - a retainer in the service of Miao Xian”",
+   "proposed": "依 L-E18 补写会前背景，以及鼓瑟、击缻、叱退左右、咸阳回敬几处情节，放在“秦王竟酒”之前。中英文同补。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "“shimen”改为“sheren”，并删去证据之外的“living in the household”，改为“a retainer in the service of Miao Xian”。",
+   "rationale": "依据 L-E18 补写会前背景：秦伐赵，赵王畏秦不欲行，廉、蔺力主赴会。又补写鼓瑟、击缻、叱退左右、以咸阳回敬十五城等情节，放在“秦王竟酒”之前。证据文本中的“鮓”为讹字，正文以转述写作“缻”，不加引号。中英文同步，ev 增加 L-E18。",
    "decided_in": "revise_r1"
   },
   {
    "id": "F5",
-   "path": "sections.context.1",
-   "category": "quotes",
+   "path": "sections.story.6",
+   "category": "facts",
    "severity": "fix",
-   "problem": "英文用引号写出“strip and lie on the block”，没有标明这是译文。“as the phrase went”又暗示这是当时的成语，证据中没有依据。",
+   "problem": "“当廷呵斥他、羞辱他的群臣”指的是渑池会上的事。稿件既没写渑池会的冲突，读者会误以为说的是秦廷献璧那一次。",
    "evidence": [
     {
-     "id": "L-E10",
-     "quote": "君不如肉袒伏斧質請罪"
+     "id": "L-E8",
+     "quote": "相如廷叱之，辱其群臣"
+    },
+    {
+     "id": "L-E18",
+     "quote": "相如張目叱之，左右皆靡"
     }
    ],
-   "proposed": "删去“as the phrase went”，改为“to bare his upper body, lie down at the executioner's block and ask pardon (to paraphrase the source)”",
+   "proposed": "补出 F4 的内容，或在此处注明“（指渑池会上之事）”。中英文同改。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "删去带引号的译文和“as the phrase went”，改为不加引号的转述，并注明“to paraphrase the source”。中文「肉袒伏斧質請罪」与证据逐字一致，保留。",
+   "rationale": "已通过 story.2 补出渑池会上相如叱退秦王左右、迫使秦王击缻的情节，读者能看到 story.6 相如话语所指的事件。为免加入证据未明言的对应关系，story.6 原文不另加注。",
    "decided_in": "revise_r1"
   },
   {
    "id": "F6",
-   "path": "sections.context.1",
-   "category": "parity",
+   "path": "sections.analysis.0",
+   "category": "interpretation_label",
    "severity": "fix",
-   "problem": "英文“refuse, and Qin's armies might.”句子不完整，缺了“来”。",
+   "problem": "有两处作者推断没有标注：“两种功劳形态不同，本不好用同一把尺子量”，以及“说明他不服的不只是排序，还有出身”。后一句是在推断廉颇的心理，原文只记了他自己说的话。",
    "evidence": [
     {
-     "id": "L-E2",
-     "quote": "欲勿予，即患秦兵之來"
+     "id": "L-E5",
+     "quote": "且相如素賤人，吾羞，不忍爲之下"
     }
    ],
-   "proposed": "改为“refuse, and Qin's armies might come”",
+   "proposed": "在这两句前加“作者认为”或“一种解释是”。英文对应处加 the author's view / one reading。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "补全英文句子，改为“refuse, and Qin's armies might come”。",
+   "rationale": "在“两种功劳本不好用同一把尺子量”前加“作者认为”，在“不服的不只是排序，还有出身”前加“一种解释是”。英文对应加 In the author's view / one reading。",
    "decided_in": "revise_r1"
   },
   {
    "id": "F7",
-   "path": "sections.story.0",
-   "category": "attribution",
+   "path": "sections.limits.0",
+   "category": "interpretation_label",
    "severity": "fix",
-   "problem": "L-E11 的节选没有写明说话人和时点。稿件写“相如出使前，先把理路摆清”和“he said”，说话人与时点在证据中无据。",
-   "evidence": [
-    {
-     "id": "L-E11",
-     "quote": "均之二策，甯許以負秦曲"
-    }
-   ],
-   "proposed": "改为“《史记》记有这样的权衡：……”，删去“相如出使前”和“he said”的归属",
+   "problem": "“凡原文未写的人物心理，均以‘一种解释是’‘作者认为’标明”是全称断言，但 analysis.0 中仍有未标注的心理推断（见 F6），这句话不成立。它还与 uncertainty_note 重复。",
+   "evidence": [],
+   "proposed": "先补齐 F6 的标注，再保留此句；或删去此句，以 uncertainty_note 为准。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "删去“相如出使前”和“he said”的归属，改为“《史记》记有这样的权衡”/“The Shiji records this weighing of options”。结尾改为不带因果的“相如奉璧出使秦国”，“使臣奉璧”可为依据。",
+   "rationale": "F6 的标注已补齐。同时把这句全称断言收窄为“作者尽量以……标明为解释”，避免断言过度。中英文同步。",
    "decided_in": "revise_r1"
   },
   {
    "id": "F8",
-   "path": "sections.story.1",
+   "path": "sections.today.0",
    "category": "facts",
    "severity": "fix",
-   "problem": "「有司」泛指主管官员，「案圖」意为查看地图。稿件写成“管图籍的官员”“the official in charge of maps”，是增添的细节。",
-   "evidence": [
-    {
-     "id": "L-E3",
-     "quote": "召有司案圖"
-    }
-   ],
-   "proposed": "改为“召来主管官员查看地图”/“summoned the officials concerned to consult the map”",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "“管图籍的官员”改为“主管官员查看地图”，英文改为“summoned the officials concerned to consult the map”。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F9",
-   "path": "sections.story.1",
-   "category": "quotes",
-   "severity": "fix",
-   "problem": "引语截去了条件句「大王必欲急臣」，把有条件的威胁写成了无条件的“放话”。英文同样缺少条件。",
-   "evidence": [
-    {
-     "id": "L-E3",
-     "quote": "大王必欲急臣，臣頭今與璧倶碎於柱矣"
-    }
-   ],
-   "proposed": "中文改为“放话：大王若一定要逼我，「臣頭今與璧倶碎於柱矣」”。英文补“if Your Majesty insists on pressing me”",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "中文补出条件“大王若一定要逼我”，英文补出“if the king insisted on pressing him”，恢复原句的条件语气。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F10",
-   "path": "sections.story.1",
-   "category": "quotes",
-   "severity": "fix",
-   "problem": "英文把译文放进引号，像是原话，没有标明是译述。",
-   "evidence": [
-    {
-     "id": "L-E12",
-     "quote": "臣知欺大王之罪當誅，臣請就湯鑊"
-    }
-   ],
-   "proposed": "去掉引号改为转述，或注明“as the text has him say, in translation”",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "英文去掉引号，改为间接转述，不再冒充原话。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F11",
-   "path": "sections.story.3",
-   "category": "attribution",
-   "severity": "fix",
-   "problem": "原文只写「以相如功大，拜爲上卿」，没有写明是赵王作出这一判断。“赵王认为”“the king judged”是增添的归属。",
-   "evidence": [
-    {
-     "id": "L-E5",
-     "quote": "以相如功大，拜爲上卿"
-    }
-   ],
-   "proposed": "改为“因相如功大，拜为上卿”/“Lin Xiangru, for his great service, was made shangqing”",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "删去“赵王认为”和“the king judged”，改为“因相如功大，拜为上卿”/“for his great service, was made shangqing”。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F12",
-   "path": "sections.story.4",
-   "category": "facts",
-   "severity": "fix",
-   "problem": "原文「常稱病」是“常常”，英文“Whenever”写成了每次都如此。",
+   "problem": "“区别只在道具：没有战车”暗示原来的场景里有战车，但证据只记相如“引車避匿”，那是出行的车，不是战车。这是用证据之外的细节冒充史实。",
    "evidence": [
     {
      "id": "L-E6",
-     "quote": "相如毎朝時，常稱病"
+     "quote": "相如引車避匿"
     }
    ],
-   "proposed": "改为“At court audiences he would often plead illness”",
+   "proposed": "改为“没有马车”（英文 no carriages），或删去这个具体道具。",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "英文“Whenever”改为“would often”，与「常」对应。",
+   "rationale": "“战车”改为“马车”，英文改为 no carriages，与相如“引車避匿”所用的出行车辆相符。",
    "decided_in": "revise_r1"
   },
   {
-   "id": "F13",
-   "path": "sections.story.6",
-   "category": "facts",
+   "id": "X1",
+   "problem": "来源上下文核查（zh）「凡原文未写的人物心理，均以“一种解释是”“作者认为”标明为作者解释。」：这句关于来源未载的断言没有必要，删去。来源原文〔A2-SJ81〕：「相如度秦王特以詐詳爲予趙城，實不可得」",
+   "origin": "inherited context review None",
    "severity": "fix",
-   "problem": "原文只说「廷叱之」，没有说在秦国朝堂。“在秦国朝堂上”“in his own court”是增添的地点。",
-   "evidence": [
-    {
-     "id": "L-E8",
-     "quote": "而相如廷叱之，辱其群臣"
-    }
-   ],
-   "proposed": "改为“我敢当廷呵斥他”/“I rebuked him to his face at court”",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "删去增添的地点，中文改为“当廷呵斥他”，英文改为“at court”。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F14",
-   "path": "sections.story.6",
-   "category": "quotes",
-   "severity": "fix",
-   "problem": "英文“in one pit”是原文没有的内容。原句是假设语气，英文却写成了正在发生的事实。",
-   "evidence": [
-    {
-     "id": "L-E8",
-     "quote": "今兩虎共鬥，其勢不倶生"
-    }
-   ],
-   "proposed": "改为“If two tigers fight, the way things stand, they cannot both live”",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "删去“in one pit”，改为假设语气“If two tigers fight”。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F15",
-   "path": "sections.story.7",
-   "category": "facts",
-   "severity": "fix",
-   "problem": "英文把「賓客」译为“a mutual acquaintance”，与原文不符，也与 limits.0 英文的“by way of guests”不一致。",
-   "evidence": [
-    {
-     "id": "L-E9",
-     "quote": "因賓客至藺相如門謝罪"
-    }
-   ],
-   "proposed": "改为“came through his retainers/guests to Lin Xiangru's gate”",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "“a mutual acquaintance”改为“through guests”，与「賓客」及 limits.0 的写法一致。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F16",
-   "path": "sections.story.7",
-   "category": "interpretation_label",
-   "severity": "fix",
-   "problem": "本段属 record，但“这之后他们没闲着”“位次之争没有耽误他们各自的活”及对应英文是作者评语。证据只列出事件先后，没有这层判断，也没有标注为解释。",
-   "evidence": [
-    {
-     "id": "L-E14",
-     "quote": "後四年，藺相如將而攻齊，至平邑而罷"
-    }
-   ],
-   "proposed": "删去这两句，或改为“作者认为，……”/“The author's reading is that …”",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "删去中英文的作者评语“这之后他们没闲着”“位次之争没有耽误他们各自的活”。本段只保留证据所列事件。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F17",
-   "path": "sections.analysis.1",
-   "category": "interpretation_label",
-   "severity": "fix",
-   "problem": "“他把争执从谁功劳大，换成赵国还剩几个能用的人”是作者对其策略的概括，没有标注为解释。原文只说「徒以吾兩人在也」，“还剩几个能用的人”是引申。",
-   "evidence": [
-    {
-     "id": "L-E8",
-     "quote": "徒以吾兩人在也"
-    }
-   ],
-   "proposed": "句前加“作者认为”/“One reading is that”，并改为“换成赵国安危系于两人并存”",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "句前加“作者认为”/“The author's reading is that”，并把引申的“赵国还剩几个能用的人”收窄为“赵国安危系于两人并存”。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F18",
-   "path": "sections.analysis.1",
-   "category": "facts",
-   "severity": "fix",
-   "problem": "“化解却在私下完成”与证据不符。廉颇是肉袒负荆、经由宾客到相如门前谢罪，证据看不出是私下进行的。",
-   "evidence": [
-    {
-     "id": "L-E9",
-     "quote": "肉袒負荊，因賓客至藺相如門謝罪"
-    }
-   ],
-   "proposed": "删去“化解却在私下完成”一句，或改为“化解不是在朝堂上当众进行的（作者解释）”，英文同步",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "“化解却在私下完成”改为“化解则不是在朝堂上当众进行的（作者解释）”，英文同步。证据记的是到门前谢罪，看不出是私下进行的。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F19",
-   "path": "sections.analysis.2",
-   "category": "attribution",
-   "severity": "fix",
-   "problem": "“相如在出使前为赵王分析局势时”和“Advising the king of Zhao before the mission”在证据中无据。L-E11 节选没有说话人、对象和时点，与 F7 同源。",
-   "evidence": [
-    {
-     "id": "L-E11",
-     "quote": "均之二策，甯許以負秦曲"
-    }
-   ],
-   "proposed": "改为“《史记》所记的那段权衡用的是另一套语言”",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "删去“相如在出使前为赵王分析局势时”及对应英文，改为“《史记》所记的那段权衡”。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F20",
-   "path": "sections.analysis.2",
-   "category": "interpretation_label",
-   "severity": "fix",
-   "problem": "“再决定让步的分寸”“only then decide how far to give”不见于证据，属于未标注的推断。",
-   "evidence": [
-    {
-     "id": "L-E11",
-     "quote": "甯許以負秦曲"
-    }
-   ],
-   "proposed": "删去该分句，或加“一种解释是”/“One reading is”",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "删去未经证据支持的“再决定让步的分寸”/“only then decide how far to give”。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F21",
-   "path": "sections.limits.1",
-   "category": "interpretation_label",
-   "severity": "fix",
-   "problem": "本段属 record，开头“一次认错没有改变廉颇的脾气”“did not remake Lian Po's temper”是作者概括，没有标注为解释。证据只记事件本身。",
-   "evidence": [
-    {
-     "id": "L-E16",
-     "quote": "廉頗怒，攻樂乘"
-    }
-   ],
-   "proposed": "改为“作者认为，一次认错未必改变了廉颇的脾气”/“The author's reading is that …”",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "开头改为“作者认为，一次认错未必改变了廉颇的脾气”/“The author's reading is that …”，标明是作者解释。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F22",
-   "path": "sections.limits.1",
-   "category": "chronology",
-   "severity": "fix",
-   "problem": "“更早些”“Earlier”断定门客散而复至一事早于乐乘事件，证据没有给出两件事的先后。",
-   "evidence": [
-    {
-     "id": "L-E15",
-     "quote": "廉頗之免長平歸也，失勢之時"
-    },
-    {
-     "id": "L-E16",
-     "quote": "趙孝成王卒"
-    }
-   ],
-   "proposed": "改为“另据记载，他自长平免归失势时……”，删去“更早些/Earlier”",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "删去“更早些/Earlier”，改为“另据记载，他自长平免归失势时……”/“According to another passage…”，不再断言两件事的先后。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F23",
-   "path": "sections.limits.1",
-   "category": "quotes",
-   "severity": "fix",
-   "problem": "英文“the way the marketplace does”加了引号，像是原文，没有标明是译文。英文还漏了「怒」，与中文“怒而攻乐乘”不一致。",
-   "evidence": [
-    {
-     "id": "L-E15",
-     "quote": "夫天下以市道交"
-    },
-    {
-     "id": "L-E16",
-     "quote": "廉頗怒，攻樂乘"
-    }
-   ],
-   "proposed": "英文改为不加引号的转述，或注明“(in translation)”；并补“Lian Po, enraged, attacked Le Cheng”",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "英文去掉引号，改为加注“(in translation)”的转述；补上“enraged”，与中文“怒而攻乐乘”一致。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F24",
+   "category": "unsupported",
    "path": "sections.limits.0",
-   "category": "interpretation_label",
-   "severity": "fix",
-   "problem": "limits.0 与 uncertainty_note 声称凡推断都已标为解释，但 story.7、analysis.1、limits.1 仍有未标注的推断（见 F16、F17、F21），这一体例声明与正文不符。",
-   "evidence": [],
-   "proposed": "按 F16、F17、F21 补齐标注，使声明属实",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "已按 F16、F17、F21 处理 story.7、analysis.1、limits.1：未标注的推断或删去，或标为作者解释。limits.0 与 uncertainty_note 的体例声明因此属实，无需再改。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "M1",
-   "path": "story.1",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "「召来管图籍的官员」——原文「召有司案圖」是有司（主管官员）查核地图，并非「管图籍的官员」",
-   "origin": "inherited mimo-review R1",
-   "audit_rationale": "原文是「有司」查看地图，不是专管图籍的官员。",
-   "disposition": "fixed",
-   "rationale": "与 F8 同一处理：改为“召来主管官员查看地图”。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "M2",
-   "path": "story.3",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "「赵王认为相如功大」——原文「以相如功大，拜爲上卿」未写明出自赵王",
-   "origin": "inherited mimo-review R2",
-   "audit_rationale": "原文没有写明判断出自赵王。",
-   "disposition": "fixed",
-   "rationale": "与 F11 同一处理：删去“赵王认为”。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "M3",
-   "path": "analysis.0",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "「说明他不服的不只是排序，还有出身」把作者推断写成结论，违反本文「未写心理均标注为解释」的自身体例",
-   "origin": "inherited mimo-review R3",
-   "disposition": "rejected",
-   "rationale": "“出身”是廉颇自己说出的理由，不是作者对其心理的推断，现写法有据。",
-   "evidence": [
-    {
-     "id": "L-E5",
-     "quote": "且相如素賤人，吾羞，不忍爲之下"
-    }
-   ],
-   "decided_in": "audit"
-  },
-  {
-   "id": "M4",
-   "path": "analysis.1",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "「相如的避让也不是单纯的忍」「他把争执从谁功劳大，换成赵国还剩几个能用的人」是无标注的心理/动机判断，与 limits 段的体例声明矛盾",
-   "origin": "inherited mimo-review R4",
-   "audit_rationale": "“不是单纯的忍”有相如自述为据，但“换成赵国还剩几个能用的人”是未标注的作者概括，问题部分成立。",
-   "disposition": "fixed",
-   "rationale": "问题部分成立。“不是单纯的忍”有相如对舍人的自述为据，予以保留；“换成赵国还剩几个能用的人”已标为作者认为，并收窄为“赵国安危系于两人并存”。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "M5",
-   "path": "sections.context.0",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "The English adds a claim not present in the Chinese sentence: after 'was raised to shangqing' it says 'his courage known to every state'. The ZH sentence only lists the Qi campaign, Yangjin and the promotion; the reputation-for-courage fact belongs to sections.hook.0, not here.",
-   "origin": "inherited mimo-parity P5",
-   "audit_rationale": "英文多出中文本段没有的内容。",
-   "disposition": "fixed",
-   "rationale": "与 F3 同一处理：删去英文多出的“his courage known to every state”。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "M6",
-   "problem": "[unsupported_claims] 「赵王认为相如功大」——原文「以相如功大」未指明赵王",
-   "origin": "inherited mimo-review R5",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "(location not given)",
    "disposition": "duplicate",
-   "same_as": "F11",
-   "rationale": "与 M2 相同。"
+   "same_as": "F7",
+   "rationale": "limits.0 的全称断言确实与 analysis.0 中未标注的心理推断矛盾（见 F6），问题成立，与 F7 相同。删除建议属于文风层面，不影响判定。"
   },
   {
-   "id": "M7",
-   "problem": "[unsupported_claims] 「召来管图籍的官员」——有司非「管图籍」之官",
-   "origin": "inherited mimo-review R6",
+   "id": "X2",
+   "problem": "来源上下文核查：从廉颇送王至境直接跳到“终不能加胜于赵”，删去了渑池会的核心冲突：秦王令赵王鼓瑟，相如以死相逼迫使秦王击缻，叱退左右，又以咸阳回敬。删去后，相如“功大”拜上卿成了没有内容的结论；story.6 中“当廷呵斥他、羞辱他的群臣”也失去所指，读者容易误以为说的是秦廷献璧那一次。此前秦攻赵、赵王畏秦不欲行、由廉蔺二人力主赴会的背景也被省掉了。。来源原文〔A2-SJ81〕：「五歩之内，相如請得以頸血濺大王矣！」左右欲刃相如，相如張目叱之，左右皆靡。於是秦王不懌，爲一撃鮓。」",
+   "origin": "inherited context review None",
    "severity": "fix",
    "category": "unsupported",
-   "path": "(location not given)",
+   "path": "sections.story.2",
    "disposition": "duplicate",
-   "same_as": "F8",
-   "rationale": "与 M1 相同。"
+   "same_as": "F4",
+   "rationale": "渑池会的核心冲突和会前背景都被省略，与 F4 相同；由此造成的 story.6 所指不明另列为 F5。"
   },
   {
-   "id": "M8",
-   "path": "(location not given)",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "[unsupported_claims] 「位次之争没有耽误他们各自的活」——作者因果评语，原文无此说",
-   "origin": "inherited mimo-review R7",
-   "audit_rationale": "属于 record 段中未标注的作者评语。",
-   "disposition": "fixed",
-   "rationale": "与 F16 同一处理：删去 story.7 中“位次之争没有耽误他们各自的活”及对应英文。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "M9",
-   "path": "(location not given)",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "[unsupported_claims] 「一次认错没有改变廉颇的脾气」——作者概括，证据仅见事件先后",
-   "origin": "inherited mimo-review R8",
-   "audit_rationale": "属于 record 段中未标注的作者概括。",
-   "disposition": "fixed",
-   "rationale": "与 F21 同一处理：改为“作者认为，一次认错未必改变了廉颇的脾气”。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "M10",
-   "path": "(location not given)",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "[unsupported_claims] 「认错的动作出现过两次」——缪贤一次原文只记「從其計」，未写动作",
-   "origin": "inherited mimo-review R9",
-   "disposition": "rejected",
-   "rationale": "缪贤自述照相如之计行事，即做了肉袒伏斧质请罪这一动作，“两次”的说法有据。",
-   "evidence": [
-    {
-     "id": "L-E10",
-     "quote": "君不如肉袒伏斧質請罪"
-    },
-    {
-     "id": "L-E10",
-     "quote": "臣從其計"
-    }
-   ],
-   "decided_in": "audit"
-  },
-  {
-   "id": "M11",
-   "path": "(location not given)",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "[unsupported_claims] 「缪贤举荐了相如」——节选正文无荐语，仅见于证据包位置标签",
-   "origin": "inherited mimo-review R10",
-   "audit_rationale": "证据位置标签明示这段是缪贤荐相如。文中说话人自称其舍人为相如，与 L-E2 相合，可以认定是缪贤在举荐。",
-   "note": "audit called it invalid without a verifiable quote; must be handled",
-   "disposition": "fixed",
-   "rationale": "节选正文能证明的是：说话人为缪贤（其舍人即相如），对象为赵王，所讲内容涉及相如；正文并未直接写出“举荐”。为稳妥起见，改为“缪贤向赵王提起相如，讲了自己的一桩旧事”，英文同步。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "M12",
-   "path": "(location not given)",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "[invented_inner_life] 相如的避让也不是单纯的忍。（无标注的动机判断）",
-   "origin": "inherited mimo-review R11",
-   "disposition": "rejected",
-   "rationale": "相如自述避让是出于国家之急，“不是单纯的忍”有原文依据。",
-   "evidence": [
-    {
-     "id": "L-E8",
-     "quote": "吾所以爲此者，以先國家之急而後私讎也"
-    }
-   ],
-   "decided_in": "audit"
-  },
-  {
-   "id": "M13",
-   "path": "(location not given)",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "[invented_inner_life] 他不服的不只是排序，还有出身。（由「素賤人」推断心理，未标注为解释）",
-   "origin": "inherited mimo-review R12",
-   "disposition": "rejected",
-   "rationale": "理由同 M3：出身是廉颇自己公开说出的理由。",
-   "evidence": [
-    {
-     "id": "L-E5",
-     "quote": "且相如素賤人，吾羞，不忍爲之下"
-    }
-   ],
-   "decided_in": "audit"
-  },
-  {
-   "id": "M14",
-   "problem": "[invented_inner_life] 他把争执从谁功劳大，换成赵国还剩几个能用的人。（无标注的动机/策略判断）",
-   "origin": "inherited mimo-review R13",
+   "id": "X3",
+   "problem": "来源上下文核查：把“曲在趙/曲在秦”的权衡写成“《史记》记有这样的权衡”，没有交代这是相如被召见时对赵王的回答，也漏掉了他请缨“完璧歸趙”。analysis.2 沿用“《史记》所记的那段权衡”，读者会以为这是朝议或史家的判断，而不是相如本人的谋略。。来源原文〔A2-SJ81〕：「相如曰：「秦以城求璧而趙不許，曲在趙。趙予璧而秦不予趙城，曲在秦。均之二策，甯許以負秦曲。」」",
+   "origin": "inherited context review None",
    "severity": "fix",
    "category": "unsupported",
-   "path": "(location not given)",
+   "path": "sections.story.0",
    "disposition": "duplicate",
-   "same_as": "F17",
-   "rationale": "与 F17 相同。"
+   "same_as": "F1",
+   "rationale": "权衡之语出自相如对赵王的答话，稿件把它归于“《史记》”，还漏掉了请缨。与 F1 相同；analysis.2 的沿用另列为 F2。"
   },
   {
-   "id": "V1-V1",
-   "path": "sections.limits.1",
-   "category": "interpretation_label",
+   "id": "X4",
+   "path": "",
+   "category": "unsupported",
    "severity": "fix",
-   "problem": "The paragraph opens with a hedged, labeled reading: 作者认为…未必改变了廉颇的脾气. It then closes with an unlabeled, definite verdict: 它也没有把一个人从此改写 / 'it did not rewrite the man from that day on'. The evidence only records later events (the attack on Le Cheng, the flight to Wei, the retainers' remark). Whether the apology changed his temper is the author's inference and should not be stated as settled fact in a kind=record paragraph.",
-   "evidence": [
-    {
-     "id": "L-E16",
-     "quote": "廉頗怒，攻樂乘，樂乘走。廉頗遂奔魏之大梁。"
-    },
-    {
-     "id": "L-E15",
-     "quote": "天下以市道交"
-    }
-   ],
-   "proposed": "Change the zh ending to '……见于本篇《史记》记载，但一种解释是，它未必把一个人从此改写。' Change the en ending to '…recorded in this chapter of the Shiji, though on one reading it need not have rewritten the man from that day on.'",
-   "origin": "final-editor verify round 1",
+   "problem": "证据包已按来源上下文补入摘录 L-E18, L-E19, L-E20；请据此检查叙事、结局与因果是否完整准确",
+   "origin": "inherited context review None",
+   "audit_rationale": "按补入的 L-E18、L-E19、L-E20 核查后，发现叙事缺漏和归属错误，已分别列为 F1–F5。",
    "disposition": "fixed",
-   "rationale": "证据只记载了此后的事件：廉颇攻乐乘、奔魏，以及门客“市道交”之语。这些记载并没有说明负荆请罪是否改变了他的性情。原结尾“它也没有把一个人从此改写”是断言，已改为明确标注的作者解释：中文改作“但一种解释是，它未必把一个人从此改写”，英文同步改为“though on one reading it need not have rewritten the man from that day on”。“只是说明”相应改为“只是想提示”，以免口气过于确定。其余句子未动。",
-   "decided_in": "revise_r2"
-  },
-  {
-   "id": "V1-V2",
-   "path": "uncertainty_note",
-   "category": "interpretation_label",
-   "severity": "fix",
-   "problem": "The zh note says inferences are marked with “一种解释是”“作者推断”. The label 作者推断 does not appear anywhere in the piece. The labels actually used are 作者认为, 作者解释, 作者提示 and 作者提出, and limits.0 also gives 作者认为. The note misdescribes the piece's own labeling.",
-   "evidence": [],
-   "proposed": "Change “作者推断” to “作者认为” so the note matches limits.0 and the text. The en wording 'the author's inference' can stay or become 'the author's view'.",
-   "origin": "final-editor verify round 1",
-   "disposition": "fixed",
-   "rationale": "正文中实际使用的标注是“作者认为”“作者解释”“作者提示”“作者提出”，没有“作者推断”。因此把说明中的“作者推断”改为“作者认为”，与 limits.0 和正文的标注保持一致。英文同步把“the author's inference”改为“the author's view”。",
+   "rationale": "我按补入的 L-E18、L-E19、L-E20 逐段核对了稿件。叙事部分已据这三条证据补全，引语与说话人也已核实。story.0 把“曲在趙／曲在秦”的权衡和“完璧歸趙”的承诺归于相如答赵王，依据是 L-E20。story.1 写出完璧的结局：相如拜上大夫，秦未予城，赵未予璧，依据是 L-E19。story.2 补齐渑池会的经过：击缻、张目叱退秦王左右、以咸阳为寿，依据是 L-E18。analysis.2 也已写明权衡是“相如答赵王时”所说，不再笼统归于《史记》。剩下的缺口在证据编号上：hook.0 和 story.3 提到“从渑池回来”“因相如功大”，analysis.0 提到“相如的功劳在秦廷与渑池”，这些内容依赖渑池会和完璧的记载，但三段的 ev 里没有对应证据。现已在 hook.0、story.3 的 ev 中补入 L-E18，在 analysis.0 的 ev 中补入 L-E18 和 L-E19，使相如功劳的所指和廉颇“徒以口舌爲勞”的语境都有证据可查。正文没有改动。",
    "decided_in": "revise_r2"
   }
  ],
  "edits": [
   {
-   "path": "sections.hook.0.en",
-   "before": "Lin Xiangru came back from the meeting at Mianchi and was made shangqing, the highest ministerial rank, placed above Lian Po. Lian Po was Zhao's finest general: he had beaten Qi, taken Yangjin and won a name for courage among the states. His reaction was blunt. Lin Xiangru had earned his place with nothing but his tongue; why should he sit above me? He announced that the next time they met he would humiliate the man. What makes the episode hard is that, by Lian Po's own account, he had great merit from storming cities and fighting in the field, while Lin Xiangru's credit was entered under words. Now both held the top rank at court: one meant to humiliate, the other hid.",
-   "after": "Lin Xiangru came back from the meeting at Mianchi and was made shangqing, placed above Lian Po. Lian Po was a fine general of Zhao: he had beaten Qi, taken Yangjin and won a name for courage among the states. His reaction was blunt. Lin Xiangru had earned his place with nothing but his tongue; why should he sit above me? He announced that the next time they met he would humiliate the man. What makes the episode hard is that, by Lian Po's own account, he had great merit from storming cities and fighting in the field, while Lin Xiangru's credit was entered under words. Now both held the rank of shangqing at court: one meant to humiliate, the other hid.",
-   "issues": [
-    "F1",
-    "F2"
-   ]
-  },
-  {
-   "path": "sections.context.0.en",
-   "before": "Lian Po's credentials were earned on the battlefield. In the reign of King Huiwen of Zhao he commanded against Qi, routed it, seized Yangjin, and was raised to shangqing, his courage known to every state. Lin Xiangru's origins could hardly have been more different. He was a man of Zhao, and his standing was that of a shimen - a retainer, a dependent gentleman living in the household of Miao Xian, the head of the palace eunuchs. When Lian Po later refused to accept him, one of the reasons he gave was exactly this: the man had always been of low station.",
-   "after": "Lian Po's credentials were earned on the battlefield. In the reign of King Huiwen of Zhao he commanded against Qi, routed it, seized Yangjin, and was raised to shangqing. Lin Xiangru's origins could hardly have been more different. He was a man of Zhao, and his standing was that of a sheren - a retainer in the service of Miao Xian, the head of the palace eunuchs. When Lian Po later refused to accept him, one of the reasons he gave was exactly this: the man had always been of low station.",
-   "issues": [
-    "F3",
-    "F4",
-    "M5"
-   ]
-  },
-  {
-   "path": "sections.context.1.zh",
-   "before": "赵惠文王时，赵国得到楚国的和氏璧，秦昭王写信来，说愿用十五座城换它。赵王与大将军廉颇诸大臣商量，两头都难：给，怕城拿不到，白白被骗；不给，又怕秦兵打过来。主意定不下来，缺一个能去秦国回话的人。缪贤举荐了相如，顺带讲了自己的一桩旧事：他曾有罪，私下打算逃去燕国，相如劝住他，理由是赵强燕弱、他正得宠于赵王，燕王当年示好正因为此，逃过去只会被捆着送回来；不如「肉袒伏斧質請罪」，倒还有活路。缪贤照做，赵王果然赦免了他。",
-   "after": "赵惠文王时，赵国得到楚国的和氏璧，秦昭王写信来，说愿用十五座城换它。赵王与大将军廉颇诸大臣商量，两头都难：给，怕城拿不到，白白被骗；不给，又怕秦兵打过来。主意定不下来，缺一个能去秦国回话的人。缪贤向赵王提起相如，讲了自己的一桩旧事：他曾有罪，私下打算逃去燕国，相如劝住他，理由是赵强燕弱、他正得宠于赵王，燕王当年示好正因为此，逃过去只会被捆着送回来；不如「肉袒伏斧質請罪」，倒还有活路。缪贤照做，赵王果然赦免了他。",
-   "issues": [
-    "F5",
-    "F6",
-    "M11"
-   ]
-  },
-  {
-   "path": "sections.context.1.en",
-   "before": "In King Huiwen's time Zhao acquired the Heshi jade from Chu, and King Zhaoxiang of Qin wrote offering fifteen cities for it. The king of Zhao consulted his great general Lian Po and the other ministers, and both answers looked bad: hand it over and the cities might never come, leaving Zhao cheated; refuse, and Qin's armies might. Nothing was settled, and there was no one fit to carry the reply to Qin. Miao Xian put forward Lin Xiangru, and told a story against himself. He had once been guilty of an offence and meant to flee to Yan. Lin Xiangru stopped him: Zhao was strong and Yan weak, and the king of Yan had courted Miao Xian only because he stood in the king of Zhao's favour; flee there, and Yan would tie him up and send him back. Better to \"strip and lie on the block\", as the phrase went, and ask pardon - there might still be a way to keep his life. Miao Xian did, and the king pardoned him.",
-   "after": "In King Huiwen's time Zhao acquired the Heshi jade from Chu, and King Zhaoxiang of Qin wrote offering fifteen cities for it. The king of Zhao consulted his great general Lian Po and the other ministers, and both answers looked bad: hand it over and the cities might never come, leaving Zhao cheated; refuse, and Qin's armies might come. Nothing was settled, and there was no one fit to carry the reply to Qin. Miao Xian brought up Lin Xiangru with the king, telling a story against himself. He had once been guilty of an offence and meant to flee to Yan. Lin Xiangru stopped him: Zhao was strong and Yan weak, and the king of Yan had courted Miao Xian only because he stood in the king of Zhao's favour; flee there, and Yan would tie him up and send him back. Better to bare his upper body, lie down at the executioner's block and ask pardon (to paraphrase the source) - there might still be a way to keep his life. Miao Xian did, and the king pardoned him.",
-   "issues": [
-    "F5",
-    "F6",
-    "M11"
-   ]
-  },
-  {
    "path": "sections.story.0.zh",
-   "before": "相如出使前，先把理路摆清：秦以城求璧而赵不许，理亏在赵；赵给了璧而秦不给城，理亏在秦。「均之二策，甯許以負秦曲」——两相比较，宁可答应，让理亏落到秦国头上。于是相如奉璧出使。",
-   "after": "《史记》记有这样的权衡：秦以城求璧而赵不许，理亏在赵；赵给了璧而秦不给城，理亏在秦。「均之二策，甯許以負秦曲」——两相比较，宁可答应，让理亏落到秦国头上。相如奉璧出使秦国。",
+   "before": "《史记》记有这样的权衡：秦以城求璧而赵不许，理亏在赵；赵给了璧而秦不给城，理亏在秦。「均之二策，甯許以負秦曲」——两相比较，宁可答应，让理亏落到秦国头上。相如奉璧出使秦国。",
+   "after": "赵王召见相如，问他：秦王要用十五座城换我的璧，可以给吗？相如答：秦强而赵弱，不能不答应；秦以城求璧而赵不许，理亏在赵；赵给了璧而秦不给城，理亏在秦。「均之二策，甯許以負秦曲」——两相比较，宁可答应，让理亏落到秦国头上。赵王问谁可以出使，相如自请奉璧前往：城归赵，璧就留在秦；城不归赵，「臣請完璧歸趙」。赵王于是派相如奉璧西入秦国。",
    "issues": [
-    "F7"
+    "F1"
    ]
   },
   {
    "path": "sections.story.0.en",
-   "before": "Before setting out, Lin Xiangru laid the logic straight. If Qin offers cities for the jade and Zhao refuses, the wrong is Zhao's; if Zhao hands over the jade and Qin refuses the cities, the wrong is Qin's. Weighing the two courses together, he said, it is better to agree and leave Qin carrying the blame. So Lin Xiangru set out as envoy with the jade.",
-   "after": "The Shiji records this weighing of options. If Qin offers cities for the jade and Zhao refuses, the wrong is Zhao's; if Zhao hands over the jade and Qin refuses the cities, the wrong is Qin's. Weighing the two courses together, it is better to agree and leave Qin carrying the blame. Lin Xiangru went to Qin as envoy with the jade.",
+   "before": "The Shiji records this weighing of options. If Qin offers cities for the jade and Zhao refuses, the wrong is Zhao's; if Zhao hands over the jade and Qin refuses the cities, the wrong is Qin's. Weighing the two courses together, it is better to agree and leave Qin carrying the blame. Lin Xiangru went to Qin as envoy with the jade.",
+   "after": "The king summoned Lin Xiangru and asked him: the king of Qin wants to trade fifteen cities for my jade; may I give it? Lin Xiangru answered that Qin was strong and Zhao weak, so Zhao could not refuse. If Qin offers cities for the jade and Zhao refuses, the wrong is Zhao's; if Zhao hands over the jade and Qin refuses the cities, the wrong is Qin's. Weighing the two courses together, it is better to agree and leave Qin carrying the blame. When the king asked who could go as envoy, Lin Xiangru offered to carry the jade himself: if the cities came to Zhao, the jade would stay in Qin; if they did not, he would bring the jade back to Zhao intact. So the king sent Lin Xiangru west into Qin with the jade.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.story.0.ev",
+   "before": [
+    "L-E11",
+    "L-E2"
+   ],
+   "after": [
+    "L-E20",
+    "L-E11"
+   ],
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.story.1.zh",
+   "before": "到了秦廷，秦王在章台接见相如，接过璧大喜，传给身边的美人和侍从看，左右都高呼万岁。相如看出秦王无意偿城，上前说璧有小毛病要指给秦王看，拿到璧便退立倚柱，怒发上冲冠，当面斥责秦王，放话：大王若一定要逼我，「臣頭今與璧倶碎於柱矣」；直到此时才「持其璧睨柱，欲以撃柱」。秦王怕他砸碎，连忙道歉，召来主管官员查看地图，指着说从这里过去的十五座城给赵。相如判断这不过是做样子，城根本拿不到，于是说和氏璧是天下共传之宝，赵王送来前斋戒五日，秦王也该斋戒五日，设九宾于廷，他才敢献璧。秦王答应了，把他安置在广成传舍。相如断定秦王即便斋戒也一定违约，就让随从穿上粗布衣，把璧揣在怀里，从小路逃走，送回赵国。等再次上廷，他把话摊开：秦自缪公以来二十多位国君，没有一位说话算数；璧已送回赵国，「臣知欺大王之罪當誅，臣請就湯鑊」。秦王与群臣相视而嘻，左右有人要把他拉下去，秦王最终说，杀了相如也得不到璧，反而断了秦赵之好，不如以礼相待送他回去，「卒廷見相如，畢禮而歸之」。",
+   "after": "到了秦廷，秦王在章台接见相如，接过璧大喜，传给身边的美人和侍从看，左右都高呼万岁。相如看出秦王无意偿城，上前说璧有小毛病要指给秦王看，拿到璧便退立倚柱，怒发上冲冠，当面斥责秦王，放话：大王若一定要逼我，「臣頭今與璧倶碎於柱矣」；直到此时才「持其璧睨柱，欲以撃柱」。秦王怕他砸碎，连忙道歉，召来主管官员查看地图，指着说从这里过去的十五座城给赵。相如判断这不过是做样子，城根本拿不到，于是说和氏璧是天下共传之宝，赵王送来前斋戒五日，秦王也该斋戒五日，设九宾于廷，他才敢献璧。秦王答应了，把他安置在广成传舍。相如断定秦王即便斋戒也一定违约，就让随从穿上粗布衣，把璧揣在怀里，从小路逃走，送回赵国。等再次上廷，他把话摊开：秦自缪公以来二十多位国君，没有一位说话算数；璧已送回赵国，「臣知欺大王之罪當誅，臣請就湯鑊」。秦王与群臣相视而嘻，左右有人要把他拉下去，秦王最终说，杀了相如也得不到璧，反而断了秦赵之好，不如以礼相待送他回去，「卒廷見相如，畢禮而歸之」。相如回国后，赵王认为他是贤大夫，出使不辱于诸侯，拜他为上大夫；而秦终究没有把城给赵，赵也始终没有把璧给秦。",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.story.1.en",
+   "before": "At the Qin court the king received Lin Xiangru in the Zhang Terrace, was delighted with the jade, and passed it around to his ladies and attendants, who all cried long life to him. Lin Xiangru saw he had no intention of paying. He said the gem had a small flaw he would point out, took it back and stood against a pillar, his hair bristling with anger, and denounced the king, warning that if the king insisted on pressing him, his head and the jade would be smashed together against the pillar. Only then did he stand holding the jade with his eyes on the pillar, ready to bring it down. The alarmed king apologised, summoned the officials concerned to consult the map and pointed out fifteen cities for Zhao. Lin Xiangru judged this mere show. The Heshi jade was a treasure the whole world talked of, he said; the king of Zhao had fasted five days before sending it, and the king of Qin should fast five days and hold the nine-fold ceremony at court before he would dare present it. The king agreed and lodged him at the Guangcheng hostel. Sure that the king would break his word even after fasting, Lin Xiangru had a follower put on coarse clothes, hide the jade in his robe and take it home to Zhao by back roads. At the next audience he laid it out: in more than twenty reigns since Duke Mu, Qin had never kept a firm agreement; the jade was already back in Zhao; he knew that deceiving the king was a crime deserving death, and he asked to be sent to the cauldron. The king and his ministers looked at one another and laughed wryly. Some attendants moved to drag him out, but the king reasoned that killing him would not bring back the jade and would end good relations with Zhao. In the end he received Lin Xiangru at court with full ceremony and sent him home.",
+   "after": "At the Qin court the king received Lin Xiangru in the Zhang Terrace, was delighted with the jade, and passed it around to his ladies and attendants, who all cried long life to him. Lin Xiangru saw he had no intention of paying. He said the gem had a small flaw he would point out, took it back and stood against a pillar, his hair bristling with anger, and denounced the king, warning that if the king insisted on pressing him, his head and the jade would be smashed together against the pillar. Only then did he stand holding the jade with his eyes on the pillar, ready to bring it down. The alarmed king apologised, summoned the officials concerned to consult the map and pointed out fifteen cities for Zhao. Lin Xiangru judged this mere show. The Heshi jade was a treasure the whole world talked of, he said; the king of Zhao had fasted five days before sending it, and the king of Qin should fast five days and hold the nine-fold ceremony at court before he would dare present it. The king agreed and lodged him at the Guangcheng hostel. Sure that the king would break his word even after fasting, Lin Xiangru had a follower put on coarse clothes, hide the jade in his robe and take it home to Zhao by back roads. At the next audience he laid it out: in more than twenty reigns since Duke Mu, Qin had never kept a firm agreement; the jade was already back in Zhao; he knew that deceiving the king was a crime deserving death, and he asked to be sent to the cauldron. The king and his ministers looked at one another and laughed wryly. Some attendants moved to drag him out, but the king reasoned that killing him would not bring back the jade and would end good relations with Zhao. In the end he received Lin Xiangru at court with full ceremony and sent him home. Once Lin Xiangru was back, the king of Zhao, judging him a worthy grandee who had not disgraced Zhao among the states, made him shangdafu. In the end Qin never handed the cities to Zhao, and Zhao never gave Qin the jade.",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.story.1.ev",
+   "before": [
+    "L-E3",
+    "L-E12"
+   ],
+   "after": [
+    "L-E3",
+    "L-E12",
+    "L-E19"
+   ],
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.story.2.zh",
+   "before": "渑池之会前，廉颇送王到边境，与赵王诀别时约定：算上路程和会面的礼节，往返不超过三十日；三十日不回，就请立太子为王，断掉秦国的念想。赵王答应了。到了渑池，秦王直到酒宴结束，「終不能加勝於趙」；赵国也「盛設兵以待秦」，秦不敢动。",
+   "after": "此后秦国伐赵，攻下石城；第二年又攻赵，杀了二万人。秦王派使者告诉赵王，想在西河外的渑池与他相会修好。赵王畏秦，不想去；廉颇、蔺相如商议说：「王不行，示趙弱且怯也。」赵王于是赴会，相如随行。廉颇送王到边境，与赵王诀别时约定：算上路程和会面的礼节，往返不超过三十日；三十日不回，就请立太子为王，断掉秦国的念想。赵王答应了。到了渑池，秦王酒酣，请赵王鼓瑟，赵王鼓了，秦御史上前记下「某年月日，秦王與趙王會飲，令趙王鼓瑟」。相如上前，请秦王击缻以相娱乐，秦王发怒，不答应；相如捧缻上前，跪着请求，秦王仍不肯击。相如说：「五歩之内，相如請得以頸血濺大王矣！」秦王左右要拿刀杀相如，「相如張目叱之，左右皆靡」。秦王不高兴，只好击了一下缻，相如回头召赵御史记下：某年某月某日，秦王为赵王击缻。秦国群臣说，请以赵国十五座城为秦王祝寿；相如也说：「請以秦之咸陽爲趙王壽。」秦王直到酒宴结束，「終不能加勝於趙」；赵国也「盛設兵以待秦」，秦不敢动。",
+   "issues": [
+    "F4",
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.story.2.en",
+   "before": "Before the meeting at Mianchi Lian Po escorted the king to the border and, taking leave, made an arrangement: allow for the road and the formalities of the meeting, and the round trip should take no more than thirty days; if the king was not back in thirty days, let the crown prince be set up as king, to cut off Qin's hopes. The king agreed. At Mianchi the king of Qin, to the end of the banquet, could not gain the upper hand over Zhao; Zhao, for its part, had massed its forces to meet Qin, and Qin dared not move.",
+   "after": "After this Qin attacked Zhao and took Shicheng; the following year it attacked again and killed twenty thousand men. The king of Qin sent an envoy proposing a friendly meeting with the king of Zhao at Mianchi, beyond the Western River. The king of Zhao, afraid of Qin, wanted not to go, but Lian Po and Lin Xiangru advised that if the king stayed away it would show Zhao as weak and timid. So the king went, with Lin Xiangru in attendance. Lian Po escorted the king to the border and, taking leave, made an arrangement: allow for the road and the formalities of the meeting, and the round trip should take no more than thirty days; if the king was not back in thirty days, let the crown prince be set up as king, to cut off Qin's hopes. The king agreed. At Mianchi, when the wine was flowing, the king of Qin asked the king of Zhao to play the se, and he did; a Qin scribe stepped forward and recorded that on such a day the king of Qin, drinking with the king of Zhao, had ordered the king of Zhao to play the se. Lin Xiangru then came forward and asked the king of Qin to strike an earthen pot for their mutual entertainment. The king of Qin angrily refused. Lin Xiangru brought the pot forward, knelt and pressed him; still the king would not strike it. Lin Xiangru said that within five paces he could spatter the king with the blood from his own neck. The king's attendants moved to cut him down, but Lin Xiangru glared and shouted at them, and they all fell back. Displeased, the king of Qin struck the pot once, and Lin Xiangru turned and called the Zhao scribe to record that on such a day the king of Qin had struck the pot for the king of Zhao. Qin's ministers asked for fifteen cities of Zhao as a toast to the king of Qin's long life; Lin Xiangru asked in return for Qin's Xianyang as a toast to the king of Zhao's long life. To the end of the banquet the king of Qin could not gain the upper hand over Zhao; Zhao, for its part, had massed its forces to meet Qin, and Qin dared not move.",
+   "issues": [
+    "F4",
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.story.2.ev",
+   "before": [
+    "L-E13",
+    "L-E4"
+   ],
+   "after": [
+    "L-E18",
+    "L-E13",
+    "L-E4"
+   ],
+   "issues": [
+    "F4",
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.zh",
+   "before": "值得一提的是廉颇的委屈。他的功劳是攻城野战，相如的功劳在秦廷与渑池，两种功劳形态不同，本不好用同一把尺子量；而他说相如「素賤人」、羞于居下，说明他不服的不只是排序，还有出身。一种解释是，廉颇计较的不是功劳有无，而是功劳能否被看见——战场胜负可以点数，口舌上的成败要靠人转述。",
+   "after": "值得一提的是廉颇的委屈。他的功劳是攻城野战，相如的功劳在秦廷与渑池；作者认为，两种功劳形态不同，本不好用同一把尺子量。他说相如「素賤人」、羞于居下，一种解释是，他不服的不只是排序，还有出身。还有一种解释是，廉颇计较的不是功劳有无，而是功劳能否被看见——战场胜负可以点数，口舌上的成败要靠人转述。",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "before": "Lian Po's grievance deserves a moment first. His merit was won storming cities; Lin Xiangru's, at the Qin court and at Mianchi. The two kinds of credit have different shapes and are not easily measured with one ruler, and his jibe that Lin Xiangru had always been a man of low station shows that what rankled was not only the ordering but the birth behind it. One reading is that what Lian Po cared about was not whether merit existed but whether it could be seen: a battlefield result can be counted off, whereas success with words depends on someone else retelling it.",
+   "after": "Lian Po's grievance deserves a moment first. His merit was won storming cities; Lin Xiangru's, at the Qin court and at Mianchi. In the author's view, the two kinds of credit have different shapes and are not easily measured with one ruler. He jibed that Lin Xiangru had always been a man of low station and that he was ashamed to rank beneath him; one reading is that what rankled was not only the ordering but the birth behind it. Another reading is that what Lian Po cared about was not whether merit existed but whether it could be seen: a battlefield result can be counted off, whereas success with words depends on someone else retelling it.",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.zh",
+   "before": "同一篇列传里，认错的动作出现过两次。早年缪贤有罪，相如给他出的主意是「肉袒伏斧質請罪」；后来廉颇上门，做的是「肉袒負荊」。两者都是脱去上衣、把身体交出去的姿势。不能断言廉颇知道前一桩事或受其影响（作者提示，非原文所述）。另外，《史记》所记的那段权衡用的是另一套语言：先说清「曲在趙」还是「曲在秦」，把理亏的一方安排到对方。太史公的评语是「退而讓頗，名重太山」——退让，反而把名望抬到了泰山那么高。",
+   "after": "同一篇列传里，认错的动作出现过两次。早年缪贤有罪，相如给他出的主意是「肉袒伏斧質請罪」；后来廉颇上门，做的是「肉袒負荊」。两者都是脱去上衣、把身体交出去的姿势。不能断言廉颇知道前一桩事或受其影响（作者提示，非原文所述）。另外，相如答赵王时的那段权衡用的是另一套语言：先说清「曲在趙」还是「曲在秦」，把理亏的一方安排到对方。太史公的评语是「退而讓頗，名重太山」——退让，反而把名望抬到了泰山那么高。",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.en",
+   "before": "Within the same biography the gesture of admitting fault appears twice. Lin Xiangru's advice to Miao Xian was to strip and lie on the block to ask pardon; when Lian Po came to the gate, he came stripped to the waist with thorns on his back. Both are postures of baring the body and handing it over. One cannot say that Lian Po knew of the earlier case or was influenced by it; the parallel is the author's observation, not something the text states. The weighing of options recorded in the Shiji uses a different grammar: first settle where the wrong will lie, with Zhao or with Qin, and arrange for it to fall on the other side. The Grand Historian's verdict: he stepped back and yielded to Lian Po, and his name came to weigh as much as Mount Tai.",
+   "after": "Within the same biography the gesture of admitting fault appears twice. Lin Xiangru's advice to Miao Xian was to strip and lie on the block to ask pardon; when Lian Po came to the gate, he came stripped to the waist with thorns on his back. Both are postures of baring the body and handing it over. One cannot say that Lian Po knew of the earlier case or was influenced by it; the parallel is the author's observation, not something the text states. The weighing Lin Xiangru offered the king when he answered him uses a different grammar: first settle where the wrong will lie, with Zhao or with Qin, and arrange for it to fall on the other side. The Grand Historian's verdict: he stepped back and yielded to Lian Po, and his name came to weigh as much as Mount Tai.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.ev",
+   "before": [
+    "L-E10",
+    "L-E9",
+    "L-E11",
+    "L-E17"
+   ],
+   "after": [
+    "L-E10",
+    "L-E9",
+    "L-E20",
+    "L-E17"
+   ],
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.limits.0.zh",
+   "before": "需要说明的不确定性：本文所据材料只有司马迁《廉颇蔺相如列传》一篇，其中的对话是史书的记述，未必是逐字实录；负荆请罪的细节——袒身、背荆条、由宾客引见——在本篇的证据中没有其他材料可以核对。凡原文未写的人物心理，均以“一种解释是”“作者认为”标明为作者解释。年份只用原文的「趙惠文王時」这类说法，不换算公元年。",
+   "after": "需要说明的不确定性：本文所据材料只有司马迁《廉颇蔺相如列传》一篇，其中的对话是史书的记述，未必是逐字实录；负荆请罪的细节——袒身、背荆条、由宾客引见——在本篇的证据中没有其他材料可以核对。文中对原文未写的人物心理所作的推断，作者尽量以“一种解释是”“作者认为”标明为解释。年份只用原文的「趙惠文王時」这类说法，不换算公元年。",
    "issues": [
     "F7"
    ]
   },
   {
-   "path": "sections.story.1.zh",
-   "before": "到了秦廷，秦王在章台接见相如，接过璧大喜，传给身边的美人和侍从看，左右都高呼万岁。相如看出秦王无意偿城，上前说璧有小毛病要指给秦王看，拿到璧便退立倚柱，怒发上冲冠，当面斥责秦王，放话「臣頭今與璧倶碎於柱矣」；直到此时才「持其璧睨柱，欲以撃柱」。秦王怕他砸碎，连忙道歉，召来管图籍的官员，指着地图说从这里过去的十五座城给赵。相如判断这不过是做样子，城根本拿不到，于是说和氏璧是天下共传之宝，赵王送来前斋戒五日，秦王也该斋戒五日，设九宾于廷，他才敢献璧。秦王答应了，把他安置在广成传舍。相如断定秦王即便斋戒也一定违约，就让随从穿上粗布衣，把璧揣在怀里，从小路逃走，送回赵国。等再次上廷，他把话摊开：秦自缪公以来二十多位国君，没有一位说话算数；璧已送回赵国，「臣知欺大王之罪當誅，臣請就湯鑊」。秦王与群臣相视而嘻，左右有人要把他拉下去，秦王最终说，杀了相如也得不到璧，反而断了秦赵之好，不如以礼相待送他回去，「卒廷見相如，畢禮而歸之」。",
-   "after": "到了秦廷，秦王在章台接见相如，接过璧大喜，传给身边的美人和侍从看，左右都高呼万岁。相如看出秦王无意偿城，上前说璧有小毛病要指给秦王看，拿到璧便退立倚柱，怒发上冲冠，当面斥责秦王，放话：大王若一定要逼我，「臣頭今與璧倶碎於柱矣」；直到此时才「持其璧睨柱，欲以撃柱」。秦王怕他砸碎，连忙道歉，召来主管官员查看地图，指着说从这里过去的十五座城给赵。相如判断这不过是做样子，城根本拿不到，于是说和氏璧是天下共传之宝，赵王送来前斋戒五日，秦王也该斋戒五日，设九宾于廷，他才敢献璧。秦王答应了，把他安置在广成传舍。相如断定秦王即便斋戒也一定违约，就让随从穿上粗布衣，把璧揣在怀里，从小路逃走，送回赵国。等再次上廷，他把话摊开：秦自缪公以来二十多位国君，没有一位说话算数；璧已送回赵国，「臣知欺大王之罪當誅，臣請就湯鑊」。秦王与群臣相视而嘻，左右有人要把他拉下去，秦王最终说，杀了相如也得不到璧，反而断了秦赵之好，不如以礼相待送他回去，「卒廷見相如，畢禮而歸之」。",
+   "path": "sections.limits.0.en",
+   "before": "The uncertainty to flag: the only material this piece draws on is Sima Qian's biography of Lian Po and Lin Xiangru. The speeches there are a historian's record and need not be verbatim transcripts, and the details of the thorn apology - the bared body, the bundle of thorns, the arrival by way of guests - cannot be checked against any other material in this piece's evidence. Where the original text says nothing of a figure's inner thoughts, the piece marks such claims as one reading or as the author's inference. Dates stay in the source's own terms, such as in the time of King Huiwen of Zhao, rather than being converted into years before the common era.",
+   "after": "The uncertainty to flag: the only material this piece draws on is Sima Qian's biography of Lian Po and Lin Xiangru. The speeches there are a historian's record and need not be verbatim transcripts, and the details of the thorn apology - the bared body, the bundle of thorns, the arrival by way of guests - cannot be checked against any other material in this piece's evidence. Where the piece infers a figure's inner thoughts beyond what the original text says, the author tries to mark such claims as one reading or as the author's inference. Dates stay in the source's own terms, such as in the time of King Huiwen of Zhao, rather than being converted into years before the common era.",
    "issues": [
-    "F8",
-    "F9",
-    "F10",
-    "M1"
+    "F7"
    ]
   },
   {
-   "path": "sections.story.1.en",
-   "before": "At the Qin court the king received Lin Xiangru in the Zhang Terrace, was delighted with the jade, and passed it around to his ladies and attendants, who all cried long life to him. Lin Xiangru saw he had no intention of paying. He said the gem had a small flaw he would point out, took it back and stood against a pillar, his hair bristling with anger, and denounced the king, warning that he would dash his own head and the jade together against the pillar. Only then did he stand holding the jade with his eyes on the pillar, ready to bring it down. The alarmed king apologised, sent for the official in charge of maps and pointed out fifteen cities for Zhao. Lin Xiangru judged this mere show. The Heshi jade was a treasure the whole world talked of, he said; the king of Zhao had fasted five days before sending it, and the king of Qin should fast five days and hold the nine-fold ceremony at court before he would dare present it. The king agreed and lodged him at the Guangcheng hostel. Sure that the king would break his word even after fasting, Lin Xiangru had a follower put on coarse clothes, hide the jade in his robe and take it home to Zhao by back roads. At the next audience he laid it out: in more than twenty reigns since Duke Mu, Qin had never kept a firm agreement; the jade was already back in Zhao; \"I know that deceiving Your Majesty is a crime deserving death, and I ask to go to the cauldron.\" The king and his ministers looked at one another and laughed wryly. Some attendants moved to drag him out, but the king reasoned that killing him would not bring back the jade and would end good relations with Zhao. In the end he received Lin Xiangru at court with full ceremony and sent him home.",
-   "after": "At the Qin court the king received Lin Xiangru in the Zhang Terrace, was delighted with the jade, and passed it around to his ladies and attendants, who all cried long life to him. Lin Xiangru saw he had no intention of paying. He said the gem had a small flaw he would point out, took it back and stood against a pillar, his hair bristling with anger, and denounced the king, warning that if the king insisted on pressing him, his head and the jade would be smashed together against the pillar. Only then did he stand holding the jade with his eyes on the pillar, ready to bring it down. The alarmed king apologised, summoned the officials concerned to consult the map and pointed out fifteen cities for Zhao. Lin Xiangru judged this mere show. The Heshi jade was a treasure the whole world talked of, he said; the king of Zhao had fasted five days before sending it, and the king of Qin should fast five days and hold the nine-fold ceremony at court before he would dare present it. The king agreed and lodged him at the Guangcheng hostel. Sure that the king would break his word even after fasting, Lin Xiangru had a follower put on coarse clothes, hide the jade in his robe and take it home to Zhao by back roads. At the next audience he laid it out: in more than twenty reigns since Duke Mu, Qin had never kept a firm agreement; the jade was already back in Zhao; he knew that deceiving the king was a crime deserving death, and he asked to be sent to the cauldron. The king and his ministers looked at one another and laughed wryly. Some attendants moved to drag him out, but the king reasoned that killing him would not bring back the jade and would end good relations with Zhao. In the end he received Lin Xiangru at court with full ceremony and sent him home.",
+   "path": "sections.today.0.zh",
+   "before": "虚构一个场景：一家公司的技术团队里，老工程师带了七八年核心系统，新来的同事凭几次故障处置和几场汇报被提拔到他上面。老工程师在周会上说，他不过会讲话。新同事听到风声，开会从不与他争，排期上也让。组里年轻人替新同事不平，觉得他太软。这个局面和朝堂上那两位的区别只在道具：没有战车，只有会议纪要。",
+   "after": "虚构一个场景：一家公司的技术团队里，老工程师带了七八年核心系统，新来的同事凭几次故障处置和几场汇报被提拔到他上面。老工程师在周会上说，他不过会讲话。新同事听到风声，开会从不与他争，排期上也让。组里年轻人替新同事不平，觉得他太软。这个局面和朝堂上那两位的区别只在道具：没有马车，只有会议纪要。",
    "issues": [
-    "F8",
-    "F9",
-    "F10",
-    "M1"
+    "F8"
    ]
   },
   {
-   "path": "sections.story.3.zh",
-   "before": "回国以后，赵王认为相如功大，拜为上卿，位在廉颇之右。廉颇的话说得很白：「我爲趙將，有攻城野戰之大功，而藺相如徒以口舌爲勞，而位居我上，且相如素賤人，吾羞，不忍爲之下。」并且公开宣言：「我見相如，必辱之。」",
-   "after": "回国以后，因相如功大，拜为上卿，位在廉颇之右。廉颇的话说得很白：「我爲趙將，有攻城野戰之大功，而藺相如徒以口舌爲勞，而位居我上，且相如素賤人，吾羞，不忍爲之下。」并且公开宣言：「我見相如，必辱之。」",
+   "path": "sections.today.0.en",
+   "before": "Take an invented scene. On a company's engineering team, the veteran who has kept the core system alive for seven or eight years watches a newcomer promoted above him on the strength of a few incident recoveries and a handful of status reviews. At the weekly meeting the old engineer mutters that his rival is nothing but a talker. The newcomer hears about it and never argues with him, conceding even on scheduling. The younger members of the team feel he is being far too soft. The only difference from that ancient court is the furniture: no war chariots, only meeting minutes.",
+   "after": "Take an invented scene. On a company's engineering team, the veteran who has kept the core system alive for seven or eight years watches a newcomer promoted above him on the strength of a few incident recoveries and a handful of status reviews. At the weekly meeting the old engineer mutters that his rival is nothing but a talker. The newcomer hears about it and never argues with him, conceding even on scheduling. The younger members of the team feel he is being far too soft. The only difference from that ancient court is the furniture: no carriages, only meeting minutes.",
    "issues": [
-    "F11",
-    "M2"
+    "F8"
    ]
   },
   {
-   "path": "sections.story.3.en",
-   "before": "Back home, the king judged Lin Xiangru's service great and made him shangqing, ranked above Lian Po. Lian Po put it plainly: I am the general of Zhao, with great merit from storming cities and fighting in the field, while Lin Xiangru has labored only with his tongue and sits above me; and he has always been a man of low station. I am ashamed, and I cannot bear to stand beneath him. Then he declared openly: when I set eyes on Lin Xiangru, I will humiliate him.",
-   "after": "Back home, Lin Xiangru, for his great service, was made shangqing, ranked above Lian Po. Lian Po put it plainly: I am the general of Zhao, with great merit from storming cities and fighting in the field, while Lin Xiangru has labored only with his tongue and sits above me; and he has always been a man of low station. I am ashamed, and I cannot bear to stand beneath him. Then he declared openly: when I set eyes on Lin Xiangru, I will humiliate him.",
+   "path": "sections.hook.0.ev",
+   "before": [
+    "L-E5",
+    "L-E1"
+   ],
+   "after": [
+    "L-E5",
+    "L-E1",
+    "L-E18"
+   ],
    "issues": [
-    "F11",
-    "M2"
+    "X4"
    ]
   },
   {
-   "path": "sections.story.4.en",
-   "before": "Lin Xiangru, hearing of it, refused to meet him. Whenever there was a court audience he pleaded illness rather than jostle with Lian Po over precedence. When he did go out and caught sight of Lian Po in the distance, he turned his carriage aside and hid.",
-   "after": "Lin Xiangru, hearing of it, refused to meet him. At court audiences he would often plead illness rather than jostle with Lian Po over precedence. When he did go out and caught sight of Lian Po in the distance, he turned his carriage aside and hid.",
+   "path": "sections.story.3.ev",
+   "before": [
+    "L-E5"
+   ],
+   "after": [
+    "L-E5",
+    "L-E18"
+   ],
    "issues": [
-    "F12"
+    "X4"
    ]
   },
   {
-   "path": "sections.story.6.zh",
-   "before": "相如坚决把他们留住，反问一句：你们看廉将军和秦王比，谁更厉害？舍人说，廉将军当然不如秦王。相如说，以秦王那样的威势，我敢在秦国朝堂上呵斥他、羞辱他的群臣，我再没出息，难道单单怕一个廉将军？「顧吾念之，彊秦之所以不敢加兵於趙者，徒以吾兩人在也。今兩虎共鬥，其勢不倶生。」我所以这样做，「以先國家之急而後私讎也」。",
-   "after": "相如坚决把他们留住，反问一句：你们看廉将军和秦王比，谁更厉害？舍人说，廉将军当然不如秦王。相如说，以秦王那样的威势，我敢当廷呵斥他、羞辱他的群臣，我再没出息，难道单单怕一个廉将军？「顧吾念之，彊秦之所以不敢加兵於趙者，徒以吾兩人在也。今兩虎共鬥，其勢不倶生。」我所以这样做，「以先國家之急而後私讎也」。",
+   "path": "sections.analysis.0.ev",
+   "before": [
+    "L-E5"
+   ],
+   "after": [
+    "L-E5",
+    "L-E18",
+    "L-E19"
+   ],
    "issues": [
-    "F13",
-    "F14"
-   ]
-  },
-  {
-   "path": "sections.story.6.en",
-   "before": "Lin Xiangru firmly refused to let them leave, and put a question back: how does General Lian compare with the king of Qin? Not his equal, they said. With all the king of Qin's might, said Lin Xiangru, I denounced him to his face in his own court and shamed his whole circle of ministers. Incompetent as I am, would I be afraid of General Lian alone? But consider: the reason mighty Qin has not dared to send its armies against Zhao is only that the two of us are still here. Now two tigers fight in one pit; the way things stand, they cannot both live. I do this because I put the state's urgent need first and my private enmity second.",
-   "after": "Lin Xiangru firmly refused to let them leave, and put a question back: how does General Lian compare with the king of Qin? Not his equal, they said. With all the king of Qin's might, said Lin Xiangru, I rebuked him to his face at court and shamed his ministers. Incompetent as I am, would I be afraid of General Lian alone? But consider: the reason mighty Qin has not dared to send its armies against Zhao is only that the two of us are still here. If two tigers fight, the way things stand, they cannot both live. I do this because I put the state's urgent need first and my private enmity second.",
-   "issues": [
-    "F13",
-    "F14"
-   ]
-  },
-  {
-   "path": "sections.story.7.zh",
-   "before": "廉颇听说了这番话，「肉袒負荊」，由宾客引路，到相如门前谢罪，说「鄙賤之人，不知將軍寬之至此也」。两人终于和好，成为刎颈之交。这之后他们没闲着：当年廉颇东攻齐，破其一军；两年后廉颇又伐齐，攻下幾邑；再过三年，他攻魏国的防陵、安阳，都攻了下来；又过四年，相如也带兵攻齐，到平邑而罢。位次之争没有耽误他们各自的活。",
-   "after": "廉颇听说了这番话，「肉袒負荊」，由宾客引路，到相如门前谢罪，说「鄙賤之人，不知將軍寬之至此也」。两人终于和好，成为刎颈之交。当年廉颇东攻齐，破其一军；两年后廉颇又伐齐，攻下幾邑；再过三年，他攻魏国的防陵、安阳，都攻了下来；又过四年，相如也带兵攻齐，到平邑而罢。",
-   "issues": [
-    "F15",
-    "F16",
-    "M8",
-    "F24"
-   ]
-  },
-  {
-   "path": "sections.story.7.en",
-   "before": "When Lian Po heard this, he stripped off his shirt, took up a bundle of thorns on his back, and came by way of a mutual acquaintance to Lin Xiangru's gate to apologize: a crude and lowly man, he said, who did not know how far the general's generosity went. In the end the two were reconciled and became friends who would die for each other. They did not idle afterwards. That same year Lian Po struck east against Qi and broke one of its armies. Two years on he campaigned against Qi again and took Ji. Three years after that he stormed Wei's Fangling and Anyang. Four years later Lin Xiangru himself led an army against Qi and stopped at Pingyi. The quarrel over rank never held up either man's work.",
-   "after": "When Lian Po heard this, he stripped off his shirt, took up a bundle of thorns on his back, and came through guests to Lin Xiangru's gate to apologize: a crude and lowly man, he said, who did not know how far the general's generosity went. In the end the two were reconciled and became friends who would die for each other. That same year Lian Po struck east against Qi and broke one of its armies. Two years on he campaigned against Qi again and took Ji. Three years after that he stormed Wei's Fangling and Anyang. Four years later Lin Xiangru himself led an army against Qi and stopped at Pingyi.",
-   "issues": [
-    "F15",
-    "F16",
-    "M8",
-    "F24"
-   ]
-  },
-  {
-   "path": "sections.analysis.1.zh",
-   "before": "相如的避让也不是单纯的忍。他给舍人的理由不是廉颇不值一提，而是一个盘面判断：「彊秦之所以不敢加兵於趙者，徒以吾兩人在也」——强秦不敢动手，只因为我们两个还在。他把争执从谁功劳大，换成赵国还剩几个能用的人。同时，避让用的是称病、让路这类不上台面的动作，原文只记了称病、引车避匿，没有记他公开回应廉颇；一种解释是，这样就没有把对方逼到必须立刻表态的位置。一种解释是，这正是给对方留的台阶：羞辱的话是公开说出去的，化解却在私下完成，廉颇要回头，不必先当众收回自己的话。",
-   "after": "相如的避让也不是单纯的忍。他给舍人的理由不是廉颇不值一提，而是一个盘面判断：「彊秦之所以不敢加兵於趙者，徒以吾兩人在也」——强秦不敢动手，只因为我们两个还在。作者认为，他把争执从谁功劳大，换成了赵国安危系于两人并存。同时，避让用的是称病、让路这类不上台面的动作，原文只记了称病、引车避匿，没有记他公开回应廉颇；一种解释是，这样就没有把对方逼到必须立刻表态的位置。一种解释是，这正是给对方留的台阶：羞辱的话是公开说出去的，化解则不是在朝堂上当众进行的（作者解释），廉颇要回头，不必先当众收回自己的话。",
-   "issues": [
-    "F17",
-    "F18",
-    "M4",
-    "F24"
-   ]
-  },
-  {
-   "path": "sections.analysis.1.en",
-   "before": "Lin Xiangru's yielding was not simple endurance either. The reason he gave his retainers was not that Lian Po was beneath notice, but a judgment about the whole board: the reason mighty Qin has not dared to send its armies against Zhao is only that the two of us are still here. He shifted the dispute from whose merit was greater to how many usable men Zhao had left. And the yielding itself used offstage moves - pleading illness, turning his carriage aside - and the record notes no public reply to Lian Po. On one reading, that kept the other man from being forced to take a stand on the spot. One reading is that this was precisely the ramp built for a retreat. The insult had been spoken in the open; the undoing happened in private, so Lian Po could turn back without first withdrawing his words before an audience.",
-   "after": "Lin Xiangru's yielding was not simple endurance either. The reason he gave his retainers was not that Lian Po was beneath notice, but a judgment about the whole board: the reason mighty Qin has not dared to send its armies against Zhao is only that the two of us are still here. The author's reading is that he shifted the dispute from whose merit was greater to the fact that Zhao's safety rested on both men surviving together. And the yielding itself used offstage moves - pleading illness, turning his carriage aside - and the record notes no public reply to Lian Po. On one reading, that kept the other man from being forced to take a stand on the spot. One reading is that this was precisely the ramp built for a retreat. The insult had been spoken in the open; the undoing did not take place before the court (the author's interpretation), so Lian Po could turn back without first withdrawing his words before an audience.",
-   "issues": [
-    "F17",
-    "F18",
-    "M4",
-    "F24"
-   ]
-  },
-  {
-   "path": "sections.analysis.2.zh",
-   "before": "同一篇列传里，认错的动作出现过两次。早年缪贤有罪，相如给他出的主意是「肉袒伏斧質請罪」；后来廉颇上门，做的是「肉袒負荊」。两者都是脱去上衣、把身体交出去的姿势。不能断言廉颇知道前一桩事或受其影响（作者提示，非原文所述）。另外，相如在出使前为赵王分析局势时，用的是另一套语言：先说清「曲在趙」还是「曲在秦」，把理亏的一方安排到对方，再决定让步的分寸。太史公的评语是「退而讓頗，名重太山」——退让，反而把名望抬到了泰山那么高。",
-   "after": "同一篇列传里，认错的动作出现过两次。早年缪贤有罪，相如给他出的主意是「肉袒伏斧質請罪」；后来廉颇上门，做的是「肉袒負荊」。两者都是脱去上衣、把身体交出去的姿势。不能断言廉颇知道前一桩事或受其影响（作者提示，非原文所述）。另外，《史记》所记的那段权衡用的是另一套语言：先说清「曲在趙」还是「曲在秦」，把理亏的一方安排到对方。太史公的评语是「退而讓頗，名重太山」——退让，反而把名望抬到了泰山那么高。",
-   "issues": [
-    "F19",
-    "F20"
-   ]
-  },
-  {
-   "path": "sections.analysis.2.en",
-   "before": "Within the same biography the gesture of admitting fault appears twice. Lin Xiangru's advice to Miao Xian was to strip and lie on the block to ask pardon; when Lian Po came to the gate, he came stripped to the waist with thorns on his back. Both are postures of baring the body and handing it over. One cannot say that Lian Po knew of the earlier case or was influenced by it; the parallel is the author's observation, not something the text states. Advising the king of Zhao before the mission, Lin Xiangru used a different grammar: first settle where the wrong will lie, with Zhao or with Qin, arrange for it to fall on the other side, and only then decide how far to give. The Grand Historian's verdict: he stepped back and yielded to Lian Po, and his name came to weigh as much as Mount Tai.",
-   "after": "Within the same biography the gesture of admitting fault appears twice. Lin Xiangru's advice to Miao Xian was to strip and lie on the block to ask pardon; when Lian Po came to the gate, he came stripped to the waist with thorns on his back. Both are postures of baring the body and handing it over. One cannot say that Lian Po knew of the earlier case or was influenced by it; the parallel is the author's observation, not something the text states. The weighing of options recorded in the Shiji uses a different grammar: first settle where the wrong will lie, with Zhao or with Qin, and arrange for it to fall on the other side. The Grand Historian's verdict: he stepped back and yielded to Lian Po, and his name came to weigh as much as Mount Tai.",
-   "issues": [
-    "F19",
-    "F20"
-   ]
-  },
-  {
-   "path": "sections.limits.1.zh",
-   "before": "还要说，一次认错没有改变廉颇的脾气。后来赵孝成王去世，悼襄王即位，派乐乘去替代廉颇，廉颇怒而攻乐乘，乐乘跑掉，廉颇便投奔魏国大梁。更早些，他失势时门客散尽，复用时门客又回来，还说「天下以市道交」，有势就来、无势就走本是常理。把这些放在一起，不是要给谁下道德评语，只是说明：相如门前那次负荆谢罪见于本篇《史记》记载，它也没有把一个人从此改写。",
-   "after": "还要说，作者认为，一次认错未必改变了廉颇的脾气。后来赵孝成王去世，悼襄王即位，派乐乘去替代廉颇，廉颇怒而攻乐乘，乐乘跑掉，廉颇便投奔魏国大梁。另据记载，他自长平免归失势时门客散尽，复用为将时门客又回来，门客还说「天下以市道交」，有势就来、无势就走本是常理。把这些放在一起，不是要给谁下道德评语，只是说明：相如门前那次负荆谢罪见于本篇《史记》记载，它也没有把一个人从此改写。",
-   "issues": [
-    "F21",
-    "F22",
-    "F23",
-    "M9",
-    "F24"
-   ]
-  },
-  {
-   "path": "sections.limits.1.en",
-   "before": "One apology did not remake Lian Po's temper. When King Xiaocheng of Zhao died, his successor King Daoxiang sent Le Cheng to replace Lian Po; Lian Po attacked Le Cheng, who fled, and then went over to Daliang in Wei. Earlier, when he had lost power, his retainers had all left, and when he was made a general again they came back; one of them told him that the world deals \"the way the marketplace does\": people come when you have power and leave when you do not. None of this is a moral verdict on anyone. It only shows that the apology at Lin Xiangru's gate is recorded in this chapter of the Shiji, and that it did not rewrite the man from that day on.",
-   "after": "The author's reading is that one apology did not necessarily remake Lian Po's temper. When King Xiaocheng of Zhao died, his successor King Daoxiang sent Le Cheng to replace Lian Po; Lian Po, enraged, attacked Le Cheng, who fled, and Lian Po then went over to Daliang in Wei. According to another passage, when he was dismissed after Changping and lost power, his retainers had all left, and when he was made a general again they came back; one of them told him that the world conducts its friendships on market terms (in translation): people come when you have power and leave when you do not. None of this is a moral verdict on anyone. It only shows that the apology at Lin Xiangru's gate is recorded in this chapter of the Shiji, and that it did not rewrite the man from that day on.",
-   "issues": [
-    "F21",
-    "F22",
-    "F23",
-    "M9",
-    "F24"
-   ]
-  },
-  {
-   "path": "sections.limits.1.zh",
-   "before": "还要说，作者认为，一次认错未必改变了廉颇的脾气。后来赵孝成王去世，悼襄王即位，派乐乘去替代廉颇，廉颇怒而攻乐乘，乐乘跑掉，廉颇便投奔魏国大梁。另据记载，他自长平免归失势时门客散尽，复用为将时门客又回来，门客还说「天下以市道交」，有势就来、无势就走本是常理。把这些放在一起，不是要给谁下道德评语，只是说明：相如门前那次负荆谢罪见于本篇《史记》记载，它也没有把一个人从此改写。",
-   "after": "还要说，作者认为，一次认错未必改变了廉颇的脾气。后来赵孝成王去世，悼襄王即位，派乐乘去替代廉颇，廉颇怒而攻乐乘，乐乘跑掉，廉颇便投奔魏国大梁。另据记载，他自长平免归失势时门客散尽，复用为将时门客又回来，门客还说「天下以市道交」，有势就来、无势就走本是常理。把这些放在一起，不是要给谁下道德评语，只是想提示：相如门前那次负荆谢罪见于本篇《史记》记载，但一种解释是，它未必把一个人从此改写。",
-   "issues": [
-    "V1-V1"
-   ]
-  },
-  {
-   "path": "sections.limits.1.en",
-   "before": "The author's reading is that one apology did not necessarily remake Lian Po's temper. When King Xiaocheng of Zhao died, his successor King Daoxiang sent Le Cheng to replace Lian Po; Lian Po, enraged, attacked Le Cheng, who fled, and Lian Po then went over to Daliang in Wei. According to another passage, when he was dismissed after Changping and lost power, his retainers had all left, and when he was made a general again they came back; one of them told him that the world conducts its friendships on market terms (in translation): people come when you have power and leave when you do not. None of this is a moral verdict on anyone. It only shows that the apology at Lin Xiangru's gate is recorded in this chapter of the Shiji, and that it did not rewrite the man from that day on.",
-   "after": "The author's reading is that one apology did not necessarily remake Lian Po's temper. When King Xiaocheng of Zhao died, his successor King Daoxiang sent Le Cheng to replace Lian Po; Lian Po, enraged, attacked Le Cheng, who fled, and Lian Po then went over to Daliang in Wei. According to another passage, when he was dismissed after Changping and lost power, his retainers had all left, and when he was made a general again they came back; one of them told him that the world conducts its friendships on market terms (in translation): people come when you have power and leave when you do not. None of this is a moral verdict on anyone. It is only meant to note that the apology at Lin Xiangru's gate is recorded in this chapter of the Shiji, though on one reading it need not have rewritten the man from that day on.",
-   "issues": [
-    "V1-V1"
-   ]
-  },
-  {
-   "path": "uncertainty_note.zh",
-   "before": "本文所据为《史记·廉颇蔺相如列传》单一篇章；对话与负荆细节无法以其他材料互证；凡原文未写的人物心理与动机，均以“一种解释是”“作者推断”标明为解释；缪贤旧事与廉颇请罪的并置仅是作者提示，不代表存在影响关系。",
-   "after": "本文所据为《史记·廉颇蔺相如列传》单一篇章；对话与负荆细节无法以其他材料互证；凡原文未写的人物心理与动机，均以“一种解释是”“作者认为”标明为解释；缪贤旧事与廉颇请罪的并置仅是作者提示，不代表存在影响关系。",
-   "issues": [
-    "V1-V2"
-   ]
-  },
-  {
-   "path": "uncertainty_note.en",
-   "before": "This piece rests on the single chapter of Sima Qian's biography of Lian Po and Lin Xiangru. The speeches and the details of the thorn-apology cannot be cross-checked against other sources. Where the original text says nothing about a figure's psychology or motive, the piece marks its claims as one reading or as the author's inference. The juxtaposition of Miao Xian's old affair and Lian Po's apology is the author's observation only and implies no influence between them.",
-   "after": "This piece rests on the single chapter of Sima Qian's biography of Lian Po and Lin Xiangru. The speeches and the details of the thorn-apology cannot be cross-checked against other sources. Where the original text says nothing about a figure's psychology or motive, the piece marks its claims as one reading or as the author's view. The juxtaposition of Miao Xian's old affair and Lian Po's apology is the author's observation only and implies no influence between them.",
-   "issues": [
-    "V1-V2"
+    "X4"
    ]
   }
  ],
@@ -1045,35 +504,24 @@
     "F6",
     "F7",
     "F8",
-    "F9",
-    "F10",
-    "F11",
-    "F12",
-    "F13",
-    "F14",
-    "F15",
-    "F16",
-    "F17",
-    "F18",
-    "F19",
-    "F20",
-    "F21",
-    "F22",
-    "F23",
-    "F24",
-    "M1",
-    "M2",
-    "M4",
-    "M5",
-    "M8",
-    "M9",
-    "M11"
+    "X4"
    ],
-   "changes_applied": 21,
+   "changes_applied": 18,
    "changes_failed": [],
-   "still_open": [],
+   "still_open": [
+    {
+     "issue": "X4",
+     "open_because": "fixed without a change citing it",
+     "claimed": {
+      "issue": "X4",
+      "action": "fixed",
+      "rationale": "已按补入的 L-E18、L-E19、L-E20 核查全文。叙事缺漏和归属错误已在 F1–F5 中逐一修正，相应段落的 ev 也已补入新证据。",
+      "evidence": []
+     }
+    }
+   ],
    "checker_after": [],
-   "content_sha256_after": "6f7a59b413c8a30ab2273e21da462b1955466ce4163800914bc02173bd06524f",
+   "content_sha256_after": "3fd510c2c1c4518ea99343547e980462346afab04b97045f70e750ae163d114a",
    "verify": {
     "fields": [
      {
@@ -1340,9 +788,7 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": [
-       "V3"
-      ]
+      "issue_ids": []
      },
      {
       "path": "sections.analysis.2",
@@ -1440,9 +886,7 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": [
-       "V1"
-      ]
+      "issue_ids": []
      },
      {
       "path": "reflection.scenario",
@@ -1526,64 +970,24 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": [
-       "V2"
-      ]
+      "issue_ids": []
      }
     ],
-    "issues": [
-     {
-      "id": "V1",
-      "path": "sections.limits.1",
-      "category": "interpretation_label",
-      "severity": "fix",
-      "problem": "The paragraph opens with a hedged, labeled reading: 作者认为…未必改变了廉颇的脾气. It then closes with an unlabeled, definite verdict: 它也没有把一个人从此改写 / 'it did not rewrite the man from that day on'. The evidence only records later events (the attack on Le Cheng, the flight to Wei, the retainers' remark). Whether the apology changed his temper is the author's inference and should not be stated as settled fact in a kind=record paragraph.",
-      "evidence": [
-       {
-        "id": "L-E16",
-        "quote": "廉頗怒，攻樂乘，樂乘走。廉頗遂奔魏之大梁。"
-       },
-       {
-        "id": "L-E15",
-        "quote": "天下以市道交"
-       }
-      ],
-      "proposed": "Change the zh ending to '……见于本篇《史记》记载，但一种解释是，它未必把一个人从此改写。' Change the en ending to '…recorded in this chapter of the Shiji, though on one reading it need not have rewritten the man from that day on.'"
-     },
-     {
-      "id": "V2",
-      "path": "uncertainty_note",
-      "category": "interpretation_label",
-      "severity": "fix",
-      "problem": "The zh note says inferences are marked with “一种解释是”“作者推断”. The label 作者推断 does not appear anywhere in the piece. The labels actually used are 作者认为, 作者解释, 作者提示 and 作者提出, and limits.0 also gives 作者认为. The note misdescribes the piece's own labeling.",
-      "evidence": [],
-      "proposed": "Change “作者推断” to “作者认为” so the note matches limits.0 and the text. The en wording 'the author's inference' can stay or become 'the author's view'."
-     },
-     {
-      "id": "V3",
-      "path": "sections.analysis.1",
-      "category": "style",
-      "severity": "note",
-      "problem": "The labels pile up: 一种解释是 appears twice in a row, and the second sentence also carries a parenthetical （作者解释）. The en text mirrors this with 'On one reading… One reading is… (the author's interpretation)'. The labeling is correct but clumsy.",
-      "evidence": [],
-      "proposed": "Merge the last two interpretive sentences under a single 一种解释是 / 'One reading is' and drop the trailing （作者解释） / '(the author's interpretation)'."
-     }
-    ],
-    "overall": "所有原文引语均逐字出自证据，史实、时序与中英对应基本无误。需修两处标注问题：limits.1 结尾把推断写成定论；uncertainty_note 所列标注词“作者推断”与正文不符。另有一处纯文风提示（analysis.1 标注重复），修订后可发。",
-    "_content_sha256": "6f7a59b413c8a30ab2273e21da462b1955466ce4163800914bc02173bd06524f"
+    "issues": [],
+    "overall": "逐字段复核后未发现需要修改的问题：史实、归属和时序均有证据支持，「」引语与证据逐字一致，英文未冒充原文，推断已标为解释，现代场景已标明虚构，中英文内容一致且无截断，定稿可以发布。",
+    "_content_sha256": "3fd510c2c1c4518ea99343547e980462346afab04b97045f70e750ae163d114a"
    }
   },
   {
    "round": 2,
    "issues_in": [
-    "V1-V1",
-    "V1-V2"
+    "X4"
    ],
-   "changes_applied": 4,
+   "changes_applied": 3,
    "changes_failed": [],
    "still_open": [],
    "checker_after": [],
-   "content_sha256_after": "37971e470057898a2d281a94b7e14ce606a4eff575afd29378b4882255b1ae42",
+   "content_sha256_after": "df540266cba4736997c92745dac0ca2cbf9760abbe512c2b313498adcbd8829f",
    "verify": {
     "fields": [
      {
@@ -2043,13 +1447,13 @@
       "path": "sections.analysis.1",
       "category": "style",
       "severity": "note",
-      "problem": "解释标记重复堆叠。连续两句都以「一种解释是」开头，第二句末尾又加了「（作者解释）」，同一推断被标注了两次，读来累赘。英文的 On one reading / One reading is ... (the author's interpretation) 有同样问题。",
+      "problem": "连续两句都以“一种解释是”/“One reading is”开头，读来重复。后句还另加了“（作者解释）”，标注显得冗余。",
       "evidence": [],
-      "proposed": "删去第二句末尾的「（作者解释）」，或把第二个「一种解释是」改为「也可以说」。英文相应删去 \"(the author's interpretation)\"。"
+      "proposed": "第二处改为“另一种解释是”/“Another reading is”，并删去句中多余的“（作者解释）”/“(the author's interpretation)”，或者只保留其中一种标注。"
      }
     ],
-    "overall": "定稿的事实、引文、归属、时序和中英对应均能在证据包中找到依据，推断与现代场景都已标明，只有一处纯文风的重复标注可酌情精简，可以发稿。",
-    "_content_sha256": "37971e470057898a2d281a94b7e14ce606a4eff575afd29378b4882255b1ae42"
+    "overall": "定稿史实、引文、归属、时序与中英对应均有证据支持，推断也都已标为解释；仅有一处文风重复可酌情调整，可以签发。",
+    "_content_sha256": "df540266cba4736997c92745dac0ca2cbf9760abbe512c2b313498adcbd8829f"
    }
   }
  ],
@@ -2103,10 +1507,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F1",
-     "F2"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.context.heading",
@@ -2128,10 +1529,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F3",
-     "F4"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.context.1",
@@ -2145,10 +1543,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F5",
-     "F6"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.story.heading",
@@ -2171,7 +1566,7 @@
      "parity"
     ],
     "issue_ids": [
-     "F7"
+     "F1"
     ]
    },
    {
@@ -2187,9 +1582,7 @@
      "parity"
     ],
     "issue_ids": [
-     "F8",
-     "F9",
-     "F10"
+     "F3"
     ]
    },
    {
@@ -2204,7 +1597,9 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F4"
+    ]
    },
    {
     "path": "sections.story.3",
@@ -2218,9 +1613,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F11"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.story.4",
@@ -2234,9 +1627,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F12"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.story.5",
@@ -2265,8 +1656,7 @@
      "parity"
     ],
     "issue_ids": [
-     "F13",
-     "F14"
+     "F5"
     ]
    },
    {
@@ -2281,10 +1671,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F15",
-     "F16"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.analysis.heading",
@@ -2306,7 +1693,9 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F6"
+    ]
    },
    {
     "path": "sections.analysis.1",
@@ -2320,10 +1709,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F17",
-     "F18"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.analysis.2",
@@ -2338,8 +1724,7 @@
      "parity"
     ],
     "issue_ids": [
-     "F19",
-     "F20"
+     "F2"
     ]
    },
    {
@@ -2355,19 +1740,17 @@
     "checked": [
      "facts",
      "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F8"
+    ]
    },
    {
     "path": "sections.today.1",
     "checked": [
      "facts",
      "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -2393,7 +1776,7 @@
      "parity"
     ],
     "issue_ids": [
-     "F24"
+     "F7"
     ]
    },
    {
@@ -2408,18 +1791,12 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F21",
-     "F22",
-     "F23"
-    ]
+    "issue_ids": []
    },
    {
     "path": "reflection.scenario",
     "checked": [
      "facts",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -2427,7 +1804,6 @@
    {
     "path": "reflection.question",
     "checked": [
-     "facts",
      "interpretation_label",
      "parity"
     ],
@@ -2437,7 +1813,6 @@
     "path": "reflection.example.assumptions",
     "checked": [
      "facts",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -2446,7 +1821,6 @@
     "path": "reflection.example.steps",
     "checked": [
      "facts",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -2454,7 +1828,6 @@
    {
     "path": "reflection.example.alternative",
     "checked": [
-     "facts",
      "interpretation_label",
      "parity"
     ],
@@ -2464,381 +1837,159 @@
     "path": "uncertainty_note",
     "checked": [
      "facts",
-     "attribution",
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F24"
-    ]
+    "issue_ids": []
    }
   ],
   "issues": [
    {
     "id": "F1",
-    "path": "sections.hook.0",
-    "category": "facts",
-    "severity": "fix",
-    "problem": "英文“Zhao's finest general”把「良將」拔高为最高级。中文“良将”与原文一致，英文与原文及中文都不符。",
-    "evidence": [
-     {
-      "id": "L-E1",
-      "quote": "廉頗者，趙之良將也"
-     }
-    ],
-    "proposed": "改为“a fine general of Zhao”"
-   },
-   {
-    "id": "F2",
-    "path": "sections.hook.0",
-    "category": "unsupported",
-    "severity": "fix",
-    "problem": "英文给上卿加注“the highest ministerial rank”，又称“both held the top rank”。“最高”之说证据未载，中文也没有对应说法。",
-    "evidence": [],
-    "proposed": "删去“the highest ministerial rank”，并把“the top rank”改为“the rank of shangqing”"
-   },
-   {
-    "id": "F3",
-    "path": "sections.context.0",
-    "category": "parity",
-    "severity": "fix",
-    "problem": "英文多出“his courage known to every state”，中文本段没有对应内容。",
-    "evidence": [
-     {
-      "id": "L-E1",
-      "quote": "以勇氣聞於諸侯"
-     }
-    ],
-    "proposed": "删去英文该短语，或在中文补“以勇气闻于诸侯”"
-   },
-   {
-    "id": "F4",
-    "path": "sections.context.0",
-    "category": "facts",
-    "severity": "fix",
-    "problem": "「舍人」在英文中误拼为“shimen”，应为“sheren”。“living in the household”是证据之外的细节。",
-    "evidence": [
-     {
-      "id": "L-E2",
-      "quote": "爲趙宦者令繆賢舍人"
-     }
-    ],
-    "proposed": "改为“a sheren - a retainer in the service of Miao Xian”"
-   },
-   {
-    "id": "F5",
-    "path": "sections.context.1",
-    "category": "quotes",
-    "severity": "fix",
-    "problem": "英文用引号写出“strip and lie on the block”，没有标明这是译文。“as the phrase went”又暗示这是当时的成语，证据中没有依据。",
-    "evidence": [
-     {
-      "id": "L-E10",
-      "quote": "君不如肉袒伏斧質請罪"
-     }
-    ],
-    "proposed": "删去“as the phrase went”，改为“to bare his upper body, lie down at the executioner's block and ask pardon (to paraphrase the source)”"
-   },
-   {
-    "id": "F6",
-    "path": "sections.context.1",
-    "category": "parity",
-    "severity": "fix",
-    "problem": "英文“refuse, and Qin's armies might.”句子不完整，缺了“来”。",
-    "evidence": [
-     {
-      "id": "L-E2",
-      "quote": "欲勿予，即患秦兵之來"
-     }
-    ],
-    "proposed": "改为“refuse, and Qin's armies might come”"
-   },
-   {
-    "id": "F7",
     "path": "sections.story.0",
     "category": "attribution",
     "severity": "fix",
-    "problem": "L-E11 的节选没有写明说话人和时点。稿件写“相如出使前，先把理路摆清”和“he said”，说话人与时点在证据中无据。",
+    "problem": "中文写“《史记》记有这样的权衡”，英文写“The Shiji records this weighing of options”。这样写像是史家或朝议的判断，但这段话是赵王召见相如时相如本人的回答。段落还漏掉了相如主动请缨、许诺“完璧归赵”这一环节。",
     "evidence": [
      {
-      "id": "L-E11",
-      "quote": "均之二策，甯許以負秦曲"
+      "id": "L-E20",
+      "quote": "王召見，問藺相如曰"
+     },
+     {
+      "id": "L-E20",
+      "quote": "相如曰：「秦以城求璧而趙不許，曲在趙。"
+     },
+     {
+      "id": "L-E20",
+      "quote": "臣請完璧歸趙"
      }
     ],
-    "proposed": "改为“《史记》记有这样的权衡：……”，删去“相如出使前”和“he said”的归属"
+    "proposed": "改为：赵王召见相如问可否予璧，相如答：……「均之二策，甯許以負秦曲」。他又自请奉璧出使，许诺城不入则完璧归赵。中英文同改。"
    },
    {
-    "id": "F8",
+    "id": "F2",
+    "path": "sections.analysis.2",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "沿用“《史记》所记的那段权衡”（英文“The weighing of options recorded in the Shiji”），没有交代这是相如对赵王的答话，会让读者误判谋略出自谁。",
+    "evidence": [
+     {
+      "id": "L-E20",
+      "quote": "相如曰：「秦以城求璧而趙不許，曲在趙。"
+     }
+    ],
+    "proposed": "改为“相如答赵王时的那段权衡”（英文：the weighing Lin Xiangru offered the king）。"
+   },
+   {
+    "id": "F3",
     "path": "sections.story.1",
     "category": "facts",
     "severity": "fix",
-    "problem": "「有司」泛指主管官员，「案圖」意为查看地图。稿件写成“管图籍的官员”“the official in charge of maps”，是增添的细节。",
+    "problem": "完璧一事写到秦王送相如回国就结束了。证据所载的结局没有写进去：相如因此拜为上大夫，秦赵最终没有交换城与璧。缺了这一步，读者看不出相如由上大夫到上卿的升迁过程。",
     "evidence": [
      {
-      "id": "L-E3",
-      "quote": "召有司案圖"
+      "id": "L-E19",
+      "quote": "拜相如爲上大夫"
+     },
+     {
+      "id": "L-E19",
+      "quote": "秦亦不以城予趙，趙亦終不予秦璧"
      }
     ],
-    "proposed": "改为“召来主管官员查看地图”/“summoned the officials concerned to consult the map”"
+    "proposed": "段末补一句：相如归国后，赵王以为贤，拜为上大夫；秦终不以城予赵，赵亦终不予秦璧。中英文同补。"
    },
    {
-    "id": "F9",
-    "path": "sections.story.1",
-    "category": "quotes",
+    "id": "F4",
+    "path": "sections.story.2",
+    "category": "facts",
     "severity": "fix",
-    "problem": "引语截去了条件句「大王必欲急臣」，把有条件的威胁写成了无条件的“放话”。英文同样缺少条件。",
+    "problem": "段落从廉颇送王至境直接跳到“终不能加胜于赵”，省掉了渑池会的核心冲突：秦王令赵王鼓瑟，相如以死相逼使秦王击缻，又张目叱退秦王左右，并以咸阳回敬十五城。会前的背景也被省掉：秦伐赵，赵王畏秦不欲行，廉、蔺力主赴会。这样一来，story.3 的“功大”没有了内容。",
     "evidence": [
      {
-      "id": "L-E3",
-      "quote": "大王必欲急臣，臣頭今與璧倶碎於柱矣"
+      "id": "L-E18",
+      "quote": "趙王畏秦，欲毋行"
+     },
+     {
+      "id": "L-E18",
+      "quote": "王不行，示趙弱且怯也"
+     },
+     {
+      "id": "L-E18",
+      "quote": "相如張目叱之，左右皆靡"
+     },
+     {
+      "id": "L-E18",
+      "quote": "秦王爲趙王撃鮓"
+     },
+     {
+      "id": "L-E18",
+      "quote": "請以秦之咸陽爲趙王壽"
      }
     ],
-    "proposed": "中文改为“放话：大王若一定要逼我，「臣頭今與璧倶碎於柱矣」”。英文补“if Your Majesty insists on pressing me”"
+    "proposed": "依 L-E18 补写会前背景，以及鼓瑟、击缻、叱退左右、咸阳回敬几处情节，放在“秦王竟酒”之前。中英文同补。"
    },
    {
-    "id": "F10",
-    "path": "sections.story.1",
-    "category": "quotes",
+    "id": "F5",
+    "path": "sections.story.6",
+    "category": "facts",
     "severity": "fix",
-    "problem": "英文把译文放进引号，像是原话，没有标明是译述。",
+    "problem": "“当廷呵斥他、羞辱他的群臣”指的是渑池会上的事。稿件既没写渑池会的冲突，读者会误以为说的是秦廷献璧那一次。",
     "evidence": [
      {
-      "id": "L-E12",
-      "quote": "臣知欺大王之罪當誅，臣請就湯鑊"
+      "id": "L-E8",
+      "quote": "相如廷叱之，辱其群臣"
+     },
+     {
+      "id": "L-E18",
+      "quote": "相如張目叱之，左右皆靡"
      }
     ],
-    "proposed": "去掉引号改为转述，或注明“as the text has him say, in translation”"
+    "proposed": "补出 F4 的内容，或在此处注明“（指渑池会上之事）”。中英文同改。"
    },
    {
-    "id": "F11",
-    "path": "sections.story.3",
-    "category": "attribution",
+    "id": "F6",
+    "path": "sections.analysis.0",
+    "category": "interpretation_label",
     "severity": "fix",
-    "problem": "原文只写「以相如功大，拜爲上卿」，没有写明是赵王作出这一判断。“赵王认为”“the king judged”是增添的归属。",
+    "problem": "有两处作者推断没有标注：“两种功劳形态不同，本不好用同一把尺子量”，以及“说明他不服的不只是排序，还有出身”。后一句是在推断廉颇的心理，原文只记了他自己说的话。",
     "evidence": [
      {
       "id": "L-E5",
-      "quote": "以相如功大，拜爲上卿"
+      "quote": "且相如素賤人，吾羞，不忍爲之下"
      }
     ],
-    "proposed": "改为“因相如功大，拜为上卿”/“Lin Xiangru, for his great service, was made shangqing”"
+    "proposed": "在这两句前加“作者认为”或“一种解释是”。英文对应处加 the author's view / one reading。"
    },
    {
-    "id": "F12",
-    "path": "sections.story.4",
-    "category": "facts",
-    "severity": "fix",
-    "problem": "原文「常稱病」是“常常”，英文“Whenever”写成了每次都如此。",
-    "evidence": [
-     {
-      "id": "L-E6",
-      "quote": "相如毎朝時，常稱病"
-     }
-    ],
-    "proposed": "改为“At court audiences he would often plead illness”"
-   },
-   {
-    "id": "F13",
-    "path": "sections.story.6",
-    "category": "facts",
-    "severity": "fix",
-    "problem": "原文只说「廷叱之」，没有说在秦国朝堂。“在秦国朝堂上”“in his own court”是增添的地点。",
-    "evidence": [
-     {
-      "id": "L-E8",
-      "quote": "而相如廷叱之，辱其群臣"
-     }
-    ],
-    "proposed": "改为“我敢当廷呵斥他”/“I rebuked him to his face at court”"
-   },
-   {
-    "id": "F14",
-    "path": "sections.story.6",
-    "category": "quotes",
-    "severity": "fix",
-    "problem": "英文“in one pit”是原文没有的内容。原句是假设语气，英文却写成了正在发生的事实。",
-    "evidence": [
-     {
-      "id": "L-E8",
-      "quote": "今兩虎共鬥，其勢不倶生"
-     }
-    ],
-    "proposed": "改为“If two tigers fight, the way things stand, they cannot both live”"
-   },
-   {
-    "id": "F15",
-    "path": "sections.story.7",
-    "category": "facts",
-    "severity": "fix",
-    "problem": "英文把「賓客」译为“a mutual acquaintance”，与原文不符，也与 limits.0 英文的“by way of guests”不一致。",
-    "evidence": [
-     {
-      "id": "L-E9",
-      "quote": "因賓客至藺相如門謝罪"
-     }
-    ],
-    "proposed": "改为“came through his retainers/guests to Lin Xiangru's gate”"
-   },
-   {
-    "id": "F16",
-    "path": "sections.story.7",
-    "category": "interpretation_label",
-    "severity": "fix",
-    "problem": "本段属 record，但“这之后他们没闲着”“位次之争没有耽误他们各自的活”及对应英文是作者评语。证据只列出事件先后，没有这层判断，也没有标注为解释。",
-    "evidence": [
-     {
-      "id": "L-E14",
-      "quote": "後四年，藺相如將而攻齊，至平邑而罷"
-     }
-    ],
-    "proposed": "删去这两句，或改为“作者认为，……”/“The author's reading is that …”"
-   },
-   {
-    "id": "F17",
-    "path": "sections.analysis.1",
-    "category": "interpretation_label",
-    "severity": "fix",
-    "problem": "“他把争执从谁功劳大，换成赵国还剩几个能用的人”是作者对其策略的概括，没有标注为解释。原文只说「徒以吾兩人在也」，“还剩几个能用的人”是引申。",
-    "evidence": [
-     {
-      "id": "L-E8",
-      "quote": "徒以吾兩人在也"
-     }
-    ],
-    "proposed": "句前加“作者认为”/“One reading is that”，并改为“换成赵国安危系于两人并存”"
-   },
-   {
-    "id": "F18",
-    "path": "sections.analysis.1",
-    "category": "facts",
-    "severity": "fix",
-    "problem": "“化解却在私下完成”与证据不符。廉颇是肉袒负荆、经由宾客到相如门前谢罪，证据看不出是私下进行的。",
-    "evidence": [
-     {
-      "id": "L-E9",
-      "quote": "肉袒負荊，因賓客至藺相如門謝罪"
-     }
-    ],
-    "proposed": "删去“化解却在私下完成”一句，或改为“化解不是在朝堂上当众进行的（作者解释）”，英文同步"
-   },
-   {
-    "id": "F19",
-    "path": "sections.analysis.2",
-    "category": "attribution",
-    "severity": "fix",
-    "problem": "“相如在出使前为赵王分析局势时”和“Advising the king of Zhao before the mission”在证据中无据。L-E11 节选没有说话人、对象和时点，与 F7 同源。",
-    "evidence": [
-     {
-      "id": "L-E11",
-      "quote": "均之二策，甯許以負秦曲"
-     }
-    ],
-    "proposed": "改为“《史记》所记的那段权衡用的是另一套语言”"
-   },
-   {
-    "id": "F20",
-    "path": "sections.analysis.2",
-    "category": "interpretation_label",
-    "severity": "fix",
-    "problem": "“再决定让步的分寸”“only then decide how far to give”不见于证据，属于未标注的推断。",
-    "evidence": [
-     {
-      "id": "L-E11",
-      "quote": "甯許以負秦曲"
-     }
-    ],
-    "proposed": "删去该分句，或加“一种解释是”/“One reading is”"
-   },
-   {
-    "id": "F21",
-    "path": "sections.limits.1",
-    "category": "interpretation_label",
-    "severity": "fix",
-    "problem": "本段属 record，开头“一次认错没有改变廉颇的脾气”“did not remake Lian Po's temper”是作者概括，没有标注为解释。证据只记事件本身。",
-    "evidence": [
-     {
-      "id": "L-E16",
-      "quote": "廉頗怒，攻樂乘"
-     }
-    ],
-    "proposed": "改为“作者认为，一次认错未必改变了廉颇的脾气”/“The author's reading is that …”"
-   },
-   {
-    "id": "F22",
-    "path": "sections.limits.1",
-    "category": "chronology",
-    "severity": "fix",
-    "problem": "“更早些”“Earlier”断定门客散而复至一事早于乐乘事件，证据没有给出两件事的先后。",
-    "evidence": [
-     {
-      "id": "L-E15",
-      "quote": "廉頗之免長平歸也，失勢之時"
-     },
-     {
-      "id": "L-E16",
-      "quote": "趙孝成王卒"
-     }
-    ],
-    "proposed": "改为“另据记载，他自长平免归失势时……”，删去“更早些/Earlier”"
-   },
-   {
-    "id": "F23",
-    "path": "sections.limits.1",
-    "category": "quotes",
-    "severity": "fix",
-    "problem": "英文“the way the marketplace does”加了引号，像是原文，没有标明是译文。英文还漏了「怒」，与中文“怒而攻乐乘”不一致。",
-    "evidence": [
-     {
-      "id": "L-E15",
-      "quote": "夫天下以市道交"
-     },
-     {
-      "id": "L-E16",
-      "quote": "廉頗怒，攻樂乘"
-     }
-    ],
-    "proposed": "英文改为不加引号的转述，或注明“(in translation)”；并补“Lian Po, enraged, attacked Le Cheng”"
-   },
-   {
-    "id": "F24",
+    "id": "F7",
     "path": "sections.limits.0",
     "category": "interpretation_label",
     "severity": "fix",
-    "problem": "limits.0 与 uncertainty_note 声称凡推断都已标为解释，但 story.7、analysis.1、limits.1 仍有未标注的推断（见 F16、F17、F21），这一体例声明与正文不符。",
+    "problem": "“凡原文未写的人物心理，均以‘一种解释是’‘作者认为’标明”是全称断言，但 analysis.0 中仍有未标注的心理推断（见 F6），这句话不成立。它还与 uncertainty_note 重复。",
     "evidence": [],
-    "proposed": "按 F16、F17、F21 补齐标注，使声明属实"
+    "proposed": "先补齐 F6 的标注，再保留此句；或删去此句，以 uncertainty_note 为准。"
+   },
+   {
+    "id": "F8",
+    "path": "sections.today.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“区别只在道具：没有战车”暗示原来的场景里有战车，但证据只记相如“引車避匿”，那是出行的车，不是战车。这是用证据之外的细节冒充史实。",
+    "evidence": [
+     {
+      "id": "L-E6",
+      "quote": "相如引車避匿"
+     }
+    ],
+    "proposed": "改为“没有马车”（英文 no carriages），或删去这个具体道具。"
    }
   ],
   "inherited": [
    {
-    "id": "M1",
-    "verdict": "valid",
-    "same_as": "F8",
-    "rationale": "原文是「有司」查看地图，不是专管图籍的官员。",
-    "evidence": [
-     {
-      "id": "L-E3",
-      "quote": "召有司案圖"
-     }
-    ]
-   },
-   {
-    "id": "M2",
-    "verdict": "valid",
-    "same_as": "F11",
-    "rationale": "原文没有写明判断出自赵王。",
-    "evidence": [
-     {
-      "id": "L-E5",
-      "quote": "以相如功大，拜爲上卿"
-     }
-    ]
-   },
-   {
-    "id": "M3",
-    "verdict": "invalid",
-    "same_as": "",
-    "rationale": "“出身”是廉颇自己说出的理由，不是作者对其心理的推断，现写法有据。",
+    "id": "X1",
+    "verdict": "duplicate",
+    "same_as": "F7",
+    "rationale": "limits.0 的全称断言确实与 analysis.0 中未标注的心理推断矛盾（见 F6），问题成立，与 F7 相同。删除建议属于文风层面，不影响判定。",
     "evidence": [
      {
       "id": "L-E5",
@@ -2847,136 +1998,53 @@
     ]
    },
    {
-    "id": "M4",
-    "verdict": "valid",
-    "same_as": "F17",
-    "rationale": "“不是单纯的忍”有相如自述为据，但“换成赵国还剩几个能用的人”是未标注的作者概括，问题部分成立。",
-    "evidence": [
-     {
-      "id": "L-E8",
-      "quote": "徒以吾兩人在也"
-     }
-    ]
-   },
-   {
-    "id": "M5",
-    "verdict": "valid",
-    "same_as": "F3",
-    "rationale": "英文多出中文本段没有的内容。",
-    "evidence": [
-     {
-      "id": "L-E1",
-      "quote": "以勇氣聞於諸侯"
-     }
-    ]
-   },
-   {
-    "id": "M6",
+    "id": "X2",
     "verdict": "duplicate",
-    "same_as": "F11",
-    "rationale": "与 M2 相同。",
-    "evidence": []
+    "same_as": "F4",
+    "rationale": "渑池会的核心冲突和会前背景都被省略，与 F4 相同；由此造成的 story.6 所指不明另列为 F5。",
+    "evidence": [
+     {
+      "id": "L-E18",
+      "quote": "相如張目叱之，左右皆靡"
+     }
+    ]
    },
    {
-    "id": "M7",
+    "id": "X3",
     "verdict": "duplicate",
-    "same_as": "F8",
-    "rationale": "与 M1 相同。",
-    "evidence": []
+    "same_as": "F1",
+    "rationale": "权衡之语出自相如对赵王的答话，稿件把它归于“《史记》”，还漏掉了请缨。与 F1 相同；analysis.2 的沿用另列为 F2。",
+    "evidence": [
+     {
+      "id": "L-E20",
+      "quote": "王召見，問藺相如曰"
+     }
+    ]
    },
    {
-    "id": "M8",
+    "id": "X4",
     "verdict": "valid",
-    "same_as": "F16",
-    "rationale": "属于 record 段中未标注的作者评语。",
-    "evidence": []
-   },
-   {
-    "id": "M9",
-    "verdict": "valid",
-    "same_as": "F21",
-    "rationale": "属于 record 段中未标注的作者概括。",
-    "evidence": []
-   },
-   {
-    "id": "M10",
-    "verdict": "invalid",
     "same_as": "",
-    "rationale": "缪贤自述照相如之计行事，即做了肉袒伏斧质请罪这一动作，“两次”的说法有据。",
+    "rationale": "按补入的 L-E18、L-E19、L-E20 核查后，发现叙事缺漏和归属错误，已分别列为 F1–F5。",
     "evidence": [
      {
-      "id": "L-E10",
-      "quote": "君不如肉袒伏斧質請罪"
-     },
-     {
-      "id": "L-E10",
-      "quote": "臣從其計"
+      "id": "L-E19",
+      "quote": "拜相如爲上大夫"
      }
     ]
-   },
-   {
-    "id": "M11",
-    "verdict": "invalid",
-    "same_as": "",
-    "rationale": "证据位置标签明示这段是缪贤荐相如。文中说话人自称其舍人为相如，与 L-E2 相合，可以认定是缪贤在举荐。",
-    "evidence": [
-     {
-      "id": "L-E10",
-      "quote": "繆賢薦相如"
-     },
-     {
-      "id": "L-E10",
-      "quote": "臣舍人相如止臣"
-     },
-     {
-      "id": "L-E2",
-      "quote": "爲趙宦者令繆賢舍人"
-     }
-    ]
-   },
-   {
-    "id": "M12",
-    "verdict": "invalid",
-    "same_as": "",
-    "rationale": "相如自述避让是出于国家之急，“不是单纯的忍”有原文依据。",
-    "evidence": [
-     {
-      "id": "L-E8",
-      "quote": "吾所以爲此者，以先國家之急而後私讎也"
-     }
-    ]
-   },
-   {
-    "id": "M13",
-    "verdict": "invalid",
-    "same_as": "",
-    "rationale": "理由同 M3：出身是廉颇自己公开说出的理由。",
-    "evidence": [
-     {
-      "id": "L-E5",
-      "quote": "且相如素賤人，吾羞，不忍爲之下"
-     }
-    ]
-   },
-   {
-    "id": "M14",
-    "verdict": "duplicate",
-    "same_as": "F17",
-    "rationale": "与 F17 相同。",
-    "evidence": []
    }
   ]
  },
- "final_content_sha256": "37971e470057898a2d281a94b7e14ce606a4eff575afd29378b4882255b1ae42",
+ "final_content_sha256": "df540266cba4736997c92745dac0ca2cbf9760abbe512c2b313498adcbd8829f",
  "open_issues": [],
  "outcome": "admissible",
  "failure": null,
- "finished_at": 1793398172.964715,
+ "finished_at": 1793431133.7816527,
  "calls": [
   {
    "step": "audit",
    "attempt": 1,
-   "wall_s": 144.7,
+   "wall_s": 100.1,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -2984,15 +2052,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 17843,
-    "output_tokens": 16510
+    "cache_creation_input_tokens": 18298,
+    "output_tokens": 11223
    },
-   "cost_estimate_usd": 0.47295200000000004
+   "cost_estimate_usd": 0.37085199999999996
   },
   {
    "step": "revise_r1",
    "attempt": 1,
-   "wall_s": 98.9,
+   "wall_s": 90.8,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -3000,15 +2068,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 21777,
-    "output_tokens": 13501
+    "cache_creation_input_tokens": 19294,
+    "output_tokens": 11081
    },
-   "cost_estimate_usd": 0.4442440000000001
+   "cost_estimate_usd": 0.37598
   },
   {
    "step": "verify_r1",
    "attempt": 1,
-   "wall_s": 81.4,
+   "wall_s": 59.2,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -3016,15 +2084,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 15474,
-    "output_tokens": 9677
+    "cache_creation_input_tokens": 18089,
+    "output_tokens": 7027
    },
-   "cost_estimate_usd": 0.31734
+   "cost_estimate_usd": 0.28526
   },
   {
    "step": "revise_r2",
    "attempt": 1,
-   "wall_s": 18.2,
+   "wall_s": 21.8,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -3032,15 +2100,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 16162,
-    "output_tokens": 2187
+    "cache_creation_input_tokens": 18252,
+    "output_tokens": 2146
    },
-   "cost_estimate_usd": 0.173044
+   "cost_estimate_usd": 0.188944
   },
   {
    "step": "verify_r2",
    "attempt": 1,
-   "wall_s": 61.4,
+   "wall_s": 45.4,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -3048,12 +2116,12 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 15487,
-    "output_tokens": 7104
+    "cache_creation_input_tokens": 18106,
+    "output_tokens": 5296
    },
-   "cost_estimate_usd": 0.265984
+   "cost_estimate_usd": 0.250776
   }
  ],
- "elapsed_min": 6.7,
- "model_wall_min": 6.7
+ "elapsed_min": 5.3,
+ "model_wall_min": 5.3
 }

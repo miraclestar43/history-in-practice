@@ -12,337 +12,224 @@
   "cli_version": "2.1.308 (Claude Code)",
   "model_reported": "claude-opus-5-5"
  },
- "code_rev": "675bf4b",
- "started_at": 1793400453.4716969,
+ "code_rev": "ef58996",
+ "started_at": 1793429776.0476453,
  "base_source": "samples/auto/cand-20261030-franklin-1787/final/article.json",
- "base_content_sha256": "693f41063f7587245777768d689af785e21bd2e0c8cdf85c05b0f83130a1a705",
- "evidence_sha256": "8c434074f7d2164d4fceca0272f297916ec41c8bb4722e8eda07941801ef801f",
+ "base_content_sha256": "630a64f8e14d93850caf5a41e96362de9aad26845cbbcf159fc7960d3b919a0f",
+ "evidence_sha256": "c4d7000eaa561e788c28b5a1b7840e3df739f2e747e76f2d858e0ebacdc68e1c",
+ "operator_note": null,
  "model_record_sha256": "c2c4787fb6937f1fbe259042a424859a0ef50e77c330a32ceeb546a243a9b2d4",
- "prior_record_sha256": "4b5b0d6a2167d0dd8a766afa3f28d31adc201016a772378aaa8aa27efc325844",
- "attempt": "attempt-2",
+ "prior_record_sha256": "62e6568efaa4aa8f08c09eb1fc700ad209397fccf5102631bc343ea522d8071f",
+ "attempt": "attempt-4",
+ "context_review_sha256": "b9c576a8f69c8186bcc61d7679f374fe01fd4f0a2a441ca589b89f44768e87c6",
  "inherited": [
   {
-   "id": "P1",
-   "model_id": "V2-V1",
-   "source": "final-editor previous attempt",
-   "where": "sections.hook.0",
-   "problem": "这一句放在富兰克林讲话之前：中文写“会上有几位成员公开表示过异议”，英文写“Several members openly voiced objections”。本段证据 F-E1 不支持这一点。证据包里当天公开表态的异议（伦道夫、格里等）都出现在讲话之后。F-E18 还记载，富兰克林写讲稿时并不知道会有哪位成员拒签。讲话时只能说仍有成员可能持有异议。",
-   "suggestion": "改为“会要散了，会上仍可能有成员对这份文件持有异议。”英文改为“Some members might still have objections to the document on the table.”，并在本段 ev 中补上 F-E6。"
+   "id": "X1",
+   "source": "context review",
+   "where": "sections.limits.0",
+   "problem": "来源上下文核查（zh）「富兰克林讲稿的措辞在两版间是否有出入，本篇不作断言。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔U2-FRANK〕：「I CONFESS that I do not entirely approve of this conſtitution at preſent」",
+   "suggestion": "Both versions are in the reading range, and the wording plainly differs. Madison's version reads 'several parts of this Constitution which I do not at present approve' and 'builders of Babel'; the 1793 version reads 'do not entirely approve' and 'builders of Babylon', and lacks '(if approved by Congress and confirmed by the conventions)'. State that differences exist and give examples, rather than declining to judge."
   },
   {
-   "id": "P2",
-   "model_id": "V2-V2",
-   "source": "final-editor previous attempt",
-   "where": "sections.story.2",
-   "problem": "中文把“有意含糊”放在“麦迪逊记下一笔内情”之下，等于说这是麦迪逊的原话。麦迪逊原文只写“This ambiguous form”，并说明起草目的是争取异议者，没有写“有意”。英文版是“this ambiguous form”，与原文一致，因此中英不对等。",
-   "suggestion": "中文改为“这个含糊的格式由古弗尼尔·莫里斯起草，为的是争取异议者……”"
+   "id": "X2",
+   "source": "context review",
+   "where": "sections.limits.0",
+   "problem": "来源上下文核查（en）「whether the wording of Franklin's speech differs between the two versions is not asserted.」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔U2-FRANK〕：「like thoſe of the builders of Babylon」",
+   "suggestion": "Elliot has 'builders of Babel'. Say the versions differ in wording and give one or two examples."
   },
   {
-   "id": "P3",
-   "model_id": "V2-V3",
-   "source": "final-editor previous attempt",
-   "where": "uncertainty_note",
-   "problem": "中英文都说英文引语“均为麦迪逊笔记中的逐字片段”。但 sections.limits.0 引用的书名“Final Speech of Dr. Franklin in the late Federal Convention”出自1793年《富兰克林文集》，不是麦迪逊笔记。limits.0 自己已经限定为“正文的英文引语”，说明需要这个限定。",
-   "suggestion": "中文改为“正文英文引语均为麦迪逊笔记中的逐字片段”，英文改为“All English quotations in the body are verbatim fragments of Madison's notes”。"
+   "id": "X3",
+   "source": "context review",
+   "where": "sections.story.4",
+   "problem": "来源上下文核查：Randolph's first statement omits the reason he gave for refusing: he expected ratification to fail and confusion to follow. Readers see only the apology and the reservation, so the refusal looks like a matter of personal conscience alone.。来源原文〔U2-ELLIOT〕：「He refused to sign, because he thought the object of the Convention would be frustrated by the alternative which it presented to the people. Nine states will fail to ratify the plan, and confusion must ensue.」",
+   "suggestion": null
+  },
+  {
+   "id": "X4",
+   "source": "context review",
+   "where": "",
+   "problem": "证据包已按来源上下文补入摘录 F-E29, F-E30, F-E31；请据此检查叙事、结局与因果是否完整准确",
+   "suggestion": null
   }
  ],
  "contamination": [],
  "issues": [
   {
    "id": "F1",
-   "path": "dek",
-   "category": "interpretation_label",
+   "path": "sections.story.4",
+   "category": "facts",
    "severity": "fix",
-   "problem": "中文“有意含糊”、英文“deliberately ambiguous”把含糊说成是有意为之。麦迪逊只写了这个格式含糊，以及起草目的是争取异议者，没有说含糊本身是刻意设计的。",
+   "problem": "伦道夫第一次起身时说明了拒签理由：他认为交给民众的选择方式会使会议目标落空，九个州将不批准，混乱必然随之而来。本段中英文都只写了他的致歉和保留行动自由，没有写这条理由。读者会以为他拒签只出于个人立场，story.6 中他关于无政府与内乱的说法也失去前因。",
    "evidence": [
     {
-     "id": "F-E7",
-     "quote": "This ambiguous form had been drawn up by Mr. Gouverneur Morris, in order to gain the dissenting members"
+     "id": "F-E29",
+     "quote": "He refused to sign, because he thought the object of the Convention would be frustrated by the alternative which it presented to the people. Nine states will fail to ratify the plan, and confusion must ensue."
     }
    ],
-   "proposed": "中文改为“一个含糊的签署格式”，英文改为“an ambiguous signing formula”。",
+   "proposed": "在致歉之后补一句。中文：他说拒签是因为他认为方案交给民众的选择方式会使会议目标落空，九个州将不会批准，混乱必然随之而来。英文：He refused, he said, because he thought the alternative presented to the people would frustrate the Convention's object; nine states would fail to ratify, and confusion must ensue.",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "麦迪逊只说这个格式含糊，并说起草目的是争取异议者，没有说含糊是刻意设计的。dek 中文“有意含糊”改为“含糊”，英文“deliberately ambiguous”改为“ambiguous”。",
+   "rationale": "在 story.4 中英文的致歉之后补入伦道夫第一次起身时陈述的拒签理由：交给民众的选择方式会使会议目标落空，九个州将不批准，混乱必然随之而来。ev 增加 F-E29。",
    "decided_in": "revise_r1"
   },
   {
    "id": "F2",
-   "path": "sections.hook.0",
-   "category": "chronology",
-   "severity": "fix",
-   "problem": "此句位于富兰克林讲话之前，说会上已有几位成员“公开表示过异议”。证据包里当天的公开异议（伦道夫、格里等）都出现在讲话之后。F-E18 还记载富兰克林写讲稿时并不知道会有成员拒签。讲话时只能说仍可能有人持异议。",
-   "evidence": [
-    {
-     "id": "F-E6",
-     "quote": "who may still have objections to it"
-    },
-    {
-     "id": "F-E18",
-     "quote": "he did not know that any particular member would refuse to sign his name to the instrument"
-    }
-   ],
-   "proposed": "中文改为“会要散了，会上仍可能有成员对这份文件持有异议。”英文改为“Some members might still have objections to the document on the table.”，并在本段 ev 中补上 F-E6。",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "讲话前没有证据表明已有成员公开表示异议，而且富兰克林写讲稿时并不知道会有人拒签。中英文改为“仍可能有成员持有异议”，并在本段 ev 中补上 F-E6。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F3",
-   "path": "sections.story.2",
-   "category": "attribution",
-   "severity": "fix",
-   "problem": "中文把“有意含糊”放在“麦迪逊记下一笔内情”之下，等于说这是麦迪逊的原话。原文只写“This ambiguous form”，英文版也只写 ambiguous，因此中英不对等。",
-   "evidence": [
-    {
-     "id": "F-E7",
-     "quote": "This ambiguous form had been drawn up by Mr. Gouverneur Morris"
-    }
-   ],
-   "proposed": "中文改为“这个含糊的格式由古弗尼尔·莫里斯起草，为的是争取异议者……”",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "这句归在麦迪逊名下，原文只写 ambiguous。中文删去“有意”，与英文和原文一致；英文保持原文字，同步给出。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F4",
-   "path": "sections.analysis.0",
-   "category": "attribution",
-   "severity": "fix",
-   "problem": "“莫里斯和布朗特只认‘出席各州一致’这个事实”会让读者以为莫里斯本人只愿证明事实、不作承诺。证据中，莫里斯只是指出该格式仅关乎各州一致这一事实；他本人表示愿连同缺点接受方案，并服从多数决定。只有布朗特明确表示签名而不承诺自己。",
-   "evidence": [
-    {
-     "id": "F-E15",
-     "quote": "he should take it with all its faults"
-    },
-    {
-     "id": "F-E15",
-     "quote": "He remarked that the signing, in the form proposed, related only to the fact that the states present were unanimous."
-    },
-    {
-     "id": "F-E17",
-     "quote": "would, without committing himself, attest the fact"
-    }
-   ],
-   "proposed": "中文改为“莫里斯把这个格式解读为只关乎‘出席各州一致’的事实，布朗特据此只作证明、不作承诺”。英文相应改为“Morris read the form as relating only to the fact that the states present were unanimous, and Blount signed on that basis without committing himself”。",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "莫里斯本人愿连同缺点接受方案，他只是指出该格式仅关乎各州一致这一事实；明确表示不承诺自己的是布朗特。中英文改为：莫里斯把格式解读为只关乎这一事实，布朗特据此可以只作证明、不作承诺。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F5",
-   "path": "sections.analysis.0",
-   "category": "interpretation_label",
-   "severity": "fix",
-   "problem": "中文的“代价是……”仍在“作者推断”的句子之内。英文“The price was that the meaning of that row would need explaining ever after.”另起一句，脱离了 The author's inference 的标注，读起来像事实陈述，与中文不对等。",
-   "evidence": [],
-   "proposed": "英文改为“The price, on this inference, was that…”，或并入前一句的推断之内。",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "英文“代价”一句原本另起，脱离了作者推断的标注。现并入推断句，并加上“on this inference”，与中文保持一致。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F6",
-   "path": "sections.limits.1",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "中文“官方日志”、英文“official Journals”，以及“它们和本篇所依据的麦迪逊笔记是两份不同的材料”这一判断，在证据包里都没有出处。证据只出现“Journals of the Convention”。",
-   "evidence": [
-    {
-     "id": "F-E23",
-     "quote": "the Journals of the Convention should be either destroyed, or deposited in the custody of the president"
-    }
-   ],
-   "proposed": "删去“官方/official”以及“两份不同的材料”一句，只写“会议日志（Journals）及其他文件的去向也值得留意”。",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "证据只写“Journals of the Convention”，不支持“官方”的说法，也不支持“与麦迪逊笔记是两份不同材料”的判断。中英文删去这两处，只保留去向值得留意一句。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F7",
-   "path": "reflection.example.alternative",
-   "category": "parity",
-   "severity": "fix",
-   "problem": "中文再次写“那个有意含糊的格式”，英文写“the ambiguous form of 1787”，中英不一致。而且“有意”没有证据支持（见 F1）。",
-   "evidence": [
-    {
-     "id": "F-E7",
-     "quote": "This ambiguous form"
-    }
-   ],
-   "proposed": "中文改为“1787年那个含糊的格式”。",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "中文删去没有证据支持的“有意”，改为“1787年那个含糊的格式”，与英文和原文一致；英文同步给出。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F8",
-   "path": "uncertainty_note",
+   "path": "sections.story.5",
    "category": "facts",
    "severity": "fix",
-   "problem": "中英文都说英文引语“均为麦迪逊笔记中的逐字片段”。但 sections.limits.0 所引书名出自1793年《富兰克林文集》，不是麦迪逊笔记。limits.0 自己已限定为“正文的英文引语”。",
+   "problem": "本段列举了几位成员对签名的说法，但漏掉了威廉森提出的另一种签法：只在随宪法呈交国会的信上签名，以照顾一些不喜欢宪法的成员。麦迪逊注明其中就包括布朗特。缺了这一条，dek 和 analysis 所说的“几种对签名的不同理解”不完整，布朗特如释重负的背景也不清楚。",
+   "evidence": [
+    {
+     "id": "F-E30",
+     "quote": "Mr. WILLIAMSON suggested that the signing should be confined to the letter accompanying the Constitution to Congress"
+    },
+    {
+     "id": "F-E30",
+     "quote": "For himself, he did not think a better plan was to be expected, and had no scruples against putting his name to it."
+    },
+    {
+     "id": "F-E31",
+     "quote": "He alluded to Mr. Blount for one."
+    }
+   ],
+   "proposed": "中英文各补一句。中文：威廉森建议签名只限于随宪法呈交国会的信，或许能让一些不喜欢宪法的成员（麦迪逊注明其中包括布朗特）满意；他自己并不指望有更好的方案，愿意签。英文作对应补充。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "在 story.5 中英文的布朗特之前补入威廉森的提议：签名只限于随宪法呈交国会的信，以照顾一些不喜欢宪法的成员，麦迪逊注明其中包括布朗特；同时补入威廉森本人不指望更好方案、愿意签名的表态。ev 增加 F-E30 和 F-E31。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "X1",
+   "path": "sections.limits.0",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "来源上下文核查（zh）「富兰克林讲稿的措辞在两版间是否有出入，本篇不作断言。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔U2-FRANK〕：「I CONFESS that I do not entirely approve of this conſtitution at preſent」",
+   "origin": "inherited context review None",
+   "disposition": "rejected",
+   "rationale": "证据包里没有1793年版讲稿的正文，只有题名（F-E11）和收尾及编者说明（F-E28）。X1 所引的“do not entirely approve”、“builders of Babylon”等字句都不在证据包中。按规则不能加入证据包以外的内容。正文说“未逐字比对、不作断言”，与证据包实际只提供麦迪逊版措辞的情况相符。",
+   "evidence": [
+    {
+     "id": "F-E11",
+     "quote": "Final Speech of Dr. Franklin in the late Federal Convention"
+    },
+    {
+     "id": "F-E2",
+     "quote": "several parts of this Constitution which I do not at present approve"
+    }
+   ],
+   "decided_in": "audit"
+  },
+  {
+   "id": "X2",
+   "path": "sections.limits.0",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "来源上下文核查（en）「whether the wording of Franklin's speech differs between the two versions is not asserted.」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔U2-FRANK〕：「like thoſe of the builders of Babylon」",
+   "origin": "inherited context review None",
+   "disposition": "rejected",
+   "rationale": "理由同 X1。证据包里没有“builders of Babylon”或“builders of Babel”的任何一种措辞，无法据证据断言两版措辞不同。英文现写法保持不作断言，是有据的。",
    "evidence": [
     {
      "id": "F-E11",
      "quote": "Final Speech of Dr. Franklin in the late Federal Convention"
     }
    ],
-   "proposed": "中文改为“正文英文引语均为麦迪逊笔记中的逐字片段”，英文改为“All English quotations in the body are verbatim fragments of Madison's notes”。",
-   "origin": "final-editor audit",
+   "decided_in": "audit"
+  },
+  {
+   "id": "X3",
+   "problem": "来源上下文核查：Randolph's first statement omits the reason he gave for refusing: he expected ratification to fail and confusion to follow. Readers see only the apology and the reservation, so the refusal looks like a matter of personal conscience alone.。来源原文〔U2-ELLIOT〕：「He refused to sign, because he thought the object of the Convention would be frustrated by the alternative which it presented to the people. Nine states will fail to ratify the plan, and confusion must ensue.」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.story.4",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "与 F1 相同：story.4 漏写了伦道夫第一次起身时陈述的拒签理由。"
+  },
+  {
+   "id": "X4",
+   "path": "",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "证据包已按来源上下文补入摘录 F-E29, F-E30, F-E31；请据此检查叙事、结局与因果是否完整准确",
+   "origin": "inherited context review None",
+   "audit_rationale": "补入的 F-E29、F-E30、F-E31 确实揭示了两处遗漏：伦道夫的拒签理由（见 F1）和威廉森只签附信的提议及其所指的布朗特（见 F2）。F-E29 至 F-E31 本身未与正文其他陈述冲突。",
    "disposition": "fixed",
-   "rationale": "limits.0 所引书名出自1793年《富兰克林文集》，不是麦迪逊笔记。中英文把范围收窄为正文英文引语，与 limits.0 的限定一致。",
+   "rationale": "按补入的 F-E29、F-E30、F-E31 检查了全文。发现两处遗漏，已分别在 story.4（伦道夫的拒签理由）和 story.5（威廉森的签法提议及其所指的布朗特）中补齐，并更新了这两段的 ev。其余段落与这三条摘录没有冲突，未作改动。",
    "decided_in": "revise_r1"
-  },
-  {
-   "id": "P1",
-   "problem": "这一句放在富兰克林讲话之前：中文写“会上有几位成员公开表示过异议”，英文写“Several members openly voiced objections”。本段证据 F-E1 不支持这一点。证据包里当天公开表态的异议（伦道夫、格里等）都出现在讲话之后。F-E18 还记载，富兰克林写讲稿时并不知道会有哪位成员拒签。讲话时只能说仍有成员可能持有异议。",
-   "origin": "inherited final-editor previous attempt V2-V1",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "sections.hook.0",
-   "disposition": "duplicate",
-   "same_as": "F2",
-   "rationale": "问题成立：讲话前的公开异议没有证据支持，且富兰克林写讲稿时不知道有人会拒签。已列为 F2。"
-  },
-  {
-   "id": "P2",
-   "problem": "中文把“有意含糊”放在“麦迪逊记下一笔内情”之下，等于说这是麦迪逊的原话。麦迪逊原文只写“This ambiguous form”，并说明起草目的是争取异议者，没有写“有意”。英文版是“this ambiguous form”，与原文一致，因此中英不对等。",
-   "origin": "inherited final-editor previous attempt V2-V2",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "sections.story.2",
-   "disposition": "duplicate",
-   "same_as": "F3",
-   "rationale": "问题成立：麦迪逊原文只写“This ambiguous form”，没有“有意”。已列为 F3。"
-  },
-  {
-   "id": "P3",
-   "problem": "中英文都说英文引语“均为麦迪逊笔记中的逐字片段”。但 sections.limits.0 引用的书名“Final Speech of Dr. Franklin in the late Federal Convention”出自1793年《富兰克林文集》，不是麦迪逊笔记。limits.0 自己已经限定为“正文的英文引语”，说明需要这个限定。",
-   "origin": "inherited final-editor previous attempt V2-V3",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "uncertainty_note",
-   "disposition": "duplicate",
-   "same_as": "F8",
-   "rationale": "问题成立：limits.0 所引书名出自1793年《富兰克林文集》，不是麦迪逊笔记。已列为 F8。"
   }
  ],
  "edits": [
   {
-   "path": "dek.zh",
-   "before": "一部明知有缺点的宪法摆在面前，签还是不签、怎么签？制宪会议最后一天：一个有意含糊的签署格式、几种对签名的不同理解、三个拒签的人，和议长椅背上画着的那颗太阳。",
-   "after": "一部明知有缺点的宪法摆在面前，签还是不签、怎么签？制宪会议最后一天：一个含糊的签署格式、几种对签名的不同理解、三个拒签的人，和议长椅背上画着的那颗太阳。",
+   "path": "sections.story.4.zh",
+   "before": "伦道夫起身，影射着富兰克林的话，为自己拒签致歉：尽管有压倒多数和德高望重的名字为这份方案背书。他说，拒签不等于他要在会外反对宪法，他只是要保留按日后的判断、照自己的职责行事的自由。",
+   "after": "伦道夫起身，影射着富兰克林的话，为自己拒签致歉：尽管有压倒多数和德高望重的名字为这份方案背书。他说，他拒签是因为他认为方案交给民众的选择方式会使会议的目标落空：九个州将不会批准这份方案，混乱必然随之而来。他说，拒签不等于他要在会外反对宪法，他只是要保留按日后的判断、照自己的职责行事的自由。",
    "issues": [
-    "F1"
+    "F1",
+    "X4"
    ]
   },
   {
-   "path": "dek.en",
-   "before": "A constitution with known flaws lay on the table: sign it or not, and how? On the last day of the Constitutional Convention: a deliberately ambiguous signing formula, several readings of what a signature meant, three refusals, and a sun painted on the back of the presiding officer's chair.",
-   "after": "A constitution with known flaws lay on the table: sign it or not, and how? On the last day of the Constitutional Convention: an ambiguous signing formula, several readings of what a signature meant, three refusals, and a sun painted on the back of the presiding officer's chair.",
+   "path": "sections.story.4.en",
+   "before": "Randolph rose and, alluding to Franklin's observations, apologized for refusing to sign, notwithstanding the vast majority and venerable names that would give the plan their sanction. Refusing, he said, did not mean he would oppose the Constitution outside the convention's doors; he meant only to keep himself free to be governed by his duty, as his future judgment should prescribe it.",
+   "after": "Randolph rose and, alluding to Franklin's observations, apologized for refusing to sign, notwithstanding the vast majority and venerable names that would give the plan their sanction. He refused, he said, because he thought the alternative the plan presented to the people would frustrate the Convention's object; nine states would fail to ratify it, and confusion must ensue. Refusing, he said, did not mean he would oppose the Constitution outside the convention's doors; he meant only to keep himself free to be governed by his duty, as his future judgment should prescribe it.",
    "issues": [
-    "F1"
+    "F1",
+    "X4"
    ]
   },
   {
-   "path": "sections.hook.0.zh",
-   "before": "1787年9月17日，制宪会议的最后一天。宪法的誊清本宣读完毕，本杰明·富兰克林站起身，手里拿着一份写好的讲稿；麦迪逊的笔记说，他是为了自己方便才把话写下来的，随后由威尔逊代为宣读。会要散了，对桌上这份文件，会上有几位成员公开表示过异议。摆在面前的一个问题是：签不签，怎么签。",
-   "after": "1787年9月17日，制宪会议的最后一天。宪法的誊清本宣读完毕，本杰明·富兰克林站起身，手里拿着一份写好的讲稿；麦迪逊的笔记说，他是为了自己方便才把话写下来的，随后由威尔逊代为宣读。会要散了，会上仍可能有成员对桌上这份文件持有异议。摆在面前的一个问题是：签不签，怎么签。",
-   "issues": [
-    "F2"
-   ]
-  },
-  {
-   "path": "sections.hook.0.en",
-   "before": "September 17, 1787, the last day of the Constitutional Convention. The engrossed Constitution had just been read aloud when Benjamin Franklin rose with a speech in his hand; Madison's notes say he had written it out for his own convenience, and Mr. Wilson read it to the hall. The meeting was about to dissolve. Several members openly voiced objections to the document on the table. One question before them: sign it or not, and how.",
-   "after": "September 17, 1787, the last day of the Constitutional Convention. The engrossed Constitution had just been read aloud when Benjamin Franklin rose with a speech in his hand; Madison's notes say he had written it out for his own convenience, and Mr. Wilson read it to the hall. The meeting was about to dissolve. Some members might still have objections to the document on the table. One question before them: sign it or not, and how.",
-   "issues": [
-    "F2"
-   ]
-  },
-  {
-   "path": "sections.hook.0.ev",
+   "path": "sections.story.4.ev",
    "before": [
-    "F-E1"
+    "F-E8",
+    "F-E19"
    ],
    "after": [
-    "F-E1",
-    "F-E6"
+    "F-E8",
+    "F-E19",
+    "F-E29"
    ],
    "issues": [
-    "F2"
+    "F1",
+    "X4"
    ]
   },
   {
-   "path": "sections.story.2.zh",
-   "before": "他随即动议成员签字，并提出一个现成的格式：“经出席各州一致同意，于会议中完成，9月17日……为此，我们在此签名作证。”麦迪逊记下一笔内情：这个有意含糊的格式由古弗尼尔·莫里斯起草，为的是争取异议者，交到富兰克林手上提出，好让它有更大的成功机会。",
-   "after": "他随即动议成员签字，并提出一个现成的格式：“经出席各州一致同意，于会议中完成，9月17日……为此，我们在此签名作证。”麦迪逊记下一笔内情：这个含糊的格式由古弗尼尔·莫里斯起草，为的是争取异议者，交到富兰克林手上提出，好让它有更大的成功机会。",
+   "path": "sections.story.5.zh",
+   "before": "接着几位成员各自说明为什么签。莫里斯说，他也有异议，但视此为能得到的最好方案，愿连同缺点照收；多数已经决定，他服从这个决定；方案一出手，其余考虑都会退居其次，问题只剩“要不要有一个全国政府”，否则便是无政府。他并指出，按所提格式签名，只关乎出席各州一致这一事实。汉密尔顿说，他希望人人都签：几个有分量的人若反对甚至拒签，可能点燃潜藏在可能很快消退的拥护热情之下的火星，造成无穷祸害；在无政府与动荡、和方案可能带来的好处之间，没有什么可犹豫的。布朗特说，他本已声明不会以承诺支持的方式签名，但这个格式让他如释重负——他可以不承诺自己，只证明“方案是会议中各州一致的行动”这一事实。",
+   "after": "接着几位成员各自说明为什么签。莫里斯说，他也有异议，但视此为能得到的最好方案，愿连同缺点照收；多数已经决定，他服从这个决定；方案一出手，其余考虑都会退居其次，问题只剩“要不要有一个全国政府”，否则便是无政府。他并指出，按所提格式签名，只关乎出席各州一致这一事实。汉密尔顿说，他希望人人都签：几个有分量的人若反对甚至拒签，可能点燃潜藏在可能很快消退的拥护热情之下的火星，造成无穷祸害；在无政府与动荡、和方案可能带来的好处之间，没有什么可犹豫的。威廉森建议，签名只限于随宪法呈交国会的那封信，这或许差不多同样可行，也能让一些不喜欢宪法的成员满意——麦迪逊注明，他所指的就包括布朗特；至于他自己，并不指望有更好的方案，对签名毫无顾虑。布朗特说，他本已声明不会以承诺支持的方式签名，但这个格式让他如释重负——他可以不承诺自己，只证明“方案是会议中各州一致的行动”这一事实。",
    "issues": [
-    "F3"
+    "F2",
+    "X4"
    ]
   },
   {
-   "path": "sections.analysis.0.zh",
-   "before": "这一天的争议几乎都绕着同一个动作：在文件末尾写上名字。一种解释是，莫里斯起草的那个格式把“签字”拆成了两个问题——你证明什么，你承诺什么。莫里斯和布朗特只认“出席各州一致”这个事实；英格索尔读作推荐；平克尼要求签名就该是承诺；伦道夫则认为两者拆不开，签了就是签了，格式再软也一样。作者推断，正因为它对不同的人意味着不同的事，多数人才能站到同一行名字底下；代价是，这行名字的含义从此需要解释。",
-   "after": "这一天的争议几乎都绕着同一个动作：在文件末尾写上名字。一种解释是，莫里斯起草的那个格式把“签字”拆成了两个问题——你证明什么，你承诺什么。莫里斯把这个格式解读为只关乎“出席各州一致”这一事实，布朗特据此表示可以只作证明、不作承诺；英格索尔读作推荐；平克尼要求签名就该是承诺；伦道夫则认为两者拆不开，签了就是签了，格式再软也一样。作者推断，正因为它对不同的人意味着不同的事，多数人才能站到同一行名字底下；代价是，这行名字的含义从此需要解释。",
+   "path": "sections.story.5.en",
+   "before": "Then several members explained why they would sign. Morris said he had objections, but this was the best that was to be attained, and he would take it with all its faults; the majority had decided and he would abide by that determination. The moment the plan went forth, every other consideration would be laid aside and the great question would be whether there was to be a national government at all — with anarchy as the alternative. The signing in the proposed form, he pointed out, related only to the fact that the states present were unanimous. Hamilton urged that every member sign: a few characters of consequence, by opposing or even refusing, might do infinite mischief, kindling the latent sparks that lurked under an enthusiasm for the convention which might soon subside — and that between anarchy and convulsions and the good the plan might bring there was nothing to hesitate over. Blount said he had declared he would not sign so as to pledge himself to support the plan, but the form relieved him: without committing himself, he could attest the fact that the plan was the unanimous act of the states in convention.",
+   "after": "Then several members explained why they would sign. Morris said he had objections, but this was the best that was to be attained, and he would take it with all its faults; the majority had decided and he would abide by that determination. The moment the plan went forth, every other consideration would be laid aside and the great question would be whether there was to be a national government at all — with anarchy as the alternative. The signing in the proposed form, he pointed out, related only to the fact that the states present were unanimous. Hamilton urged that every member sign: a few characters of consequence, by opposing or even refusing, might do infinite mischief, kindling the latent sparks that lurked under an enthusiasm for the convention which might soon subside — and that between anarchy and convulsions and the good the plan might bring there was nothing to hesitate over. Williamson suggested that the signing be confined to the letter accompanying the Constitution to Congress, which might do nearly as well and would satisfy some members who disliked the Constitution — Madison notes that he alluded to Blount for one; for himself, he did not think a better plan was to be expected and had no scruples against putting his name to it. Blount said he had declared he would not sign so as to pledge himself to support the plan, but the form relieved him: without committing himself, he could attest the fact that the plan was the unanimous act of the states in convention.",
    "issues": [
-    "F4",
-    "F5"
+    "F2",
+    "X4"
    ]
   },
   {
-   "path": "sections.analysis.0.en",
-   "before": "Almost the whole day's argument circles a single act: writing a name at the foot of a page. On one reading, Morris's form split signing into two questions — what do you attest, and what do you commit to? Morris and Blount acknowledged only the fact that the states present were unanimous; Ingersoll read the signature as a recommendation; Pinckney held that it ought to be a commitment; Randolph thought the two inseparable, a signature however softly worded being still a signature. The author's inference: precisely because the act meant different things to different men could a majority stand beneath one row of names. The price was that the meaning of that row would need explaining ever after.",
-   "after": "Almost the whole day's argument circles a single act: writing a name at the foot of a page. On one reading, Morris's form split signing into two questions — what do you attest, and what do you commit to? Morris read the form as relating only to the fact that the states present were unanimous, and Blount, relieved by it, would attest that fact without committing himself; Ingersoll read the signature as a recommendation; Pinckney held that it ought to be a commitment; Randolph thought the two inseparable, a signature however softly worded being still a signature. The author's inference: precisely because the act meant different things to different men could a majority stand beneath one row of names; the price, on this inference, was that the meaning of that row would need explaining ever after.",
+   "path": "sections.story.5.ev",
+   "before": [
+    "F-E15",
+    "F-E16",
+    "F-E17"
+   ],
+   "after": [
+    "F-E15",
+    "F-E16",
+    "F-E17",
+    "F-E30",
+    "F-E31"
+   ],
    "issues": [
-    "F4",
-    "F5"
-   ]
-  },
-  {
-   "path": "sections.limits.1.zh",
-   "before": "会议官方日志及其他文件的去向也值得留意，它们和本篇所依据的麦迪逊笔记是两份不同的材料。同日的笔记里，金建议销毁会议日志或交主席保管，理由是日志若公开，会被想阻挠宪法的人利用；威尔逊倾向交主席保管（他一度更赞成销毁），说虚假说法可能流传，不应让反驳无从谈起；最终决定把日志及其他文件交主席保管，听候日后若依宪法成立的国会处置。至于富兰克林关于太阳的那段话，笔记记的是他望着椅背，对身边几位成员说的——那是对身边几个人说的话，不是对全场的正式演说。另外，本篇只写到1787年9月17日会议散会为止，不涉及宪法此后的批准与修正。",
-   "after": "会议日志及其他文件的去向也值得留意。同日的笔记里，金建议销毁会议日志或交主席保管，理由是日志若公开，会被想阻挠宪法的人利用；威尔逊倾向交主席保管（他一度更赞成销毁），说虚假说法可能流传，不应让反驳无从谈起；最终决定把日志及其他文件交主席保管，听候日后若依宪法成立的国会处置。至于富兰克林关于太阳的那段话，笔记记的是他望着椅背，对身边几位成员说的——那是对身边几个人说的话，不是对全场的正式演说。另外，本篇只写到1787年9月17日会议散会为止，不涉及宪法此后的批准与修正。",
-   "issues": [
-    "F6"
-   ]
-  },
-  {
-   "path": "sections.limits.1.en",
-   "before": "The fate of the Convention's official Journals and other papers also deserves a look; they are a different set of papers from the Madison notes this piece relies on. In Madison's notes for the same day, King suggests that the Journals be destroyed or left in the president's custody, since made public they would be put to bad use by those wishing to prevent the Constitution's adoption; Wilson prefers the second course, though he had at one time liked the first best — false suggestions may be spread, and it should not be made impossible to contradict them — and the Journals and other papers are left with the president, subject to the order of Congress, if ever formed under the Constitution. As for Franklin and the sun, the notes record that he observed to a few members near him: an aside to those beside him, not a formal address to the whole hall. In any case, this piece stops at the adjournment of 17 September 1787 and touches neither ratification nor amendment.",
-   "after": "The fate of the Convention's Journals and other papers also deserves a look. In Madison's notes for the same day, King suggests that the Journals be destroyed or left in the president's custody, since made public they would be put to bad use by those wishing to prevent the Constitution's adoption; Wilson prefers the second course, though he had at one time liked the first best — false suggestions may be spread, and it should not be made impossible to contradict them — and the Journals and other papers are left with the president, subject to the order of Congress, if ever formed under the Constitution. As for Franklin and the sun, the notes record that he observed to a few members near him: an aside to those beside him, not a formal address to the whole hall. In any case, this piece stops at the adjournment of 17 September 1787 and touches neither ratification nor amendment.",
-   "issues": [
-    "F6"
-   ]
-  },
-  {
-   "path": "reflection.example.alternative.zh",
-   "before": "作者提出：可以要求在签名旁注明一句保留说明，例如“仅确认方案按程序通过，不代表认可全部条款”。这和1787年那个有意含糊的格式精神相通，但并非同一做法；作者也提醒，这样做会削弱“一致”的效果，需要权衡。",
-   "after": "作者提出：可以要求在签名旁注明一句保留说明，例如“仅确认方案按程序通过，不代表认可全部条款”。这和1787年那个含糊的格式精神相通，但并非同一做法；作者也提醒，这样做会削弱“一致”的效果，需要权衡。",
-   "issues": [
-    "F7"
-   ]
-  },
-  {
-   "path": "uncertainty_note.zh",
-   "before": "会场记录主要来自麦迪逊的笔记（1845年埃利奥特编本，维基文库）；1793年《富兰克林文集》所印讲稿可作对照，本篇未逐字比对两版。英文引语均为麦迪逊笔记中的逐字片段，人物发言按笔记转述，未替任何人补写动机或心理；作者的推断均已标明为解释。",
-   "after": "会场记录主要来自麦迪逊的笔记（1845年埃利奥特编本，维基文库）；1793年《富兰克林文集》所印讲稿可作对照，本篇未逐字比对两版。正文英文引语均为麦迪逊笔记中的逐字片段，人物发言按笔记转述，未替任何人补写动机或心理；作者的推断均已标明为解释。",
-   "issues": [
-    "F8"
-   ]
-  },
-  {
-   "path": "uncertainty_note.en",
-   "before": "The record comes chiefly from Madison's notes (Elliot's 1845 edition, Wikisource); the speech as printed in the 1793 Works of Franklin can serve as a check, and the two have not been collated word by word here. All English quotations are verbatim fragments of Madison's notes; speeches are reported as the notes give them, no motive or psychology has been supplied for anyone, and the author's inferences are marked as interpretation.",
-   "after": "The record comes chiefly from Madison's notes (Elliot's 1845 edition, Wikisource); the speech as printed in the 1793 Works of Franklin can serve as a check, and the two have not been collated word by word here. All English quotations in the body are verbatim fragments of Madison's notes; speeches are reported as the notes give them, no motive or psychology has been supplied for anyone, and the author's inferences are marked as interpretation.",
-   "issues": [
-    "F8"
+    "F2",
+    "X4"
    ]
   }
  ],
@@ -352,18 +239,13 @@
    "issues_in": [
     "F1",
     "F2",
-    "F3",
-    "F4",
-    "F5",
-    "F6",
-    "F7",
-    "F8"
+    "X4"
    ],
-   "changes_applied": 13,
+   "changes_applied": 6,
    "changes_failed": [],
    "still_open": [],
    "checker_after": [],
-   "content_sha256_after": "0eafd25854a3baa027596192cc38eeaed9b81b7367d6f783b6b5acbed97e03c4",
+   "content_sha256_after": "d2bf94cbd31effcc677b10e83131d8dc26722bac4f70c5abe244b15b9daed852",
    "verify": {
     "fields": [
      {
@@ -872,8 +754,8 @@
      }
     ],
     "issues": [],
-    "overall": "逐字段重新核对后，定稿的日期、人名、表决数字、发言内容和英文引语都能在证据包中找到逐字或忠实的依据。推断均已标为解释，现代场景已标明虚构，中英文一致且无截断，可以发布。",
-    "_content_sha256": "0eafd25854a3baa027596192cc38eeaed9b81b7367d6f783b6b5acbed97e03c4"
+    "overall": "逐字段复核后，各字段的事实、归属、时序、引语与中英对应均有证据支持，推断已标为解释，现代场景未冒充记录，定稿可发。",
+    "_content_sha256": "d2bf94cbd31effcc677b10e83131d8dc26722bac4f70c5abe244b15b9daed852"
    }
   }
  ],
@@ -905,14 +787,18 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F1"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.hook.heading",
     "checked": [
      "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -929,9 +815,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F2"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.hook.1",
@@ -951,6 +835,12 @@
     "path": "sections.context.heading",
     "checked": [
      "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1001,6 +891,12 @@
     "path": "sections.story.heading",
     "checked": [
      "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1045,9 +941,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F3"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.story.3",
@@ -1075,7 +969,9 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F1"
+    ]
    },
    {
     "path": "sections.story.5",
@@ -1089,7 +985,9 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F2"
+    ]
    },
    {
     "path": "sections.story.6",
@@ -1165,6 +1063,12 @@
     "path": "sections.analysis.heading",
     "checked": [
      "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1181,10 +1085,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F4",
-     "F5"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.analysis.1",
@@ -1204,6 +1105,7 @@
     "path": "sections.today.heading",
     "checked": [
      "facts",
+     "quotes",
      "parity"
     ],
     "issue_ids": []
@@ -1213,8 +1115,6 @@
     "checked": [
      "facts",
      "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1224,8 +1124,6 @@
     "checked": [
      "facts",
      "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1234,6 +1132,12 @@
     "path": "sections.limits.heading",
     "checked": [
      "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1264,9 +1168,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F6"
-    ]
+    "issue_ids": []
    },
    {
     "path": "reflection.scenario",
@@ -1309,13 +1211,10 @@
     "checked": [
      "facts",
      "attribution",
-     "quotes",
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F7"
-    ]
+    "issue_ids": []
    },
    {
     "path": "uncertainty_note",
@@ -1323,184 +1222,120 @@
      "facts",
      "attribution",
      "quotes",
+     "inner_life",
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F8"
-    ]
+    "issue_ids": []
    }
   ],
   "issues": [
    {
     "id": "F1",
-    "path": "dek",
-    "category": "interpretation_label",
+    "path": "sections.story.4",
+    "category": "facts",
     "severity": "fix",
-    "problem": "中文“有意含糊”、英文“deliberately ambiguous”把含糊说成是有意为之。麦迪逊只写了这个格式含糊，以及起草目的是争取异议者，没有说含糊本身是刻意设计的。",
+    "problem": "伦道夫第一次起身时说明了拒签理由：他认为交给民众的选择方式会使会议目标落空，九个州将不批准，混乱必然随之而来。本段中英文都只写了他的致歉和保留行动自由，没有写这条理由。读者会以为他拒签只出于个人立场，story.6 中他关于无政府与内乱的说法也失去前因。",
     "evidence": [
      {
-      "id": "F-E7",
-      "quote": "This ambiguous form had been drawn up by Mr. Gouverneur Morris, in order to gain the dissenting members"
+      "id": "F-E29",
+      "quote": "He refused to sign, because he thought the object of the Convention would be frustrated by the alternative which it presented to the people. Nine states will fail to ratify the plan, and confusion must ensue."
      }
     ],
-    "proposed": "中文改为“一个含糊的签署格式”，英文改为“an ambiguous signing formula”。"
+    "proposed": "在致歉之后补一句。中文：他说拒签是因为他认为方案交给民众的选择方式会使会议目标落空，九个州将不会批准，混乱必然随之而来。英文：He refused, he said, because he thought the alternative presented to the people would frustrate the Convention's object; nine states would fail to ratify, and confusion must ensue."
    },
    {
     "id": "F2",
-    "path": "sections.hook.0",
-    "category": "chronology",
-    "severity": "fix",
-    "problem": "此句位于富兰克林讲话之前，说会上已有几位成员“公开表示过异议”。证据包里当天的公开异议（伦道夫、格里等）都出现在讲话之后。F-E18 还记载富兰克林写讲稿时并不知道会有成员拒签。讲话时只能说仍可能有人持异议。",
-    "evidence": [
-     {
-      "id": "F-E6",
-      "quote": "who may still have objections to it"
-     },
-     {
-      "id": "F-E18",
-      "quote": "he did not know that any particular member would refuse to sign his name to the instrument"
-     }
-    ],
-    "proposed": "中文改为“会要散了，会上仍可能有成员对这份文件持有异议。”英文改为“Some members might still have objections to the document on the table.”，并在本段 ev 中补上 F-E6。"
-   },
-   {
-    "id": "F3",
-    "path": "sections.story.2",
-    "category": "attribution",
-    "severity": "fix",
-    "problem": "中文把“有意含糊”放在“麦迪逊记下一笔内情”之下，等于说这是麦迪逊的原话。原文只写“This ambiguous form”，英文版也只写 ambiguous，因此中英不对等。",
-    "evidence": [
-     {
-      "id": "F-E7",
-      "quote": "This ambiguous form had been drawn up by Mr. Gouverneur Morris"
-     }
-    ],
-    "proposed": "中文改为“这个含糊的格式由古弗尼尔·莫里斯起草，为的是争取异议者……”"
-   },
-   {
-    "id": "F4",
-    "path": "sections.analysis.0",
-    "category": "attribution",
-    "severity": "fix",
-    "problem": "“莫里斯和布朗特只认‘出席各州一致’这个事实”会让读者以为莫里斯本人只愿证明事实、不作承诺。证据中，莫里斯只是指出该格式仅关乎各州一致这一事实；他本人表示愿连同缺点接受方案，并服从多数决定。只有布朗特明确表示签名而不承诺自己。",
-    "evidence": [
-     {
-      "id": "F-E15",
-      "quote": "he should take it with all its faults"
-     },
-     {
-      "id": "F-E15",
-      "quote": "He remarked that the signing, in the form proposed, related only to the fact that the states present were unanimous."
-     },
-     {
-      "id": "F-E17",
-      "quote": "would, without committing himself, attest the fact"
-     }
-    ],
-    "proposed": "中文改为“莫里斯把这个格式解读为只关乎‘出席各州一致’的事实，布朗特据此只作证明、不作承诺”。英文相应改为“Morris read the form as relating only to the fact that the states present were unanimous, and Blount signed on that basis without committing himself”。"
-   },
-   {
-    "id": "F5",
-    "path": "sections.analysis.0",
-    "category": "interpretation_label",
-    "severity": "fix",
-    "problem": "中文的“代价是……”仍在“作者推断”的句子之内。英文“The price was that the meaning of that row would need explaining ever after.”另起一句，脱离了 The author's inference 的标注，读起来像事实陈述，与中文不对等。",
-    "evidence": [],
-    "proposed": "英文改为“The price, on this inference, was that…”，或并入前一句的推断之内。"
-   },
-   {
-    "id": "F6",
-    "path": "sections.limits.1",
-    "category": "unsupported",
-    "severity": "fix",
-    "problem": "中文“官方日志”、英文“official Journals”，以及“它们和本篇所依据的麦迪逊笔记是两份不同的材料”这一判断，在证据包里都没有出处。证据只出现“Journals of the Convention”。",
-    "evidence": [
-     {
-      "id": "F-E23",
-      "quote": "the Journals of the Convention should be either destroyed, or deposited in the custody of the president"
-     }
-    ],
-    "proposed": "删去“官方/official”以及“两份不同的材料”一句，只写“会议日志（Journals）及其他文件的去向也值得留意”。"
-   },
-   {
-    "id": "F7",
-    "path": "reflection.example.alternative",
-    "category": "parity",
-    "severity": "fix",
-    "problem": "中文再次写“那个有意含糊的格式”，英文写“the ambiguous form of 1787”，中英不一致。而且“有意”没有证据支持（见 F1）。",
-    "evidence": [
-     {
-      "id": "F-E7",
-      "quote": "This ambiguous form"
-     }
-    ],
-    "proposed": "中文改为“1787年那个含糊的格式”。"
-   },
-   {
-    "id": "F8",
-    "path": "uncertainty_note",
+    "path": "sections.story.5",
     "category": "facts",
     "severity": "fix",
-    "problem": "中英文都说英文引语“均为麦迪逊笔记中的逐字片段”。但 sections.limits.0 所引书名出自1793年《富兰克林文集》，不是麦迪逊笔记。limits.0 自己已限定为“正文的英文引语”。",
+    "problem": "本段列举了几位成员对签名的说法，但漏掉了威廉森提出的另一种签法：只在随宪法呈交国会的信上签名，以照顾一些不喜欢宪法的成员。麦迪逊注明其中就包括布朗特。缺了这一条，dek 和 analysis 所说的“几种对签名的不同理解”不完整，布朗特如释重负的背景也不清楚。",
     "evidence": [
      {
-      "id": "F-E11",
-      "quote": "Final Speech of Dr. Franklin in the late Federal Convention"
+      "id": "F-E30",
+      "quote": "Mr. WILLIAMSON suggested that the signing should be confined to the letter accompanying the Constitution to Congress"
+     },
+     {
+      "id": "F-E30",
+      "quote": "For himself, he did not think a better plan was to be expected, and had no scruples against putting his name to it."
+     },
+     {
+      "id": "F-E31",
+      "quote": "He alluded to Mr. Blount for one."
      }
     ],
-    "proposed": "中文改为“正文英文引语均为麦迪逊笔记中的逐字片段”，英文改为“All English quotations in the body are verbatim fragments of Madison's notes”。"
+    "proposed": "中英文各补一句。中文：威廉森建议签名只限于随宪法呈交国会的信，或许能让一些不喜欢宪法的成员（麦迪逊注明其中包括布朗特）满意；他自己并不指望有更好的方案，愿意签。英文作对应补充。"
    }
   ],
   "inherited": [
    {
-    "id": "P1",
-    "verdict": "duplicate",
-    "same_as": "F2",
-    "rationale": "问题成立：讲话前的公开异议没有证据支持，且富兰克林写讲稿时不知道有人会拒签。已列为 F2。",
-    "evidence": [
-     {
-      "id": "F-E18",
-      "quote": "he did not know that any particular member would refuse to sign his name to the instrument"
-     }
-    ]
-   },
-   {
-    "id": "P2",
-    "verdict": "duplicate",
-    "same_as": "F3",
-    "rationale": "问题成立：麦迪逊原文只写“This ambiguous form”，没有“有意”。已列为 F3。",
-    "evidence": [
-     {
-      "id": "F-E7",
-      "quote": "This ambiguous form had been drawn up by Mr. Gouverneur Morris"
-     }
-    ]
-   },
-   {
-    "id": "P3",
-    "verdict": "duplicate",
-    "same_as": "F8",
-    "rationale": "问题成立：limits.0 所引书名出自1793年《富兰克林文集》，不是麦迪逊笔记。已列为 F8。",
+    "id": "X1",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "证据包里没有1793年版讲稿的正文，只有题名（F-E11）和收尾及编者说明（F-E28）。X1 所引的“do not entirely approve”、“builders of Babylon”等字句都不在证据包中。按规则不能加入证据包以外的内容。正文说“未逐字比对、不作断言”，与证据包实际只提供麦迪逊版措辞的情况相符。",
     "evidence": [
      {
       "id": "F-E11",
       "quote": "Final Speech of Dr. Franklin in the late Federal Convention"
+     },
+     {
+      "id": "F-E2",
+      "quote": "several parts of this Constitution which I do not at present approve"
+     }
+    ]
+   },
+   {
+    "id": "X2",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "理由同 X1。证据包里没有“builders of Babylon”或“builders of Babel”的任何一种措辞，无法据证据断言两版措辞不同。英文现写法保持不作断言，是有据的。",
+    "evidence": [
+     {
+      "id": "F-E11",
+      "quote": "Final Speech of Dr. Franklin in the late Federal Convention"
+     }
+    ]
+   },
+   {
+    "id": "X3",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "与 F1 相同：story.4 漏写了伦道夫第一次起身时陈述的拒签理由。",
+    "evidence": [
+     {
+      "id": "F-E29",
+      "quote": "Nine states will fail to ratify the plan, and confusion must ensue."
+     }
+    ]
+   },
+   {
+    "id": "X4",
+    "verdict": "valid",
+    "same_as": "",
+    "rationale": "补入的 F-E29、F-E30、F-E31 确实揭示了两处遗漏：伦道夫的拒签理由（见 F1）和威廉森只签附信的提议及其所指的布朗特（见 F2）。F-E29 至 F-E31 本身未与正文其他陈述冲突。",
+    "evidence": [
+     {
+      "id": "F-E30",
+      "quote": "would be found satisfactory to some members"
+     },
+     {
+      "id": "F-E31",
+      "quote": "He alluded to Mr. Blount for one."
      }
     ]
    }
   ]
  },
- "final_content_sha256": "0eafd25854a3baa027596192cc38eeaed9b81b7367d6f783b6b5acbed97e03c4",
+ "final_content_sha256": "d2bf94cbd31effcc677b10e83131d8dc26722bac4f70c5abe244b15b9daed852",
  "open_issues": [],
  "outcome": "admissible",
  "failure": null,
- "finished_at": 1793400635.1949286,
+ "finished_at": 1793429945.7659514,
  "calls": [
   {
    "step": "audit",
    "attempt": 1,
-   "wall_s": 93.4,
+   "wall_s": 90.2,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1508,15 +1343,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 19238,
-    "output_tokens": 11113
+    "cache_creation_input_tokens": 20819,
+    "output_tokens": 10084
    },
-   "cost_estimate_usd": 0.376172
+   "cost_estimate_usd": 0.36824
   },
   {
    "step": "revise_r1",
    "attempt": 1,
-   "wall_s": 40.8,
+   "wall_s": 23.2,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1524,15 +1359,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 20099,
-    "output_tokens": 5304
+    "cache_creation_input_tokens": 20490,
+    "output_tokens": 2833
    },
-   "cost_estimate_usd": 0.26688
+   "cost_estimate_usd": 0.220588
   },
   {
    "step": "verify_r1",
    "attempt": 1,
-   "wall_s": 47.4,
+   "wall_s": 56.2,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1540,12 +1375,12 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 17823,
-    "output_tokens": 5744
+    "cache_creation_input_tokens": 19732,
+    "output_tokens": 6730
    },
-   "cost_estimate_usd": 0.257472
+   "cost_estimate_usd": 0.292464
   }
  ],
- "elapsed_min": 3.0,
- "model_wall_min": 3.0
+ "elapsed_min": 2.8,
+ "model_wall_min": 2.8
 }

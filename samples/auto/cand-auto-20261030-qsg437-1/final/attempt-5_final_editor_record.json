@@ -1,0 +1,1606 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-auto-20261030-qsg437-1",
+ "edition_id": "cand-auto-20261030-qsg437-1",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "8645cae",
+ "started_at": 1793437439.7020764,
+ "base_source": "samples/auto/cand-auto-20261030-qsg437-1/final/article.json",
+ "base_content_sha256": "5d72be8e0ba891d3217d00b854873f22ad39d3a069b029d8cc3560280c7e625d",
+ "evidence_sha256": "e67cda1063e78d9839fa7aefd42bd04b5e8d74163191024ea81417fba765fa7d",
+ "operator_note": null,
+ "model_record_sha256": null,
+ "prior_record_sha256": "f394a4771631a6da12b6e249c13c13244521ccbd059857ebff6213240d4598b7",
+ "attempt": "attempt-5",
+ "context_review_sha256": null,
+ "inherited": [
+  {
+   "id": "P1",
+   "model_id": "V2-V1",
+   "source": "final-editor previous attempt",
+   "where": "sections.hook.0",
+   "problem": "中文写明出处为《清史稿·张之洞传》。英文只写“The Draft History of the Qing records”，紧接着又说“The biography then records”。英文读者不知道这是谁的传，出处层级比中文少了一层。",
+   "suggestion": "英文改为“Zhang Zhidong's biography in the Draft History of the Qing records it this way …”"
+  },
+  {
+   "id": "P2",
+   "model_id": "V2-V3",
+   "source": "final-editor previous attempt",
+   "where": "sections.hook.1",
+   "problem": "开头只讲京通铁路的修停之争，没有交代张之洞议奏的线路与京通线不同：他提出的是一条以河为界、分南北两段的线路。读者读到后文“南北线路”“北路、南路”时，容易以为这就是京通线，无法说清他究竟提出了什么、为何难以定夺。",
+   "suggestion": "在 hook.1 补一句：“他没有就京通线本身辩护，而是另拟一条以河为界、分南北两段的线路。”英文同步增补。"
+  },
+  {
+   "id": "P3",
+   "model_id": "V2-V5",
+   "source": "final-editor previous attempt",
+   "where": "sections.analysis.2",
+   "problem": "稿件称“先试修一小段”属传文未载的替代选择，但传文记有翁同龢等「請試修邊地」，“试修”主张本身有记载，只是目的在用兵、地点在边地。另外，“这在议奏中也未见”只能针对传文摘录的议奏而言，不能推及议奏全文。",
+   "suggestion": "限定为“传文所录议奏中未见”。并注明：传文记翁同龢等曾请试修边地，但那是为便用兵，不是以运量和扰民程度决定其余各段。英文同步修改。"
+  }
+ ],
+ "contamination": [
+  {
+   "id": "K1",
+   "brief_line": "注意：以下摘录的锚点未通过逐字核对，已删除；简报中引用它们的句子也已删除，不得写入相关内容：QSG4371-E12、QSG4371-E2、QSG4371-E4、QSG4371-E6。",
+   "dropped_ids": [
+    "QSG4371-E12",
+    "QSG4371-E2",
+    "QSG4371-E4",
+    "QSG4371-E6"
+   ]
+  }
+ ],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.hook.0",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "中文写明出处是《清史稿·张之洞传》。英文只写 \"The Draft History of the Qing records\"，后文却说 \"The biography then records\"。英文读者不知道是谁的传，出处比中文少了一层。",
+   "evidence": [
+    {
+     "id": "QSG4371-E3",
+     "quote": "臺諫爭陳鐵路之害，請停辦"
+    }
+   ],
+   "proposed": "英文改为 \"Zhang Zhidong's biography in the Draft History of the Qing records it this way ...\"。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文出处改为 Zhang Zhidong's biography in the Draft History of the Qing，与中文《清史稿·张之洞传》一致；中文随同字段同步给出。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.hook.0",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "张之洞第一次出现（「其后录有张之洞的议奏」）时没有说明身份，也没有说明他与这场争执的关系。他的身份要到 hook.1 才以“本文传主”交代。不了解背景的读者读到这里，不知道他是谁、为何要上奏。",
+   "evidence": [
+    {
+     "id": "QSG4371-E1",
+     "quote": "設廣東水陸師學堂"
+    }
+   ],
+   "proposed": "把“本文传主”的说明挪到第一次出现处，如“其后录有本文传主张之洞的议奏”（英文同步为 \"the memorial of Zhang Zhidong, the subject of this biography\"）。不要补入证据以外的官职。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "在 hook.0 张之洞首次出现处标明“本文传主”，英文同步；hook.1 删去重复的“本文传主”。未补入任何官职。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.hook.1",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "开头只讲京通铁路修还是停的争执，没有交代张之洞议奏所论的线路是什么：一条以河为界、分南北两段的线路。读者读到 dek 和后文的“北路、南路”时，容易以为这就是京通线，说不清他究竟提出了什么。",
+   "evidence": [
+    {
+     "id": "QSG4371-E7",
+     "quote": "河北路成"
+    },
+    {
+     "id": "QSG4371-E8",
+     "quote": "自河以南"
+    },
+    {
+     "id": "QSG4371-E3",
+     "quote": "修京通鐵路"
+    }
+   ],
+   "proposed": "在 hook.1 补一句：“他的议奏所论是一条以河为界、分南北两段的线路；传文所录未说明它与京通线的关系。”英文同步增补。不得写入证据以外的起讫地点。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "hook.1 补一句：议奏所论是以河为界、分南北两段的线路，传文所录未说明它与京通线的关系，英文同步；未写起讫地点；ev 补 E7、E8、E3。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.hook.0",
+   "category": "readability",
+   "severity": "note",
+   "problem": "翁同龢、徐会沣第一次出现时没有任何身份说明，读者难以判断他们在争执中的位置。证据包没有记他们的官职。",
+   "evidence": [
+    {
+     "id": "QSG4371-E18",
+     "quote": "翁同龢等請試修邊地，便用兵；徐會灃請改修德州濟寧路，利漕運"
+    }
+   ],
+   "proposed": "可写“另有翁同龢等、徐会沣两种奏请（传文此处未载其职）”。不得补造官职。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F5",
+   "path": "sections.analysis.2",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "稿件称替代选择“传文没有记载，属反事实”。但传文记有翁同龢等「請試修邊地」，“试修”这一主张本身有记载，只是目的在用兵、地点在边地，并非以运量与扰民程度决定其余各段。另外，“议奏中也未见”只能指传文所录的议奏文字，不能推及议奏全文。",
+   "evidence": [
+    {
+     "id": "QSG4371-E18",
+     "quote": "翁同龢等請試修邊地，便用兵"
+    },
+    {
+     "id": "QSG4371-E19",
+     "quote": "分段分年成之"
+    }
+   ],
+   "proposed": "改为“传文所录议奏中未见”，并注明：传文记翁同龢等曾请试修边地，但那是为便用兵，不是先修一段、以运量和扰民程度决定其余各段。英文同步修改。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "把“传文没有记载”“议奏中也未见”收窄为“传文所录议奏中未见”；并注明翁同龢等请试修边地是为便用兵，不是以运量与扰民程度决定其余各段；英文同步，ev 补 E18。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F6",
+   "path": "sections.analysis.0",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "稿件称议奏“包含四个部分”，漏掉了 story.4 所述的南北两段接续图景。传文所录议奏实有这一部分，此说与前文不一致，容易让读者以为议奏只有这四项。",
+   "evidence": [
+    {
+     "id": "QSG4371-E7",
+     "quote": "河北路成，則三晉之轍接於井陘"
+    },
+    {
+     "id": "QSG4371-E8",
+     "quote": "萬里聲息，刻期可通"
+    }
+   ],
+   "proposed": "改为“至少包含以下四个部分（另有南北接续的图景）”。英文同步改为 \"includes at least four components (besides the picture of connections)\"。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "改为“至少包含以下四个部分（另有南北接续的图景）”，英文同步，与 story.4 一致；ev 补 E7、E8。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F7",
+   "path": "sections.story.5",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "“没有留下各段无人专责的余地”是作者对分工效果的判断，却写成了事实。传文只记了各段交给谁。",
+   "evidence": [
+    {
+     "id": "QSG4371-E13",
+     "quote": "北路責之直隸總督，南路責之湖廣總督，副以河南巡撫"
+    }
+   ],
+   "proposed": "前加“作者认为，”。英文前加 \"In the author's view,\"。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "把“没有留下各段无人专责的余地”标明为作者判断（作者认为／In the author's view），传文只记各段交给谁。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "P1",
+   "problem": "中文写明出处为《清史稿·张之洞传》。英文只写“The Draft History of the Qing records”，紧接着又说“The biography then records”。英文读者不知道这是谁的传，出处层级比中文少了一层。",
+   "origin": "inherited final-editor previous attempt V2-V1",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.hook.0",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "与 F1 相同：英文出处缺少“张之洞传”这一层。"
+  },
+  {
+   "id": "P2",
+   "problem": "开头只讲京通铁路的修停之争，没有交代张之洞议奏的线路与京通线不同：他提出的是一条以河为界、分南北两段的线路。读者读到后文“南北线路”“北路、南路”时，容易以为这就是京通线，无法说清他究竟提出了什么、为何难以定夺。",
+   "origin": "inherited final-editor previous attempt V2-V3",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.hook.1",
+   "disposition": "duplicate",
+   "same_as": "F3",
+   "rationale": "与 F3 相同。开头未交代议奏所论是分南北两段的线路，问题成立。但原建议中“没有就京通线本身辩护”一语缺乏证据支持，应采用 F3 的限定写法，也不得写入已剔除证据中的起讫地点。"
+  },
+  {
+   "id": "P3",
+   "problem": "稿件称“先试修一小段”属传文未载的替代选择，但传文记有翁同龢等「請試修邊地」，“试修”主张本身有记载，只是目的在用兵、地点在边地。另外，“这在议奏中也未见”只能针对传文摘录的议奏而言，不能推及议奏全文。",
+   "origin": "inherited final-editor previous attempt V2-V5",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.analysis.2",
+   "disposition": "duplicate",
+   "same_as": "F5",
+   "rationale": "与 F5 相同：传文确记翁同龢等「請試修邊地」，“议奏中未见”也应限定为传文所录部分。"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.hook.0.zh",
+   "before": "要不要修京通铁路，朝中有了争执。《清史稿·张之洞传》记：「會海軍衙門奏請修京通鐵路，臺諫爭陳鐵路之害，請停辦」。海军衙门主张修，台谏（负责进言、弹劾的言官）争陈铁路之害、请停办。传文紧接着又记了另外两种主张：「翁同龢等請試修邊地，便用兵；徐會灃請改修德州濟寧路，利漕運」，其后录有张之洞的议奏。至于台谏所说的害具体是哪几条、海军衙门的理由为何，传文都没有记。",
+   "after": "要不要修京通铁路，朝中有了争执。《清史稿·张之洞传》记：「會海軍衙門奏請修京通鐵路，臺諫爭陳鐵路之害，請停辦」。海军衙门主张修，台谏（负责进言、弹劾的言官）争陈铁路之害、请停办。传文紧接着又记了另外两种主张：「翁同龢等請試修邊地，便用兵；徐會灃請改修德州濟寧路，利漕運」，其后录有本文传主张之洞的议奏。至于台谏所说的害具体是哪几条、海军衙门的理由为何，传文都没有记。",
+   "issues": [
+    "F1",
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.hook.0.en",
+   "before": "The proposed Beijing-Tongzhou railway drew opposition at court. The Draft History of the Qing records it this way (here and throughout, quotations from the Chinese are our own translations): \"When the Naval Office petitioned to build the Beijing-Tongzhou railway, the censors pressed the harms of railways and asked that the project be halted.\" The Naval Office stood for building; the censors - the court's officials charged with remonstrance and impeachment - pressed the harms and asked for a stop. The biography then records two further proposals: Weng Tonghe and others asked to try building in the frontier regions, for ease of moving troops; Xu Huifeng asked to build a Dezhou-Jining line instead, for the benefit of grain transport. After that it records Zhang Zhidong's memorial. Which harms the censors meant, and what reasons the Naval Office gave, the biography does not record.",
+   "after": "The proposed Beijing-Tongzhou railway drew opposition at court. Zhang Zhidong's biography in the Draft History of the Qing records it this way (here and throughout, quotations from the Chinese are our own translations): \"When the Naval Office petitioned to build the Beijing-Tongzhou railway, the censors pressed the harms of railways and asked that the project be halted.\" The Naval Office stood for building; the censors - the court's officials charged with remonstrance and impeachment - pressed the harms and asked for a stop. The biography then records two further proposals: Weng Tonghe and others asked to try building in the frontier regions, for ease of moving troops; Xu Huifeng asked to build a Dezhou-Jining line instead, for the benefit of grain transport. After that it records the memorial of Zhang Zhidong, the subject of this biography. Which harms the censors meant, and what reasons the Naval Office gave, the biography does not record.",
+   "issues": [
+    "F1",
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.hook.1.zh",
+   "before": "本文传主张之洞针对这几种主张上了一份议奏，其中明确排出了目标次序：「修路之利，以通土貨、厚民生為最大，徵兵、轉餉次之」。目标的轻重被明明白白摆上桌面——作者认为，这个排序是这篇议奏最容易被略过、也最见功夫的地方。",
+   "after": "张之洞针对这几种主张上了一份议奏。他的议奏所论是一条以河为界、分南北两段的线路；传文所录未说明它与京通线的关系。议奏中明确排出了目标次序：「修路之利，以通土貨、厚民生為最大，徵兵、轉餉次之」。目标的轻重被明明白白摆上桌面——作者认为，这个排序是这篇议奏最容易被略过、也最见功夫的地方。",
+   "issues": [
+    "F2",
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "Zhang Zhidong, the subject of this biography, answered these proposals with a memorial that set out an explicit ranking of goals: \"In building a railway, the greatest benefit lies in moving local goods and enriching the people's livelihood; raising troops and forwarding supplies come second.\" The relative weight of the goals is laid plainly on the table. In the author's view, that ranking is the easiest thing to skim past in this memorial, and the place where the real craft sits.",
+   "after": "Zhang Zhidong answered these proposals with a memorial. The line it discusses is divided by the river into a northern and a southern section; the biography's record does not say how it relates to the Beijing-Tongzhou line. The memorial sets out an explicit ranking of goals: \"In building a railway, the greatest benefit lies in moving local goods and enriching the people's livelihood; raising troops and forwarding supplies come second.\" The relative weight of the goals is laid plainly on the table. In the author's view, that ranking is the easiest thing to skim past in this memorial, and the place where the real craft sits.",
+   "issues": [
+    "F2",
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.hook.1.ev",
+   "before": [
+    "QSG4371-E5",
+    "QSG4371-E18"
+   ],
+   "after": [
+    "QSG4371-E5",
+    "QSG4371-E18",
+    "QSG4371-E7",
+    "QSG4371-E8",
+    "QSG4371-E3"
+   ],
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.zh",
+   "before": "作者提出的替代选择（传文没有记载，属反事实）：议奏已主张「分段分年成之」，但没有先试修一小段、看运量与扰民程度再定其余各段的设计；另一种做法是把「利」逐条配上可核对的口径，让反对者逐条检验，这在议奏中也未见。这两种设计是作者提出的比较项，不是议奏里的内容。",
+   "after": "作者提出的替代选择（传文所录议奏中未见，属反事实）：议奏已主张「分段分年成之」，但传文所录议奏中没有先试修一小段、看运量与扰民程度再定其余各段的设计；传文记翁同龢等曾「請試修邊地」，但那是为「便用兵」，不是先修一段、以运量和扰民程度决定其余各段。另一种做法是把「利」逐条配上可核对的口径，让反对者逐条检验，这在传文所录议奏中也未见。这两种设计是作者提出的比较项，不是传文所录议奏里的内容。",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.en",
+   "before": "Alternatives the author offers (absent from the biography, therefore counterfactual): the memorial already proposes completing the line section by section, year by year, but it has no design for building a short stretch first and letting freight volumes and the degree of disruption decide the rest; another option would be to attach a checkable yardstick to each \"benefit,\" so opponents could test them one by one, and that too does not appear in the memorial. Both designs are comparison items the author raises, not part of the memorial.",
+   "after": "Alternatives the author offers (not found in the memorial as the biography records it, therefore counterfactual): the memorial already proposes completing the line section by section, year by year, but the recorded text has no design for building a short stretch first and letting freight volumes and the degree of disruption decide the rest. The biography does record that Weng Tonghe and others asked to try building in the frontier regions, but that was for ease of moving troops, not a matter of building one stretch first and letting freight volumes and disruption decide the remaining sections. Another option would be to attach a checkable yardstick to each \"benefit,\" so opponents could test them one by one, and that too does not appear in the memorial as recorded. Both designs are comparison items the author raises, not part of the memorial as the biography records it.",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.ev",
+   "before": [
+    "QSG4371-E19"
+   ],
+   "after": [
+    "QSG4371-E19",
+    "QSG4371-E18"
+   ],
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.zh",
+   "before": "作者的一种读法是，这份议奏包含四个部分：排目标次序（通土货、厚民生最大，征兵转饷次之），列逐条的「利」并编号（共七条），提出「分段分年成之」，落实到官职（北路直隶总督、南路湖广总督、河南巡抚为副）。作者认为，这样写可能把争论从“有没有害”引向“这些逐条的「利」成不成立、这三位督抚之职扛不扛得动”。",
+   "after": "作者的一种读法是，这份议奏至少包含以下四个部分（另有南北接续的图景）：排目标次序（通土货、厚民生最大，征兵转饷次之），列逐条的「利」并编号（共七条），提出「分段分年成之」，落实到官职（北路直隶总督、南路湖广总督、河南巡抚为副）。作者认为，这样写可能把争论从“有没有害”引向“这些逐条的「利」成不成立、这三位督抚之职扛不扛得动”。",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "before": "One reading is that the memorial has four components: a ranking of goals (moving goods and enriching livelihoods greatest, raising troops and forwarding supplies next); a numbered, item-by-item list of benefits, seven in all; a proposal to complete the line section by section, year by year; and responsibility assigned to offices (north to the Governor-General of Zhili, south to the Governor-General of Huguang, the Governor of Henan as deputy). In the author's view, writing it this way may steer the argument away from \"is it harmful\" toward \"do these itemized benefits hold, and can these three offices carry them.\"",
+   "after": "One reading is that the memorial includes at least four components (besides the picture of connections): a ranking of goals (moving goods and enriching livelihoods greatest, raising troops and forwarding supplies next); a numbered, item-by-item list of benefits, seven in all; a proposal to complete the line section by section, year by year; and responsibility assigned to offices (north to the Governor-General of Zhili, south to the Governor-General of Huguang, the Governor of Henan as deputy). In the author's view, writing it this way may steer the argument away from \"is it harmful\" toward \"do these itemized benefits hold, and can these three offices carry them.\"",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.ev",
+   "before": [
+    "QSG4371-E5",
+    "QSG4371-E13",
+    "QSG4371-E19"
+   ],
+   "after": [
+    "QSG4371-E5",
+    "QSG4371-E13",
+    "QSG4371-E19",
+    "QSG4371-E7",
+    "QSG4371-E8"
+   ],
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.story.5.zh",
+   "before": "再往下是分工：「北路責之直隸總督，南路責之湖廣總督，副以河南巡撫」。北路归直隶总督，南路归湖广总督，河南巡抚做副手。谁扛哪一段，写得清清楚楚，没有留下各段无人专责的余地。",
+   "after": "再往下是分工：「北路責之直隸總督，南路責之湖廣總督，副以河南巡撫」。北路归直隶总督，南路归湖广总督，河南巡抚做副手。谁扛哪一段，写得清清楚楚；作者认为，这样没有留下各段无人专责的余地。",
+   "issues": [
+    "F7"
+   ]
+  },
+  {
+   "path": "sections.story.5.en",
+   "before": "Then the division of labor: \"Let the northern section be the charge of the Governor-General of Zhili, and the southern section the charge of the Governor-General of Huguang, assisted by the Governor of Henan.\" Who carries which stretch is written out plainly, leaving no room for a section that no one is specifically responsible for.",
+   "after": "Then the division of labor: \"Let the northern section be the charge of the Governor-General of Zhili, and the southern section the charge of the Governor-General of Huguang, assisted by the Governor of Henan.\" Who carries which stretch is written out plainly. In the author's view, this leaves no room for a section that no one is specifically responsible for.",
+   "issues": [
+    "F7"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F5",
+    "F6",
+    "F7"
+   ],
+   "changes_applied": 13,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[4] numbers differ zh[] en[10000]"
+    ],
+    [
+     "CHECK",
+     "story[8] numbers differ zh[10] en[]"
+    ]
+   ],
+   "content_sha256_after": "e327f782ebd262c56ad87288a84ccfd4a141362923c0194468328d5d752644f2",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "中文开头只写「京通铁路」，没有展开，不了解背景的读者未必知道这是北京至通州的线路。英文已写作 Beijing-Tongzhou，中英在可读性上不对等。",
+      "evidence": [
+       {
+        "id": "QSG4371-E3",
+        "quote": "會海軍衙門奏請修京通鐵路"
+       }
+      ],
+      "proposed": "首次出现时写作「京通铁路（北京至通州）」，后文沿用「京通铁路」这一简称。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.hook.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "「以河为界」没有说明是哪条河。读者在开头难以想象议奏线路的大致走向，而证据本身也没有点名这条河。",
+      "evidence": [
+       {
+        "id": "QSG4371-E7",
+        "quote": "河北路成"
+       },
+       {
+        "id": "QSG4371-E8",
+        "quote": "自河以南"
+       }
+      ],
+      "proposed": "不补写河名，只加一句限定，例如「以一条河为界（传文只称“河”）」，避免读者自行代入。"
+     }
+    ],
+    "overall": "定稿各字段的事实、引文、归属与解释标注均有证据支持，中英一致，可以发布；开头的易读性只有两处可选的小改进。",
+    "_content_sha256": "e327f782ebd262c56ad87288a84ccfd4a141362923c0194468328d5d752644f2"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1",
+     "F2",
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F7"
+    ]
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.hook.0",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "中文写明出处是《清史稿·张之洞传》。英文只写 \"The Draft History of the Qing records\"，后文却说 \"The biography then records\"。英文读者不知道是谁的传，出处比中文少了一层。",
+    "evidence": [
+     {
+      "id": "QSG4371-E3",
+      "quote": "臺諫爭陳鐵路之害，請停辦"
+     }
+    ],
+    "proposed": "英文改为 \"Zhang Zhidong's biography in the Draft History of the Qing records it this way ...\"。"
+   },
+   {
+    "id": "F2",
+    "path": "sections.hook.0",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "张之洞第一次出现（「其后录有张之洞的议奏」）时没有说明身份，也没有说明他与这场争执的关系。他的身份要到 hook.1 才以“本文传主”交代。不了解背景的读者读到这里，不知道他是谁、为何要上奏。",
+    "evidence": [
+     {
+      "id": "QSG4371-E1",
+      "quote": "設廣東水陸師學堂"
+     }
+    ],
+    "proposed": "把“本文传主”的说明挪到第一次出现处，如“其后录有本文传主张之洞的议奏”（英文同步为 \"the memorial of Zhang Zhidong, the subject of this biography\"）。不要补入证据以外的官职。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.hook.1",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "开头只讲京通铁路修还是停的争执，没有交代张之洞议奏所论的线路是什么：一条以河为界、分南北两段的线路。读者读到 dek 和后文的“北路、南路”时，容易以为这就是京通线，说不清他究竟提出了什么。",
+    "evidence": [
+     {
+      "id": "QSG4371-E7",
+      "quote": "河北路成"
+     },
+     {
+      "id": "QSG4371-E8",
+      "quote": "自河以南"
+     },
+     {
+      "id": "QSG4371-E3",
+      "quote": "修京通鐵路"
+     }
+    ],
+    "proposed": "在 hook.1 补一句：“他的议奏所论是一条以河为界、分南北两段的线路；传文所录未说明它与京通线的关系。”英文同步增补。不得写入证据以外的起讫地点。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.hook.0",
+    "category": "readability",
+    "severity": "note",
+    "problem": "翁同龢、徐会沣第一次出现时没有任何身份说明，读者难以判断他们在争执中的位置。证据包没有记他们的官职。",
+    "evidence": [
+     {
+      "id": "QSG4371-E18",
+      "quote": "翁同龢等請試修邊地，便用兵；徐會灃請改修德州濟寧路，利漕運"
+     }
+    ],
+    "proposed": "可写“另有翁同龢等、徐会沣两种奏请（传文此处未载其职）”。不得补造官职。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.analysis.2",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "稿件称替代选择“传文没有记载，属反事实”。但传文记有翁同龢等「請試修邊地」，“试修”这一主张本身有记载，只是目的在用兵、地点在边地，并非以运量与扰民程度决定其余各段。另外，“议奏中也未见”只能指传文所录的议奏文字，不能推及议奏全文。",
+    "evidence": [
+     {
+      "id": "QSG4371-E18",
+      "quote": "翁同龢等請試修邊地，便用兵"
+     },
+     {
+      "id": "QSG4371-E19",
+      "quote": "分段分年成之"
+     }
+    ],
+    "proposed": "改为“传文所录议奏中未见”，并注明：传文记翁同龢等曾请试修边地，但那是为便用兵，不是先修一段、以运量和扰民程度决定其余各段。英文同步修改。"
+   },
+   {
+    "id": "F6",
+    "path": "sections.analysis.0",
+    "category": "interpretation_label",
+    "severity": "fix",
+    "problem": "稿件称议奏“包含四个部分”，漏掉了 story.4 所述的南北两段接续图景。传文所录议奏实有这一部分，此说与前文不一致，容易让读者以为议奏只有这四项。",
+    "evidence": [
+     {
+      "id": "QSG4371-E7",
+      "quote": "河北路成，則三晉之轍接於井陘"
+     },
+     {
+      "id": "QSG4371-E8",
+      "quote": "萬里聲息，刻期可通"
+     }
+    ],
+    "proposed": "改为“至少包含以下四个部分（另有南北接续的图景）”。英文同步改为 \"includes at least four components (besides the picture of connections)\"。"
+   },
+   {
+    "id": "F7",
+    "path": "sections.story.5",
+    "category": "interpretation_label",
+    "severity": "fix",
+    "problem": "“没有留下各段无人专责的余地”是作者对分工效果的判断，却写成了事实。传文只记了各段交给谁。",
+    "evidence": [
+     {
+      "id": "QSG4371-E13",
+      "quote": "北路責之直隸總督，南路責之湖廣總督，副以河南巡撫"
+     }
+    ],
+    "proposed": "前加“作者认为，”。英文前加 \"In the author's view,\"。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "P1",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "与 F1 相同：英文出处缺少“张之洞传”这一层。",
+    "evidence": []
+   },
+   {
+    "id": "P2",
+    "verdict": "duplicate",
+    "same_as": "F3",
+    "rationale": "与 F3 相同。开头未交代议奏所论是分南北两段的线路，问题成立。但原建议中“没有就京通线本身辩护”一语缺乏证据支持，应采用 F3 的限定写法，也不得写入已剔除证据中的起讫地点。",
+    "evidence": [
+     {
+      "id": "QSG4371-E7",
+      "quote": "河北路成"
+     },
+     {
+      "id": "QSG4371-E8",
+      "quote": "自河以南"
+     }
+    ]
+   },
+   {
+    "id": "P3",
+    "verdict": "duplicate",
+    "same_as": "F5",
+    "rationale": "与 F5 相同：传文确记翁同龢等「請試修邊地」，“议奏中未见”也应限定为传文所录部分。",
+    "evidence": [
+     {
+      "id": "QSG4371-E18",
+      "quote": "翁同龢等請試修邊地，便用兵"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "e327f782ebd262c56ad87288a84ccfd4a141362923c0194468328d5d752644f2",
+ "open_issues": [],
+ "outcome": "admissible",
+ "failure": null,
+ "finished_at": 1793437598.6140401,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 81.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15958,
+    "output_tokens": 8940
+   },
+   "cost_estimate_usd": 0.306472
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 35.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15949,
+    "output_tokens": 4612
+   },
+   "cost_estimate_usd": 0.21983999999999998
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 42.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 14854,
+    "output_tokens": 4864
+   },
+   "cost_estimate_usd": 0.21611999999999998
+  }
+ ],
+ "elapsed_min": 2.6,
+ "model_wall_min": 2.6
+}

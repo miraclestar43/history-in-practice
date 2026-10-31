@@ -12,793 +12,125 @@
   "cli_version": "2.1.308 (Claude Code)",
   "model_reported": "claude-opus-5-5"
  },
- "code_rev": "5506058",
- "started_at": 1793397397.8441267,
- "base_source": "samples/auto/cand-20261030-jingxing/article.json",
- "base_content_sha256": "6e13fb97d8116861128fc83e7610b0630295475e704711670031e4b97f34f11e",
- "evidence_sha256": "5e22b76ed7a13ca1715b4f66de7995fdae0235aa624417089f9df7e3358e575d",
+ "code_rev": "ef58996",
+ "started_at": 1793430602.5353496,
+ "base_source": "samples/auto/cand-20261030-jingxing/final/article.json",
+ "base_content_sha256": "e150c4b7f1567eb72fb670f1b87c8f373ab146d68a16f81486be3df8c879b0dd",
+ "evidence_sha256": "7d653634b3f1e4b5a6f87457fab6d31579d944d5c2ef596409a6504a7a68754d",
+ "operator_note": null,
  "model_record_sha256": "4f42728dc8c05f84511f6022d5af966f9a442d89865fa9e340d01ff4bbf79505",
- "prior_record_sha256": null,
- "attempt": "attempt-1",
+ "prior_record_sha256": "a8931de02211a8c23b1a7401a1cd90f3c85f94ce118ac7c7baf3f25f5e5ecfcf",
+ "attempt": "attempt-4",
+ "context_review_sha256": "595160a159fb4902467e78cb659582c622305ae07793ffbaa6347411f8aa2bb1",
  "inherited": [
   {
-   "id": "M1",
-   "model_id": "R1",
-   "source": "mimo-review",
-   "where": "analysis.0",
-   "problem": "「规矩先划掉了半个选项池，李左车的方案可能在讨论开始之前就已不在考虑之内」是对陈馀考虑过程/内心的推断，与 limits 段「不替他补充任何心理活动」及 reflection 中「未对陈馀的心理作任何补充」的声明相抵触",
-   "suggestion": "二选一：删去「不在考虑之内」的说法，只说「原文所记的三条理由中有两条不是对敌情的判断」；或把声明改为「除明确标注为作者推断处外，未补充心理活动」"
-  },
-  {
-   "id": "M2",
-   "model_id": "P2",
-   "source": "mimo-parity",
-   "where": "sections.today.1",
-   "problem": "ZH labels the scene 现代虚构场景之二 (a second modern, explicitly fictional scene), but EN reads only \"Another scene: a handover\" — the 'modern' and, more importantly, the 'fictional' framing flag present in ZH is dropped, so the hypothetical hedge is missing in English.",
-   "suggestion": "Start with \"Another modern scene, fictional: a handover.\""
-  },
-  {
-   "id": "M3",
-   "model_id": "R2",
-   "source": "mimo-review",
-   "where": "(location not given)",
-   "problem": "[unsupported_claims] story 第1段「韩信先派一万人先行出山」——原文无「出山」，只作「使萬人先行，出，背水陳」",
-   "suggestion": ""
-  },
-  {
-   "id": "M4",
-   "model_id": "R3",
-   "source": "mimo-review",
-   "where": "(location not given)",
-   "problem": "[unsupported_claims] story 第4段「一支军队刚刚获胜，主帅最急着办的事之一，是保住对方那位出主意的人」——作者评价性概括，证据只记禁杀广武君、悬赏千金、解缚师事等动作",
-   "suggestion": ""
-  },
-  {
-   "id": "M5",
-   "model_id": "R4",
-   "source": "mimo-review",
-   "where": "(location not given)",
-   "problem": "[unsupported_claims] analysis 第1段「李左车的方案可能在讨论开始之前就已不在考虑之内」——无史料支持的内心推断（虽已标注为作者推断，但与 limits 声明冲突）",
-   "suggestion": ""
-  },
-  {
-   "id": "M6",
-   "model_id": "R5",
-   "source": "mimo-review",
-   "where": "(location not given)",
-   "problem": "[invented_inner_life] 「一种解释是：规矩先划掉了半个选项池，李左车的方案可能在讨论开始之前就已不在考虑之内。」——写到了陈馀「考虑过的选项」，原文只记三条公开理由（儒者/义兵不用诈谋、兵法倍则战、诸侯谓吾怯），未记其权衡过程；该句已标注为作者推断，但属对内心的补充",
-   "suggestion": ""
-  },
-  {
-   "id": "M7",
-   "model_id": "R6",
-   "source": "mimo-review",
-   "where": "(location not given)",
-   "problem": "[invented_inner_life] 「看上去像不懂打仗。」——写出了时人（赵军）的想法作为大笑的解释，原文只记「大笑」，未记所笑为何",
-   "suggestion": ""
+   "id": "X1",
+   "source": "context review",
+   "where": "",
+   "problem": "证据包已按来源上下文补入摘录 J-E13；请据此检查叙事、结局与因果是否完整准确",
+   "suggestion": null
   }
  ],
  "contamination": [],
  "issues": [
   {
    "id": "F1",
-   "path": "dek",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "The dek says the battle「被讲了两千年」and that「多数版本只记得赢家的招数」(EN: \"retold for two thousand years… most retellings remember only the winner's tricks\"). These are claims about how the battle has been received and retold. The evidence pack contains only the text of the Shiji and says nothing about later retellings.",
-   "evidence": [],
-   "proposed": "Delete the claims about reception history. For example: 「一场以少胜多的仗，人们常记住赢家的招数；这篇想说的是另一件事……」, and make the matching change in EN. Alternatively, mark the sentence as the author's impression.",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "删去“被讲了两千年”“多数版本只记得”等证据包无法支持的流传史断言，改为不涉及后世流传的说法；中英同步。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F2",
-   "path": "sections.hook.0",
-   "category": "attribution",
-   "severity": "fix",
-   "problem": "「汉军是乘胜远斗，离本土越来越远，粮草跟在后面」(EN: \"the Han army was fighting far from home… its grain straggling along behind\") is stated in the narrator's voice as established fact. In the evidence, this is Li Zuoche's assessment and inference presented to Chen Yu. Nothing records the Han grain actually trailing behind.",
+   "path": "sections.context.2",
+   "category": "style",
+   "severity": "note",
+   "problem": "英文对李左车封号的译法前后不一：context.0 作 \"the Lord of Guangwu\"，context.2 与 story.4 作 \"the Guangwu Jun\"。这可能让英文读者以为是两个人。",
    "evidence": [
     {
      "id": "J-E2",
      "quote": "廣武君李左車說成安君曰"
-    },
-    {
-     "id": "J-E2",
-     "quote": "此乘勝而去國遠鬬"
-    },
-    {
-     "id": "J-E2",
-     "quote": "其勢糧食必在其後"
     }
    ],
-   "proposed": "Change to 「据李左车的分析，汉军是乘胜远斗，粮食势必落在后面」. Make the matching change in EN: \"as Li Zuoche saw it, …\".",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "把“乘胜远斗、粮食在后”改为李左车的分析，而非叙述者确认的事实；中英同步。",
-   "decided_in": "revise_r1"
+   "proposed": "context.2 与 story.4 统一改为 \"the Lord of Guangwu\"。",
+   "origin": "final-editor audit"
   },
   {
-   "id": "F3",
-   "path": "sections.context.1",
-   "category": "quotes",
-   "severity": "fix",
-   "problem": "ZH gives Li Zuoche's request as a paraphrase without quotation marks. EN puts its own English rendering in quotation marks as first-person direct speech (\"Grant me thirty thousand picked troops…\"), so readers cannot tell it is a translation. The same issue applies to \"the heads of the two generals will be delivered to your command tent\" in the same field.",
-   "evidence": [
-    {
-     "id": "J-E2",
-     "quote": "願足下假臣奇兵三萬人，從閒道絕其輜重"
-    }
-   ],
-   "proposed": "Make EN an indirect paraphrase (\"He asked for thirty thousand picked troops to cut…\"). Alternatively, mark the quoted English as a translation, for example \"in the Shiji's words, roughly: …\".",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "英文把加引号的第一人称译文改为间接转述，两将之头一句也去掉引号；中文无需改动，原样给出。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F4",
-   "path": "sections.context.2",
-   "category": "parity",
-   "severity": "fix",
-   "problem": "ZH names the commander as 「赵国这边的主帅成安君陈馀」. EN says only \"The Zhao commander-in-chief\" and gives neither the title nor the name, so a personal name is missing from EN.",
+   "id": "F2",
+   "path": "sections.analysis.0",
+   "category": "style",
+   "severity": "note",
+   "problem": "英文把陈馀的几条理由（如 Claims tens of thousands, really no more than a few thousand）直接并入正文，没有引号、斜体或引导语。读者难以分辨哪部分是对原文理由的译述，哪部分是作者的话。",
    "evidence": [
     {
      "id": "J-E3",
-     "quote": "成安君，儒者也"
+     "quote": "今韓信兵號數萬，其實不過數千"
     }
    ],
-   "proposed": "Change to \"Chen Yu, the Lord of Cheng'an and Zhao's commander-in-chief, gets one line…\".",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "英文补上陈馀及其成安君的名号，与中文一致；同时把加引号的英文译文改为转述，避免冒充原文。",
-   "decided_in": "revise_r1"
+   "proposed": "在各条理由前加引导语（如 \"the claim that…\"），或用斜体标出，并保持译述口吻。",
+   "origin": "final-editor audit"
   },
   {
-   "id": "F5",
-   "path": "sections.story.0",
-   "category": "attribution",
-   "severity": "fix",
-   "problem": "In EN, \"only when they reported back, delighted at the news, did he dare…\" leaves \"delighted\" ambiguous: it can be read as the scouts being delighted. The evidence says Han Xin was the one who was 「大喜」.",
-   "evidence": [
-    {
-     "id": "J-E4",
-     "quote": "還報，則大喜，乃敢引兵遂下"
-    }
-   ],
-   "proposed": "Change to \"When they reported back, he was overjoyed, and only then did he dare lead his army down…\".",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "英文改为明确由韩信“大喜”，消除可能误读为探子高兴的歧义。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F6",
-   "path": "sections.story.0",
-   "category": "quotes",
-   "severity": "fix",
-   "problem": "ZH gives Han Xin's orders as a paraphrase without quotation marks. EN puts an English rendering in quotation marks (\"When Zhao sees us withdraw…\") as if it were the original words, with no sign that it is a translation.",
-   "evidence": [
-    {
-     "id": "J-E4",
-     "quote": "趙見我走，必空壁逐我，若疾入趙壁，拔趙幟，立漢赤幟"
-    }
-   ],
-   "proposed": "Make EN indirect speech (\"telling them that when Zhao saw…\"). Alternatively, mark it as a translation.",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "英文把加引号的命令改为间接引语；中文为转述，未改。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F7",
-   "path": "sections.story.1",
+   "id": "X1",
+   "path": "",
    "category": "unsupported",
    "severity": "fix",
-   "problem": "「先行出山」: the source has only 「出」 and does not say they came out of the mountains. 「出山」 adds a geographic detail.",
+   "problem": "证据包已按来源上下文补入摘录 J-E13；请据此检查叙事、结局与因果是否完整准确",
+   "origin": "inherited context review None",
+   "audit_rationale": "J-E13 的位置注明它是可选背景，不是本役必需。稿件的结局已按 J-E11 写到韩信采纳李左车之计、燕国归附，叙事完整。正文对韩信的评价都限于本役（礼遇并采用李左车之计）。稿件没有断言韩信一贯听取逆耳之言，也没有任何说法与 J-E13 相矛盾，因此无须据此修改叙事、结局或因果。",
+   "note": "audit called it invalid without a verifiable quote; must be handled",
+   "disposition": "rejected",
+   "rationale": "已按 J-E13 核对全稿，无须修改。J-E13 记的是韩信临刑时后悔没用蒯通之计，是本役以后的事；它的位置说明也注明是可选背景，不是本役必需。稿件的叙事和结局已依 J-E11 写全：李左车先谦辞，再献计，韩信说“善”、采用其计，燕国归附。因果也与 J-E9 一致，即韩信自己所说的“用与不用，听与不听”，且稿件只把它当作韩信事后的说法。正文对韩信的评价都限于本役，即礼遇并采用李左车之计。稿件没有说韩信一贯听取逆耳之言，today.1 也只是标明虚构的现代场景，因此与 J-E13 没有矛盾。叙事、结局、因果都完整准确。",
    "evidence": [
     {
-     "id": "J-E5",
-     "quote": "信乃使萬人先行，出，背水陳"
+     "id": "J-E11",
+     "quote": "韓信曰：『善。』從其策，發使使燕，燕從風而靡"
+    },
+    {
+     "id": "J-E9",
+     "quote": "用與不用，聽與不聽也"
+    },
+    {
+     "id": "J-E13",
+     "quote": "信方斬，曰：『吾悔不用蒯通之計"
     }
    ],
-   "proposed": "Change to 「派一万人先行出发，背水列阵」 or 「先行而出」.",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "“先行出山”改为“先行而出”，删去原文没有的“山”这一地理细节；英文同步。",
    "decided_in": "revise_r1"
   },
   {
-   "id": "F8",
-   "path": "sections.story.1",
-   "category": "unsupported",
-   "severity": "fix",
-   "problem": "「赵军从营垒上望见」 (EN: \"from the ramparts\") says where the Zhao troops were watching from. The evidence says only 「望見」 and does not mention the ramparts.",
-   "evidence": [
-    {
-     "id": "J-E5",
-     "quote": "趙軍望見而大笑"
-    }
-   ],
-   "proposed": "Delete 「从营垒上」 / \"from the ramparts\".",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "删去“从营垒上”和“from the ramparts”。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F9",
-   "path": "sections.story.1",
+   "id": "V1-V1",
+   "path": "sections.story.3",
    "category": "inner_life",
    "severity": "fix",
-   "problem": "「一万人把自己放在无退路的地方，看上去像不懂打仗」 (EN: \"looked like men who had never fought\") explains why the Zhao army laughed and what it was thinking. The source records only 「大笑」, not what they were laughing at. The sentence is also not marked as interpretation.",
-   "evidence": [
-    {
-     "id": "J-E5",
-     "quote": "趙軍望見而大笑"
-    }
-   ],
-   "proposed": "Delete the sentence, or mark it as the author's reading: 「一种解释是，在赵军看来这近乎不懂兵法」, with the matching change in EN.",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "把对赵军为何发笑的说法改为明确标注的作者推测，并说明原文只记“大笑”；英文同步，并去掉译文引号。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F10",
-   "path": "sections.story.2",
-   "category": "causality",
-   "severity": "fix",
-   "problem": "「已经无路可退，人人殊死作战」 (EN: \"with nowhere left to go, fought to the death\") presents \"no retreat\" as the cause of the fight to the death, in the narrator's voice. The battle account records only that they fought to the death and could not be beaten. The no-retreat explanation is Han Xin's own account afterwards.",
+   "problem": "英文“they were sure the Han had already taken the king”把原文的「以爲」（以为、认为）加重成了“确信”，比证据说得更满。中文“以为”是对的，所以中英也不一致。",
    "evidence": [
     {
      "id": "J-E6",
-     "quote": "軍皆殊死戰，不可敗"
+     "quote": "而大驚，以爲漢皆已得趙王將矣"
     }
    ],
-   "proposed": "Change to 「人人殊死作战，打不垮」. To explain the reason, attribute it to Han Xin's later explanation.",
-   "origin": "final-editor audit",
+   "proposed": "英文改为“Greatly alarmed, they believed the Han had already taken the king of Zhao and his generals.”",
+   "origin": "final-editor verify round 1",
    "disposition": "fixed",
-   "rationale": "删去叙述口吻下“无路可退”的因果说明，只保留原文所记的殊死战、不可败；英文同步。",
-   "decided_in": "revise_r1"
+   "rationale": "英文把原文「以爲」译作“they were sure”，语气过强。现改为“they believed”，与原文和中文“以为”一致。中文字段原样保留，按中英同步规则一并给出完整文字。",
+   "decided_in": "revise_r2"
   },
   {
-   "id": "F11",
-   "path": "sections.story.4",
-   "category": "unsupported",
+   "id": "V2-V1",
+   "path": "sections.today.1",
+   "category": "parity",
    "severity": "fix",
-   "problem": "「主帅最急着办的事之一」 (EN: \"one of the commander-in-chief's first tasks\") is an unsupported claim about order and urgency. The evidence records only the order not to kill him, the reward of a thousand in gold, untying his bonds and treating him as a teacher. It does not say this was done first or most urgently.",
-   "evidence": [
-    {
-     "id": "J-E7",
-     "quote": "信乃令軍中毋殺廣武君，有能生得者購千金"
-    }
-   ],
-   "proposed": "Change to 「一支军队刚刚获胜，主帅下的命令里有一条，是保住对方那位出主意的人，还为此悬赏千金」, with the matching change in EN.",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "“最急着办的事之一”改为“下的命令里有一条”，不再断言先后与急缓；英文同步。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F12",
-   "path": "sections.story.4",
-   "category": "quotes",
-   "severity": "fix",
-   "problem": "ZH gives the untying of bonds and the teacher's seating as a paraphrase. EN puts its own rendering in quotation marks (\"loosed his bonds… served him as a teacher\") as if it were the original text, with no sign that it is a translation.",
+   "problem": "中文写明是「当年韩信」解缚、师事李左车，结论句的主语是「赢家」。英文写成 \"Untying the bonds and serving Li Zuoche as a teacher is exactly that: the person most worth asking...\"，丢了行为人韩信，也丢了「赢家」这一主语。结果中英意思不完全对应，英文读者看不出是谁做了这件事。",
    "evidence": [
     {
      "id": "J-E7",
      "quote": "信乃解其縛，東鄉坐，西鄉對，師事之"
     }
    ],
-   "proposed": "Remove the quotation marks and paraphrase. Alternatively, mark it as a translation, for example \"in the Shiji's words, roughly\".",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "英文去掉引号，改为转述解缚、东向坐、师事之。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F13",
-   "path": "sections.story.6",
-   "category": "facts",
-   "severity": "fix",
-   "problem": "EN \"would long ago have been your prisoner\" adds who the captor would be (\"your\"). The original says only that he would already have been captured. The rendering is also inconsistent with the field's \"have been taken\" elsewhere in the piece.",
-   "evidence": [
-    {
-     "id": "J-E9",
-     "quote": "若信者亦已爲禽矣"
-    }
-   ],
-   "proposed": "Change to \"a man like me would already have been taken\".",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "英文改为“would already have been taken”，不再添加擒者是谁；百里奚一句的英文也去掉引号，改为转述。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F14",
-   "path": "sections.story.7",
-   "category": "interpretation_label",
-   "severity": "fix",
-   "problem": "「开口先讲的是任何人都可能出错」 (EN: \"opened by reminding everyone that anyone can be wrong\") summarizes the intent of what Li Zuoche said, but sits in a record paragraph without an interpretation label. The original also says the fool has his hits, so this summary is a selective reading.",
-   "evidence": [
-    {
-     "id": "J-E10",
-     "quote": "臣聞智者千慮，必有一失；愚者千慮，必有一得"
-    }
-   ],
-   "proposed": "Change to 「作者认为，他开口先讲的，近乎是任何人都可能出错」. Make the matching change in EN: \"One reading is that…\".",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "把意图概括标注为“一种解读”，并补上原文中“愚者必有一得”的另一半；英文同步，并去掉译文引号。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F15",
-   "path": "sections.analysis.0",
-   "category": "quotes",
-   "severity": "fix",
-   "problem": "The quotations 「兵号数万，其实不过数千」「千里而袭我，亦已罢极」 use simplified characters and do not match the source text character for character. 「义兵不用诈谋奇计」 is put in plain double quotes rather than 「」 and also does not match the source characters.",
-   "evidence": [
-    {
-     "id": "J-E3",
-     "quote": "今韓信兵號數萬，其實不過數千"
-    },
-    {
-     "id": "J-E3",
-     "quote": "能千里而襲我，亦已罷極"
-    },
-    {
-     "id": "J-E3",
-     "quote": "常稱義兵不用詐謀奇計"
-    }
-   ],
-   "proposed": "Restore the source characters: 「兵號數萬，其實不過數千」「千里而襲我，亦已罷極」「義兵不用詐謀奇計」.",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "三处引文恢复为证据原字，并统一使用「」。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F16",
-   "path": "sections.analysis.0",
-   "category": "attribution",
-   "severity": "fix",
-   "problem": "The paragraph says it splits 「陈馀拒绝的两层理由」 apart, but then treats 「义兵不用诈谋奇计」 as one of his reasons for this refusal. In the source, that line is Sima Qian's description of what Chen Yu habitually said (「常稱」). It is not recorded as the reason he gave for rejecting this particular plan. The count of reasons is also inconsistent: \"two\" is stated, but three are listed.",
-   "evidence": [
-    {
-     "id": "J-E3",
-     "quote": "成安君，儒者也，常稱義兵不用詐謀奇計"
-    },
-    {
-     "id": "J-E3",
-     "quote": "不聽廣武君策"
-    }
-   ],
-   "proposed": "State clearly that 「义兵不用诈谋奇计」 is the historian's description of his habitual stance, not a reason he gave this time. Its link to the refusal belongs in the 「一种解释是」 interpretation.",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "说明“常称义兵不用诈谋奇计”是史家对陈馀一贯说法的描述，不是这次拒绝的理由；它与拒绝之间的关联放进“一种解释是”；删去与所列内容不符的“两层”计数。英文同步。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F17",
-   "path": "sections.analysis.0",
-   "category": "inner_life",
-   "severity": "fix",
-   "problem": "「规矩先划掉了半个选项池，李左车的方案可能在讨论开始之前就已不在考虑之内」 infers Chen Yu's deliberation, that is, what he did or did not consider. It is labeled 「一种解释是」, but it contradicts the declarations in limits.1 (「不替他补充任何心理活动」) and uncertainty_note (「未对陈馀的心理作任何补充」). The source records only his stated words and the result: he did not adopt the plan.",
-   "evidence": [
-    {
-     "id": "J-E3",
-     "quote": "不聽廣武君策，廣武君策不用"
-    }
-   ],
-   "proposed": "Either delete the clause 「不在考虑之内」 and keep only 「原文所记的理由中有一条是规矩而非判断」, or change the declarations in limits.1 and uncertainty_note to 「除明确标注为作者推断处外，未补充陈馀的心理活动」.",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "删去关于陈馀考虑过什么的推断（“划掉选项池”“不在考虑之内”），只保留规矩与计策相冲、二者或有关联的标注解释，与 limits.1 和 uncertainty_note 中“不补充心理活动”的声明一致。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F18",
-   "path": "sections.analysis.2",
-   "category": "interpretation_label",
-   "severity": "fix",
-   "problem": "「可这场仗里，决定性的一次动作恰恰发生在开战之前」 (EN: \"the decisive acts happened before the first blow fell\") states the author's judgment of what was decisive as fact, with no interpretation label. The evidence records sequence only; it does not say which act was decisive.",
-   "evidence": [],
-   "proposed": "Add a label: 「作者认为，这场仗里决定性的……」 / \"In the author's view, the decisive acts…\".",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "给“决定性动作”的判断加上“作者认为”的标注；英文同步。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F19",
-   "path": "sections.today.1",
-   "category": "parity",
-   "severity": "fix",
-   "problem": "ZH says 「现代虚构场景之二」. EN says only \"Another scene: a handover\" and drops the \"modern\" and \"fictional\" labels, so the EN reader loses the signal that this is a hypothetical scene.",
-   "evidence": [],
-   "proposed": "Change to \"Second modern scene, fictional: a handover.\"",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "英文补上“Second modern scene, fictional”，与中文的虚构场景标注一致。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "F20",
-   "path": "uncertainty_note",
-   "category": "quotes",
-   "severity": "fix",
-   "problem": "In the quotation 「诚令成安君聽足下計，若信者亦已爲禽矣」, the first character is the simplified 「诚」. The source has 「誠」, so the quotation is not character-for-character.",
-   "evidence": [
-    {
-     "id": "J-E9",
-     "quote": "誠令成安君聽足下計，若信者亦已爲禽矣"
-    }
-   ],
-   "proposed": "Change to 「誠令成安君聽足下計，若信者亦已爲禽矣」.",
-   "origin": "final-editor audit",
-   "disposition": "fixed",
-   "rationale": "引文首字“诚”改为证据原字“誠”。",
-   "decided_in": "revise_r1"
-  },
-  {
-   "id": "M1",
-   "problem": "「规矩先划掉了半个选项池，李左车的方案可能在讨论开始之前就已不在考虑之内」是对陈馀考虑过程/内心的推断，与 limits 段「不替他补充任何心理活动」及 reflection 中「未对陈馀的心理作任何补充」的声明相抵触",
-   "origin": "inherited mimo-review R1",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "analysis.0",
-   "disposition": "duplicate",
-   "same_as": "F17",
-   "rationale": "Same as F17: the inference in analysis.0 about what Chen Yu considered contradicts the declarations in limits.1 and uncertainty_note."
-  },
-  {
-   "id": "M2",
-   "problem": "ZH labels the scene 现代虚构场景之二 (a second modern, explicitly fictional scene), but EN reads only \"Another scene: a handover\" — the 'modern' and, more importantly, the 'fictional' framing flag present in ZH is dropped, so the hypothetical hedge is missing in English.",
-   "origin": "inherited mimo-parity P2",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "sections.today.1",
-   "disposition": "duplicate",
-   "same_as": "F19",
-   "rationale": "Same as F19: the EN for today.1 is missing the \"modern, fictional\" labels."
-  },
-  {
-   "id": "M3",
-   "problem": "[unsupported_claims] story 第1段「韩信先派一万人先行出山」——原文无「出山」，只作「使萬人先行，出，背水陳」",
-   "origin": "inherited mimo-review R2",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "(location not given)",
-   "disposition": "duplicate",
-   "same_as": "F7",
-   "rationale": "Same as F7: the source has only 「出」, so 「出山」 is an added detail."
-  },
-  {
-   "id": "M4",
-   "problem": "[unsupported_claims] story 第4段「一支军队刚刚获胜，主帅最急着办的事之一，是保住对方那位出主意的人」——作者评价性概括，证据只记禁杀广武君、悬赏千金、解缚师事等动作",
-   "origin": "inherited mimo-review R3",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "(location not given)",
-   "disposition": "duplicate",
-   "same_as": "F11",
-   "rationale": "Same as F11: \"most urgent task\" adds urgency and ordering not found in the evidence."
-  },
-  {
-   "id": "M5",
-   "problem": "[unsupported_claims] analysis 第1段「李左车的方案可能在讨论开始之前就已不在考虑之内」——无史料支持的内心推断（虽已标注为作者推断，但与 limits 声明冲突）",
-   "origin": "inherited mimo-review R4",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "(location not given)",
-   "disposition": "duplicate",
-   "same_as": "F17",
-   "rationale": "Same issue as F17 and M1."
-  },
-  {
-   "id": "M6",
-   "problem": "[invented_inner_life] 「一种解释是：规矩先划掉了半个选项池，李左车的方案可能在讨论开始之前就已不在考虑之内。」——写到了陈馀「考虑过的选项」，原文只记三条公开理由（儒者/义兵不用诈谋、兵法倍则战、诸侯谓吾怯），未记其权衡过程；该句已标注为作者推断，但属对内心的补充",
-   "origin": "inherited mimo-review R5",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "(location not given)",
-   "disposition": "duplicate",
-   "same_as": "F17",
-   "rationale": "Same issue as F17 and M1: an addition to Chen Yu's inner life."
-  },
-  {
-   "id": "M7",
-   "problem": "[invented_inner_life] 「看上去像不懂打仗。」——写出了时人（赵军）的想法作为大笑的解释，原文只记「大笑」，未记所笑为何",
-   "origin": "inherited mimo-review R6",
-   "severity": "fix",
-   "category": "unsupported",
-   "path": "(location not given)",
-   "disposition": "duplicate",
-   "same_as": "F9",
-   "rationale": "Same as F9: the source records only 「大笑」, not what the Zhao army was laughing at."
-  },
-  {
-   "id": "V1-V1",
-   "path": "sections.story.7",
-   "category": "chronology",
-   "severity": "fix",
-   "problem": "中文写“李左车开口说的是”“开口先讲的”，英文写“began with”“opened by”，都把「智者千慮」一语写成李左车在这场对话中的第一句话。据J-E9，他最先的回应是以“敗軍之將”推辞。J-E9与J-E10之间是否连续，证据也未显示。",
-   "evidence": [
-    {
-     "id": "J-E9",
-     "quote": "廣武君辭謝曰：『臣聞敗軍之將，不可以言勇'"
-    },
-    {
-     "id": "J-E10",
-     "quote": "廣武君曰：『臣聞智者千慮，必有一失；愚者千慮，必有一得。"
-    }
-   ],
-   "proposed": "中文“李左车开口说的是”改为“随后李左车说”，“开口先讲的”改为“这时讲的”；英文“began with”改为“then answered with”，“opened by suggesting”改为“now suggested”。",
-   "origin": "final-editor verify round 1",
-   "disposition": "fixed",
-   "rationale": "J-E9记李左车最先以败军之将推辞，J-E10与J-E9是否前后相接，证据并未显示。因此中文把“李左车开口说的是”改为“原文又记李左车说”，“开口先讲的”改为“在这里讲的”；英文“began with”改为“The text also records Li Zuoche saying”，“opened by suggesting”改为“here suggests”。未采用建议中的“随后”“now”，因为这两种说法同样暗示时间先后。",
-   "decided_in": "revise_r2"
-  },
-  {
-   "id": "V1-V2",
-   "path": "sections.limits.1",
-   "category": "quotes",
-   "severity": "fix",
-   "problem": "英文引号内的译文“would long ago have been taken”中的“long ago”在原文中没有对应。原文“亦已”只是“已经”之意。这句译文也与 story.6 的“would already have been taken”不一致。",
-   "evidence": [
-    {
-     "id": "J-E9",
-     "quote": "誠令成安君聽足下計，若信者亦已爲禽矣"
-    }
-   ],
-   "proposed": "改为“would already have been taken”。",
-   "origin": "final-editor verify round 1",
-   "disposition": "fixed",
-   "rationale": "原文「亦已」只是“已经”的意思，所以删去“long ago”，改为“would already have been taken”，与 story.6 一致。另依规则4，英文不应给译述加引号冒充原文，因此改成不带引号的转述。中文本来就准确，按原文照录。",
-   "decided_in": "revise_r2"
-  },
-  {
-   "id": "V1-V3",
-   "path": "uncertainty_note",
-   "category": "quotes",
-   "severity": "fix",
-   "problem": "问题同 V2：英文引号内译文用了“long ago”，超出原文“亦已”的意思。",
-   "evidence": [
-    {
-     "id": "J-E9",
-     "quote": "若信者亦已爲禽矣"
-    }
-   ],
-   "proposed": "改为“would already have been taken”。",
-   "origin": "final-editor verify round 1",
-   "disposition": "fixed",
-   "rationale": "与V1-V2同样处理：英文删去“long ago”，改为“would already have been taken”，并改成不带引号的转述。中文本来就准确，按原文照录。",
-   "decided_in": "revise_r2"
+   "proposed": "英文改为：\"When Han Xin untied Li Zuoche's bonds and served him as a teacher, he was doing exactly that: the person a winner most needs to ask is often not his own adviser, but the one on the other side who went unheard.\"",
+   "origin": "final-editor verify round 2"
   }
  ],
  "edits": [
   {
-   "path": "dek.zh",
-   "before": "一场以少胜出的仗被讲了两千年，多数版本只记得赢家的招数。这篇想说的是另一件事：一条被否决的建议，和赢家打赢之后怎样对待提建议的人。",
-   "after": "讲这场以少胜多的仗，可以只讲赢家的招数；这篇想说的是另一件事：一条被否决的建议，和赢家打赢之后怎样对待提建议的人。",
-   "issues": [
-    "F1"
-   ]
-  },
-  {
-   "path": "dek.en",
-   "before": "A battle won against the odds has been retold for two thousand years, and most retellings remember only the winner's tricks. This one is about something else: a proposal that was rejected, and how the winner treated the man who made it after the fighting stopped.",
-   "after": "A battle won against the odds can be told through the winner's tricks alone. This one is about something else: a proposal that was rejected, and how the winner treated the man who made it after the fighting stopped.",
-   "issues": [
-    "F1"
-   ]
-  },
-  {
-   "path": "sections.hook.0.zh",
-   "before": "韩信和张耳带着数万人，准备东下井陉去打赵国；赵王歇和成安君陈馀把军队聚在井陉口，号称二十万。兵力对比一目了然，难处在另一头：汉军是乘胜远斗，离本土越来越远，粮草跟在后面。就在交手之前，赵营里有人递上一条非常具体的方案，方案没有被采纳。这一篇要说的就是这条被否掉的计，以及打赢之后，赢家怎样对待出计的人。",
-   "after": "韩信和张耳带着数万人，准备东下井陉去打赵国；赵王歇和成安君陈馀把军队聚在井陉口，号称二十万。兵力对比一目了然，难处在另一头：据赵营中李左车的分析，汉军是乘胜离国远斗，粮食势必落在后面。就在交手之前，他向陈馀递上一条非常具体的方案，方案没有被采纳。这一篇要说的就是这条被否掉的计，以及打赢之后，赢家怎样对待出计的人。",
-   "issues": [
-    "F2"
-   ]
-  },
-  {
-   "path": "sections.hook.0.en",
-   "before": "Han Xin and Zhang Er were marching east with tens of thousands of troops, bound to attack the state of Zhao through Jingxing. King Xie of Zhao and the Lord of Cheng'an, Chen Yu, massed their forces at the Jingxing pass under a strength they claimed at two hundred thousand. The disparity was obvious. The trouble lay elsewhere: the Han army was fighting far from home on the back of a string of victories, its grain straggling along behind. Before the two sides came to blows, someone in the Zhao camp put forward a very specific plan, and the plan was turned down. This piece is about that rejected proposal, and about how the winner treated the man who drew it up once the fighting was over.",
-   "after": "Han Xin and Zhang Er were marching east with tens of thousands of troops, bound to attack the state of Zhao through Jingxing. King Xie of Zhao and the Lord of Cheng'an, Chen Yu, massed their forces at the Jingxing pass under a strength they claimed at two hundred thousand. The disparity was obvious. The trouble lay elsewhere: as Li Zuoche, in the Zhao camp, saw it, the Han army was riding its victories far from home, and its grain was bound to fall behind. Before the two sides came to blows, he put a very specific plan to Chen Yu, and the plan was turned down. This piece is about that rejected proposal, and about how the winner treated the man who drew it up once the fighting was over.",
-   "issues": [
-    "F2"
-   ]
-  },
-  {
-   "path": "sections.context.1.en",
-   "before": "His proposal followed from that: \"Grant me thirty thousand picked troops and I will cut their baggage train from the side roads.\" Hold the main body behind deep ditches and high walls and refuse battle. Ahead the Han would have no one to fight; behind them no road home; cut off and unable to forage, and in less than ten days \"the heads of the two generals will be delivered to your command tent.\" He closed with a warning: otherwise, he said, you will surely be taken by those two.",
-   "after": "His proposal followed from that. He asked to be lent thirty thousand picked troops to cut the Han baggage train by the side roads, while the main body held behind deep ditches and high walls and refused battle. Ahead the Han would have no one to fight; behind them no way back; with their rear cut and nothing to forage in the open country, he reckoned that in less than ten days the heads of the two generals could be delivered to the commander's tent. He closed with a warning: otherwise, he said, you will surely be taken by those two.",
-   "issues": [
-    "F3"
-   ]
-  },
-  {
-   "path": "sections.context.2.en",
-   "before": "The Zhao commander-in-chief gets one line of characterization from the historian: \"a Confucian, who always maintained that a righteous army does not use deceit and cunning schemes.\" His grounds for refusing are recorded too, in two layers. One is arithmetic: the manual says ten-to-one besieges, two-to-one fights; Han Xin claims tens of thousands but has no more than a few thousand, and a thousand-li raid has worn them to the bone. The other is reputation: to hide behind walls at such odds would mean \"the lords will think me cowardly, and come lightly to attack me.\" He did not take the Guangwu Jun's advice.",
-   "after": "Chen Yu, the Lord of Cheng'an and Zhao's commander-in-chief, gets one line of characterization from the historian: a Confucian, who always maintained that a righteous army does not use deceit and cunning schemes. His grounds for refusing are recorded too, in two layers. One is arithmetic: the manual says ten-to-one besieges, two-to-one fights; Han Xin claims tens of thousands but has no more than a few thousand, and a thousand-li raid has worn them to the bone. The other is reputation: to avoid battle at such odds would mean, in his words roughly, that the lords would think him cowardly and come lightly to attack him. He did not take the Guangwu Jun's advice.",
-   "issues": [
-    "F4"
-   ]
-  },
-  {
-   "path": "sections.story.0.en",
-   "before": "Han Xin sent men to spy out the camp, learned the plan had not been adopted, and only when they reported back, delighted at the news, did he dare lead his army down toward Jingxing, halting thirty li short of the pass. At midnight he chose two thousand light cavalry, each man carrying a red banner, and sent them by side paths to hide in the hills and watch the Zhao camp, with orders: \"When Zhao sees us withdraw, they will empty their camp to pursue us; go in fast, pull down the Zhao banners and stand up Han's red banners in their place.\" Everything this detachment did later hung on one premise — that the Zhao army really would come out.",
-   "after": "Han Xin sent men to spy out the camp and learned the plan had not been adopted. When they reported back, he was overjoyed, and only then did he dare lead his army down toward Jingxing, halting thirty li short of the pass. At midnight he chose two thousand light cavalry, each man carrying a red banner, and sent them by side paths to hide in the hills and watch the Zhao army, telling them that when Zhao saw the Han withdraw, it would empty its camp to pursue; they were then to go in fast, pull down the Zhao banners and stand up Han's red banners in their place. Everything this detachment did later hung on one premise — that the Zhao army really would come out.",
-   "issues": [
-    "F5",
-    "F6"
-   ]
-  },
-  {
-   "path": "sections.story.1.zh",
-   "before": "韩信先派一万人先行出山，背靠河水列阵。赵军从营垒上望见，「大笑」。按诸将事后引用的兵法，布阵要右背山陵、前左水泽；一万人把自己放在无退路的地方，看上去像不懂打仗。",
-   "after": "韩信派一万人先行而出，背靠河水列阵。赵军望见，「大笑」。按诸将事后引用的兵法，布阵要右背山陵、前左水泽。作者推测，背水列阵违背了这条常规，赵军或因此发笑；但原文只记了大笑，没有说他们笑什么。",
-   "issues": [
-    "F7",
-    "F8",
-    "F9"
-   ]
-  },
-  {
-   "path": "sections.story.1.en",
-   "before": "He sent ten thousand men out first to form up with their backs to the river. The Zhao soldiers saw them from the ramparts and \"roared with laughter.\" By the manual his generals later quoted, a proper line kept hills at the right rear and water at the left front. Ten thousand men with no retreat behind them looked like men who had never fought.",
-   "after": "He sent ten thousand men ahead; they went out and formed up with their backs to the river. The Zhao army saw them and roared with laughter. By the manual his generals later quoted, a proper line kept hills at the right rear and water at the left front. The author's guess is that this breach of the rule is what drew the laughter; the text records only that they laughed, not why.",
-   "issues": [
-    "F7",
-    "F8",
-    "F9"
-   ]
-  },
-  {
-   "path": "sections.story.2.zh",
-   "before": "平旦，韩信打出大将的旗鼓，擂鼓出井陉口，赵军开营出击，双方打了很久。然后韩信、张耳假装丢下旗鼓（原文「詳弃鼓旗」），退向水边的部队；水上那一军把他们放入阵中，回身再战。赵军果然全营出动，争抢汉军的旗鼓，一路追击韩信、张耳。而退入水边阵中的汉军已经无路可退，人人殊死作战，打不垮。",
-   "after": "平旦，韩信打出大将的旗鼓，擂鼓出井陉口，赵军开营出击，双方打了很久。然后韩信、张耳假装丢下旗鼓（原文「詳弃鼓旗」），退向水边的部队；水上那一军把他们放入阵中，回身再战。赵军果然全营出动，争抢汉军的旗鼓，一路追击韩信、张耳。而已退入水边阵中的汉军人人殊死作战，打不垮。",
-   "issues": [
-    "F10"
-   ]
-  },
-  {
-   "path": "sections.story.2.en",
-   "before": "At dawn Han Xin raised the general's banners, beat the drums, and came out through the pass. The Zhao camp opened and attacked, and the fighting went on a long time. Then Han Xin and Zhang Er made a show of abandoning their drums and standards and fell back toward the force by the water, which opened its ranks to take them in and turned to fight again. The Zhao army duly poured out of its walls, scrambling for the Han drums and standards, chasing Han Xin and Zhang Er. The Han soldiers at the riverbank, with nowhere left to go, fought to the death and could not be broken.",
-   "after": "At dawn Han Xin raised the general's banners, beat the drums, and came out through the pass. The Zhao camp opened and attacked, and the fighting went on a long time. Then Han Xin and Zhang Er made a show of abandoning their drums and standards and fell back toward the force by the water, which opened its ranks to take them in and turned to fight again. The Zhao army duly poured out of its walls, scrambling for the Han drums and standards, chasing Han Xin and Zhang Er. The Han soldiers at the riverbank, Han Xin and Zhang Er now among them, fought to the death and could not be broken.",
-   "issues": [
-    "F10"
-   ]
-  },
-  {
-   "path": "sections.story.4.zh",
-   "before": "然后是这一篇真正关心的那一幕。韩信下令军中不得杀害广武君李左车，能活捉者赏千金。于是有人把捆着的李左车送到帐下，韩信亲自给他解开绳索，请他东向而坐、自己西向相对，以师礼待他。一支军队刚刚获胜，主帅最急着办的事之一，是保住对方那位出主意的人，还为此悬赏千金。",
-   "after": "然后是这一篇真正关心的那一幕。韩信下令军中不得杀害广武君李左车，能活捉者赏千金。于是有人把捆着的李左车送到帐下，韩信亲自给他解开绳索，请他东向而坐、自己西向相对，以师礼待他。一支军队刚刚获胜，主帅下的命令里有一条，是保住对方那位出主意的人，还为此悬赏千金。",
-   "issues": [
-    "F11",
-    "F12"
-   ]
-  },
-  {
-   "path": "sections.story.4.en",
-   "before": "Then comes the scene this piece is really about. Han Xin ordered that the Guangwu Jun, Li Zuoche, must not be killed, and set a thousand in gold on bringing him in alive. Someone delivered him bound at headquarters; Han Xin \"loosed his bonds, seated him facing east, sat facing him from the west, and served him as a teacher.\" An army had just won, and one of the commander-in-chief's first tasks was keeping the other side's adviser alive — with a reward of a thousand in gold for it.",
-   "after": "Then comes the scene this piece is really about. Han Xin ordered that the Guangwu Jun, Li Zuoche, must not be killed, and set a thousand in gold on bringing him in alive. Someone delivered him bound to headquarters; Han Xin untied him, seated him facing east while he himself sat facing west, and treated him as his teacher. An army had just won, and among the commander-in-chief's orders was one to keep the other side's adviser alive — with a reward of a thousand in gold for it.",
-   "issues": [
-    "F11",
-    "F12"
-   ]
-  },
-  {
-   "path": "sections.story.6.en",
-   "before": "Han Xin then asked Li Zuoche: I mean to strike Yan in the north and Qi in the east — how do I make that work? Li Zuoche declined: a defeated general cannot speak of courage, a minister of a ruined state cannot plan survival; what am I, a captured and ruined man, to weigh great matters with? Han Xin offered the story of Baili Xi, who saw Yu fall while he served Yu and saw Qin rise to hegemony while he served Qin: \"not that he was foolish at Yu and wise at Qin, but that his advice was used or not used, heeded or not heeded.\" And had the Lord of Cheng'an heeded your plan, a man like me would long ago have been your prisoner. It is because he did not use you that I sit here asking.",
-   "after": "Han Xin then asked Li Zuoche: I mean to strike Yan in the north and Qi in the east — how do I make that work? Li Zuoche declined: a defeated general cannot speak of courage, a minister of a ruined state cannot plan survival; what am I, a captured and ruined man, to weigh great matters with? Han Xin offered the story of Baili Xi, who saw Yu fall while he served Yu and saw Qin rise to hegemony while he served Qin: not that he was foolish at Yu and wise at Qin, but that his advice was used or not used, heeded or not heeded. And had the Lord of Cheng'an heeded your plan, a man like me would already have been taken. It is because he did not use you that I sit here asking.",
-   "issues": [
-    "F13"
-   ]
-  },
-  {
-   "path": "sections.story.7.zh",
-   "before": "李左车开口说的是：「智者千慮，必有一失；愚者千慮，必有一得」，所以有句话说，狂夫之言，圣人也从中择取。一位刚刚亡国、被生擒的人，开口先讲的是任何人都可能出错。",
-   "after": "李左车开口说的是：「智者千慮，必有一失；愚者千慮，必有一得」，所以有句话说，狂夫之言，圣人也从中择取。一种解读是：一位刚刚亡国、被生擒的人，开口先讲的，近乎是任何人都可能出错——而他同时也说了，愚者也会有所得。",
-   "issues": [
-    "F14"
-   ]
-  },
-  {
-   "path": "sections.story.7.en",
-   "before": "Li Zuoche began: \"the wise man, in a thousand considerations, must have one failure; the fool, in a thousand considerations, must have one success\" — hence the saying, the sage still picks through a madman's words. A man whose state had just fallen, taken alive, opened by reminding everyone that anyone can be wrong.",
-   "after": "Li Zuoche began with the saying that the wise man, in a thousand considerations, must have one failure, and the fool, in a thousand considerations, must have one success — hence the saying, the sage still picks through a madman's words. One reading is that a man whose state had just fallen, taken alive, opened by suggesting that anyone can be wrong — while also allowing that even a fool can be right.",
-   "issues": [
-    "F14"
-   ]
-  },
-  {
-   "path": "sections.analysis.0.zh",
-   "before": "把陈馀拒绝的两层理由拆开看，会发现它们不是一类东西。「兵号数万，其实不过数千」「千里而袭我，亦已罢极」是对敌情的判断，可以争论；“避而不击，诸侯就会说我怯懦”不是对汉军的判断，是对自身形象的判断；而「义兵不用诈谋奇计」根本不是判断，是一条规矩。一种解释是：规矩先划掉了半个选项池，李左车的方案可能在讨论开始之前就已不在考虑之内。作者推断，这也是为什么原文要给陈馀加上「儒者也」这个身份标签——史家记的是立场，不只是失策。",
-   "after": "把原文所记陈馀拒绝的理由拆开看，会发现它们不是一类东西。「兵號數萬，其實不過數千」「千里而襲我，亦已罷極」是对敌情的判断，可以争论；“避而不击，诸侯就会说我怯懦”不是对汉军的判断，是对自身形象的判断。此外，史家在记这些理由之前，先交代了他平日的立场：「常稱義兵不用詐謀奇計」。这是司马迁对他一贯说法的描述，不是他这一次拒绝时给出的理由；而且它不是判断，是一条规矩。一种解释是：这条规矩与李左车的奇兵之计正好相冲，二者或有关联，但原文并没有把它记为这次拒绝的理由。作者推断，这也是为什么原文要给陈馀加上「儒者也」这个身份标签——史家记的是立场，不只是失策。",
-   "issues": [
-    "F15",
-    "F16",
-    "F17"
-   ]
-  },
-  {
-   "path": "sections.analysis.0.en",
-   "before": "Split Chen Yu's two grounds apart and they are not the same kind of thing. \"Claims tens of thousands, really no more than a few thousand,\" \"a thousand-li raid has worn them to the bone\" — those are readings of the enemy, contestable in principle. \"Refuse battle and the lords will think me cowardly\" is not a reading of the Han army at all; it is a reading of his own image. And \"a righteous army does not use deceit and cunning schemes\" is not a judgment at all — it is a rule. One explanation: the rule had already struck half the options from the table, so Li Zuoche's plan may have been out of the running before the discussion opened. The author's inference is that this is why the text stamps Chen Yu \"a Confucian\": the historian is recording a stance, not merely a mistake.",
-   "after": "Split apart the reasons the text records for Chen Yu's refusal and they are not the same kind of thing. Claims tens of thousands, really no more than a few thousand; a thousand-li raid has worn them to the bone — those are readings of the enemy, contestable in principle. Refuse battle and the lords will think me cowardly is not a reading of the Han army at all; it is a reading of his own image. Before recording those reasons, the historian also sets out his habitual stance: he always maintained that a righteous army does not use deceit and cunning schemes. That is Sima Qian's description of what Chen Yu habitually said, not a reason he gave for this refusal; and it is not a judgment at all but a rule. One explanation: that rule runs directly against Li Zuoche's surprise-force plan, and the two may be connected, but the text does not record it as a ground for this refusal. The author's inference is that this is why the text labels Chen Yu a Confucian: the historian is recording a stance, not merely a mistake.",
-   "issues": [
-    "F15",
-    "F16",
-    "F17"
-   ]
-  },
-  {
-   "path": "sections.analysis.2.zh",
-   "before": "还有一个容易被忽略的不对称。战后诸将问的是“为什么背水”，也就是问赢家的招数妙在哪里；原文没有记下有人问“那条计当初为什么没被采纳”。作者推断，复盘天然聚光在胜者的技巧上，因为技巧可学；而一次否决看上去毫无技术含量，也不产生任何战果。可这场仗里，决定性的一次动作恰恰发生在开战之前——一次拒绝，和一次对拒绝的探知。",
-   "after": "还有一个容易被忽略的不对称。战后诸将问的是“为什么背水”，也就是问赢家的招数妙在哪里；原文没有记下有人问“那条计当初为什么没被采纳”。作者推断，复盘天然聚光在胜者的技巧上，因为技巧可学；而一次否决看上去毫无技术含量，也不产生任何战果。可作者认为，这场仗里决定性的动作恰恰发生在开战之前——一次拒绝，和一次对拒绝的探知。",
-   "issues": [
-    "F18"
-   ]
-  },
-  {
-   "path": "sections.analysis.2.en",
-   "before": "There is also an easy-to-miss asymmetry. After the battle the generals asked why the backs-to-the-water formation — a question about what made the winner's move clever. The text does not record anyone asking why that plan had not been adopted before the fighting. The author's inference: after-action review naturally spotlights the winner's technique, because technique can be learned, while a veto looks like it takes no skill and yields no result. Yet in this battle the decisive acts happened before the first blow fell — a refusal, and the discovery of that refusal.",
-   "after": "There is also an easy-to-miss asymmetry. After the battle the generals asked why the backs-to-the-water formation — a question about what made the winner's move clever. The text does not record anyone asking why that plan had not been adopted before the fighting. The author's inference: after-action review naturally spotlights the winner's technique, because technique can be learned, while a veto looks like it takes no skill and yields no result. Yet in the author's view, the decisive acts in this battle happened before the first blow fell — a refusal, and the discovery of that refusal.",
-   "issues": [
-    "F18"
-   ]
-  },
-  {
-   "path": "sections.today.1.en",
-   "before": "Another scene: a handover. Having won the bid, the client hires as consultant precisely the person on the losing side whose plan was voted down — not to humiliate him, but to treat his thinking as coursework. Untying the bonds and serving Li Zuoche as a teacher is exactly that: the person most worth asking is often not your own adviser, but the one on the other side who went unheard.",
-   "after": "Second modern scene, fictional: a handover. Having won the bid, the client hires as consultant precisely the person on the losing side whose plan was voted down — not to humiliate him, but to treat his thinking as coursework. Untying the bonds and serving Li Zuoche as a teacher is exactly that: the person most worth asking is often not your own adviser, but the one on the other side who went unheard.",
-   "issues": [
-    "F19"
-   ]
-  },
-  {
-   "path": "uncertainty_note.zh",
-   "before": "本文唯一史源为司马迁《史记·淮阴侯列传》。其中人物对话是史家记述，未必逐字；「诚令成安君聽足下計，若信者亦已爲禽矣」出自韩信之口，属事后自述，不可检验。除原文所记理由外，本文未对陈馀的心理作任何补充；作者提出的替代情形只用于分析，不作事实陈述。",
-   "after": "本文唯一史源为司马迁《史记·淮阴侯列传》。其中人物对话是史家记述，未必逐字；「誠令成安君聽足下計，若信者亦已爲禽矣」出自韩信之口，属事后自述，不可检验。除原文所记理由外，本文未对陈馀的心理作任何补充；作者提出的替代情形只用于分析，不作事实陈述。",
-   "issues": [
-    "F20"
-   ]
-  },
-  {
-   "path": "sections.story.7.zh",
-   "before": "李左车开口说的是：「智者千慮，必有一失；愚者千慮，必有一得」，所以有句话说，狂夫之言，圣人也从中择取。一种解读是：一位刚刚亡国、被生擒的人，开口先讲的，近乎是任何人都可能出错——而他同时也说了，愚者也会有所得。",
-   "after": "原文又记李左车说：「智者千慮，必有一失；愚者千慮，必有一得」，所以有句话说，狂夫之言，圣人也从中择取。一种解读是：一位刚刚亡国、被生擒的人，在这里讲的，近乎是任何人都可能出错——而他同时也说了，愚者也会有所得。",
+   "path": "sections.story.3.en",
+   "before": "The ambush had been waiting for exactly that. With the Zhao camp emptied, the two thousand riders swept in, pulled down the Zhao banners and raised two thousand red ones of Han. Unable to win in front and unable to catch Han Xin, the Zhao troops turned for their camp and found the walls all hung with Han's red banners. Greatly alarmed, they were sure the Han had already taken the king of Zhao and his generals. The army dissolved; commanders cut men down to hold the line and could not. The Han struck from both sides, routed the Zhao army, killed the Lord of Cheng'an on the banks of the Zhi, and took King Xie alive.",
+   "after": "The ambush had been waiting for exactly that. With the Zhao camp emptied, the two thousand riders swept in, pulled down the Zhao banners and raised two thousand red ones of Han. Unable to win in front and unable to catch Han Xin, the Zhao troops turned for their camp and found the walls all hung with Han's red banners. Greatly alarmed, they believed the Han had already taken the king of Zhao and his generals. The army dissolved; commanders cut men down to hold the line and could not. The Han struck from both sides, routed the Zhao army, killed the Lord of Cheng'an on the banks of the Zhi, and took King Xie alive.",
    "issues": [
     "V1-V1"
-   ]
-  },
-  {
-   "path": "sections.story.7.en",
-   "before": "Li Zuoche began with the saying that the wise man, in a thousand considerations, must have one failure, and the fool, in a thousand considerations, must have one success — hence the saying, the sage still picks through a madman's words. One reading is that a man whose state had just fallen, taken alive, opened by suggesting that anyone can be wrong — while also allowing that even a fool can be right.",
-   "after": "The text also records Li Zuoche saying that the wise man, in a thousand considerations, must have one failure, and the fool, in a thousand considerations, must have one success — hence the saying, the sage still picks through a madman's words. One reading is that a man whose state had just fallen, taken alive, here suggests that anyone can be wrong — while also allowing that even a fool can be right.",
-   "issues": [
-    "V1-V1"
-   ]
-  },
-  {
-   "path": "sections.limits.1.en",
-   "before": "Two things must stay open. First, \"had the Lord of Cheng'an heeded your plan, a man like me would long ago have been taken\" is Han Xin's own claim after the event, untestable; this piece records it as his explanation of himself, not as fact. Second, where Chen Yu's mind is concerned, this piece follows exactly the reasons the text gives and adds nothing; what would have happened had he adopted the plan is an analytical counterfactual the author offers, not a record, and it will never have an answer.",
-   "after": "Two things must stay open. First, Han Xin's statement that, had the Lord of Cheng'an heeded Li Zuoche's plan, a man like him would already have been taken is his own claim after the event, untestable; this piece records it as his explanation of himself, not as fact. Second, where Chen Yu's mind is concerned, this piece follows exactly the reasons the text gives and adds nothing; what would have happened had he adopted the plan is an analytical counterfactual the author offers, not a record, and it will never have an answer.",
-   "issues": [
-    "V1-V2"
-   ]
-  },
-  {
-   "path": "uncertainty_note.en",
-   "before": "The only historical source for this piece is Sima Qian's \"Account of the Marquis of Huaiyin\" in the Records of the Grand Historian. The speeches there are the historian's account and need not be verbatim; \"had the Lord of Cheng'an heeded your plan, a man like me would long ago have been taken\" comes from Han Xin's own mouth, an after-the-fact statement that cannot be tested. Beyond the reasons recorded in the original text, this piece adds nothing to Chen Yu's psychology; the alternative scenario the author offers serves analysis only and is not stated as fact.",
-   "after": "The only historical source for this piece is Sima Qian's \"Account of the Marquis of Huaiyin\" in the Records of the Grand Historian. The speeches there are the historian's account and need not be verbatim; the statement that, had the Lord of Cheng'an heeded Li Zuoche's plan, a man like Han Xin would already have been taken comes from Han Xin's own mouth, an after-the-fact statement that cannot be tested. Beyond the reasons recorded in the original text, this piece adds nothing to Chen Yu's psychology; the alternative scenario the author offers serves analysis only and is not stated as fact.",
-   "issues": [
-    "V1-V3"
    ]
   }
  ],
@@ -806,28 +138,9 @@
   {
    "round": 1,
    "issues_in": [
-    "F1",
-    "F2",
-    "F3",
-    "F4",
-    "F5",
-    "F6",
-    "F7",
-    "F8",
-    "F9",
-    "F10",
-    "F11",
-    "F12",
-    "F13",
-    "F14",
-    "F15",
-    "F16",
-    "F17",
-    "F18",
-    "F19",
-    "F20"
+    "X1"
    ],
-   "changes_applied": 22,
+   "changes_applied": 0,
    "changes_failed": [],
    "still_open": [],
    "checker_after": [
@@ -837,10 +150,14 @@
     ],
     [
      "CHECK",
+     "story[7] numbers differ zh[] en[100]"
+    ],
+    [
+     "CHECK",
      "analysis[1] numbers differ zh[2000] en[2000, 10000]"
     ]
    ],
-   "content_sha256_after": "b553f5151ad106b43366e2411bd27092e521d9dc4e18eac7856519de2f5bad72",
+   "content_sha256_after": "e150c4b7f1567eb72fb670f1b87c8f373ab146d68a16f81486be3df8c879b0dd",
    "verify": {
     "fields": [
      {
@@ -943,290 +260,6 @@
      },
      {
       "path": "sections.context.2",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.story.heading",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.story.0",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.story.1",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.story.2",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.story.3",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.story.4",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.story.5",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.story.6",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.story.7",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": [
-       "V1"
-      ]
-     },
-     {
-      "path": "sections.analysis.heading",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.analysis.0",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.analysis.1",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.analysis.2",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.analysis.3",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.today.heading",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.today.0",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.today.1",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": [
-       "V4"
-      ]
-     },
-     {
-      "path": "sections.limits.heading",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.limits.0",
-      "checked": [
-       "facts",
-       "attribution",
-       "chronology",
-       "causality",
-       "quotes",
-       "inner_life",
-       "interpretation_label",
-       "parity"
-      ],
-      "issue_ids": []
-     },
-     {
-      "path": "sections.limits.1",
       "checked": [
        "facts",
        "attribution",
@@ -1242,7 +275,63 @@
       ]
      },
      {
-      "path": "reflection.scenario",
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
       "checked": [
        "facts",
        "attribution",
@@ -1254,8 +343,232 @@
        "parity"
       ],
       "issue_ids": [
-       "V5"
+       "V1"
       ]
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
      },
      {
       "path": "reflection.question",
@@ -1325,89 +638,49 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": [
-       "V3"
-      ]
+      "issue_ids": []
      }
     ],
     "issues": [
      {
       "id": "V1",
-      "path": "sections.story.7",
-      "category": "chronology",
+      "path": "sections.story.3",
+      "category": "inner_life",
       "severity": "fix",
-      "problem": "中文写“李左车开口说的是”“开口先讲的”，英文写“began with”“opened by”，都把「智者千慮」一语写成李左车在这场对话中的第一句话。据J-E9，他最先的回应是以“敗軍之將”推辞。J-E9与J-E10之间是否连续，证据也未显示。",
+      "problem": "英文“they were sure the Han had already taken the king”把原文的「以爲」（以为、认为）加重成了“确信”，比证据说得更满。中文“以为”是对的，所以中英也不一致。",
       "evidence": [
        {
-        "id": "J-E9",
-        "quote": "廣武君辭謝曰：『臣聞敗軍之將，不可以言勇'"
-       },
-       {
-        "id": "J-E10",
-        "quote": "廣武君曰：『臣聞智者千慮，必有一失；愚者千慮，必有一得。"
+        "id": "J-E6",
+        "quote": "而大驚，以爲漢皆已得趙王將矣"
        }
       ],
-      "proposed": "中文“李左车开口说的是”改为“随后李左车说”，“开口先讲的”改为“这时讲的”；英文“began with”改为“then answered with”，“opened by suggesting”改为“now suggested”。"
+      "proposed": "英文改为“Greatly alarmed, they believed the Han had already taken the king of Zhao and his generals.”"
      },
      {
       "id": "V2",
-      "path": "sections.limits.1",
-      "category": "quotes",
-      "severity": "fix",
-      "problem": "英文引号内的译文“would long ago have been taken”中的“long ago”在原文中没有对应。原文“亦已”只是“已经”之意。这句译文也与 story.6 的“would already have been taken”不一致。",
-      "evidence": [
-       {
-        "id": "J-E9",
-        "quote": "誠令成安君聽足下計，若信者亦已爲禽矣"
-       }
-      ],
-      "proposed": "改为“would already have been taken”。"
-     },
-     {
-      "id": "V3",
-      "path": "uncertainty_note",
-      "category": "quotes",
-      "severity": "fix",
-      "problem": "问题同 V2：英文引号内译文用了“long ago”，超出原文“亦已”的意思。",
-      "evidence": [
-       {
-        "id": "J-E9",
-        "quote": "若信者亦已爲禽矣"
-       }
-      ],
-      "proposed": "改为“would already have been taken”。"
-     },
-     {
-      "id": "V4",
-      "path": "sections.today.1",
+      "path": "sections.context.2",
       "category": "style",
       "severity": "note",
-      "problem": "类比主体不清。中文“竞标赢了之后，甲方请的顾问”和英文“Having won the bid, the client hires”把赢家写成了甲方/客户，与“赢家师事对手谋士”的类比对不上。",
-      "evidence": [],
-      "proposed": "改为“赢下竞标的一方，随后请来的顾问……”；英文改为“Having won the bid, the winning firm hires…”。"
-     },
-     {
-      "id": "V5",
-      "path": "reflection.scenario",
-      "category": "style",
-      "severity": "note",
-      "problem": "“暂缓扩张、先加固后方”是守己方后方，不等于“断其辎重”（断敌方补给）。类比只对得上“坚壁不战”一半。",
-      "evidence": [],
-      "proposed": "删去“断其辎重”，只保留“坚壁不战”的类比；或改写提议内容，使其同时包含针对对手供给的一面。"
+      "problem": "同一人物的英文称号不统一：context.0 用“the Lord of Guangwu”，context.2 用“the Guangwu Jun”，story.4 也用“the Guangwu Jun”。",
+      "evidence": [
+       {
+        "id": "J-E2",
+        "quote": "廣武君李左車說成安君曰"
+       }
+      ],
+      "proposed": "全文统一用“the Lord of Guangwu”，与“the Lord of Cheng'an”的译法保持一致。"
      }
     ],
-    "overall": "定稿史实与「」引文整体都有证据支持，推断也基本标注到位。只需修正 story.7 对李左车发言次序的表述，以及两处英文译文中多出的“long ago”。",
-    "_content_sha256": "b553f5151ad106b43366e2411bd27092e521d9dc4e18eac7856519de2f5bad72"
+    "overall": "所有「」引文都能在证据中逐字找到，史实、时间顺序和推断标注都有证据支持；只需把 story.3 英文的“were sure”改回与「以爲」相符的“believed”，另有一处称号译法不统一的文风小问题。",
+    "_content_sha256": "e150c4b7f1567eb72fb670f1b87c8f373ab146d68a16f81486be3df8c879b0dd"
    }
   },
   {
    "round": 2,
    "issues_in": [
-    "V1-V1",
-    "V1-V2",
-    "V1-V3"
+    "V1-V1"
    ],
-   "changes_applied": 4,
+   "changes_applied": 1,
    "changes_failed": [],
    "still_open": [],
    "checker_after": [
@@ -1417,10 +690,14 @@
     ],
     [
      "CHECK",
+     "story[7] numbers differ zh[] en[100]"
+    ],
+    [
+     "CHECK",
      "analysis[1] numbers differ zh[2000] en[2000, 10000]"
     ]
    ],
-   "content_sha256_after": "68f19de462a0fc6801a51137bc32826cd6149ba974631838572da0faec0c412b",
+   "content_sha256_after": "7cb5bb4cef6ebf035db060601718a96bef7a2b8ba5ddf2d131eee35de4f5d203",
    "verify": {
     "fields": [
      {
@@ -1771,7 +1048,9 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": []
+      "issue_ids": [
+       "V1"
+      ]
      },
      {
       "path": "sections.limits.heading",
@@ -1900,9 +1179,24 @@
       "issue_ids": []
      }
     ],
-    "issues": [],
-    "overall": "逐字段复核后未发现需修改的问题：事实、人名、地名、数字与时序均有证据支持，「」引语逐字见于J-E1至J-E10，推断与反事实均已标明为作者解释，现代场景已标为虚构且未冒充记录，中英文对应完整，可以签发。",
-    "_content_sha256": "68f19de462a0fc6801a51137bc32826cd6149ba974631838572da0faec0c412b"
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.today.1",
+      "category": "parity",
+      "severity": "fix",
+      "problem": "中文写明是「当年韩信」解缚、师事李左车，结论句的主语是「赢家」。英文写成 \"Untying the bonds and serving Li Zuoche as a teacher is exactly that: the person most worth asking...\"，丢了行为人韩信，也丢了「赢家」这一主语。结果中英意思不完全对应，英文读者看不出是谁做了这件事。",
+      "evidence": [
+       {
+        "id": "J-E7",
+        "quote": "信乃解其縛，東鄉坐，西鄉對，師事之"
+       }
+      ],
+      "proposed": "英文改为：\"When Han Xin untied Li Zuoche's bonds and served him as a teacher, he was doing exactly that: the person a winner most needs to ask is often not his own adviser, but the one on the other side who went unheard.\""
+     }
+    ],
+    "overall": "定稿的史实、引文、归属、时序和推断标注都有证据支撑或已明确标为解释；只有 today.1 的英文丢了行为人和「赢家」主语，需要做一处小的中英对齐修改。",
+    "_content_sha256": "7cb5bb4cef6ebf035db060601718a96bef7a2b8ba5ddf2d131eee35de4f5d203"
    }
   }
  ],
@@ -1913,11 +1207,6 @@
     "checked": [
      "facts",
      "attribution",
-     "chronology",
-     "causality",
-     "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1927,27 +1216,17 @@
     "checked": [
      "facts",
      "attribution",
-     "chronology",
      "causality",
-     "quotes",
-     "inner_life",
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F1"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.hook.heading",
     "checked": [
      "facts",
-     "attribution",
      "chronology",
-     "causality",
-     "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1964,20 +1243,13 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F2"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.context.heading",
     "checked": [
      "facts",
      "attribution",
-     "chronology",
-     "causality",
-     "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -2008,9 +1280,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F3"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.context.2",
@@ -2025,19 +1295,13 @@
      "parity"
     ],
     "issue_ids": [
-     "F4"
+     "F1"
     ]
    },
    {
     "path": "sections.story.heading",
     "checked": [
      "facts",
-     "attribution",
-     "chronology",
-     "causality",
-     "quotes",
-     "inner_life",
-     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -2054,10 +1318,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F5",
-     "F6"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.story.1",
@@ -2071,11 +1332,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F7",
-     "F8",
-     "F9"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.story.2",
@@ -2089,9 +1346,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F10"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.story.3",
@@ -2120,8 +1375,7 @@
      "parity"
     ],
     "issue_ids": [
-     "F11",
-     "F12"
+     "F1"
     ]
    },
    {
@@ -2150,9 +1404,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F13"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.story.7",
@@ -2166,19 +1418,12 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F14"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.analysis.heading",
     "checked": [
      "facts",
-     "attribution",
-     "chronology",
-     "causality",
-     "quotes",
-     "inner_life",
      "interpretation_label",
      "parity"
     ],
@@ -2197,9 +1442,7 @@
      "parity"
     ],
     "issue_ids": [
-     "F15",
-     "F16",
-     "F17"
+     "F2"
     ]
    },
    {
@@ -2228,9 +1471,7 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F18"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.analysis.3",
@@ -2249,7 +1490,6 @@
    {
     "path": "sections.today.heading",
     "checked": [
-     "facts",
      "parity"
     ],
     "issue_ids": []
@@ -2270,14 +1510,11 @@
      "quotes",
      "parity"
     ],
-    "issue_ids": [
-     "F19"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.limits.heading",
     "checked": [
-     "facts",
      "parity"
     ],
     "issue_ids": []
@@ -2287,10 +1524,7 @@
     "checked": [
      "facts",
      "attribution",
-     "chronology",
-     "causality",
      "quotes",
-     "inner_life",
      "interpretation_label",
      "parity"
     ],
@@ -2301,16 +1535,12 @@
     "checked": [
      "facts",
      "attribution",
-     "chronology",
-     "causality",
      "quotes",
      "inner_life",
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F17"
-    ]
+    "issue_ids": []
    },
    {
     "path": "reflection.scenario",
@@ -2324,7 +1554,6 @@
    {
     "path": "reflection.question",
     "checked": [
-     "facts",
      "parity"
     ],
     "issue_ids": []
@@ -2332,7 +1561,6 @@
    {
     "path": "reflection.example.assumptions",
     "checked": [
-     "facts",
      "parity"
     ],
     "issue_ids": []
@@ -2340,7 +1568,6 @@
    {
     "path": "reflection.example.steps",
     "checked": [
-     "facts",
      "parity"
     ],
     "issue_ids": []
@@ -2349,7 +1576,6 @@
     "path": "reflection.example.alternative",
     "checked": [
      "facts",
-     "attribution",
      "quotes",
      "interpretation_label",
      "parity"
@@ -2361,398 +1587,75 @@
     "checked": [
      "facts",
      "attribution",
-     "chronology",
-     "causality",
      "quotes",
      "inner_life",
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F17",
-     "F20"
-    ]
+    "issue_ids": []
    }
   ],
   "issues": [
    {
     "id": "F1",
-    "path": "dek",
-    "category": "unsupported",
-    "severity": "fix",
-    "problem": "The dek says the battle「被讲了两千年」and that「多数版本只记得赢家的招数」(EN: \"retold for two thousand years… most retellings remember only the winner's tricks\"). These are claims about how the battle has been received and retold. The evidence pack contains only the text of the Shiji and says nothing about later retellings.",
-    "evidence": [],
-    "proposed": "Delete the claims about reception history. For example: 「一场以少胜多的仗，人们常记住赢家的招数；这篇想说的是另一件事……」, and make the matching change in EN. Alternatively, mark the sentence as the author's impression."
-   },
-   {
-    "id": "F2",
-    "path": "sections.hook.0",
-    "category": "attribution",
-    "severity": "fix",
-    "problem": "「汉军是乘胜远斗，离本土越来越远，粮草跟在后面」(EN: \"the Han army was fighting far from home… its grain straggling along behind\") is stated in the narrator's voice as established fact. In the evidence, this is Li Zuoche's assessment and inference presented to Chen Yu. Nothing records the Han grain actually trailing behind.",
+    "path": "sections.context.2",
+    "category": "style",
+    "severity": "note",
+    "problem": "英文对李左车封号的译法前后不一：context.0 作 \"the Lord of Guangwu\"，context.2 与 story.4 作 \"the Guangwu Jun\"。这可能让英文读者以为是两个人。",
     "evidence": [
      {
       "id": "J-E2",
       "quote": "廣武君李左車說成安君曰"
-     },
-     {
-      "id": "J-E2",
-      "quote": "此乘勝而去國遠鬬"
-     },
-     {
-      "id": "J-E2",
-      "quote": "其勢糧食必在其後"
      }
     ],
-    "proposed": "Change to 「据李左车的分析，汉军是乘胜远斗，粮食势必落在后面」. Make the matching change in EN: \"as Li Zuoche saw it, …\"."
+    "proposed": "context.2 与 story.4 统一改为 \"the Lord of Guangwu\"。"
    },
    {
-    "id": "F3",
-    "path": "sections.context.1",
-    "category": "quotes",
-    "severity": "fix",
-    "problem": "ZH gives Li Zuoche's request as a paraphrase without quotation marks. EN puts its own English rendering in quotation marks as first-person direct speech (\"Grant me thirty thousand picked troops…\"), so readers cannot tell it is a translation. The same issue applies to \"the heads of the two generals will be delivered to your command tent\" in the same field.",
-    "evidence": [
-     {
-      "id": "J-E2",
-      "quote": "願足下假臣奇兵三萬人，從閒道絕其輜重"
-     }
-    ],
-    "proposed": "Make EN an indirect paraphrase (\"He asked for thirty thousand picked troops to cut…\"). Alternatively, mark the quoted English as a translation, for example \"in the Shiji's words, roughly: …\"."
-   },
-   {
-    "id": "F4",
-    "path": "sections.context.2",
-    "category": "parity",
-    "severity": "fix",
-    "problem": "ZH names the commander as 「赵国这边的主帅成安君陈馀」. EN says only \"The Zhao commander-in-chief\" and gives neither the title nor the name, so a personal name is missing from EN.",
-    "evidence": [
-     {
-      "id": "J-E3",
-      "quote": "成安君，儒者也"
-     }
-    ],
-    "proposed": "Change to \"Chen Yu, the Lord of Cheng'an and Zhao's commander-in-chief, gets one line…\"."
-   },
-   {
-    "id": "F5",
-    "path": "sections.story.0",
-    "category": "attribution",
-    "severity": "fix",
-    "problem": "In EN, \"only when they reported back, delighted at the news, did he dare…\" leaves \"delighted\" ambiguous: it can be read as the scouts being delighted. The evidence says Han Xin was the one who was 「大喜」.",
-    "evidence": [
-     {
-      "id": "J-E4",
-      "quote": "還報，則大喜，乃敢引兵遂下"
-     }
-    ],
-    "proposed": "Change to \"When they reported back, he was overjoyed, and only then did he dare lead his army down…\"."
-   },
-   {
-    "id": "F6",
-    "path": "sections.story.0",
-    "category": "quotes",
-    "severity": "fix",
-    "problem": "ZH gives Han Xin's orders as a paraphrase without quotation marks. EN puts an English rendering in quotation marks (\"When Zhao sees us withdraw…\") as if it were the original words, with no sign that it is a translation.",
-    "evidence": [
-     {
-      "id": "J-E4",
-      "quote": "趙見我走，必空壁逐我，若疾入趙壁，拔趙幟，立漢赤幟"
-     }
-    ],
-    "proposed": "Make EN indirect speech (\"telling them that when Zhao saw…\"). Alternatively, mark it as a translation."
-   },
-   {
-    "id": "F7",
-    "path": "sections.story.1",
-    "category": "unsupported",
-    "severity": "fix",
-    "problem": "「先行出山」: the source has only 「出」 and does not say they came out of the mountains. 「出山」 adds a geographic detail.",
-    "evidence": [
-     {
-      "id": "J-E5",
-      "quote": "信乃使萬人先行，出，背水陳"
-     }
-    ],
-    "proposed": "Change to 「派一万人先行出发，背水列阵」 or 「先行而出」."
-   },
-   {
-    "id": "F8",
-    "path": "sections.story.1",
-    "category": "unsupported",
-    "severity": "fix",
-    "problem": "「赵军从营垒上望见」 (EN: \"from the ramparts\") says where the Zhao troops were watching from. The evidence says only 「望見」 and does not mention the ramparts.",
-    "evidence": [
-     {
-      "id": "J-E5",
-      "quote": "趙軍望見而大笑"
-     }
-    ],
-    "proposed": "Delete 「从营垒上」 / \"from the ramparts\"."
-   },
-   {
-    "id": "F9",
-    "path": "sections.story.1",
-    "category": "inner_life",
-    "severity": "fix",
-    "problem": "「一万人把自己放在无退路的地方，看上去像不懂打仗」 (EN: \"looked like men who had never fought\") explains why the Zhao army laughed and what it was thinking. The source records only 「大笑」, not what they were laughing at. The sentence is also not marked as interpretation.",
-    "evidence": [
-     {
-      "id": "J-E5",
-      "quote": "趙軍望見而大笑"
-     }
-    ],
-    "proposed": "Delete the sentence, or mark it as the author's reading: 「一种解释是，在赵军看来这近乎不懂兵法」, with the matching change in EN."
-   },
-   {
-    "id": "F10",
-    "path": "sections.story.2",
-    "category": "causality",
-    "severity": "fix",
-    "problem": "「已经无路可退，人人殊死作战」 (EN: \"with nowhere left to go, fought to the death\") presents \"no retreat\" as the cause of the fight to the death, in the narrator's voice. The battle account records only that they fought to the death and could not be beaten. The no-retreat explanation is Han Xin's own account afterwards.",
-    "evidence": [
-     {
-      "id": "J-E6",
-      "quote": "軍皆殊死戰，不可敗"
-     }
-    ],
-    "proposed": "Change to 「人人殊死作战，打不垮」. To explain the reason, attribute it to Han Xin's later explanation."
-   },
-   {
-    "id": "F11",
-    "path": "sections.story.4",
-    "category": "unsupported",
-    "severity": "fix",
-    "problem": "「主帅最急着办的事之一」 (EN: \"one of the commander-in-chief's first tasks\") is an unsupported claim about order and urgency. The evidence records only the order not to kill him, the reward of a thousand in gold, untying his bonds and treating him as a teacher. It does not say this was done first or most urgently.",
-    "evidence": [
-     {
-      "id": "J-E7",
-      "quote": "信乃令軍中毋殺廣武君，有能生得者購千金"
-     }
-    ],
-    "proposed": "Change to 「一支军队刚刚获胜，主帅下的命令里有一条，是保住对方那位出主意的人，还为此悬赏千金」, with the matching change in EN."
-   },
-   {
-    "id": "F12",
-    "path": "sections.story.4",
-    "category": "quotes",
-    "severity": "fix",
-    "problem": "ZH gives the untying of bonds and the teacher's seating as a paraphrase. EN puts its own rendering in quotation marks (\"loosed his bonds… served him as a teacher\") as if it were the original text, with no sign that it is a translation.",
-    "evidence": [
-     {
-      "id": "J-E7",
-      "quote": "信乃解其縛，東鄉坐，西鄉對，師事之"
-     }
-    ],
-    "proposed": "Remove the quotation marks and paraphrase. Alternatively, mark it as a translation, for example \"in the Shiji's words, roughly\"."
-   },
-   {
-    "id": "F13",
-    "path": "sections.story.6",
-    "category": "facts",
-    "severity": "fix",
-    "problem": "EN \"would long ago have been your prisoner\" adds who the captor would be (\"your\"). The original says only that he would already have been captured. The rendering is also inconsistent with the field's \"have been taken\" elsewhere in the piece.",
-    "evidence": [
-     {
-      "id": "J-E9",
-      "quote": "若信者亦已爲禽矣"
-     }
-    ],
-    "proposed": "Change to \"a man like me would already have been taken\"."
-   },
-   {
-    "id": "F14",
-    "path": "sections.story.7",
-    "category": "interpretation_label",
-    "severity": "fix",
-    "problem": "「开口先讲的是任何人都可能出错」 (EN: \"opened by reminding everyone that anyone can be wrong\") summarizes the intent of what Li Zuoche said, but sits in a record paragraph without an interpretation label. The original also says the fool has his hits, so this summary is a selective reading.",
-    "evidence": [
-     {
-      "id": "J-E10",
-      "quote": "臣聞智者千慮，必有一失；愚者千慮，必有一得"
-     }
-    ],
-    "proposed": "Change to 「作者认为，他开口先讲的，近乎是任何人都可能出错」. Make the matching change in EN: \"One reading is that…\"."
-   },
-   {
-    "id": "F15",
+    "id": "F2",
     "path": "sections.analysis.0",
-    "category": "quotes",
-    "severity": "fix",
-    "problem": "The quotations 「兵号数万，其实不过数千」「千里而袭我，亦已罢极」 use simplified characters and do not match the source text character for character. 「义兵不用诈谋奇计」 is put in plain double quotes rather than 「」 and also does not match the source characters.",
+    "category": "style",
+    "severity": "note",
+    "problem": "英文把陈馀的几条理由（如 Claims tens of thousands, really no more than a few thousand）直接并入正文，没有引号、斜体或引导语。读者难以分辨哪部分是对原文理由的译述，哪部分是作者的话。",
     "evidence": [
      {
       "id": "J-E3",
       "quote": "今韓信兵號數萬，其實不過數千"
-     },
-     {
-      "id": "J-E3",
-      "quote": "能千里而襲我，亦已罷極"
-     },
-     {
-      "id": "J-E3",
-      "quote": "常稱義兵不用詐謀奇計"
      }
     ],
-    "proposed": "Restore the source characters: 「兵號數萬，其實不過數千」「千里而襲我，亦已罷極」「義兵不用詐謀奇計」."
-   },
-   {
-    "id": "F16",
-    "path": "sections.analysis.0",
-    "category": "attribution",
-    "severity": "fix",
-    "problem": "The paragraph says it splits 「陈馀拒绝的两层理由」 apart, but then treats 「义兵不用诈谋奇计」 as one of his reasons for this refusal. In the source, that line is Sima Qian's description of what Chen Yu habitually said (「常稱」). It is not recorded as the reason he gave for rejecting this particular plan. The count of reasons is also inconsistent: \"two\" is stated, but three are listed.",
-    "evidence": [
-     {
-      "id": "J-E3",
-      "quote": "成安君，儒者也，常稱義兵不用詐謀奇計"
-     },
-     {
-      "id": "J-E3",
-      "quote": "不聽廣武君策"
-     }
-    ],
-    "proposed": "State clearly that 「义兵不用诈谋奇计」 is the historian's description of his habitual stance, not a reason he gave this time. Its link to the refusal belongs in the 「一种解释是」 interpretation."
-   },
-   {
-    "id": "F17",
-    "path": "sections.analysis.0",
-    "category": "inner_life",
-    "severity": "fix",
-    "problem": "「规矩先划掉了半个选项池，李左车的方案可能在讨论开始之前就已不在考虑之内」 infers Chen Yu's deliberation, that is, what he did or did not consider. It is labeled 「一种解释是」, but it contradicts the declarations in limits.1 (「不替他补充任何心理活动」) and uncertainty_note (「未对陈馀的心理作任何补充」). The source records only his stated words and the result: he did not adopt the plan.",
-    "evidence": [
-     {
-      "id": "J-E3",
-      "quote": "不聽廣武君策，廣武君策不用"
-     }
-    ],
-    "proposed": "Either delete the clause 「不在考虑之内」 and keep only 「原文所记的理由中有一条是规矩而非判断」, or change the declarations in limits.1 and uncertainty_note to 「除明确标注为作者推断处外，未补充陈馀的心理活动」."
-   },
-   {
-    "id": "F18",
-    "path": "sections.analysis.2",
-    "category": "interpretation_label",
-    "severity": "fix",
-    "problem": "「可这场仗里，决定性的一次动作恰恰发生在开战之前」 (EN: \"the decisive acts happened before the first blow fell\") states the author's judgment of what was decisive as fact, with no interpretation label. The evidence records sequence only; it does not say which act was decisive.",
-    "evidence": [],
-    "proposed": "Add a label: 「作者认为，这场仗里决定性的……」 / \"In the author's view, the decisive acts…\"."
-   },
-   {
-    "id": "F19",
-    "path": "sections.today.1",
-    "category": "parity",
-    "severity": "fix",
-    "problem": "ZH says 「现代虚构场景之二」. EN says only \"Another scene: a handover\" and drops the \"modern\" and \"fictional\" labels, so the EN reader loses the signal that this is a hypothetical scene.",
-    "evidence": [],
-    "proposed": "Change to \"Second modern scene, fictional: a handover.\""
-   },
-   {
-    "id": "F20",
-    "path": "uncertainty_note",
-    "category": "quotes",
-    "severity": "fix",
-    "problem": "In the quotation 「诚令成安君聽足下計，若信者亦已爲禽矣」, the first character is the simplified 「诚」. The source has 「誠」, so the quotation is not character-for-character.",
-    "evidence": [
-     {
-      "id": "J-E9",
-      "quote": "誠令成安君聽足下計，若信者亦已爲禽矣"
-     }
-    ],
-    "proposed": "Change to 「誠令成安君聽足下計，若信者亦已爲禽矣」."
+    "proposed": "在各条理由前加引导语（如 \"the claim that…\"），或用斜体标出，并保持译述口吻。"
    }
   ],
   "inherited": [
    {
-    "id": "M1",
-    "verdict": "duplicate",
-    "same_as": "F17",
-    "rationale": "Same as F17: the inference in analysis.0 about what Chen Yu considered contradicts the declarations in limits.1 and uncertainty_note.",
+    "id": "X1",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "J-E13 的位置注明它是可选背景，不是本役必需。稿件的结局已按 J-E11 写到韩信采纳李左车之计、燕国归附，叙事完整。正文对韩信的评价都限于本役（礼遇并采用李左车之计）。稿件没有断言韩信一贯听取逆耳之言，也没有任何说法与 J-E13 相矛盾，因此无须据此修改叙事、结局或因果。",
     "evidence": [
      {
-      "id": "J-E3",
-      "quote": "不聽廣武君策，廣武君策不用"
-     }
-    ]
-   },
-   {
-    "id": "M2",
-    "verdict": "duplicate",
-    "same_as": "F19",
-    "rationale": "Same as F19: the EN for today.1 is missing the \"modern, fictional\" labels.",
-    "evidence": []
-   },
-   {
-    "id": "M3",
-    "verdict": "duplicate",
-    "same_as": "F7",
-    "rationale": "Same as F7: the source has only 「出」, so 「出山」 is an added detail.",
-    "evidence": [
+      "id": "J-E13",
+      "quote": "可选的背景，不是本役必需"
+     },
      {
-      "id": "J-E5",
-      "quote": "信乃使萬人先行，出，背水陳"
-     }
-    ]
-   },
-   {
-    "id": "M4",
-    "verdict": "duplicate",
-    "same_as": "F11",
-    "rationale": "Same as F11: \"most urgent task\" adds urgency and ordering not found in the evidence.",
-    "evidence": [
-     {
-      "id": "J-E7",
-      "quote": "信乃令軍中毋殺廣武君，有能生得者購千金"
-     }
-    ]
-   },
-   {
-    "id": "M5",
-    "verdict": "duplicate",
-    "same_as": "F17",
-    "rationale": "Same issue as F17 and M1.",
-    "evidence": [
-     {
-      "id": "J-E3",
-      "quote": "不聽廣武君策，廣武君策不用"
-     }
-    ]
-   },
-   {
-    "id": "M6",
-    "verdict": "duplicate",
-    "same_as": "F17",
-    "rationale": "Same issue as F17 and M1: an addition to Chen Yu's inner life.",
-    "evidence": [
-     {
-      "id": "J-E3",
-      "quote": "不聽廣武君策，廣武君策不用"
-     }
-    ]
-   },
-   {
-    "id": "M7",
-    "verdict": "duplicate",
-    "same_as": "F9",
-    "rationale": "Same as F9: the source records only 「大笑」, not what the Zhao army was laughing at.",
-    "evidence": [
-     {
-      "id": "J-E5",
-      "quote": "趙軍望見而大笑"
+      "id": "J-E11",
+      "quote": "韓信曰：『善。』從其策，發使使燕，燕從風而靡。"
      }
     ]
    }
   ]
  },
- "final_content_sha256": "68f19de462a0fc6801a51137bc32826cd6149ba974631838572da0faec0c412b",
- "open_issues": [],
- "outcome": "admissible",
+ "final_content_sha256": "7cb5bb4cef6ebf035db060601718a96bef7a2b8ba5ddf2d131eee35de4f5d203",
+ "open_issues": [
+  "V2-V1"
+ ],
+ "outcome": "pending_review",
  "failure": null,
- "finished_at": 1793397767.6970234,
+ "finished_at": 1793430815.5294383,
  "calls": [
   {
    "step": "audit",
    "attempt": 1,
-   "wall_s": 125.3,
+   "wall_s": 73.6,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -2760,15 +1663,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 15725,
-    "output_tokens": 15013
+    "cache_creation_input_tokens": 17011,
+    "output_tokens": 8295
    },
-   "cost_estimate_usd": 0.426068
+   "cost_estimate_usd": 0.301996
   },
   {
    "step": "revise_r1",
    "attempt": 1,
-   "wall_s": 94.7,
+   "wall_s": 11.6,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -2776,15 +1679,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 19526,
-    "output_tokens": 12281
+    "cache_creation_input_tokens": 16573,
+    "output_tokens": 999
    },
-   "cost_estimate_usd": 0.401836
+   "cost_estimate_usd": 0.152572
   },
   {
    "step": "verify_r1",
    "attempt": 1,
-   "wall_s": 68.0,
+   "wall_s": 62.2,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -2792,15 +1695,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 14162,
-    "output_tokens": 7697
+    "cache_creation_input_tokens": 16309,
+    "output_tokens": 7465
    },
-   "cost_estimate_usd": 0.267244
+   "cost_estimate_usd": 0.27978000000000003
   },
   {
    "step": "revise_r2",
    "attempt": 1,
-   "wall_s": 26.0,
+   "wall_s": 7.0,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -2808,15 +1711,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 14938,
-    "output_tokens": 2362
+    "cache_creation_input_tokens": 16523,
+    "output_tokens": 727
    },
-   "cost_estimate_usd": 0.166752
+   "cost_estimate_usd": 0.146732
   },
   {
    "step": "verify_r2",
    "attempt": 1,
-   "wall_s": 55.8,
+   "wall_s": 58.4,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -2824,12 +1727,12 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 14179,
-    "output_tokens": 6430
+    "cache_creation_input_tokens": 16307,
+    "output_tokens": 7023
    },
-   "cost_estimate_usd": 0.24204
+   "cost_estimate_usd": 0.270924
   }
  ],
- "elapsed_min": 6.2,
- "model_wall_min": 6.2
+ "elapsed_min": 3.5,
+ "model_wall_min": 3.5
 }

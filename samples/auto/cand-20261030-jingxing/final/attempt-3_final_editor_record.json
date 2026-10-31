@@ -1,0 +1,1231 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-20261030-jingxing",
+ "edition_id": "cand-20261030-jingxing",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "ef58996",
+ "started_at": 1793430359.7483954,
+ "base_source": "samples/auto/cand-20261030-jingxing/final/article.json",
+ "base_content_sha256": "e24cac23bb67f7b6b7c1a3e935a865faae20e5ab0d3836c8435a50b03e6481e7",
+ "evidence_sha256": "ea66fc7f48fb159a017e371320429c81b7200052eadab8a4aa003172a0c13dd8",
+ "operator_note": null,
+ "model_record_sha256": "4f42728dc8c05f84511f6022d5af966f9a442d89865fa9e340d01ff4bbf79505",
+ "prior_record_sha256": "04f3648ccd7f0befdb969509318dd520a58fe623ac36629da0c4da2060025d6d",
+ "attempt": "attempt-3",
+ "context_review_sha256": "cb5c69837d4dbdef3a2b7a0540d1cc063ad8d3b3791bf2028007be86b21a7c85",
+ "inherited": [
+  {
+   "id": "X1",
+   "source": "context review",
+   "where": "",
+   "problem": "证据包已按来源上下文补入摘录 J-E12；请据此检查叙事、结局与因果是否完整准确",
+   "suggestion": null
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.hook.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“兵力对比一目了然”/“The disparity was obvious”把兵力悬殊写成确定事实。证据中赵军二十万只是“號稱”。陈馀还认为韩信号称数万、实际不过数千。双方真实兵力在原文里并不确定。",
+   "evidence": [
+    {
+     "id": "J-E1",
+     "quote": "號稱二十萬"
+    },
+    {
+     "id": "J-E3",
+     "quote": "今韓信兵號數萬，其實不過數千"
+    }
+   ],
+   "proposed": "改为“账面上兵力悬殊（赵军二十万是号称之数）”/“On paper the gap was wide (Zhao's two hundred thousand was a claimed figure).”",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "把“兵力对比一目了然”及对应英文改为账面上兵力悬殊，并注明赵军二十万是号称之数。原文二十万为“號稱”，陈馀也说汉军号数万、实不过数千，真实兵力并不确定。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.story.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "叙事漏掉了J-E4与J-E5之间的记载。韩信先令裨将传飧，宣布“今日破趙會食”，诸将都不信，只假装应诺。他还向军吏说明：赵军未见大将旗鼓，不肯攻击前军。这一段解释了一万人为何敢先出、背水列阵。没有它，story.5诸将所说的“曰破趙會食”在正文中缺了出处，也缺了韩信对这次部署的自述理由。",
+   "evidence": [
+    {
+     "id": "J-E12",
+     "quote": "令其裨將傳飱，曰：『今日破趙會食！』諸將皆莫信，詳應曰：『諾。』"
+    },
+    {
+     "id": "J-E12",
+     "quote": "且彼未見吾大將旗鼓，未肯擊前行，恐吾至阻險而還"
+    }
+   ],
+   "proposed": "在“韩信派一万人先行”之前补一句（中英同步）：韩信令裨将传飧，说今日破赵会食，诸将都不信，只假意应诺；他对军吏说，赵军已先占据便利之地筑营，没见到大将旗鼓之前不会攻击前军。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "在一万人先行之前补入两件事：传飧时宣布「今日破趙會食」，诸将不信、假意应诺；韩信向军吏说明赵军未见大将旗鼓不肯击前军。中英同步，ev 增加 J-E12；兵法常规出自诸将之问，ev 一并加入 J-E8。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.story.3",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "英文“Beaten in front”意为在前方被打败。中文“在前面不能取胜”与原文“已不勝”都只是未能取胜，英文说重了。",
+   "evidence": [
+    {
+     "id": "J-E6",
+     "quote": "趙軍已不勝，不能得信等"
+    }
+   ],
+   "proposed": "英文改为“Unable to win in front and unable to catch Han Xin”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文“Beaten in front”说重了，改为“Unable to win in front”，与中文“不能取胜”及原文“已不勝”一致。中文本来准确，原样保留。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "X1",
+   "problem": "证据包已按来源上下文补入摘录 J-E12；请据此检查叙事、结局与因果是否完整准确",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "",
+   "disposition": "duplicate",
+   "same_as": "F2",
+   "rationale": "问题成立，已作为F2列出。正文没有吸收J-E12：破赵会食的宣告、诸将莫信，以及赵军未见大将旗鼓不击前军的判断都缺失。结局部分（J-E11中采用其策、燕国归附）已在story.7写入，无需另列。"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.hook.0.zh",
+   "before": "韩信和张耳带着数万人，准备东下井陉去打赵国；赵王歇和成安君陈馀把军队聚在井陉口，号称二十万。兵力对比一目了然，难处在另一头：据赵营中李左车的分析，汉军是乘胜离国远斗，粮食势必落在后面。就在交手之前，他向陈馀递上一条非常具体的方案，方案没有被采纳。这一篇要说的就是这条被否掉的计，以及打赢之后，赢家怎样对待出计的人。",
+   "after": "韩信和张耳带着数万人，准备东下井陉去打赵国；赵王歇和成安君陈馀把军队聚在井陉口，号称二十万。账面上兵力悬殊（赵军二十万是号称之数），难处在另一头：据赵营中李左车的分析，汉军是乘胜离国远斗，粮食势必落在后面。就在交手之前，他向陈馀递上一条非常具体的方案，方案没有被采纳。这一篇要说的就是这条被否掉的计，以及打赢之后，赢家怎样对待出计的人。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.hook.0.en",
+   "before": "Han Xin and Zhang Er were marching east with tens of thousands of troops, bound to attack the state of Zhao through Jingxing. King Xie of Zhao and the Lord of Cheng'an, Chen Yu, massed their forces at the Jingxing pass under a strength they claimed at two hundred thousand. The disparity was obvious. The trouble lay elsewhere: as Li Zuoche, in the Zhao camp, saw it, the Han army was riding its victories far from home, and its grain was bound to fall behind. Before the two sides came to blows, he put a very specific plan to Chen Yu, and the plan was turned down. This piece is about that rejected proposal, and about how the winner treated the man who drew it up once the fighting was over.",
+   "after": "Han Xin and Zhang Er were marching east with tens of thousands of troops, bound to attack the state of Zhao through Jingxing. King Xie of Zhao and the Lord of Cheng'an, Chen Yu, massed their forces at the Jingxing pass under a strength they claimed at two hundred thousand. On paper the gap was wide (Zhao's two hundred thousand was a claimed figure). The trouble lay elsewhere: as Li Zuoche, in the Zhao camp, saw it, the Han army was riding its victories far from home, and its grain was bound to fall behind. Before the two sides came to blows, he put a very specific plan to Chen Yu, and the plan was turned down. This piece is about that rejected proposal, and about how the winner treated the man who drew it up once the fighting was over.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.story.1.zh",
+   "before": "韩信派一万人先行而出，背靠河水列阵。赵军望见，「大笑」。按诸将事后引用的兵法，布阵要右背山陵、前左水泽。作者推测，背水列阵违背了这条常规，赵军或因此发笑；但原文只记了大笑，没有说他们笑什么。",
+   "after": "韩信先令裨将传飧，说「今日破趙會食」，诸将都不信，只假意应诺。他对军吏解释：赵军已先占据便利之地筑营，在没见到我军大将旗鼓之前，不肯攻击前军，怕我军走到险阻处就退回去。韩信于是派一万人先行而出，背靠河水列阵。赵军望见，「大笑」。按诸将事后引用的兵法，布阵要右背山陵、前左水泽。作者推测，背水列阵违背了这条常规，赵军或因此发笑；但原文只记了大笑，没有说他们笑什么。",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.1.en",
+   "before": "He sent ten thousand men ahead; they went out and formed up with their backs to the river. The Zhao army saw them and roared with laughter. By the manual his generals later quoted, a proper line kept hills at the right rear and water at the left front. The author's guess is that this breach of the rule is what drew the laughter; the text records only that they laughed, not why.",
+   "after": "Han Xin first had his lieutenants pass round a light meal, announcing that they would eat together that day once Zhao was broken. None of the generals believed it; they feigned assent. He explained to his officers that Zhao had already built its camp on favorable ground and, until it saw the general's banners and drums, would not attack the vanguard, for fear that he would turn back on reaching the difficult ground. He then sent ten thousand men ahead; they went out and formed up with their backs to the river. The Zhao army saw them and roared with laughter. By the manual his generals later quoted, a proper line kept hills at the right rear and water at the left front. The author's guess is that this breach of the rule is what drew the laughter; the text records only that they laughed, not why.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.1.ev",
+   "before": [
+    "J-E5"
+   ],
+   "after": [
+    "J-E12",
+    "J-E5",
+    "J-E8"
+   ],
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.3.en",
+   "before": "The ambush had been waiting for exactly that. With the Zhao camp emptied, the two thousand riders swept in, pulled down the Zhao banners and raised two thousand red ones of Han. Beaten in front and unable to catch Han Xin, the Zhao troops turned for their camp and found the walls all hung with Han's red banners. Greatly alarmed, they were sure the Han had already taken the king of Zhao and his generals. The army dissolved; commanders cut men down to hold the line and could not. The Han struck from both sides, routed the Zhao army, killed the Lord of Cheng'an on the banks of the Zhi, and took King Xie alive.",
+   "after": "The ambush had been waiting for exactly that. With the Zhao camp emptied, the two thousand riders swept in, pulled down the Zhao banners and raised two thousand red ones of Han. Unable to win in front and unable to catch Han Xin, the Zhao troops turned for their camp and found the walls all hung with Han's red banners. Greatly alarmed, they were sure the Han had already taken the king of Zhao and his generals. The army dissolved; commanders cut men down to hold the line and could not. The Han struck from both sides, routed the Zhao army, killed the Lord of Cheng'an on the banks of the Zhi, and took King Xie alive.",
+   "issues": [
+    "F3"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3"
+   ],
+   "changes_applied": 6,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "context[2] numbers differ zh[] en[10]"
+    ],
+    [
+     "CHECK",
+     "story[7] numbers differ zh[] en[100]"
+    ],
+    [
+     "CHECK",
+     "analysis[1] numbers differ zh[2000] en[2000, 10000]"
+    ]
+   ],
+   "content_sha256_after": "e150c4b7f1567eb72fb670f1b87c8f373ab146d68a16f81486be3df8c879b0dd",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.today.1",
+      "category": "style",
+      "severity": "note",
+      "problem": "类比主体不清：场景里赢下竞标的是投标方，聘请顾问的却写成“甲方/the client”，和“赢家请教对手阵营里没被听的人”这一对应关系对不上。英文版还省掉了“当年韩信”这个主语，“Untying the bonds…is exactly that”缺少行为人。",
+      "evidence": [
+       {
+        "id": "J-E7",
+        "quote": "信乃解其縛，東鄉坐，西鄉對，師事之"
+       }
+      ],
+      "proposed": "中文改为“竞标赢了之后，胜出的一方请来的顾问……”；英文改为“Having won the bid, the winning firm hires…”，并补主语：“When Han Xin untied Li Zuoche and served him as a teacher, he was doing exactly that”。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.context.2",
+      "category": "style",
+      "severity": "note",
+      "problem": "英文称谓不统一：context.0 作“the Lord of Guangwu”，本段作“the Guangwu Jun”。",
+      "evidence": [
+       {
+        "id": "J-E2",
+        "quote": "廣武君李左車說成安君曰"
+       }
+      ],
+      "proposed": "统一为“the Lord of Guangwu”（story.4 也一并统一）。"
+     }
+    ],
+    "overall": "逐字段复核后，事实、引语、时序、因果和解释标注均有证据支持，引文逐字无误；仅有两处纯文风问题建议顺手调整，无需阻止发布。",
+    "_content_sha256": "e150c4b7f1567eb72fb670f1b87c8f373ab146d68a16f81486be3df8c879b0dd"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "causality",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "chronology",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "inner_life",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "quotes",
+     "inner_life",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.hook.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“兵力对比一目了然”/“The disparity was obvious”把兵力悬殊写成确定事实。证据中赵军二十万只是“號稱”。陈馀还认为韩信号称数万、实际不过数千。双方真实兵力在原文里并不确定。",
+    "evidence": [
+     {
+      "id": "J-E1",
+      "quote": "號稱二十萬"
+     },
+     {
+      "id": "J-E3",
+      "quote": "今韓信兵號數萬，其實不過數千"
+     }
+    ],
+    "proposed": "改为“账面上兵力悬殊（赵军二十万是号称之数）”/“On paper the gap was wide (Zhao's two hundred thousand was a claimed figure).”"
+   },
+   {
+    "id": "F2",
+    "path": "sections.story.1",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "叙事漏掉了J-E4与J-E5之间的记载。韩信先令裨将传飧，宣布“今日破趙會食”，诸将都不信，只假装应诺。他还向军吏说明：赵军未见大将旗鼓，不肯攻击前军。这一段解释了一万人为何敢先出、背水列阵。没有它，story.5诸将所说的“曰破趙會食”在正文中缺了出处，也缺了韩信对这次部署的自述理由。",
+    "evidence": [
+     {
+      "id": "J-E12",
+      "quote": "令其裨將傳飱，曰：『今日破趙會食！』諸將皆莫信，詳應曰：『諾。』"
+     },
+     {
+      "id": "J-E12",
+      "quote": "且彼未見吾大將旗鼓，未肯擊前行，恐吾至阻險而還"
+     }
+    ],
+    "proposed": "在“韩信派一万人先行”之前补一句（中英同步）：韩信令裨将传飧，说今日破赵会食，诸将都不信，只假意应诺；他对军吏说，赵军已先占据便利之地筑营，没见到大将旗鼓之前不会攻击前军。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.story.3",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "英文“Beaten in front”意为在前方被打败。中文“在前面不能取胜”与原文“已不勝”都只是未能取胜，英文说重了。",
+    "evidence": [
+     {
+      "id": "J-E6",
+      "quote": "趙軍已不勝，不能得信等"
+     }
+    ],
+    "proposed": "英文改为“Unable to win in front and unable to catch Han Xin”。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "X1",
+    "verdict": "duplicate",
+    "same_as": "F2",
+    "rationale": "问题成立，已作为F2列出。正文没有吸收J-E12：破赵会食的宣告、诸将莫信，以及赵军未见大将旗鼓不击前军的判断都缺失。结局部分（J-E11中采用其策、燕国归附）已在story.7写入，无需另列。",
+    "evidence": [
+     {
+      "id": "J-E12",
+      "quote": "諸將皆莫信"
+     },
+     {
+      "id": "J-E11",
+      "quote": "從其策，發使使燕，燕從風而靡"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "e150c4b7f1567eb72fb670f1b87c8f373ab146d68a16f81486be3df8c879b0dd",
+ "open_issues": [],
+ "outcome": "admissible",
+ "failure": null,
+ "finished_at": 1793430539.491539,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 89.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16514,
+    "output_tokens": 9872
+   },
+   "cost_estimate_usd": 0.32956
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 23.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16785,
+    "output_tokens": 2731
+   },
+   "cost_estimate_usd": 0.18890800000000002
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 66.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16085,
+    "output_tokens": 7731
+   },
+   "cost_estimate_usd": 0.283308
+  }
+ ],
+ "elapsed_min": 3.0,
+ "model_wall_min": 3.0
+}

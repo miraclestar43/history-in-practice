@@ -1,0 +1,2388 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-auto-20261030-qsg412-1",
+ "edition_id": "cand-auto-20261030-qsg412-1",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "8645cae",
+ "started_at": 1793435295.7833967,
+ "base_source": "samples/auto/cand-auto-20261030-qsg412-1/final/article.json",
+ "base_content_sha256": "40085e5c5cebf38d60c7e40fddfb19cbe9dfdbb596058758d2f9e5ab051102f2",
+ "evidence_sha256": "e112eb28b39ea69c24d6e266e516a17681fc0fd7cb37a8e0523cd3b3895d4815",
+ "operator_note": null,
+ "model_record_sha256": "d335b1241f50944cbc37f7e3d115103e6a4de59b853b6b50472b89258fa0431e",
+ "prior_record_sha256": "b724f53826054e10b31da47c578a00d6e258e89533aba59b143c9cade2fd2447",
+ "attempt": "attempt-3",
+ "context_review_sha256": null,
+ "inherited": [
+  {
+   "id": "P1",
+   "model_id": "V2-V4",
+   "source": "final-editor previous attempt",
+   "where": "sections.story.5",
+   "problem": "中文正文没有写“南路恟惧”，句末却说“放回俘虏与南疆恟惧，传记写在一处”，指向了一件文中未曾交代的事。英文则写了 Panic spread through the south。中英不一致，中文还缺了一个记录事实。",
+   "suggestion": "中文改为“……悉释所擒缠回，纵之归。南路恟惧；次日收托克逊城……”，不添因果。"
+  },
+  {
+   "id": "P2",
+   "model_id": "V2-V6",
+   "source": "final-editor previous attempt",
+   "where": "sections.analysis.2",
+   "problem": "英文 the biography says Russia too was cowed by our military prestige 中的“our”沿用了传记的清廷口吻，却没有加引号。读起来像作者本人站在清方立场作判断。",
+   "suggestion": "改为 the biography says Russia too was \"cowed by our military might\"（加引号表明是原文口吻），或写作 cowed by the Qing army's might。"
+  },
+  {
+   "id": "P3",
+   "model_id": "V2-V7",
+   "source": "final-editor previous attempt",
+   "where": "sections.analysis.4",
+   "problem": "中文删去了“爭言富強”。英文则译作 talking of wealth and strength among themselves，把“爭言富強”和“私議”混在一起，“among themselves”无原文依据。中英两版都与原文有出入。",
+   "suggestion": "中文补“海外诸国争言富强，虽见中国屡平大难，仍私议以为脆弱”。英文改为 the overseas powers, all vying to speak of wealth and power, still privately judged China frail……"
+  }
+ ],
+ "contamination": [
+  {
+   "id": "K1",
+   "brief_line": "- 以金顺出精河为东路，张曜沿特克斯河为中路，锦棠经布鲁特游牧为西路，分遣谭上连等分屯喀什噶尔、阿克苏、哈密为后路声援，合马步卒四万余人（QSG4121-E16）。",
+   "dropped_ids": [
+    "QSG4121-E16"
+   ]
+  },
+  {
+   "id": "K2",
+   "brief_line": "- 始西征，虑各行省协助饷不时至，请一借贷外国，诏拨款五百万、敕自借外债五百万（QSG4121-E20）；出塞凡二十月而新疆南北城尽复，为馈运饶给之力（QSG4121-E19）。",
+   "dropped_ids": [
+    "QSG4121-E20"
+   ]
+  },
+  {
+   "id": "K3",
+   "brief_line": "注意：以下摘录的锚点未通过逐字核对，已删除，不得使用其内容：QSG4121-E16、QSG4121-E20。",
+   "dropped_ids": [
+    "QSG4121-E16",
+    "QSG4121-E20"
+   ]
+  }
+ ],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.story.5",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "中文漏写“南路恟惧”，但句末又说“放回俘虏与南疆恟惧，传记写在一处”，指向一件文中没有交代的事。英文写了 Panic spread through the south，中英不一致。",
+   "evidence": [
+    {
+     "id": "QSG4121-E8",
+     "quote": "悉釋所擒纏回，縱之歸。南路恟懼，翼日，收托克遜城"
+    }
+   ],
+   "proposed": "中文改为“……悉释所擒缠回，纵之归。南路恟惧；次日收托克逊城……”，不添因果。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文补入“南路恟惧”，置于释俘与收托克逊之间，不添因果；末句改为“放回俘虏与南路恟惧”，与前文呼应。顺手把繁体“托克遜”统一为“托克逊”。英文末句同步改为 the panic in the south，中英一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.story.5",
+   "category": "style",
+   "severity": "note",
+   "problem": "中文“托克遜”用了繁体字，与 story.3 的“托克逊”不统一。",
+   "evidence": [],
+   "proposed": "统一作“托克逊”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F3",
+   "path": "sections.analysis.2",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "英文 cowed by our military prestige 沿用了传记的清廷口吻“我”，但没有加引号，读来像作者本人站在清方立场下判断。",
+   "evidence": [
+    {
+     "id": "QSG4121-E18",
+     "quote": "俄亦懾我兵威，恐事遂決裂"
+    }
+   ],
+   "proposed": "改为 the biography says Russia too was \"cowed by our military might\"（加引号表明是原文口吻），或写作 cowed by the Qing army's might。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文改为 the biography, written from the Qing side, says Russia too was cowed by the might of the Qing army，点明这是传记的清方口吻，不再像作者本人的判断。按规则，英文不加引号冒充原文。中文改为用「」逐字引原文「俄亦懾我兵威」，标明这是传记用语。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.analysis.4",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "中文删去了“争言富强”。英文译作 talking of wealth and strength among themselves，把“争言富强”与“私议”混在一起，among themselves 没有原文依据。中英两版不对等。",
+   "evidence": [
+    {
+     "id": "QSG4121-E22",
+     "quote": "海外諸國爭言富強，雖中國屢平大難，彼猶私議以為脆弱也"
+    }
+   ],
+   "proposed": "中文补为“海外诸国争言富强，虽见中国屡平大难，仍私议以为脆弱”。英文改为 the overseas powers, all vying to talk of wealth and power, still privately judged China frail……",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文补回“争言富强”，并删去原文没有的“见”字，改为“虽中国屡平大难，仍私议以为脆弱”。英文删去无据的 among themselves，把“争言富强”（vied with one another in talk of wealth and power）与“私议”（privately judged）分开译述，中英对等。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.analysis.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "正文写“俄还伊犁于俄无损”，却删去了奏折中支撑这一判断的前提：俄方索要偿款卢布五百万元。读者因此无从理解为何“于俄无损”。中英两版都缺。",
+   "evidence": [
+    {
+     "id": "QSG4121-E14",
+     "quote": "及我索地，則索償盧布五百萬元。是俄還伊犁，於俄無損"
+    }
+   ],
+   "proposed": "中文补“及我索地，俄索偿卢布五百万元，故俄还伊犁于俄无损”；英文相应补 Russia demanded five million rubles in compensation, so returning Ili cost it nothing。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中英两版都补入奏折中的前提：俄视伊犁为外府，及我索地，俄索偿卢布五百万元，因此俄还伊犁于俄无损。英文用 five million rubles，与中文“五百万”一致，两版都没有阿拉伯数字。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F6",
+   "path": "sections.hook.0",
+   "category": "readability",
+   "severity": "note",
+   "problem": "开头出现“关陇”“出关”“高宗”（英文 Guanlong, beyond the pass, emperor Gaozong），都没有说明。不了解背景的读者能看出朝中在争西征与海防、两头都要钱，但这些名词会造成阻滞。",
+   "evidence": [],
+   "proposed": "简短说明：关陇指陕甘一带；“出关”即出关西进新疆；高宗为乾隆。不增加史实。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F7",
+   "path": "sections.context.0",
+   "category": "readability",
+   "severity": "note",
+   "problem": "背景段一次堆出安集延、喀什噶尔、南路诸城、乌鲁木齐、妥明、北路伊犁诸城，其中妥明在后文不再出现，读者暂时用不上。",
+   "evidence": [],
+   "proposed": "保留“先据南疆、再并北疆（含伊犁）”的层级，把妥明一句压缩为“又攻败据乌鲁木齐的另一股回众”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F8",
+   "path": "sections.story.0",
+   "category": "readability",
+   "severity": "note",
+   "problem": "李鸿章首次出现时没有说明身份及其与此事的关系，只写“言之尤力”。",
+   "evidence": [
+    {
+     "id": "QSG4121-E3",
+     "quote": "鴻章言之尤力"
+    }
+   ],
+   "proposed": "写明他是主张罢西征、专力海防一方中最力者，不补证据外的官职。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F9",
+   "path": "sections.story.3",
+   "category": "readability",
+   "severity": "note",
+   "problem": "“锦棠”只用名不用姓，与“左宗棠”的称法不一致，读者可能误以为姓“锦”。英文 Suzhou 容易与江苏苏州混淆。",
+   "evidence": [],
+   "proposed": "注明传记只称其名“锦棠”。英文 Suzhou 加注 (in Gansu) 或写作 Suzhou (Jiuquan)，不加其他史实。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F10",
+   "path": "sections.story.6",
+   "category": "readability",
+   "severity": "note",
+   "problem": "中文在“左宗棠”与“宗棠”之间交替（story.6/7、analysis.0 用“宗棠”），偶有读者会误为两人。",
+   "evidence": [],
+   "proposed": "引语外的叙述统一用“左宗棠”，引语内保留原文。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "P1",
+   "problem": "中文正文没有写“南路恟惧”，句末却说“放回俘虏与南疆恟惧，传记写在一处”，指向了一件文中未曾交代的事。英文则写了 Panic spread through the south。中英不一致，中文还缺了一个记录事实。",
+   "origin": "inherited final-editor previous attempt V2-V4",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.story.5",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "中文确实漏写南路恟惧，与句末呼应不上，且与英文不一致。"
+  },
+  {
+   "id": "P2",
+   "problem": "英文 the biography says Russia too was cowed by our military prestige 中的“our”沿用了传记的清廷口吻，却没有加引号。读起来像作者本人站在清方立场作判断。",
+   "origin": "inherited final-editor previous attempt V2-V6",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.analysis.2",
+   "disposition": "duplicate",
+   "same_as": "F3",
+   "rationale": "英文 our 沿用传记口吻而未加引号，确实成立。"
+  },
+  {
+   "id": "P3",
+   "problem": "中文删去了“爭言富強”。英文则译作 talking of wealth and strength among themselves，把“爭言富強”和“私議”混在一起，“among themselves”无原文依据。中英两版都与原文有出入。",
+   "origin": "inherited final-editor previous attempt V2-V7",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.analysis.4",
+   "disposition": "duplicate",
+   "same_as": "F4",
+   "rationale": "中文缺“争言富强”，英文 among themselves 无据，中英不对等，确实成立。"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.story.1",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "本段 kind=record。段末“要害在中段：兵减不掉，饷照旧要花 / The sting is in the middle…”是作者对原话重点的评判，却以陈述句写出，没有标为解释。开头的“作者认为”只覆盖第一句。",
+   "evidence": [
+    {
+     "id": "QSG4121-E4",
+     "quote": "防邊兵不可減，糜餉自若"
+    }
+   ],
+   "proposed": "zh 改为“作者以为，要害在中段：……”；en 改为“In the author's reading, the sting is in the middle: …”",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "段末对原话要害的评判改为明确标注的作者解释：中文改为“作者以为，要害在中段”，英文同步改为“In the author's reading, the sting is in the middle”。引语与其余文字不变。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V2",
+   "path": "sections.story.5",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "英文“released every captured Muslim of the south”多出“of the south”。原文只说释放所擒缠回，没有限定为南路之人；中文版也没有这一限定。",
+   "evidence": [
+    {
+     "id": "QSG4121-E8",
+     "quote": "悉釋所擒纏回，縱之歸"
+    }
+   ],
+   "proposed": "en 改为“released every Turkic Muslim he had captured, sending them home”",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "英文删去证据不支持的“of the south”，改为“released every Turkic Muslim he had captured, sending them home”，与原文及中文版一致。中文原文无此限定，按同步要求照录未改。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V3",
+   "path": "sections.analysis.2",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "英文在“the biography … says Russia too was cowed”中插入“written from the Qing side”，中文版没有对应内容，中英不一致。这一史源立场判断属于作者评语，应同时出现在两种语言中，或者都删去。",
+   "evidence": [
+    {
+     "id": "QSG4121-E18",
+     "quote": "而俄亦懾我兵威，恐事遂決裂"
+    }
+   ],
+   "proposed": "删去 en 的“written from the Qing side,”；或在 zh 对应处补“（此系清方史书的说法）”",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "删去英文中无中文对应的作者评语“written from the Qing side,”，恢复中英一致。中文原样保留，引语「俄亦懾我兵威」逐字见于证据。",
+   "decided_in": "revise_r2"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.story.5.zh",
+   "before": "三年三月，锦棠攻克达坂城，悉释所擒缠回，纵之归；次日收托克遜城，另部连破诸城隘，收吐鲁番，降缠回万余。接着是帕夏的结局：饮药死，其子伯克胡里戕其弟，走喀什噶尔。放回俘虏与南疆恟惧，传记写在一处。",
+   "after": "三年三月，锦棠攻克达坂城，悉释所擒缠回，纵之归。南路恟惧；次日收托克逊城，另部连破诸城隘，收吐鲁番，降缠回万余。接着是帕夏的结局：饮药死，其子伯克胡里戕其弟，走喀什噶尔。放回俘虏与南路恟惧，传记写在一处。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.story.5.en",
+   "before": "In the third month of the third year Jintang took Dabancheng and released every captured Muslim of the south, sending them home. Panic spread through the south; the next day Toksun fell, other columns stormed the cities and passes and recovered Turpan, and more than ten thousand Muslims submitted. Then Pasha's end: he drank poison and died; his son Bokhuli killed his own brother and fled to Kashgar. The freeing of the captives and the alarm down south are set down side by side.",
+   "after": "In the third month of the third year Jintang took Dabancheng and released every captured Muslim of the south, sending them home. Panic spread through the south; the next day Toksun fell, other columns stormed the cities and passes and recovered Turpan, and more than ten thousand Muslims submitted. Then Pasha's end: he drank poison and died; his son Bokhuli killed his own brother and fled to Kashgar. The freeing of the captives and the panic in the south are set down side by side.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.zh",
+   "before": "崇厚得罪去，命曾纪泽使俄更前约，左宗棠自请出屯哈密，规复伊犁。六年四月，他「輿櫬發肅州」——抬着棺材从肃州出发，五月抵哈密。俄闻王师大出，增兵守伊犁、纳林河，别以兵船翔海上，用震撼京师，天津、奉天、山东皆警。七月诏左宗棠入都备顾问，由西征将领锦棠接替他；传记说俄亦慑我兵威，明年正月和议成，交还伊犁，防海军皆罢。",
+   "after": "崇厚得罪去，命曾纪泽使俄更前约，左宗棠自请出屯哈密，规复伊犁。六年四月，他「輿櫬發肅州」——抬着棺材从肃州出发，五月抵哈密。俄闻王师大出，增兵守伊犁、纳林河，别以兵船翔海上，用震撼京师，天津、奉天、山东皆警。七月诏左宗棠入都备顾问，由西征将领锦棠接替他；传记称「俄亦懾我兵威」，明年正月和议成，交还伊犁，防海军皆罢。",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.en",
+   "before": "Chong Hou was disgraced and removed, and Zeng Jize sent to Russia to revise the treaty. Zuo asked to move out to Hami to prepare the recovery of Ili. In the fourth month of the sixth year he set out from Suzhou \"carrying his coffin\" and reached Hami in the fifth. Russia, hearing the imperial army was moving in force, reinforced Ili and the Naryn and put warships to sea to shake the capital; Tianjin, Fengtian and Shandong were all on alert. In the seventh month Zuo was summoned to the capital as an adviser, and Jintang, a commander of the expedition, replaced him; the biography says Russia too was cowed by our military prestige. In the first month of the following year peace was concluded, Ili returned, and the coastal forces stood down.",
+   "after": "Chong Hou was disgraced and removed, and Zeng Jize sent to Russia to revise the treaty. Zuo asked to move out to Hami to prepare the recovery of Ili. In the fourth month of the sixth year he set out from Suzhou \"carrying his coffin\" and reached Hami in the fifth. Russia, hearing the imperial army was moving in force, reinforced Ili and the Naryn and put warships to sea to shake the capital; Tianjin, Fengtian and Shandong were all on alert. In the seventh month Zuo was summoned to the capital as an adviser, and Jintang, a commander of the expedition, replaced him; the biography, written from the Qing side, says Russia too was cowed by the might of the Qing army. In the first month of the following year peace was concluded, Ili returned, and the coastal forces stood down.",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.analysis.4.zh",
+   "before": "仗打赢之后，外部的看法也变了。国家承平久，武备弛不振，海外诸国虽见中国屡平大难，仍私议以为脆弱；及宗棠平帕夏，外国乃稍稍传说之。京师民间另有一则传言：左宗棠初入京师时，内城有教堂高楼俯瞰宫殿，民间讙言「左侯至，樓即毀矣」；后出示谕晓，传言乃止，原文未明言示谕者是谁。传记以「其威望在人如此」收束此事，随即转笔：左宗棠在军机、译署任上（此职系入觐后所授，传记记于前文），「同列頗厭苦之」，他本人也「自不樂居內，引疾乞退」。",
+   "after": "仗打赢之后，外部的看法也变了。国家承平久，武备弛不振，而海外诸国争言富强，虽中国屡平大难，仍私议以为脆弱；及宗棠平帕夏，外国乃稍稍传说之。京师民间另有一则传言：左宗棠初入京师时，内城有教堂高楼俯瞰宫殿，民间讙言「左侯至，樓即毀矣」；后出示谕晓，传言乃止，原文未明言示谕者是谁。传记以「其威望在人如此」收束此事，随即转笔：左宗棠在军机、译署任上（此职系入觐后所授，传记记于前文），「同列頗厭苦之」，他本人也「自不樂居內，引疾乞退」。",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.analysis.4.en",
+   "before": "After the victories, opinion abroad shifted. The empire had been at peace so long that its armaments had gone slack, and the overseas powers, talking of wealth and strength among themselves, still whispered that China was frail even after it had put down one great crisis after another. Once Zuo had dealt with Pasha, the foreigners began to spread the word about him. Within the capital there was a separate, domestic rumor: when Zuo first entered the capital, a church tower in the Inner City overlooked the palace, and people in the city said the tower would come down once the Marquis Zuo arrived; a notice was posted to explain, and the talk stopped. The record does not say who issued the notice. The biography closes the episode by calling it a measure of his prestige, then turns: in his posts at the Grand Council and the foreign-affairs office (conferred after his audience, as the biography records earlier), his colleagues found him a great trial, and Zuo himself, unhappy serving in the capital, pleaded illness and asked to retire.",
+   "after": "After the victories, opinion abroad shifted. The empire had been at peace so long that its armaments had gone slack, while the overseas powers vied with one another in talk of wealth and power; even though China had put down one great crisis after another, they still privately judged it frail. Once Zuo had dealt with Pasha, the foreigners began to spread the word about him. Within the capital there was a separate, domestic rumor: when Zuo first entered the capital, a church tower in the Inner City overlooked the palace, and people in the city said the tower would come down once the Marquis Zuo arrived; a notice was posted to explain, and the talk stopped. The record does not say who issued the notice. The biography closes the episode by calling it a measure of his prestige, then turns: in his posts at the Grand Council and the foreign-affairs office (conferred after his audience, as the biography records earlier), his colleagues found him a great trial, and Zuo himself, unhappy serving in the capital, pleaded illness and asked to retire.",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.zh",
+   "before": "左宗棠的奏折把这笔割地换和平的账摊开：俄还伊犁于俄无损，我所得不过一荒郊；崇厚又议畀俄陬尔果斯河及帖克斯河，是划伊犁西南之地归俄。他说：「茲一矢未加，遽捐要地」，界务不可许；俄商志在贸易，其政府广设领事，欲藉通商深入腹地，商务也不可许。他给的次序是：「當先之以議論，委婉而用機，次決之以戰陣，堅忍而求勝。」",
+   "after": "左宗棠的奏折把这笔割地换和平的账摊开：俄视伊犁为外府，及我索地，俄则索偿卢布五百万元，所以俄还伊犁于俄无损，我所得不过一荒郊；崇厚又议畀俄陬尔果斯河及帖克斯河，是划伊犁西南之地归俄。他说：「茲一矢未加，遽捐要地」，界务不可许；俄商志在贸易，其政府广设领事，欲藉通商深入腹地，商务也不可许。他给的次序是：「當先之以議論，委婉而用機，次決之以戰陣，堅忍而求勝。」",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.en",
+   "before": "Zuo's memorial laid out the ledger for trading land for peace. Russia's return of Ili would cost Russia nothing, and what China got back would be \"only a stretch of empty outskirts\"; Chong Hou was meanwhile offering Russia the Korgos and Tekes rivers, ceding the southwest of Ili outright. \"Not a single arrow has been loosed,\" Zuo wrote, \"and we are to give up a key position at once\": the boundary terms must not be granted. Russian merchants were after trade, but their government was planting consulates everywhere, hoping to use commerce to reach deep into the interior; those trade terms must not be granted either. His order of operations: \"first let there be discussion, subtle and flexible; then decide it in battle, patient and determined to win.\"",
+   "after": "Zuo's memorial laid out the ledger for trading land for peace. Russia treated Ili as an outlying treasury, and when China asked for the land back, Russia demanded five million rubles in compensation; so returning Ili would cost Russia nothing, and what China got back would be \"only a stretch of empty outskirts\"; Chong Hou was meanwhile offering Russia the Korgos and Tekes rivers, ceding the southwest of Ili outright. \"Not a single arrow has been loosed,\" Zuo wrote, \"and we are to give up a key position at once\": the boundary terms must not be granted. Russian merchants were after trade, but their government was planting consulates everywhere, hoping to use commerce to reach deep into the interior; those trade terms must not be granted either. His order of operations: \"first let there be discussion, subtle and flexible; then decide it in battle, patient and determined to win.\"",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.story.1.zh",
+   "before": "作者认为，左宗棠的反驳重心在账上，不过原话里也有「挫國威」这样的非财务理由。他认为割弃不等于省钱：关陇新平，不趁势收回旧地，反而让帕夏另立一国，是坐自遗患；帕夏若守不住，地不是归英就是入俄，地盘坐缩，边防要地尽失，防边的兵也减不掉。传记记其言：「關隴新平，不及時規還國家舊所沒地，而割棄使別為國，此坐自遺患。萬一帕夏不能有，不西為英並，即北折而入俄耳。吾地坐縮，邊要盡失，防邊兵不可減，糜餉自若。無益海防而挫國威，且長亂。此必不可。」要害在中段：兵减不掉，饷照旧要花。",
+   "after": "作者认为，左宗棠的反驳重心在账上，不过原话里也有「挫國威」这样的非财务理由。他认为割弃不等于省钱：关陇新平，不趁势收回旧地，反而让帕夏另立一国，是坐自遗患；帕夏若守不住，地不是归英就是入俄，地盘坐缩，边防要地尽失，防边的兵也减不掉。传记记其言：「關隴新平，不及時規還國家舊所沒地，而割棄使別為國，此坐自遺患。萬一帕夏不能有，不西為英並，即北折而入俄耳。吾地坐縮，邊要盡失，防邊兵不可減，糜餉自若。無益海防而挫國威，且長亂。此必不可。」作者以为，要害在中段：兵减不掉，饷照旧要花。",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.story.1.en",
+   "before": "One reading is that Zuo's answer rested chiefly on cost, though his words also cite damage to the state's prestige. Carving territory loose, he argued, did not save money: it stored up trouble, and if Pasha failed to hold the land it would fall to England or to Russia; the territory would shrink, every strategic point be lost, and the frontier troops could not be cut. The biography gives his words: \"Guanlong has only just been pacified. Instead of recovering in good time the lands the state once lost, we carve them off and let another state be founded there — that is to store up trouble of our own making. Should Pasha fail to hold them, they will be swallowed by England in the west or fold north into Russia. Our territory shrinks of its own accord, every strategic point is lost, the frontier troops cannot be reduced, and the spending goes on as before. It does nothing for coastal defense, it damages our prestige, and it feeds disorder. This must not be.\" The sting is in the middle: the troops cannot be cut, and the money flows out all the same.",
+   "after": "One reading is that Zuo's answer rested chiefly on cost, though his words also cite damage to the state's prestige. Carving territory loose, he argued, did not save money: it stored up trouble, and if Pasha failed to hold the land it would fall to England or to Russia; the territory would shrink, every strategic point be lost, and the frontier troops could not be cut. The biography gives his words: \"Guanlong has only just been pacified. Instead of recovering in good time the lands the state once lost, we carve them off and let another state be founded there — that is to store up trouble of our own making. Should Pasha fail to hold them, they will be swallowed by England in the west or fold north into Russia. Our territory shrinks of its own accord, every strategic point is lost, the frontier troops cannot be reduced, and the spending goes on as before. It does nothing for coastal defense, it damages our prestige, and it feeds disorder. This must not be.\" In the author's reading, the sting is in the middle: the troops cannot be cut, and the money flows out all the same.",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.story.5.en",
+   "before": "In the third month of the third year Jintang took Dabancheng and released every captured Muslim of the south, sending them home. Panic spread through the south; the next day Toksun fell, other columns stormed the cities and passes and recovered Turpan, and more than ten thousand Muslims submitted. Then Pasha's end: he drank poison and died; his son Bokhuli killed his own brother and fled to Kashgar. The freeing of the captives and the panic in the south are set down side by side.",
+   "after": "In the third month of the third year Jintang took Dabancheng and released every Turkic Muslim he had captured, sending them home. Panic spread through the south; the next day Toksun fell, other columns stormed the cities and passes and recovered Turpan, and more than ten thousand Muslims submitted. Then Pasha's end: he drank poison and died; his son Bokhuli killed his own brother and fled to Kashgar. The freeing of the captives and the panic in the south are set down side by side.",
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.en",
+   "before": "Chong Hou was disgraced and removed, and Zeng Jize sent to Russia to revise the treaty. Zuo asked to move out to Hami to prepare the recovery of Ili. In the fourth month of the sixth year he set out from Suzhou \"carrying his coffin\" and reached Hami in the fifth. Russia, hearing the imperial army was moving in force, reinforced Ili and the Naryn and put warships to sea to shake the capital; Tianjin, Fengtian and Shandong were all on alert. In the seventh month Zuo was summoned to the capital as an adviser, and Jintang, a commander of the expedition, replaced him; the biography, written from the Qing side, says Russia too was cowed by the might of the Qing army. In the first month of the following year peace was concluded, Ili returned, and the coastal forces stood down.",
+   "after": "Chong Hou was disgraced and removed, and Zeng Jize sent to Russia to revise the treaty. Zuo asked to move out to Hami to prepare the recovery of Ili. In the fourth month of the sixth year he set out from Suzhou \"carrying his coffin\" and reached Hami in the fifth. Russia, hearing the imperial army was moving in force, reinforced Ili and the Naryn and put warships to sea to shake the capital; Tianjin, Fengtian and Shandong were all on alert. In the seventh month Zuo was summoned to the capital as an adviser, and Jintang, a commander of the expedition, replaced him; the biography says Russia too was cowed by the might of the Qing army. In the first month of the following year peace was concluded, Ili returned, and the coastal forces stood down.",
+   "issues": [
+    "V1-V3"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F3",
+    "F4",
+    "F5"
+   ],
+   "changes_applied": 8,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[5] numbers differ zh[] en[10000]"
+    ],
+    [
+     "CHECK",
+     "analysis[1] numbers differ zh[5000000] en[]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[] en[10000]"
+    ]
+   ],
+   "content_sha256_after": "786580c9fead56e3c2d413a3b7df9dcb33505076e620335f2f5fc83da32748bc",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V6"
+      ]
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V7"
+      ]
+     },
+     {
+      "path": "sections.analysis.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V8"
+      ]
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.story.1",
+      "category": "interpretation_label",
+      "severity": "fix",
+      "problem": "本段 kind=record。段末“要害在中段：兵减不掉，饷照旧要花 / The sting is in the middle…”是作者对原话重点的评判，却以陈述句写出，没有标为解释。开头的“作者认为”只覆盖第一句。",
+      "evidence": [
+       {
+        "id": "QSG4121-E4",
+        "quote": "防邊兵不可減，糜餉自若"
+       }
+      ],
+      "proposed": "zh 改为“作者以为，要害在中段：……”；en 改为“In the author's reading, the sting is in the middle: …”"
+     },
+     {
+      "id": "V2",
+      "path": "sections.story.5",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "英文“released every captured Muslim of the south”多出“of the south”。原文只说释放所擒缠回，没有限定为南路之人；中文版也没有这一限定。",
+      "evidence": [
+       {
+        "id": "QSG4121-E8",
+        "quote": "悉釋所擒纏回，縱之歸"
+       }
+      ],
+      "proposed": "en 改为“released every Turkic Muslim he had captured, sending them home”"
+     },
+     {
+      "id": "V3",
+      "path": "sections.analysis.2",
+      "category": "parity",
+      "severity": "fix",
+      "problem": "英文在“the biography … says Russia too was cowed”中插入“written from the Qing side”，中文版没有对应内容，中英不一致。这一史源立场判断属于作者评语，应同时出现在两种语言中，或者都删去。",
+      "evidence": [
+       {
+        "id": "QSG4121-E18",
+        "quote": "而俄亦懾我兵威，恐事遂決裂"
+       }
+      ],
+      "proposed": "删去 en 的“written from the Qing side,”；或在 zh 对应处补“（此系清方史书的说法）”"
+     },
+     {
+      "id": "V4",
+      "path": "sections.hook.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "开头出现“高宗”“关陇”“出关”，不熟悉背景的读者不一定知道所指。主线（西征与海防争同一笔钱）能看懂，但这几个词增加了理解门槛。",
+      "evidence": [
+       {
+        "id": "QSG4121-E3",
+        "quote": "論者多言自高宗定新疆"
+       }
+      ],
+      "proposed": "首次出现时加极简说明，例如“自高宗（乾隆帝）定新疆”；“关陇”可作“陕甘一带（关陇）”"
+     },
+     {
+      "id": "V5",
+      "path": "sections.story.7",
+      "category": "readability",
+      "severity": "note",
+      "problem": "中文正文在引语之外交替使用“左宗棠”和“宗棠”（如“宗棠露布以闻”“宗棠曰”，以及 analysis.0 的“宗棠条上”、story.6 的“宗棠歎曰”），称呼不统一。",
+      "evidence": [
+       {
+        "id": "QSG4121-E11",
+        "quote": "宗棠露布以聞，詔晉二等侯"
+       }
+      ],
+      "proposed": "引语之外统一作“左宗棠”"
+     },
+     {
+      "id": "V6",
+      "path": "sections.story.3",
+      "category": "readability",
+      "severity": "note",
+      "problem": "英文“Suzhou”（肃州）容易被读者误认作江苏苏州，后文 analysis.2 也再次出现。",
+      "evidence": [
+       {
+        "id": "QSG4121-E6",
+        "quote": "二年三月，次肅州"
+       }
+      ],
+      "proposed": "en 首次出现时写作“Suzhou (in Gansu)”"
+     },
+     {
+      "id": "V7",
+      "path": "sections.analysis.4",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“此职系入觐后所授，传记记于前文”所指的授职，正文从未交代，读者无从对照。",
+      "evidence": [
+       {
+        "id": "QSG4121-E25",
+        "quote": "既入覲，賜紫禁城騎馬，使內侍二人扶掖上殿，授軍機大臣，兼值譯署"
+       }
+      ],
+      "proposed": "把括注改为“（入觐后，左宗棠被授军机大臣，兼值译署）”，en 同步修改"
+     },
+     {
+      "id": "V8",
+      "path": "reflection.example.alternative",
+      "category": "readability",
+      "severity": "note",
+      "problem": "中文“既不停全款、也不全停”字面上自相矛盾，和英文“neither full funding nor a full stop”也对不上。",
+      "evidence": [],
+      "proposed": "zh 改为“既不全额投入、也不全部停下”"
+     }
+    ],
+    "overall": "定稿引语逐字可核，因果与推断大体已标注；需修正 story.1 未标注的评判、story.5 英文多出的“of the south”和 analysis.2 的中英不一致，另有几处易读性小问题，但开头可读，不影响理解。",
+    "_content_sha256": "786580c9fead56e3c2d413a3b7df9dcb33505076e620335f2f5fc83da32748bc"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1",
+    "V1-V2",
+    "V1-V3"
+   ],
+   "changes_applied": 4,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[5] numbers differ zh[] en[10000]"
+    ],
+    [
+     "CHECK",
+     "analysis[1] numbers differ zh[5000000] en[]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[] en[10000]"
+    ]
+   ],
+   "content_sha256_after": "4b0e0382d740605199add5fd8bb7a23fd5379b69e7437b5cd40f666e079a06db",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "开头的整体问题读者能说清：朝中有人主张罢西征、专力海防，两头都要钱。但“高宗”“关陇”“出关”没有注释。不了解背景的读者不知道高宗是哪位皇帝，也不知道出关是要西进新疆。",
+      "evidence": [
+       {
+        "id": "QSG4121-E3",
+        "quote": "宗棠既平關隴，將出關，而海防議起"
+       }
+      ],
+      "proposed": "中文：“正要出关”改为“正要出关西征新疆”，“自高宗定新疆”改为“自清高宗平定新疆”。英文相应改为 \"about to march out beyond the pass toward Xinjiang\"、\"the Qing emperor Gaozong\"。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.context.0",
+      "category": "style",
+      "severity": "note",
+      "problem": "英文 \"came originally from the Andijan\" 缺少中心名词，读起来像残句。中文“原出安集延部”是完整的。",
+      "evidence": [
+       {
+        "id": "QSG4121-E1",
+        "quote": "本安集延部之和碩伯克也"
+       }
+      ],
+      "proposed": "改为 \"came originally from the Andijan people\"。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.story.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "李鸿章在本段首次出现，只写了他“言之尤力”，没有交代身份。证据包没有给出他当时的官职，所以只能点明他在本事中的角色。",
+      "evidence": [
+       {
+        "id": "QSG4121-E3",
+        "quote": "鴻章言之尤力"
+       }
+      ],
+      "proposed": "中文改为“传记说海防一派中李鸿章于此「言之尤力」”。英文改为 \"Li Hongzhang, the leading voice on the coastal-defense side, pressed this hardest\"。不要补写证据之外的官职。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.story.3",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“锦棠/Jintang”在传记中只是名，不带姓。英文读者会以为这是全名。中文里“锦棠”与“宗棠”字形相近，又与“左宗棠”交替出现，容易混淆。",
+      "evidence": [
+       {
+        "id": "QSG4121-E6",
+        "quote": "錦棠北逾天山"
+       }
+      ],
+      "proposed": "首次出现处补一句“（传记只称其名）”，英文补 \"(the biography gives only his given name)\"。正文叙述中统一称“左宗棠”，“宗棠”只保留在引文中。"
+     }
+    ],
+    "overall": "逐字段核对后，事实、归属、时序、引语和解释标注都有证据支持，中英一致，没有事实类问题。开头的易读性可以通过，仅有四处 note 级的易读性和文风建议，定稿可以发布。",
+    "_content_sha256": "4b0e0382d740605199add5fd8bb7a23fd5379b69e7437b5cd40f666e079a06db"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F7"
+    ]
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "chronology",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F8"
+    ]
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F9"
+    ]
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1",
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F10"
+    ]
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.analysis.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.analysis.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "chronology",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.story.5",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "中文漏写“南路恟惧”，但句末又说“放回俘虏与南疆恟惧，传记写在一处”，指向一件文中没有交代的事。英文写了 Panic spread through the south，中英不一致。",
+    "evidence": [
+     {
+      "id": "QSG4121-E8",
+      "quote": "悉釋所擒纏回，縱之歸。南路恟懼，翼日，收托克遜城"
+     }
+    ],
+    "proposed": "中文改为“……悉释所擒缠回，纵之归。南路恟惧；次日收托克逊城……”，不添因果。"
+   },
+   {
+    "id": "F2",
+    "path": "sections.story.5",
+    "category": "style",
+    "severity": "note",
+    "problem": "中文“托克遜”用了繁体字，与 story.3 的“托克逊”不统一。",
+    "evidence": [],
+    "proposed": "统一作“托克逊”。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.analysis.2",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "英文 cowed by our military prestige 沿用了传记的清廷口吻“我”，但没有加引号，读来像作者本人站在清方立场下判断。",
+    "evidence": [
+     {
+      "id": "QSG4121-E18",
+      "quote": "俄亦懾我兵威，恐事遂決裂"
+     }
+    ],
+    "proposed": "改为 the biography says Russia too was \"cowed by our military might\"（加引号表明是原文口吻），或写作 cowed by the Qing army's might。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.analysis.4",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "中文删去了“争言富强”。英文译作 talking of wealth and strength among themselves，把“争言富强”与“私议”混在一起，among themselves 没有原文依据。中英两版不对等。",
+    "evidence": [
+     {
+      "id": "QSG4121-E22",
+      "quote": "海外諸國爭言富強，雖中國屢平大難，彼猶私議以為脆弱也"
+     }
+    ],
+    "proposed": "中文补为“海外诸国争言富强，虽见中国屡平大难，仍私议以为脆弱”。英文改为 the overseas powers, all vying to talk of wealth and power, still privately judged China frail……"
+   },
+   {
+    "id": "F5",
+    "path": "sections.analysis.1",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "正文写“俄还伊犁于俄无损”，却删去了奏折中支撑这一判断的前提：俄方索要偿款卢布五百万元。读者因此无从理解为何“于俄无损”。中英两版都缺。",
+    "evidence": [
+     {
+      "id": "QSG4121-E14",
+      "quote": "及我索地，則索償盧布五百萬元。是俄還伊犁，於俄無損"
+     }
+    ],
+    "proposed": "中文补“及我索地，俄索偿卢布五百万元，故俄还伊犁于俄无损”；英文相应补 Russia demanded five million rubles in compensation, so returning Ili cost it nothing。"
+   },
+   {
+    "id": "F6",
+    "path": "sections.hook.0",
+    "category": "readability",
+    "severity": "note",
+    "problem": "开头出现“关陇”“出关”“高宗”（英文 Guanlong, beyond the pass, emperor Gaozong），都没有说明。不了解背景的读者能看出朝中在争西征与海防、两头都要钱，但这些名词会造成阻滞。",
+    "evidence": [],
+    "proposed": "简短说明：关陇指陕甘一带；“出关”即出关西进新疆；高宗为乾隆。不增加史实。"
+   },
+   {
+    "id": "F7",
+    "path": "sections.context.0",
+    "category": "readability",
+    "severity": "note",
+    "problem": "背景段一次堆出安集延、喀什噶尔、南路诸城、乌鲁木齐、妥明、北路伊犁诸城，其中妥明在后文不再出现，读者暂时用不上。",
+    "evidence": [],
+    "proposed": "保留“先据南疆、再并北疆（含伊犁）”的层级，把妥明一句压缩为“又攻败据乌鲁木齐的另一股回众”。"
+   },
+   {
+    "id": "F8",
+    "path": "sections.story.0",
+    "category": "readability",
+    "severity": "note",
+    "problem": "李鸿章首次出现时没有说明身份及其与此事的关系，只写“言之尤力”。",
+    "evidence": [
+     {
+      "id": "QSG4121-E3",
+      "quote": "鴻章言之尤力"
+     }
+    ],
+    "proposed": "写明他是主张罢西征、专力海防一方中最力者，不补证据外的官职。"
+   },
+   {
+    "id": "F9",
+    "path": "sections.story.3",
+    "category": "readability",
+    "severity": "note",
+    "problem": "“锦棠”只用名不用姓，与“左宗棠”的称法不一致，读者可能误以为姓“锦”。英文 Suzhou 容易与江苏苏州混淆。",
+    "evidence": [],
+    "proposed": "注明传记只称其名“锦棠”。英文 Suzhou 加注 (in Gansu) 或写作 Suzhou (Jiuquan)，不加其他史实。"
+   },
+   {
+    "id": "F10",
+    "path": "sections.story.6",
+    "category": "readability",
+    "severity": "note",
+    "problem": "中文在“左宗棠”与“宗棠”之间交替（story.6/7、analysis.0 用“宗棠”），偶有读者会误为两人。",
+    "evidence": [],
+    "proposed": "引语外的叙述统一用“左宗棠”，引语内保留原文。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "P1",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "中文确实漏写南路恟惧，与句末呼应不上，且与英文不一致。",
+    "evidence": [
+     {
+      "id": "QSG4121-E8",
+      "quote": "南路恟懼"
+     }
+    ]
+   },
+   {
+    "id": "P2",
+    "verdict": "duplicate",
+    "same_as": "F3",
+    "rationale": "英文 our 沿用传记口吻而未加引号，确实成立。",
+    "evidence": [
+     {
+      "id": "QSG4121-E18",
+      "quote": "俄亦懾我兵威"
+     }
+    ]
+   },
+   {
+    "id": "P3",
+    "verdict": "duplicate",
+    "same_as": "F4",
+    "rationale": "中文缺“争言富强”，英文 among themselves 无据，中英不对等，确实成立。",
+    "evidence": [
+     {
+      "id": "QSG4121-E22",
+      "quote": "海外諸國爭言富強"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "4b0e0382d740605199add5fd8bb7a23fd5379b69e7437b5cd40f666e079a06db",
+ "open_issues": [],
+ "outcome": "admissible",
+ "failure": null,
+ "finished_at": 1793435663.645949,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 116.1,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 19152,
+    "output_tokens": 12841
+   },
+   "cost_estimate_usd": 0.41004399999999996
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 34.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 18214,
+    "output_tokens": 4319
+   },
+   "cost_estimate_usd": 0.2321
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 88.9,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 17591,
+    "output_tokens": 10082
+   },
+   "cost_estimate_usd": 0.342376
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 21.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 17962,
+    "output_tokens": 2550
+   },
+   "cost_estimate_usd": 0.194704
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 107.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 17598,
+    "output_tokens": 12147
+   },
+   "cost_estimate_usd": 0.38373199999999996
+  }
+ ],
+ "elapsed_min": 6.1,
+ "model_wall_min": 6.1
+}

@@ -1,0 +1,1204 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-20261030-shackleton-ocean-camp",
+ "edition_id": "cand-20261030-shackleton-ocean-camp",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "2af9f62",
+ "started_at": 1793431873.391591,
+ "base_source": "samples/auto/cand-20261030-shackleton-ocean-camp/final/article.json",
+ "base_content_sha256": "2319f5ecd40fae171cbc3e69a73b7ecef70db5887fd96c7f1f2bb58dc85d69e7",
+ "evidence_sha256": "d8dd19c2d101c3422b9aaf842ea525b99439258a75080243e3f07939cfb5047f",
+ "operator_note": null,
+ "model_record_sha256": "6a4351505063bf4a2d30b3e86d2da6d9ede352116f8b0739f53fb486924d835c",
+ "prior_record_sha256": "3aa9998a7da9a65b1a5397a0f473ef4f153b8fe56f23663e7f18bb5f0f05e090",
+ "attempt": "attempt-5",
+ "context_review_sha256": null,
+ "inherited": [
+  {
+   "id": "P1",
+   "model_id": "V2-V1",
+   "source": "final-editor previous attempt",
+   "where": "sections.limits.0",
+   "problem": "原文对队员消沉的记述带有保留（seemed），中英文都去掉了这层保留，把部分队员的消沉写成了确定的状态。",
+   "suggestion": "中文改为“部分人似乎一度消沉，随即恢复”；英文改为“and an apathy that seemed to take hold of some of the men soon passed”。"
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.limits.0",
+   "category": "inner_life",
+   "severity": "fix",
+   "problem": "原文对部分队员消沉的记述带有保留（seemed）。中文“部分人一度消沉”和英文“an apathy that took hold of some of the men”都去掉了这层保留，把外部观察到的样子写成了确定的心理状态。",
+   "evidence": [
+    {
+     "id": "S-E25",
+     "quote": "THE apathy which seemed to take possession of some of the men at the frustration of their hopes was soon dispelled."
+    }
+   ],
+   "proposed": "中文改为“部分人似乎一度消沉，随即恢复”；英文改为“and an apathy that seemed to take hold of some of the men soon passed”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "原文用 seemed 表示这是外部观察到的样子，不是确定的心理状态。中文改为“部分人似乎一度消沉，随即恢复”，英文改为“an apathy that seemed to take hold of some of the men soon passed”，保留了原文的这层保留，其余文字未动。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.story.3",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "原文方向是 north-northwesterly（北西北）。中文写成“向北偏西北”，表述含混，容易被读成别的方位，与英文“north-north-west”不完全对应。",
+   "evidence": [
+    {
+     "id": "S-E11",
+     "quote": "had covered a mile in a north-northwesterly direction"
+    }
+   ],
+   "proposed": "改为“向北西北方向走了一英里”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文方位“向北偏西北”含混，改为“向北西北方向走了一英里”，与原文 north-northwesterly 及英文 north-north-west 对应。英文原本已经准确，按中英同步规则照原文重给。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "P1",
+   "problem": "原文对队员消沉的记述带有保留（seemed），中英文都去掉了这层保留，把部分队员的消沉写成了确定的状态。",
+   "origin": "inherited final-editor previous attempt V2-V1",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.limits.0",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "问题成立：原文用 seemed 表示保留，正文中英文都去掉了这层保留。此条与 F1 内容相同。"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.limits.0.zh",
+   "before": "本篇的全部过程都出自沙克尔顿本人的叙述（这里用的是1920年印本的 OCR 文本），是当事人、领导者的记述。没有取得其他队员的日记作对照。他的叙述写到了队员的状态：大家筋疲力尽；第二次尝试受挫、被迫后撤时，全队大失所望；部分人一度消沉，随即恢复。这些也都出自他的叙述。但营地里其他人是否同意海洋营的决定，证据里没有，本篇也不另替他们猜测心理。文中那句“喝过更干净的水”出自一位未具名队员的日记，是经沙克尔顿转引的。",
+   "after": "本篇的全部过程都出自沙克尔顿本人的叙述（这里用的是1920年印本的 OCR 文本），是当事人、领导者的记述。没有取得其他队员的日记作对照。他的叙述写到了队员的状态：大家筋疲力尽；第二次尝试受挫、被迫后撤时，全队大失所望；部分人似乎一度消沉，随即恢复。这些也都出自他的叙述。但营地里其他人是否同意海洋营的决定，证据里没有，本篇也不另替他们猜测心理。文中那句“喝过更干净的水”出自一位未具名队员的日记，是经沙克尔顿转引的。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.limits.0.en",
+   "before": "Everything in this piece comes from Shackleton's own narrative, read here through the OCR text of the 1920 printing: the account of a participant who led the party. No other member's diary has been brought in for comparison. His narrative does report the men's state: they were all exhausted; at the second setback, when they had to retreat, there was intense disappointment among all of them; and an apathy that took hold of some of the men soon passed. These reports, too, come from his narrative. Whether anyone else in the camp agreed with the Ocean Camp decision is not in the evidence, and this piece does not put further feelings in their mouths. The line about the sip of water comes from an unnamed member's diary, as quoted by Shackleton.",
+   "after": "Everything in this piece comes from Shackleton's own narrative, read here through the OCR text of the 1920 printing: the account of a participant who led the party. No other member's diary has been brought in for comparison. His narrative does report the men's state: they were all exhausted; at the second setback, when they had to retreat, there was intense disappointment among all of them; and an apathy that seemed to take hold of some of the men soon passed. These reports, too, come from his narrative. Whether anyone else in the camp agreed with the Ocean Camp decision is not in the evidence, and this piece does not put further feelings in their mouths. The line about the sip of water comes from an unnamed member's diary, as quoted by Shackleton.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.story.3.zh",
+   "before": "第一天的走法是接力。开路的小队拿着镐和铲，在冰脊间为拉船的雪橇凿出一条路；七组狗队把雪橇往前拉半英里，再折回去拉其余的雪橇；沃斯利管着两条船，十五个人拉，也得分段倒运。他们跨过两道正在张开的冰缝，缝里有虎鲸探出头来。到下午5点，他们向北偏西北走了一英里。",
+   "after": "第一天的走法是接力。开路的小队拿着镐和铲，在冰脊间为拉船的雪橇凿出一条路；七组狗队把雪橇往前拉半英里，再折回去拉其余的雪橇；沃斯利管着两条船，十五个人拉，也得分段倒运。他们跨过两道正在张开的冰缝，缝里有虎鲸探出头来。到下午5点，他们向北西北方向走了一英里。",
+   "issues": [
+    "F2"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2"
+   ],
+   "changes_applied": 3,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[4] numbers differ zh[2, 20] en[2, 10, 20]"
+    ],
+    [
+     "CHECK",
+     "story[6] numbers differ zh[12, 14, 18] en[10, 14, 18]"
+    ]
+   ],
+   "content_sha256_after": "3a1e2c45e134318430c421166e0cd4c73522b31b2334f1e989e9f45a365261c7",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.9",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.10",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.11",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.12",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.13",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [],
+    "overall": "逐字段复核未发现问题：数字、人名、地名与事件均有证据支持；英文引语逐字取自原文；推断段落已标明为作者解释；对“第一个营地”和第一夜的对应关系有恰当保留；中英文本一致，无缺失或截断；现代场景没有冒充记录。定稿可以发布。",
+    "_content_sha256": "3a1e2c45e134318430c421166e0cd4c73522b31b2334f1e989e9f45a365261c7"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "inner_life",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "chronology",
+     "causality",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "inner_life",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.9",
+    "checked": [
+     "facts",
+     "chronology",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.10",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.11",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.12",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.13",
+    "checked": [
+     "facts",
+     "chronology",
+     "causality",
+     "attribution",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.3",
+    "checked": [
+     "facts",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.limits.0",
+    "category": "inner_life",
+    "severity": "fix",
+    "problem": "原文对部分队员消沉的记述带有保留（seemed）。中文“部分人一度消沉”和英文“an apathy that took hold of some of the men”都去掉了这层保留，把外部观察到的样子写成了确定的心理状态。",
+    "evidence": [
+     {
+      "id": "S-E25",
+      "quote": "THE apathy which seemed to take possession of some of the men at the frustration of their hopes was soon dispelled."
+     }
+    ],
+    "proposed": "中文改为“部分人似乎一度消沉，随即恢复”；英文改为“and an apathy that seemed to take hold of some of the men soon passed”。"
+   },
+   {
+    "id": "F2",
+    "path": "sections.story.3",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "原文方向是 north-northwesterly（北西北）。中文写成“向北偏西北”，表述含混，容易被读成别的方位，与英文“north-north-west”不完全对应。",
+    "evidence": [
+     {
+      "id": "S-E11",
+      "quote": "had covered a mile in a north-northwesterly direction"
+     }
+    ],
+    "proposed": "改为“向北西北方向走了一英里”。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "P1",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "问题成立：原文用 seemed 表示保留，正文中英文都去掉了这层保留。此条与 F1 内容相同。",
+    "evidence": [
+     {
+      "id": "S-E25",
+      "quote": "seemed to take possession of some of the men"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "3a1e2c45e134318430c421166e0cd4c73522b31b2334f1e989e9f45a365261c7",
+ "open_issues": [],
+ "outcome": "admissible",
+ "failure": null,
+ "finished_at": 1793432025.293876,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 60.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 19958,
+    "output_tokens": 6917
+   },
+   "cost_estimate_usd": 0.29801200000000005
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 11.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 19581,
+    "output_tokens": 1342
+   },
+   "cost_estimate_usd": 0.18349600000000002
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 80.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 19170,
+    "output_tokens": 9531
+   },
+   "cost_estimate_usd": 0.34398799999999996
+  }
+ ],
+ "elapsed_min": 2.5,
+ "model_wall_min": 2.5
+}

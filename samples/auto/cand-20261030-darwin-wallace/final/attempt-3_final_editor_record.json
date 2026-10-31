@@ -1,0 +1,1075 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-20261030-darwin-wallace",
+ "edition_id": "cand-20261030-darwin-wallace",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "ef58996",
+ "started_at": 1793429388.2797203,
+ "base_source": "samples/auto/cand-20261030-darwin-wallace/final/article.json",
+ "base_content_sha256": "805fcf98278a90031b78061c320473e721b56839ea8e9a231bad488863a0f772",
+ "evidence_sha256": "b9c87f8aeb8e29db85055ea350a1e7c36bb8f1bd8728d0030d472afb012df8e1",
+ "operator_note": null,
+ "model_record_sha256": "117638de74f757e6e83f0f5c1f6c211ba4a486b75577017ff902cc045033032f",
+ "prior_record_sha256": "e3ad994ca2064c7f2cd4a73b7e191b614026292c1903ee7136dcdbe3f92dd8af",
+ "attempt": "attempt-3",
+ "context_review_sha256": "6a30a0ad4e6e9d83cc719990fd72942a088883d2bad262e5e9d468ce7318e8f4",
+ "inherited": [
+  {
+   "id": "X1",
+   "source": "context review",
+   "where": "",
+   "problem": "证据包已按来源上下文补入摘录 V-E24；请据此检查叙事、结局与因果是否完整准确",
+   "suggestion": null
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.story.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "本节标题是“三份材料的来路”，story.1 直接从“第二份材料”写起，但 story.0 没有交代第一份材料是什么。证据写明，第一份材料是该手稿的摘录，宣读的也只是选段，并非整份手稿。正文只写“那份旧手稿”，读者可能以为宣读的是整部手稿。中英文都有此缺口。",
+   "evidence": [
+    {
+     "id": "V-E3",
+     "quote": "1. Extracts from a MS. work on Species"
+    },
+    {
+     "id": "V-E23",
+     "quote": "from which we propose to read to the Society the extracts referred to"
+    }
+   ],
+   "proposed": "在句首补一句：中文“第一份材料是这份手稿的摘录。”英文“The first item was extracts from this manuscript.”",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "在 story.0 句首补写第一份材料是达尔文手稿的摘录，并说明信中要宣读的只是选段，不是整部手稿。中英文同步修改。ev 增加 V-E3 和 V-E23。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.story.4",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "中文用引号括起“强烈倾向”，看上去像原文引语，但它其实是英文证据的译述，证据中没有这几个中文字。英文版引的是原文，没有问题。",
+   "evidence": [
+    {
+     "id": "V-E6",
+     "quote": "as he was strongly inclined to do (in favour of Mr. Wallace)"
+    }
+   ],
+   "proposed": "去掉中文引号，改为：……不能像信中所说他（为照顾华莱士）强烈倾向于做的那样……",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文去掉“强烈倾向”的引号，改为转述：信中所说他（为照顾华莱士）强烈倾向于做的那样。英文原本就是逐字引语，保持不变，仅一并给出完整文字。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.analysis.1",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "正文说第二种替代做法“与信中所记达尔文的倾向相对应”，并且只把其余两种标为作者构造。但第二种做法中“把达尔文的优先权留给他日后自述”这半句，信里没有记载。信里只记了两件事：达尔文提议征得华莱士同意后尽快发表其论文；他强烈倾向于扣下自己的手稿。此外，正文也漏掉了“征得华莱士同意”这一前提。",
+   "evidence": [
+    {
+     "id": "V-E6",
+     "quote": "to obtain Mr. Wallace's consent to allow the Essay to be published as soon as possible"
+    },
+    {
+     "id": "V-E6",
+     "quote": "as he was strongly inclined to do (in favour of Mr. Wallace)"
+    }
+   ],
+   "proposed": "改为：第二种的前半（只发华莱士）与信中所记达尔文的倾向相对应：他提议征得华莱士同意后尽快发表其论文，并强烈倾向于不公开自己的手稿；“日后自述优先权”一节与其余两种一样，是作者提出的对照，不是材料里的记载。英文同步修改。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "改为只把第二种做法的前半（只发华莱士）对应到信中所记达尔文的倾向，并补上“征得华莱士同意”这一前提。“日后自述优先权”一节明确标为作者提出的对照，与其余两种并列，不是材料里的记载。中英文同步修改。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "X1",
+   "path": "",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "证据包已按来源上下文补入摘录 V-E24；请据此检查叙事、结局与因果是否完整准确",
+   "origin": "inherited context review None",
+   "disposition": "rejected",
+   "rationale": "正文已按补入的 V-E24 处理。story.6 只说信中“依次列出三份材料，各附日期”，并明确写出“当天按什么顺序宣读，材料没有记”，没有把按日期排列当成宣读顺序，也没有据此做因果推断。V-E23 所示“只宣读摘录”一点，story.6 也已写作“手稿摘录”。叙事与结局的完整性问题已在 F1 中另行列出。",
+   "evidence": [
+    {
+     "id": "V-E24",
+     "quote": "Taken in the order of their dates, they consist of:—"
+    },
+    {
+     "id": "V-E23",
+     "quote": "from which we propose to read to the Society the extracts referred to"
+    }
+   ],
+   "decided_in": "audit"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.story.0.zh",
+   "before": "据达尔文本人所说，那份旧手稿从未打算发表：1858年，他为它加了一条脚注，署“C. D. 1858”，说明这份手稿从未打算发表，因此写得并不仔细。",
+   "after": "第一份材料是达尔文那份关于物种的手稿的摘录；信中说要向学会宣读的只是其中选段，不是整部手稿。据达尔文本人所说，那份旧手稿从未打算发表：1858年，他为它加了一条脚注，署“C. D. 1858”，说明这份手稿从未打算发表，因此写得并不仔细。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.story.0.en",
+   "before": "By Darwin's own account, his old manuscript was never intended for publication. In 1858 he added a footnote to it: \"This MS. work was never intended for publication, and therefore was not written with care.—C. D. 1858.\"",
+   "after": "The first item was extracts from Darwin's manuscript on species; the letter says only extracts were to be read to the Society, not the whole manuscript. By Darwin's own account, his old manuscript was never intended for publication. In 1858 he added a footnote to it: \"This MS. work was never intended for publication, and therefore was not written with care.—C. D. 1858.\"",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.story.0.ev",
+   "before": [
+    "V-E12"
+   ],
+   "after": [
+    "V-E12",
+    "V-E3",
+    "V-E23"
+   ],
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.story.4.zh",
+   "before": "达尔文收到论文后的做法，莱尔和胡克写得很具体：他写信给莱尔，提议征得华莱士本人同意后，尽快把这篇论文发表。两位中间人表示赞成，但附了一个条件：达尔文不能像他（为照顾华莱士）“强烈倾向”的那样，扣下自己关于同一主题的手稿。信里记下的是达尔文的倾向：把发表的机会让给对方。",
+   "after": "达尔文收到论文后的做法，莱尔和胡克写得很具体：他写信给莱尔，提议征得华莱士本人同意后，尽快把这篇论文发表。两位中间人表示赞成，但附了一个条件：达尔文不能像信中所说他（为照顾华莱士）强烈倾向于做的那样，扣下自己关于同一主题的手稿。信里记下的是达尔文的倾向：把发表的机会让给对方。",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.zh",
+   "before": "作者把他们的做法概括为：算，但要公开兑现。作者列出的替代做法至少有三种，各有代价：由达尔文先单独发表；只发华莱士，把达尔文的优先权留给他日后自述；或者都等达尔文的完整著作出来再说。其中第二种与信中所记达尔文的倾向相对应：他提议尽快发表华莱士的论文，并强烈倾向于扣下自己的手稿；其余两种是作者提出的对照选项，不是材料里的记载。实际被选中的是第四条：三份材料同场宣读，日期写进正文，理由写给一位秘书并公开发表。莱尔和胡克自己说，这样做的依据是让经年思考、建立在大量事实上的观点立刻成为别人可以出发的目标。分配交给了程序，当事人让步的意愿只是其中一步。",
+   "after": "作者把他们的做法概括为：算，但要公开兑现。作者列出的替代做法至少有三种，各有代价：由达尔文先单独发表；只发华莱士，把达尔文的优先权留给他日后自述；或者都等达尔文的完整著作出来再说。其中第二种的前半（只发华莱士）与信中所记达尔文的倾向相对应：他提议征得华莱士同意后尽快发表其论文，并强烈倾向于扣下自己的手稿；“把达尔文的优先权留给他日后自述”这半句，与其余两种一样，是作者提出的对照选项，不是材料里的记载。实际被选中的是第四条：三份材料同场宣读，日期写进正文，理由写给一位秘书并公开发表。莱尔和胡克自己说，这样做的依据是让经年思考、建立在大量事实上的观点立刻成为别人可以出发的目标。分配交给了程序，当事人让步的意愿只是其中一步。",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.en",
+   "before": "The author's summary of their course is: yes, but it has to be cashed in publicly. The author sets out at least three alternative courses, each with its own price: Darwin publishing alone first; only Wallace published, with Darwin left to state his own priority later; or everyone waiting for Darwin's complete book. The second corresponds to the inclination the letter records in Darwin: he proposed that Wallace's essay be published as soon as possible, and was strongly inclined to withhold his own memoir; the other two are options constructed by the author for contrast, not episodes recorded in the documents. The course actually taken was a fourth: three sets of material read together in one session, the dates printed in the body of the text, the reasoning addressed to a secretary and made public. The warrant Lyell and Hooker gave was that views founded on a wide deduction from facts and matured by years of reflection should at once become a goal from which others might start. The allocation was handed to a procedure; a party's willingness to give way was one step in it.",
+   "after": "The author's summary of their course is: yes, but it has to be cashed in publicly. The author sets out at least three alternative courses, each with its own price: Darwin publishing alone first; only Wallace published, with Darwin left to state his own priority later; or everyone waiting for Darwin's complete book. The first half of the second (publishing only Wallace) corresponds to the inclination the letter records in Darwin: he proposed to obtain Wallace's consent and have Wallace's essay published as soon as possible, and was strongly inclined to withhold his own memoir; the part about Darwin stating his own priority later, like the other two options, was constructed by the author for contrast and is not recorded in the documents. The course actually taken was a fourth: three sets of material read together in one session, the dates printed in the body of the text, the reasoning addressed to a secretary and made public. The warrant Lyell and Hooker gave was that views founded on a wide deduction from facts and matured by years of reflection should at once become a goal from which others might start. The allocation was handed to a procedure; a party's willingness to give way was one step in it.",
+   "issues": [
+    "F3"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3"
+   ],
+   "changes_applied": 6,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [],
+   "content_sha256_after": "44943ac180df8039fb0390f23cf56f54d2085f54f0ce4d31e276309263c4b9fc",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [],
+    "overall": "逐字段复核后，日期、人名、数字、引语均能在证据中逐字或准确对应，致格雷信的日期分歧、宣读顺序、华莱士是否知情等不确定处都已如实标注，推断段落均有解释标签，现代场景均标为虚构，中英文一致，未发现需要修改的问题，可以签发。",
+    "_content_sha256": "44943ac180df8039fb0390f23cf56f54d2085f54f0ce4d31e276309263c4b9fc"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "inner_life",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.story.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "本节标题是“三份材料的来路”，story.1 直接从“第二份材料”写起，但 story.0 没有交代第一份材料是什么。证据写明，第一份材料是该手稿的摘录，宣读的也只是选段，并非整份手稿。正文只写“那份旧手稿”，读者可能以为宣读的是整部手稿。中英文都有此缺口。",
+    "evidence": [
+     {
+      "id": "V-E3",
+      "quote": "1. Extracts from a MS. work on Species"
+     },
+     {
+      "id": "V-E23",
+      "quote": "from which we propose to read to the Society the extracts referred to"
+     }
+    ],
+    "proposed": "在句首补一句：中文“第一份材料是这份手稿的摘录。”英文“The first item was extracts from this manuscript.”"
+   },
+   {
+    "id": "F2",
+    "path": "sections.story.4",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "中文用引号括起“强烈倾向”，看上去像原文引语，但它其实是英文证据的译述，证据中没有这几个中文字。英文版引的是原文，没有问题。",
+    "evidence": [
+     {
+      "id": "V-E6",
+      "quote": "as he was strongly inclined to do (in favour of Mr. Wallace)"
+     }
+    ],
+    "proposed": "去掉中文引号，改为：……不能像信中所说他（为照顾华莱士）强烈倾向于做的那样……"
+   },
+   {
+    "id": "F3",
+    "path": "sections.analysis.1",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "正文说第二种替代做法“与信中所记达尔文的倾向相对应”，并且只把其余两种标为作者构造。但第二种做法中“把达尔文的优先权留给他日后自述”这半句，信里没有记载。信里只记了两件事：达尔文提议征得华莱士同意后尽快发表其论文；他强烈倾向于扣下自己的手稿。此外，正文也漏掉了“征得华莱士同意”这一前提。",
+    "evidence": [
+     {
+      "id": "V-E6",
+      "quote": "to obtain Mr. Wallace's consent to allow the Essay to be published as soon as possible"
+     },
+     {
+      "id": "V-E6",
+      "quote": "as he was strongly inclined to do (in favour of Mr. Wallace)"
+     }
+    ],
+    "proposed": "改为：第二种的前半（只发华莱士）与信中所记达尔文的倾向相对应：他提议征得华莱士同意后尽快发表其论文，并强烈倾向于不公开自己的手稿；“日后自述优先权”一节与其余两种一样，是作者提出的对照，不是材料里的记载。英文同步修改。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "X1",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "正文已按补入的 V-E24 处理。story.6 只说信中“依次列出三份材料，各附日期”，并明确写出“当天按什么顺序宣读，材料没有记”，没有把按日期排列当成宣读顺序，也没有据此做因果推断。V-E23 所示“只宣读摘录”一点，story.6 也已写作“手稿摘录”。叙事与结局的完整性问题已在 F1 中另行列出。",
+    "evidence": [
+     {
+      "id": "V-E24",
+      "quote": "Taken in the order of their dates, they consist of:—"
+     },
+     {
+      "id": "V-E23",
+      "quote": "from which we propose to read to the Society the extracts referred to"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "44943ac180df8039fb0390f23cf56f54d2085f54f0ce4d31e276309263c4b9fc",
+ "open_issues": [],
+ "outcome": "admissible",
+ "failure": null,
+ "finished_at": 1793429538.9971588,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 71.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16323,
+    "output_tokens": 8115
+   },
+   "cost_estimate_usd": 0.29289200000000004
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 21.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16683,
+    "output_tokens": 2632
+   },
+   "cost_estimate_usd": 0.186112
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 57.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15814,
+    "output_tokens": 6757
+   },
+   "cost_estimate_usd": 0.26166
+  }
+ ],
+ "elapsed_min": 2.5,
+ "model_wall_min": 2.5
+}

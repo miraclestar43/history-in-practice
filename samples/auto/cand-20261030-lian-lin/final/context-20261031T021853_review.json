@@ -1,0 +1,457 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-20261030-lian-lin",
+ "content_sha256": "df540266cba4736997c92745dac0ca2cbf9760abbe512c2b313498adcbd8829f",
+ "evidence_in_sha256": "1557749deb3e193ae541230e58acba6b464ab9a6ac34a5f03ae2c5a9fa23f16e",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793431133.9833841,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "同时，避让用的是称病、让路这类不上台面的动作，原文只记了称病、引车避匿，没有记他公开回应廉颇；"
+  },
+  {
+   "id": "A2",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "文中对原文未写的人物心理所作的推断，作者尽量以“一种解释是”“作者认为”标明为解释。"
+  },
+  {
+   "id": "A3",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "凡原文未写的人物心理与动机，均以“一种解释是”“作者认为”标明为解释；"
+  }
+ ],
+ "search": null,
+ "units": {
+  "A2-SJ81": {
+   "title": "司馬遷《史記·廉頗藺相如列傳》（维基文库本）",
+   "url": "https://zh.wikisource.org/w/index.php?title=%E5%8F%B2%E8%A8%98/%E5%8D%B7081&action=render",
+   "ref": "zh:史記/卷081",
+   "evidence_text_sha256": "16769e9914e636465140c96901a916956e7221d254ec9a21bd08bd1a339e8ffa",
+   "cache_sha256": "16769e9914e636465140c96901a916956e7221d254ec9a21bd08bd1a339e8ffa",
+   "cjk": true,
+   "source_chars": 4765,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     4765
+    ]
+   ],
+   "chars_reviewed": 4765
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 43.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 4514
+  }
+ ],
+ "finished_at": 1793431178.1035364,
+ "elapsed_min": 0.7,
+ "review": {
+  "episode": [
+   {
+    "source_id": "A2-SJ81",
+    "outcome": "位次之争以廉颇听到相如对舍人的解释后肉袒负荆、由宾客引至相如门前谢罪告终，两人和好并结为刎颈之交，此后各自领兵出征；这一结局已收在证据包中。",
+    "quote": "廉頗聞之，肉袒負荊，因賓客至藺相如門謝罪。曰：「鄙賤之人，不知將軍寬之至此也。」卒相與驩，爲刎頸之交。",
+    "in_evidence": true
+   },
+   {
+    "source_id": "A2-SJ81",
+    "outcome": "列传中廉颇本人的结局：奔魏后不被信用，赵王想召回他，但使者受郭开贿赂毁之，赵王遂不召；他转投楚国，为楚将无功，仍思用赵人，最终死于寿春。这段不在证据包摘录中，稿件也未涉及。",
+    "quote": "廉頗一爲楚將，無功，曰：「我思用趙人。」廉頗卒死於壽春。",
+    "in_evidence": false
+   }
+  ],
+  "additions": [],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.analysis.1",
+    "lang": "zh",
+    "sentence": "同时，避让用的是称病、让路这类不上台面的动作，原文只记了称病、引车避匿，没有记他公开回应廉颇；",
+    "verdict": "supported",
+    "source_ids": [
+     "A2-SJ81"
+    ],
+    "scope": "《廉頗藺相如列傳》全文（complete），重点核对自“相如聞，不肯與會”至“爲刎頸之交”一段：相如只对舍人私下解释，未见他对廉颇的任何公开回应",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "相如聞，不肯與會。相如毎朝時，常稱病，不欲與廉頗爭列。已而相如出，望見廉頗，相如引車避匿。"
+    },
+    "fix": "可保留；为求准确，可写作“原文只记了不肯与会、称病、引车避匿”。"
+   },
+   {
+    "id": "N1",
+    "path": "sections.analysis.1",
+    "lang": "en",
+    "sentence": "and the record notes no public reply to Lian Po.",
+    "verdict": "supported",
+    "source_ids": [
+     "A2-SJ81"
+    ],
+    "scope": "《廉頗藺相如列傳》全文，自廉颇宣言至负荆一段",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "相如聞，不肯與會。"
+    },
+    "fix": "可保留。"
+   },
+   {
+    "id": "A2",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "文中对原文未写的人物心理所作的推断，作者尽量以“一种解释是”“作者认为”标明为解释。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "A2-SJ81"
+    ],
+    "scope": "这是对本文写法的说明，不指向来源中某处具体缺载",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "吾羞，不忍爲之下。"
+    },
+    "fix": "可保留。注意廉颇的羞愤与相如的动机（先國家之急）原文均已明写，不属于“原文未写”的范围。"
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "Where the piece infers a figure's inner thoughts beyond what the original text says, the author tries to mark such claims as one reading or as the author's inference.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "A2-SJ81"
+    ],
+    "scope": "写法说明",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "吾所以爲此者，以先國家之急而後私讎也。"
+    },
+    "fix": "可保留。"
+   },
+   {
+    "id": "A3",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "凡原文未写的人物心理与动机，均以“一种解释是”“作者认为”标明为解释；",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "A2-SJ81"
+    ],
+    "scope": "写法说明；与 limits.0 内容重复",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "吾所以爲此者，以先國家之急而後私讎也。"
+    },
+    "fix": "“均”说得过满，建议改为“尽量”，与 limits.0 一致。"
+   },
+   {
+    "id": "N3",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "Where the original text says nothing about a figure's psychology or motive, the piece marks its claims as one reading or as the author's view.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "A2-SJ81"
+    ],
+    "scope": "写法说明",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "吾羞，不忍爲之下。"
+    },
+    "fix": "可保留。"
+   },
+   {
+    "id": "N4",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "不能断言廉颇知道前一桩事或受其影响（作者提示，非原文所述）。",
+    "verdict": "supported",
+    "source_ids": [
+     "A2-SJ81"
+    ],
+    "scope": "《廉頗藺相如列傳》全文：缪贤旧事与负荆两处之间，原文没有任何关联性的叙述",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "廉頗聞之，肉袒負荊，因賓客至藺相如門謝罪。"
+    },
+    "fix": "可保留。"
+   },
+   {
+    "id": "N5",
+    "path": "sections.analysis.2",
+    "lang": "en",
+    "sentence": "the parallel is the author's observation, not something the text states.",
+    "verdict": "supported",
+    "source_ids": [
+     "A2-SJ81"
+    ],
+    "scope": "《廉頗藺相如列傳》全文",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "君不如肉袒伏斧質請罪，則幸得脱矣。"
+    },
+    "fix": "可保留。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.limits.1",
+    "problem": "用“攻乐乘、奔魏”来说明负荆之后廉颇的脾气未改，但列传随后写到他在魏不被信用、仍思为赵所用、终死寿春。这些内容会影响读者对他晚年的理解，宜一句带过，避免读者以为奔魏就是他的结局。",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "廉頗居梁久之，魏不能信用。趙以數困於秦兵，趙王思復得廉頗，廉頗亦思復用於趙。"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.context.0",
+    "problem": "原文明载是赵惠文王十六年，稿件写作“赵惠文王时”，属于模糊化，并非误导；与 limits.0 所说“只用原文说法”的口径略有出入。",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "趙惠文王十六年，廉頗爲趙將伐齊"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "来源为全文，位次之争的结局（负荆、刎颈之交）及完璧、渑池的结局都已在证据包中，稿件叙述准确；待核断言 A1 成立，A2、A3 属写法说明（A3 的“均”宜改为“尽量”）；仅建议在 limits.1 补一句廉颇晚年思赵、死于寿春，作为 note。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "同时，避让用的是称病、让路这类不上台面的动作，原文只记了称病、引车避匿，没有记他公开回应廉颇；",
+   "verdict": "supported",
+   "source_ids": [
+    "A2-SJ81"
+   ],
+   "scope": "《廉頗藺相如列傳》全文（complete），重点核对自“相如聞，不肯與會”至“爲刎頸之交”一段：相如只对舍人私下解释，未见他对廉颇的任何公开回应",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "相如聞，不肯與會。相如毎朝時，常稱病，不欲與廉頗爭列。已而相如出，望見廉頗，相如引車避匿。"
+   },
+   "fix": "可保留；为求准确，可写作“原文只记了不肯与会、称病、引车避匿”。",
+   "unit_status": {
+    "A2-SJ81": "complete"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.analysis.1",
+   "lang": "en",
+   "sentence": "and the record notes no public reply to Lian Po.",
+   "verdict": "supported",
+   "source_ids": [
+    "A2-SJ81"
+   ],
+   "scope": "《廉頗藺相如列傳》全文，自廉颇宣言至负荆一段",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "相如聞，不肯與會。"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "A2-SJ81": "complete"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "文中对原文未写的人物心理所作的推断，作者尽量以“一种解释是”“作者认为”标明为解释。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "A2-SJ81"
+   ],
+   "scope": "这是对本文写法的说明，不指向来源中某处具体缺载",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "吾羞，不忍爲之下。"
+   },
+   "fix": "可保留。注意廉颇的羞愤与相如的动机（先國家之急）原文均已明写，不属于“原文未写”的范围。",
+   "unit_status": {
+    "A2-SJ81": "complete"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "Where the piece infers a figure's inner thoughts beyond what the original text says, the author tries to mark such claims as one reading or as the author's inference.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "A2-SJ81"
+   ],
+   "scope": "写法说明",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "吾所以爲此者，以先國家之急而後私讎也。"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "A2-SJ81": "complete"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "凡原文未写的人物心理与动机，均以“一种解释是”“作者认为”标明为解释；",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "A2-SJ81"
+   ],
+   "scope": "写法说明；与 limits.0 内容重复",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "吾所以爲此者，以先國家之急而後私讎也。"
+   },
+   "fix": "“均”说得过满，建议改为“尽量”，与 limits.0 一致。",
+   "unit_status": {
+    "A2-SJ81": "complete"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "Where the original text says nothing about a figure's psychology or motive, the piece marks its claims as one reading or as the author's view.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "A2-SJ81"
+   ],
+   "scope": "写法说明",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "吾羞，不忍爲之下。"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "A2-SJ81": "complete"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "不能断言廉颇知道前一桩事或受其影响（作者提示，非原文所述）。",
+   "verdict": "supported",
+   "source_ids": [
+    "A2-SJ81"
+   ],
+   "scope": "《廉頗藺相如列傳》全文：缪贤旧事与负荆两处之间，原文没有任何关联性的叙述",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "廉頗聞之，肉袒負荊，因賓客至藺相如門謝罪。"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "A2-SJ81": "complete"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "the parallel is the author's observation, not something the text states.",
+   "verdict": "supported",
+   "source_ids": [
+    "A2-SJ81"
+   ],
+   "scope": "《廉頗藺相如列傳》全文",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "君不如肉袒伏斧質請罪，則幸得脱矣。"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "A2-SJ81": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.limits.1",
+   "problem": "用“攻乐乘、奔魏”来说明负荆之后廉颇的脾气未改，但列传随后写到他在魏不被信用、仍思为赵所用、终死寿春。这些内容会影响读者对他晚年的理解，宜一句带过，避免读者以为奔魏就是他的结局。",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "廉頗居梁久之，魏不能信用。趙以數困於秦兵，趙王思復得廉頗，廉頗亦思復用於趙。"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.context.0",
+   "problem": "原文明载是赵惠文王十六年，稿件写作“赵惠文王时”，属于模糊化，并非误导；与 limits.0 所说“只用原文说法”的口径略有出入。",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "趙惠文王十六年，廉頗爲趙將伐齊"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "A2-SJ81",
+   "outcome": "位次之争以廉颇听到相如对舍人的解释后肉袒负荆、由宾客引至相如门前谢罪告终，两人和好并结为刎颈之交，此后各自领兵出征；这一结局已收在证据包中。",
+   "quote": "廉頗聞之，肉袒負荊，因賓客至藺相如門謝罪。曰：「鄙賤之人，不知將軍寬之至此也。」卒相與驩，爲刎頸之交。",
+   "in_evidence": true
+  },
+  {
+   "source_id": "A2-SJ81",
+   "outcome": "列传中廉颇本人的结局：奔魏后不被信用，赵王想召回他，但使者受郭开贿赂毁之，赵王遂不召；他转投楚国，为楚将无功，仍思用赵人，最终死于寿春。这段不在证据包摘录中，稿件也未涉及。",
+   "quote": "廉頗一爲楚將，無功，曰：「我思用趙人。」廉頗卒死於壽春。",
+   "in_evidence": false
+  }
+ ],
+ "additions": [],
+ "additions_failed": [],
+ "evidence_sha256": "1557749deb3e193ae541230e58acba6b464ab9a6ac34a5f03ae2c5a9fa23f16e",
+ "outcome": "clean",
+ "blocking": []
+}

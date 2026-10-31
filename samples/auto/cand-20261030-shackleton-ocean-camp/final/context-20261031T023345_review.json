@@ -1,0 +1,565 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-20261030-shackleton-ocean-camp",
+ "content_sha256": "3a1e2c45e134318430c421166e0cd4c73522b31b2334f1e989e9f45a365261c7",
+ "evidence_in_sha256": "d8dd19c2d101c3422b9aaf842ea525b99439258a75080243e3f07939cfb5047f",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793432025.3695002,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.analysis.0",
+   "lang": "zh",
+   "sentence": "这段记述没有交代那是哪个营地，不能直接等同于前文所记的行军第一夜。"
+  },
+  {
+   "id": "A2",
+   "path": "sections.analysis.0",
+   "lang": "en",
+   "sentence": "the passage does not say which camp that was, and it should not simply be equated with the march's first night described earlier."
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "扉页则被他撕了下来，这段记述没有写它的去向。"
+  },
+  {
+   "id": "A4",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "In his words, \"A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas.\" The fly-leaf was torn out, and the passage does not say what became of it."
+  },
+  {
+   "id": "A5",
+   "path": "sections.analysis.3",
+   "lang": "zh",
+   "sentence": "作者提出的替代选择（他没有写自己考虑过这些）：比如把队伍分成两支，一支维持最低限度的探路，一支守营保存体力；"
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-SOUTH": {
+   "title": "Ernest Shackleton, South: The Story of Shackleton's Last Expedition, 1914–1917 (1920 printing; archive.org OCR)",
+   "url": "https://archive.org/download/southstoryshack00shac/southstoryshack00shac_djvu.txt",
+   "ref": "southstoryshack00shac",
+   "evidence_text_sha256": "e709edf2dc345da821c4b958cadfccc12ebdb10eecdd4aea9a035b69e54cea92",
+   "cache_sha256": "e709edf2dc345da821c4b958cadfccc12ebdb10eecdd4aea9a035b69e54cea92",
+   "cjk": false,
+   "source_chars": 847815,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     4769,
+     15676
+    ],
+    [
+     185304,
+     224080
+    ],
+    [
+     252317,
+     264553
+    ]
+   ],
+   "chars_reviewed": 61919
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 68.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 7503
+  }
+ ],
+ "finished_at": 1793432094.1707559,
+ "elapsed_min": 1.1,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-SOUTH",
+    "outcome": "The first march ends after about four days. Shackleton camps the party on a thick old floe, Ocean Camp, which is their home for nearly two months while they salvage supplies from the wreck.",
+    "quote": "This floating lump of ice, about a mile square at first but later splitting into smaller and smaller fragments, was to be our home for nearly two months.",
+    "in_evidence": true
+   },
+   {
+    "source_id": "S-SOUTH",
+    "outcome": "The second attempt fails after seven days and seven and a half miles. With food for only forty-two days they camp on the floe again at Patience Camp, where they stay nearly three and a half months, and the men's apathy soon passes.",
+    "quote": "Our new home, which we were to occupy for nearly three and a half months, we called “‘ Patience Camp.” 106 CHAPTER VII PATIENCE CAMP THE apathy which seemed to take possession of some of the men at the frustration of their hopes was soon dispelled.",
+    "in_evidence": true
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-SOUTH",
+    "start": "But about 7 p.m., after the tents were up,",
+    "end": "By 8 p.m. the camp had been pitched again.",
+    "why": "This is the first time the ice split on the night of 27 October, at the first camp beside the ship. It is what Shackleton's later phrase 'twice during the night at our first camp' refers to, and it corrects analysis.0's claim that the camp cannot be identified."
+   },
+   {
+    "source_id": "S-SOUTH",
+    "start": "At midnight I was pacing the ice,",
+    "end": "to the larger portion.",
+    "why": "This is the second split the same night (the crack at midnight). Together with the 7 p.m. split it confirms that the 'first camp' was the camp pitched after the ship was abandoned, not the first night of the march."
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.analysis.0",
+    "lang": "zh",
+    "sentence": "这段记述没有交代那是哪个营地，不能直接等同于前文所记的行军第一夜。",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Ch. 4, from the night of 27 October after abandoning ship to the decision to march on 30 October (S-SOUTH 185304–224080)",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "But about 7 p.m., after the tents were up, the ice we were occupying became involved in the pressure and started to split and smash beneath our feet."
+    },
+    "fix": "State it directly: the 'first camp' was the camp pitched on the floe beside the ship on the night it was abandoned (27 October). That night the ice split at 7 p.m., forcing a move, and a crack ran through the camp at midnight. This was before the march began, not the march's first night."
+   },
+   {
+    "id": "A2",
+    "path": "sections.analysis.0",
+    "lang": "en",
+    "sentence": "the passage does not say which camp that was, and it should not simply be equated with the march's first night described earlier.",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Ch. 4, night of 27 October through 30 October (S-SOUTH 185304–224080)",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I noticed suddenly a crack running across our floe right through the camp."
+    },
+    "fix": "Replace with: the 'first camp' was the camp pitched beside the wrecked ship on 27 October, where the ice split at 7 p.m. and again at midnight. It came before the march, so it is not the march's first night."
+   },
+   {
+    "id": "A3",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "扉页则被他撕了下来，这段记述没有写它的去向。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Ch. 4, the passage on leaving Dump Camp (from 'I rather grudged the two pounds allowance' to the end of the suitcase paragraph), plus the rest of window 2 and window 3",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I tore the fly-leaf out of the Bible that Queen Alexandra had given to the ship, with her own writing in it,"
+    },
+    "fix": "Can stay as is. Optionally add that the passage does not say what happened to the Bible itself either."
+   },
+   {
+    "id": "A4",
+    "path": "sections.analysis.2",
+    "lang": "en",
+    "sentence": "In his words, \"A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas.\" The fly-leaf was torn out, and the passage does not say what became of it.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Ch. 4, the passage on leaving Dump Camp, plus the rest of the read windows",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas."
+    },
+    "fix": "Can stay; the quotation is verbatim."
+   },
+   {
+    "id": "A5",
+    "path": "sections.analysis.3",
+    "lang": "zh",
+    "sentence": "作者提出的替代选择（他没有写自己考虑过这些）：比如把队伍分成两支，一支维持最低限度的探路，一支守营保存体力；",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Read windows only, ch. 4–7. Splitting the party never appears, but the claim covers his whole narrative, which these windows do not.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "We will make an attempt to move."
+    },
+    "fix": "'作者提出的' already marks these as the author's ideas, so delete the parenthetical. If it is kept, narrow it to: '在海洋营决定前后的记述里，他只写了扎营等待与行军两种方案'."
+   },
+   {
+    "id": "N1",
+    "path": "sections.analysis.3",
+    "lang": "en",
+    "sentence": "Then there are alternatives the author raises for the sake of argument; nothing suggests Shackleton weighed them himself.",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Read windows only. The claim covers his whole narrative, which these windows do not.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "We will make an attempt to move."
+    },
+    "fix": "Delete 'nothing suggests Shackleton weighed them himself', or narrow it to: 'in the passages around the Ocean Camp decision he weighs only marching against camping to wait'."
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "但营地里其他人是否同意海洋营的决定，证据里没有，本篇也不另替他们猜测心理。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "The evidence pack, and the ch. 5 opening in the read range (from the end of the march to the setting up of Ocean Camp)",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I decided to find a more solid floe and there camp until condi- tions were more favourable"
+    },
+    "fix": "Can stay."
+   },
+   {
+    "id": "N3",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "Whether anyone else in the camp agreed with the Ocean Camp decision is not in the evidence, and this piece does not put further feelings in their mouths.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "The evidence pack, and the ch. 5 opening in the read range",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I decided to find a more solid floe and there camp until condi- tions were more favourable"
+    },
+    "fix": "Can stay."
+   },
+   {
+    "id": "N4",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "本篇也不写耐心营之后的经过，那部分不在这份证据包的覆盖范围内。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "This describes the coverage of the evidence pack and the piece, not what the source records",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "Our new home, which we were to occupy for nearly three and a half months, we called"
+    },
+    "fix": "No change needed."
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.analysis.0",
+    "problem": "The piece says the location of the 'first camp' is unclear and tells readers not to identify it. The read range shows it was the camp beside the ship on 27 October, where the ice split twice. That is exactly why abandoning the march would 'minimize the peril of the ice splitting under us', so leaving it vague weakens the argument.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I had the camp moved to a bigger floe about 200 yds. away, just beyond the bow of the ship."
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.story.13",
+    "problem": "The piece goes straight from 'retreat half a mile and camp' to 'camp on the floe again', which reads as if Patience Camp was where they retreated to. It leaves out that a crack formed in the night and they moved hurriedly about a mile and a half east before stopping for good.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "During the night a crack formed right across the floe, so we hurriedly shifted to a strong old floe about a mile and a half to the east of our present position."
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.story.4",
+    "problem": "The paragraph starts 'on one of the first days' and then switches to 'the first night of the march'. In fact the six miles marched and the camp on young salty ice both belong to the first day of the march (30 October), so the timing is vague and the paragraph reads as two separate days.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "At 3 p.m., after lunch, we got under way, leaving Dump Camp a mass of debris."
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "The draft broadly matches the source, and the outcomes (Ocean Camp, Patience Camp) are in the evidence. Correct analysis.0's claim that the 'first camp' cannot be identified (it is contradicted by the source), and cut or narrow the broad absence claim in analysis.3."
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.analysis.0",
+   "lang": "zh",
+   "sentence": "这段记述没有交代那是哪个营地，不能直接等同于前文所记的行军第一夜。",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Ch. 4, from the night of 27 October after abandoning ship to the decision to march on 30 October (S-SOUTH 185304–224080)",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "But about 7 p.m., after the tents were up, the ice we were occupying became involved in the pressure and started to split and smash beneath our feet."
+   },
+   "fix": "State it directly: the 'first camp' was the camp pitched on the floe beside the ship on the night it was abandoned (27 October). That night the ice split at 7 p.m., forcing a move, and a crack ran through the camp at midnight. This was before the march began, not the march's first night.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.analysis.0",
+   "lang": "en",
+   "sentence": "the passage does not say which camp that was, and it should not simply be equated with the march's first night described earlier.",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Ch. 4, night of 27 October through 30 October (S-SOUTH 185304–224080)",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I noticed suddenly a crack running across our floe right through the camp."
+   },
+   "fix": "Replace with: the 'first camp' was the camp pitched beside the wrecked ship on 27 October, where the ice split at 7 p.m. and again at midnight. It came before the march, so it is not the march's first night.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "扉页则被他撕了下来，这段记述没有写它的去向。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Ch. 4, the passage on leaving Dump Camp (from 'I rather grudged the two pounds allowance' to the end of the suitcase paragraph), plus the rest of window 2 and window 3",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I tore the fly-leaf out of the Bible that Queen Alexandra had given to the ship, with her own writing in it,"
+   },
+   "fix": "Can stay as is. Optionally add that the passage does not say what happened to the Bible itself either.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A4",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "In his words, \"A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas.\" The fly-leaf was torn out, and the passage does not say what became of it.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Ch. 4, the passage on leaving Dump Camp, plus the rest of the read windows",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas."
+   },
+   "fix": "Can stay; the quotation is verbatim.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A5",
+   "path": "sections.analysis.3",
+   "lang": "zh",
+   "sentence": "作者提出的替代选择（他没有写自己考虑过这些）：比如把队伍分成两支，一支维持最低限度的探路，一支守营保存体力；",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Read windows only, ch. 4–7. Splitting the party never appears, but the claim covers his whole narrative, which these windows do not.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "We will make an attempt to move."
+   },
+   "fix": "'作者提出的' already marks these as the author's ideas, so delete the parenthetical. If it is kept, narrow it to: '在海洋营决定前后的记述里，他只写了扎营等待与行军两种方案'.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.analysis.3",
+   "lang": "en",
+   "sentence": "Then there are alternatives the author raises for the sake of argument; nothing suggests Shackleton weighed them himself.",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Read windows only. The claim covers his whole narrative, which these windows do not.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "We will make an attempt to move."
+   },
+   "fix": "Delete 'nothing suggests Shackleton weighed them himself', or narrow it to: 'in the passages around the Ocean Camp decision he weighs only marching against camping to wait'.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "但营地里其他人是否同意海洋营的决定，证据里没有，本篇也不另替他们猜测心理。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "The evidence pack, and the ch. 5 opening in the read range (from the end of the march to the setting up of Ocean Camp)",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I decided to find a more solid floe and there camp until condi- tions were more favourable"
+   },
+   "fix": "Can stay.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "Whether anyone else in the camp agreed with the Ocean Camp decision is not in the evidence, and this piece does not put further feelings in their mouths.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "The evidence pack, and the ch. 5 opening in the read range",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I decided to find a more solid floe and there camp until condi- tions were more favourable"
+   },
+   "fix": "Can stay.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "本篇也不写耐心营之后的经过，那部分不在这份证据包的覆盖范围内。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "This describes the coverage of the evidence pack and the piece, not what the source records",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "Our new home, which we were to occupy for nearly three and a half months, we called"
+   },
+   "fix": "No change needed.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.analysis.0",
+   "problem": "The piece says the location of the 'first camp' is unclear and tells readers not to identify it. The read range shows it was the camp beside the ship on 27 October, where the ice split twice. That is exactly why abandoning the march would 'minimize the peril of the ice splitting under us', so leaving it vague weakens the argument.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I had the camp moved to a bigger floe about 200 yds. away, just beyond the bow of the ship."
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.story.13",
+   "problem": "The piece goes straight from 'retreat half a mile and camp' to 'camp on the floe again', which reads as if Patience Camp was where they retreated to. It leaves out that a crack formed in the night and they moved hurriedly about a mile and a half east before stopping for good.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "During the night a crack formed right across the floe, so we hurriedly shifted to a strong old floe about a mile and a half to the east of our present position."
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.story.4",
+   "problem": "The paragraph starts 'on one of the first days' and then switches to 'the first night of the march'. In fact the six miles marched and the camp on young salty ice both belong to the first day of the march (30 October), so the timing is vague and the paragraph reads as two separate days.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "At 3 p.m., after lunch, we got under way, leaving Dump Camp a mass of debris."
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-SOUTH",
+   "outcome": "The first march ends after about four days. Shackleton camps the party on a thick old floe, Ocean Camp, which is their home for nearly two months while they salvage supplies from the wreck.",
+   "quote": "This floating lump of ice, about a mile square at first but later splitting into smaller and smaller fragments, was to be our home for nearly two months.",
+   "in_evidence": true
+  },
+  {
+   "source_id": "S-SOUTH",
+   "outcome": "The second attempt fails after seven days and seven and a half miles. With food for only forty-two days they camp on the floe again at Patience Camp, where they stay nearly three and a half months, and the men's apathy soon passes.",
+   "quote": "Our new home, which we were to occupy for nearly three and a half months, we called “‘ Patience Camp.” 106 CHAPTER VII PATIENCE CAMP THE apathy which seemed to take possession of some of the men at the frustration of their hopes was soon dispelled.",
+   "in_evidence": true
+  }
+ ],
+ "additions": [
+  {
+   "id": "S-E26",
+   "source_id": "S-SOUTH",
+   "offset": 191364,
+   "chars": 687,
+   "why": "This is the first time the ice split on the night of 27 October, at the first camp beside the ship. It is what Shackleton's later phrase 'twice during the night at our first camp' refers to, and it corrects analysis.0's claim that the camp cannot be identified."
+  },
+  {
+   "id": "S-E27",
+   "source_id": "S-SOUTH",
+   "offset": 194330,
+   "chars": 385,
+   "why": "This is the second split the same night (the crack at midnight). Together with the 7 p.m. split it confirms that the 'first camp' was the camp pitched after the ship was abandoned, not the first night of the march."
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "c441a4f3cbeca85e3dbc95b5d081635425ce8489a6325d37c61a6b8b8a0334f0",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.analysis.0.zh: contradicted — 这段记述没有交代那是哪个营地，不能直接等同于前文所记的行军第一夜。",
+  "sections.analysis.0.en: contradicted — the passage does not say which camp that was, and it should not simply be equate",
+  "sections.analysis.3.zh: unnecessary — 作者提出的替代选择（他没有写自己考虑过这些）：比如把队伍分成两支，一支维持最低限度的探路，一支守营保存体力；",
+  "sections.analysis.3.en: unnecessary — Then there are alternatives the author raises for the sake of argument; nothing ",
+  "sections.analysis.0: The piece says the location of the 'first camp' is unclear and tells readers not to identify it. The",
+  "evidence must be expanded first: 2 addition(s) ['S-E26', 'S-E27']"
+ ]
+}

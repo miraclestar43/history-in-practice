@@ -12,30 +12,106 @@
   "cli_version": "2.1.308 (Claude Code)",
   "model_reported": "claude-opus-5-5"
  },
- "code_rev": "63f43a3",
- "started_at": 1793408425.2915888,
+ "code_rev": "8645cae",
+ "started_at": 1793437676.8805437,
  "base_source": "samples/auto/cand-auto-20261030-qsg437-1/final/article.json",
- "base_content_sha256": "c2c21a8a38caa599ea679681135841b09a2d5f158457c7d34d31ebaec2f0976e",
- "evidence_sha256": "03dc7c3ff1b559cc84f0e05e4a36d49c82f77bed51ccd94147c0c6949208720b",
- "operator_note": "extra attempt beyond max_attempts: owner AFK prompt 2026-10-30 §5: resolve the Zhang Zhidong overlap/mistranslation against evidence; checker now names the shared phrases",
+ "base_content_sha256": "e327f782ebd262c56ad87288a84ccfd4a141362923c0194468328d5d752644f2",
+ "evidence_sha256": "e4dc00efca8c60aec00b1018e59ad733436b6c1803b3b6e44fa2e3eafd6dd183",
+ "operator_note": null,
  "model_record_sha256": null,
- "prior_record_sha256": "eddf4276244634c848e8410aeaaa1002d57c5823dfcbca7e4bf5e309aae46342",
- "attempt": "attempt-3",
+ "prior_record_sha256": "80e1c780725fcf6641599a3f935e3ac80f7305bafdf95760924dde6d256a9988",
+ "attempt": "attempt-6",
+ "context_review_sha256": "df0b182843a44ce6d6d08436a6ac3b54b33261971255a309321b0a7c111f38d0",
  "inherited": [
   {
-   "id": "P1",
-   "model_id": "V2-V1",
-   "source": "final-editor previous attempt",
-   "where": "sections.analysis.1",
-   "problem": "利一的原文是「無慮引敵」，意思是不必担心铁路把敌人引进来，不是“避敌”。中文“避敌”和英文 \"avoiding the enemy\" 都改变了原意，也与 story.1 中正确的转述（“不至于引敌”/\"will not draw in an enemy\"）不一致。",
-   "suggestion": "中文“避敌、避坟庐这两条”改为“不至引敌、坟庐易避这两条”；英文 \"avoiding the enemy and sparing graves and houses\" 改为 \"not drawing in the enemy and easily avoiding graves and houses\"。"
+   "id": "X1",
+   "source": "context review",
+   "where": "sections.hook.1",
+   "problem": "来源上下文核查（zh）「传文所录未说明它与京通线的关系。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG437〕：「今宜自京外盧溝橋起，經河南以達湖北漢口鎮。此幹路樞紐，中國大利所萃也。」",
+   "suggestion": "改为：议奏提出另修一条干路，「自京外盧溝橋起，經河南以達湖北漢口鎮」，以黄河为界分南北两段；这是在京通线、边地线、德济线之外另拟的路线。"
   },
   {
-   "id": "P2",
-   "model_id": "C2-9",
-   "source": "final-editor previous attempt",
+   "id": "X2",
+   "source": "context review",
+   "where": "sections.hook.1",
+   "problem": "来源上下文核查（en）「the biography's record does not say how it relates to the Beijing-Tongzhou line.」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG437〕：「今宜自京外盧溝橋起，經河南以達湖北漢口鎮」",
+   "suggestion": "改为说明这是一条另拟的干路：从京外卢沟桥起，经河南，到汉口。"
+  },
+  {
+   "id": "X3",
+   "source": "context review",
+   "where": "sections.analysis.1",
+   "problem": "来源上下文核查（zh）「一种解释是，「厚民生」排在「徵兵、轉餉」之前，是把争议最小、也最难被驳倒的目标放在最前面：台谏说的是「鐵路之害」，而不至引敌、坟庐易避这两条或许是对着「害」字去答的（传文未记台谏所指何害）。」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG437〕：「臺諫爭陳鐵路之害，請停辦」",
+   "suggestion": "括注内容属实，但已在 hook.0 和 story.1 说过两次，删去括注。"
+  },
+  {
+   "id": "X4",
+   "source": "context review",
+   "where": "sections.analysis.1",
+   "problem": "来源上下文核查（en）「The censors spoke of \"the harms of railways,\" and the two points about not drawing in the enemy and easily avoiding graves and houses may answer the word \"harms,\" though the biography does not record which harms were meant.」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG437〕：「臺諫爭陳鐵路之害」",
+   "suggestion": "删去重复的 though 从句。"
+  },
+  {
+   "id": "X5",
+   "source": "context review",
+   "where": "sections.story.0",
+   "problem": "来源上下文核查（zh）「这组「利」是他自己列举的理由，不是独立核算过的数字。」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG437〕：「有此七利，分段分年成之」",
+   "suggestion": "七利是定性理由，本来就不是数字；「没有独立核算」是来源无法支持的否定性断言。改为「这组「利」是他列举的理由，不是数字测算」，或直接删去。"
+  },
+  {
+   "id": "X6",
+   "source": "context review",
+   "where": "sections.story.0",
+   "problem": "来源上下文核查（en）「These are reasons he assembled himself, not figures from any independent accounting.」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG437〕：「有此七利」",
+   "suggestion": "改为「These are qualitative reasons he listed, not quantified estimates」，或删去。"
+  },
+  {
+   "id": "X7",
+   "source": "context review",
+   "where": "sections.limits.1",
+   "problem": "来源上下文核查（zh）「那组「利」是他自己列举的理由，不是独立核算过的数字，不能当作成本收益分析来读。」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG437〕：「有此七利，分段分年成之」",
+   "suggestion": "删去「独立核算」一说，改为「是定性理由，传文未录任何测算」。"
+  },
+  {
+   "id": "X8",
+   "source": "context review",
+   "where": "sections.limits.1",
+   "problem": "来源上下文核查（en）「That set of \"benefits\" is a list of reasons he compiled himself, not independently audited figures, and cannot be read as cost-benefit analysis.」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG437〕：「有此七利」",
+   "suggestion": "删去「independently audited」，改为「qualitative reasons, with no quantities given in the recorded text」。"
+  },
+  {
+   "id": "X9",
+   "source": "context review",
+   "where": "uncertainty_note",
+   "problem": "来源上下文核查（zh）「「利」为他自列的理由，非独立核算；」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG437〕：「有此七利」",
+   "suggestion": "改为「「利」为定性理由，传文未录测算」。"
+  },
+  {
+   "id": "X10",
+   "source": "context review",
+   "where": "uncertainty_note",
+   "problem": "来源上下文核查（en）「the \"benefits\" are reasons he listed himself, not independent figures;」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG437〕：「有此七利」",
+   "suggestion": "同 N5。"
+  },
+  {
+   "id": "X11",
+   "source": "context review",
+   "where": "sections.hook.1",
+   "problem": "来源上下文核查：稿件始终没有交代议奏所拟线路的起讫，只说「以河为界、分南北两段」，还称传文未说明它与京通线的关系。实际上议奏明言另修一条卢沟桥经河南到汉口的干路，读者会误以为这是京通线的延伸，或以为线路不明。。来源原文〔S-QSG437〕：「今宜自京外盧溝橋起，經河南以達湖北漢口鎮。此幹路樞紐，中國大利所萃也。」",
+   "suggestion": null
+  },
+  {
+   "id": "X12",
+   "source": "context review",
+   "where": "sections.limits.1",
+   "problem": "来源上下文核查：「不是独立核算过的数字」暗示这些「利」原本是数字、只是缺少第三方核查。来源中七利是定性论点，这个否定性说法既无来源依据，也是多余的。。来源原文〔S-QSG437〕：「有此七利，分段分年成之」",
+   "suggestion": null
+  },
+  {
+   "id": "X13",
+   "source": "context review",
    "where": "",
-   "problem": "checker: today[0] repeats the open-question scenario: shared phrases 「把目标的优先级公开排出来」「写成可以逐条检验的清单」; bigram overlap 0.25",
+   "problem": "证据包已按来源上下文补入摘录 QSG4371-E22, QSG4371-E23；请据此检查叙事、结局与因果是否完整准确",
    "suggestion": null
   }
  ],
@@ -54,107 +130,601 @@
  "issues": [
   {
    "id": "F1",
-   "path": "sections.analysis.1",
+   "path": "sections.hook.1",
    "category": "facts",
    "severity": "fix",
-   "problem": "利一原文是「無慮引敵」，意思是不必担心铁路把敌人引进来，不是“避敌”。中文“避敌”和英文 \"avoiding the enemy\" 都改变了原意，也与 story.1 的转述（“不至于引敌”/\"will not draw in an enemy\"）不一致。",
+   "problem": "中英文都称“传文所录未说明它与京通线的关系”，但议奏明确给出了所拟干路的起讫：自京外卢沟桥起，经河南，到汉口镇。这是另拟的干路，不是京通线。现写法与证据相反，也让读者无从知道议奏所论是哪条线。证据只说“河北”“自河以南”，没有写出“黄河”二字，改写时不应补入。",
    "evidence": [
     {
-     "id": "QSG4371-E9",
-     "quote": "內處腹地，無慮引敵，利一"
+     "id": "QSG4371-E22",
+     "quote": "今宜自京外盧溝橋起，經河南以達湖北漢口鎮。此幹路樞紐，中國大利所萃也"
+    },
+    {
+     "id": "QSG4371-E7",
+     "quote": "河北路成"
+    },
+    {
+     "id": "QSG4371-E8",
+     "quote": "自河以南"
     }
    ],
-   "proposed": "中文“避敌、避坟庐这两条”改为“不至引敌、坟庐易避这两条”；英文 \"avoiding the enemy and sparing graves and houses\" 改为 \"not drawing in the enemy and easily avoiding graves and houses\"。",
+   "proposed": "中文改为：他的议奏另拟一条干路，「自京外盧溝橋起，經河南以達湖北漢口鎮」，以河为界分南北两段，并非京通线。英文同步改为：The memorial proposes a separate trunk line, running from Lugou Bridge outside the capital through Henan to Hankou, divided by the river into northern and southern sections; it is not the Beijing-Tongzhou line.",
    "origin": "final-editor audit",
    "disposition": "fixed",
-   "rationale": "利一原文是「無慮引敵」，意思是不必担心铁路把敌人引进来，不是“避敌”。现将中文“避敌、避坟庐这两条”改为“不至引敌、坟庐易避这两条”，英文同步改为 \"not drawing in the enemy and easily avoiding graves and houses\"，与原文及 story.1 的转述一致。其余文字未动。",
+   "rationale": "删去“传文所录未说明它与京通线的关系”，改为写明议奏另拟一条干路，自京外卢沟桥起，经河南到汉口镇，以河为界分南北两段，并非京通线。文中只用“河”，未补“黄河”。中英文同步修改，ev 增加 E22。",
    "decided_in": "revise_r1"
   },
   {
    "id": "F2",
-   "path": "sections.today.0",
-   "category": "style",
-   "severity": "note",
-   "problem": "today.0 与 reflection.question 措辞重复，两处都有「把目标的优先级公开排出来」「写成可以逐条检验的清单」，读来像同一段话写了两遍。",
-   "evidence": [],
-   "proposed": "改写 today.0 或 reflection.question 中的一处措辞，避免逐字重复。",
-   "origin": "final-editor audit"
+   "path": "sections.hook.0",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "开头一口气列出海军衙门、台谏、翁同龢、徐会沣四方主张。张之洞直到段末才以“本文传主”身份出现，读者读完不清楚他与这场争执的关系。翁同龢、徐会沣也只有名字，没有说明各自主张的立场。再加上 hook.1 原先没交代线路起讫，不了解背景的读者说不清“谁遇到了什么问题、为什么难”。",
+   "evidence": [
+    {
+     "id": "QSG4371-E3",
+     "quote": "會海軍衙門奏請修京通鐵路，臺諫爭陳鐵路之害，請停辦"
+    },
+    {
+     "id": "QSG4371-E18",
+     "quote": "翁同龢等請試修邊地，便用兵；徐會灃請改修德州濟寧路，利漕運"
+    }
+   ],
+   "proposed": "首句先点明：朝中就修不修铁路、修在哪里分成几派（修京通线、停办、改修边地、改修德济线），张之洞随后上议奏回应。再按“修京通—请停办—修边地以便用兵—修德济以利漕运”的顺序简列各方，各方只保留主张与理由，不补造身份。英文同步调整。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "首句先点明张之洞的议奏写于一场“修不修、修在哪里”的多方争执。随后按修京通、请停办、试修边地以便用兵、改修德州济宁路以利漕运的顺序，逐一写出各方的主张与理由，不补造身份。最后说明传文在这些主张之后才录张之洞议奏。中英文同步。",
+   "decided_in": "revise_r1"
   },
   {
    "id": "F3",
-   "path": "sections.hook.0",
-   "category": "style",
+   "path": "sections.story.6",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "中英文都说张之洞本传在准奏之后“只”记他奏开炼铁厂「資路用」（\"it goes on only to record his petition for an ironworks\"）。但本传后文还记有他「三十四年，督辦粵漢鐵路」。“只”字与证据不符。粤汉铁路与议奏所拟的卢沟桥至汉口干路名称不同，不应混为一谈。",
+   "evidence": [
+    {
+     "id": "QSG4371-E23",
+     "quote": "三十四年，督辦粵漢鐵路"
+    },
+    {
+     "id": "QSG4371-E22",
+     "quote": "今宜自京外盧溝橋起，經河南以達湖北漢口鎮"
+    }
+   ],
+   "proposed": "删去“只”。补一句：本传后文另记「三十四年，督辦粵漢鐵路」，那是粤汉铁路，并非议奏所拟自卢沟桥经河南至汉口的干路。英文同步修改。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“只”。补写本传另记「三十四年，督辦粵漢鐵路」，并说明粤汉铁路不是议奏所拟自卢沟桥经河南至汉口的干路。英文中年份用文字表述，未出现中文所无的阿拉伯数字。ev 增加 E22、E23。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.limits.2",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "与 F3 相同：限制段说本传“只在其后记他奏开炼铁厂「資路用」”（\"goes on only to record\"），漏掉了本传另记的督办粤汉铁路一事。",
+   "evidence": [
+    {
+     "id": "QSG4371-E23",
+     "quote": "三十四年，督辦粵漢鐵路"
+    }
+   ],
+   "proposed": "删去“只”。补充：本传另记「三十四年，督辦粵漢鐵路」，与议奏所拟线路不是同一条。英文同步修改。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "限制段删去“只”，补写本传另记督办粤汉铁路，且与议奏所拟线路不是同一条。中英文同步，ev 增加 E23。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.story.0",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "“不是独立核算过的数字”（\"not figures from any independent accounting\"）是证据之外的否定性断言。证据里七利是逐条的定性理由，并不是数字，传文也没有记任何测算。这样写会暗示这些“利”原本是数字，只是缺少第三方核查。",
+   "evidence": [
+    {
+     "id": "QSG4371-E19",
+     "quote": "有此七利，分段分年成之"
+    }
+   ],
+   "proposed": "中文改为：这组「利」是议奏自列的定性理由，传文未录任何测算。英文改为：These are qualitative reasons the memorial itself lists; the recorded text gives no quantities.",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "把“不是独立核算过的数字”改为“议奏自列的定性理由，传文未录任何测算”，不再暗示七利原本是数字。英文同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F6",
+   "path": "sections.limits.1",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "与 F5 相同：“不是独立核算过的数字”（\"not independently audited figures\"）是证据之外的否定性断言，而且暗示七利原本是数字。",
+   "evidence": [
+    {
+     "id": "QSG4371-E19",
+     "quote": "有此七利"
+    }
+   ],
+   "proposed": "中文改为：那组「利」是他自列的定性理由，传文未录任何测算，不能当作成本收益分析来读。英文同步修改。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "同 F5，改为“自列的定性理由，传文未录任何测算”，保留“不能当作成本收益分析来读”。英文同步，ev 增加 E19。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F7",
+   "path": "uncertainty_note",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "与 F5 相同：“非独立核算”（\"not independent figures\"）是证据之外的否定性断言。另外，本说明说张之洞本传未记工期等，却没有提到本传另记督办粤汉铁路，与 F3、F4 修改后的正文不一致。",
+   "evidence": [
+    {
+     "id": "QSG4371-E19",
+     "quote": "有此七利"
+    },
+    {
+     "id": "QSG4371-E23",
+     "quote": "三十四年，督辦粵漢鐵路"
+    }
+   ],
+   "proposed": "改为「「利」为定性理由，传文未录测算」。补一句：本传另记督办粤汉铁路，与议奏所拟线路不同。英文同步修改。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "把“非独立核算”改为“定性理由，传文未录测算”。补写本传另记督办粤汉铁路、与议奏所拟线路不同，使说明与修改后的正文一致。中英文同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F8",
+   "path": "sections.story.8",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "“按「家不增一畝」这一限定，‘不问花费’不宜读作为私谋利”是作者从两处传文并列推出的结论，传文并没有这样说。中文接在“一种解释是”之后、隔了分号，标示不清。英文另起一句（\"should not be taken as spending for private gain\"），完全没有解释标签。",
+   "evidence": [
+    {
+     "id": "QSG4371-E17",
+     "quote": "務宏大，不問費多寡"
+    },
+    {
+     "id": "QSG4371-E21",
+     "quote": "任疆寄數十年，及卒，家不增一畝雲"
+    }
+   ],
+   "proposed": "中文改为：作者认为，结合「家不增一畝」，“不问花费”不宜读作为私谋利。英文改为：In the author's view, read with the qualifier about his family's land, ... should not be taken as spending for private gain.",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "把“不宜读作为私谋利”单独成句，并以“作者认为”明确标为作者解释；英文改为“In the author's view”起句。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F10",
+   "path": "dek",
+   "category": "readability",
    "severity": "note",
-   "problem": "英文 \"the censors and remonstrating officials - the Qing court's remonstrance officials\" 同义反复，括注没有增加信息。",
-   "evidence": [],
-   "proposed": "简化为 \"the censors (the court's remonstrance officials)\"。",
+   "problem": "导语只说“一条南北线路”，读者不知道线路起讫，后文与《王文韶传》京汉铁路的对照也就难以理解。证据给出了起讫。",
+   "evidence": [
+    {
+     "id": "QSG4371-E22",
+     "quote": "今宜自京外盧溝橋起，經河南以達湖北漢口鎮"
+    }
+   ],
+   "proposed": "把“一条南北线路”改为“一条自卢沟桥经河南至汉口的干路”。英文同步修改。",
    "origin": "final-editor audit"
   },
   {
-   "id": "P1",
-   "problem": "利一的原文是「無慮引敵」，意思是不必担心铁路把敌人引进来，不是“避敌”。中文“避敌”和英文 \"avoiding the enemy\" 都改变了原意，也与 story.1 中正确的转述（“不至于引敌”/\"will not draw in an enemy\"）不一致。",
-   "origin": "inherited final-editor previous attempt V2-V1",
+   "id": "X1",
+   "problem": "来源上下文核查（zh）「传文所录未说明它与京通线的关系。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG437〕：「今宜自京外盧溝橋起，經河南以達湖北漢口鎮。此幹路樞紐，中國大利所萃也。」",
+   "origin": "inherited context review None",
    "severity": "fix",
    "category": "unsupported",
-   "path": "sections.analysis.1",
+   "path": "sections.hook.1",
    "disposition": "duplicate",
    "same_as": "F1",
-   "rationale": "问题成立：原文「無慮引敵」意为不必担心引来敌人，“避敌”属误译，已列为 F1。"
+   "rationale": "问题成立，已并入 F1。但建议中的“以黄河为界”超出证据，证据只说「河北路」「自河以南」，未写黄河，不宜采用该措辞。"
   },
   {
-   "id": "P2",
-   "problem": "checker: today[0] repeats the open-question scenario: shared phrases 「把目标的优先级公开排出来」「写成可以逐条检验的清单」; bigram overlap 0.25",
-   "origin": "inherited final-editor previous attempt C2-9",
+   "id": "X2",
+   "problem": "来源上下文核查（en）「the biography's record does not say how it relates to the Beijing-Tongzhou line.」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-QSG437〕：「今宜自京外盧溝橋起，經河南以達湖北漢口鎮」",
+   "origin": "inherited context review None",
    "severity": "fix",
    "category": "unsupported",
-   "path": "",
+   "path": "sections.hook.1",
    "disposition": "duplicate",
-   "same_as": "F2",
-   "rationale": "两处确有逐字重复的短语，属文风问题，不涉史实，已列为 F2（note）。"
+   "same_as": "F1",
+   "rationale": "英文同样声称传文未说明线路关系，与证据相反，已并入 F1。"
   },
   {
-   "id": "C1-6",
+   "id": "X3",
+   "path": "sections.analysis.1",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "来源上下文核查（zh）「一种解释是，「厚民生」排在「徵兵、轉餉」之前，是把争议最小、也最难被驳倒的目标放在最前面：台谏说的是「鐵路之害」，而不至引敌、坟庐易避这两条或许是对着「害」字去答的（传文未记台谏所指何害）。」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG437〕：「臺諫爭陳鐵路之害，請停辦」",
+   "origin": "inherited context review None",
+   "disposition": "rejected",
+   "rationale": "括注“传文未记台谏所指何害”是必要的限定，有证据支持：传文只记「爭陳鐵路之害」，没有列出具体哪些害。此处正在推测利一、利二是在回应“害”，删去括注会让推测显得有据。各段重复交代属于文风问题，不构成删除限定的理由。",
+   "evidence": [
+    {
+     "id": "QSG4371-E3",
+     "quote": "臺諫爭陳鐵路之害，請停辦"
+    }
+   ],
+   "decided_in": "audit"
+  },
+  {
+   "id": "X4",
+   "path": "sections.analysis.1",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "来源上下文核查（en）「The censors spoke of \"the harms of railways,\" and the two points about not drawing in the enemy and easily avoiding graves and houses may answer the word \"harms,\" though the biography does not record which harms were meant.」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG437〕：「臺諫爭陳鐵路之害」",
+   "origin": "inherited context review None",
+   "disposition": "rejected",
+   "rationale": "理由同 X3。英文 though 从句是对推测的必要限定，有证据支持。",
+   "evidence": [
+    {
+     "id": "QSG4371-E3",
+     "quote": "臺諫爭陳鐵路之害，請停辦"
+    }
+   ],
+   "decided_in": "audit"
+  },
+  {
+   "id": "X5",
+   "problem": "来源上下文核查（zh）「这组「利」是他自己列举的理由，不是独立核算过的数字。」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG437〕：「有此七利，分段分年成之」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.story.0",
+   "disposition": "duplicate",
+   "same_as": "F5",
+   "rationale": "问题成立，已并入 F5。"
+  },
+  {
+   "id": "X6",
+   "problem": "来源上下文核查（en）「These are reasons he assembled himself, not figures from any independent accounting.」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG437〕：「有此七利」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.story.0",
+   "disposition": "duplicate",
+   "same_as": "F5",
+   "rationale": "英文同一问题，已并入 F5。"
+  },
+  {
+   "id": "X7",
+   "problem": "来源上下文核查（zh）「那组「利」是他自己列举的理由，不是独立核算过的数字，不能当作成本收益分析来读。」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG437〕：「有此七利，分段分年成之」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.limits.1",
+   "disposition": "duplicate",
+   "same_as": "F6",
+   "rationale": "问题成立，已并入 F6。"
+  },
+  {
+   "id": "X8",
+   "problem": "来源上下文核查（en）「That set of \"benefits\" is a list of reasons he compiled himself, not independently audited figures, and cannot be read as cost-benefit analysis.」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG437〕：「有此七利」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.limits.1",
+   "disposition": "duplicate",
+   "same_as": "F6",
+   "rationale": "英文同一问题，已并入 F6。"
+  },
+  {
+   "id": "X9",
+   "problem": "来源上下文核查（zh）「「利」为他自列的理由，非独立核算；」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG437〕：「有此七利」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "uncertainty_note",
+   "disposition": "duplicate",
+   "same_as": "F7",
+   "rationale": "问题成立，已并入 F7。"
+  },
+  {
+   "id": "X10",
+   "problem": "来源上下文核查（en）「the \"benefits\" are reasons he listed himself, not independent figures;」：这句关于来源未载的断言没有必要，删去。来源原文〔S-QSG437〕：「有此七利」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "uncertainty_note",
+   "disposition": "duplicate",
+   "same_as": "F7",
+   "rationale": "英文同一问题，已并入 F7。"
+  },
+  {
+   "id": "X11",
+   "problem": "来源上下文核查：稿件始终没有交代议奏所拟线路的起讫，只说「以河为界、分南北两段」，还称传文未说明它与京通线的关系。实际上议奏明言另修一条卢沟桥经河南到汉口的干路，读者会误以为这是京通线的延伸，或以为线路不明。。来源原文〔S-QSG437〕：「今宜自京外盧溝橋起，經河南以達湖北漢口鎮。此幹路樞紐，中國大利所萃也。」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.hook.1",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "指出稿件未交代线路起讫、并误称传文未说明，与 F1 相同。"
+  },
+  {
+   "id": "X12",
+   "problem": "来源上下文核查：「不是独立核算过的数字」暗示这些「利」原本是数字、只是缺少第三方核查。来源中七利是定性论点，这个否定性说法既无来源依据，也是多余的。。来源原文〔S-QSG437〕：「有此七利，分段分年成之」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.limits.1",
+   "disposition": "duplicate",
+   "same_as": "F6",
+   "rationale": "指出“不是独立核算过的数字”暗示七利原为数字，与 F6 相同。"
+  },
+  {
+   "id": "X13",
    "path": "",
    "category": "unsupported",
    "severity": "fix",
-   "problem": "checker: today[0] repeats the open-question scenario: shared phrases 「把目标的优先级公开排出来」「写成可以逐条检验的清单」; bigram overlap 0.25",
-   "origin": "checker",
+   "problem": "证据包已按来源上下文补入摘录 QSG4371-E22, QSG4371-E23；请据此检查叙事、结局与因果是否完整准确",
+   "origin": "inherited context review None",
+   "audit_rationale": "按 E22、E23 复核后确有问题：线路起讫问题见 F1、F10；本传另记督办粤汉铁路、正文误写“只”记炼铁厂的问题见 F3、F4、F7。",
    "disposition": "fixed",
-   "rationale": "今天怎么用第一段与反思问题共用了“把目标的优先级公开排出来”“写成可以逐条检验的清单”等措辞。现已改写这一段的中英文：改为“先交代哪个目标最重、哪个其次”“把支持的理由分条编号”，原意保留，只是不再重复反思问题的表述。kind 仍为 modern，ev 为空，没有加入新的事实。",
+   "rationale": "已按 E22、E23 复核全文。线路起讫问题在 F1 中修正（hook.1）。本传另记督办粤汉铁路、正文误写“只”记炼铁厂的问题，在 F3、F4、F7 中修正（story.6、limits.2、uncertainty_note），并写明粤汉线不是议奏所拟线路。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.hook.0",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "开头第一句就出现了张之洞，但没有交代他是谁。直到段末才用“本文传主”点明，而且这个说法只说明他是传记主角，没有说明他和铁路争议是什么关系。“海军衙门”第一次出现时也没有说明是什么机构。不了解背景的读者读完开头，说不清是谁在什么位置上面对这场争执。",
+   "evidence": [
+    {
+     "id": "QSG4371-E21",
+     "quote": "任疆寄數十年"
+    },
+    {
+     "id": "QSG4371-E1",
+     "quote": "設廣東水陸師學堂，創槍砲廠，開礦務局"
+    }
+   ],
+   "proposed": "首句改为“晚清地方大员张之洞的铁路议奏写于一场争执之中……”（英文同步改为 \"Zhang Zhidong, a senior provincial official of the late Qing, wrote his railway memorial...\"）。“海军衙门”首次出现处补一句括注“（清廷主管海军事务的机构）”。段末“本文传主张之洞”可简化为“张之洞”。其余事实与限定不动。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "在段首交代了张之洞的身份。依据有两处：一是证据所载「任疆寄數十年」，据此说他久任地方大员；二是他此前在广东办学堂、枪炮厂、矿务局。“晚清”一词证据包中没有，所以没有采用。“海军衙门”首次出现处补了括注，并注明“从名称看”，表明这是据名称作的说明，没有引入证据外的职掌细节。段末“本文传主张之洞”改为“张之洞就此所上的议奏”，点明他与这场争议的关系。英文同步修改，ev 补入 E21、E1。其余事实与限定未动。",
    "decided_in": "revise_r2"
   }
  ],
  "edits": [
   {
-   "path": "sections.analysis.1.zh",
-   "before": "一种解释是，「厚民生」排在「徵兵、轉餉」之前，是把争议最小、也最难被驳倒的目标放在最前面：台谏说的是「鐵路之害」，而避敌、避坟庐这两条或许是对着「害」字去答的（传文未记台谏所指何害）。作者推断这种写法出于策略考虑，传文没有写他的思考过程，此处是作者的解释。",
-   "after": "一种解释是，「厚民生」排在「徵兵、轉餉」之前，是把争议最小、也最难被驳倒的目标放在最前面：台谏说的是「鐵路之害」，而不至引敌、坟庐易避这两条或许是对着「害」字去答的（传文未记台谏所指何害）。作者推断这种写法出于策略考虑，传文没有写他的思考过程，此处是作者的解释。",
+   "path": "sections.hook.0.zh",
+   "before": "要不要修京通铁路，朝中有了争执。《清史稿·张之洞传》记：「會海軍衙門奏請修京通鐵路，臺諫爭陳鐵路之害，請停辦」。海军衙门主张修，台谏（负责进言、弹劾的言官）争陈铁路之害、请停办。传文紧接着又记了另外两种主张：「翁同龢等請試修邊地，便用兵；徐會灃請改修德州濟寧路，利漕運」，其后录有本文传主张之洞的议奏。至于台谏所说的害具体是哪几条、海军衙门的理由为何，传文都没有记。",
+   "after": "张之洞的铁路议奏写于一场争执之中：朝中就修不修铁路、修在哪里有几种主张。《清史稿·张之洞传》记：「會海軍衙門奏請修京通鐵路，臺諫爭陳鐵路之害，請停辦」。海军衙门主张修京通铁路；台谏（负责进言、弹劾的言官）争陈铁路之害，请停办。传文接着记了另外两种主张：「翁同龢等請試修邊地，便用兵；徐會灃請改修德州濟寧路，利漕運」。翁同龢等主张试修边地，理由是便于用兵；徐会沣主张改修德州济宁路，理由是利于漕运。传文在这几种主张之后，才录下本文传主张之洞的议奏。至于台谏所说的害具体是哪几条、海军衙门的理由为何，传文都没有记。",
    "issues": [
-    "F1"
+    "F2"
    ]
   },
   {
-   "path": "sections.analysis.1.en",
-   "before": "One reading: putting \"enriching livelihoods\" before \"raising troops and forwarding supplies\" sets the least contested, hardest-to-topple goal at the front. The censors spoke of \"the harms of railways,\" and the two points about avoiding the enemy and sparing graves and houses may answer the word \"harms,\" though the biography does not record which harms were meant. The author infers that this drafting is tactical; the biography records no thought process, so this is the author's interpretation.",
-   "after": "One reading: putting \"enriching livelihoods\" before \"raising troops and forwarding supplies\" sets the least contested, hardest-to-topple goal at the front. The censors spoke of \"the harms of railways,\" and the two points about not drawing in the enemy and easily avoiding graves and houses may answer the word \"harms,\" though the biography does not record which harms were meant. The author infers that this drafting is tactical; the biography records no thought process, so this is the author's interpretation.",
+   "path": "sections.hook.0.en",
+   "before": "The proposed Beijing-Tongzhou railway drew opposition at court. Zhang Zhidong's biography in the Draft History of the Qing records it this way (here and throughout, quotations from the Chinese are our own translations): \"When the Naval Office petitioned to build the Beijing-Tongzhou railway, the censors pressed the harms of railways and asked that the project be halted.\" The Naval Office stood for building; the censors - the court's officials charged with remonstrance and impeachment - pressed the harms and asked for a stop. The biography then records two further proposals: Weng Tonghe and others asked to try building in the frontier regions, for ease of moving troops; Xu Huifeng asked to build a Dezhou-Jining line instead, for the benefit of grain transport. After that it records the memorial of Zhang Zhidong, the subject of this biography. Which harms the censors meant, and what reasons the Naval Office gave, the biography does not record.",
+   "after": "Zhang Zhidong's railway memorial was written in the middle of a dispute: at court there were several positions on whether to build railways and where. His biography in the Draft History of the Qing records it this way (here and throughout, quotations from the Chinese are our own translations): \"When the Naval Office petitioned to build the Beijing-Tongzhou railway, the censors pressed the harms of railways and asked that the project be halted.\" The Naval Office stood for building the Beijing-Tongzhou line. The censors, the court's officials charged with remonstrance and impeachment, pressed the harms and asked for a stop. The biography then records two further proposals. Weng Tonghe and others asked to try building in the frontier regions, for ease of moving troops. Xu Huifeng asked to build a Dezhou-Jining line instead, for the benefit of grain transport. Only after these positions does the biography record the memorial of Zhang Zhidong, the subject of this biography. Which harms the censors meant, and what reasons the Naval Office gave, the biography does not record.",
    "issues": [
-    "F1"
+    "F2"
    ]
   },
   {
-   "path": "sections.today.0.zh",
-   "before": "写一份提案或评审材料时，可以借用这份议奏的顺序：开头不急着罗列优劣，而是先把目标的优先级公开排出来——哪个目标最大、哪个次之，白纸黑字放在最前面；然后把理由写成可以逐条检验的清单，像那六条编号的“利”一样，每条都能被追问“成不成立”。",
-   "after": "写一份提案或评审材料时，可以借用这份议奏的顺序：开头不急着罗列优劣，先交代哪个目标最重、哪个其次，把轻重写在最前面；随后把支持的理由分条编号，像那六条编号的“利”一样，每一条都留给读者去追问“成不成立”。",
+   "path": "sections.hook.1.zh",
+   "before": "张之洞针对这几种主张上了一份议奏。他的议奏所论是一条以河为界、分南北两段的线路；传文所录未说明它与京通线的关系。议奏中明确排出了目标次序：「修路之利，以通土貨、厚民生為最大，徵兵、轉餉次之」。目标的轻重被明明白白摆上桌面——作者认为，这个排序是这篇议奏最容易被略过、也最见功夫的地方。",
+   "after": "张之洞针对这几种主张上了一份议奏。他的议奏另拟一条干路，「自京外盧溝橋起，經河南以達湖北漢口鎮」，以河为界分南北两段，并非京通线。议奏中明确排出了目标次序：「修路之利，以通土貨、厚民生為最大，徵兵、轉餉次之」。目标的轻重被明明白白摆上桌面——作者认为，这个排序是这篇议奏最容易被略过、也最见功夫的地方。",
    "issues": [
-    "C1-6"
+    "F1",
+    "X13"
    ]
   },
   {
-   "path": "sections.today.0.en",
-   "before": "When drafting a proposal or a review document, you can borrow this memorial's order: rather than opening with a list of pros and cons, first publish the ranking of goals - which goal is greatest, which next, in black and white at the front - and then write the case as a checklist testable point by point, like those six numbered benefits, each open to the challenge: \"does this hold?\"",
-   "after": "When drafting a proposal or a review document, you can borrow this memorial's order: rather than opening with a list of pros and cons, state up front which goal weighs most and which comes next; then number the supporting reasons one by one, like those six numbered benefits, leaving each open to the reader's challenge: \"does this hold?\"",
+   "path": "sections.hook.1.en",
+   "before": "Zhang Zhidong answered these proposals with a memorial. The line it discusses is divided by the river into a northern and a southern section; the biography's record does not say how it relates to the Beijing-Tongzhou line. The memorial sets out an explicit ranking of goals: \"In building a railway, the greatest benefit lies in moving local goods and enriching the people's livelihood; raising troops and forwarding supplies come second.\" The relative weight of the goals is laid plainly on the table. In the author's view, that ranking is the easiest thing to skim past in this memorial, and the place where the real craft sits.",
+   "after": "Zhang Zhidong answered these proposals with a memorial. The memorial proposes a separate trunk line, running from Lugou Bridge outside the capital through Henan to Hankou in Hubei, divided by the river into northern and southern sections; it is not the Beijing-Tongzhou line. The memorial sets out an explicit ranking of goals: \"In building a railway, the greatest benefit lies in moving local goods and enriching the people's livelihood; raising troops and forwarding supplies come second.\" The relative weight of the goals is laid plainly on the table. In the author's view, that ranking is the easiest thing to skim past in this memorial, and the place where the real craft sits.",
    "issues": [
-    "C1-6"
+    "F1",
+    "X13"
+   ]
+  },
+  {
+   "path": "sections.hook.1.ev",
+   "before": [
+    "QSG4371-E5",
+    "QSG4371-E18",
+    "QSG4371-E7",
+    "QSG4371-E8",
+    "QSG4371-E3"
+   ],
+   "after": [
+    "QSG4371-E5",
+    "QSG4371-E18",
+    "QSG4371-E7",
+    "QSG4371-E8",
+    "QSG4371-E3",
+    "QSG4371-E22"
+   ],
+   "issues": [
+    "F1",
+    "X13"
+   ]
+  },
+  {
+   "path": "sections.story.0.zh",
+   "before": "议奏逐条列「利」，传文留下了编号：利一到利七，每条一两句，最后一条是「海上用兵，漕運無梗，利七」；议奏随即提出「有此七利，分段分年成之」。这组「利」是他自己列举的理由，不是独立核算过的数字。",
+   "after": "议奏逐条列「利」，传文留下了编号：利一到利七，每条一两句，最后一条是「海上用兵，漕運無梗，利七」；议奏随即提出「有此七利，分段分年成之」。这组「利」是议奏自列的定性理由，传文未录任何测算。",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.story.0.en",
+   "before": "The memorial works through a numbered list of benefits, and the biography preserves the numbering: benefit one through benefit seven, each a sentence or two. The last reads: \"Should war come by sea, grain transport will not be obstructed - benefit seven.\" The memorial then proposes: \"With these seven benefits, let it be completed section by section, year by year.\" These are reasons he assembled himself, not figures from any independent accounting.",
+   "after": "The memorial works through a numbered list of benefits, and the biography preserves the numbering: benefit one through benefit seven, each a sentence or two. The last reads: \"Should war come by sea, grain transport will not be obstructed - benefit seven.\" The memorial then proposes: \"With these seven benefits, let it be completed section by section, year by year.\" These are qualitative reasons the memorial itself lists; the recorded text gives no quantities.",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.story.6.zh",
+   "before": "结果是「得旨報可，遂有移楚之命」。朝廷准了这份奏请，随后有调他赴湖广之命。需要说清楚的是，「得旨報可」只是准奏，不等于已经开工；张之洞本传没有记议奏所提线路的工期、用款、拆迁，只在其后记他奏开炼铁厂「資路用」；同卷《王文韶传》记有京汉铁路兴筑，是否即此线，本文不作断定，也不替他补写这些细节。",
+   "after": "结果是「得旨報可，遂有移楚之命」。朝廷准了这份奏请，随后有调他赴湖广之命。需要说清楚的是，「得旨報可」只是准奏，不等于已经开工；张之洞本传没有记议奏所提线路的工期、用款、拆迁，其后记他奏开炼铁厂「資路用」，后文另记「三十四年，督辦粵漢鐵路」，那是粤汉铁路，并非议奏所拟自卢沟桥经河南至汉口的干路；同卷《王文韶传》记有京汉铁路兴筑，是否即此线，本文不作断定，也不替他补写这些细节。",
+   "issues": [
+    "F3",
+    "X13"
+   ]
+  },
+  {
+   "path": "sections.story.6.en",
+   "before": "The outcome: \"The memorial received an approving rescript, and there followed the order transferring him to Huguang.\" The throne approved the request, and an order sending him to Huguang followed. Be clear: \"approved by rescript\" means the memorial was accepted, not that work began. Zhang's own biography records no schedule, outlay, or relocations for the line he proposed; it goes on only to record his petition for an ironworks to supply the railway. The biography of Wang Wenshao in the same chapter records the building of the Beijing-Hankou railway; whether that is this line, this article does not decide, and it will not supply the missing details.",
+   "after": "The outcome: \"The memorial received an approving rescript, and there followed the order transferring him to Huguang.\" The throne approved the request, and an order sending him to Huguang followed. Be clear: \"approved by rescript\" means the memorial was accepted, not that work began. Zhang's own biography records no schedule, outlay, or relocations for the line he proposed. It goes on to record his petition for an ironworks to supply the railway. Later it records that in the thirty-fourth year he was put in charge of the Canton-Hankou railway; that is a different line from the trunk his memorial proposed, from Lugou Bridge through Henan to Hankou. The biography of Wang Wenshao in the same chapter records the building of the Beijing-Hankou railway; whether that is this line, this article does not decide, and it will not supply the missing details.",
+   "issues": [
+    "F3",
+    "X13"
+   ]
+  },
+  {
+   "path": "sections.story.6.ev",
+   "before": [
+    "QSG4371-E14",
+    "QSG4371-E20"
+   ],
+   "after": [
+    "QSG4371-E14",
+    "QSG4371-E20",
+    "QSG4371-E22",
+    "QSG4371-E23"
+   ],
+   "issues": [
+    "F3",
+    "X13"
+   ]
+  },
+  {
+   "path": "sections.story.8.zh",
+   "before": "传文对他有一句评语：「蒞官所至，必有興作。務宏大，不問費多寡」。传文同时记他任疆寄数十年，「及卒，家不增一畝」。一种解释是，这句话与前面那份编号清单出自同一种风格——敢开大摊子，也肯把摊子一条条写出来；至于花费，评语说他不问多寡，传文并未举出具体用款数字；按「家不增一畝」这一限定，“不问花费”不宜读作为私谋利。",
+   "after": "传文对他有一句评语：「蒞官所至，必有興作。務宏大，不問費多寡」。传文同时记他任疆寄数十年，「及卒，家不增一畝」。一种解释是，这句话与前面那份编号清单出自同一种风格——敢开大摊子，也肯把摊子一条条写出来；至于花费，评语说他不问多寡，传文并未举出具体用款数字。作者认为，结合「家不增一畝」，“不问花费”不宜读作为私谋利。",
+   "issues": [
+    "F8"
+   ]
+  },
+  {
+   "path": "sections.story.8.en",
+   "before": "The biography passes a verdict on him: \"Wherever he took office, he had works begun. He aimed at the grand, and did not ask how much it cost.\" It also records that after decades as a provincial official, \"at his death, his family had not gained a single mu of land.\" One reading: that verdict and the numbered list share the same style - bold enough to open big undertakings, willing to write each out item by item. As for spending, the verdict says he did not ask the amount; the biography gives no figures. Read with the qualifier about his family's land, \"did not ask how much it cost\" should not be taken as spending for private gain.",
+   "after": "The biography passes a verdict on him: \"Wherever he took office, he had works begun. He aimed at the grand, and did not ask how much it cost.\" It also records that after decades as a provincial official, \"at his death, his family had not gained a single mu of land.\" One reading: that verdict and the numbered list share the same style - bold enough to open big undertakings, willing to write each out item by item. As for spending, the verdict says he did not ask the amount; the biography gives no figures. In the author's view, read with the qualifier about his family's land, \"did not ask how much it cost\" should not be taken as spending for private gain.",
+   "issues": [
+    "F8"
+   ]
+  },
+  {
+   "path": "sections.limits.1.zh",
+   "before": "其次，那段议奏文字是史书所录的文字，未必是他逐字说过的话；本文所引文字均按史书所录转述。那组「利」是他自己列举的理由，不是独立核算过的数字，不能当作成本收益分析来读。",
+   "after": "其次，那段议奏文字是史书所录的文字，未必是他逐字说过的话；本文所引文字均按史书所录转述。那组「利」是他自列的定性理由，传文未录任何测算，不能当作成本收益分析来读。",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.limits.1.en",
+   "before": "Second, the memorial text is documentary text as the historians recorded it, not necessarily words he spoke verbatim; all text quoted in this article is reported as the history records it. That set of \"benefits\" is a list of reasons he compiled himself, not independently audited figures, and cannot be read as cost-benefit analysis.",
+   "after": "Second, the memorial text is documentary text as the historians recorded it, not necessarily words he spoke verbatim; all text quoted in this article is reported as the history records it. That set of \"benefits\" is a list of qualitative reasons he compiled himself; the recorded text gives no quantities, and it cannot be read as cost-benefit analysis.",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.limits.1.ev",
+   "before": [
+    "QSG4371-E5"
+   ],
+   "after": [
+    "QSG4371-E5",
+    "QSG4371-E19"
+   ],
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.limits.2.zh",
+   "before": "再次，张之洞本传没有记议奏所提线路的工期、用款、拆迁，只在其后记他奏开炼铁厂「資路用」；同卷《王文韶传》有京汉铁路兴筑的记载，是否同一线路无法确定，本文不替他补写；「得旨報可」只是准奏，不等于已经开工，更不等于办成。本文也不把原文没有的公元年份换算出来，更不会说他事先知道结果——他写下那些「利」的时候，看到的只是清单，不是成绩单。",
+   "after": "再次，张之洞本传没有记议奏所提线路的工期、用款、拆迁，其后记他奏开炼铁厂「資路用」，另记「三十四年，督辦粵漢鐵路」，那是粤汉铁路，与议奏所拟线路不是同一条；同卷《王文韶传》有京汉铁路兴筑的记载，是否同一线路无法确定，本文不替他补写；「得旨報可」只是准奏，不等于已经开工，更不等于办成。本文也不把原文没有的公元年份换算出来，更不会说他事先知道结果——他写下那些「利」的时候，看到的只是清单，不是成绩单。",
+   "issues": [
+    "F4",
+    "X13"
+   ]
+  },
+  {
+   "path": "sections.limits.2.en",
+   "before": "Third, Zhang's own biography records no schedule, outlay, or relocations for the proposed line; it goes on only to record his petition for an ironworks to supply the railway. The biography of Wang Wenshao in the same chapter records the building of the Beijing-Hankou railway, but whether it is the same line cannot be determined, and this article does not fill in the gaps. \"Approved by rescript\" is approval, not the start of work, still less a finished line. This article also converts no Common Era years the original does not have, and will not say he knew the outcome in advance: when he wrote those numbered benefits, what lay before him was a checklist, not a report card.",
+   "after": "Third, Zhang's own biography records no schedule, outlay, or relocations for the proposed line. It goes on to record his petition for an ironworks to supply the railway, and also records that in the thirty-fourth year he was put in charge of the Canton-Hankou railway, which is not the same line as the one his memorial proposed. The biography of Wang Wenshao in the same chapter records the building of the Beijing-Hankou railway, but whether it is the same line cannot be determined, and this article does not fill in the gaps. \"Approved by rescript\" is approval, not the start of work, still less a finished line. This article also converts no Common Era years the original does not have, and will not say he knew the outcome in advance: when he wrote those numbered benefits, what lay before him was a checklist, not a report card.",
+   "issues": [
+    "F4",
+    "X13"
+   ]
+  },
+  {
+   "path": "sections.limits.2.ev",
+   "before": [
+    "QSG4371-E14",
+    "QSG4371-E20"
+   ],
+   "after": [
+    "QSG4371-E14",
+    "QSG4371-E20",
+    "QSG4371-E23"
+   ],
+   "issues": [
+    "F4",
+    "X13"
+   ]
+  },
+  {
+   "path": "uncertainty_note.zh",
+   "before": "本文主要据《清史稿·张之洞传》，另引同卷《王文韶传》一条，无《清史稿》以外的记载对照；议奏文字按史书所录转述，未必是逐字原话；「利」为他自列的理由，非独立核算；张之洞本传未记工期、用款、拆迁，同卷《王文韶传》所记京汉铁路兴筑是否即此线，未作断定；「得旨報可」仅为准奏，不等于开工；不换算公元年份，亦不假定他事先知道结果。",
+   "after": "本文主要据《清史稿·张之洞传》，另引同卷《王文韶传》一条，无《清史稿》以外的记载对照；议奏文字按史书所录转述，未必是逐字原话；「利」为定性理由，传文未录测算；张之洞本传未记议奏所拟线路的工期、用款、拆迁，另记督办粤汉铁路，与议奏所拟线路不同；同卷《王文韶传》所记京汉铁路兴筑是否即此线，未作断定；「得旨報可」仅为准奏，不等于开工；不换算公元年份，亦不假定他事先知道结果。",
+   "issues": [
+    "F7",
+    "X13"
+   ]
+  },
+  {
+   "path": "uncertainty_note.en",
+   "before": "This article rests mainly on one source, the biography of Zhang Zhidong in the Draft History of the Qing, plus one lead from the biography of Wang Wenshao in the same chapter, with no record outside the Draft History for comparison. The memorial text is reported as the historians recorded it and may not be verbatim; the \"benefits\" are reasons he listed himself, not independent figures; Zhang's own biography records no schedule, outlay, or relocations, and whether the Beijing-Hankou railway recorded in the biography of Wang Wenshao in the same chapter is this line is left undecided; \"approved by rescript\" means approval only, not the start of work. No Common Era years are converted, and no foreknowledge of the outcome is assumed.",
+   "after": "This article rests mainly on one source, the biography of Zhang Zhidong in the Draft History of the Qing, plus one lead from the biography of Wang Wenshao in the same chapter, with no record outside the Draft History for comparison. The memorial text is reported as the historians recorded it and may not be verbatim. The \"benefits\" are qualitative reasons, and the recorded text gives no quantities. Zhang's own biography records no schedule, outlay, or relocations for the proposed line; it separately records his charge of the Canton-Hankou railway, a different line from the one proposed. Whether the Beijing-Hankou railway recorded in the biography of Wang Wenshao in the same chapter is this line is left undecided. \"Approved by rescript\" means approval only, not the start of work. No Common Era years are converted, and no foreknowledge of the outcome is assumed.",
+   "issues": [
+    "F7",
+    "X13"
+   ]
+  },
+  {
+   "path": "sections.hook.0.zh",
+   "before": "张之洞的铁路议奏写于一场争执之中：朝中就修不修铁路、修在哪里有几种主张。《清史稿·张之洞传》记：「會海軍衙門奏請修京通鐵路，臺諫爭陳鐵路之害，請停辦」。海军衙门主张修京通铁路；台谏（负责进言、弹劾的言官）争陈铁路之害，请停办。传文接着记了另外两种主张：「翁同龢等請試修邊地，便用兵；徐會灃請改修德州濟寧路，利漕運」。翁同龢等主张试修边地，理由是便于用兵；徐会沣主张改修德州济宁路，理由是利于漕运。传文在这几种主张之后，才录下本文传主张之洞的议奏。至于台谏所说的害具体是哪几条、海军衙门的理由为何，传文都没有记。",
+   "after": "张之洞一生久任地方大员，传文称他「任疆寄數十年」；在这份议奏之前，他已在广东办过学堂、枪炮厂和矿务局。他的铁路议奏写于一场争执之中：朝中就修不修铁路、修在哪里有几种主张。《清史稿·张之洞传》记：「會海軍衙門奏請修京通鐵路，臺諫爭陳鐵路之害，請停辦」。海军衙门（从名称看，是主管海军事务的衙署）主张修京通铁路；台谏（负责进言、弹劾的言官）争陈铁路之害，请停办。传文接着记了另外两种主张：「翁同龢等請試修邊地，便用兵；徐會灃請改修德州濟寧路，利漕運」。翁同龢等主张试修边地，理由是便于用兵；徐会沣主张改修德州济宁路，理由是利于漕运。传文在这几种主张之后，才录下张之洞就此所上的议奏。至于台谏所说的害具体是哪几条、海军衙门的理由为何，传文都没有记。",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.hook.0.en",
+   "before": "Zhang Zhidong's railway memorial was written in the middle of a dispute: at court there were several positions on whether to build railways and where. His biography in the Draft History of the Qing records it this way (here and throughout, quotations from the Chinese are our own translations): \"When the Naval Office petitioned to build the Beijing-Tongzhou railway, the censors pressed the harms of railways and asked that the project be halted.\" The Naval Office stood for building the Beijing-Tongzhou line. The censors, the court's officials charged with remonstrance and impeachment, pressed the harms and asked for a stop. The biography then records two further proposals. Weng Tonghe and others asked to try building in the frontier regions, for ease of moving troops. Xu Huifeng asked to build a Dezhou-Jining line instead, for the benefit of grain transport. Only after these positions does the biography record the memorial of Zhang Zhidong, the subject of this biography. Which harms the censors meant, and what reasons the Naval Office gave, the biography does not record.",
+   "after": "Zhang Zhidong spent much of his career as a senior provincial official; the biography says he held provincial posts for several decades. Before this memorial, he had already set up an academy, an arsenal, and a mining bureau in Guangdong. His railway memorial was written in the middle of a dispute: at court there were several positions on whether to build railways and where. His biography in the Draft History of the Qing records it this way (here and throughout, quotations from the Chinese are our own translations): \"When the Naval Office petitioned to build the Beijing-Tongzhou railway, the censors pressed the harms of railways and asked that the project be halted.\" The Naval Office, which, as its name indicates, was the office in charge of naval affairs, stood for building the Beijing-Tongzhou line. The censors, the court's officials charged with remonstrance and impeachment, pressed the harms and asked for a stop. The biography then records two further proposals. Weng Tonghe and others asked to try building in the frontier regions, for ease of moving troops. Xu Huifeng asked to build a Dezhou-Jining line instead, for the benefit of grain transport. Only after these positions does the biography record the memorial Zhang Zhidong submitted on the matter. Which harms the censors meant, and what reasons the Naval Office gave, the biography does not record.",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.hook.0.ev",
+   "before": [
+    "QSG4371-E3",
+    "QSG4371-E18"
+   ],
+   "after": [
+    "QSG4371-E3",
+    "QSG4371-E18",
+    "QSG4371-E21",
+    "QSG4371-E1"
+   ],
+   "issues": [
+    "V1-V1"
    ]
   }
  ],
@@ -162,9 +732,17 @@
   {
    "round": 1,
    "issues_in": [
-    "F1"
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "X13"
    ],
-   "changes_applied": 2,
+   "changes_applied": 20,
    "changes_failed": [],
    "still_open": [],
    "checker_after": [
@@ -173,11 +751,19 @@
      "story[4] numbers differ zh[] en[10000]"
     ],
     [
-     "FIX",
-     "today[0] repeats the open-question scenario: shared phrases 「把目标的优先级公开排出来」「写成可以逐条检验的清单」; bigram overlap 0.25"
+     "CHECK",
+     "story[6] numbers differ zh[34] en[30]"
+    ],
+    [
+     "CHECK",
+     "story[8] numbers differ zh[10] en[]"
+    ],
+    [
+     "CHECK",
+     "limits[2] numbers differ zh[34] en[30]"
     ]
    ],
-   "content_sha256_after": "d570d717b7fb37a5d9ea72a2438dc3f21aaa9803e8248c890923d5b8a0f54928",
+   "content_sha256_after": "40d59ce4cd8e66d5aa4c3cc4961c55df3a0de39295855e5fba3b7f65629e7b29",
    "verify": {
     "fields": [
      {
@@ -348,9 +934,7 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": [
-       "V2"
-      ]
+      "issue_ids": []
      },
      {
       "path": "sections.story.2",
@@ -693,55 +1277,57 @@
      {
       "id": "V1",
       "path": "sections.hook.0",
-      "category": "style",
-      "severity": "note",
-      "problem": "英文 \"the censors and remonstrating officials - the Qing court's remonstrance officials\" 同义重复，读来累赘。",
+      "category": "readability",
+      "severity": "fix",
+      "problem": "开头第一句就出现了张之洞，但没有交代他是谁。直到段末才用“本文传主”点明，而且这个说法只说明他是传记主角，没有说明他和铁路争议是什么关系。“海军衙门”第一次出现时也没有说明是什么机构。不了解背景的读者读完开头，说不清是谁在什么位置上面对这场争执。",
       "evidence": [
        {
-        "id": "QSG4371-E3",
-        "quote": "臺諫爭陳鐵路之害"
-       }
-      ],
-      "proposed": "改为 \"the censors (the Qing court's remonstrance officials) pressed the harms and asked for a stop.\""
-     },
-     {
-      "id": "V2",
-      "path": "sections.story.1",
-      "category": "style",
-      "severity": "note",
-      "problem": "「这半句」/\"that half-sentence\" 指代不清，读者难以确定指的是「墳廬易避」。另外，英文此处把「務宏大」译作 \"grand in scale\"，story.8 译作 \"He aimed at the grand\"，两处译法不统一。",
-      "evidence": [
-       {
-        "id": "QSG4371-E9",
-        "quote": "原野廣漠，墳廬易避，利二"
+        "id": "QSG4371-E21",
+        "quote": "任疆寄數十年"
        },
        {
-        "id": "QSG4371-E17",
-        "quote": "務宏大"
+        "id": "QSG4371-E1",
+        "quote": "設廣東水陸師學堂，創槍砲廠，開礦務局"
        }
       ],
-      "proposed": "中文改为「值得记住的正是「墳廬易避」这半句」，英文相应写明 \"graves and houses can easily be avoided\"，并统一「務宏大」的英译。"
+      "proposed": "首句改为“晚清地方大员张之洞的铁路议奏写于一场争执之中……”（英文同步改为 \"Zhang Zhidong, a senior provincial official of the late Qing, wrote his railway memorial...\"）。“海军衙门”首次出现处补一句括注“（清廷主管海军事务的机构）”。段末“本文传主张之洞”可简化为“张之洞”。其余事实与限定不动。"
      }
     ],
-    "overall": "逐字段复核未见事实、引文、归属、时序或解释标注上的问题，中英文对应完整；只有两处纯文风建议，可以发稿。",
-    "_content_sha256": "d570d717b7fb37a5d9ea72a2438dc3f21aaa9803e8248c890923d5b8a0f54928"
+    "overall": "全稿逐字段核对后，事实、引文、归属、时序和解释标注都有证据支撑，中英文一致。唯一需要修改的是开头首次提到张之洞和海军衙门时缺少身份说明，属易读性问题，补上后可以发稿。",
+    "_content_sha256": "40d59ce4cd8e66d5aa4c3cc4961c55df3a0de39295855e5fba3b7f65629e7b29"
    }
   },
   {
    "round": 2,
    "issues_in": [
-    "C1-6"
+    "V1-V1"
    ],
-   "changes_applied": 2,
+   "changes_applied": 3,
    "changes_failed": [],
    "still_open": [],
    "checker_after": [
     [
      "CHECK",
+     "hook[0] numbers differ zh[10] en[]"
+    ],
+    [
+     "CHECK",
      "story[4] numbers differ zh[] en[10000]"
+    ],
+    [
+     "CHECK",
+     "story[6] numbers differ zh[34] en[30]"
+    ],
+    [
+     "CHECK",
+     "story[8] numbers differ zh[10] en[]"
+    ],
+    [
+     "CHECK",
+     "limits[2] numbers differ zh[34] en[30]"
     ]
    ],
-   "content_sha256_after": "a69d8777d962e73c307e5173a996fb17efc9e0cfd384eced511afe4d03e21041",
+   "content_sha256_after": "7ce4bddd10cc98c055f2aee24497aac0d62d75530485cb182726b7c26cfba4be",
    "verify": {
     "fields": [
      {
@@ -798,7 +1384,9 @@
        "interpretation_label",
        "parity"
       ],
-      "issue_ids": []
+      "issue_ids": [
+       "V1"
+      ]
      },
      {
       "path": "sections.hook.1",
@@ -1249,9 +1837,28 @@
       "issue_ids": []
      }
     ],
-    "issues": [],
-    "overall": "定稿逐字段核对通过：中文引文均逐字见于证据（E1、E3、E5、E7–E11、E13–E17），英文引语已声明为本文自译，动机「恥言和」已归属修撰者，推断与反事实均已标注，现代场景未冒充记录，中英内容一致无缺失，可以发布。",
-    "_content_sha256": "a69d8777d962e73c307e5173a996fb17efc9e0cfd384eced511afe4d03e21041"
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "开头先交代张之洞在广东办学堂、枪炮厂、矿务局。读者此时还用不上这一信息，而且 context.0 又把它完整重复了一遍。结果是延后了读者对核心问题的把握：朝中就修不修铁路、修在哪里争执不下。读者仍能说清问题所在，因此不构成 fix。",
+      "evidence": [
+       {
+        "id": "QSG4371-E1",
+        "quote": "設廣東水陸師學堂，創槍砲廠，開礦務局"
+       },
+       {
+        "id": "QSG4371-E3",
+        "quote": "臺諫爭陳鐵路之害，請停辦"
+       }
+      ],
+      "proposed": "hook.0 中英文都删去“在这份议奏之前，他已在广东办过学堂、枪炮厂和矿务局”一句，这一信息留在 context.0 交代。身份只保留“久任地方大员，「任疆寄數十年」”。"
+     }
+    ],
+    "overall": "定稿各字段的事实、引文、归属、时序与中英对应均有证据支持，推断和反事实均已标明为作者解释，可以发布。仅有一条易读性 note，建议精简 hook 开头的背景铺陈。",
+    "_content_sha256": "7ce4bddd10cc98c055f2aee24497aac0d62d75530485cb182726b7c26cfba4be"
    }
   }
  ],
@@ -1283,7 +1890,9 @@
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F10"
+    ]
    },
    {
     "path": "sections.hook.heading",
@@ -1306,7 +1915,7 @@
      "parity"
     ],
     "issue_ids": [
-     "F3"
+     "F2"
     ]
    },
    {
@@ -1314,12 +1923,16 @@
     "checked": [
      "facts",
      "attribution",
+     "chronology",
+     "causality",
      "quotes",
      "inner_life",
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F1"
+    ]
    },
    {
     "path": "sections.context.heading",
@@ -1348,7 +1961,10 @@
     "checked": [
      "facts",
      "attribution",
+     "chronology",
+     "causality",
      "quotes",
+     "inner_life",
      "interpretation_label",
      "parity"
     ],
@@ -1359,6 +1975,7 @@
     "checked": [
      "facts",
      "attribution",
+     "chronology",
      "causality",
      "quotes",
      "inner_life",
@@ -1380,17 +1997,23 @@
     "checked": [
      "facts",
      "attribution",
+     "chronology",
+     "causality",
      "quotes",
+     "inner_life",
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F5"
+    ]
    },
    {
     "path": "sections.story.1",
     "checked": [
      "facts",
      "attribution",
+     "chronology",
      "causality",
      "quotes",
      "inner_life",
@@ -1404,7 +2027,10 @@
     "checked": [
      "facts",
      "attribution",
+     "chronology",
+     "causality",
      "quotes",
+     "inner_life",
      "interpretation_label",
      "parity"
     ],
@@ -1415,7 +2041,11 @@
     "checked": [
      "facts",
      "attribution",
+     "chronology",
+     "causality",
      "quotes",
+     "inner_life",
+     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1425,7 +2055,10 @@
     "checked": [
      "facts",
      "attribution",
+     "chronology",
+     "causality",
      "quotes",
+     "inner_life",
      "interpretation_label",
      "parity"
     ],
@@ -1436,7 +2069,11 @@
     "checked": [
      "facts",
      "attribution",
+     "chronology",
+     "causality",
      "quotes",
+     "inner_life",
+     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1449,9 +2086,13 @@
      "chronology",
      "causality",
      "quotes",
+     "inner_life",
+     "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F3"
+    ]
    },
    {
     "path": "sections.story.7",
@@ -1461,6 +2102,8 @@
      "chronology",
      "causality",
      "quotes",
+     "inner_life",
+     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1470,11 +2113,16 @@
     "checked": [
      "facts",
      "attribution",
+     "chronology",
+     "causality",
      "quotes",
+     "inner_life",
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F8"
+    ]
    },
    {
     "path": "sections.analysis.heading",
@@ -1489,7 +2137,10 @@
     "checked": [
      "facts",
      "attribution",
+     "chronology",
+     "causality",
      "quotes",
+     "inner_life",
      "interpretation_label",
      "parity"
     ],
@@ -1500,20 +2151,23 @@
     "checked": [
      "facts",
      "attribution",
+     "chronology",
      "causality",
      "quotes",
      "inner_life",
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": [
-     "F1"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.analysis.2",
     "checked": [
      "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
      "inner_life",
      "interpretation_label",
      "parity"
@@ -1523,6 +2177,7 @@
    {
     "path": "sections.today.heading",
     "checked": [
+     "facts",
      "parity"
     ],
     "issue_ids": []
@@ -1534,9 +2189,7 @@
      "quotes",
      "parity"
     ],
-    "issue_ids": [
-     "F2"
-    ]
+    "issue_ids": []
    },
    {
     "path": "sections.today.1",
@@ -1550,6 +2203,7 @@
    {
     "path": "sections.limits.heading",
     "checked": [
+     "facts",
      "parity"
     ],
     "issue_ids": []
@@ -1559,7 +2213,11 @@
     "checked": [
      "facts",
      "attribution",
+     "chronology",
+     "causality",
      "quotes",
+     "inner_life",
+     "interpretation_label",
      "parity"
     ],
     "issue_ids": []
@@ -1569,21 +2227,32 @@
     "checked": [
      "facts",
      "attribution",
+     "chronology",
+     "causality",
      "quotes",
+     "inner_life",
+     "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F6"
+    ]
    },
    {
     "path": "sections.limits.2",
     "checked": [
      "facts",
+     "attribution",
      "chronology",
+     "causality",
      "quotes",
      "inner_life",
+     "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F4"
+    ]
    },
    {
     "path": "reflection.scenario",
@@ -1632,79 +2301,342 @@
      "facts",
      "attribution",
      "chronology",
+     "causality",
      "quotes",
+     "inner_life",
      "interpretation_label",
      "parity"
     ],
-    "issue_ids": []
+    "issue_ids": [
+     "F7"
+    ]
    }
   ],
   "issues": [
    {
     "id": "F1",
-    "path": "sections.analysis.1",
+    "path": "sections.hook.1",
     "category": "facts",
     "severity": "fix",
-    "problem": "利一原文是「無慮引敵」，意思是不必担心铁路把敌人引进来，不是“避敌”。中文“避敌”和英文 \"avoiding the enemy\" 都改变了原意，也与 story.1 的转述（“不至于引敌”/\"will not draw in an enemy\"）不一致。",
+    "problem": "中英文都称“传文所录未说明它与京通线的关系”，但议奏明确给出了所拟干路的起讫：自京外卢沟桥起，经河南，到汉口镇。这是另拟的干路，不是京通线。现写法与证据相反，也让读者无从知道议奏所论是哪条线。证据只说“河北”“自河以南”，没有写出“黄河”二字，改写时不应补入。",
     "evidence": [
      {
-      "id": "QSG4371-E9",
-      "quote": "內處腹地，無慮引敵，利一"
+      "id": "QSG4371-E22",
+      "quote": "今宜自京外盧溝橋起，經河南以達湖北漢口鎮。此幹路樞紐，中國大利所萃也"
+     },
+     {
+      "id": "QSG4371-E7",
+      "quote": "河北路成"
+     },
+     {
+      "id": "QSG4371-E8",
+      "quote": "自河以南"
      }
     ],
-    "proposed": "中文“避敌、避坟庐这两条”改为“不至引敌、坟庐易避这两条”；英文 \"avoiding the enemy and sparing graves and houses\" 改为 \"not drawing in the enemy and easily avoiding graves and houses\"。"
+    "proposed": "中文改为：他的议奏另拟一条干路，「自京外盧溝橋起，經河南以達湖北漢口鎮」，以河为界分南北两段，并非京通线。英文同步改为：The memorial proposes a separate trunk line, running from Lugou Bridge outside the capital through Henan to Hankou, divided by the river into northern and southern sections; it is not the Beijing-Tongzhou line."
    },
    {
     "id": "F2",
-    "path": "sections.today.0",
-    "category": "style",
-    "severity": "note",
-    "problem": "today.0 与 reflection.question 措辞重复，两处都有「把目标的优先级公开排出来」「写成可以逐条检验的清单」，读来像同一段话写了两遍。",
-    "evidence": [],
-    "proposed": "改写 today.0 或 reflection.question 中的一处措辞，避免逐字重复。"
+    "path": "sections.hook.0",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "开头一口气列出海军衙门、台谏、翁同龢、徐会沣四方主张。张之洞直到段末才以“本文传主”身份出现，读者读完不清楚他与这场争执的关系。翁同龢、徐会沣也只有名字，没有说明各自主张的立场。再加上 hook.1 原先没交代线路起讫，不了解背景的读者说不清“谁遇到了什么问题、为什么难”。",
+    "evidence": [
+     {
+      "id": "QSG4371-E3",
+      "quote": "會海軍衙門奏請修京通鐵路，臺諫爭陳鐵路之害，請停辦"
+     },
+     {
+      "id": "QSG4371-E18",
+      "quote": "翁同龢等請試修邊地，便用兵；徐會灃請改修德州濟寧路，利漕運"
+     }
+    ],
+    "proposed": "首句先点明：朝中就修不修铁路、修在哪里分成几派（修京通线、停办、改修边地、改修德济线），张之洞随后上议奏回应。再按“修京通—请停办—修边地以便用兵—修德济以利漕运”的顺序简列各方，各方只保留主张与理由，不补造身份。英文同步调整。"
    },
    {
     "id": "F3",
-    "path": "sections.hook.0",
-    "category": "style",
+    "path": "sections.story.6",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "中英文都说张之洞本传在准奏之后“只”记他奏开炼铁厂「資路用」（\"it goes on only to record his petition for an ironworks\"）。但本传后文还记有他「三十四年，督辦粵漢鐵路」。“只”字与证据不符。粤汉铁路与议奏所拟的卢沟桥至汉口干路名称不同，不应混为一谈。",
+    "evidence": [
+     {
+      "id": "QSG4371-E23",
+      "quote": "三十四年，督辦粵漢鐵路"
+     },
+     {
+      "id": "QSG4371-E22",
+      "quote": "今宜自京外盧溝橋起，經河南以達湖北漢口鎮"
+     }
+    ],
+    "proposed": "删去“只”。补一句：本传后文另记「三十四年，督辦粵漢鐵路」，那是粤汉铁路，并非议奏所拟自卢沟桥经河南至汉口的干路。英文同步修改。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.limits.2",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "与 F3 相同：限制段说本传“只在其后记他奏开炼铁厂「資路用」”（\"goes on only to record\"），漏掉了本传另记的督办粤汉铁路一事。",
+    "evidence": [
+     {
+      "id": "QSG4371-E23",
+      "quote": "三十四年，督辦粵漢鐵路"
+     }
+    ],
+    "proposed": "删去“只”。补充：本传另记「三十四年，督辦粵漢鐵路」，与议奏所拟线路不是同一条。英文同步修改。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.story.0",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "“不是独立核算过的数字”（\"not figures from any independent accounting\"）是证据之外的否定性断言。证据里七利是逐条的定性理由，并不是数字，传文也没有记任何测算。这样写会暗示这些“利”原本是数字，只是缺少第三方核查。",
+    "evidence": [
+     {
+      "id": "QSG4371-E19",
+      "quote": "有此七利，分段分年成之"
+     }
+    ],
+    "proposed": "中文改为：这组「利」是议奏自列的定性理由，传文未录任何测算。英文改为：These are qualitative reasons the memorial itself lists; the recorded text gives no quantities."
+   },
+   {
+    "id": "F6",
+    "path": "sections.limits.1",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "与 F5 相同：“不是独立核算过的数字”（\"not independently audited figures\"）是证据之外的否定性断言，而且暗示七利原本是数字。",
+    "evidence": [
+     {
+      "id": "QSG4371-E19",
+      "quote": "有此七利"
+     }
+    ],
+    "proposed": "中文改为：那组「利」是他自列的定性理由，传文未录任何测算，不能当作成本收益分析来读。英文同步修改。"
+   },
+   {
+    "id": "F7",
+    "path": "uncertainty_note",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "与 F5 相同：“非独立核算”（\"not independent figures\"）是证据之外的否定性断言。另外，本说明说张之洞本传未记工期等，却没有提到本传另记督办粤汉铁路，与 F3、F4 修改后的正文不一致。",
+    "evidence": [
+     {
+      "id": "QSG4371-E19",
+      "quote": "有此七利"
+     },
+     {
+      "id": "QSG4371-E23",
+      "quote": "三十四年，督辦粵漢鐵路"
+     }
+    ],
+    "proposed": "改为「「利」为定性理由，传文未录测算」。补一句：本传另记督办粤汉铁路，与议奏所拟线路不同。英文同步修改。"
+   },
+   {
+    "id": "F8",
+    "path": "sections.story.8",
+    "category": "interpretation_label",
+    "severity": "fix",
+    "problem": "“按「家不增一畝」这一限定，‘不问花费’不宜读作为私谋利”是作者从两处传文并列推出的结论，传文并没有这样说。中文接在“一种解释是”之后、隔了分号，标示不清。英文另起一句（\"should not be taken as spending for private gain\"），完全没有解释标签。",
+    "evidence": [
+     {
+      "id": "QSG4371-E17",
+      "quote": "務宏大，不問費多寡"
+     },
+     {
+      "id": "QSG4371-E21",
+      "quote": "任疆寄數十年，及卒，家不增一畝雲"
+     }
+    ],
+    "proposed": "中文改为：作者认为，结合「家不增一畝」，“不问花费”不宜读作为私谋利。英文改为：In the author's view, read with the qualifier about his family's land, ... should not be taken as spending for private gain."
+   },
+   {
+    "id": "F10",
+    "path": "dek",
+    "category": "readability",
     "severity": "note",
-    "problem": "英文 \"the censors and remonstrating officials - the Qing court's remonstrance officials\" 同义反复，括注没有增加信息。",
-    "evidence": [],
-    "proposed": "简化为 \"the censors (the court's remonstrance officials)\"。"
+    "problem": "导语只说“一条南北线路”，读者不知道线路起讫，后文与《王文韶传》京汉铁路的对照也就难以理解。证据给出了起讫。",
+    "evidence": [
+     {
+      "id": "QSG4371-E22",
+      "quote": "今宜自京外盧溝橋起，經河南以達湖北漢口鎮"
+     }
+    ],
+    "proposed": "把“一条南北线路”改为“一条自卢沟桥经河南至汉口的干路”。英文同步修改。"
    }
   ],
   "inherited": [
    {
-    "id": "P1",
+    "id": "X1",
     "verdict": "duplicate",
     "same_as": "F1",
-    "rationale": "问题成立：原文「無慮引敵」意为不必担心引来敌人，“避敌”属误译，已列为 F1。",
+    "rationale": "问题成立，已并入 F1。但建议中的“以黄河为界”超出证据，证据只说「河北路」「自河以南」，未写黄河，不宜采用该措辞。",
     "evidence": [
      {
-      "id": "QSG4371-E9",
-      "quote": "無慮引敵"
+      "id": "QSG4371-E22",
+      "quote": "今宜自京外盧溝橋起，經河南以達湖北漢口鎮"
      }
     ]
    },
    {
-    "id": "P2",
+    "id": "X2",
     "verdict": "duplicate",
-    "same_as": "F2",
-    "rationale": "两处确有逐字重复的短语，属文风问题，不涉史实，已列为 F2（note）。",
-    "evidence": []
+    "same_as": "F1",
+    "rationale": "英文同样声称传文未说明线路关系，与证据相反，已并入 F1。",
+    "evidence": [
+     {
+      "id": "QSG4371-E22",
+      "quote": "今宜自京外盧溝橋起，經河南以達湖北漢口鎮"
+     }
+    ]
+   },
+   {
+    "id": "X3",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "括注“传文未记台谏所指何害”是必要的限定，有证据支持：传文只记「爭陳鐵路之害」，没有列出具体哪些害。此处正在推测利一、利二是在回应“害”，删去括注会让推测显得有据。各段重复交代属于文风问题，不构成删除限定的理由。",
+    "evidence": [
+     {
+      "id": "QSG4371-E3",
+      "quote": "臺諫爭陳鐵路之害，請停辦"
+     }
+    ]
+   },
+   {
+    "id": "X4",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "理由同 X3。英文 though 从句是对推测的必要限定，有证据支持。",
+    "evidence": [
+     {
+      "id": "QSG4371-E3",
+      "quote": "臺諫爭陳鐵路之害，請停辦"
+     }
+    ]
+   },
+   {
+    "id": "X5",
+    "verdict": "duplicate",
+    "same_as": "F5",
+    "rationale": "问题成立，已并入 F5。",
+    "evidence": [
+     {
+      "id": "QSG4371-E19",
+      "quote": "有此七利，分段分年成之"
+     }
+    ]
+   },
+   {
+    "id": "X6",
+    "verdict": "duplicate",
+    "same_as": "F5",
+    "rationale": "英文同一问题，已并入 F5。",
+    "evidence": [
+     {
+      "id": "QSG4371-E19",
+      "quote": "有此七利"
+     }
+    ]
+   },
+   {
+    "id": "X7",
+    "verdict": "duplicate",
+    "same_as": "F6",
+    "rationale": "问题成立，已并入 F6。",
+    "evidence": [
+     {
+      "id": "QSG4371-E19",
+      "quote": "有此七利，分段分年成之"
+     }
+    ]
+   },
+   {
+    "id": "X8",
+    "verdict": "duplicate",
+    "same_as": "F6",
+    "rationale": "英文同一问题，已并入 F6。",
+    "evidence": [
+     {
+      "id": "QSG4371-E19",
+      "quote": "有此七利"
+     }
+    ]
+   },
+   {
+    "id": "X9",
+    "verdict": "duplicate",
+    "same_as": "F7",
+    "rationale": "问题成立，已并入 F7。",
+    "evidence": [
+     {
+      "id": "QSG4371-E19",
+      "quote": "有此七利"
+     }
+    ]
+   },
+   {
+    "id": "X10",
+    "verdict": "duplicate",
+    "same_as": "F7",
+    "rationale": "英文同一问题，已并入 F7。",
+    "evidence": [
+     {
+      "id": "QSG4371-E19",
+      "quote": "有此七利"
+     }
+    ]
+   },
+   {
+    "id": "X11",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "指出稿件未交代线路起讫、并误称传文未说明，与 F1 相同。",
+    "evidence": [
+     {
+      "id": "QSG4371-E22",
+      "quote": "此幹路樞紐，中國大利所萃也"
+     }
+    ]
+   },
+   {
+    "id": "X12",
+    "verdict": "duplicate",
+    "same_as": "F6",
+    "rationale": "指出“不是独立核算过的数字”暗示七利原为数字，与 F6 相同。",
+    "evidence": [
+     {
+      "id": "QSG4371-E19",
+      "quote": "有此七利，分段分年成之"
+     }
+    ]
+   },
+   {
+    "id": "X13",
+    "verdict": "valid",
+    "same_as": "",
+    "rationale": "按 E22、E23 复核后确有问题：线路起讫问题见 F1、F10；本传另记督办粤汉铁路、正文误写“只”记炼铁厂的问题见 F3、F4、F7。",
+    "evidence": [
+     {
+      "id": "QSG4371-E22",
+      "quote": "今宜自京外盧溝橋起"
+     },
+     {
+      "id": "QSG4371-E23",
+      "quote": "三十四年，督辦粵漢鐵路"
+     }
+    ]
    }
   ]
  },
- "final_content_sha256": "a69d8777d962e73c307e5173a996fb17efc9e0cfd384eced511afe4d03e21041",
+ "final_content_sha256": "7ce4bddd10cc98c055f2aee24497aac0d62d75530485cb182726b7c26cfba4be",
  "open_issues": [],
  "outcome": "admissible",
  "failure": null,
- "finished_at": 1793408614.0299485,
+ "finished_at": 1793437974.8925188,
  "calls": [
   {
    "step": "audit",
    "attempt": 1,
-   "wall_s": 58.8,
+   "wall_s": 98.0,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1712,15 +2644,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 13457,
-    "output_tokens": 6449
+    "cache_creation_input_tokens": 18496,
+    "output_tokens": 11219
    },
-   "cost_estimate_usd": 0.236644
+   "cost_estimate_usd": 0.372356
   },
   {
    "step": "revise_r1",
    "attempt": 1,
-   "wall_s": 6.8,
+   "wall_s": 63.4,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1728,15 +2660,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 12542,
-    "output_tokens": 781
+    "cache_creation_input_tokens": 17976,
+    "output_tokens": 8577
    },
-   "cost_estimate_usd": 0.115964
+   "cost_estimate_usd": 0.31535599999999997
   },
   {
    "step": "verify_r1",
    "attempt": 1,
-   "wall_s": 67.8,
+   "wall_s": 55.0,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1744,15 +2676,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 12265,
-    "output_tokens": 7604
+    "cache_creation_input_tokens": 15769,
+    "output_tokens": 6203
    },
-   "cost_estimate_usd": 0.250208
+   "cost_estimate_usd": 0.25022
   },
   {
    "step": "revise_r2",
    "attempt": 1,
-   "wall_s": 8.0,
+   "wall_s": 20.6,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1760,15 +2692,15 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 12340,
-    "output_tokens": 690
+    "cache_creation_input_tokens": 15846,
+    "output_tokens": 2308
    },
-   "cost_estimate_usd": 0.112528
+   "cost_estimate_usd": 0.172936
   },
   {
    "step": "verify_r2",
    "attempt": 1,
-   "wall_s": 47.2,
+   "wall_s": 60.8,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
@@ -1776,12 +2708,12 @@
    "tokens": {
     "input_tokens": 2,
     "cache_read_input_tokens": 0,
-    "cache_creation_input_tokens": 12238,
-    "output_tokens": 5608
+    "cache_creation_input_tokens": 15950,
+    "output_tokens": 6777
    },
-   "cost_estimate_usd": 0.210072
+   "cost_estimate_usd": 0.263148
   }
  ],
- "elapsed_min": 3.1,
- "model_wall_min": 3.1
+ "elapsed_min": 5.0,
+ "model_wall_min": 5.0
 }

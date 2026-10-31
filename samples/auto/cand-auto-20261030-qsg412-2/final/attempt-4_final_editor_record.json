@@ -1,0 +1,2611 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-auto-20261030-qsg412-2",
+ "edition_id": "cand-auto-20261030-qsg412-2",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "8645cae",
+ "started_at": 1793436101.7254283,
+ "base_source": "samples/auto/cand-auto-20261030-qsg412-2/final/article.json",
+ "base_content_sha256": "449aa788edc5a5677eac5b0a713828e6365621d4d10ec502423f8353886f2e82",
+ "evidence_sha256": "22db182bd270dad2d660f8b90221eeadec94562709903d2e5af603849e0bdc01",
+ "operator_note": null,
+ "model_record_sha256": null,
+ "prior_record_sha256": "06531de34184ed15356daf3151f0280c0b05287c0385a3f75d35db014301ff21",
+ "attempt": "attempt-4",
+ "context_review_sha256": null,
+ "inherited": [
+  {
+   "id": "O1",
+   "source": "operator request",
+   "where": "",
+   "problem": "中英信息对等与篇幅：中文正文明显比英文简略（中文约 2,030 字、约 6 分钟；英文约 2,005 词、约 10 分钟）。逐段对照英文，把英文已有、证据支持而中文省略的背景、经过与分析补进中文，使两种语言信息对等；可以从证据包补充有记录的背景（例如交涉的前因、条款争议、各方主张），但不得添加证据以外的事实、对话或心理。补足后若仍明显短于约十分钟，就保持短稿，不要注水。同时检查英文是否有拖沓重复之处，有则压缩，不删事实。",
+   "suggestion": null
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.hook.0",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "开头没有交代俄国已占伊犁、崇厚赴俄是为议还伊犁。不了解背景的读者读到“难处不在于要不要伊犁”时，不知道伊犁是什么、为何落在俄国手里、条约谈的是什么，也就说不清问题为何难。这些背景要到 context.0、context.3 才出现。",
+   "evidence": [
+    {
+     "id": "QSG4122-E2",
+     "quote": "俄以回數擾其邊境，遽引兵逐回，取伊犁"
+    },
+    {
+     "id": "QSG4122-E4",
+     "quote": "並請與俄議還伊犁、交叛人二事"
+    }
+   ],
+   "proposed": "在 hook.0 首句前补一句有据背景（中英同步），如：“俄国此前出兵占了伊犁；朝廷派全权大臣崇厚赴俄，议还伊犁。”其后接“崇厚遽定约……”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "在 hook.0 首句前补入有据背景：俄国出兵占伊犁，左宗棠请与俄议还伊犁，朝廷遣崇厚使俄。中英同步，ev 补入 E2、E4。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.hook.1",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "左宗棠首次出现时未说明身份及其与新疆事务的关系。“锦棠”只有名、无身份，读者不知是谁。“六年四月”未说明是原文年号纪年。",
+   "evidence": [
+    {
+     "id": "QSG4122-E17",
+     "quote": "宗棠以西事自任"
+    },
+    {
+     "id": "QSG4122-E12",
+     "quote": "錦棠經布魯特游牧為西路"
+    }
+   ],
+   "proposed": "左宗棠首次出现处写为“以西事自任的左宗棠”（英文同步）。锦棠写为“西路统兵的锦棠”。“六年四月”后加“（原文年号纪年）”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "左宗棠首次出现处写作“以西事自任的左宗棠”，锦棠写作“西路统兵的锦棠”，“六年四月”后注明为原文年号纪年。中英同步，ev 补入 E17。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.hook.1",
+   "category": "causality",
+   "severity": "fix",
+   "problem": "开头把“出屯哈密→入都→和议成、交还伊犁”连续排列，略去了崇厚得罪去、命曾纪泽使俄更前约一节。读者容易把左宗棠出兵读成和议成的原因，而证据只记先后。",
+   "evidence": [
+    {
+     "id": "QSG4122-E11",
+     "quote": "崇厚得罪去，命曾紀澤使俄，更前約"
+    }
+   ],
+   "proposed": "在“奏上获嘉许”后补“崇厚得罪去，朝廷命曾纪泽使俄改约”（英文同步），使改约交涉出现在和议成之前。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "在“奏上获嘉许”后补入崇厚得罪去、朝廷命曾纪泽使俄改约，使改约交涉出现在出屯与和议成之前，避免读者把出兵读成和议成的原因。中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.context.0",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "“帕夏”首次出现未说明是谁、与伊犁交涉有何关系，读者无从判断此人的角色。",
+   "evidence": [
+    {
+     "id": "QSG4122-E1",
+     "quote": "帕夏能屬役回眾"
+    }
+   ],
+   "proposed": "写为“传中所称的「帕夏」，能役使回众……”，并点明此句只交代英俄各自插手的背景。若与伊犁问题无直接关系，可后移，不放在开头。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "改为“传中所称的「帕夏」”，并加一句点明此处只交代英、俄各自插手的背景。中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.context.1",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "金顺首次出现未说明身份。读者不知他是左宗棠麾下统兵者（story.6 才写到他领东路）。",
+   "evidence": [
+    {
+     "id": "QSG4122-E16",
+     "quote": "金順請乘虛襲伊犁"
+    },
+    {
+     "id": "QSG4122-E12",
+     "quote": "以金順出精河為東路"
+    }
+   ],
+   "proposed": "改为“左宗棠部下统兵的金顺请求乘虚袭击伊犁”（英文同步）。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "金顺首次出现时写明为左宗棠部下统兵者，依据是其在部署中领东路。中英同步，ev 补入 E12。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F6",
+   "path": "sections.context.2",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“错过一次得手的机会”/“a chance of success”预设偷袭会成功。证据只记“乘虛襲伊犁”的请求，没有成败。",
+   "evidence": [
+    {
+     "id": "QSG4122-E16",
+     "quote": "金順請乘虛襲伊犁"
+    }
+   ],
+   "proposed": "改为“错过一次乘虚出兵的机会”/“let an opening to strike slip by”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "把“得手的机会”改为“乘虚出兵的机会”，英文改为“an opening to strike”，不再预设偷袭会成功。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F7",
+   "path": "sections.story.0",
+   "category": "style",
+   "severity": "note",
+   "problem": "“崇厚为朝士所纠……议久不决”在同段内重复两次，且与 hook.0 重复，中英文皆然。",
+   "evidence": [],
+   "proposed": "删去末句的重复叙述，保留“事情悬在半空”的结语。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F8",
+   "path": "sections.story.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "英文“concluded the treaty on the spot”中的“on the spot”证据无据，中文也没有对应内容。证据只有“遽”（仓促）。",
+   "evidence": [
+    {
+     "id": "QSG4122-E5",
+     "quote": "崇厚遽定約"
+    }
+   ],
+   "proposed": "删去“on the spot”，作“Chong Hou concluded the treaty, and quickly”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去证据无据的“on the spot”，改为“concluded the treaty, and quickly”，只保留“遽”所含的仓促之意。中文原无对应内容，无需改动。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F9",
+   "path": "sections.story.7",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "中文“宗棠輿櫬發肅州”是证据原文逐字照录，却没有加引号，与 hook.1 的引法不一致，读者分不清哪些是原文、哪些是转述。",
+   "evidence": [
+    {
+     "id": "QSG4122-E13",
+     "quote": "宗棠輿櫬發肅州"
+    }
+   ],
+   "proposed": "改为“六年四月，左宗棠「輿櫬發肅州」，五月抵哈密”，或改用白话转述。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文改为“左宗棠「輿櫬發肅州」”，用「」标出逐字原文，与 hook.1 的引法一致。英文同步给出全文，内容不变。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F10",
+   "path": "sections.story.8",
+   "category": "causality",
+   "severity": "fix",
+   "problem": "“从一道奏疏到一纸和约，中间隔着数次调动、增兵与告警”把奏疏与和约写成一条链，略去了曾纪泽使俄改约这一交涉环节，暗示和约由奏疏与军事调动促成。",
+   "evidence": [
+    {
+     "id": "QSG4122-E11",
+     "quote": "命曾紀澤使俄，更前約"
+    }
+   ],
+   "proposed": "改为“从一道奏疏到一纸和约，中间有曾纪泽使俄改约，也有数次调动、增兵与告警”（英文同步）。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "在奏疏到和约之间补入曾纪泽使俄改约这一交涉环节，不再暗示和约仅由奏疏与军事调动促成。中英同步，ev 补入 E11。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F11",
+   "path": "sections.analysis.1",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "借款五百万与“出塞凡二十月，新疆南北城尽复”记的是西征之初及收复新疆，时间在伊犁交涉之前。正文却直接拿来说明伊犁奏疏中“堅忍而求勝”背后的运道饷项，未交代时间差，读者会以为这些钱粮用于伊犁对峙。",
+   "evidence": [
+    {
+     "id": "QSG4122-E17",
+     "quote": "始西征"
+    },
+    {
+     "id": "QSG4122-E18",
+     "quote": "出塞凡二十月"
+    },
+    {
+     "id": "QSG4122-E10",
+     "quote": "堅忍而求勝"
+    }
+   ],
+   "proposed": "写明“这是更早西征收复新疆时的事”。作者推断改为“一种解释是，此前西征靠馈运饶给成事，提出‘堅忍而求勝’时可以此为凭”，不把两者写成同一时期。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "写明借款与出塞二十月是更早西征收复新疆时的事。作者推断收窄为：此前西征靠馈运成事，可作提出「堅忍而求勝」时的凭据。同时注明材料未记伊犁对峙时的钱粮，并删去无据的“只是姿态”一句。中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F12",
+   "path": "sections.analysis.1",
+   "category": "readability",
+   "severity": "note",
+   "problem": "“拨款五百万、借债五百万”未说明单位（原文未载），读者可能与上文卢布五百万元混淆。limits.1 照录数字清单也漏了这两个数。",
+   "evidence": [
+    {
+     "id": "QSG4122-E17",
+     "quote": "為撥款五百萬，敕自借外國債五百萬"
+    }
+   ],
+   "proposed": "注明“原文未载单位”，并把这两个数字补入 limits.1 的照录清单。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F13",
+   "path": "sections.story.7",
+   "category": "readability",
+   "severity": "note",
+   "problem": "中文正文对左宗棠在“左宗棠”与“宗棠”之间交替称呼（hook.1、story.7、story.8），简称不稳定。",
+   "evidence": [],
+   "proposed": "首次全名后统一用“左宗棠”或“左”，引语内保留原文“宗棠”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "O1",
+   "path": "",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "中英信息对等与篇幅：中文正文明显比英文简略（中文约 2,030 字、约 6 分钟；英文约 2,005 词、约 10 分钟）。逐段对照英文，把英文已有、证据支持而中文省略的背景、经过与分析补进中文，使两种语言信息对等；可以从证据包补充有记录的背景（例如交涉的前因、条款争议、各方主张），但不得添加证据以外的事实、对话或心理。补足后若仍明显短于约十分钟，就保持短稿，不要注水。同时检查英文是否有拖沓重复之处，有则压缩，不删事实。",
+   "origin": "inherited operator request None",
+   "disposition": "rejected",
+   "rationale": "逐段对照后，中英文在事实、数字、人名、保留意见上基本对等，未发现英文有而中文缺的有据内容。篇幅差异是中文字数与英文词数不可直接比较造成的，不是信息缺失。从证据包补写背景以“对齐篇幅”会造成注水，也无必要。开头确需补的背景已在 F1 中按易读性要求列出。英文的重复之处中英两版同样存在，已列为 F7（style note），英文 “on the spot” 的冗余与无据之处列为 F8。",
+   "evidence": [
+    {
+     "id": "QSG4122-E11",
+     "quote": "命曾紀澤使俄，更前約"
+    },
+    {
+     "id": "QSG4122-E5",
+     "quote": "崇厚遽定約，為朝士所糾，議久不決"
+    }
+   ],
+   "decided_in": "audit"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.hook.0",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "开头第一句就让左宗棠出场，但没有交代他的身份，也没有说明他与伊犁、新疆的关系。同一段也没说伊犁在新疆。不了解背景的读者说不清为什么由他来请议还伊犁。",
+   "evidence": [
+    {
+     "id": "QSG4122-E4",
+     "quote": "條上新疆建行省事宜，並請與俄議還伊犁"
+    },
+    {
+     "id": "QSG4122-E6",
+     "quote": "自俄踞伊犁，蠶食不已，新疆乃有日蹙百里之勢"
+    },
+    {
+     "id": "QSG4122-E12",
+     "quote": "宗棠乃自請出屯哈密，規复伊犁"
+    }
+   ],
+   "proposed": "中文改为：「俄国此前出兵占了新疆的伊犁；统兵经营新疆的左宗棠请与俄议还伊犁……」。英文同步改为：\"Russia had earlier sent troops in and seized Ili, in Xinjiang. Zuo Zongtang, the commander in charge of Xinjiang affairs, asked…\"。不要补写史源未载的官衔。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "在开头点明伊犁在新疆，并交代左宗棠以西事自任、统兵经营新疆，说明为什么由他请议还伊犁；没有补写官衔。中英文同步修改，ev 增补 E6、E17、E18。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V2",
+   "path": "sections.context.0",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "「帕夏」第一次出现时没有说明他是谁、与伊犁之事有何关系，读者在开头就多了一个来历不明的人物。",
+   "evidence": [
+    {
+     "id": "QSG4122-E1",
+     "quote": "帕夏能屬役回眾，通使結援英、俄，購兵械自備"
+    }
+   ],
+   "proposed": "中文改为：「传中所称的「帕夏」，是当地一位能役使回众的首领（原文未载其名），他通使结援英、俄……」。英文同步改为：\"the figure the biography calls the Pasha, a local leader who could command the Muslim population (the source gives no name)…\"。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "首次出现时说明「帕夏」是一位能役使回众的首领。没有采用建议中的“当地”和“原文未载其名”：前者证据不支持；后者无法确证，因为传全文可能记有其名。改为“本文所据材料未录其名，也未写明他与伊犁之事的直接关系”。中英文同步修改。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V2-V1",
+   "path": "sections.hook.1",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "锦棠在原文中只出现名、不出现姓，稿中直接写“锦棠”。英文中“Jintang”与东路统兵的“Jin Shun”（金顺）读起来像同姓，story.6 两人并列时更难分清；中文读者也看不出“锦棠”只是名。",
+   "evidence": [
+    {
+     "id": "QSG4122-E12",
+     "quote": "以金順出精河為東路，張曜沿特克斯河為中路，錦棠經布魯特游牧為西路"
+    },
+    {
+     "id": "QSG4122-E15",
+     "quote": "以錦棠代之"
+    }
+   ],
+   "proposed": "首次出现时（hook.1）写作 zh“锦棠（原文只称其名）”、en“Jintang (the source gives only his given name; not to be confused with Jin Shun)”，之后在 story.6、story.8 统一沿用此称呼。不补外部姓氏。",
+   "origin": "final-editor verify round 2"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.hook.0.zh",
+   "before": "全权大臣崇厚使俄，谈成一份条约；崇厚为朝士所纠，议了很久，议不出结果。作者的一种解释是：难处不在于要不要伊犁，而在于约已经签了；认账，是失地失利权在先；翻案，得有人去谈，还得有让对方重新坐下来的筹码。",
+   "after": "俄国此前出兵占了伊犁；左宗棠请与俄议还伊犁，朝廷诏遣全权大臣崇厚使俄，谈成一份条约。崇厚为朝士所纠，议了很久，议不出结果。作者的一种解释是：难处不在于要不要伊犁，而在于约已经签了；认账，是失地失利权在先；翻案，得有人去谈，还得有让对方重新坐下来的筹码。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.hook.0.en",
+   "before": "Chong Hou, a plenipotentiary envoy sent to Russia, concluded a treaty. Chong Hou was censured by court officials, and the debate dragged on toward no conclusion. One reading, the author's, is that the trouble was never whether Ili mattered, but that the treaty had already been signed. Accept it, and the lost territory and compromised rights stood as a fait accompli. Repudiate it, and someone had to go back to the table carrying enough leverage to make the other side sit down again.",
+   "after": "Russia had earlier sent troops in and seized Ili. Zuo Zongtang asked that the return of Ili be negotiated with Russia, and the court sent Chong Hou, a plenipotentiary envoy, to Russia, where he concluded a treaty. Chong Hou was censured by court officials, and the debate dragged on toward no conclusion. One reading, the author's, is that the trouble was never whether Ili mattered, but that the treaty had already been signed. Accept it, and the lost territory and compromised rights stood as a fait accompli. Repudiate it, and someone had to go back to the table carrying enough leverage to make the other side sit down again.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.hook.0.ev",
+   "before": [
+    "QSG4122-E5",
+    "QSG4122-E11"
+   ],
+   "after": [
+    "QSG4122-E2",
+    "QSG4122-E4",
+    "QSG4122-E5",
+    "QSG4122-E11"
+   ],
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.hook.1.zh",
+   "before": "僵局之中，左宗棠上奏，逐条点出哪几处不可许，主张「先之以議論，委婉而用機，次決之以戰陣，堅忍而求勝」。奏上获嘉许，他于是自请出屯哈密。六年四月，他「輿櫬發肅州」，五月抵哈密。七月，他奉诏入都备顾问，由锦棠接替。明年正月，和议成，交还伊犁。",
+   "after": "僵局之中，以西事自任的左宗棠上奏，逐条点出哪几处不可许，主张「先之以議論，委婉而用機，次決之以戰陣，堅忍而求勝」。奏上获嘉许，崇厚得罪去，朝廷命曾纪泽使俄改约；他于是自请出屯哈密。六年四月（原文年号纪年），他「輿櫬發肅州」，五月抵哈密。七月，他奉诏入都备顾问，由西路统兵的锦棠接替。明年正月，和议成，交还伊犁。",
+   "issues": [
+    "F2",
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "Into that deadlock stepped Zuo Zongtang with a memorial. Item by item he named the terms that must not be accepted, and argued that one should \"first take the matter up in negotiation, tactful and alert to opportunity, then settle it on the field of battle, patient and set on victory.\" The throne commended it, and he then asked leave to move his headquarters to Hami. In the fourth month of the sixth year he \"set out from Suzhou with a coffin in his carriage,\" and reached Hami in the fifth month. In the seventh month he was summoned to the capital and Jintang took his place. In the first month of the following year, peace was concluded and Ili was returned.",
+   "after": "Into that deadlock stepped Zuo Zongtang, who had taken the western affairs upon himself, with a memorial. Item by item he named the terms that must not be accepted, and argued that one should \"first take the matter up in negotiation, tactful and alert to opportunity, then settle it on the field of battle, patient and set on victory.\" The throne commended it; Chong Hou was punished and dismissed, and the court sent Zeng Jize to Russia to revise the treaty. Zuo then asked leave to move his headquarters to Hami. In the fourth month of the sixth year (by the reign-year count used in the source) he \"set out from Suzhou with a coffin in his carriage,\" and reached Hami in the fifth month. In the seventh month he was summoned to the capital and Jintang, who led the western column, took his place. In the first month of the following year, peace was concluded and Ili was returned.",
+   "issues": [
+    "F2",
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.hook.1.ev",
+   "before": [
+    "QSG4122-E10",
+    "QSG4122-E11",
+    "QSG4122-E12",
+    "QSG4122-E13",
+    "QSG4122-E15"
+   ],
+   "after": [
+    "QSG4122-E10",
+    "QSG4122-E11",
+    "QSG4122-E12",
+    "QSG4122-E13",
+    "QSG4122-E15",
+    "QSG4122-E17"
+   ],
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.context.0.zh",
+   "before": "先看这份奏疏落在什么样的局面里。帕夏能役使回众，通使结援英、俄，购买兵械自备；英人暗中相助，想让他别立一国，用以屏障俄国。俄方则因回众屡扰其边境，出兵逐回，占了伊犁，还说要代取乌鲁木齐。",
+   "after": "先看这份奏疏落在什么样的局面里。传中所称的「帕夏」，能役使回众，通使结援英、俄，购买兵械自备；英人暗中相助，想让他别立一国，用以屏障俄国。这一句只交代英、俄各自插手的背景。俄方则因回众屡扰其边境，出兵逐回，占了伊犁，还说要代取乌鲁木齐。",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.context.0.en",
+   "before": "Start with the situation the memorial landed in. The Pasha could command the Muslim population, sent envoys to seek support from Britain and Russia, and bought weapons to arm his own forces. The British backed him quietly, hoping to see him set up a separate state that would stand as a shield against Russia. Russia, for its part, because Muslim raiders repeatedly harassed its border, sent troops to drive them out, seized Ili, and announced that it would go on to take Urumqi on China's behalf.",
+   "after": "Start with the situation the memorial landed in. The figure the biography calls the Pasha could command the Muslim population, sent envoys to seek support from Britain and Russia, and bought weapons to arm his own forces. The British backed him quietly, hoping to see him set up a separate state that would stand as a shield against Russia. This line serves only to show how Britain and Russia each had a hand in the region. Russia, for its part, because Muslim raiders repeatedly harassed its border, sent troops to drive them out, seized Ili, and announced that it would go on to take Urumqi on China's behalf.",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.context.1.zh",
+   "before": "其时有伊犁之变，朝廷诏左宗棠分兵屯肃州，他遣徐占彪带六千人前往。传中另记一事：俄方与土耳其交战时，金顺请求乘虚袭击伊犁，左宗棠不许，说「不可。師不以正，彼有辭矣」。",
+   "after": "其时有伊犁之变，朝廷诏左宗棠分兵屯肃州，他遣徐占彪带六千人前往。传中另记一事：俄方与土耳其交战时，左宗棠部下统兵的金顺请求乘虚袭击伊犁，左宗棠不许，说「不可。師不以正，彼有辭矣」。",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.context.1.en",
+   "before": "At the time of the Ili crisis, the court ordered Zuo Zongtang to detach troops to garrison Suzhou, and he sent Xu Zhanbiao with six thousand men. The biography records a separate episode: when Russia was at war with Turkey, Jin Shun asked to exploit the opening and strike Ili. Zuo refused: \"No. If our army does not act from a position of right, we hand them their excuse.\"",
+   "after": "At the time of the Ili crisis, the court ordered Zuo Zongtang to detach troops to garrison Suzhou, and he sent Xu Zhanbiao with six thousand men. The biography records a separate episode: when Russia was at war with Turkey, Jin Shun, one of the commanders under Zuo, asked to exploit the opening and strike Ili. Zuo refused: \"No. If our army does not act from a position of right, we hand them their excuse.\"",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.context.1.ev",
+   "before": [
+    "QSG4122-E3",
+    "QSG4122-E16"
+   ],
+   "after": [
+    "QSG4122-E3",
+    "QSG4122-E16",
+    "QSG4122-E12"
+   ],
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.context.2.zh",
+   "before": "一种解释是，他宁可错过一次得手的机会，也不让对方事后找到说辞。至于他当时怎么权衡，本文所据材料只录了这一句，不作推测。",
+   "after": "一种解释是，他宁可错过一次乘虚出兵的机会，也不让对方事后找到说辞。至于他当时怎么权衡，本文所据材料只录了这一句，不作推测。",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.context.2.en",
+   "before": "One reading of it is that he would rather let a chance of success slip by than give the other side a justification to use afterward. As for how he weighed the decision, the material used here gives only this line, and we do not speculate beyond it.",
+   "after": "One reading of it is that he would rather let an opening to strike slip by than give the other side a justification to use afterward. As for how he weighed the decision, the material used here gives only this line, and we do not speculate beyond it.",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.story.0.en",
+   "before": "The Russian side laid out three heads of demand: trade, borders, and indemnity. Chong Hou concluded the treaty on the spot, and he moved fast — the history reaches for one blunt word: \"Chong Hou hastily concluded the treaty.\" Chong Hou was then censured by court officials, and the debate went on without decision. The treaty had been signed, yet Chong Hou had been censured and the debate stalled; the whole affair hung in mid-air.",
+   "after": "The Russian side laid out three heads of demand: trade, borders, and indemnity. Chong Hou concluded the treaty, and quickly — the history reaches for one blunt word: \"Chong Hou hastily concluded the treaty.\" Chong Hou was then censured by court officials, and the debate went on without decision. The treaty had been signed, yet Chong Hou had been censured and the debate stalled; the whole affair hung in mid-air.",
+   "issues": [
+    "F8"
+   ]
+  },
+  {
+   "path": "sections.story.7.zh",
+   "before": "六年四月，宗棠輿櫬發肅州，五月抵哈密。俄方闻王师大出，增兵守伊犁、纳林河，另派兵船在海上出没，用以震撼京师，天津、奉天、山东同时告警。谈判桌之外，两边都在调动。",
+   "after": "六年四月，左宗棠「輿櫬發肅州」，五月抵哈密。俄方闻王师大出，增兵守伊犁、纳林河，另派兵船在海上出没，用以震撼京师，天津、奉天、山东同时告警。谈判桌之外，两边都在调动。",
+   "issues": [
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.story.8.zh",
+   "before": "七月，朝廷诏宗棠入都备顾问，以锦棠代之。明年正月，和议成，交还伊犁，防海军皆罢。从一道奏疏到一纸和约，中间隔着数次调动、增兵与告警，最后落在文书上。",
+   "after": "七月，朝廷诏宗棠入都备顾问，以锦棠代之。明年正月，和议成，交还伊犁，防海军皆罢。从一道奏疏到一纸和约，中间有曾纪泽使俄改约，也有数次调动、增兵与告警，最后落在文书上。",
+   "issues": [
+    "F10"
+   ]
+  },
+  {
+   "path": "sections.story.8.en",
+   "before": "In the seventh month the court summoned Zuo to the capital as an adviser and put Jintang in his place. In the first month of the following year, peace was concluded, Ili was handed back, and the coastal defenses were stood down. Between one memorial and one treaty lay several troop movements, reinforcements, and alarms — and in the end it all came to rest on paper.",
+   "after": "In the seventh month the court summoned Zuo to the capital as an adviser and put Jintang in his place. In the first month of the following year, peace was concluded, Ili was handed back, and the coastal defenses were stood down. Between one memorial and one treaty lay Zeng Jize's mission to Russia to revise the treaty, as well as several troop movements, reinforcements, and alarms — and in the end it all came to rest on paper.",
+   "issues": [
+    "F10"
+   ]
+  },
+  {
+   "path": "sections.story.8.ev",
+   "before": [
+    "QSG4122-E15"
+   ],
+   "after": [
+    "QSG4122-E15",
+    "QSG4122-E11"
+   ],
+   "issues": [
+    "F10"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.zh",
+   "before": "另一层容易被忽略的是钱粮。西征之初，左宗棠请借外债，诏拨款五百万、敕自借外国债五百万；史书说，出塞凡二十月，新疆南北城尽复，是馈运饶给之力。作者推断，「堅忍而求勝」一句背后是运道与饷项，没有这些，战阵那一步只是姿态。",
+   "after": "另一层容易被忽略的是钱粮，不过这是更早西征收复新疆时的事。西征之初，左宗棠请借外债，诏拨款五百万、敕自借外国债五百万；史书说，出塞凡二十月，新疆南北城尽复，是馈运饶给之力。一种解释是，此前西征靠馈运饶给成事，提出「堅忍而求勝」时可以此为凭。本文所据材料未记伊犁对峙时的钱粮，不能把两者写成同一时期。",
+   "issues": [
+    "F11"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.en",
+   "before": "The layer easily missed is money and grain. At the outset of the western expedition, Zuo asked to borrow from abroad; the court allotted five million and directed him to raise a further five million as a foreign loan. The history says that in twenty months beyond the passes, the cities of northern and southern Xinjiang were all recovered — and that it was the abundance of supply transport that accomplished it. The author's inference: behind those words about being \"patient and set on victory\" lay supply routes and payrolls. Without them, the second step was only a posture.",
+   "after": "The layer easily missed is money and grain — though this belongs to the earlier western expedition that recovered Xinjiang. At the outset of that expedition, Zuo asked to borrow from abroad; the court allotted five million and directed him to raise a further five million as a foreign loan. The history says that in twenty months beyond the passes, the cities of northern and southern Xinjiang were all recovered — and that it was the abundance of supply transport that accomplished it. One reading is that the earlier campaign had succeeded on the strength of its supply, and that this record stood behind the call to be \"patient and set on victory.\" The material used here says nothing about supply during the Ili standoff, so the two should not be treated as the same period.",
+   "issues": [
+    "F11"
+   ]
+  },
+  {
+   "path": "sections.hook.0.zh",
+   "before": "俄国此前出兵占了伊犁；左宗棠请与俄议还伊犁，朝廷诏遣全权大臣崇厚使俄，谈成一份条约。崇厚为朝士所纠，议了很久，议不出结果。作者的一种解释是：难处不在于要不要伊犁，而在于约已经签了；认账，是失地失利权在先；翻案，得有人去谈，还得有让对方重新坐下来的筹码。",
+   "after": "俄国此前出兵占了新疆的伊犁；以西事自任、统兵经营新疆的左宗棠请与俄议还伊犁，朝廷诏遣全权大臣崇厚使俄，谈成一份条约。崇厚为朝士所纠，议了很久，议不出结果。作者的一种解释是：难处不在于要不要伊犁，而在于约已经签了；认账，是失地失利权在先；翻案，得有人去谈，还得有让对方重新坐下来的筹码。",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.hook.0.en",
+   "before": "Russia had earlier sent troops in and seized Ili. Zuo Zongtang asked that the return of Ili be negotiated with Russia, and the court sent Chong Hou, a plenipotentiary envoy, to Russia, where he concluded a treaty. Chong Hou was censured by court officials, and the debate dragged on toward no conclusion. One reading, the author's, is that the trouble was never whether Ili mattered, but that the treaty had already been signed. Accept it, and the lost territory and compromised rights stood as a fait accompli. Repudiate it, and someone had to go back to the table carrying enough leverage to make the other side sit down again.",
+   "after": "Russia had earlier sent troops in and seized Ili, in Xinjiang. Zuo Zongtang, who had taken the western affairs upon himself and led the campaign in Xinjiang, asked that the return of Ili be negotiated with Russia, and the court sent Chong Hou, a plenipotentiary envoy, to Russia, where he concluded a treaty. Chong Hou was censured by court officials, and the debate dragged on toward no conclusion. One reading, the author's, is that the trouble was never whether Ili mattered, but that the treaty had already been signed. Accept it, and the lost territory and compromised rights stood as a fait accompli. Repudiate it, and someone had to go back to the table carrying enough leverage to make the other side sit down again.",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.hook.0.ev",
+   "before": [
+    "QSG4122-E2",
+    "QSG4122-E4",
+    "QSG4122-E5",
+    "QSG4122-E11"
+   ],
+   "after": [
+    "QSG4122-E2",
+    "QSG4122-E4",
+    "QSG4122-E5",
+    "QSG4122-E6",
+    "QSG4122-E11",
+    "QSG4122-E17",
+    "QSG4122-E18"
+   ],
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.context.0.zh",
+   "before": "先看这份奏疏落在什么样的局面里。传中所称的「帕夏」，能役使回众，通使结援英、俄，购买兵械自备；英人暗中相助，想让他别立一国，用以屏障俄国。这一句只交代英、俄各自插手的背景。俄方则因回众屡扰其边境，出兵逐回，占了伊犁，还说要代取乌鲁木齐。",
+   "after": "先看这份奏疏落在什么样的局面里。传中所称的「帕夏」，是一位能役使回众的首领，他通使结援英、俄，购买兵械自备；英人暗中相助，想让他别立一国，用以屏障俄国。本文所据材料未录其名，也未写明他与伊犁之事的直接关系；这一句只交代英、俄各自插手的背景。俄方则因回众屡扰其边境，出兵逐回，占了伊犁，还说要代取乌鲁木齐。",
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.context.0.en",
+   "before": "Start with the situation the memorial landed in. The figure the biography calls the Pasha could command the Muslim population, sent envoys to seek support from Britain and Russia, and bought weapons to arm his own forces. The British backed him quietly, hoping to see him set up a separate state that would stand as a shield against Russia. This line serves only to show how Britain and Russia each had a hand in the region. Russia, for its part, because Muslim raiders repeatedly harassed its border, sent troops to drive them out, seized Ili, and announced that it would go on to take Urumqi on China's behalf.",
+   "after": "Start with the situation the memorial landed in. The figure the biography calls the Pasha was a leader who could command the Muslim population; he sent envoys to seek support from Britain and Russia, and bought weapons to arm his own forces. The British backed him quietly, hoping to see him set up a separate state that would stand as a shield against Russia. The material used here does not give his name or spell out his direct connection to the Ili affair; this line serves only to show how Britain and Russia each had a hand in the region. Russia, for its part, because Muslim raiders repeatedly harassed its border, sent troops to drive them out, seized Ili, and announced that it would go on to take Urumqi on China's behalf.",
+   "issues": [
+    "V1-V2"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F8",
+    "F9",
+    "F10",
+    "F11"
+   ],
+   "changes_applied": 20,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[1] numbers differ zh[5000000] en[100]"
+    ],
+    [
+     "CHECK",
+     "analysis[1] numbers differ zh[20, 5000000] en[20]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[20, 40000, 5000000] en[20, 40000]"
+    ]
+   ],
+   "content_sha256_after": "c19ac77f3674339e29a3932446098e8b54a60d00e422f4685bb987ba35dd6de4",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V7"
+      ]
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V6"
+      ]
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.0",
+      "category": "readability",
+      "severity": "fix",
+      "problem": "开头第一句就让左宗棠出场，但没有交代他的身份，也没有说明他与伊犁、新疆的关系。同一段也没说伊犁在新疆。不了解背景的读者说不清为什么由他来请议还伊犁。",
+      "evidence": [
+       {
+        "id": "QSG4122-E4",
+        "quote": "條上新疆建行省事宜，並請與俄議還伊犁"
+       },
+       {
+        "id": "QSG4122-E6",
+        "quote": "自俄踞伊犁，蠶食不已，新疆乃有日蹙百里之勢"
+       },
+       {
+        "id": "QSG4122-E12",
+        "quote": "宗棠乃自請出屯哈密，規复伊犁"
+       }
+      ],
+      "proposed": "中文改为：「俄国此前出兵占了新疆的伊犁；统兵经营新疆的左宗棠请与俄议还伊犁……」。英文同步改为：\"Russia had earlier sent troops in and seized Ili, in Xinjiang. Zuo Zongtang, the commander in charge of Xinjiang affairs, asked…\"。不要补写史源未载的官衔。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.context.0",
+      "category": "readability",
+      "severity": "fix",
+      "problem": "「帕夏」第一次出现时没有说明他是谁、与伊犁之事有何关系，读者在开头就多了一个来历不明的人物。",
+      "evidence": [
+       {
+        "id": "QSG4122-E1",
+        "quote": "帕夏能屬役回眾，通使結援英、俄，購兵械自備"
+       }
+      ],
+      "proposed": "中文改为：「传中所称的「帕夏」，是当地一位能役使回众的首领（原文未载其名），他通使结援英、俄……」。英文同步改为：\"the figure the biography calls the Pasha, a local leader who could command the Muslim population (the source gives no name)…\"。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.hook.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "开头连排了六年四月、五月、七月、明年正月四个时间点，年号又没有点明，读者还用不上这些信息。「锦棠」只出现名、不带姓，像是另一位新人物。英文Suzhou容易与苏州混淆。",
+      "evidence": [
+       {
+        "id": "QSG4122-E13",
+        "quote": "六年四月，宗棠輿櫬發肅州，五月，抵哈密"
+       },
+       {
+        "id": "QSG4122-E15",
+        "quote": "以錦棠代之"
+       }
+      ],
+      "proposed": "hook只保留「出屯哈密、后奉召入都、次年和议成、交还伊犁」的骨架，具体月份留在story.7和story.8。「锦棠」首次出现时注明「原文只称其名」。英文首次出现时写作 Suzhou (Suzhou in Gansu, not the eastern city)。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.story.8",
+      "category": "readability",
+      "severity": "note",
+      "problem": "中文这里写「宗棠」，全文其他地方都写「左宗棠」，称呼不统一。",
+      "evidence": [
+       {
+        "id": "QSG4122-E15",
+        "quote": "詔宗棠入都備顧問"
+       }
+      ],
+      "proposed": "改为「朝廷诏左宗棠入都备顾问」。"
+     },
+     {
+      "id": "V5",
+      "path": "sections.analysis.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "「五百万」没有单位，读者不知道比较的是什么。原文的单位也未明（诏中称「千萬金」）。",
+      "evidence": [
+       {
+        "id": "QSG4122-E17",
+        "quote": "國家何惜千萬金。為撥款五百萬，敕自借外國債五百萬"
+       }
+      ],
+      "proposed": "补一句「原文未注单位，诏中合称「千萬金」」，中英文同步。"
+     },
+     {
+      "id": "V6",
+      "path": "sections.story.3",
+      "category": "style",
+      "severity": "note",
+      "problem": "「想「欲藉通商深入腹地」」中，「想」与引文里的「欲」意思重复。",
+      "evidence": [
+       {
+        "id": "QSG4122-E8",
+        "quote": "欲藉通商深入腹地"
+       }
+      ],
+      "proposed": "改为「俄国政府广设领事，奏中称其「欲藉通商深入腹地」」。"
+     },
+     {
+      "id": "V7",
+      "path": "sections.story.0",
+      "category": "style",
+      "severity": "note",
+      "problem": "「崇厚为朝士所纠、议久不决」在同一段里重复说了两遍。",
+      "evidence": [
+       {
+        "id": "QSG4122-E5",
+        "quote": "為朝士所糾，議久不決"
+       }
+      ],
+      "proposed": "删去末句的重复部分，只保留「条约已签，事情悬在半空」。英文同步删减。"
+     }
+    ],
+    "overall": "事实、引文、编年、因果与中英对应均有证据支持，可以放行。但开头需要交代左宗棠的身份和伊犁所在，并说明「帕夏」是谁（两处readability/fix），其余为易读性与文风小改。",
+    "_content_sha256": "c19ac77f3674339e29a3932446098e8b54a60d00e422f4685bb987ba35dd6de4"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1",
+    "V1-V2"
+   ],
+   "changes_applied": 5,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[1] numbers differ zh[5000000] en[100]"
+    ],
+    [
+     "CHECK",
+     "analysis[1] numbers differ zh[20, 5000000] en[20]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[20, 40000, 5000000] en[20, 40000]"
+    ]
+   ],
+   "content_sha256_after": "bf32165812ce5a8a3b089bb2b80b942063eb8381e68d36c5ab2e4617c061f5c2",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1",
+       "V5"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V6"
+      ]
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.1",
+      "category": "readability",
+      "severity": "fix",
+      "problem": "锦棠在原文中只出现名、不出现姓，稿中直接写“锦棠”。英文中“Jintang”与东路统兵的“Jin Shun”（金顺）读起来像同姓，story.6 两人并列时更难分清；中文读者也看不出“锦棠”只是名。",
+      "evidence": [
+       {
+        "id": "QSG4122-E12",
+        "quote": "以金順出精河為東路，張曜沿特克斯河為中路，錦棠經布魯特游牧為西路"
+       },
+       {
+        "id": "QSG4122-E15",
+        "quote": "以錦棠代之"
+       }
+      ],
+      "proposed": "首次出现时（hook.1）写作 zh“锦棠（原文只称其名）”、en“Jintang (the source gives only his given name; not to be confused with Jin Shun)”，之后在 story.6、story.8 统一沿用此称呼。不补外部姓氏。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.context.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "英文“Suzhou”（肃州）首次出现时没有说明，英文读者容易误认为江苏的苏州。",
+      "evidence": [
+       {
+        "id": "QSG4122-E3",
+        "quote": "詔宗棠分兵屯肅州"
+       }
+      ],
+      "proposed": "en 首次出现处改为“the garrison town of Suzhou (肃州)”，hook.1、story.7 沿用 Suzhou。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.story.8",
+      "category": "readability",
+      "severity": "note",
+      "problem": "中文其余各处都称“左宗棠”，此处改用“宗棠”，同一人的称呼不一致。",
+      "evidence": [
+       {
+        "id": "QSG4122-E15",
+        "quote": "七月，詔宗棠入都備顧問"
+       }
+      ],
+      "proposed": "改为“朝廷诏左宗棠入都备顾问”。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.context.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "context 开头先写一位稿件自己也说与伊犁之事关系不明的“帕夏”。读者在理解局面时用不上这条信息，反而推迟了“俄占伊犁”这一关键背景。",
+      "evidence": [
+       {
+        "id": "QSG4122-E1",
+        "quote": "英人陰助之，欲令別立為國，用捍蔽俄"
+       },
+       {
+        "id": "QSG4122-E2",
+        "quote": "遽引兵逐回，取伊犁"
+       }
+      ],
+      "proposed": "把“俄方出兵逐回、占伊犁、言将代取乌鲁木齐”移到段首，帕夏一句压缩后放在段末作为补充背景，保留“材料未写明其与伊犁之事的关系”这一限定。"
+     },
+     {
+      "id": "V5",
+      "path": "sections.hook.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "开头连续堆了四月、五月、七月、明年正月四个时间点，“六年”还没有说明是哪个年号。读者在这时用不上这些时间，开头显得拥挤。",
+      "evidence": [
+       {
+        "id": "QSG4122-E13",
+        "quote": "六年四月，宗棠輿櫬發肅州，五月，抵哈密"
+       },
+       {
+        "id": "QSG4122-E15",
+        "quote": "明年正月，和議成，交還伊犁"
+       }
+      ],
+      "proposed": "hook.1 只保留“自请出屯哈密……最终和议成、交还伊犁”的主线，把具体月份留到 story.7、story.8 交代。"
+     },
+     {
+      "id": "V6",
+      "path": "sections.story.3",
+      "category": "style",
+      "severity": "note",
+      "problem": "“想「欲藉通商深入腹地」”中“想”与“欲”语义重复。",
+      "evidence": [
+       {
+        "id": "QSG4122-E8",
+        "quote": "欲藉通商深入腹地"
+       }
+      ],
+      "proposed": "删去“想”，改为“俄国政府广设领事，「欲藉通商深入腹地」”。"
+     }
+    ],
+    "overall": "定稿逐字段核对通过：事实、引文、解释标注与中英一致性均有证据支撑。需修一处易读性问题，即锦棠在英文中易与金顺混淆的称呼；其余为说明性小改。",
+    "_content_sha256": "bf32165812ce5a8a3b089bb2b80b942063eb8381e68d36c5ab2e4617c061f5c2"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2",
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "causality",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   },
+   {
+    "path": "sections.context.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": [
+     "F7",
+     "F8"
+    ]
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "inner_life",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": [
+     "F9",
+     "F13"
+    ]
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "chronology",
+     "causality",
+     "parity"
+    ],
+    "issue_ids": [
+     "F10"
+    ]
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F11",
+     "F12"
+    ]
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "causality",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "causality",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "causality",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.hook.0",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "开头没有交代俄国已占伊犁、崇厚赴俄是为议还伊犁。不了解背景的读者读到“难处不在于要不要伊犁”时，不知道伊犁是什么、为何落在俄国手里、条约谈的是什么，也就说不清问题为何难。这些背景要到 context.0、context.3 才出现。",
+    "evidence": [
+     {
+      "id": "QSG4122-E2",
+      "quote": "俄以回數擾其邊境，遽引兵逐回，取伊犁"
+     },
+     {
+      "id": "QSG4122-E4",
+      "quote": "並請與俄議還伊犁、交叛人二事"
+     }
+    ],
+    "proposed": "在 hook.0 首句前补一句有据背景（中英同步），如：“俄国此前出兵占了伊犁；朝廷派全权大臣崇厚赴俄，议还伊犁。”其后接“崇厚遽定约……”。"
+   },
+   {
+    "id": "F2",
+    "path": "sections.hook.1",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "左宗棠首次出现时未说明身份及其与新疆事务的关系。“锦棠”只有名、无身份，读者不知是谁。“六年四月”未说明是原文年号纪年。",
+    "evidence": [
+     {
+      "id": "QSG4122-E17",
+      "quote": "宗棠以西事自任"
+     },
+     {
+      "id": "QSG4122-E12",
+      "quote": "錦棠經布魯特游牧為西路"
+     }
+    ],
+    "proposed": "左宗棠首次出现处写为“以西事自任的左宗棠”（英文同步）。锦棠写为“西路统兵的锦棠”。“六年四月”后加“（原文年号纪年）”。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.hook.1",
+    "category": "causality",
+    "severity": "fix",
+    "problem": "开头把“出屯哈密→入都→和议成、交还伊犁”连续排列，略去了崇厚得罪去、命曾纪泽使俄更前约一节。读者容易把左宗棠出兵读成和议成的原因，而证据只记先后。",
+    "evidence": [
+     {
+      "id": "QSG4122-E11",
+      "quote": "崇厚得罪去，命曾紀澤使俄，更前約"
+     }
+    ],
+    "proposed": "在“奏上获嘉许”后补“崇厚得罪去，朝廷命曾纪泽使俄改约”（英文同步），使改约交涉出现在和议成之前。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.context.0",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "“帕夏”首次出现未说明是谁、与伊犁交涉有何关系，读者无从判断此人的角色。",
+    "evidence": [
+     {
+      "id": "QSG4122-E1",
+      "quote": "帕夏能屬役回眾"
+     }
+    ],
+    "proposed": "写为“传中所称的「帕夏」，能役使回众……”，并点明此句只交代英俄各自插手的背景。若与伊犁问题无直接关系，可后移，不放在开头。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.context.1",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "金顺首次出现未说明身份。读者不知他是左宗棠麾下统兵者（story.6 才写到他领东路）。",
+    "evidence": [
+     {
+      "id": "QSG4122-E16",
+      "quote": "金順請乘虛襲伊犁"
+     },
+     {
+      "id": "QSG4122-E12",
+      "quote": "以金順出精河為東路"
+     }
+    ],
+    "proposed": "改为“左宗棠部下统兵的金顺请求乘虚袭击伊犁”（英文同步）。"
+   },
+   {
+    "id": "F6",
+    "path": "sections.context.2",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“错过一次得手的机会”/“a chance of success”预设偷袭会成功。证据只记“乘虛襲伊犁”的请求，没有成败。",
+    "evidence": [
+     {
+      "id": "QSG4122-E16",
+      "quote": "金順請乘虛襲伊犁"
+     }
+    ],
+    "proposed": "改为“错过一次乘虚出兵的机会”/“let an opening to strike slip by”。"
+   },
+   {
+    "id": "F7",
+    "path": "sections.story.0",
+    "category": "style",
+    "severity": "note",
+    "problem": "“崇厚为朝士所纠……议久不决”在同段内重复两次，且与 hook.0 重复，中英文皆然。",
+    "evidence": [],
+    "proposed": "删去末句的重复叙述，保留“事情悬在半空”的结语。"
+   },
+   {
+    "id": "F8",
+    "path": "sections.story.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "英文“concluded the treaty on the spot”中的“on the spot”证据无据，中文也没有对应内容。证据只有“遽”（仓促）。",
+    "evidence": [
+     {
+      "id": "QSG4122-E5",
+      "quote": "崇厚遽定約"
+     }
+    ],
+    "proposed": "删去“on the spot”，作“Chong Hou concluded the treaty, and quickly”。"
+   },
+   {
+    "id": "F9",
+    "path": "sections.story.7",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "中文“宗棠輿櫬發肅州”是证据原文逐字照录，却没有加引号，与 hook.1 的引法不一致，读者分不清哪些是原文、哪些是转述。",
+    "evidence": [
+     {
+      "id": "QSG4122-E13",
+      "quote": "宗棠輿櫬發肅州"
+     }
+    ],
+    "proposed": "改为“六年四月，左宗棠「輿櫬發肅州」，五月抵哈密”，或改用白话转述。"
+   },
+   {
+    "id": "F10",
+    "path": "sections.story.8",
+    "category": "causality",
+    "severity": "fix",
+    "problem": "“从一道奏疏到一纸和约，中间隔着数次调动、增兵与告警”把奏疏与和约写成一条链，略去了曾纪泽使俄改约这一交涉环节，暗示和约由奏疏与军事调动促成。",
+    "evidence": [
+     {
+      "id": "QSG4122-E11",
+      "quote": "命曾紀澤使俄，更前約"
+     }
+    ],
+    "proposed": "改为“从一道奏疏到一纸和约，中间有曾纪泽使俄改约，也有数次调动、增兵与告警”（英文同步）。"
+   },
+   {
+    "id": "F11",
+    "path": "sections.analysis.1",
+    "category": "chronology",
+    "severity": "fix",
+    "problem": "借款五百万与“出塞凡二十月，新疆南北城尽复”记的是西征之初及收复新疆，时间在伊犁交涉之前。正文却直接拿来说明伊犁奏疏中“堅忍而求勝”背后的运道饷项，未交代时间差，读者会以为这些钱粮用于伊犁对峙。",
+    "evidence": [
+     {
+      "id": "QSG4122-E17",
+      "quote": "始西征"
+     },
+     {
+      "id": "QSG4122-E18",
+      "quote": "出塞凡二十月"
+     },
+     {
+      "id": "QSG4122-E10",
+      "quote": "堅忍而求勝"
+     }
+    ],
+    "proposed": "写明“这是更早西征收复新疆时的事”。作者推断改为“一种解释是，此前西征靠馈运饶给成事，提出‘堅忍而求勝’时可以此为凭”，不把两者写成同一时期。"
+   },
+   {
+    "id": "F12",
+    "path": "sections.analysis.1",
+    "category": "readability",
+    "severity": "note",
+    "problem": "“拨款五百万、借债五百万”未说明单位（原文未载），读者可能与上文卢布五百万元混淆。limits.1 照录数字清单也漏了这两个数。",
+    "evidence": [
+     {
+      "id": "QSG4122-E17",
+      "quote": "為撥款五百萬，敕自借外國債五百萬"
+     }
+    ],
+    "proposed": "注明“原文未载单位”，并把这两个数字补入 limits.1 的照录清单。"
+   },
+   {
+    "id": "F13",
+    "path": "sections.story.7",
+    "category": "readability",
+    "severity": "note",
+    "problem": "中文正文对左宗棠在“左宗棠”与“宗棠”之间交替称呼（hook.1、story.7、story.8），简称不稳定。",
+    "evidence": [],
+    "proposed": "首次全名后统一用“左宗棠”或“左”，引语内保留原文“宗棠”。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "O1",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "逐段对照后，中英文在事实、数字、人名、保留意见上基本对等，未发现英文有而中文缺的有据内容。篇幅差异是中文字数与英文词数不可直接比较造成的，不是信息缺失。从证据包补写背景以“对齐篇幅”会造成注水，也无必要。开头确需补的背景已在 F1 中按易读性要求列出。英文的重复之处中英两版同样存在，已列为 F7（style note），英文 “on the spot” 的冗余与无据之处列为 F8。",
+    "evidence": [
+     {
+      "id": "QSG4122-E11",
+      "quote": "命曾紀澤使俄，更前約"
+     },
+     {
+      "id": "QSG4122-E5",
+      "quote": "崇厚遽定約，為朝士所糾，議久不決"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "bf32165812ce5a8a3b089bb2b80b942063eb8381e68d36c5ab2e4617c061f5c2",
+ "open_issues": [
+  "V2-V1"
+ ],
+ "outcome": "pending_review",
+ "failure": null,
+ "finished_at": 1793436464.561849,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 114.5,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13922,
+    "output_tokens": 12291
+   },
+   "cost_estimate_usd": 0.35720399999999997
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 55.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15488,
+    "output_tokens": 7140
+   },
+   "cost_estimate_usd": 0.266712
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 87.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13528,
+    "output_tokens": 9993
+   },
+   "cost_estimate_usd": 0.30809200000000003
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 20.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13924,
+    "output_tokens": 2348
+   },
+   "cost_estimate_usd": 0.15836
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 85.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13680,
+    "output_tokens": 9505
+   },
+   "cost_estimate_usd": 0.299548
+  }
+ ],
+ "elapsed_min": 6.0,
+ "model_wall_min": 6.0
+}

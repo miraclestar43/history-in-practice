@@ -1,0 +1,989 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-book-20261031-curie-radium",
+ "content_sha256": "6afc0e3c7ff3898dc1056da884059e17877ebe28bfa0c8fc3879474454240682",
+ "evidence_in_sha256": "b49e1a88080ce17bd0e716e28f98387b862a63cd1a30e107eaebfb0cc5421b52",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793443308.9896996,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.0",
+   "lang": "zh",
+   "sentence": "后来有一次（书中未写年份），日内瓦方面来请皮埃尔：那里物质条件更好，还能过上近似乡居的宁静生活。"
+  },
+  {
+   "id": "A2",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "作者提出另一种做法（书中没有写他们讨论过任何替代方案）：分用途授权，研究与教学免费，商业开发收费；"
+  },
+  {
+   "id": "A3",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "传记与自传笔记为居里夫人自述、引言为梅洛尼转述，均非独立记录，决定的日期书中未载。"
+  }
+ ],
+ "search": {
+  "terms": [
+   "patent",
+   "copyright",
+   "material profit",
+   "Institute of Radium"
+  ],
+  "hits": [
+   {
+    "term": "patent",
+    "source_id": "S-BK-CURIE",
+    "offset": 12271
+   },
+   {
+    "term": "patent",
+    "source_id": "S-BK-CURIE",
+    "offset": 12383
+   },
+   {
+    "term": "patent",
+    "source_id": "S-BK-CURIE",
+    "offset": 12535
+   },
+   {
+    "term": "patent",
+    "source_id": "S-BK-CURIE",
+    "offset": 264738
+   },
+   {
+    "term": "copyright",
+    "source_id": "S-BK-CURIE",
+    "offset": 125253
+   },
+   {
+    "term": "material profit",
+    "source_id": "S-BK-CURIE",
+    "offset": 125206
+   },
+   {
+    "term": "material profit",
+    "source_id": "S-BK-CURIE",
+    "offset": 264597
+   },
+   {
+    "term": "Institute of Radium",
+    "source_id": "S-BK-CURIE",
+    "offset": 238039
+   },
+   {
+    "term": "Institute of Radium",
+    "source_id": "S-BK-CURIE",
+    "offset": 244114
+   },
+   {
+    "term": "Institute of Radium",
+    "source_id": "S-BK-CURIE",
+    "offset": 262121
+   },
+   {
+    "term": "Institute of Radium",
+    "source_id": "S-BK-CURIE",
+    "offset": 265934
+   }
+  ]
+ },
+ "units": {
+  "S-BK-CURIE": {
+   "title": "Marie Curie, Pierre Curie (Macmillan, 1923), tr. C. and V. Kellogg — Project Gutenberg #69617",
+   "url": "https://www.gutenberg.org/cache/epub/69617/pg69617.txt",
+   "ref": "book:BK-CURIE",
+   "evidence_text_sha256": "a3a5dc235468ad13911196ab2781a91aae1670ac7266826bba423090d88e83ad",
+   "cache_sha256": "a3a5dc235468ad13911196ab2781a91aae1670ac7266826bba423090d88e83ad",
+   "cjk": false,
+   "source_chars": 284588,
+   "status": "truncated",
+   "whole_source": false,
+   "spans": [
+    [
+     1443,
+     29459
+    ],
+    [
+     107911,
+     136351
+    ],
+    [
+     235039,
+     241058
+    ],
+    [
+     241114,
+     247133
+    ],
+    [
+     261693,
+     284588
+    ]
+   ],
+   "chars_reviewed": 91389,
+   "search_windows": 8,
+   "unreviewed": [
+    [
+     259121,
+     265140
+    ],
+    [
+     261597,
+     267612
+    ],
+    [
+     261738,
+     267744
+    ],
+    [
+     262934,
+     268953
+    ]
+   ]
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 96.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 11280
+  },
+  {
+   "step": "context_r2",
+   "attempt": 1,
+   "wall_s": 84.6,
+   "json_ok": true,
+   "schema_ok": false,
+   "schema_problems": [
+    "claim A3: needs_search is not available in this round (use unresolved)",
+    "claim N4: needs_search is not available in this round (use unresolved)",
+    "claim N6: needs_search is not available in this round (use unresolved)",
+    "claim N8: needs_search is not available in this round (use unresolved)"
+   ],
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 9590
+  },
+  {
+   "step": "context_r2",
+   "attempt": 2,
+   "wall_s": 73.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 8197
+  }
+ ],
+ "finished_at": 1793443568.4702423,
+ "elapsed_min": 4.3,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-BK-CURIE",
+    "outcome": "在她自传笔记关于放弃专利的段落里，结局是她承认朋友们的反对有道理，但仍坚持当初做得对。",
+    "quote": "Yet, I still believe that we have done right.",
+    "in_evidence": true
+   },
+   {
+    "source_id": "S-BK-CURIE",
+    "outcome": "日内瓦邀请的结局是皮埃尔拒绝，经庞加莱的影响获聘索邦 P.C.N. 教席。夫妇留在巴黎，收入增加，但工作条件更艰难。",
+    "quote": "So we remained in Paris, and with our income increased. But we were at the same time working under increasingly difficult conditions.",
+    "in_evidence": true
+   },
+   {
+    "source_id": "S-BK-CURIE",
+    "outcome": "赠镭一事的结局是：仪式上只交出象征性的金钥匙，镭管由标准局测量、装箱并送上船。居里回国后带着感激继续工作，但仍感到经费不足。",
+    "quote": "I came back to my work, made easier by the precious gift, with an even stronger desire to carry it forward with renewed courage. But as my aims are still wanting support in essential parts",
+    "in_evidence": true
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-BK-CURIE",
+    "start": "In the spring of 1900, there came an unexpected offer",
+    "end": "where our reception was the most encouraging possible.",
+    "why": "书中写明日内瓦邀请发生在1900年春，并交代了邀请条件（更高薪水、实验室、给居里夫人的职位）。证据包缺这一段，稿件因此误写为“书中未写年份”。"
+   },
+   {
+    "source_id": "S-BK-CURIE",
+    "start": "In May, 1919, another mission took me to Paris",
+    "end": "I resolved to see Madame Curie myself.",
+    "why": "给出梅洛尼探访的时间（1919年5月），可以准确定位导语和 story.6 中“设备不足、镭只用于提取射气”这一观察所属的时期。"
+   },
+   {
+    "source_id": "S-BK-CURIE",
+    "start": "Jacques Curie, Pierre's brother and the companion of his youth",
+    "end": "I have added details related by my husband himself and a few of his friends.",
+    "why": "作者序说明传记采用了雅克·居里提供的全部回忆以及皮埃尔友人的讲述，并非只是居里夫人一人的自述。这会影响 limits 和 uncertainty_note 对“独立性”的表述。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.0",
+    "lang": "zh",
+    "sentence": "后来有一次（书中未写年份），日内瓦方面来请皮埃尔：那里物质条件更好，还能过上近似乡居的宁静生活。",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-CURIE"
+    ],
+    "scope": "第六章开头关于日内瓦邀请的段落",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "In the spring of 1900, there came an unexpected offer, that of the Chair of Physics in the University of Geneva."
+    },
+    "fix": "改为“1900年春，日内瓦大学来请皮埃尔出任物理教席”，删去“书中未写年份”。"
+   },
+   {
+    "id": "N1",
+    "path": "sections.story.0",
+    "lang": "en",
+    "sentence": "At one point (the book gives no year), Geneva came calling for Pierre",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-CURIE"
+    ],
+    "scope": "第六章开头关于日内瓦邀请的段落",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "In the spring of 1900, there came an unexpected offer, that of the Chair of Physics in the University of Geneva."
+    },
+    "fix": "改为 \"In the spring of 1900, the University of Geneva offered Pierre its chair of physics\"。"
+   },
+   {
+    "id": "A2",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "作者提出另一种做法（书中没有写他们讨论过任何替代方案）：分用途授权，研究与教学免费，商业开发收费；",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-CURIE"
+    ],
+    "scope": "自传笔记第二章末关于放弃专利的段落；梅洛尼引言中的专利对话",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "the objection of many of our friends, who have argued, not without reason, that if we had guaranteed our rights, we could have had the financial means of founding a satisfactory Institute of Radium"
+    },
+    "fix": "书中记有朋友们主张保留权利这一替代意见。应改为：“作者提出另一种做法（书中记载的替代意见只有朋友们主张保留权利；分用途授权一类方案在已读部分未见）”。"
+   },
+   {
+    "id": "N2",
+    "path": "sections.analysis.2",
+    "lang": "en",
+    "sentence": "The author's alternative, and the book records no such discussion",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-CURIE"
+    ],
+    "scope": "自传笔记第二章末关于放弃专利的段落",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "the objection of many of our friends, who have argued, not without reason, that if we had guaranteed our rights"
+    },
+    "fix": "改为 \"The author's alternative; the only alternative the book records is the friends' argument for guaranteeing their rights\"。"
+   },
+   {
+    "id": "A3",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "传记与自传笔记为居里夫人自述、引言为梅洛尼转述，均非独立记录，决定的日期书中未载。",
+    "verdict": "unresolved",
+    "source_ids": [
+     "S-BK-CURIE"
+    ],
+    "scope": "已读的5段（约9.1万字符，共28.5万字符）。另有4段未读，“决定的日期书中未载”无法据此判定。已读部分只写“since the beginning”。",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "We have published, since the beginning, without any reserve, the process that we used to prepare the radium."
+    },
+    "fix": "改为“书中（已读部分）只说从一开始即公开，未给出决定的具体日期”。“均非独立记录”的问题见 N3。"
+   },
+   {
+    "id": "N3",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "传记与自传笔记为居里夫人自述、引言为梅洛尼转述，均非独立记录",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-CURIE"
+    ],
+    "scope": "作者序；梅洛尼引言",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "He communicated to me all his personal memories; and to this important contribution, which I have utilized in full, I have added details related by my husband himself and a few of his friends."
+    },
+    "fix": "应具体说明：传记由居里夫人执笔，采用了雅克·居里和友人的回忆；引言是募捐发起人梅洛尼的亲历记述；三者收在同一本书中，本文未查阅书外文件。不要笼统说“均非独立记录”。"
+   },
+   {
+    "id": "N4",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "the biography and the autobiographical notes are Marie Curie's own account and the introduction is Meloney's report, none of them an independent record; the book does not date the decision.",
+    "verdict": "unresolved",
+    "source_ids": [
+     "S-BK-CURIE"
+    ],
+    "scope": "已读5段，另有4段未读；作者序显示传记采用了雅克·居里等人的回忆",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "He communicated to me all his personal memories"
+    },
+    "fix": "与 A3、N3 同样改写：说明书中各部分的来源和作者身份，日期限定为“已读部分未见具体日期”。"
+   },
+   {
+    "id": "N5",
+    "path": "sections.story.2",
+    "lang": "zh",
+    "sentence": "书里没写这个决定的日期。",
+    "verdict": "unresolved",
+    "source_ids": [
+     "S-BK-CURIE"
+    ],
+    "scope": "已读5段，其余4段未读",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "We have published, since the beginning, without any reserve"
+    },
+    "fix": "改为“书中只说从一开始就公开”，或删去这句。"
+   },
+   {
+    "id": "N6",
+    "path": "sections.story.2",
+    "lang": "en",
+    "sentence": "The book gives no date for the decision.",
+    "verdict": "unresolved",
+    "source_ids": [
+     "S-BK-CURIE"
+    ],
+    "scope": "已读5段，其余4段未读",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "We have published, since the beginning, without any reserve"
+    },
+    "fix": "改为 \"The book says only that the process was published from the beginning\"，或删去这句。"
+   },
+   {
+    "id": "N7",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "皮埃尔·居里传记和自传笔记都是居里夫人本人的叙述，梅洛尼那几段是她的转述，都不是独立记录。",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-CURIE"
+    ],
+    "scope": "作者序；梅洛尼引言",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "He communicated to me all his personal memories; and to this important contribution, which I have utilized in full, I have added details related by my husband himself and a few of his friends."
+    },
+    "fix": "改为：传记由居里夫人执笔并采用了雅克·居里和友人的回忆；梅洛尼的引言是她作为募捐发起人的亲历记述；三者同收一书，本文未核对书外材料。"
+   },
+   {
+    "id": "N8",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "none of it is an independent record",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-CURIE"
+    ],
+    "scope": "作者序；梅洛尼引言",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "I have been asked to tell why I undertook the Marie Curie Radium Campaign and how I persuaded Madame Curie to write this book."
+    },
+    "fix": "写明梅洛尼是另一位作者、亲历者兼募捐发起人；传记吸收了雅克·居里的回忆；本文没有查阅书外文件。"
+   },
+   {
+    "id": "N9",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "不申请专利的那个决定，书里没写日期，也没留下会议或对话的记录，本文不补写。",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-BK-CURIE"
+    ],
+    "scope": "已读5段；另有4段未读，也无法确证",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "With my agreement he refused to draw any material profit from our discovery."
+    },
+    "fix": "删去“没留下会议或对话的记录”，日期部分按 N5 处理。"
+   },
+   {
+    "id": "N10",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "The decision not to patent is undated in the book, and no minutes or conversations of the deliberations survive there",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-BK-CURIE"
+    ],
+    "scope": "已读5段；另有4段未读",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "With my agreement he refused to draw any material profit from our discovery."
+    },
+    "fix": "删去关于会议和对话记录的否定句，日期部分按 N6 处理。"
+   },
+   {
+    "id": "N11",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "标为作者推断与作者提出的替代做法的段落，都是本文的解释，材料里没有对应记载。",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-CURIE"
+    ],
+    "scope": "自传笔记关于放弃专利的段落",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "if we had guaranteed our rights, we could have had the financial means of founding a satisfactory Institute of Radium, without experiencing any of the difficulties that have been such a handicap to both of us"
+    },
+    "fix": "改为“这些是本文的解释；材料中相近的记载只有朋友们保留权利的主张和她本人对困难的叙述”。"
+   },
+   {
+    "id": "N12",
+    "path": "sections.limits.1",
+    "lang": "en",
+    "sentence": "the paragraphs marked as the author's inference and as the author's alternative are this piece's interpretation, with nothing in the material to match.",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-CURIE"
+    ],
+    "scope": "自传笔记关于放弃专利的段落",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "the objection of many of our friends, who have argued, not without reason, that if we had guaranteed our rights"
+    },
+    "fix": "删去 \"with nothing in the material to match\"，或改为指明书中对应的朋友们的意见。"
+   },
+   {
+    "id": "N13",
+    "path": "reflection.example.alternative",
+    "lang": "zh",
+    "sentence": "作者提出的替代方案（材料中没有这类讨论）",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-CURIE"
+    ],
+    "scope": "自传笔记关于放弃专利的段落；梅洛尼引言中的专利对话",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "I suggested royalties on her patents."
+    },
+    "fix": "改为“材料中有关于保留权利、专利版税的议论，但没有分层授权的方案（已读部分）”。"
+   },
+   {
+    "id": "N14",
+    "path": "reflection.example.alternative",
+    "lang": "en",
+    "sentence": "The author's alternative, and no such discussion appears in the material",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-CURIE"
+    ],
+    "scope": "自传笔记关于放弃专利的段落；梅洛尼引言",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "I suggested royalties on her patents."
+    },
+    "fix": "改为 \"the material records arguments for retaining rights and a question about royalties, but no tiered-licensing scheme\"。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.story.0",
+    "problem": "稿件称书中未写年份，但原文明确写了1900年春。",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "In the spring of 1900, there came an unexpected offer"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.hook.0",
+    "problem": "zh 只写“局”，读者无法知道指的是哪个机构。原文是华盛顿的标准局（Bureau of Standards）。",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "I have visited with special interest the Bureau of Standards, a very important national institution at Washington for scientific measurements"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.hook.1",
+    "problem": "“实验室里那点镭当时只用于提取射气”是梅洛尼1919年5月探访时的观察。稿件没有给出时期，容易被读成长期状态。",
+    "quote": {
+     "source_id": "S-BK-CURIE",
+     "quote": "In May, 1919, another mission took me to Paris"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "证据包已覆盖主要结局。但日内瓦邀请有明确年份（1900年春），“未写年份”的说法应改正；“均非独立记录”“材料中没有替代方案讨论”等否定性断言与书中内容（雅克·居里的回忆、梅洛尼的亲历记述、朋友们保留权利的主张）不符，需要改写；关于决定日期的否定断言因4段未读，只能存疑。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.0",
+   "lang": "zh",
+   "sentence": "后来有一次（书中未写年份），日内瓦方面来请皮埃尔：那里物质条件更好，还能过上近似乡居的宁静生活。",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-CURIE"
+   ],
+   "scope": "第六章开头关于日内瓦邀请的段落",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "In the spring of 1900, there came an unexpected offer, that of the Chair of Physics in the University of Geneva."
+   },
+   "fix": "改为“1900年春，日内瓦大学来请皮埃尔出任物理教席”，删去“书中未写年份”。",
+   "unit_status": {
+    "S-BK-CURIE": "truncated"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.story.0",
+   "lang": "en",
+   "sentence": "At one point (the book gives no year), Geneva came calling for Pierre",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-CURIE"
+   ],
+   "scope": "第六章开头关于日内瓦邀请的段落",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "In the spring of 1900, there came an unexpected offer, that of the Chair of Physics in the University of Geneva."
+   },
+   "fix": "改为 \"In the spring of 1900, the University of Geneva offered Pierre its chair of physics\"。",
+   "unit_status": {
+    "S-BK-CURIE": "truncated"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "作者提出另一种做法（书中没有写他们讨论过任何替代方案）：分用途授权，研究与教学免费，商业开发收费；",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-CURIE"
+   ],
+   "scope": "自传笔记第二章末关于放弃专利的段落；梅洛尼引言中的专利对话",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "the objection of many of our friends, who have argued, not without reason, that if we had guaranteed our rights, we could have had the financial means of founding a satisfactory Institute of Radium"
+   },
+   "fix": "书中记有朋友们主张保留权利这一替代意见。应改为：“作者提出另一种做法（书中记载的替代意见只有朋友们主张保留权利；分用途授权一类方案在已读部分未见）”。",
+   "unit_status": {
+    "S-BK-CURIE": "truncated"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "The author's alternative, and the book records no such discussion",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-CURIE"
+   ],
+   "scope": "自传笔记第二章末关于放弃专利的段落",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "the objection of many of our friends, who have argued, not without reason, that if we had guaranteed our rights"
+   },
+   "fix": "改为 \"The author's alternative; the only alternative the book records is the friends' argument for guaranteeing their rights\"。",
+   "unit_status": {
+    "S-BK-CURIE": "truncated"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "传记与自传笔记为居里夫人自述、引言为梅洛尼转述，均非独立记录，决定的日期书中未载。",
+   "verdict": "unresolved",
+   "source_ids": [
+    "S-BK-CURIE"
+   ],
+   "scope": "已读的5段（约9.1万字符，共28.5万字符）。另有4段未读，“决定的日期书中未载”无法据此判定。已读部分只写“since the beginning”。",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "We have published, since the beginning, without any reserve, the process that we used to prepare the radium."
+   },
+   "fix": "改为“书中（已读部分）只说从一开始即公开，未给出决定的具体日期”。“均非独立记录”的问题见 N3。",
+   "unit_status": {
+    "S-BK-CURIE": "truncated"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "传记与自传笔记为居里夫人自述、引言为梅洛尼转述，均非独立记录",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-CURIE"
+   ],
+   "scope": "作者序；梅洛尼引言",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "He communicated to me all his personal memories; and to this important contribution, which I have utilized in full, I have added details related by my husband himself and a few of his friends."
+   },
+   "fix": "应具体说明：传记由居里夫人执笔，采用了雅克·居里和友人的回忆；引言是募捐发起人梅洛尼的亲历记述；三者收在同一本书中，本文未查阅书外文件。不要笼统说“均非独立记录”。",
+   "unit_status": {
+    "S-BK-CURIE": "truncated"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "the biography and the autobiographical notes are Marie Curie's own account and the introduction is Meloney's report, none of them an independent record; the book does not date the decision.",
+   "verdict": "unresolved",
+   "source_ids": [
+    "S-BK-CURIE"
+   ],
+   "scope": "已读5段，另有4段未读；作者序显示传记采用了雅克·居里等人的回忆",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "He communicated to me all his personal memories"
+   },
+   "fix": "与 A3、N3 同样改写：说明书中各部分的来源和作者身份，日期限定为“已读部分未见具体日期”。",
+   "unit_status": {
+    "S-BK-CURIE": "truncated"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "sections.story.2",
+   "lang": "zh",
+   "sentence": "书里没写这个决定的日期。",
+   "verdict": "unresolved",
+   "source_ids": [
+    "S-BK-CURIE"
+   ],
+   "scope": "已读5段，其余4段未读",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "We have published, since the beginning, without any reserve"
+   },
+   "fix": "改为“书中只说从一开始就公开”，或删去这句。",
+   "unit_status": {
+    "S-BK-CURIE": "truncated"
+   }
+  },
+  {
+   "id": "N6",
+   "path": "sections.story.2",
+   "lang": "en",
+   "sentence": "The book gives no date for the decision.",
+   "verdict": "unresolved",
+   "source_ids": [
+    "S-BK-CURIE"
+   ],
+   "scope": "已读5段，其余4段未读",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "We have published, since the beginning, without any reserve"
+   },
+   "fix": "改为 \"The book says only that the process was published from the beginning\"，或删去这句。",
+   "unit_status": {
+    "S-BK-CURIE": "truncated"
+   }
+  },
+  {
+   "id": "N7",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "皮埃尔·居里传记和自传笔记都是居里夫人本人的叙述，梅洛尼那几段是她的转述，都不是独立记录。",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-CURIE"
+   ],
+   "scope": "作者序；梅洛尼引言",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "He communicated to me all his personal memories; and to this important contribution, which I have utilized in full, I have added details related by my husband himself and a few of his friends."
+   },
+   "fix": "改为：传记由居里夫人执笔并采用了雅克·居里和友人的回忆；梅洛尼的引言是她作为募捐发起人的亲历记述；三者同收一书，本文未核对书外材料。",
+   "unit_status": {
+    "S-BK-CURIE": "truncated"
+   }
+  },
+  {
+   "id": "N8",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "none of it is an independent record",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-CURIE"
+   ],
+   "scope": "作者序；梅洛尼引言",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "I have been asked to tell why I undertook the Marie Curie Radium Campaign and how I persuaded Madame Curie to write this book."
+   },
+   "fix": "写明梅洛尼是另一位作者、亲历者兼募捐发起人；传记吸收了雅克·居里的回忆；本文没有查阅书外文件。",
+   "unit_status": {
+    "S-BK-CURIE": "truncated"
+   }
+  },
+  {
+   "id": "N9",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "不申请专利的那个决定，书里没写日期，也没留下会议或对话的记录，本文不补写。",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-BK-CURIE"
+   ],
+   "scope": "已读5段；另有4段未读，也无法确证",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "With my agreement he refused to draw any material profit from our discovery."
+   },
+   "fix": "删去“没留下会议或对话的记录”，日期部分按 N5 处理。",
+   "unit_status": {
+    "S-BK-CURIE": "truncated"
+   }
+  },
+  {
+   "id": "N10",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "The decision not to patent is undated in the book, and no minutes or conversations of the deliberations survive there",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-BK-CURIE"
+   ],
+   "scope": "已读5段；另有4段未读",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "With my agreement he refused to draw any material profit from our discovery."
+   },
+   "fix": "删去关于会议和对话记录的否定句，日期部分按 N6 处理。",
+   "unit_status": {
+    "S-BK-CURIE": "truncated"
+   }
+  },
+  {
+   "id": "N11",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "标为作者推断与作者提出的替代做法的段落，都是本文的解释，材料里没有对应记载。",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-CURIE"
+   ],
+   "scope": "自传笔记关于放弃专利的段落",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "if we had guaranteed our rights, we could have had the financial means of founding a satisfactory Institute of Radium, without experiencing any of the difficulties that have been such a handicap to both of us"
+   },
+   "fix": "改为“这些是本文的解释；材料中相近的记载只有朋友们保留权利的主张和她本人对困难的叙述”。",
+   "unit_status": {
+    "S-BK-CURIE": "truncated"
+   }
+  },
+  {
+   "id": "N12",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "the paragraphs marked as the author's inference and as the author's alternative are this piece's interpretation, with nothing in the material to match.",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-CURIE"
+   ],
+   "scope": "自传笔记关于放弃专利的段落",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "the objection of many of our friends, who have argued, not without reason, that if we had guaranteed our rights"
+   },
+   "fix": "删去 \"with nothing in the material to match\"，或改为指明书中对应的朋友们的意见。",
+   "unit_status": {
+    "S-BK-CURIE": "truncated"
+   }
+  },
+  {
+   "id": "N13",
+   "path": "reflection.example.alternative",
+   "lang": "zh",
+   "sentence": "作者提出的替代方案（材料中没有这类讨论）",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-CURIE"
+   ],
+   "scope": "自传笔记关于放弃专利的段落；梅洛尼引言中的专利对话",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "I suggested royalties on her patents."
+   },
+   "fix": "改为“材料中有关于保留权利、专利版税的议论，但没有分层授权的方案（已读部分）”。",
+   "unit_status": {
+    "S-BK-CURIE": "truncated"
+   }
+  },
+  {
+   "id": "N14",
+   "path": "reflection.example.alternative",
+   "lang": "en",
+   "sentence": "The author's alternative, and no such discussion appears in the material",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-CURIE"
+   ],
+   "scope": "自传笔记关于放弃专利的段落；梅洛尼引言",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "I suggested royalties on her patents."
+   },
+   "fix": "改为 \"the material records arguments for retaining rights and a question about royalties, but no tiered-licensing scheme\"。",
+   "unit_status": {
+    "S-BK-CURIE": "truncated"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.story.0",
+   "problem": "稿件称书中未写年份，但原文明确写了1900年春。",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "In the spring of 1900, there came an unexpected offer"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.hook.0",
+   "problem": "zh 只写“局”，读者无法知道指的是哪个机构。原文是华盛顿的标准局（Bureau of Standards）。",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "I have visited with special interest the Bureau of Standards, a very important national institution at Washington for scientific measurements"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.hook.1",
+   "problem": "“实验室里那点镭当时只用于提取射气”是梅洛尼1919年5月探访时的观察。稿件没有给出时期，容易被读成长期状态。",
+   "quote": {
+    "source_id": "S-BK-CURIE",
+    "quote": "In May, 1919, another mission took me to Paris"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-BK-CURIE",
+   "outcome": "在她自传笔记关于放弃专利的段落里，结局是她承认朋友们的反对有道理，但仍坚持当初做得对。",
+   "quote": "Yet, I still believe that we have done right.",
+   "in_evidence": true
+  },
+  {
+   "source_id": "S-BK-CURIE",
+   "outcome": "日内瓦邀请的结局是皮埃尔拒绝，经庞加莱的影响获聘索邦 P.C.N. 教席。夫妇留在巴黎，收入增加，但工作条件更艰难。",
+   "quote": "So we remained in Paris, and with our income increased. But we were at the same time working under increasingly difficult conditions.",
+   "in_evidence": true
+  },
+  {
+   "source_id": "S-BK-CURIE",
+   "outcome": "赠镭一事的结局是：仪式上只交出象征性的金钥匙，镭管由标准局测量、装箱并送上船。居里回国后带着感激继续工作，但仍感到经费不足。",
+   "quote": "I came back to my work, made easier by the precious gift, with an even stronger desire to carry it forward with renewed courage. But as my aims are still wanting support in essential parts",
+   "in_evidence": true
+  }
+ ],
+ "additions": [
+  {
+   "id": "CUR-E29",
+   "source_id": "S-BK-CURIE",
+   "offset": 121191,
+   "chars": 720,
+   "why": "书中写明日内瓦邀请发生在1900年春，并交代了邀请条件（更高薪水、实验室、给居里夫人的职位）。证据包缺这一段，稿件因此误写为“书中未写年份”。"
+  },
+  {
+   "id": "CUR-E30",
+   "source_id": "S-BK-CURIE",
+   "offset": 6437,
+   "chars": 89,
+   "why": "给出梅洛尼探访的时间（1919年5月），可以准确定位导语和 story.6 中“设备不足、镭只用于提取射气”这一观察所属的时期。"
+  },
+  {
+   "id": "CUR-E31",
+   "source_id": "S-BK-CURIE",
+   "offset": 1711,
+   "chars": 527,
+   "why": "作者序说明传记采用了雅克·居里提供的全部回忆以及皮埃尔友人的讲述，并非只是居里夫人一人的自述。这会影响 limits 和 uncertainty_note 对“独立性”的表述。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "3c898df65d668ff7edd62157edff08c3071682e4d859bb4a71e6595fe8200913",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.story.0.zh: contradicted — 后来有一次（书中未写年份），日内瓦方面来请皮埃尔：那里物质条件更好，还能过上近似乡居的宁静生活。",
+  "sections.story.0.en: contradicted — At one point (the book gives no year), Geneva came calling for Pierre",
+  "sections.analysis.2.zh: contradicted — 作者提出另一种做法（书中没有写他们讨论过任何替代方案）：分用途授权，研究与教学免费，商业开发收费；",
+  "sections.analysis.2.en: contradicted — The author's alternative, and the book records no such discussion",
+  "uncertainty_note.zh: unresolved — 传记与自传笔记为居里夫人自述、引言为梅洛尼转述，均非独立记录，决定的日期书中未载。",
+  "uncertainty_note.zh: contradicted — 传记与自传笔记为居里夫人自述、引言为梅洛尼转述，均非独立记录",
+  "uncertainty_note.en: unresolved — the biography and the autobiographical notes are Marie Curie's own account and t",
+  "sections.story.2.zh: unresolved — 书里没写这个决定的日期。",
+  "sections.story.2.en: unresolved — The book gives no date for the decision.",
+  "sections.limits.0.zh: contradicted — 皮埃尔·居里传记和自传笔记都是居里夫人本人的叙述，梅洛尼那几段是她的转述，都不是独立记录。",
+  "sections.limits.0.en: contradicted — none of it is an independent record",
+  "sections.limits.0.zh: unnecessary — 不申请专利的那个决定，书里没写日期，也没留下会议或对话的记录，本文不补写。",
+  "sections.limits.0.en: unnecessary — The decision not to patent is undated in the book, and no minutes or conversatio",
+  "sections.limits.1.zh: contradicted — 标为作者推断与作者提出的替代做法的段落，都是本文的解释，材料里没有对应记载。",
+  "sections.limits.1.en: contradicted — the paragraphs marked as the author's inference and as the author's alternative ",
+  "reflection.example.alternative.zh: contradicted — 作者提出的替代方案（材料中没有这类讨论）",
+  "reflection.example.alternative.en: contradicted — The author's alternative, and no such discussion appears in the material",
+  "sections.story.0: 稿件称书中未写年份，但原文明确写了1900年春。",
+  "evidence must be expanded first: 3 addition(s) ['CUR-E29', 'CUR-E30', 'CUR-E31']"
+ ]
+}

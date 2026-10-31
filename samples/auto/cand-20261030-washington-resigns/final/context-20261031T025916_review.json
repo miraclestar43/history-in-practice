@@ -1,0 +1,680 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-20261030-washington-resigns",
+ "content_sha256": "f68b66d9fb41d9279c97d7707b1f582820592b8cf09e6cac8c694d6957735f06",
+ "evidence_in_sha256": "b66b1d82c6349d723877eed017b9b39bc13a430ed15ca082018805b9203d15e8",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793433556.1680975,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.context.1",
+   "lang": "en",
+   "sentence": "This excerpt does not show the result of the vote."
+  },
+  {
+   "id": "A2",
+   "path": "sections.context.5",
+   "lang": "zh",
+   "sentence": "日志只记规则，不写理由。"
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "日志只写了戴帽与就座，没写为什么。"
+  },
+  {
+   "id": "A4",
+   "path": "sections.limits.heading",
+   "lang": "en",
+   "sentence": "What This Record Does Not Tell Us"
+  },
+  {
+   "id": "A5",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "没有取得任何在场者的私人记述，因此讲话者的神情与语气、在场个人的现场反应，本篇都无从得知。"
+  },
+  {
+   "id": "A6",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "it does not describe individual faces or reactions in the room."
+  },
+  {
+   "id": "A7",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "Motives, private thoughts, and options he may have considered are never supplied by this writer where the source is silent."
+  }
+ ],
+ "search": null,
+ "units": {
+  "D-JCC25": {
+   "title": "Journals of the Continental Congress, 1774–1789, vol. 25 (Library of Congress, 1922), archive.org OCR",
+   "url": "https://archive.org/download/journalscontinent25unit/journalscontinent25unit_djvu.txt",
+   "ref": "journalscontinent25unit",
+   "evidence_text_sha256": "7e3e4d08e86dd77bbb5e41134a5af3a9ee7e89cc5c8c036f8d53f094c13a121e",
+   "cache_sha256": "7e3e4d08e86dd77bbb5e41134a5af3a9ee7e89cc5c8c036f8d53f094c13a121e",
+   "cjk": false,
+   "source_chars": 1193429,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     588403,
+     603920
+    ],
+    [
+     634399,
+     652077
+    ]
+   ],
+   "chars_reviewed": 33195
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 73.5,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 7865
+  }
+ ],
+ "finished_at": 1793433630.1659524,
+ "elapsed_min": 1.2,
+ "review": {
+  "episode": [
+   {
+    "source_id": "D-JCC25",
+    "outcome": "The audience does not end with the handover of the commission. The President reads Congress's answer. It replies to Washington's two requests (care for his confidential officers, and commending the country to God) and closes with a prayer for him. The 24 December entry then moves straight to routine business and records nothing further about the audience.",
+    "quote": "And for you we address to him our earnest prayers, that a life so beloved may be fostered with all his care; that yoiu- days may be happy as they have been illustrious; and that he wiU finally give you that reward which this world cannot give.",
+    "in_evidence": true
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "D-JCC25",
+    "start": "Sense of the Ilouae taken",
+    "end": "with yeaa and nays, December 20, 1783.",
+    "why": "The editors' note on the 20 December vote records only that the sense of the House was taken with yeas and nays. It states no result. This gives the 'no result shown' claim (A1/N1) an exact scope."
+   },
+   {
+    "source_id": "D-JCC25",
+    "start": "Thia report, in the writing of James McHenry",
+    "end": "No. 19, VI, folio 461.",
+    "why": "The printed text of Congress's answer is McHenry's draft and still carries revision marks (e.g. 'safety and triumph success'). Readers should know the quoted answer comes from a revised draft. The two passages the piece quotes are not affected by the revisions."
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.context.1",
+    "lang": "en",
+    "sentence": "This excerpt does not show the result of the vote.",
+    "verdict": "supported",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "JCC 25, the full 20 December 1783 entry and the editors' note on the motion (offsets 590903–593300)",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "Sense of the Ilouae taken on the competency of seven atatea to receive the resignation of Commander in Cliief, with yeaa and nays, December 20, 1783."
+    },
+    "fix": "State the scope precisely. The journal prints the full member roll call: Forster, Gerry and Osgood also voted ay, and Partridge was the only no. Neither the journal nor the editors' note states a formal result. Avoid the vague 'this excerpt'."
+   },
+   {
+    "id": "N1",
+    "path": "sections.context.1",
+    "lang": "zh",
+    "sentence": "这段摘录没有显示表决结果。",
+    "verdict": "supported",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "Same as A1",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "Sense of the Ilouae taken on the competency of seven atatea to receive the resignation of Commander in Cliief, with yeaa and nays, December 20, 1783."
+    },
+    "fix": "Change to: '日志载有完整的议员点名（仅帕特里奇反对），但日志与编者注均未写明正式表决结果。'"
+   },
+   {
+    "id": "A2",
+    "path": "sections.context.5",
+    "lang": "zh",
+    "sentence": "日志只记规则，不写理由。",
+    "verdict": "supported",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "JCC 25, 22 December 1783: the order of audience (clauses 1–6, the bowing rule) and the editors' note (offsets 593299–595900). No reasons are recorded.",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "When the General rises to make his address, and also when he retires, he is to bow to Congress, which they are to return by uncovering without bowing."
+    },
+    "fix": "Keep. Optionally narrow to '22日议定的次序只列规则，不写理由'."
+   },
+   {
+    "id": "A3",
+    "path": "sections.analysis.1",
+    "lang": "zh",
+    "sentence": "日志只写了戴帽与就座，没写为什么。",
+    "verdict": "supported",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "JCC 25, 22 December 1783, clause 1 of the order of audience and the surrounding committee report",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "1. The President and members are to be seated and covered, and the secretary to be standing by the side of the President."
+    },
+    "fix": "Keep."
+   },
+   {
+    "id": "A4",
+    "path": "sections.limits.heading",
+    "lang": "en",
+    "sentence": "What This Record Does Not Tell Us",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "Section heading; makes no specific statement about the source",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "According to order, his Excellency the Commander in Chief was admitted to a public audience"
+    },
+    "fix": "Keep the heading. Each specific statement in the section must be checked on its own."
+   },
+   {
+    "id": "A5",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "没有取得任何在场者的私人记述，因此讲话者的神情与语气、在场个人的现场反应，本篇都无从得知。",
+    "verdict": "supported",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "The evidence pack and reading range contain only JCC vol. 25. This is a statement about what we consulted, not a claim that no such accounts exist.",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "the President, after a pause, informed him"
+    },
+    "fix": "Keep the wording '没有取得…本篇无从得知'. Do not extend it to say no private accounts exist."
+   },
+   {
+    "id": "A6",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "it does not describe individual faces or reactions in the room.",
+    "verdict": "supported",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "JCC 25, the 23 December 1783 entry (audience, address, answer). The journal records the President's pause and Congress's formal statement of emotion, but describes no individual's face or reaction.",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "The United States in Congress assembled receive with emotions, too affecting for utterance"
+    },
+    "fix": "Keep. The text already identifies the 'emotions' line as an institutional written statement."
+   },
+   {
+    "id": "A7",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "Motives, private thoughts, and options he may have considered are never supplied by this writer where the source is silent.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "The author's statement of method",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "whether in writing or at an audience"
+    },
+    "fix": "Keep. The alternatives imagined in analysis.3 are labelled non-historical and concern Congress's options, not his own thoughts."
+   },
+   {
+    "id": "N2",
+    "path": "sections.story.3",
+    "lang": "zh",
+    "sentence": "说这话时是什么语气，日志无从体现，本篇也不猜。",
+    "verdict": "supported",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "JCC 25, 23 December: the address and the surrounding narrative. Only 'he arose and addressed' is recorded; there is no description of tone.",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "Whereupon, he arose and addressed Congi'ess as follows:"
+    },
+    "fix": "Keep."
+   },
+   {
+    "id": "N3",
+    "path": "sections.story.7",
+    "lang": "zh",
+    "sentence": "本篇所据的OCR文本在这一处同样有乱码，无法判断这些字是否已被删去。",
+    "verdict": "supported",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "JCC 25, 22 December, clauses 4–6 of the order of audience. The garbled runs ('pre acntod to the Scorotaiy', 'addroaa answer', 'commiBoion') follow the same pattern as revised wording elsewhere in the volume, so they may be struck type, but this cannot be confirmed from the OCR.",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "copy of his address to hia aid to be pre acntod to the Scorotaiy [to the President]"
+    },
+    "fix": "Keep as a technical limitation. Optionally add that the garbling pattern looks like other revised wording, but do not assert that the words were deleted."
+   },
+   {
+    "id": "N4",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "No private account by anyone present was available for comparison, so individual faces and reactions in the room are unknowable",
+    "verdict": "unresolved",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "Whether such accounts exist is outside the reading range. All we can say is that this piece consulted none.",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "A signed draft of this address is in the Washington papers, Library of Clongrees"
+    },
+    "fix": "Change to: 'No private account by anyone present was consulted, so this piece cannot report individual faces or reactions.' Do not say none was available or that reactions are unknowable."
+   },
+   {
+    "id": "N5",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "没有在场者私人记述可对照，个人神情与现场反应不可知",
+    "verdict": "unresolved",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "Same as N4",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "A signed draft of this address is in the Washington papers, Library of Clongrees"
+    },
+    "fix": "Change to '本篇未查阅在场者私人记述，个人神情与现场反应本篇无从得知'."
+   },
+   {
+    "id": "N6",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "本篇所据的OCR文本无法判断原稿另有哪些删改，本篇只转述方括号中的字样。",
+    "verdict": "supported",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "JCC 25, 22 December, the order of audience and the editors' note (Gerry's hand, bracketed words in Boudinot's hand)",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "the words in brackets being in the writing of Elias Boudinot"
+    },
+    "fix": "Keep. Optionally note separately that Congress's answer is McHenry's draft and that its brackets were entered by Bankson, so readers do not apply the Boudinot note to the answer."
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.context.1",
+    "problem": "The text says 'in the portion of the roll call cited here', implying the roll call is incomplete. The reading range (with U-E21) shows the full member roll call: Forster, Gerry and Osgood also voted ay, and Partridge was the only no. The paragraph should also cite U-E21.",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "Mf Forster, ay Gerry, ay Osgood, ay"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.story.6",
+    "problem": "Congress's answer is quoted without saying that it is printed from McHenry's draft, which carries revisions and Bankson's bracketed entries. The quoted phrases are clean, but readers should know the source is a draft.",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "Thia report, in the writing of James McHenry, is in the Papers of the Continental Congress, No. 19, VI, folio 461."
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "The piece already covers the ending (Congress's answer and its point-by-point reply) and has no serious truncation errors. Two fixes are needed: the vote-result claim should state its scope precisely and note the full roll call, and the uncertainty note's 'no private account was available / unknowable' should be narrowed to 'not consulted, so this piece cannot report'."
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.context.1",
+   "lang": "en",
+   "sentence": "This excerpt does not show the result of the vote.",
+   "verdict": "supported",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "JCC 25, the full 20 December 1783 entry and the editors' note on the motion (offsets 590903–593300)",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "Sense of the Ilouae taken on the competency of seven atatea to receive the resignation of Commander in Cliief, with yeaa and nays, December 20, 1783."
+   },
+   "fix": "State the scope precisely. The journal prints the full member roll call: Forster, Gerry and Osgood also voted ay, and Partridge was the only no. Neither the journal nor the editors' note states a formal result. Avoid the vague 'this excerpt'.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.context.1",
+   "lang": "zh",
+   "sentence": "这段摘录没有显示表决结果。",
+   "verdict": "supported",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "Same as A1",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "Sense of the Ilouae taken on the competency of seven atatea to receive the resignation of Commander in Cliief, with yeaa and nays, December 20, 1783."
+   },
+   "fix": "Change to: '日志载有完整的议员点名（仅帕特里奇反对），但日志与编者注均未写明正式表决结果。'",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.context.5",
+   "lang": "zh",
+   "sentence": "日志只记规则，不写理由。",
+   "verdict": "supported",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "JCC 25, 22 December 1783: the order of audience (clauses 1–6, the bowing rule) and the editors' note (offsets 593299–595900). No reasons are recorded.",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "When the General rises to make his address, and also when he retires, he is to bow to Congress, which they are to return by uncovering without bowing."
+   },
+   "fix": "Keep. Optionally narrow to '22日议定的次序只列规则，不写理由'.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "日志只写了戴帽与就座，没写为什么。",
+   "verdict": "supported",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "JCC 25, 22 December 1783, clause 1 of the order of audience and the surrounding committee report",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "1. The President and members are to be seated and covered, and the secretary to be standing by the side of the President."
+   },
+   "fix": "Keep.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "A4",
+   "path": "sections.limits.heading",
+   "lang": "en",
+   "sentence": "What This Record Does Not Tell Us",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "Section heading; makes no specific statement about the source",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "According to order, his Excellency the Commander in Chief was admitted to a public audience"
+   },
+   "fix": "Keep the heading. Each specific statement in the section must be checked on its own.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "A5",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "没有取得任何在场者的私人记述，因此讲话者的神情与语气、在场个人的现场反应，本篇都无从得知。",
+   "verdict": "supported",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "The evidence pack and reading range contain only JCC vol. 25. This is a statement about what we consulted, not a claim that no such accounts exist.",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "the President, after a pause, informed him"
+   },
+   "fix": "Keep the wording '没有取得…本篇无从得知'. Do not extend it to say no private accounts exist.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "A6",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "it does not describe individual faces or reactions in the room.",
+   "verdict": "supported",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "JCC 25, the 23 December 1783 entry (audience, address, answer). The journal records the President's pause and Congress's formal statement of emotion, but describes no individual's face or reaction.",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "The United States in Congress assembled receive with emotions, too affecting for utterance"
+   },
+   "fix": "Keep. The text already identifies the 'emotions' line as an institutional written statement.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "A7",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "Motives, private thoughts, and options he may have considered are never supplied by this writer where the source is silent.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "The author's statement of method",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "whether in writing or at an audience"
+   },
+   "fix": "Keep. The alternatives imagined in analysis.3 are labelled non-historical and concern Congress's options, not his own thoughts.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.story.3",
+   "lang": "zh",
+   "sentence": "说这话时是什么语气，日志无从体现，本篇也不猜。",
+   "verdict": "supported",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "JCC 25, 23 December: the address and the surrounding narrative. Only 'he arose and addressed' is recorded; there is no description of tone.",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "Whereupon, he arose and addressed Congi'ess as follows:"
+   },
+   "fix": "Keep.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.story.7",
+   "lang": "zh",
+   "sentence": "本篇所据的OCR文本在这一处同样有乱码，无法判断这些字是否已被删去。",
+   "verdict": "supported",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "JCC 25, 22 December, clauses 4–6 of the order of audience. The garbled runs ('pre acntod to the Scorotaiy', 'addroaa answer', 'commiBoion') follow the same pattern as revised wording elsewhere in the volume, so they may be struck type, but this cannot be confirmed from the OCR.",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "copy of his address to hia aid to be pre acntod to the Scorotaiy [to the President]"
+   },
+   "fix": "Keep as a technical limitation. Optionally add that the garbling pattern looks like other revised wording, but do not assert that the words were deleted.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "No private account by anyone present was available for comparison, so individual faces and reactions in the room are unknowable",
+   "verdict": "unresolved",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "Whether such accounts exist is outside the reading range. All we can say is that this piece consulted none.",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "A signed draft of this address is in the Washington papers, Library of Clongrees"
+   },
+   "fix": "Change to: 'No private account by anyone present was consulted, so this piece cannot report individual faces or reactions.' Do not say none was available or that reactions are unknowable.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "没有在场者私人记述可对照，个人神情与现场反应不可知",
+   "verdict": "unresolved",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "Same as N4",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "A signed draft of this address is in the Washington papers, Library of Clongrees"
+   },
+   "fix": "Change to '本篇未查阅在场者私人记述，个人神情与现场反应本篇无从得知'.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "N6",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "本篇所据的OCR文本无法判断原稿另有哪些删改，本篇只转述方括号中的字样。",
+   "verdict": "supported",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "JCC 25, 22 December, the order of audience and the editors' note (Gerry's hand, bracketed words in Boudinot's hand)",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "the words in brackets being in the writing of Elias Boudinot"
+   },
+   "fix": "Keep. Optionally note separately that Congress's answer is McHenry's draft and that its brackets were entered by Bankson, so readers do not apply the Boudinot note to the answer.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.context.1",
+   "problem": "The text says 'in the portion of the roll call cited here', implying the roll call is incomplete. The reading range (with U-E21) shows the full member roll call: Forster, Gerry and Osgood also voted ay, and Partridge was the only no. The paragraph should also cite U-E21.",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "Mf Forster, ay Gerry, ay Osgood, ay"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.story.6",
+   "problem": "Congress's answer is quoted without saying that it is printed from McHenry's draft, which carries revisions and Bankson's bracketed entries. The quoted phrases are clean, but readers should know the source is a draft.",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "Thia report, in the writing of James McHenry, is in the Papers of the Continental Congress, No. 19, VI, folio 461."
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "D-JCC25",
+   "outcome": "The audience does not end with the handover of the commission. The President reads Congress's answer. It replies to Washington's two requests (care for his confidential officers, and commending the country to God) and closes with a prayer for him. The 24 December entry then moves straight to routine business and records nothing further about the audience.",
+   "quote": "And for you we address to him our earnest prayers, that a life so beloved may be fostered with all his care; that yoiu- days may be happy as they have been illustrious; and that he wiU finally give you that reward which this world cannot give.",
+   "in_evidence": true
+  }
+ ],
+ "additions": [
+  {
+   "id": "U-E22",
+   "source_id": "D-JCC25",
+   "offset": 593811,
+   "chars": 149,
+   "why": "The editors' note on the 20 December vote records only that the sense of the House was taken with yeas and nays. It states no result. This gives the 'no result shown' claim (A1/N1) an exact scope."
+  },
+  {
+   "id": "U-E23",
+   "source_id": "D-JCC25",
+   "offset": 645107,
+   "chars": 114,
+   "why": "The printed text of Congress's answer is McHenry's draft and still carries revision marks (e.g. 'safety and triumph success'). Readers should know the quoted answer comes from a revised draft. The two passages the piece quotes are not affected by the revisions."
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "b2d097b31fd1dc5d5c9cbdd6321bb02fb6eb91691d3b376ac5a305d48ae735cb",
+ "outcome": "needs_work",
+ "blocking": [
+  "uncertainty_note.en: unresolved — No private account by anyone present was available for comparison, so individual",
+  "uncertainty_note.zh: unresolved — 没有在场者私人记述可对照，个人神情与现场反应不可知",
+  "evidence must be expanded first: 2 addition(s) ['U-E22', 'U-E23']"
+ ]
+}

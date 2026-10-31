@@ -1,0 +1,722 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261030-south-el-1",
+ "content_sha256": "cddb01d604c7556c92ab1cc23baaeb98ed5b2ec7090a44a43852a46a2fd3bcf4",
+ "evidence_in_sha256": "57d6d2eb3b263137d382c1a4ec17cb7fbc06a8fdd430449ba189795abfdf2ec7",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793439848.1257896,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.context.2",
+   "lang": "zh",
+   "sentence": "一种解释是：他没有把出海说成上策，只说成不得已。"
+  },
+  {
+   "id": "A2",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "原文没有说这些理由是否当众向全队讲过；"
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.1",
+   "lang": "en",
+   "sentence": "The original does not say whether those reasons were put to the whole party;"
+  },
+  {
+   "id": "A4",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "原文没有写明当众论证与征求志愿的实际先后，也没有写明是否确已征求；"
+  },
+  {
+   "id": "A5",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "这只是一种解释，原文也没有说明他为什么这样安排。"
+  },
+  {
+   "id": "A6",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "The original does not state the actual order of the arguing and the call for volunteers, nor whether volunteers were in fact called for;"
+  },
+  {
+   "id": "A7",
+   "path": "sections.today.0",
+   "lang": "en",
+   "sentence": "A remote station of a few people, supplies good for another stretch of time, communications down, the next resupply date unknown: does everyone stay and endure, or does someone go out and risk seeking help?"
+  },
+  {
+   "id": "A8",
+   "path": "sections.today.1",
+   "lang": "zh",
+   "sentence": "只说“你看着办”却不讲失败的下场，责任就悬在半空。"
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-SOUTH": {
+   "title": "Ernest Shackleton, South (1920 printing), archive.org OCR",
+   "url": "https://archive.org/download/southstoryshack00shac/southstoryshack00shac_djvu.txt",
+   "ref": "southstoryshack00shac",
+   "evidence_text_sha256": "e709edf2dc345da821c4b958cadfccc12ebdb10eecdd4aea9a035b69e54cea92",
+   "cache_sha256": "e709edf2dc345da821c4b958cadfccc12ebdb10eecdd4aea9a035b69e54cea92",
+   "cjk": false,
+   "source_chars": 847815,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     364526,
+     394934
+    ],
+    [
+     396060,
+     427339
+    ]
+   ],
+   "chars_reviewed": 61687
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 63.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 6890
+  }
+ ],
+ "finished_at": 1793439912.7332036,
+ "elapsed_min": 1.1,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-SOUTH",
+    "outcome": "In the reading range, the James Caird reaches a small cove in King Haakon Bay at dusk on May 10. All six get safely ashore, find fresh water, and the next day haul the boat above high-water mark. The evidence pack stops at the moment they turn toward the cove, so it does not include the landing.",
+    "quote": "However, I made fast the line, and in a few minutes we were all safe on the beach, with the boat floating in the surging water just off the shore.",
+    "in_evidence": false
+   },
+   {
+    "source_id": "S-SOUTH",
+    "outcome": "On the island side, the follow-up to the doctors' fear of operating is given: they had thought there was no chloroform, then found some after the boat left. The reading range does not say whether an operation took place or how it went.",
+    "quote": "They were - under the impression then that they had no chloroform, but they found some subsequently in the medicine-chest after we had left.",
+    "in_evidence": true
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-SOUTH",
+    "start": "in a minute or two we",
+    "end": "put new life into us",
+    "why": "This is how the voyage actually ends in the reading range: they land safely and drink fresh water. Without it the draft stops with the boat still turning toward the cove."
+   },
+   {
+    "source_id": "S-SOUTH",
+    "start": "I called the men together, explained my plan, and asked for volunteers.",
+    "end": "Many came forward at once.",
+    "why": "It shows he did call the men together, explain the plan and ask for volunteers, and that many came forward at once. This directly answers the 'order unknown / not said whether volunteers were called' claims in analysis.2."
+   },
+   {
+    "source_id": "S-SOUTH",
+    "start": "This record of the voyage to South Georgia is based upon",
+    "end": "never to be forgotten.",
+    "why": "It qualifies the nature of the source: the voyage account rests on scanty day-by-day notes plus memory, not memory alone. limits and uncertainty_note need this to describe 'written after the fact' accurately."
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.context.2",
+    "lang": "zh",
+    "sentence": "一种解释是：他没有把出海说成上策，只说成不得已。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "This is an interpretation, not an assertion about what the source records. It is consistent with the source's 'That conclusion was forced upon me' and 'The risk was justified solely by our urgent need of assistance'.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "The risk was justified solely by our urgent need of assistance."
+    },
+    "fix": "Can stay."
+   },
+   {
+    "id": "A2",
+    "path": "sections.analysis.1",
+    "lang": "zh",
+    "sentence": "原文没有说这些理由是否当众向全队讲过；",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Checked chapter IX in the reading range, the passages on the doctors' proposal to take Blackborrow and the veto. The doctors are named as making the proposal and he says 'I had to veto this idea'. The range does not say whether the reasons for the veto were explained to the whole party. 'I called the men together, explained my plan' refers to the overall boat-journey plan, not the veto.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "They suggested that I should take Blackborrow in order that he might have shelter and warmth as quickly ag possible, but I had to veto this idea."
+    },
+    "fix": "Narrow the scope to 'in the passages read, the veto of the doctors' proposal is not said to have been explained to the whole party'. Also note that the proposal came from the two doctors. The conjecture that follows should stay clearly marked as such."
+   },
+   {
+    "id": "A3",
+    "path": "sections.analysis.1",
+    "lang": "en",
+    "sentence": "The original does not say whether those reasons were put to the whole party;",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Same as A2: chapter IX, the passages on the doctors' proposal and the veto.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "They suggested that I should take Blackborrow in order that he might have shelter and warmth as quickly ag possible, but I had to veto this idea."
+    },
+    "fix": "Narrow to: the passages read do not say whether his reasons for vetoing the doctors' proposal were explained to the whole party."
+   },
+   {
+    "id": "A4",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "原文没有写明当众论证与征求志愿的实际先后，也没有写明是否确已征求；",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Chapter IX, crew-selection paragraph.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I called the men together, explained my plan, and asked for volunteers. Many came forward at once."
+    },
+    "fix": "Delete this sentence. Change to: the source says he called the men together, explained the plan, then asked for volunteers, and many came forward at once. He still made the final choice himself, and he also writes that he already knew roughly whom he would pick. Rewrite the interpretation in this paragraph on that basis."
+   },
+   {
+    "id": "A5",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "这只是一种解释，原文也没有说明他为什么这样安排。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Chapter IX, crew-selection paragraphs in the reading range. He calls for volunteers while already knowing his choices, and gives no reason for doing it that way.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "Four other men would be required, and I decided to call for volunteers, although, as a matter of fact, I pretty well knew which of the people I would select."
+    },
+    "fix": "Can stay, but narrow to 'the passages read do not explain why he still called for volunteers when he already had his choices in mind'. Do not combine it with the contradicted A4."
+   },
+   {
+    "id": "A6",
+    "path": "sections.analysis.2",
+    "lang": "en",
+    "sentence": "The original does not state the actual order of the arguing and the call for volunteers, nor whether volunteers were in fact called for;",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Chapter IX, crew-selection paragraph.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I called the men together, explained my plan, and asked for volunteers. Many came forward at once."
+    },
+    "fix": "Delete. State that he called the men together, explained the plan, then asked for volunteers, and many came forward at once, with the final selection still his."
+   },
+   {
+    "id": "A7",
+    "path": "sections.today.0",
+    "lang": "en",
+    "sentence": "A remote station of a few people, supplies good for another stretch of time, communications down, the next resupply date unknown: does everyone stay and endure, or does someone go out and risk seeking help?",
+    "verdict": "not_a_source_claim",
+    "source_ids": [],
+    "scope": "A modern hypothetical scenario.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "A boat journey in search of relief was necessary and must not be delayed."
+    },
+    "fix": "Can stay."
+   },
+   {
+    "id": "A8",
+    "path": "sections.today.1",
+    "lang": "zh",
+    "sentence": "只说“你看着办”却不讲失败的下场，责任就悬在半空。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [],
+    "scope": "Modern advice.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "with directions as to his course of action in the event of our failure to bring relief"
+    },
+    "fix": "Can stay."
+   },
+   {
+    "id": "N1",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "这套记录只有当事人一个史源，是他事后写下的第一人称自述。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "This piece cites only South, which is a source-count statement. It cannot be taken to mean the events have no other record. Also, the voyage part is said to be based on day-by-day notes.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "This record of the voyage to South Georgia is based upon Scanty notes made day by day."
+    },
+    "fix": "Change to: 'This piece cites only one source, the participant's own first-person account in South. The voyage section, by his own statement, is based on scanty day-by-day notes plus memory.' Drop wording that suggests the events have only one historical source."
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "文森特为什么垮掉，队长自己说难以解释",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Description of the May 5–6 voyage passage.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I could not easily account for his collapse"
+    },
+    "fix": "Can stay."
+   },
+   {
+    "id": "N3",
+    "path": "sections.limits.1",
+    "lang": "en",
+    "sentence": "The quoted passages give no calendar year, so none is supplied here;",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Limited to the two reading windows: only month and day appear (April 20–23, May 5–11), with no year. This does not mean the full book lacks a year.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "The gale was stronger than ever on the following morning (April 20)."
+    },
+    "fix": "Keep the scope as 'the passages quoted in this piece'. Do not write it as 'the original gives no year'. Delete if not needed."
+   },
+   {
+    "id": "N4",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "对话与心理均为记述性内容，未必逐字、不可核实",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "'Cannot be verified' is a negative judgment. The reading range does not establish that none of this can be checked, and the draft did not consult other material.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "The notes dealt usually with the bare facts of distances, positions, and weather, but our memories retained the incidents of the passing days"
+    },
+    "fix": "Change to: 'dialogue and psychological description come from his recollection and need not be verbatim. He says the notes mostly recorded distances, positions and weather.' Delete 'cannot be verified'."
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.story.8",
+    "problem": "The paragraph stops with the boat turning toward the cove, which reads as an unresolved middle point. The reading range goes on to say they landed safely that same evening, found fresh water, and hauled the boat up the next day.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "However, I made fast the line, and in a few minutes we were all safe on the beach, with the boat floating in the surging water just off the shore."
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.story.1",
+    "problem": "It says only that he 'decided to call for volunteers' and leaves out what happened next: he called the men together, explained the plan, asked for volunteers, and many came forward. This omission led analysis.2 to wrongly claim the source does not say whether volunteers were called or in what order.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I called the men together, explained my plan, and asked for volunteers. Many came forward at once."
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.analysis.2",
+    "problem": "The interpretation rests on 'order and whether it happened are unknown', but the source states the order (gather, explain, ask for volunteers) and the result. It needs to be rewritten.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I called the men together, explained my plan, and asked for volunteers."
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.limits.0",
+    "problem": "'Written after the fact' without qualification omits that the voyage section is based on day-by-day notes, which changes how readers judge how reliable the record is.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "This record of the voyage to South Georgia is based upon Scanty notes made day by day."
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.hook.0",
+    "problem": "'No one will ever come to search for them' is presented as fact. In the source it is one of the leader's considerations, his own assessment.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "A consideration that had weight with me was that there was no chance at all of any search being made for us on Elephant Island."
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "The draft is broadly accurate. It must add the landing at King Haakon Bay as the voyage's ending, and the fact that volunteers were called and many came forward; the latter contradicts the analysis.2 claim (A4/A6) that the source does not say. The single-source and 'cannot be verified' wording in limits and uncertainty_note should be narrowed, noting the day-by-day notes."
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.context.2",
+   "lang": "zh",
+   "sentence": "一种解释是：他没有把出海说成上策，只说成不得已。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "This is an interpretation, not an assertion about what the source records. It is consistent with the source's 'That conclusion was forced upon me' and 'The risk was justified solely by our urgent need of assistance'.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "The risk was justified solely by our urgent need of assistance."
+   },
+   "fix": "Can stay.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "原文没有说这些理由是否当众向全队讲过；",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Checked chapter IX in the reading range, the passages on the doctors' proposal to take Blackborrow and the veto. The doctors are named as making the proposal and he says 'I had to veto this idea'. The range does not say whether the reasons for the veto were explained to the whole party. 'I called the men together, explained my plan' refers to the overall boat-journey plan, not the veto.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "They suggested that I should take Blackborrow in order that he might have shelter and warmth as quickly ag possible, but I had to veto this idea."
+   },
+   "fix": "Narrow the scope to 'in the passages read, the veto of the doctors' proposal is not said to have been explained to the whole party'. Also note that the proposal came from the two doctors. The conjecture that follows should stay clearly marked as such.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.1",
+   "lang": "en",
+   "sentence": "The original does not say whether those reasons were put to the whole party;",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Same as A2: chapter IX, the passages on the doctors' proposal and the veto.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "They suggested that I should take Blackborrow in order that he might have shelter and warmth as quickly ag possible, but I had to veto this idea."
+   },
+   "fix": "Narrow to: the passages read do not say whether his reasons for vetoing the doctors' proposal were explained to the whole party.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A4",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "原文没有写明当众论证与征求志愿的实际先后，也没有写明是否确已征求；",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Chapter IX, crew-selection paragraph.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I called the men together, explained my plan, and asked for volunteers. Many came forward at once."
+   },
+   "fix": "Delete this sentence. Change to: the source says he called the men together, explained the plan, then asked for volunteers, and many came forward at once. He still made the final choice himself, and he also writes that he already knew roughly whom he would pick. Rewrite the interpretation in this paragraph on that basis.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A5",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "这只是一种解释，原文也没有说明他为什么这样安排。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Chapter IX, crew-selection paragraphs in the reading range. He calls for volunteers while already knowing his choices, and gives no reason for doing it that way.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "Four other men would be required, and I decided to call for volunteers, although, as a matter of fact, I pretty well knew which of the people I would select."
+   },
+   "fix": "Can stay, but narrow to 'the passages read do not explain why he still called for volunteers when he already had his choices in mind'. Do not combine it with the contradicted A4.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A6",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "The original does not state the actual order of the arguing and the call for volunteers, nor whether volunteers were in fact called for;",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Chapter IX, crew-selection paragraph.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I called the men together, explained my plan, and asked for volunteers. Many came forward at once."
+   },
+   "fix": "Delete. State that he called the men together, explained the plan, then asked for volunteers, and many came forward at once, with the final selection still his.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A7",
+   "path": "sections.today.0",
+   "lang": "en",
+   "sentence": "A remote station of a few people, supplies good for another stretch of time, communications down, the next resupply date unknown: does everyone stay and endure, or does someone go out and risk seeking help?",
+   "verdict": "not_a_source_claim",
+   "source_ids": [],
+   "scope": "A modern hypothetical scenario.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "A boat journey in search of relief was necessary and must not be delayed."
+   },
+   "fix": "Can stay.",
+   "unit_status": {}
+  },
+  {
+   "id": "A8",
+   "path": "sections.today.1",
+   "lang": "zh",
+   "sentence": "只说“你看着办”却不讲失败的下场，责任就悬在半空。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [],
+   "scope": "Modern advice.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "with directions as to his course of action in the event of our failure to bring relief"
+   },
+   "fix": "Can stay.",
+   "unit_status": {}
+  },
+  {
+   "id": "N1",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "这套记录只有当事人一个史源，是他事后写下的第一人称自述。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "This piece cites only South, which is a source-count statement. It cannot be taken to mean the events have no other record. Also, the voyage part is said to be based on day-by-day notes.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "This record of the voyage to South Georgia is based upon Scanty notes made day by day."
+   },
+   "fix": "Change to: 'This piece cites only one source, the participant's own first-person account in South. The voyage section, by his own statement, is based on scanty day-by-day notes plus memory.' Drop wording that suggests the events have only one historical source.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "文森特为什么垮掉，队长自己说难以解释",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Description of the May 5–6 voyage passage.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I could not easily account for his collapse"
+   },
+   "fix": "Can stay.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "The quoted passages give no calendar year, so none is supplied here;",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Limited to the two reading windows: only month and day appear (April 20–23, May 5–11), with no year. This does not mean the full book lacks a year.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "The gale was stronger than ever on the following morning (April 20)."
+   },
+   "fix": "Keep the scope as 'the passages quoted in this piece'. Do not write it as 'the original gives no year'. Delete if not needed.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "对话与心理均为记述性内容，未必逐字、不可核实",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "'Cannot be verified' is a negative judgment. The reading range does not establish that none of this can be checked, and the draft did not consult other material.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "The notes dealt usually with the bare facts of distances, positions, and weather, but our memories retained the incidents of the passing days"
+   },
+   "fix": "Change to: 'dialogue and psychological description come from his recollection and need not be verbatim. He says the notes mostly recorded distances, positions and weather.' Delete 'cannot be verified'.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.story.8",
+   "problem": "The paragraph stops with the boat turning toward the cove, which reads as an unresolved middle point. The reading range goes on to say they landed safely that same evening, found fresh water, and hauled the boat up the next day.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "However, I made fast the line, and in a few minutes we were all safe on the beach, with the boat floating in the surging water just off the shore."
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.story.1",
+   "problem": "It says only that he 'decided to call for volunteers' and leaves out what happened next: he called the men together, explained the plan, asked for volunteers, and many came forward. This omission led analysis.2 to wrongly claim the source does not say whether volunteers were called or in what order.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I called the men together, explained my plan, and asked for volunteers. Many came forward at once."
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.analysis.2",
+   "problem": "The interpretation rests on 'order and whether it happened are unknown', but the source states the order (gather, explain, ask for volunteers) and the result. It needs to be rewritten.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I called the men together, explained my plan, and asked for volunteers."
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.limits.0",
+   "problem": "'Written after the fact' without qualification omits that the voyage section is based on day-by-day notes, which changes how readers judge how reliable the record is.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "This record of the voyage to South Georgia is based upon Scanty notes made day by day."
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.hook.0",
+   "problem": "'No one will ever come to search for them' is presented as fact. In the source it is one of the leader's considerations, his own assessment.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "A consideration that had weight with me was that there was no chance at all of any search being made for us on Elephant Island."
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-SOUTH",
+   "outcome": "In the reading range, the James Caird reaches a small cove in King Haakon Bay at dusk on May 10. All six get safely ashore, find fresh water, and the next day haul the boat above high-water mark. The evidence pack stops at the moment they turn toward the cove, so it does not include the landing.",
+   "quote": "However, I made fast the line, and in a few minutes we were all safe on the beach, with the boat floating in the surging water just off the shore.",
+   "in_evidence": false
+  },
+  {
+   "source_id": "S-SOUTH",
+   "outcome": "On the island side, the follow-up to the doctors' fear of operating is given: they had thought there was no chloroform, then found some after the boat left. The reading range does not say whether an operation took place or how it went.",
+   "quote": "They were - under the impression then that they had no chloroform, but they found some subsequently in the medicine-chest after we had left.",
+   "in_evidence": true
+  }
+ ],
+ "additions": [
+  {
+   "id": "SOUTH-EL1-E32",
+   "source_id": "S-SOUTH",
+   "offset": 419575,
+   "chars": 960,
+   "why": "This is how the voyage actually ends in the reading range: they land safely and drink fresh water. Without it the draft stops with the boat still turning toward the cove."
+  },
+  {
+   "id": "SOUTH-EL1-E33",
+   "source_id": "S-SOUTH",
+   "offset": 371127,
+   "chars": 98,
+   "why": "It shows he did call the men together, explain the plan and ask for volunteers, and that many came forward at once. This directly answers the 'order unknown / not said whether volunteers were called' claims in analysis.2."
+  },
+  {
+   "id": "SOUTH-EL1-E34",
+   "source_id": "S-SOUTH",
+   "offset": 387918,
+   "chars": 273,
+   "why": "It qualifies the nature of the source: the voyage account rests on scanty day-by-day notes plus memory, not memory alone. limits and uncertainty_note need this to describe 'written after the fact' accurately."
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "aec1215966d055897070438dd4f4af12bdfc65b0024e720801e33f0ddb3ecc27",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.analysis.2.zh: contradicted — 原文没有写明当众论证与征求志愿的实际先后，也没有写明是否确已征求；",
+  "sections.analysis.2.en: contradicted — The original does not state the actual order of the arguing and the call for vol",
+  "uncertainty_note.zh: unnecessary — 对话与心理均为记述性内容，未必逐字、不可核实",
+  "sections.story.8: The paragraph stops with the boat turning toward the cove, which reads as an unresolved middle point",
+  "sections.story.1: It says only that he 'decided to call for volunteers' and leaves out what happened next: he called t",
+  "sections.analysis.2: The interpretation rests on 'order and whether it happened are unknown', but the source states the o",
+  "evidence must be expanded first: 3 addition(s) ['SOUTH-EL1-E32', 'SOUTH-EL1-E33', 'SOUTH-EL1-E34']"
+ ]
+}

@@ -1,0 +1,428 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-20261030-franklin-1787",
+ "content_sha256": "630a64f8e14d93850caf5a41e96362de9aad26845cbbcf159fc7960d3b919a0f",
+ "evidence_in_sha256": "b4e60b708aff4abc1a0f4945d479e001875408c0bd677a4e85bf61c998d18310",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793429739.6434176,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.6",
+   "lang": "en",
+   "sentence": "Franklin explained that when drawing up that paper he had not known that any particular member would refuse to sign, and hoped to be so understood."
+  },
+  {
+   "id": "A2",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "另外，本篇只写到1787年9月17日会议散会为止，不涉及宪法此后的批准与修正。"
+  },
+  {
+   "id": "A3",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "In any case, this piece stops at the adjournment of 17 September 1787 and touches neither ratification nor amendment."
+  }
+ ],
+ "search": null,
+ "units": {
+  "U2-ELLIOT": {
+   "title": "James Madison's notes of the Federal Convention, 17 September 1787, in Jonathan Elliot (ed.), Debates in the Several State Conventions, vol. 5 (1845), Wikisource",
+   "url": "https://en.wikisource.org/w/index.php?title=Debates%20in%20the%20Several%20State%20Conventions/Volume%205/September%2017&action=render",
+   "ref": "en:Debates in the Several State Conventions/Volume 5/September 17",
+   "evidence_text_sha256": "37137cdcfca2dde503eac42d70c01776cd87ef89b672778d40bcf5622fdce9a7",
+   "cache_sha256": "37137cdcfca2dde503eac42d70c01776cd87ef89b672778d40bcf5622fdce9a7",
+   "cjk": false,
+   "source_chars": 62049,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     62049
+    ]
+   ],
+   "chars_reviewed": 62049
+  },
+  "U2-FRANK": {
+   "title": "Works of the late Doctor Benjamin Franklin (1793): Final Speech of Dr. Franklin in the late Federal Convention, Wikisource",
+   "url": "https://en.wikisource.org/w/index.php?title=Works%20of%20the%20late%20Doctor%20Benjamin%20Franklin/Final%20Speech%20of%20Dr.%20Franklin%20in%20the%20late%20Federal%20Convention&action=render",
+   "ref": "en:Works of the late Doctor Benjamin Franklin/Final Speech of Dr. Franklin in the late Federal Convention",
+   "evidence_text_sha256": "5fcedf3ce2acefd56025df5c380f7495b7a9b2d0504e20651d8ac9ba59687d6c",
+   "cache_sha256": "5fcedf3ce2acefd56025df5c380f7495b7a9b2d0504e20651d8ac9ba59687d6c",
+   "cjk": false,
+   "source_chars": 5805,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     5805
+    ]
+   ],
+   "chars_reviewed": 5805
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 35.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 3864
+  }
+ ],
+ "finished_at": 1793429775.7117243,
+ "elapsed_min": 0.6,
+ "review": {
+  "episode": [
+   {
+    "source_id": "U2-ELLIOT",
+    "outcome": "All members sign except Randolph, Mason and Gerry, and the Convention adjourns sine die. While the last members sign, Franklin remarks that the sun painted on the president's chair is a rising sun.",
+    "quote": "The Constitution being signed by all the members, except Mr. Randolph, Mr. Mason, and Mr. Gerry, who declined giving it the sanction of their names, the Convention dissolved itself by an adjournment sine die .",
+    "in_evidence": true
+   },
+   {
+    "source_id": "U2-FRANK",
+    "outcome": "The speech text ends with the motion to add the closing formula, which is agreed to. An editor's note then explains why the speech is ascribed to Franklin.",
+    "quote": "[The motion was then made for adding the laſt formula, viz. Done in Convention, by the unanimous conſent, &c.: which was agreed to, and added accordingly.]",
+    "in_evidence": true
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "U2-ELLIOT",
+    "start": "He refused to sign, because he thought",
+    "end": "most consistent with the public good.",
+    "why": "This is Randolph's stated reason for refusing at his first rising: nine states will fail to ratify, and confusion will follow. F-E8 stops before it, so story.4 reports only the apology and the reservation, not the cause."
+   },
+   {
+    "source_id": "U2-ELLIOT",
+    "start": "Mr. WILLIAMSON suggested",
+    "end": "no scruples against putting his name to it.",
+    "why": "Williamson proposed a further way to sign: signing only the letter to Congress. This bears directly on the 'several readings of a signature' in analysis.0 and on the alternative in analysis.1. The draft says only 'several members explained why they would sign' and leaves this proposal out."
+   },
+   {
+    "source_id": "U2-ELLIOT",
+    "start": "He alluded to Mr. Blount for one.",
+    "end": "He alluded to Mr. Blount for one.",
+    "why": "Footnote 2 states that Williamson's 'some members who disliked the Constitution' included Blount. This connects to Blount's statement in story.5."
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.6",
+    "lang": "en",
+    "sentence": "Franklin explained that when drawing up that paper he had not known that any particular member would refuse to sign, and hoped to be so understood.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "U2-ELLIOT"
+    ],
+    "scope": "Madison's notes, 17 Sept., Franklin's reply to Randolph",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "He declared that, when drawing up that paper, he did not know that any particular member would refuse to sign his name to the instrument, and hoped to be so understood."
+    },
+    "fix": "No change needed. This is an accurate paraphrase of Franklin's own statement, not a claim about what the source records or omits."
+   },
+   {
+    "id": "A2",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "另外，本篇只写到1787年9月17日会议散会为止，不涉及宪法此后的批准与修正。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [],
+    "scope": "A statement about the scope of this piece, not about the source",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "the Convention dissolved itself by an adjournment sine die"
+    },
+    "fix": "Can be kept as is."
+   },
+   {
+    "id": "A3",
+    "path": "sections.limits.1",
+    "lang": "en",
+    "sentence": "In any case, this piece stops at the adjournment of 17 September 1787 and touches neither ratification nor amendment.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [],
+    "scope": "A statement about the scope of this piece, not about the source",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "the Convention dissolved itself by an adjournment sine die"
+    },
+    "fix": "Can be kept as is."
+   },
+   {
+    "id": "N1",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "富兰克林讲稿的措辞在两版间是否有出入，本篇不作断言。",
+    "verdict": "contradicted",
+    "source_ids": [
+     "U2-ELLIOT",
+     "U2-FRANK"
+    ],
+    "scope": "Both full texts were read: U2-FRANK in full, and Franklin's speech in U2-ELLIOT",
+    "quote": {
+     "source_id": "U2-FRANK",
+     "quote": "I CONFESS that I do not entirely approve of this conſtitution at preſent"
+    },
+    "fix": "Both versions are in the reading range, and the wording plainly differs. Madison's version reads 'several parts of this Constitution which I do not at present approve' and 'builders of Babel'; the 1793 version reads 'do not entirely approve' and 'builders of Babylon', and lacks '(if approved by Congress and confirmed by the conventions)'. State that differences exist and give examples, rather than declining to judge."
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "whether the wording of Franklin's speech differs between the two versions is not asserted.",
+    "verdict": "contradicted",
+    "source_ids": [
+     "U2-ELLIOT",
+     "U2-FRANK"
+    ],
+    "scope": "Both full texts were read: U2-FRANK in full, and Franklin's speech in U2-ELLIOT",
+    "quote": {
+     "source_id": "U2-FRANK",
+     "quote": "like thoſe of the builders of Babylon"
+    },
+    "fix": "Elliot has 'builders of Babel'. Say the versions differ in wording and give one or two examples."
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.story.4",
+    "problem": "Randolph's first statement omits the reason he gave for refusing: he expected ratification to fail and confusion to follow. Readers see only the apology and the reservation, so the refusal looks like a matter of personal conscience alone.",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "He refused to sign, because he thought the object of the Convention would be frustrated by the alternative which it presented to the people. Nine states will fail to ratify the plan, and confusion must ensue."
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.limits.1",
+    "problem": "The draft says only that the papers were left with the president. It omits that the vote was 10 to 1, with Maryland opposed because of its instructions to its deputies, and that the follow-up resolution passed nem. con.",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "Georgia, ay, 10; Maryland, [ 4 ] no, 1."
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.story.5",
+    "problem": "The draft says several members explained why they would sign but skips Williamson's proposal to sign only the accompanying letter. That proposal was another reading of what a signature should mean.",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "Mr. WILLIAMSON suggested that the signing should be confined to the letter accompanying the Constitution to Congress"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "The draft's main narrative matches the full source and the outcomes are already in the evidence. Two fixes are needed. First, add Randolph's stated reason for refusing to story.4. Second, revise limits.0's refusal to judge whether the two versions of the speech differ, since both full texts were read and the wording visibly differs."
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.6",
+   "lang": "en",
+   "sentence": "Franklin explained that when drawing up that paper he had not known that any particular member would refuse to sign, and hoped to be so understood.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "U2-ELLIOT"
+   ],
+   "scope": "Madison's notes, 17 Sept., Franklin's reply to Randolph",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "He declared that, when drawing up that paper, he did not know that any particular member would refuse to sign his name to the instrument, and hoped to be so understood."
+   },
+   "fix": "No change needed. This is an accurate paraphrase of Franklin's own statement, not a claim about what the source records or omits.",
+   "unit_status": {
+    "U2-ELLIOT": "complete"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "另外，本篇只写到1787年9月17日会议散会为止，不涉及宪法此后的批准与修正。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [],
+   "scope": "A statement about the scope of this piece, not about the source",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "the Convention dissolved itself by an adjournment sine die"
+   },
+   "fix": "Can be kept as is.",
+   "unit_status": {}
+  },
+  {
+   "id": "A3",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "In any case, this piece stops at the adjournment of 17 September 1787 and touches neither ratification nor amendment.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [],
+   "scope": "A statement about the scope of this piece, not about the source",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "the Convention dissolved itself by an adjournment sine die"
+   },
+   "fix": "Can be kept as is.",
+   "unit_status": {}
+  },
+  {
+   "id": "N1",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "富兰克林讲稿的措辞在两版间是否有出入，本篇不作断言。",
+   "verdict": "contradicted",
+   "source_ids": [
+    "U2-ELLIOT",
+    "U2-FRANK"
+   ],
+   "scope": "Both full texts were read: U2-FRANK in full, and Franklin's speech in U2-ELLIOT",
+   "quote": {
+    "source_id": "U2-FRANK",
+    "quote": "I CONFESS that I do not entirely approve of this conſtitution at preſent"
+   },
+   "fix": "Both versions are in the reading range, and the wording plainly differs. Madison's version reads 'several parts of this Constitution which I do not at present approve' and 'builders of Babel'; the 1793 version reads 'do not entirely approve' and 'builders of Babylon', and lacks '(if approved by Congress and confirmed by the conventions)'. State that differences exist and give examples, rather than declining to judge.",
+   "unit_status": {
+    "U2-ELLIOT": "complete",
+    "U2-FRANK": "complete"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "whether the wording of Franklin's speech differs between the two versions is not asserted.",
+   "verdict": "contradicted",
+   "source_ids": [
+    "U2-ELLIOT",
+    "U2-FRANK"
+   ],
+   "scope": "Both full texts were read: U2-FRANK in full, and Franklin's speech in U2-ELLIOT",
+   "quote": {
+    "source_id": "U2-FRANK",
+    "quote": "like thoſe of the builders of Babylon"
+   },
+   "fix": "Elliot has 'builders of Babel'. Say the versions differ in wording and give one or two examples.",
+   "unit_status": {
+    "U2-ELLIOT": "complete",
+    "U2-FRANK": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.story.4",
+   "problem": "Randolph's first statement omits the reason he gave for refusing: he expected ratification to fail and confusion to follow. Readers see only the apology and the reservation, so the refusal looks like a matter of personal conscience alone.",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "He refused to sign, because he thought the object of the Convention would be frustrated by the alternative which it presented to the people. Nine states will fail to ratify the plan, and confusion must ensue."
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.limits.1",
+   "problem": "The draft says only that the papers were left with the president. It omits that the vote was 10 to 1, with Maryland opposed because of its instructions to its deputies, and that the follow-up resolution passed nem. con.",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "Georgia, ay, 10; Maryland, [ 4 ] no, 1."
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.story.5",
+   "problem": "The draft says several members explained why they would sign but skips Williamson's proposal to sign only the accompanying letter. That proposal was another reading of what a signature should mean.",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "Mr. WILLIAMSON suggested that the signing should be confined to the letter accompanying the Constitution to Congress"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "U2-ELLIOT",
+   "outcome": "All members sign except Randolph, Mason and Gerry, and the Convention adjourns sine die. While the last members sign, Franklin remarks that the sun painted on the president's chair is a rising sun.",
+   "quote": "The Constitution being signed by all the members, except Mr. Randolph, Mr. Mason, and Mr. Gerry, who declined giving it the sanction of their names, the Convention dissolved itself by an adjournment sine die .",
+   "in_evidence": true
+  },
+  {
+   "source_id": "U2-FRANK",
+   "outcome": "The speech text ends with the motion to add the closing formula, which is agreed to. An editor's note then explains why the speech is ascribed to Franklin.",
+   "quote": "[The motion was then made for adding the laſt formula, viz. Done in Convention, by the unanimous conſent, &c.: which was agreed to, and added accordingly.]",
+   "in_evidence": true
+  }
+ ],
+ "additions": [
+  {
+   "id": "F-E29",
+   "source_id": "U2-ELLIOT",
+   "offset": 26393,
+   "chars": 410,
+   "why": "This is Randolph's stated reason for refusing at his first rising: nine states will fail to ratify, and confusion will follow. F-E8 stops before it, so story.4 reports only the apology and the reservation, not the cause."
+  },
+  {
+   "id": "F-E30",
+   "source_id": "U2-ELLIOT",
+   "offset": 27400,
+   "chars": 357,
+   "why": "Williamson proposed a further way to sign: signing only the letter to Congress. This bears directly on the 'several readings of a signature' in analysis.0 and on the alternative in analysis.1. The draft says only 'several members explained why they would sign' and leaves this proposal out."
+  },
+  {
+   "id": "F-E31",
+   "source_id": "U2-ELLIOT",
+   "offset": 61076,
+   "chars": 33,
+   "why": "Footnote 2 states that Williamson's 'some members who disliked the Constitution' included Blount. This connects to Blount's statement in story.5."
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "c4d7000eaa561e788c28b5a1b7840e3df739f2e747e76f2d858e0ebacdc68e1c",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.limits.0.zh: contradicted — 富兰克林讲稿的措辞在两版间是否有出入，本篇不作断言。",
+  "sections.limits.0.en: contradicted — whether the wording of Franklin's speech differs between the two versions is not",
+  "sections.story.4: Randolph's first statement omits the reason he gave for refusing: he expected ratification to fail a",
+  "evidence must be expanded first: 3 addition(s) ['F-E29', 'F-E30', 'F-E31']"
+ ]
+}

@@ -1,0 +1,726 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-20261030-shackleton-ocean-camp",
+ "content_sha256": "da80dfa470a98123cf2a74cc84a92e2706bcee42447c189daf5071c34902ea49",
+ "evidence_in_sha256": "2f27ceea809585428ca2a3b87c7d998573be856048dcd64f6dddadf0b8b2cfcf",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793428526.0963688,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "另一种解释是关于取舍的标准（作者推断）：金币被扔掉、照片被留下，他在这几段里没有说明原因；"
+  },
+  {
+   "id": "A2",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "扉页则被他撕了下来，这段记述没有写它的去向。"
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "the fly-leaf was torn out, and the passage does not say what became of it."
+  },
+  {
+   "id": "A4",
+   "path": "sections.analysis.3",
+   "lang": "zh",
+   "sentence": "作者提出的替代选择（他没有写自己考虑过这些）：比如把队伍分成两支，一支维持最低限度的探路，一支守营保存体力；"
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-SOUTH": {
+   "title": "Ernest Shackleton, South: The Story of Shackleton's Last Expedition, 1914–1917 (1920 printing; archive.org OCR)",
+   "url": "https://archive.org/download/southstoryshack00shac/southstoryshack00shac_djvu.txt",
+   "ref": "southstoryshack00shac",
+   "evidence_text_sha256": "e709edf2dc345da821c4b958cadfccc12ebdb10eecdd4aea9a035b69e54cea92",
+   "cache_sha256": "e709edf2dc345da821c4b958cadfccc12ebdb10eecdd4aea9a035b69e54cea92",
+   "cjk": false,
+   "source_chars": 847815,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     4790,
+     15469
+    ],
+    [
+     185304,
+     224080
+    ],
+    [
+     253805,
+     264405
+    ]
+   ],
+   "chars_reviewed": 60055
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 83.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 9133
+  }
+ ],
+ "finished_at": 1793428610.7860024,
+ "elapsed_min": 1.4,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-SOUTH",
+    "outcome": "弃船：压力在下午达到顶点，他命令全员下到冰上，看着冰把船碾碎。弃船当晚他向全队宣布，打算朝保利特岛方向徒步行进。",
+    "quote": "Again the pressure began, and at 5 p.m. I ordered all hands on to the ice.",
+    "in_evidence": false
+   },
+   {
+    "source_id": "S-SOUTH",
+    "outcome": "在海洋营等到的“第二次尝试”确实做了：又行军七天，但冰面无法通行，只好后撤。照当时的速度要三百多天才能到陆地，最后再次扎营，这就是耐心营。",
+    "quote": "We had been on the march for seven days; rations were short and the men were weak.",
+    "in_evidence": false
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-SOUTH",
+    "start": "We could even, if progress proved too difficult",
+    "end": "The issue is beyond my power either to predict or to control.",
+    "why": "行军开始前，他已经写下“在厚浮冰上扎营、等浮冰外漂到开阔水面”这个方案，并因士气等心理原因明确否决，选择先走。这直接改变了 analysis.0 和 analysis.3 对海洋营决定的解读。"
+   },
+   {
+    "source_id": "S-SOUTH",
+    "start": "I rather grudged the two pounds allowance per man",
+    "end": "And the face of the deep is frozen.",
+    "why": "这里写明了留照片、扔金币的理由，也写了他同时撕下的约伯记那一页。稿件 analysis.2 称“没有说明原因”，与此相反。"
+   },
+   {
+    "source_id": "S-SOUTH",
+    "start": "We had been on the march for seven days; rations were short and the men were weak.",
+    "end": "till conditions should appear more favourable for a renewal of the attempt to escape.",
+    "why": "这是海洋营决定的后续结局：第二次尝试失败，才转入耐心营。证据包只有“耐心营”这个名字，稿件 story.13 因此漏掉了这次转折。"
+   },
+   {
+    "source_id": "S-SOUTH",
+    "start": "I have told them the distance to the Barrier and the distance to Paulet Island",
+    "end": "we will all reach safety in the end.",
+    "why": "补出行军的明确目标是朝保利特岛方向徒步，以及他当晚向全队说明了这个计划，可以充实 hook 和 context。"
+   },
+   {
+    "source_id": "S-SOUTH",
+    "start": "Should this be done, the Transcontinental party",
+    "end": "as early as possible in 1915 set out on the journey.",
+    "why": "“立刻出发”只是原计划在十一月登陆这一前提下的安排，原文还有登陆太晚就越冬的备选。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "另一种解释是关于取舍的标准（作者推断）：金币被扔掉、照片被留下，他在这几段里没有说明原因；",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "第4章离开抛弃营前关于两磅限额的段落",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas. So sovereigns were thrown away and photographs were kept."
+    },
+    "fix": "改为：他给出了理由——人在这种处境下需要寄托，需要一件能想起家人的实物。可以引用这句原文，删去“没有说明原因”和“个人偏好”的推测。"
+   },
+   {
+    "id": "A2",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "扉页则被他撕了下来，这段记述没有写它的去向。",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "第4章撕下扉页及其后关于另一本圣经的段落（已读窗口内确实没有交代扉页的去向）",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "and also the wonderful page of Job containing the verse"
+    },
+    "fix": "删除这句。如果保留这个细节，应补上他同时撕下了约伯记一页。"
+   },
+   {
+    "id": "A3",
+    "path": "sections.analysis.2",
+    "lang": "en",
+    "sentence": "the fly-leaf was torn out, and the passage does not say what became of it.",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Ch. 4, fly-leaf passage and the following lines on the other Bible",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "and also the wonderful page of Job containing the verse"
+    },
+    "fix": "Delete; if the detail is kept, add the page of Job."
+   },
+   {
+    "id": "A4",
+    "path": "sections.analysis.3",
+    "lang": "zh",
+    "sentence": "作者提出的替代选择（他没有写自己考虑过这些）：比如把队伍分成两支，一支维持最低限度的探路，一支守营保存体力；",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "已读窗口：第4章弃船至第5章海洋营（偏移185304–224080），以及第6–7章转入耐心营的段落。窗口内没有提到分队方案；全书其余部分未读。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "Yet I feel sure that it is the right thing to attempt a march"
+    },
+    "fix": "限定范围，改为“在弃船到海洋营这几段里没有写到分队方案”，并注明他确实权衡过“继续走”与“扎营等待”。"
+   },
+   {
+    "id": "N1",
+    "path": "sections.analysis.2",
+    "lang": "en",
+    "sentence": "The sovereigns were thrown away and the photographs were kept, and he gives no reason in these passages;",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Ch. 4, two-pound allowance passage",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas."
+    },
+    "fix": "State his stated reason and quote it."
+   },
+   {
+    "id": "N2",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "也许那道上限筛的只是重量，也许只是个人偏好，两种说法都超出了他写下的内容。",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "第4章两磅限额段落",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "some personal belongings could fairly be regarded as indis- pensable."
+    },
+    "fix": "删去。改写为：他的标准是除了重量，还要留下能维系心理的纪念物。"
+   },
+   {
+    "id": "N3",
+    "path": "sections.analysis.2",
+    "lang": "en",
+    "sentence": "Both go beyond what he wrote.",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Ch. 4, two-pound allowance passage",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "some personal belongings could fairly be regarded as indis- pensable."
+    },
+    "fix": "Delete; replace with his stated standard."
+   },
+   {
+    "id": "N4",
+    "path": "sections.analysis.3",
+    "lang": "en",
+    "sentence": "Then there are alternatives the author raises for the sake of argument; nothing suggests Shackleton weighed them himself.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Read windows, ch. 4–5 and the Patience Camp transition; no split-party option appears there",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "Yet I feel sure that it is the right thing to attempt a march"
+    },
+    "fix": "Narrow to 'in these chapters' and note that he did weigh marching against camping to wait."
+   },
+   {
+    "id": "N5",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "营地里别人怎么想、是否同意这个决定，证据里没有，本篇也不替他们猜测心理。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "证据包及已读窗口中关于海洋营决定的段落，均没有记载队员对该决定的反应",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I decided to find a more solid floe and there camp until condi- tions were more favourable"
+    },
+    "fix": "无需修改。"
+   },
+   {
+    "id": "N6",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "文中那句“喝过更干净的水”出自一位未具名队员的日记，是经沙克尔顿转引的。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "第5章开头的饮水段落",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "as one man wrote in his diary"
+    },
+    "fix": "无需修改。"
+   },
+   {
+    "id": "N7",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "本篇也不写耐心营之后的经过，那部分不在这份证据包的覆盖范围内。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "说的是本篇和证据包的范围，不是来源记载与否",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "Our new home, which we were to occupy for nearly three and a half months"
+    },
+    "fix": "无需修改。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.analysis.2",
+    "problem": "稿件把留照片的标准说成“没有说明、只能猜测”，但原文明确给出了理由：需要能想起家人的纪念物。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas."
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.story.13",
+    "problem": "截断造成误导：海洋营所等待的第二次尝试实际做了，行军七天后失败，才转入耐心营。稿件写成“后来换了营地”，读者会以为海洋营的等待直接通向耐心营。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "We had marched seven and a half miles in a direct line and at this rate it would take us over three hundred days to reach the land away to the west."
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.analysis.0",
+    "problem": "稿件称海洋营“这一次把等待写成了计划”。实际上行军之前，他已写下“扎营、等浮冰外漂到开阔水面”这个方案，并因心理原因否决。海洋营是回到了先前否决的方案，并非首次提出。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "We could even, if progress proved too difficult and too injurious to the boats, which we must guard as our ultimate means of salvation, camp on the nearest heavy floe, scour the neighbouring pack for penguins and seals, and await the outward drift of the pack to open and navigable water."
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.analysis.3",
+    "problem": "稿件强调“不是唯一的可能”，但他本人已明确权衡过走与等，并写出选择行军的士气理由。应说明这一点，避免读者以为他没有考虑过替代方案。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "It will be much better for the men in general to feel that, even though progress is slow, they are on their way to land than it will be simply to sit down and wait"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.story.1",
+    "problem": "证据摘录截在逗号处，漏掉了他同时撕下的约伯记一页及所引经文。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "and also the wonderful page of Job containing the verse"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.context.0",
+    "problem": "“立刻出发”是以十一月成功登陆为前提的安排，原计划还写有登陆过晚就越冬再出发的备选。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "Should the landing be made too late in the season, the party will go into winter quarters"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "必须修改：analysis.2 称“没有说明原因”与原文相反；story.13 漏掉了第二次尝试失败这一结局；analysis.0 忽略了他在行军前已否决过扎营等待的方案。其余事实叙述与来源一致。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "另一种解释是关于取舍的标准（作者推断）：金币被扔掉、照片被留下，他在这几段里没有说明原因；",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "第4章离开抛弃营前关于两磅限额的段落",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas. So sovereigns were thrown away and photographs were kept."
+   },
+   "fix": "改为：他给出了理由——人在这种处境下需要寄托，需要一件能想起家人的实物。可以引用这句原文，删去“没有说明原因”和“个人偏好”的推测。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "扉页则被他撕了下来，这段记述没有写它的去向。",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "第4章撕下扉页及其后关于另一本圣经的段落（已读窗口内确实没有交代扉页的去向）",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "and also the wonderful page of Job containing the verse"
+   },
+   "fix": "删除这句。如果保留这个细节，应补上他同时撕下了约伯记一页。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "the fly-leaf was torn out, and the passage does not say what became of it.",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Ch. 4, fly-leaf passage and the following lines on the other Bible",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "and also the wonderful page of Job containing the verse"
+   },
+   "fix": "Delete; if the detail is kept, add the page of Job.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A4",
+   "path": "sections.analysis.3",
+   "lang": "zh",
+   "sentence": "作者提出的替代选择（他没有写自己考虑过这些）：比如把队伍分成两支，一支维持最低限度的探路，一支守营保存体力；",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "已读窗口：第4章弃船至第5章海洋营（偏移185304–224080），以及第6–7章转入耐心营的段落。窗口内没有提到分队方案；全书其余部分未读。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "Yet I feel sure that it is the right thing to attempt a march"
+   },
+   "fix": "限定范围，改为“在弃船到海洋营这几段里没有写到分队方案”，并注明他确实权衡过“继续走”与“扎营等待”。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "The sovereigns were thrown away and the photographs were kept, and he gives no reason in these passages;",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Ch. 4, two-pound allowance passage",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas."
+   },
+   "fix": "State his stated reason and quote it.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "也许那道上限筛的只是重量，也许只是个人偏好，两种说法都超出了他写下的内容。",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "第4章两磅限额段落",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "some personal belongings could fairly be regarded as indis- pensable."
+   },
+   "fix": "删去。改写为：他的标准是除了重量，还要留下能维系心理的纪念物。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "Both go beyond what he wrote.",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Ch. 4, two-pound allowance passage",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "some personal belongings could fairly be regarded as indis- pensable."
+   },
+   "fix": "Delete; replace with his stated standard.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "sections.analysis.3",
+   "lang": "en",
+   "sentence": "Then there are alternatives the author raises for the sake of argument; nothing suggests Shackleton weighed them himself.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Read windows, ch. 4–5 and the Patience Camp transition; no split-party option appears there",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "Yet I feel sure that it is the right thing to attempt a march"
+   },
+   "fix": "Narrow to 'in these chapters' and note that he did weigh marching against camping to wait.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "营地里别人怎么想、是否同意这个决定，证据里没有，本篇也不替他们猜测心理。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "证据包及已读窗口中关于海洋营决定的段落，均没有记载队员对该决定的反应",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I decided to find a more solid floe and there camp until condi- tions were more favourable"
+   },
+   "fix": "无需修改。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N6",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "文中那句“喝过更干净的水”出自一位未具名队员的日记，是经沙克尔顿转引的。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "第5章开头的饮水段落",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "as one man wrote in his diary"
+   },
+   "fix": "无需修改。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N7",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "本篇也不写耐心营之后的经过，那部分不在这份证据包的覆盖范围内。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "说的是本篇和证据包的范围，不是来源记载与否",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "Our new home, which we were to occupy for nearly three and a half months"
+   },
+   "fix": "无需修改。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.analysis.2",
+   "problem": "稿件把留照片的标准说成“没有说明、只能猜测”，但原文明确给出了理由：需要能想起家人的纪念物。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas."
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.story.13",
+   "problem": "截断造成误导：海洋营所等待的第二次尝试实际做了，行军七天后失败，才转入耐心营。稿件写成“后来换了营地”，读者会以为海洋营的等待直接通向耐心营。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "We had marched seven and a half miles in a direct line and at this rate it would take us over three hundred days to reach the land away to the west."
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.analysis.0",
+   "problem": "稿件称海洋营“这一次把等待写成了计划”。实际上行军之前，他已写下“扎营、等浮冰外漂到开阔水面”这个方案，并因心理原因否决。海洋营是回到了先前否决的方案，并非首次提出。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "We could even, if progress proved too difficult and too injurious to the boats, which we must guard as our ultimate means of salvation, camp on the nearest heavy floe, scour the neighbouring pack for penguins and seals, and await the outward drift of the pack to open and navigable water."
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.analysis.3",
+   "problem": "稿件强调“不是唯一的可能”，但他本人已明确权衡过走与等，并写出选择行军的士气理由。应说明这一点，避免读者以为他没有考虑过替代方案。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "It will be much better for the men in general to feel that, even though progress is slow, they are on their way to land than it will be simply to sit down and wait"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.story.1",
+   "problem": "证据摘录截在逗号处，漏掉了他同时撕下的约伯记一页及所引经文。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "and also the wonderful page of Job containing the verse"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.context.0",
+   "problem": "“立刻出发”是以十一月成功登陆为前提的安排，原计划还写有登陆过晚就越冬再出发的备选。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "Should the landing be made too late in the season, the party will go into winter quarters"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-SOUTH",
+   "outcome": "弃船：压力在下午达到顶点，他命令全员下到冰上，看着冰把船碾碎。弃船当晚他向全队宣布，打算朝保利特岛方向徒步行进。",
+   "quote": "Again the pressure began, and at 5 p.m. I ordered all hands on to the ice.",
+   "in_evidence": false
+  },
+  {
+   "source_id": "S-SOUTH",
+   "outcome": "在海洋营等到的“第二次尝试”确实做了：又行军七天，但冰面无法通行，只好后撤。照当时的速度要三百多天才能到陆地，最后再次扎营，这就是耐心营。",
+   "quote": "We had been on the march for seven days; rations were short and the men were weak.",
+   "in_evidence": false
+  }
+ ],
+ "additions": [
+  {
+   "id": "S-E19",
+   "source_id": "S-SOUTH",
+   "offset": 205082,
+   "chars": 1204,
+   "why": "行军开始前，他已经写下“在厚浮冰上扎营、等浮冰外漂到开阔水面”这个方案，并因士气等心理原因明确否决，选择先走。这直接改变了 analysis.0 和 analysis.3 对海洋营决定的解读。"
+  },
+  {
+   "id": "S-E20",
+   "source_id": "S-SOUTH",
+   "offset": 207249,
+   "chars": 847,
+   "why": "这里写明了留照片、扔金币的理由，也写了他同时撕下的约伯记那一页。稿件 analysis.2 称“没有说明原因”，与此相反。"
+  },
+  {
+   "id": "S-E21",
+   "source_id": "S-SOUTH",
+   "offset": 255533,
+   "chars": 588,
+   "why": "这是海洋营决定的后续结局：第二次尝试失败，才转入耐心营。证据包只有“耐心营”这个名字，稿件 story.13 因此漏掉了这次转折。"
+  },
+  {
+   "id": "S-E22",
+   "source_id": "S-SOUTH",
+   "offset": 193023,
+   "chars": 424,
+   "why": "补出行军的明确目标是朝保利特岛方向徒步，以及他当晚向全队说明了这个计划，可以充实 hook 和 context。"
+  },
+  {
+   "id": "S-E23",
+   "source_id": "S-SOUTH",
+   "offset": 7269,
+   "chars": 407,
+   "why": "“立刻出发”只是原计划在十一月登陆这一前提下的安排，原文还有登陆太晚就越冬的备选。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "a47ffc64491443ea8bfcbcc3c3620d5839efd33b44d782bd1ef6601c50cc0eba",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.analysis.2.zh: contradicted — 另一种解释是关于取舍的标准（作者推断）：金币被扔掉、照片被留下，他在这几段里没有说明原因；",
+  "sections.analysis.2.zh: unnecessary — 扉页则被他撕了下来，这段记述没有写它的去向。",
+  "sections.analysis.2.en: unnecessary — the fly-leaf was torn out, and the passage does not say what became of it.",
+  "sections.analysis.2.en: contradicted — The sovereigns were thrown away and the photographs were kept, and he gives no r",
+  "sections.analysis.2.zh: contradicted — 也许那道上限筛的只是重量，也许只是个人偏好，两种说法都超出了他写下的内容。",
+  "sections.analysis.2.en: contradicted — Both go beyond what he wrote.",
+  "sections.analysis.2: 稿件把留照片的标准说成“没有说明、只能猜测”，但原文明确给出了理由：需要能想起家人的纪念物。",
+  "sections.story.13: 截断造成误导：海洋营所等待的第二次尝试实际做了，行军七天后失败，才转入耐心营。稿件写成“后来换了营地”，读者会以为海洋营的等待直接通向耐心营。",
+  "sections.analysis.0: 稿件称海洋营“这一次把等待写成了计划”。实际上行军之前，他已写下“扎营、等浮冰外漂到开阔水面”这个方案，并因心理原因否决。海洋营是回到了先前否决的方案，并非首次提出。",
+  "evidence must be expanded first: 5 addition(s) ['S-E19', 'S-E20', 'S-E21', 'S-E22', 'S-E23']"
+ ]
+}

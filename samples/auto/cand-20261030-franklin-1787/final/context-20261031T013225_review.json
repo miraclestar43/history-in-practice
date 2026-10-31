@@ -1,0 +1,411 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-20261030-franklin-1787",
+ "content_sha256": "0eafd25854a3baa027596192cc38eeaed9b81b7367d6f783b6b5acbed97e03c4",
+ "evidence_in_sha256": "8c434074f7d2164d4fceca0272f297916ec41c8bb4722e8eda07941801ef801f",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793428345.827188,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.6",
+   "lang": "en",
+   "sentence": "Franklin explained that when drawing up that paper he had not known that any particular member would refuse to sign, and hoped to be so understood."
+  },
+  {
+   "id": "A2",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "另外，本篇只写到1787年9月17日会议散会为止，不涉及宪法此后的批准与修正。"
+  },
+  {
+   "id": "A3",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "In any case, this piece stops at the adjournment of 17 September 1787 and touches neither ratification nor amendment."
+  }
+ ],
+ "search": null,
+ "units": {
+  "U2-ELLIOT": {
+   "title": "James Madison's notes of the Federal Convention, 17 September 1787, in Jonathan Elliot (ed.), Debates in the Several State Conventions, vol. 5 (1845), Wikisource",
+   "url": "https://en.wikisource.org/w/index.php?title=Debates%20in%20the%20Several%20State%20Conventions/Volume%205/September%2017&action=render",
+   "ref": "en:Debates in the Several State Conventions/Volume 5/September 17",
+   "evidence_text_sha256": "37137cdcfca2dde503eac42d70c01776cd87ef89b672778d40bcf5622fdce9a7",
+   "cache_sha256": "37137cdcfca2dde503eac42d70c01776cd87ef89b672778d40bcf5622fdce9a7",
+   "cjk": false,
+   "source_chars": 62049,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     62049
+    ]
+   ],
+   "chars_reviewed": 62049
+  },
+  "U2-FRANK": {
+   "title": "Works of the late Doctor Benjamin Franklin (1793): Final Speech of Dr. Franklin in the late Federal Convention, Wikisource",
+   "url": "https://en.wikisource.org/w/index.php?title=Works%20of%20the%20late%20Doctor%20Benjamin%20Franklin/Final%20Speech%20of%20Dr.%20Franklin%20in%20the%20late%20Federal%20Convention&action=render",
+   "ref": "en:Works of the late Doctor Benjamin Franklin/Final Speech of Dr. Franklin in the late Federal Convention",
+   "evidence_text_sha256": "5fcedf3ce2acefd56025df5c380f7495b7a9b2d0504e20651d8ac9ba59687d6c",
+   "cache_sha256": "5fcedf3ce2acefd56025df5c380f7495b7a9b2d0504e20651d8ac9ba59687d6c",
+   "cjk": false,
+   "source_chars": 5805,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     5805
+    ]
+   ],
+   "chars_reviewed": 5805
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 43.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 4490
+  }
+ ],
+ "finished_at": 1793428390.0974443,
+ "elapsed_min": 0.7,
+ "review": {
+  "episode": [
+   {
+    "source_id": "U2-ELLIOT",
+    "outcome": "除伦道夫、梅森、格里三人拒签外，全体成员签署宪法，会议无期休会；最后几人签字时，富兰克林说出椅背太阳是“升起而非落下”的话。",
+    "quote": "The Constitution being signed by all the members, except Mr. Randolph, Mr. Mason, and Mr. Gerry, who declined giving it the sanction of their names, the Convention dissolved itself by an adjournment sine die .",
+    "in_evidence": true
+   },
+   {
+    "source_id": "U2-FRANK",
+    "outcome": "1793年《富兰克林文集》印本在讲稿后注明：随即动议加上“Done in Convention, by the unanimous consent”这一格式，获得同意并照加。编者另在脚注中说明，把讲稿归于富兰克林的依据是内证，以及它在富兰克林生前署其名刊出而无人反驳。",
+    "quote": "[The motion was then made for adding the laſt formula, viz. Done in Convention, by the unanimous conſent, &c.: which was agreed to, and added accordingly.]",
+    "in_evidence": false
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "U2-ELLIOT",
+    "start": "Gen. Pinckney and Mr. Butler disliked",
+    "end": "voted in the negative.",
+    "why": "这条脚注说明南卡罗来纳代表团“意见分裂”的原因：平克尼和巴特勒不喜欢这个模棱两可的签署格式，因此投了反对票。缺了它，story.9 的读者可能以为南卡罗来纳反对宪法本身。"
+   },
+   {
+    "source_id": "U2-ELLIOT",
+    "start": "This was the only occasion",
+    "end": "discussions of the Convention.",
+    "why": "麦迪逊注明，这是会议主席唯一一次参与会议讨论。这一限定会加重 story.3 中华盛顿发言的分量。"
+   },
+   {
+    "source_id": "U2-ELLIOT",
+    "start": "This negative of Maryland",
+    "end": "proceedings of the Contention.",
+    "why": "脚注解释了日志保管表决中马里兰唯一的反对票：该州给代表的指示要求他们向本州报告会议经过。limits.1 写到日志去向时应当知道这一点。"
+   },
+   {
+    "source_id": "U2-FRANK",
+    "start": "[The motion was then made",
+    "end": "uncontradicted, in an American periodical publication.",
+    "why": "这是该来源的收尾（格式动议获通过）和编者对讲稿归属依据的说明。limits.0 引用这一版作对照时需要它。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.6",
+    "lang": "en",
+    "sentence": "Franklin explained that when drawing up that paper he had not known that any particular member would refuse to sign, and hoped to be so understood.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "U2-ELLIOT"
+    ],
+    "scope": "麦迪逊9月17日笔记中富兰克林回应伦道夫一段",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "He declared that, when drawing up that paper, he did not know that any particular member would refuse to sign his name to the instrument, and hoped to be so understood."
+    },
+    "fix": "无需修改。此句是对来源的转述，与原文一致。"
+   },
+   {
+    "id": "A2",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "另外，本篇只写到1787年9月17日会议散会为止，不涉及宪法此后的批准与修正。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "U2-ELLIOT"
+    ],
+    "scope": "本篇自身的写作范围声明，不涉及来源记载与否",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "the Convention dissolved itself by an adjournment sine die"
+    },
+    "fix": "可保留。"
+   },
+   {
+    "id": "A3",
+    "path": "sections.limits.1",
+    "lang": "en",
+    "sentence": "In any case, this piece stops at the adjournment of 17 September 1787 and touches neither ratification nor amendment.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "U2-ELLIOT"
+    ],
+    "scope": "本篇自身的写作范围声明，不涉及来源记载与否",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "the Convention dissolved itself by an adjournment sine die"
+    },
+    "fix": "可保留。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.story.9",
+    "problem": "只写“南卡罗来纳代表团意见分裂”，没有交代原因。读者可能误以为南卡罗来纳有人反对宪法；按脚注，反对的只是这个含糊的签署格式。",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "Gen. Pinckney and Mr. Butler disliked the equivocal form of signing, and on that account voted in the negative."
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.story.3",
+    "problem": "没有提到麦迪逊的注：这是主席唯一一次进入会议讨论。这一限定能说明他这次发言为何不同寻常。",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "This was the only occasion on which the President entered at all inti the discussions of the Convention."
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.limits.0",
+    "problem": "稿件说两版措辞是否有出入“不作断言”，但两版全文都在阅读范围内，差异一眼可见：开头措辞不同，Babel 印作 Babylon，1793 版也没有“(if approved by Congress and confirmed by the conventions)”。此外，1793 版编者的归属依据也可以交代。",
+    "quote": {
+     "source_id": "U2-FRANK",
+     "quote": "I CONFESS that I do not entirely approve of this conſtitution at preſent"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.story.5",
+    "problem": "写“几位成员各自说明为什么签”时漏了威廉森。他曾建议只在致国会的信上签名，以照顾不喜欢宪法的成员，脚注说他所指的人之一就是布朗特。这一节与布朗特的表态直接相关。",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "Mr. WILLIAMSON suggested that the signing should be confined to the letter accompanying the Constitution to Congress"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.limits.1",
+    "problem": "写日志交主席保管，但没有说明这是10比1表决通过的，马里兰投了反对票，其原因见脚注。",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "This negative of Maryland was occasioned by the language of the instructions to the deputies of that state"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "稿件叙事与麦迪逊笔记基本一致，结局已在证据中；需补入南卡罗来纳意见分裂原因的脚注（必须修改），另有主席唯一一次发言、马里兰反对票、两版讲稿差异等几处可选补充。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.6",
+   "lang": "en",
+   "sentence": "Franklin explained that when drawing up that paper he had not known that any particular member would refuse to sign, and hoped to be so understood.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "U2-ELLIOT"
+   ],
+   "scope": "麦迪逊9月17日笔记中富兰克林回应伦道夫一段",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "He declared that, when drawing up that paper, he did not know that any particular member would refuse to sign his name to the instrument, and hoped to be so understood."
+   },
+   "fix": "无需修改。此句是对来源的转述，与原文一致。",
+   "unit_status": {
+    "U2-ELLIOT": "complete"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "另外，本篇只写到1787年9月17日会议散会为止，不涉及宪法此后的批准与修正。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "U2-ELLIOT"
+   ],
+   "scope": "本篇自身的写作范围声明，不涉及来源记载与否",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "the Convention dissolved itself by an adjournment sine die"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "U2-ELLIOT": "complete"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "In any case, this piece stops at the adjournment of 17 September 1787 and touches neither ratification nor amendment.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "U2-ELLIOT"
+   ],
+   "scope": "本篇自身的写作范围声明，不涉及来源记载与否",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "the Convention dissolved itself by an adjournment sine die"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "U2-ELLIOT": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.story.9",
+   "problem": "只写“南卡罗来纳代表团意见分裂”，没有交代原因。读者可能误以为南卡罗来纳有人反对宪法；按脚注，反对的只是这个含糊的签署格式。",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "Gen. Pinckney and Mr. Butler disliked the equivocal form of signing, and on that account voted in the negative."
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.story.3",
+   "problem": "没有提到麦迪逊的注：这是主席唯一一次进入会议讨论。这一限定能说明他这次发言为何不同寻常。",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "This was the only occasion on which the President entered at all inti the discussions of the Convention."
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.limits.0",
+   "problem": "稿件说两版措辞是否有出入“不作断言”，但两版全文都在阅读范围内，差异一眼可见：开头措辞不同，Babel 印作 Babylon，1793 版也没有“(if approved by Congress and confirmed by the conventions)”。此外，1793 版编者的归属依据也可以交代。",
+   "quote": {
+    "source_id": "U2-FRANK",
+    "quote": "I CONFESS that I do not entirely approve of this conſtitution at preſent"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.story.5",
+   "problem": "写“几位成员各自说明为什么签”时漏了威廉森。他曾建议只在致国会的信上签名，以照顾不喜欢宪法的成员，脚注说他所指的人之一就是布朗特。这一节与布朗特的表态直接相关。",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "Mr. WILLIAMSON suggested that the signing should be confined to the letter accompanying the Constitution to Congress"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.limits.1",
+   "problem": "写日志交主席保管，但没有说明这是10比1表决通过的，马里兰投了反对票，其原因见脚注。",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "This negative of Maryland was occasioned by the language of the instructions to the deputies of that state"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "U2-ELLIOT",
+   "outcome": "除伦道夫、梅森、格里三人拒签外，全体成员签署宪法，会议无期休会；最后几人签字时，富兰克林说出椅背太阳是“升起而非落下”的话。",
+   "quote": "The Constitution being signed by all the members, except Mr. Randolph, Mr. Mason, and Mr. Gerry, who declined giving it the sanction of their names, the Convention dissolved itself by an adjournment sine die .",
+   "in_evidence": true
+  },
+  {
+   "source_id": "U2-FRANK",
+   "outcome": "1793年《富兰克林文集》印本在讲稿后注明：随即动议加上“Done in Convention, by the unanimous consent”这一格式，获得同意并照加。编者另在脚注中说明，把讲稿归于富兰克林的依据是内证，以及它在富兰克林生前署其名刊出而无人反驳。",
+   "quote": "[The motion was then made for adding the laſt formula, viz. Done in Convention, by the unanimous conſent, &c.: which was agreed to, and added accordingly.]",
+   "in_evidence": false
+  }
+ ],
+ "additions": [
+  {
+   "id": "F-E25",
+   "source_id": "U2-ELLIOT",
+   "offset": 61112,
+   "chars": 111,
+   "why": "这条脚注说明南卡罗来纳代表团“意见分裂”的原因：平克尼和巴特勒不喜欢这个模棱两可的签署格式，因此投了反对票。缺了它，story.9 的读者可能以为南卡罗来纳反对宪法本身。"
+  },
+  {
+   "id": "F-E26",
+   "source_id": "U2-ELLIOT",
+   "offset": 60969,
+   "chars": 104,
+   "why": "麦迪逊注明，这是会议主席唯一一次参与会议讨论。这一限定会加重 story.3 中华盛顿发言的分量。"
+  },
+  {
+   "id": "F-E27",
+   "source_id": "U2-ELLIOT",
+   "offset": 61226,
+   "chars": 185,
+   "why": "脚注解释了日志保管表决中马里兰唯一的反对票：该州给代表的指示要求他们向本州报告会议经过。limits.1 写到日志去向时应当知道这一点。"
+  },
+  {
+   "id": "F-E28",
+   "source_id": "U2-FRANK",
+   "offset": 5449,
+   "chars": 355,
+   "why": "这是该来源的收尾（格式动议获通过）和编者对讲稿归属依据的说明。limits.0 引用这一版作对照时需要它。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "b4e60b708aff4abc1a0f4945d479e001875408c0bd677a4e85bf61c998d18310",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.story.9: 只写“南卡罗来纳代表团意见分裂”，没有交代原因。读者可能误以为南卡罗来纳有人反对宪法；按脚注，反对的只是这个含糊的签署格式。",
+  "evidence must be expanded first: 4 addition(s) ['F-E25', 'F-E26', 'F-E27', 'F-E28']"
+ ]
+}
