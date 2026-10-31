@@ -17,13 +17,13 @@ normalised text plus its SHA-256. to_source() writes the text into the source ca
 the existing evidence-pack builder (evidence.build) cuts verbatim excerpts that map back to a book location.
 """
 from __future__ import annotations
-import hashlib, html, html.parser, json, posixpath, re, sqlite3, time, unicodedata, urllib.request, zipfile, io
+import hashlib, html, html.parser, json, posixpath, re, resource, sqlite3, statistics, subprocess, tempfile, time, unicodedata, urllib.parse, urllib.request, zipfile, io
 from pathlib import Path
 from xml.etree import ElementTree as ET
 from . import evidence
 from .textnorm import t2s
 
-LIMITS = {"max_files": 3, "max_file_bytes": 50 * 2**20, "max_total_bytes": 200 * 2**20,
+LIMITS = {"max_files": 10, "max_file_bytes": 50 * 2**20, "max_total_bytes": 200 * 2**20,     # phase 2 (2026-10-31): 10 files; same byte caps
           "zip_members": 3000, "zip_member_bytes": 30 * 2**20, "zip_total_bytes": 300 * 2**20, "zip_ratio": 200}
 UA = "history-in-practice-books/0.1 (+https://github.com/miraclestar43/history-in-practice)"
 BLOCK = {"p", "h1", "h2", "h3", "h4", "h5", "h6", "li", "blockquote", "dd", "dt", "pre", "td", "th", "div", "section", "tr", "table", "ul", "ol"}
@@ -105,11 +105,26 @@ def acquire(url: str, dest_dir: Path, manifest_path: Path, meta: dict, *, opener
         raise BookError(f"file exceeds the pilot cap ({cap} bytes)")
     if "html" in ctype.lower() and not meta["format"] == "html":
         raise BookError(f"got {ctype!r} instead of a {meta['format']} file (login, challenge or error page)")
+    if meta.get("git_blob") and git_blob_sha(body) != meta["git_blob"]:
+        raise BookError(f"downloaded bytes are not Git blob {meta['git_blob'][:12]} (LFS pointer, truncated or error body)")
     sha = hashlib.sha256(body).hexdigest(); dest_dir.mkdir(parents=True, exist_ok=True)
     p = dest_dir / f"{meta['book_id']}.{meta['format']}"; p.write_bytes(body)
     rec = dict(meta, url=url, bytes=len(body), file_sha256=sha, content_type=ctype, acquired_at=time.strftime("%Y-%m-%dT%H:%M:%S%z"), path=p.name)
     man["files"] = [f for f in man["files"] if f["book_id"] != meta["book_id"]] + [rec]
     manifest_path.write_text(json.dumps(man, ensure_ascii=False, indent=1)); return rec
+
+
+def git_blob_sha(body: bytes) -> str:
+    return hashlib.sha1(b"blob %d\0" % len(body) + body).hexdigest()
+
+
+def fork_file(repo: str, ref: str, tree: list[dict], path: str) -> dict:
+    """Where one file of a fork's pinned snapshot lives: raw URL at the commit, its Git blob SHA-1 and size (from the tree)."""
+    x = next((e for e in tree if e.get("path") == path and e.get("type") == "blob"), None)
+    if not x:
+        raise BookError(f"{path} is not a blob in {repo}@{ref[:12]}")
+    return {"url": f"https://raw.githubusercontent.com/{repo}/{ref}/{urllib.parse.quote(path)}", "git_blob": x["sha"], "git_size": x["size"],
+            "repo": repo, "ref": ref, "repo_path": path}
 
 
 # ------------------------------------------------------------------ TXT
@@ -305,9 +320,103 @@ def parse_epub(data: bytes) -> dict:
             "norm_sha256": hashlib.sha256(norm.encode()).hexdigest()}
 
 
+# ------------------------------------------------------------------ PDF (text layer only; scanned files are flagged, not OCRed)
+
+PDF = {"max_pages": 2000, "timeout_s": 180, "mem_bytes": 1536 * 2**20, "cpu_s": 300, "min_page_chars": 30, "text_page_share": 0.6}
+_JUNK = re.compile(r"[\ufffd\ue000-\uf8ff]")
+
+
+def _limited():
+    resource.setrlimit(resource.RLIMIT_AS, (PDF["mem_bytes"], PDF["mem_bytes"]))
+    resource.setrlimit(resource.RLIMIT_CPU, (PDF["cpu_s"], PDF["cpu_s"]))
+
+
+def _run(args) -> str:
+    r = subprocess.run(args, capture_output=True, timeout=PDF["timeout_s"], preexec_fn=_limited)
+    if r.returncode != 0:
+        raise BookError(f"{args[0]} failed (rc {r.returncode}): {r.stderr.decode('utf-8', 'replace')[:200]}")
+    return r.stdout.decode("utf-8", "replace")
+
+
+def pdf_paragraphs(pages: list[str]) -> tuple[list[dict], list[dict], dict]:
+    """Pure: pdftotext pages -> paragraphs with {page (1-based), para} locations. Drops page numbers and running
+    headers/footers (a line repeated on >30% of pages); joins hard-wrapped lines (no space for CJK); a paragraph ends
+    at a blank line, or at sentence-final punctuation on a line clearly shorter than the page's typical line."""
+    lines = [[l.strip() for l in pg.split("\n")] for pg in pages]
+    key = lambda l: re.sub(r"\d+", "#", l)
+    freq = {}
+    for pg in lines:
+        for k in {key(l) for l in pg if l}:
+            freq[k] = freq.get(k, 0) + 1
+    rep = {k for k, n in freq.items() if len(pages) >= 5 and n > 0.3 * len(pages)}
+    paras, chapters, dropped = [], [], {"page_numbers": 0, "running_lines": 0}
+    for i, pg in enumerate(lines, 1):
+        body = []
+        for l in pg:
+            if l and re.fullmatch(r"[-–—\s]*[\dⅰ-ⅿⅠ-ⅯivxlcIVXLC]{1,6}[-–—\s]*", l):        # blank lines stay (paragraph breaks)
+                dropped["page_numbers"] += 1; continue
+            if l and key(l) in rep:
+                dropped["running_lines"] += 1; continue
+            body.append(l)
+        lens = sorted(len(l) for l in body if l) or [0]
+        typical = lens[int(0.8 * (len(lens) - 1))]             # ~ a full line (short last lines would drag a median down)
+        buf, k = [], 0
+        def flush():
+            nonlocal buf, k
+            text = "".join(buf) if re.search(r"[一-鿿]", "".join(buf)) else " ".join(buf)
+            text = re.sub(r"\s+", " ", text).strip()
+            buf = []
+            if text:
+                if (CHAPTER_RE.match(text) or re.fullmatch(r"第[一二三四五六七八九十百零〇\d]+[章讲講篇部分卷].{0,30}", text)) and len(text) < 60:
+                    chapters.append({"title": text, "page": i, "first_para": len(paras)})
+                paras.append({"loc": {"page": i, "para": k}, "chapter": max(0, len(chapters) - 1), "text": text}); k += 1
+        heading = lambda l: len(l) < 40 and bool(CHAPTER_RE.match(l) or re.fullmatch(r"第[一二三四五六七八九十百零〇\d]+[章讲講篇部分卷节節][\s：:]?.{0,30}", l))
+        for l in body:
+            if not l:
+                flush(); continue
+            if heading(l):                             # pdftotext emits no blank line around headings: a heading is its own paragraph
+                flush(); buf.append(l); flush(); continue
+            if buf and not re.search(r"[一-鿿]", l) and buf[-1].endswith("-"):
+                buf[-1] = buf[-1][:-1] + l.lstrip(); continue
+            buf.append(l)
+            if re.search(r"[。！？!?」』”\"）)]$", l) and len(l) < 0.8 * typical:
+                flush()
+        flush()
+    return paras, chapters, dropped
+
+
+def parse_pdf(data: bytes) -> dict:
+    """Text-layer PDF -> paragraphs with page locations, inside a bounded subprocess (time, memory, CPU). Quality is
+    measured, not assumed: pages with text, characters per page, CJK share, junk characters. Too few text pages ->
+    needs_ocr (scanned); too much junk -> garbled. Either way the book is NOT usable as evidence (to_source refuses)."""
+    with tempfile.TemporaryDirectory() as td:
+        f = Path(td) / "in.pdf"; f.write_bytes(data)
+        info = dict(re.findall(r"^([A-Za-z ]+):\s*(.*)$", _run(["pdfinfo", str(f)]), re.M))
+        n = int(info.get("Pages", "0") or 0)
+        if info.get("Encrypted", "no").startswith("yes") and "copy:no" in info.get("Encrypted", "").replace(" ", ""):
+            raise BookError("PDF is encrypted against text extraction (DRM): not processed")
+        if not 0 < n <= PDF["max_pages"]:
+            raise BookError(f"PDF has {n} pages (limit {PDF['max_pages']})")
+        raw = _run(["pdftotext", "-enc", "UTF-8", "-eol", "unix", str(f), "-"])
+    pages = raw.split("\f")[:n] + [""] * max(0, n - len(raw.split("\f")))
+    raw_text = unicodedata.normalize("NFC", "".join(pages))
+    chars = [len(re.sub(r"\s", "", p)) for p in pages]
+    text_pages = sum(c >= PDF["min_page_chars"] for c in chars)
+    nonspace = re.sub(r"\s", "", raw_text)
+    junk = len(_JUNK.findall(nonspace)) / max(1, len(nonspace))
+    cjk = len(re.findall(r"[一-鿿]", nonspace)) / max(1, len(nonspace))
+    status = "needs_ocr" if text_pages < PDF["text_page_share"] * n else "garbled" if junk > 0.02 else "text"
+    paras, chapters, dropped = pdf_paragraphs([unicodedata.normalize("NFC", p) for p in pages]) if status == "text" else ([], [], {})
+    norm = "\n\n".join(p["text"] for p in paras)
+    return {"format": "pdf", "pdf_text_status": status, "pdf_info": {k: info.get(k) for k in ("Title", "Author", "Creator", "Producer", "CreationDate", "Pages", "Encrypted", "Page size")},
+            "quality": {"pages": n, "pages_with_text": text_pages, "median_chars_per_page": statistics.median(chars) if chars else 0,
+                        "cjk_share": round(cjk, 3), "junk_share": round(junk, 4), "dropped": dropped},
+            "norm_sha256": hashlib.sha256(norm.encode()).hexdigest(), "chapters": chapters, "paragraphs": paras}
+
+
 def parse(path: Path) -> dict:
-    data = Path(path).read_bytes()
-    b = parse_epub(data) if Path(path).suffix.lower() == ".epub" else parse_txt(data)
+    data = Path(path).read_bytes(); suf = Path(path).suffix.lower()
+    b = parse_epub(data) if suf == ".epub" else parse_pdf(data) if suf == ".pdf" else parse_txt(data)
     b["file_sha256"] = hashlib.sha256(data).hexdigest(); b["bytes"] = len(data)
     return b
 
@@ -318,6 +427,9 @@ def locator(book: dict, loc: dict) -> str:
     if "spine" in loc:
         ch = next((c for c in reversed(book["chapters"]) if c["spine"] <= loc["spine"]), None)
         return f"EPUB spine {loc['spine']} ({loc['href']}{', ' + ch['title'][:40] if ch else ''}), paragraph {loc['para']}"
+    if "page" in loc:
+        ch = next((c for c in reversed(book["chapters"]) if c["first_para"] <= next((k for k, p in enumerate(book["paragraphs"]) if p["loc"] == loc), 0)), None)
+        return f"PDF page {loc['page']} (1-based file page index; printed page labels not verified), paragraph {loc['para']}" + (f", {ch['title'][:40]}" if ch else "")
     return f"TXT offset {loc['offset']}+{loc['length']} (normalised text sha256 {book['norm_sha256'][:12]})"
 
 
@@ -330,9 +442,11 @@ def to_source(book: dict, sid: str, cache: Path, src_meta: dict, *, cjk: bool) -
     for p, t in zip(book["paragraphs"], paras):
         n = len(evidence.normalise(t, cjk))
         lmap.append({"start": off, "end": off + n, "loc": p["loc"]}); off += n + sep
-    assert len(evidence.normalise(text, cjk)) == off - sep, "location map out of step with the normalised text"
+    assert len(evidence.normalise(text, cjk)) == max(0, off - sep), "location map out of step with the normalised text"
     missing = [m for m in src_meta.get("must_contain", []) if m not in re.sub(r"\s+", " ", text)]
     status = "evidence_usable" if src_meta.get("verified") and not missing else ("extractable" if missing else "unverified")
+    if book.get("format") == "pdf" and book.get("pdf_text_status") != "text":
+        status = book.get("pdf_text_status") or "needs_ocr"                  # scanned/garbled PDFs are never evidence
     sha = hashlib.sha256(text.encode()).hexdigest()
     cache.mkdir(parents=True, exist_ok=True)
     (cache / f"{sid}.txt").write_text(text, encoding="utf-8")

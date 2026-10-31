@@ -34,7 +34,7 @@
   hip books locate --book ID --text NEEDLE                          stable location (EPUB spine/para, TXT offset) of a passage
 """
 from __future__ import annotations
-import argparse, json, os, subprocess, sys
+import argparse, json, os, subprocess, sys, urllib.request
 from pathlib import Path
 import shutil
 from . import config, state, registry, checks, render, pipeline, site_export, mailer, llm, publish, editor, supply
@@ -584,8 +584,22 @@ def cmd_books(a):
         items = json.loads(Path(a.path).read_text(encoding="utf-8"))
         rep = books.import_catalogue(books.catalogue_db(root / "discovery.sqlite"), items, a.source or Path(a.path).name)
         print(json.dumps(rep, ensure_ascii=False, indent=1)); return 0
+    if a.action == "fetch-fork":                      # one file from a pinned fork snapshot, blob-verified; tree read remotely
+        tree = json.loads(urllib.request.urlopen(urllib.request.Request(f"https://api.github.com/repos/{a.repo}/git/trees/{a.ref}?recursive=1",
+                          headers={"User-Agent": books.UA, "Accept": "application/vnd.github+json"}), timeout=60).read())["tree"]
+        loc = books.fork_file(a.repo, a.ref, tree, a.path); m = json.loads(a.meta or "{}")
+        fmt = Path(a.path).suffix.lower().lstrip(".")
+        rec = books.acquire(loc["url"], root / "files", root / "manifest.json",
+                            dict(m, book_id=a.book, format=fmt, git_blob=loc["git_blob"], repo=a.repo, ref=a.ref, repo_path=a.path,
+                                 upstream=a.upstream, provenance=f"fork {a.repo} of {a.upstream} at {a.ref}; path {a.path}"))
+        print(json.dumps({k: v for k, v in rec.items() if k != "url"}, ensure_ascii=False, indent=1)); return 0
     man = json.loads((root / "manifest.json").read_text(encoding="utf-8")); f = next(x for x in man["files"] if x["book_id"] == a.book)
     b = books.parse(root / "files" / f["path"])
+    if a.action == "probe":
+        q = {k: b.get(k) for k in ("format", "pdf_text_status", "pdf_info", "quality")} | {"paragraphs": len(b["paragraphs"]), "chapters": [c["title"] for c in b["chapters"]][:40]}
+        mid = b["paragraphs"][len(b["paragraphs"]) // 2] if b["paragraphs"] else None
+        q["sample"] = [{"location": books.locator(b, p["loc"]), "text": p["text"][:160]} for p in (b["paragraphs"][:3] + ([mid] if mid else []))]
+        print(json.dumps(q, ensure_ascii=False, indent=1)); return 0
     if b["file_sha256"] != f["file_sha256"]:
         raise SystemExit("file changed since acquisition (sha256 mismatch)")
     if a.action == "ingest":
@@ -751,8 +765,10 @@ def main(argv=None):
     p.add_argument("--exception", action="append", metavar="ISSUE_ID=REASON", help="per-issue owner exception; repeat once per open issue")
     p.add_argument("--as-sample", action="store_true"); p.add_argument("--from-pending", action="store_true", help="kept for compatibility; implied")
     p.set_defaults(f=cmd_admit)
-    p = sp.add_parser("books"); p.add_argument("action", choices=["import-catalogue", "ingest", "locate"])
+    p = sp.add_parser("books"); p.add_argument("action", choices=["import-catalogue", "fetch-fork", "probe", "ingest", "locate"])
     p.add_argument("--path"); p.add_argument("--source"); p.add_argument("--book"); p.add_argument("--sid")
+    p.add_argument("--repo", help="fork, e.g. miraclestar43/bo-guan-yue-qu"); p.add_argument("--ref", help="pinned snapshot commit")
+    p.add_argument("--upstream"); p.add_argument("--meta", help="JSON: title, author, translator, year, language, genre, edition")
     p.add_argument("--must-contain", action="append"); p.add_argument("--verified", metavar="NOTE", help="who/how the edition was verified")
     p.add_argument("--text"); p.set_defaults(f=cmd_books)
     p = sp.add_parser("registry-rebuild"); p.add_argument("content", nargs="+"); p.add_argument("--db"); p.set_defaults(f=cmd_registry_rebuild)

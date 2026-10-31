@@ -1,5 +1,7 @@
 **Status 2026-10-30 (AFK test):** no unit is installed or enabled. A successful TEST email/website is not authorization to enable timers or recurring sends; that remains an owner decision. The prepare unit now runs MiMo drafting + the Pi-local Claude final editor (`hip nightly`, exit 4 = final editor unavailable).
 
+**Job limits (2026-10-31), configured per job — the owner set no fixed AFK time limit:** `hip nightly --budget-minutes 150` bounds one batch (a new final-editor attempt or context review starts only if `final_editor.min_minutes_per_attempt` = 20 remain); `final_editor.max_attempts` = 3 genuine attempts per article, counted since its last demotion; each model call has a process-group timeout (final editor audit/revise 1800 s, verify 1500 s; context review 1500 s); the unit's `TimeoutStartSec` caps the whole run. Admission requires a clean source-context review (`hip context-review`).
+
 # systemd templates (NOT enabled)
 
 User units for raspberrypi51. Nothing here is installed by the repo, and no timer has been enabled.

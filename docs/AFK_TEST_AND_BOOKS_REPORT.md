@@ -1,5 +1,7 @@
 # AFK test edition, unattended final editor, inventory and book intake — report
 
+> **Superseded in part (2026-10-31):** see [REVIEW_FOLLOWUP_20261031.md](REVIEW_FOLLOWUP_20261031.md). The TEST email has since been sent once per recipient (accepted by Resend); the 吴起 defect was repaired; max_attempts is now 3 (decided); admission now also requires a source-context review, so the inventory figures below are superseded.
+
 Date: 2026-10-30 (America/Los_Angeles). Work done on the Pi (raspberrypi51) by Claude Code while the owner was AFK, following
 `prompts/04_AFK_FIRST_EDITION_AND_BOOKS.md` (commit ef02679). Branch `stabilize/20261030` → PR #1 branch `review/fable-2026-10-30`;
 PR #1 stays a draft. Nobody has read or approved anything below: neither reader has seen the test, and no inbox receipt is claimed.
@@ -122,7 +124,7 @@ The MiMo edit loop is no longer called. Health handling:
 | | `cand-auto-20261030-south-el-1` Shackleton's boat journey from Elephant Island (world; 历史·人物传记) | checker BLOCK + 19 issues → pending | 13.7 min, 10 calls, 100.3k tokens, 6→1→2→0 | **admitted unattended**, record `56fe4a604ca7` |
 
 - **Manual interventions:** after nightly 1, one recorded extra attempt each (`final-edit --extra-attempt`, reason stored in the hash-bound record): qsg412-2 admitted in 3.2 min (record `06531de34184`), grant67 in 4.1 min (record `c41d8365f573`). Nightly 2 had no intervention.
-- **What this shows:** the unattended path works end to end with no MiMo edit loop and no API: supply → draft → audit/revise/verify → admission through a verified record. But in 2 of 4 articles, verify still found one or two small, real issues after `MAX_ATTEMPTS = 2`. **Owner decision:** raise `max_attempts` to 3 (about 4–6 more minutes per stubborn article, within the 150-minute budget), or keep 2 and accept manual extra attempts.
+- **What this shows:** the unattended path works end to end with no MiMo edit loop and no API: supply → draft → audit/revise/verify → admission through a verified record. But in 2 of 4 articles, verify still found one or two small, real issues after `MAX_ATTEMPTS = 2`. **Owner decision:** raise `max_attempts` to 3 (about 4–6 more minutes per stubborn article, within the nightly job's configured `--budget-minutes` bound — a per-job limit, not an owner-imposed session budget; the owner set no fixed AFK time limit), or keep 2 and accept manual extra attempts.
 - **Checker on the admitted finals:** no FIX/BLOCK on any of the four. One non-blocking CHECK each on sj065-1 and south-el-1 (today/question resemblance, overlap 0.14 and 0.17, below the FIX rule).
 - **Quality spot check (by me, not by a reader):**
   - **吴起 (sj065-1) has a factual defect.** The zh text says the source "stops at this speech and does not record how the Lu ruler responded" (「这里所据的原文止于这段进言，没有记载鲁君听后如何处置」). But 史记 goes on: 「魯君疑之，謝吳起」. Excerpt E3 ends just before that line, so neither the checker nor the final editor's verify (both read only the evidence pack) could see it. I **requeued** it with that reason (`hip requeue`; reversible). Fix: add the line to the evidence pack and re-prepare.

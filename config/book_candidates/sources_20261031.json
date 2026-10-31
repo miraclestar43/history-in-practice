@@ -1,0 +1,194 @@
+{
+ "updated": "2026-10-31",
+ "note": "Leads and acquisitions for book intake phase 2. Full books and extracted text stay in data/books (private, not in Git). Titles are file/title leads, not reviewed content.",
+ "source_priority": [
+  {
+   "source": "miraclestar43/bo-guan-yue-qu (fork)",
+   "priority": 1,
+   "use": "Chinese PDFs, fetched file by file from the pinned snapshot"
+  },
+  {
+   "source": "miraclestar43/english_ebooks (fork)",
+   "priority": 1,
+   "use": "English EPUBs (default branch master), fetched file by file"
+  },
+  {
+   "source": "owner-provided Google Drive folder (URL in private config only)",
+   "priority": 2,
+   "use": "publicly readable listing; mostly programming/self-help; relevant subfolders inventoried privately; no file downloaded yet"
+  },
+  {
+   "source": "jbiaojerry/ebook-treasure-chest",
+   "priority": 3,
+   "use": "LOWERED: optional discovery metadata only (already imported); its third-party download links are not followed"
+  }
+ ],
+ "forks": [
+  {
+   "fork": "https://github.com/miraclestar43/bo-guan-yue-qu",
+   "parent": "yaoxingle/bo-guan-yue-qu",
+   "default_branch": "main",
+   "head": "1b0d81a1ada44c920d5c19798447616127cec825",
+   "snapshot_tag": "snapshot-20261031",
+   "tree": "498 entries, 474 PDF blobs, 4,019,859,394 bytes, not truncated",
+   "license": "none stated"
+  },
+  {
+   "fork": "https://github.com/miraclestar43/english_ebooks",
+   "parent": "stevenspage/english_ebooks",
+   "default_branch": "master",
+   "head": "a6823f5cbd083c215c6a4948892a698342b8158d",
+   "snapshot_tag": "snapshot-20261031",
+   "tree": "68 EPUB blobs, 193,734,618 bytes (+ covers, book_info.json), not truncated",
+   "license": "none stated"
+  }
+ ],
+ "shortlist": [
+  {
+   "title": "胡适口述自传",
+   "theme": "人物传记·文化·教育",
+   "genre": "oral autobiography (participant, translated and annotated by 唐德刚)",
+   "status": "acquired, text PDF, ingested evidence_usable; article candidate cand-book-20261031-hushi-baihua",
+   "acquired": {
+    "book_id": "BK-HUSHI-KS",
+    "format": "pdf",
+    "bytes": 3328276,
+    "file_sha256": "eb8db00fe2f6a3bb49055284c41bfd635330caa6c8e95b066450f763d8c89070",
+    "git_blob": "e90fccba4ad21929b3bae98040ce81a7764f4cb4",
+    "repo": "miraclestar43/bo-guan-yue-qu",
+    "ref": "1b0d81a1ada44c920d5c19798447616127cec825",
+    "repo_path": "13-人物传记/胡适口述自传.pdf",
+    "upstream": "yaoxingle/bo-guan-yue-qu"
+   }
+  },
+  {
+   "title": "经度：一个孤独的天才解决所处时代最大难题的真实故事 (Dava Sobel, tr. 肖明波, 上海人民 2015)",
+   "theme": "科学故事·制度与奖金",
+   "genre": "popular science history (translation)",
+   "status": "acquired, text PDF (143/162 pages with text)",
+   "acquired": {
+    "book_id": "BK-JINGDU",
+    "format": "pdf",
+    "bytes": 3455043,
+    "file_sha256": "27079e1794df40c1d56a5ba0d925bbc1d38b5f82a64cccdfae798aca554480cf",
+    "git_blob": "861a1976fba292416dae5283f86c475173f2ec93",
+    "repo": "miraclestar43/bo-guan-yue-qu",
+    "ref": "1b0d81a1ada44c920d5c19798447616127cec825",
+    "repo_path": "17-科学科普/经度：一个孤独的天才解决所处时代最大难题的真实故事.pdf",
+    "upstream": "yaoxingle/bo-guan-yue-qu"
+   }
+  },
+  {
+   "title": "中国财政史十六讲 (刘守刚)",
+   "theme": "经济金融·财政史",
+   "genre": "academic lectures (interpretive)",
+   "status": "acquired, text PDF (498/500 pages)",
+   "acquired": {
+    "book_id": "BK-CZS16",
+    "format": "pdf",
+    "bytes": 2114812,
+    "file_sha256": "0482316e3f9047284b16affe492357a2171833c0704e7037ae03b25da6dd71d1",
+    "git_blob": "3460a1286759ebea36c80501854f04ea35400ab0",
+    "repo": "miraclestar43/bo-guan-yue-qu",
+    "ref": "1b0d81a1ada44c920d5c19798447616127cec825",
+    "repo_path": "02-经济金融与理财/中国财政史十六讲.pdf",
+    "upstream": "yaoxingle/bo-guan-yue-qu"
+   }
+  },
+  {
+   "title": "三案始末 (温功义, 三联 2013)",
+   "theme": "历史·政治（明代宫廷）",
+   "genre": "narrative history (secondary)",
+   "status": "acquired, text PDF (138/140 pages)",
+   "acquired": {
+    "book_id": "BK-SANAN",
+    "format": "pdf",
+    "bytes": 849581,
+    "file_sha256": "81f0b4920b8b100d207627f4d2bdb230b5bcf051b68d69595e5cca27be248a0e",
+    "git_blob": "ef48f676fbf5f19ef921d349087a9f040a184972",
+    "repo": "miraclestar43/bo-guan-yue-qu",
+    "ref": "1b0d81a1ada44c920d5c19798447616127cec825",
+    "repo_path": "12-历史与世界格局/三案始末.pdf",
+    "upstream": "yaoxingle/bo-guan-yue-qu"
+   }
+  },
+  {
+   "title": "Shoe Dog (Phil Knight, 2016)",
+   "theme": "企业传记",
+   "genre": "business memoir (self-account)",
+   "status": "acquired, EPUB parsed (2,705 paragraphs)",
+   "acquired": {
+    "book_id": "BK-SHOEDOG",
+    "format": "epub",
+    "bytes": 739190,
+    "file_sha256": "4e6f674be0f3bc6512a4ed401549b20ba2bd854295c519496c0b654f0f941188",
+    "git_blob": "094b194f4c3c4a91e2c047fb4c43b618619d6830",
+    "repo": "miraclestar43/english_ebooks",
+    "ref": "a6823f5cbd083c215c6a4948892a698342b8158d",
+    "repo_path": "ebooks/Shoe Dog A Memoir by the Creator of Nike (Knight, Phil) .epub",
+    "upstream": "stevenspage/english_ebooks"
+   }
+  },
+  {
+   "title": "The Worlds I See (Fei-Fei Li, 2023)",
+   "theme": "科学·人物",
+   "genre": "science memoir (self-account)",
+   "status": "acquired, EPUB parsed (1,790 paragraphs)",
+   "acquired": {
+    "book_id": "BK-WORLDSISEE",
+    "format": "epub",
+    "bytes": 2048431,
+    "file_sha256": "fa62a0ab7db46060df91839afc6f09754cf2310ab1b943a221096ae5c76bbec7",
+    "git_blob": "4874c676329a78f9f83f1fe11bf8f2d3af6d21d4",
+    "repo": "miraclestar43/english_ebooks",
+    "ref": "a6823f5cbd083c215c6a4948892a698342b8158d",
+    "repo_path": "ebooks/The Worlds I See Curiosity, Exploration,  Discorvery at Dawn of Ai (Fei-Fei Li).epub",
+    "upstream": "stevenspage/english_ebooks"
+   }
+  },
+  {
+   "title": "帝国定型：美国的1890-1900",
+   "theme": "政治·美国史",
+   "genre": "interpretive history",
+   "status": "lead (1.2 MB PDF; duplicate version exists)"
+  },
+  {
+   "title": "费城风云：美国宪法的诞生及其启示",
+   "theme": "政治·美国史",
+   "genre": "narrative history",
+   "status": "lead (1.4 MB PDF)"
+  },
+  {
+   "title": "大宋宰相王安石",
+   "theme": "人物·改革",
+   "genre": "popular biography",
+   "status": "lead (1.2 MB PDF)"
+  },
+  {
+   "title": "别逗了，费曼先生",
+   "theme": "科学·人物",
+   "genre": "memoir (translation)",
+   "status": "lead (1.5 MB PDF)"
+  },
+  {
+   "title": "From the Ground Up (Howard Schultz)",
+   "theme": "企业传记",
+   "genre": "business memoir",
+   "status": "lead (5.6 MB EPUB)"
+  },
+  {
+   "title": "The Man Who Solved the Market (Gregory Zuckerman)",
+   "theme": "金融·人物",
+   "genre": "journalistic biography",
+   "status": "lead (7.9 MB EPUB)"
+  },
+  {
+   "title": "叫魂：1768年中国妖术大恐慌",
+   "theme": "历史·社会",
+   "genre": "academic history (translation)",
+   "status": "lead (27.8 MB PDF; may be a scan — would be marked needs_ocr, not OCRed)"
+  }
+ ],
+ "excluded_examples": "fiction/novels (e.g. The Godfather, Me Before You) cannot evidence historical episodes; self-help and trading-psychology titles out of scope",
+ "rights_note": "Neither repository states a licence; many titles are in-copyright modern books. Forks are public. Full texts are kept privately for reference; public articles are original writing with short quotations and bibliography."
+}

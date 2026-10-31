@@ -1,4 +1,5 @@
 """Book intake pilot (books.py) on LABELLED SYNTHETIC FIXTURES built here: TXT encodings and Gutenberg boilerplate,
+text-layer PDFs (bounded pdftotext, 1-based page locations, scanned -> needs_ocr), fork files verified by Git blob hash,
 EPUB spine order and stable locations, untrusted-input refusals (ZIP names/bombs, DRM, entity declarations),
 book text -> evidence excerpt -> book location, catalogue leads (dedupe, never evidence) and acquisition caps.
 The real-file run is recorded in docs/AFK_TEST_AND_BOOKS_REPORT.md."""
@@ -134,6 +135,75 @@ class Acquire(unittest.TestCase):
             self.assertEqual(len(json.loads(man.read_text())["files"]), 2)
         finally:
             books.LIMITS.clear(); books.LIMITS.update(old)
+
+
+def pdf(pages):
+    """A minimal LABELLED SYNTHETIC PDF (Helvetica text lines per page; an empty list = a page with no text layer)."""
+    objs = ["<< /Type /Catalog /Pages 2 0 R >>", None, "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>"]
+    kids = []
+    for lines in pages:
+        body = "BT /F1 11 Tf 72 740 Td " + " ".join(f"({l}) Tj 0 -14 Td" for l in lines) + " ET" if lines else "0 0 m 10 10 l S"
+        objs.append(f"<< /Length {len(body)} >>\nstream\n{body}\nendstream"); c = len(objs)
+        objs.append(f"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents {c} 0 R /Resources << /Font << /F1 3 0 R >> >> >>")
+        kids.append(f"{len(objs)} 0 R")
+    objs[1] = f"<< /Type /Pages /Kids [{' '.join(kids)}] /Count {len(kids)} >>"
+    out, offs = b"%PDF-1.4\n", []
+    for i, o in enumerate(objs, 1):
+        offs.append(len(out)); out += f"{i} 0 obj\n{o}\nendobj\n".encode()
+    x = len(out)
+    out += f"xref\n0 {len(objs) + 1}\n0000000000 65535 f \n".encode() + b"".join(f"{o:010d} 00000 n \n".encode() for o in offs)
+    return out + f"trailer\n<< /Size {len(objs) + 1} /Root 1 0 R >>\nstartxref\n{x}\n%%EOF\n".encode()
+
+
+class Pdf(unittest.TestCase):
+    def test_text_layer_pages_paragraphs_and_locations(self):
+        pages = [["Chapter One", "", "The first paragraph starts here and goes on across", "a hard wrap to its end.", "", "1"],
+                 ["Second page text that is long enough to count as a real text page.", "", "2"]]
+        b = books.parse_pdf(pdf(pages))
+        self.assertEqual(b["pdf_text_status"], "text"); self.assertEqual(b["quality"]["pages"], 2)
+        texts = [p["text"] for p in b["paragraphs"]]
+        self.assertIn("The first paragraph starts here and goes on across a hard wrap to its end.", texts)
+        self.assertNotIn("1", texts); self.assertNotIn("2", texts)                                    # page numbers dropped
+        second = next(p for p in b["paragraphs"] if p["text"].startswith("Second page"))
+        self.assertEqual(second["loc"], {"page": 2, "para": 0})                                         # 1-based file page index
+        self.assertIn("PDF page 2 (1-based", books.locator(b, second["loc"]))
+        self.assertEqual(books.parse_pdf(pdf(pages))["norm_sha256"], b["norm_sha256"])
+
+    def test_scanned_pdf_is_flagged_and_never_evidence(self):
+        b = books.parse_pdf(pdf([[], [], ["only one page with a short line of text in it here"]]))
+        self.assertEqual(b["pdf_text_status"], "needs_ocr"); self.assertEqual(b["paragraphs"], [])
+        b["file_sha256"] = "f"
+        meta = books.to_source(b, "S-SCAN", Path(tempfile.mkdtemp()), {"must_contain": [], "verified": True}, cjk=False)
+        self.assertEqual(meta["status"], "needs_ocr")
+        with self.assertRaises(books.BookError):
+            books.parse_pdf(b"%PDF-1.4 not really a pdf")
+
+    def test_cjk_rejoin_running_headers_and_paragraph_ends(self):
+        head = "胡适口述自传"
+        pages = [[head, "第八章 从文学革命到文艺复兴", "我那首诗在我的朋友们之间引起了一场是非。梅、任", "两君都参加了对我的辩论。", "所以我们辩论不休，愈辩则牵涉愈多，内容也愈复杂", "愈精湛。", "88"]] + \
+                [[head, s, str(88 + i)] for i, s in enumerate(["甲乙丙丁戊己庚辛壬癸。", "子丑寅卯辰巳午未申酉。", "春夏秋冬东南西北。",
+                                                              "金木水火土日月星辰。", "宫商角徵羽山川草木。"], 1)]
+        paras, chapters, dropped = books.pdf_paragraphs(["\n".join(p) for p in pages])
+        texts = [p["text"] for p in paras]
+        self.assertEqual(texts[:3], ["第八章 从文学革命到文艺复兴", "我那首诗在我的朋友们之间引起了一场是非。梅、任两君都参加了对我的辩论。",
+                                     "所以我们辩论不休，愈辩则牵涉愈多，内容也愈复杂愈精湛。"])         # heading apart; CJK joined without spaces
+        self.assertNotIn(head, texts); self.assertEqual(dropped["running_lines"], 6); self.assertEqual(dropped["page_numbers"], 6)
+        self.assertEqual(chapters[0]["title"], "第八章 从文学革命到文艺复兴"); self.assertEqual(paras[0]["loc"]["page"], 1)
+
+
+class Fork(Acquire):
+    def test_git_blob_must_match_the_pinned_tree(self):
+        body = b"%PDF-1.4 fake book bytes"; tree = [{"path": "12-史/书.pdf", "type": "blob", "sha": books.git_blob_sha(body), "size": len(body)}]
+        loc = books.fork_file("me/fork", "a" * 40, tree, "12-史/书.pdf")
+        self.assertEqual(loc["url"], "https://raw.githubusercontent.com/me/fork/" + "a" * 40 + "/12-%E5%8F%B2/%E4%B9%A6.pdf")
+        td = Path(tempfile.mkdtemp()); man = td / "m.json"; meta = {"book_id": "B1", "format": "pdf", "git_blob": loc["git_blob"]}
+        lfs = b"version https://git-lfs.github.com/spec/v1\noid sha256:abc\nsize 123\n"
+        with self.assertRaisesRegex(books.BookError, "not Git blob"):
+            books.acquire(loc["url"], td, man, meta, opener=self.fake(lfs, "application/octet-stream"))
+        rec = books.acquire(loc["url"], td, man, meta, opener=self.fake(body, "application/octet-stream"))
+        self.assertEqual(rec["git_blob"], books.git_blob_sha(body))
+        with self.assertRaises(books.BookError):
+            books.fork_file("me/fork", "a" * 40, tree, "missing.pdf")
 
 
 if __name__ == "__main__":
