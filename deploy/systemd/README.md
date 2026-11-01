@@ -1,21 +1,47 @@
-**Status 2026-11-01: ready for launch, NOT installed or enabled.** Launch steps, rollback and checks: `docs/LAUNCH_20261101.md`. Claude (Claude Code CLI, subscription) drafts, writes the English and edits; MiMo is no longer used and there is no fallback (exit 4 + alert when Claude is unavailable). Both services run `hip alert` in ExecStopPost: one email to the maintainer, never subscribers.
+# systemd user units: 没事儿多读书 (live since 2026-11-01)
 
-# systemd templates (NOT enabled)
+**Installed and enabled on raspberrypi51** as user `star` (uid 1000). The unit files in this directory are linked into `~/.config/systemd/user/`. Launch record, rollback and checks: `docs/LAUNCH_20261101.md`.
 
-User units for raspberrypi51. Nothing here is installed by the repo, and no timer has been enabled.
-
-| Unit | When | What |
+| Unit | When (Asia/Shanghai) | What |
 |---|---|---|
-| `hip-prepare.service/.timer` | 20:00 America/Los_Angeles | `hip nightly`: candidate top-up from the source catalogue → pipeline → editor stage (batch budget) |
-| `hip-send.service/.timer` | 07:30 America/Los_Angeles | `recover`, then publish today's edition (site → bounded live wait → email) |
-| `hip-send-retry.timer` | 08:00–10:30 every 30 min, America/Los_Angeles | reruns `hip-send.service` while a deploy is still landing or a send partly failed; idempotent |
+| `hip-send.timer` → `hip-send.service` | daily **22:08** (= 06:08 PST / 07:08 PDT) | `recover`, then publish today's issue: site commit → push → live check → email |
+| `hip-send-retry.timer` → `hip-send.service` | 22:38, 23:08, 23:35; 23:45 | resumes a run whose deploy is still landing or whose send partly failed (idempotent). The 23:45 run marks an unfinished day `overdue` and alerts |
+| `hip-prepare.timer` → `hip-prepare.service` | daily **10:00** | `hip nightly`: candidate top-up → Claude drafting → final editor (batch budget) |
 
-Before enabling:
+**Both services** run `hip alert` in `ExecStopPost`: one email to the maintainer, never to subscribers, once per problem per day.
 
-1. Fill the private runtime env (`~/.config/history-in-practice/runtime.env`, mode 600): Resend key, From, **Reply-To (required: the footer asks readers to reply and the From address has no mailbox)**. Run the one-off tracked test `bin/hip test-edition send --test-id ID --confirm-real-email` (works while `EMAIL_SEND_ENABLED=false`; see docs/EMAIL_SETUP.md), check both inboxes and reply once; only then set `EMAIL_SEND_ENABLED=true`.
-2. Confirm the Cloudflare deployment path for the website repo.
-3. `mkdir -p data/logs`, then `systemctl --user link $PWD/deploy/systemd/hip-*.{service,timer}`.
-4. Check `systemd-analyze calendar "*-*-* 07:30:00 America/Los_Angeles"`, then `systemctl --user enable --now hip-prepare.timer hip-send.timer hip-send-retry.timer`.
-5. `bin/hip inventory` must show `coverage_days` ≥ 7 before enabling sends; samples count only after `hip approve-sample`.
+**Claude** (Claude Code CLI, claude.ai subscription) drafts, writes the English and edits. There is no other model and no fallback: if Claude is unavailable, the run exits 4 and alerts.
 
-Logs append to `data/logs/`. Log rotation (`logrotate` or a size check in `hip doctor`) is still to be added. Restarting is safe: `recover` turns interrupted sends into `unknown`, which are never resent automatically.
+## Reboot recovery (no login, no SSH, no Claude session needed)
+
+**Lingering.** `loginctl show-user star -p Linger` → `Linger=yes`. The user manager (`user@1000.service`) starts at boot and starts the enabled timers. If lingering were ever off, restore it with `loginctl enable-linger star`.
+
+**Timers.** All three are `enabled` in `timers.target.wants`, so they come back after every boot. Verified after the reboot of 2026-11-01 01:32 CT: active since boot, nothing run.
+
+**No catch-up, no early send, no late send:**
+- every timer has `Persistent=false`, so a boot never triggers a missed run;
+- `publish-today` starts nothing before 22:08 Beijing time and sends nothing after the 23:40 deadline or on a later day;
+- per-recipient delivery records make a rerun resend nothing.
+
+**Everything is readable without a session, using files under `/home/star` only:**
+- code and venv: `~/history-in-practice` (branch `main`); `bin/hip` uses absolute paths;
+- private runtime config `~/.config/history-in-practice/runtime.env` (0600): SMTP, recipients, site push and send flags;
+- the Claude login: `~/.config/history-in-practice/claude/.credentials.json` (0600; a file, not a keyring);
+- GitHub push for the site: `gh` credential helper, token in `~/.config/gh/hosts.yml` (0600; a file, not a keyring);
+- production website copy: `data/website_prod` (`main` of `website_test`).
+
+`hip doctor` and a push dry-run were checked from inside the user manager (`systemd-run --user`, no SSH environment): runtime config, email config, Claude preflight and push all OK.
+
+**After a reboot, check:**
+```
+loginctl show-user star -p Linger
+systemctl --user list-timers 'hip-*'
+systemctl --user --failed
+bin/hip status
+```
+
+**Stop or roll back:**
+- `systemctl --user disable --now hip-send.timer hip-send-retry.timer hip-prepare.timer`;
+- `EMAIL_SEND_ENABLED=false` in the runtime config.
+
+**Logs** append to `data/logs/` (`send.log`, `prepare.log`). Log rotation is still to be added.
