@@ -1,0 +1,312 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261031-sj077-2",
+ "content_sha256": "6246a00900ebc0bb94ad8d44c4f2ca335528915728e54c0cb5c097c37747c0f0",
+ "evidence_in_sha256": "dc7ea2b7d3b996f2b5cb943acfec56b45a0abbd4b2278099557767ab983adf98",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793507057.4840763,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.7",
+   "lang": "en",
+   "sentence": "Wuji \"at once blamed himself, as if there were nowhere he could hide.\" Later, when the king of Zhao received him with the rites of a host, Wuji stood to the side, declined the honor, and pronounced himself at fault, saying he had failed Wei and done nothing for Zhao."
+  },
+  {
+   "id": "A2",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "Phrases in the original such as \"troubled in his heart,\" \"showed a self-satisfied look,\" and \"at once blamed himself\" are narrative wording, not recorded states of mind;"
+  },
+  {
+   "id": "A3",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "\"Troubled in his heart,\" \"showed a self-satisfied look,\" and \"at once blamed himself\" are narrative wording, not recorded states of mind."
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-SJ077": {
+   "title": "司馬遷《史記·魏公子列傳》（维基文库本）",
+   "url": "https://zh.wikisource.org/w/index.php?title=%E5%8F%B2%E8%A8%98/%E5%8D%B7077&action=render",
+   "ref": "zh:史記/卷077",
+   "evidence_text_sha256": "4b1d4ec9f91a18e56ebb8b733e1cd11ffa0ada580ac283fa1b715015b54f3370",
+   "cache_sha256": "4b1d4ec9f91a18e56ebb8b733e1cd11ffa0ada580ac283fa1b715015b54f3370",
+   "cjk": true,
+   "source_chars": 3383,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     3383
+    ]
+   ],
+   "chars_reviewed": 3383
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 38.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "prompts": [
+    {
+     "file": "context_review.md",
+     "sha256": "166543d1f6ca"
+    }
+   ],
+   "output_tokens": 3881
+  }
+ ],
+ "finished_at": 1793507095.9957156,
+ "elapsed_min": 0.6,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-SJ077",
+    "outcome": "公子病酒而死，同年魏安釐王也去世。秦国随即攻魏，此后逐步吞并魏国，十八年后俘虏魏王、屠大梁。汉高祖为公子设守冢、四时奉祠，太史公以亲访夷门和「名冠諸侯，不虛耳」的评语收束全篇。",
+    "quote": "秦聞公子死，使蒙驁攻魏，拔二十城，初置東郡。其後秦稍蠶食魏，十八歲而虜魏王，屠大梁。",
+    "in_evidence": true
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-SJ077",
+    "start": "侯生又謂公子曰",
+    "end": "從騎皆竊罵侯生",
+    "why": "sections.context.5 写侯嬴让车骑在集市久等、去拜访朋友，又写无忌脸色始终不变。这一段在证据包里没有对应摘录：E5 止于「公子執轡愈恭」，E6 从「侯生視公子色終不變」开始。这段原文还交代了两点：所访之客正是朱亥；将相宗室满堂等候，从骑都在暗中骂侯生。有了这些，读者才看得出这场考验的分量，也才明白朱亥与侯嬴的关系从何而来。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.7",
+    "lang": "en",
+    "sentence": "Wuji \"at once blamed himself, as if there were nowhere he could hide.\" Later, when the king of Zhao received him with the rites of a host, Wuji stood to the side, declined the honor, and pronounced himself at fault, saying he had failed Wei and done nothing for Zhao.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "《魏公子列傳》全文，赵封五城一段",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "公子側行辭讓，從東階上。自言罪過，以負於魏，無功於趙"
+    },
+    "fix": "这是正面转述，与原文一致，无需修改。"
+   },
+   {
+    "id": "A2",
+    "path": "sections.limits.1",
+    "lang": "en",
+    "sentence": "Phrases in the original such as \"troubled in his heart,\" \"showed a self-satisfied look,\" and \"at once blamed himself\" are narrative wording, not recorded states of mind;",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "《魏公子列傳》全文",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "公子聞之，意驕矜而有自功之色"
+    },
+    "fix": "「not recorded states of mind」在本传内无从核验，属于泛化的否定判断，建议删除。如需保留提醒，可改为正面表述：这些心理描写出自司马迁的叙述，本文照其叙述转述。"
+   },
+   {
+    "id": "A3",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "\"Troubled in his heart,\" \"showed a self-satisfied look,\" and \"at once blamed himself\" are narrative wording, not recorded states of mind.",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "《魏公子列傳》全文",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "公子行數里，心不快"
+    },
+    "fix": "与 A2 同样处理：删去「而非实录心理」这一否定判断，或改为「心理描写出自史家叙述」。"
+   },
+   {
+    "id": "N1",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "本文只依据《史记·魏公子列传》。侯嬴献计、朱亥的答话、门客的劝谏，都是史家记述的对话，未必是逐字实录。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "稿件的来源数量说明",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "侯生乃屏人間語"
+    },
+    "fix": "这是来源数量说明加一般性提醒，没有断言「无人核查」或「原文未载」，可以保留。不要由此推出其他结论。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.context.5",
+    "problem": "稿件说侯嬴「去拜访一位朋友」，没有点明此人就是朱亥，也略去了满堂将相宗室等候、从骑暗骂侯生的情节。这削弱了这场考验的分量，也让后文朱亥的来历少了铺垫。该句目前也没有对应的证据摘录。",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "侯生下見其客朱亥，俾倪故久立，與其客語，微察公子。公子顏色愈和。當是時，魏將相宗室賓客滿堂，待公子舉酒。市人皆觀公子執轡。從騎皆竊罵侯生。"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "全文已读，证据包已覆盖结局与关键回应，稿件正面叙述基本准确。只需为 context.5 的集市一段补摘录，并删去或改写 limits.1 与 uncertainty_note 中「非实录心理」这一无法核验的否定判断。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.7",
+   "lang": "en",
+   "sentence": "Wuji \"at once blamed himself, as if there were nowhere he could hide.\" Later, when the king of Zhao received him with the rites of a host, Wuji stood to the side, declined the honor, and pronounced himself at fault, saying he had failed Wei and done nothing for Zhao.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "《魏公子列傳》全文，赵封五城一段",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "公子側行辭讓，從東階上。自言罪過，以負於魏，無功於趙"
+   },
+   "fix": "这是正面转述，与原文一致，无需修改。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "Phrases in the original such as \"troubled in his heart,\" \"showed a self-satisfied look,\" and \"at once blamed himself\" are narrative wording, not recorded states of mind;",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "《魏公子列傳》全文",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "公子聞之，意驕矜而有自功之色"
+   },
+   "fix": "「not recorded states of mind」在本传内无从核验，属于泛化的否定判断，建议删除。如需保留提醒，可改为正面表述：这些心理描写出自司马迁的叙述，本文照其叙述转述。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "\"Troubled in his heart,\" \"showed a self-satisfied look,\" and \"at once blamed himself\" are narrative wording, not recorded states of mind.",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "《魏公子列傳》全文",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "公子行數里，心不快"
+   },
+   "fix": "与 A2 同样处理：删去「而非实录心理」这一否定判断，或改为「心理描写出自史家叙述」。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "本文只依据《史记·魏公子列传》。侯嬴献计、朱亥的答话、门客的劝谏，都是史家记述的对话，未必是逐字实录。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "稿件的来源数量说明",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "侯生乃屏人間語"
+   },
+   "fix": "这是来源数量说明加一般性提醒，没有断言「无人核查」或「原文未载」，可以保留。不要由此推出其他结论。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.context.5",
+   "problem": "稿件说侯嬴「去拜访一位朋友」，没有点明此人就是朱亥，也略去了满堂将相宗室等候、从骑暗骂侯生的情节。这削弱了这场考验的分量，也让后文朱亥的来历少了铺垫。该句目前也没有对应的证据摘录。",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "侯生下見其客朱亥，俾倪故久立，與其客語，微察公子。公子顏色愈和。當是時，魏將相宗室賓客滿堂，待公子舉酒。市人皆觀公子執轡。從騎皆竊罵侯生。"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-SJ077",
+   "outcome": "公子病酒而死，同年魏安釐王也去世。秦国随即攻魏，此后逐步吞并魏国，十八年后俘虏魏王、屠大梁。汉高祖为公子设守冢、四时奉祠，太史公以亲访夷门和「名冠諸侯，不虛耳」的评语收束全篇。",
+   "quote": "秦聞公子死，使蒙驁攻魏，拔二十城，初置東郡。其後秦稍蠶食魏，十八歲而虜魏王，屠大梁。",
+   "in_evidence": true
+  }
+ ],
+ "additions": [
+  {
+   "id": "SJ0771-E39",
+   "source_id": "S-SJ077",
+   "offset": 504,
+   "chars": 100,
+   "why": "sections.context.5 写侯嬴让车骑在集市久等、去拜访朋友，又写无忌脸色始终不变。这一段在证据包里没有对应摘录：E5 止于「公子執轡愈恭」，E6 从「侯生視公子色終不變」开始。这段原文还交代了两点：所访之客正是朱亥；将相宗室满堂等候，从骑都在暗中骂侯生。有了这些，读者才看得出这场考验的分量，也才明白朱亥与侯嬴的关系从何而来。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "c4a0c958625a07d7f432db29c05585a0915a3376b12c9c59c560d763a5cc0519",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.limits.1.en: unnecessary — Phrases in the original such as \"troubled in his heart,\" \"showed a self-satisfie",
+  "uncertainty_note.en: unnecessary — \"Troubled in his heart,\" \"showed a self-satisfied look,\" and \"at once blamed him",
+  "evidence must be expanded first: 1 addition(s) ['SJ0771-E39']"
+ ]
+}

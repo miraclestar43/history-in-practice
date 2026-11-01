@@ -1,0 +1,95 @@
+# Saving Zhao with No Clean Option
+
+*Qin's army has the Zhao capital of Handan surrounded, and the hundred thousand troops the king of Wei sent to relieve it have been halted at the frontier and told to hold. Prince Wuji has no army, only a band of retainers, and a decision he cannot get out of.*
+
+unscheduled · Ancient China · cand-auto-20261031-sj077-2 rev 1
+
+## A Turn at the East Gate
+
+In the twentieth year of King Anxi of Wei, Prince Wuji rode out of the city of Daliang with a hundred-odd chariots and horsemen, intending to hurl himself at the Qin army and die alongside the state of Zhao. Passing the Yimen, the eastern gate of the city, he stopped to see Hou Ying, an old gatekeeper he trusted, and told him the plan outright. Hou Ying saw him off with a single line — "Push on, my lord; I am old and cannot follow you". The column had gone a few li when the Records of the Grand Historian has Wuji "troubled in his heart"; he turned the chariots around and came back to ask Hou Ying what he had missed. [SJ0771-E13][SJ0771-E27]
+
+The difficulty was plain to see. Qin forces had invested Handan, the Zhao capital. King Anxi had already sent General Jin Pi with a hundred thousand troops to relieve Zhao, then ordered him to halt and camp at Ye and watch. Wuji had petitioned the king again and again, and set every persuasive talker in his household on the case; the king feared Qin and would not budge. What Wuji had left were a hundred-odd chariots and a band of retainers. Riding out meant dying for nothing. Staying meant Handan could fall any day — and his own sister was inside the walls. [SJ0771-E26][SJ0771-E27][SJ0771-E9]
+
+## A Relief Army That Stopped Halfway
+
+In the twentieth year of King Anxi of Wei, King Zhao of Qin, having destroyed Zhao's army at Changping, marched on and laid siege to Handan. Wuji's sister was the wife of Lord Pingyuan. She wrote letter after letter to the King of Wei and to Wuji begging for help, and the king sent General Jin Pi with a hundred thousand troops to rescue Zhao. [SJ0771-E9]
+
+Qin's envoy put the matter bluntly to the king of Wei: Handan would fall within days, and whichever of the other states dared to come to Zhao's relief, Qin would turn on it first once Zhao was finished. The king was frightened. He sent men to stop Jin Pi and had the great army camp at Ye — "in name a rescue of Zhao, in fact holding both sides and waiting to see which way things broke." [SJ0771-E26]
+
+Lord Pingyuan's envoys now arrived in Wei in an unbroken stream, official carriages crowding the road, and their reproaches grew sharper with every trip. I attached myself to this marriage, one of them said on his master's behalf, because I took the prince for a man of high principle, one who hurries to relieve another's distress. Now Handan may surrender to Qin any day and Wei's rescue has not come — where is that principle? "Even if you think little of me, Zhao Sheng, have you no pity for your own sister?" [SJ0771-E11]
+
+Wuji petitioned the king several times, and his retainers, debaters and persuaders alike, argued the case from every angle. King Anxi feared Qin and never relented. Wuji judged that he would never get troops out of the king, and decided he would not "live on alone and let Zhao perish." So he gathered his retainers, readied a hundred-odd chariots, and meant to lead his men into the Qin lines to die with Zhao. That was the plan he rode out with. [SJ0771-E27]
+
+Wuji's reputation rested on his habit of humbling himself before men of talent: humane and courteous to scholars whether able or not, never letting wealth and rank make him proud. Men competed to join him from a country several thousand li around, and three thousand retainers ate at his gate. Once, while he and the king were playing a board game, beacons flared on the northern frontier: "Zhao raiders are crossing the border." The king put down the game and wanted to summon his ministers. Wuji said it was merely the king of Zhao out hunting, not a raid. Before long word came from the north that it had indeed been a hunt. A retainer of mine, Wuji said, has a way of learning the king of Zhao's private business and reports it to me. From then on, the Records says, the king "dreaded the prince's ability, and did not dare entrust him with affairs of state." [SJ0771-E2][SJ0771-E3]
+
+Among the retainers was Hou Ying, seventy years old and poor, a gatekeeper at the Yimen. Wuji sought him out and tried to present him with a handsome gift. Hou Ying would not take it: he had kept himself and his conduct clean for decades, he said, and would not accept the prince's money simply because gatekeeping left him poor. So Wuji laid on a feast for all his retainers, and once the guests were seated, he went out with his carriage and escort, left the seat of honor on the left of the chariot empty, and fetched Hou Ying himself. Hou Ying, in his shabby robe and cap, climbed straight up into that seat without a word of demur — a test of Wuji, this was — and Wuji took the reins and grew only more respectful. Hou Ying then stood about a long time in the marketplace so that passers-by would stare; Wuji's manner never changed. At the house Wuji showed Hou Ying to the seat of honor and presented him to the assembled guests one by one, and the guests were astonished. Hou Ying later spelled out his reasoning: he was a mere gatekeeper, and the prince had personally come for him before a crowd. "I wanted to make your name," he said, "so I stood a long time by your carriage in the market while people watched, and the more I tried you, the more respectful you became. The townsfolk took me for a lout and you for a true elder who can humble himself before scholars." When the feast broke up, Hou Ying became Wuji's chief retainer. [SJ0771-E4][SJ0771-E5][SJ0771-E6][SJ0771-E7][SJ0771-E38]
+
+## The Tiger Tally, the Iron Mace, and Eighty Thousand Men
+
+Back at the Yimen, Hou Ying laid out the one plan that could work. The command tally that authenticated orders to Jin Pi's army — matched half to half, one side held by the general, one by the king — was normally kept in the king of Wei's bedchamber. Lady Ru, the king's favorite, came and went in the bedchamber freely and could steal it out. Hou Ying spelled out why she would. Her father had been murdered; for three years she had put up money to see her father's death avenged, and no one, the king included, had been able to bring it off. She had wept to Wuji, who sent a retainer to cut off her enemy's head and present it to her. Hou Ying's judgment was that Lady Ru would gladly die for Wuji and had simply never had the chance to serve him; one word from the prince and she would agree. Get the tally, take over Jin Pi's army, go north to rescue Zhao and push Qin back from the west — "an achievement worthy of the Five Hegemons." [SJ0771-E15]
+
+Wuji followed the plan and asked Lady Ru. She did steal Jin Pi's tally and give it to him. [SJ0771-E28]
+
+Hou Ying then warned him about the step that could ruin everything. "A general in the field need not obey every command from his sovereign." Even if the tally matched, Jin Pi might refuse to hand over the army and send to the king instead, and then the whole thing was in danger. Hou Ying told him to take the butcher Zhu Hai along: if Jin Pi complied, well and good; if he did not, Zhu Hai could strike. [SJ0771-E17]
+
+Wuji wept at that. Jin Pi was an old campaigner of the shouting, veteran stamp, he said, and would, he feared, refuse — in which case he would have to be killed. "That is why I weep — do you think I fear death?" Zhu Hai was the butcher Hou Ying had recommended earlier, a man of worth hidden in the marketplace. Wuji had called on him several times, and Zhu Hai had never once returned the courtesy, which Wuji had found odd at the time. [SJ0771-E18][SJ0771-E8]
+
+This time Zhu Hai answered without hesitation: "I am a knife-wielding butcher in the market. You have come to see me in person again and again, and I never answered in kind because small courtesies are of no use. Now that you are in a fix, this is the moment for me to give my life." Hou Ying, for his part, said he was too old to go. Let him reckon the days of Wuji's journey, he asked, and on the day Wuji reached Jin Pi's army he would cut his own throat facing north, to see him off. The Records later confirms that Hou Ying did cut his throat facing north. [SJ0771-E19][SJ0771-E20][SJ0771-E30]
+
+At Ye, Wuji declared that he was replacing Jin Pi by the king's order. Jin Pi matched the two halves of the tally and was still suspicious. He raised his hand and looked hard at Wuji: "I hold a hundred thousand men on the frontier, a grave charge for the state, and now a single carriage comes to relieve me. What is the meaning of this?" He was on the point of refusing. Zhu Hai drew from his sleeve an iron mace weighing forty catties and killed him. Wuji took over the army and gave orders in the camp: fathers and sons both serving, the father goes home; brothers both serving, the elder brother goes home; an only son with no brothers goes home to care for his parents. From the men left he picked eighty thousand, and advanced on the Qin army. [SJ0771-E29][SJ0771-E22]
+
+The Qin army raised the siege and drew off; Handan was saved and Zhao preserved. The king of Zhao and Lord Pingyuan came out to the border to meet Wuji in person, Lord Pingyuan with a quiver of arrows on his back, leading the way. The king of Zhao bowed twice and said that no worthier man had appeared since antiquity. [SJ0771-E23]
+
+King Xiaocheng of Zhao, grateful that Wuji had seized the army on a forged order and saved Zhao, took counsel with Lord Pingyuan and proposed to enfeoff him with five cities. When Wuji heard, he "showed a self-satisfied look, as if the credit were his own." A retainer came to him: kindness done to you must never be forgotten, he said; kindness you do to another is best forgotten. Taking the tally and Jin Pi's army on your own authority — "toward Zhao you have done a service; toward Wei you cannot be called a loyal minister." To go on preening yourself over it is something I cannot approve. Wuji "at once blamed himself, as if there were nowhere he could hide." Later, when the king of Zhao received him with the rites of a host, Wuji stood to the side, declined the honor, and pronounced himself at fault: "I have failed Wei and done nothing for Zhao." Because he kept declining, the king of Zhao could not bring himself to hand over the five cities. In the end the king gave him the town of Hao to support his household, and Wei restored to him the city of Xinling. [SJ0771-E24][SJ0771-E31]
+
+The king of Wei was angry over the stolen tally and the killing of Jin Pi, and Wuji knew it. Once Qin had been driven off and Zhao saved, he sent the Wei generals home with their troops and stayed on in Zhao with his own retainers. Looking back on it years later, he put it this way: "I first heard Lord Pingyuan was worthy, and so I failed my king of Wei to save Zhao." [SJ0771-E25][SJ0771-E36]
+
+## Three Things Beyond Loyalty
+
+One reading: treat this as a friend staking everything for a friend and you miss where the real difficulty lay. Wuji's first move was not to charge but to turn back at the Yimen. His question to Hou Ying was whether there was another way. Hou Ying's rebuke — "it would be like throwing meat at a starving tiger. What would it accomplish? And what use would your retainers be then?" — traded courage for arithmetic: what would a hundred-odd chariots buy against the Qin army? If even his retainers could not be put to use, what were retainers for? [SJ0771-E13][SJ0771-E14]
+
+Second, he staffed for the bad case before he acted. He knew going in that even a genuine tally might be refused, and Jin Pi might simply refer back to the king; he also foresaw that this step would mean killing an old general of his own state, which is why he wept and said so out loud first. The author's inference: naming the cost in advance does not make it smaller. It turns a shock into an execution of a decision already made. [SJ0771-E17][SJ0771-E18]
+
+Third, he kept the books honestly after it worked. Zhao was about to grant five cities; a retainer reminded him that he could not count as a loyal minister to Wei, and he blamed himself on the spot. Before the king of Zhao he declared he had failed Wei and done nothing for Zhao. While he was staying in Zhao he still said he had failed his king to save Zhao. On this reading he did not write the debt off: the army went home to Wei, and he stayed in Zhao. But the record also says he stayed in Zhao ten years without returning; when the king of Wei sent men to fetch him, he feared the king's anger and even barred his household from admitting the king's envoys, so staying there need not count as settling the debt. [SJ0771-E24][SJ0771-E31][SJ0771-E36][SJ0771-E25][SJ0771-E32]
+
+The alternative the author imagines: simply passing the evidence up the chain and leaving his own position untouched. But Lord Pingyuan had already said that Handan might surrender to Qin any day, and the price of holding back would be paid by the people inside the walls. On this reading, what Wuji chose was not a clean option; it was one that could change the situation, at the price of killing his own general and losing the trust of his king. [SJ0771-E11][SJ0771-E22]
+
+What did Sima Qian make of it? The Grand Historian writes that he passed through Daliang and made a point of finding the Yimen, and adds that Xinling's readiness to seek out recluses in mountain caves and to befriend men beneath him was something he had real cause for: "his name stood first among the lords — no empty fame." The praise lands on the end where he honored Hou Ying, not on the forged order and the slain general. And the costs did not stop there. Wuji stayed in Zhao ten years. When Qin attacked Wei, the two recluses he had befriended there — Master Mao, who lived among gamblers, and Master Xue, who hid himself among ale-sellers — told him that the only reason he was respected in Zhao and known to the lords was that he had Wei behind him; he changed countenance at once, ordered the carriage, and went back to save Wei. The king of Wei met him in tears and gave him the seal of supreme commander. Wuji called the other states to arms, led their five armies to rout Qin beyond the river, put the general Meng Ao to flight, and pursued to the Hangu Pass, after which the Qin army dared not come out. Alarmed, the king of Qin sent ten thousand jin of gold into Wei to buy off Jin Pi's former retainers, who slandered Wuji to the king: he has been an exile ten years, the lords obey only him, they want to make him king. The king heard it daily and came to believe it; he sent a replacement to take over the army. Wuji, knowing he had been pushed aside by slander a second time, excused himself on illness and spent long nights drinking with his retainers, strong wine and women, for four years, until drink killed him. After his death Qin attacked Wei, took twenty cities and set up its first commandery there, and eighteen years later captured the king of Wei and put Daliang to the sword. One reading is that this closing episode writes Wuji's survival and Wei's survival on the same line. [SJ0771-E37][SJ0771-E32][SJ0771-E34][SJ0771-E33][SJ0771-E35]
+
+## The Limits of the Record
+
+This piece rests on a single source: one account in the "Biography of the Prince of Wei" in the Records of the Grand Historian, with no second version to check it against. Hou Ying's plan, Zhu Hai's reply, and the retainer's remonstrance are all speeches recorded by the historian, not necessarily verbatim transcripts. [SJ0771-E15][SJ0771-E19][SJ0771-E24]
+
+Phrases in the original such as "troubled in his heart," "showed a self-satisfied look," and "at once blamed himself" are narrative wording, not recorded states of mind; wherever emotion enters this piece, it is only the historian's narration being relayed. Hou Ying's motive in cutting his throat, and what became of Lady Ru after she stole the tally, are given only as an act and a single line, with nothing further. [SJ0771-E13][SJ0771-E24][SJ0771-E20][SJ0771-E28]
+
+The figure of "eighty thousand selected men" appears in one place only, with nothing to corroborate it; how the tally was verified at the camp and how the troops took the news are not recorded. Dates follow the original reckoning — the twentieth year of King Anxi of Wei — with no conversion. [SJ0771-E22][SJ0771-E29]
+
+## Think about it
+
+Your team faces an obvious risk. Leadership, afraid of a bigger rival, has stopped already-committed resources halfway and told them to hold and watch. You have front-line evidence in hand and two capable people; pushing forward means bypassing the normal chain of command, and it may cost your own side.
+
+**Before you act, which is the first question to ask: is this throwing meat at a starving tiger, or what if the person who has to comply refuses?**
+
+<details><summary>One possible approach</summary>
+
+- **Assumptions**: Leadership stopped out of fear of a bigger rival, in the way the king of Qin's threat stopped the king of Wei — not because they failed to see the risk. You have verifiable front-line evidence and capable people. If it works, the credit and the debt to your own side will both be real.
+- **What you could do**: First, replace the death-ride with concrete arithmetic: what would the resources at hand actually buy? Second, before acting, line up a person and a stop-loss for the case where the other party will not cooperate — Hou Ying had Wuji bring the butcher Zhu Hai. Third, after it works, put the debt to your own side on your own account and do not bank the credit — as Wuji did once the retainer spoke to him.
+- **Another reasonable choice**: You could also stay inside the process, pass the evidence up and wait for approval, or do only your own job and leave your position untouched. The author's point: both preserve procedure, but the cost falls on the party under siege.
+
+</details>
+
+## Sources and uncertainty
+
+This piece has only one source; the speeches need not be verbatim. "Troubled in his heart," "showed a self-satisfied look," and "at once blamed himself" are narrative wording, not recorded states of mind. The figure of eighty thousand, the tally-checking, the army's reaction, Hou Ying's motive, and Lady Ru's later fate have nothing further in the record. Dates follow the original and are not converted to the common era.
+
+## Sources
+
+1. 司馬遷《史記·魏公子列傳》（维基文库本） — <https://zh.wikisource.org/w/index.php?title=%E5%8F%B2%E8%A8%98/%E5%8D%B7077&action=render>
+
+## Read more
+
+- [司馬遷《史記·魏公子列傳》（维基文库本）](https://zh.wikisource.org/wiki/%E5%8F%B2%E8%A8%98/%E5%8D%B7077) — The source this piece is based on. (Free online, classical Chinese)
+
+---
+
+Evidence ids [X-En] map to verbatim excerpts in the evidence file.

@@ -591,6 +591,8 @@ class FinalEditor(unittest.TestCase):
         self.assertIn("不要先把全部经过和结局概述一遍", draft)                     # dek/hook division of labour
         self.assertIn("同一称谓指不同的人", draft)
         self.assertIn("Same title, different people", every["translate_en_long"])
+        for name in ("final_audit", "final_verify"):        # sj077-2 validation: an unglossed key line was only a note
+            self.assertIn("引用的关键文言没有在同段讲清意思（第 7 条）", every[name], name)
         for name in ("final_revise", "edit_zh_en"):                                 # fixing must not move backwards
             self.assertIn("不要恢复初稿或上一轮已经删去的内容", every[name], name)
 

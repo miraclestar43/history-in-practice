@@ -1,0 +1,3341 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-auto-20261031-sj077-2",
+ "edition_id": "cand-auto-20261031-sj077-2",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "743f9ed",
+ "started_at": 1793506644.0918324,
+ "base_source": "samples/auto/cand-auto-20261031-sj077-2/final/article.json",
+ "base_content_sha256": "abefee59b3b49ca98686cb03778df2fc4572a01c1815de21bce4336c71737938",
+ "evidence_sha256": "c4a0c958625a07d7f432db29c05585a0915a3376b12c9c59c560d763a5cc0519",
+ "operator_note": null,
+ "model_record_sha256": "e245ee32bb7eb8324a129e1901405a0c5eda9f757536a01b1ab48b26a7669458",
+ "prior_record_sha256": "9fd731278852a45034b662c8a7a549edfde8d4d3686e40e4942a7dcbaeab93a6",
+ "attempt": "attempt-3",
+ "context_review_sha256": null,
+ "inherited": [
+  {
+   "id": "P1",
+   "model_id": "V2-V1",
+   "source": "final-editor previous attempt",
+   "where": "sections.analysis.2",
+   "problem": "中文结论是留赵「未必就是认下这笔债」（承认亏欠）。英文写成 need not count as settling the debt，意思变成“还清这笔债”，与中文不一致；也与同段 did not write the debt off 的“承认／不抹掉”框架不一致。",
+   "suggestion": "英文末句改为：so staying there need not mean he was owning up to the debt."
+  }
+ ],
+ "contamination": [
+  {
+   "id": "K1",
+   "brief_line": "方向：这篇讲魏安釐王二十年邯郸被围、魏王不敢出兵时，信陵君决定偷虎符、杀本国将军晋鄙、夺军救赵（SJ0771-E9）（SJ0771-E10）（SJ0771-E12）。看点有三处：他出发送死前先折返问侯生，被当面点破是“以肉投餒虎”的盲动（SJ0771-E13）（SJ0771-E14）；动手前先为“晋鄙不交兵权”这个坏情况备好人手（SJ0771-E17）（SJ0771-E18）；事成之后不居功，听门客提醒后立即自责（SJ0771-E24）。不要写成“为朋友两肋插刀”的义气赞美，也不要写成窃符杀将的道德审判，要看他在没有干净选项时怎么准备、怎么付代价、怎么面对自己这方的亏欠。",
+   "dropped_ids": [
+    "SJ0771-E10",
+    "SJ0771-E12"
+   ]
+  },
+  {
+   "id": "K2",
+   "brief_line": "- 秦王派使者告魏王：邯郸旦暮且下，敢救者移兵先击之；魏王惧，使人止晋鄙，留军壁邺，名为救赵，实持两端以观望（SJ0771-E10）。",
+   "dropped_ids": [
+    "SJ0771-E10"
+   ]
+  },
+  {
+   "id": "K3",
+   "brief_line": "- 公子数请魏王，宾客辩士说王万端，魏王畏秦终不听；公子自度不能得之于王，约车骑百余乘，欲以客往赴秦军，与赵俱死（SJ0771-E12）。",
+   "dropped_ids": [
+    "SJ0771-E12"
+   ]
+  },
+  {
+   "id": "K4",
+   "brief_line": "- 公子从其计，如姬果然盗出晋鄙兵符给公子（SJ0771-E16）。",
+   "dropped_ids": [
+    "SJ0771-E16"
+   ]
+  },
+  {
+   "id": "K5",
+   "brief_line": "- 公子到邺矫魏王令代晋鄙；晋鄙合符后起疑，说今拥十万之众屯于境上、国之重任，单车来代是怎么回事，欲无听（SJ0771-E21）。",
+   "dropped_ids": [
+    "SJ0771-E21"
+   ]
+  },
+  {
+   "id": "K6",
+   "brief_line": "必须写明的不确定性：本篇只有一个史源（《史记·魏公子列传》一处记述），其中的密语与对话（如侯嬴屏人间语献计、朱亥答话）是史家记述，未必逐字（SJ0771-E15）（SJ0771-E19）；不要替人物写心理，原文的“心不快”“意骄矜”“立自责”只是叙述用语，不是实录（SJ0771-E13）（SJ0771-E24）；不要换算公元年份，只用原文的魏安釐王二十年这样的纪年（SJ0771-E9）；“得选兵八万人”这一数字只此一处，无旁证（SJ0771-E22）；晋鄙军中如何收场、合符如何校验，原文没有记载（SJ0771-E21）（SJ0771-E22）；侯生自刭的动机、如姬盗符的后续，原文只写行为与一句话，没有更多交代（SJ0771-E20）（SJ0771-E16）。",
+   "dropped_ids": [
+    "SJ0771-E16",
+    "SJ0771-E21"
+   ]
+  },
+  {
+   "id": "K7",
+   "brief_line": "现代应用：今天常见的情形是：你所在的团队遇到明显风险，但决策层因为害怕更大的对手而不肯动（SJ0771-E10）；你手里有一线证据和能干的人，要不要绕开常规流程推动（SJ0771-E12）；动手前先问一句“这是不是拿肉投餒虎”，并为“对方不配合”备好预案（SJ0771-E14）（SJ0771-E17）；事情成了之后不居功，主动承认对自己这方的亏欠（SJ0771-E24）。",
+   "dropped_ids": [
+    "SJ0771-E10",
+    "SJ0771-E12"
+   ]
+  },
+  {
+   "id": "K8",
+   "brief_line": "注意：以下摘录的锚点未通过逐字核对，已删除，不得使用其内容：SJ0771-E10、SJ0771-E12、SJ0771-E16、SJ0771-E21。",
+   "dropped_ids": [
+    "SJ0771-E10",
+    "SJ0771-E12",
+    "SJ0771-E16",
+    "SJ0771-E21"
+   ]
+  }
+ ],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.analysis.2",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "中文结论是留赵“未必就是认下这笔债”（承认亏欠）；英文末句写成 need not count as settling the debt，意思变成“还清债务”。这与中文不一致，也与同段 did not write the debt off 的框架不一致。",
+   "evidence": [
+    {
+     "id": "SJ0771-E32",
+     "quote": "公子恐其怒之，乃誡門下：「有敢為魏王使通者，死。」"
+    }
+   ],
+   "proposed": "英文末句改为：so staying there need not mean he was owning up to the debt.",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文末句的 settling the debt（还清债务）改为 owning up to the debt（承认亏欠），与中文“认下这笔债”及同段 did not write the debt off 的框架一致；中文不变，按同步规则一并给出全文。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.story.7",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文把“自言罪過，以負於魏，無功於趙”写成无忌第一人称的直接引语 \"I have failed Wei and done nothing for Zhao.\"，但原文是史家的间接叙述，不是他的原话。中文只引了逐字片段，没有问题。",
+   "evidence": [
+    {
+     "id": "SJ0771-E31",
+     "quote": "自言罪過，以負於魏，無功於趙"
+    }
+   ],
+   "proposed": "英文改为间接转述：and pronounced himself at fault, saying he had failed Wei and done nothing for Zhao.",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "原文是史家的间接叙述，不是无忌的原话。英文把带引号的第一人称直接引语改为间接转述 saying he had failed Wei and done nothing for Zhao。中文引的是逐字片段，保持不变，按同步规则一并给出全文。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.context.5",
+   "category": "readability",
+   "severity": "note",
+   "problem": "侯嬴在集市里拜访的“一位朋友”就是屠户朱亥，但这里没有点明。到 story.3 才写“朱亥是侯嬴早先推荐的屠者”，读者前后对不上。",
+   "evidence": [
+    {
+     "id": "SJ0771-E8",
+     "quote": "臣所過屠者朱亥"
+    }
+   ],
+   "proposed": "中文“去拜访一位朋友”改为“去拜访屠户朱亥”；英文 to call on a friend 改为 to call on his friend Zhu Hai, a butcher。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F4",
+   "path": "sections.story.3",
+   "category": "readability",
+   "severity": "note",
+   "problem": "中文直接引了「嚄唶宿將」，没有在同段用白话讲明意思（英文已经译出）。",
+   "evidence": [
+    {
+     "id": "SJ0771-E18",
+     "quote": "晉鄙嚄唶宿將"
+    }
+   ],
+   "proposed": "在「嚄唶宿將」后补一句白话，例如“——一位叱咤军中的老将”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F5",
+   "path": "sections.analysis.0",
+   "category": "readability",
+   "severity": "note",
+   "problem": "analysis 各段反复使用“作者推断：”标签（analysis.0、1、2、3 各一次，analysis.4 又有“作者认为”“一种解释是”），读起来像审核括注。",
+   "evidence": [],
+   "proposed": "在 analysis 开头标一次“作者推断”，其余段落改用自然句承接。不删去任何推断的限定。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F6",
+   "path": "sections.limits.2",
+   "category": "readability",
+   "severity": "note",
+   "problem": "limits.2 只是重复 limits.0 的“本文只依据本传”，对读者判断没有新增信息。limits.1 与 uncertainty_note 也大段重复。",
+   "evidence": [],
+   "proposed": "删去 limits.2；uncertainty_note 保持现状即可，limits.1 可只保留第一句。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F7",
+   "path": "sections.context.0",
+   "category": "readability",
+   "severity": "note",
+   "problem": "context.0 至 context.3 把 hook.1 已经讲过的晋鄙十万众、止于邺、百余乘车骑等再讲一遍，开头部分重复较多。",
+   "evidence": [],
+   "proposed": "可酌情压缩 hook.1 或 context 中重复的兵数与驻邺细节，只保留一处完整叙述。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "P1",
+   "problem": "中文结论是留赵「未必就是认下这笔债」（承认亏欠）。英文写成 need not count as settling the debt，意思变成“还清这笔债”，与中文不一致；也与同段 did not write the debt off 的“承认／不抹掉”框架不一致。",
+   "origin": "inherited final-editor previous attempt V2-V1",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.analysis.2",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "英文 settling the debt 与中文“认下这笔债”意思不一致，问题成立，与 F1 相同。"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.context.5",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "证据写的是侯嬴故意让公子的车骑在集市里久停（「久立公子車騎市中」），被久久晾着的是无忌的车骑。中文「久久站着」主语含混，英文 standing there a long time 把久立的写成了侯嬴本人。",
+   "evidence": [
+    {
+     "id": "SJ0771-E7",
+     "quote": "故久立公子車騎市中，過客以觀公子"
+    }
+   ],
+   "proposed": "中文改为：「侯嬴又让无忌的车骑在集市里久等，自己去拜访一位朋友，借此观察无忌」。英文改为：\"Hou Ying then kept Wuji's carriage waiting a long time in the marketplace while he called on a friend and watched Wuji\"。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "按证据，在集市里被久久晾着的是无忌的车骑，侯嬴借拜访朋友观察无忌。中文改为“让无忌的车骑在集市里久等，自己去拜访一位朋友”。英文改为 kept Wuji's carriage waiting a long time in the marketplace，不再写成侯嬴本人久立。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V2",
+   "path": "sections.context.5",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "英文比中文多出内容：once the guests were seated，以及侯嬴自陈中的 he was a mere gatekeeper, and the prince had personally come for him before a crowd。英文还把集市久候的经过重复叙述了一遍。中文没有这些。中英不一致。",
+   "evidence": [
+    {
+     "id": "SJ0771-E7",
+     "quote": "嬴乃夷門抱關者也，而公子親枉車騎，自迎嬴於眾人廣坐之中"
+    }
+   ],
+   "proposed": "英文删去自陈部分重复的集市经过，并删去中文没有的半句，改为：\"Hou Ying later spelled out his reasoning: he had wanted to make the prince's name. The townsfolk took Hou Ying for a lout and Wuji for a true elder who can humble himself before scholars.\" 同时删去 once the guests were seated，或在中文相应补「坐定」。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "英文删去中文没有的 once the guests were seated，也删去侯嬴自陈中“只是守门人、公子当众亲迎”的半句。自陈部分重复叙述的集市经过一并删去，只保留与中文一致的内容：想成全公子礼贤下士之名，市人因此视侯嬴为小人、称无忌为长者。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V6",
+   "path": "sections.analysis.3",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "中文「失信于魏王」指无忌背弃了对魏王的信义；英文 losing the trust of his king 指魏王不再信任他。两者含义不同。",
+   "evidence": [
+    {
+     "id": "SJ0771-E25",
+     "quote": "魏王怒公子之盜其兵符，矯殺晉鄙"
+    }
+   ],
+   "proposed": "英文改为 \"at the price of killing his own general and breaking faith with his king\"。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "中文“失信于魏王”指无忌背弃对魏王的信义。英文原作 losing the trust of his king，意思成了魏王不再信任他，现改为 breaking faith with his king，与中文一致。中文字段保持原文，随英文一并给出。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "OP1",
+   "path": "sections.context.5",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "context review note (quote 侯生下見其客朱亥，俾倪故久立，與其客語，微察公子。公子顏色愈和): the friend is 朱亥; the waiting hall and the riders' curses show the weight of the test",
+   "origin": "operator: owner instruction (local fix)",
+   "evidence": [],
+   "disposition": "fixed",
+   "decided_in": "localfix-attempt-3-1",
+   "rationale": "local fix: standing owner rule 2026-10-31: context-review findings with source quotes; zh fixed alongside en for parity"
+  },
+  {
+   "id": "CTX-X1",
+   "path": "sections.limits.1",
+   "category": "context",
+   "severity": "fix",
+   "problem": "来源上下文核查（en）「Phrases in the original such as \"troubled in his heart,\" \"showed a self-satisfied look,\" and \"at once blamed himself\" are narrative wording, not recorded states of mind;」：这句关于来源未载的断言没有必要，删去。来源原文〔S-SJ077〕：「公子聞之，意驕矜而有自功之色」",
+   "origin": "source-context review 1793507057.4840763 (content 6246a00900eb)",
+   "evidence": [],
+   "disposition": "fixed",
+   "decided_in": "localfix-attempt-3-1",
+   "rationale": "local fix: standing owner rule 2026-10-31: context-review findings with source quotes; zh fixed alongside en for parity"
+  },
+  {
+   "id": "CTX-X2",
+   "path": "uncertainty_note",
+   "category": "context",
+   "severity": "fix",
+   "problem": "来源上下文核查（en）「\"Troubled in his heart,\" \"showed a self-satisfied look,\" and \"at once blamed himself\" are narrative wording, not recorded states of mind.」：这句关于来源未载的断言没有必要，删去。来源原文〔S-SJ077〕：「公子行數里，心不快」",
+   "origin": "source-context review 1793507057.4840763 (content 6246a00900eb)",
+   "evidence": [],
+   "disposition": "fixed",
+   "decided_in": "localfix-attempt-3-1",
+   "rationale": "local fix: standing owner rule 2026-10-31: context-review findings with source quotes; zh fixed alongside en for parity"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.analysis.2.en",
+   "before": "Third, how he kept the books after it worked. Zhao was about to grant five cities; a retainer reminded him that he could not count as a loyal minister to Wei, and he blamed himself on the spot. Before the king of Zhao he declared he had failed Wei and done nothing for Zhao. While he was staying in Zhao he still said he had failed his king to save Zhao. On this reading he did not write the debt off: the army went home to Wei, and he stayed in Zhao. But the record also says he stayed in Zhao ten years without returning; when the king of Wei sent men to fetch him, he feared the king's anger and even barred his household from admitting the king's envoys, so staying there need not count as settling the debt.",
+   "after": "Third, how he kept the books after it worked. Zhao was about to grant five cities; a retainer reminded him that he could not count as a loyal minister to Wei, and he blamed himself on the spot. Before the king of Zhao he declared he had failed Wei and done nothing for Zhao. While he was staying in Zhao he still said he had failed his king to save Zhao. On this reading he did not write the debt off: the army went home to Wei, and he stayed in Zhao. But the record also says he stayed in Zhao ten years without returning; when the king of Wei sent men to fetch him, he feared the king's anger and even barred his household from admitting the king's envoys, so staying there need not mean he was owning up to the debt.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.story.7.en",
+   "before": "King Xiaocheng of Zhao, grateful that Wuji had seized the army on a forged order and saved Zhao, took counsel with Lord Pingyuan and proposed to enfeoff him with five cities. When Wuji heard, he \"showed a self-satisfied look, as if the credit were his own.\" A retainer came to him: kindness done to you must never be forgotten, he said; kindness you do to another is best forgotten. Forging the king of Wei's order and seizing Jin Pi's army — \"toward Zhao you have done a service; toward Wei you cannot be called a loyal minister.\" To go on preening yourself over it is something I cannot approve. Wuji \"at once blamed himself, as if there were nowhere he could hide.\" Later, when the king of Zhao received him with the rites of a host, Wuji stood to the side, declined the honor, and pronounced himself at fault: \"I have failed Wei and done nothing for Zhao.\" Because Wuji held back, the king of Zhao could not bring himself to hand over the five cities. In the end the king gave him the town of Hao to support his household, and Wei restored to him the city of Xinling.",
+   "after": "King Xiaocheng of Zhao, grateful that Wuji had seized the army on a forged order and saved Zhao, took counsel with Lord Pingyuan and proposed to enfeoff him with five cities. When Wuji heard, he \"showed a self-satisfied look, as if the credit were his own.\" A retainer came to him: kindness done to you must never be forgotten, he said; kindness you do to another is best forgotten. Forging the king of Wei's order and seizing Jin Pi's army — \"toward Zhao you have done a service; toward Wei you cannot be called a loyal minister.\" To go on preening yourself over it is something I cannot approve. Wuji \"at once blamed himself, as if there were nowhere he could hide.\" Later, when the king of Zhao received him with the rites of a host, Wuji stood to the side, declined the honor, and pronounced himself at fault, saying he had failed Wei and done nothing for Zhao. Because Wuji held back, the king of Zhao could not bring himself to hand over the five cities. In the end the king gave him the town of Hao to support his household, and Wei restored to him the city of Xinling.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.context.5.zh",
+   "before": "魏国有位隐士侯嬴，年七十，家贫，在大梁夷门守门。无忌想厚赠他，他不肯收，说自己修身絜行几十年，终不能因为守门穷困而受财。无忌于是置酒大会宾客，空出车上左边的尊位，亲自去迎侯嬴。侯嬴穿着破旧衣冠，径直登上上座，也不谦让，为的是看无忌的反应；无忌执辔，愈恭。侯嬴又让车骑停在集市里，去拜访一位朋友，久久站着，借此观察无忌；无忌的脸色始终不变。到家后无忌请他坐上座，向在座宾客一一介绍，宾客皆惊。侯嬴后来自己说破：他这样做是想成全公子礼贤下士的名声；市人因此把他看作小人，称无忌是能下士的长者。宴罢，侯嬴成为上客。",
+   "after": "魏国有位隐士侯嬴，年七十，家贫，在大梁夷门守门。无忌想厚赠他，他不肯收，说自己修身絜行几十年，终不能因为守门穷困而受财。无忌于是置酒大会宾客，空出车上左边的尊位，亲自去迎侯嬴。侯嬴穿着破旧衣冠，径直登上上座，也不谦让，为的是看无忌的反应；无忌执辔，愈恭。侯嬴又让无忌的车骑在集市里久等，自己去拜访一位朋友，借此观察无忌；无忌的脸色始终不变。到家后无忌请他坐上座，向在座宾客一一介绍，宾客皆惊。侯嬴后来自己说破：他这样做是想成全公子礼贤下士的名声；市人因此把他看作小人，称无忌是能下士的长者。宴罢，侯嬴成为上客。",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.context.5.en",
+   "before": "Wei had a recluse named Hou Ying, seventy years old and poor, a gatekeeper at the Yimen. Wuji sought him out and tried to present him with a handsome gift. Hou Ying would not take it: he had kept himself and his conduct clean for decades, he said, and would not accept the prince's money simply because gatekeeping left him poor. So Wuji laid on a feast for all his retainers, and once the guests were seated, he went out with his carriage and escort, left the seat of honor on the left of the chariot empty, and fetched Hou Ying himself. Hou Ying, in his shabby robe and cap, climbed straight up into that seat without a word of demur — a test of Wuji, this was — and Wuji took the reins and grew only more respectful. Hou Ying then had Wuji's carriage wait in the marketplace while he went to call on a friend, standing there a long time and watching Wuji; Wuji's manner never changed. At the house Wuji showed Hou Ying to the seat of honor and presented him to the assembled guests one by one, and the guests were astonished. Hou Ying later spelled out his reasoning: he was a mere gatekeeper, and the prince had personally come for him before a crowd. He had wanted to make the prince's name, so he kept the prince's carriage standing in the market while he called on a friend and watched the prince, and the prince only grew more respectful. The townsfolk took Hou Ying for a lout and Wuji for a true elder who can humble himself before scholars. When the feast broke up, Hou Ying became one of Wuji's most honored guests.",
+   "after": "Wei had a recluse named Hou Ying, seventy years old and poor, a gatekeeper at the Yimen. Wuji sought him out and tried to present him with a handsome gift. Hou Ying would not take it: he had kept himself and his conduct clean for decades, he said, and would not accept the prince's money simply because gatekeeping left him poor. So Wuji laid on a feast for all his retainers, went out with his carriage and escort, left the seat of honor on the left of the chariot empty, and fetched Hou Ying himself. Hou Ying, in his shabby robe and cap, climbed straight up into that seat without a word of demur — a test of Wuji, this was — and Wuji took the reins and grew only more respectful. Hou Ying then kept Wuji's carriage waiting a long time in the marketplace while he called on a friend, watching Wuji all the while; Wuji's manner never changed. At the house Wuji showed Hou Ying to the seat of honor and presented him to the assembled guests one by one, and the guests were astonished. Hou Ying later spelled out his reasoning: he had acted this way to make the prince's name as a man who humbles himself before scholars. As a result, the townsfolk took Hou Ying for a lout and Wuji for a true elder who can humble himself before scholars. When the feast broke up, Hou Ying became one of Wuji's most honored guests.",
+   "issues": [
+    "V1-V1",
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.analysis.3.en",
+   "before": "The other course was to keep waiting for the king of Wei to change his mind. But Lord Pingyuan had already said that Handan might surrender to Qin any day. On this reading, the price of holding back would be paid by the people inside the walls, and what Wuji chose was not a clean option; it was one that could change the situation, at the price of killing his own general and losing the trust of his king.",
+   "after": "The other course was to keep waiting for the king of Wei to change his mind. But Lord Pingyuan had already said that Handan might surrender to Qin any day. On this reading, the price of holding back would be paid by the people inside the walls, and what Wuji chose was not a clean option; it was one that could change the situation, at the price of killing his own general and breaking faith with his king.",
+   "issues": [
+    "V1-V6"
+   ]
+  },
+  {
+   "path": "sections.limits.1.zh",
+   "before": "原文里的「心不快」「意驕矜」「立自責」是叙述用语，不是实录的心理；本文凡涉情绪处都只是转述史家的叙述。",
+   "after": "原文里的「心不快」「意驕矜」「立自責」这类心理描写出自史家的叙述，本文照其叙述转述。",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP1"
+   ]
+  },
+  {
+   "path": "sections.limits.1.en",
+   "before": "Phrases in the original such as \"troubled in his heart,\" \"showed a self-satisfied look,\" and \"at once blamed himself\" are narrative wording, not recorded states of mind; wherever emotion enters this piece, it is only the historian's narration being relayed.",
+   "after": "Phrases in the original such as \"troubled in his heart,\" \"showed a self-satisfied look\" and \"at once blamed himself\" are the historian's narration; this piece relays them as he tells it.",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP1"
+   ]
+  },
+  {
+   "path": "uncertainty_note.zh",
+   "before": "本文只依据《史记·魏公子列传》；对话出自史家记述，未必逐字；「心不快」「意驕矜」「立自責」是叙述用语，而非实录心理。",
+   "after": "本文只依据《史记·魏公子列传》；对话出自史家记述，未必逐字；「心不快」「意驕矜」「立自責」等心理描写出自史家叙述。",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP1"
+   ]
+  },
+  {
+   "path": "uncertainty_note.en",
+   "before": "This piece draws only on the \"Biography of the Prince of Wei\" in the Records of the Grand Historian; the speeches come from the historian's account and need not be verbatim. \"Troubled in his heart,\" \"showed a self-satisfied look,\" and \"at once blamed himself\" are narrative wording, not recorded states of mind.",
+   "after": "This piece draws only on the \"Biography of the Prince of Wei\" in the Records of the Grand Historian; the speeches come from the historian's account and need not be verbatim, and phrases such as \"troubled in his heart,\" \"showed a self-satisfied look\" and \"at once blamed himself\" are the historian's narration.",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP1"
+   ]
+  },
+  {
+   "path": "sections.context.5.zh",
+   "before": "魏国有位隐士侯嬴，年七十，家贫，在大梁夷门守门。无忌想厚赠他，他不肯收，说自己修身絜行几十年，终不能因为守门穷困而受财。无忌于是置酒大会宾客，空出车上左边的尊位，亲自去迎侯嬴。侯嬴穿着破旧衣冠，径直登上上座，也不谦让，为的是看无忌的反应；无忌执辔，愈恭。侯嬴又让无忌的车骑在集市里久等，自己去拜访一位朋友，借此观察无忌；无忌的脸色始终不变。到家后无忌请他坐上座，向在座宾客一一介绍，宾客皆惊。侯嬴后来自己说破：他这样做是想成全公子礼贤下士的名声；市人因此把他看作小人，称无忌是能下士的长者。宴罢，侯嬴成为上客。",
+   "after": "魏国有位隐士侯嬴，年七十，家贫，在大梁夷门守门。无忌想厚赠他，他不肯收，说自己修身絜行几十年，终不能因为守门穷困而受财。无忌于是置酒大会宾客，空出车上左边的尊位，亲自去迎侯嬴。侯嬴穿着破旧衣冠，径直登上上座，也不谦让，为的是看无忌的反应；无忌执辔，愈恭。侯嬴又下车去见他的朋友、在市上当屠户的朱亥，故意站着和朱亥说了很久，暗中观察无忌。这时魏国的将相、宗室和宾客已坐满一堂，等无忌回去开席；跟随的骑从都在暗中骂侯嬴。无忌的脸色反而越发温和，始终不变。到家后无忌请他坐上座，向在座宾客一一介绍，宾客皆惊。侯嬴后来自己说破：他这样做是想成全公子礼贤下士的名声；市人因此把他看作小人，称无忌是能下士的长者。宴罢，侯嬴成为上客。",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP1"
+   ]
+  },
+  {
+   "path": "sections.context.5.en",
+   "before": "Wei had a recluse named Hou Ying, seventy years old and poor, a gatekeeper at the Yimen. Wuji sought him out and tried to present him with a handsome gift. Hou Ying would not take it: he had kept himself and his conduct clean for decades, he said, and would not accept the prince's money simply because gatekeeping left him poor. So Wuji laid on a feast for all his retainers, went out with his carriage and escort, left the seat of honor on the left of the chariot empty, and fetched Hou Ying himself. Hou Ying, in his shabby robe and cap, climbed straight up into that seat without a word of demur — a test of Wuji, this was — and Wuji took the reins and grew only more respectful. Hou Ying then kept Wuji's carriage waiting a long time in the marketplace while he called on a friend, watching Wuji all the while; Wuji's manner never changed. At the house Wuji showed Hou Ying to the seat of honor and presented him to the assembled guests one by one, and the guests were astonished. Hou Ying later spelled out his reasoning: he had acted this way to make the prince's name as a man who humbles himself before scholars. As a result, the townsfolk took Hou Ying for a lout and Wuji for a true elder who can humble himself before scholars. When the feast broke up, Hou Ying became one of Wuji's most honored guests.",
+   "after": "Wei had a recluse named Hou Ying, seventy years old and poor, a gatekeeper at the Yimen. Wuji sought him out and tried to present him with a handsome gift. Hou Ying would not take it: he had kept himself and his conduct clean for decades, he said, and would not accept the prince's money simply because gatekeeping left him poor. So Wuji laid on a feast for all his retainers, went out with his carriage and escort, left the seat of honor on the left of the chariot empty, and fetched Hou Ying himself. Hou Ying, in his shabby robe and cap, climbed straight up into that seat without a word of demur — a test of Wuji, this was — and Wuji took the reins and grew only more respectful. Hou Ying then got down to see his friend Zhu Hai, a butcher in the market, and deliberately stood talking with him for a long time, watching Wuji out of the corner of his eye. Meanwhile Wei's generals, ministers, royal kinsmen and guests filled the prince's hall, waiting for him to begin the feast, and Wuji's own riders cursed Hou Ying under their breath. Wuji's face only grew milder; his manner never changed. At the house Wuji showed Hou Ying to the seat of honor and presented him to the assembled guests one by one, and the guests were astonished. Hou Ying later spelled out his reasoning: he had acted this way to make the prince's name as a man who humbles himself before scholars. As a result, the townsfolk took Hou Ying for a lout and Wuji for a true elder who can humble himself before scholars. When the feast broke up, Hou Ying became one of Wuji's most honored guests.",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP1"
+   ]
+  },
+  {
+   "path": "sections.context.5.ev",
+   "before": [
+    "SJ0771-E4",
+    "SJ0771-E5",
+    "SJ0771-E6",
+    "SJ0771-E7",
+    "SJ0771-E38"
+   ],
+   "after": [
+    "SJ0771-E4",
+    "SJ0771-E5",
+    "SJ0771-E6",
+    "SJ0771-E7",
+    "SJ0771-E38",
+    "SJ0771-E39"
+   ],
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP1"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2"
+   ],
+   "changes_applied": 2,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "hook[0] numbers differ zh[] en[100]"
+    ],
+    [
+     "CHECK",
+     "hook[1] numbers differ zh[100000] en[100, 100000]"
+    ],
+    [
+     "CHECK",
+     "context[3] numbers differ zh[] en[100]"
+    ],
+    [
+     "CHECK",
+     "context[5] numbers differ zh[10, 70] en[70]"
+    ],
+    [
+     "CHECK",
+     "analysis[0] numbers differ zh[] en[100]"
+    ],
+    [
+     "CHECK",
+     "limits[2] numbers differ zh[80000, 100000] en[80000]"
+    ]
+   ],
+   "content_sha256_after": "0c6db2a93f012a6e2720ed3143724bf1ccd0a6c2184ff710da9dc2c356811972",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1",
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V6"
+      ]
+     },
+     {
+      "path": "sections.analysis.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V7"
+      ]
+     },
+     {
+      "path": "sections.limits.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V8"
+      ]
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.context.5",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "证据写的是侯嬴故意让公子的车骑在集市里久停（「久立公子車騎市中」），被久久晾着的是无忌的车骑。中文「久久站着」主语含混，英文 standing there a long time 把久立的写成了侯嬴本人。",
+      "evidence": [
+       {
+        "id": "SJ0771-E7",
+        "quote": "故久立公子車騎市中，過客以觀公子"
+       }
+      ],
+      "proposed": "中文改为：「侯嬴又让无忌的车骑在集市里久等，自己去拜访一位朋友，借此观察无忌」。英文改为：\"Hou Ying then kept Wuji's carriage waiting a long time in the marketplace while he called on a friend and watched Wuji\"。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.context.5",
+      "category": "parity",
+      "severity": "fix",
+      "problem": "英文比中文多出内容：once the guests were seated，以及侯嬴自陈中的 he was a mere gatekeeper, and the prince had personally come for him before a crowd。英文还把集市久候的经过重复叙述了一遍。中文没有这些。中英不一致。",
+      "evidence": [
+       {
+        "id": "SJ0771-E7",
+        "quote": "嬴乃夷門抱關者也，而公子親枉車騎，自迎嬴於眾人廣坐之中"
+       }
+      ],
+      "proposed": "英文删去自陈部分重复的集市经过，并删去中文没有的半句，改为：\"Hou Ying later spelled out his reasoning: he had wanted to make the prince's name. The townsfolk took Hou Ying for a lout and Wuji for a true elder who can humble himself before scholars.\" 同时删去 once the guests were seated，或在中文相应补「坐定」。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.context.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "英文 King Zhao of Qin 与后文的 the king of Zhao（赵王）字面相近，英语读者容易混成同一人。另外，晋鄙率十万救赵一事在 hook.1 已经交代过，这里又完整重复一遍。",
+      "evidence": [
+       {
+        "id": "SJ0771-E9",
+        "quote": "秦昭王已破趙長平軍，又進兵圍邯鄲"
+       }
+      ],
+      "proposed": "英文改称 \"King Zhaoxiang of Qin\" 或 \"the king of Qin\"。末句可缩为「魏王派出的，就是开头说的晋鄙那支十万大军」，避免整句重复。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.story.6",
+      "category": "readability",
+      "severity": "note",
+      "problem": "迎接无忌时写「赵王」，下一段才出现「赵孝成王」，接着又回到「赵王」。context.4 打猎一事里也有一位「赵王」，读者可能分不清这些「赵王」是否同一人。",
+      "evidence": [
+       {
+        "id": "SJ0771-E24",
+        "quote": "趙孝成王德公子之矯奪晉鄙兵而存趙"
+       }
+      ],
+      "proposed": "story.6 首次出现时写「赵孝成王」（英文 King Xiaocheng of Zhao），此后统一沿用这一称呼。"
+     },
+     {
+      "id": "V5",
+      "path": "sections.analysis.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "analysis.0 至 analysis.3 每段都以「作者推断」开头或插入，标注重复，违反「集中写、标一次」的要求。此外标题是「三件事」，analysis.1、analysis.2 分别写「第二步」「第三步」，analysis.0 却没有标「第一」。",
+      "evidence": [
+       {
+        "id": "SJ0771-E17",
+        "quote": "晉鄙聽，大善；不聽，可使擊之"
+       }
+      ],
+      "proposed": "只在 analysis.0 开头保留一次「作者推断」，并在该段补「第一步」。删去 analysis.1、analysis.2、analysis.3 中重复的「作者推断：」，改用「这说明」「换个角度看」一类自然衔接。英文同步调整。"
+     },
+     {
+      "id": "V6",
+      "path": "sections.analysis.3",
+      "category": "parity",
+      "severity": "fix",
+      "problem": "中文「失信于魏王」指无忌背弃了对魏王的信义；英文 losing the trust of his king 指魏王不再信任他。两者含义不同。",
+      "evidence": [
+       {
+        "id": "SJ0771-E25",
+        "quote": "魏王怒公子之盜其兵符，矯殺晉鄙"
+       }
+      ],
+      "proposed": "英文改为 \"at the price of killing his own general and breaking faith with his king\"。"
+     },
+     {
+      "id": "V7",
+      "path": "sections.limits.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "limits.1 与 uncertainty_note 几乎逐句重复（叙述用语、非实录心理）。半句「本文凡涉情绪处都只是转述史家的叙述」近似审核说明，属于凑数。",
+      "evidence": [
+       {
+        "id": "SJ0771-E13",
+        "quote": "公子行數里，心不快"
+       }
+      ],
+      "proposed": "删去「本文凡涉情绪处都只是转述史家的叙述」这半句，或整段并入 uncertainty_note，只保留一处。"
+     },
+     {
+      "id": "V8",
+      "path": "sections.limits.2",
+      "category": "readability",
+      "severity": "note",
+      "problem": "limits.2 只是声明兵数取自本传。limits.0 已说明本文只依据本传，这一段不增加读者需要的信息，属于为凑局限而写。",
+      "evidence": [
+       {
+        "id": "SJ0771-E22",
+        "quote": "得選兵八萬人"
+       }
+      ],
+      "proposed": "删去 limits.2。"
+     }
+    ],
+    "overall": "引文均逐字可查，史实与因果基本有证据支持；需修正 context.5 久立主语的误读、context.5 和 analysis.3 两处中英不一致，其余为人物称呼和局限段冗余的易读性小问题，开头可读性合格。",
+    "_content_sha256": "0c6db2a93f012a6e2720ed3143724bf1ccd0a6c2184ff710da9dc2c356811972"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1",
+    "V1-V2",
+    "V1-V6"
+   ],
+   "changes_applied": 3,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "hook[0] numbers differ zh[] en[100]"
+    ],
+    [
+     "CHECK",
+     "hook[1] numbers differ zh[100000] en[100, 100000]"
+    ],
+    [
+     "CHECK",
+     "context[3] numbers differ zh[] en[100]"
+    ],
+    [
+     "CHECK",
+     "context[5] numbers differ zh[10, 70] en[70]"
+    ],
+    [
+     "CHECK",
+     "analysis[0] numbers differ zh[] en[100]"
+    ],
+    [
+     "CHECK",
+     "limits[2] numbers differ zh[80000, 100000] en[80000]"
+    ]
+   ],
+   "content_sha256_after": "6246a00900ebc0bb94ad8d44c4f2ca335528915728e54c0cb5c097c37747c0f0",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2",
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.analysis.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.story.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "中文在转述侯嬴的话时，“无忌”“公子”“他”来回切换。“公子待他厚，公子走而他不送，他由此知道公子会……”一句里，“他”指侯嬴，“公子”指无忌，同一人换了称呼，读者需要停下来分辨。",
+      "evidence": [
+       {
+        "id": "SJ0771-E14",
+        "quote": "然公子遇臣厚，公子往而臣不送，以是知公子恨之復返也"
+       }
+      ],
+      "proposed": "改为“无忌待他厚，无忌走时他却不送，侯嬴由此料到无忌会心怀不满而折回”；后文“公子一开口”改为“无忌一开口”。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.analysis.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“作者推断：”在 analysis.0、1、2、3 中各出现一次，analysis.4 又有“作者认为”和“一种解释是”。按第6、8条，推断只需在 analysis 开头集中标一次，反复贴标签读起来像审核痕迹。",
+      "evidence": [
+       {
+        "id": "SJ0771-E18",
+        "quote": "往恐不聽，必當殺之，是以泣耳"
+       }
+      ],
+      "proposed": "保留 analysis.0 开头的“作者推断”。analysis.1、2、3 的标签改成自然句或删去，例如“这样看”。analysis.4 只保留一处“一种解释是”。英文同步处理。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.analysis.2",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“这笔债他没有抹掉，军队送回魏国，自己留在赵国”中，后两个分句和“没抹掉债”的关系没有交代。紧接着又说“留赵未必就是认下这笔债”，前后读来像自相矛盾。",
+      "evidence": [
+       {
+        "id": "SJ0771-E25",
+        "quote": "使將將其軍歸魏，而公子獨與客留趙"
+       },
+       {
+        "id": "SJ0771-E32",
+        "quote": "公子恐其怒之，乃誡門下"
+       }
+      ],
+      "proposed": "改为“从这些言行看，他没有把这笔债抹掉；至于把军队送回魏国、自己留在赵国，能否算认债，要另看：他留赵十年不归……”。英文同步修改。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.limits.2",
+      "category": "readability",
+      "severity": "note",
+      "problem": "limits.0 已说明本文只依据本传，这一段再说兵数取自本传，没有新增会影响判断的限度，属于凑数的局限说明（第8条“宁短勿凑”）。",
+      "evidence": [
+       {
+        "id": "SJ0771-E22",
+        "quote": "得選兵八萬人"
+       }
+      ],
+      "proposed": "删去 sections.limits.2 的中英文。"
+     },
+     {
+      "id": "V5",
+      "path": "sections.context.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "hook.1 已交代秦围邯郸、姐姐是平原君夫人、晋鄙率十万救赵，context.0 又重复一遍，开头信息有冗余。",
+      "evidence": [
+       {
+        "id": "SJ0771-E9",
+        "quote": "魏王使將軍晉鄙將十萬眾救趙"
+       }
+      ],
+      "proposed": "context.0 只保留 hook 中没有的内容：长平之后围邯郸，姐姐多次写信求救，促成魏王出兵。删去重复的身份交代。"
+     }
+    ],
+    "overall": "逐字段核对后，事实、引文、归属与时序均有证据支持，没有需要修正的事实问题；仅有五处不影响理解的易读性建议（note），定稿可通过。",
+    "_content_sha256": "6246a00900ebc0bb94ad8d44c4f2ca335528915728e54c0cb5c097c37747c0f0"
+   }
+  },
+  {
+   "round": 3,
+   "local_fix": {
+    "by": "operator (owner rule 2026-10-31: small evidence-backed fixes)",
+    "reason": "standing owner rule 2026-10-31: context-review findings with source quotes; zh fixed alongside en for parity",
+    "issues": [
+     "CTX-X1",
+     "CTX-X2",
+     "OP1"
+    ],
+    "rejected": [],
+    "pack_corrected": null,
+    "at": 1793507175.8430521,
+    "dir": "localfix-attempt-3-1"
+   },
+   "issues_in": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP1"
+   ],
+   "changes_applied": 7,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "hook[0] numbers differ zh[] en[100]"
+    ],
+    [
+     "CHECK",
+     "hook[1] numbers differ zh[100000] en[100, 100000]"
+    ],
+    [
+     "CHECK",
+     "context[3] numbers differ zh[] en[100]"
+    ],
+    [
+     "CHECK",
+     "context[5] numbers differ zh[10, 70] en[70]"
+    ],
+    [
+     "CHECK",
+     "analysis[0] numbers differ zh[] en[100]"
+    ],
+    [
+     "CHECK",
+     "limits[2] numbers differ zh[80000, 100000] en[80000]"
+    ]
+   ],
+   "content_sha256_after": "3bf0143b4e9310175fa7eb16733e8e9127741c092b22ce0a07b0f09a8f8c9505",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.context.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.analysis.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.context.4",
+      "category": "readability",
+      "severity": "note",
+      "problem": "英文段中的 the king 指称不稳。段首 \"while he and the king were playing\" 没有说明是魏王。段内随后出现 the king of Zhao，段末 \"the king 'dreaded the prince's ability'\" 因此可能被误读为赵王。",
+      "evidence": [
+       {
+        "id": "SJ0771-E3",
+        "quote": "是後魏王畏公子之賢能，不敢任公子以國政"
+       }
+      ],
+      "proposed": "英文首次出现处改为 \"while he and the king of Wei were playing\"，段末改为 \"the king of Wei 'dreaded the prince's ability...'\"。中文不变。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.story.6",
+      "category": "readability",
+      "severity": "note",
+      "problem": "赵国国君在 story.6 以“赵王”首次出场，到 story.7 才写“赵孝成王”。context.4 里打猎的“赵王”也只称“赵王”。读者可能分不清是不是同一人。",
+      "evidence": [
+       {
+        "id": "SJ0771-E24",
+        "quote": "趙孝成王德公子之矯奪晉鄙兵而存趙"
+       }
+      ],
+      "proposed": "story.6 首次出现时写“赵孝成王和平原君亲自到边界迎接”（英文 \"King Xiaocheng of Zhao and Lord Pingyuan\"），后文沿用“赵王”。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.analysis.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "analysis.0–3 每段都以“作者推断：”或 On this reading 开头或插入，标签反复出现，与“集中写、标一次”的要求不符。analysis.1、analysis.2、analysis.3 也有同一问题。",
+      "evidence": [],
+      "proposed": "只在 analysis.0 段首保留一次“作者推断：”。其后各段删去重复标签，改用“在作者看来”这类自然过渡，或直接陈述。英文同步处理。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.analysis.4",
+      "category": "readability",
+      "severity": "note",
+      "problem": "段落先写太史公评价，再插入“此后的经过是：”，接着一口气讲完归魏、破秦、被谗、病酒而死、魏亡。评价与后事叙述混在一段，顺序也不自然，读者不易看出这些后事和“司马迁怎么看”有什么关系。",
+      "evidence": [
+       {
+        "id": "SJ0771-E37",
+        "quote": "名冠諸侯，不虛耳"
+       },
+       {
+        "id": "SJ0771-E35",
+        "quote": "秦聞公子死，使蒙驁攻魏，拔二十城"
+       }
+      ],
+      "proposed": "把后事叙述（留赵十年至魏亡）移到太史公评价之前，或拆成独立一段。事实与限定不删。"
+     },
+     {
+      "id": "V5",
+      "path": "sections.limits.2",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“兵数取自本传”与 limits.0 的“本文只依据《史记·魏公子列传》”重复，没有提供读者需要的新限定，属于凑数。",
+      "evidence": [],
+      "proposed": "删去 sections.limits.2（中英同删）。"
+     }
+    ],
+    "overall": "定稿各字段的事实、引文、时序与归属都有证据支持，推断均已标明，中英一致，开头能让读者说清谁遇到了什么难题；只余几处不影响理解的易读性小建议（英文指代、赵王首次出场的称谓、重复推断标签、末段顺序、冗余局限段）。",
+    "_content_sha256": "3bf0143b4e9310175fa7eb16733e8e9127741c092b22ce0a07b0f09a8f8c9505"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F7"
+    ]
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1",
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.analysis.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.analysis.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   },
+   {
+    "path": "sections.limits.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "quotes",
+     "inner_life",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.analysis.2",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "中文结论是留赵“未必就是认下这笔债”（承认亏欠）；英文末句写成 need not count as settling the debt，意思变成“还清债务”。这与中文不一致，也与同段 did not write the debt off 的框架不一致。",
+    "evidence": [
+     {
+      "id": "SJ0771-E32",
+      "quote": "公子恐其怒之，乃誡門下：「有敢為魏王使通者，死。」"
+     }
+    ],
+    "proposed": "英文末句改为：so staying there need not mean he was owning up to the debt."
+   },
+   {
+    "id": "F2",
+    "path": "sections.story.7",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文把“自言罪過，以負於魏，無功於趙”写成无忌第一人称的直接引语 \"I have failed Wei and done nothing for Zhao.\"，但原文是史家的间接叙述，不是他的原话。中文只引了逐字片段，没有问题。",
+    "evidence": [
+     {
+      "id": "SJ0771-E31",
+      "quote": "自言罪過，以負於魏，無功於趙"
+     }
+    ],
+    "proposed": "英文改为间接转述：and pronounced himself at fault, saying he had failed Wei and done nothing for Zhao."
+   },
+   {
+    "id": "F3",
+    "path": "sections.context.5",
+    "category": "readability",
+    "severity": "note",
+    "problem": "侯嬴在集市里拜访的“一位朋友”就是屠户朱亥，但这里没有点明。到 story.3 才写“朱亥是侯嬴早先推荐的屠者”，读者前后对不上。",
+    "evidence": [
+     {
+      "id": "SJ0771-E8",
+      "quote": "臣所過屠者朱亥"
+     }
+    ],
+    "proposed": "中文“去拜访一位朋友”改为“去拜访屠户朱亥”；英文 to call on a friend 改为 to call on his friend Zhu Hai, a butcher。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.story.3",
+    "category": "readability",
+    "severity": "note",
+    "problem": "中文直接引了「嚄唶宿將」，没有在同段用白话讲明意思（英文已经译出）。",
+    "evidence": [
+     {
+      "id": "SJ0771-E18",
+      "quote": "晉鄙嚄唶宿將"
+     }
+    ],
+    "proposed": "在「嚄唶宿將」后补一句白话，例如“——一位叱咤军中的老将”。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.analysis.0",
+    "category": "readability",
+    "severity": "note",
+    "problem": "analysis 各段反复使用“作者推断：”标签（analysis.0、1、2、3 各一次，analysis.4 又有“作者认为”“一种解释是”），读起来像审核括注。",
+    "evidence": [],
+    "proposed": "在 analysis 开头标一次“作者推断”，其余段落改用自然句承接。不删去任何推断的限定。"
+   },
+   {
+    "id": "F6",
+    "path": "sections.limits.2",
+    "category": "readability",
+    "severity": "note",
+    "problem": "limits.2 只是重复 limits.0 的“本文只依据本传”，对读者判断没有新增信息。limits.1 与 uncertainty_note 也大段重复。",
+    "evidence": [],
+    "proposed": "删去 limits.2；uncertainty_note 保持现状即可，limits.1 可只保留第一句。"
+   },
+   {
+    "id": "F7",
+    "path": "sections.context.0",
+    "category": "readability",
+    "severity": "note",
+    "problem": "context.0 至 context.3 把 hook.1 已经讲过的晋鄙十万众、止于邺、百余乘车骑等再讲一遍，开头部分重复较多。",
+    "evidence": [],
+    "proposed": "可酌情压缩 hook.1 或 context 中重复的兵数与驻邺细节，只保留一处完整叙述。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "P1",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "英文 settling the debt 与中文“认下这笔债”意思不一致，问题成立，与 F1 相同。",
+    "evidence": [
+     {
+      "id": "SJ0771-E32",
+      "quote": "公子留趙十年不歸"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "3bf0143b4e9310175fa7eb16733e8e9127741c092b22ce0a07b0f09a8f8c9505",
+ "open_issues": [],
+ "outcome": "admissible",
+ "failure": null,
+ "finished_at": 1793507285.9022753,
+ "calls": [
+  {
+   "step": "verify_r3",
+   "attempt": 1,
+   "wall_s": 110.1,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "prompts": [
+    {
+     "file": "final_verify.md",
+     "sha256": "2a944e3ebd2a"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    }
+   ],
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 22531,
+    "output_tokens": 12627
+   },
+   "cost_estimate_usd": 0.43279599999999996
+  }
+ ],
+ "elapsed_min": 10.7,
+ "model_wall_min": 1.8,
+ "evidence_expanded": [
+  {
+   "from": "dc7ea2b7d3b996f2b5cb943acfec56b45a0abbd4b2278099557767ab983adf98",
+   "to": "c4a0c958625a07d7f432db29c05585a0915a3376b12c9c59c560d763a5cc0519",
+   "by": "source-context review 1793507057.4840763",
+   "added": [
+    "SJ0771-E39"
+   ]
+  }
+ ],
+ "local_fixes": [
+  {
+   "by": "operator (owner rule 2026-10-31: small evidence-backed fixes)",
+   "reason": "standing owner rule 2026-10-31: context-review findings with source quotes; zh fixed alongside en for parity",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP1"
+   ],
+   "rejected": [],
+   "pack_corrected": null,
+   "at": 1793507175.8430521,
+   "dir": "localfix-attempt-3-1",
+   "edits": [
+    {
+     "path": "sections.limits.1.zh",
+     "before": "原文里的「心不快」「意驕矜」「立自責」是叙述用语，不是实录的心理；本文凡涉情绪处都只是转述史家的叙述。",
+     "after": "原文里的「心不快」「意驕矜」「立自責」这类心理描写出自史家的叙述，本文照其叙述转述。",
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP1"
+     ]
+    },
+    {
+     "path": "sections.limits.1.en",
+     "before": "Phrases in the original such as \"troubled in his heart,\" \"showed a self-satisfied look,\" and \"at once blamed himself\" are narrative wording, not recorded states of mind; wherever emotion enters this piece, it is only the historian's narration being relayed.",
+     "after": "Phrases in the original such as \"troubled in his heart,\" \"showed a self-satisfied look\" and \"at once blamed himself\" are the historian's narration; this piece relays them as he tells it.",
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP1"
+     ]
+    },
+    {
+     "path": "uncertainty_note.zh",
+     "before": "本文只依据《史记·魏公子列传》；对话出自史家记述，未必逐字；「心不快」「意驕矜」「立自責」是叙述用语，而非实录心理。",
+     "after": "本文只依据《史记·魏公子列传》；对话出自史家记述，未必逐字；「心不快」「意驕矜」「立自責」等心理描写出自史家叙述。",
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP1"
+     ]
+    },
+    {
+     "path": "uncertainty_note.en",
+     "before": "This piece draws only on the \"Biography of the Prince of Wei\" in the Records of the Grand Historian; the speeches come from the historian's account and need not be verbatim. \"Troubled in his heart,\" \"showed a self-satisfied look,\" and \"at once blamed himself\" are narrative wording, not recorded states of mind.",
+     "after": "This piece draws only on the \"Biography of the Prince of Wei\" in the Records of the Grand Historian; the speeches come from the historian's account and need not be verbatim, and phrases such as \"troubled in his heart,\" \"showed a self-satisfied look\" and \"at once blamed himself\" are the historian's narration.",
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP1"
+     ]
+    },
+    {
+     "path": "sections.context.5.zh",
+     "before": "魏国有位隐士侯嬴，年七十，家贫，在大梁夷门守门。无忌想厚赠他，他不肯收，说自己修身絜行几十年，终不能因为守门穷困而受财。无忌于是置酒大会宾客，空出车上左边的尊位，亲自去迎侯嬴。侯嬴穿着破旧衣冠，径直登上上座，也不谦让，为的是看无忌的反应；无忌执辔，愈恭。侯嬴又让无忌的车骑在集市里久等，自己去拜访一位朋友，借此观察无忌；无忌的脸色始终不变。到家后无忌请他坐上座，向在座宾客一一介绍，宾客皆惊。侯嬴后来自己说破：他这样做是想成全公子礼贤下士的名声；市人因此把他看作小人，称无忌是能下士的长者。宴罢，侯嬴成为上客。",
+     "after": "魏国有位隐士侯嬴，年七十，家贫，在大梁夷门守门。无忌想厚赠他，他不肯收，说自己修身絜行几十年，终不能因为守门穷困而受财。无忌于是置酒大会宾客，空出车上左边的尊位，亲自去迎侯嬴。侯嬴穿着破旧衣冠，径直登上上座，也不谦让，为的是看无忌的反应；无忌执辔，愈恭。侯嬴又下车去见他的朋友、在市上当屠户的朱亥，故意站着和朱亥说了很久，暗中观察无忌。这时魏国的将相、宗室和宾客已坐满一堂，等无忌回去开席；跟随的骑从都在暗中骂侯嬴。无忌的脸色反而越发温和，始终不变。到家后无忌请他坐上座，向在座宾客一一介绍，宾客皆惊。侯嬴后来自己说破：他这样做是想成全公子礼贤下士的名声；市人因此把他看作小人，称无忌是能下士的长者。宴罢，侯嬴成为上客。",
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP1"
+     ]
+    },
+    {
+     "path": "sections.context.5.en",
+     "before": "Wei had a recluse named Hou Ying, seventy years old and poor, a gatekeeper at the Yimen. Wuji sought him out and tried to present him with a handsome gift. Hou Ying would not take it: he had kept himself and his conduct clean for decades, he said, and would not accept the prince's money simply because gatekeeping left him poor. So Wuji laid on a feast for all his retainers, went out with his carriage and escort, left the seat of honor on the left of the chariot empty, and fetched Hou Ying himself. Hou Ying, in his shabby robe and cap, climbed straight up into that seat without a word of demur — a test of Wuji, this was — and Wuji took the reins and grew only more respectful. Hou Ying then kept Wuji's carriage waiting a long time in the marketplace while he called on a friend, watching Wuji all the while; Wuji's manner never changed. At the house Wuji showed Hou Ying to the seat of honor and presented him to the assembled guests one by one, and the guests were astonished. Hou Ying later spelled out his reasoning: he had acted this way to make the prince's name as a man who humbles himself before scholars. As a result, the townsfolk took Hou Ying for a lout and Wuji for a true elder who can humble himself before scholars. When the feast broke up, Hou Ying became one of Wuji's most honored guests.",
+     "after": "Wei had a recluse named Hou Ying, seventy years old and poor, a gatekeeper at the Yimen. Wuji sought him out and tried to present him with a handsome gift. Hou Ying would not take it: he had kept himself and his conduct clean for decades, he said, and would not accept the prince's money simply because gatekeeping left him poor. So Wuji laid on a feast for all his retainers, went out with his carriage and escort, left the seat of honor on the left of the chariot empty, and fetched Hou Ying himself. Hou Ying, in his shabby robe and cap, climbed straight up into that seat without a word of demur — a test of Wuji, this was — and Wuji took the reins and grew only more respectful. Hou Ying then got down to see his friend Zhu Hai, a butcher in the market, and deliberately stood talking with him for a long time, watching Wuji out of the corner of his eye. Meanwhile Wei's generals, ministers, royal kinsmen and guests filled the prince's hall, waiting for him to begin the feast, and Wuji's own riders cursed Hou Ying under their breath. Wuji's face only grew milder; his manner never changed. At the house Wuji showed Hou Ying to the seat of honor and presented him to the assembled guests one by one, and the guests were astonished. Hou Ying later spelled out his reasoning: he had acted this way to make the prince's name as a man who humbles himself before scholars. As a result, the townsfolk took Hou Ying for a lout and Wuji for a true elder who can humble himself before scholars. When the feast broke up, Hou Ying became one of Wuji's most honored guests.",
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP1"
+     ]
+    },
+    {
+     "path": "sections.context.5.ev",
+     "before": [
+      "SJ0771-E4",
+      "SJ0771-E5",
+      "SJ0771-E6",
+      "SJ0771-E7",
+      "SJ0771-E38"
+     ],
+     "after": [
+      "SJ0771-E4",
+      "SJ0771-E5",
+      "SJ0771-E6",
+      "SJ0771-E7",
+      "SJ0771-E38",
+      "SJ0771-E39"
+     ],
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP1"
+     ]
+    }
+   ]
+  }
+ ],
+ "calls_before_local_fix": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 129.1,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "prompts": [
+    {
+     "file": "final_audit.md",
+     "sha256": "eb2d48e03e23"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    }
+   ],
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 24652,
+    "output_tokens": 14373
+   },
+   "cost_estimate_usd": 0.484684
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 13.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "prompts": [
+    {
+     "file": "final_revise.md",
+     "sha256": "01e8737eac5e"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    }
+   ],
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 22178,
+    "output_tokens": 1598
+   },
+   "cost_estimate_usd": 0.209392
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 133.7,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "prompts": [
+    {
+     "file": "final_verify.md",
+     "sha256": "2a944e3ebd2a"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    }
+   ],
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 22154,
+    "output_tokens": 15258
+   },
+   "cost_estimate_usd": 0.4824
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 23.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "prompts": [
+    {
+     "file": "final_revise.md",
+     "sha256": "01e8737eac5e"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    }
+   ],
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 22606,
+    "output_tokens": 2767
+   },
+   "cost_estimate_usd": 0.23619600000000002
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 113.1,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "prompts": [
+    {
+     "file": "final_verify.md",
+     "sha256": "2a944e3ebd2a"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    }
+   ],
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 22093,
+    "output_tokens": 13124
+   },
+   "cost_estimate_usd": 0.439232
+  }
+ ]
+}
