@@ -6,6 +6,7 @@
 - 结构为（hook / context / story / analysis / today / limits 六节，reflection，uncertainty_note，quotes，background_claims）。story 节可以有 4–9 段；today 仍恰好两段，且两个场景都不能和开放问题的场景重复。
 - 每段标 kind：record（有记录的叙事，必须引用证据 ID）、interpretation（作者解释，要用“一种解释是”“作者推断”等标明）、modern（现代虚构场景，ev 为空）、uncertainty（不确定性说明）。
 - 人物动机、想法和“考虑过的选项”只有原文写了才能写；作者提出的替代选择只放在 analysis、limits 或开放问题里，并注明是作者提出的。
+- 讲清楚：说明人物关系与职务；关键文言以白话叙述为主、少量原句点睛并当场讲清意思；正文不写审核过程说明（“原文没写，本文不补写”之类）和替读者下的感受结论；史书评语标明是谁说的；必要的材料局限集中放在 limits。
 - 古文或原文引语用「」，必须是证据中的逐字片段，并在 quotes 中列出。
 - 不编造对话、场景画面、数字或人物；不得使用证据包以外的引语。
 

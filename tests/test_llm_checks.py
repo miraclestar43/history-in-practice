@@ -73,6 +73,15 @@ class Checker(unittest.TestCase):
         o3 = copy.deepcopy(self.o); t3 = next(s for s in o3["sections"] if s["id"] == "today"); t3["paras"] = t3["paras"][:1]
         self.assertNotIn("today", " ".join(m for _, m in checks.check(o3, self.ev)[0]))
 
+    def test_review_process_notes_in_the_body_are_flagged_but_never_block(self):
+        # reader feedback 2026-10-31 (吴起): "原文没有写他的心理，本文也不补写" interrupts the story; advisory (CHECK) so
+        # admitted articles keep their status, and the limits section may state the source's limits
+        o = copy.deepcopy(self.o); o["sections"][2]["paras"][0]["zh"] += "原文没有写他的心理，本文也不补写。"
+        f, _ = checks.check(o, self.ev)
+        self.assertTrue(any(l == "CHECK" and "readability" in m and m.startswith("story[0]") for l, m in f)); self.assertFalse(checks.blocked(f))
+        lim = next(s for s in o["sections"] if s["id"] == "limits"); lim["paras"][0]["zh"] += "本文不补写心理。"
+        self.assertFalse(any(m.startswith("limits") and "readability" in m for _, m in checks.check(o, self.ev)[0]))
+
     def test_record_paragraph_without_evidence_blocks(self):
         o = copy.deepcopy(self.o); o["sections"][2]["paras"][0]["ev"] = []
         self.assertTrue(checks.blocked(checks.check(o, self.ev)[0]))

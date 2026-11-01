@@ -6,6 +6,8 @@ import json, re, sys
 from pathlib import Path
 from .textnorm import t2s
 SECTIONS = ["hook", "context", "story", "analysis", "today", "limits"]
+# the body should not narrate the review ("原文没写，本文也不补写", "此处录其二", "（作者解释）") or tell the reader what to feel
+PROCESS_NOTE = re.compile(r"本文(也|就)?不(再)?补写|此处(只)?(录|节引)其|（作者(解释|推断)）|作者认为，?这是|原文(没有|未)写[^。]{0,12}(本文|所以)")
 CN_NUM = {"零":0,"一":1,"二":2,"两":2,"三":3,"四":4,"五":5,"六":6,"七":7,"八":8,"九":9}
 
 def cn_to_int(s):
@@ -90,6 +92,9 @@ def check(o: dict, ev: dict):
             for x in p["ev"]:
                 if x not in ex: find.append(("BLOCK", f"{where} unknown evidence id {x}"))
             if p["kind"] == "modern" and p["ev"]: find.append(("FIX", f"{where} modern scene cites evidence"))
+            if s["id"] != "limits" and PROCESS_NOTE.search(p["zh"]):      # reader feedback 2026-10-31 (吴起): advisory only
+                find.append(("CHECK", f"{where} readability: review-process note or a verdict on the reader's feelings in the body: "
+                                      f"「{PROCESS_NOTE.search(p['zh']).group(0)}」 (move needed limits to the end)"))
             # quotes: classical Chinese in 「」 must occur (t2s) in a cited excerpt
             for q in re.findall(r"「([^」]{2,})」", p["zh"]):
                 pool = "".join(t2s(ex[x]["display"]) for x in p["ev"] if x in ex)

@@ -413,6 +413,89 @@ class FinalEditor(unittest.TestCase):
         ops = [i for i in r["issues"] if i["id"].startswith("OP")]
         self.assertEqual([(i["path"], i["disposition"]) for i in ops], [("sections.hook.0", "fixed")])
 
+    def test_local_fix_of_context_findings_adopts_the_cut_excerpt_and_never_starts_an_attempt(self):
+        # 2026-10-31 (胡适 rev2): the context review of an admissible text found a wrong chapter citation and cut a new
+        # excerpt. The owner-authorized local fix uses those findings as its basis (CTX-X<n>), may correct the source
+        # citation, adopts the expanded pack, then gets one context review: no whole-article path, no attempt counted,
+        # earlier records kept byte for byte.
+        from history_in_practice import cli, evidence as evmod
+        from unittest import mock
+        import argparse, io, contextlib
+        src = (self.cache / "A-SJ56.txt").read_text(encoding="utf-8"); norm = evmod.normalise(src, True)
+        last = max(self.ev["excerpts"], key=lambda e: e["offset"]); after = norm[last["offset"] + len(last["quote"]):][:40]
+        rec = final_edit.run(CID, self.db, call=self.script()); self.assertEqual(rec["outcome"], "admissible")
+        def needs_work(prompt, timeout_s=0, **kw):
+            return reply(self.context_reply(prompt, context_issues=[{"path": "uncertainty_note", "problem": "章节写错",
+                                                                     "quote": {"source_id": "A-SJ56", "quote": after[:12]}, "severity": "fix"}],
+                                            additions=[{"source_id": "A-SJ56", "start": after[:6], "end": after[14:20], "why": "当事人自述"}]))
+        cx = final_edit.run_context(CID, call=needs_work); self.assertEqual(cx["outcome"], "needs_work", cx)
+        out = final_edit.OUT_ROOT / CID / "final"
+        kept = {f.name: f.read_bytes() for f in out.glob("*.json") if f.name.startswith(("attempt-", "context-"))}
+        o = json.loads((out / "article.json").read_text()); note = o["uncertainty_note"]
+        ch = Path(tempfile.mkdtemp()) / "ch.json"
+        ch.write_text(json.dumps([{"path": "uncertainty_note.zh", "text": note["zh"] + "（章节已更正）"},
+                                  {"path": "uncertainty_note.en", "text": note["en"] + " (chapter corrected)"},
+                                  {"path": "sources.0.citation", "text": o["sources"][0]["citation"] + "（第七章）"}], ensure_ascii=False))
+        # outside the fields the findings name: refused, nothing written
+        bad = Path(tempfile.mkdtemp()) / "bad.json"; bad.write_text(json.dumps([{"path": "sections.story.0.zh", "text": "改"}]))
+        self.assertEqual(final_edit.local_fix(CID, self.db, json.loads(bad.read_text()), ["CTX-X1"], "t", call=self.script())["outcome"], "refused")
+        self._patch_cli(self.script())
+        a = argparse.Namespace(edition=CID, issue=["CTX-X1"], changes=str(ch), reason="owner: fix chapter citation",
+                               operator_issue=["sources.0.citation|owner: cite the right chapter"])
+        n_before = final_edit.attempts_used(CID)
+        with mock.patch.object(final_edit, "run", side_effect=AssertionError("no whole-article attempt")), \
+             mock.patch.object(cli, "_final_one", side_effect=AssertionError("no queue hand-off")), \
+             mock.patch.object(cli, "db", return_value=self.db), contextlib.redirect_stdout(io.StringIO()):
+            rc = cli.cmd_local_fix(a)
+        self.assertEqual(rc, 0); self.assertEqual(final_edit.attempts_used(CID), n_before)
+        self.assertEqual(state.get(self.db, CID)["status"], "checked"); self.assertEqual(final_edit.current_eligibility(self.db, CID)[0], [])
+        r = final_edit.prior_final(CID); new_ev = json.loads((out / "evidence.json").read_text())
+        self.assertEqual(r["evidence_expanded"][0]["added"], [x["id"] for x in cx["additions"]])
+        self.assertIn(cx["additions"][0]["id"], [e["id"] for e in new_ev["excerpts"]])
+        self.assertTrue(all(e in new_ev["excerpts"] for e in self.ev["excerpts"]))                     # old excerpts unchanged
+        self.assertIn("（第七章）", json.loads((out / "article.json").read_text())["sources"][0]["citation"])
+        self.assertEqual([f for f in kept if (out / f).read_bytes() != kept[f]], [])                         # history untouched
+        self.assertFalse(any((final_edit.data_dir() / "final_edit" / CID).glob(f"attempt-{n_before + 1}")))
+
+    def test_local_fix_can_correct_pack_metadata_and_reject_an_issue_with_a_verbatim_cut(self):
+        # 2026-10-31 (胡适): the pack's source title named the wrong chapter, so the verify pass "contradicted" the right
+        # citation. The pack may be corrected (title; verbatim cuts from the cached text, old excerpts unchanged) and the
+        # issue rejected with a quote from the corrected pack; a non-unique anchor or a quote not in the pack is refused.
+        from history_in_practice import evidence as evmod
+        src = (self.cache / "A-SJ56.txt").read_text(encoding="utf-8"); norm = evmod.normalise(src, True)
+        last = max(self.ev["excerpts"], key=lambda e: e["offset"]); after = norm[last["offset"] + len(last["quote"]):][:40]
+        bad = {"id": "1", "path": "uncertainty_note", "category": "facts", "severity": "fix", "problem": "来源标题与正文不符",
+               "evidence": [{"id": self.real_quote["id"], "quote": self.real_quote["quote"]}], "proposed": "改"}
+        story0 = self.o["sections"][2]["paras"][0]; n = {"k": 0}
+        def fix_all(prompt):
+            todo = json.loads(prompt.rsplit("【问题清单】", 1)[1].split("\n\n[", 1)[0]); n["k"] += 1
+            return {"changes": [{"path": "sections.story.0.zh", "text": story0["zh"] + "删" * n["k"], "issues": [x["id"] for x in todo]}],
+                    "dispositions": [{"issue": x["id"], "action": "fixed", "rationale": "删"} for x in todo]}
+        for k in self.ev["sources"]:                              # as a real fetch records it: the hash of the cached text
+            self.ev["sources"][k]["text_sha256"] = __import__("hashlib").sha256((self.cache / f"{k}.txt").read_bytes()).hexdigest()
+        (final_edit.OUT_ROOT / CID / "evidence.json").write_text(json.dumps(self.ev, ensure_ascii=False))
+        rec = final_edit.run(CID, self.db, call=self.script(revise=fix_all, verify_issues=lambda k: [bad])); vid = rec["open_issues"][-1]
+        self.assertEqual((rec["outcome"], rec.get("failure")), ("pending_review", None), rec.get("open_issues"))
+        sid = self.ev["excerpts"][0]["source_id"]
+        fix = {"titles": {sid: "更正后的来源标题"}, "add": [{"source_id": sid, "start": after[:8], "end": after[16:22], "why": "章名"}]}
+        rej = [{"issue": vid, "rationale": "来源原文的章名", "evidence": [{"id": "A-SJ56-E99", "quote": after[:8]}]}]
+        self.assertIn("quotes verified", final_edit.local_fix(CID, self.db, [], [], "t", call=self.script(), pack_fix=fix, rejections=rej)["reason"])
+        r0 = final_edit.local_fix(CID, self.db, [], [], "t", call=self.script(), pack_fix={"add": [{"source_id": sid, "start": "。", "end": "。"}]},
+                                  rejections=rej)
+        self.assertIn("exactly once", r0["reason"])
+        new_id = final_edit.correct_pack(self.ev, fix, self.cache)[1][0]; rej[0]["evidence"][0]["id"] = new_id
+        r = final_edit.local_fix(CID, self.db, [], [], "pack title", call=self.script(), pack_fix=fix, rejections=rej)
+        self.assertEqual(r["outcome"], "admissible", r.get("open_issues"))
+        out = final_edit.OUT_ROOT / CID / "final"; ev2 = json.loads((out / "evidence.json").read_text())
+        self.assertEqual(ev2["sources"][sid]["title"], "更正后的来源标题"); self.assertTrue(all(e in ev2["excerpts"] for e in self.ev["excerpts"]))
+        self.assertEqual(r["evidence_corrected"][0]["added"], [new_id])
+        fix2 = {"locators": {self.ev["excerpts"][0]["id"]: "第一章"}}; ev3 = final_edit.correct_pack(ev2, fix2, self.cache)[0]
+        self.assertEqual([{k: v for k, v in e.items() if k != "locator"} for e in ev3["excerpts"]],
+                         [{k: v for k, v in e.items() if k != "locator"} for e in ev2["excerpts"]])     # only the label changes
+        self.assertEqual(next(i for i in r["issues"] if i["id"] == vid)["disposition"], "rejected")
+        o = json.loads((out / "article.json").read_text())
+        self.assertEqual(final_edit.verify_final_record(o, ev2, r, json.loads((out / "base_article.json").read_text())), [])
+
     def test_owner_authorized_revision_archives_rev1_and_readmits_rev2_after_one_attempt(self):
         from history_in_practice import cli
         rec, a = self.run_admit(self.script()); self.assertTrue(a["admitted"], a)

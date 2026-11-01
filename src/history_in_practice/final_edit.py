@@ -27,7 +27,7 @@ edition was last demoted from `checked`.
 from __future__ import annotations
 import copy, json, re, shutil, time
 from pathlib import Path
-from . import checks, render, state, registry, editor, schemas, claude_cli, context
+from . import checks, render, state, registry, editor, schemas, claude_cli, context, evidence
 from .config import REPO, data_dir, load_project
 from .pipeline import PROMPTS, CODE_REV, _evidence_block
 from .textnorm import t2s
@@ -163,13 +163,63 @@ def quote_ok(ev: dict, cite: dict) -> bool:
     return bool(e) and len(q) >= 2 and (q in _norm(e.get("quote", "")) or q in _norm(e.get("display", "")))
 
 
-def apply_changes(o: dict, ev: dict, changes: list) -> tuple[list, list]:
-    """Full-field replacements of text (.zh/.en), ev lists and kinds. Returns (applied, failed)."""
+def correct_pack(ev: dict, fix: dict, cache: Path | None = None) -> tuple[dict, list, list]:
+    """Owner-scoped correction of an evidence pack (2026-10-31, 胡适: the pack's source title named the wrong chapter, so
+    the editor saw every excerpt labelled chapter 8). Existing excerpts keep id, offset, quote and display; a source
+    title and an excerpt's locator label may be corrected;
+    an added excerpt is cut verbatim from the cached source text (unchanged since the pack was built) between a start
+    anchor that occurs exactly once and an end anchor. Returns (new pack, added excerpt ids, errors)."""
+    new = copy.deepcopy(ev); added, errs = [], []
+    cache = Path(cache or data_dir() / "source_cache")
+    for sid, title in (fix.get("titles") or {}).items():
+        if sid not in new["sources"] or not str(title).strip():
+            errs.append(f"title: unknown source {sid} or empty title"); continue
+        new["sources"][sid]["title"] = str(title)
+    ids = {x["id"]: x for x in new["excerpts"]}
+    for eid, loc in (fix.get("locators") or {}).items():         # the label only: id, offset, quote and display stay as cut
+        if eid not in ids or not str(loc).strip():
+            errs.append(f"locator: unknown excerpt {eid} or empty label"); continue
+        ids[eid]["locator"] = str(loc)
+    for a in fix.get("add") or []:
+        sid = a.get("source_id"); f = cache / f"{sid}.txt"
+        if sid not in new["sources"] or not f.exists():
+            errs.append(f"add: source {sid} not in the pack or not cached"); continue
+        raw = f.read_bytes()
+        if context._sha(raw) != new["sources"][sid].get("text_sha256"):
+            errs.append(f"add: cached text of {sid} differs from the text the pack was cut from"); continue
+        cjk = context._cjk(raw.decode("utf-8"), new, sid)
+        if cjk is None:
+            errs.append(f"add: pack offsets of {sid} do not match its cached text"); continue
+        norm = evidence.normalise(raw.decode("utf-8"), cjk); st, en = evidence.normalise(str(a.get("start", "")), cjk), evidence.normalise(str(a.get("end", "")), cjk)
+        if not st or norm.count(st) != 1:
+            errs.append(f"add: start anchor must occur exactly once ({norm.count(st) if st else 0} hits)"); continue
+        res, err = evidence.cut(norm, st, en, max_len=400)
+        if err:
+            errs.append(f"add: {err}"); continue
+        off, quote = res
+        prefix = next((x["id"].rsplit("-E", 1)[0] for x in new["excerpts"] if x["source_id"] == sid and "-E" in x["id"]), sid)
+        n = 1 + max([int(x["id"].rsplit("-E", 1)[1]) for x in new["excerpts"] if x["id"].startswith(prefix + "-E") and x["id"].rsplit("-E", 1)[1].isdigit()] or [0])
+        ex = {"id": f"{prefix}-E{n}", "source_id": sid, "locator": f"operator addition: {str(a.get('why', ''))[:120]}", "offset": off,
+              "start_anchor_hits": 1, "quote": quote, "display": evidence.dehyphen(quote), "added_by": "operator (owner-scoped local fix)"}
+        new["excerpts"].append(ex); added.append(ex["id"])
+    return new, added, errs
+
+
+META_FIELD = re.compile(r"^(sources\.\d+\.citation|further_reading\.\d+\.title)$")   # citation metadata only a local fix may correct
+
+
+def apply_changes(o: dict, ev: dict, changes: list, *, meta: bool = False) -> tuple[list, list]:
+    """Full-field replacements of text (.zh/.en), ev lists and kinds (and, for a local fix, citation metadata).
+    Returns (applied, failed)."""
     ev_ids = {e["id"] for e in ev["excerpts"]}; applied, failed = [], []
     for c in changes or []:
         try:
             path = c["path"]; r, k = editor.ref(o, path); before = r[k]
-            if k in ("zh", "en"):
+            if meta and META_FIELD.match(path):
+                new = c.get("text")
+                if not isinstance(new, str) or not new.strip():
+                    raise ValueError("text must be a non-empty string")
+            elif k in ("zh", "en"):
                 new = c.get("text")
                 if not isinstance(new, str) or not new.strip():
                     raise ValueError("text must be a non-empty string")
@@ -407,7 +457,9 @@ def run_context(cid: str, *, call=None, cache: Path | None = None) -> dict:
     d = OUT_ROOT / cid / "final"
     o = json.loads((d / "article.json").read_text(encoding="utf-8")); ev = json.loads((d / "evidence.json").read_text(encoding="utf-8"))
     render.finalize(o)
-    stamp = time.strftime("%Y%m%dT%H%M%S")
+    stamp = time.strftime("%Y%m%dT%H%M%S"); k = 1
+    while (d / f"context-{stamp}_review.json").exists():          # every review keeps its own file, even within one second
+        k += 1; stamp = f"{time.strftime('%Y%m%dT%H%M%S')}-{k}"
     rec, new_ev = context.review(o, ev, Path(cache or data_dir() / "source_cache"), data_dir() / "context" / cid / stamp, call=call, cid=cid)
     (d / f"context-{stamp}_review.json").write_text(json.dumps(rec, ensure_ascii=False, indent=1), encoding="utf-8")   # every review stays in git
     if rec.get("outcome") in ("clean", "needs_work"):
@@ -541,13 +593,18 @@ def run(cid: str, db, *, call=None, max_rounds: int = MAX_ROUNDS, operator_note:
     return _finish(rec, w, o, cid, caller, None, issues)
 
 
-LOCAL_FIX_MAX_FIELDS = 4          # e.g. one sentence's field in zh + en, plus a neighbouring field for a transition
+LOCAL_FIX_MAX_FIELDS = 4          # per named issue: e.g. one sentence's field in zh + en, plus a neighbouring field for a transition
 
 
-def local_fix(cid: str, db, changes: list, issue_ids: list[str], reason: str, *, call=None, operator_issues: list[dict] | None = None) -> dict:
+def local_fix(cid: str, db, changes: list, issue_ids: list[str], reason: str, *, call=None, operator_issues: list[dict] | None = None,
+              pack_fix: dict | None = None, rejections: list[dict] | None = None, cache: Path | None = None) -> dict:
     """A recorded *local* fix of open final-editor issues (owner rule 2026-10-31): small, evidence-backed wording or
     attribution corrections, not a whole-article retry. Allowed only for open fix issues of the latest record that carry
-    a verifiable evidence quote, and only on the fields those issues name (zh/en text, <= LOCAL_FIX_MAX_FIELDS). The
+    a verifiable evidence quote, for the fix issues of a needs-work context review bound to this exact text (CTX-X<n>,
+    each with the reviewer's source quote; the pack expanded by that review is adopted, every old excerpt unchanged), or
+    for owner-instructed operator issues; and only on the fields those issues name (zh/en text, or a source citation /
+    further-reading title; <= LOCAL_FIX_MAX_FIELDS per issue). It may also correct the pack (correct_pack: a source
+    title, verbatim cuts; old excerpts unchanged) and reject open issues with quotes verified in the corrected pack. The
     change is appended to the same record's edit log (so admission still replays base -> final), then a fresh full
     verify pass runs on the exact new text; anything it raises stays open. Runs in localfix-* (not counted as an
     attempt; attempt counts are untouched). Context review and admission follow as usual."""
@@ -557,13 +614,23 @@ def local_fix(cid: str, db, changes: list, issue_ids: list[str], reason: str, *,
         if pre:
             return {"candidate_id": cid, "outcome": "not_run", "reason": "; ".join(pre)}
     out = OUT_ROOT / cid / "final"; rec = prior_final(cid)
-    if not rec or rec.get("failure") or rec.get("outcome") != "pending_review":
+    if not rec or rec.get("failure"):
         return {"candidate_id": cid, "outcome": "refused", "reason": "local fix needs a completed final-editor record with open issues"}
     o = json.loads((out / "article.json").read_text(encoding="utf-8")); render.finalize(o)
     ev = json.loads((out / "evidence.json").read_text(encoding="utf-8"))
     if rec.get("final_content_sha256") != o["content_sha256"] or rec.get("evidence_sha256") != editor.sha(ev):
         return {"candidate_id": cid, "outcome": "refused", "reason": "article/evidence differ from the latest record"}
+    carried = carried_context(cid, o, ev)                # a needs-work context review of exactly this text, or None
+    if rec.get("outcome") != "pending_review" and not carried:
+        return {"candidate_id": cid, "outcome": "refused", "reason": "local fix needs a completed final-editor record with open issues "
+                                                                     "or a needs-work context review of its text"}
     issues = {i["id"]: i for i in rec["issues"]}; problems = []
+    ctx = {}
+    if carried:
+        crec, new_ev, cx = carried
+        ctx = {f"CTX-{i['id']}": {"id": f"CTX-{i['id']}", "path": i["where"], "category": "context", "severity": "fix",
+                                  "problem": i["problem"], "origin": f"source-context review {crec.get('started_at')} (content {crec['content_sha256'][:12]})",
+                                  "evidence": []} for i in cx if i.get("where")}
     for k, x in enumerate(operator_issues or []):        # owner-instructed wording fixes: the basis is the owner's instruction
         if not (x.get("path") and x.get("problem")):
             problems.append("operator issue needs FIELD_PATH|PROBLEM"); continue
@@ -571,41 +638,68 @@ def local_fix(cid: str, db, changes: list, issue_ids: list[str], reason: str, *,
         issues[oid] = {"id": oid, "path": x["path"], "category": "readability", "severity": "fix", "problem": x["problem"],
                        "origin": "operator: owner instruction (local fix)", "evidence": []}
         issue_ids = list(issue_ids) + [oid]
-    if not issue_ids:
+    if not issue_ids and not rejections:
         problems.append("name at least one open issue or operator issue")
     for k in issue_ids:
         i = issues.get(k)
         if str(k).startswith("OP"):
             continue
+        if k in ctx:                                     # the reviewer's quote was checked against the source text at review time
+            issues[k] = ctx[k]; continue
         if not i or k not in (rec.get("open_issues") or []):
             problems.append(f"{k}: not an open issue of the latest record")
         elif not (i.get("evidence") and all(quote_ok(ev, c) for c in i["evidence"])):
             problems.append(f"{k}: no verifiable evidence quote (not a clear-basis local fix)")
     allowed = {issues[k].get("path") for k in issue_ids if k in issues}
     fields = {c.get("path") for c in changes}
-    if len(fields) > LOCAL_FIX_MAX_FIELDS:
-        problems.append(f"{len(fields)} fields changed (> {LOCAL_FIX_MAX_FIELDS}): use an attempt, not a local fix")
+    if len(fields) > LOCAL_FIX_MAX_FIELDS * max(1, len(issue_ids)):
+        problems.append(f"{len(fields)} fields changed (> {LOCAL_FIX_MAX_FIELDS} per issue): use an attempt, not a local fix")
     for c in changes:
-        base_path, _, lang = str(c.get("path")).rpartition(".")
-        if lang not in ("zh", "en") or base_path not in allowed:
+        path = str(c.get("path")); base_path, _, lang = path.rpartition(".")
+        if not ((META_FIELD.match(path) and path in allowed) or (lang in ("zh", "en", "ev") and base_path in allowed)):
             problems.append(f"{c.get('path')}: outside the fields the issues name {sorted(allowed)}")
+    pack_note = None
+    if pack_fix:
+        new_ev, added, perr = correct_pack(ev, pack_fix, cache)
+        problems += perr
+        pack_note = {"from": editor.sha(ev), "to": editor.sha(new_ev), "titles": pack_fix.get("titles") or {},
+                     "locators": pack_fix.get("locators") or {}, "added": added, "reason": reason}
+    for x in rejections or []:
+        k = x.get("issue")
+        if k not in (rec.get("open_issues") or []):
+            problems.append(f"reject {k}: not an open issue of the latest record")
+        elif not (x.get("rationale") and x.get("evidence") and all(quote_ok(new_ev if pack_fix else ev, c) for c in x["evidence"])):
+            problems.append(f"reject {k}: needs a rationale and quotes verified in the (corrected) pack")
     if problems:
         return {"candidate_id": cid, "outcome": "refused", "reason": "; ".join(problems)}
+    rec = copy.deepcopy(rec)
+    if pack_note:
+        ev = new_ev; rec["evidence_sha256"] = editor.sha(ev); rec["evidence_corrected"] = (rec.get("evidence_corrected") or []) + [pack_note]
+    if carried and editor.sha(carried[1]) != editor.sha(ev):    # cite what the context review cut from the source (old excerpts kept)
+        rec["evidence_expanded"] = (rec.get("evidence_expanded") or []) + [
+            {"from": editor.sha(ev), "to": editor.sha(carried[1]), "by": f"source-context review {carried[0].get('started_at')}",
+             "added": [a["id"] for a in carried[0].get("additions") or []]}]
+        ev = carried[1]; rec["evidence_sha256"] = editor.sha(ev)
     root = data_dir() / "final_edit" / cid; w = root / f"localfix-{rec['attempt']}-{len(list(root.glob('localfix-*'))) + 1}"
     w.mkdir(parents=True, exist_ok=True)
-    applied, failed = apply_changes(o, ev, [dict(c, issues=list(issue_ids)) for c in changes])
-    if failed or not applied:
+    applied, failed = apply_changes(o, ev, [dict(c, issues=list(issue_ids)) for c in changes], meta=True)
+    if failed or not (applied or pack_fix or rejections):
         return {"candidate_id": cid, "outcome": "refused", "reason": f"changes did not apply: {failed or 'no change'}"}
-    render.finalize(o); rec = copy.deepcopy(rec); rec["edits"] += applied
+    render.finalize(o); rec["edits"] += applied
     for k in issue_ids:
         issues[k].update(disposition="fixed", decided_in=w.name, rationale=f"local fix: {reason}")
+    for x in rejections or []:
+        issues[x["issue"]].update(disposition="rejected", decided_in=w.name, rationale=f"local fix: {x['rationale']}", evidence=x["evidence"])
     paths = [p for p, _, _ in editor.fields(o)]; caller = editor.Caller(w, cid, call); rnd = len(rec["rounds"]) + 1
     findings, _ = checks.check(o, ev)
     r = {"round": rnd, "local_fix": {"by": "operator (owner rule 2026-10-31: small evidence-backed fixes)", "reason": reason,
-                                     "issues": list(issue_ids), "at": time.time(), "dir": w.name},
+                                     "issues": list(issue_ids), "rejected": [x["issue"] for x in rejections or []],
+                                     "pack_corrected": pack_note, "at": time.time(), "dir": w.name},
          "issues_in": list(issue_ids), "changes_applied": len(applied), "changes_failed": [], "still_open": [], "checker_after": findings,
          "content_sha256_after": o["content_sha256"]}
-    ver = caller(f"verify_r{rnd}", f"{(PROMPTS / 'final_verify.md').read_text()}\n\n{_view(o, ev)}\n\n【必须覆盖的字段路径】\n{json.dumps(paths, ensure_ascii=False)}",
+    meta = [f"{p} ⟨{editor.ref(o, p)[0][editor.ref(o, p)[1]]}⟩" for p in sorted(fields) if META_FIELD.match(p)]
+    extra = ("\n\n【本次局部修正同时改动的来源元数据（请一并核对其与证据包是否一致；有问题记在 uncertainty_note 下）】\n" + "\n".join(meta)) if meta else ""
+    ver = caller(f"verify_r{rnd}", f"{(PROMPTS / 'final_verify.md').read_text()}\n\n{_view(o, ev, extra)}\n\n【必须覆盖的字段路径】\n{json.dumps(paths, ensure_ascii=False)}",
                  TIMEOUTS["verify"], "\n\n[Reply with one valid JSON object only, matching the schema.]", validate=verify_schema(paths))
     rec.setdefault("local_fixes", []).append(r["local_fix"] | {"edits": applied})
     rec["calls_before_local_fix"] = (rec.get("calls_before_local_fix") or []) + (rec.get("calls") or [])

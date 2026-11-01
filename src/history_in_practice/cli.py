@@ -180,7 +180,9 @@ def cmd_local_fix(a):
     max_attempts still limits whole-article retries, and no further attempt is started here."""
     from . import final_edit
     d = db(); ops = [dict(zip(("path", "problem"), x.split("|", 1))) for x in a.operator_issue]
-    r = final_edit.local_fix(a.edition, d, _load(a.changes), a.issue, a.reason, operator_issues=ops)
+    r = final_edit.local_fix(a.edition, d, _load(a.changes) if a.changes else [], a.issue, a.reason, operator_issues=ops,
+                             pack_fix=_load(a.pack_fix) if getattr(a, "pack_fix", None) else None,
+                             rejections=_load(a.rejections) if getattr(a, "rejections", None) else None)
     res = {"local_fix": {k: r.get(k) for k in ("outcome", "reason", "open_issues", "final_content_sha256", "failure")}}
     # Only the context review of the new text and admission follow. Never a whole-article attempt: on 2026-10-31 handing
     # off to _final_one here started unrequested attempts after a revision's demotion had reset the allowance.
@@ -861,7 +863,9 @@ def main(argv=None):
     p.add_argument("edition"); p.add_argument("article", metavar="NEW_ARTICLE.json"); p.add_argument("--reason", required=True)
     p.set_defaults(f=cmd_revise_base)
     p = sp.add_parser("local-fix", help="recorded small evidence-backed fix of named open final-editor issues (not an attempt)")
-    p.add_argument("edition"); p.add_argument("--issue", action="append", default=[]); p.add_argument("--changes", required=True, metavar="CHANGES.json")
+    p.add_argument("edition"); p.add_argument("--issue", action="append", default=[]); p.add_argument("--changes", metavar="CHANGES.json")
+    p.add_argument("--pack-fix", metavar="PACK_FIX.json", help='{"titles": {SID: title}, "add": [{"source_id", "start", "end", "why"}]}: correct the pack (old excerpts unchanged)')
+    p.add_argument("--rejections", metavar="REJECT.json", help='[{"issue", "rationale", "evidence": [{"id", "quote"}]}]: quotes verified in the (corrected) pack')
     p.add_argument("--operator-issue", action="append", default=[], metavar="FIELD_PATH|PROBLEM", help="an owner-instructed wording fix of one field (recorded; basis = the owner instruction)")
     p.add_argument("--reason", required=True); p.set_defaults(f=cmd_local_fix)
     p = sp.add_parser("site-preview", help="TEST preview: add admitted reader samples and dated notices (never emails)")

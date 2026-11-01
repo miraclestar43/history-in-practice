@@ -39,7 +39,7 @@ def ref(o, path):
         return (sec["heading"], parts[3]) if parts[2] == "heading" else (sec["paras"][int(parts[2])], parts[3])
     cur = o
     for k in parts[:-1]:
-        cur = cur[k]
+        cur = cur[int(k)] if isinstance(cur, list) else cur[k]
     return cur, parts[-1]
 
 
