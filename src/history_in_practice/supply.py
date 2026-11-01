@@ -40,7 +40,9 @@ def window(entry: dict, cache: Path) -> tuple[str, str, bool, dict]:
         return "", "", spec["cjk"], fetched
     full = evidence.normalise((cache / f"{spec['id']}.txt").read_text(encoding="utf-8"), spec["cjk"])
     text = full
-    if entry.get("window"):
+    if entry.get("offsets"):                      # a book unit (library.py): offsets into the normalised text
+        a, b = entry["offsets"]; text = full[a:b]
+    elif entry.get("window"):
         a, b = entry["window"]; i = full.find(a); j = full.find(b, i + 1)
         if i >= 0 and j > i:
             text = full[i:j]
@@ -54,15 +56,24 @@ def used_spans(db, ref: str) -> list[tuple[int, int]]:
     return out
 
 
-def validate(prop: dict, full: str, cjk: bool, sid: str, prefix: str, taken: list[tuple[int, int]]) -> tuple[list, list]:
-    """Mechanical anchor checks. Returns (excerpt spec rows, dropped [{id, reason}])."""
+VOICES = ("【当事人】", "【作者】", "【译注】", "【后世评论】", "【文学化】")
+
+
+def validate(prop: dict, full: str, cjk: bool, sid: str, prefix: str, taken: list[tuple[int, int]], book: bool = False) -> tuple[list, list]:
+    """Mechanical anchor checks. Returns (excerpt spec rows, dropped [{id, reason}]). For book sources every label must
+    name its voice, and 【文学化】 (imagined, novelised) passages are never kept as evidence."""
     rows, dropped, spans = [], [], []
     min_start = 10 if cjk else 25
     for e in prop.get("excerpts") or []:
         eid, a, b = str(e.get("id", "")), evidence.normalise(str(e.get("start", "")), cjk), evidence.normalise(str(e.get("end", "")), cjk)
         why = None
+        label = str(e.get("label", ""))
         if not re.fullmatch(r"E\d+", eid):
             why = "bad id"
+        elif book and not label.startswith(VOICES):
+            why = "book excerpt without a voice label (当事人/作者/译注/后世评论)"
+        elif book and label.startswith("【文学化】"):
+            why = "novelised passage: not evidence"
         elif len(a) < min_start or len(b) < (4 if cjk else 10):
             why = "anchor too short"
         elif full.count(a) != 1:
@@ -98,10 +109,34 @@ def attempts() -> list[dict]:
 TAGS = ("历史", "政治与治理", "外交", "经济与金融", "企业与商业", "科学与技术", "人物传记", "社会与日常生活", "教育", "文化", "战争与冲突")
 
 
+def _spread(e: dict) -> str:
+    """Stable pseudo-random unit order within a book, so supply spreads through the whole book instead of spending the
+    first nights on its opening essays and theory chapters."""
+    import hashlib
+    return hashlib.sha256(e["id"].encode()).hexdigest()
+
+
+def pick_book_unit(book_id: str, category: str | None = None) -> dict | None:
+    """The next untried unit of one book (operator/validation runs: `hip supply --book ID`)."""
+    from . import library
+    tried = {a.get("catalogue_id") for a in attempts()}
+    us = [e for e in library.entries(category) if e["book_id"] == book_id and e["id"] not in tried]
+    return min(us, key=_spread) if us else None
+
+
 def pick_entry(category: str) -> dict | None:
-    tried = {}
+    """Books first (2026-11-01): an untried unit of a usable book in this category, least-used book first, units in a
+    stable spread order (_spread); the original catalogue (Wikisource etc.) remains the fallback. Every attempt logs which
+    source it used."""
+    from . import library
+    tried, per_book = {}, {}
     for a in attempts():
         tried[a.get("catalogue_id")] = tried.get(a.get("catalogue_id"), 0) + 1
+        if a.get("book_id"):
+            per_book[a["book_id"]] = per_book.get(a["book_id"], 0) + 1
+    units = [e for e in library.entries(category) if not tried.get(e["id"])]
+    if units:
+        return min(units, key=lambda e: (per_book.get(e["book_id"], 0), e["book_id"], _spread(e)))
     pool = [e for e in load_catalogue() if e["category"] == category]
     return min(pool, key=lambda e: tried.get(e["id"], 0)) if pool else None
 
@@ -110,7 +145,11 @@ def propose(entry: dict, db, *, call=None, cache: Path | None = None, date: str 
     """One proposal attempt for one catalogue entry. Writes a candidate file on success."""
     cache = Path(cache or data_dir() / "source_cache"); cache.mkdir(parents=True, exist_ok=True)
     date = date or time.strftime("%Y%m%d"); t0 = time.monotonic()
-    rec = {"at": time.time(), "catalogue_id": entry["id"], "category": entry["category"], "code_rev": CODE_REV}
+    rec = {"at": time.time(), "catalogue_id": entry["id"], "category": entry["category"], "code_rev": CODE_REV,
+           "source_kind": entry.get("kind", "catalogue"), "source_title": entry.get("title")}
+    is_book = entry.get("kind") == "book"
+    if is_book:
+        rec.update(book_id=entry["book_id"], unit=entry["unit"], unit_location=entry.get("unit_location"))
     from . import writer
     call = call or writer.call
     if call is writer.call and writer.preflight():           # no other model: stop, the caller reports health
@@ -121,7 +160,13 @@ def propose(entry: dict, db, *, call=None, cache: Path | None = None, date: str 
     spec = source_spec(entry); taken = used_spans(db, spec["ref"])
     used_titles = [r[0] for r in db.execute("SELECT title FROM episode WHERE status NOT IN ('rejected')")]
     used_text = "\n".join(f"- {full[a:a + (60 if cjk else 160)]}……" for a, _ in sorted(taken)[:40]) or "（无）"
-    prompt = (f"{load_prompt('propose_candidate')}\n\n类别：{entry['category']}\n"
+    book_block = ""
+    if is_book:
+        bk = entry["book"]
+        book_block = (f"\n\n{load_prompt('propose_book')}\n\n【书籍】{bk.get('author')}《{bk.get('title')}》"
+                      + (f"，{bk['translator']} 译" if bk.get("translator") else "") + (f"，{bk['edition']}" if bk.get("edition") else "")
+                      + f"；书的性质：{bk.get('genre')}；本段：{entry.get('unit_title') or entry.get('unit_location')}")
+    prompt = (f"{load_prompt('propose_candidate')}{book_block}\n\n类别：{entry['category']}\n"
               f"【已用过的段落（开头）】\n{used_text}\n\n【已有选题标题】\n" + "\n".join(f"- {t}" for t in used_titles[-60:]) +
               f"\n\n【原文】（{entry['title']}）\n<source>\n{text}\n</source>")
     r = call(prompt, timeout_s=1800); m = {k: v for k, v in r.items() if k != "text"}
@@ -131,6 +176,8 @@ def propose(entry: dict, db, *, call=None, cache: Path | None = None, date: str 
         prop = llm.parse_json(r["text"]) if r["rc"] == 0 and not r["killed"] else None
     except ValueError:
         prop = None
+    if prop is not None and prop.get("skip"):                    # the model found no complete episode in this unit
+        rec.update(outcome="rejected", reason=f"no suitable episode: {str(prop['skip'])[:200]}"); _log(rec); return rec
     if prop is None:
         refusal = len(r["text"].strip()) < 400 and REFUSAL.search(r["text"])
         rec.update(outcome="rejected", reason="provider refusal" if refusal else "no usable JSON from model", raw=r["text"][:300]); _log(rec); return rec
@@ -140,7 +187,7 @@ def propose(entry: dict, db, *, call=None, cache: Path | None = None, date: str 
     slug = re.sub(r"[^a-z0-9]+", "-", entry["id"].lower()).strip("-")
     n = 1 + sum(1 for p in (REPO / "config/candidates").glob(f"auto-*-{slug}-*.json"))
     cid = f"cand-auto-{date}-{slug}-{n}"; prefix = f"{slug.upper()}{n}"
-    rows, dropped = validate(prop, full, cjk, spec["id"], prefix, taken)
+    rows, dropped = validate(prop, full, cjk, spec["id"], prefix, taken, book=is_book)
     rec.update(candidate_id=cid, proposed=len(prop.get("excerpts") or []), kept=len(rows), dropped=dropped)
     core = [f"{prefix}-{c}" for c in (prop.get("core") or []) if f"{prefix}-{c}" in {x[0] for x in rows}]
     ep = prop.get("episode") or {}
@@ -183,6 +230,22 @@ def propose(entry: dict, db, *, call=None, cache: Path | None = None, date: str 
             "provenance": {"proposed_by": f"{rec.get('proposed_by')} (prompts/propose_candidate.md)", "catalogue_id": entry["id"],
                            "proposed_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "code_rev": CODE_REV,
                            "excerpts_proposed": rec["proposed"], "excerpts_dropped": dropped, "model_wall_s": m["wall_s"]}}
+    if is_book:                                         # where every excerpt sits in the book, and the edition it came from
+        from . import books
+        locs = {}
+        for x in pack["excerpts"]:
+            loc = books.book_location(cache, spec["id"], x["offset"])
+            locs[x["id"]] = {"voice": next((v for v in VOICES if x.get("locator", "").startswith(v)), None), "book_location": loc}
+        bk = entry["book"]
+        cand["origin"] = "book"
+        cand["provenance"]["book"] = dict(bk, unit=entry["unit"], unit_title=entry.get("unit_title"), unit_location=entry.get("unit_location"),
+                                          offsets=entry["offsets"])
+        cand["evidence_notes"] = {"excerpt_locations": locs,
+                                  "voices": "labels: 【当事人】 quoted participant / document, 【作者】 the author's narration, 【译注】 translator or "
+                                            "editor note, 【后世评论】 later judgment; 【文学化】 passages were dropped"}
+        cand["further_reading"] = [{"title": entry["title"].split("；")[0], "what": {"zh": "本篇依据的书。", "en": "The book this piece is based on."},
+                                    "access": {"zh": "图书（本篇依据书中章节：" + (entry.get("unit_title") or "") + "）",
+                                               "en": "Book (chapter used: " + (entry.get("unit_title") or "") + ")"}}]
     out = Path(out_dir or REPO / "config/candidates"); out.mkdir(parents=True, exist_ok=True)
     path = out / f"auto-{date}-{entry['category']}-{slug}-{n}.json"
     path.write_text(json.dumps(cand, ensure_ascii=False, indent=1), encoding="utf-8")

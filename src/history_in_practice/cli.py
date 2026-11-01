@@ -393,9 +393,9 @@ def cmd_supply(a):
     cats = [a.category] if a.category else sorted(rot, key=lambda c: (-inv["gaps_to_target"].get(c, 0), inv["schedulable_by_category"].get(c, 0)))
     out = []
     with publish.lock("prepare"):
-        for c in cats[: a.max]:
-            e = supply.pick_entry(c)
-            out.append(supply.propose(e, d) if e else {"category": c, "outcome": "rejected", "reason": "no catalogue entry for category"})
+        for c in ([a.category] * a.max if getattr(a, "book", None) else cats[: a.max]):
+            e = supply.pick_book_unit(a.book, c) if getattr(a, "book", None) else supply.pick_entry(c)
+            out.append(supply.propose(e, d) if e else {"category": c, "outcome": "rejected", "reason": "no untried unit / catalogue entry"})
     print(json.dumps([{k: v for k, v in r.items() if k != "raw"} for r in out], ensure_ascii=False, indent=1))
     return 0 if any(r.get("outcome") == "candidate" for r in out) else 2
 
@@ -756,6 +756,23 @@ def cmd_books(a):
     raise SystemExit(a.action)
 
 
+def cmd_library(a):
+    """Book library for supply (library.py): status by level; ingest a book (acquired -> usable or unsuitable); list its units."""
+    from . import library
+    if a.action == "status":
+        print(json.dumps(library.inventory(), ensure_ascii=False, indent=1)); return 0
+    if a.action == "ingest":
+        if a.book == "all":
+            print(json.dumps(library.sync(), ensure_ascii=False, indent=1)); return 0
+        e = library.ingest(a.book, verified=a.verified or "file blob-verified against the pinned repository commit; edition = that file")
+        print(json.dumps({k: e.get(k) for k in ("book_id", "title", "level", "reason", "format", "paragraphs", "chapters_detected", "units")},
+                         ensure_ascii=False, indent=1)); return 0 if e.get("level") == "usable" else 2
+    if a.action == "units":
+        us = [x for x in library.entries() if x["book_id"] == a.book]
+        print(json.dumps([{k: x[k] for k in ("id", "unit_title", "unit_location", "offsets")} for x in us], ensure_ascii=False, indent=1)); return 0
+    raise SystemExit(a.action)
+
+
 def cmd_admit(a):
     """Admit an article into inventory. Pending drafts need an editor record bound to this exact content and evidence;
     remaining FIX-level issues need a named --exception. --as-sample registers a sample that is never schedulable
@@ -915,6 +932,7 @@ def main(argv=None):
     p.add_argument("--window-hours", type=float, default=6); p.add_argument("--confirm-real-email", action="store_true")
     p.set_defaults(f=cmd_test_edition)
     p = sp.add_parser("supply"); p.add_argument("--category"); p.add_argument("--max", type=int, default=1); p.add_argument("--check", action="store_true")
+    p.add_argument("--book", help="propose from the next untried units of this library book (validation/operator runs)")
     p.set_defaults(f=cmd_supply)
     p = sp.add_parser("edit"); p.add_argument("edition"); p.add_argument("--rounds", type=int, help="override editor.max_rounds for this attempt")
     p.set_defaults(f=cmd_edit)
@@ -947,6 +965,8 @@ def main(argv=None):
     p.add_argument("--upstream"); p.add_argument("--meta", help="JSON: title, author, translator, year, language, genre, edition")
     p.add_argument("--must-contain", action="append"); p.add_argument("--verified", metavar="NOTE", help="who/how the edition was verified")
     p.add_argument("--text"); p.set_defaults(f=cmd_books)
+    p = sp.add_parser("library", help="book library for supply: status | ingest --book ID | units --book ID")
+    p.add_argument("action", choices=["status", "ingest", "units"]); p.add_argument("--book", help="book id; `ingest --book all` = sync the library"); p.add_argument("--verified"); p.set_defaults(f=cmd_library)
     p = sp.add_parser("registry-rebuild"); p.add_argument("content", nargs="+"); p.add_argument("--db"); p.set_defaults(f=cmd_registry_rebuild)
     a = ap.parse_args(argv)
     import signal as _sig                              # systemd stop/timeout sends SIGTERM: unwind so model children are killed
