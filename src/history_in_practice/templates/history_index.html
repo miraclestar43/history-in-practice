@@ -77,10 +77,15 @@ function renderList(index){
   document.title = "没事儿多读书"; document.documentElement.lang = lang==="zh" ? "zh-CN" : "en";
   const wrap = el("div"); wrap.append(el("h1",{},"没事儿多读书"));
   const other = lang==="zh" ? "en" : "zh"; const u = new URL(location.href); u.searchParams.set("lang", other);
-  wrap.append(el("p",{class:"langs"}), testNote()); wrap.querySelector(".langs").append(el("a",{href:u.search},other==="en"?"English":"中文"));
+  const isTest = index.mode === "test";              // only the TEST preview index says so; production never shows the banner
+  wrap.append(el("p",{class:"langs"}), ...(isTest ? [testNote()] : [])); wrap.querySelector(".langs").append(el("a",{href:u.search},other==="en"?"English":"中文"));
+  // production lists published issues only: never a sample, a TEST or anything under revision
+  const shown = isTest ? index.items : index.items.filter(i => !i.sample && !i.test && !i.notice);
   const f = el("div",{class:"filters",role:"group","aria-label":"类别"}); let active = params.get("cat") || "";
   const list = el("div");
-  const draw = () => { list.replaceChildren(); for (const it of index.items.filter(i => !active || i.category===active).sort((a,b) => rank(a)-rank(b))){
+  const draw = () => { list.replaceChildren();
+    if (!shown.length) list.append(el("p",{class:"small"}, lang==="zh" ? "第一期即将发布。" : "The first story is coming soon."));
+    for (const it of shown.filter(i => !active || i.category===active).sort((a,b) => rank(a)-rank(b))){
       const d = el("div",{class:"item"}); const a = el("a",{href:"?story="+encodeURIComponent(it.edition_id)+"&lang="+lang}, it.title[lang]);
       if (it.sample && !it.notice) d.append(sampleNote());
       if (it.notice) d.append(noticeBox(it.notice));

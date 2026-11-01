@@ -1,4 +1,4 @@
-# TEMPLATE — not installed or enabled. Publishes today's scheduled edition:
+# Ready for launch; NOT installed or enabled until the owner confirms. Publishes today's scheduled edition:
 # archive -> site export/commit -> verify live JSON (content_sha256) -> email.
 # Requires EMAIL_SEND_ENABLED=true and a complete mail config (recipients,
 # SMTP, From, Reply-To); otherwise it stops before email and exits non-zero.
@@ -21,3 +21,6 @@ Nice=5
 LimitAS=2G
 StandardOutput=append:%h/history-in-practice/data/logs/send.log
 StandardError=append:%h/history-in-practice/data/logs/send.log
+# Maintainer alert (alert.py): skipped / overdue / partial / still waiting near the deadline / Claude
+# unavailable / low inventory -> one email to the maintainer (never subscribers), once per problem per day.
+ExecStopPost=-%h/history-in-practice/bin/hip alert --source send

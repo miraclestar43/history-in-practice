@@ -1,9 +1,10 @@
-# TEMPLATE — not installed or enabled. Review before `systemctl --user link`.
+# Ready for launch; NOT installed or enabled until the owner confirms. Review before `systemctl --user link`.
 # Builds inventory in one batch: tops up candidates from the source catalogue
 # when fewer than 2 are waiting (hip supply), runs new candidates through the
-# pipeline (MiMo drafts), gives recorded MiMo refusals one Pi Claude draft, then
-# the Pi-local Claude Code final editor (subscription login in its dedicated config;
-# preflight first, no API fallback) admits only verified, record-bound articles.
+# pipeline -- Claude (Claude Code CLI, subscription login, writer.py) drafts, writes the
+# English and edits; MiMo is no longer used and there is no fallback -- then the
+# Pi-local Claude final editor (preflight first, no API fallback) admits only
+# verified, record-bound articles. Claude unavailable -> nothing drafted, exit 4, alert.
 # One article is ~15–40 min of model time; the timeout is a whole-batch budget.
 # Exit 1 = coverage below the alert threshold; exit 4 = final editor unavailable or
 # degraded (drafts stay pending; see data/health/final_editor.json, `hip doctor`).
@@ -25,3 +26,5 @@ IOSchedulingClass=idle
 LimitAS=3G
 StandardOutput=append:%h/history-in-practice/data/logs/prepare.log
 StandardError=append:%h/history-in-practice/data/logs/prepare.log
+# Maintainer alert (alert.py): runs whatever the exit code; one email to the maintainer, never subscribers.
+ExecStopPost=-%h/history-in-practice/bin/hip alert --source prepare

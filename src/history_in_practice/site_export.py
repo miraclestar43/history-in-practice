@@ -74,7 +74,8 @@ def preview(site_root: Path, samples: list[dict], notices: dict[str, dict] | Non
         it["notice"] = {k: n[k] for k in ("kind", "at", "revision", "zh", "en")}
     items.sort(key=lambda x: x["edition_date"], reverse=True)
     ip.parent.mkdir(parents=True, exist_ok=True)
-    ip.write_text(json.dumps({"schema_version": index.get("schema_version", "0.2"), "items": items}, ensure_ascii=False, indent=1), encoding="utf-8")
+    ip.write_text(json.dumps({"schema_version": index.get("schema_version", "0.2"), "mode": "test", "items": items}, ensure_ascii=False, indent=1),
+                  encoding="utf-8")                                 # the page shows its TEST banner only for this index
     return written + ["data/history/index.json"]
 
 

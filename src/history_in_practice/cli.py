@@ -369,7 +369,19 @@ def cmd_prepare_queue(a):
 def cmd_publish_today(a):
     with publish.lock("publish"):
         rep = publish.publish_today(db(), config.load_runtime(), date=a.date)
+    from . import alert
+    alert.record("publish_last.json", rep)                  # read by `hip alert` (ExecStopPost)
     print(json.dumps(rep, ensure_ascii=False, indent=1)); return publish.EXIT.get(rep.get("outcome"), 4)
+
+
+def cmd_alert(a):
+    """Maintainer alert from the jobs' last records (alert.py): one email to ALERT_EMAIL / EMAIL_REPLY_TO, never subscribers,
+    once per problem per LA day. Exit 0 always: an alert failure must not mask the job's own exit status."""
+    from . import alert
+    now = publish.now_la()
+    r = alert.run(config.load_runtime(), now, source=a.source, deadline_s_left=publish.seconds_left(now.date().isoformat(), now),
+                  dry_run=a.dry_run)
+    print(json.dumps(r, ensure_ascii=False, indent=1)); return 0
 
 
 def cmd_supply(a):
@@ -695,8 +707,12 @@ def cmd_nightly(a):
         rep["claude_redraft"] = _claude_redrafts(d, 1)
         rep["final_edit"], rep["health"] = _final_queue(d, a.max_articles + 1, max(0, a.budget_minutes - (_t.monotonic() - t0) / 60))
     rep["inventory"] = pipeline.inventory(d, verify=True)
+    from . import alert
+    na = next((x["reason"] for x in rep["prepare"] if x.get("outcome") == "not_run"), None)
+    alert.record("nightly_last.json", {"writer_unavailable": na, "inventory_alert": rep["inventory"]["alert"],
+                                       "coverage_days": rep["inventory"].get("coverage_days"), "final_editor": rep["health"]["final_editor"]})
     print(json.dumps(rep, ensure_ascii=False, indent=1))
-    return 4 if rep["health"]["final_editor"] != "ok" else 1 if rep["inventory"]["alert"] else 0
+    return 4 if rep["health"]["final_editor"] != "ok" or na else 1 if rep["inventory"]["alert"] else 0
 
 
 def cmd_books(a):
@@ -888,6 +904,8 @@ def main(argv=None):
     p = sp.add_parser("prepare-queue"); p.add_argument("--max-articles", type=int, default=3); p.add_argument("--budget-minutes", type=float, default=150)
     p.set_defaults(f=cmd_prepare_queue)
     p = sp.add_parser("publish-today"); p.add_argument("--date"); p.set_defaults(f=cmd_publish_today)
+    p = sp.add_parser("alert", help="maintainer alert from the jobs' last records (never to subscribers)")
+    p.add_argument("--source", default="manual"); p.add_argument("--dry-run", action="store_true"); p.set_defaults(f=cmd_alert)
     p = sp.add_parser("send-test"); p.add_argument("rest", nargs="*"); p.add_argument("--confirm-real-email", action="store_true")
     p.set_defaults(f=cmd_send_test)
     p = sp.add_parser("test-edition"); p.add_argument("action", choices=["prepare", "status", "verify-site", "send", "renew-window", "correct", "verify-correction"])
