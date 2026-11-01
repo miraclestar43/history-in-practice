@@ -114,15 +114,14 @@ The worktree's copy of the data lacked production's old final-editor attempt rec
 1. add its library.json entry: repository, commit, path, metadata, categories;
 2. run `hip library ingest --book ID` (or `--book all`).
 
-## 6. Deployment (after merging; nothing else changes)
+## 6. Deployment
 
-Before 10:00 Beijing (the next `hip-prepare` run):
-1. Merge `feature/book-supply` into `main`. On the Pi: `cd ~/history-in-practice && git pull --ff-only`.
-2. Run `bin/hip library ingest --book all`. It:
-   - fetches the two files production does not have yet (叫魂, 晚清七十年) from their pinned commits, blob verified;
-   - ingests the eight usable books into the production data directory;
-   - prints each book's level and unit count (expected: 233 units).
-3. Run `bin/hip adopt cand-auto-20261101-bk-lhzz-u1-1 cand-auto-20261101-bk-jiaohun-u14-1`. It should print `"adopted": true` for each. If it doesn't, the edition stays pending with its reasons, and the nightly drafts nothing for it.
-4. Nothing else: timers, recipients, the send time and the stored plan are unchanged. Adopted articles join the inventory, and the mix places them after the planned issues. The next `hip-prepare` drafts the remaining book candidates; when fewer than 2 are waiting, it proposes from untried book units.
+Superseded by the combined deploy of this branch with the 2026-11-01 evening round (`docs/ROUND_20261101_DIRECTION.md`). It is the script `data/logs/deploy_20261101.sh` (run once, by hand, outside the send and nightly windows):
+1. Keep the book evidence packs that the merge stops tracking.
+2. Run `git pull --ff-only`, then restore those packs as local, ignored files.
+3. Run `hip library ingest --book all`.
+4. Copy the worktree records of the finished articles.
+5. Run `hip adopt cand-auto-20261101-bk-lhzz-u1-1 cand-auto-20261101-bk-jiaohun-u14-1 cand-auto-20261101-bk-ming-u51-1`.
+6. Push the new page shell to the site.
 
-**Rollback:** revert the merge. Book candidates not yet drafted are then never drafted, and the picker uses the catalogue only. Adopted articles are ordinary inventory: `hip requeue ID` sends one back to the pending queue, as for any other article.
+Timers, recipients, the send time and the stored plan are unchanged.
