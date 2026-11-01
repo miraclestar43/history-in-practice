@@ -15,7 +15,7 @@ header.site a{color:var(--muted);text-decoration:none}
 main{max-width:680px;margin:0 auto;padding:20px 20px 80px}
 html[lang=en] main{max-width:660px}
 html[lang=en] body{line-height:1.7}
-html[lang=en] article p{hyphens:auto;-webkit-hyphens:auto}
+html[lang=en] article section p{hyphens:auto;-webkit-hyphens:auto}
 article p{margin:0 0 1.05em;text-wrap:pretty;overflow-wrap:break-word}
 h1{font-family:Georgia,"Songti SC","Noto Serif CJK SC",serif;font-size:28px;line-height:1.3;margin:.25em 0 .35em;text-wrap:balance;overflow-wrap:break-word}
 h2{font-size:20px;line-height:1.45;color:var(--accent);margin:2em 0 .6em;letter-spacing:.02em}
@@ -69,7 +69,7 @@ a{color:var(--accent)}
 const CAT = {china_ancient:["中国古代","Ancient China"],world:["世界史","World History"],china_modern:["中国近现代","Modern China"],us:["美国史","U.S. History"]};
 const T = {zh:{q:"想一想",ex:"一个参考思路",as:"假设",st:"可以怎么做",alt:"另一种合理选择",unc:"出处与不确定性",src:"本篇依据",more:"想再读一点",notes:"书目与补充说明",toc:"目录",fs:"字号",min:"分钟",all:"全部",back:"← 全部文章",stop:"先停十秒，想想你会怎么做。"},
            en:{q:"Think about it",ex:"One possible approach",as:"Assumptions",st:"What you could do",alt:"Another reasonable choice",unc:"Sources and uncertainty",src:"Sources",more:"Read more",notes:"Sources and notes",toc:"Contents",fs:"Text size",min:"min",all:"All",back:"← All stories",stop:"Pause for ten seconds and decide what you would do."}};
-const BRAND = {zh:"没事儿多读书",en:"没事儿多读书 · Read a Little History"};
+const BRAND = {zh:"没事儿多读书",en:"没事儿多读书"};
 const SCALES = [0.9, 1, 1.12, 1.25];
 let scale = Math.min(SCALES.length-1, Math.max(0, parseInt(localStorage.getItem("hip-fs") ?? "1", 10) || 1));
 const TEST = {zh:"测试页面：用于检查排版与链接，不是正式发布的一期；每日订阅尚未开始。",en:"TEST page: for checking layout and links. Not an official edition; the daily subscription has not started."};
