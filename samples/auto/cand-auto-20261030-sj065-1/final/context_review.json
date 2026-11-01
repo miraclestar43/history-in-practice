@@ -3,8 +3,8 @@
  "schema": "context-review/v1",
  "mode": "article",
  "edition_id": "cand-auto-20261030-sj065-1",
- "content_sha256": "0957c695ee61a4c16ca1e809489d902011423f4c49bb112e7a663c0a8579b0fa",
- "evidence_in_sha256": "9101c2145b547e762c8cf363c18a7a0c4399e0201d672e8027bf617600528779",
+ "content_sha256": "54253159fee7b2734bb5be514e77ea49fca24eb7184b8dc69f22381ad13a92fd",
+ "evidence_in_sha256": "cb0f9060b5b618c4feb6ad31367759427008a42985053e6e0423978e057e2245",
  "reviewer": {
   "name": "Pi Claude",
   "role": "named final editor (source-context review)",
@@ -35,37 +35,13 @@
    "extra_cap": 0.3
   }
  },
- "started_at": 1793428111.995961,
+ "started_at": 1793496347.991269,
  "flagged": [
   {
    "id": "A1",
-   "path": "sections.context.2",
-   "lang": "zh",
-   "sentence": "原文没有写他的心理，本文也不补写。"
-  },
-  {
-   "id": "A2",
-   "path": "sections.story.4",
+   "path": "sections.story.2",
    "lang": "en",
-   "sentence": "Wu Qi fell silent for a long time, then said it should be entrusted to Tian Wen."
-  },
-  {
-   "id": "A3",
-   "path": "sections.analysis.1",
-   "lang": "zh",
-   "sentence": "原文没有写吴起做任何辩解，只写他「懼得罪，遂去」。"
-  },
-  {
-   "id": "A4",
-   "path": "sections.analysis.1",
-   "lang": "zh",
-   "sentence": "但原文没有写他考虑过这些选项。"
-  },
-  {
-   "id": "A5",
-   "path": "uncertainty_note",
-   "lang": "en",
-   "sentence": "every \"one explanation\" and \"the author infers\", and the author's alternative, are interpretation, not recorded history."
+   "sentence": "Wu Qi was silent for a long time, then said: To you."
   }
  ],
  "search": null,
@@ -93,41 +69,23 @@
   {
    "step": "context_r1",
    "attempt": 1,
-   "wall_s": 54.6,
+   "wall_s": 21.6,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
    "killed": null,
    "provider_refusal": null,
-   "output_tokens": 6147
+   "output_tokens": 2025
   }
  ],
- "finished_at": 1793428166.938333,
- "elapsed_min": 0.9,
+ "finished_at": 1793496369.9076462,
+ "elapsed_min": 0.4,
  "review": {
   "episode": [
    {
     "source_id": "S-SJ065",
-    "outcome": "In Lu, the ruler grew suspicious after the slander and dismissed Wu Qi, who then sought to serve Marquis Wen of Wei.",
-    "quote": "魯君疑之，謝吳起。吳起於是聞魏文侯賢，欲事之。",
-    "in_evidence": true
-   },
-   {
-    "source_id": "S-SJ065",
-    "outcome": "In Wei, Wu Qi declined the marriage as the servant had foreseen, Marquis Wu stopped trusting him, and Wu Qi feared punishment and left for Chu.",
-    "quote": "於是吳起見公主之賤魏相，果辭魏武侯。武侯疑之而弗信也。吳起懼得罪，遂去，即之楚。",
-    "in_evidence": true
-   },
-   {
-    "source_id": "S-SJ065",
-    "outcome": "In Chu, after King Dao died, the royal clan and great ministers attacked and killed Wu Qi; the new king had all who shot him and struck the king's body executed, and more than seventy clans were exterminated.",
+    "outcome": "In Wei, Wu Qi feared punishment after the marquis lost trust in him and left for Chu. There he became chief minister. When King Dao died, the royal clan rose against Wu Qi and killed him, and some of their blows struck the king's body. The new king then had those men executed, and more than seventy families were exterminated. Sima Qian's closing verdict is that his harshness and lack of kindness cost him his life.",
     "quote": "悼王既葬，太子立，乃使令尹盡誅射吳起而并中王尸者。坐射起而夷宗死者七十餘家。",
-    "in_evidence": true
-   },
-   {
-    "source_id": "S-SJ065",
-    "outcome": "Sima Qian closes with his verdict: Wu Qi preached virtue over terrain, yet in Chu his harshness and lack of kindness cost him his life.",
-    "quote": "吳起說武侯以形勢不如德，然行之於楚，以刻暴少恩亡其軀。悲夫！",
     "in_evidence": true
    }
   ],
@@ -135,446 +93,60 @@
   "claims": [
    {
     "id": "A1",
-    "path": "sections.context.2",
-    "lang": "zh",
-    "sentence": "原文没有写他的心理，本文也不补写。",
-    "verdict": "supported",
-    "source_ids": [
-     "S-SJ065"
-    ],
-    "scope": "《孫子吳起列傳》吳起部分，从鲁君辞退吴起到吴起欲事魏文侯一段（「魯君疑之，謝吳起」至「李克曰」前）",
-    "quote": {
-     "source_id": "S-SJ065",
-     "quote": "魯君疑之，謝吳起。吳起於是聞魏文侯賢，欲事之。"
-    },
-    "fix": "可保留。如要更准确，可写作“原文没有写他被辞退时的心理”，因为原文在别处写过「吳起不悅」「懼得罪」。"
-   },
-   {
-    "id": "A2",
-    "path": "sections.story.4",
+    "path": "sections.story.2",
     "lang": "en",
-    "sentence": "Wu Qi fell silent for a long time, then said it should be entrusted to Tian Wen.",
+    "sentence": "Wu Qi was silent for a long time, then said: To you.",
     "verdict": "not_a_source_claim",
     "source_ids": [
      "S-SJ065"
     ],
-    "scope": "田文论功段",
+    "scope": "《孫子吳起列傳》吳起部分，田文论功一段（全文已读）",
     "quote": {
      "source_id": "S-SJ065",
      "quote": "起默然良久，曰：「屬之子矣。」"
     },
-    "fix": "无需修改；叙述与原文一致。"
-   },
-   {
-    "id": "A3",
-    "path": "sections.analysis.1",
-    "lang": "zh",
-    "sentence": "原文没有写吴起做任何辩解，只写他「懼得罪，遂去」。",
-    "verdict": "supported",
-    "source_ids": [
-     "S-SJ065"
-    ],
-    "scope": "《孫子吳起列傳》吳起部分，公叔之計至吳起之楚一段（「田文既死」至「即之楚」）",
-    "quote": {
-     "source_id": "S-SJ065",
-     "quote": "武侯疑之而弗信也。吳起懼得罪，遂去，即之楚。"
-    },
-    "fix": "可保留。"
-   },
-   {
-    "id": "A4",
-    "path": "sections.analysis.1",
-    "lang": "zh",
-    "sentence": "但原文没有写他考虑过这些选项。",
-    "verdict": "supported",
-    "source_ids": [
-     "S-SJ065"
-    ],
-    "scope": "《孫子吳起列傳》全文，尤其是辞婚去魏一段",
-    "quote": {
-     "source_id": "S-SJ065",
-     "quote": "吳起懼得罪，遂去，即之楚。"
-    },
-    "fix": "可保留，用来标明这是反事实讨论。"
-   },
-   {
-    "id": "A5",
-    "path": "uncertainty_note",
-    "lang": "en",
-    "sentence": "every \"one explanation\" and \"the author infers\", and the author's alternative, are interpretation, not recorded history.",
-    "verdict": "not_a_source_claim",
-    "source_ids": [
-     "S-SJ065"
-    ],
-    "scope": "本文自身的标注说明",
-    "quote": {
-     "source_id": "S-SJ065",
-     "quote": "吳起為人節廉而自喜名也。"
-    },
-    "fix": "无需修改。这是对本文解释性内容的标注；其中引用的史料（如仆人对吴起的判断）在正文中已区分说明。"
-   },
-   {
-    "id": "N1",
-    "path": "sections.context.2",
-    "lang": "en",
-    "sentence": "the source gives no inner reaction, and this article will not supply one.",
-    "verdict": "supported",
-    "source_ids": [
-     "S-SJ065"
-    ],
-    "scope": "鲁君辞退吴起至吴起欲事魏文侯一段",
-    "quote": {
-     "source_id": "S-SJ065",
-     "quote": "魯君疑之，謝吳起。吳起於是聞魏文侯賢，欲事之。"
-    },
-    "fix": "可保留。"
-   },
-   {
-    "id": "N2",
-    "path": "sections.context.2",
-    "lang": "zh",
-    "sentence": "把这段进言拆开看，它没有否定吴起会打仗",
-    "verdict": "supported",
-    "source_ids": [
-     "S-SJ065"
-    ],
-    "scope": "鲁人进谗全段（「魯人或惡吳起曰」至「則是棄衛」）",
-    "quote": {
-     "source_id": "S-SJ065",
-     "quote": "夫魯小國，而有戰勝之名，則諸侯圖魯矣。"
-    },
-    "fix": "可保留；进言甚至以吴起战胜为前提。"
-   },
-   {
-    "id": "N3",
-    "path": "sections.story.3",
-    "lang": "zh",
-    "sentence": "（原文共论三事，此处录其二。）",
-    "verdict": "supported",
-    "source_ids": [
-     "S-SJ065"
-    ],
-    "scope": "吴起与田文论功段",
-    "quote": {
-     "source_id": "S-SJ065",
-     "quote": "起曰：「治百官，親萬民，實府庫，子孰與起？」文曰：「不如子。」"
-    },
-    "fix": "可保留。"
-   },
-   {
-    "id": "N4",
-    "path": "sections.analysis.1",
-    "lang": "en",
-    "sentence": "The source records no defense by Wu Qi; it says only that he feared being punished and so left.",
-    "verdict": "supported",
-    "source_ids": [
-     "S-SJ065"
-    ],
-    "scope": "辞婚去魏一段",
-    "quote": {
-     "source_id": "S-SJ065",
-     "quote": "吳起懼得罪，遂去，即之楚。"
-    },
-    "fix": "可保留。"
-   },
-   {
-    "id": "N5",
-    "path": "sections.analysis.1",
-    "lang": "en",
-    "sentence": "The source says nothing about his weighing such options.",
-    "verdict": "supported",
-    "source_ids": [
-     "S-SJ065"
-    ],
-    "scope": "《孫子吳起列傳》全文",
-    "quote": {
-     "source_id": "S-SJ065",
-     "quote": "吳起懼得罪，遂去，即之楚。"
-    },
-    "fix": "可保留。"
-   },
-   {
-    "id": "N6",
-    "path": "sections.limits.0",
-    "lang": "zh",
-    "sentence": "原文没有公元纪年，本文也不作换算。",
-    "verdict": "supported",
-    "source_ids": [
-     "S-SJ065"
-    ],
-    "scope": "《孫子吳起列傳》全文（2928字符）",
-    "quote": {
-     "source_id": "S-SJ065",
-     "quote": "後十三歲，魏與趙攻韓"
-    },
-    "fix": "可保留；原文只有相对纪时，没有公元纪年。"
-   },
-   {
-    "id": "N7",
-    "path": "sections.limits.0",
-    "lang": "en",
-    "sentence": "The original gives no dates in the common era, and none have been calculated here.",
-    "verdict": "supported",
-    "source_ids": [
-     "S-SJ065"
-    ],
-    "scope": "《孫子吳起列傳》全文",
-    "quote": {
-     "source_id": "S-SJ065",
-     "quote": "後十三歲，魏與趙攻韓"
-    },
-    "fix": "可保留。"
+    "fix": "This narrates what Wu Qi did; it is not a claim about what the source records. It matches the source and needs no change."
    }
   ],
   "context_issues": [
    {
-    "path": "sections.story.7",
-    "problem": "原文以「故」把楚国贵戚欲害吴起与其变法相连，尤其是「廢公族疏遠者」。稿件写成「楚国的贵戚都想害他」，丢掉了因果连接。变法的目的「以撫養戰鬬之士」也被略去。不算误导，但削弱了读者对其死因的理解。",
+    "path": "sections.story.1",
+    "problem": "The paragraph goes straight from 'Wu Qi served Marquis Wu' to Tian Wen becoming chief minister. It leaves out the river dialogue and Marquis Wu's response, recorded in between: 'Good', followed by Wu Qi being (re)appointed governor of Xihe with a great reputation. analysis.1 later says Wu Qi had told Marquis Wu that terrain counts for less than virtue, but the body of the article never narrates that episode. Readers lack the context. Suggest adding a sentence to story.1 that briefly tells the 'virtue, not terrain' exchange and its result.",
     "quote": {
      "source_id": "S-SJ065",
-     "quote": "廢公族疏遠者，以撫養戰鬬之士。要在彊兵，破馳說之言從橫者。於是南平百越；北并陳蔡，卻三晉；西伐秦。諸侯患楚之彊。故楚之貴戚盡欲害吳起。"
+     "quote": "若君不修德，舟中之人盡為敵國也。」武侯曰：「善。」（即封）吳起為西河守，甚有聲名。"
     },
     "severity": "note"
    },
    {
-    "id": "",
-    "path": "sections.story.2",
-    "problem": "武侯称「善」之后，原文紧接着写吴起继续任西河守、甚有声名。稿件止于「善」，不影响主线，可酌情补一句。",
+    "path": "dek",
+    "problem": "The dek ends at 'the ruler grew suspicious and stopped trusting him'. It does not give the immediate outcome in the source: Wu Qi, fearing punishment, left Wei for Chu. The title asks why he left Wei, so the dek can add this half-sentence to close the event. This is not a factual error.",
     "quote": {
      "source_id": "S-SJ065",
-     "quote": "武侯曰：「善。」（即封）吳起為西河守，甚有聲名。"
+     "quote": "吳起懼得罪，遂去，即之楚。"
     },
     "severity": "note"
    }
   ],
   "search": [],
-  "overall": "来源为全文，三段结局（鲁、魏、楚）及太史公评语均已在证据包中；待核断言均成立或不属来源断言；仅有两处可选的补充说明，无须强制修改。"
+  "overall": "The source was read in full. The story's ending and key turns are already covered by the evidence pack, including the added E26–E28. The draft contains no negative source claims ('not recorded / no verification' and the like) that need correcting. The statements in limits and uncertainty_note are accurate. Two points are optional improvements: adding the 'virtue, not terrain' exchange to story.1, and adding Wu Qi's departure for Chu to the dek."
  },
  "claims": [
   {
    "id": "A1",
-   "path": "sections.context.2",
-   "lang": "zh",
-   "sentence": "原文没有写他的心理，本文也不补写。",
-   "verdict": "supported",
-   "source_ids": [
-    "S-SJ065"
-   ],
-   "scope": "《孫子吳起列傳》吳起部分，从鲁君辞退吴起到吴起欲事魏文侯一段（「魯君疑之，謝吳起」至「李克曰」前）",
-   "quote": {
-    "source_id": "S-SJ065",
-    "quote": "魯君疑之，謝吳起。吳起於是聞魏文侯賢，欲事之。"
-   },
-   "fix": "可保留。如要更准确，可写作“原文没有写他被辞退时的心理”，因为原文在别处写过「吳起不悅」「懼得罪」。",
-   "unit_status": {
-    "S-SJ065": "complete"
-   }
-  },
-  {
-   "id": "A2",
-   "path": "sections.story.4",
+   "path": "sections.story.2",
    "lang": "en",
-   "sentence": "Wu Qi fell silent for a long time, then said it should be entrusted to Tian Wen.",
+   "sentence": "Wu Qi was silent for a long time, then said: To you.",
    "verdict": "not_a_source_claim",
    "source_ids": [
     "S-SJ065"
    ],
-   "scope": "田文论功段",
+   "scope": "《孫子吳起列傳》吳起部分，田文论功一段（全文已读）",
    "quote": {
     "source_id": "S-SJ065",
     "quote": "起默然良久，曰：「屬之子矣。」"
    },
-   "fix": "无需修改；叙述与原文一致。",
-   "unit_status": {
-    "S-SJ065": "complete"
-   }
-  },
-  {
-   "id": "A3",
-   "path": "sections.analysis.1",
-   "lang": "zh",
-   "sentence": "原文没有写吴起做任何辩解，只写他「懼得罪，遂去」。",
-   "verdict": "supported",
-   "source_ids": [
-    "S-SJ065"
-   ],
-   "scope": "《孫子吳起列傳》吳起部分，公叔之計至吳起之楚一段（「田文既死」至「即之楚」）",
-   "quote": {
-    "source_id": "S-SJ065",
-    "quote": "武侯疑之而弗信也。吳起懼得罪，遂去，即之楚。"
-   },
-   "fix": "可保留。",
-   "unit_status": {
-    "S-SJ065": "complete"
-   }
-  },
-  {
-   "id": "A4",
-   "path": "sections.analysis.1",
-   "lang": "zh",
-   "sentence": "但原文没有写他考虑过这些选项。",
-   "verdict": "supported",
-   "source_ids": [
-    "S-SJ065"
-   ],
-   "scope": "《孫子吳起列傳》全文，尤其是辞婚去魏一段",
-   "quote": {
-    "source_id": "S-SJ065",
-    "quote": "吳起懼得罪，遂去，即之楚。"
-   },
-   "fix": "可保留，用来标明这是反事实讨论。",
-   "unit_status": {
-    "S-SJ065": "complete"
-   }
-  },
-  {
-   "id": "A5",
-   "path": "uncertainty_note",
-   "lang": "en",
-   "sentence": "every \"one explanation\" and \"the author infers\", and the author's alternative, are interpretation, not recorded history.",
-   "verdict": "not_a_source_claim",
-   "source_ids": [
-    "S-SJ065"
-   ],
-   "scope": "本文自身的标注说明",
-   "quote": {
-    "source_id": "S-SJ065",
-    "quote": "吳起為人節廉而自喜名也。"
-   },
-   "fix": "无需修改。这是对本文解释性内容的标注；其中引用的史料（如仆人对吴起的判断）在正文中已区分说明。",
-   "unit_status": {
-    "S-SJ065": "complete"
-   }
-  },
-  {
-   "id": "N1",
-   "path": "sections.context.2",
-   "lang": "en",
-   "sentence": "the source gives no inner reaction, and this article will not supply one.",
-   "verdict": "supported",
-   "source_ids": [
-    "S-SJ065"
-   ],
-   "scope": "鲁君辞退吴起至吴起欲事魏文侯一段",
-   "quote": {
-    "source_id": "S-SJ065",
-    "quote": "魯君疑之，謝吳起。吳起於是聞魏文侯賢，欲事之。"
-   },
-   "fix": "可保留。",
-   "unit_status": {
-    "S-SJ065": "complete"
-   }
-  },
-  {
-   "id": "N2",
-   "path": "sections.context.2",
-   "lang": "zh",
-   "sentence": "把这段进言拆开看，它没有否定吴起会打仗",
-   "verdict": "supported",
-   "source_ids": [
-    "S-SJ065"
-   ],
-   "scope": "鲁人进谗全段（「魯人或惡吳起曰」至「則是棄衛」）",
-   "quote": {
-    "source_id": "S-SJ065",
-    "quote": "夫魯小國，而有戰勝之名，則諸侯圖魯矣。"
-   },
-   "fix": "可保留；进言甚至以吴起战胜为前提。",
-   "unit_status": {
-    "S-SJ065": "complete"
-   }
-  },
-  {
-   "id": "N3",
-   "path": "sections.story.3",
-   "lang": "zh",
-   "sentence": "（原文共论三事，此处录其二。）",
-   "verdict": "supported",
-   "source_ids": [
-    "S-SJ065"
-   ],
-   "scope": "吴起与田文论功段",
-   "quote": {
-    "source_id": "S-SJ065",
-    "quote": "起曰：「治百官，親萬民，實府庫，子孰與起？」文曰：「不如子。」"
-   },
-   "fix": "可保留。",
-   "unit_status": {
-    "S-SJ065": "complete"
-   }
-  },
-  {
-   "id": "N4",
-   "path": "sections.analysis.1",
-   "lang": "en",
-   "sentence": "The source records no defense by Wu Qi; it says only that he feared being punished and so left.",
-   "verdict": "supported",
-   "source_ids": [
-    "S-SJ065"
-   ],
-   "scope": "辞婚去魏一段",
-   "quote": {
-    "source_id": "S-SJ065",
-    "quote": "吳起懼得罪，遂去，即之楚。"
-   },
-   "fix": "可保留。",
-   "unit_status": {
-    "S-SJ065": "complete"
-   }
-  },
-  {
-   "id": "N5",
-   "path": "sections.analysis.1",
-   "lang": "en",
-   "sentence": "The source says nothing about his weighing such options.",
-   "verdict": "supported",
-   "source_ids": [
-    "S-SJ065"
-   ],
-   "scope": "《孫子吳起列傳》全文",
-   "quote": {
-    "source_id": "S-SJ065",
-    "quote": "吳起懼得罪，遂去，即之楚。"
-   },
-   "fix": "可保留。",
-   "unit_status": {
-    "S-SJ065": "complete"
-   }
-  },
-  {
-   "id": "N6",
-   "path": "sections.limits.0",
-   "lang": "zh",
-   "sentence": "原文没有公元纪年，本文也不作换算。",
-   "verdict": "supported",
-   "source_ids": [
-    "S-SJ065"
-   ],
-   "scope": "《孫子吳起列傳》全文（2928字符）",
-   "quote": {
-    "source_id": "S-SJ065",
-    "quote": "後十三歲，魏與趙攻韓"
-   },
-   "fix": "可保留；原文只有相对纪时，没有公元纪年。",
-   "unit_status": {
-    "S-SJ065": "complete"
-   }
-  },
-  {
-   "id": "N7",
-   "path": "sections.limits.0",
-   "lang": "en",
-   "sentence": "The original gives no dates in the common era, and none have been calculated here.",
-   "verdict": "supported",
-   "source_ids": [
-    "S-SJ065"
-   ],
-   "scope": "《孫子吳起列傳》全文",
-   "quote": {
-    "source_id": "S-SJ065",
-    "quote": "後十三歲，魏與趙攻韓"
-   },
-   "fix": "可保留。",
+   "fix": "This narrates what Wu Qi did; it is not a claim about what the source records. It matches the source and needs no change.",
    "unit_status": {
     "S-SJ065": "complete"
    }
@@ -582,21 +154,20 @@
  ],
  "context_issues": [
   {
-   "path": "sections.story.7",
-   "problem": "原文以「故」把楚国贵戚欲害吴起与其变法相连，尤其是「廢公族疏遠者」。稿件写成「楚国的贵戚都想害他」，丢掉了因果连接。变法的目的「以撫養戰鬬之士」也被略去。不算误导，但削弱了读者对其死因的理解。",
+   "path": "sections.story.1",
+   "problem": "The paragraph goes straight from 'Wu Qi served Marquis Wu' to Tian Wen becoming chief minister. It leaves out the river dialogue and Marquis Wu's response, recorded in between: 'Good', followed by Wu Qi being (re)appointed governor of Xihe with a great reputation. analysis.1 later says Wu Qi had told Marquis Wu that terrain counts for less than virtue, but the body of the article never narrates that episode. Readers lack the context. Suggest adding a sentence to story.1 that briefly tells the 'virtue, not terrain' exchange and its result.",
    "quote": {
     "source_id": "S-SJ065",
-    "quote": "廢公族疏遠者，以撫養戰鬬之士。要在彊兵，破馳說之言從橫者。於是南平百越；北并陳蔡，卻三晉；西伐秦。諸侯患楚之彊。故楚之貴戚盡欲害吳起。"
+    "quote": "若君不修德，舟中之人盡為敵國也。」武侯曰：「善。」（即封）吳起為西河守，甚有聲名。"
    },
    "severity": "note"
   },
   {
-   "id": "",
-   "path": "sections.story.2",
-   "problem": "武侯称「善」之后，原文紧接着写吴起继续任西河守、甚有声名。稿件止于「善」，不影响主线，可酌情补一句。",
+   "path": "dek",
+   "problem": "The dek ends at 'the ruler grew suspicious and stopped trusting him'. It does not give the immediate outcome in the source: Wu Qi, fearing punishment, left Wei for Chu. The title asks why he left Wei, so the dek can add this half-sentence to close the event. This is not a factual error.",
    "quote": {
     "source_id": "S-SJ065",
-    "quote": "武侯曰：「善。」（即封）吳起為西河守，甚有聲名。"
+    "quote": "吳起懼得罪，遂去，即之楚。"
    },
    "severity": "note"
   }
@@ -604,32 +175,14 @@
  "episode": [
   {
    "source_id": "S-SJ065",
-   "outcome": "In Lu, the ruler grew suspicious after the slander and dismissed Wu Qi, who then sought to serve Marquis Wen of Wei.",
-   "quote": "魯君疑之，謝吳起。吳起於是聞魏文侯賢，欲事之。",
-   "in_evidence": true
-  },
-  {
-   "source_id": "S-SJ065",
-   "outcome": "In Wei, Wu Qi declined the marriage as the servant had foreseen, Marquis Wu stopped trusting him, and Wu Qi feared punishment and left for Chu.",
-   "quote": "於是吳起見公主之賤魏相，果辭魏武侯。武侯疑之而弗信也。吳起懼得罪，遂去，即之楚。",
-   "in_evidence": true
-  },
-  {
-   "source_id": "S-SJ065",
-   "outcome": "In Chu, after King Dao died, the royal clan and great ministers attacked and killed Wu Qi; the new king had all who shot him and struck the king's body executed, and more than seventy clans were exterminated.",
+   "outcome": "In Wei, Wu Qi feared punishment after the marquis lost trust in him and left for Chu. There he became chief minister. When King Dao died, the royal clan rose against Wu Qi and killed him, and some of their blows struck the king's body. The new king then had those men executed, and more than seventy families were exterminated. Sima Qian's closing verdict is that his harshness and lack of kindness cost him his life.",
    "quote": "悼王既葬，太子立，乃使令尹盡誅射吳起而并中王尸者。坐射起而夷宗死者七十餘家。",
-   "in_evidence": true
-  },
-  {
-   "source_id": "S-SJ065",
-   "outcome": "Sima Qian closes with his verdict: Wu Qi preached virtue over terrain, yet in Chu his harshness and lack of kindness cost him his life.",
-   "quote": "吳起說武侯以形勢不如德，然行之於楚，以刻暴少恩亡其軀。悲夫！",
    "in_evidence": true
   }
  ],
  "additions": [],
  "additions_failed": [],
- "evidence_sha256": "9101c2145b547e762c8cf363c18a7a0c4399e0201d672e8027bf617600528779",
+ "evidence_sha256": "cb0f9060b5b618c4feb6ad31367759427008a42985053e6e0423978e057e2245",
  "outcome": "clean",
  "blocking": []
 }

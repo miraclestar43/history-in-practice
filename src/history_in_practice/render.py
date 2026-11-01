@@ -71,6 +71,16 @@ NEWS_SCHEMA = "news3min/v0-prototype"
 NEWS_MAX_AGE_H = 26
 
 
+# What kind of statement the "why" line is (owner feedback 2026-10-31: keep reported fact, a source's judgment and the
+# editor's interpretation apart). reported: a stated consequence from the sources; source_judgment: an attributed
+# opinion (analyst, publisher, the company itself); interpretation: the editor's own reading.
+NEWS_WHY_LABELS = {"reported": "为什么值得知道：", "source_judgment": "来源观点：", "interpretation": "编辑解读："}
+
+
+def news_why(it: dict) -> str:
+    return (NEWS_WHY_LABELS.get(it.get("why_kind"), "为什么值得知道：") + it["why"]) if it.get("why") else ""
+
+
 def news_problems(snap: dict | None, now_iso: str | None = None) -> list[str]:
     """Consumer-side check of a frozen 3-minute news snapshot (prompts/08 §4). Any problem means the edition goes out
     without news and says so briefly; a stale, degraded or unsourced snapshot is never shown as today's news."""
@@ -85,6 +95,8 @@ def news_problems(snap: dict | None, now_iso: str | None = None) -> list[str]:
     for i, it in enumerate(items):
         if not (it.get("headline") and it.get("what")): p.append(f"item {i + 1}: headline/what missing")
         if not any(web_url(s.get("url")) for s in it.get("sources") or []): p.append(f"item {i + 1}: no source link")
+        if it.get("why") and it.get("why_kind") not in NEWS_WHY_LABELS: p.append(f"item {i + 1}: why_kind must be one of {sorted(NEWS_WHY_LABELS)}")
+        if it.get("why") and _restates(it["why"], it.get("headline", "")): p.append(f"item {i + 1}: why restates the headline (omit it instead)")
     try:
         as_of = datetime.fromisoformat(snap["as_of"]); now = datetime.fromisoformat(now_iso) if now_iso else datetime.now(timezone.utc)
         age = (now - as_of).total_seconds() / 3600
@@ -92,6 +104,13 @@ def news_problems(snap: dict | None, now_iso: str | None = None) -> list[str]:
     except (KeyError, ValueError, TypeError):
         p.append("as_of missing or not ISO")
     return p
+
+
+def _restates(why: str, headline: str) -> bool:
+    """Most of the why line's 2-character runs already occur in the headline: it adds nothing."""
+    grams = lambda t: {t[i:i + 2] for i in range(len(t) - 1) if re.match(r"[一-鿿]{2}", t[i:i + 2])}
+    w, h = grams(why), grams(headline)
+    return len(w) >= 4 and len(w & h) / len(w) >= 0.6
 
 
 def news_minutes(snap: dict) -> int:
@@ -105,7 +124,7 @@ def news_html(snap: dict | None, ok: bool) -> str:
         return h + '<p style="font-size:15px;line-height:1.8;color:#55524d;margin:0 0 24px;">今天的新闻简报暂缺（没有及时、可核对来源的版本），下面直接进入今日故事。</p>'
     out = [h, f'<p style="font-size:13px;color:#8a857d;margin:0 0 14px;">{e(snap["label"]["zh"])}</p>']
     for i, it in enumerate(snap["items"]):
-        why = ("解读：" if it.get("why_kind") == "interpretation" else "为什么值得知道：") + it["why"] if it.get("why") else ""
+        why = news_why(it)
         srcs = " · ".join(f'<a href="{e(s["url"])}" style="color:{ACCENT};">{e(s["name"])}</a>' if web_url(s.get("url")) else e(s["name"])
                           for s in it.get("sources") or [])
         out.append(f'<p style="font-size:16px;line-height:1.8;margin:0 0 4px;color:#1d1d1f;"><b>{i + 1}. {e(it["headline"])}</b></p>'
@@ -206,7 +225,7 @@ def email_text(obj, base, news: dict | None = None, now_iso: str | None = None):
             nw = [f"== 今日新闻 · 约 {news_minutes(news)} 分钟 ==", news["label"]["zh"], ""]
             for i, it in enumerate(news["items"]):
                 nw += [f"{i + 1}. {it['headline']}", it["what"]]
-                if it.get("why"): nw.append(("解读：" if it.get("why_kind") == "interpretation" else "为什么值得知道：") + it["why"])
+                if it.get("why"): nw.append(news_why(it))
                 if it.get("qualifiers"): nw.append(it["qualifiers"])
                 nw += ["来源：" + "；".join(s["name"] + (f" {s['url']}" if web_url(s.get("url")) else "") for s in it.get("sources") or []), ""]
             nw += ["=" * 20, "== 今日故事 ==", ""]

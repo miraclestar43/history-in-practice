@@ -40,3 +40,35 @@
 - **Length:** 725 zh characters, about 2.3 min at 320 chars/min.
 - **Sourcing:** every fact traces to a listed source stored by news-intel; uncertain points are kept (anonymous sources, Binance's own claim, North Korea as a *suspect*).
 - **Delivery:** not sent anywhere.
+
+## Follow-up (2026-10-31 night): branch `feature/news3min-quality` in news-intel
+
+**Status:** implemented and validated offline, **not merged**. Services, timers, Telegram and `main` are unchanged. Full report on the branch: `docs/NEWS3MIN_QUALITY_20261031.md`, commit `bd364a2`, worktree `~/pi-news-intel-wt-news3min`.
+
+- **Why zh falls back (findings 1–2):** every run now records its provider outcomes. A real run of 5 stories showed the provider answers, but the validator rejects correct Chinese output:
+  - IT之家 amounts such as `32 万亿日元` were not traceable. **Fixed.**
+  - The model writes English entity names for Chinese sources. **Open:** needs a bilingual alias table.
+- **Where general news is lost (findings 3–4):**
+  - **Collection:** the zh edition has no general news source.
+  - **Classification:** about 830 events per edition per week are Unclassified, with relevance multiplier 0.0.
+- **Ranking fix:** a public-safety bucket behind a flag that defaults to off. Replayed on the 240 real events of the window: Ebola goes from 38.8 (cannot qualify) to 66.0 (qualifies; above the charger's 61.3), and no other event changes.
+- **Automatic snapshot (no human choice):** produced for comparison.
+  - In `samples/news/`: `news3min-auto-20261031-1600PT.flag-off.json` and `.flag-on.model.json`.
+  - With the provider, 2 of 5 items were model-validated, but both contain errors that validation did not catch. So it is **not reader-ready**.
+  - The hand-picked sample (`news3min-20261031-1600PT.r2.json`) shows editorial direction only.
+- **Owner decisions:**
+  - add general Chinese/world sources (source policy);
+  - the 0.0 Unclassified multiplier;
+  - enable the flag;
+  - merge.
+
+## Copy fixes in the sample (revision 2, owner feedback)
+
+`samples/news/news3min-20261031-1600PT.r2.json`; revision 1 is kept.
+
+- **"Why" lines:** each is grounded in a source or omitted. Ebola now has none, because its source adds nothing to the headline.
+- **Labels:** each "why" line carries its kind: 为什么值得知道 (reported), 来源观点 (a named source's judgment) or 编辑解读 (the editor's reading). `news_problems` rejects an unknown kind, or a "why" that restates the headline.
+- **No links between stories:** the OpenAI funding cut, the stock drop and the memory-chip profits are no longer linked as a trend. The memory-chip "why" is 日经亚洲's own explanation, attributed to it.
+- **Data comparisons:** keep the period (July–September 2026; Micron June–August), and say that Apple's part is a market forecast, not an actual figure.
+- **Cross-day events:** Binance gives the date of the hack (10-29) and what was new on 10-31 (90% covered).
+- **Count:** 5 items, 764 zh characters, about 2 minutes. OpenAI dropped out to keep 5 items with variety.

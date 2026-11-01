@@ -1,0 +1,188 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261030-sj065-1",
+ "content_sha256": "54253159fee7b2734bb5be514e77ea49fca24eb7184b8dc69f22381ad13a92fd",
+ "evidence_in_sha256": "cb0f9060b5b618c4feb6ad31367759427008a42985053e6e0423978e057e2245",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793496347.991269,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.2",
+   "lang": "en",
+   "sentence": "Wu Qi was silent for a long time, then said: To you."
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-SJ065": {
+   "title": "司馬遷《史記·孫子吳起列傳》（维基文库本）",
+   "url": "https://zh.wikisource.org/w/index.php?title=%E5%8F%B2%E8%A8%98/%E5%8D%B7065&action=render",
+   "ref": "zh:史記/卷065",
+   "evidence_text_sha256": "c6bedf3de6168b486a80b40b2c425409808d8161efb99ac3a05423cb08dbfd24",
+   "cache_sha256": "c6bedf3de6168b486a80b40b2c425409808d8161efb99ac3a05423cb08dbfd24",
+   "cjk": true,
+   "source_chars": 2928,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     2928
+    ]
+   ],
+   "chars_reviewed": 2928
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 21.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 2025
+  }
+ ],
+ "finished_at": 1793496369.9076462,
+ "elapsed_min": 0.4,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-SJ065",
+    "outcome": "In Wei, Wu Qi feared punishment after the marquis lost trust in him and left for Chu. There he became chief minister. When King Dao died, the royal clan rose against Wu Qi and killed him, and some of their blows struck the king's body. The new king then had those men executed, and more than seventy families were exterminated. Sima Qian's closing verdict is that his harshness and lack of kindness cost him his life.",
+    "quote": "悼王既葬，太子立，乃使令尹盡誅射吳起而并中王尸者。坐射起而夷宗死者七十餘家。",
+    "in_evidence": true
+   }
+  ],
+  "additions": [],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.2",
+    "lang": "en",
+    "sentence": "Wu Qi was silent for a long time, then said: To you.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ065"
+    ],
+    "scope": "《孫子吳起列傳》吳起部分，田文论功一段（全文已读）",
+    "quote": {
+     "source_id": "S-SJ065",
+     "quote": "起默然良久，曰：「屬之子矣。」"
+    },
+    "fix": "This narrates what Wu Qi did; it is not a claim about what the source records. It matches the source and needs no change."
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.story.1",
+    "problem": "The paragraph goes straight from 'Wu Qi served Marquis Wu' to Tian Wen becoming chief minister. It leaves out the river dialogue and Marquis Wu's response, recorded in between: 'Good', followed by Wu Qi being (re)appointed governor of Xihe with a great reputation. analysis.1 later says Wu Qi had told Marquis Wu that terrain counts for less than virtue, but the body of the article never narrates that episode. Readers lack the context. Suggest adding a sentence to story.1 that briefly tells the 'virtue, not terrain' exchange and its result.",
+    "quote": {
+     "source_id": "S-SJ065",
+     "quote": "若君不修德，舟中之人盡為敵國也。」武侯曰：「善。」（即封）吳起為西河守，甚有聲名。"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "dek",
+    "problem": "The dek ends at 'the ruler grew suspicious and stopped trusting him'. It does not give the immediate outcome in the source: Wu Qi, fearing punishment, left Wei for Chu. The title asks why he left Wei, so the dek can add this half-sentence to close the event. This is not a factual error.",
+    "quote": {
+     "source_id": "S-SJ065",
+     "quote": "吳起懼得罪，遂去，即之楚。"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "The source was read in full. The story's ending and key turns are already covered by the evidence pack, including the added E26–E28. The draft contains no negative source claims ('not recorded / no verification' and the like) that need correcting. The statements in limits and uncertainty_note are accurate. Two points are optional improvements: adding the 'virtue, not terrain' exchange to story.1, and adding Wu Qi's departure for Chu to the dek."
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.2",
+   "lang": "en",
+   "sentence": "Wu Qi was silent for a long time, then said: To you.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ065"
+   ],
+   "scope": "《孫子吳起列傳》吳起部分，田文论功一段（全文已读）",
+   "quote": {
+    "source_id": "S-SJ065",
+    "quote": "起默然良久，曰：「屬之子矣。」"
+   },
+   "fix": "This narrates what Wu Qi did; it is not a claim about what the source records. It matches the source and needs no change.",
+   "unit_status": {
+    "S-SJ065": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.story.1",
+   "problem": "The paragraph goes straight from 'Wu Qi served Marquis Wu' to Tian Wen becoming chief minister. It leaves out the river dialogue and Marquis Wu's response, recorded in between: 'Good', followed by Wu Qi being (re)appointed governor of Xihe with a great reputation. analysis.1 later says Wu Qi had told Marquis Wu that terrain counts for less than virtue, but the body of the article never narrates that episode. Readers lack the context. Suggest adding a sentence to story.1 that briefly tells the 'virtue, not terrain' exchange and its result.",
+   "quote": {
+    "source_id": "S-SJ065",
+    "quote": "若君不修德，舟中之人盡為敵國也。」武侯曰：「善。」（即封）吳起為西河守，甚有聲名。"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "dek",
+   "problem": "The dek ends at 'the ruler grew suspicious and stopped trusting him'. It does not give the immediate outcome in the source: Wu Qi, fearing punishment, left Wei for Chu. The title asks why he left Wei, so the dek can add this half-sentence to close the event. This is not a factual error.",
+   "quote": {
+    "source_id": "S-SJ065",
+    "quote": "吳起懼得罪，遂去，即之楚。"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-SJ065",
+   "outcome": "In Wei, Wu Qi feared punishment after the marquis lost trust in him and left for Chu. There he became chief minister. When King Dao died, the royal clan rose against Wu Qi and killed him, and some of their blows struck the king's body. The new king then had those men executed, and more than seventy families were exterminated. Sima Qian's closing verdict is that his harshness and lack of kindness cost him his life.",
+   "quote": "悼王既葬，太子立，乃使令尹盡誅射吳起而并中王尸者。坐射起而夷宗死者七十餘家。",
+   "in_evidence": true
+  }
+ ],
+ "additions": [],
+ "additions_failed": [],
+ "evidence_sha256": "cb0f9060b5b618c4feb6ad31367759427008a42985053e6e0423978e057e2245",
+ "outcome": "clean",
+ "blocking": []
+}

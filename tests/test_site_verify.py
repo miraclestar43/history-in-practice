@@ -125,7 +125,17 @@ class NewsModule(unittest.TestCase):
         o = frozen(); h = render.email_html(o, "https://x", news=fake_news(), now_iso=self.NOW)
         self.assertEqual(render.news_problems(fake_news(), self.NOW), [])
         self.assertIn('href="#news"', h); self.assertIn('href="#story"', h); self.assertIn('id="news"', h); self.assertIn('id="story"', h)
-        self.assertLess(h.index("虚构新闻0"), h.index('id="story"')); self.assertIn("解读：这是测试。", h); self.assertIn("https://example.org/2", h)
+        self.assertLess(h.index("虚构新闻0"), h.index('id="story"')); self.assertIn("编辑解读：这是测试。", h); self.assertIn("https://example.org/2", h)
+
+    def test_why_line_is_labelled_by_kind_and_never_restates_the_headline(self):
+        # owner feedback 2026-10-31: keep reported fact, a source's judgment and the editor's reading apart; a "why"
+        # that only repeats the headline is dropped, not shown
+        n = fake_news(); n["items"][0].update(why="分析机构认为需求推高了利润。", why_kind="source_judgment")
+        self.assertIn("来源观点：分析机构认为需求推高了利润。", render.email_html(frozen(), "https://x", news=n, now_iso=self.NOW))
+        rep = fake_news(); rep["items"][0].update(headline="刚果（金）埃博拉疫情死亡超过五千人", why="刚果（金）埃博拉疫情死亡超过五千人，值得关注。")
+        self.assertTrue(any("restates" in x for x in render.news_problems(rep, self.NOW)))
+        bad = fake_news(); bad["items"][0]["why_kind"] = "trend"
+        self.assertTrue(any("why_kind" in x for x in render.news_problems(bad, self.NOW)))
 
     def test_stale_degraded_or_unsourced_news_is_replaced_by_a_short_note(self):
         o = frozen()

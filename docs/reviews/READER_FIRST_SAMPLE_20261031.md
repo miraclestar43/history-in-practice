@@ -109,3 +109,60 @@ The checks so far are model checks: the final editor, the deterministic checker 
    - **(b) HS-E41:** 胡适 himself ties the experiment, and the name 《尝试集》, to Dewey's experimentalism. The article presents that framing as the author's inference.
 
 **Next step (needs the owner):** one recorded fix: the chapter citation in `sources` and the end note, and re-attributing analysis.1's "experiment" framing to 胡适's own explanation (HS-E41). After that, one context review.
+
+### Revision 2 completed (owner go-ahead, 2026-10-31 night): admitted
+
+**Status: admitted** (final-editor record `9f9608911724`, content `9dc2863a`, clean context review bound to that text). On the test site it is a recommended sample; revision 1 stays archived with its records.
+
+| | rev 1 | rev 2 as admitted |
+|---|---|---|
+| Chinese | 4,840 chars, ≈15 min | **3,081 chars, ≈10 min** |
+| English | 3,549 words, ≈18 min | **2,216 words, ≈11 min** (accepted by the owner; no rewrite to reach 2,000) |
+
+**What the fix changed (only these sentences and their links):**
+- **Chapters:** the events are cited to chapter 7 《文学革命的结胎时期》, the outcome to chapter 8 《从文学革命到文艺复兴》. This is in the end note, the materials note, the source citation and the read-more title. 唐德刚's note on the abridged, hand-revised and back-translated English draft is limited to chapter 7.
+- **Dewey:** analysis.0 now reports, as 胡适's own statement, that he named 《尝试集》 under the influence of the American philosopher Dewey's experimentalism, with poetry as the part left to test (HS-E41). analysis.1 ("作者推断") now holds only the article's own additions: naming the book in advance as a burden of proof, the written-down retreat, and the low-key publication.
+
+**Root cause of the wrong chapter (in rev 1 too):** the evidence pack's *source title* said "第八章" for every excerpt, so the drafter and the final editor both saw chapter 8. The first verify pass after the fix therefore flagged the correct citation as unsupported (V4-V1, V4-V2). The pack metadata was corrected from the source's chapter headings:
+- The new chapter-heading excerpts are cut verbatim from the source: HS-E42 (chapter 7 heading) and HS-E43 (end of the chapter 7 notes plus the chapter 8 heading).
+- Normalised offsets: chapter 7 starts at 99,581 and chapter 8 at 115,735.
+- Each excerpt label now carries its chapter: 38 excerpts are in chapter 7, and HS-E30, E37 and E40 are in chapter 8.
+- No excerpt's quote, offset or id changed.
+
+The two issues were then rejected, with quotes taken from the corrected pack. A fresh verify had no open issues, the context review was clean, and the text was admitted. Records:
+- `data/local_fixes/hushi_rev2_*`
+- `localfix-attempt-7-4` and `localfix-attempt-7-5`
+- `context-20261031T195747_review.json`
+
+**One note-level point left for a later revision:** the context review notes that "陈独秀随即写了《文学革命论》" is slightly quicker than the source ("在《新青年》的后一期"). A local fix cannot touch admitted text, and this was not worth another demotion.
+
+## 吴起辞婚: reader-feedback revision (owner, 2026-10-31 night)
+
+**The reader's feedback:**
+- The body kept interrupting itself with "作者解释 / 原文没写，本文不补写".
+- Key classical lines and the relationships between people were not explained.
+
+**The owner's request:** a scoped readability revision. Its main line is the marriage test; the 鲁国 and 楚国 parts are kept only as background.
+
+**Drafting rev 2 (by the operator, from the evidence pack only):**
+- **People and the test:**
+  - 公叔 is introduced as 魏相 and the princess as his wife.
+  - The home scene and 武侯's marriage offer are told as the two steps of one test.
+- **Classical lines and judgments:**
+  - 「猜忍」 is translated as 多疑狠厉 and attributed to the accuser.
+  - 田文's answer is explained: a young ruler and an uneasy state, and personal merit against the chief minister's present duty.
+  - 李克's 「贪而好色」 and the servant's 「节廉而自喜名」 are each labelled as that person's judgment.
+- **Removed from the body:**
+  - the process notes (原文没写/本文不补写, 此处录其二, （作者解释）);
+  - the "最刺眼的一笔" verdict;
+  - the boat speech;
+  - the "today" section, so the modern scene now lives only in the question.
+- **Background:** the 鲁国 and 楚国 parts are each cut to one paragraph.
+
+**Checking:**
+- One revision attempt (attempt-4; the three earlier attempts are kept).
+- The final editor fixed 15 precision points, for example: "无人能比" → what 田文 admitted; "除掉" → "赶走" (害/易去); 置相 is appointing, not creating the office; the history's own causal 「故」 is restored.
+- Then two local fixes under the standing rule:
+  1. the English "privileges" (not in 廢公族疏遠者);
+  2. naming 武侯 as the ruler, separating the two princesses, and marking the plan as a plan in Chinese as well as English.
+- Length: zh 2,544 → about 2,200 chars (≈7 min); en 2,438 → about 1,750 words (≈9 min).
