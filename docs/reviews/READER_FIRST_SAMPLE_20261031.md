@@ -162,7 +162,11 @@ The two issues were then rejected, with quotes taken from the corrected pack. A 
 **Checking:**
 - One revision attempt (attempt-4; the three earlier attempts are kept).
 - The final editor fixed 15 precision points, for example: "无人能比" → what 田文 admitted; "除掉" → "赶走" (害/易去); 置相 is appointing, not creating the office; the history's own causal 「故」 is restored.
-- Then two local fixes under the standing rule:
+- Then four recorded local fixes under the standing rule (none is an attempt):
   1. the English "privileges" (not in 廢公族疏遠者);
-  2. naming 武侯 as the ruler, separating the two princesses, and marking the plan as a plan in Chinese as well as English.
-- Length: zh 2,544 → about 2,200 chars (≈7 min); en 2,438 → about 1,750 words (≈9 min).
+  2. naming 武侯 as the ruler, separating the two princesses, and marking the plan as a plan in Chinese as well as English;
+  3. a citation for 武侯's reign;
+  4. the context review's findings, with the excerpts it cut: 「魏文侯既卒，起事其子武侯」 (E27) and the third comparison 「治百官，親萬民，實府庫」 (E28); who was executed after 悼王's burial; and "these are the speakers' judgments, not the historian's verdict" in place of "未另作核验".
+- **Admitted:** record `97da37f91adc`, with a clean context review bound to content `54253159`.
+- **Length:** zh 2,544 → **2,225 chars (≈7 min)**; en 2,438 → **1,777 words (≈9 min)**.
+- **Notes left open (note level):** the English Wey/Wei names; one clumsy clause in the reflection example; the skipped river scene; the dek stops before the outcome.
