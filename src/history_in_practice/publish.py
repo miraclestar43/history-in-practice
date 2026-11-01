@@ -61,6 +61,11 @@ def deadline_at(date: str, tz) -> datetime:
     return datetime.fromisoformat(date).replace(hour=hh, minute=mm, tzinfo=tz)
 
 
+def send_at(date: str, tz) -> datetime:
+    hh, mm = map(int, load_project().get("send_time", "07:30").split(":"))
+    return datetime.fromisoformat(date).replace(hour=hh, minute=mm, tzinfo=tz)
+
+
 def past_deadline(date: str, now: datetime) -> bool:
     """True when `now` (tz-aware, LA) is after the send deadline of `date`."""
     return now > deadline_at(date, now.tzinfo)
@@ -210,6 +215,10 @@ def publish_today(db, runtime, *, date: str | None = None, fetch=site_export.htt
         rep["overdue"] = stale                       # alerted, never sent late
     if past_deadline(date, now) and not db.execute("SELECT 1 FROM edition WHERE edition_date=? AND status='complete'", (date,)).fetchone():
         rep.update(outcome="overdue", reason=f"past the {date} send deadline; nothing scheduled or sent late"); return rep
+    if now < send_at(date, now.tzinfo) and not db.execute(f"SELECT 1 FROM edition WHERE edition_date=? AND status IN {IN_FLIGHT + ('complete',)}",
+                                                          (date,)).fetchone():
+        # launch 2026-11-01: an early run (manual, a catch-up timer) starts nothing -- no schedule, site or email before send_time
+        rep.update(outcome="waiting", reason=f"before the {load_project().get('send_time')} send time ({now.tzinfo}); nothing started"); return rep
     ed = schedule(db, date)
     if not ed:
         rep.update(outcome="skipped", reason=f"no eligible edition for plan position {position(db)} (mix: ~4 China / 3 elsewhere per 7); alert maintainer"); return rep

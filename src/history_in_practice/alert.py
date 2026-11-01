@@ -3,7 +3,7 @@
 Each scheduled job records how it ended under data/health/ (publish_last.json, final_editor.json, nightly_last.json).
 `hip alert` (ExecStopPost of hip-send.service and hip-prepare.service, so it runs whatever the exit code) turns the states
 that need a person into ONE plain-text email to the maintainer -- ALERT_EMAIL in the private runtime env, else
-EMAIL_REPLY_TO (the owner's mailbox) -- never to subscribers. The same problem alerts once per Los Angeles day.
+EMAIL_REPLY_TO (the owner's mailbox) -- never to subscribers. The same problem alerts once per day (project timezone).
 
 Alerted: no eligible edition (skipped); overdue (not sent, never sent late); a partial send; a run still waiting at the
 last retry before the deadline; Claude unavailable or degraded (drafting/final editing paused, no other model is used);
@@ -84,7 +84,7 @@ def run(runtime, now_la, *, source: str, deadline_s_left: float | None = None, d
     key = f"{now_la.date().isoformat()}:{fp}"
     if key in (seen.get("sent") or []):
         return {"alert": "already sent today", "problems": ps}
-    body = ("没事儿多读书 · 维护提醒（" + now_la.strftime("%Y-%m-%d %H:%M") + " 洛杉矶时间，来自 " + source + "）\n\n"
+    body = ("没事儿多读书 · 维护提醒（" + now_la.strftime("%Y-%m-%d %H:%M") + f" {now_la.tzinfo}，来自 " + source + "）\n\n"
             + "\n".join(f"- {p}" for p in ps) + "\n\n查看：bin/hip status ；日志：data/logs/。本邮件只发给维护者。")
     if dry_run:
         return {"alert": "dry run", "problems": ps, "body": body}

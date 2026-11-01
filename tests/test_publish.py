@@ -21,6 +21,9 @@ class PublishFlow(unittest.TestCase):
         os.environ["HIP_DATA_DIR"] = str(t / "data"); os.environ["HIP_CONTENT_DIR"] = str(t / "content")
         from history_in_practice import state, publish, config, render
         self.state, self.publish, self.config, self.render = state, publish, config, render
+        # these tests exercise the original 07:30 / 11:00 Los Angeles schedule; the live config moved to Beijing time
+        self._lp = publish.load_project
+        publish.load_project = lambda: dict(self._lp(), timezone="America/Los_Angeles", send_time="07:30", send_deadline="11:00")
         self.db = state.connect(t / "data" / "s.sqlite")
         self.remote = t / "remote.git"; subprocess.run(["git", "init", "-q", "--bare", str(self.remote)], check=True)
         self.site = t / "site"; self.site.mkdir()
@@ -47,7 +50,15 @@ class PublishFlow(unittest.TestCase):
         return o
 
     def tearDown(self):
+        self.publish.load_project = self._lp
         self.td.cleanup(); os.environ.pop("HIP_DATA_DIR"); os.environ.pop("HIP_CONTENT_DIR")
+
+    def test_a_run_before_send_time_starts_nothing(self):
+        """Launch 2026-11-01: an early run (manual or a catch-up timer) never schedules, publishes or sends before send_time."""
+        rt = self.config.Runtime({"SITE_REPO_PATH": str(self.site), "SITE_PUSH_ENABLED": "true", "SITE_BASE_URL": "https://starhub.vip"}, None)
+        r = self.publish.publish_today(self.db, rt, date="2026-11-02", fetch=self.served(), clock=at("2026-11-02", "07:29"), sleep=self.slept.append)
+        self.assertEqual(r["outcome"], "waiting"); self.assertIn("before the 07:30 send time", r["reason"])
+        self.assertEqual(self.db.execute("SELECT count(*) FROM edition WHERE status='scheduled' OR edition_date='2026-11-02'").fetchone()[0], 0)
 
     def served(self, stale_first=0):
         site, n = self.site, {"i": 0}

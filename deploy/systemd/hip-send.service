@@ -1,10 +1,10 @@
-# Ready for launch; NOT installed or enabled until the owner confirms. Publishes today's scheduled edition:
+# Launched 2026-11-01 (22:08 Asia/Shanghai). Publishes today's scheduled edition:
 # archive -> site export/commit -> verify live JSON (content_sha256) -> email.
 # Requires EMAIL_SEND_ENABLED=true and a complete mail config (recipients,
 # SMTP, From, Reply-To); otherwise it stops before email and exits non-zero.
 # The live check retries with bounded backoff (~22 min, project.json site_wait);
 # if the deploy is still not live it exits 5 (waiting) and hip-send-retry.timer
-# resumes it. Past send_deadline (11:00 LA) or on a later day an unfinished
+# resumes it. Past send_deadline (23:40 Asia/Shanghai) or on a later day an unfinished
 # edition becomes `overdue` (exit 6, alert) and is never sent late.
 # Exit codes: 0 complete, 3 partial, 4 skipped (no approved edition), 5 waiting, 6 overdue.
 [Unit]

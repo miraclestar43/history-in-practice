@@ -12,7 +12,7 @@ BRAND = "没事儿多读书"          # column name (owner decision 2026-10-31, 
 
 
 def dotted(date) -> str:
-    """YYYY-MM-DD (America/Los_Angeles edition date) -> YYYY.MM.DD; empty if the object has no real date."""
+    """YYYY-MM-DD (edition date in the project timezone, Asia/Shanghai since 2026-11-01) -> YYYY.MM.DD; empty if the object has no real date."""
     return str(date).replace("-", ".") if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(date or "")) else ""
 
 
