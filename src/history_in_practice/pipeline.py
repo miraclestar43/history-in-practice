@@ -258,7 +258,8 @@ def prepare(c, db, *, call=None, workdir: Path | None = None, cache: Path | None
     obj.update(schema_version="0.2", edition_id=cid, episode_id=eid, status="checked", edition_date=c.get("planned_date", "unscheduled"),
                category=c["category"], revision=1, correction_note=None, single_basis_disclosed=bool(c.get("single_basis_disclosed")),
                preheader=c.get("preheader", {"zh": obj["dek"]["zh"], "en": obj["dek"]["en"]}),
-               sources=[{"id": sid, "citation": v["title"], "url": v.get("url"), "link_label": "source", "basis": v.get("basis")} for sid, v in pack["sources"].items()],
+               sources=[{"id": sid, "citation": v["title"], "url": v.get("url") if render.web_url(v.get("url")) else None, "link_label": "source", "basis": v.get("basis")}
+                        for sid, v in pack["sources"].items()],
                further_reading=c.get("further_reading", []), episode={k: v for k, v in ep.items() if k not in ("title", "category")})
     for s in obj["sections"]:          # modern scenes cannot quote history: 「」 there is emphasis, not quotation
         for para in s["paras"]:
