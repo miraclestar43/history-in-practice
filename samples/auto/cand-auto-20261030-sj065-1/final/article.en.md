@@ -2,7 +2,7 @@
 
 *Wu Qi held Wei's western frontier at Xihe, and even Tian Wen, chief minister at the time, admitted that his record was the greater. A later chief minister, Gongshu, resented him and wanted to drive him out, so he laid a two-step trap: persuade the ruler to offer Wu Qi a princess in marriage, then bring Wu Qi home to watch Gongshu's own wife, a princess, treat her husband with contempt. Wu Qi declined the marriage, and the ruler grew suspicious and stopped trusting him.*
 
-unscheduled · Ancient China · cand-auto-20261030-sj065-1 rev 2
+unscheduled · Ancient China · cand-auto-20261030-sj065-1 rev 3
 
 ## A Scene in the Chief Minister's House
 

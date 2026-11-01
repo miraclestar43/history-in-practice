@@ -13,6 +13,7 @@ from .config import REPO, data_dir, load_project
 
 PROMPTS = Path(__file__).with_name("prompts")
 _INCLUDE = __import__("re").compile(r"\{\{include:([a-z0-9_]+)\}\}")
+_SLOT = __import__("re").compile(r"\{[\u4e00-\u9fff]+\}")          # a fill-in slot such as {稿件模式} (context_review.md)
 
 
 def load_prompt(name: str) -> str:
@@ -28,8 +29,8 @@ def prompt_files(sent: str) -> list[dict]:
     import hashlib
     out = []
     for p in sorted(PROMPTS.glob("*.md")):
-        body = load_prompt(p.stem)
-        if body.strip() and body.strip() in sent:
+        parts = [x.strip() for x in _SLOT.split(load_prompt(p.stem)) if x.strip()]   # a template matches piece by piece
+        if parts and all(x in sent for x in parts):
             out.append({"file": p.name, "sha256": hashlib.sha256(p.read_bytes()).hexdigest()[:12]})
     return out
 import re as _re

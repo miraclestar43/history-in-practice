@@ -565,6 +565,8 @@ class FinalEditor(unittest.TestCase):
         self.assertIn(self.RULE_ZH, sent["verify"][n])                                       # local-fix re-verification
         final_edit.run_context(CID, call=rec(self.script()))
         self.assertTrue(sent["context"][0].startswith(pipeline.load_prompt("context_review")[:40]))
+        cx = json.loads((out / "context_review.json").read_text())
+        self.assertIn("context_review.md", {f["file"] for c in cx["calls"] for f in c["prompts"] or []})   # templated prompt
 
     def test_owner_revision_path_audits_with_the_same_rules(self):
         from history_in_practice import cli
