@@ -61,7 +61,8 @@ VOICES = ("【当事人】", "【作者】", "【译注】", "【后世评论】
 
 def validate(prop: dict, full: str, cjk: bool, sid: str, prefix: str, taken: list[tuple[int, int]], book: bool = False) -> tuple[list, list]:
     """Mechanical anchor checks. Returns (excerpt spec rows, dropped [{id, reason}]). For book sources every label must
-    name its voice, and 【文学化】 (imagined, novelised) passages are never kept as evidence."""
+    name its voice. 【文学化】 (novelised telling, fable) passages are kept since 2026-11-01: the article must attribute them
+    to the book ("据本书的讲述") and never present them as established fact (editor-in-chief)."""
     rows, dropped, spans = [], [], []
     min_start = 10 if cjk else 25
     for e in prop.get("excerpts") or []:
@@ -71,9 +72,7 @@ def validate(prop: dict, full: str, cjk: bool, sid: str, prefix: str, taken: lis
         if not re.fullmatch(r"E\d+", eid):
             why = "bad id"
         elif book and not label.startswith(VOICES):
-            why = "book excerpt without a voice label (当事人/作者/译注/后世评论)"
-        elif book and label.startswith("【文学化】"):
-            why = "novelised passage: not evidence"
+            why = "book excerpt without a voice label (当事人/作者/译注/后世评论/文学化)"
         elif len(a) < min_start or len(b) < (4 if cjk else 10):
             why = "anchor too short"
         elif full.count(a) != 1:
@@ -251,7 +250,7 @@ def propose(entry: dict, db, *, call=None, cache: Path | None = None, date: str 
                                           offsets=entry["offsets"])
         cand["evidence_notes"] = {"excerpt_locations": locs,
                                   "voices": "labels: 【当事人】 quoted participant / document, 【作者】 the author's narration, 【译注】 translator or "
-                                            "editor note, 【后世评论】 later judgment; 【文学化】 passages were dropped"}
+                                            "editor note, 【后世评论】 later judgment, 【文学化】 the book's novelised telling (attribute it to the book)"}
         cand["further_reading"] = [{"title": entry["title"].split("；")[0], "what": {"zh": "本篇依据的书。", "en": "The book this piece is based on."},
                                     "access": {"zh": "图书（本篇依据书中章节：" + (entry.get("unit_title") or "") + "）",
                                                "en": "Book (chapter used: " + (entry.get("unit_title") or "") + ")"}}]

@@ -1,6 +1,6 @@
 """Book library -> nightly supply (2026-11-01). A real TXT book is ingested (acquired -> usable), cut into chapter units
 (front matter left out), offered to the supply picker before the catalogue, and a model proposal from a unit becomes a
-candidate whose excerpts carry their voice and book location; 【文学化】 passages are dropped; a unit with no complete
+candidate whose excerpts carry their voice and book location; 【文学化】 passages are kept with their voice (2026-11-01); a unit with no complete
 episode is skipped and logged; every attempt records which source it used. The model is a fake."""
 import hashlib, json, os, sys, tempfile, unittest
 from pathlib import Path
@@ -56,11 +56,13 @@ class Library(unittest.TestCase):
         r = supply.propose(pick, self.db, call=call, out_dir=self.out)
         self.assertEqual(r["outcome"], "candidate", (r.get("reason"), r.get("dropped", [])[:3]))
         self.assertIn("【这段原文来自一本书】", seen[0]); self.assertIn("测试书", seen[0])
-        self.assertIn({"id": "E14", "reason": "novelised passage: not evidence"}, r["dropped"])
+        self.assertFalse(any(d["id"] == "E14" for d in r["dropped"]), r["dropped"])  # a novelised telling is kept, labelled
         c = json.loads(Path(r["path"]).read_text())
         self.assertEqual(c["origin"], "book"); self.assertEqual(c["provenance"]["book"]["book_id"], "BK-T")
         locs = c["evidence_notes"]["excerpt_locations"]
-        self.assertTrue(all(v["voice"] == "【作者】" and "offset" in v["book_location"] for v in locs.values()))
+        self.assertTrue(all("offset" in v["book_location"] for v in locs.values()))
+        self.assertEqual(sorted(v["voice"] for v in locs.values()).count("【文学化】"), 1)
+        self.assertTrue(all(v["voice"] in ("【作者】", "【文学化】") for v in locs.values()))
         log = supply.attempts()[-1]
         self.assertEqual((log["source_kind"], log["book_id"], log["unit"]), ("book", "BK-T", pick["unit"]))
         nxt = supply.pick_entry("china_ancient")                                # that unit is now tried: the next one is offered

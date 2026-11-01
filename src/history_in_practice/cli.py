@@ -190,14 +190,14 @@ def _basis(specs) -> dict | None:
 
 def cmd_local_fix(a):
     """Owner rule 2026-10-31: a small, evidence-backed wording/attribution fix of named open final-editor issues, recorded
-    in the same record and re-verified (full verify pass, then context review and admission as usual). Not an attempt:
+    in the same record and re-verified (a verify pass scoped to the changed fields unless --wide, then context review and admission as usual). Not an attempt:
     max_attempts still limits whole-article retries, and no further attempt is started here."""
     from . import final_edit
     d = db(); ops = [dict(zip(("path", "problem"), x.split("|", 1))) for x in a.operator_issue]
     r = final_edit.local_fix(a.edition, d, _load(a.changes) if a.changes else [], a.issue, a.reason, operator_issues=ops,
                              pack_fix=_load(a.pack_fix) if getattr(a, "pack_fix", None) else None,
                              rejections=_load(a.rejections) if getattr(a, "rejections", None) else None,
-                             basis=_basis(getattr(a, "basis", None)))
+                             basis=_basis(getattr(a, "basis", None)), wide=getattr(a, "wide", False))
     res = {"local_fix": {k: r.get(k) for k in ("outcome", "reason", "open_issues", "final_content_sha256", "failure")}}
     # Only the context review of the new text and admission follow. Never a whole-article attempt: on 2026-10-31 handing
     # off to _final_one here started unrequested attempts after a revision's demotion had reset the allowance.
@@ -934,6 +934,7 @@ def main(argv=None):
     p.add_argument("--operator-issue", action="append", default=[], metavar="FIELD_PATH|PROBLEM", help="an owner-instructed wording fix of one field (recorded; basis = the owner instruction)")
     p.add_argument("--basis", action="append", metavar="ISSUE=EVIDENCE_ID:QUOTE",
                    help="verbatim basis for an open issue whose own quote does not match the pack (checked against the pack)")
+    p.add_argument("--wide", action="store_true", help="re-check the whole article (the fix changes the core judgment); default: changed fields only")
     p.add_argument("--reason", required=True); p.set_defaults(f=cmd_local_fix)
     p = sp.add_parser("site-preview", help="TEST preview: add admitted reader samples and dated notices (never emails)")
     p.add_argument("--site-root", required=True); p.add_argument("--sample", action="append", default=[], metavar="EDITION_ID")

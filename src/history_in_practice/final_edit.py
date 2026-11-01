@@ -87,8 +87,7 @@ def _issue_problems(iss, prefix) -> list[str]:
             p.append(f"{prefix}[{k}].category {i.get('category')!r} unknown")
         if i.get("severity") not in ("block", "fix", "note"):
             p.append(f"{prefix}[{k}].severity {i.get('severity')!r} unknown")
-        if i.get("severity") == "note" and i.get("category") not in ("style", "readability"):
-            p.append(f"{prefix}[{k}]: a {i.get('category')} issue cannot be a note")
+        # any category may be a note (editor-in-chief 2026-11-01): only issues that change the main line are fix/block
         if not isinstance(i.get("evidence", []), list):
             p.append(f"{prefix}[{k}].evidence must be a list")
     return p
@@ -598,7 +597,7 @@ LOCAL_FIX_MAX_FIELDS = 4          # per named issue: e.g. one sentence's field i
 
 def local_fix(cid: str, db, changes: list, issue_ids: list[str], reason: str, *, call=None, operator_issues: list[dict] | None = None,
               pack_fix: dict | None = None, rejections: list[dict] | None = None, cache: Path | None = None,
-              basis: dict | None = None) -> dict:
+              basis: dict | None = None, wide: bool = False) -> dict:
     """A recorded *local* fix of open final-editor issues (owner rule 2026-10-31): small, evidence-backed wording or
     attribution corrections, not a whole-article retry. Allowed only for open fix issues of the latest record that carry
     a verifiable evidence quote, for the fix issues of a needs-work context review bound to this exact text (CTX-X<n>,
@@ -607,7 +606,9 @@ def local_fix(cid: str, db, changes: list, issue_ids: list[str], reason: str, *,
     further-reading title; <= LOCAL_FIX_MAX_FIELDS per issue). It may also correct the pack (correct_pack: a source
     title, verbatim cuts; old excerpts unchanged) and reject open issues with quotes verified in the corrected pack. The
     change is appended to the same record's edit log (so admission still replays base -> final), then a fresh full
-    verify pass runs on the exact new text; anything it raises stays open. Runs in localfix-* (not counted as an
+    verify pass runs on the exact new text; anything it raises stays open. That pass reads the whole article but is scoped
+    (editor-in-chief 2026-11-01): fix/block only on the changed fields, or on anything that changes the main line; the rest
+    were already verified (wide=True drops the scope, for a fix that touches the core judgment). Runs in localfix-* (not counted as an
     attempt; attempt counts are untouched). Context review and admission follow as usual."""
     call = call or claude_cli.call
     if call is claude_cli.call:
@@ -705,6 +706,10 @@ def local_fix(cid: str, db, changes: list, issue_ids: list[str], reason: str, *,
          "content_sha256_after": o["content_sha256"]}
     meta = [f"{p} ⟨{editor.ref(o, p)[0][editor.ref(o, p)[1]]}⟩" for p in sorted(fields) if META_FIELD.match(p)]
     extra = ("\n\n【本次局部修正同时改动的来源元数据（请一并核对其与证据包是否一致；有问题记在 uncertainty_note 下）】\n" + "\n".join(meta)) if meta else ""
+    if not wide:
+        extra += ("\n\n【本次核查范围：局部修正后只重查受影响部分】\n本次只改动了这些字段：" + "、".join(sorted({re.sub(r"\.(zh|en)$", "", f) for f in fields if f}))
+                  + "。fields 仍要覆盖全部字段路径，但只对这些字段（中英文）提出 fix/block。其他字段此前已通过核查：除非发现会改变主线的问题"
+                  "（人物关系错误、关键因果错误、引文曲解、严重误导、编造），否则至多记 note。")
     ver = caller(f"verify_r{rnd}", f"{load_prompt('final_verify')}\n\n{_view(o, ev, extra)}\n\n【必须覆盖的字段路径】\n{json.dumps(paths, ensure_ascii=False)}",
                  TIMEOUTS["verify"], "\n\n[Reply with one valid JSON object only, matching the schema.]", validate=verify_schema(paths))
     rec.setdefault("local_fixes", []).append(r["local_fix"] | {"edits": applied})

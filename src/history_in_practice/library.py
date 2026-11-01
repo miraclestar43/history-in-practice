@@ -6,14 +6,15 @@ Levels (a catalogue count is never a count of usable books):
   acquired    the file is on the Pi: pinned repo commit + path, git blob verified, sha256 (data/books/manifest.json)
   readable    parsed: TXT/EPUB text, or a PDF with a real text layer (scans are refused), enough paragraphs
   usable      ingested as a book_file source (source cache + location map) with chapter units: in the supply pool
-  unsuitable  readable or not, but not for this column (reason recorded): scanned, novelised, theory only, ...
+  unsuitable  readable or not, but not for this column (reason recorded): scanned, no text layer, theory only, ...
 
 Public Git keeps only config/books/library.json (metadata, levels, reasons, hashes, unit titles). Book files, parsed
 text and caches stay under data/books and data/source_cache.
 
 Evidence roles: `genre` says what kind of book it is. Candidates label every excerpt with whose voice it is
-(当事人 / 作者 / 译注 / 后世评论 / 文学化); 文学化 passages are never evidence (supply.validate drops them), and a
-book whose genre is `novelised` is never in the pool.
+(当事人 / 作者 / 译注 / 后世评论 / 文学化). Since 2026-11-01 (editor-in-chief) popular history, memoirs, business
+stories, novels and fables are all usable material: articles stay faithful to the book and say what kind of book it is
+("据《明朝那些事儿》的讲述"); a novelised telling is never presented as established fact.
 """
 from __future__ import annotations
 import json, re
@@ -23,7 +24,7 @@ from .config import REPO, data_dir
 
 LIB = REPO / "config/books/library.json"
 LEVELS = ("catalogued", "acquired", "readable", "usable", "unsuitable")
-GENRES = ("memoir", "biography", "scholarly_history", "popular_history", "essay", "letters", "novelised")
+GENRES = ("memoir", "biography", "scholarly_history", "popular_history", "essay", "letters", "business", "novelised", "fable")
 UNIT_MAX = {True: 14000, False: 40000}          # normalised characters per unit (below supply.MAX_WINDOW)
 UNIT_MIN = {True: 2500, False: 6000}
 FRONT = re.compile(r"目录|目錄|序言|自序|序例|前言|后记|後記|出版说明|版权|致谢|致謝|索引|参考文献|參考文獻|附录|附錄|Contents|Preface|Acknowledg|Index|Copyright|Bibliography", re.I)
@@ -147,8 +148,6 @@ def ingest(book_id: str, *, verified: str) -> dict:
     why = readability(b, e.get("language", "zh"))
     if why:
         e.update(level="unsuitable", reason="; ".join(why)); save(lib); return e
-    if e.get("genre") == "novelised":
-        e.update(level="unsuitable", reason="novelised/popular narrative: discovery only, never evidence"); save(lib); return e
     sid = e.get("source_id") or f"S-{book_id}"
     meta = {k: e.get(k) for k in ("title", "author", "translator", "edition", "year", "language", "genre")} | {
         "must_contain": [], "verified": True, "verified_note": verified, "repo": e.get("repo"), "ref": e.get("ref"), "repo_path": e.get("repo_path")}

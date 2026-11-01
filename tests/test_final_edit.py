@@ -125,9 +125,11 @@ class FinalEditor(unittest.TestCase):
         self.assertEqual(len(rec["rounds"]), final_edit.MAX_ROUNDS); self.assertEqual(rec["outcome"], "pending_review"); self.assertFalse(a["admitted"])
         self.assertTrue(any(i.startswith(f"V{final_edit.MAX_ROUNDS}-") for i in rec["open_issues"]))
 
-    def test_note_cannot_hide_a_fact_problem_and_incomplete_coverage_fails(self):
-        bad = {"fields": self.fields()[:-3], "issues": [{"id": "F1", "path": "sections.hook.0", "category": "facts", "severity": "note", "problem": "p"}],
-               "inherited": []}
+    def test_side_fact_may_be_a_note_but_incomplete_coverage_fails(self):
+        note = {"id": "F1", "path": "sections.hook.0", "category": "facts", "severity": "note", "problem": "与主线无关的日期出入"}
+        ok = {"fields": self.fields(), "issues": [note], "inherited": []}
+        self.assertFalse(any("note" in x for x in final_edit.audit_schema(self.paths, [i["id"] for i in self.inh])(ok)))   # 2026-11-01
+        bad = {"fields": self.fields()[:-3], "issues": [note], "inherited": []}
         self.assertTrue(final_edit.audit_schema(self.paths, [i["id"] for i in self.inh])(bad))
         rec, a = self.run_admit(self.script(audit=bad))
         self.assertTrue(rec["failure"].startswith("audit failed")); self.assertEqual(rec["outcome"], "pending_review"); self.assertFalse(a["admitted"])
@@ -369,9 +371,14 @@ class FinalEditor(unittest.TestCase):
         clean = self.script(verify_issues=lambda k: [])
         r = final_edit.local_fix(CID, self.db, [{"path": "sections.hook.0.zh", "text": "改"}], [open_id], "t", call=clean)
         self.assertEqual(r["outcome"], "refused"); self.assertIn("outside the fields", r["reason"])          # only the named field          # only the named field
+        seen = []
+        def spy(prompt, *x, **k):
+            seen.append(prompt); return clean(prompt, *x, **k)
         r = final_edit.local_fix(CID, self.db, [{"path": "sections.story.0.zh", "text": story["zh"] + "（归属已改）"},
-                                                {"path": "sections.story.0.en", "text": story["en"] + " (attribution fixed)"}], [open_id], "t", call=clean)
+                                                {"path": "sections.story.0.en", "text": story["en"] + " (attribution fixed)"}], [open_id], "t", call=spy)
         self.assertEqual(r["outcome"], "admissible", r.get("open_issues")); self.assertEqual(final_edit.attempts_used(CID), n0)
+        scope = seen[-1].split("【本次核查范围", 1)                                   # 2026-11-01: re-check only what changed
+        self.assertEqual(len(scope), 2); self.assertIn("sections.story.0", scope[1]); self.assertNotIn("sections.hook.0", scope[1].split("。")[0])
         self.assertEqual(r["local_fixes"][0]["issues"], [open_id]); self.assertEqual(len(r["local_fixes"][0]["edits"]), 2)
         o = json.loads((out / "article.json").read_text())
         self.assertEqual(final_edit.verify_final_record(o, json.loads((out / "evidence.json").read_text()), r,
@@ -561,8 +568,8 @@ class FinalEditor(unittest.TestCase):
     # every stage that actually writes or judges text -- MiMo draft and English, the MiMo edit rounds, the Claude final
     # audit / revise / verify (also on the owner-authorized revision and local-fix paths) -- and every call records which
     # prompt files it was sent, so a run can show what was loaded rather than what the docs say.
-    RULE_ZH = "【讲清楚：读者优先的写法】"
-    RULE_EN = "[Make it clear: reader-first rules"
+    RULE_ZH = "【栏目方向与讲清楚的写法】"
+    RULE_EN = "[Column direction and reader-first rules"
 
     def _calls(self, path):
         return [json.loads(x) for x in Path(path).read_text().splitlines()]
@@ -626,9 +633,17 @@ class FinalEditor(unittest.TestCase):
         self.assertIn("同一称谓指不同的人", draft)
         self.assertIn("Same title, different people", every["translate_en_long"])
         for name in ("final_audit", "final_verify"):        # sj077-2 validation: an unglossed key line was only a note
-            self.assertIn("引用的关键文言没有在同段讲清意思（第 7 条）", every[name], name)
+            self.assertIn("引用的关键文言没有在同段讲清意思（第 9 条）", every[name], name)
+            self.assertIn("任何类别都可以是 note", every[name], name)            # 2026-11-01: side details do not force rewrites
         for name in ("final_revise", "edit_zh_en"):                                 # fixing must not move backwards
-            self.assertIn("不要恢复初稿或上一轮已经删去的内容", every[name], name)
+            self.assertIn("也不要恢复已经删去的内容", every[name], name)
+        # 2026-11-01 column direction: faithful to the material, not a primary-source audit; novels and fables allowed
+        for name, t in every.items():
+            for old in ("把单一来源写成定论", "只有一个史源时说明这一点", "程序会删去", "有史料记录的具体决策"):
+                self.assertNotIn(old, t, name)
+        for name in ("propose_candidate", "style_zh", "final_audit", "final_verify", "final_revise", "edit_zh_en"):
+            self.assertIn("读有意思的故事，理解人物的选择与处境", every[name], name)
+        self.assertIn("小说", every["propose_book"]); self.assertIn("忠实于所用材料", every["context_review"])
 
     def test_checker_signals_two_paragraph_today_and_a_dek_that_retells_the_opening(self):
         from history_in_practice import checks
