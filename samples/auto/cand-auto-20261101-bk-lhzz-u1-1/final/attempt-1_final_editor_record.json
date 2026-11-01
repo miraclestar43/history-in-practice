@@ -1,0 +1,4040 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-auto-20261101-bk-lhzz-u1-1",
+ "edition_id": "cand-auto-20261101-bk-lhzz-u1-1",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "089fe8a",
+ "started_at": 1793517329.4690313,
+ "base_source": "data/drafts/cand-auto-20261101-bk-lhzz-u1-1/article.json",
+ "base_content_sha256": "2bbd69709cd4ef5e3e299381b4e906724558b5a5cb79ac43223c9819a6189410",
+ "evidence_sha256": "b43091ccc3e80ede76e62e73188bdcc4300b7735f126e1495ccc69accaf8e9f1",
+ "operator_note": null,
+ "model_record_sha256": null,
+ "prior_record_sha256": null,
+ "attempt": "attempt-1",
+ "context_review_sha256": null,
+ "inherited": [
+  {
+   "id": "M1",
+   "model_id": "R1",
+   "source": "mimo-review",
+   "where": "hook.0",
+   "problem": "E9原文称郜云官为“裨將”，稿件写成“副将”。后文E14的“总兵副将等职”是许给降将的官职，同一个“副将”既指郜云官的身份又指许诺的官职，容易写混。另外，E13列出郜云官的名号是“纳王”。“暗中派人联络”中的“派人”，原文也没有写，原文只是“通款於程學啟”。",
+   "suggestion": "改为“守军中的裨将郜云官等人，暗中与城外官军将领程学启通款，请求投降”。"
+  },
+  {
+   "id": "M2",
+   "model_id": "R2",
+   "source": "mimo-review",
+   "where": "context.4",
+   "problem": "E7原文是：李秀成派部将纠合无锡、溧阳、宜兴等处八万余众、千余条船出运河口，他自己率精锐数千据金匮援苏州。稿件写成“李秀成调集八万多人、一千多条船回援苏州”，把部将所部与李秀成亲率的兵力混为一体。",
+   "suggestion": "改为“李秀成派部将纠合八万多人、一千多条船出运河口，自率精锐数千据金匮援苏州”。"
+  },
+  {
+   "id": "M3",
+   "model_id": "R3",
+   "source": "mimo-review",
+   "where": "story.0",
+   "problem": "E10中订约、开条件的主语是“學啟與戈登”二人共同“面訂降約”。稿件写“程学启开出的条件是”，把条件单独归于程学启。后文分析又说“许诺的是程学启”，与证据不符。另外，“押上的信用”一句是解释，放在了record段里。",
+   "suggestion": "改为“程学启和戈登与郜云官等人约定”，并把“押上的信用”一句移到分析段或删去。"
+  },
+  {
+   "id": "M4",
+   "model_id": "R4",
+   "source": "mimo-review",
+   "where": "story.6",
+   "problem": "叙事写到戈登息怒、常胜军继续作战就结束了，全文完全遗漏了E20梁启超对杀降的明确评判：“李文忠於是有慚德矣”，并列出殺降、負約食言、欺戈登三罪。E20还给出了可能的不得已缘由，即“鑒於苗沛霖、李世忠故事”。分析部分专门讨论责任归属，却不引作者本人的定论，反而另立“一种解释”。",
+   "suggestion": "在戈登一段后补一段record，转述E20：梁启超认为此举有三罪，戈登之怒“不亦宜乎”，同时说李鸿章或许鉴于苗沛霖、李世忠旧事而有不得已之处。分析段据此调整。"
+  },
+  {
+   "id": "M5",
+   "model_id": "R5",
+   "source": "mimo-review",
+   "where": "analysis.0",
+   "problem": "“许诺的是程学启”与E10中程学启、戈登共同订约的记载不符。关于戈登为何找李鸿章，稿件自拟了“在戈登和记载者看来”的解释，但E20中梁启超已明确把责任归于李鸿章（負約食言、欺戈登負友人）。稿件把“记载者”的看法写成推测，与原文不符。",
+   "suggestion": "把“许诺的是程学启”改为“当面订约的是程学启和戈登”，删去“记载者看来”的推测，改引E20中梁启超对李鸿章的评判。"
+  },
+  {
+   "id": "M6",
+   "model_id": "R6",
+   "source": "mimo-review",
+   "where": "analysis.1",
+   "problem": "“作者推断”中的“作者”指梁启超还是本文作者，无法分辨；全文“作者”一词兼指两人。“事前却没有人征求他的意见”和“怒火指向绕过他作出的决定”，仅凭一个“聞”字推不出来，读起来却像史实。",
+   "suggestion": "改为“本文推测：‘聞’字暗示戈登可能事后才得知”。删去“没有人征求他的意见”的断言，或改引E20中的“欺戈登負友人”。"
+  },
+  {
+   "id": "M7",
+   "model_id": "R7",
+   "source": "mimo-review",
+   "where": "analysis.2",
+   "problem": "稿件称“书中给出的是一笔控制风险的账”，暗示这是书中唯一的理由。E20中梁启超另外提出了“鑒於苗沛霖、李世忠故事”的可能缘由，稿件没有交代。",
+   "suggestion": "补一句“梁启超在按语中还推测，此举或许是鉴于苗沛霖、李世忠旧事而不得已”。"
+  },
+  {
+   "id": "M8",
+   "model_id": "R8",
+   "source": "mimo-review",
+   "where": "analysis.3",
+   "problem": "“作者提出两种可能的做法”“都是作者的假设”中的“作者”，容易被理解为梁启超；梁启超并没有提出这些做法。",
+   "suggestion": "把这两处“作者”改为“本文”或“笔者”。"
+  },
+  {
+   "id": "M9",
+   "model_id": "R9",
+   "source": "mimo-review",
+   "where": "limits.0",
+   "problem": "“这部书写于事后多年”不在证据包内。“以李鸿章为中心”之外，稿件也没有交代梁启超对此事持批评立场，可能让读者误以为书是为李鸿章辩护。",
+   "suggestion": "删去“写于事后多年”，或注明这一说法出自证据之外。补一句“梁启超本人对杀降持明确批评态度”。"
+  },
+  {
+   "id": "M10",
+   "model_id": "R10",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] “这部书写于事后多年”（证据包无写作时间）",
+   "suggestion": ""
+  },
+  {
+   "id": "M11",
+   "model_id": "R11",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] “程学启开出的条件是……”（E10为程学启与戈登共同订约）",
+   "suggestion": ""
+  },
+  {
+   "id": "M12",
+   "model_id": "R12",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] “李秀成调集八万多人、一千多条船回援苏州”（八万余众为部将纠合，李秀成自率仅精锐数千）",
+   "suggestion": ""
+  },
+  {
+   "id": "M13",
+   "model_id": "R13",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] “事前却没有人征求他的意见”（仅凭“聞”字不能断定）",
+   "suggestion": ""
+  },
+  {
+   "id": "M14",
+   "model_id": "R14",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] “郜云官……暗中派人联络”（原文仅“通款”，未说派人）",
+   "suggestion": ""
+  },
+  {
+   "id": "M15",
+   "model_id": "R15",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] “守军中的副将郜云官”（原文为“裨將”）",
+   "suggestion": ""
+  },
+  {
+   "id": "M16",
+   "model_id": "R16",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[invented_inner_life] “城外的程学启想要的，不只是一扇打开的城门”",
+   "suggestion": ""
+  },
+  {
+   "id": "M17",
+   "model_id": "R17",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[invented_inner_life] “他的怒火指向的，正是那个绕过他作出的决定”",
+   "suggestion": ""
+  },
+  {
+   "id": "M18",
+   "model_id": "R18",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[invented_inner_life] “在戈登和记载者看来，前线将领的许诺代表的是统帅”",
+   "suggestion": ""
+  }
+ ],
+ "contamination": [
+  {
+   "id": "K1",
+   "brief_line": "有記錄的骨架：華爾在上海募兵訓練，因屢以少勝多，被稱為常勝軍（BK-LHZZ-U11-E1）。淮軍初到上海時，西人笑其衣帽粗陋；後來見其將校勇毅、紀律嚴整，常勝軍也開始服從李鴻章節制（BK-LHZZ-U11-E2）。白齊文勒索軍資、毆打楊坊，李鴻章與英領事交涉，把他撤換，由英國將官戈登代領常勝軍，時在同治二年二月（BK-LHZZ-U11-E3）。三月克復太倉、昆山，程學啟功最大，戈登從此更加敬服他（BK-LHZZ-U11-E4）。六月，程學啟與劉銘傳謀復蘇州（BK-LHZZ-U11-E5）。此後蘇州周邊十餘處敵壘被攻破，淮軍威名大振（BK-LHZZ-U11-E6）。李秀成集眾回援蘇州，雙方互有勝敗（BK-LHZZ-U11-E7）。十月十九日，官軍攻破蘇州外郭，李秀成、譚紹洸退入內城死守（BK-LHZZ-U11-E8）。城中糧盡，裨將郜雲官等向程學啟乞降（BK-LHZZ-U11-E9）。程學啟與戈登乘小船到陽澄湖，與郜雲官等當面訂立降約：要求殺李秀成、譚紹洸來獻，許以二品之賞，由戈登作保；郜雲官等不忍加害李秀成，只答應斬譚紹洸（BK-LHZZ-U11-E10）。李秀成察覺後連夜出城（BK-LHZZ-U11-E11）。郜雲官刺殺譚紹洸，開門投降（BK-LHZZ-U11-E12）。降將獻上首級，書中列出八名降將的名銜（BK-LHZZ-U11-E13）。八將在城中仍有部眾十餘萬人；程學啟先前許以總兵、副將等職，他們要求兌現。程學啟認為八人“狼子野心”，將來難以控制，於是與李鴻章密謀，在座艦上設宴，號炮一響，伏兵把八人殺死，又殺餘黨千餘，其餘部眾投降；李鴻章因功加太子少保（BK-LHZZ-U11-E14）。戈登是保人，聽說李鴻章食言，大怒，帶著短槍去找他；李鴻章躲避，不敢回營，幾天後戈登怒氣漸消（BK-LHZZ-U11-E15）。此後戈登所率常勝軍仍與淮軍共同進攻常州一帶（BK-LHZZ-U11-E19）。",
+   "dropped_ids": [
+    "U11-E1",
+    "U11-E10",
+    "U11-E11",
+    "U11-E12",
+    "U11-E13",
+    "U11-E14",
+    "U11-E15",
+    "U11-E19",
+    "U11-E2",
+    "U11-E3",
+    "U11-E4",
+    "U11-E5",
+    "U11-E6",
+    "U11-E7",
+    "U11-E8",
+    "U11-E9"
+   ]
+  },
+  {
+   "id": "K2",
+   "brief_line": "注意：以下摘录的锚点未通过逐字核对，已删除；简报中引用它们的句子也已删除，不得写入相关内容：BK-LHZZ-U11-E16、BK-LHZZ-U11-E17、BK-LHZZ-U11-E20。",
+   "dropped_ids": [
+    "U11-E16",
+    "U11-E17",
+    "U11-E20"
+   ]
+  }
+ ],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.hook.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "原文称郜云官为“裨將”，中文稿写成“副将”。后文“总兵副将等职”是许给降将的官职，同一个“副将”既指身份又指所许官职，读者容易混淆。英文 subordinate commander 与原文一致，但中英不一致。原文还写的是“郜云官等”，稿件丢了“等”。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E9",
+     "quote": "其裨將郜云官等，猜疑攜貳，遂通款於程學啟，乞降"
+    }
+   ],
+   "proposed": "改为“守军中的裨将（下级将领）郜云官等人”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文“副将”改为“下级将领”，避免与后文所许官职“副将”混淆，并与英文 subordinate commanders 一致；补回“等人”，英文同步写作 Gao Yunguan and other subordinate commanders。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.hook.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "原文只写“通款於程學啟”，没有写郜云官派人。中文“暗中派人联络”与英文 sent word 都补出了原文没有的细节。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E9",
+     "quote": "遂通款於程學啟，乞降"
+    }
+   ],
+   "proposed": "中文改为“暗中与城外的官军将领程学启通款，请求投降”；英文改为“secretly made overtures to Cheng Xueqi … offering to surrender”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“派人”和 sent word，中文改为“通款”，英文改为 made overtures；同时去掉证据未写的“暗中”/secretly，使中英一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.hook.0",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "英文加了公历年份“(1863)”。证据包没有这一年份，中文稿也没有，中英不一致。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E8",
+     "quote": "十月十九日（二年）"
+    }
+   ],
+   "proposed": "删去英文的“(1863)”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去英文中证据包没有的公历年份 (1863)，中英一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.hook.1",
+   "category": "inner_life",
+   "severity": "fix",
+   "problem": "“城外的程学启想要的，不只是一扇打开的城门”和英文 Cheng Xueqi wanted more than an open gate，都把程学启的意图当作事实来写，证据中没有这一说法。",
+   "evidence": [],
+   "proposed": "删去这半句，中文直接从“城里的郜云官要拿什么来换……”写起，英文同步删去。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去关于程学启意图的无据断言，中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.hook.0",
+   "category": "readability",
+   "severity": "note",
+   "problem": "开头一段连续出现李秀成、谭绍洸、郜云官、程学启四个人名，并带年号日期。读者此刻只需要知道“城里一名下级将领想向城外官军将领投降”。",
+   "evidence": [],
+   "proposed": "可只保留郜云官、程学启两个名字，守将用“城中守将”概称，名字留到 context.4 再交代；不增加其他内容。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F6",
+   "path": "sections.context.1",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "英文“Li turned to the men around him”只用姓氏“Li”。前文 hook 已出现 Li Xiucheng，读者分不清这里的 Li 指李鸿章还是李秀成。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E2",
+     "quote": "鴻章徐語左右曰"
+    }
+   ],
+   "proposed": "改为“Li Hongzhang turned to the men around him”。全文统一用 Li Hongzhang 与 Li Xiucheng 两个全称。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文 Li 改为 Li Hongzhang，避免与 Li Xiucheng 混淆；中文未改，按规则附上原文。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F7",
+   "path": "sections.context.1",
+   "category": "readability",
+   "severity": "note",
+   "problem": "context 前两段讲华尔建军和淮军衣帽受嘲，离主线较远。降约的关键人物戈登要到 context.2 才出场。",
+   "evidence": [],
+   "proposed": "可考虑压缩衣帽一段，只保留“常胜军后来服从李鸿章调度”这一点；不另加背景。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F8",
+   "path": "sections.context.2",
+   "category": "readability",
+   "severity": "note",
+   "problem": "英文“the second month of the same year”中的 same year 在本段没有明确所指。末句“也就是说，戈登是在……之后才接手”只是重复前句。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E3",
+     "quote": "時同治二年二月也"
+    }
+   ],
+   "proposed": "英文改为“the second month of the second year of the Tongzhi reign”；末句可删去，中英同步。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F9",
+   "path": "sections.context.4",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "原文是李秀成派部将纠合八万余众、千余只船出运河口，他自己只率精锐数千据金匮援苏州。稿件写成李秀成本人调集八万多人回援，把两支兵力混为一体。英文同样有误。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E7",
+     "quote": "使其部將糾合無錫、溧陽、宜興等處眾八萬餘，船千餘只，出運河口，而自率精銳數千，據金匱援蘇州"
+    }
+   ],
+   "proposed": "改为“李秀成派部将纠合八万多人、一千多条船出运河口，自己率精锐数千人据金匮，回援苏州”，英文同步修改。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "按原文分开两路兵力：部将纠合八万余众、千余只船出运河口，李秀成自率精锐数千据金匮援苏州。中英同步；英文数字改用文字，避免与中文数字形式不一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F10",
+   "path": "sections.story.0",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "原文是程学启与戈登二人一同与郜云官等“面訂降約”，条件也出自这次共同订约。稿件写“程学启开出的条件是”，英文写 Cheng's terms，都把条件单独归于程学启。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E10",
+     "quote": "於是學啟與戈登親乘輕舸造城北之陽澄湖，與雲官等面訂降約"
+    },
+    {
+     "id": "BK-LHZZ-U11-E10",
+     "quote": "使殺秀成、紹洸以獻，許以二品之賞"
+    }
+   ],
+   "proposed": "改为“双方约定的条件是”，英文改为“The terms agreed were these”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "“程学启开出的条件”改为“双方约定的条件”，英文改为 The terms agreed。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F11",
+   "path": "sections.story.0",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "record 段末句“不只是程学启的许诺，还有一位外国将领押上的信用”是作者的解释，没有标明，却写在记录段里。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E10",
+     "quote": "戈登爲之保人，故云官等不疑"
+    }
+   ],
+   "proposed": "改为照实转述原文因果：“按梁启超的写法，降将肯信这份约，是因为戈登作保。”“押上的信用”一类解释移入 analysis 或删去，英文同步。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“外国将领押上的信用”这一解释，改为照实转述梁启超的因果：降将肯信，是因为戈登作保。中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F12",
+   "path": "sections.story.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "英文对“二品之賞”加了注释 near the top of the official hierarchy，这一说法不在证据包内，中文也没有，中英不一致。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E10",
+     "quote": "許以二品之賞"
+    }
+   ],
+   "proposed": "删去“near the top of the official hierarchy”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去英文中证据外的 near the top of the official hierarchy。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F13",
+   "path": "sections.story.0",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文把译文放进引号，写成 follows immediately with the line \"...\"，看起来像原文。读者看不出这是译述。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E10",
+     "quote": "戈登爲之保人，故云官等不疑"
+    }
+   ],
+   "proposed": "改为“Liang's next line, rendered in English, is that Gordon stood as their guarantor, and so…”，或去掉引号改为转述。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文去掉引号，标明 in translation 并改为转述。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F14",
+   "path": "sections.story.1",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文“Liang writes: \"But in the end…\"”把译文当作原文引语呈现。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E10",
+     "quote": "然卒不忍害秀成，乃許斬紹洸而別"
+    }
+   ],
+   "proposed": "改为“In Liang's words, as translated here, …”，或改为不加引号的转述。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文改为不加引号的转述 Liang writes that…；中文未改，按规则附上原文。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F15",
+   "path": "sections.story.4",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文“\"menacing\"”“\"asked that the agreement be honoured\"”都是译文，却以原文引语的形式出现。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E14",
+     "quote": "聲勢洶洶"
+    },
+    {
+     "id": "BK-LHZZ-U11-E14",
+     "quote": "至是求如約"
+    }
+   ],
+   "proposed": "去掉引号改为转述，或注明 in translation。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文去掉 menacing 和 asked that the agreement be honoured 的引号，改为转述。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F16",
+   "path": "sections.story.5",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文两处引号内都是译文（wolf cubs…、At the sound of the signal gun…），读者看不出是译述。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E14",
+     "quote": "謂狼子野心，恐後不可制"
+    },
+    {
+     "id": "BK-LHZZ-U11-E14",
+     "quote": "號炮一響，伏兵起而駢戮之"
+    }
+   ],
+   "proposed": "首处加“in translation”，或改为不加引号的转述。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文第一处标明 in translation 并去引号，第二处改为不加引号的转述；中文未改，按规则附上原文。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F17",
+   "path": "sections.story.6",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文三处引号内都是译文（when he heard…、took a pistol…、Hongzhang kept out of his way…），以原文引语形式出现。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E15",
+     "quote": "至是聞鴻章之食言也，大怒"
+    }
+   ],
+   "proposed": "标明为译述，如“Liang writes, in effect, that…”，或去掉引号。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文三处引号译文全部改为 Liang writes, in effect, that… 引出的转述。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F18",
+   "path": "sections.story.4",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "「聲勢洶洶」在本段没有用白话讲清意思，后文 analysis.2 又把它当作杀降理由之一。不符合第 7 条。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E14",
+     "quote": "聲勢洶洶"
+    }
+   ],
+   "proposed": "在引语后加“意思是来势汹汹、气势逼人”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "在「聲勢洶洶」后加白话释义“来势汹汹、气势逼人”，英文同步补足释义。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F19",
+   "path": "sections.story.3",
+   "category": "readability",
+   "severity": "note",
+   "problem": "八个降将的名号全部列出，其中大多数人后文不再出现，增加读者负担。",
+   "evidence": [],
+   "proposed": "可只点出郜云官（纳王）和汪有为，其余概括为“四位王、四位天将军，一共八人”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F20",
+   "path": "sections.story.6",
+   "category": "readability",
+   "severity": "note",
+   "problem": "“阳澄湖那条小船上的第三个人”让读者无从知道前两个人是谁。原文只写程学启与戈登乘船去订约。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E10",
+     "quote": "於是學啟與戈登親乘輕舸造城北之陽澄湖"
+    }
+   ],
+   "proposed": "改为“现在回到在阳澄湖为降约作保的戈登”，英文同步。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F21",
+   "path": "sections.story.6",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "全文写到戈登息怒、常胜军续战就结束，遗漏了梁启超按语对杀降的明确评判（三罪），以及他说的可能不得已的缘由。这会改变读者对结局的判断。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E20",
+     "quote": "李文忠於是有慚德矣"
+    },
+    {
+     "id": "BK-LHZZ-U11-E20",
+     "quote": "殺降背公理一也，負約食言二也，欺戈登負友人三也"
+    },
+    {
+     "id": "BK-LHZZ-U11-E20",
+     "quote": "雖彼鑒於苗沛霖、李世忠故事"
+    }
+   ],
+   "proposed": "在戈登息怒后补一两句记录：“梁启超在按语中说，李鸿章因此有愧于德：杀降违背公理，负约食言，欺骗戈登、辜负朋友；戈登如此愤恨也在情理之中。他也说，李鸿章或许是鉴于苗沛霖、李世忠的旧事，有不得已之处。”英文同步。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "在戈登息怒后补入梁启超按语：三罪之评、戈登愤恨在情理之中，以及鉴于苗沛霖、李世忠旧事可能有不得已之处，均写明是梁启超的评价；ev 加入 E20。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F22",
+   "path": "sections.analysis.0",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "“许诺的是程学启，他在湖上开出条件”有误：湖上订约是程学启与戈登共同进行的。单独许以总兵副将等职的是程学启，这一点有据。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E10",
+     "quote": "與雲官等面訂降約"
+    },
+    {
+     "id": "BK-LHZZ-U11-E14",
+     "quote": "程學啟既許以總兵副將等職"
+    }
+   ],
+   "proposed": "改为“湖上与降将订约的是程学启和戈登，许以总兵副将等职的是程学启”，英文同步。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "改为湖上订约者是程学启和戈登，许以总兵、副将等职者是程学启。中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F23",
+   "path": "sections.analysis.0",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "稿件把“记载者”的看法写成推测（在戈登和记载者看来），但梁启超在按语中已明确把负约食言、欺戈登的责任归于李鸿章。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E20",
+     "quote": "殺降背公理一也，負約食言二也，欺戈登負友人三也"
+    },
+    {
+     "id": "BK-LHZZ-U11-E15",
+     "quote": "至是聞鴻章之食言也，大怒"
+    }
+   ],
+   "proposed": "改为“梁启超自己把这笔账记在李鸿章名下。一种解释是，在戈登看来，前线将领的许诺代表的是统帅……”，英文同步。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "写明梁启超自己把责任记在李鸿章名下，“一种解释”只保留对戈登看法的推测；ev 加入 E20。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F24",
+   "path": "sections.analysis.1",
+   "category": "inner_life",
+   "severity": "fix",
+   "problem": "“作者推断”中的“作者”分不清指梁启超还是本文作者。“事前却没有人征求他的意见”仅凭“聞”字推不出。“他的怒火指向的，正是那个绕过他作出的决定”写成了事实。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E15",
+     "quote": "至是聞鴻章之食言也，大怒"
+    },
+    {
+     "id": "BK-LHZZ-U11-E20",
+     "quote": "欺戈登負友人三也"
+    }
+   ],
+   "proposed": "改为“本文推测：‘聞’字表明戈登是听说此事的，他作保的话随降将被杀而落空；梁启超也把这件事算作‘欺戈登’。”删去“没有人征求他的意见”和“怒火指向”的断言，英文同步。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "“作者推断”改为“本文推测”；删去“没有人征求他的意见”和“怒火指向”的断言；补上梁启超把此事算作「欺戈登」；ev 加入 E20。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F25",
+   "path": "sections.analysis.2",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“梁启超没有把杀降和这一点联系起来”是对完整来源写了什么、没写什么的断言，而本文只依据证据包。",
+   "evidence": [],
+   "proposed": "改为“本文不把这一点当作杀降的理由”，英文改为“this article does not treat it as a reason for the killings”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "关于梁启超未作联系的来源断言，改为本文的立场：“本文不把这一点当作杀降的理由”。中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F26",
+   "path": "sections.analysis.2",
+   "category": "causality",
+   "severity": "fix",
+   "problem": "“书中给出的是一笔控制风险的账”暗示这是书中唯一的理由。梁启超在按语中另外提出，李鸿章此举或许是鉴于苗沛霖、李世忠旧事而不得已。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E20",
+     "quote": "雖彼鑒於苗沛霖、李世忠故事"
+    }
+   ],
+   "proposed": "补一句：“梁启超在按语里还说，李鸿章或许是鉴于苗沛霖、李世忠的旧事，有不得已之处。”英文同步。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "补入梁启超按语中可能“不得已”的另一缘由；ev 加入 E20。中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F27",
+   "path": "sections.analysis.3",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“书中没有写两人怎样修复关系”（英文 The book does not say…）是关于完整来源的否定断言，读者理解不需要。",
+   "evidence": [],
+   "proposed": "删去这半句，保留“后来的合作也不能证明这一步做对了……”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“书中没有写两人怎样修复关系”及对应英文。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F28",
+   "path": "sections.analysis.3",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "“作者提出两种可能的做法”“都是作者的假设”中的“作者”容易被理解为梁启超。英文 not anything the record describes 也是关于来源的断言。",
+   "evidence": [],
+   "proposed": "中文两处“作者”改为“本文”；英文末句改为“Both are this article's own hypotheses.”",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "两处“作者”改为“本文”；英文末句改为 Both are this article's own hypotheses.",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F29",
+   "path": "sections.limits.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“这部书写于事后多年”（英文 written many years after the events）不在证据包内。",
+   "evidence": [],
+   "proposed": "删去这半句，英文同步。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去证据外的“写于事后多年”，英文同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F30",
+   "path": "sections.limits.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“两者是什么关系，书中没有交代”（英文 The book does not explain…）是关于完整来源的否定断言。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E10",
+     "quote": "許以二品之賞"
+    },
+    {
+     "id": "BK-LHZZ-U11-E14",
+     "quote": "程學啟既許以總兵副將等職"
+    }
+   ],
+   "proposed": "改为“本文无法判断两者的关系”，英文改为“this article cannot determine how the two relate”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "关于来源的否定断言改为“本文无法判断两者的关系”，英文同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "M1",
+   "problem": "E9原文称郜云官为“裨將”，稿件写成“副将”。后文E14的“总兵副将等职”是许给降将的官职，同一个“副将”既指郜云官的身份又指许诺的官职，容易写混。另外，E13列出郜云官的名号是“纳王”。“暗中派人联络”中的“派人”，原文也没有写，原文只是“通款於程學啟”。",
+   "origin": "inherited mimo-review R1",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "hook.0",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "“副将”应为“裨將”，问题成立；“派人”一点另见 F2。"
+  },
+  {
+   "id": "M2",
+   "problem": "E7原文是：李秀成派部将纠合无锡、溧阳、宜兴等处八万余众、千余条船出运河口，他自己率精锐数千据金匮援苏州。稿件写成“李秀成调集八万多人、一千多条船回援苏州”，把部将所部与李秀成亲率的兵力混为一体。",
+   "origin": "inherited mimo-review R2",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "context.4",
+   "disposition": "duplicate",
+   "same_as": "F9",
+   "rationale": "八万余众是部将纠合的，李秀成自率的只有精锐数千。"
+  },
+  {
+   "id": "M3",
+   "problem": "E10中订约、开条件的主语是“學啟與戈登”二人共同“面訂降約”。稿件写“程学启开出的条件是”，把条件单独归于程学启。后文分析又说“许诺的是程学启”，与证据不符。另外，“押上的信用”一句是解释，放在了record段里。",
+   "origin": "inherited mimo-review R3",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "story.0",
+   "disposition": "duplicate",
+   "same_as": "F10",
+   "rationale": "订约是程学启与戈登共同进行的；record 段中的解释另见 F11。"
+  },
+  {
+   "id": "M4",
+   "problem": "叙事写到戈登息怒、常胜军继续作战就结束了，全文完全遗漏了E20梁启超对杀降的明确评判：“李文忠於是有慚德矣”，并列出殺降、負約食言、欺戈登三罪。E20还给出了可能的不得已缘由，即“鑒於苗沛霖、李世忠故事”。分析部分专门讨论责任归属，却不引作者本人的定论，反而另立“一种解释”。",
+   "origin": "inherited mimo-review R4",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "story.6",
+   "disposition": "duplicate",
+   "same_as": "F21",
+   "rationale": "E20 在本证据包内，梁启超对杀降的评判和不得已之说都会影响读者判断，正文遗漏了。"
+  },
+  {
+   "id": "M5",
+   "problem": "“许诺的是程学启”与E10中程学启、戈登共同订约的记载不符。关于戈登为何找李鸿章，稿件自拟了“在戈登和记载者看来”的解释，但E20中梁启超已明确把责任归于李鸿章（負約食言、欺戈登負友人）。稿件把“记载者”的看法写成推测，与原文不符。",
+   "origin": "inherited mimo-review R5",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "analysis.0",
+   "disposition": "duplicate",
+   "same_as": "F22",
+   "rationale": "湖上订约属共同行为，问题成立；但许以总兵副将等职的确是程学启（E14），这一部分有据。“记载者”一点另见 F23。"
+  },
+  {
+   "id": "M6",
+   "problem": "“作者推断”中的“作者”指梁启超还是本文作者，无法分辨；全文“作者”一词兼指两人。“事前却没有人征求他的意见”和“怒火指向绕过他作出的决定”，仅凭一个“聞”字推不出来，读起来却像史实。",
+   "origin": "inherited mimo-review R6",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "analysis.1",
+   "disposition": "duplicate",
+   "same_as": "F24",
+   "rationale": "“作者”指代不清，推断超出“聞”字所能支持的范围。"
+  },
+  {
+   "id": "M7",
+   "problem": "稿件称“书中给出的是一笔控制风险的账”，暗示这是书中唯一的理由。E20中梁启超另外提出了“鑒於苗沛霖、李世忠故事”的可能缘由，稿件没有交代。",
+   "origin": "inherited mimo-review R7",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "analysis.2",
+   "disposition": "duplicate",
+   "same_as": "F26",
+   "rationale": "梁启超另给出了苗沛霖、李世忠旧事这一可能缘由。"
+  },
+  {
+   "id": "M8",
+   "problem": "“作者提出两种可能的做法”“都是作者的假设”中的“作者”，容易被理解为梁启超；梁启超并没有提出这些做法。",
+   "origin": "inherited mimo-review R8",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "analysis.3",
+   "disposition": "duplicate",
+   "same_as": "F28",
+   "rationale": "“作者”易被误认为梁启超。"
+  },
+  {
+   "id": "M9",
+   "problem": "“这部书写于事后多年”不在证据包内。“以李鸿章为中心”之外，稿件也没有交代梁启超对此事持批评立场，可能让读者误以为书是为李鸿章辩护。",
+   "origin": "inherited mimo-review R9",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "limits.0",
+   "disposition": "duplicate",
+   "same_as": "F29",
+   "rationale": "“写于事后多年”无据，问题成立。梁启超的批评立场按 F21 在正文补入即可，limits 不必另加。"
+  },
+  {
+   "id": "M10",
+   "problem": "[unsupported_claims] “这部书写于事后多年”（证据包无写作时间）",
+   "origin": "inherited mimo-review R10",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F29",
+   "rationale": "与 M9 同一问题。"
+  },
+  {
+   "id": "M11",
+   "problem": "[unsupported_claims] “程学启开出的条件是……”（E10为程学启与戈登共同订约）",
+   "origin": "inherited mimo-review R11",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F10",
+   "rationale": "条件出自共同订约。"
+  },
+  {
+   "id": "M12",
+   "problem": "[unsupported_claims] “李秀成调集八万多人、一千多条船回援苏州”（八万余众为部将纠合，李秀成自率仅精锐数千）",
+   "origin": "inherited mimo-review R12",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F9",
+   "rationale": "与 M2 同一问题。"
+  },
+  {
+   "id": "M13",
+   "problem": "[unsupported_claims] “事前却没有人征求他的意见”（仅凭“聞”字不能断定）",
+   "origin": "inherited mimo-review R13",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F24",
+   "rationale": "仅凭“聞”字推不出事前无人征求他的意见。"
+  },
+  {
+   "id": "M14",
+   "problem": "[unsupported_claims] “郜云官……暗中派人联络”（原文仅“通款”，未说派人）",
+   "origin": "inherited mimo-review R14",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F2",
+   "rationale": "原文只写“通款”，没有写派人。"
+  },
+  {
+   "id": "M15",
+   "problem": "[unsupported_claims] “守军中的副将郜云官”（原文为“裨將”）",
+   "origin": "inherited mimo-review R15",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "原文为“裨將”。"
+  },
+  {
+   "id": "M16",
+   "problem": "[invented_inner_life] “城外的程学启想要的，不只是一扇打开的城门”",
+   "origin": "inherited mimo-review R16",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F4",
+   "rationale": "程学启的意图无证据支持。"
+  },
+  {
+   "id": "M17",
+   "problem": "[invented_inner_life] “他的怒火指向的，正是那个绕过他作出的决定”",
+   "origin": "inherited mimo-review R17",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F24",
+   "rationale": "把戈登怒火的指向当作事实来写。"
+  },
+  {
+   "id": "M18",
+   "problem": "[invented_inner_life] “在戈登和记载者看来，前线将领的许诺代表的是统帅”",
+   "origin": "inherited mimo-review R18",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F23",
+   "rationale": "戈登的看法已标为“一种解释是”，可以保留；但“记载者”的看法在 E20 中有明确评判，不应再写成推测。"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.context.1",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文把李鸿章那句话的英译放进引号，读起来像是原话。其他段落都标明了 in translation，这里没有标。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E2",
+     "quote": "軍之良窳，豈在服制耶？"
+    }
+   ],
+   "proposed": "英文改为转述：Li Hongzhang asked the men around him, in effect, whether an army's quality was to be judged by its uniforms. 中文不改。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "英文去掉引号，把李鸿章的反问改为 in effect 转述，避免冒充原话；中文原引语逐字有据，未改。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V2",
+   "path": "sections.story.6",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“阳澄湖那条小船上的第三个人”与证据不符。乘小船去阳澄湖的只有程学启和戈登，证据没有说船上有第三人，这个说法会让读者误解当时的场面和人物。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E10",
+     "quote": "學啟與戈登親乘輕舸造城北之陽澄湖"
+    }
+   ],
+   "proposed": "中文改为“现在回到阳澄湖订约时的保人戈登。”英文改为 Now return to Gordon, the guarantor of the pact made on Yangcheng Lake.",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "删去“小船上的第三个人”的说法。乘船去阳澄湖的只有程学启和戈登。现改为戈登是阳澄湖降约的保人，中英同步。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V3",
+   "path": "sections.story.6",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "转述梁启超的按语时，只写到“或许有不得已之处”就结束了。原文是“虽……而……”的让步句式，落点是批评李鸿章平生好用小智小术。只保留让步的一半，会削弱梁启超的评判，改变读者对结局的看法。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E20",
+     "quote": "雖彼鑒於苗沛霖、李世忠故事，其個或有所大不得已者存，而文忠生平好用小智小術，亦可以見其概矣。"
+    }
+   ],
+   "proposed": "末尾补一句。中文：“但他随即说，从这件事也可以看出李鸿章平生喜欢用小聪明、小手段。”英文：But he concludes that the episode also shows Li Hongzhang's lifelong fondness for petty cleverness and small tricks.",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "按梁启超“虽……而……”的句式，补出他按语的落点：从这件事可见李鸿章平生好用小智小术。中英同步。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V4",
+   "path": "sections.analysis.2",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "本段同样只引了梁启超按语里“不得已”的让步部分，漏掉了他在同一句里对李鸿章“好用小智小术”的批评。分析因此偏向替李鸿章开脱。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E20",
+     "quote": "而文忠生平好用小智小術，亦可以見其概矣"
+    }
+   ],
+   "proposed": "在“有不得已之处”后补“但同一句里他也说，这可见李鸿章平生好用小聪明、小手段”。英文同步补上。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "在“有不得已之处”之后，补上同一句里对李鸿章“好用小智小术”的批评，避免只转述让步的一半。中英同步。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V5",
+   "path": "sections.analysis.2",
+   "category": "causality",
+   "severity": "fix",
+   "problem": "先提示“降将只交出一个首级、李秀成也走了”，暗示这可能是杀降的原因，接着又说本文不把它当理由。证据没有把这一点与杀降联系起来。这样写既暗示了无据的因果，又在正文里露出了审核过程。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E14",
+     "quote": "學啟細察此八人，謂狼子野心，恐後不可制。乃與李鴻章密謀"
+    }
+   ],
+   "proposed": "删去“另有一点可以留意……但本文不把这一点当作杀降的理由。”这两句，英文同步删去。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "删去“只交出一个首级、李秀成也走了”这句暗示性提示，以及“本文不把这一点当作杀降的理由”这句审核式说明。证据给出的理由只有程学启的判断。中英同步。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V6",
+   "path": "sections.analysis.3",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“长远那笔，书中只留下片段”／the book leaves only fragments 是在断言完整来源写了什么、没写什么，而本文看到的只是证据包。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E15",
+     "quote": "數日後，怒漸解，乃止。"
+    }
+   ],
+   "proposed": "中文改为“长远那笔，本文依据的记载只涉及几件事：”，英文改为 Of the longer account, the material this article draws on mentions only a few things:",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "把“书中只留下片段”改为“本文依据的记载只涉及几件事”，不再断言完整来源写了什么、没写什么。中英同步。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "C1-55",
+   "path": "",
+   "category": "unsupported",
+   "severity": "block",
+   "problem": "checker: context[2] English has number(s) [40000] not present in Chinese",
+   "origin": "checker",
+   "disposition": "fixed",
+   "rationale": "英文的 40,000 改为 forty thousand，与中文“四万两”一致，消除只出现在英文里的阿拉伯数字；事实不变。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "C1-56",
+   "path": "",
+   "category": "unsupported",
+   "severity": "block",
+   "problem": "checker: story[4] English has number(s) [100000] not present in Chinese",
+   "origin": "checker",
+   "disposition": "fixed",
+   "rationale": "英文的 100,000 改为 a hundred thousand，与中文“十几万”一致；事实不变。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "C1-57",
+   "path": "",
+   "category": "unsupported",
+   "severity": "block",
+   "problem": "checker: analysis[2] English has number(s) [100000] not present in Chinese",
+   "origin": "checker",
+   "disposition": "fixed",
+   "rationale": "英文的 100,000 改为 a hundred thousand，与中文“十几万”一致；同时去掉英文里冒充原文的引号。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "C1-58",
+   "path": "",
+   "category": "unsupported",
+   "severity": "block",
+   "problem": "checker: limits[0] English has number(s) [100000] not present in Chinese",
+   "origin": "checker",
+   "disposition": "fixed",
+   "rationale": "英文的 100,000 改为 a hundred thousand，与中文“十几万”一致；事实不变。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V2-V1",
+   "path": "sections.story.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "本段写“双方约定的条件是：杀掉李秀成、谭绍洸……”（英文 The terms agreed were these），等于说降将接受了杀两人的条件。原文中这是城外一方提出的要求，降将最后只答应斩谭绍洸。下一段 story.1 又写“约定并没有被全盘接受”，两段前后矛盾。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E10",
+     "quote": "使殺秀成、紹洸以獻，許以二品之賞"
+    },
+    {
+     "id": "BK-LHZZ-U11-E10",
+     "quote": "然卒不忍害秀成，乃許斬紹洸而別"
+    }
+   ],
+   "proposed": "中文改为“城外一方提出的条件是：杀掉李秀成、谭绍洸，把首级献上来；作为交换，许给二品的官赏。”英文改为“The terms put to them were these: …”。",
+   "origin": "final-editor verify round 2"
+  },
+  {
+   "id": "V2-V2",
+   "path": "sections.limits.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“十几万部众、一千多余党等数字，也都只出自这一处记载”（英文 come from this one account alone）是在断言这些数字在全部来源中只有这一处出处，超出了证据包能支持的范围。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E14",
+     "quote": "此八將所部兵在城中者尚十餘萬人"
+    }
+   ],
+   "proposed": "中文改为“十几万部众、一千多余党等数字，都取自这部书，本文未与其他记载核对。”英文改为“The figures … are taken from this book and have not been checked against other records.”",
+   "origin": "final-editor verify round 2"
+  },
+  {
+   "id": "V2-V3",
+   "path": "uncertainty_note",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“相关数字也只有这一个来源”（英文 the figures cited have only this one source）断言这些数字在全部来源中只有一个出处，属于对完整来源的断言。",
+   "evidence": [
+    {
+     "id": "BK-LHZZ-U11-E14",
+     "quote": "此八將所部兵在城中者尚十餘萬人"
+    }
+   ],
+   "proposed": "中文改为“文中数字均取自这部书，未另行核对。”英文改为“the figures cited are taken from this book and have not been checked elsewhere.”",
+   "origin": "final-editor verify round 2"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.hook.0.zh",
+   "before": "同治二年十月，官军已经攻破苏州外郭，守将李秀成、谭绍洸退进内城死守。官军从水陆三面合围，城里粮食吃完了，人心开始动摇。守军中的副将郜云官，暗中派人联络城外的官军将领程学启，请求投降。",
+   "after": "同治二年十月，官军已经攻破苏州外郭，守将李秀成、谭绍洸退进内城死守。官军从水陆三面合围，城里粮食吃完了，人心开始动摇。守军中的下级将领郜云官等人，向城外的官军将领程学启通款，请求投降。",
+   "issues": [
+    "F1",
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.hook.0.en",
+   "before": "In the tenth month of the second year of the Tongzhi reign (1863), government forces had broken through the outer walls of Suzhou. The two commanders defending the city, Li Xiucheng and Tan Shaoguang, fell back into the inner city and held on. The besiegers closed in from three sides, by land and by water. Inside, the food ran out and the garrison's resolve began to waver. Gao Yunguan, one of the defenders' subordinate commanders, secretly sent word to Cheng Xueqi, a general on the government side outside the walls, offering to surrender.",
+   "after": "In the tenth month of the second year of the Tongzhi reign, government forces had broken through the outer walls of Suzhou. The two commanders defending the city, Li Xiucheng and Tan Shaoguang, fell back into the inner city and held on. The besiegers closed in from three sides, by land and by water. Inside, the food ran out and the garrison's resolve began to waver. Gao Yunguan and other subordinate commanders among the defenders made overtures to Cheng Xueqi, a general on the government side outside the walls, offering to surrender.",
+   "issues": [
+    "F1",
+    "F2",
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.hook.1.zh",
+   "before": "投降不是递一句话就完的事。城外的程学启想要的，不只是一扇打开的城门；城里的郜云官要拿什么来换，换回什么，又凭什么相信对方会守约，都得当面谈清楚。这份降约怎么谈、靠什么让人相信，后来成了整件事的关键。",
+   "after": "投降不是递一句话就完的事。城里的郜云官要拿什么来换，换回什么，又凭什么相信对方会守约，都得当面谈清楚。这份降约怎么谈、靠什么让人相信，后来成了整件事的关键。",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "A surrender is not settled with a single message. Cheng Xueqi wanted more than an open gate. Gao Yunguan, for his part, needed to know what he would have to hand over, what he would receive in return, and why he should believe the other side would keep its word. All of it had to be agreed in person. How that pact was negotiated, and what made it believable, became the crux of everything that followed.",
+   "after": "A surrender is not settled with a single message. Gao Yunguan needed to know what he would have to hand over, what he would receive in return, and why he should believe the other side would keep its word. All of it had to be agreed in person. How that pact was negotiated, and what made it believable, became the crux of everything that followed.",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.context.1.en",
+   "before": "When Li Hongzhang's Huai Army first arrived in Shanghai, Westerners laughed behind their hands at the soldiers' rough clothes and caps. Li turned to the men around him and said, \"Is the quality of an army to be judged by its uniforms?\" The rhetorical question was his reply to the mockery. Let them see the banners and drums of our generals, he went on, and they will reach their own verdict. In time the Europeans and Americans saw how brave the Huai officers were and how strict their discipline, and their attitude changed. The Ever-Victorious Army, too, began to accept Li Hongzhang's command.",
+   "after": "When Li Hongzhang's Huai Army first arrived in Shanghai, Westerners laughed behind their hands at the soldiers' rough clothes and caps. Li Hongzhang turned to the men around him and said, \"Is the quality of an army to be judged by its uniforms?\" The rhetorical question was his reply to the mockery. Let them see the banners and drums of our generals, he went on, and they will reach their own verdict. In time the Europeans and Americans saw how brave the Huai officers were and how strict their discipline, and their attitude changed. The Ever-Victorious Army, too, began to accept Li Hongzhang's command.",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.context.4.zh",
+   "before": "李秀成调集八万多人、一千多条船回援苏州，双方连战，互有胜负。十月十九日，李鸿章亲自督军，程学启和戈登担任先锋，苦战后攻破外郭。李秀成和谭绍洸退入内城，死守不屈。",
+   "after": "李秀成派部将纠合无锡、溧阳、宜兴等处八万多人、一千多条船，出运河口；自己率精锐数千人据守金匮，回援苏州。两路互相策应，与官军连战，互有胜负。十月十九日，李鸿章亲自督军，程学启和戈登担任先锋，苦战后攻破外郭。李秀成和谭绍洸退入内城，死守不屈。",
+   "issues": [
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.context.4.en",
+   "before": "Li Xiucheng gathered more than 80,000 men and over a thousand boats to relieve Suzhou, and the two sides clashed repeatedly, each winning some and losing some. On the nineteenth day of the tenth month, with Li Hongzhang directing the attack in person and Cheng Xueqi and Gordon leading the vanguard, the government forces fought their way through the outer walls. Li Xiucheng and Tan Shaoguang withdrew into the inner city and refused to yield.",
+   "after": "Li Xiucheng sent his subordinate commanders to gather more than eighty thousand men from Wuxi, Liyang, Yixing and elsewhere, with over a thousand boats, out to the mouth of the Grand Canal, while he himself took several thousand picked troops to hold Jinkui and relieve Suzhou. The two forces supported each other and clashed repeatedly with the government side, each winning some and losing some. On the nineteenth day of the tenth month, with Li Hongzhang directing the attack in person and Cheng Xueqi and Gordon leading the vanguard, the government forces fought their way through the outer walls. Li Xiucheng and Tan Shaoguang withdrew into the inner city and refused to yield.",
+   "issues": [
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.story.0.zh",
+   "before": "郜云官乞降之后，程学启和戈登亲自乘小船到城北的阳澄湖，与郜云官等人当面订约。程学启开出的条件是：杀掉李秀成、谭绍洸，把首级献上来；作为交换，许给二品的官赏。戈登是这份约定的保人。梁启超紧接着写了一句「戈登爲之保人，故云官等不疑」：因为有戈登作保，郜云官等人才没有疑心。这句话说明了降约靠什么立住：不只是程学启的许诺，还有一位外国将领押上的信用。",
+   "after": "郜云官乞降之后，程学启和戈登亲自乘小船到城北的阳澄湖，与郜云官等人当面订约。双方约定的条件是：杀掉李秀成、谭绍洸，把首级献上来；作为交换，许给二品的官赏。戈登是这份约定的保人。梁启超紧接着写了一句「戈登爲之保人，故云官等不疑」：因为有戈登作保，郜云官等人才没有疑心。按梁启超的写法，降将肯信这份约，靠的是戈登的担保。",
+   "issues": [
+    "F10",
+    "F11"
+   ]
+  },
+  {
+   "path": "sections.story.0.en",
+   "before": "After Gao Yunguan's offer reached him, Cheng Xueqi went with Gordon by small boat to Yangcheng Lake, north of the city, to settle terms face to face with Gao and his fellow commanders. Cheng's terms were these: kill Li Xiucheng and Tan Shaoguang and deliver their heads, and in return receive rewards of the second rank, near the top of the official hierarchy. Gordon acted as guarantor. Liang Qichao follows immediately with the line \"Gordon stood as their guarantor, and so Yunguan and the others had no doubts.\" That sentence shows what the pact rested on: not Cheng's promise alone, but the credit of a foreign commander who had put his name to it.",
+   "after": "After Gao Yunguan's offer reached him, Cheng Xueqi went with Gordon by small boat to Yangcheng Lake, north of the city, to settle terms face to face with Gao and his fellow commanders. The terms agreed were these: kill Li Xiucheng and Tan Shaoguang and deliver their heads, and in return receive rewards of the second rank. Gordon acted as guarantor. Liang's next line, in translation, is that because Gordon stood as their guarantor, Gao Yunguan and the others had no doubts. As Liang tells it, what made the defectors trust the pact was Gordon's guarantee.",
+   "issues": [
+    "F10",
+    "F11",
+    "F12",
+    "F13"
+   ]
+  },
+  {
+   "path": "sections.story.1.en",
+   "before": "The terms were not accepted in full. Liang writes: \"But in the end they could not bear to harm Xiucheng; they agreed only to behead Shaoguang, and so they parted.\" This was a concession within the pact. The men outside the walls had asked for two heads, and the defectors would deliver only one.",
+   "after": "The terms were not accepted in full. Liang writes that in the end Gao Yunguan and the others could not bear to harm Li Xiucheng; they agreed only to behead Tan Shaoguang, and so they parted. This was a concession within the pact. The men outside the walls had asked for two heads, and the defectors would deliver only one.",
+   "issues": [
+    "F14"
+   ]
+  },
+  {
+   "path": "sections.story.4.zh",
+   "before": "城门开了，事情却没有结束。这八人的部下还有十几万人留在城中，梁启超形容为「聲勢洶洶」。程学启先前许过他们总兵、副将等官职，这时八人「求如約」，要求按约兑现。降约的前半段，是降将开门、献首级；现在轮到许诺的一方了。",
+   "after": "城门开了，事情却没有结束。这八人的部下还有十几万人留在城中，梁启超形容为「聲勢洶洶」，意思是来势汹汹、气势逼人。程学启先前许过他们总兵、副将等官职，这时八人「求如約」，要求按约兑现。降约的前半段，是降将开门、献首级；现在轮到许诺的一方了。",
+   "issues": [
+    "F15",
+    "F18"
+   ]
+  },
+  {
+   "path": "sections.story.4.en",
+   "before": "The gates were open, but the matter was not closed. More than 100,000 of these eight men's troops were still inside the city, a force Liang describes as \"menacing.\" Cheng Xueqi had earlier promised the eight posts such as brigade general and deputy general, and now they \"asked that the agreement be honoured.\" The defectors had done their part: they had opened the gates and handed over a head. It was now the turn of the side that had made the promises.",
+   "after": "The gates were open, but the matter was not closed. More than 100,000 of these eight men's troops were still inside the city, a force Liang describes as menacing, pressing and full of threat. Cheng Xueqi had earlier promised the eight posts such as brigade general and deputy general, and now they asked that the agreement be honoured. The defectors had done their part: they had opened the gates and handed over a head. It was now the turn of the side that had made the promises.",
+   "issues": [
+    "F15",
+    "F18"
+   ]
+  },
+  {
+   "path": "sections.story.5.en",
+   "before": "Liang records Cheng Xueqi's judgment of the eight: \"he judged them wolf cubs at heart, and feared they could not be controlled later\", untameably ambitious men who might slip out of his grip. That is the reason the book gives. Cheng then plotted in secret with Li Hongzhang, and the eight were invited to a lavish banquet aboard a ship. \"At the sound of the signal gun, the hidden soldiers rose and killed them all together.\" More than a thousand of their followers who tried to resist were killed as well, and the rest of their troops surrendered. With Suzhou pacified, Li Hongzhang was rewarded with the honorary title Junior Guardian of the Heir Apparent.",
+   "after": "Liang records Cheng Xueqi's judgment of the eight: in translation, he judged them wolf cubs at heart and feared they could not be controlled later, untameably ambitious men who might slip out of his grip. That is the reason the book gives. Cheng then plotted in secret with Li Hongzhang, and the eight were invited to a lavish banquet aboard a ship. When the signal gun sounded, the hidden soldiers rose and killed all eight together. More than a thousand of their followers who tried to resist were killed as well, and the rest of their troops surrendered. With Suzhou pacified, Li Hongzhang was rewarded with the honorary title Junior Guardian of the Heir Apparent.",
+   "issues": [
+    "F16"
+   ]
+  },
+  {
+   "path": "sections.story.6.zh",
+   "before": "现在回到阳澄湖那条小船上的第三个人。八人投降时，戈登是保人。梁启超写他「聞鴻章之食言也，大怒」：听说李鸿章不守诺言，戈登勃然大怒，想杀李鸿章抵罪，「自攜短銃以覓之」，亲自带着短枪去找李鸿章。「鴻章避之，不敢歸營」，李鸿章躲开了，不敢回营。几天后，戈登的怒气渐渐消了，这才作罢。",
+   "after": "现在回到阳澄湖那条小船上的第三个人。八人投降时，戈登是保人。梁启超写他「聞鴻章之食言也，大怒」：听说李鸿章不守诺言，戈登勃然大怒，想杀李鸿章抵罪，「自攜短銃以覓之」，亲自带着短枪去找李鸿章。「鴻章避之，不敢歸營」，李鸿章躲开了，不敢回营。几天后，戈登的怒气渐渐消了，这才作罢。梁启超在按语中评论说，李鸿章因此有愧于德：杀降违背公理，负约食言，欺骗戈登、辜负朋友；戈登如此痛恨，也在情理之中。他同时说，李鸿章或许是鉴于苗沛霖、李世忠的旧事，有不得已之处。",
+   "issues": [
+    "F17",
+    "F21"
+   ]
+  },
+  {
+   "path": "sections.story.6.en",
+   "before": "Now return to the third man in that small boat on Yangcheng Lake. When the eight surrendered, Gordon had been their guarantor. Liang writes that \"when he heard that Hongzhang had broken his word, he was enraged.\" Gordon wanted to kill Li Hongzhang to make him pay, and \"took a pistol himself and went looking for him.\" Then: \"Hongzhang kept out of his way and dared not return to camp.\" After a few days Gordon's anger slowly cooled, and he let the matter drop.",
+   "after": "Now return to the third man in that small boat on Yangcheng Lake. When the eight surrendered, Gordon had been their guarantor. Liang writes, in effect, that when Gordon heard Li Hongzhang had broken his word, he was enraged. Gordon wanted to kill Li Hongzhang to make him pay, and went looking for him with a pistol himself. Li Hongzhang kept out of his way and dared not return to camp. After a few days Gordon's anger slowly cooled, and he let the matter drop. In a note of his own, Liang judges that Li Hongzhang fell short in virtue here: killing men who had surrendered violated public principle, going back on the agreement broke his word, and deceiving Gordon wronged a friend; Gordon's bitter fury, he says, was only fitting. He adds that Li Hongzhang may have had the earlier cases of Miao Peilin and Li Shizhong in mind, and may have acted under some real compulsion.",
+   "issues": [
+    "F17",
+    "F21"
+   ]
+  },
+  {
+   "path": "sections.story.6.ev",
+   "before": [
+    "BK-LHZZ-U11-E15"
+   ],
+   "after": [
+    "BK-LHZZ-U11-E15",
+    "BK-LHZZ-U11-E20"
+   ],
+   "issues": [
+    "F21"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.zh",
+   "before": "把这件事拆开看，降约里有三个角色。许诺的是程学启，他在湖上开出条件；作保的是戈登，书中明说降将「不疑」是因为他；决定不兑现的，是程学启与李鸿章的密谋。值得注意的是，主意出自程学启的判断，戈登去找的却是李鸿章，书里用的词也是“鸿章之食言”。一种解释是：在戈登和记载者看来，前线将领的许诺代表的是统帅；统帅点头杀降，就等于统帅本人食言。许诺可以由前线作出，兑现与否却要由上面来担。",
+   "after": "把这件事拆开看，降约里有三个角色。许诺的是程学启：湖上与降将订约的是他和戈登，许以总兵、副将等职的是他；作保的是戈登，书中明说降将「不疑」是因为他；决定不兑现的，是程学启与李鸿章的密谋。值得注意的是，主意出自程学启的判断，戈登去找的却是李鸿章，书里用的词也是“鸿章之食言”。梁启超自己也把这笔账记在李鸿章名下。一种解释是：在戈登看来，前线将领的许诺代表的是统帅；统帅点头杀降，就等于统帅本人食言。许诺可以由前线作出，兑现与否却要由上面来担。",
+   "issues": [
+    "F22",
+    "F23"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "before": "Take the episode apart and the pact had three roles. Cheng Xueqi made the promise, setting the terms on the lake. Gordon guaranteed it, and the book says plainly that the defectors had \"no doubts\" because of him. The decision not to pay came from the secret plan between Cheng and Li Hongzhang. Yet the idea grew out of Cheng's judgment, while the man Gordon went hunting for was Li Hongzhang, and the book's own phrase is that Hongzhang had broken his word. One reading is that, to Gordon and to the chronicler alike, a field commander's promise spoke for his superior; once the superior agreed to kill men who had surrendered, the broken word was his. Promises may be made at the front, but whether they are kept is answered higher up.",
+   "after": "Take the episode apart and the pact had three roles. Cheng Xueqi made the promise: he and Gordon settled terms with the defectors on the lake, and it was Cheng who promised them posts such as brigade general and deputy general. Gordon guaranteed it, and the book says plainly that the defectors had \"no doubts\" because of him. The decision not to pay came from the secret plan between Cheng and Li Hongzhang. Yet the idea grew out of Cheng's judgment, while the man Gordon went hunting for was Li Hongzhang, and the book's own phrase is that Hongzhang had broken his word. Liang himself, in his note, lays the account at Li Hongzhang's door. One reading is that, to Gordon, a field commander's promise spoke for his superior; once the superior agreed to kill men who had surrendered, the broken word was his. Promises may be made at the front, but whether they are kept is answered higher up.",
+   "issues": [
+    "F22",
+    "F23"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.ev",
+   "before": [
+    "BK-LHZZ-U11-E10",
+    "BK-LHZZ-U11-E14",
+    "BK-LHZZ-U11-E15"
+   ],
+   "after": [
+    "BK-LHZZ-U11-E10",
+    "BK-LHZZ-U11-E14",
+    "BK-LHZZ-U11-E15",
+    "BK-LHZZ-U11-E20"
+   ],
+   "issues": [
+    "F23"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.zh",
+   "before": "第二层是保人的处境。书中写戈登是“聞”，也就是事后听说的。作者推断，他的信用被拿去用了，事前却没有人征求他的意见。降将因为他才不起疑；降将被杀，他作保的那句话也跟着落空。他的怒火指向的，正是那个绕过他作出的决定。",
+   "after": "第二层是保人的处境。书中写戈登是「聞」，本文据此推测，他是事后才听说这件事的。降将因为他才不起疑；降将被杀，他作保的那句话也跟着落空。梁启超也把这件事算作「欺戈登」，即欺骗了戈登。",
+   "issues": [
+    "F24"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.en",
+   "before": "The second layer is the guarantor's position. The book says Gordon \"heard\", that is, he learned of it afterwards. From this one may infer that his credit was put to use without anyone asking him first. The defectors had trusted the pact because of him; when they were killed, his word as guarantor fell with them. His fury was aimed squarely at a decision taken around him.",
+   "after": "The second layer is the guarantor's position. The book says Gordon heard of it; this article infers from that word that he learned of it after the fact. The defectors had trusted the pact because of him; when they were killed, his word as guarantor fell with them. Liang, too, counts the episode as a deception of Gordon.",
+   "issues": [
+    "F24"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.ev",
+   "before": [
+    "BK-LHZZ-U11-E10",
+    "BK-LHZZ-U11-E15"
+   ],
+   "after": [
+    "BK-LHZZ-U11-E10",
+    "BK-LHZZ-U11-E15",
+    "BK-LHZZ-U11-E20"
+   ],
+   "issues": [
+    "F24"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.zh",
+   "before": "第三层是程学启的理由。十几万部众、「聲勢洶洶」、「狼子野心」，书中给出的是一笔控制风险的账。另有一点可以留意：降约原本要两个人的首级，降将只交出一个，李秀成也走了。但梁启超没有把杀降和这一点联系起来，读者不宜替程学启补上这个理由。",
+   "after": "第三层是程学启的理由。十几万部众、「聲勢洶洶」、「狼子野心」，书中给出的是一笔控制风险的账。梁启超在按语里还说，李鸿章或许是鉴于苗沛霖、李世忠的旧事，有不得已之处。另有一点可以留意：降约原本要两个人的首级，降将只交出一个，李秀成也走了。但本文不把这一点当作杀降的理由。",
+   "issues": [
+    "F25",
+    "F26"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.en",
+   "before": "The third layer is Cheng Xueqi's reasoning. More than 100,000 troops, a \"menacing\" presence, men who were \"wolf cubs at heart\": what the book sets out is a calculation about controlling risk. One more detail invites attention. The pact had asked for two heads, the defectors delivered only one, and Li Xiucheng got away. But Liang never links the killings to this, and readers should not supply that reason on Cheng's behalf.",
+   "after": "The third layer is Cheng Xueqi's reasoning. More than 100,000 troops, a \"menacing\" presence, men who were \"wolf cubs at heart\": what the book sets out is a calculation about controlling risk. In his note Liang also says that Li Hongzhang may have had the earlier cases of Miao Peilin and Li Shizhong in mind and acted under some real compulsion. One more detail invites attention. The pact had asked for two heads, the defectors delivered only one, and Li Xiucheng got away. But this article does not treat it as a reason for the killings.",
+   "issues": [
+    "F25",
+    "F26"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.ev",
+   "before": [
+    "BK-LHZZ-U11-E10",
+    "BK-LHZZ-U11-E11",
+    "BK-LHZZ-U11-E14"
+   ],
+   "after": [
+    "BK-LHZZ-U11-E10",
+    "BK-LHZZ-U11-E11",
+    "BK-LHZZ-U11-E14",
+    "BK-LHZZ-U11-E20"
+   ],
+   "issues": [
+    "F26"
+   ]
+  },
+  {
+   "path": "sections.analysis.3.zh",
+   "before": "代价也分两笔。眼前那笔很清楚：苏州到手，李鸿章加衔。长远那笔，书中只留下片段：李鸿章躲了几天，戈登怒气消退，常胜军之后仍与淮军并肩作战。书中没有写两人怎样修复关系，后来的合作也不能证明这一步做对了，只能说明这道裂痕没有让双方当场决裂。如果承诺的风险真的太大，作者提出两种可能的做法：许诺之前先请统帅定好权限，反悔之前先和保人商量。这两种做法都是作者的假设。",
+   "after": "代价也分两笔。眼前那笔很清楚：苏州到手，李鸿章加衔。长远那笔，书中只留下片段：李鸿章躲了几天，戈登怒气消退，常胜军之后仍与淮军并肩作战。后来的合作也不能证明这一步做对了，只能说明这道裂痕没有让双方当场决裂。如果承诺的风险真的太大，本文提出两种可能的做法：许诺之前先请统帅定好权限，反悔之前先和保人商量。这两种做法都是本文的假设。",
+   "issues": [
+    "F27",
+    "F28"
+   ]
+  },
+  {
+   "path": "sections.analysis.3.en",
+   "before": "The costs fall into two accounts. The immediate one is plain: Suzhou was taken and Li Hongzhang received a new title. Of the longer account, the book leaves only fragments. Li Hongzhang stayed out of sight for a few days, Gordon's anger subsided, and the Ever-Victorious Army went on fighting beside the Huai Army. The book does not say how the two men repaired their relationship, and their later cooperation does not prove the decision was right; it shows only that the rift did not break them apart on the spot. If honouring the promise really carried too great a risk, two other courses can be imagined: before promising, agree with the commander-in-chief on the limits of what may be offered; before going back on the promise, consult the guarantor. Both are this article's own hypotheses, not anything the record describes.",
+   "after": "The costs fall into two accounts. The immediate one is plain: Suzhou was taken and Li Hongzhang received a new title. Of the longer account, the book leaves only fragments. Li Hongzhang stayed out of sight for a few days, Gordon's anger subsided, and the Ever-Victorious Army went on fighting beside the Huai Army. Their later cooperation does not prove the decision was right; it shows only that the rift did not break them apart on the spot. If honouring the promise really carried too great a risk, this article suggests two other courses: before promising, agree with the commander-in-chief on the limits of what may be offered; before going back on the promise, consult the guarantor. Both are this article's own hypotheses.",
+   "issues": [
+    "F27",
+    "F28"
+   ]
+  },
+  {
+   "path": "sections.limits.0.zh",
+   "before": "本文只依据梁启超《李鸿章传》一部书。这部书写于事后多年，以李鸿章为中心，降将一方和戈登本人的说法都没有进入证据。许诺的内容有两种说法：湖上订约时是“二品之赏”，城破后降将要求兑现的是“总兵副将等职”，两者是什么关系，书中没有交代。十几万部众、一千多余党等数字，也都只出自这一处记载。",
+   "after": "本文只依据梁启超《李鸿章传》一部书。这部书以李鸿章为中心，降将一方和戈登本人的说法都没有进入证据。许诺的内容有两种说法：湖上订约时是“二品之赏”，城破后降将要求兑现的是“总兵副将等职”，本文无法判断两者的关系。十几万部众、一千多余党等数字，也都只出自这一处记载。",
+   "issues": [
+    "F29",
+    "F30"
+   ]
+  },
+  {
+   "path": "sections.limits.0.en",
+   "before": "This article rests on a single book, Liang Qichao's biography of Li Hongzhang. It was written many years after the events and centres on Li Hongzhang; neither the defectors' version nor Gordon's own account is among the evidence. The promise is also described in two ways: at the lake it was rewards of the second rank, while after the city fell the defectors asked for posts such as brigade general and deputy general. The book does not explain how the two relate. The figures of more than 100,000 troops and more than a thousand followers killed likewise come from this one account alone.",
+   "after": "This article rests on a single book, Liang Qichao's biography of Li Hongzhang. The book centres on Li Hongzhang; neither the defectors' version nor Gordon's own account is among the evidence. The promise is also described in two ways: at the lake it was rewards of the second rank, while after the city fell the defectors asked for posts such as brigade general and deputy general. This article cannot determine how the two relate. The figures of more than 100,000 troops and more than a thousand followers killed likewise come from this one account alone.",
+   "issues": [
+    "F29",
+    "F30"
+   ]
+  },
+  {
+   "path": "sections.context.1.en",
+   "before": "When Li Hongzhang's Huai Army first arrived in Shanghai, Westerners laughed behind their hands at the soldiers' rough clothes and caps. Li Hongzhang turned to the men around him and said, \"Is the quality of an army to be judged by its uniforms?\" The rhetorical question was his reply to the mockery. Let them see the banners and drums of our generals, he went on, and they will reach their own verdict. In time the Europeans and Americans saw how brave the Huai officers were and how strict their discipline, and their attitude changed. The Ever-Victorious Army, too, began to accept Li Hongzhang's command.",
+   "after": "When Li Hongzhang's Huai Army first arrived in Shanghai, Westerners laughed behind their hands at the soldiers' rough clothes and caps. Li Hongzhang asked the men around him, in effect, whether an army's quality was to be judged by its uniforms. The rhetorical question was his reply to the mockery. Let them see the banners and drums of our generals, he went on, and they will reach their own verdict. In time the Europeans and Americans saw how brave the Huai officers were and how strict their discipline, and their attitude changed. The Ever-Victorious Army, too, began to accept Li Hongzhang's command.",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.context.2.en",
+   "before": "After Ward's death, his successor, Burgevine, demanded an enormous sum for military funds from Yang Fang, the circuit intendant, or daotai, of Shanghai. When the money did not come, Burgevine beat Yang Fang and carried off 40,000 taels of silver. Li Hongzhang was furious. He took the matter up with the British consul, had Burgevine removed, and put a British officer, Gordon, in command of the Ever-Victorious Army in his place. That was the second month of the same year. Gordon, in other words, took over the force only after Li Hongzhang had negotiated with the British.",
+   "after": "After Ward's death, his successor, Burgevine, demanded an enormous sum for military funds from Yang Fang, the circuit intendant, or daotai, of Shanghai. When the money did not come, Burgevine beat Yang Fang and carried off forty thousand taels of silver. Li Hongzhang was furious. He took the matter up with the British consul, had Burgevine removed, and put a British officer, Gordon, in command of the Ever-Victorious Army in his place. That was the second month of the same year. Gordon, in other words, took over the force only after Li Hongzhang had negotiated with the British.",
+   "issues": [
+    "C1-55"
+   ]
+  },
+  {
+   "path": "sections.story.4.en",
+   "before": "The gates were open, but the matter was not closed. More than 100,000 of these eight men's troops were still inside the city, a force Liang describes as menacing, pressing and full of threat. Cheng Xueqi had earlier promised the eight posts such as brigade general and deputy general, and now they asked that the agreement be honoured. The defectors had done their part: they had opened the gates and handed over a head. It was now the turn of the side that had made the promises.",
+   "after": "The gates were open, but the matter was not closed. More than a hundred thousand of these eight men's troops were still inside the city, a force Liang describes as menacing, pressing and full of threat. Cheng Xueqi had earlier promised the eight posts such as brigade general and deputy general, and now they asked that the agreement be honoured. The defectors had done their part: they had opened the gates and handed over a head. It was now the turn of the side that had made the promises.",
+   "issues": [
+    "C1-56"
+   ]
+  },
+  {
+   "path": "sections.story.6.zh",
+   "before": "现在回到阳澄湖那条小船上的第三个人。八人投降时，戈登是保人。梁启超写他「聞鴻章之食言也，大怒」：听说李鸿章不守诺言，戈登勃然大怒，想杀李鸿章抵罪，「自攜短銃以覓之」，亲自带着短枪去找李鸿章。「鴻章避之，不敢歸營」，李鸿章躲开了，不敢回营。几天后，戈登的怒气渐渐消了，这才作罢。梁启超在按语中评论说，李鸿章因此有愧于德：杀降违背公理，负约食言，欺骗戈登、辜负朋友；戈登如此痛恨，也在情理之中。他同时说，李鸿章或许是鉴于苗沛霖、李世忠的旧事，有不得已之处。",
+   "after": "现在回到戈登。八人投降时，他正是阳澄湖降约的保人。梁启超写他「聞鴻章之食言也，大怒」：听说李鸿章不守诺言，戈登勃然大怒，想杀李鸿章抵罪，「自攜短銃以覓之」，亲自带着短枪去找李鸿章。「鴻章避之，不敢歸營」，李鸿章躲开了，不敢回营。几天后，戈登的怒气渐渐消了，这才作罢。梁启超在按语中评论说，李鸿章因此有愧于德：杀降违背公理，负约食言，欺骗戈登、辜负朋友；戈登如此痛恨，也在情理之中。他承认李鸿章或许是鉴于苗沛霖、李世忠的旧事，有不得已之处，但随即说，从这件事也可以看出李鸿章平生喜欢用小聪明、小手段。",
+   "issues": [
+    "V1-V2",
+    "V1-V3"
+   ]
+  },
+  {
+   "path": "sections.story.6.en",
+   "before": "Now return to the third man in that small boat on Yangcheng Lake. When the eight surrendered, Gordon had been their guarantor. Liang writes, in effect, that when Gordon heard Li Hongzhang had broken his word, he was enraged. Gordon wanted to kill Li Hongzhang to make him pay, and went looking for him with a pistol himself. Li Hongzhang kept out of his way and dared not return to camp. After a few days Gordon's anger slowly cooled, and he let the matter drop. In a note of his own, Liang judges that Li Hongzhang fell short in virtue here: killing men who had surrendered violated public principle, going back on the agreement broke his word, and deceiving Gordon wronged a friend; Gordon's bitter fury, he says, was only fitting. He adds that Li Hongzhang may have had the earlier cases of Miao Peilin and Li Shizhong in mind, and may have acted under some real compulsion.",
+   "after": "Now return to Gordon. When the eight surrendered, he had been the guarantor of the pact made on Yangcheng Lake. Liang writes, in effect, that when Gordon heard Li Hongzhang had broken his word, he was enraged. Gordon wanted to kill Li Hongzhang to make him pay, and went looking for him with a pistol himself. Li Hongzhang kept out of his way and dared not return to camp. After a few days Gordon's anger slowly cooled, and he let the matter drop. In a note of his own, Liang judges that Li Hongzhang fell short in virtue here: killing men who had surrendered violated public principle, going back on the agreement broke his word, and deceiving Gordon wronged a friend; Gordon's bitter fury, he says, was only fitting. He grants that Li Hongzhang may have had the earlier cases of Miao Peilin and Li Shizhong in mind, and may have acted under some real compulsion, but concludes that the episode also shows Li Hongzhang's lifelong fondness for petty cleverness and small tricks.",
+   "issues": [
+    "V1-V2",
+    "V1-V3"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.zh",
+   "before": "第三层是程学启的理由。十几万部众、「聲勢洶洶」、「狼子野心」，书中给出的是一笔控制风险的账。梁启超在按语里还说，李鸿章或许是鉴于苗沛霖、李世忠的旧事，有不得已之处。另有一点可以留意：降约原本要两个人的首级，降将只交出一个，李秀成也走了。但本文不把这一点当作杀降的理由。",
+   "after": "第三层是程学启的理由。十几万部众、「聲勢洶洶」、「狼子野心」，书中给出的是一笔控制风险的账。梁启超在按语里还说，李鸿章或许是鉴于苗沛霖、李世忠的旧事，有不得已之处；但同一句里他也说，从这件事可见李鸿章平生好用小聪明、小手段。",
+   "issues": [
+    "V1-V4",
+    "V1-V5",
+    "C1-57"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.en",
+   "before": "The third layer is Cheng Xueqi's reasoning. More than 100,000 troops, a \"menacing\" presence, men who were \"wolf cubs at heart\": what the book sets out is a calculation about controlling risk. In his note Liang also says that Li Hongzhang may have had the earlier cases of Miao Peilin and Li Shizhong in mind and acted under some real compulsion. One more detail invites attention. The pact had asked for two heads, the defectors delivered only one, and Li Xiucheng got away. But this article does not treat it as a reason for the killings.",
+   "after": "The third layer is Cheng Xueqi's reasoning. More than a hundred thousand troops, a menacing presence, men he judged wolf cubs at heart: what the book sets out is a calculation about controlling risk. In his note Liang also says that Li Hongzhang may have had the earlier cases of Miao Peilin and Li Shizhong in mind and acted under some real compulsion; but in the same sentence he says the episode shows Li Hongzhang's lifelong fondness for petty cleverness and small tricks.",
+   "issues": [
+    "V1-V4",
+    "V1-V5",
+    "C1-57"
+   ]
+  },
+  {
+   "path": "sections.analysis.3.zh",
+   "before": "代价也分两笔。眼前那笔很清楚：苏州到手，李鸿章加衔。长远那笔，书中只留下片段：李鸿章躲了几天，戈登怒气消退，常胜军之后仍与淮军并肩作战。后来的合作也不能证明这一步做对了，只能说明这道裂痕没有让双方当场决裂。如果承诺的风险真的太大，本文提出两种可能的做法：许诺之前先请统帅定好权限，反悔之前先和保人商量。这两种做法都是本文的假设。",
+   "after": "代价也分两笔。眼前那笔很清楚：苏州到手，李鸿章加衔。长远那笔，本文依据的记载只涉及几件事：李鸿章躲了几天，戈登怒气消退，常胜军之后仍与淮军并肩作战。后来的合作也不能证明这一步做对了，只能说明这道裂痕没有让双方当场决裂。如果承诺的风险真的太大，本文提出两种可能的做法：许诺之前先请统帅定好权限，反悔之前先和保人商量。这两种做法都是本文的假设。",
+   "issues": [
+    "V1-V6"
+   ]
+  },
+  {
+   "path": "sections.analysis.3.en",
+   "before": "The costs fall into two accounts. The immediate one is plain: Suzhou was taken and Li Hongzhang received a new title. Of the longer account, the book leaves only fragments. Li Hongzhang stayed out of sight for a few days, Gordon's anger subsided, and the Ever-Victorious Army went on fighting beside the Huai Army. Their later cooperation does not prove the decision was right; it shows only that the rift did not break them apart on the spot. If honouring the promise really carried too great a risk, this article suggests two other courses: before promising, agree with the commander-in-chief on the limits of what may be offered; before going back on the promise, consult the guarantor. Both are this article's own hypotheses.",
+   "after": "The costs fall into two accounts. The immediate one is plain: Suzhou was taken and Li Hongzhang received a new title. Of the longer account, the material this article draws on mentions only a few things: Li Hongzhang stayed out of sight for a few days, Gordon's anger subsided, and the Ever-Victorious Army went on fighting beside the Huai Army. Their later cooperation does not prove the decision was right; it shows only that the rift did not break them apart on the spot. If honouring the promise really carried too great a risk, this article suggests two other courses: before promising, agree with the commander-in-chief on the limits of what may be offered; before going back on the promise, consult the guarantor. Both are this article's own hypotheses.",
+   "issues": [
+    "V1-V6"
+   ]
+  },
+  {
+   "path": "sections.limits.0.en",
+   "before": "This article rests on a single book, Liang Qichao's biography of Li Hongzhang. The book centres on Li Hongzhang; neither the defectors' version nor Gordon's own account is among the evidence. The promise is also described in two ways: at the lake it was rewards of the second rank, while after the city fell the defectors asked for posts such as brigade general and deputy general. This article cannot determine how the two relate. The figures of more than 100,000 troops and more than a thousand followers killed likewise come from this one account alone.",
+   "after": "This article rests on a single book, Liang Qichao's biography of Li Hongzhang. The book centres on Li Hongzhang; neither the defectors' version nor Gordon's own account is among the evidence. The promise is also described in two ways: at the lake it was rewards of the second rank, while after the city fell the defectors asked for posts such as brigade general and deputy general. This article cannot determine how the two relate. The figures of more than a hundred thousand troops and more than a thousand followers killed likewise come from this one account alone.",
+   "issues": [
+    "C1-58"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F6",
+    "F9",
+    "F10",
+    "F11",
+    "F12",
+    "F13",
+    "F14",
+    "F15",
+    "F16",
+    "F17",
+    "F18",
+    "F21",
+    "F22",
+    "F23",
+    "F24",
+    "F25",
+    "F26",
+    "F27",
+    "F28",
+    "F29",
+    "F30"
+   ],
+   "changes_applied": 29,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "context[2] numbers differ zh[40002] en[40000]"
+    ],
+    [
+     "BLOCK",
+     "context[2] English has number(s) [40000] not present in Chinese"
+    ],
+    [
+     "CHECK",
+     "context[3] numbers differ zh[10000] en[10, 10000]"
+    ],
+    [
+     "CHECK",
+     "context[4] numbers differ zh[19, 1000, 80000] en[80000]"
+    ],
+    [
+     "CHECK",
+     "story[2] numbers differ zh[24, 1000] en[20]"
+    ],
+    [
+     "CHECK",
+     "story[3] numbers differ zh[25] en[20]"
+    ],
+    [
+     "CHECK",
+     "story[4] numbers differ zh[] en[100000]"
+    ],
+    [
+     "BLOCK",
+     "story[4] English has number(s) [100000] not present in Chinese"
+    ],
+    [
+     "CHECK",
+     "story[5] numbers differ zh[1000] en[]"
+    ],
+    [
+     "CHECK",
+     "analysis[2] numbers differ zh[] en[100000]"
+    ],
+    [
+     "BLOCK",
+     "analysis[2] English has number(s) [100000] not present in Chinese"
+    ],
+    [
+     "CHECK",
+     "limits[0] numbers differ zh[1000] en[100000]"
+    ],
+    [
+     "BLOCK",
+     "limits[0] English has number(s) [100000] not present in Chinese"
+    ]
+   ],
+   "content_sha256_after": "a6f8b98128662dcb7daa7cc21445d59ded3bd4d615125b9fc2bee4415c49c982",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2",
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4",
+       "V5"
+      ]
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V6",
+       "V7"
+      ]
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.context.1",
+      "category": "quotes",
+      "severity": "fix",
+      "problem": "英文把李鸿章那句话的英译放进引号，读起来像是原话。其他段落都标明了 in translation，这里没有标。",
+      "evidence": [
+       {
+        "id": "BK-LHZZ-U11-E2",
+        "quote": "軍之良窳，豈在服制耶？"
+       }
+      ],
+      "proposed": "英文改为转述：Li Hongzhang asked the men around him, in effect, whether an army's quality was to be judged by its uniforms. 中文不改。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.story.6",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "“阳澄湖那条小船上的第三个人”与证据不符。乘小船去阳澄湖的只有程学启和戈登，证据没有说船上有第三人，这个说法会让读者误解当时的场面和人物。",
+      "evidence": [
+       {
+        "id": "BK-LHZZ-U11-E10",
+        "quote": "學啟與戈登親乘輕舸造城北之陽澄湖"
+       }
+      ],
+      "proposed": "中文改为“现在回到阳澄湖订约时的保人戈登。”英文改为 Now return to Gordon, the guarantor of the pact made on Yangcheng Lake."
+     },
+     {
+      "id": "V3",
+      "path": "sections.story.6",
+      "category": "attribution",
+      "severity": "fix",
+      "problem": "转述梁启超的按语时，只写到“或许有不得已之处”就结束了。原文是“虽……而……”的让步句式，落点是批评李鸿章平生好用小智小术。只保留让步的一半，会削弱梁启超的评判，改变读者对结局的看法。",
+      "evidence": [
+       {
+        "id": "BK-LHZZ-U11-E20",
+        "quote": "雖彼鑒於苗沛霖、李世忠故事，其個或有所大不得已者存，而文忠生平好用小智小術，亦可以見其概矣。"
+       }
+      ],
+      "proposed": "末尾补一句。中文：“但他随即说，从这件事也可以看出李鸿章平生喜欢用小聪明、小手段。”英文：But he concludes that the episode also shows Li Hongzhang's lifelong fondness for petty cleverness and small tricks."
+     },
+     {
+      "id": "V4",
+      "path": "sections.analysis.2",
+      "category": "attribution",
+      "severity": "fix",
+      "problem": "本段同样只引了梁启超按语里“不得已”的让步部分，漏掉了他在同一句里对李鸿章“好用小智小术”的批评。分析因此偏向替李鸿章开脱。",
+      "evidence": [
+       {
+        "id": "BK-LHZZ-U11-E20",
+        "quote": "而文忠生平好用小智小術，亦可以見其概矣"
+       }
+      ],
+      "proposed": "在“有不得已之处”后补“但同一句里他也说，这可见李鸿章平生好用小聪明、小手段”。英文同步补上。"
+     },
+     {
+      "id": "V5",
+      "path": "sections.analysis.2",
+      "category": "causality",
+      "severity": "fix",
+      "problem": "先提示“降将只交出一个首级、李秀成也走了”，暗示这可能是杀降的原因，接着又说本文不把它当理由。证据没有把这一点与杀降联系起来。这样写既暗示了无据的因果，又在正文里露出了审核过程。",
+      "evidence": [
+       {
+        "id": "BK-LHZZ-U11-E14",
+        "quote": "學啟細察此八人，謂狼子野心，恐後不可制。乃與李鴻章密謀"
+       }
+      ],
+      "proposed": "删去“另有一点可以留意……但本文不把这一点当作杀降的理由。”这两句，英文同步删去。"
+     },
+     {
+      "id": "V6",
+      "path": "sections.analysis.3",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "“长远那笔，书中只留下片段”／the book leaves only fragments 是在断言完整来源写了什么、没写什么，而本文看到的只是证据包。",
+      "evidence": [
+       {
+        "id": "BK-LHZZ-U11-E15",
+        "quote": "數日後，怒漸解，乃止。"
+       }
+      ],
+      "proposed": "中文改为“长远那笔，本文依据的记载只涉及几件事：”，英文改为 Of the longer account, the material this article draws on mentions only a few things:"
+     },
+     {
+      "id": "V7",
+      "path": "sections.analysis.3",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“代价也分两笔”之后，列出的眼前一笔是收获（苏州到手、李鸿章加衔），不是代价，读者容易困惑。",
+      "evidence": [
+       {
+        "id": "BK-LHZZ-U11-E14",
+        "quote": "蘇州定，鴻章以功加太子少保"
+       }
+      ],
+      "proposed": "改为“得失也分两笔。眼前那笔很清楚……”，英文 costs 改为 gains and costs。"
+     }
+    ],
+    "overall": "定稿整体有证据支持，人物和转折也清楚。需修正以下几处：阳澄湖“第三个人”的错误说法、两处只取梁启超按语让步半句的片面转述、analysis.2 暗示无据因果的两句、一处关于完整来源的断言，以及 context.1 英文引语冒充原话。",
+    "_content_sha256": "a6f8b98128662dcb7daa7cc21445d59ded3bd4d615125b9fc2bee4415c49c982"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1",
+    "V1-V2",
+    "V1-V3",
+    "V1-V4",
+    "V1-V5",
+    "V1-V6",
+    "C1-55",
+    "C1-56",
+    "C1-57",
+    "C1-58"
+   ],
+   "changes_applied": 10,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "context[2] numbers differ zh[40002] en[40000]"
+    ],
+    [
+     "CHECK",
+     "context[3] numbers differ zh[10000] en[10, 10000]"
+    ],
+    [
+     "CHECK",
+     "context[4] numbers differ zh[19, 1000, 80000] en[80000]"
+    ],
+    [
+     "CHECK",
+     "story[2] numbers differ zh[24, 1000] en[20]"
+    ],
+    [
+     "CHECK",
+     "story[3] numbers differ zh[25] en[20]"
+    ],
+    [
+     "CHECK",
+     "story[4] numbers differ zh[] en[100000]"
+    ],
+    [
+     "CHECK",
+     "story[5] numbers differ zh[1000] en[]"
+    ],
+    [
+     "CHECK",
+     "analysis[2] numbers differ zh[] en[100000]"
+    ],
+    [
+     "CHECK",
+     "limits[0] numbers differ zh[1000] en[100000]"
+    ]
+   ],
+   "content_sha256_after": "5b84f9cbdcd58a224fed20f2a7e08835b34cea760a30e942fdadd86e6ef094f1",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V6"
+      ]
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V7"
+      ]
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.story.0",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "本段写“双方约定的条件是：杀掉李秀成、谭绍洸……”（英文 The terms agreed were these），等于说降将接受了杀两人的条件。原文中这是城外一方提出的要求，降将最后只答应斩谭绍洸。下一段 story.1 又写“约定并没有被全盘接受”，两段前后矛盾。",
+      "evidence": [
+       {
+        "id": "BK-LHZZ-U11-E10",
+        "quote": "使殺秀成、紹洸以獻，許以二品之賞"
+       },
+       {
+        "id": "BK-LHZZ-U11-E10",
+        "quote": "然卒不忍害秀成，乃許斬紹洸而別"
+       }
+      ],
+      "proposed": "中文改为“城外一方提出的条件是：杀掉李秀成、谭绍洸，把首级献上来；作为交换，许给二品的官赏。”英文改为“The terms put to them were these: …”。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.limits.0",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "“十几万部众、一千多余党等数字，也都只出自这一处记载”（英文 come from this one account alone）是在断言这些数字在全部来源中只有这一处出处，超出了证据包能支持的范围。",
+      "evidence": [
+       {
+        "id": "BK-LHZZ-U11-E14",
+        "quote": "此八將所部兵在城中者尚十餘萬人"
+       }
+      ],
+      "proposed": "中文改为“十几万部众、一千多余党等数字，都取自这部书，本文未与其他记载核对。”英文改为“The figures … are taken from this book and have not been checked against other records.”"
+     },
+     {
+      "id": "V3",
+      "path": "uncertainty_note",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "“相关数字也只有这一个来源”（英文 the figures cited have only this one source）断言这些数字在全部来源中只有一个出处，属于对完整来源的断言。",
+      "evidence": [
+       {
+        "id": "BK-LHZZ-U11-E14",
+        "quote": "此八將所部兵在城中者尚十餘萬人"
+       }
+      ],
+      "proposed": "中文改为“文中数字均取自这部书，未另行核对。”英文改为“the figures cited are taken from this book and have not been checked elsewhere.”"
+     },
+     {
+      "id": "V4",
+      "path": "sections.hook.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "开头只写了“官军”和“守将李秀成”，没有说明守城的一方是谁的军队。不了解背景的读者不清楚交战双方各是谁。",
+      "evidence": [
+       {
+        "id": "BK-LHZZ-U11-E1",
+        "quote": "洪軍蹂躪江蘇，蘇、常俱陷"
+       }
+      ],
+      "proposed": "在“守将李秀成、谭绍洸”前加一个简短身份，如“占据苏州的洪军（太平军）守将”，英文同步补上。"
+     },
+     {
+      "id": "V5",
+      "path": "sections.analysis.2",
+      "category": "readability",
+      "severity": "note",
+      "problem": "梁启超按语中“鉴于苗沛霖、李世忠旧事”和“好用小智小术”两点，在 story.6 已经完整转述，analysis.2 又几乎原样复述一遍。",
+      "evidence": [
+       {
+        "id": "BK-LHZZ-U11-E20",
+        "quote": "雖彼鑒於苗沛霖、李世忠故事，其個或有所大不得已者存，而文忠生平好用小智小術"
+       }
+      ],
+      "proposed": "analysis.2 第二句压缩为一句指回，例如“梁启超在按语里同时给了开脱与批评（见上）”。也可以只在一处完整转述。"
+     },
+     {
+      "id": "V6",
+      "path": "sections.context.2",
+      "category": "readability",
+      "severity": "note",
+      "problem": "末句“也就是说，戈登是在李鸿章与英方交涉之后，才接手这支队伍的”重复了前一句的内容，没有增加信息。",
+      "evidence": [
+       {
+        "id": "BK-LHZZ-U11-E3",
+        "quote": "立與英領事交涉。黜白齊文，使償所攫金，而以英國將官戈登代之"
+       }
+      ],
+      "proposed": "删去末句，中英同步。"
+     },
+     {
+      "id": "V7",
+      "path": "reflection.example.steps",
+      "category": "style",
+      "severity": "note",
+      "problem": "格式中英不一致：中文分行且不编号，英文挤在一行并带“1. 2. 3.”编号。",
+      "evidence": [],
+      "proposed": "统一格式：都分行编号，或都分行不编号。"
+     }
+    ],
+    "overall": "定稿史实整体有证据支持，引文逐字、解释已标明。需修正 story.0 把城外提出的条件写成“双方约定”的问题，以及 limits 和 uncertainty_note 中关于数字“只有这一个来源”的断言；其余为易读性和格式小问题。",
+    "_content_sha256": "5b84f9cbdcd58a224fed20f2a7e08835b34cea760a30e942fdadd86e6ef094f1"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1",
+     "F2",
+     "F3",
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6",
+     "F7"
+    ]
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F8"
+    ]
+   },
+   {
+    "path": "sections.context.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F9"
+    ]
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F10",
+     "F11",
+     "F12",
+     "F13"
+    ]
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F14"
+    ]
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F19"
+    ]
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F15",
+     "F18"
+    ]
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F16"
+    ]
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F17",
+     "F20",
+     "F21"
+    ]
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F22",
+     "F23"
+    ]
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F24"
+    ]
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F25",
+     "F26"
+    ]
+   },
+   {
+    "path": "sections.analysis.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F27",
+     "F28"
+    ]
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F29",
+     "F30"
+    ]
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.hook.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "原文称郜云官为“裨將”，中文稿写成“副将”。后文“总兵副将等职”是许给降将的官职，同一个“副将”既指身份又指所许官职，读者容易混淆。英文 subordinate commander 与原文一致，但中英不一致。原文还写的是“郜云官等”，稿件丢了“等”。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E9",
+      "quote": "其裨將郜云官等，猜疑攜貳，遂通款於程學啟，乞降"
+     }
+    ],
+    "proposed": "改为“守军中的裨将（下级将领）郜云官等人”。"
+   },
+   {
+    "id": "F2",
+    "path": "sections.hook.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "原文只写“通款於程學啟”，没有写郜云官派人。中文“暗中派人联络”与英文 sent word 都补出了原文没有的细节。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E9",
+      "quote": "遂通款於程學啟，乞降"
+     }
+    ],
+    "proposed": "中文改为“暗中与城外的官军将领程学启通款，请求投降”；英文改为“secretly made overtures to Cheng Xueqi … offering to surrender”。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.hook.0",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "英文加了公历年份“(1863)”。证据包没有这一年份，中文稿也没有，中英不一致。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E8",
+      "quote": "十月十九日（二年）"
+     }
+    ],
+    "proposed": "删去英文的“(1863)”。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.hook.1",
+    "category": "inner_life",
+    "severity": "fix",
+    "problem": "“城外的程学启想要的，不只是一扇打开的城门”和英文 Cheng Xueqi wanted more than an open gate，都把程学启的意图当作事实来写，证据中没有这一说法。",
+    "evidence": [],
+    "proposed": "删去这半句，中文直接从“城里的郜云官要拿什么来换……”写起，英文同步删去。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.hook.0",
+    "category": "readability",
+    "severity": "note",
+    "problem": "开头一段连续出现李秀成、谭绍洸、郜云官、程学启四个人名，并带年号日期。读者此刻只需要知道“城里一名下级将领想向城外官军将领投降”。",
+    "evidence": [],
+    "proposed": "可只保留郜云官、程学启两个名字，守将用“城中守将”概称，名字留到 context.4 再交代；不增加其他内容。"
+   },
+   {
+    "id": "F6",
+    "path": "sections.context.1",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "英文“Li turned to the men around him”只用姓氏“Li”。前文 hook 已出现 Li Xiucheng，读者分不清这里的 Li 指李鸿章还是李秀成。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E2",
+      "quote": "鴻章徐語左右曰"
+     }
+    ],
+    "proposed": "改为“Li Hongzhang turned to the men around him”。全文统一用 Li Hongzhang 与 Li Xiucheng 两个全称。"
+   },
+   {
+    "id": "F7",
+    "path": "sections.context.1",
+    "category": "readability",
+    "severity": "note",
+    "problem": "context 前两段讲华尔建军和淮军衣帽受嘲，离主线较远。降约的关键人物戈登要到 context.2 才出场。",
+    "evidence": [],
+    "proposed": "可考虑压缩衣帽一段，只保留“常胜军后来服从李鸿章调度”这一点；不另加背景。"
+   },
+   {
+    "id": "F8",
+    "path": "sections.context.2",
+    "category": "readability",
+    "severity": "note",
+    "problem": "英文“the second month of the same year”中的 same year 在本段没有明确所指。末句“也就是说，戈登是在……之后才接手”只是重复前句。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E3",
+      "quote": "時同治二年二月也"
+     }
+    ],
+    "proposed": "英文改为“the second month of the second year of the Tongzhi reign”；末句可删去，中英同步。"
+   },
+   {
+    "id": "F9",
+    "path": "sections.context.4",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "原文是李秀成派部将纠合八万余众、千余只船出运河口，他自己只率精锐数千据金匮援苏州。稿件写成李秀成本人调集八万多人回援，把两支兵力混为一体。英文同样有误。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E7",
+      "quote": "使其部將糾合無錫、溧陽、宜興等處眾八萬餘，船千餘只，出運河口，而自率精銳數千，據金匱援蘇州"
+     }
+    ],
+    "proposed": "改为“李秀成派部将纠合八万多人、一千多条船出运河口，自己率精锐数千人据金匮，回援苏州”，英文同步修改。"
+   },
+   {
+    "id": "F10",
+    "path": "sections.story.0",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "原文是程学启与戈登二人一同与郜云官等“面訂降約”，条件也出自这次共同订约。稿件写“程学启开出的条件是”，英文写 Cheng's terms，都把条件单独归于程学启。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E10",
+      "quote": "於是學啟與戈登親乘輕舸造城北之陽澄湖，與雲官等面訂降約"
+     },
+     {
+      "id": "BK-LHZZ-U11-E10",
+      "quote": "使殺秀成、紹洸以獻，許以二品之賞"
+     }
+    ],
+    "proposed": "改为“双方约定的条件是”，英文改为“The terms agreed were these”。"
+   },
+   {
+    "id": "F11",
+    "path": "sections.story.0",
+    "category": "interpretation_label",
+    "severity": "fix",
+    "problem": "record 段末句“不只是程学启的许诺，还有一位外国将领押上的信用”是作者的解释，没有标明，却写在记录段里。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E10",
+      "quote": "戈登爲之保人，故云官等不疑"
+     }
+    ],
+    "proposed": "改为照实转述原文因果：“按梁启超的写法，降将肯信这份约，是因为戈登作保。”“押上的信用”一类解释移入 analysis 或删去，英文同步。"
+   },
+   {
+    "id": "F12",
+    "path": "sections.story.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "英文对“二品之賞”加了注释 near the top of the official hierarchy，这一说法不在证据包内，中文也没有，中英不一致。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E10",
+      "quote": "許以二品之賞"
+     }
+    ],
+    "proposed": "删去“near the top of the official hierarchy”。"
+   },
+   {
+    "id": "F13",
+    "path": "sections.story.0",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文把译文放进引号，写成 follows immediately with the line \"...\"，看起来像原文。读者看不出这是译述。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E10",
+      "quote": "戈登爲之保人，故云官等不疑"
+     }
+    ],
+    "proposed": "改为“Liang's next line, rendered in English, is that Gordon stood as their guarantor, and so…”，或去掉引号改为转述。"
+   },
+   {
+    "id": "F14",
+    "path": "sections.story.1",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文“Liang writes: \"But in the end…\"”把译文当作原文引语呈现。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E10",
+      "quote": "然卒不忍害秀成，乃許斬紹洸而別"
+     }
+    ],
+    "proposed": "改为“In Liang's words, as translated here, …”，或改为不加引号的转述。"
+   },
+   {
+    "id": "F15",
+    "path": "sections.story.4",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文“\"menacing\"”“\"asked that the agreement be honoured\"”都是译文，却以原文引语的形式出现。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E14",
+      "quote": "聲勢洶洶"
+     },
+     {
+      "id": "BK-LHZZ-U11-E14",
+      "quote": "至是求如約"
+     }
+    ],
+    "proposed": "去掉引号改为转述，或注明 in translation。"
+   },
+   {
+    "id": "F16",
+    "path": "sections.story.5",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文两处引号内都是译文（wolf cubs…、At the sound of the signal gun…），读者看不出是译述。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E14",
+      "quote": "謂狼子野心，恐後不可制"
+     },
+     {
+      "id": "BK-LHZZ-U11-E14",
+      "quote": "號炮一響，伏兵起而駢戮之"
+     }
+    ],
+    "proposed": "首处加“in translation”，或改为不加引号的转述。"
+   },
+   {
+    "id": "F17",
+    "path": "sections.story.6",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文三处引号内都是译文（when he heard…、took a pistol…、Hongzhang kept out of his way…），以原文引语形式出现。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E15",
+      "quote": "至是聞鴻章之食言也，大怒"
+     }
+    ],
+    "proposed": "标明为译述，如“Liang writes, in effect, that…”，或去掉引号。"
+   },
+   {
+    "id": "F18",
+    "path": "sections.story.4",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "「聲勢洶洶」在本段没有用白话讲清意思，后文 analysis.2 又把它当作杀降理由之一。不符合第 7 条。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E14",
+      "quote": "聲勢洶洶"
+     }
+    ],
+    "proposed": "在引语后加“意思是来势汹汹、气势逼人”。"
+   },
+   {
+    "id": "F19",
+    "path": "sections.story.3",
+    "category": "readability",
+    "severity": "note",
+    "problem": "八个降将的名号全部列出，其中大多数人后文不再出现，增加读者负担。",
+    "evidence": [],
+    "proposed": "可只点出郜云官（纳王）和汪有为，其余概括为“四位王、四位天将军，一共八人”。"
+   },
+   {
+    "id": "F20",
+    "path": "sections.story.6",
+    "category": "readability",
+    "severity": "note",
+    "problem": "“阳澄湖那条小船上的第三个人”让读者无从知道前两个人是谁。原文只写程学启与戈登乘船去订约。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E10",
+      "quote": "於是學啟與戈登親乘輕舸造城北之陽澄湖"
+     }
+    ],
+    "proposed": "改为“现在回到在阳澄湖为降约作保的戈登”，英文同步。"
+   },
+   {
+    "id": "F21",
+    "path": "sections.story.6",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "全文写到戈登息怒、常胜军续战就结束，遗漏了梁启超按语对杀降的明确评判（三罪），以及他说的可能不得已的缘由。这会改变读者对结局的判断。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E20",
+      "quote": "李文忠於是有慚德矣"
+     },
+     {
+      "id": "BK-LHZZ-U11-E20",
+      "quote": "殺降背公理一也，負約食言二也，欺戈登負友人三也"
+     },
+     {
+      "id": "BK-LHZZ-U11-E20",
+      "quote": "雖彼鑒於苗沛霖、李世忠故事"
+     }
+    ],
+    "proposed": "在戈登息怒后补一两句记录：“梁启超在按语中说，李鸿章因此有愧于德：杀降违背公理，负约食言，欺骗戈登、辜负朋友；戈登如此愤恨也在情理之中。他也说，李鸿章或许是鉴于苗沛霖、李世忠的旧事，有不得已之处。”英文同步。"
+   },
+   {
+    "id": "F22",
+    "path": "sections.analysis.0",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "“许诺的是程学启，他在湖上开出条件”有误：湖上订约是程学启与戈登共同进行的。单独许以总兵副将等职的是程学启，这一点有据。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E10",
+      "quote": "與雲官等面訂降約"
+     },
+     {
+      "id": "BK-LHZZ-U11-E14",
+      "quote": "程學啟既許以總兵副將等職"
+     }
+    ],
+    "proposed": "改为“湖上与降将订约的是程学启和戈登，许以总兵副将等职的是程学启”，英文同步。"
+   },
+   {
+    "id": "F23",
+    "path": "sections.analysis.0",
+    "category": "interpretation_label",
+    "severity": "fix",
+    "problem": "稿件把“记载者”的看法写成推测（在戈登和记载者看来），但梁启超在按语中已明确把负约食言、欺戈登的责任归于李鸿章。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E20",
+      "quote": "殺降背公理一也，負約食言二也，欺戈登負友人三也"
+     },
+     {
+      "id": "BK-LHZZ-U11-E15",
+      "quote": "至是聞鴻章之食言也，大怒"
+     }
+    ],
+    "proposed": "改为“梁启超自己把这笔账记在李鸿章名下。一种解释是，在戈登看来，前线将领的许诺代表的是统帅……”，英文同步。"
+   },
+   {
+    "id": "F24",
+    "path": "sections.analysis.1",
+    "category": "inner_life",
+    "severity": "fix",
+    "problem": "“作者推断”中的“作者”分不清指梁启超还是本文作者。“事前却没有人征求他的意见”仅凭“聞”字推不出。“他的怒火指向的，正是那个绕过他作出的决定”写成了事实。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E15",
+      "quote": "至是聞鴻章之食言也，大怒"
+     },
+     {
+      "id": "BK-LHZZ-U11-E20",
+      "quote": "欺戈登負友人三也"
+     }
+    ],
+    "proposed": "改为“本文推测：‘聞’字表明戈登是听说此事的，他作保的话随降将被杀而落空；梁启超也把这件事算作‘欺戈登’。”删去“没有人征求他的意见”和“怒火指向”的断言，英文同步。"
+   },
+   {
+    "id": "F25",
+    "path": "sections.analysis.2",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“梁启超没有把杀降和这一点联系起来”是对完整来源写了什么、没写什么的断言，而本文只依据证据包。",
+    "evidence": [],
+    "proposed": "改为“本文不把这一点当作杀降的理由”，英文改为“this article does not treat it as a reason for the killings”。"
+   },
+   {
+    "id": "F26",
+    "path": "sections.analysis.2",
+    "category": "causality",
+    "severity": "fix",
+    "problem": "“书中给出的是一笔控制风险的账”暗示这是书中唯一的理由。梁启超在按语中另外提出，李鸿章此举或许是鉴于苗沛霖、李世忠旧事而不得已。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E20",
+      "quote": "雖彼鑒於苗沛霖、李世忠故事"
+     }
+    ],
+    "proposed": "补一句：“梁启超在按语里还说，李鸿章或许是鉴于苗沛霖、李世忠的旧事，有不得已之处。”英文同步。"
+   },
+   {
+    "id": "F27",
+    "path": "sections.analysis.3",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“书中没有写两人怎样修复关系”（英文 The book does not say…）是关于完整来源的否定断言，读者理解不需要。",
+    "evidence": [],
+    "proposed": "删去这半句，保留“后来的合作也不能证明这一步做对了……”。"
+   },
+   {
+    "id": "F28",
+    "path": "sections.analysis.3",
+    "category": "interpretation_label",
+    "severity": "fix",
+    "problem": "“作者提出两种可能的做法”“都是作者的假设”中的“作者”容易被理解为梁启超。英文 not anything the record describes 也是关于来源的断言。",
+    "evidence": [],
+    "proposed": "中文两处“作者”改为“本文”；英文末句改为“Both are this article's own hypotheses.”"
+   },
+   {
+    "id": "F29",
+    "path": "sections.limits.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“这部书写于事后多年”（英文 written many years after the events）不在证据包内。",
+    "evidence": [],
+    "proposed": "删去这半句，英文同步。"
+   },
+   {
+    "id": "F30",
+    "path": "sections.limits.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“两者是什么关系，书中没有交代”（英文 The book does not explain…）是关于完整来源的否定断言。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E10",
+      "quote": "許以二品之賞"
+     },
+     {
+      "id": "BK-LHZZ-U11-E14",
+      "quote": "程學啟既許以總兵副將等職"
+     }
+    ],
+    "proposed": "改为“本文无法判断两者的关系”，英文改为“this article cannot determine how the two relate”。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "M1",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "“副将”应为“裨將”，问题成立；“派人”一点另见 F2。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E9",
+      "quote": "其裨將郜云官等，猜疑攜貳，遂通款於程學啟，乞降"
+     }
+    ]
+   },
+   {
+    "id": "M2",
+    "verdict": "duplicate",
+    "same_as": "F9",
+    "rationale": "八万余众是部将纠合的，李秀成自率的只有精锐数千。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E7",
+      "quote": "而自率精銳數千，據金匱援蘇州"
+     }
+    ]
+   },
+   {
+    "id": "M3",
+    "verdict": "duplicate",
+    "same_as": "F10",
+    "rationale": "订约是程学启与戈登共同进行的；record 段中的解释另见 F11。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E10",
+      "quote": "與雲官等面訂降約"
+     }
+    ]
+   },
+   {
+    "id": "M4",
+    "verdict": "duplicate",
+    "same_as": "F21",
+    "rationale": "E20 在本证据包内，梁启超对杀降的评判和不得已之说都会影响读者判断，正文遗漏了。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E20",
+      "quote": "李文忠於是有慚德矣"
+     }
+    ]
+   },
+   {
+    "id": "M5",
+    "verdict": "duplicate",
+    "same_as": "F22",
+    "rationale": "湖上订约属共同行为，问题成立；但许以总兵副将等职的确是程学启（E14），这一部分有据。“记载者”一点另见 F23。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E14",
+      "quote": "程學啟既許以總兵副將等職"
+     }
+    ]
+   },
+   {
+    "id": "M6",
+    "verdict": "duplicate",
+    "same_as": "F24",
+    "rationale": "“作者”指代不清，推断超出“聞”字所能支持的范围。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E15",
+      "quote": "至是聞鴻章之食言也，大怒"
+     }
+    ]
+   },
+   {
+    "id": "M7",
+    "verdict": "duplicate",
+    "same_as": "F26",
+    "rationale": "梁启超另给出了苗沛霖、李世忠旧事这一可能缘由。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E20",
+      "quote": "雖彼鑒於苗沛霖、李世忠故事"
+     }
+    ]
+   },
+   {
+    "id": "M8",
+    "verdict": "duplicate",
+    "same_as": "F28",
+    "rationale": "“作者”易被误认为梁启超。",
+    "evidence": []
+   },
+   {
+    "id": "M9",
+    "verdict": "duplicate",
+    "same_as": "F29",
+    "rationale": "“写于事后多年”无据，问题成立。梁启超的批评立场按 F21 在正文补入即可，limits 不必另加。",
+    "evidence": []
+   },
+   {
+    "id": "M10",
+    "verdict": "duplicate",
+    "same_as": "F29",
+    "rationale": "与 M9 同一问题。",
+    "evidence": []
+   },
+   {
+    "id": "M11",
+    "verdict": "duplicate",
+    "same_as": "F10",
+    "rationale": "条件出自共同订约。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E10",
+      "quote": "於是學啟與戈登親乘輕舸造城北之陽澄湖"
+     }
+    ]
+   },
+   {
+    "id": "M12",
+    "verdict": "duplicate",
+    "same_as": "F9",
+    "rationale": "与 M2 同一问题。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E7",
+      "quote": "使其部將糾合無錫、溧陽、宜興等處眾八萬餘"
+     }
+    ]
+   },
+   {
+    "id": "M13",
+    "verdict": "duplicate",
+    "same_as": "F24",
+    "rationale": "仅凭“聞”字推不出事前无人征求他的意见。",
+    "evidence": []
+   },
+   {
+    "id": "M14",
+    "verdict": "duplicate",
+    "same_as": "F2",
+    "rationale": "原文只写“通款”，没有写派人。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E9",
+      "quote": "遂通款於程學啟，乞降"
+     }
+    ]
+   },
+   {
+    "id": "M15",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "原文为“裨將”。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E9",
+      "quote": "其裨將郜云官等"
+     }
+    ]
+   },
+   {
+    "id": "M16",
+    "verdict": "duplicate",
+    "same_as": "F4",
+    "rationale": "程学启的意图无证据支持。",
+    "evidence": []
+   },
+   {
+    "id": "M17",
+    "verdict": "duplicate",
+    "same_as": "F24",
+    "rationale": "把戈登怒火的指向当作事实来写。",
+    "evidence": []
+   },
+   {
+    "id": "M18",
+    "verdict": "duplicate",
+    "same_as": "F23",
+    "rationale": "戈登的看法已标为“一种解释是”，可以保留；但“记载者”的看法在 E20 中有明确评判，不应再写成推测。",
+    "evidence": [
+     {
+      "id": "BK-LHZZ-U11-E20",
+      "quote": "負約食言二也"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "5b84f9cbdcd58a224fed20f2a7e08835b34cea760a30e942fdadd86e6ef094f1",
+ "open_issues": [
+  "V2-V1",
+  "V2-V2",
+  "V2-V3"
+ ],
+ "outcome": "pending_review",
+ "failure": null,
+ "finished_at": 1793517852.0301242,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 206.5,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "prompts": [
+    {
+     "file": "final_audit.md",
+     "sha256": "7f94f71e83f1"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    }
+   ],
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 25156,
+    "output_tokens": 23207
+   },
+   "cost_estimate_usd": 0.665396
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 101.5,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "prompts": [
+    {
+     "file": "final_revise.md",
+     "sha256": "01e8737eac5e"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    }
+   ],
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 26070,
+    "output_tokens": 13628
+   },
+   "cost_estimate_usd": 0.481128
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 75.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "prompts": [
+    {
+     "file": "final_verify.md",
+     "sha256": "a4f4b2cbdbd6"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    }
+   ],
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 20711,
+    "output_tokens": 8398
+   },
+   "cost_estimate_usd": 0.333656
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 55.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "prompts": [
+    {
+     "file": "final_revise.md",
+     "sha256": "01e8737eac5e"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    }
+   ],
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 22325,
+    "output_tokens": 7149
+   },
+   "cost_estimate_usd": 0.321588
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 84.1,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "prompts": [
+    {
+     "file": "final_verify.md",
+     "sha256": "a4f4b2cbdbd6"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    }
+   ],
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 20758,
+    "output_tokens": 9664
+   },
+   "cost_estimate_usd": 0.359352
+  }
+ ],
+ "elapsed_min": 8.7,
+ "model_wall_min": 8.7
+}

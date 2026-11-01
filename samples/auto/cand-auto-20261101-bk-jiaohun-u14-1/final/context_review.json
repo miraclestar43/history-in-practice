@@ -1,0 +1,386 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261101-bk-jiaohun-u14-1",
+ "content_sha256": "274da2072c2f920ed2d752efb3e03b9ba61b13d4ebf1ba17666d525ca0db99db",
+ "evidence_in_sha256": "745543bd59e6685f8efe75b9be7c3c2dc69d8938a632be8f09816bdb3859cdf6",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793523759.6778753,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "reflection.example.steps",
+   "lang": "zh",
+   "sentence": "汇报“查无此事”时说明依据，而不是只写结论。"
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-BK-JIAOHUN": {
+   "title": "孔飞力（Philip A. Kuhn）《叫魂：1768年中国妖术大恐慌》（陈兼、刘昶 译）；第九章 政治罪与官僚君主制",
+   "url": null,
+   "ref": "book:BK-JIAOHUN",
+   "evidence_text_sha256": "6ffb877bade208c0bc1db4f495a533c5c32789f44424361336a099bb6924db5c",
+   "cache_sha256": "6ffb877bade208c0bc1db4f495a533c5c32789f44424361336a099bb6924db5c",
+   "cjk": true,
+   "source_chars": 172317,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     150924,
+     164688
+    ]
+   ],
+   "chars_reviewed": 13764
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 42.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "prompts": [
+    {
+     "file": "context_review.md",
+     "sha256": "166543d1f6ca"
+    }
+   ],
+   "output_tokens": 4396
+  }
+ ],
+ "finished_at": 1793523802.0186179,
+ "elapsed_min": 0.7,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-BK-JIAOHUN",
+    "outcome": "江西始终没有搜捕任何嫌犯。清剿中止后，吴绍诗谢罪并报告全省无一起剪辫案。他没有受到斥责，第二年反而升任刑部尚书。同一章写到收场时，弘历在官僚中寻找替罪羊：富尼汉被降级受罚，苏尔德被单独严惩、贬往新疆。",
+    "quote": "吴绍诗安然度过了这一危机：弘历不但没有斥责他，反而在第二年任命他为刑部尚书。",
+    "in_evidence": true
+   }
+  ],
+  "additions": [],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "reflection.example.steps",
+    "lang": "zh",
+    "sentence": "汇报“查无此事”时说明依据，而不是只写结论。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "这是反思栏目给读者的操作建议，不是关于来源记载与否的断言",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "吴绍诗（在弘历中止了清剿以后）在反复谦卑的谢罪后报告说江西没有发现一起剪辫案"
+    },
+    "fix": "无需修改"
+   },
+   {
+    "id": "N1",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "高晋答应的后续报告，孔飞力没有找到。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "第九章“忙而不动：吴绍诗在江西”一节的脚注①。这句话说的是作者本人未能找到，不是说该报告不存在",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "高晋并答应继续观察，随后报告，但我无法找到这份后续报告。"
+    },
+    "fix": "保留。不要改写成“高晋没有提交后续报告”"
+   },
+   {
+    "id": "N2",
+    "path": "sections.story.6",
+    "lang": "zh",
+    "sentence": "孔飞力说，没有档案文字能证明江西曾像邻省那样搜捕过可疑嫌犯。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "第九章吴绍诗一节。稿件已标明这是孔飞力据档案作出的判断",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "没有档案文字证明江西曾像邻省那样搜捕过可疑嫌犯。"
+    },
+    "fix": "保留，并继续标明是孔飞力的说法"
+   },
+   {
+    "id": "N3",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "本文唯一的依据是孔飞力《叫魂》的中译本（陈兼、刘昶译），没有使用其他史源。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "本文自身的来源数量说明",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "关于官僚机器如何回应君主的淫威，我们必须在档案文件里细心地寻找。"
+    },
+    "fix": "保留。不得据此推出“孔飞力或当时无人核查”；孔飞力本人依据的是档案"
+   },
+   {
+    "id": "N4",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "朱批和奏报都转引自书中译文，与档案原文是否逐字一致无法判断。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "本文作者对自身核查范围的说明（未查阅档案原件），具体且可核验",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "《宫中廷寄》，乾隆十六年八月十七日。"
+    },
+    "fix": "保留"
+   },
+   {
+    "id": "N5",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "他为何难以受罚，孔飞力给出的理由中，高晋的袒护一项是推测。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "第九章吴绍诗一节结尾",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "由于他在法律方面的造诣，也可能由于他的顶头上司、弘历的姻亲高晋的袒护"
+    },
+    "fix": "保留"
+   },
+   {
+    "id": "N6",
+    "path": "sections.hook.0",
+    "lang": "zh",
+    "sentence": "谣言已经进了他的辖境，他没有向朝廷奏报。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "叙述人物的行为，不是关于来源是否记载的断言",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "吴绍诗并未奏报这一情况。"
+    },
+    "fix": "无需修改"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.hook.0",
+    "problem": "“吴当时已七十岁”紧接在“叫魂危机发生的前一年”之后，“当时”可能指1767年。稿件把“年约七十”放在1768年6月的场景里，时间略有出入。",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "吴当时已七十岁，是一个著名的法律世家的大家长。"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "稿件已写出吴绍诗、吴坛、苏尔德各自的结局，以及孔飞力对“利用”一说和替罪羊性质的限定；否定性断言均有原文支持或属于本文自身的范围说明，无需补充摘录，只有吴绍诗年龄对应的年份可以斟酌。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "reflection.example.steps",
+   "lang": "zh",
+   "sentence": "汇报“查无此事”时说明依据，而不是只写结论。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "这是反思栏目给读者的操作建议，不是关于来源记载与否的断言",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "吴绍诗（在弘历中止了清剿以后）在反复谦卑的谢罪后报告说江西没有发现一起剪辫案"
+   },
+   "fix": "无需修改",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "高晋答应的后续报告，孔飞力没有找到。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "第九章“忙而不动：吴绍诗在江西”一节的脚注①。这句话说的是作者本人未能找到，不是说该报告不存在",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "高晋并答应继续观察，随后报告，但我无法找到这份后续报告。"
+   },
+   "fix": "保留。不要改写成“高晋没有提交后续报告”",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.story.6",
+   "lang": "zh",
+   "sentence": "孔飞力说，没有档案文字能证明江西曾像邻省那样搜捕过可疑嫌犯。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "第九章吴绍诗一节。稿件已标明这是孔飞力据档案作出的判断",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "没有档案文字证明江西曾像邻省那样搜捕过可疑嫌犯。"
+   },
+   "fix": "保留，并继续标明是孔飞力的说法",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "本文唯一的依据是孔飞力《叫魂》的中译本（陈兼、刘昶译），没有使用其他史源。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "本文自身的来源数量说明",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "关于官僚机器如何回应君主的淫威，我们必须在档案文件里细心地寻找。"
+   },
+   "fix": "保留。不得据此推出“孔飞力或当时无人核查”；孔飞力本人依据的是档案",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "朱批和奏报都转引自书中译文，与档案原文是否逐字一致无法判断。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "本文作者对自身核查范围的说明（未查阅档案原件），具体且可核验",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "《宫中廷寄》，乾隆十六年八月十七日。"
+   },
+   "fix": "保留",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "他为何难以受罚，孔飞力给出的理由中，高晋的袒护一项是推测。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "第九章吴绍诗一节结尾",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "由于他在法律方面的造诣，也可能由于他的顶头上司、弘历的姻亲高晋的袒护"
+   },
+   "fix": "保留",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  },
+  {
+   "id": "N6",
+   "path": "sections.hook.0",
+   "lang": "zh",
+   "sentence": "谣言已经进了他的辖境，他没有向朝廷奏报。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "叙述人物的行为，不是关于来源是否记载的断言",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "吴绍诗并未奏报这一情况。"
+   },
+   "fix": "无需修改",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.hook.0",
+   "problem": "“吴当时已七十岁”紧接在“叫魂危机发生的前一年”之后，“当时”可能指1767年。稿件把“年约七十”放在1768年6月的场景里，时间略有出入。",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "吴当时已七十岁，是一个著名的法律世家的大家长。"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-BK-JIAOHUN",
+   "outcome": "江西始终没有搜捕任何嫌犯。清剿中止后，吴绍诗谢罪并报告全省无一起剪辫案。他没有受到斥责，第二年反而升任刑部尚书。同一章写到收场时，弘历在官僚中寻找替罪羊：富尼汉被降级受罚，苏尔德被单独严惩、贬往新疆。",
+   "quote": "吴绍诗安然度过了这一危机：弘历不但没有斥责他，反而在第二年任命他为刑部尚书。",
+   "in_evidence": true
+  }
+ ],
+ "additions": [],
+ "additions_failed": [],
+ "evidence_sha256": "745543bd59e6685f8efe75b9be7c3c2dc69d8938a632be8f09816bdb3859cdf6",
+ "outcome": "clean",
+ "blocking": []
+}

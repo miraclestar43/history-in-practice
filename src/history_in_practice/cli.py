@@ -178,15 +178,26 @@ def cmd_revise_base(a):
     print(json.dumps(res, ensure_ascii=False, indent=1)); return 0 if res["status"] == "checked" else 2
 
 
+def _basis(specs) -> dict | None:
+    """--basis ISSUE=EVIDENCE_ID:verbatim quote (repeatable): the operator's verbatim basis for an issue whose own quote
+    does not match the pack (e.g. a verifier typo). local_fix checks every quote against the pack before accepting it."""
+    out = {}
+    for s in specs or []:
+        k, _, rest = s.partition("="); eid, _, q = rest.partition(":")
+        out.setdefault(k.strip(), []).append({"id": eid.strip(), "quote": q.strip()})
+    return out or None
+
+
 def cmd_local_fix(a):
     """Owner rule 2026-10-31: a small, evidence-backed wording/attribution fix of named open final-editor issues, recorded
-    in the same record and re-verified (full verify pass, then context review and admission as usual). Not an attempt:
+    in the same record and re-verified (a verify pass scoped to the changed fields unless --wide, then context review and admission as usual). Not an attempt:
     max_attempts still limits whole-article retries, and no further attempt is started here."""
     from . import final_edit
     d = db(); ops = [dict(zip(("path", "problem"), x.split("|", 1))) for x in a.operator_issue]
     r = final_edit.local_fix(a.edition, d, _load(a.changes) if a.changes else [], a.issue, a.reason, operator_issues=ops,
                              pack_fix=_load(a.pack_fix) if getattr(a, "pack_fix", None) else None,
-                             rejections=_load(a.rejections) if getattr(a, "rejections", None) else None)
+                             rejections=_load(a.rejections) if getattr(a, "rejections", None) else None,
+                             basis=_basis(getattr(a, "basis", None)), wide=getattr(a, "wide", False))
     res = {"local_fix": {k: r.get(k) for k in ("outcome", "reason", "open_issues", "final_content_sha256", "failure")}}
     # Only the context review of the new text and admission follow. Never a whole-article attempt: on 2026-10-31 handing
     # off to _final_one here started unrequested attempts after a revision's demotion had reset the allowance.
@@ -393,9 +404,9 @@ def cmd_supply(a):
     cats = [a.category] if a.category else sorted(rot, key=lambda c: (-inv["gaps_to_target"].get(c, 0), inv["schedulable_by_category"].get(c, 0)))
     out = []
     with publish.lock("prepare"):
-        for c in cats[: a.max]:
-            e = supply.pick_entry(c)
-            out.append(supply.propose(e, d) if e else {"category": c, "outcome": "rejected", "reason": "no catalogue entry for category"})
+        for c in ([a.category] * a.max if getattr(a, "book", None) else cats[: a.max]):
+            e = supply.pick_book_unit(a.book, c) if getattr(a, "book", None) else supply.pick_entry(c)
+            out.append(supply.propose(e, d) if e else {"category": c, "outcome": "rejected", "reason": "no untried unit / catalogue entry"})
     print(json.dumps([{k: v for k, v in r.items() if k != "raw"} for r in out], ensure_ascii=False, indent=1))
     return 0 if any(r.get("outcome") == "candidate" for r in out) else 2
 
@@ -689,8 +700,10 @@ def cmd_nightly(a):
             from . import mix
             rot = list(mix.GROUP)                        # supply follows the mix plan's actual gaps, not equal counts
             cats = sorted(rot, key=lambda c: (-inv["gaps_to_target"].get(c, 0), inv["schedulable_by_category"].get(c, 0)))
-            rep["supply"] = [{k: v for k, v in supply.propose(supply.pick_entry(c), d).items() if k not in ("raw", "dropped")}
-                             for c in cats[: a.min_candidates - inv["candidates_unprocessed"]] if supply.pick_entry(c)]
+            sp = config.load_project().get("supply", {})
+            rep["supply"] = [{k: v for k, v in r.items() if k not in ("raw", "dropped")} for r in
+                             supply.fill(cats[: a.min_candidates - inv["candidates_unprocessed"]], d,
+                                         tries_per_category=int(sp.get("tries_per_category", 3)), max_calls=int(sp.get("max_calls_per_night", 8)))]
         rep["prepare"] = []
         for p in sorted((REPO / "config/candidates").glob("*.json")):
             c = pipeline.load_candidate(p)
@@ -754,6 +767,35 @@ def cmd_books(a):
                 out.append({"location": books.locator(b, p["loc"]), "loc": p["loc"], "text": p["text"][:300]})
         print(json.dumps(out[:5], ensure_ascii=False, indent=1)); return 0 if out else 1
     raise SystemExit(a.action)
+
+
+def cmd_library(a):
+    """Book library for supply (library.py): status by level; ingest a book (acquired -> usable or unsuitable); list its units."""
+    from . import library
+    if a.action == "status":
+        print(json.dumps(library.inventory(), ensure_ascii=False, indent=1)); return 0
+    if a.action == "ingest":
+        if a.book == "all":
+            print(json.dumps(library.sync(max_new=a.max_new), ensure_ascii=False, indent=1)); return 0
+        e = library.ingest(a.book, verified=a.verified or "file blob-verified against the pinned repository commit; edition = that file")
+        print(json.dumps({k: e.get(k) for k in ("book_id", "title", "level", "reason", "format", "paragraphs", "chapters_detected", "units")},
+                         ensure_ascii=False, indent=1)); return 0 if e.get("level") == "usable" else 2
+    if a.action == "check":
+        e = library.check(a.book)
+        print(json.dumps({k: e.get(k) for k in ("book_id", "title", "level", "reason", "format", "paragraphs", "chapters_detected")},
+                         ensure_ascii=False, indent=1)); return 0
+    if a.action == "units":
+        us = [x for x in library.entries() if x["book_id"] == a.book]
+        print(json.dumps([{k: x[k] for k in ("id", "unit_title", "unit_location", "offsets")} for x in us], ensure_ascii=False, indent=1)); return 0
+    raise SystemExit(a.action)
+
+
+def cmd_adopt(a):
+    """Admit articles finished in another data directory of this repo (records in samples/auto/<id>/final), through the
+    unchanged admission checks (final_edit.adopt)."""
+    from . import final_edit
+    d = db(); out = [final_edit.adopt(d, e) for e in a.editions]
+    print(json.dumps(out, ensure_ascii=False, indent=1)); return 0 if all(r.get("adopted") for r in out) else 2
 
 
 def cmd_admit(a):
@@ -890,6 +932,9 @@ def main(argv=None):
     p.add_argument("--pack-fix", metavar="PACK_FIX.json", help='{"titles": {SID: title}, "add": [{"source_id", "start", "end", "why"}]}: correct the pack (old excerpts unchanged)')
     p.add_argument("--rejections", metavar="REJECT.json", help='[{"issue", "rationale", "evidence": [{"id", "quote"}]}]: quotes verified in the (corrected) pack')
     p.add_argument("--operator-issue", action="append", default=[], metavar="FIELD_PATH|PROBLEM", help="an owner-instructed wording fix of one field (recorded; basis = the owner instruction)")
+    p.add_argument("--basis", action="append", metavar="ISSUE=EVIDENCE_ID:QUOTE",
+                   help="verbatim basis for an open issue whose own quote does not match the pack (checked against the pack)")
+    p.add_argument("--wide", action="store_true", help="re-check the whole article (the fix changes the core judgment); default: changed fields only")
     p.add_argument("--reason", required=True); p.set_defaults(f=cmd_local_fix)
     p = sp.add_parser("site-preview", help="TEST preview: add admitted reader samples and dated notices (never emails)")
     p.add_argument("--site-root", required=True); p.add_argument("--sample", action="append", default=[], metavar="EDITION_ID")
@@ -915,6 +960,7 @@ def main(argv=None):
     p.add_argument("--window-hours", type=float, default=6); p.add_argument("--confirm-real-email", action="store_true")
     p.set_defaults(f=cmd_test_edition)
     p = sp.add_parser("supply"); p.add_argument("--category"); p.add_argument("--max", type=int, default=1); p.add_argument("--check", action="store_true")
+    p.add_argument("--book", help="propose from the next untried units of this library book (validation/operator runs)")
     p.set_defaults(f=cmd_supply)
     p = sp.add_parser("edit"); p.add_argument("edition"); p.add_argument("--rounds", type=int, help="override editor.max_rounds for this attempt")
     p.set_defaults(f=cmd_edit)
@@ -947,6 +993,11 @@ def main(argv=None):
     p.add_argument("--upstream"); p.add_argument("--meta", help="JSON: title, author, translator, year, language, genre, edition")
     p.add_argument("--must-contain", action="append"); p.add_argument("--verified", metavar="NOTE", help="who/how the edition was verified")
     p.add_argument("--text"); p.set_defaults(f=cmd_books)
+    p = sp.add_parser("adopt", help="admit articles finished in another data directory (records in samples/auto/<id>/final), same checks")
+    p.add_argument("editions", nargs="+"); p.set_defaults(f=cmd_adopt)
+    p = sp.add_parser("library", help="book library for supply: status | ingest --book ID | units --book ID")
+    p.add_argument("action", choices=["status", "check", "ingest", "units"]); p.add_argument("--book", help="book id; `ingest --book all` = sync the library"); p.add_argument("--verified")
+    p.add_argument("--max-new", type=int, default=3, help="ingest --book all: at most this many new files per run (resumable)"); p.set_defaults(f=cmd_library)
     p = sp.add_parser("registry-rebuild"); p.add_argument("content", nargs="+"); p.add_argument("--db"); p.set_defaults(f=cmd_registry_rebuild)
     a = ap.parse_args(argv)
     import signal as _sig                              # systemd stop/timeout sends SIGTERM: unwind so model children are killed
