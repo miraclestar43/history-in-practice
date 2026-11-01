@@ -1,0 +1,398 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261030-qsg412-2",
+ "content_sha256": "3ee64882467592e25078bada27cd22440bc76071e6d60f39177b017814be026c",
+ "evidence_in_sha256": "03217a3d1e42be30075f229b5103eaf552189e07a133a6110f90cfb68b31cd12",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793464365.6960568,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "本文所据材料未记伊犁对峙时的钱粮，不能把两者写成同一时期。"
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-QSG412": {
+   "title": "趙爾巽等《清史稿·左宗棠傳》（1928，维基文库本）",
+   "url": "https://zh.wikisource.org/w/index.php?title=%E6%B8%85%E5%8F%B2%E7%A8%BF/%E5%8D%B7412&action=render",
+   "ref": "zh:清史稿/卷412",
+   "evidence_text_sha256": "7d27027d04522820ddf2a54e738d3a6518712fa8e8ca655a69b73ac515b40fce",
+   "cache_sha256": "7d27027d04522820ddf2a54e738d3a6518712fa8e8ca655a69b73ac515b40fce",
+   "cjk": true,
+   "source_chars": 7015,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     7015
+    ]
+   ],
+   "chars_reviewed": 7015
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 51.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 5304
+  }
+ ],
+ "finished_at": 1793464417.018546,
+ "elapsed_min": 0.9,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-QSG412",
+    "outcome": "Under the Ili negotiation thread, the court commended Zuo Zongtang's memorial, Chong Hou was punished and dismissed, and Zeng Jize was sent to revise the treaty. Zuo set out for Hami, Russia sent reinforcements, and the coast went on alert. Zuo was then recalled to the capital and replaced by Jintang. The thread ends with the history saying Russia feared an outright rupture; peace was concluded the next year, Ili was returned, and coastal defenses were stood down.",
+    "quote": "七月，詔宗棠入都備顧問，以錦棠代之。而俄亦懾我兵威，恐事遂決裂。明年正月，和議成，交還伊犁，防海軍皆罷。",
+    "in_evidence": true
+   }
+  ],
+  "additions": [],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.analysis.1",
+    "lang": "zh",
+    "sentence": "本文所据材料未记伊犁对峙时的钱粮，不能把两者写成同一时期。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "《清史稿·左宗棠传》全文（0–7015）。光绪四年至七年伊犁交涉、出屯哈密一段（四年正月至明年正月和议成）没有钱粮记载。传文随后的「籌西事，尤以節兵裕餉為本謀」是对西事的总评，没有指明伊犁对峙时期；借款五百万、「出塞凡二十月」都属于更早收复新疆的西征。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "宗棠用兵善審機，不常其方略。籌西事，尤以節兵裕餉為本謀。始西征，慮各行省協助餉不時至"
+    },
+    "fix": "可保留。如需更准确，可改为「传文对伊犁对峙期间的钱粮没有具体记载，只有『籌西事，尤以節兵裕餉為本謀』一句总评」，避免读者以为传文全无相关说法。"
+   },
+   {
+    "id": "N1",
+    "path": "sections.context.2",
+    "lang": "zh",
+    "sentence": "至于他当时怎么权衡，本文所据材料只录了这一句，不作推测。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "《清史稿·左宗棠传》全文。金顺请乘虚袭伊犁一事，传文只记左宗棠一句答语，没有记他的权衡过程。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "時俄方與土耳其戰，金順請乘虛襲伊犁。宗棠曰：「不可。師不以正，彼有辭矣。」"
+    },
+    "fix": "可保留。英文对应句同。"
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "崇厚约的完整条款与曾纪泽改约的具体内容不在本文所据段落之内，本文不补写。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "《清史稿·左宗棠传》全文（已通读全篇，并非只读部分段落）。传文只记崇厚约的三端要求、畀俄两河之地、广设领事和索偿卢布五百万元，没有完整条款；曾纪泽改约只记「更前約」，没有具体内容。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "崇厚得罪去，命曾紀澤使俄，更前約。"
+    },
+    "fix": "把「不在本文所据段落之内」改为「《左宗棠传》全篇未载」，以准确反映核查范围是全文。uncertainty_note 中英文同句一并修改。"
+   },
+   {
+    "id": "N3",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "崇厚约文与曾纪泽改约内容不在本文所据段落之内，不作补写。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "《清史稿·左宗棠传》全文",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "俄以通商、分界、償款三端相要。崇厚遽定約，為朝士所糾，議久不決。"
+    },
+    "fix": "改为「《左宗棠传》全篇未载崇厚约文全文与曾纪泽改约内容」。英文「lie outside the passages this piece draws on」相应改为「are not given anywhere in the biography」。"
+   },
+   {
+    "id": "N4",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "这是史书的判断，本文未用其他材料核验。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "这句说的是本文自身的取材范围，指本文只据一源，没有断言当时无人核查。传文中「俄亦懾我兵威，恐事遂決裂」确为史书叙述者的判断。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "而俄亦懾我兵威，恐事遂決裂。"
+    },
+    "fix": "可保留。此句在 limits.1 与 uncertainty_note 中重复出现，可只保留一两处。不得改写成「当时无人核查」一类的说法。"
+   },
+   {
+    "id": "N5",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "this is the history's own judgment and has not been independently checked here.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "这句是对本文取材的自述，限定词「here」使范围准确。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
+    },
+    "fix": "保留「here」的限定，不要扩展成「no independent verification exists」。"
+   },
+   {
+    "id": "N6",
+    "path": "sections.story.1",
+    "lang": "zh",
+    "sentence": "数字照史书所录，未经核实。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "这句说的是本文的处理方式。卢布五百万元出自左宗棠奏疏的转述，本文未另行核对。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "及我索地，則索償盧布五百萬元"
+    },
+    "fix": "可保留。也可点明数字是奏疏所言、并非史官另记。limits.1「数字照录不核」同理。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "uncertainty_note",
+    "problem": "英文写成「the cause of the peace settlement」、中文写成「呈现为和议成的原因」，比 limits.1 的「leading into」和 analysis.2 的措辞更强。传文只是把两件事前后并列，没有明言因果。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成，交還伊犁"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.analysis.1",
+    "problem": "叙述借款时省略了沈葆桢反对借外债、朝廷随后下诏拨款并准借五百万这一转折，读者会以为借债请求直接获准。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "請一借貸外國。沈葆楨尼其議，詔曰：「宗棠以西事自任，國家何惜千萬金。"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "已通读全文，伊犁交涉的结局（和议成、交还伊犁）已在证据中。A1 及其他否定性断言大体成立，但「不在本文所据段落之内」应改为「传文全篇未载」，uncertainty_note 中的因果措辞宜放缓。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "本文所据材料未记伊犁对峙时的钱粮，不能把两者写成同一时期。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "《清史稿·左宗棠传》全文（0–7015）。光绪四年至七年伊犁交涉、出屯哈密一段（四年正月至明年正月和议成）没有钱粮记载。传文随后的「籌西事，尤以節兵裕餉為本謀」是对西事的总评，没有指明伊犁对峙时期；借款五百万、「出塞凡二十月」都属于更早收复新疆的西征。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "宗棠用兵善審機，不常其方略。籌西事，尤以節兵裕餉為本謀。始西征，慮各行省協助餉不時至"
+   },
+   "fix": "可保留。如需更准确，可改为「传文对伊犁对峙期间的钱粮没有具体记载，只有『籌西事，尤以節兵裕餉為本謀』一句总评」，避免读者以为传文全无相关说法。",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.context.2",
+   "lang": "zh",
+   "sentence": "至于他当时怎么权衡，本文所据材料只录了这一句，不作推测。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "《清史稿·左宗棠传》全文。金顺请乘虚袭伊犁一事，传文只记左宗棠一句答语，没有记他的权衡过程。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "時俄方與土耳其戰，金順請乘虛襲伊犁。宗棠曰：「不可。師不以正，彼有辭矣。」"
+   },
+   "fix": "可保留。英文对应句同。",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "崇厚约的完整条款与曾纪泽改约的具体内容不在本文所据段落之内，本文不补写。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "《清史稿·左宗棠传》全文（已通读全篇，并非只读部分段落）。传文只记崇厚约的三端要求、畀俄两河之地、广设领事和索偿卢布五百万元，没有完整条款；曾纪泽改约只记「更前約」，没有具体内容。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "崇厚得罪去，命曾紀澤使俄，更前約。"
+   },
+   "fix": "把「不在本文所据段落之内」改为「《左宗棠传》全篇未载」，以准确反映核查范围是全文。uncertainty_note 中英文同句一并修改。",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "崇厚约文与曾纪泽改约内容不在本文所据段落之内，不作补写。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "《清史稿·左宗棠传》全文",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "俄以通商、分界、償款三端相要。崇厚遽定約，為朝士所糾，議久不決。"
+   },
+   "fix": "改为「《左宗棠传》全篇未载崇厚约文全文与曾纪泽改约内容」。英文「lie outside the passages this piece draws on」相应改为「are not given anywhere in the biography」。",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "这是史书的判断，本文未用其他材料核验。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "这句说的是本文自身的取材范围，指本文只据一源，没有断言当时无人核查。传文中「俄亦懾我兵威，恐事遂決裂」确为史书叙述者的判断。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "而俄亦懾我兵威，恐事遂決裂。"
+   },
+   "fix": "可保留。此句在 limits.1 与 uncertainty_note 中重复出现，可只保留一两处。不得改写成「当时无人核查」一类的说法。",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "this is the history's own judgment and has not been independently checked here.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "这句是对本文取材的自述，限定词「here」使范围准确。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
+   },
+   "fix": "保留「here」的限定，不要扩展成「no independent verification exists」。",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N6",
+   "path": "sections.story.1",
+   "lang": "zh",
+   "sentence": "数字照史书所录，未经核实。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "这句说的是本文的处理方式。卢布五百万元出自左宗棠奏疏的转述，本文未另行核对。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "及我索地，則索償盧布五百萬元"
+   },
+   "fix": "可保留。也可点明数字是奏疏所言、并非史官另记。limits.1「数字照录不核」同理。",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "uncertainty_note",
+   "problem": "英文写成「the cause of the peace settlement」、中文写成「呈现为和议成的原因」，比 limits.1 的「leading into」和 analysis.2 的措辞更强。传文只是把两件事前后并列，没有明言因果。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成，交還伊犁"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.analysis.1",
+   "problem": "叙述借款时省略了沈葆桢反对借外债、朝廷随后下诏拨款并准借五百万这一转折，读者会以为借债请求直接获准。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "請一借貸外國。沈葆楨尼其議，詔曰：「宗棠以西事自任，國家何惜千萬金。"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-QSG412",
+   "outcome": "Under the Ili negotiation thread, the court commended Zuo Zongtang's memorial, Chong Hou was punished and dismissed, and Zeng Jize was sent to revise the treaty. Zuo set out for Hami, Russia sent reinforcements, and the coast went on alert. Zuo was then recalled to the capital and replaced by Jintang. The thread ends with the history saying Russia feared an outright rupture; peace was concluded the next year, Ili was returned, and coastal defenses were stood down.",
+   "quote": "七月，詔宗棠入都備顧問，以錦棠代之。而俄亦懾我兵威，恐事遂決裂。明年正月，和議成，交還伊犁，防海軍皆罷。",
+   "in_evidence": true
+  }
+ ],
+ "additions": [],
+ "additions_failed": [],
+ "evidence_sha256": "03217a3d1e42be30075f229b5103eaf552189e07a133a6110f90cfb68b31cd12",
+ "outcome": "clean",
+ "blocking": []
+}

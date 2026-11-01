@@ -1,0 +1,11 @@
+# Launched 2026-11-01. Nightly inventory batch at 10:00 Beijing time (02:00 UTC; ends well before the 22:08 send and
+# clear of news-intel's 05:00 UTC daily). Persistent=false: no catch-up run on enable or after a reboot.
+[Unit]
+Description=History in Practice: inventory preparation (10:00 Asia/Shanghai)
+
+[Timer]
+OnCalendar=*-*-* 10:00:00 Asia/Shanghai
+Persistent=false
+
+[Install]
+WantedBy=timers.target

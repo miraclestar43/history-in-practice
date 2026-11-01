@@ -1,0 +1,639 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261030-south-el-1",
+ "content_sha256": "91dfff1286194de9326b773f322d6cf859cb1fc4e786f198c7b753ee001cfbd1",
+ "evidence_in_sha256": "5b025cdf540fd234283086717c45d0d6fb46bf58ff0e94d9e15a3cc75e0efc71",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793429073.0984375,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.context.2",
+   "lang": "zh",
+   "sentence": "一种解释是：他没有把出海说成上策，只说成不得已。"
+  },
+  {
+   "id": "A2",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "原文没有说这些理由是否当众向全队讲过；"
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.1",
+   "lang": "en",
+   "sentence": "The original does not say whether those reasons were put to the whole party;"
+  },
+  {
+   "id": "A4",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "这只是一种解释，原文没有说明他为什么这样安排。"
+  },
+  {
+   "id": "A5",
+   "path": "sections.today.0",
+   "lang": "en",
+   "sentence": "A remote station of a few people, supplies good for another stretch of time, communications down, the next resupply date unknown: does everyone stay and endure, or does someone go out and risk seeking help?"
+  },
+  {
+   "id": "A6",
+   "path": "sections.today.1",
+   "lang": "zh",
+   "sentence": "只说“你看着办”却不讲失败的下场，责任就悬在半空。"
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-SOUTH": {
+   "title": "Ernest Shackleton, South (1920 printing), archive.org OCR",
+   "url": "https://archive.org/download/southstoryshack00shac/southstoryshack00shac_djvu.txt",
+   "ref": "southstoryshack00shac",
+   "evidence_text_sha256": "e709edf2dc345da821c4b958cadfccc12ebdb10eecdd4aea9a035b69e54cea92",
+   "cache_sha256": "e709edf2dc345da821c4b958cadfccc12ebdb10eecdd4aea9a035b69e54cea92",
+   "cjk": false,
+   "source_chars": 847815,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     364526,
+     394934
+    ],
+    [
+     396060,
+     419594
+    ]
+   ],
+   "chars_reviewed": 53942
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 73.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 8105
+  }
+ ],
+ "finished_at": 1793429147.3303976,
+ "elapsed_min": 1.2,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-SOUTH",
+    "outcome": "The James Caird sails from Elephant Island. Wild stays in full command, and the shore party gives three cheers as the boat leaves. This is the end of the departure decision itself.",
+    "quote": "they waved to us and gave three hearty cheers. There wag — hope in their hearts and they trusted us to bring the help that they needed.",
+    "in_evidence": true
+   },
+   {
+    "source_id": "S-SOUTH",
+    "outcome": "The boat sights South Georgia fourteen days out and survives a hurricane on a lee shore. On May 10 it gets into King Haakon Bay and runs for a small cove. The reading range stops at 'but in a minute or two', so the landing itself is not in the read text.",
+    "quote": "McCarthy caught a glimpse of the black cliffs of South Georgia, just fourteen days after oy; departure from Elephant Island. It was a glad momen}.",
+    "in_evidence": false
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-SOUTH",
+    "start": "The morning of May 8 broke thick and stormy",
+    "end": "The job was nearly done.",
+    "why": "This is how the voyage turns out: they sight South Georgia fourteen days after leaving. The draft stops at the water rationing, so readers never learn whether the boat arrived."
+   },
+   {
+    "source_id": "S-SOUTH",
+    "start": "Just after 6 p.m., in the dark",
+    "end": "held that pin in its place throughout the hurricane.",
+    "why": "This is the last life-or-death turn before landing: the wind suddenly shifts, and they find the mast pin had nearly fallen out."
+   },
+   {
+    "source_id": "S-SOUTH",
+    "start": "When at last the dawn came on the morning of May 10",
+    "end": "and we turned in that direction.",
+    "why": "They enter King Haakon Bay and head for a cove. This is the latest point of the voyage inside the reading range; the landing itself is cut off."
+   },
+   {
+    "source_id": "S-SOUTH",
+    "start": "McIlroy and Macklin were both anxious to",
+    "end": "their duty lay on the island with the sick men.",
+    "why": "The proposal to take Blackborrow came from the two doctors, who stayed on the island to look after the sick. The draft says only that 'someone proposed' it, which loses this background."
+   },
+   {
+    "source_id": "S-SOUTH",
+    "start": "Worsley, Wild, and I climbed to the summit",
+    "end": "on the following morning.",
+    "why": "story.5 starts with 'once the decision was made' but never says what was decided: to sail the next morning unless conditions forbade it."
+   },
+   {
+    "source_id": "S-SOUTH",
+    "start": "Blackborrow’s feet were giving him much pain",
+    "end": "after we had left.",
+    "why": "Follow-up to the doctors' fear of an operation: they had believed there was no chloroform, then found some after the boat left."
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.context.2",
+    "lang": "zh",
+    "sentence": "一种解释是：他没有把出海说成上策，只说成不得已。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Chapter IX, opening paragraphs on the reasons for the boat journey",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "The risk was justified solely by our urgent need of assistance."
+    },
+    "fix": "This is an interpretation and it fits the source, so it can stay. hook.2 already makes the same point, so it could also be cut as repetition."
+   },
+   {
+    "id": "A2",
+    "path": "sections.analysis.1",
+    "lang": "zh",
+    "sentence": "原文没有说这些理由是否当众向全队讲过；",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Chapter IX, the paragraphs from 'I called the men together' through 'JT finally selected' (the volunteers and the Blackborrow veto)",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "They suggested that I should take Blackborrow in order that he might have shelter and warmth as quickly ag possible, but I had to veto this idea."
+    },
+    "fix": "The assertion is accurate. Write the scope as 'this section does not say'. Consider cutting the unverified conjecture that follows, and state that the proposal came from the two doctors."
+   },
+   {
+    "id": "A3",
+    "path": "sections.analysis.1",
+    "lang": "en",
+    "sentence": "The original does not say whether those reasons were put to the whole party;",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Chapter IX, the volunteer and Blackborrow-veto paragraphs",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "It would be hard enough for fit men to live in the boat."
+    },
+    "fix": "Same as the Chinese version. Optionally narrow it to 'The passage does not say' and trim the conjecture."
+   },
+   {
+    "id": "A4",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "这只是一种解释，原文没有说明他为什么这样安排。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Chapter IX, the paragraph on calling for volunteers and the one on calling the men together",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I called the men together, explained my plan, and asked for volunteers."
+    },
+    "fix": "Can stay as written."
+   },
+   {
+    "id": "N1",
+    "path": "sections.analysis.2",
+    "lang": "en",
+    "sentence": "That is only one reading; the original gives no reason for the arrangement.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "Chapter IX, the volunteer paragraphs",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "Four other men would be required, and I decided to call for volunteers, although, as a matter of fact, I pretty well knew which of the people I would select."
+    },
+    "fix": "Can stay as written."
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "所引片段未给公元年份，这里不做换算",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "The two reading windows (364526–394934, 396060–419594). They give only month and day (April 20 to May 10), never a year.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "A hard north-westerly gale came up on the eleventh day (May 5)"
+    },
+    "fix": "Accurate. Same in the English version and in uncertainty_note."
+   },
+   {
+    "id": "N3",
+    "path": "sections.limits.1",
+    "lang": "en",
+    "sentence": "Why Vincent collapsed, the leader himself says he could not easily account for",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "The May 5 big-wave passage",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I could not easily account for his collapse"
+    },
+    "fix": "Can stay as written."
+   },
+   {
+    "id": "A5",
+    "path": "sections.today.0",
+    "lang": "en",
+    "sentence": "A remote station of a few people, supplies good for another stretch of time, communications down, the next resupply date unknown: does everyone stay and endure, or does someone go out and risk seeking help?",
+    "verdict": "not_a_source_claim",
+    "source_ids": [],
+    "scope": "Modern analogy",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": ""
+    },
+    "fix": "No change needed."
+   },
+   {
+    "id": "A6",
+    "path": "sections.today.1",
+    "lang": "zh",
+    "sentence": "只说“你看着办”却不讲失败的下场，责任就悬在半空。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [],
+    "scope": "Modern takeaway",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": ""
+    },
+    "fix": "No change needed."
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.story.8",
+    "problem": "The narrative ends on thirst and water rationing during the voyage. The outcome follows straight after in the source (South Georgia sighted fourteen days out, then the approach to King Haakon Bay), so readers are left not knowing whether the voyage succeeded.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "Things were bad for us in those days, but the end was coming."
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.story.2",
+    "problem": "Writing 'one proposal was' hides who proposed it: the two doctors, who had chosen to stay with the sick. That changes how the veto reads.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "McIlroy and Macklin were both anxious to. go but realized that their duty lay on the island with the sick men."
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.story.5",
+    "problem": "'With that decision made' cuts off what the decision was: to sail the next morning unless conditions forbade it.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I decided that, unless the conditions forbade it, we would make a start in the James Caird on the following morning."
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.context.0",
+    "problem": "The draft presents South Georgia as the obvious destination. It leaves out the comparison with the nearer Port Stanley, which was upwind and so out of reach. Evidence item E4 is even labelled 'how the two destinations compare'.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "Port Stanley, in the Falkland Islands, 540 miles away"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.hook.1",
+    "problem": "The doctors' fear of operating has a follow-up the draft omits: they thought they had no chloroform, then found some after the boat left.",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "They were - under the impression then that they had no chloroform, but they found some subsequently in the medicine-chest after we had left."
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "The claims about what the source does not say are accurate within the read range. The main problem is that the draft ends mid-voyage: the sighting of South Georgia and the approach to King Haakon Bay must be added, along with small context points such as the doctors being the ones who proposed taking Blackborrow."
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.context.2",
+   "lang": "zh",
+   "sentence": "一种解释是：他没有把出海说成上策，只说成不得已。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Chapter IX, opening paragraphs on the reasons for the boat journey",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "The risk was justified solely by our urgent need of assistance."
+   },
+   "fix": "This is an interpretation and it fits the source, so it can stay. hook.2 already makes the same point, so it could also be cut as repetition.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "原文没有说这些理由是否当众向全队讲过；",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Chapter IX, the paragraphs from 'I called the men together' through 'JT finally selected' (the volunteers and the Blackborrow veto)",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "They suggested that I should take Blackborrow in order that he might have shelter and warmth as quickly ag possible, but I had to veto this idea."
+   },
+   "fix": "The assertion is accurate. Write the scope as 'this section does not say'. Consider cutting the unverified conjecture that follows, and state that the proposal came from the two doctors.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.1",
+   "lang": "en",
+   "sentence": "The original does not say whether those reasons were put to the whole party;",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Chapter IX, the volunteer and Blackborrow-veto paragraphs",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "It would be hard enough for fit men to live in the boat."
+   },
+   "fix": "Same as the Chinese version. Optionally narrow it to 'The passage does not say' and trim the conjecture.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A4",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "这只是一种解释，原文没有说明他为什么这样安排。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Chapter IX, the paragraph on calling for volunteers and the one on calling the men together",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I called the men together, explained my plan, and asked for volunteers."
+   },
+   "fix": "Can stay as written.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "That is only one reading; the original gives no reason for the arrangement.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "Chapter IX, the volunteer paragraphs",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "Four other men would be required, and I decided to call for volunteers, although, as a matter of fact, I pretty well knew which of the people I would select."
+   },
+   "fix": "Can stay as written.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "所引片段未给公元年份，这里不做换算",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "The two reading windows (364526–394934, 396060–419594). They give only month and day (April 20 to May 10), never a year.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "A hard north-westerly gale came up on the eleventh day (May 5)"
+   },
+   "fix": "Accurate. Same in the English version and in uncertainty_note.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "Why Vincent collapsed, the leader himself says he could not easily account for",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "The May 5 big-wave passage",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I could not easily account for his collapse"
+   },
+   "fix": "Can stay as written.",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A5",
+   "path": "sections.today.0",
+   "lang": "en",
+   "sentence": "A remote station of a few people, supplies good for another stretch of time, communications down, the next resupply date unknown: does everyone stay and endure, or does someone go out and risk seeking help?",
+   "verdict": "not_a_source_claim",
+   "source_ids": [],
+   "scope": "Modern analogy",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": ""
+   },
+   "fix": "No change needed.",
+   "unit_status": {}
+  },
+  {
+   "id": "A6",
+   "path": "sections.today.1",
+   "lang": "zh",
+   "sentence": "只说“你看着办”却不讲失败的下场，责任就悬在半空。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [],
+   "scope": "Modern takeaway",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": ""
+   },
+   "fix": "No change needed.",
+   "unit_status": {}
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.story.8",
+   "problem": "The narrative ends on thirst and water rationing during the voyage. The outcome follows straight after in the source (South Georgia sighted fourteen days out, then the approach to King Haakon Bay), so readers are left not knowing whether the voyage succeeded.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "Things were bad for us in those days, but the end was coming."
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.story.2",
+   "problem": "Writing 'one proposal was' hides who proposed it: the two doctors, who had chosen to stay with the sick. That changes how the veto reads.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "McIlroy and Macklin were both anxious to. go but realized that their duty lay on the island with the sick men."
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.story.5",
+   "problem": "'With that decision made' cuts off what the decision was: to sail the next morning unless conditions forbade it.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I decided that, unless the conditions forbade it, we would make a start in the James Caird on the following morning."
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.context.0",
+   "problem": "The draft presents South Georgia as the obvious destination. It leaves out the comparison with the nearer Port Stanley, which was upwind and so out of reach. Evidence item E4 is even labelled 'how the two destinations compare'.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "Port Stanley, in the Falkland Islands, 540 miles away"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.hook.1",
+   "problem": "The doctors' fear of operating has a follow-up the draft omits: they thought they had no chloroform, then found some after the boat left.",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "They were - under the impression then that they had no chloroform, but they found some subsequently in the medicine-chest after we had left."
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-SOUTH",
+   "outcome": "The James Caird sails from Elephant Island. Wild stays in full command, and the shore party gives three cheers as the boat leaves. This is the end of the departure decision itself.",
+   "quote": "they waved to us and gave three hearty cheers. There wag — hope in their hearts and they trusted us to bring the help that they needed.",
+   "in_evidence": true
+  },
+  {
+   "source_id": "S-SOUTH",
+   "outcome": "The boat sights South Georgia fourteen days out and survives a hurricane on a lee shore. On May 10 it gets into King Haakon Bay and runs for a small cove. The reading range stops at 'but in a minute or two', so the landing itself is not in the read text.",
+   "quote": "McCarthy caught a glimpse of the black cliffs of South Georgia, just fourteen days after oy; departure from Elephant Island. It was a glad momen}.",
+   "in_evidence": false
+  }
+ ],
+ "additions": [
+  {
+   "id": "SOUTH-EL1-E26",
+   "source_id": "S-SOUTH",
+   "offset": 412395,
+   "chars": 948,
+   "why": "This is how the voyage turns out: they sight South Georgia fourteen days after leaving. The draft stops at the water rationing, so readers never learn whether the boat arrived."
+  },
+  {
+   "id": "SOUTH-EL1-E27",
+   "source_id": "S-SOUTH",
+   "offset": 416673,
+   "chars": 868,
+   "why": "This is the last life-or-death turn before landing: the wind suddenly shifts, and they find the mast pin had nearly fallen out."
+  },
+  {
+   "id": "SOUTH-EL1-E28",
+   "source_id": "S-SOUTH",
+   "offset": 417946,
+   "chars": 1393,
+   "why": "They enter King Haakon Bay and head for a cove. This is the latest point of the voyage inside the reading range; the landing itself is cut off."
+  },
+  {
+   "id": "SOUTH-EL1-E29",
+   "source_id": "S-SOUTH",
+   "offset": 371480,
+   "chars": 110,
+   "why": "The proposal to take Blackborrow came from the two doctors, who stayed on the island to look after the sick. The draft says only that 'someone proposed' it, which loses this background."
+  },
+  {
+   "id": "SOUTH-EL1-E30",
+   "source_id": "S-SOUTH",
+   "offset": 379908,
+   "chars": 350,
+   "why": "story.5 starts with 'once the decision was made' but never says what was decided: to sail the next morning unless conditions forbade it."
+  },
+  {
+   "id": "SOUTH-EL1-E31",
+   "source_id": "S-SOUTH",
+   "offset": 377869,
+   "chars": 266,
+   "why": "Follow-up to the doctors' fear of an operation: they had believed there was no chloroform, then found some after the boat left."
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "57d6d2eb3b263137d382c1a4ec17cb7fbc06a8fdd430449ba189795abfdf2ec7",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.story.8: The narrative ends on thirst and water rationing during the voyage. The outcome follows straight aft",
+  "evidence must be expanded first: 6 addition(s) ['SOUTH-EL1-E26', 'SOUTH-EL1-E27', 'SOUTH-EL1-E28', 'SOUTH-EL1-E29', 'SOUTH-EL1-E30', 'SOUTH-EL1-E31']"
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "candidate_id": "cand-20261030-snow-water-companies",
+ "category": "world",
+ "steps": [],
+ "sources": {
+  "B-SNOW": "evidence_usable"
+ },
+ "dedup": [
+  "distinct",
+  ""
+ ],
+ "episode_id": "ep-cand-20261030-snow-water-companies",
+ "model_calls": [
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 305.2,
+   "prompt_bytes": 8794,
+   "prompt_chars": 5848,
+   "out_bytes": 12534,
+   "out_chars": 6213,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "draft_zh",
+   "attempt": 1,
+   "candidate": "cand-20261030-snow-water-companies",
+   "json_ok": false
+  },
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 207.3,
+   "prompt_bytes": 8869,
+   "prompt_chars": 5883,
+   "out_bytes": 13919,
+   "out_chars": 6570,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "draft_zh",
+   "attempt": 2,
+   "candidate": "cand-20261030-snow-water-companies",
+   "json_ok": true
+  },
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 135.5,
+   "prompt_bytes": 18759,
+   "prompt_chars": 10970,
+   "out_bytes": 6730,
+   "out_chars": 3383,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "review_zh",
+   "attempt": 1,
+   "candidate": "cand-20261030-snow-water-companies",
+   "json_ok": true
+  },
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 160.7,
+   "prompt_bytes": 19564,
+   "prompt_chars": 12099,
+   "out_bytes": 15108,
+   "out_chars": 15072,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "en",
+   "attempt": 1,
+   "candidate": "cand-20261030-snow-water-companies",
+   "json_ok": true
+  }
+ ],
+ "length": {
+  "zh_chars": 2557,
+  "en_words": 1898,
+  "basis": "body + question + example; excludes sources and read-more"
+ },
+ "reading_minutes": {
+  "zh": 8,
+  "en": 9,
+  "basis": "estimate: 320 zh chars/min, 200 en words/min"
+ },
+ "findings": [
+  [
+   "CHECK",
+   "story[5] numbers differ zh[37, 59, 315] en[17, 37, 59, 315, 10000]"
+  ],
+  [
+   "CHECK",
+   "limits[2] numbers differ zh[37, 59, 315] en[17, 37, 59, 315]"
+  ],
+  [
+   "FIX",
+   "today[0] may repeat the open-question scenario"
+  ]
+ ],
+ "outcome": "checked",
+ "wall_s": 808.9
+}

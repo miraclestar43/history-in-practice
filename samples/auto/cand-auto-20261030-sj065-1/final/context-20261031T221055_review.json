@@ -1,0 +1,228 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261030-sj065-1",
+ "content_sha256": "4af4a57437973b6660dca6ac7820e2f5a16a136fc1f50b7d5ae3a2c4539401ec",
+ "evidence_in_sha256": "cb0f9060b5b618c4feb6ad31367759427008a42985053e6e0423978e057e2245",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793502655.2503088,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.2",
+   "lang": "en",
+   "sentence": "Wu Qi was silent for a long time, then said: To you."
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-SJ065": {
+   "title": "司馬遷《史記·孫子吳起列傳》（维基文库本）",
+   "url": "https://zh.wikisource.org/w/index.php?title=%E5%8F%B2%E8%A8%98/%E5%8D%B7065&action=render",
+   "ref": "zh:史記/卷065",
+   "evidence_text_sha256": "c6bedf3de6168b486a80b40b2c425409808d8161efb99ac3a05423cb08dbfd24",
+   "cache_sha256": "c6bedf3de6168b486a80b40b2c425409808d8161efb99ac3a05423cb08dbfd24",
+   "cjk": true,
+   "source_chars": 2928,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     2928
+    ]
+   ],
+   "chars_reviewed": 2928
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 23.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "prompts": [
+    {
+     "file": "context_review.md",
+     "sha256": "166543d1f6ca"
+    }
+   ],
+   "output_tokens": 2463
+  }
+ ],
+ "finished_at": 1793502679.3822494,
+ "elapsed_min": 0.4,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-SJ065",
+    "outcome": "在魏国这一段，公叔之计成功：吴起辞婚，武侯起疑，吴起怕获罪离魏赴楚。全传以吴起在楚被贵戚射杀收尾：太子即位后诛杀射中王尸者，七十余家被灭族；太史公评他“以刻暴少恩亡其軀”。",
+    "quote": "悼王既葬，太子立，乃使令尹盡誅射吳起而并中王尸者。坐射起而夷宗死者七十餘家。",
+    "in_evidence": true
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-SJ065",
+    "start": "於是魏文侯以為將",
+    "end": "拔五城",
+    "why": "这是文侯向李克问人之后的直接结果：任吴起为将，攻秦拔五城。证据包从李克评语直接跳到治军，story.0 因此没有交代文侯是否任用他，也缺少吴起在魏的首个战功。这句话也能支撑dek和story.1里“功劳”的说法。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.2",
+    "lang": "en",
+    "sentence": "Wu Qi was silent for a long time, then said: To you.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ065"
+    ],
+    "scope": "《孫子吳起列傳》吴起与田文论功一段",
+    "quote": {
+     "source_id": "S-SJ065",
+     "quote": "起默然良久，曰：「屬之子矣。」"
+    },
+    "fix": "无需修改；这是对人物言行的叙述，与原文一致。"
+   },
+   {
+    "id": "N1",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "这些是说话人各自的评价，不是史家的定论。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SJ065"
+    ],
+    "scope": "《孫子吳起列傳》吴起部分全文及太史公曰",
+    "quote": {
+     "source_id": "S-SJ065",
+     "quote": "吳起為人節廉而自喜名也"
+    },
+    "fix": "可以保留。三则评语在原文中确实分别出自鲁人、李克和公叔之仆之口。另可注意，司马迁叙述文侯任用他的理由时也写到“廉平”，与仆人所说“节廉”大体相合；如需更周全，可写明这一点。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.story.0",
+    "problem": "段落写了文侯问李克，随即转入吴起治军，漏掉了紧接着的结果：文侯因此任他为将，攻秦拔五城。读者看不到文侯任用吴起的直接依据，也看不到他在魏的首个战功。",
+    "quote": {
+     "source_id": "S-SJ065",
+     "quote": "於是魏文侯以為將，擊秦，拔五城。"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "来源为全文，结局（离魏赴楚、死于楚乱、七十余家夷宗）均已在证据包中；稿件没有错误的否定性来源断言，只建议在story.0补上文侯任其为将、拔秦五城这一句。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.2",
+   "lang": "en",
+   "sentence": "Wu Qi was silent for a long time, then said: To you.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ065"
+   ],
+   "scope": "《孫子吳起列傳》吴起与田文论功一段",
+   "quote": {
+    "source_id": "S-SJ065",
+    "quote": "起默然良久，曰：「屬之子矣。」"
+   },
+   "fix": "无需修改；这是对人物言行的叙述，与原文一致。",
+   "unit_status": {
+    "S-SJ065": "complete"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "这些是说话人各自的评价，不是史家的定论。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SJ065"
+   ],
+   "scope": "《孫子吳起列傳》吴起部分全文及太史公曰",
+   "quote": {
+    "source_id": "S-SJ065",
+    "quote": "吳起為人節廉而自喜名也"
+   },
+   "fix": "可以保留。三则评语在原文中确实分别出自鲁人、李克和公叔之仆之口。另可注意，司马迁叙述文侯任用他的理由时也写到“廉平”，与仆人所说“节廉”大体相合；如需更周全，可写明这一点。",
+   "unit_status": {
+    "S-SJ065": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.story.0",
+   "problem": "段落写了文侯问李克，随即转入吴起治军，漏掉了紧接着的结果：文侯因此任他为将，攻秦拔五城。读者看不到文侯任用吴起的直接依据，也看不到他在魏的首个战功。",
+   "quote": {
+    "source_id": "S-SJ065",
+    "quote": "於是魏文侯以為將，擊秦，拔五城。"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-SJ065",
+   "outcome": "在魏国这一段，公叔之计成功：吴起辞婚，武侯起疑，吴起怕获罪离魏赴楚。全传以吴起在楚被贵戚射杀收尾：太子即位后诛杀射中王尸者，七十余家被灭族；太史公评他“以刻暴少恩亡其軀”。",
+   "quote": "悼王既葬，太子立，乃使令尹盡誅射吳起而并中王尸者。坐射起而夷宗死者七十餘家。",
+   "in_evidence": true
+  }
+ ],
+ "additions": [
+  {
+   "id": "SJ0651-E29",
+   "source_id": "S-SJ065",
+   "offset": 1806,
+   "chars": 15,
+   "why": "这是文侯向李克问人之后的直接结果：任吴起为将，攻秦拔五城。证据包从李克评语直接跳到治军，story.0 因此没有交代文侯是否任用他，也缺少吴起在魏的首个战功。这句话也能支撑dek和story.1里“功劳”的说法。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "91470ea7108dd602caf566f53a3cb6559c0c2fccf9bd92c36264370653cd6366",
+ "outcome": "needs_work",
+ "blocking": [
+  "evidence must be expanded first: 1 addition(s) ['SJ0651-E29']"
+ ]
+}

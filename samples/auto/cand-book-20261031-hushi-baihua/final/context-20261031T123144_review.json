@@ -1,0 +1,440 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-book-20261031-hushi-baihua",
+ "content_sha256": "083fae741d514083bc75b8928b3bc3e0a4e62f2d88a64167900b02f3c993c2f1",
+ "evidence_in_sha256": "d8786b7bb1060a2283d90c6b7256e1a3e8ffabd84e72e9a30c5a3a8fdb66acbb",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793467904.4701529,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.9",
+   "lang": "zh",
+   "sentence": "另一位是古典音韵学教授、章太炎门人钱玄同，这位古文大家没有写文章，却写去小批评大捧场的长信，也在《新青年》发表，声势为之一振。"
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-BK-HUSHI": {
+   "title": "胡适口述，唐德刚译注《胡适口述自传》，中国文史出版社 2020（PDF 文字层；第八章“从文学革命到文艺复兴”）",
+   "url": "https://raw.githubusercontent.com/miraclestar43/bo-guan-yue-qu/1b0d81a1ada44c920d5c19798447616127cec825/13-%E4%BA%BA%E7%89%A9%E4%BC%A0%E8%AE%B0/%E8%83%A1%E9%80%82%E5%8F%A3%E8%BF%B0%E8%87%AA%E4%BC%A0.pdf",
+   "ref": "book:BK-HUSHI-KS",
+   "evidence_text_sha256": "11a8350c0f89bc7fe786a0d88fefbd19620d0e8ed664ec3ed375b2caceb630ec",
+   "cache_sha256": "11a8350c0f89bc7fe786a0d88fefbd19620d0e8ed664ec3ed375b2caceb630ec",
+   "cjk": true,
+   "source_chars": 198290,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     98706,
+     122114
+    ]
+   ],
+   "chars_reviewed": 23408
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 52.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 5606
+  }
+ ],
+ "finished_at": 1793467957.0720184,
+ "elapsed_min": 0.9,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-BK-HUSHI",
+    "outcome": "在胡适的自述里，这件事收尾于五四后白话刊物大量出现，以及1920年教育部通令小学一、二年级教材改用白话。他称之为“至少获得了部分的胜利”。",
+    "quote": "所以在一九二二年以后，所有的小学教材都要以国语（白话）为准了。因此在我们的斗争中，至少获得了部分的胜利。其中重要的部分就是以白话文为教育的工具。",
+    "in_evidence": true
+   },
+   {
+    "source_id": "S-BK-HUSHI",
+    "outcome": "紧接着胡适又表示不满意：四十年来白话文始终没有成为完全的教育工具和文学工具。他把原因归于执政者的保守，以及教科书文白夹杂。",
+    "quote": "但是上述这些成就，对我这位原始运动策划人来说，我还是感觉到不满意。由于多种原因——尤其是政治方面的原因——使白话文在四十年来就始终没有能成为完全的教育工具和文学工具。",
+    "in_evidence": false
+   },
+   {
+    "source_id": "S-BK-HUSHI",
+    "outcome": "钟文鳌传单这条支线的收尾是：两篇论文在学生会宣读，赵元任后来成为国语罗马字的主要编制人之一。",
+    "quote": "我二人的论文都在中国学生会中宣读了。",
+    "in_evidence": true
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-BK-HUSHI",
+    "start": "但是上述这些成就，对我这位原始运动策划人来说",
+    "end": "我宁愿只提这两项最重要的原因",
+    "why": "这是胡适对结局的自我限定，紧接在“部分的胜利”之后：他不满意，白话文四十年来没有成为完全的工具，并归咎执政者与文白夹杂的教科书。analysis.3 只写了胜利，不写这段会让读者误以为结局圆满。"
+   },
+   {
+    "source_id": "S-BK-HUSHI",
+    "start": "那时还有一桩值得一提的偶然发生的小事",
+    "end": "又有一件小小的意外事件在绮色佳的凯约嘉湖畔发生了",
+    "why": "胡适本人明确把凯约嘉湖事件算作“偶然发生的小事”“小小的意外事件”。analysis.0 声称把湖上事件归入这一串是“本文的归并”，与来源不符，需要用这段来更正。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.9",
+    "lang": "zh",
+    "sentence": "另一位是古典音韵学教授、章太炎门人钱玄同，这位古文大家没有写文章，却写去小批评大捧场的长信，也在《新青年》发表，声势为之一振。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章“二 孤独的文学实验”钱玄同响应一段",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "钱玄同教授则没有写什么文章，但是他却向独秀和我写了些小批评大捧场的长信，支持我们的观点。这些信也在《新青年》上发表了。"
+    },
+    "fix": "这是叙述钱玄同做了什么，不是关于来源是否记载的断言，且与来源一致。可加“据胡适说”，保留即可。"
+   },
+   {
+    "id": "N1",
+    "path": "sections.analysis.0",
+    "lang": "zh",
+    "sentence": "本文把传单和湖上险些翻船引出的争论也放进这一串，这是本文的归并。",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章“一 革命的导火线”全节",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "那时还有一桩值得一提的偶然发生的小事，也引起了连锁性的反应。其结果竟使我下定决心不写旧诗，要写就用活的语言来写。就在我记录上述九条的同时，我又收到一封从绮色佳的来信，信中告诉我说，又有一件小小的意外事件在绮色佳的凯约嘉湖畔发生了。"
+    },
+    "fix": "改为：胡适本人也把湖上险事称作“小小的意外事件”；只有把钟文鳌传单归入这一串是本文的归并（来源中传单一事出现在“革命的导火线”一节之前，未被他称为意外事件）。"
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "因此这是当事人多年后的自述，不是当时的独立记录；",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章注〔1〕唐德刚关于英文稿来源的说明，以及第七、八章正文",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "因此本章的英文稿，原是我们自他《四十自述》的《逼上梁山》那一章里节译出来的"
+    },
+    "fix": "可保留，但宜补一句：自述中引用了他1916年7月6日的日记和7月26日致任鸿隽信，这些内容经他本人转录，本文未查阅原日记和原信。"
+   },
+   {
+    "id": "N3",
+    "path": "sections.limits.2",
+    "lang": "zh",
+    "sentence": "本文只依据这一更正，未另行核验；",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章“二”中小说年代更正一段",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "那些精彩的故事和长篇小说，都是经过几百年的流传，到明代才正式写出定稿的。"
+    },
+    "fix": "这是对本文自身查证范围的说明，属实，保留。"
+   },
+   {
+    "id": "N4",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "唐德刚的注释属评论而非史实。",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章注〔2〕〔5〕〔6〕、第八章正文中的译注",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "一九五六年当他以这一论调在哈佛大学讲演时（笔者至今尚保存一份那时的录音带），那时尚在哈佛读书，后来曾为他作传的格里德（JeromeB.Grieder）博士简直就嗤之以鼻。"
+    },
+    "fix": "改为：唐德刚注释中的评价与推论属评论；注中所记事实（如1956年哈佛讲演、格里德的反应、《展望》杂志出处）是唐德刚的记述，本文未另行核实。"
+   },
+   {
+    "id": "N5",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "and Tang Degang's notes are commentary rather than fact.",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章注〔2〕〔5〕〔6〕",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "见DonaldRobinson，“TheWorld’s100MostImportantPeople”，Look，Oct.4，1955，p.40."
+    },
+    "fix": "Tang's evaluations are commentary; the facts he records (the 1956 Harvard lecture, Grieder's reaction, the Look citation) are his testimony, not checked here."
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.analysis.3",
+    "problem": "段落只交代“部分的胜利”和1920年通令，漏掉了紧接着的转折：胡适明言不满意，认为四十年来白话文始终未成为完全的教育与文学工具，并归咎执政者的保守和文白夹杂的教科书。读者会把中途成果误读为圆满结局。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "由于多种原因——尤其是政治方面的原因——使白话文在四十年来就始终没有能成为完全的教育工具和文学工具。"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.limits.1",
+    "problem": "只引唐德刚“白话文百分之百成功”的判断，没有对照胡适本人“不满意”的自评。两者并列才能看清，否则读者以为来源对白话文结局没有异议。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "但是眼看四十年过去了，这运动至今还没有达成我当年的理想，我宁愿只提这两项最重要的原因"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.analysis.0",
+    "problem": "把湖上事件归入“一连串小意外”说成本文的归并，实际上胡适本人就这样归类，属于错误归属。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "那时还有一桩值得一提的偶然发生的小事，也引起了连锁性的反应。"
+    },
+    "severity": "fix"
+   }
+  ],
+  "search": [],
+  "overall": "阅读范围已覆盖结局：证据包有“部分的胜利”，但缺胡适紧随其后的“不满意”限定，须补入 analysis.3；analysis.0 把湖上事件当作本文归并有误；uncertainty_note 把唐德刚注释一概称为“评论而非史实”过宽，应区分评论与他记述的事实。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.9",
+   "lang": "zh",
+   "sentence": "另一位是古典音韵学教授、章太炎门人钱玄同，这位古文大家没有写文章，却写去小批评大捧场的长信，也在《新青年》发表，声势为之一振。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章“二 孤独的文学实验”钱玄同响应一段",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "钱玄同教授则没有写什么文章，但是他却向独秀和我写了些小批评大捧场的长信，支持我们的观点。这些信也在《新青年》上发表了。"
+   },
+   "fix": "这是叙述钱玄同做了什么，不是关于来源是否记载的断言，且与来源一致。可加“据胡适说”，保留即可。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.analysis.0",
+   "lang": "zh",
+   "sentence": "本文把传单和湖上险些翻船引出的争论也放进这一串，这是本文的归并。",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章“一 革命的导火线”全节",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "那时还有一桩值得一提的偶然发生的小事，也引起了连锁性的反应。其结果竟使我下定决心不写旧诗，要写就用活的语言来写。就在我记录上述九条的同时，我又收到一封从绮色佳的来信，信中告诉我说，又有一件小小的意外事件在绮色佳的凯约嘉湖畔发生了。"
+   },
+   "fix": "改为：胡适本人也把湖上险事称作“小小的意外事件”；只有把钟文鳌传单归入这一串是本文的归并（来源中传单一事出现在“革命的导火线”一节之前，未被他称为意外事件）。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "因此这是当事人多年后的自述，不是当时的独立记录；",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章注〔1〕唐德刚关于英文稿来源的说明，以及第七、八章正文",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "因此本章的英文稿，原是我们自他《四十自述》的《逼上梁山》那一章里节译出来的"
+   },
+   "fix": "可保留，但宜补一句：自述中引用了他1916年7月6日的日记和7月26日致任鸿隽信，这些内容经他本人转录，本文未查阅原日记和原信。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.limits.2",
+   "lang": "zh",
+   "sentence": "本文只依据这一更正，未另行核验；",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章“二”中小说年代更正一段",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "那些精彩的故事和长篇小说，都是经过几百年的流传，到明代才正式写出定稿的。"
+   },
+   "fix": "这是对本文自身查证范围的说明，属实，保留。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "唐德刚的注释属评论而非史实。",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章注〔2〕〔5〕〔6〕、第八章正文中的译注",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "一九五六年当他以这一论调在哈佛大学讲演时（笔者至今尚保存一份那时的录音带），那时尚在哈佛读书，后来曾为他作传的格里德（JeromeB.Grieder）博士简直就嗤之以鼻。"
+   },
+   "fix": "改为：唐德刚注释中的评价与推论属评论；注中所记事实（如1956年哈佛讲演、格里德的反应、《展望》杂志出处）是唐德刚的记述，本文未另行核实。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "and Tang Degang's notes are commentary rather than fact.",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章注〔2〕〔5〕〔6〕",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "见DonaldRobinson，“TheWorld’s100MostImportantPeople”，Look，Oct.4，1955，p.40."
+   },
+   "fix": "Tang's evaluations are commentary; the facts he records (the 1956 Harvard lecture, Grieder's reaction, the Look citation) are his testimony, not checked here.",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.analysis.3",
+   "problem": "段落只交代“部分的胜利”和1920年通令，漏掉了紧接着的转折：胡适明言不满意，认为四十年来白话文始终未成为完全的教育与文学工具，并归咎执政者的保守和文白夹杂的教科书。读者会把中途成果误读为圆满结局。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "由于多种原因——尤其是政治方面的原因——使白话文在四十年来就始终没有能成为完全的教育工具和文学工具。"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.limits.1",
+   "problem": "只引唐德刚“白话文百分之百成功”的判断，没有对照胡适本人“不满意”的自评。两者并列才能看清，否则读者以为来源对白话文结局没有异议。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "但是眼看四十年过去了，这运动至今还没有达成我当年的理想，我宁愿只提这两项最重要的原因"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.analysis.0",
+   "problem": "把湖上事件归入“一连串小意外”说成本文的归并，实际上胡适本人就这样归类，属于错误归属。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "那时还有一桩值得一提的偶然发生的小事，也引起了连锁性的反应。"
+   },
+   "severity": "fix"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-BK-HUSHI",
+   "outcome": "在胡适的自述里，这件事收尾于五四后白话刊物大量出现，以及1920年教育部通令小学一、二年级教材改用白话。他称之为“至少获得了部分的胜利”。",
+   "quote": "所以在一九二二年以后，所有的小学教材都要以国语（白话）为准了。因此在我们的斗争中，至少获得了部分的胜利。其中重要的部分就是以白话文为教育的工具。",
+   "in_evidence": true
+  },
+  {
+   "source_id": "S-BK-HUSHI",
+   "outcome": "紧接着胡适又表示不满意：四十年来白话文始终没有成为完全的教育工具和文学工具。他把原因归于执政者的保守，以及教科书文白夹杂。",
+   "quote": "但是上述这些成就，对我这位原始运动策划人来说，我还是感觉到不满意。由于多种原因——尤其是政治方面的原因——使白话文在四十年来就始终没有能成为完全的教育工具和文学工具。",
+   "in_evidence": false
+  },
+  {
+   "source_id": "S-BK-HUSHI",
+   "outcome": "钟文鳌传单这条支线的收尾是：两篇论文在学生会宣读，赵元任后来成为国语罗马字的主要编制人之一。",
+   "quote": "我二人的论文都在中国学生会中宣读了。",
+   "in_evidence": true
+  }
+ ],
+ "additions": [
+  {
+   "id": "HS-E37",
+   "source_id": "S-BK-HUSHI",
+   "offset": 119436,
+   "chars": 571,
+   "why": "这是胡适对结局的自我限定，紧接在“部分的胜利”之后：他不满意，白话文四十年来没有成为完全的工具，并归咎执政者与文白夹杂的教科书。analysis.3 只写了胜利，不写这段会让读者误以为结局圆满。"
+  },
+  {
+   "id": "HS-E38",
+   "source_id": "S-BK-HUSHI",
+   "offset": 105227,
+   "chars": 114,
+   "why": "胡适本人明确把凯约嘉湖事件算作“偶然发生的小事”“小小的意外事件”。analysis.0 声称把湖上事件归入这一串是“本文的归并”，与来源不符，需要用这段来更正。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "0dd80244e4b8ab297cf604612f4bd3ff22bdcdb576c3cf6f0476cfda5e24b1c6",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.analysis.0.zh: contradicted — 本文把传单和湖上险些翻船引出的争论也放进这一串，这是本文的归并。",
+  "uncertainty_note.zh: contradicted — 唐德刚的注释属评论而非史实。",
+  "uncertainty_note.en: contradicted — and Tang Degang's notes are commentary rather than fact.",
+  "sections.analysis.3: 段落只交代“部分的胜利”和1920年通令，漏掉了紧接着的转折：胡适明言不满意，认为四十年来白话文始终未成为完全的教育与文学工具，并归咎执政者的保守和文白夹杂的教科书。读者会把中途成果误读为圆满结局。",
+  "sections.analysis.0: 把湖上事件归入“一连串小意外”说成本文的归并，实际上胡适本人就这样归类，属于错误归属。",
+  "evidence must be expanded first: 2 addition(s) ['HS-E37', 'HS-E38']"
+ ]
+}

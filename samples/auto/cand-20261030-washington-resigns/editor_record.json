@@ -1,0 +1,625 @@
+{
+ "candidate_id": "attempt-2",
+ "editor": "hermes-isolated editor (prompts/edit_zh_en.md)",
+ "code_rev": "a61c045",
+ "started_at": 1793380559.554259,
+ "evidence_sha256": "f6e35ee70844c1f18cb2f1efa8d0270e01c518ac869da265000492846e28fd40",
+ "original_content_sha256": "6a020d0913c24fa9b5000009cbb75dfda9af4bdfb4a285f47797a7994ec3866e",
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    {
+     "id": "S1",
+     "source": "review",
+     "severity": "fix",
+     "where": "context.0",
+     "problem": "\"总司令当天写来的信\"：证据（U-E10）只记12月20日宣读此信，未记写信日期，\"当天写来\"是把宣读日当成写信日",
+     "suggestion": "改为\"国会读到总司令写来的信（当日宣读）\"",
+     "seeded_from": "R1"
+    },
+    {
+     "id": "S2",
+     "source": "review",
+     "severity": "fix",
+     "where": "limits.1",
+     "problem": "\"另有两处技术性保留\"之后列出第一、第二、第三三条，计数错误",
+     "suggestion": "改为\"另有三处技术性保留\"",
+     "seeded_from": "R2"
+    },
+    {
+     "id": "S3",
+     "source": "review",
+     "severity": "fix",
+     "where": "limits.0",
+     "problem": "\"本篇所据只有……12月22日议定的接见次序、23日的接见经过与讲话文本\"与正文不符：正文使用了12月20日的信、质询与点名表决（U-E10/E11/E12）",
+     "suggestion": "改为\"所据为《大陆会议日志》第25卷12月20日至23日的官方记录\"",
+     "seeded_from": "R3"
+    },
+    {
+     "id": "S4",
+     "source": "parity",
+     "severity": "fix",
+     "where": "sections.context.3",
+     "problem": "The quoted set words differ: EN has 'Sir, The United States in Congress assembled are prepared to receive your communications.' while the ZH quotation ('合众国国会已准备好听取您的陈述。') drops the form of address 'Sir'.",
+     "suggestion": "Add the address to the ZH quote: '阁下，合众国国会已准备好听取您的陈述。'",
+     "seeded_from": "P4"
+    },
+    {
+     "id": "S5",
+     "source": "parity",
+     "severity": "fix",
+     "where": "sections.analysis.3",
+     "problem": "Hedge mismatch: ZH asserts the alternatives could work '甚至更快' (even faster), while EN softens this to 'perhaps faster', adding an uncertainty absent in Chinese.",
+     "suggestion": "EN: change 'perhaps faster' to 'and even faster' (or ZH: '甚至更快' → '也许更快').",
+     "seeded_from": "P5"
+    }
+   ],
+   "edits_applied": [
+    {
+     "path": "sections.context.0.zh",
+     "before": "事情从12月20日星期六开始。国会读到总司令当天写来的信：他已到达本城，打算请求准许辞去他荣幸地为国会担任的职务，并询问国会希望他以什么方式提出辞呈——书面，还是当面接见。国会当即议决：下周二12点，公开接见总司令。",
+     "after": "事情从12月20日星期六开始。国会读到总司令写来的信（当日宣读）：他已到达本城，打算请求准许辞去他荣幸地为国会担任的职务，并询问国会希望他以什么方式提出辞呈——书面，还是当面接见。国会当即议决：下周二12点，公开接见总司令。",
+     "reason": "U-E10 只记 12 月 20 日宣读此信，未记写信日期，删去\"当天写来\"，改为标注宣读时间",
+     "issues": [
+      "S1"
+     ]
+    },
+    {
+     "path": "sections.context.0.en",
+     "before": "It began on Saturday, 20 December. Congress read a letter written that day by the Commander in Chief. He had arrived in the city \"with the intention of asking leave to resign the commission he has the honor of holding in their service\", and he asked how they wished him to offer his resignation, \"whether in writing or at an audience\". Congress resolved at once that he be admitted to a public audience on Tuesday next, at twelve o'clock.",
+     "after": "It began on Saturday, 20 December. Congress read, that day, a letter from the Commander in Chief. He had arrived in the city \"with the intention of asking leave to resign the commission he has the honor of holding in their service\", and he asked how they wished him to offer his resignation, \"whether in writing or at an audience\". Congress resolved at once that he be admitted to a public audience on Tuesday next, at twelve o'clock.",
+     "reason": "英文同样把宣读日当成写信日（written that day），改为 that day 修饰 read，与中文同步收窄",
+     "issues": [
+      "S1"
+     ]
+    },
+    {
+     "path": "sections.limits.1.zh",
+     "before": "另有两处技术性保留。第一，议长的答词没有收进本篇证据包，本篇不予引用。第二，这份材料取自影印本的OCR识别，存在讹字，本篇英文引文只取清晰片段，可疑拼写一律留在引号之外。第三，日志印本用方括号和删改标出议定稿的修改；OCR文本只能看出方括号里的字，看不出删去的是哪些，本篇只转述方括号中的字样。",
+     "after": "另有三处技术性保留。第一，议长的答词没有收进本篇证据包，本篇不予引用。第二，这份材料取自影印本的OCR识别，存在讹字，本篇英文引文只取清晰片段，可疑拼写一律留在引号之外。第三，日志印本用方括号和删改标出议定稿的修改；OCR文本只能看出方括号里的字，看不出删去的是哪些，本篇只转述方括号中的字样。",
+     "reason": "该段实列第一、第二、第三三条，计数改为三",
+     "issues": [
+      "S2"
+     ]
+    },
+    {
+     "path": "sections.limits.1.en",
+     "before": "Two technical reservations follow. First, the President's reply is not in this article's evidence pack and is not quoted. Second, the material comes from OCR of a facsimile and contains misreadings, so the English quotations here take only clean stretches, with doubtful spellings left outside the quotation marks. Third, the printed journal marks revisions to the draft protocol with brackets and deletions; the OCR text shows the bracketed words but not which words were struck out, so this piece reports only what is in the brackets.",
+     "after": "Three technical reservations follow. First, the President's reply is not in this article's evidence pack and is not quoted. Second, the material comes from OCR of a facsimile and contains misreadings, so the English quotations here take only clean stretches, with doubtful spellings left outside the quotation marks. Third, the printed journal marks revisions to the draft protocol with brackets and deletions; the OCR text shows the bracketed words but not which words were struck out, so this piece reports only what is in the brackets.",
+     "reason": "与中文同步改正计数（First/Second/Third 共三条）",
+     "issues": [
+      "S2"
+     ]
+    },
+    {
+     "path": "sections.limits.0.zh",
+     "before": "本篇所据只有《大陆会议日志》第25卷的官方记录：12月22日议定的接见次序、23日的接见经过与讲话文本。没有取得任何在场者的私人记述，因此讲话者的神情与语气、在场者的反应，一律付之阙如。日志记动作、记次序、记讲话，不记心情；本篇也不涉及他此后的事。凡是原文没写的动机、念头和“他考虑过的选项”，本篇都不替他补。",
+     "after": "本篇所据只有《大陆会议日志》第25卷的官方记录：12月20日至23日的记录，包括12月22日议定的接见次序、23日的接见经过与讲话文本。没有取得任何在场者的私人记述，因此讲话者的神情与语气、在场者的反应，一律付之阙如。日志记动作、记次序、记讲话，不记心情；本篇也不涉及他此后的事。凡是原文没写的动机、念头和“他考虑过的选项”，本篇都不替他补。",
+     "reason": "正文使用了 12 月 20 日的信、质询与点名表决（U-E10/E11/E12），来源范围应为 20 至 23 日",
+     "issues": [
+      "S3"
+     ]
+    },
+    {
+     "path": "sections.limits.0.en",
+     "before": "Everything in this piece rests on one source: the official Journals of the Continental Congress, volume 25 — the order of audience agreed on December 22, the audience of the twenty-third, and the text of the address. No private account by anyone present was consulted, and so the speaker's face and tone, and the reactions in the room, are simply absent. The journal records gestures, sequence, and speech; it does not record feeling. Nor does this piece follow the man beyond that day. Motives, private thoughts, and options he may have considered are never supplied by this writer where the source is silent.",
+     "after": "Everything in this piece rests on one source: the official Journals of the Continental Congress, volume 25 — the record of December 20 to 23, including the order of audience agreed on December 22, the audience of the twenty-third, and the text of the address. No private account by anyone present was consulted, and so the speaker's face and tone, and the reactions in the room, are simply absent. The journal records gestures, sequence, and speech; it does not record feeling. Nor does this piece follow the man beyond that day. Motives, private thoughts, and options he may have considered are never supplied by this writer where the source is silent.",
+     "reason": "与中文同步，把所述来源范围改为 12 月 20 至 23 日",
+     "issues": [
+      "S3"
+     ]
+    },
+    {
+     "path": "sections.context.3.zh",
+     "before": "后三条写讲话与交接。待旁听者安顿好，必要时由秘书宣布肃静，议长对将军说：“合众国国会已准备好听取您的陈述。”将军起身讲话，然后坐下；议长宣读国会的答词，将军站着听；最后秘书把答词副本交给将军，收下委任状，将军告辞。日志所印的这份议定稿留着改动的痕迹：在讲委任状和讲稿副本交给谁的那一句，正文写的是交给他的副官，再呈给秘书，方括号里另有“交给议长”的字样。编者注说，这份报告是埃尔布里奇·格里的笔迹，方括号里的字出自埃利亚斯·博迪诺之手。",
+     "after": "后三条写讲话与交接。待旁听者安顿好，必要时由秘书宣布肃静，议长对将军说：“阁下，合众国国会已准备好听取您的陈述。”将军起身讲话，然后坐下；议长宣读国会的答词，将军站着听；最后秘书把答词副本交给将军，收下委任状，将军告辞。日志所印的这份议定稿留着改动的痕迹：在讲委任状和讲稿副本交给谁的那一句，正文写的是交给他的副官，再呈给秘书，方括号里另有“交给议长”的字样。编者注说，这份报告是埃尔布里奇·格里的笔迹，方括号里的字出自埃利亚斯·博迪诺之手。",
+     "reason": "补上 U-E14 中 \"Sir\" 的呼语，使中文引语与英文引语内容一致（英文字面引语仍只留在英文字段）",
+     "issues": [
+      "S4"
+     ]
+    },
+    {
+     "path": "sections.analysis.3.zh",
+     "before": "别的做法并非没有。华盛顿自己的信就给了两个选项：书面辞职，或者当面接见；国会选了公开接见。作者还可以设想其他安排（非史实）：将军与议长相向而立、各自致辞，或者只收下委任状、不设讲话。这些做法同样能完成权力归位，甚至更快，但都会少掉一个看得见的高低位差和一段完整记录在案的自述。",
+     "after": "别的做法并非没有。华盛顿自己的信就给了两个选项：书面辞职，或者当面接见；国会选了公开接见。作者还可以设想其他安排（非史实）：将军与议长相向而立、各自致辞，或者只收下委任状、不设讲话。这些做法同样能完成权力归位，也许更快，但都会少掉一个看得见的高低位差和一段完整记录在案的自述。",
+     "reason": "作者设想的替代方案不宜断言更快，收窄为\"也许更快\"，与英文 \"perhaps faster\" 对齐；英文已如此表述故不另改",
+     "issues": [
+      "S5"
+     ]
+    }
+   ],
+   "edits_failed": [
+    {
+     "edit": {
+      "path": "sections.limits.0",
+      "new": [
+       "U-E1",
+       "U-E4",
+       "U-E10",
+       "U-E11",
+       "U-E12"
+      ],
+      "issues": [
+       "S3"
+      ],
+      "reason": "该段所述来源范围由 22—23 日扩为 20—23 日，补入 12 月 20 日的三条证据（U-E10 来信与议决、U-E11 质询、U-E12 点名表决）以支撑"
+     },
+     "error": "IndexError: list index out of range"
+    }
+   ],
+   "dispositions": [
+    {
+     "issue": "S1",
+     "action": "fixed",
+     "reason": "U-E10 只写 \"from the Commander in Chief, was read\"，未记写信日期，\"当天写来/ written that day\" 确把宣读日当写信日；中英均改为\"当日宣读 / read, that day\""
+    },
+    {
+     "issue": "S2",
+     "action": "fixed",
+     "reason": "原文\"两处\"后却列出\"第一、第二、第三\"三条，中英均改为\"三处 / Three\""
+    },
+    {
+     "issue": "S3",
+     "action": "fixed",
+     "reason": "正文确实使用了 U-E10（12 月 20 日来信与议决）、U-E11（七个州是否有权接受的质询）、U-E12（点名表决），原句只列 22—23 日与正文不符；中英均改为 12 月 20 至 23 日的记录，并补相应 ev"
+    },
+    {
+     "issue": "S4",
+     "action": "fixed",
+     "reason": "U-E14 定稿用语为 \"Sir, The United States in Congress assembled are prepared to receive your communications.\"，中文引语漏掉呼语 Sir，补为\"阁下，……\"，与英文字段一致"
+    },
+    {
+     "issue": "S5",
+     "action": "fixed",
+     "reason": "英文为 \"perhaps faster\"（不确定），中文\"甚至更快\"是更强断言，属作者设想且无证据支持；按收窄原则将中文改为\"也许更快\"，英文表述已合证据故保持不动"
+    }
+   ],
+   "checker_after": [
+    [
+     "CHECK",
+     "analysis[0] numbers differ zh[22, 23] en[20]"
+    ]
+   ],
+   "content_sha256_after": "34cf6d1ad07c2133aa3fc01d5639c2f0a81ac77ee12a59d22afa4ad48d8ff4b6",
+   "review_after": {
+    "issues": [
+     {
+      "section": "context",
+      "para": 1,
+      "severity": "note",
+      "problem": "'到了23日接见当天上午'——U-E16只记23日议决发信，未记时段；接见定在12点，但发信决议的时刻无据",
+      "suggestion": "改为'到了23日接见当天'，删去'上午'"
+     },
+     {
+      "section": "context",
+      "para": 2,
+      "severity": "note",
+      "problem": "'日志留下了点名表决：名单上列出的议员几乎都投赞成'——U-E12自注只是'part of the yeas and nays'（点名表决的节录），稿子易被读成完整名单",
+      "suggestion": "改为'日志节录的点名表决中，列名者几乎都投赞成'"
+     },
+     {
+      "section": "context",
+      "para": 2,
+      "severity": "note",
+      "problem": "'埃勒里则应本人要求把反对改成了赞成'——U-E12原文只作'changed into ay at the request of the Member'，'本人'是推断，非原文字面",
+      "suggestion": "改为'应一位议员的要求把反对改成了赞成（原文作 at the request of the Member）'，或注明为推断"
+     },
+     {
+      "section": "context",
+      "para": 4,
+      "severity": "fix",
+      "problem": "'正文写的是交给他的副官，再呈给秘书'——U-E14中'委任状'本身也在方括号内（[his Commission and a]），是增补；正文只有'讲稿副本交给副官、呈给秘书'。稿子把委任状算进正文",
+      "suggestion": "改为'正文写的是把讲稿副本交给他的副官再呈给秘书；\"委任状\"与\"交给议长\"都在方括号内，是后加的改动'"
+     },
+     {
+      "section": "story",
+      "para": 3,
+      "severity": "note",
+      "problem": "'请辞用的是请求允准的说法，而不是通知已经生效'是作者对措辞的解读（依据U-E6的'claim the indulgence'），却置于kind=record段",
+      "suggestion": "句末补'（这是对措辞的解读）'或移入解读段"
+     },
+     {
+      "section": "story",
+      "para": 6,
+      "severity": "fix",
+      "problem": "'议定稿里这一步写得几经改动'——OCR只能看出方括号增字，看不出删改（本篇limits段自己也这么说），'几经改动'的次数与过程不可见",
+      "suggestion": "改为'议定稿这一步留有方括号改动的痕迹'"
+     },
+     {
+      "section": "story",
+      "para": 6,
+      "severity": "note",
+      "problem": "'委任状是权力的凭证，副本是这番说法的留档，两件东西一次交清'是解读性断言，混在record段；U-E9只记交付事实",
+      "suggestion": "在'两件东西一次交清'后注明'（这是作者对两件物品含义的解读）'，或将后两句归入解读"
+     },
+     {
+      "section": "analysis",
+      "para": 2,
+      "severity": "fix",
+      "problem": "'接受这份辞呈的国会，自己都不太确定是否够格'——把机构心理写成史实；U-E11只记录了'七个州是否有权接受'这一质询与表决动作，未记录任何'不确定'的心理状态",
+      "suggestion": "改为'国会就\"七个州是否有权接受\"专门表决过一次'，删去'自己都不太确定是否够格'，或明确写'作者据质询一事推测其自认资格存疑'"
+     },
+     {
+      "section": "limits",
+      "para": 1,
+      "severity": "fix",
+      "problem": "'本篇英文引文只取清晰片段，可疑拼写一律留在引号之外'——全篇没有任何英文引文（所有引语均为中文转述），此声明与稿件实际不符",
+      "suggestion": "删去该句，或改为'本篇引语均为中文转述，未逐字引英文原文'"
+     },
+     {
+      "section": "uncertainty_note",
+      "para": 0,
+      "severity": "fix",
+      "problem": "'议长答词在该卷中以带删改痕迹的草稿形式印出'——U-E15的编者注说的是接见次序那份报告（格里笔迹、博迪诺括号增字）带改动痕迹，不是议长答词；证据包也没有答词文本，无从知其印出形态",
+      "suggestion": "改为'议长答词未收入本篇证据包，本篇不引用；带括号改动的是接见次序的议定稿'"
+     }
+    ],
+    "unsupported_claims": [
+     "议长答词在该卷中以带删改痕迹的草稿形式印出（删改痕迹属接见次序议定稿，见U-E15；答词文本不在证据包内）",
+     "本篇英文引文只取清晰片段，可疑拼写一律留在引号之外（全篇无英文引文）",
+     "到了23日接见当天上午（U-E16未记时刻）",
+     "议定稿里这一步写得几经改动（OCR只见方括号增字，删改不可见，稿子limits段亦如此承认）"
+    ],
+    "invented_inner_life": [
+     "接受这份辞呈的国会，自己都不太确定是否够格——出席的只有七个州（U-E11只记录了质询与表决这一动作，未写任何机构心理）"
+    ],
+    "quote_mismatches": [],
+    "overall": "整体忠实于《大陆会议日志》第25卷，日期、程序、出席与讲话转述基本准确，但需修正三处：把方括号增补的'委任状'当正文、把议定稿的改动痕迹安到议长答词头上、以及把'国会自认不够格'写成史实。",
+    "_content_sha256": "34cf6d1ad07c2133aa3fc01d5639c2f0a81ac77ee12a59d22afa4ad48d8ff4b6"
+   },
+   "parity_after": {
+    "issues": [
+     {
+      "path": "title",
+      "severity": "fix",
+      "problem": "The two titles name opposite actions: ZH has 脱帽的人 (the one(s) who removed their hats, i.e. Congress answering by uncovering), while EN has 'the Men Who Kept Their Hats On' — keeping hats on, which is the opposite gesture and not what the ZH title says.",
+      "suggestion": "Change the EN title to match the ZH: 'The Man Who Bowed and the Men Who Took Their Hats Off: Handing Back Power, 1783' (or, if the EN is intended, change ZH 脱帽的人 to 戴着帽子的人)."
+     },
+     {
+      "path": "sections.story.1",
+      "severity": "note",
+      "problem": "The EN adds a verbatim journal quotation ('the President, after a pause, informed him...') and the interpretive line that the President 'did not rush to fill the silence', neither of which appears in the ZH; the shared content (the pause is in the record) matches.",
+      "suggestion": "Either add the journal quotation and the 'did not rush' sentence to the ZH, or drop them from the EN so both versions carry the same material."
+     }
+    ],
+    "overall": "The two editions match closely on all facts, names, dates and quotations apart from the title's reversed hat gesture (remove vs keep on) and one extra quotation and interpretive aside in the EN of sections.story.1.",
+    "_content_sha256": "34cf6d1ad07c2133aa3fc01d5639c2f0a81ac77ee12a59d22afa4ad48d8ff4b6"
+   },
+   "carried_over": []
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    {
+     "id": "R1",
+     "source": "review",
+     "severity": "fix",
+     "where": "context.4",
+     "problem": "'正文写的是交给他的副官，再呈给秘书'——U-E14中'委任状'本身也在方括号内（[his Commission and a]），是增补；正文只有'讲稿副本交给副官、呈给秘书'。稿子把委任状算进正文",
+     "suggestion": "改为'正文写的是把讲稿副本交给他的副官再呈给秘书；\"委任状\"与\"交给议长\"都在方括号内，是后加的改动'"
+    },
+    {
+     "id": "R2",
+     "source": "review",
+     "severity": "fix",
+     "where": "story.6",
+     "problem": "'议定稿里这一步写得几经改动'——OCR只能看出方括号增字，看不出删改（本篇limits段自己也这么说），'几经改动'的次数与过程不可见",
+     "suggestion": "改为'议定稿这一步留有方括号改动的痕迹'"
+    },
+    {
+     "id": "R3",
+     "source": "review",
+     "severity": "fix",
+     "where": "analysis.2",
+     "problem": "'接受这份辞呈的国会，自己都不太确定是否够格'——把机构心理写成史实；U-E11只记录了'七个州是否有权接受'这一质询与表决动作，未记录任何'不确定'的心理状态",
+     "suggestion": "改为'国会就\"七个州是否有权接受\"专门表决过一次'，删去'自己都不太确定是否够格'，或明确写'作者据质询一事推测其自认资格存疑'"
+    },
+    {
+     "id": "R4",
+     "source": "review",
+     "severity": "fix",
+     "where": "limits.1",
+     "problem": "'本篇英文引文只取清晰片段，可疑拼写一律留在引号之外'——全篇没有任何英文引文（所有引语均为中文转述），此声明与稿件实际不符",
+     "suggestion": "删去该句，或改为'本篇引语均为中文转述，未逐字引英文原文'"
+    },
+    {
+     "id": "R5",
+     "source": "review",
+     "severity": "fix",
+     "where": "uncertainty_note.0",
+     "problem": "'议长答词在该卷中以带删改痕迹的草稿形式印出'——U-E15的编者注说的是接见次序那份报告（格里笔迹、博迪诺括号增字）带改动痕迹，不是议长答词；证据包也没有答词文本，无从知其印出形态",
+     "suggestion": "改为'议长答词未收入本篇证据包，本篇不引用；带括号改动的是接见次序的议定稿'"
+    },
+    {
+     "id": "P6",
+     "source": "parity",
+     "severity": "fix",
+     "where": "title",
+     "problem": "The two titles name opposite actions: ZH has 脱帽的人 (the one(s) who removed their hats, i.e. Congress answering by uncovering), while EN has 'the Men Who Kept Their Hats On' — keeping hats on, which is the opposite gesture and not what the ZH title says.",
+     "suggestion": "Change the EN title to match the ZH: 'The Man Who Bowed and the Men Who Took Their Hats Off: Handing Back Power, 1783' (or, if the EN is intended, change ZH 脱帽的人 to 戴着帽子的人)."
+    }
+   ],
+   "edits_applied": [
+    {
+     "path": "sections.context.3.zh",
+     "before": "后三条写讲话与交接。待旁听者安顿好，必要时由秘书宣布肃静，议长对将军说：“阁下，合众国国会已准备好听取您的陈述。”将军起身讲话，然后坐下；议长宣读国会的答词，将军站着听；最后秘书把答词副本交给将军，收下委任状，将军告辞。日志所印的这份议定稿留着改动的痕迹：在讲委任状和讲稿副本交给谁的那一句，正文写的是交给他的副官，再呈给秘书，方括号里另有“交给议长”的字样。编者注说，这份报告是埃尔布里奇·格里的笔迹，方括号里的字出自埃利亚斯·博迪诺之手。",
+     "after": "后三条写讲话与交接。待旁听者安顿好，必要时由秘书宣布肃静，议长对将军说：“阁下，合众国国会已准备好听取您的陈述。”将军起身讲话，然后坐下；议长宣读国会的答词，将军站着听；最后秘书把答词副本交给将军，收下委任状，将军告辞。日志所印的这份议定稿留着改动的痕迹：在讲委任状和讲稿副本交给谁的那一句，正文写的是把讲稿副本交给他的副官，再呈给秘书；“委任状”与“交给议长”都在方括号里，是后加的增字。编者注说，这份报告是埃尔布里奇·格里的笔迹，方括号里的字出自埃利亚斯·博迪诺之手。",
+     "reason": "U-E14中「[his Commission and a]」是方括号增字，正文只有「copy of his address to his aid ... to the Scorotaiy [to the President]」，故不再把委任状算进正文。",
+     "issues": [
+      "R1"
+     ]
+    },
+    {
+     "path": "sections.context.3.en",
+     "before": "The last three clauses dealt with the speech and the handover. After a proper time for the spectators to settle, silence was to be ordered if necessary, and the President was to address the General in set words: \"Sir, The United States in Congress assembled are prepared to receive your communications.\" The General would rise, speak and sit again; the President would deliver the answer of Congress, which the General was to receive standing; and the secretary would hand him a copy of the answer and receive the commission, after which the General would take his leave. The draft as printed carries changes. In the sentence about the commission and the copy of the address, the text has them going to his aide to be presented to the secretary, with \"[to the President]\" in brackets. The editors note that the report is in the writing of Elbridge Gerry, \"the words in brackets being in the writing of Elias Boudinot\".",
+     "after": "The last three clauses dealt with the speech and the handover. After a proper time for the spectators to settle, silence was to be ordered if necessary, and the President was to address the General in set words: \"Sir, The United States in Congress assembled are prepared to receive your communications.\" The General would rise, speak and sit again; the President would deliver the answer of Congress, which the General was to receive standing; and the secretary would hand him a copy of the answer and receive the commission, after which the General would take his leave. The draft as printed carries changes. In the sentence about the commission and the copy of the address, the text has the copy of the address going to his aide to be presented to the secretary; both \"[his Commission and a]\" and \"[to the President]\" are bracketed insertions The editors note that the report is in the writing of Elbridge Gerry, \"the words in brackets being in the writing of Elias Boudinot\".",
+     "reason": "与中文同步：U-E14中「[his Commission and a]」在方括号内，正文只有「copy of his address to his aid」，两处方括号增字逐字照录。",
+     "issues": [
+      "R1"
+     ]
+    },
+    {
+     "path": "sections.story.6.zh",
+     "before": "说完，他走上前，把委任状和讲稿副本一并交给议长。委任状是权力的凭证，副本是这番说法的留档，两件东西一次交清。议定稿里这一步写得几经改动，日志记下的结果是：由他本人走上前，交到议长手里。",
+     "after": "说完，他走上前，把委任状和讲稿副本一并交给议长。委任状是权力的凭证，副本是这番说法的留档，两件东西一次交清。议定稿这一步留有方括号改动的痕迹，日志记下的结果是：由他本人走上前，交到议长手里。",
+     "reason": "OCR只能看到方括号增字，删改不可见（limits.1亦如此声明），故把“几经改动”收窄为可见的方括号改动痕迹。",
+     "issues": [
+      "R2"
+     ]
+    },
+    {
+     "path": "sections.story.6.en",
+     "before": "With that, he stepped forward and placed his commission, together with a copy of his address, in the President's hands. The journal closes the entry in one line: \"He then advanced and delivered to the President his commission, with a copy of his address\". The commission was the token of authority; the copy was the account of it, kept on file. Two objects, delivered at once. The draft had been revised at exactly this step; what the journal records is that he himself stepped forward and put the commission into the President's hands.",
+     "after": "With that, he stepped forward and placed his commission, together with a copy of his address, in the President's hands. The journal closes the entry in one line: \"He then advanced and delivered to the President his commission, with a copy of his address\". The commission was the token of authority; the copy was the account of it, kept on file. Two objects, delivered at once. The draft at this step carries bracketed changes; what the journal records is that he himself stepped forward and put the commission into the President's hands.",
+     "reason": "与中文同步：删改次数与过程在OCR中不可见，只保留U-E14可见的方括号改动。",
+     "issues": [
+      "R2"
+     ]
+    },
+    {
+     "path": "sections.analysis.2.zh",
+     "before": "还有一层（作者的解读）：接受这份辞呈的国会，自己都不太确定是否够格——出席的只有七个州，还专门表决了一次七个州是否有权接受；接见当天上午，它还在写信催缺席的州派人来。在这样的时候，一套事先写定、公开执行、当场留档的程序，也许正替一个人手不齐的机构撑住了分量。日志没有把这几件事联系起来，这是作者的连接。",
+     "after": "还有一层（作者的解读）：接受这份辞呈的国会，就“七个州是否有权接受”专门表决过一次——出席的只有七个州；接见当天上午，它还在写信催缺席的州派人来。在这样的时候，一套事先写定、公开执行、当场留档的程序，也许正替一个人手不齐的机构撑住了分量。日志没有把这几件事联系起来，这是作者的连接。",
+     "reason": "U-E11只记录质询与表决动作，没有记录国会的心理状态，删去“自己都不太确定是否够格”的机构心理描写，只保留表决这一事实。",
+     "issues": [
+      "R3"
+     ]
+    },
+    {
+     "path": "sections.analysis.2.en",
+     "before": "There is another layer, and it is the author's reading. The Congress receiving this resignation was not sure it was competent to do so: only seven states were present, and it took a formal vote on whether seven were enough; on the very morning of the audience it was still writing to absent states to send their delegates. At such a moment a procedure written in advance, carried out in public and recorded on the spot may have lent weight to a body short of hands. The journal does not connect these things; the connection is the author's.",
+     "after": "There is another layer, and it is the author's reading. The Congress receiving this resignation took a formal vote on whether seven states were competent to receive it: only seven states were present; on the very morning of the audience it was still writing to absent states to send their delegates. At such a moment a procedure written in advance, carried out in public and recorded on the spot may have lent weight to a body short of hands. The journal does not connect these things; the connection is the author's.",
+     "reason": "与中文同步：U-E11的质询是「Is it the sense of Congress that seven states in Congress Assembled are competent to receive the resignation of a Commander in Chief?」，只写表决，不写“不确定”的心理。",
+     "issues": [
+      "R3"
+     ]
+    },
+    {
+     "path": "sections.limits.1.zh",
+     "before": "另有三处技术性保留。第一，议长的答词没有收进本篇证据包，本篇不予引用。第二，这份材料取自影印本的OCR识别，存在讹字，本篇英文引文只取清晰片段，可疑拼写一律留在引号之外。第三，日志印本用方括号和删改标出议定稿的修改；OCR文本只能看出方括号里的字，看不出删去的是哪些，本篇只转述方括号中的字样。",
+     "after": "另有三处技术性保留。第一，议长的答词没有收进本篇证据包，本篇不予引用。第二，这份材料取自影印本的OCR识别，存在讹字，本篇英文引文只取清晰片段，可疑拼写一律留在引号之外。第三，日志印本用方括号和删改标出议定稿的修改；OCR文本只能看出方括号里的字，看不出删去的是哪些，本篇只转述方括号中的字样。",
+     "reason": "经核查不作改动，见dispositions。",
+     "issues": [
+      "R4"
+     ]
+    },
+    {
+     "path": "sections.limits.1.en",
+     "before": "Three technical reservations follow. First, the President's reply is not in this article's evidence pack and is not quoted. Second, the material comes from OCR of a facsimile and contains misreadings, so the English quotations here take only clean stretches, with doubtful spellings left outside the quotation marks. Third, the printed journal marks revisions to the draft protocol with brackets and deletions; the OCR text shows the bracketed words but not which words were struck out, so this piece reports only what is in the brackets.",
+     "after": "Three technical reservations follow. First, the President's reply is not in this article's evidence pack and is not quoted. Second, the material comes from OCR of a facsimile and contains misreadings, so the English quotations here take only clean stretches, with doubtful spellings left outside the quotation marks. Third, the printed journal marks revisions to the draft protocol with brackets and deletions; the OCR text shows the bracketed words but not which words were struck out, so this piece reports only what is in the brackets.",
+     "reason": "经核查不作改动，见dispositions。",
+     "issues": [
+      "R4"
+     ]
+    },
+    {
+     "path": "uncertainty_note.zh",
+     "before": "全部事实来自《大陆会议日志》第25卷的官方记录（1783年12月22日议定的接见次序、12月23日的接见与华盛顿讲话文本）。没有在场者私人记述可对照，人物心情与现场反应不可知；议长答词在该卷中以带删改痕迹的草稿形式印出，本篇未引用；材料经OCR识别，存在讹字，引文只取清晰片段；议定稿的删改在OCR文本中只能看到方括号内的字样。",
+     "after": "全部事实来自《大陆会议日志》第25卷的官方记录（1783年12月22日议定的接见次序、12月23日的接见与华盛顿讲话文本）。没有在场者私人记述可对照，人物心情与现场反应不可知；议长答词未收入本篇证据包，本篇不引用；带括号改动的是接见次序的议定稿；材料经OCR识别，存在讹字，引文只取清晰片段；议定稿的删改在OCR文本中只能看到方括号内的字样。",
+     "reason": "U-E15的编者注说的是接见次序那份报告（格里笔迹、括号内为博迪诺笔迹），不是议长答词；证据包也没有答词文本。",
+     "issues": [
+      "R5"
+     ]
+    },
+    {
+     "path": "uncertainty_note.en",
+     "before": "All facts come from the official Journals of the Continental Congress, volume 25 (the order of audience agreed on December 22, 1783; the audience and Washington's address of December 23). No private account by anyone present was available for comparison, so mood and reaction in the room are unknowable; the President's reply is printed in that volume as a draft bearing signs of revision and is not quoted here; the material was captured by OCR from a facsimile and contains misreadings, so quotations take only clean stretches; in the draft protocol the OCR shows only the bracketed insertions, not what was struck out.",
+     "after": "All facts come from the official Journals of the Continental Congress, volume 25 (the order of audience agreed on December 22, 1783; the audience and Washington's address of December 23). No private account by anyone present was available for comparison, so mood and reaction in the room are unknowable; the President's reply is not in this article's evidence pack and is not quoted here; the draft bearing bracketed changes is the protocol of the order of audience; the material was captured by OCR from a facsimile and contains misreadings, so quotations take only clean stretches; in the draft protocol the OCR shows only the bracketed insertions, not what was struck out.",
+     "reason": "与中文同步：U-E15所述带括号改动者为接见次序的报告，非议长答词；答词不在证据包内。",
+     "issues": [
+      "R5"
+     ]
+    },
+    {
+     "path": "title.en",
+     "before": "The Man Who Bowed and the Men Who Kept Their Hats On: Handing Back Power, 1783",
+     "after": "The Man Who Bowed and the Men Who Took Their Hats Off: Handing Back Power, 1783",
+     "reason": "与中文标题“脱帽的人”对齐：U-E3规定国会以脱帽回礼（uncovering），而非戴着帽子。",
+     "issues": [
+      "P6"
+     ]
+    },
+    {
+     "path": "sections.story.6.ev",
+     "before": [
+      "U-E9"
+     ],
+     "after": [
+      "U-E9",
+      "U-E14"
+     ],
+     "reason": "“议定稿这一步留有方括号改动的痕迹”一句来自U-E14的方括号文本，原ev只有U-E9，补入U-E14。",
+     "issues": [
+      "R2"
+     ]
+    }
+   ],
+   "edits_failed": [],
+   "dispositions": [
+    {
+     "issue": "R1",
+     "action": "fixed",
+     "reason": "U-E14原文为「he is to deliver [his Commission and a] copy of his address to hia aid ... [to the President]」，其中「[his Commission and a]」在方括号内，正文只有讲稿副本交副官、呈秘书；已把中英文改为讲稿副本交副官、呈秘书，委任状与“交给议长”／[to the President]均标为方括号增字。"
+    },
+    {
+     "issue": "R2",
+     "action": "fixed",
+     "reason": "U-E14只能看出方括号增字，本篇limits.1也写明“OCR文本只能看出方括号里的字，看不出删去的是哪些”，故把“写得几经改动／had been revised”收窄为“留有方括号改动的痕迹／carries bracketed changes”。"
+    },
+    {
+     "issue": "R3",
+     "action": "fixed",
+     "reason": "U-E11只记录质询「Is it the sense of Congress that seven states in Congress Assembled are competent to receive the resignation of a Commander in Chief?」及U-E12的点名表决，没有任何机构心理的记载；已删去“自己都不太确定是否够格／was not sure it was competent to do so”，中英文均改为只陈述表决事实。"
+    },
+    {
+     "issue": "R4",
+     "action": "rejected",
+     "reason": "“全篇没有任何英文引文”与稿件不符：英文字段确有逐字引文，且都取自清晰片段，例如U-E8的「Having now finished the work assigned me, I retire from the great theatre of action」；而U-E8原文的讹字「imder whose orders」「pubHc life」（原注OCR: pubHc = public）以及U-E18的「pcctdiar」、U-E10的「pleasm-e」均未进入引号，与“英文引文只取清晰片段，可疑拼写一律留在引号之外”的声明一致，故不改。"
+    },
+    {
+     "issue": "R5",
+     "action": "fixed",
+     "reason": "U-E15编者注原文是「This report, in the writing of Elbridge Gerry, the words in brackets being in the writing of Elias Boudinot」，说的是接见次序那份报告，不是议长答词；证据包内也没有答词文本，无从知其印出形态，故按建议改写。"
+    },
+    {
+     "issue": "P6",
+     "action": "fixed",
+     "reason": "U-E3原文「When the General rises to make his address, and also when he retires, he is to bow to Congress, which they are to return by uncovering without bowing」——国会是脱帽回礼，中文标题“脱帽的人”与证据一致，故改英文标题为 the Men Who Took Their Hats Off，与中文对齐。"
+    }
+   ],
+   "checker_after": [
+    [
+     "CHECK",
+     "analysis[0] numbers differ zh[22, 23] en[20]"
+    ]
+   ],
+   "content_sha256_after": "21a190ee1c1f1cea79660c34d3014b2b90bd03a445e8204fa8383befaeef0876",
+   "review_after": {
+    "issues": [
+     {
+      "section": "context",
+      "para": 1,
+      "severity": "fix",
+      "problem": "“埃勒里则应本人要求把反对改成了赞成”——U-E12原文为“Ellery, no changed into ay at the request of the Member”，未说明是谁的请求，不能确定是埃勒里“本人要求”",
+      "suggestion": "改为“埃勒里的反对票后来改为赞成（日志记为‘应一位议员的请求’，未注明是谁提出）”"
+     },
+     {
+      "section": "context",
+      "para": 2,
+      "severity": "fix",
+      "problem": "“议定的接见次序一共三条”与下一段“后三条”自相矛盾；U-E2与U-E14合起来是六条（1–3入场就座，4–6讲话与交接）",
+      "suggestion": "改为“接见次序共六条，前三条管入场与就座”"
+     },
+     {
+      "section": "context",
+      "para": 1,
+      "severity": "fix",
+      "problem": "“到了23日接见当天上午，国会还议决立即写信”——U-E16只记23日议决发信，未写是上午",
+      "suggestion": "删“上午”，改为“到了23日接见当天，国会还议决……”"
+     },
+     {
+      "section": "analysis",
+      "para": 2,
+      "severity": "fix",
+      "problem": "“接见当天上午，它还在写信催缺席的州派人来”——同上，证据未给出时段",
+      "suggestion": "删“上午”"
+     },
+     {
+      "section": "context",
+      "para": 0,
+      "severity": "note",
+      "problem": "“12月20日星期六”——证据包未直接给出12月20日的星期几，系由U-E1（12月22日星期一）推算",
+      "suggestion": "改为“12月20日”或注明“据22日为星期一推算”"
+     },
+     {
+      "section": "context",
+      "para": 1,
+      "severity": "note",
+      "problem": "“有议员动议先问一个问题”——U-E11只留下提交国会的问题文本，未记是谁动议",
+      "suggestion": "改为“国会先议了一个问题”"
+     },
+     {
+      "section": "context",
+      "para": 3,
+      "severity": "note",
+      "problem": "“议长宣读国会的答词”——U-E14原文为“the President is to deliver the answer of Congress”，是“交付/致答词”，未写“宣读”",
+      "suggestion": "改为“议长向将军致答词”"
+     }
+    ],
+    "unsupported_claims": [
+     "23日接见当天‘上午’国会发信（证据未记时段）",
+     "埃勒里‘应本人要求’改票（证据只写‘at the request of the Member’，主语不明）",
+     "‘有议员动议’提出七州是否有权接受辞职的问题（证据只留问题与表决记录）"
+    ],
+    "invented_inner_life": [
+     "“埃勒里则应本人要求把反对改成了赞成”（把改票归因于埃勒里本人的意愿，原文未写）"
+    ],
+    "quote_mismatches": [],
+    "overall": "核心事实、日期、程序与讲话引述均与《大陆会议日志》第25卷相符，解释段落也已标明为作者解读，仅有改票归因、条目总数与“上午”等少数细节需最小修正。",
+    "_content_sha256": "21a190ee1c1f1cea79660c34d3014b2b90bd03a445e8204fa8383befaeef0876"
+   },
+   "parity_after": {
+    "issues": [
+     {
+      "path": "sections.context.3",
+      "severity": "note",
+      "problem": "English has a missing sentence period: '...are bracketed insertions The editors note that...' — a punctuation slip, not a content difference",
+      "suggestion": "Change 'insertions The editors' to 'insertions. The editors'"
+     },
+     {
+      "path": "sections.story.1",
+      "severity": "note",
+      "problem": "The English adds two sentences of elaboration ('The President did not rush to fill the silence; the silence itself was entered into the official account alongside the words') that have no direct counterpart in the Chinese, though they restate the same idea already present in ZH",
+      "suggestion": "Optionally trim the English to the Chinese's single line 'The pause made it into the record.'"
+     }
+    ],
+    "overall": "The two editions match on all facts, dates, names, quotations, attributions and hedges; only a punctuation slip and one elaborative English aside are worth noting.",
+    "_content_sha256": "21a190ee1c1f1cea79660c34d3014b2b90bd03a445e8204fa8383befaeef0876"
+   },
+   "carried_over": []
+  }
+ ],
+ "seeded_issues": 5,
+ "final_content_sha256": "21a190ee1c1f1cea79660c34d3014b2b90bd03a445e8204fa8383befaeef0876",
+ "remaining": [
+  {
+   "id": "R1",
+   "source": "review",
+   "severity": "fix",
+   "where": "context.1",
+   "problem": "“埃勒里则应本人要求把反对改成了赞成”——U-E12原文为“Ellery, no changed into ay at the request of the Member”，未说明是谁的请求，不能确定是埃勒里“本人要求”",
+   "suggestion": "改为“埃勒里的反对票后来改为赞成（日志记为‘应一位议员的请求’，未注明是谁提出）”"
+  },
+  {
+   "id": "R2",
+   "source": "review",
+   "severity": "fix",
+   "where": "context.2",
+   "problem": "“议定的接见次序一共三条”与下一段“后三条”自相矛盾；U-E2与U-E14合起来是六条（1–3入场就座，4–6讲话与交接）",
+   "suggestion": "改为“接见次序共六条，前三条管入场与就座”"
+  },
+  {
+   "id": "R3",
+   "source": "review",
+   "severity": "fix",
+   "where": "context.1",
+   "problem": "“到了23日接见当天上午，国会还议决立即写信”——U-E16只记23日议决发信，未写是上午",
+   "suggestion": "删“上午”，改为“到了23日接见当天，国会还议决……”"
+  },
+  {
+   "id": "R4",
+   "source": "review",
+   "severity": "fix",
+   "where": "analysis.2",
+   "problem": "“接见当天上午，它还在写信催缺席的州派人来”——同上，证据未给出时段",
+   "suggestion": "删“上午”"
+  }
+ ],
+ "final_reviewed": true,
+ "outcome": "pending_review",
+ "model_calls": 8,
+ "model_wall_s": 1155.3,
+ "edits_total": 20,
+ "finished_at": 1793381714.807929
+}

@@ -1,0 +1,338 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-book-20261031-hushi-baihua",
+ "content_sha256": "9dc2863a0c79269e460210546740a258f6fb246dd27a5f08b5711f4553fe2a85",
+ "evidence_in_sha256": "d6073f66a19bb4181f04de75274ab00a4af853a6a2bafb8f518d88d8993d60ed",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793494667.7654908,
+ "flagged": [],
+ "search": null,
+ "units": {
+  "S-BK-HUSHI": {
+   "title": "胡适口述，唐德刚译注《胡适口述自传》，中国文史出版社 2020（PDF 文字层；第七章“文学革命的结胎时期”，结局见第八章“从文学革命到文艺复兴”）",
+   "url": "https://raw.githubusercontent.com/miraclestar43/bo-guan-yue-qu/1b0d81a1ada44c920d5c19798447616127cec825/13-%E4%BA%BA%E7%89%A9%E4%BC%A0%E8%AE%B0/%E8%83%A1%E9%80%82%E5%8F%A3%E8%BF%B0%E8%87%AA%E4%BC%A0.pdf",
+   "ref": "book:BK-HUSHI-KS",
+   "evidence_text_sha256": "11a8350c0f89bc7fe786a0d88fefbd19620d0e8ed664ec3ed375b2caceb630ec",
+   "cache_sha256": "11a8350c0f89bc7fe786a0d88fefbd19620d0e8ed664ec3ed375b2caceb630ec",
+   "cjk": true,
+   "source_chars": 198290,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     98381,
+     124007
+    ]
+   ],
+   "chars_reviewed": 25626
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 39.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 3922
+  }
+ ],
+ "finished_at": 1793494707.924587,
+ "elapsed_min": 0.7,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-BK-HUSHI",
+    "outcome": "第七章以胡适决定专写白话诗、命名《尝试集》，以及《文学改良刍议》在《新青年》刊出后引起全国讨论收尾。第八章写出结局：1920年教育部通令小学一、二年级教材改用白话，胡适称之为“部分的胜利”，但他仍不满意，认为四十年来白话文没有成为完全的教育工具和文学工具。",
+    "quote": "因此在我们的斗争中，至少获得了部分的胜利。其中重要的部分就是以白话文为教育的工具。",
+    "in_evidence": true
+   }
+  ],
+  "additions": [],
+  "claims": [
+   {
+    "id": "N1",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "但本文依据的只是经胡适转引、再经英译与回译的文本，未核对原件。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章正文中引用日记、书信的段落及唐德刚注〔1〕；证据包只有这一本书，没有日记或书信原件。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "不过这经过胡先生自己手订的英文稿与《逼上梁山》的原文，多少也有点出入，所以笔者还是把它翻译回来了。"
+    },
+    "fix": "保留。这句说的是本文实际查阅了什么，表述准确，并且没有推出“当时无人核查”。"
+   },
+   {
+    "id": "N2",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "这一说明只针对第七章。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章唐德刚注〔1〕（原文写作“本章的英文稿”）；第八章在阅读范围内的部分没有同类说明。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "因此本章的英文稿，原是我们自他《四十自述》的《逼上梁山》那一章里节译出来的"
+    },
+    "fix": "保留。"
+   },
+   {
+    "id": "N3",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "这些都是唐德刚的记述，本文未另行核验。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章唐德刚注〔3〕〔5〕〔6〕；格里德一事只见于唐德刚的注释，并注明他保存有录音带。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "（笔者至今尚保存一份那时的录音带）"
+    },
+    "fix": "保留。可补一句：唐德刚自称保存有1956年演讲的录音带，但本文没有听过这份录音。"
+   },
+   {
+    "id": "N4",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "梅光迪、任鸿隽的言行都经胡适转述",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章全章；任鸿隽、梅光迪的话都是胡适引述的信件内容或他的概括。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "任君的信上则说：“白话自有白话用处（如作小说、演说等），然不能用之于诗！”"
+    },
+    "fix": "保留。"
+   },
+   {
+    "id": "N5",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "朋友们的话都经他转述。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章全章",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "例如梅君说，文学之中有各种部门，在小说和民歌里面，白话是可以用的"
+    },
+    "fix": "保留。"
+   },
+   {
+    "id": "N6",
+    "path": "sections.story.2",
+    "lang": "zh",
+    "sentence": "这两处日期并不完全吻合，本文照录胡适的说法。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章“九条”及凯约嘉湖段落",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "就在我记录上述九条的同时，我又收到一封从绮色佳的来信"
+    },
+    "fix": "这是本文对来源内部日期矛盾的具体说明，可以核验，建议保留。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.story.8",
+    "problem": "“随即/at once”说得略快。来源说陈独秀的《文学革命论》发表在《新青年》的后一期，没有说“立即”。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "他在《新青年》的后一期也写了一篇《文学革命论》来作为响应"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "稿件已收入第八章的结局，包括胡适的自我限定和对新诗成就的自评。各条否定性、来源性说明的范围都写得准确，没有发现需要补充的摘录，只有一处措辞可以微调。"
+ },
+ "claims": [
+  {
+   "id": "N1",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "但本文依据的只是经胡适转引、再经英译与回译的文本，未核对原件。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章正文中引用日记、书信的段落及唐德刚注〔1〕；证据包只有这一本书，没有日记或书信原件。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "不过这经过胡先生自己手订的英文稿与《逼上梁山》的原文，多少也有点出入，所以笔者还是把它翻译回来了。"
+   },
+   "fix": "保留。这句说的是本文实际查阅了什么，表述准确，并且没有推出“当时无人核查”。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "这一说明只针对第七章。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章唐德刚注〔1〕（原文写作“本章的英文稿”）；第八章在阅读范围内的部分没有同类说明。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "因此本章的英文稿，原是我们自他《四十自述》的《逼上梁山》那一章里节译出来的"
+   },
+   "fix": "保留。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "这些都是唐德刚的记述，本文未另行核验。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章唐德刚注〔3〕〔5〕〔6〕；格里德一事只见于唐德刚的注释，并注明他保存有录音带。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "（笔者至今尚保存一份那时的录音带）"
+   },
+   "fix": "保留。可补一句：唐德刚自称保存有1956年演讲的录音带，但本文没有听过这份录音。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "梅光迪、任鸿隽的言行都经胡适转述",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章全章；任鸿隽、梅光迪的话都是胡适引述的信件内容或他的概括。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "任君的信上则说：“白话自有白话用处（如作小说、演说等），然不能用之于诗！”"
+   },
+   "fix": "保留。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "朋友们的话都经他转述。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章全章",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "例如梅君说，文学之中有各种部门，在小说和民歌里面，白话是可以用的"
+   },
+   "fix": "保留。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N6",
+   "path": "sections.story.2",
+   "lang": "zh",
+   "sentence": "这两处日期并不完全吻合，本文照录胡适的说法。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章“九条”及凯约嘉湖段落",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "就在我记录上述九条的同时，我又收到一封从绮色佳的来信"
+   },
+   "fix": "这是本文对来源内部日期矛盾的具体说明，可以核验，建议保留。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.story.8",
+   "problem": "“随即/at once”说得略快。来源说陈独秀的《文学革命论》发表在《新青年》的后一期，没有说“立即”。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "他在《新青年》的后一期也写了一篇《文学革命论》来作为响应"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-BK-HUSHI",
+   "outcome": "第七章以胡适决定专写白话诗、命名《尝试集》，以及《文学改良刍议》在《新青年》刊出后引起全国讨论收尾。第八章写出结局：1920年教育部通令小学一、二年级教材改用白话，胡适称之为“部分的胜利”，但他仍不满意，认为四十年来白话文没有成为完全的教育工具和文学工具。",
+   "quote": "因此在我们的斗争中，至少获得了部分的胜利。其中重要的部分就是以白话文为教育的工具。",
+   "in_evidence": true
+  }
+ ],
+ "additions": [],
+ "additions_failed": [],
+ "evidence_sha256": "d6073f66a19bb4181f04de75274ab00a4af853a6a2bafb8f518d88d8993d60ed",
+ "outcome": "clean",
+ "blocking": []
+}

@@ -1,0 +1,1917 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-20261030-washington-resigns",
+ "edition_id": "cand-20261030-washington-resigns",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "3528916",
+ "started_at": 1793433157.0243638,
+ "base_source": "samples/auto/cand-20261030-washington-resigns/final/article.json",
+ "base_content_sha256": "0bf964ef7198636a2f0382e6b439be2521ba134ab21728a5158b3bb288047d6f",
+ "evidence_sha256": "b66b1d82c6349d723877eed017b9b39bc13a430ed15ca082018805b9203d15e8",
+ "operator_note": null,
+ "model_record_sha256": "7e256fd8cbe60cd0af9448416b6b413a6cbb6e40559fb5e4de57df22582c82ee",
+ "prior_record_sha256": "f0db1c703d6b11599d0db5d14f73081759b20083816c1d06d8ff8962105e3b66",
+ "attempt": "attempt-4",
+ "context_review_sha256": null,
+ "inherited": [
+  {
+   "id": "P1",
+   "model_id": "V2-V1",
+   "source": "final-editor previous attempt",
+   "where": "sections.story.7",
+   "problem": "括号说明断言第4条经方括号增字后“写明”把委任状和讲稿副本交给议长，并说这与日志一致。但第4条正文仍有“交给副官、再呈给秘书”的字样，而且这几个字在OCR中同样是乱码。现有证据无法判断这些字是否被删去。增字“[to the President]”也可以读成附加，不一定是替换。第4条的这种处理，与本段对第6条“无法判断是否删去”的处理不一致，也与 limits.1“只转述方括号中的字样、其他删改无法判断”的保留相矛盾。",
+   "suggestion": "改为：“议定稿第4条的方括号增字加入了委任状和‘交给议长’的字样；但正文中‘交给副官、再呈给秘书’的字样仍在，OCR同样有乱码，无法判断是否已删去。第6条仍有由秘书接收委任状的字样，情况相同。”英文同步修改，删去“which matches the journal”。"
+  },
+  {
+   "id": "P2",
+   "model_id": "V2-V2",
+   "source": "final-editor previous attempt",
+   "where": "sections.limits.0",
+   "problem": "转述讲话时，把“高兴”（pleased）也挂在“独立得到确认”上。原文中，happy 针对独立与主权得到确认，pleased 针对合众国获得成为受尊重国家的机会。",
+   "suggestion": "中文改为“讲话本身说到他对独立与主权得到确认感到欣慰，对合众国有机会成为受尊重的国家感到高兴”。英文改为“speaks of his being happy at the confirmation of independence and pleased with the opportunity of becoming a respectable nation”。"
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.story.7",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "括号说明称第4条“经方括号增字后，也写明把委任状和讲稿副本交给议长，与日志所记一致”（英文：which matches the journal）。但第4条印本中“交给副官、再呈给秘书”的字样仍在，而且这几个字在OCR中同样是乱码。现有证据无法判断这些字是否已被删去，“[to the President]”也可能只是附加，不一定是替换。这样写与本段对第6条“无法判断是否删去”的处理不一致，也与 limits.1“只转述方括号中的字样、其他删改无法判断”的保留相矛盾。",
+   "evidence": [
+    {
+     "id": "U-E14",
+     "quote": "copy of his address to hia aid to be pre acntod to the Scorotaiy [to the President]"
+    },
+    {
+     "id": "U-E15",
+     "quote": "the words in brackets being in the writing of Elias Boudinot"
+    }
+   ],
+   "proposed": "中文改为：“议定稿第4条的方括号增字加入了‘委任状’和‘交给议长’的字样，但正文中‘交给副官、再呈给秘书’的字样仍在，OCR在这一处同样有乱码，无法判断是否已删去；第6条由秘书接收委任状的字样，情况相同。”英文同步修改，删去“which matches the journal”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“与日志所记一致/which matches the journal”。括号说明改为：第4条的方括号增字加入了委任状和交给议长的字样，但把讲稿副本交给副官、再呈给秘书的正文字样仍在，OCR在此处同样有乱码，无法判断是否已删去。第6条由秘书接收委任状的字样，情况相同。这样与limits.1的保留一致。中英同步修改。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.limits.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "转述讲话时，把“高兴/pleased”也挂在“独立得到确认”上，中英文都是如此。原文中，happy 针对独立与主权得到确认，pleased 针对合众国获得成为受尊重国家的机会。",
+   "evidence": [
+    {
+     "id": "U-E7",
+     "quote": "Happy in the confirmation of our independence and sovereignty, and pleased with the opportunity afforded the United States, of becoming a respectable nation"
+    }
+   ],
+   "proposed": "中文改为“讲话本身说到他对独立与主权得到确认感到欣慰，对合众国有机会成为受尊重的国家感到高兴”。英文改为“speaks of his being happy at the confirmation of independence and sovereignty and pleased with the opportunity of becoming a respectable nation”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "修正对讲话的转述，中英同步。按原文，欣慰（happy）针对独立与主权得到确认，高兴（pleased）针对合众国获得成为受尊重国家的机会，不再把两者都挂在“独立得到确认”上。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "P1",
+   "problem": "括号说明断言第4条经方括号增字后“写明”把委任状和讲稿副本交给议长，并说这与日志一致。但第4条正文仍有“交给副官、再呈给秘书”的字样，而且这几个字在OCR中同样是乱码。现有证据无法判断这些字是否被删去。增字“[to the President]”也可以读成附加，不一定是替换。第4条的这种处理，与本段对第6条“无法判断是否删去”的处理不一致，也与 limits.1“只转述方括号中的字样、其他删改无法判断”的保留相矛盾。",
+   "origin": "inherited final-editor previous attempt V2-V1",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.story.7",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "问题成立，与F1相同：第4条原有的“交给副官、呈给秘书”字样仍在且为乱码，不能断言该条已写明交给议长、与日志一致。"
+  },
+  {
+   "id": "P2",
+   "problem": "转述讲话时，把“高兴”（pleased）也挂在“独立得到确认”上。原文中，happy 针对独立与主权得到确认，pleased 针对合众国获得成为受尊重国家的机会。",
+   "origin": "inherited final-editor previous attempt V2-V2",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.limits.0",
+   "disposition": "duplicate",
+   "same_as": "F2",
+   "rationale": "问题成立，与F2相同：pleased 的对象是成为受尊重国家的机会，不是独立得到确认。"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.analysis.3",
+   "category": "causality",
+   "severity": "fix",
+   "problem": "The paragraph says that each of the author's two imagined arrangements would lose both things: the visible difference in rank and the complete first-person account (EN: \"each would have cost a visible difference in rank and a complete first-person account\"; ZH: “都会少掉……高低位差和一段……自述”). That does not hold. In the first arrangement, where the General and the President face each other and speak in turn, the General still speaks, so the first-person account survives. That arrangement loses only the difference in rank. The no-speech arrangement is the one that loses the account. The counterfactual consequences are stated as a blanket conclusion that the paragraph's own logic does not support.",
+   "evidence": [
+    {
+     "id": "U-E3",
+     "quote": "he is to bow to Congress, which they are to return by uncovering without bowing"
+    }
+   ],
+   "proposed": "Give each consequence to its own arrangement. ZH: “前者会少掉看得见的高低位差，后者会少掉一段完整记录在案的自述”. EN: \"the first would have lost the visible difference in rank, the second the complete first-person account on the record\".",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "原文把两种设想安排的后果一概而论，说两者都会同时少掉高低位差和自述。改为分别归属：相向而立、各自致辞的安排里将军仍然讲话，自述得以保留，只少掉鞠躬与脱帽所体现的高低位差；只收委任状、不设讲话的安排才会少掉完整记录在案的自述。中英两版同步修改，没有加入新的事实。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V2-V1",
+   "path": "sections.analysis.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "证据只有22日议定的鞠躬/脱帽规则；23日的记录没有记载将军实际鞠躬、国会实际脱帽回礼。前半句正确地用了“was to”。但随后“the standing man bowed, the seated body answered / 站着的鞠躬、坐着的回礼”把规则写成了已发生的动作。末句称姿态属于“documented transfer / 有记录的权力交还”的一部分，也暗示姿态已被记录在案。",
+   "evidence": [
+    {
+     "id": "U-E3",
+     "quote": "he is to bow to Congress, which they are to return by uncovering without bowing"
+    },
+    {
+     "id": "U-E9",
+     "quote": "He then advanced and delivered to the President his commission, with a copy of his address"
+    }
+   ],
+   "proposed": "改为规定语气：en“the standing man was to bow, the seated body to answer”，zh“按规定站着的鞠躬、坐着的回礼”。末句改为“仪式、按规定的姿态、凭证三者叠加”，en 同步改为“Ceremony, prescribed posture, and token together”。",
+   "origin": "final-editor verify round 2"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.story.7.zh",
+   "before": "作者推断，这套流程的要害在于它不依赖任何人相信谁的品格：仪式前一日成文，次日按议定次序进行，凭证当场易手，讲稿副本随凭证一并交出。（据日志，委任状是交给议长的；议定稿第4条经方括号增字后，也写明把委任状和讲稿副本交给议长，与日志所记一致。第6条仍有由秘书接收委任状的字样，但本篇所据的OCR文本在这一处有乱码，无法判断这些字是否已被删去。）一个人是否忠诚，一场仪式无法证明；但权力是否已归位，可以在这一天被记成白纸黑字。这是作者对记录方式的解释，日志本身并未陈述其用意。",
+   "after": "作者推断，这套流程的要害在于它不依赖任何人相信谁的品格：仪式前一日成文，次日按议定次序进行，凭证当场易手，讲稿副本随凭证一并交出。（据日志，委任状是交给议长的。议定稿第4条的方括号增字加入了“委任状”和“交给议长”的字样，但正文中把讲稿副本交给副官、再呈给秘书的字样仍在。本篇所据的OCR文本在这一处同样有乱码，无法判断这些字是否已被删去。第6条由秘书接收委任状的字样，情况相同。）一个人是否忠诚，一场仪式无法证明；但权力是否已归位，可以在这一天被记成白纸黑字。这是作者对记录方式的解释，日志本身并未陈述其用意。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.story.7.en",
+   "before": "The author's inference is that the point of the procedure was that it depended on nobody's character. The order was written the day before and followed the next day, the token changed hands on the spot, and a copy of the address was handed over along with it. (The journal has the commission delivered to the President. Clause 4 of the draft, as amended by the bracketed insertions, also has the commission and the copy of the address going to the President, which matches the journal. Clause 6 still contains wording in which the secretary receives the commission, but the OCR text this piece relies on is garbled at that point and cannot show whether those words were struck out.) A man's loyalty cannot be proven by a ceremony. Whether power has been put back where it belongs, however, can be entered in black and white on a particular day. That is an interpretation of how the record was made; the journal itself states no such intention.",
+   "after": "The author's inference is that the point of the procedure was that it depended on nobody's character. The order was written the day before and followed the next day, the token changed hands on the spot, and a copy of the address was handed over along with it. (The journal has the commission delivered to the President. The bracketed insertions in clause 4 of the draft add the words for the commission and for delivery to the President, but the wording that has the copy of the address going to his aide to be presented to the secretary remains in the printed text. The OCR text this piece relies on is garbled at that point too and cannot show whether those words were struck out. The same holds for the wording in clause 6 in which the secretary receives the commission.) A man's loyalty cannot be proven by a ceremony. Whether power has been put back where it belongs, however, can be entered in black and white on a particular day. That is an interpretation of how the record was made; the journal itself states no such intention.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.limits.0.zh",
+   "before": "本篇所据只有《大陆会议日志》第25卷的官方记录：12月20日至23日的记录，包括12月22日议定的接见次序、23日的接见经过与讲话文本。没有取得任何在场者的私人记述，因此讲话者的神情与语气、在场个人的现场反应，本篇都无从得知。日志记动作、记次序、记讲话，不描写个人的神情与现场反应。讲话本身说到他对独立得到确认感到欣慰、高兴，国会的正式答词也自称怀着难以言表的感情接受，但这些是写成文字的正式表态，答词更是机构的书面表态，不是对现场的描写。本篇也不涉及他此后的事。凡是原文没写的动机、念头和“他考虑过的选项”，本篇都不替他补。",
+   "after": "本篇所据只有《大陆会议日志》第25卷的官方记录：12月20日至23日的记录，包括12月22日议定的接见次序、23日的接见经过与讲话文本。没有取得任何在场者的私人记述，因此讲话者的神情与语气、在场个人的现场反应，本篇都无从得知。日志记动作、记次序、记讲话，不描写个人的神情与现场反应。讲话本身说到他对独立与主权得到确认感到欣慰，对合众国有机会成为受尊重的国家感到高兴；国会的正式答词也自称怀着难以言表的感情接受。但这些是写成文字的正式表态，答词更是机构的书面表态，不是对现场的描写。本篇也不涉及他此后的事。凡是原文没写的动机、念头和“他考虑过的选项”，本篇都不替他补。",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.limits.0.en",
+   "before": "Everything in this piece rests on one source: the official Journals of the Continental Congress, volume 25 — the record of December 20 to 23, including the order of audience agreed on December 22, the audience of the twenty-third, and the text of the address. No private account by anyone present was consulted, and so the speaker's face and tone, and the reactions of individuals in the room, are beyond what this piece can know. The journal records gestures, sequence, and speech; it does not describe individual faces or reactions in the room. The address itself speaks of his being happy and pleased at the confirmation of independence, and Congress's formal answer speaks of receiving his resignation with emotions too affecting for utterance, but these are formal statements set down in writing, the answer being the institution's own written statement, not descriptions of the scene. Nor does this piece follow the man beyond that day. Motives, private thoughts, and options he may have considered are never supplied by this writer where the source is silent.",
+   "after": "Everything in this piece rests on one source: the official Journals of the Continental Congress, volume 25 — the record of December 20 to 23, including the order of audience agreed on December 22, the audience of the twenty-third, and the text of the address. No private account by anyone present was consulted, and so the speaker's face and tone, and the reactions of individuals in the room, are beyond what this piece can know. The journal records gestures, sequence, and speech; it does not describe individual faces or reactions in the room. The address itself speaks of his being happy at the confirmation of independence and sovereignty, and pleased with the opportunity afforded the United States of becoming a respectable nation. Congress's formal answer speaks of receiving his resignation with emotions too affecting for utterance. But these are formal statements set down in writing, the answer being the institution's own written statement, not descriptions of the scene. Nor does this piece follow the man beyond that day. Motives, private thoughts, and options he may have considered are never supplied by this writer where the source is silent.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.analysis.3.zh",
+   "before": "别的做法并非没有。华盛顿自己的信就给了两个选项：书面辞职，或者当面接见；国会选了公开接见。作者还可以设想其他安排（非史实）：将军与议长相向而立、各自致辞，或者只收下委任状、不设讲话。这些做法同样能完成权力归位，也许更快，但都会少掉一个看得见的高低位差和一段完整记录在案的自述。",
+   "after": "别的做法并非没有。华盛顿自己的信就给了两个选项：书面辞职，或者当面接见；国会选了公开接见。作者还可以设想其他安排（非史实）：将军与议长相向而立、各自致辞，或者只收下委任状、不设讲话。这些做法同样能完成权力归位，也许更快，但前者会少掉看得见的高低位差，后者会少掉一段完整记录在案的自述。",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.analysis.3.en",
+   "before": "Other forms were available. Washington's own letter offered two: a resignation in writing, or an audience. Congress chose the public audience. The author can imagine other arrangements too, and they are not history: the General and the President facing each other and speaking in turn, or Congress simply taking the commission with no speech at all. Each would have returned the authority, perhaps faster, and each would have cost a visible difference in rank and a complete first-person account on the record.",
+   "after": "Other forms were available. Washington's own letter offered two: a resignation in writing, or an audience. Congress chose the public audience. The author can imagine other arrangements too, and they are not history: the General and the President facing each other and speaking in turn, or Congress simply taking the commission with no speech at all. Each would have returned the authority, perhaps faster, but the first would have lost the visible difference in rank, the second the complete first-person account on the record.",
+   "issues": [
+    "V1-V1"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2"
+   ],
+   "changes_applied": 4,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "analysis[0] numbers differ zh[22, 23] en[20]"
+    ]
+   ],
+   "content_sha256_after": "429bc4a57268f9b4d52431385f6b9460e2642fc103b0ff8e5aef81a8e3d9bcd2",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.analysis.3",
+      "category": "causality",
+      "severity": "fix",
+      "problem": "The paragraph says that each of the author's two imagined arrangements would lose both things: the visible difference in rank and the complete first-person account (EN: \"each would have cost a visible difference in rank and a complete first-person account\"; ZH: “都会少掉……高低位差和一段……自述”). That does not hold. In the first arrangement, where the General and the President face each other and speak in turn, the General still speaks, so the first-person account survives. That arrangement loses only the difference in rank. The no-speech arrangement is the one that loses the account. The counterfactual consequences are stated as a blanket conclusion that the paragraph's own logic does not support.",
+      "evidence": [
+       {
+        "id": "U-E3",
+        "quote": "he is to bow to Congress, which they are to return by uncovering without bowing"
+       }
+      ],
+      "proposed": "Give each consequence to its own arrangement. ZH: “前者会少掉看得见的高低位差，后者会少掉一段完整记录在案的自述”. EN: \"the first would have lost the visible difference in rank, the second the complete first-person account on the record\"."
+     }
+    ],
+    "overall": "The final draft's facts, dates, quotations, attributions and Chinese–English parity all match the evidence, and the interpretive passages are labelled as interpretation. The only problem is in the analysis section's counterfactual paragraph, which assigns both consequences to both imagined arrangements; it needs a small wording fix (fix) before publication.",
+    "_content_sha256": "429bc4a57268f9b4d52431385f6b9460e2642fc103b0ff8e5aef81a8e3d9bcd2"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1"
+   ],
+   "changes_applied": 2,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "analysis[0] numbers differ zh[22, 23] en[20]"
+    ]
+   ],
+   "content_sha256_after": "46a2028a36810deb043d45d8cc017f63581ef3f350d429d4b2367b10e20e2bf0",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.analysis.0",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "证据只有22日议定的鞠躬/脱帽规则；23日的记录没有记载将军实际鞠躬、国会实际脱帽回礼。前半句正确地用了“was to”。但随后“the standing man bowed, the seated body answered / 站着的鞠躬、坐着的回礼”把规则写成了已发生的动作。末句称姿态属于“documented transfer / 有记录的权力交还”的一部分，也暗示姿态已被记录在案。",
+      "evidence": [
+       {
+        "id": "U-E3",
+        "quote": "he is to bow to Congress, which they are to return by uncovering without bowing"
+       },
+       {
+        "id": "U-E9",
+        "quote": "He then advanced and delivered to the President his commission, with a copy of his address"
+       }
+      ],
+      "proposed": "改为规定语气：en“the standing man was to bow, the seated body to answer”，zh“按规定站着的鞠躬、坐着的回礼”。末句改为“仪式、按规定的姿态、凭证三者叠加”，en 同步改为“Ceremony, prescribed posture, and token together”。"
+     }
+    ],
+    "overall": "定稿整体证据扎实，引文逐字、解释均已标注、中英一致；仅 analysis.0 一处把议定的鞠躬与脱帽规则写成了实际发生的动作，需小改。",
+    "_content_sha256": "46a2028a36810deb043d45d8cc017f63581ef3f350d429d4b2367b10e20e2bf0"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "chronology",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "chronology",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.story.7",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "括号说明称第4条“经方括号增字后，也写明把委任状和讲稿副本交给议长，与日志所记一致”（英文：which matches the journal）。但第4条印本中“交给副官、再呈给秘书”的字样仍在，而且这几个字在OCR中同样是乱码。现有证据无法判断这些字是否已被删去，“[to the President]”也可能只是附加，不一定是替换。这样写与本段对第6条“无法判断是否删去”的处理不一致，也与 limits.1“只转述方括号中的字样、其他删改无法判断”的保留相矛盾。",
+    "evidence": [
+     {
+      "id": "U-E14",
+      "quote": "copy of his address to hia aid to be pre acntod to the Scorotaiy [to the President]"
+     },
+     {
+      "id": "U-E15",
+      "quote": "the words in brackets being in the writing of Elias Boudinot"
+     }
+    ],
+    "proposed": "中文改为：“议定稿第4条的方括号增字加入了‘委任状’和‘交给议长’的字样，但正文中‘交给副官、再呈给秘书’的字样仍在，OCR在这一处同样有乱码，无法判断是否已删去；第6条由秘书接收委任状的字样，情况相同。”英文同步修改，删去“which matches the journal”。"
+   },
+   {
+    "id": "F2",
+    "path": "sections.limits.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "转述讲话时，把“高兴/pleased”也挂在“独立得到确认”上，中英文都是如此。原文中，happy 针对独立与主权得到确认，pleased 针对合众国获得成为受尊重国家的机会。",
+    "evidence": [
+     {
+      "id": "U-E7",
+      "quote": "Happy in the confirmation of our independence and sovereignty, and pleased with the opportunity afforded the United States, of becoming a respectable nation"
+     }
+    ],
+    "proposed": "中文改为“讲话本身说到他对独立与主权得到确认感到欣慰，对合众国有机会成为受尊重的国家感到高兴”。英文改为“speaks of his being happy at the confirmation of independence and sovereignty and pleased with the opportunity of becoming a respectable nation”。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "P1",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "问题成立，与F1相同：第4条原有的“交给副官、呈给秘书”字样仍在且为乱码，不能断言该条已写明交给议长、与日志一致。",
+    "evidence": [
+     {
+      "id": "U-E14",
+      "quote": "to hia aid to be pre acntod to the Scorotaiy [to the President]"
+     }
+    ]
+   },
+   {
+    "id": "P2",
+    "verdict": "duplicate",
+    "same_as": "F2",
+    "rationale": "问题成立，与F2相同：pleased 的对象是成为受尊重国家的机会，不是独立得到确认。",
+    "evidence": [
+     {
+      "id": "U-E7",
+      "quote": "pleased with the opportunity afforded the United States, of becoming a respectable nation"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "46a2028a36810deb043d45d8cc017f63581ef3f350d429d4b2367b10e20e2bf0",
+ "open_issues": [
+  "V2-V1"
+ ],
+ "outcome": "pending_review",
+ "failure": null,
+ "finished_at": 1793433376.9912848,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 63.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 18692,
+    "output_tokens": 7351
+   },
+   "cost_estimate_usd": 0.296564
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 18.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 18246,
+    "output_tokens": 2276
+   },
+   "cost_estimate_usd": 0.191496
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 69.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 17525,
+    "output_tokens": 8177
+   },
+   "cost_estimate_usd": 0.303748
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 11.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 17911,
+    "output_tokens": 780
+   },
+   "cost_estimate_usd": 0.158896
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 56.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 17532,
+    "output_tokens": 6757
+   },
+   "cost_estimate_usd": 0.275404
+  }
+ ],
+ "elapsed_min": 3.7,
+ "model_wall_min": 3.7
+}

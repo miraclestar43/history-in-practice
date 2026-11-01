@@ -1,0 +1,16 @@
+# Launched 2026-11-01. Resumes today's publish run (idempotent: never re-archives, never resends an accepted or
+# unknown delivery) while a site deploy is still landing or a send partly failed, then marks an unfinished day
+# overdue just after send_deadline (23:40 Asia/Shanghai) so it is alerted the same evening and never sent later.
+[Unit]
+Description=History in Practice: resume today's publish before the deadline (Asia/Shanghai)
+
+[Timer]
+OnCalendar=*-*-* 22:38:00 Asia/Shanghai
+OnCalendar=*-*-* 23:08:00 Asia/Shanghai
+OnCalendar=*-*-* 23:35:00 Asia/Shanghai
+OnCalendar=*-*-* 23:45:00 Asia/Shanghai
+Persistent=false
+Unit=hip-send.service
+
+[Install]
+WantedBy=timers.target

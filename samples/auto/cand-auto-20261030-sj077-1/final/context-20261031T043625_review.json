@@ -1,0 +1,546 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261030-sj077-1",
+ "content_sha256": "efaf36241a399cdd6886d17e915e06a782d0fde125605f164c5930c5fdb22920",
+ "evidence_in_sha256": "cb45ae6440e0c289f393adbf41ef725d155ea72882e38a1de4553a3f50346e7f",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793439386.0040178,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.1",
+   "lang": "zh",
+   "sentence": "侯生只说一句「公子勉之矣，老臣不能從」。"
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.7",
+   "lang": "en",
+   "sentence": "The prince at once blamed himself, looking as if he had nowhere to hide."
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "至于盗符、惹魏王怒等其他代价，原文没有写他事前是否掂量过。"
+  },
+  {
+   "id": "A4",
+   "path": "sections.analysis.1",
+   "lang": "en",
+   "sentence": "as for the other costs, such as stealing the tally and angering the king, the source does not say whether he weighed them beforehand."
+  },
+  {
+   "id": "A5",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "the source does not state any such connection."
+  },
+  {
+   "id": "A6",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "The prince's displeasure, self-congratulation and self-blame, as the narrative describes them, are narrative labels, not recorded psychology."
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-SJ077": {
+   "title": "司馬遷《史記·魏公子列傳》（维基文库本）",
+   "url": "https://zh.wikisource.org/w/index.php?title=%E5%8F%B2%E8%A8%98/%E5%8D%B7077&action=render",
+   "ref": "zh:史記/卷077",
+   "evidence_text_sha256": "4b1d4ec9f91a18e56ebb8b733e1cd11ffa0ada580ac283fa1b715015b54f3370",
+   "cache_sha256": "4b1d4ec9f91a18e56ebb8b733e1cd11ffa0ada580ac283fa1b715015b54f3370",
+   "cjk": true,
+   "source_chars": 3383,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     3383
+    ]
+   ],
+   "chars_reviewed": 3383
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 43.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 4599
+  }
+ ],
+ "finished_at": 1793439429.3333275,
+ "elapsed_min": 0.7,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-SJ077",
+    "outcome": "救赵之后，公子留赵十年，因秦攻魏归国为上将军；秦用反间，魏王改派他人代将，公子谢病不朝，纵饮四年，病酒而死。",
+    "quote": "日夜為樂飲者四歲，竟病酒而卒",
+    "in_evidence": true
+   },
+   {
+    "source_id": "S-SJ077",
+    "outcome": "公子死后，秦即攻魏，拔二十城，十八年后虏魏王、屠大梁；汉高祖为公子置守冢五家，四时奉祠。",
+    "quote": "秦聞公子死，使蒙驁攻魏，拔二十城，初置東郡。其後秦稍蠶食魏，十八歲而虜魏王，屠大梁。",
+    "in_evidence": false
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-SJ077",
+    "start": "魏安釐王三十年，公子使使遍告諸侯",
+    "end": "故世俗稱魏公子兵法",
+    "why": "「秦王患之」紧接在这段之后，指的是公子率五国之兵破秦、威振天下。稿件从授上将军印直接跳到秦行金毁谤，漏掉了秦国出手反间的直接起因。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.1",
+    "lang": "zh",
+    "sentence": "侯生只说一句「公子勉之矣，老臣不能從」。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "夷门辞决一段",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "辭決而行，侯生曰：「公子勉之矣，老臣不能從。」"
+    },
+    "fix": "这是叙述人物说了什么，与原文一致，保留。"
+   },
+   {
+    "id": "A2",
+    "path": "sections.story.7",
+    "lang": "en",
+    "sentence": "The prince at once blamed himself, looking as if he had nowhere to hide.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "赵封五城、客谏一段",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "於是公子立自責，似若無所容者"
+    },
+    "fix": "这是对原文的转述，准确，保留。"
+   },
+   {
+    "id": "A3",
+    "path": "sections.analysis.1",
+    "lang": "zh",
+    "sentence": "至于盗符、惹魏王怒等其他代价，原文没有写他事前是否掂量过。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "全篇。重点核查侯生献计至「至鄴」各段：公子事前的反应只记了为晋鄙而泣；「公子亦自知也」出现在事后。",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "晉鄙嚄唶宿將，往恐不聽，必當殺之，是以泣耳，豈畏死哉？"
+    },
+    "fix": "可保留。"
+   },
+   {
+    "id": "A4",
+    "path": "sections.analysis.1",
+    "lang": "en",
+    "sentence": "as for the other costs, such as stealing the tally and angering the king, the source does not say whether he weighed them beforehand.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "同A3，全篇",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "魏王怒公子之盜其兵符，矯殺晉鄙，公子亦自知也"
+    },
+    "fix": "可保留。"
+   },
+   {
+    "id": "A5",
+    "path": "sections.analysis.2",
+    "lang": "en",
+    "sentence": "the source does not state any such connection.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "全篇。秦行金反间一段只写「求晉鄙客，令毀公子」，没有说明为什么要找晋鄙客；太史公评与索隐述赞也没有说明。",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "乃行金萬斤於魏，求晉鄙客，令毀公子於魏王曰"
+    },
+    "fix": "可保留。"
+   },
+   {
+    "id": "N1",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "原文并未明说两者之间的关联。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "同A5，全篇",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "求晉鄙客，令毀公子於魏王"
+    },
+    "fix": "可保留。"
+   },
+   {
+    "id": "A6",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "The prince's displeasure, self-congratulation and self-blame, as the narrative describes them, are narrative labels, not recorded psychology.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "全篇的叙述用语",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "公子聞之，意驕矜而有自功之色"
+    },
+    "fix": "这是方法性的提示，不是断言来源未载，保留。"
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "本文只依据并核对了《史记·魏公子列传》一篇，未与其他记载对照。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "本文自身的核查范围",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "太史公曰：吾過大梁之墟，求問其所謂夷門。"
+    },
+    "fix": "这是对本文自身工作范围的说明，属实，保留；不得延伸为「史家没有核查」。"
+   },
+   {
+    "id": "N3",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "「得選兵八萬人」在本篇只出现一次，本文未与其他记载对照",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "全篇。「八萬」确实只出现一次。",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "得選兵八萬人，進兵擊秦軍"
+    },
+    "fix": "「只出现一次」本身不构成存疑的理由。冠以「更该存疑」，等于暗示了一个没有依据的疑点。建议删去，或改为中性表述：「人数据本篇所记，未与他书对照」。"
+   },
+   {
+    "id": "N4",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "「得選兵八萬人」在本篇只出现一次。",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "同N3",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "得選兵八萬人"
+    },
+    "fix": "同N3，中英文一并删除或改为中性表述。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.analysis.2",
+    "problem": "稿件从授上将军印直接跳到秦行金毁谤，漏掉了公子率五国之兵破秦、威振天下这一段。读者会看不出秦国反间的起因是公子的战功。",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "公子率五國之兵破秦軍於河外，走蒙驁。遂乘勝逐秦軍至函谷關，抑秦兵，秦兵不敢出。"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "全篇已通读，结局（病酒而卒）已在证据包内；否定性断言均属实或不是来源断言；「八万人只出现一次」属于不必要的存疑，建议删除或改为中性表述；建议补入五国破秦一段，交代秦国反间的起因。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.1",
+   "lang": "zh",
+   "sentence": "侯生只说一句「公子勉之矣，老臣不能從」。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "夷门辞决一段",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "辭決而行，侯生曰：「公子勉之矣，老臣不能從。」"
+   },
+   "fix": "这是叙述人物说了什么，与原文一致，保留。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.7",
+   "lang": "en",
+   "sentence": "The prince at once blamed himself, looking as if he had nowhere to hide.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "赵封五城、客谏一段",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "於是公子立自責，似若無所容者"
+   },
+   "fix": "这是对原文的转述，准确，保留。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "至于盗符、惹魏王怒等其他代价，原文没有写他事前是否掂量过。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "全篇。重点核查侯生献计至「至鄴」各段：公子事前的反应只记了为晋鄙而泣；「公子亦自知也」出现在事后。",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "晉鄙嚄唶宿將，往恐不聽，必當殺之，是以泣耳，豈畏死哉？"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "A4",
+   "path": "sections.analysis.1",
+   "lang": "en",
+   "sentence": "as for the other costs, such as stealing the tally and angering the king, the source does not say whether he weighed them beforehand.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "同A3，全篇",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "魏王怒公子之盜其兵符，矯殺晉鄙，公子亦自知也"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "A5",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "the source does not state any such connection.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "全篇。秦行金反间一段只写「求晉鄙客，令毀公子」，没有说明为什么要找晋鄙客；太史公评与索隐述赞也没有说明。",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "乃行金萬斤於魏，求晉鄙客，令毀公子於魏王曰"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "原文并未明说两者之间的关联。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "同A5，全篇",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "求晉鄙客，令毀公子於魏王"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "A6",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "The prince's displeasure, self-congratulation and self-blame, as the narrative describes them, are narrative labels, not recorded psychology.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "全篇的叙述用语",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "公子聞之，意驕矜而有自功之色"
+   },
+   "fix": "这是方法性的提示，不是断言来源未载，保留。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "本文只依据并核对了《史记·魏公子列传》一篇，未与其他记载对照。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "本文自身的核查范围",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "太史公曰：吾過大梁之墟，求問其所謂夷門。"
+   },
+   "fix": "这是对本文自身工作范围的说明，属实，保留；不得延伸为「史家没有核查」。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "「得選兵八萬人」在本篇只出现一次，本文未与其他记载对照",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "全篇。「八萬」确实只出现一次。",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "得選兵八萬人，進兵擊秦軍"
+   },
+   "fix": "「只出现一次」本身不构成存疑的理由。冠以「更该存疑」，等于暗示了一个没有依据的疑点。建议删去，或改为中性表述：「人数据本篇所记，未与他书对照」。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "「得選兵八萬人」在本篇只出现一次。",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "同N3",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "得選兵八萬人"
+   },
+   "fix": "同N3，中英文一并删除或改为中性表述。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.analysis.2",
+   "problem": "稿件从授上将军印直接跳到秦行金毁谤，漏掉了公子率五国之兵破秦、威振天下这一段。读者会看不出秦国反间的起因是公子的战功。",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "公子率五國之兵破秦軍於河外，走蒙驁。遂乘勝逐秦軍至函谷關，抑秦兵，秦兵不敢出。"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-SJ077",
+   "outcome": "救赵之后，公子留赵十年，因秦攻魏归国为上将军；秦用反间，魏王改派他人代将，公子谢病不朝，纵饮四年，病酒而死。",
+   "quote": "日夜為樂飲者四歲，竟病酒而卒",
+   "in_evidence": true
+  },
+  {
+   "source_id": "S-SJ077",
+   "outcome": "公子死后，秦即攻魏，拔二十城，十八年后虏魏王、屠大梁；汉高祖为公子置守冢五家，四时奉祠。",
+   "quote": "秦聞公子死，使蒙驁攻魏，拔二十城，初置東郡。其後秦稍蠶食魏，十八歲而虜魏王，屠大梁。",
+   "in_evidence": false
+  }
+ ],
+ "additions": [
+  {
+   "id": "SJ0771-E34",
+   "source_id": "S-SJ077",
+   "offset": 2763,
+   "chars": 105,
+   "why": "「秦王患之」紧接在这段之后，指的是公子率五国之兵破秦、威振天下。稿件从授上将军印直接跳到秦行金毁谤，漏掉了秦国出手反间的直接起因。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "e96ce50f76155e65340f2eb40e579e04bc200bdeb4b1fd1b29ae5f684c9d318b",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.limits.1.zh: unnecessary — 「得選兵八萬人」在本篇只出现一次，本文未与其他记载对照",
+  "uncertainty_note.zh: unnecessary — 「得選兵八萬人」在本篇只出现一次。",
+  "evidence must be expanded first: 1 addition(s) ['SJ0771-E34']"
+ ]
+}

@@ -1,0 +1,1320 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-20261030-darwin-wallace",
+ "edition_id": "cand-20261030-darwin-wallace",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "ef58996",
+ "started_at": 1793429147.9326837,
+ "base_source": "samples/auto/cand-20261030-darwin-wallace/final/article.json",
+ "base_content_sha256": "21e237df1a0b53026950417d58f1a44872e6729bf7c78250da743ce9f2b6c3c9",
+ "evidence_sha256": "e28c8316436943c5f38bd9ba3f8b82508f60363d07336bf308167b7c3a75fa0d",
+ "operator_note": null,
+ "model_record_sha256": "117638de74f757e6e83f0f5c1f6c211ba4a486b75577017ff902cc045033032f",
+ "prior_record_sha256": "d1969c3b067e95ff28c2e09719f4a19c0913a6d5b5fd390cf64de0a485a0ba4f",
+ "attempt": "attempt-2",
+ "context_review_sha256": "dcf08d35e1f982294e29d6a218822c2286d67298ca1f8704dbd105c7f855ae46",
+ "inherited": [
+  {
+   "id": "X1",
+   "source": "context review",
+   "where": "",
+   "problem": "证据包已按来源上下文补入摘录 V-E23；请据此检查叙事、结局与因果是否完整准确",
+   "suggestion": null
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.hook.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "正文称莱尔与胡克为“两位皇家学会会员”，英文作“both Fellows of the Royal Society”。证据只给出 Lyell 的头衔为 F.R.S.，胡克的头衔为 V.P.R.S.，两人共同的头衔是 F.L.S.。“都是皇家学会会员（F.R.S.）”属于推断。",
+   "evidence": [
+    {
+     "id": "V-E1",
+     "quote": "Sir Charles Lyell , F.R.S., F.L.S., and J. D. Hooker , Esq., M.D., V.P.R.S., F.L.S."
+    }
+   ],
+   "proposed": "改为按信头所列头衔表述，例如“两位林奈学会会员莱尔与胡克”/“Charles Lyell and J. D. Hooker, both Fellows of the Linnean Society”；或分别写明 F.R.S. 与 V.P.R.S.。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "信头只显示两人共同的头衔是 F.L.S.，胡克的皇家学会头衔为 V.P.R.S.。中英文均已改为“两位林奈学会会员”/“both Fellows of the Linnean Society”，删去“都是皇家学会会员”这一推断。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.context.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "证据说华莱士考察的是马来群岛“大部分岛屿”。英文“exploring the islands of the Malay Archipelago”和中文“这些岛屿”都没有体现“大部分”这一限定，略有夸大。",
+   "evidence": [
+    {
+     "id": "V-E9",
+     "quote": "explored the greater part of the islands constituting the Malay Archipelago"
+    }
+   ],
+   "proposed": "英文改为“exploring the greater part of the islands of the Malay Archipelago”；中文补“考察了马来群岛的大部分岛屿”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "按证据补上“大部分”这一限定：中文改为“考察了马来群岛的大部分岛屿和部分巴布亚”，英文改为“the greater part of the islands of the Malay Archipelago”。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.story.0",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "首句“达尔文的那份旧手稿从未打算发表”/“was never intended for publication”由叙述者以事实口吻直接断言。证据中这只是达尔文本人1858年脚注里的说法，应归于他本人。",
+   "evidence": [
+    {
+     "id": "V-E12",
+     "quote": "This MS. work was never intended for publication"
+    }
+   ],
+   "proposed": "首句改为“据达尔文本人所说，那份旧手稿从未打算发表”/“By Darwin's own account, his old manuscript was never intended for publication.”，或删去首句，只保留脚注引述。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "首句改为归于达尔文本人的说法（“据达尔文本人所说”/“By Darwin's own account”），不再由叙述者直接断言。脚注引述保持不变。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.story.3",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "中文写“作者表示：如果达尔文认为……就请转给莱尔”，有两处问题。其一，本文其他段落用“作者”指本文作者，这里容易误读。其二，证据中这一意愿是莱尔和胡克信中转述的，不是华莱士原文。英文用 with the express wish 加引语，来源同样未标明。",
+   "evidence": [
+    {
+     "id": "V-E5",
+     "quote": "sent to him with the expressed wish that it should be forwarded to Sir Charles Lyell"
+    }
+   ],
+   "proposed": "中文改为“据莱尔和胡克的信，华莱士寄出时表示：如果达尔文认为……”；英文补“according to Lyell and Hooker's letter”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文删去易与本文作者混淆的“作者表示”，改为“据莱尔和胡克的信……华莱士寄出时表示”。英文补“According to Lyell and Hooker's letter”，并按证据用词改为 expressed wish，标明这一意愿是信中转述的。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.story.7",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "英文作“its royal medal”，中文作“获皇家学会奖章”，丢失了“royal medal”这一具体奖项名，中英不完全对应。",
+   "evidence": [
+    {
+     "id": "V-E22",
+     "quote": "he received the royal medal from the Royal Society"
+    }
+   ],
+   "proposed": "中文改为“1868年获皇家学会颁发的皇家奖章（royal medal）”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文改为“获皇家学会颁发的皇家奖章”，补回奖项名；英文同步改为与证据一致的“received the royal medal from the Royal Society”，中英对应。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F6",
+   "path": "sections.analysis.1",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "末句中英不一致。英文是“a party's willingness to give way”（让步的意愿），中文“当事人的让步”读作已经发生的让步。证据中，达尔文让出发表机会的倾向被莱尔和胡克的条件拦下；他实际做的是授权二人处置手稿。",
+   "evidence": [
+    {
+     "id": "V-E6",
+     "quote": "as he was strongly inclined to do (in favour of Mr. Wallace)"
+    },
+    {
+     "id": "V-E7",
+     "quote": "he gave us permission to make what use we thought proper of his memoir"
+    }
+   ],
+   "proposed": "中文改为“当事人让步的意愿只是其中一步”，与英文保持一致。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文末句改为“当事人让步的意愿只是其中一步”，与英文 willingness to give way 对齐。这样就不再暗示让步已经发生：达尔文的倾向被二人的条件拦下，他实际做的是授权二人处置手稿。英文保持原样。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F7",
+   "path": "sections.limits.1",
+   "category": "style",
+   "severity": "note",
+   "problem": "中文正文出现“证据包”这一编辑流程用语，英文作“the evidence”。面向读者的文本里显得生硬。",
+   "evidence": [],
+   "proposed": "改为“现有材料没有说明……”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F8",
+   "path": "sections.story.2",
+   "category": "style",
+   "severity": "note",
+   "problem": "中文“证据里没有更多材料”、英文“nothing further in the evidence”同样使用了编辑流程用语。",
+   "evidence": [],
+   "proposed": "改为“现有材料中没有更多记载可以判断”/“nothing further in the surviving record decides between them”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "X1",
+   "path": "",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "证据包已按来源上下文补入摘录 V-E23；请据此检查叙事、结局与因果是否完整准确",
+   "origin": "inherited context review None",
+   "disposition": "rejected",
+   "rationale": "V-E23 表明宣读的只是达尔文手稿第一部分第二章的摘录，而不是全部手稿。正文与此一致：story.6 明确写“extracts from the manuscript”/“手稿摘录”，dek、hook.0、analysis.1、limits.1 只说“材料”被宣读，没有任何地方声称全文宣读。story.6 还注明当天的宣读顺序没有记载；叙事、结局与因果均未越出证据。",
+   "evidence": [
+    {
+     "id": "V-E3",
+     "quote": "Extracts from a MS. work on Species"
+    },
+    {
+     "id": "V-E2",
+     "quote": "a selection from them should be laid before the Linnean Society"
+    },
+    {
+     "id": "V-E23",
+     "quote": "from which we propose to read to the Society the extracts referred to"
+    }
+   ],
+   "decided_in": "audit"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.hook.0.zh",
+   "before": "1858年6月30日，伦敦。两位皇家学会会员莱尔与胡克联名给林奈学会秘书贝内特写信，随信附上几份材料；信里说，这些材料都关于同一个主题。麻烦在于：同一套理论被两个人各自独立想了出来，而两个人都没把它发表出去。信里说，二人都可以公平地要求享有作为这一重要研究方向上原创思想者的功绩。",
+   "after": "1858年6月30日，伦敦。两位林奈学会会员莱尔与胡克联名给林奈学会秘书贝内特写信，随信附上几份材料；信里说，这些材料都关于同一个主题。麻烦在于：同一套理论被两个人各自独立想了出来，而两个人都没把它发表出去。信里说，二人都可以公平地要求享有作为这一重要研究方向上原创思想者的功绩。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.hook.0.en",
+   "before": "London, 30 June 1858. Charles Lyell and J. D. Hooker, both Fellows of the Royal Society, wrote a joint letter to J. J. Bennett, secretary of the Linnean Society, enclosing papers which, they said, \"all relate to the same subject\". The difficulty was: the same theory had occurred to two men working independently of each other, and neither had published. The two men, the letter says, \"may both fairly claim the merit of being original thinkers in this important line of inquiry.\"",
+   "after": "London, 30 June 1858. Charles Lyell and J. D. Hooker, both Fellows of the Linnean Society, wrote a joint letter to J. J. Bennett, secretary of the Linnean Society, enclosing papers which, they said, \"all relate to the same subject\". The difficulty was: the same theory had occurred to two men working independently of each other, and neither had published. The two men, the letter says, \"may both fairly claim the merit of being original thinkers in this important line of inquiry.\"",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.context.0.zh",
+   "before": "先把两位当事人摆出来。达尔文这边，有一份关于物种的手稿：1839年草拟，1844年誊写，胡克在1844年读过誊本，内容后来又告诉了莱尔。多年里，莱尔和胡克反复催达尔文把观点发表出来，他一直没有。华莱士这边，1854年出发去东印度，在马来群岛一带考察了近八年，研究这些岛屿和部分巴布亚的动植物；更早的1848年，他与贝茨同赴巴西，走亚马逊和内格罗河的原始森林，1852年返英，他那批尤以鸟类和植物见长的收藏，大半毁于海难。1877年的一篇人物小传记下关键的一句：他在马来群岛研究时并不知道达尔文在同一方向上的先前工作，却得出了几乎相同的结论。",
+   "after": "先把两位当事人摆出来。达尔文这边，有一份关于物种的手稿：1839年草拟，1844年誊写，胡克在1844年读过誊本，内容后来又告诉了莱尔。多年里，莱尔和胡克反复催达尔文把观点发表出来，他一直没有。华莱士这边，1854年出发去东印度，用近八年考察了马来群岛的大部分岛屿和部分巴布亚，研究那里的动植物；更早的1848年，他与贝茨同赴巴西，走亚马逊和内格罗河的原始森林，1852年返英，他那批尤以鸟类和植物见长的收藏，大半毁于海难。1877年的一篇人物小传记下关键的一句：他在马来群岛研究时并不知道达尔文在同一方向上的先前工作，却得出了几乎相同的结论。",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.context.0.en",
+   "before": "Begin with the two men themselves. Darwin had a manuscript on species: drafted in 1839, copied out in 1844. Hooker read that copy in 1844, and its contents later reached Lyell. For years the two of them pressed Darwin to publish his views; for years he held back. Wallace, meanwhile, was travelling. He set out for the East Indies in 1854 and spent nearly eight years exploring the islands of the Malay Archipelago and parts of Papua, studying their animals and plants. Earlier, in 1848, he had gone to Brazil with Bates, through the primeval forests of the Amazon and the Rio Negro, and returned to England in 1852; his collections, especially rich in birds and plants, were largely destroyed by shipwreck. A sketch published in 1877 supplies the decisive sentence: while pursuing his researches in the Malay Archipelago, Wallace was unaware of Darwin's earlier labours in the same direction, yet arrived at almost the same general conclusions.",
+   "after": "Begin with the two men themselves. Darwin had a manuscript on species: drafted in 1839, copied out in 1844. Hooker read that copy in 1844, and its contents later reached Lyell. For years the two of them pressed Darwin to publish his views; for years he held back. Wallace, meanwhile, was travelling. He set out for the East Indies in 1854 and spent nearly eight years exploring the greater part of the islands of the Malay Archipelago and parts of Papua, studying their animals and plants. Earlier, in 1848, he had gone to Brazil with Bates, through the primeval forests of the Amazon and the Rio Negro, and returned to England in 1852; his collections, especially rich in birds and plants, were largely destroyed by shipwreck. A sketch published in 1877 supplies the decisive sentence: while pursuing his researches in the Malay Archipelago, Wallace was unaware of Darwin's earlier labours in the same direction, yet arrived at almost the same general conclusions.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.0.zh",
+   "before": "达尔文的那份旧手稿从未打算发表。1858年，达尔文为它加了一条脚注，署“C. D. 1858”，说明这份手稿从未打算发表，因此写得并不仔细。",
+   "after": "据达尔文本人所说，那份旧手稿从未打算发表：1858年，他为它加了一条脚注，署“C. D. 1858”，说明这份手稿从未打算发表，因此写得并不仔细。",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.story.0.en",
+   "before": "Darwin's old manuscript was never intended for publication. In 1858 he added a footnote to it: \"This MS. work was never intended for publication, and therefore was not written with care.—C. D. 1858.\"",
+   "after": "By Darwin's own account, his old manuscript was never intended for publication. In 1858 he added a footnote to it: \"This MS. work was never intended for publication, and therefore was not written with care.—C. D. 1858.\"",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.story.3.zh",
+   "before": "第三份材料是华莱士的论文，标题《论变种无限偏离原初类型的倾向》，落款特尔纳特，1858年2月。它是写给朋友兼通信者达尔文看的，作者表示：如果达尔文认为它足够新颖、有意思，就请转给莱尔。两份材料的开头读来很不一样。达尔文的摘录从德堪多讲起：德堪多曾雄辩地宣称，整个自然都处在战争之中，生物与生物相争，或与外部自然相争；随后又说，这就是马尔萨斯的学说，而且多数情形下作用强了十倍。华莱士则从一条反对意见讲起：家养变种不稳定，任其自然便常常回到亲本的样子，有人以此认为物种是分别创造、永远不变的。出发点不同，落点接近。",
+   "after": "第三份材料是华莱士的论文，标题《论变种无限偏离原初类型的倾向》，落款特尔纳特，1858年2月。据莱尔和胡克的信，这篇论文是写给朋友兼通信者达尔文看的，华莱士寄出时表示：如果达尔文认为它足够新颖、有意思，就请转给莱尔。两份材料的开头读来很不一样。达尔文的摘录从德堪多讲起：德堪多曾雄辩地宣称，整个自然都处在战争之中，生物与生物相争，或与外部自然相争；随后又说，这就是马尔萨斯的学说，而且多数情形下作用强了十倍。华莱士则从一条反对意见讲起：家养变种不稳定，任其自然便常常回到亲本的样子，有人以此认为物种是分别创造、永远不变的。出发点不同，落点接近。",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.story.3.en",
+   "before": "The third item was Wallace's essay, \"On the Tendency of Varieties to depart indefinitely from the Original Type,\" dated Ternate, February 1858. It was written for his friend and correspondent Darwin to read, with the express wish that, \"if Mr. Darwin thought it sufficiently novel and interesting,\" it should be forwarded to Lyell. The two openings read very differently. Darwin's extract opens from De Candolle: \"De Candolle, in an eloquent passage, has declared that all nature is at war, one organism with another, or with external nature.\" A few sentences later it calls the struggle \"the doctrine of Malthus applied in most cases with tenfold force.\" Wallace opens from an objection - that domestic varieties are unstable and tend to revert to the parent form, which is taken to show that species were created distinct and are kept that way. Different starting points, converging destinations.",
+   "after": "The third item was Wallace's essay, \"On the Tendency of Varieties to depart indefinitely from the Original Type,\" dated Ternate, February 1858. According to Lyell and Hooker's letter, it was written for his friend and correspondent Darwin to read, and sent with the expressed wish that, \"if Mr. Darwin thought it sufficiently novel and interesting,\" it should be forwarded to Lyell. The two openings read very differently. Darwin's extract opens from De Candolle: \"De Candolle, in an eloquent passage, has declared that all nature is at war, one organism with another, or with external nature.\" A few sentences later it calls the struggle \"the doctrine of Malthus applied in most cases with tenfold force.\" Wallace opens from an objection - that domestic varieties are unstable and tend to revert to the parent form, which is taken to show that species were created distinct and are kept that way. Different starting points, converging destinations.",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.story.7.zh",
+   "before": "小传还顺笔记下华莱士后来的路：1862年回英国，此后多年整理他庞大的收藏——100,000余件昆虫标本、8,000多只鸟；1868年获皇家学会奖章，1870年获巴黎地理学会金质奖章，同年出版《自然选择理论文集》。在人类起源问题上，他承认自然选择对达尔文归于它的多数变化有效，但否认单靠自然选择、没有某种更高原因的共同作用，就能完成从类人猿到人的过渡。",
+   "after": "小传还顺笔记下华莱士后来的路：1862年回英国，此后多年整理他庞大的收藏——100,000余件昆虫标本、8,000多只鸟；1868年获皇家学会颁发的皇家奖章，1870年获巴黎地理学会金质奖章，同年出版《自然选择理论文集》。在人类起源问题上，他承认自然选择对达尔文归于它的多数变化有效，但否认单靠自然选择、没有某种更高原因的共同作用，就能完成从类人猿到人的过渡。",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.story.7.en",
+   "before": "The sketch also follows Wallace's later course. He returned to England in 1862 and spent several years classifying an enormous collection - upward of 100,000 insect specimens and more than 8,000 birds. In 1868 the Royal Society gave him its royal medal; in 1870 the Geographical Society of Paris its gold medal, and in that same year he published \"Contributions to the Theory of Natural Selection\". On human origins, though he recognized the efficacy of natural selection in producing most of the changes Darwin attributed to it, he denied that it was competent, without the joint agency of some higher cause, to effect the transition from the anthropoid apes to man.",
+   "after": "The sketch also follows Wallace's later course. He returned to England in 1862 and spent several years classifying an enormous collection - upward of 100,000 insect specimens and more than 8,000 birds. In 1868 he received the royal medal from the Royal Society; in 1870 the Geographical Society of Paris gave him its gold medal, and in that same year he published \"Contributions to the Theory of Natural Selection\". On human origins, though he recognized the efficacy of natural selection in producing most of the changes Darwin attributed to it, he denied that it was competent, without the joint agency of some higher cause, to effect the transition from the anthropoid apes to man.",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.zh",
+   "before": "作者把他们的做法概括为：算，但要公开兑现。作者列出的替代做法至少有三种，各有代价：由达尔文先单独发表；只发华莱士，把达尔文的优先权留给他日后自述；或者都等达尔文的完整著作出来再说。其中第二种与信中所记达尔文的倾向相对应：他提议尽快发表华莱士的论文，并强烈倾向于扣下自己的手稿；其余两种是作者提出的对照选项，不是材料里的记载。实际被选中的是第四条：三份材料同场宣读，日期写进正文，理由写给一位秘书并公开发表。莱尔和胡克自己说，这样做的依据是让经年思考、建立在大量事实上的观点立刻成为别人可以出发的目标。分配交给了程序，当事人的让步只是其中一步。",
+   "after": "作者把他们的做法概括为：算，但要公开兑现。作者列出的替代做法至少有三种，各有代价：由达尔文先单独发表；只发华莱士，把达尔文的优先权留给他日后自述；或者都等达尔文的完整著作出来再说。其中第二种与信中所记达尔文的倾向相对应：他提议尽快发表华莱士的论文，并强烈倾向于扣下自己的手稿；其余两种是作者提出的对照选项，不是材料里的记载。实际被选中的是第四条：三份材料同场宣读，日期写进正文，理由写给一位秘书并公开发表。莱尔和胡克自己说，这样做的依据是让经年思考、建立在大量事实上的观点立刻成为别人可以出发的目标。分配交给了程序，当事人让步的意愿只是其中一步。",
+   "issues": [
+    "F6"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6"
+   ],
+   "changes_applied": 11,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [],
+   "content_sha256_after": "805fcf98278a90031b78061c320473e721b56839ea8e9a231bad488863a0f772",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [],
+    "overall": "逐字段复核后未发现需要修改的问题：日期、数字、人名与地名均有证据支持，英文引语逐字出自证据，推断都已标为作者解释，致格雷信的日期分歧如实保留，现代场景明确标为虚构，中英文内容一致、没有缺失或截断，定稿可以发出。",
+    "_content_sha256": "805fcf98278a90031b78061c320473e721b56839ea8e9a231bad488863a0f772"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F8"
+    ]
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F7"
+    ]
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.hook.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "正文称莱尔与胡克为“两位皇家学会会员”，英文作“both Fellows of the Royal Society”。证据只给出 Lyell 的头衔为 F.R.S.，胡克的头衔为 V.P.R.S.，两人共同的头衔是 F.L.S.。“都是皇家学会会员（F.R.S.）”属于推断。",
+    "evidence": [
+     {
+      "id": "V-E1",
+      "quote": "Sir Charles Lyell , F.R.S., F.L.S., and J. D. Hooker , Esq., M.D., V.P.R.S., F.L.S."
+     }
+    ],
+    "proposed": "改为按信头所列头衔表述，例如“两位林奈学会会员莱尔与胡克”/“Charles Lyell and J. D. Hooker, both Fellows of the Linnean Society”；或分别写明 F.R.S. 与 V.P.R.S.。"
+   },
+   {
+    "id": "F2",
+    "path": "sections.context.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "证据说华莱士考察的是马来群岛“大部分岛屿”。英文“exploring the islands of the Malay Archipelago”和中文“这些岛屿”都没有体现“大部分”这一限定，略有夸大。",
+    "evidence": [
+     {
+      "id": "V-E9",
+      "quote": "explored the greater part of the islands constituting the Malay Archipelago"
+     }
+    ],
+    "proposed": "英文改为“exploring the greater part of the islands of the Malay Archipelago”；中文补“考察了马来群岛的大部分岛屿”。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.story.0",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "首句“达尔文的那份旧手稿从未打算发表”/“was never intended for publication”由叙述者以事实口吻直接断言。证据中这只是达尔文本人1858年脚注里的说法，应归于他本人。",
+    "evidence": [
+     {
+      "id": "V-E12",
+      "quote": "This MS. work was never intended for publication"
+     }
+    ],
+    "proposed": "首句改为“据达尔文本人所说，那份旧手稿从未打算发表”/“By Darwin's own account, his old manuscript was never intended for publication.”，或删去首句，只保留脚注引述。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.story.3",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "中文写“作者表示：如果达尔文认为……就请转给莱尔”，有两处问题。其一，本文其他段落用“作者”指本文作者，这里容易误读。其二，证据中这一意愿是莱尔和胡克信中转述的，不是华莱士原文。英文用 with the express wish 加引语，来源同样未标明。",
+    "evidence": [
+     {
+      "id": "V-E5",
+      "quote": "sent to him with the expressed wish that it should be forwarded to Sir Charles Lyell"
+     }
+    ],
+    "proposed": "中文改为“据莱尔和胡克的信，华莱士寄出时表示：如果达尔文认为……”；英文补“according to Lyell and Hooker's letter”。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.story.7",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "英文作“its royal medal”，中文作“获皇家学会奖章”，丢失了“royal medal”这一具体奖项名，中英不完全对应。",
+    "evidence": [
+     {
+      "id": "V-E22",
+      "quote": "he received the royal medal from the Royal Society"
+     }
+    ],
+    "proposed": "中文改为“1868年获皇家学会颁发的皇家奖章（royal medal）”。"
+   },
+   {
+    "id": "F6",
+    "path": "sections.analysis.1",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "末句中英不一致。英文是“a party's willingness to give way”（让步的意愿），中文“当事人的让步”读作已经发生的让步。证据中，达尔文让出发表机会的倾向被莱尔和胡克的条件拦下；他实际做的是授权二人处置手稿。",
+    "evidence": [
+     {
+      "id": "V-E6",
+      "quote": "as he was strongly inclined to do (in favour of Mr. Wallace)"
+     },
+     {
+      "id": "V-E7",
+      "quote": "he gave us permission to make what use we thought proper of his memoir"
+     }
+    ],
+    "proposed": "中文改为“当事人让步的意愿只是其中一步”，与英文保持一致。"
+   },
+   {
+    "id": "F7",
+    "path": "sections.limits.1",
+    "category": "style",
+    "severity": "note",
+    "problem": "中文正文出现“证据包”这一编辑流程用语，英文作“the evidence”。面向读者的文本里显得生硬。",
+    "evidence": [],
+    "proposed": "改为“现有材料没有说明……”。"
+   },
+   {
+    "id": "F8",
+    "path": "sections.story.2",
+    "category": "style",
+    "severity": "note",
+    "problem": "中文“证据里没有更多材料”、英文“nothing further in the evidence”同样使用了编辑流程用语。",
+    "evidence": [],
+    "proposed": "改为“现有材料中没有更多记载可以判断”/“nothing further in the surviving record decides between them”。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "X1",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "V-E23 表明宣读的只是达尔文手稿第一部分第二章的摘录，而不是全部手稿。正文与此一致：story.6 明确写“extracts from the manuscript”/“手稿摘录”，dek、hook.0、analysis.1、limits.1 只说“材料”被宣读，没有任何地方声称全文宣读。story.6 还注明当天的宣读顺序没有记载；叙事、结局与因果均未越出证据。",
+    "evidence": [
+     {
+      "id": "V-E3",
+      "quote": "Extracts from a MS. work on Species"
+     },
+     {
+      "id": "V-E2",
+      "quote": "a selection from them should be laid before the Linnean Society"
+     },
+     {
+      "id": "V-E23",
+      "quote": "from which we propose to read to the Society the extracts referred to"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "805fcf98278a90031b78061c320473e721b56839ea8e9a231bad488863a0f772",
+ "open_issues": [],
+ "outcome": "admissible",
+ "failure": null,
+ "finished_at": 1793429332.8645084,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 92.3,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16109,
+    "output_tokens": 10882
+   },
+   "cost_estimate_usd": 0.34652
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 39.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 17184,
+    "output_tokens": 5365
+   },
+   "cost_estimate_usd": 0.24478
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 53.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15479,
+    "output_tokens": 6300
+   },
+   "cost_estimate_usd": 0.24984
+  }
+ ],
+ "elapsed_min": 3.1,
+ "model_wall_min": 3.1
+}

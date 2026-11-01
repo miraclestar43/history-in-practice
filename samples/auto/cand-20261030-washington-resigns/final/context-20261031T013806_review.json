@@ -1,0 +1,879 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-20261030-washington-resigns",
+ "content_sha256": "a5fcb9eff880b8687940109baf7c3c29c450697d1bdc0ce1584554fe7b50cd62",
+ "evidence_in_sha256": "f6e35ee70844c1f18cb2f1efa8d0270e01c518ac869da265000492846e28fd40",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793428686.301627,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.context.1",
+   "lang": "zh",
+   "sentence": "其中埃勒里的反对票，日志记为应一位议员的请求改成了赞成，没有写明是哪位议员。"
+  },
+  {
+   "id": "A2",
+   "path": "sections.context.1",
+   "lang": "en",
+   "sentence": "Ellery's no was recorded as \"changed into ay at the request of the Member\", and the journal does not say which member."
+  },
+  {
+   "id": "A3",
+   "path": "sections.context.1",
+   "lang": "en",
+   "sentence": "This excerpt does not show the result of the vote."
+  },
+  {
+   "id": "A4",
+   "path": "sections.context.5",
+   "lang": "zh",
+   "sentence": "日志只记规则，不写理由。"
+  },
+  {
+   "id": "A5",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "日志只写了戴帽与就座，没写为什么。"
+  },
+  {
+   "id": "A6",
+   "path": "sections.limits.heading",
+   "lang": "en",
+   "sentence": "What This Record Does Not Tell Us"
+  },
+  {
+   "id": "A7",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "it does not record feeling."
+  },
+  {
+   "id": "A8",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "Motives, private thoughts, and options he may have considered are never supplied by this writer where the source is silent."
+  }
+ ],
+ "search": null,
+ "units": {
+  "D-JCC25": {
+   "title": "Journals of the Continental Congress, 1774–1789, vol. 25 (Library of Congress, 1922), archive.org OCR",
+   "url": "https://archive.org/download/journalscontinent25unit/journalscontinent25unit_djvu.txt",
+   "ref": "journalscontinent25unit",
+   "evidence_text_sha256": "7e3e4d08e86dd77bbb5e41134a5af3a9ee7e89cc5c8c036f8d53f094c13a121e",
+   "cache_sha256": "7e3e4d08e86dd77bbb5e41134a5af3a9ee7e89cc5c8c036f8d53f094c13a121e",
+   "cjk": false,
+   "source_chars": 1193429,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     588403,
+     603920
+    ],
+    [
+     634399,
+     649469
+    ]
+   ],
+   "chars_reviewed": 30587
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 84.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 9423
+  }
+ ],
+ "finished_at": 1793428771.8916593,
+ "elapsed_min": 1.4,
+ "review": {
+  "episode": [
+   {
+    "source_id": "D-JCC25",
+    "outcome": "After Washington handed over his commission and a copy of his address, he resumed his place and the President delivered Congress's answer. The answer opens by saying Congress receives the resignation 'with emotions, too affecting for utterance' and closes with a prayer for him. The journal then moves on to December 24.",
+    "quote": "He then advanced and delivered to the President his commission, with a copy of his address, and rctiu'Dcd to having resumed his place, whereupon the President return- ed him the following answer:",
+    "in_evidence": false
+   },
+   {
+    "source_id": "D-JCC25",
+    "outcome": "On the December 20 vote on whether seven states were competent to receive the resignation, the roll call in the reading range shows only Partridge voting no, and Ellery's no changed to ay. The journal states no separate result, and the editors' footnote describes the entry only as the 'sense of the House taken… with yeas and nays'.",
+    "quote": "Sense of the House taken on the competency of seven atatea to receive the resignation of Commander in Cliief, with yeaa and nays, December 20, 1783.",
+    "in_evidence": false
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "D-JCC25",
+    "start": "the following answer",
+    "end": "posterity ages.]",
+    "why": "Congress's spoken reply is the direct response and the end of the audience. The piece stops at the handover and says the reply cannot be quoted, but it sits right after U-E9 in the reading range."
+   },
+   {
+    "source_id": "D-JCC25",
+    "start": "We feel with you our obligations to the army in general",
+    "end": "reward which this world cannot give.",
+    "why": "The second half of the reply answers Washington's two requests point by point: Congress promises to look after his confidential officers and joins him in commending the country to God. This is the reply to the content of story.4."
+   },
+   {
+    "source_id": "D-JCC25",
+    "start": "Mf Forster, ay",
+    "end": "Osgood, ay",
+    "why": "Completes the roll call: Forster, Gerry and Osgood also voted ay. This shows that Partridge was the only no in the whole recorded list, not just in the portion cited."
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.context.1",
+    "lang": "zh",
+    "sentence": "其中埃勒里的反对票，日志记为应一位议员的请求改成了赞成，没有写明是哪位议员。",
+    "verdict": "contradicted",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "Yeas-and-nays entry of December 20, 1783",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "Ellery, no changed into ay at the request of the Member"
+    },
+    "fix": "The original uses the definite article, 'the Member', which most naturally means the voting member himself (Ellery). Render it as 'changed into ay at the request of the member [himself]' and delete '没有写明是哪位议员'. If you want to keep some caution, say the original reads only 'at the request of the Member'."
+   },
+   {
+    "id": "A2",
+    "path": "sections.context.1",
+    "lang": "en",
+    "sentence": "Ellery's no was recorded as \"changed into ay at the request of the Member\", and the journal does not say which member.",
+    "verdict": "contradicted",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "Yeas-and-nays entry of December 20, 1783",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "Ellery, no changed into ay at the request of the Member"
+    },
+    "fix": "Delete 'and the journal does not say which member'. 'The Member' most naturally refers to Ellery himself."
+   },
+   {
+    "id": "A3",
+    "path": "sections.context.1",
+    "lang": "en",
+    "sentence": "This excerpt does not show the result of the vote.",
+    "verdict": "supported",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "Journal entry and footnote for December 20 (offsets 588403–603920): yeas and nays only, with no stated result",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "Sense of the House taken on the competency of seven atatea to receive the resignation of Commander in Cliief, with yeaa and nays, December 20, 1783."
+    },
+    "fix": "Point the claim at the journal, not the excerpt: 'The journal records the yeas and nays but states no result.' Add Forster, Gerry and Osgood (all ay), so readers see that Partridge was the only no."
+   },
+   {
+    "id": "A4",
+    "path": "sections.context.5",
+    "lang": "zh",
+    "sentence": "日志只记规则，不写理由。",
+    "verdict": "supported",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "The December 22 committee report on the order of audience and the editors' footnote",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "When the General rises to make his address, and also when he retires, he is to bow to Congress, which they are to return by uncovering without bowing."
+    },
+    "fix": "Keep."
+   },
+   {
+    "id": "A5",
+    "path": "sections.analysis.1",
+    "lang": "zh",
+    "sentence": "日志只写了戴帽与就座，没写为什么。",
+    "verdict": "supported",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "Clause 1 of the December 22 order of audience",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "The President and members are to be seated and covered, and the secretary to be standing by the side of the President."
+    },
+    "fix": "Keep. It largely repeats A4, so you could merge the two."
+   },
+   {
+    "id": "A6",
+    "path": "sections.limits.heading",
+    "lang": "en",
+    "sentence": "What This Record Does Not Tell Us",
+    "verdict": "supported",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "Section heading. The specific claims beneath it are checked separately (see A7, N1–N4).",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "TUESDAY, DECEMBER 23, 1783"
+    },
+    "fix": "The heading can stay, but the claims in this section need correcting."
+   },
+   {
+    "id": "A7",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "it does not record feeling.",
+    "verdict": "contradicted",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "President's answer on December 23",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "The United States in Congress assembled receive with emotions, too affecting for utterance"
+    },
+    "fix": "Change to: 'It does not describe anyone's demeanour, though Congress's formal answer speaks of receiving the resignation \"with emotions, too affecting for utterance\".'"
+   },
+   {
+    "id": "A8",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "Motives, private thoughts, and options he may have considered are never supplied by this writer where the source is silent.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "A statement about the writer's practice",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "desiring to know their pleasm-e in what manner it will be most proper to offer his resignation; whether in writing or at an audience"
+    },
+    "fix": "Keep."
+   },
+   {
+    "id": "N1",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "日志记动作、记次序、记讲话，不记心情",
+    "verdict": "contradicted",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "President's answer on December 23",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "The United States in Congress assembled receive with emotions, too affecting for utterance"
+    },
+    "fix": "Change to '日志不描写神情，但国会答词自称以“难以言表的激动”接受辞呈'."
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "第一，议长的答词没有收进本篇证据包，本篇不予引用。",
+    "verdict": "contradicted",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "Entry for December 23, immediately after the handover",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "whereupon the President return- ed him the following answer:"
+    },
+    "fix": "The answer is in the source and is the end of the episode. Add it through the additions and quote it, then delete this reservation."
+   },
+   {
+    "id": "N3",
+    "path": "sections.limits.1",
+    "lang": "en",
+    "sentence": "First, the President's reply is not in this article's evidence pack and is not quoted.",
+    "verdict": "contradicted",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "Entry for December 23, immediately after the handover",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "whereupon the President return- ed him the following answer:"
+    },
+    "fix": "Same as N2. Add and quote the reply, and drop this reservation from uncertainty_note as well."
+   },
+   {
+    "id": "N4",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "so mood and reaction in the room are unknowable; the President's reply is not in this article's evidence pack and is not quoted here",
+    "verdict": "contradicted",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "President's answer on December 23",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "The United States in Congress assembled receive with emotions, too affecting for utterance"
+    },
+    "fix": "Change to: 'Individual demeanour is unknowable; Congress's formal reply is recorded and quoted.' Make the matching change in the zh version."
+   },
+   {
+    "id": "N5",
+    "path": "sections.story.3",
+    "lang": "zh",
+    "sentence": "说这话时是什么语气，日志无从体现，本篇也不猜。",
+    "verdict": "supported",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "Entry for the December 23 audience",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "Whereupon, he arose and addressed Congi'ess as follows:"
+    },
+    "fix": "Keep."
+   },
+   {
+    "id": "N6",
+    "path": "sections.story.7",
+    "lang": "zh",
+    "sentence": "日志本身并未陈述其用意。",
+    "verdict": "supported",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "The December 22 order of audience and the December 23 entry",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "Resolved, That the order for the public audience of General Washington be as follows :"
+    },
+    "fix": "Keep."
+   },
+   {
+    "id": "N7",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "日志没有把这几件事联系起来，这是作者的连接。",
+    "verdict": "supported",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "Entries for December 20–23",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "Is it the sense of Congress that seven states in Congress Assembled are competent to receive the resignation of a Commander in Chief?"
+    },
+    "fix": "Keep."
+   },
+   {
+    "id": "N8",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "本篇所据的OCR文本无法判断原稿另有哪些删改",
+    "verdict": "unresolved",
+    "source_ids": [
+     "D-JCC25"
+    ],
+    "scope": "Clauses 4–6 of the December 22 order of audience",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "the secretary is to deliver the General a copy of the addroaa answer, and receive the commiBoion from the General, who [and the General] is then to take his leave."
+    },
+    "fix": "The garbled words ('addroaa', 'commiBoion', 'pre acntod to the Scorotaiy') appear to be struck-through words in the printed edition, but OCR alone cannot confirm this. Say: 'Some garbled words in the OCR may be deletions; this needs checking against the facsimile.'"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.story.6",
+    "problem": "The scene stops at the handover. Immediately afterwards the source records that Washington returned to his place and the President delivered Congress's answer. Readers are left thinking the ceremony ended with the handover, and the institution's spoken response, the other half of the episode, is missing.",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "and rctiu'Dcd to having resumed his place, whereupon the President return- ed him the following answer:"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.story.7",
+    "problem": "The parenthetical says the journal and clause 6 of the draft do not match on who receives the commission. But Boudinot's bracketed insertion in clause 4 already changes the procedure to the General delivering the commission and the copy of his address to the President. The revised protocol therefore matches the journal; the garbled wording of clause 6 most likely reflects the pre-revision text.",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "he is to deliver [his Commission and a] copy of his address to hia aid to be pre acntod to the Scorotaiy [to the President]"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.limits.0",
+    "problem": "The piece says the reactions in the room are 'simply absent'. In fact Congress's formal answer records the institution's response and its stated emotion.",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "The United States in Congress assembled receive with emotions, too affecting for utterance"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.story.4",
+    "problem": "Washington's request that the officers be looked after receives a direct answer in Congress's reply. Leaving it out makes the request look unanswered.",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "will particularly charge ourselves with the interests of those confidential officers, who have attended your person to this interesting affecting moment."
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.context.1",
+    "problem": "The roll call is described only as 'the portion cited'. The reading range also shows Forster, Gerry and Osgood voting ay, so Partridge was the only no in the entire recorded list.",
+    "quote": {
+     "source_id": "D-JCC25",
+     "quote": "Mf Forster, ay Gerry, ay Osgood, ay"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "Main problems: the piece cuts off before Congress's reply and wrongly says it cannot be quoted, and as a result it asserts the record shows no feeling or reaction. It also misreads 'at the request of the Member' and the bracketed revision to the protocol. Add the President's answer and correct these points before publication."
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.context.1",
+   "lang": "zh",
+   "sentence": "其中埃勒里的反对票，日志记为应一位议员的请求改成了赞成，没有写明是哪位议员。",
+   "verdict": "contradicted",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "Yeas-and-nays entry of December 20, 1783",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "Ellery, no changed into ay at the request of the Member"
+   },
+   "fix": "The original uses the definite article, 'the Member', which most naturally means the voting member himself (Ellery). Render it as 'changed into ay at the request of the member [himself]' and delete '没有写明是哪位议员'. If you want to keep some caution, say the original reads only 'at the request of the Member'.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.context.1",
+   "lang": "en",
+   "sentence": "Ellery's no was recorded as \"changed into ay at the request of the Member\", and the journal does not say which member.",
+   "verdict": "contradicted",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "Yeas-and-nays entry of December 20, 1783",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "Ellery, no changed into ay at the request of the Member"
+   },
+   "fix": "Delete 'and the journal does not say which member'. 'The Member' most naturally refers to Ellery himself.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.context.1",
+   "lang": "en",
+   "sentence": "This excerpt does not show the result of the vote.",
+   "verdict": "supported",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "Journal entry and footnote for December 20 (offsets 588403–603920): yeas and nays only, with no stated result",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "Sense of the House taken on the competency of seven atatea to receive the resignation of Commander in Cliief, with yeaa and nays, December 20, 1783."
+   },
+   "fix": "Point the claim at the journal, not the excerpt: 'The journal records the yeas and nays but states no result.' Add Forster, Gerry and Osgood (all ay), so readers see that Partridge was the only no.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "A4",
+   "path": "sections.context.5",
+   "lang": "zh",
+   "sentence": "日志只记规则，不写理由。",
+   "verdict": "supported",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "The December 22 committee report on the order of audience and the editors' footnote",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "When the General rises to make his address, and also when he retires, he is to bow to Congress, which they are to return by uncovering without bowing."
+   },
+   "fix": "Keep.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "A5",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "日志只写了戴帽与就座，没写为什么。",
+   "verdict": "supported",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "Clause 1 of the December 22 order of audience",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "The President and members are to be seated and covered, and the secretary to be standing by the side of the President."
+   },
+   "fix": "Keep. It largely repeats A4, so you could merge the two.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "A6",
+   "path": "sections.limits.heading",
+   "lang": "en",
+   "sentence": "What This Record Does Not Tell Us",
+   "verdict": "supported",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "Section heading. The specific claims beneath it are checked separately (see A7, N1–N4).",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "TUESDAY, DECEMBER 23, 1783"
+   },
+   "fix": "The heading can stay, but the claims in this section need correcting.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "A7",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "it does not record feeling.",
+   "verdict": "contradicted",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "President's answer on December 23",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "The United States in Congress assembled receive with emotions, too affecting for utterance"
+   },
+   "fix": "Change to: 'It does not describe anyone's demeanour, though Congress's formal answer speaks of receiving the resignation \"with emotions, too affecting for utterance\".'",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "A8",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "Motives, private thoughts, and options he may have considered are never supplied by this writer where the source is silent.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "A statement about the writer's practice",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "desiring to know their pleasm-e in what manner it will be most proper to offer his resignation; whether in writing or at an audience"
+   },
+   "fix": "Keep.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "日志记动作、记次序、记讲话，不记心情",
+   "verdict": "contradicted",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "President's answer on December 23",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "The United States in Congress assembled receive with emotions, too affecting for utterance"
+   },
+   "fix": "Change to '日志不描写神情，但国会答词自称以“难以言表的激动”接受辞呈'.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "第一，议长的答词没有收进本篇证据包，本篇不予引用。",
+   "verdict": "contradicted",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "Entry for December 23, immediately after the handover",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "whereupon the President return- ed him the following answer:"
+   },
+   "fix": "The answer is in the source and is the end of the episode. Add it through the additions and quote it, then delete this reservation.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "First, the President's reply is not in this article's evidence pack and is not quoted.",
+   "verdict": "contradicted",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "Entry for December 23, immediately after the handover",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "whereupon the President return- ed him the following answer:"
+   },
+   "fix": "Same as N2. Add and quote the reply, and drop this reservation from uncertainty_note as well.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "so mood and reaction in the room are unknowable; the President's reply is not in this article's evidence pack and is not quoted here",
+   "verdict": "contradicted",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "President's answer on December 23",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "The United States in Congress assembled receive with emotions, too affecting for utterance"
+   },
+   "fix": "Change to: 'Individual demeanour is unknowable; Congress's formal reply is recorded and quoted.' Make the matching change in the zh version.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "sections.story.3",
+   "lang": "zh",
+   "sentence": "说这话时是什么语气，日志无从体现，本篇也不猜。",
+   "verdict": "supported",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "Entry for the December 23 audience",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "Whereupon, he arose and addressed Congi'ess as follows:"
+   },
+   "fix": "Keep.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "N6",
+   "path": "sections.story.7",
+   "lang": "zh",
+   "sentence": "日志本身并未陈述其用意。",
+   "verdict": "supported",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "The December 22 order of audience and the December 23 entry",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "Resolved, That the order for the public audience of General Washington be as follows :"
+   },
+   "fix": "Keep.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "N7",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "日志没有把这几件事联系起来，这是作者的连接。",
+   "verdict": "supported",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "Entries for December 20–23",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "Is it the sense of Congress that seven states in Congress Assembled are competent to receive the resignation of a Commander in Chief?"
+   },
+   "fix": "Keep.",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  },
+  {
+   "id": "N8",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "本篇所据的OCR文本无法判断原稿另有哪些删改",
+   "verdict": "unresolved",
+   "source_ids": [
+    "D-JCC25"
+   ],
+   "scope": "Clauses 4–6 of the December 22 order of audience",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "the secretary is to deliver the General a copy of the addroaa answer, and receive the commiBoion from the General, who [and the General] is then to take his leave."
+   },
+   "fix": "The garbled words ('addroaa', 'commiBoion', 'pre acntod to the Scorotaiy') appear to be struck-through words in the printed edition, but OCR alone cannot confirm this. Say: 'Some garbled words in the OCR may be deletions; this needs checking against the facsimile.'",
+   "unit_status": {
+    "D-JCC25": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.story.6",
+   "problem": "The scene stops at the handover. Immediately afterwards the source records that Washington returned to his place and the President delivered Congress's answer. Readers are left thinking the ceremony ended with the handover, and the institution's spoken response, the other half of the episode, is missing.",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "and rctiu'Dcd to having resumed his place, whereupon the President return- ed him the following answer:"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.story.7",
+   "problem": "The parenthetical says the journal and clause 6 of the draft do not match on who receives the commission. But Boudinot's bracketed insertion in clause 4 already changes the procedure to the General delivering the commission and the copy of his address to the President. The revised protocol therefore matches the journal; the garbled wording of clause 6 most likely reflects the pre-revision text.",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "he is to deliver [his Commission and a] copy of his address to hia aid to be pre acntod to the Scorotaiy [to the President]"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.limits.0",
+   "problem": "The piece says the reactions in the room are 'simply absent'. In fact Congress's formal answer records the institution's response and its stated emotion.",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "The United States in Congress assembled receive with emotions, too affecting for utterance"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.story.4",
+   "problem": "Washington's request that the officers be looked after receives a direct answer in Congress's reply. Leaving it out makes the request look unanswered.",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "will particularly charge ourselves with the interests of those confidential officers, who have attended your person to this interesting affecting moment."
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.context.1",
+   "problem": "The roll call is described only as 'the portion cited'. The reading range also shows Forster, Gerry and Osgood voting ay, so Partridge was the only no in the entire recorded list.",
+   "quote": {
+    "source_id": "D-JCC25",
+    "quote": "Mf Forster, ay Gerry, ay Osgood, ay"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "D-JCC25",
+   "outcome": "After Washington handed over his commission and a copy of his address, he resumed his place and the President delivered Congress's answer. The answer opens by saying Congress receives the resignation 'with emotions, too affecting for utterance' and closes with a prayer for him. The journal then moves on to December 24.",
+   "quote": "He then advanced and delivered to the President his commission, with a copy of his address, and rctiu'Dcd to having resumed his place, whereupon the President return- ed him the following answer:",
+   "in_evidence": false
+  },
+  {
+   "source_id": "D-JCC25",
+   "outcome": "On the December 20 vote on whether seven states were competent to receive the resignation, the roll call in the reading range shows only Partridge voting no, and Ellery's no changed to ay. The journal states no separate result, and the editors' footnote describes the entry only as the 'sense of the House taken… with yeas and nays'.",
+   "quote": "Sense of the House taken on the competency of seven atatea to receive the resignation of Commander in Cliief, with yeaa and nays, December 20, 1783.",
+   "in_evidence": false
+  }
+ ],
+ "additions": [
+  {
+   "id": "U-E19",
+   "source_id": "D-JCC25",
+   "offset": 641553,
+   "chars": 1522,
+   "why": "Congress's spoken reply is the direct response and the end of the audience. The piece stops at the handover and says the reply cannot be quoted, but it sits right after U-E9 in the reading range."
+  },
+  {
+   "id": "U-E20",
+   "source_id": "D-JCC25",
+   "offset": 643136,
+   "chars": 941,
+   "why": "The second half of the reply answers Washington's two requests point by point: Congress promises to look after his confidential officers and joins him in commending the country to God. This is the reply to the content of story.4."
+  },
+  {
+   "id": "U-E21",
+   "source_id": "D-JCC25",
+   "offset": 591776,
+   "chars": 35,
+   "why": "Completes the roll call: Forster, Gerry and Osgood also voted ay. This shows that Partridge was the only no in the whole recorded list, not just in the portion cited."
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "b66b1d82c6349d723877eed017b9b39bc13a430ed15ca082018805b9203d15e8",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.context.1.zh: contradicted — 其中埃勒里的反对票，日志记为应一位议员的请求改成了赞成，没有写明是哪位议员。",
+  "sections.context.1.en: contradicted — Ellery's no was recorded as \"changed into ay at the request of the Member\", and ",
+  "sections.limits.0.en: contradicted — it does not record feeling.",
+  "sections.limits.0.zh: contradicted — 日志记动作、记次序、记讲话，不记心情",
+  "sections.limits.1.zh: contradicted — 第一，议长的答词没有收进本篇证据包，本篇不予引用。",
+  "sections.limits.1.en: contradicted — First, the President's reply is not in this article's evidence pack and is not q",
+  "uncertainty_note.en: contradicted — so mood and reaction in the room are unknowable; the President's reply is not in",
+  "sections.limits.1.zh: unresolved — 本篇所据的OCR文本无法判断原稿另有哪些删改",
+  "sections.story.6: The scene stops at the handover. Immediately afterwards the source records that Washington returned ",
+  "sections.story.7: The parenthetical says the journal and clause 6 of the draft do not match on who receives the commis",
+  "sections.limits.0: The piece says the reactions in the room are 'simply absent'. In fact Congress's formal answer recor",
+  "evidence must be expanded first: 3 addition(s) ['U-E19', 'U-E20', 'U-E21']"
+ ]
+}

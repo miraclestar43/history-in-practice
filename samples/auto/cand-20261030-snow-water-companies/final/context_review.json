@@ -1,0 +1,338 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-20261030-snow-water-companies",
+ "content_sha256": "3e3c836803748bfacb82987a99372f89fd6427d9d2f5b7619d1de4ad7c4402a6",
+ "evidence_in_sha256": "1ef45b7faca1ea7b3348a5688d13f6062d3d47479730934fa13b20081f4ef364",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793432299.2874205,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.7",
+   "lang": "zh",
+   "sentence": "不过肯宁顿的数字只是死亡户数，证据未给出两家在当地各有多少供水户，不能直接当作死亡率比较。"
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.7",
+   "lang": "en",
+   "sentence": "Kennington's 38 houses against 4 came from the same intermixed streets, though these are only counts of houses with deaths: the evidence does not say how many houses each company supplied there, so they cannot be compared directly as death rates."
+  },
+  {
+   "id": "A3",
+   "path": "sections.limits.2",
+   "lang": "zh",
+   "sentence": "化验部分只写定性的差别。"
+  }
+ ],
+ "search": null,
+ "units": {
+  "B-SNOW": {
+   "title": "John Snow, On the Mode of Communication of Cholera, 2nd ed. (1855), archive.org OCR",
+   "url": "https://archive.org/download/b28985266/b28985266_djvu.txt",
+   "ref": "b28985266",
+   "evidence_text_sha256": "3a5e9a7f3527b373c9f0d2235e3156654d8d31026bb83d2e27621a3e42296072",
+   "cache_sha256": "3a5e9a7f3527b373c9f0d2235e3156654d8d31026bb83d2e27621a3e42296072",
+   "cjk": false,
+   "source_chars": 374908,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     111655,
+     171177
+    ]
+   ],
+   "chars_reviewed": 59522
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 45.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 4503
+  }
+ ],
+ "finished_at": 1793432344.7808235,
+ "elapsed_min": 0.8,
+ "review": {
+  "episode": [
+   {
+    "source_id": "B-SNOW",
+    "outcome": "疫情后半段两组差距缩小，第二个七周约为五倍。按每万居民计，截至10月14日的14周为153对26。斯诺的收尾判断是：兰贝斯供水户在整场疫情中所受霍乱影响低于全伦敦，但不低于北区和中区。",
+    "quote": "Company, continued throughout the epidemic to enjoy an immunity from cholera, not only greater than London at large, but greater than every group of districts, except the north and central groups.",
+    "in_evidence": true
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "B-SNOW",
+    "start": "In table viii, showing the mortality in the first seven weeks",
+    "end": "are marked with an asterisk.",
+    "why": "表八、表九中南华克和沃克斯霍尔公司的数字并非全部逐户查得。部分只由该公司供水的分区，后三周的供水是按头四周的比例推算的。这会改变读者对1,263例和每万户315的理解，稿件没有交代。"
+   },
+   {
+    "source_id": "B-SNOW",
+    "start": "Mr. Whiting took great pains with his part of the inquiry",
+    "end": "it may be well to consider this period first.",
+    "why": "怀廷的调查只覆盖疫情头四周（7月8日至8月5日），而且只查是否接公司水。这对limits.0中关于怀廷分工的叙述是必要的限定。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.7",
+    "lang": "zh",
+    "sentence": "不过肯宁顿的数字只是死亡户数，证据未给出两家在当地各有多少供水户，不能直接当作死亡率比较。",
+    "verdict": "supported",
+    "source_ids": [
+     "B-SNOW"
+    ],
+    "scope": "B-SNOW 已读窗口111655–171177，包括肯宁顿段落与议会报表段落。斯诺本人说明，议会报表只给出各公司总户数，没有分区户数。",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "but as the number of houses which they supplied in particular districts was not stated"
+    },
+    "fix": "可改为更有力的说法：斯诺本人指出，议会报表没有列出两家公司在各分区的供水户数。"
+   },
+   {
+    "id": "A2",
+    "path": "sections.story.7",
+    "lang": "en",
+    "sentence": "Kennington's 38 houses against 4 came from the same intermixed streets, though these are only counts of houses with deaths: the evidence does not say how many houses each company supplied there, so they cannot be compared directly as death rates.",
+    "verdict": "supported",
+    "source_ids": [
+     "B-SNOW"
+    ],
+    "scope": "B-SNOW 已读窗口111655–171177。斯诺说明议会报表未载分区户数。",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "but as the number of houses which they supplied in particular districts was not stated"
+    },
+    "fix": "Consider: 'Snow himself notes that the parliamentary return did not give the number of houses each company supplied in particular districts.'"
+   },
+   {
+    "id": "A3",
+    "path": "sections.limits.2",
+    "lang": "zh",
+    "sentence": "化验部分只写定性的差别。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "B-SNOW"
+    ],
+    "scope": "这是本篇的编辑取舍说明，不是关于来源记载与否的断言。",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "The test I employed was founded on the great difference in the quantity of chloride of sodium contained in the two kinds of water"
+    },
+    "fix": "无需修改。"
+   },
+   {
+    "id": "N1",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "这种选择会不会和房租、房龄、地段有关，本篇的证据无法回答，这是作者提出的疑问。",
+    "verdict": "supported",
+    "source_ids": [
+     "B-SNOW"
+    ],
+    "scope": "B-SNOW 已读窗口111655–171177。斯诺只断言两组没有差别，没有给出按公司划分的房租、房龄数据，也没有提出这一疑问。",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "Each Company supplies both rich and poor, both large houses and small ; there is no differ- ence either in the condition or occupation"
+    },
+    "fix": "保留。范围宜限定为“已读部分”。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.limits.0",
+    "problem": "稿件只说怀廷调查了部分地区，没有交代两点限定。一是他只查了头四周。二是这些分区后三周的供水是按比例推算的，因此表八、表九中南华克和沃克斯霍尔公司的数字部分出于计算。story.6和limits.2把表九数字当作逐户查得的清楚数据呈现，会误导读者。",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "the water supply of the last three weeks is calculated to have been in the same proportion by the Company, or by pump wells, etc., as in the first four weeks"
+    },
+    "severity": "fix"
+   },
+   {
+    "id_placeholder": null,
+    "path": "sections.story.6",
+    "problem": "14周的每万人153对26，是把795例供水不明的死亡平均分摊到各供水来源后得出的；两组人口也是登记总长的估计数。稿件未说明这一点。",
+    "quote": {
+     "source_id": "B-SNOW",
+     "quote": "If the 795 deaths in which the water supply was not ascertained be distributed equally over the other sources of supply"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "结局（差距随疫情缩小但持续显著，全程153对26）已在证据包中，稿件也已正确呈现。A1和A2有斯诺原文直接支持。需要补上一点：表八、表九中南华克和沃克斯霍尔公司的部分数字是按比例推算的，并相应修改limits.0。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.7",
+   "lang": "zh",
+   "sentence": "不过肯宁顿的数字只是死亡户数，证据未给出两家在当地各有多少供水户，不能直接当作死亡率比较。",
+   "verdict": "supported",
+   "source_ids": [
+    "B-SNOW"
+   ],
+   "scope": "B-SNOW 已读窗口111655–171177，包括肯宁顿段落与议会报表段落。斯诺本人说明，议会报表只给出各公司总户数，没有分区户数。",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "but as the number of houses which they supplied in particular districts was not stated"
+   },
+   "fix": "可改为更有力的说法：斯诺本人指出，议会报表没有列出两家公司在各分区的供水户数。",
+   "unit_status": {
+    "B-SNOW": "windows"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.7",
+   "lang": "en",
+   "sentence": "Kennington's 38 houses against 4 came from the same intermixed streets, though these are only counts of houses with deaths: the evidence does not say how many houses each company supplied there, so they cannot be compared directly as death rates.",
+   "verdict": "supported",
+   "source_ids": [
+    "B-SNOW"
+   ],
+   "scope": "B-SNOW 已读窗口111655–171177。斯诺说明议会报表未载分区户数。",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "but as the number of houses which they supplied in particular districts was not stated"
+   },
+   "fix": "Consider: 'Snow himself notes that the parliamentary return did not give the number of houses each company supplied in particular districts.'",
+   "unit_status": {
+    "B-SNOW": "windows"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.limits.2",
+   "lang": "zh",
+   "sentence": "化验部分只写定性的差别。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "B-SNOW"
+   ],
+   "scope": "这是本篇的编辑取舍说明，不是关于来源记载与否的断言。",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "The test I employed was founded on the great difference in the quantity of chloride of sodium contained in the two kinds of water"
+   },
+   "fix": "无需修改。",
+   "unit_status": {
+    "B-SNOW": "windows"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "这种选择会不会和房租、房龄、地段有关，本篇的证据无法回答，这是作者提出的疑问。",
+   "verdict": "supported",
+   "source_ids": [
+    "B-SNOW"
+   ],
+   "scope": "B-SNOW 已读窗口111655–171177。斯诺只断言两组没有差别，没有给出按公司划分的房租、房龄数据，也没有提出这一疑问。",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "Each Company supplies both rich and poor, both large houses and small ; there is no differ- ence either in the condition or occupation"
+   },
+   "fix": "保留。范围宜限定为“已读部分”。",
+   "unit_status": {
+    "B-SNOW": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.limits.0",
+   "problem": "稿件只说怀廷调查了部分地区，没有交代两点限定。一是他只查了头四周。二是这些分区后三周的供水是按比例推算的，因此表八、表九中南华克和沃克斯霍尔公司的数字部分出于计算。story.6和limits.2把表九数字当作逐户查得的清楚数据呈现，会误导读者。",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "the water supply of the last three weeks is calculated to have been in the same proportion by the Company, or by pump wells, etc., as in the first four weeks"
+   },
+   "severity": "fix"
+  },
+  {
+   "id_placeholder": null,
+   "path": "sections.story.6",
+   "problem": "14周的每万人153对26，是把795例供水不明的死亡平均分摊到各供水来源后得出的；两组人口也是登记总长的估计数。稿件未说明这一点。",
+   "quote": {
+    "source_id": "B-SNOW",
+    "quote": "If the 795 deaths in which the water supply was not ascertained be distributed equally over the other sources of supply"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "B-SNOW",
+   "outcome": "疫情后半段两组差距缩小，第二个七周约为五倍。按每万居民计，截至10月14日的14周为153对26。斯诺的收尾判断是：兰贝斯供水户在整场疫情中所受霍乱影响低于全伦敦，但不低于北区和中区。",
+   "quote": "Company, continued throughout the epidemic to enjoy an immunity from cholera, not only greater than London at large, but greater than every group of districts, except the north and central groups.",
+   "in_evidence": true
+  }
+ ],
+ "additions": [
+  {
+   "id": "W-E18",
+   "source_id": "B-SNOW",
+   "offset": 154597,
+   "chars": 714,
+   "why": "表八、表九中南华克和沃克斯霍尔公司的数字并非全部逐户查得。部分只由该公司供水的分区，后三周的供水是按头四周的比例推算的。这会改变读者对1,263例和每万户315的理解，稿件没有交代。"
+  },
+  {
+   "id": "W-E19",
+   "source_id": "B-SNOW",
+   "offset": 147519,
+   "chars": 568,
+   "why": "怀廷的调查只覆盖疫情头四周（7月8日至8月5日），而且只查是否接公司水。这对limits.0中关于怀廷分工的叙述是必要的限定。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "f506117fa0b0dc6fda83989396a374810d03e4223d30961657d15e950425841f",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.limits.0: 稿件只说怀廷调查了部分地区，没有交代两点限定。一是他只查了头四周。二是这些分区后三周的供水是按比例推算的，因此表八、表九中南华克和沃克斯霍尔公司的数字部分出于计算。story.6和limits.2把表",
+  "evidence must be expanded first: 2 addition(s) ['W-E18', 'W-E19']"
+ ]
+}

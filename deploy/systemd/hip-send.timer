@@ -1,0 +1,12 @@
+# Launched 2026-11-01. Daily publish + send at 22:08 Beijing time (Asia/Shanghai; = 06:08 PST / 07:08 PDT).
+# Persistent=false: enabling the timer or booting late never triggers a catch-up run (publish-today also refuses
+# to start before send_time and never sends after send_deadline 23:40 or on a later day).
+[Unit]
+Description=History in Practice: daily publish and send (22:08 Asia/Shanghai)
+
+[Timer]
+OnCalendar=*-*-* 22:08:00 Asia/Shanghai
+Persistent=false
+
+[Install]
+WantedBy=timers.target

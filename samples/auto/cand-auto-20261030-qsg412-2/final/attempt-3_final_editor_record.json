@@ -1,0 +1,1393 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-auto-20261030-qsg412-2",
+ "edition_id": "cand-auto-20261030-qsg412-2",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "0cce3d9",
+ "started_at": 1793411917.0592098,
+ "base_source": "samples/auto/cand-auto-20261030-qsg412-2/final/article.json",
+ "base_content_sha256": "09a89416d9152951d24c1d22095d8eeab7efe29c48630b18df5fe335f2eb04ba",
+ "evidence_sha256": "22db182bd270dad2d660f8b90221eeadec94562709903d2e5af603849e0bdc01",
+ "operator_note": "extra attempt beyond max_attempts: owner AFK prompt 2026-10-30 §5: verify a real new article through admission; unattended run left 1-2 small open verify issues after max_attempts",
+ "model_record_sha256": null,
+ "prior_record_sha256": "eadb4d57159ae855d97da7c38ac337da8776eb8d18764a90ece8ac405bd600a3",
+ "attempt": "attempt-3",
+ "inherited": [
+  {
+   "id": "P1",
+   "model_id": "V2-V1",
+   "source": "final-editor previous attempt",
+   "where": "sections.context.2",
+   "problem": "称原文对左宗棠的权衡「只记了这一句话，没有更多」（EN: \"preserves only that single sentence and nothing more\"）。证据中左宗棠的引语以「開头，却没有闭合的」，说明该段话在证据片段处被截断，原文很可能还有下文。现有证据不能支持「没有更多」的断言。",
+   "suggestion": "改为「至于他当时怎么权衡，本文所据材料只录了这一句，不作推测。」EN: \"As for how he weighed the decision, the material used here gives only this line, and we do not speculate beyond it.\""
+  },
+  {
+   "id": "P2",
+   "model_id": "V2-V5",
+   "source": "final-editor previous attempt",
+   "where": "sections.today.1",
+   "problem": "中文为「切换的时间和成本算清楚」，英文 \"cost out the timing of a switch\" 把「时间」与「成本」并成一项，中英文不对等。",
+   "suggestion": "EN 改为 \"work out the timing and the cost of a switch\"。"
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.context.2",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "断言原文对左宗棠的权衡「只记了这一句话，没有更多」（EN: \"preserves only that single sentence and nothing more\"）。证据中引语以「开头而未闭合，说明证据片段在此截断，原文可能还有下文；现有证据不能支持「没有更多」。",
+   "evidence": [
+    {
+     "id": "QSG4122-E16",
+     "quote": "宗棠曰：「不可。師不以正，彼有辭矣"
+    }
+   ],
+   "proposed": "改为「至于他当时怎么权衡，本文所据材料只录了这一句，不作推测。」EN: \"As for how he weighed the decision, the material used here gives only this line, and we do not speculate beyond it.\"",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "证据片段在引语处截断，不能断言原文“没有更多”。已改为“本文所据材料只录了这一句，不作推测”，中英同步修改。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.today.1",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "中文为「切换的时间和成本算清楚」，时间与成本是两项；英文 \"cost out the timing of a switch\" 把两项并成一项，中英不对等。",
+   "evidence": [],
+   "proposed": "EN 改为 \"work out the timing and the cost of a switch\"。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文原把“时间”和“成本”并成一项，已改为 \"work out the timing and the cost of a switch\"，与中文的两项对齐。中文本身未改，按规则一并给出完整文字。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.limits.0",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "「成书在传主身后」/\"compiled after his death\" 涉及传主卒年，证据包未载。证据只给出成书年份1928，且正文的年号未换算，读者无从据证据判断成书是否在传主身后。",
+   "evidence": [
+    {
+     "id": "QSG4122-E1",
+     "quote": "趙爾巽等《清史稿·左宗棠傳》（1928，维基文库本）"
+    }
+   ],
+   "proposed": "改为「成书于1928年，晚于所述事件」或直接写「成书于1928年」；EN 相应改为 \"compiled in 1928\"。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "证据包没有记载传主卒年，“成书在传主身后”缺乏依据。已改为证据所载的“成书于1928年”，英文同步改为 \"compiled in 1928\"。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "uncertainty_note",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "与 F3 相同：「成书在传主身后」/\"compiled after his death\" 证据包未载。",
+   "evidence": [
+    {
+     "id": "QSG4122-E1",
+     "quote": "趙爾巽等《清史稿·左宗棠傳》（1928，维基文库本）"
+    }
+   ],
+   "proposed": "改为「成书于1928年」；EN 改为 \"compiled in 1928\"。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "理由同F3。已将不确定性说明中的“成书在传主身后”改为“成书于1928年”，英文同步改为 \"compiled in 1928\"。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.story.3",
+   "category": "style",
+   "severity": "note",
+   "problem": "「想「欲藉通商深入腹地」」中「想」与引文里的「欲」语义重复。",
+   "evidence": [
+    {
+     "id": "QSG4122-E8",
+     "quote": "欲藉通商深入腹地"
+    }
+   ],
+   "proposed": "删去「想」，写作「俄国政府广设领事，「欲藉通商深入腹地」」。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F6",
+   "path": "sections.context.0",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "证据「俄以回數擾其邊境」以叙述口吻直陈原因；正文「以……为由」、EN \"cited\" 把它写成俄方声称的借口，给原文添加了定性。",
+   "evidence": [
+    {
+     "id": "QSG4122-E2",
+     "quote": "俄以回數擾其邊境，遽引兵逐回，取伊犁"
+    }
+   ],
+   "proposed": "中文改为「俄方则因回众屡扰其边境，出兵逐回……」；EN 改为 \"Russia, because Muslim raiders repeatedly harassed its border, sent troops...\"。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "原文以叙述口吻直陈原因，正文写成“以……为由”和 \"cited\"，等于给原文加了“借口”的定性。已改为“因回众屡扰其边境”，英文改为 \"because Muslim raiders repeatedly harassed its border\"。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "P1",
+   "problem": "称原文对左宗棠的权衡「只记了这一句话，没有更多」（EN: \"preserves only that single sentence and nothing more\"）。证据中左宗棠的引语以「開头，却没有闭合的」，说明该段话在证据片段处被截断，原文很可能还有下文。现有证据不能支持「没有更多」的断言。",
+   "origin": "inherited final-editor previous attempt V2-V1",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.context.2",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "问题成立，与 F1 相同。证据引语未闭合，片段被截断，不能断言原文「没有更多」。"
+  },
+  {
+   "id": "P2",
+   "problem": "中文为「切换的时间和成本算清楚」，英文 \"cost out the timing of a switch\" 把「时间」与「成本」并成一项，中英文不对等。",
+   "origin": "inherited final-editor previous attempt V2-V5",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.today.1",
+   "disposition": "duplicate",
+   "same_as": "F2",
+   "rationale": "问题成立，与 F2 相同。英文漏掉了「成本」这一项，中英不对等。"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.context.2.zh",
+   "before": "一种解释是，他宁可错过一次得手的机会，也不让对方事后找到说辞。至于他当时怎么权衡，原文只记了这一句话，没有更多。",
+   "after": "一种解释是，他宁可错过一次得手的机会，也不让对方事后找到说辞。至于他当时怎么权衡，本文所据材料只录了这一句，不作推测。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.context.2.en",
+   "before": "One reading of it is that he would rather let a chance of success slip by than give the other side a justification to use afterward. As for how he weighed the decision at the time, the source preserves only that single sentence and nothing more.",
+   "after": "One reading of it is that he would rather let a chance of success slip by than give the other side a justification to use afterward. As for how he weighed the decision, the material used here gives only this line, and we do not speculate beyond it.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.today.1.en",
+   "before": "The other thing is to let the preparation be seen. Work up the evaluation of alternative suppliers, and cost out the timing of a switch; put it on the table in internal meetings, and where necessary let the other side see it too. When they know you can genuinely walk away, terms may loosen — or they may not, and that is the price to be paid.",
+   "after": "The other thing is to let the preparation be seen. Work up the evaluation of alternative suppliers, and work out the timing and the cost of a switch; put it on the table in internal meetings, and where necessary let the other side see it too. When they know you can genuinely walk away, terms may loosen — or they may not, and that is the price to be paid.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.limits.0.zh",
+   "before": "本文只有一个史源，即《清史稿·左宗棠传》，成书在传主身后，所述与当时档案未必一致。奏疏与对话（如「先之以議論」「師不以正」）是史书的记述，未必是逐字原话。英文版引号内的文字是作者对古文的译述。",
+   "after": "本文只有一个史源，即《清史稿·左宗棠传》，成书于1928年，所述与当时档案未必一致。奏疏与对话（如「先之以議論」「師不以正」）是史书的记述，未必是逐字原话。英文版引号内的文字是作者对古文的译述。",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.limits.0.en",
+   "before": "This piece rests on a single source, the biography of Zuo Zongtang in the Draft History of the Qing, compiled after his death; its account may not match the archives of the time. The memorial and the dialogue — such as \"first take the matter up in negotiation\" and \"our army does not act from a position of right\" — are the history's rendering and may not be verbatim. Quoted passages in English are the author's translations of the classical Chinese.",
+   "after": "This piece rests on a single source, the biography of Zuo Zongtang in the Draft History of the Qing, compiled in 1928; its account may not match the archives of the time. The memorial and the dialogue — such as \"first take the matter up in negotiation\" and \"our army does not act from a position of right\" — are the history's rendering and may not be verbatim. Quoted passages in English are the author's translations of the classical Chinese.",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "uncertainty_note.zh",
+   "before": "本文只据《清史稿·左宗棠传》一个史源，成书在传主身后，所述与当时档案未必一致；奏疏与对话是史书记述，未必逐字。编年照原文年号，数字照录不核；「俄亦懾我兵威」与「和議成」是并置叙述，因果未经证实；崇厚约文与曾纪泽改约内容原文未载，不作补写。",
+   "after": "本文只据《清史稿·左宗棠传》一个史源，成书于1928年，所述与当时档案未必一致；奏疏与对话是史书记述，未必逐字。编年照原文年号，数字照录不核；「俄亦懾我兵威」与「和議成」是并置叙述，因果未经证实；崇厚约文与曾纪泽改约内容原文未载，不作补写。",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "uncertainty_note.en",
+   "before": "This piece relies on a single source, the biography of Zuo Zongtang in the Draft History of the Qing, compiled after his death, and its account may not match the archives of the time. The memorial and the dialogue are the history's renderings and may not be verbatim. Dates follow the original reign years; figures are copied as given and not checked. That \"Russia was awed by our military might\" and that \"peace was concluded\" appear side by side in the source, and the causal link is unproven. Chong Hou's treaty text and the substance of Zeng Jize's revision are not in the source and are not filled in here.",
+   "after": "This piece relies on a single source, the biography of Zuo Zongtang in the Draft History of the Qing, compiled in 1928, and its account may not match the archives of the time. The memorial and the dialogue are the history's renderings and may not be verbatim. Dates follow the original reign years; figures are copied as given and not checked. That \"Russia was awed by our military might\" and that \"peace was concluded\" appear side by side in the source, and the causal link is unproven. Chong Hou's treaty text and the substance of Zeng Jize's revision are not in the source and are not filled in here.",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.context.0.zh",
+   "before": "先看这份奏疏落在什么样的局面里。帕夏能役使回众，通使结援英、俄，购买兵械自备；英人暗中相助，想让他别立一国，用以屏障俄国。俄方则以回众屡扰边境为由，出兵逐回，占了伊犁，还说要代取乌鲁木齐。",
+   "after": "先看这份奏疏落在什么样的局面里。帕夏能役使回众，通使结援英、俄，购买兵械自备；英人暗中相助，想让他别立一国，用以屏障俄国。俄方则因回众屡扰其边境，出兵逐回，占了伊犁，还说要代取乌鲁木齐。",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.context.0.en",
+   "before": "Start with the situation the memorial landed in. The Pasha could command the Muslim population, sent envoys to seek support from Britain and Russia, and bought weapons to arm his own forces. The British backed him quietly, hoping to see him set up a separate state that would stand as a shield against Russia. Russia, for its part, cited repeated raids against its border, sent troops to drive the raiders out, seized Ili, and announced that it would go on to take Urumqi on China's behalf.",
+   "after": "Start with the situation the memorial landed in. The Pasha could command the Muslim population, sent envoys to seek support from Britain and Russia, and bought weapons to arm his own forces. The British backed him quietly, hoping to see him set up a separate state that would stand as a shield against Russia. Russia, for its part, because Muslim raiders repeatedly harassed its border, sent troops to drive them out, seized Ili, and announced that it would go on to take Urumqi on China's behalf.",
+   "issues": [
+    "F6"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F6"
+   ],
+   "changes_applied": 9,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[1] numbers differ zh[5000000] en[100]"
+    ],
+    [
+     "CHECK",
+     "analysis[1] numbers differ zh[20, 5000000] en[20]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[20, 40000, 5000000] en[20, 40000]"
+    ]
+   ],
+   "content_sha256_after": "449aa788edc5a5677eac5b0a713828e6365621d4d10ec502423f8353886f2e82",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.story.3",
+      "category": "style",
+      "severity": "note",
+      "problem": "中文“想「欲藉通商深入腹地」”中，“想”与引文里的“欲”语义重复，读来累赘。引文本身逐字无误。",
+      "evidence": [
+       {
+        "id": "QSG4122-E8",
+        "quote": "欲藉通商深入腹地，此商務之不可許者也"
+       }
+      ],
+      "proposed": "改为“意在「欲藉通商深入腹地」”，或删去“想”，写作“俄国政府广设领事，「欲藉通商深入腹地」”。"
+     }
+    ],
+    "overall": "定稿的事实、引文、编年和归因都有证据支持。推断已标为解释，因果保持并置、未写成定论，中英内容一致；只有一处纯文风提示，可以放行。",
+    "_content_sha256": "449aa788edc5a5677eac5b0a713828e6365621d4d10ec502423f8353886f2e82"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.context.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "chronology",
+     "causality",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "attribution",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "chronology",
+     "causality",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4"
+    ]
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.context.2",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "断言原文对左宗棠的权衡「只记了这一句话，没有更多」（EN: \"preserves only that single sentence and nothing more\"）。证据中引语以「开头而未闭合，说明证据片段在此截断，原文可能还有下文；现有证据不能支持「没有更多」。",
+    "evidence": [
+     {
+      "id": "QSG4122-E16",
+      "quote": "宗棠曰：「不可。師不以正，彼有辭矣"
+     }
+    ],
+    "proposed": "改为「至于他当时怎么权衡，本文所据材料只录了这一句，不作推测。」EN: \"As for how he weighed the decision, the material used here gives only this line, and we do not speculate beyond it.\""
+   },
+   {
+    "id": "F2",
+    "path": "sections.today.1",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "中文为「切换的时间和成本算清楚」，时间与成本是两项；英文 \"cost out the timing of a switch\" 把两项并成一项，中英不对等。",
+    "evidence": [],
+    "proposed": "EN 改为 \"work out the timing and the cost of a switch\"。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.limits.0",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "「成书在传主身后」/\"compiled after his death\" 涉及传主卒年，证据包未载。证据只给出成书年份1928，且正文的年号未换算，读者无从据证据判断成书是否在传主身后。",
+    "evidence": [
+     {
+      "id": "QSG4122-E1",
+      "quote": "趙爾巽等《清史稿·左宗棠傳》（1928，维基文库本）"
+     }
+    ],
+    "proposed": "改为「成书于1928年，晚于所述事件」或直接写「成书于1928年」；EN 相应改为 \"compiled in 1928\"。"
+   },
+   {
+    "id": "F4",
+    "path": "uncertainty_note",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "与 F3 相同：「成书在传主身后」/\"compiled after his death\" 证据包未载。",
+    "evidence": [
+     {
+      "id": "QSG4122-E1",
+      "quote": "趙爾巽等《清史稿·左宗棠傳》（1928，维基文库本）"
+     }
+    ],
+    "proposed": "改为「成书于1928年」；EN 改为 \"compiled in 1928\"。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.story.3",
+    "category": "style",
+    "severity": "note",
+    "problem": "「想「欲藉通商深入腹地」」中「想」与引文里的「欲」语义重复。",
+    "evidence": [
+     {
+      "id": "QSG4122-E8",
+      "quote": "欲藉通商深入腹地"
+     }
+    ],
+    "proposed": "删去「想」，写作「俄国政府广设领事，「欲藉通商深入腹地」」。"
+   },
+   {
+    "id": "F6",
+    "path": "sections.context.0",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "证据「俄以回數擾其邊境」以叙述口吻直陈原因；正文「以……为由」、EN \"cited\" 把它写成俄方声称的借口，给原文添加了定性。",
+    "evidence": [
+     {
+      "id": "QSG4122-E2",
+      "quote": "俄以回數擾其邊境，遽引兵逐回，取伊犁"
+     }
+    ],
+    "proposed": "中文改为「俄方则因回众屡扰其边境，出兵逐回……」；EN 改为 \"Russia, because Muslim raiders repeatedly harassed its border, sent troops...\"。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "P1",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "问题成立，与 F1 相同。证据引语未闭合，片段被截断，不能断言原文「没有更多」。",
+    "evidence": [
+     {
+      "id": "QSG4122-E16",
+      "quote": "宗棠曰：「不可。師不以正，彼有辭矣"
+     }
+    ]
+   },
+   {
+    "id": "P2",
+    "verdict": "duplicate",
+    "same_as": "F2",
+    "rationale": "问题成立，与 F2 相同。英文漏掉了「成本」这一项，中英不对等。",
+    "evidence": []
+   }
+  ]
+ },
+ "final_content_sha256": "449aa788edc5a5677eac5b0a713828e6365621d4d10ec502423f8353886f2e82",
+ "open_issues": [],
+ "outcome": "admissible",
+ "failure": null,
+ "finished_at": 1793412107.600369,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 100.9,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13733,
+    "output_tokens": 11567
+   },
+   "cost_estimate_usd": 0.341212
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 21.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13915,
+    "output_tokens": 2689
+   },
+   "cost_estimate_usd": 0.165108
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 68.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 12707,
+    "output_tokens": 8118
+   },
+   "cost_estimate_usd": 0.26402400000000004
+  }
+ ],
+ "elapsed_min": 3.2,
+ "model_wall_min": 3.2
+}

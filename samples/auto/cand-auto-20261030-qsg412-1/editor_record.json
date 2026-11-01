@@ -1,0 +1,159 @@
+{
+ "candidate_id": "attempt-3",
+ "editor": "hermes-isolated editor (prompts/edit_zh_en.md)",
+ "code_rev": "e0fa34d",
+ "started_at": 1793387707.525031,
+ "evidence_sha256": "b0e102ba14bf56f7d0e399992cac96efc095ddc8ad5b4c8dc6f043ac3c40fafc",
+ "original_content_sha256": "aa5af855548c29aeeee135b6e2091dec674992fea62f441bc19dd9967007ee03",
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    {
+     "id": "S1",
+     "source": "review",
+     "severity": "fix",
+     "where": "story.0",
+     "problem": "「赞成一方在史料里只留下这一句判断」与证据不符：E3记有论者一方的整段理由（岁糜数百万此漏卮、竭天下力赡西军无以待不虞、宜徇英人议许帕夏自立称籓），且与本文开头段引用的正是这些理由，自相矛盾；未记具体论据的只是李鸿章个人",
+     "suggestion": "改为：传记未记鸿章本人的具体论据，赞成一方的理由在史料中仅存「论者多言」一段概述",
+     "seeded_from": "S1"
+    },
+    {
+     "id": "S2",
+     "source": "review",
+     "severity": "fix",
+     "where": "limits.1",
+     "problem": "列举纪年「光绪元年、二年、三年、六年」漏掉四年，正文「四年正月，宗棠条上新疆建行省事宜」用到四年",
+     "suggestion": "改为「原文纪年用光绪元年、二年、三年、四年、六年」",
+     "seeded_from": "S2"
+    },
+    {
+     "id": "S3",
+     "source": "parity",
+     "severity": "fix",
+     "where": "sections.analysis.4",
+     "problem": "The English sentence ends with a truncated phrase: \"the foreigners began to tell the story about\" — the verb has no object, so the claim (外国乃稍稍传说之, that foreigners began spreading word of him/it) is left incomplete.",
+     "suggestion": "Change to \"the foreigners began to spread the word about him.\"",
+     "seeded_from": "S3"
+    }
+   ],
+   "edits_applied": [],
+   "edits_failed": [],
+   "dispositions": [
+    {
+     "issue": "S1",
+     "action": "rejected",
+     "reason": "该问题所指的原句「赞成一方在史料里只留下这一句判断」在现稿中并不存在，story.0 现有文字已是建议写法：「传记说「鴻章言之尤力」，却没有记下鸿章本人的具体论据；赞成一方的理由在史料里仅存「論者多言」一段概述。」这与证据 E3 原文一致：「論者多言自高宗定新疆，歲糜數百萬，此漏卮也。今至竭天下力贍西軍，無以待不虞，尤失計。宜徇英人議，許帕夏自立為國稱籓，罷西征，專力海防。鴻章言之尤力。」即赞成一方的理由确只存「論者多言」一段概述，而未记具体论据的仅李鸿章一人，故现写法成立，无需改动。"
+    },
+    {
+     "issue": "S2",
+     "action": "rejected",
+     "reason": "该问题所指的漏列并不存在，limits.1 现文已作「原文纪年用光绪元年、二年、三年、四年、六年」，含四年，与正文「四年正月，宗棠条上新疆建行省事宜」用到的年份一致。证据 E12 原文即「四年正月，條上新疆建行省事宜」，现写法照录该年纪年并与之相符，故无需改动。"
+    },
+    {
+     "issue": "S3",
+     "action": "rejected",
+     "reason": "该问题所指的截断句 \"the foreigners began to tell the story about\" 在现稿中并不存在，analysis.4.en 现文结尾为 \"Once Zuo had dealt with Pasha, the foreigners began to spread the word about him.\"，动词已有宾语、句意完整。该句对应证据 E22 原文「及宗棠平帕夏，外國乃稍稍傳說之。」，「之」即指帕夏其人其事，现译文 spread the word about him 与原文逐字所指一致，故无需改动。"
+    }
+   ],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[5] numbers differ zh[] en[10000]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[] en[10000]"
+    ]
+   ],
+   "content_sha256_after": "aa5af855548c29aeeee135b6e2091dec674992fea62f441bc19dd9967007ee03",
+   "review_after": {
+    "issues": [
+     {
+      "section": "context",
+      "para": 1,
+      "severity": "fix",
+      "problem": "「乌鲁木齐也在其口头计划之内」把原文「且言將代取烏魯木齊」的「代取」（俄称代清取）改成了俄国自己要占乌鲁木齐，含义变味",
+      "suggestion": "改为「且言将代清取乌鲁木齐（原文作『代取』）」"
+     },
+     {
+      "section": "context",
+      "para": 1,
+      "severity": "note",
+      "problem": "「到光绪元年，伊犁已在俄国手中」为按叙述顺序推得，证据未记俄取伊犁的具体时间（仅『當是時』）",
+      "suggestion": "改为「在此之前俄已取伊犁（原文未记具体年月）」"
+     },
+     {
+      "section": "story",
+      "para": 0,
+      "severity": "fix",
+      "problem": "「海上一旦有事将无以应对」改写了引文所据的「無以待不虞」，原文泛指不虞（不测），未限定海上",
+      "suggestion": "改为「天下之力尽耗于西军，一旦有不虞之事将无以应对」"
+     },
+     {
+      "section": "story",
+      "para": 7,
+      "severity": "note",
+      "problem": "顺序与原文不合：原文是伯克胡里纳白彦虎攻汉城、大军至遁走俄在前，西四城相继下在后，稿中把遁走俄放在西四城下之后",
+      "suggestion": "按原文改为「伯克胡里、白彦虎遁走俄，西四城相继下」"
+     },
+     {
+      "section": "analysis",
+      "para": 4,
+      "severity": "note",
+      "problem": "「他后来初入京师」的『后来』是加写的时间；原文「其初入京師」未记年月，且该条写的是民间讙言与示谕止之，与「外国改观」不是同一件事",
+      "suggestion": "删去「后来」，并另起一句标明此为传记另一则记事，与外国改观分开"
+     }
+    ],
+    "unsupported_claims": [
+     "「到光绪元年，伊犁已在俄国手中」——证据只说『當是時』俄取伊犁，未记时间",
+     "「乌鲁木齐也在其口头计划之内」——原文为『將代取』，非俄自取之计划",
+     "「海上一旦有事将无以应对」——原文仅作『無以待不虞』",
+     "「他后来初入京师」——原文未记此事时间"
+    ],
+    "invented_inner_life": [],
+    "quote_mismatches": [],
+    "overall": "引语与主要时地人名均与《清史稿·左宗棠传》相符，史实与作者推断分界清楚，仅有上述转述失真与语序、时间补写的小问题，修改后可用。",
+    "_content_sha256": "aa5af855548c29aeeee135b6e2091dec674992fea62f441bc19dd9967007ee03"
+   },
+   "parity_after": null
+  }
+ ],
+ "seeded_issues": 3,
+ "final_content_sha256": "aa5af855548c29aeeee135b6e2091dec674992fea62f441bc19dd9967007ee03",
+ "remaining": [
+  {
+   "id": "S1",
+   "source": "review",
+   "severity": "fix",
+   "where": "story.0",
+   "problem": "「赞成一方在史料里只留下这一句判断」与证据不符：E3记有论者一方的整段理由（岁糜数百万此漏卮、竭天下力赡西军无以待不虞、宜徇英人议许帕夏自立称籓），且与本文开头段引用的正是这些理由，自相矛盾；未记具体论据的只是李鸿章个人",
+   "suggestion": "改为：传记未记鸿章本人的具体论据，赞成一方的理由在史料中仅存「论者多言」一段概述",
+   "seeded_from": "S1"
+  },
+  {
+   "id": "S2",
+   "source": "review",
+   "severity": "fix",
+   "where": "limits.1",
+   "problem": "列举纪年「光绪元年、二年、三年、六年」漏掉四年，正文「四年正月，宗棠条上新疆建行省事宜」用到四年",
+   "suggestion": "改为「原文纪年用光绪元年、二年、三年、四年、六年」",
+   "seeded_from": "S2"
+  },
+  {
+   "id": "S3",
+   "source": "parity",
+   "severity": "fix",
+   "where": "sections.analysis.4",
+   "problem": "The English sentence ends with a truncated phrase: \"the foreigners began to tell the story about\" — the verb has no object, so the claim (外国乃稍稍传说之, that foreigners began spreading word of him/it) is left incomplete.",
+   "suggestion": "Change to \"the foreigners began to spread the word about him.\"",
+   "seeded_from": "S3"
+  }
+ ],
+ "final_reviewed": false,
+ "outcome": "pending_review",
+ "model_calls": 3,
+ "model_wall_s": 245.1,
+ "edits_total": 0,
+ "finished_at": 1793387952.667476
+}

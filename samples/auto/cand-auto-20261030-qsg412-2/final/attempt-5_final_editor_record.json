@@ -1,0 +1,1455 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-auto-20261030-qsg412-2",
+ "edition_id": "cand-auto-20261030-qsg412-2",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "8645cae",
+ "started_at": 1793436464.9663148,
+ "base_source": "samples/auto/cand-auto-20261030-qsg412-2/final/article.json",
+ "base_content_sha256": "bf32165812ce5a8a3b089bb2b80b942063eb8381e68d36c5ab2e4617c061f5c2",
+ "evidence_sha256": "22db182bd270dad2d660f8b90221eeadec94562709903d2e5af603849e0bdc01",
+ "operator_note": null,
+ "model_record_sha256": null,
+ "prior_record_sha256": "e23737cb386b32096950214ddd9cb078add560c45cbf738965bd945abc132c57",
+ "attempt": "attempt-5",
+ "context_review_sha256": null,
+ "inherited": [
+  {
+   "id": "P1",
+   "model_id": "V2-V1",
+   "source": "final-editor previous attempt",
+   "where": "sections.hook.1",
+   "problem": "锦棠在原文中只出现名、不出现姓，稿中直接写“锦棠”。英文中“Jintang”与东路统兵的“Jin Shun”（金顺）读起来像同姓，story.6 两人并列时更难分清；中文读者也看不出“锦棠”只是名。",
+   "suggestion": "首次出现时（hook.1）写作 zh“锦棠（原文只称其名）”、en“Jintang (the source gives only his given name; not to be confused with Jin Shun)”，之后在 story.6、story.8 统一沿用此称呼。不补外部姓氏。"
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.hook.1",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "锦棠首次出现时没有说明称呼方式。英文中的 Jintang 与东路统兵的 Jin Shun（金顺）读起来像同姓之人，story.6 两人并列时更难分清。原文只写「錦棠」二字，证据并未说明这是名还是其他称呼，所以不宜断言“原文只给名”。",
+   "evidence": [
+    {
+     "id": "QSG4122-E12",
+     "quote": "錦棠經布魯特游牧為西路"
+    },
+    {
+     "id": "QSG4122-E15",
+     "quote": "以錦棠代之"
+    },
+    {
+     "id": "QSG4122-E12",
+     "quote": "以金順出精河為東路"
+    }
+   ],
+   "proposed": "hook.1 首次出现时，zh 写“锦棠（原文仅作此称）”，en 写“Jintang (as the source calls him; a different man from Jin Shun)”。story.6、story.8 统一沿用 Jintang，不补外部姓氏。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "在 hook.1 中锦棠首次出现处加注说明：原文仅作此称，且与东路统兵的金顺并非一人。中英文同步修改。这里不断言“锦棠”是名还是其他称呼，也不补外部姓氏。两人在原文中分属西路、东路，故可判定并非同一人。story.6 和 story.8 已统一沿用“锦棠”和 Jintang，无需改动。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.hook.0",
+   "category": "readability",
+   "severity": "note",
+   "problem": "开头用诏书语「以西事自任」介绍左宗棠，一般读者不易懂。英文 taken the western affairs upon himself 也较晦涩。hook.1 又重复了一次。",
+   "evidence": [
+    {
+     "id": "QSG4122-E17",
+     "quote": "宗棠以西事自任"
+    }
+   ],
+   "proposed": "hook.0 保留“统兵经营新疆”作为身份说明，「以西事自任」改为注明出处的引语或删去重复；hook.1 不再重复此语。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F3",
+   "path": "sections.hook.1",
+   "category": "readability",
+   "severity": "note",
+   "problem": "开头连续堆叠“六年四月、五月、七月、明年正月”等年月，读者在此处还用不上这些时间点。",
+   "evidence": [],
+   "proposed": "hook.1 只保留“自请出屯哈密—奉诏入都—明年和议成、交还伊犁”的顺序，具体月份留到 story.7、story.8。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F4",
+   "path": "sections.hook.1",
+   "category": "readability",
+   "severity": "note",
+   "problem": "英文 Suzhou（肃州）容易被读者误认为另一个更著名的同音地名 Suzhou。hook.1 与 story.7 都有此问题。",
+   "evidence": [
+    {
+     "id": "QSG4122-E13",
+     "quote": "宗棠輿櫬發肅州"
+    }
+   ],
+   "proposed": "英文首次出现时写作“Suzhou (肅州)”，以原文汉字区分，不补外部地理信息。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F5",
+   "path": "sections.context.0",
+   "category": "readability",
+   "severity": "note",
+   "problem": "context 第一段先讲未具名、与伊犁关系不明的「帕夏」，读者暂时用不上。这会冲淡“俄国占伊犁”这一关键背景。",
+   "evidence": [
+    {
+     "id": "QSG4122-E2",
+     "quote": "遽引兵逐回，取伊犁"
+    }
+   ],
+   "proposed": "把俄取伊犁一句移到段首；帕夏部分压缩为一句背景，保留“材料未写明其与伊犁之事的关系”的限定。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F6",
+   "path": "sections.story.8",
+   "category": "readability",
+   "severity": "note",
+   "problem": "中文此处突然改称「宗棠」，全文其他地方用“左宗棠”，称呼不统一。",
+   "evidence": [
+    {
+     "id": "QSG4122-E15",
+     "quote": "詔宗棠入都備顧問"
+    }
+   ],
+   "proposed": "改为“朝廷诏左宗棠入都备顾问”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F7",
+   "path": "sections.analysis.1",
+   "category": "readability",
+   "severity": "note",
+   "problem": "“五百万”没有单位，读者不知道比较的是什么。原文本身也未写单位。",
+   "evidence": [
+    {
+     "id": "QSG4122-E17",
+     "quote": "為撥款五百萬，敕自借外國債五百萬"
+    }
+   ],
+   "proposed": "在数字后加“（原文未写单位）”/“(the source gives no unit)”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F8",
+   "path": "sections.story.0",
+   "category": "style",
+   "severity": "note",
+   "problem": "“崇厚为朝士所纠、议久不决”在同一段内说了两遍。",
+   "evidence": [],
+   "proposed": "删去末句的重复部分，只保留“事情悬在半空”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F9",
+   "path": "sections.story.3",
+   "category": "style",
+   "severity": "note",
+   "problem": "“想「欲藉通商深入腹地」”中“想”与“欲”语义重复。",
+   "evidence": [],
+   "proposed": "改为“意在「藉通商深入腹地」”，或去掉“想”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "P1",
+   "problem": "锦棠在原文中只出现名、不出现姓，稿中直接写“锦棠”。英文中“Jintang”与东路统兵的“Jin Shun”（金顺）读起来像同姓，story.6 两人并列时更难分清；中文读者也看不出“锦棠”只是名。",
+   "origin": "inherited final-editor previous attempt V2-V1",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.hook.1",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "Jintang 与 Jin Shun 在英文中易混的问题成立，已作为 F1 列出。但原建议称“原文只称其名”，证据并未说明「錦棠」是名，因此 F1 改用“原文仅作此称”的写法。"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.hook.1.zh",
+   "before": "僵局之中，以西事自任的左宗棠上奏，逐条点出哪几处不可许，主张「先之以議論，委婉而用機，次決之以戰陣，堅忍而求勝」。奏上获嘉许，崇厚得罪去，朝廷命曾纪泽使俄改约；他于是自请出屯哈密。六年四月（原文年号纪年），他「輿櫬發肅州」，五月抵哈密。七月，他奉诏入都备顾问，由西路统兵的锦棠接替。明年正月，和议成，交还伊犁。",
+   "after": "僵局之中，以西事自任的左宗棠上奏，逐条点出哪几处不可许，主张「先之以議論，委婉而用機，次決之以戰陣，堅忍而求勝」。奏上获嘉许，崇厚得罪去，朝廷命曾纪泽使俄改约；他于是自请出屯哈密。六年四月（原文年号纪年），他「輿櫬發肅州」，五月抵哈密。七月，他奉诏入都备顾问，由西路统兵的锦棠（原文仅作此称，与东路统兵的金顺并非一人）接替。明年正月，和议成，交还伊犁。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "Into that deadlock stepped Zuo Zongtang, who had taken the western affairs upon himself, with a memorial. Item by item he named the terms that must not be accepted, and argued that one should \"first take the matter up in negotiation, tactful and alert to opportunity, then settle it on the field of battle, patient and set on victory.\" The throne commended it; Chong Hou was punished and dismissed, and the court sent Zeng Jize to Russia to revise the treaty. Zuo then asked leave to move his headquarters to Hami. In the fourth month of the sixth year (by the reign-year count used in the source) he \"set out from Suzhou with a coffin in his carriage,\" and reached Hami in the fifth month. In the seventh month he was summoned to the capital and Jintang, who led the western column, took his place. In the first month of the following year, peace was concluded and Ili was returned.",
+   "after": "Into that deadlock stepped Zuo Zongtang, who had taken the western affairs upon himself, with a memorial. Item by item he named the terms that must not be accepted, and argued that one should \"first take the matter up in negotiation, tactful and alert to opportunity, then settle it on the field of battle, patient and set on victory.\" The throne commended it; Chong Hou was punished and dismissed, and the court sent Zeng Jize to Russia to revise the treaty. Zuo then asked leave to move his headquarters to Hami. In the fourth month of the sixth year (by the reign-year count used in the source) he \"set out from Suzhou with a coffin in his carriage,\" and reached Hami in the fifth month. In the seventh month he was summoned to the capital and Jintang (as the source calls him; a different man from Jin Shun, who led the eastern column), who led the western column, took his place. In the first month of the following year, peace was concluded and Ili was returned.",
+   "issues": [
+    "F1"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1"
+   ],
+   "changes_applied": 2,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[1] numbers differ zh[5000000] en[100]"
+    ],
+    [
+     "CHECK",
+     "analysis[1] numbers differ zh[20, 5000000] en[20]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[20, 40000, 5000000] en[20, 40000]"
+    ]
+   ],
+   "content_sha256_after": "7aadd8a34cdb162487382597a98dd08ee0c8292dac005b289c865176e4e0f900",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "开头第二段密集排列了四个月份节点（六年四月、五月、七月、明年正月）和三个新人名（曾纪泽、锦棠、金顺）。其中金顺只是为了说明“不是同一人”才出现，读者此时还用不上这些信息，开头因此显得拥挤。",
+      "evidence": [
+       {
+        "id": "QSG4122-E15",
+        "quote": "七月，詔宗棠入都備顧問，以錦棠代之"
+       }
+      ],
+      "proposed": "hook.1 保留奏疏要点、改约结果和最终交还伊犁。“七月入都、锦棠接替”及关于金顺的括注移到 story.6/story.8，在锦棠、金顺首次随三路部署出现时再作区分。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.context.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "背景段开头先写一位未具名、且文中自承与伊犁之事关系不明的“帕夏”，读者要先读完这段旁支，才看到与主题直接相关的“俄取伊犁”。",
+      "evidence": [
+       {
+        "id": "QSG4122-E2",
+        "quote": "俄以回數擾其邊境，遽引兵逐回，取伊犁"
+       }
+      ],
+      "proposed": "把“俄方因回众扰边出兵、占伊犁、言将代取乌鲁木齐”提到段首，帕夏与英俄插手的背景后置为补充句，内容不删。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.story.8",
+      "category": "readability",
+      "severity": "note",
+      "problem": "中文正文其余各处均称“左宗棠”，此处改用“宗棠”，称呼不统一。",
+      "evidence": [
+       {
+        "id": "QSG4122-E15",
+        "quote": "詔宗棠入都備顧問"
+       }
+      ],
+      "proposed": "“朝廷诏宗棠入都备顾问”改为“朝廷诏左宗棠入都备顾问”。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.story.0",
+      "category": "style",
+      "severity": "note",
+      "problem": "末句“条约是签了，崇厚却遭纠劾，议久不决”与前一句“崇厚为朝士所纠，朝廷议论长久不能决定”内容重复，中英文都是如此。",
+      "evidence": [],
+      "proposed": "末句压缩为“条约是签了，事情却悬在半空。”英文同步改为“The treaty had been signed, yet the whole affair hung in mid-air.”"
+     },
+     {
+      "id": "V5",
+      "path": "sections.story.3",
+      "category": "style",
+      "severity": "note",
+      "problem": "“想「欲藉通商深入腹地」”中，“想”与引文里的“欲”语义重复。",
+      "evidence": [
+       {
+        "id": "QSG4122-E8",
+        "quote": "欲藉通商深入腹地"
+       }
+      ],
+      "proposed": "改为“俄国政府广设领事，「欲藉通商深入腹地」”，删去“想”。"
+     }
+    ],
+    "overall": "定稿的事实、引文、编年、因果限定与中英对应均有证据支持，可以通过。仅有开头信息密度、背景段顺序和称呼统一几处易读性与文风小问题，建议顺手调整。",
+    "_content_sha256": "7aadd8a34cdb162487382597a98dd08ee0c8292dac005b289c865176e4e0f900"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "chronology",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1",
+     "F3",
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F8"
+    ]
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F9"
+    ]
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1",
+     "F6"
+    ]
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F7"
+    ]
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "chronology",
+     "causality",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "attribution",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "chronology",
+     "causality",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.hook.1",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "锦棠首次出现时没有说明称呼方式。英文中的 Jintang 与东路统兵的 Jin Shun（金顺）读起来像同姓之人，story.6 两人并列时更难分清。原文只写「錦棠」二字，证据并未说明这是名还是其他称呼，所以不宜断言“原文只给名”。",
+    "evidence": [
+     {
+      "id": "QSG4122-E12",
+      "quote": "錦棠經布魯特游牧為西路"
+     },
+     {
+      "id": "QSG4122-E15",
+      "quote": "以錦棠代之"
+     },
+     {
+      "id": "QSG4122-E12",
+      "quote": "以金順出精河為東路"
+     }
+    ],
+    "proposed": "hook.1 首次出现时，zh 写“锦棠（原文仅作此称）”，en 写“Jintang (as the source calls him; a different man from Jin Shun)”。story.6、story.8 统一沿用 Jintang，不补外部姓氏。"
+   },
+   {
+    "id": "F2",
+    "path": "sections.hook.0",
+    "category": "readability",
+    "severity": "note",
+    "problem": "开头用诏书语「以西事自任」介绍左宗棠，一般读者不易懂。英文 taken the western affairs upon himself 也较晦涩。hook.1 又重复了一次。",
+    "evidence": [
+     {
+      "id": "QSG4122-E17",
+      "quote": "宗棠以西事自任"
+     }
+    ],
+    "proposed": "hook.0 保留“统兵经营新疆”作为身份说明，「以西事自任」改为注明出处的引语或删去重复；hook.1 不再重复此语。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.hook.1",
+    "category": "readability",
+    "severity": "note",
+    "problem": "开头连续堆叠“六年四月、五月、七月、明年正月”等年月，读者在此处还用不上这些时间点。",
+    "evidence": [],
+    "proposed": "hook.1 只保留“自请出屯哈密—奉诏入都—明年和议成、交还伊犁”的顺序，具体月份留到 story.7、story.8。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.hook.1",
+    "category": "readability",
+    "severity": "note",
+    "problem": "英文 Suzhou（肃州）容易被读者误认为另一个更著名的同音地名 Suzhou。hook.1 与 story.7 都有此问题。",
+    "evidence": [
+     {
+      "id": "QSG4122-E13",
+      "quote": "宗棠輿櫬發肅州"
+     }
+    ],
+    "proposed": "英文首次出现时写作“Suzhou (肅州)”，以原文汉字区分，不补外部地理信息。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.context.0",
+    "category": "readability",
+    "severity": "note",
+    "problem": "context 第一段先讲未具名、与伊犁关系不明的「帕夏」，读者暂时用不上。这会冲淡“俄国占伊犁”这一关键背景。",
+    "evidence": [
+     {
+      "id": "QSG4122-E2",
+      "quote": "遽引兵逐回，取伊犁"
+     }
+    ],
+    "proposed": "把俄取伊犁一句移到段首；帕夏部分压缩为一句背景，保留“材料未写明其与伊犁之事的关系”的限定。"
+   },
+   {
+    "id": "F6",
+    "path": "sections.story.8",
+    "category": "readability",
+    "severity": "note",
+    "problem": "中文此处突然改称「宗棠」，全文其他地方用“左宗棠”，称呼不统一。",
+    "evidence": [
+     {
+      "id": "QSG4122-E15",
+      "quote": "詔宗棠入都備顧問"
+     }
+    ],
+    "proposed": "改为“朝廷诏左宗棠入都备顾问”。"
+   },
+   {
+    "id": "F7",
+    "path": "sections.analysis.1",
+    "category": "readability",
+    "severity": "note",
+    "problem": "“五百万”没有单位，读者不知道比较的是什么。原文本身也未写单位。",
+    "evidence": [
+     {
+      "id": "QSG4122-E17",
+      "quote": "為撥款五百萬，敕自借外國債五百萬"
+     }
+    ],
+    "proposed": "在数字后加“（原文未写单位）”/“(the source gives no unit)”。"
+   },
+   {
+    "id": "F8",
+    "path": "sections.story.0",
+    "category": "style",
+    "severity": "note",
+    "problem": "“崇厚为朝士所纠、议久不决”在同一段内说了两遍。",
+    "evidence": [],
+    "proposed": "删去末句的重复部分，只保留“事情悬在半空”。"
+   },
+   {
+    "id": "F9",
+    "path": "sections.story.3",
+    "category": "style",
+    "severity": "note",
+    "problem": "“想「欲藉通商深入腹地」”中“想”与“欲”语义重复。",
+    "evidence": [],
+    "proposed": "改为“意在「藉通商深入腹地」”，或去掉“想”。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "P1",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "Jintang 与 Jin Shun 在英文中易混的问题成立，已作为 F1 列出。但原建议称“原文只称其名”，证据并未说明「錦棠」是名，因此 F1 改用“原文仅作此称”的写法。",
+    "evidence": [
+     {
+      "id": "QSG4122-E12",
+      "quote": "錦棠經布魯特游牧為西路"
+     },
+     {
+      "id": "QSG4122-E12",
+      "quote": "以金順出精河為東路"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "7aadd8a34cdb162487382597a98dd08ee0c8292dac005b289c865176e4e0f900",
+ "open_issues": [],
+ "outcome": "admissible",
+ "failure": null,
+ "finished_at": 1793436640.8782218,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 94.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 14563,
+    "output_tokens": 10448
+   },
+   "cost_estimate_usd": 0.325472
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 11.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13710,
+    "output_tokens": 1121
+   },
+   "cost_estimate_usd": 0.132108
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 70.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13730,
+    "output_tokens": 7885
+   },
+   "cost_estimate_usd": 0.267548
+  }
+ ],
+ "elapsed_min": 2.9,
+ "model_wall_min": 2.9
+}

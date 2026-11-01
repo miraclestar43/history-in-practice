@@ -1,0 +1,314 @@
+{
+ "candidate_id": "attempt-2",
+ "editor": "hermes-isolated editor (prompts/edit_zh_en.md)",
+ "code_rev": "a61c045",
+ "started_at": 1793381714.8305464,
+ "evidence_sha256": "2f27ceea809585428ca2a3b87c7d998573be856048dcd64f6dddadf0b8b2cfcf",
+ "original_content_sha256": "96210bc1ea13064cbf914b2e02849e3f34252bee0ee299e8b5a751abda74f1c5",
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    {
+     "id": "S1",
+     "source": "review",
+     "severity": "fix",
+     "where": "limits.0",
+     "problem": "'其中有些段落像是当时的日记'是证据包不支持的判断；证据只显示有一处转引队员日记",
+     "suggestion": "删去该句，或改为'其中一处引了一位队员的日记'",
+     "seeded_from": "R1"
+    },
+    {
+     "id": "S2",
+     "source": "review",
+     "severity": "fix",
+     "where": "limits.1",
+     "problem": "以'所有数字'起头却只列了部分（漏了570多英里、180英里、360英里、300英里、十英里、20英尺、14英尺、1902年等），清单与'所有'不符",
+     "suggestion": "改为'主要数字'，或补全清单",
+     "seeded_from": "R2"
+    }
+   ],
+   "edits_applied": [
+    {
+     "path": "sections.limits.0.zh",
+     "before": "本篇的全部过程都出自沙克尔顿本人的叙述（这里用的是1920年印本的 OCR 文本），是当事人、领导者的记述，其中有些段落像是当时的日记。没有取得其他队员的日记作对照，营地里别人怎么想、是否同意这个决定，证据里没有，本篇也不替他们猜测心理。文中那句“喝过更干净的水”出自一位未具名队员的日记，是经沙克尔顿转引的。",
+     "after": "本篇的全部过程都出自沙克尔顿本人的叙述（这里用的是1920年印本的 OCR 文本），是当事人、领导者的记述。没有取得其他队员的日记作对照，营地里别人怎么想、是否同意这个决定，证据里没有，本篇也不替他们猜测心理。文中那句“喝过更干净的水”出自一位未具名队员的日记，是经沙克尔顿转引的。",
+     "reason": "证据包只显示一处经沙克尔顿转引的队员日记（S-E15），没有证据支持“有些段落像是当时的日记”这一判断，按规则3删除；后一句已交代该处日记引语。",
+     "issues": [
+      "S1"
+     ]
+    },
+    {
+     "path": "sections.limits.0.en",
+     "before": "Everything in this piece comes from Shackleton's own narrative, read here through the OCR text of the 1920 printing: the account of a participant who led the party, parts of which read like a contemporary diary. No other member's diary has been brought in for comparison. What the rest of the camp thought, and whether anyone questioned the decision, is not in the evidence, and this piece does not put feelings in their mouths. The line about the sip of water comes from an unnamed member's diary, as quoted by Shackleton.",
+     "after": "Everything in this piece comes from Shackleton's own narrative, read here through the OCR text of the 1920 printing: the account of a participant who led the party. No other member's diary has been brought in for comparison. What the rest of the camp thought, and whether anyone questioned the decision, is not in the evidence, and this piece does not put feelings in their mouths. The line about the sip of water comes from an unnamed member's diary, as quoted by Shackleton.",
+     "reason": "与中文同步：证据仅支持有一处转引队员日记（S-E15），不支持“有些段落像日记”的判断，删除该同位语。",
+     "issues": [
+      "S1"
+     ]
+    },
+    {
+     "path": "sections.limits.1.zh",
+     "before": "文本是 OCR，有讹字，引用只取清晰片段，个别有讹字的词不加引号照抄。所有数字——1800英里、281天、346英里、两磅、一吨、一英里、六英里、一英里半、两个月、三个半月——都出自他的记述，未与别的记录核对。本篇也不写此后获救的过程，那部分不在这份证据包的覆盖范围内。",
+     "after": "文本是 OCR，有讹字，引用只取清晰片段，个别有讹字的词不加引号照抄。主要数字——1800英里、281天、346英里、两磅、一吨、一英里、六英里、一英里半、两个月、三个半月——都出自他的记述，未与别的记录核对。本篇也不写此后获救的过程，那部分不在这份证据包的覆盖范围内。",
+     "reason": "清单未列全（570多英里、180英里、360英里、300英里、十英里、20英尺、14英尺、1902年等均未列），与“所有”不符，按建议收窄为“主要数字”，不动清单本身。",
+     "issues": [
+      "S2"
+     ]
+    },
+    {
+     "path": "sections.limits.1.en",
+     "before": "The text is machine-read, and it carries errors. Quotations are taken only from clean stretches; a few damaged words are reproduced without quotation marks. All the figures — 1,800 miles, 281 days, 346 miles, two pounds, a ton, one mile, six miles, one and a half miles, two months, three and a half months — come from his account and have not been checked against any other record. Nor does this piece tell the story of the rescue that followed; that falls outside the evidence gathered here.",
+     "after": "The text is machine-read, and it carries errors. Quotations are taken only from clean stretches; a few damaged words are reproduced without quotation marks. The main figures — 1,800 miles, 281 days, 346 miles, two pounds, a ton, one mile, six miles, one and a half miles, two months, three and a half months — come from his account and have not been checked against any other record. Nor does this piece tell the story of the rescue that followed; that falls outside the evidence gathered here.",
+     "reason": "与中文同步，将全称判断收窄为主要数字，避免清单与“所有”不一致。",
+     "issues": [
+      "S2"
+     ]
+    }
+   ],
+   "edits_failed": [],
+   "dispositions": [
+    {
+     "issue": "S1",
+     "action": "fixed",
+     "reason": "删除了“其中有些段落像是当时的日记”及其英文对应语。证据包中仅 S-E15 有一处队员日记转引（“One has seen and tasted cleaner, but seldom more opportunely found water.”），不足以支持“有些段落像日记”的判断；同段后一句已准确说明该日记引语，信息无损失。"
+    },
+    {
+     "issue": "S2",
+     "action": "fixed",
+     "reason": "将“所有数字——”改为“主要数字——”（英文“All the figures —”改为“The main figures —”），使限定语与不完整的列举相符；清单内容与数字保持原样，未新增证据包以外的事实。"
+    }
+   ],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[4] numbers differ zh[2, 20] en[2, 10, 20]"
+    ],
+    [
+     "CHECK",
+     "story[6] numbers differ zh[14, 18] en[10, 14, 18]"
+    ]
+   ],
+   "content_sha256_after": "9125169781d0a588365180d46946065e31debdf2ecb2e5dcc7d178bccb3b81e1",
+   "review_after": {
+    "issues": [
+     {
+      "section": "story",
+      "para": 6,
+      "severity": "fix",
+      "problem": "'十几个人用镐和铲'与原文不符：S-E14 写的是 'a dozen men'（十二个人）",
+      "suggestion": "改为'十二个人用镐和铲'"
+     },
+     {
+      "section": "story",
+      "para": 6,
+      "severity": "note",
+      "problem": "'下午开路顺利得多'中的'下午'证据未写：S-E14 无时间信息，仅能由 S-E13'午饭后拔营'间接推断",
+      "suggestion": "删去'下午'，改为'继续前进后开路顺利得多'"
+     },
+     {
+      "section": "story",
+      "para": 10,
+      "severity": "note",
+      "problem": "'光是把两条船挪过去'默认 S-E16 是搬往海洋营那趟，但 S-E16 只写 shifting the two boats，未写明是哪次搬运",
+      "suggestion": "改为'另有一段搬运两条船的记述：……（原文未写明是否即搬往海洋营那趟）'"
+     },
+     {
+      "section": "context",
+      "para": 1,
+      "severity": "note",
+      "problem": "'随浮冰向西北漂了570多英里'取的是净位移（困冰点到弃船点573英里），同段证据还有总漂移1186英里、估计实际超过1500英里，略去易让读者低估总里程",
+      "suggestion": "补一句'（这是困冰点到弃船点的净位移；累计漂移约1186英里）'"
+     },
+     {
+      "section": "analysis",
+      "para": 2,
+      "severity": "note",
+      "problem": "'金币在冰上派不上用场'是把作者推断写成事实前提：S-E5 只写金币被扔掉、照片被留下，未说明原因",
+      "suggestion": "改为'金币在冰上或许派不上用场（他没写原因）'"
+     }
+    ],
+    "unsupported_claims": [
+     "'金币在冰上派不上用场'——S-E5 只写'金币被扔掉、照片被留下'，未说明原因",
+     "'光是把两条船挪过去'指搬往海洋营那次——S-E16 未写明是哪次搬运",
+     "'下午开路'中的时间——S-E14 未写具体时间"
+    ],
+    "invented_inner_life": [],
+    "quote_mismatches": [],
+    "overall": "引语（含英文原句与队员日记转引）、日期、数字与人名归属基本与证据一致，作者推断处多有标注，替代选项也明确声明不是沙克尔顿考虑过的，仅'十几个人/十二人'一处数量失准和两处把推断当前提、一处取舍数字易生歧义需小改。",
+    "_content_sha256": "9125169781d0a588365180d46946065e31debdf2ecb2e5dcc7d178bccb3b81e1"
+   },
+   "parity_after": {
+    "issues": [],
+    "overall": "The English edition matches the Chinese edition in all facts, figures, names, quotations, attributions and hedges across every field; no content discrepancies found.",
+    "_content_sha256": "9125169781d0a588365180d46946065e31debdf2ecb2e5dcc7d178bccb3b81e1"
+   },
+   "carried_over": []
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    {
+     "id": "R1",
+     "source": "review",
+     "severity": "fix",
+     "where": "story.6",
+     "problem": "'十几个人用镐和铲'与原文不符：S-E14 写的是 'a dozen men'（十二个人）",
+     "suggestion": "改为'十二个人用镐和铲'"
+    }
+   ],
+   "edits_applied": [
+    {
+     "path": "sections.story.6.zh",
+     "before": "下午开路顺利得多。两组狗拉着小艇出发，只需帮一次手；他写道，十四条狗干得和十八个人一样好，甚至更好。十几个人用镐和铲，十分钟就能在一道约14英尺高的冰脊上凿出一条还算平整的路。",
+     "after": "下午开路顺利得多。两组狗拉着小艇出发，只需帮一次手；他写道，十四条狗干得和十八个人一样好，甚至更好。十二个人用镐和铲，十分钟就能在一道约14英尺高的冰脊上凿出一条还算平整的路。",
+     "reason": "S-E14 原文为 'a dozen men'，即十二个人，中文原写“十几个人”不符，据证据收窄为“十二个人”。英文字段已写作 'A dozen men'，与证据一致，无需改动。",
+     "issues": [
+      "R1"
+     ]
+    }
+   ],
+   "edits_failed": [],
+   "dispositions": [
+    {
+     "issue": "R1",
+     "action": "fixed",
+     "reason": "已修好：S-E14 写道 'But it is wonderful what a dozen men can do with picks and shovels'，'a dozen men' 是十二个人，中文原写“十几个人”与原文不符，已改为“十二个人用镐和铲”；英文字段原本就是 'A dozen men'，两种语言一致。"
+    }
+   ],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[4] numbers differ zh[2, 20] en[2, 10, 20]"
+    ],
+    [
+     "CHECK",
+     "story[6] numbers differ zh[12, 14, 18] en[10, 14, 18]"
+    ]
+   ],
+   "content_sha256_after": "583414719ca720602ce79f3d3f377870519ea6c464fa9cefdd86850b1bf03ca8",
+   "review_after": {
+    "issues": [
+     {
+      "section": "story",
+      "para": 0,
+      "severity": "note",
+      "problem": "『在被他们称为抛弃营的地方』：原文为 was to become known as Dump Camp，是后来才得此名，措辞像当时就这么叫",
+      "suggestion": "改为『在后来被称为“抛弃营”的那处营地』"
+     },
+     {
+      "section": "story",
+      "para": 0,
+      "severity": "note",
+      "problem": "『用他的原话，负担不起多余的重量』只给中文转述却称“原话”，原句为 We could not afford to cumber ourselves with unnecessary weight",
+      "suggestion": "去掉“用他的原话”，或给出英文原句再附译文"
+     },
+     {
+      "section": "story",
+      "para": 1,
+      "severity": "note",
+      "problem": "『王后』未点名，原文是 Queen Alexandra（亚历山德拉王后），人名信息丢失",
+      "suggestion": "改为『亚历山德拉王后赠给船的那本圣经』"
+     },
+     {
+      "section": "story",
+      "para": 5,
+      "severity": "note",
+      "problem": "『有人折回抛弃营』：证据点名 Rickenson 与 Worsley（早7点出发），并记一小时后每人一块饼干的 hoosh，稿件略去",
+      "suggestion": "改为『里克森和沃斯利清晨7点折回抛弃营取木头和鲸脂』"
+     },
+     {
+      "section": "story",
+      "para": 6,
+      "severity": "note",
+      "problem": "『下午开路顺利得多』的『下午』证据未写（只写饭后拔营后接着凿路）；另省去『五组狗队随行』及 Wild、Hurley 两个名字",
+      "suggestion": "删『下午』改『接着』；可补『另有五组狗队随行』"
+     },
+     {
+      "section": "story",
+      "para": 10,
+      "severity": "note",
+      "problem": "『光是把两条船挪过去』指搬往海洋营，但 S-E16 只写挪两条船极吃力，未写是哪一次搬运，指代系据行文顺序推定",
+      "suggestion": "改为『有一次挪两条船也费尽了力气』或注明该指代为编者判断"
+     },
+     {
+      "section": "analysis",
+      "para": 2,
+      "severity": "fix",
+      "problem": "『金币在冰上派不上用场，照片和一页有亲笔字的扉页也换不来什么』把弃留的理由写成陈述，证据只记 sovereigns were thrown away and photographs were kept，未给理由；虽后文补『他没有说明原因』，首句仍像史实",
+      "suggestion": "首句改为『金币被扔掉、照片和扉页被留下，他没有说明原因』"
+     },
+     {
+      "section": "limits",
+      "para": 1,
+      "severity": "note",
+      "problem": "『主要数字』清单漏了稿件中同样引用的 570多英里、300英里、10英里、14英尺、20英尺 等",
+      "suggestion": "补入这些数字，或改称『部分主要数字』"
+     }
+    ],
+    "unsupported_claims": [
+     "『下午开路顺利得多』中的“下午”：证据只写午饭后拔营，未写凿路发生在下午",
+     "『光是把两条船挪过去』即搬往海洋营那一次：S-E16 未说明是哪次搬运",
+     "『金币在冰上派不上用场，照片和一页有亲笔字的扉页也换不来什么』：证据包未给弃留金币与照片的任何理由",
+     "『两次决定看的是同样的东西：……值不值得把船带进去冒险』：这套权衡标准是作者归纳，原文未写他这样权衡（段首已标“作者推断”）"
+    ],
+    "invented_inner_life": [
+     "『两次决定看的是同样的东西：眼前这段路找不找得到、值不值得把船带进去冒险』——他心中的权衡标准原文未写（段首已标“作者推断”，未伪装成史实）",
+     "『也许那道上限筛的只是重量，也许只是个人偏好』——对其动机的猜测，原文无一字（文中自陈“超出了他写下的内容”，属明示假设）",
+     "『比如把队伍分成两支……或者先派少数人轻装去试水道』——这些备选方案原文全无（文中已注明“他没有写自己考虑过这些”，属作者补充，非其内心）"
+    ],
+    "quote_mismatches": [
+     "『喝过更干净的水』与原文 “One has seen and tasted cleaner” 不完全对应：原文是“见过、尝过”更干净的（水），译文只作“喝过”",
+     "『用他的原话，负担不起多余的重量』以“原话”引出的却是中文转述，原句为 We could not afford to cumber ourselves with unnecessary weight"
+    ],
+    "overall": "证据包与稿件高度吻合，数字（1800英里、281天、346英里、两磅、一吨、六英里、一英里半等）、时间、引语归属与因果说法均能对上，无阻断性错误，只需对几处推断性细节和人名省略作最小改动或标注。",
+    "_content_sha256": "583414719ca720602ce79f3d3f377870519ea6c464fa9cefdd86850b1bf03ca8"
+   },
+   "parity_after": {
+    "issues": [
+     {
+      "path": "sections.context.0",
+      "severity": "fix",
+      "problem": "The English names the ship (\"Once the ice had crushed Endurance\"), but the Chinese only says 船被压毁 with no ship name anywhere in the text.",
+      "suggestion": "Add the ship's name in Chinese (e.g. 船被压毁之后 → 「坚忍号」被压毁之后) or drop \"Endurance\" from the English."
+     },
+     {
+      "path": "sections.analysis.0",
+      "severity": "note",
+      "problem": "The English specifies the hoped-for route as \"boats in the water, land to the north-west\", while the Chinese only says 届时可以划船去找陆地 without the north-west direction (it appears earlier in sections.story.8).",
+      "suggestion": "Add the direction in Chinese (划船向西北去找陆地) or drop \"to the north-west\" from the English."
+     }
+    ],
+    "overall": "The two editions match closely on all facts, figures, quotations and hedges apart from the ship's name appearing only in English and a repeated north-west direction specified only in English.",
+    "_content_sha256": "583414719ca720602ce79f3d3f377870519ea6c464fa9cefdd86850b1bf03ca8"
+   },
+   "carried_over": []
+  }
+ ],
+ "seeded_issues": 2,
+ "final_content_sha256": "583414719ca720602ce79f3d3f377870519ea6c464fa9cefdd86850b1bf03ca8",
+ "remaining": [
+  {
+   "id": "R1",
+   "source": "review",
+   "severity": "fix",
+   "where": "analysis.2",
+   "problem": "『金币在冰上派不上用场，照片和一页有亲笔字的扉页也换不来什么』把弃留的理由写成陈述，证据只记 sovereigns were thrown away and photographs were kept，未给理由；虽后文补『他没有说明原因』，首句仍像史实",
+   "suggestion": "首句改为『金币被扔掉、照片和扉页被留下，他没有说明原因』"
+  },
+  {
+   "id": "P2",
+   "source": "parity",
+   "severity": "fix",
+   "where": "sections.context.0",
+   "problem": "The English names the ship (\"Once the ice had crushed Endurance\"), but the Chinese only says 船被压毁 with no ship name anywhere in the text.",
+   "suggestion": "Add the ship's name in Chinese (e.g. 船被压毁之后 → 「坚忍号」被压毁之后) or drop \"Endurance\" from the English."
+  }
+ ],
+ "final_reviewed": true,
+ "outcome": "pending_review",
+ "model_calls": 6,
+ "model_wall_s": 808.4,
+ "edits_total": 5,
+ "finished_at": 1793382523.318061
+}

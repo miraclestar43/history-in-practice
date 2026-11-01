@@ -1,0 +1,4268 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-auto-20261030-sj077-1",
+ "edition_id": "cand-auto-20261030-sj077-1",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "59f99a5",
+ "started_at": 1793395824.86717,
+ "base_source": "samples/auto/cand-auto-20261030-sj077-1/article.json",
+ "base_content_sha256": "53983ca8245edd42c67a389dbd70f906956e3e42f52197d5683910547867e635",
+ "evidence_sha256": "4ca849c182d95c74b2861f9543be3010d9470f2f6498b94b9d8a59da00e54362",
+ "model_record_sha256": "aa0df4892ca870db806495b9f8bdfec8326511bdc8e7ab116f3d026fc58c5255",
+ "inherited": [
+  {
+   "id": "M1",
+   "model_id": "R1",
+   "source": "mimo-review",
+   "where": "hook.0",
+   "problem": "'平原君的使者一批批赶到大梁'——E11原文是'平原君使者冠蓋相屬於魏'，只说至魏，未指名大梁；'话一句比一句重'亦为文学化铺陈，非原文内容",
+   "suggestion": "改为'平原君的使者冠盖相属赶到魏国'，'话一句比一句重'改作'催得很急'"
+  },
+  {
+   "id": "M2",
+   "model_id": "R2",
+   "source": "mimo-review",
+   "where": "hook.1",
+   "problem": "'魏王未再发兵、使人止晋鄙'证据包全无对应记载（E9止于'魏王使將軍晉鄙將十萬眾救趙'），却被写进kind:record正文，仅靠括注兜底",
+   "suggestion": "改写为'据简报转述，魏王后使人止晋鄙；证据包仅记魏王使晋鄙救赵一事'，kind改interpretation"
+  },
+  {
+   "id": "M3",
+   "model_id": "R3",
+   "source": "mimo-review",
+   "where": "story.0",
+   "problem": "'他先求魏王发兵不得，遂决意赴秦军而死'的因果前半（求魏王不得）证据包无；E13只记'欲死秦軍狀'，'遂'字把未经证实的因果写成事实",
+   "suggestion": "改为'据简报转述，他求魏王发兵不得；《史记》只记他决意赴秦军而死'"
+  },
+  {
+   "id": "M4",
+   "model_id": "R4",
+   "source": "mimo-review",
+   "where": "story.5",
+   "problem": "'公子矫魏王令代晋鄙。合符之后，晋鄙不肯交权'——矫杀晋鄙、盗兵符仅见E25概述，'合符''不肯交权'与如姬实际盗出兵符证据包均无（E15只是侯生献计），括注只覆盖到'不肯交权'",
+   "suggestion": "把'（此节据简报转述）'的范围扩至'矫魏王令、合符、晋鄙不肯交权'整句"
+  },
+  {
+   "id": "M5",
+   "model_id": "R5",
+   "source": "mimo-review",
+   "where": "limits.1",
+   "problem": "'杀将之后如何收场，原文没有记载'与E22矛盾：原文明确记了椎杀晋鄙后的收场（勒兵下令、父子兄弟归养、得选兵八万、进兵击秦），本文story第五段还照引了这条",
+   "suggestion": "删'杀将之后如何收场'，或改为'杀将之后军中是否另有波折，原文未载'"
+  },
+  {
+   "id": "M6",
+   "model_id": "R6",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] '魏王未再发兵、使人止晋鄙、留军观望'（据简报转述，证据包无）",
+   "suggestion": ""
+  },
+  {
+   "id": "M7",
+   "model_id": "R7",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] '他先求魏王发兵不得'（据简报转述，证据包无）",
+   "suggestion": ""
+  },
+  {
+   "id": "M8",
+   "model_id": "R8",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] '如姬实际盗出兵符'（E15仅记侯生献计'如姬必许諾'，无执行记载；limits段自认未逐字核对）",
+   "suggestion": ""
+  },
+  {
+   "id": "M9",
+   "model_id": "R9",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] '晋鄙合符后起疑、不肯交权'（据简报转述，证据包无）",
+   "suggestion": ""
+  },
+  {
+   "id": "M10",
+   "model_id": "R10",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] dek'大军未至'（证据包只有平原君使者的责问'魏救不至'，无魏军留驻不进的记载）",
+   "suggestion": ""
+  },
+  {
+   "id": "M11",
+   "model_id": "R11",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] '公子约车骑欲赴秦军'（limits段自列，证据包无）",
+   "suggestion": ""
+  },
+  {
+   "id": "M12",
+   "model_id": "R12",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[invented_inner_life] '侯生那句『以肉投餒虎』的作用，是逼他把勇气换成方案'（analysis-0，虽标'作者推断'，但把话语意图归给侯生，原文未写）",
+   "suggestion": ""
+  },
+  {
+   "id": "M13",
+   "model_id": "R13",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[invented_inner_life] '这一步的难处不在敢不敢'（analysis-1，对公子心理难度的判断，原文未写，仅标'作者推断'）",
+   "suggestion": ""
+  },
+  {
+   "id": "M14",
+   "model_id": "R14",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[invented_inner_life] '用离开把这笔债认下来'（analysis-2，把留赵解释为认债的动机，原文只写'公子獨與客留趙'这一行为，虽标'作者推断'）",
+   "suggestion": ""
+  }
+ ],
+ "contamination": [
+  {
+   "id": "K1",
+   "brief_line": "方向：这篇讲魏安釐王二十年邯郸被围、魏王不敢出兵时，信陵君决定偷虎符、杀本国将军晋鄙、夺军救赵（SJ0771-E9）（SJ0771-E10）（SJ0771-E12）。看点有三处：他出发送死前先折返问侯生，被当面点破是“以肉投餒虎”的盲动（SJ0771-E13）（SJ0771-E14）；动手前先为“晋鄙不交兵权”这个坏情况备好人手（SJ0771-E17）（SJ0771-E18）；事成之后不居功，听门客提醒后立即自责（SJ0771-E24）。不要写成“为朋友两肋插刀”的义气赞美，也不要写成窃符杀将的道德审判，要看他在没有干净选项时怎么准备、怎么付代价、怎么面对自己这方的亏欠。",
+   "dropped_ids": [
+    "SJ0771-E10",
+    "SJ0771-E12"
+   ]
+  },
+  {
+   "id": "K2",
+   "brief_line": "- 秦王派使者告魏王：邯郸旦暮且下，敢救者移兵先击之；魏王惧，使人止晋鄙，留军壁邺，名为救赵，实持两端以观望（SJ0771-E10）。",
+   "dropped_ids": [
+    "SJ0771-E10"
+   ]
+  },
+  {
+   "id": "K3",
+   "brief_line": "- 公子数请魏王，宾客辩士说王万端，魏王畏秦终不听；公子自度不能得之于王，约车骑百余乘，欲以客往赴秦军，与赵俱死（SJ0771-E12）。",
+   "dropped_ids": [
+    "SJ0771-E12"
+   ]
+  },
+  {
+   "id": "K4",
+   "brief_line": "- 公子从其计，如姬果然盗出晋鄙兵符给公子（SJ0771-E16）。",
+   "dropped_ids": [
+    "SJ0771-E16"
+   ]
+  },
+  {
+   "id": "K5",
+   "brief_line": "- 公子到邺矫魏王令代晋鄙；晋鄙合符后起疑，说今拥十万之众屯于境上、国之重任，单车来代是怎么回事，欲无听（SJ0771-E21）。",
+   "dropped_ids": [
+    "SJ0771-E21"
+   ]
+  },
+  {
+   "id": "K6",
+   "brief_line": "必须写明的不确定性：本篇只有一个史源（《史记·魏公子列传》一处记述），其中的密语与对话（如侯嬴屏人间语献计、朱亥答话）是史家记述，未必逐字（SJ0771-E15）（SJ0771-E19）；不要替人物写心理，原文的“心不快”“意骄矜”“立自责”只是叙述用语，不是实录（SJ0771-E13）（SJ0771-E24）；不要换算公元年份，只用原文的魏安釐王二十年这样的纪年（SJ0771-E9）；“得选兵八万人”这一数字只此一处，无旁证（SJ0771-E22）；晋鄙军中如何收场、合符如何校验，原文没有记载（SJ0771-E21）（SJ0771-E22）；侯生自刭的动机、如姬盗符的后续，原文只写行为与一句话，没有更多交代（SJ0771-E20）（SJ0771-E16）。",
+   "dropped_ids": [
+    "SJ0771-E16",
+    "SJ0771-E21"
+   ]
+  },
+  {
+   "id": "K7",
+   "brief_line": "现代应用：今天常见的情形是：你所在的团队遇到明显风险，但决策层因为害怕更大的对手而不肯动（SJ0771-E10）；你手里有一线证据和能干的人，要不要绕开常规流程推动（SJ0771-E12）；动手前先问一句“这是不是拿肉投餒虎”，并为“对方不配合”备好预案（SJ0771-E14）（SJ0771-E17）；事情成了之后不居功，主动承认对自己这方的亏欠（SJ0771-E24）。",
+   "dropped_ids": [
+    "SJ0771-E10",
+    "SJ0771-E12"
+   ]
+  },
+  {
+   "id": "K8",
+   "brief_line": "注意：以下摘录的锚点未通过逐字核对，已删除，不得使用其内容：SJ0771-E10、SJ0771-E12、SJ0771-E16、SJ0771-E21。",
+   "dropped_ids": [
+    "SJ0771-E10",
+    "SJ0771-E12",
+    "SJ0771-E16",
+    "SJ0771-E21"
+   ]
+  }
+ ],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "dek",
+   "category": "unsupported",
+   "severity": "block",
+   "problem": "「大军未至（据简报转述）」/'the army never reached the city' 沿用已剔除的 E10（K2：魏王止晋鄙、留军观望）。证据里只有平原君使者责问时说的「魏救不至」。这是使者的说法，正文却当成叙述事实来写。",
+   "evidence": [
+    {
+     "id": "SJ0771-E11",
+     "quote": "今邯鄲旦暮降秦而魏救不至"
+    }
+   ],
+   "proposed": "改为'平原君的使者责问魏救不至'（英文同步改为 Lord Pingyuan's envoys complained that Wei's relief had not come），删除'据简报转述'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“大军未至（据简报转述）”/'the army never reached the city'，改为平原君使者责问魏救不至，把它写成使者的说法。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.hook.0",
+   "category": "unsupported",
+   "severity": "block",
+   "problem": "括注「留驻不进一节据简报转述」和英文 'the halt of the relief army is retold from the briefing' 都用了已剔除的 E10（K2）。英文还把'援军停驻'当成事实写出。紧接其后的 'Instead' 也以这一说法为前提。",
+   "evidence": [
+    {
+     "id": "SJ0771-E9",
+     "quote": "魏王使將軍晉鄙將十萬眾救趙"
+    }
+   ],
+   "proposed": "中英文都删去括注；英文删去 'Instead'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中英文都删去了出自已剔除 E10 的“留驻不进”括注，英文同时删去以此为前提的 'Instead'。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.hook.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "「话一句比一句重」/'each message harsher than the last' 写的是语气逐次升级，证据只记使者冠盖相属、责让之辞，没有逐次加重的记载。（使者到大梁一节可由侯嬴为大梁夷门监者、公子过夷门推知，不算问题。）",
+   "evidence": [
+    {
+     "id": "SJ0771-E11",
+     "quote": "平原君使者冠蓋相屬於魏，讓魏公子曰"
+    }
+   ],
+   "proposed": "改为'使者冠盖相属，责让公子'（英文同步），删去'一句比一句重'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“话一句比一句重”/'each message harsher than the last'，改为使者冠盖相属、责让魏公子；到大梁一节照旧保留。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.hook.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "中文的「公子无忌」和英文通篇的 'Lord Xinling' 都超出证据包。证据只称「魏公子」「公子」。",
+   "evidence": [
+    {
+     "id": "SJ0771-E11",
+     "quote": "讓魏公子曰"
+    }
+   ],
+   "proposed": "改称'魏公子'/'the Wei prince (the lord)'；或明确注明人名封号出自证据包以外。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文“公子无忌”改为“魏公子”；英文所有出现 'Lord Xinling' 的字段（hook.0、hook.1、context.0–3、story.3、story.4、story.5、story.7、story.8）都改为 'the Wei prince'/'the prince'，不再使用证据包以外的名号。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.hook.1",
+   "category": "unsupported",
+   "severity": "block",
+   "problem": "「魏王未再发兵、使人止晋鄙（据简报转述）」出自已剔除的 E10（K2），却写进了 record 段。英文同。",
+   "evidence": [],
+   "proposed": "删去这一句，只保留公子有门客、未得任以国政，以及决意赴秦军而死。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去出自已剔除 E10 的“魏王未再发兵、使人止晋鄙”一句，只保留三千门客、未任国政、决意赴死、夷门辞决；ev 补入 E2、E3。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F6",
+   "path": "sections.context.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "「公子无忌」的名字不在证据中。",
+   "evidence": [
+    {
+     "id": "SJ0771-E2",
+     "quote": "公子為人仁而下士"
+    }
+   ],
+   "proposed": "改为'魏公子'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "“公子无忌”改为“魏公子”。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F7",
+   "path": "sections.context.0",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文用引号引的是译文，没有标明是译述，读来像原文。",
+   "evidence": [
+    {
+     "id": "SJ0771-E2",
+     "quote": "士無賢不肖皆謙而禮交之"
+    }
+   ],
+   "proposed": "在引语前加 'in translation' 或 'as the passage may be rendered'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文去掉引号，改为标明 'in translation' 的译述。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F8",
+   "path": "sections.context.1",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "中文有「一种解释是」，英文 'Read the episode both ways' 没有解释标签，两种语言不一致。",
+   "evidence": [],
+   "proposed": "改为 'One reading is that the episode cuts both ways.'",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文改为 'One reading is that the episode cuts both ways.'，与中文“一种解释是”的标签一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F9",
+   "path": "sections.context.1",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文引号里是译文，没有标明是译述。",
+   "evidence": [
+    {
+     "id": "SJ0771-E3",
+     "quote": "是後魏王畏公子之賢能，不敢任公子以國政"
+    }
+   ],
+   "proposed": "标明是译文。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文去掉引号，改为标明 'in translation' 的译述。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F10",
+   "path": "sections.context.2",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "英文 'the eastern gate of Daliang' 中的方位'东门'证据没有。",
+   "evidence": [
+    {
+     "id": "SJ0771-E4",
+     "quote": "為大梁夷門監者"
+    }
+   ],
+   "proposed": "改为 'a gate of Daliang'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去证据没有的“东门”方位，改为 'a gate of Daliang'。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F11",
+   "path": "sections.context.2",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文引号里是侯嬴话的译文，没有标明是译述。",
+   "evidence": [
+    {
+     "id": "SJ0771-E4",
+     "quote": "臣脩身絜行數十年"
+    }
+   ],
+   "proposed": "标明是译文。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "侯嬴的话在英文中改为不加引号、标明 'in translation' 的转述。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F12",
+   "path": "sections.context.3",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "「这些看似闲棋的往来，邯郸被围那年全用上了」/'came due' 是作者推断，却写在 record 段里，没有标签。",
+   "evidence": [],
+   "proposed": "前面加'作者认为'/'One reading is'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "推断句前加上“作者认为”/'In the author's view'。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F13",
+   "path": "sections.context.3",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文引号里是译文，没有标明是译述。",
+   "evidence": [
+    {
+     "id": "SJ0771-E8",
+     "quote": "此子賢者，世莫能知"
+    }
+   ],
+   "proposed": "标明是译文。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文两处引语去掉引号，改为标明 'in translation' 的转述。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F14",
+   "path": "sections.story.0",
+   "category": "unsupported",
+   "severity": "block",
+   "problem": "「据简报转述，他先求魏王发兵不得，遂决意赴秦军而死」用了已剔除的 E12（K3），还用「遂」/'and so' 把它写成因果。证据只记他决意赴死。",
+   "evidence": [
+    {
+     "id": "SJ0771-E13",
+     "quote": "具告所以欲死秦軍狀"
+    }
+   ],
+   "proposed": "删去求魏王一节和'遂'，只写'他决意赴秦军而死'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去出自已剔除 E12 的求魏王一节和因果连词“遂”/'and so'，只写他决意赴秦军而死。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F15",
+   "path": "sections.story.1",
+   "category": "inner_life",
+   "severity": "fix",
+   "problem": "英文 'a gnawing unhappiness' 加重了原文「心不快」的心理程度，中文没有这一层。",
+   "evidence": [
+    {
+     "id": "SJ0771-E13",
+     "quote": "公子行數里，心不快"
+    }
+   ],
+   "proposed": "改为 'felt displeased'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "'a gnawing unhappiness' 改为 'felt displeased'，与“心不快”的程度相符。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F16",
+   "path": "sections.story.1",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文引号里是译文，没有标明是译述。",
+   "evidence": [
+    {
+     "id": "SJ0771-E13",
+     "quote": "公子勉之矣，老臣不能從"
+    }
+   ],
+   "proposed": "标明是译文。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文引语去掉引号，改为标明 'in translation' 的转述。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F17",
+   "path": "sections.story.2",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "「这一折返是全篇的转折」/'the pivot of the whole story' 是作者判断，写在 record 段里，没有标签。",
+   "evidence": [],
+   "proposed": "加'作者认为'/'In the author's reading'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "转折判断前加“作者认为”/'In the author's reading'。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F18",
+   "path": "sections.story.2",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "英文 'the retainers squandered besides' 与原文「尚安事客」和中文「还要门客何用」意思不同。",
+   "evidence": [
+    {
+     "id": "SJ0771-E14",
+     "quote": "尚安事客"
+    }
+   ],
+   "proposed": "改为 'and what use, then, are retainers?'",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "改为 'what use, then, are retainers?'，与「尚安事客」和中文“还要门客何用”一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F19",
+   "path": "sections.story.2",
+   "category": "inner_life",
+   "severity": "fix",
+   "problem": "英文 'he had counted on exactly this' 写成侯生有意设计。原文只说「以是知」，即他由此料知。",
+   "evidence": [
+    {
+     "id": "SJ0771-E14",
+     "quote": "以是知公子恨之復返也"
+    }
+   ],
+   "proposed": "改为 'he said he had known the lord would resent it and come back'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去 'he had counted on exactly this'，改为他说由此料知公子会恨而复返，不再写成有意设计。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F20",
+   "path": "sections.story.2",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文引号里是译文，没有标明是译述。",
+   "evidence": [
+    {
+     "id": "SJ0771-E14",
+     "quote": "譬若以肉投餒虎"
+    }
+   ],
+   "proposed": "标明是译文。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文引语去掉引号，改为标明 'in translation' 的转述。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F21",
+   "path": "sections.story.3",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "「原文记如姬…」/'The source has her…' 把侯生的转述（「嬴聞」）写成了叙述者的记录。",
+   "evidence": [
+    {
+     "id": "SJ0771-E15",
+     "quote": "嬴聞如姬父為人所殺"
+    }
+   ],
+   "proposed": "改为'侯生说如姬…'/'Hou Ying said she was…'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "“原文记如姬”改为“侯生说如姬”，英文改为 'Hou Ying said she was…'，并点明整段是侯生所言。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F22",
+   "path": "sections.story.3",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文引号 'she had no way to repay him' 误译「顧未有路耳」，'repay' 是添加的意思，而且用引号冒充原文。",
+   "evidence": [
+    {
+     "id": "SJ0771-E15",
+     "quote": "顧未有路耳"
+    }
+   ],
+   "proposed": "改为译述：only she had not yet had the opportunity (in translation)。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去含 'repay' 的引号误译，改为 'only, in translation, she had not yet had the opportunity'。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F23",
+   "path": "sections.story.3",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "英文 'for three years she had sought revenge' 漏掉了没能报仇（自王以下莫能得），中文「三年未能报仇」有这一层。",
+   "evidence": [
+    {
+     "id": "SJ0771-E15",
+     "quote": "自王以下欲求報其父仇，莫能得"
+    }
+   ],
+   "proposed": "补上 'and no one, from the king down, had been able to avenge him'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文补上 'and no one, from the king down, had been able to avenge him'；中文同步写明自王以下皆未能报仇。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F24",
+   "path": "sections.story.4",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文多处引号里是译文，没有标明是译述。",
+   "evidence": [
+    {
+     "id": "SJ0771-E17",
+     "quote": "將在外，主令有所不受"
+    }
+   ],
+   "proposed": "标明是译文。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文各处引语去掉引号，改为标明 'in translation' 的转述；顺带把 'too old to follow' 收窄为 'could not follow'，与「老臣不能從」一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F25",
+   "path": "sections.story.5",
+   "category": "unsupported",
+   "severity": "block",
+   "problem": "「到了晋鄙军中，公子矫魏王令代晋鄙。合符之后，晋鄙不肯交权」来自已剔除的 E21（K5）。括注只覆盖了后半句，'代晋鄙''合符''不肯交权'都没有证据。",
+   "evidence": [
+    {
+     "id": "SJ0771-E22",
+     "quote": "朱亥袖四十斤鐵椎，椎殺晉鄙"
+    }
+   ],
+   "proposed": "删去这两句，直接从朱亥椎杀晋鄙写起。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去出自已剔除 E21 的“矫令代晋鄙、合符后不肯交权”两句，直接从朱亥椎杀晋鄙写起。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F26",
+   "path": "sections.story.5",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文军令用引号，是译文，没有标明是译述。",
+   "evidence": [
+    {
+     "id": "SJ0771-E22",
+     "quote": "父子俱在軍中，父歸"
+    }
+   ],
+   "proposed": "标明是译文。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文军令去掉引号，改为标明 'in translation' 的转述。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F27",
+   "path": "sections.story.6",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文引号里是赵王话的译文，没有标明是译述。",
+   "evidence": [
+    {
+     "id": "SJ0771-E23",
+     "quote": "自古賢人未有及公子者也"
+    }
+   ],
+   "proposed": "标明是译文。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "赵王的话在英文中改为标明 'in translation' 的转述。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F28",
+   "path": "sections.story.7",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "英文 'overridden the general'/'overriding the king's order' 没有译出「矯」（伪托王令）的意思，与中文「矫夺」「矫魏王令」不一致。",
+   "evidence": [
+    {
+     "id": "SJ0771-E24",
+     "quote": "且矯魏王令，奪晉鄙兵以救趙"
+    }
+   ],
+   "proposed": "改为 'forging the king's order'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文改为 'on a forged royal order' 和 'forging the king of Wei's order'，译出「矯」的意思。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F29",
+   "path": "sections.story.7",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文引号里是译文，没有标明是译述。",
+   "evidence": [
+    {
+     "id": "SJ0771-E24",
+     "quote": "於趙則有功矣，於魏則未為忠臣也"
+    }
+   ],
+   "proposed": "标明是译文。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文引语去掉引号，改为标明 'in translation' 的转述。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F30",
+   "path": "sections.story.8",
+   "category": "style",
+   "severity": "note",
+   "problem": "英文句末多了一个句号（'authorization..'）。",
+   "evidence": [],
+   "proposed": "删去多余的句号。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F31",
+   "path": "sections.analysis.0",
+   "category": "unsupported",
+   "severity": "block",
+   "problem": "「求魏王（走不通，据简报转述）」用了已剔除的 E12（K3）。「带着门客死在秦军阵前」/'with his retainers' 也沿用了 K3 的'以客往赴秦军'。",
+   "evidence": [
+    {
+     "id": "SJ0771-E13",
+     "quote": "具告所以欲死秦軍狀"
+    }
+   ],
+   "proposed": "删去'求魏王'这一项，选项只列赴秦军而死、矫令夺军；反事实中删去'带着门客'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去出自 E12 的“求魏王”选项，只列两条路；反事实中删去“带着门客”。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F32",
+   "path": "sections.analysis.0",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "首句「公子一次也不是在好与坏之间挑…都不干净」是作者判断，没有标签。",
+   "evidence": [],
+   "proposed": "句首加'作者认为'/'In the author's reading'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "首句加上“作者认为”/'In the author's reading'。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F33",
+   "path": "sections.analysis.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "「流泪说必杀晋鄙」/'he said Jin Bi had to be killed' 丢掉了'恐不听'这个条件。原话是担心晋鄙不听，不听才必杀。",
+   "evidence": [
+    {
+     "id": "SJ0771-E18",
+     "quote": "往恐不聽，必當殺之"
+    }
+   ],
+   "proposed": "改为'流泪说怕晋鄙不听、到时必须杀他'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "改为流泪说怕晋鄙不听、到时必须杀他，补回“恐不听”这个条件。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F34",
+   "path": "sections.analysis.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "「绝于魏王」/'breaking with the king' 证据里没有。证据只记魏王怒、公子留赵。",
+   "evidence": [
+    {
+     "id": "SJ0771-E25",
+     "quote": "魏王怒公子之盜其兵符，矯殺晉鄙"
+    }
+   ],
+   "proposed": "改为'惹魏王怒'/'angering the king'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "“绝于魏王”/'breaking with the king' 改为“惹魏王怒”/'angering the king'。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F35",
+   "path": "sections.analysis.2",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "「立自责，随后遣军归魏、自己留赵」以及「门客劝谏、公子自责、留赵在后」排定的先后没有证据支持。E25 把遣军归魏系在'已卻秦存趙'之后，没有说在五城、自责之后。",
+   "evidence": [
+    {
+     "id": "SJ0771-E25",
+     "quote": "已卻秦存趙，使將將其軍歸魏，而公子獨與客留趙"
+    }
+   ],
+   "proposed": "删去'随后'和先后排序，或注明二者先后原文未定。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“随后”和自责与留赵的先后排序，注明遣军归魏系于退秦存赵之后，原文未交代它与五城之议、自责的先后。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F36",
+   "path": "sections.analysis.2",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "「他不居功的姿态」/'his refusal to claim credit' 与证据相反。原文先记他「意驕矜而有自功之色」，受劝后才自责。",
+   "evidence": [
+    {
+     "id": "SJ0771-E24",
+     "quote": "意驕矜而有自功之色"
+    }
+   ],
+   "proposed": "改为'他先居功、受劝后立即自责'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "“不居功的姿态”改为“先有居功之色，受劝后立即自责”。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F37",
+   "path": "sections.analysis.2",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文引号里是译文，没有标明是译述。",
+   "evidence": [
+    {
+     "id": "SJ0771-E24",
+     "quote": "於趙則有功矣，於魏則未為忠臣也"
+    }
+   ],
+   "proposed": "标明是译文。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文引语去掉引号，改为标明 'in translation' 的转述。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F38",
+   "path": "sections.analysis.2",
+   "category": "style",
+   "severity": "note",
+   "problem": "英文 'then send the army home and stay in Zhao' 语法残缺。",
+   "evidence": [],
+   "proposed": "改为 'he then sent the army home and stayed in Zhao'。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F39",
+   "path": "sections.limits.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "英文篇名 'Hereditary House of Lord Wei' 错了，原篇是列传，不是世家。",
+   "evidence": [],
+   "proposed": "改为 'Biography of the Wei Prince' (Records of the Grand Historian)。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文篇名改为 'Biography of the Wei Prince in the Records of the Grand Historian'。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F40",
+   "path": "sections.limits.0",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "「密语」/'whispered schemes' 的说法来自简报（屏人间语），证据包没有密谈的记载。",
+   "evidence": [
+    {
+     "id": "SJ0771-E15",
+     "quote": "嬴聞晉鄙之兵符常在王臥內"
+    }
+   ],
+   "proposed": "删去'密语'，改为'对话与献计'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“密语”/'whispered schemes'，改为“对话与献计”/'The dialogue and the proposed scheme'。英文同时去掉“心不快”等标签外的引号，用词与正文统一。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F41",
+   "path": "sections.limits.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "「杀将之后如何收场，原文没有记载」与证据矛盾。原文记了将军、勒兵下令、选兵、进击。",
+   "evidence": [
+    {
+     "id": "SJ0771-E22",
+     "quote": "公子遂將晉鄙軍。勒兵下令軍中曰"
+    }
+   ],
+   "proposed": "删去'杀将之后如何收场'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去与 E22 矛盾的“杀将之后如何收场”，只保留合符如何校验未载。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F42",
+   "path": "sections.limits.1",
+   "category": "unsupported",
+   "severity": "block",
+   "problem": "列举的「魏王使人止晋鄙留军观望、公子约车骑欲赴秦军、如姬盗出兵符、晋鄙合符起疑」全部来自已剔除的 E10/E12/E16/E21（K2–K5）。剔除的内容不能转述。「如姬盗符之后的下落」/'after stealing the tally' 也以 E16 为前提。",
+   "evidence": [],
+   "proposed": "删去整句列举；把'如姬盗符之后的下落'改为'侯生所献窃符之计如何执行，证据未载'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去整句出自已剔除摘录的转述列举；“如姬盗符之后的下落”改为“侯生所献窃符之计如何执行，证据未载”。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F43",
+   "path": "uncertainty_note",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "「晋鄙军中如何收场…原文未载」/'how the affair ended' 与 E22 矛盾。",
+   "evidence": [
+    {
+     "id": "SJ0771-E22",
+     "quote": "得選兵八萬人，進兵擊秦軍"
+    }
+   ],
+   "proposed": "删去'如何收场'。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“如何收场”/'how the affair ended'，只保留合符如何校验未载。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F44",
+   "path": "uncertainty_note",
+   "category": "unsupported",
+   "severity": "block",
+   "problem": "「魏王止晋鄙、公子约车骑赴死、如姬盗符、晋鄙合符起疑」以及「如姬盗符的后续」都沿用了已剔除的 E10/E12/E16/E21。",
+   "evidence": [],
+   "proposed": "删去这些内容。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去魏王止晋鄙、公子约车骑赴死、如姬盗符、晋鄙合符起疑以及“如姬盗符的后续”，改为窃符之计如何执行证据未载。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F45",
+   "path": "uncertainty_note",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "英文篇名 'Hereditary House of Lord Wei' 错误；'whispered schemes'/「密语」证据没有。",
+   "evidence": [],
+   "proposed": "同 F39、F40。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "与 F39、F40 同步：英文篇名改为 'Biography of the Wei Prince'，“密语”/'whispered schemes' 改为“对话与献计”。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "M1",
+   "problem": "'平原君的使者一批批赶到大梁'——E11原文是'平原君使者冠蓋相屬於魏'，只说至魏，未指名大梁；'话一句比一句重'亦为文学化铺陈，非原文内容",
+   "origin": "inherited mimo-review R1",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "hook.0",
+   "disposition": "duplicate",
+   "same_as": "F3",
+   "rationale": "'话一句比一句重'确实无据。'大梁'则可由夷门在大梁、公子过夷门推知，这一部分不成立。"
+  },
+  {
+   "id": "M2",
+   "problem": "'魏王未再发兵、使人止晋鄙'证据包全无对应记载（E9止于'魏王使將軍晉鄙將十萬眾救趙'），却被写进kind:record正文，仅靠括注兜底",
+   "origin": "inherited mimo-review R2",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "hook.1",
+   "disposition": "duplicate",
+   "same_as": "F5",
+   "rationale": "内容来自已剔除的 E10。"
+  },
+  {
+   "id": "M3",
+   "problem": "'他先求魏王发兵不得，遂决意赴秦军而死'的因果前半（求魏王不得）证据包无；E13只记'欲死秦軍狀'，'遂'字把未经证实的因果写成事实",
+   "origin": "inherited mimo-review R3",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "story.0",
+   "disposition": "duplicate",
+   "same_as": "F14",
+   "rationale": "内容来自已剔除的 E12，并被写成因果。"
+  },
+  {
+   "id": "M4",
+   "problem": "'公子矫魏王令代晋鄙。合符之后，晋鄙不肯交权'——矫杀晋鄙、盗兵符仅见E25概述，'合符''不肯交权'与如姬实际盗出兵符证据包均无（E15只是侯生献计），括注只覆盖到'不肯交权'",
+   "origin": "inherited mimo-review R4",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "story.5",
+   "disposition": "duplicate",
+   "same_as": "F25",
+   "rationale": "内容来自已剔除的 E21。"
+  },
+  {
+   "id": "M5",
+   "problem": "'杀将之后如何收场，原文没有记载'与E22矛盾：原文明确记了椎杀晋鄙后的收场（勒兵下令、父子兄弟归养、得选兵八万、进兵击秦），本文story第五段还照引了这条",
+   "origin": "inherited mimo-review R5",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "limits.1",
+   "disposition": "duplicate",
+   "same_as": "F41",
+   "rationale": "E22 记有收场。"
+  },
+  {
+   "id": "M6",
+   "problem": "[unsupported_claims] '魏王未再发兵、使人止晋鄙、留军观望'（据简报转述，证据包无）",
+   "origin": "inherited mimo-review R6",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F5",
+   "rationale": "同为 K2 污染。"
+  },
+  {
+   "id": "M7",
+   "problem": "[unsupported_claims] '他先求魏王发兵不得'（据简报转述，证据包无）",
+   "origin": "inherited mimo-review R7",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F14",
+   "rationale": "同为 K3 污染。"
+  },
+  {
+   "id": "M8",
+   "problem": "[unsupported_claims] '如姬实际盗出兵符'（E15仅记侯生献计'如姬必许諾'，无执行记载；limits段自认未逐字核对）",
+   "origin": "inherited mimo-review R8",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F42",
+   "rationale": "如姬盗符来自已剔除的 E16。"
+  },
+  {
+   "id": "M9",
+   "problem": "[unsupported_claims] '晋鄙合符后起疑、不肯交权'（据简报转述，证据包无）",
+   "origin": "inherited mimo-review R9",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F25",
+   "rationale": "同为 K5 污染。"
+  },
+  {
+   "id": "M10",
+   "problem": "[unsupported_claims] dek'大军未至'（证据包只有平原君使者的责问'魏救不至'，无魏军留驻不进的记载）",
+   "origin": "inherited mimo-review R10",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "'大军未至'来自 K2，原文只有使者的责问。"
+  },
+  {
+   "id": "M11",
+   "problem": "[unsupported_claims] '公子约车骑欲赴秦军'（limits段自列，证据包无）",
+   "origin": "inherited mimo-review R11",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F42",
+   "rationale": "约车骑一节来自已剔除的 E12。"
+  },
+  {
+   "id": "M12",
+   "path": "(location not given)",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "[invented_inner_life] '侯生那句『以肉投餒虎』的作用，是逼他把勇气换成方案'（analysis-0，虽标'作者推断'，但把话语意图归给侯生，原文未写）",
+   "origin": "inherited mimo-review R12",
+   "disposition": "rejected",
+   "rationale": "该句位于 interpretation 段，已标'作者推断'。证据中侯生斥公子无他端，随后献计，推断有据。",
+   "evidence": [
+    {
+     "id": "SJ0771-E14",
+     "quote": "無他端而欲赴秦軍，譬若以肉投餒虎，何功之有哉"
+    }
+   ],
+   "decided_in": "audit"
+  },
+  {
+   "id": "M13",
+   "path": "(location not given)",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "[invented_inner_life] '这一步的难处不在敢不敢'（analysis-1，对公子心理难度的判断，原文未写，仅标'作者推断'）",
+   "origin": "inherited mimo-review R13",
+   "disposition": "rejected",
+   "rationale": "已标'作者推断'，并以公子自述'不是怕死'为据。",
+   "evidence": [
+    {
+     "id": "SJ0771-E18",
+     "quote": "是以泣耳，豈畏死哉"
+    }
+   ],
+   "decided_in": "audit"
+  },
+  {
+   "id": "M14",
+   "path": "(location not given)",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "[invented_inner_life] '用离开把这笔债认下来'（analysis-2，把留赵解释为认债的动机，原文只写'公子獨與客留趙'这一行为，虽标'作者推断'）",
+   "origin": "inherited mimo-review R14",
+   "disposition": "rejected",
+   "rationale": "已标'作者推断'，并说明原文只写留赵这一行为；原文也记公子自知魏王之怒。先后顺序问题另见 F35。",
+   "evidence": [
+    {
+     "id": "SJ0771-E25",
+     "quote": "公子亦自知也"
+    }
+   ],
+   "decided_in": "audit"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.context.0",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "record 段称公子名声“一半来自养客”（en: rested half on his retainers）。这是证据中没有的量化判断，也没有标为解释。",
+   "evidence": [
+    {
+     "id": "SJ0771-E2",
+     "quote": "士以此方數千里爭往歸之，致食客三千人"
+    }
+   ],
+   "proposed": "zh 改为“魏公子在魏国以养客知名”；en 改为“The Wei prince was known in Wei for keeping retainers.”",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "删去证据不支持的量化判断“一半来自养客／rested half on his retainers”。中文改为“以养客知名”，英文同步改为“was known in Wei for keeping retainers”。证据只记士人争相归附、食客三千。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V2",
+   "path": "sections.limits.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "称侯生自刭的动机“原文只写行为和一句话”（en: comes down to an act），等于断言自刭已经发生。证据包只有侯生请求届时北乡自刭的许诺，没有记载他实际自刭。",
+   "evidence": [
+    {
+     "id": "SJ0771-E20",
+     "quote": "請數公子行日，以至晉鄙軍之日，北鄉自剄，以送公子"
+    }
+   ],
+   "proposed": "zh 改为“侯生许诺北乡自刭以送公子，证据只记这句许诺，是否践行、动机为何均未载”；en 相应改为“Hou Ying's pledge to cut his own throat is recorded only as a single sentence; whether he carried it out, and why, is not in the evidence.”",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "证据只记侯生许诺届时北乡自刭以送公子，没有记载他实际自刭。已把“自刭的动机只写行为和一句话／comes down to an act”改为“只记这句许诺，是否践行、动机为何均未载”，中英同步。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V3",
+   "path": "sections.limits.1",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "“晋鄙军中合符如何校验，原文没有记载”是对原文全篇的断言，证据包无法支持，因为包内只有侯生对合符的假设性预案。这一句与同段末句“证据未载”的口径也不一致。",
+   "evidence": [
+    {
+     "id": "SJ0771-E17",
+     "quote": "公子即合符，而晉鄙不授公子兵而復請之，事必危矣"
+    }
+   ],
+   "proposed": "zh 改为“晋鄙军中实际如何合符，证据未载”；en 改为“how the tallies were actually matched in Jin Bi's camp is not recorded in the evidence”。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "证据包中关于合符只有侯生的假设性预案，无法支持对原文全篇“没有记载”的断言。已收窄为“晋鄙军中实际如何合符，证据未载”，与同段末句的口径一致，中英同步。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V4",
+   "path": "uncertainty_note",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "与 V2 相同：“侯生自刭的动机原文只写行为与一句话”（en: given only as an act）把侯生的许诺写成了已发生的行为，证据没有记载他实际自刭。",
+   "evidence": [
+    {
+     "id": "SJ0771-E20",
+     "quote": "請數公子行日，以至晉鄙軍之日，北鄉自剄，以送公子"
+    }
+   ],
+   "proposed": "zh 改为“侯生北乡自刭只见于其许诺之语，是否践行及动机证据未载”；en 改为“Hou Ying's throat-cutting appears only as a pledge; whether he carried it out, and why, is not in the evidence.”",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "与 V1-V2 同样处理：改为“侯生北乡自刭只见于其许诺之语，是否践行及动机证据未载”，英文同步为“appears only as a pledge”，不再把许诺写成已发生的行为。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V5",
+   "path": "uncertainty_note",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "与 V3 相同：“晋鄙军中合符如何校验原文未载”是对原文全篇的断言，超出证据包可核范围。",
+   "evidence": [
+    {
+     "id": "SJ0771-E17",
+     "quote": "公子即合符，而晉鄙不授公子兵而復請之，事必危矣"
+    }
+   ],
+   "proposed": "zh 改为“晋鄙军中实际如何合符，证据未载”；en 改为“how the tallies were actually matched in Jin Bi's camp is not recorded in the evidence”。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "与 V1-V3 同样处理：把“原文未载”收窄为“晋鄙军中实际如何合符，证据未载”，英文同步为“is not recorded in the evidence”。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V2-V1",
+   "path": "sections.hook.0",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "“公子不是自命能急人之困吗”/“the man who prided himself on rushing to others in distress”把“能急人之困”写成了公子的自我标榜。原文的说法不同：平原君称，自己正是看重公子高义、能急人之困，才与公子结为婚姻。这句话说的是平原君对公子的期许，并非公子的自我宣称。",
+   "evidence": [
+    {
+     "id": "SJ0771-E11",
+     "quote": "勝所以自附為婚姻者，以公子之高義，為能急人之困"
+    },
+    {
+     "id": "SJ0771-E11",
+     "quote": "安在公子能急人之困也"
+    }
+   ],
+   "proposed": "中文改为“当初正是看重公子高义、能急人之困才结为婚姻，如今公子的急人之困在哪里？”；英文改为“had he not married into the prince's family precisely because the prince was known to rush to others in distress — so where was that now?”",
+   "origin": "final-editor verify round 2"
+  }
+ ],
+ "edits": [
+  {
+   "path": "dek.zh",
+   "before": "魏安釐王二十年，秦军围邯郸，魏王遣晋鄙救赵，大军未至（据简报转述）。魏公子决意赴秦军而死，出城后折返夷门，被一个守门老人当面点破：那是拿肉投餒虎。本文看他如何在没有干净选项时准备、付代价、认亏欠。",
+   "after": "魏安釐王二十年，秦军围邯郸，魏王遣晋鄙救赵，平原君的使者责问魏救不至。魏公子决意赴秦军而死，路过夷门辞别后又折返，被一个守门老人当面点破：那是拿肉投餒虎。本文看他如何在没有干净选项时准备、付代价、认亏欠。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "dek.en",
+   "before": "In the twentieth year of King Anxi of Wei, Qin's armies closed around Handan and the king of Wei sent General Jin Bi to relieve Zhao, but the army never reached the city (retold from the briefing). The lord of Wei resolved to go and die at the Qin army; after riding out and turning back at the Yimen gate, an old gatekeeper cut him to his face: that is meat thrown to a starving tiger. Here is how he worked the problem when no option was clean — what he prepared, what it cost, and what he admitted he owed.",
+   "after": "In the twentieth year of King Anxi of Wei, Qin's armies closed around Handan and the king of Wei sent General Jin Bi to relieve Zhao; Lord Pingyuan's envoys complained that Wei's relief had not come. The Wei prince resolved to go and die at the Qin army; after taking his leave at the Yimen gate and riding off, he turned back, and an old gatekeeper told him to his face that this was meat thrown to a starving tiger. Here is how he worked the problem when no option was clean — what he prepared, what it cost, and what he admitted he owed.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.hook.0.zh",
+   "before": "魏安釐王二十年，秦军击破赵长平军之后，进兵围住邯郸。魏王派将军晋鄙带十万众救赵（留驻不进一节据简报转述，证据包无）——平原君的使者一批批赶到大梁，车盖接连不断，话一句比一句重：邯郸旦暮之间就要降秦，而魏国答应的救兵至今不到，公子不是自命能急人之困吗？末了还添一句「獨不憐公子姊邪」。公子无忌的姐姐，正是平原君夫人。",
+   "after": "魏安釐王二十年，秦军击破赵长平军之后，进兵围住邯郸。魏王派将军晋鄙带十万众救赵。平原君的使者冠盖相属，赶到大梁责让魏公子：邯郸旦暮之间就要降秦，而魏国的救兵至今不到，公子不是自命能急人之困吗？末了还添一句「獨不憐公子姊邪」。魏公子的姐姐，正是平原君夫人。",
+   "issues": [
+    "F2",
+    "F3",
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.hook.0.en",
+   "before": "In the twentieth year of King Anxi of Wei, after Qin had broken Zhao's army at Changping, its armies pressed on and encircled Handan. The king of Wei sent General Jin Bi with a hundred thousand troops to relieve Zhao (the halt of the relief army is retold from the briefing and is not in the evidence packet). Instead, envoys from Lord Pingyuan arrived in Daliang one after another — caps of office and carriage canopies in an unbroken line — each message harsher than the last: Handan was within days of surrendering to Qin, and the relief Wei had promised still had not come: was Lord Xinling not the man who prided himself on rushing to others in distress? The last message added a barb: \"And have you no pity for your own sister?\" Lord Xinling's elder sister was Lord Pingyuan's wife.",
+   "after": "In the twentieth year of King Anxi of Wei, after Qin had broken Zhao's army at Changping, its armies pressed on and encircled Handan. The king of Wei sent General Jin Bi with a hundred thousand troops to relieve Zhao. Envoys from Lord Pingyuan arrived in Daliang one after another — caps of office and carriage canopies in an unbroken line — reproaching the Wei prince: Handan was within days of surrendering to Qin, and Wei's relief still had not come; was the prince not the man who prided himself on rushing to others in distress? They added, in translation: had he no pity for his own sister? The prince's elder sister was Lord Pingyuan's wife.",
+   "issues": [
+    "F2",
+    "F3",
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.hook.1.zh",
+   "before": "更麻烦的是，魏王未再发兵、使人止晋鄙（据简报转述），而公子手里只有三千门客，未得国政之任。他决意赴秦军而死。出城路过夷门时，他向守门的侯生辞决。",
+   "after": "此时公子手里只有三千门客，却未被任以国政。他决意赴秦军而死。出城路过夷门时，他向守门的侯生辞决。",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "Worse still, the king of Wei sent no further troops and sent men to halt Jin Bi (retold from the briefing), and Lord Xinling had three thousand retainers but no appointment to the governance of the state. The plan he settled on was to go and die at the Qin army. On his way out of the city, passing the Yimen gate, he took his leave of Hou Ying, the gatekeeper.",
+   "after": "At this point the prince had three thousand retainers but no appointment to the governance of the state. The plan he settled on was to go and die at the Qin army. On his way out of the city, passing the Yimen gate, he took his leave of Hou Ying, the gatekeeper.",
+   "issues": [
+    "F5",
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.hook.1.ev",
+   "before": [
+    "SJ0771-E13",
+    "SJ0771-E14"
+   ],
+   "after": [
+    "SJ0771-E2",
+    "SJ0771-E3",
+    "SJ0771-E13"
+   ],
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.context.0.zh",
+   "before": "公子无忌在魏国的名声，一半来自养客。《史记》说他「公子為人仁而下士，士無賢不肖皆謙而禮交之」，不敢以富贵骄士，以致食客三千人，方圆数千里的士人争相投奔。这些门客不只是排场：有一回他和魏王下棋，北境举烽报警，说赵寇将入界，公子说是赵王田猎，不久北边传话果然如此。魏王问何以知晓，他说门客中有人能得赵王阴事。",
+   "after": "魏公子在魏国的名声，一半来自养客。《史记》说他「公子為人仁而下士，士無賢不肖皆謙而禮交之」，不敢以富贵骄士，以致食客三千人，方圆数千里的士人争相投奔。这些门客不只是排场：有一回他和魏王下棋，北境举烽报警，说赵寇将入界，公子说是赵王田猎，不久北边传话果然如此。魏王问何以知晓，他说门客中有人能得赵王阴事。",
+   "issues": [
+    "F6",
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.context.0.en",
+   "before": "Lord Xinling's standing in Wei rested half on his retainers. The Grand Historian writes that \"he was humane and humble toward men of talent, treating every scholar, worthy or not, with courtesy and respect,\" never presuming on wealth and rank — so that he had three thousand retainers, and men of ability from a radius of several thousand li competed to attach themselves to him. They were not mere pageantry. One day, while he was playing a board game with the king of Wei, beacon fires on the northern frontier signaled a Zhao raid about to cross the border. The lord said the king of Zhao was out hunting, nothing more. Word later came from the north confirming exactly that. Asked how he knew, he explained that among his retainers was a man who could ferret out the king of Zhao's private business.",
+   "after": "The Wei prince's standing in Wei rested half on his retainers. The Grand Historian writes, in translation, that he was humane and humble toward men of talent, treating every scholar, worthy or not, with courtesy and respect, never presuming on wealth and rank — so that he had three thousand retainers, and men of ability from a radius of several thousand li competed to attach themselves to him. They were not mere pageantry. One day, while he was playing a board game with the king of Wei, beacon fires on the northern frontier signaled a Zhao raid about to cross the border. The prince said the king of Zhao was out hunting, nothing more. Word later came from the north confirming exactly that. Asked how he knew, he explained that among his retainers was a man who could ferret out the king of Zhao's private business.",
+   "issues": [
+    "F6",
+    "F7",
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.context.1.en",
+   "before": "Read the episode both ways. His intelligence was proven — and the price went straight onto the ledger: \"From then on the king of Wei feared Lord Xinling's ability and dared not entrust him with the government of the state.\" The more capable he appeared, the less his king would hand him. By the time Handan cried for help he held no charge of the governance of the state, and raising troops was out of the question (the author's inference).",
+   "after": "One reading is that the episode cuts both ways. His intelligence was proven — and the price went straight onto the ledger: in translation, from then on the king of Wei feared the prince's ability and dared not entrust him with the government of the state. The more capable he appeared, the less his king would hand him. By the time Handan cried for help he held no charge of the governance of the state, and raising troops was out of the question (the author's inference).",
+   "issues": [
+    "F8",
+    "F9",
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.context.2.en",
+   "before": "The other man Lord Xinling honored kept the Yimen — the eastern gate of Daliang. Hou Ying was seventy, poor, and gatekeeper there. Lord Xinling called on him and wanted to make him a handsome gift, but he would not accept: he had \"kept himself and his conduct clean for decades,\" he said, \"and would not take the lord's money just because a gatekeeper's life left him poor.\" So Lord Xinling laid on a feast for his assembled guests, and when everyone was seated he drove out himself with his carriage and escort, leaving the seat of honor at the left of the carriage empty, to fetch Hou Ying in person. The old man turned up in his shabby clothes and worn cap, climbed straight into the seat of honor without yielding it while Lord Xinling held the reins ever more respectfully. At home he seated Hou Ying in the place of honor and introduced him one by one to the assembled guests. The whole company was astonished.",
+   "after": "The other man the prince honored kept the Yimen, a gate of Daliang. Hou Ying was seventy, poor, and gatekeeper there. The prince called on him and wanted to make him a handsome gift, but he would not accept: in translation, he said he had kept himself and his conduct clean for decades and would not take the prince's money just because a gatekeeper's life left him poor. So the prince laid on a feast for his assembled guests, and when everyone was seated he drove out himself with his carriage and escort, leaving the seat of honor at the left of the carriage empty, to fetch Hou Ying in person. The old man turned up in his shabby clothes and worn cap, climbed straight into the seat of honor without yielding it, while the prince held the reins ever more respectfully. At home he seated Hou Ying in the place of honor and introduced him one by one to the assembled guests. The whole company was astonished.",
+   "issues": [
+    "F10",
+    "F11",
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.context.3.zh",
+   "before": "侯生后来把话说穿：他故意让公子的车骑久立市中，让过客围观，公子愈恭，于是「市人皆以嬴為小人，而以公子為長者能下士也」。他还推荐过一位屠者朱亥，说「此子賢者，世莫能知」。公子几次登门去请，朱亥不回谢，公子当时只觉得奇怪。这些看似闲棋的往来，邯郸被围那年全用上了。",
+   "after": "侯生后来把话说穿：他故意让公子的车骑久立市中，让过客围观，公子愈恭，于是「市人皆以嬴為小人，而以公子為長者能下士也」。他还推荐过一位屠者朱亥，说「此子賢者，世莫能知」。公子几次登门去请，朱亥不回谢，公子当时只觉得奇怪。作者认为，这些看似闲棋的往来，邯郸被围那年全用上了。",
+   "issues": [
+    "F12"
+   ]
+  },
+  {
+   "path": "sections.context.3.en",
+   "before": "Hou Ying later spelled out the game he had been playing. He had deliberately left the lord's carriage standing in the marketplace so that passers-by could watch: the longer the lord waited, the more deferential he became — and so, he said, \"the townsfolk all took me for a petty man, and the lord for a true elder who could humble himself before men of talent.\" He also recommended a butcher named Zhu Hai: \"This is a worthy man; the world does not know him.\" Lord Xinling called on Zhu Hai several times; the butcher never came to return the courtesies, which the lord at that point simply found odd. All of these seemingly idle moves came due in the year Handan was besieged.",
+   "after": "Hou Ying later spelled out the game he had been playing. He had deliberately left the lord's carriage standing in the marketplace so that passers-by could watch: the longer the lord waited, the more deferential he became — and so, he said in translation, the townsfolk all took him for a petty man, and the lord for a true elder who could humble himself before men of talent. He also recommended a butcher named Zhu Hai, calling him, in translation, a worthy man whom the world did not know. The prince called on Zhu Hai several times; the butcher never came to return the courtesies, which the prince at that point simply found odd. In the author's view, all of these seemingly idle moves came due in the year Handan was besieged.",
+   "issues": [
+    "F12",
+    "F13",
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.story.0.zh",
+   "before": "平原君的使者在大梁把话说绝：救兵不到，公子的高义安在。据简报转述，他先求魏王发兵不得，遂决意赴秦军而死。",
+   "after": "平原君的使者在大梁把话说绝：救兵不到，公子的高义安在。他决意赴秦军而死。",
+   "issues": [
+    "F14"
+   ]
+  },
+  {
+   "path": "sections.story.0.en",
+   "before": "Lord Pingyuan's envoys left nothing to the imagination in Daliang: with no relief army in sight, where was the lord's famed righteousness? Retold from the briefing: he first appealed to the king of Wei for troops and was refused, and so resolved to go and die against the Qin army.",
+   "after": "Lord Pingyuan's envoys left nothing to the imagination in Daliang: with no relief army in sight, where was the lord's famed righteousness? He resolved to go and die against the Qin army.",
+   "issues": [
+    "F14"
+   ]
+  },
+  {
+   "path": "sections.story.1.en",
+   "before": "That day he rode out, passed the Yimen gate, stopped to see Hou Ying and told him the whole plan — going to die at the Qin army — then took his leave and set off. Hou Ying said only: \"Push on, my lord; this old servant cannot follow you.\" A few li on, the lord felt a gnawing unhappiness — the narrator's own phrase — and said: \"I have treated Hou Ying handsomely in every way, as all the world knows; now I am going to my death, and Hou Ying has not half a word to say in seeing me off. Have I fallen short somewhere?\" So he \"turned his carriage around and went back to question Hou Ying.\"",
+   "after": "That day he rode out, passed the Yimen gate, stopped to see Hou Ying and told him the whole plan — going to die at the Qin army — then took his leave and set off. Hou Ying said only, in translation, that the lord should push on, and that this old servant could not follow him. A few li on, the lord felt displeased — the narrator's own phrase — and said, in translation, that he had treated Hou Ying handsomely in every way, as all the world knew; now he was going to his death, and Hou Ying had not half a word to see him off — had he fallen short somewhere? So he turned his carriage around and went back to question Hou Ying.",
+   "issues": [
+    "F15",
+    "F16"
+   ]
+  },
+  {
+   "path": "sections.story.2.zh",
+   "before": "这一折返是全篇的转折。侯生当面把话挑明：「今有難，無他端而欲赴秦軍，譬若以肉投餒虎，何功之有哉」——没有别的办法，只想冲进秦军，等于拿肉喂饿虎，白送，还要门客何用。他还说，正因为知道公子待他厚，此去而不相送，公子必会「恨之復返」。他自己说：「以是知公子恨之復返也」。",
+   "after": "作者认为，这一折返是全篇的转折。侯生当面把话挑明：「今有難，無他端而欲赴秦軍，譬若以肉投餒虎，何功之有哉」——没有别的办法，只想冲进秦军，等于拿肉喂饿虎，白送，还要门客何用。他还说，公子待他厚，此去而他不相送，公子必会「恨之復返」。他自己说：「以是知公子恨之復返也」。",
+   "issues": [
+    "F17"
+   ]
+  },
+  {
+   "path": "sections.story.2.en",
+   "before": "That turn is the pivot of the whole story. Hou Ying put it to his face: \"With disaster upon you and no plan at all, you mean to throw yourself at the Qin army — that is like throwing meat to a starving tiger. What would it accomplish?\" Nothing gained, and the retainers squandered besides. He added that he had counted on exactly this: knowing how well the lord treated him, going to die without so much as a parting word would make the lord \"resent it and come back.\" In Hou Ying's own words, he said as much: he knew the lord would resent it and come back.",
+   "after": "In the author's reading, that turn is the pivot of the whole story. Hou Ying put it to his face, in translation: with disaster upon him and no other plan, the lord meant to throw himself at the Qin army — like throwing meat to a starving tiger; what would it accomplish? Nothing gained — and what use, then, are retainers? He added that the lord had treated him well, and he had not seen the lord off; from this, he said, he had known the lord would resent it and come back.",
+   "issues": [
+    "F17",
+    "F18",
+    "F19",
+    "F20"
+   ]
+  },
+  {
+   "path": "sections.story.3.zh",
+   "before": "侯生给出的方案：晋鄙的兵符常在魏王卧内，如姬最幸，出入卧内，有办法窃取。如姬的父亲被人所杀，三年未能报仇，她曾向公子泣诉，公子使客斩了仇人的头敬献给她。原文记如姬「欲為公子死，無所辭，顧未有路耳」，所以开口请她，她必许。得虎符、夺晋鄙军，北救赵而西却秦，「此五霸之伐也」。",
+   "after": "侯生给出的方案：他说，晋鄙的兵符常在魏王卧内，如姬最幸，出入卧内，有办法窃取。他又说，如姬的父亲被人所杀，三年未能报仇，自王以下想替她报父仇的都没能做到；她曾向公子泣诉，公子使客斩了仇人的头敬献给她。侯生说如姬「欲為公子死，無所辭，顧未有路耳」，所以公子开口请她，她必许。得虎符、夺晋鄙军，北救赵而西却秦，「此五霸之伐也」。",
+   "issues": [
+    "F21",
+    "F23"
+   ]
+  },
+  {
+   "path": "sections.story.3.en",
+   "before": "Hou Ying's plan: the tally that authorized Jin Bi to move troops — a tiger tally — was normally kept in the king of Wei's bedchamber, and Lady Ruji, the king's favorite, came and went there and was able to steal it. Her father had been murdered; for three years she had sought revenge. She had wept to Lord Xinling, who sent a retainer to cut off her enemy's head and presented it to her respectfully. The source has her ready to die for Lord Xinling and to refuse him nothing; only \"she had no way to repay him.\" If the lord would but ask, she would certainly agree. Then, with the tiger tally in hand, seize Jin Bi's army, relieve Zhao in the north and drive Qin back in the west: \"that is an achievement to rank with the Five Hegemons.\"",
+   "after": "Hou Ying's plan, as he laid it out: Jin Bi's army tally — a tiger tally — was normally kept in the king of Wei's bedchamber, and Lady Ruji, the king's favorite, came and went there and was able to steal it. He went on: her father had been murdered; for three years she had sought revenge, and no one, from the king down, had been able to avenge him. She had wept to the prince, who sent a retainer to cut off her enemy's head and presented it to her respectfully. Hou Ying said she was ready to die for the prince and would refuse him nothing; only, in translation, she had not yet had the opportunity. If the prince would but ask, she would certainly agree. Then, with the tiger tally in hand, he could seize Jin Bi's army, relieve Zhao in the north and drive Qin back in the west — in translation, an achievement to rank with the Five Hegemons.",
+   "issues": [
+    "F21",
+    "F22",
+    "F23",
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.story.4.en",
+   "before": "The plan covered only the first half; the second half was the bad case. Hou Ying warned that \"a general in the field is not bound by every order from his sovereign\": even with the tallies matching, if Jin Bi withheld the army and sent to the king instead, the whole enterprise would be in danger. So take the butcher Zhu Hai along: \"If Jin Bi obeys, excellent; if not, you may have him strike.\" Lord Xinling wept on hearing it: \"Jin Bi is a battle-seasoned old general; I fear he will not obey, and then he must be killed. That is why I weep. Do you imagine I fear death?\" What he cried for was the killing of his own country's veteran commander, not the risk to himself. Zhu Hai said he was a butcher who slapped the knife in the marketplace; he had never returned the lord's visits because \"petty courtesies were of no use\" — but \"now that the lord is in a tight spot, this is the hour to spend my life.\" Hou Ying, who had already said at the gate that he was too old to follow, here only asked to count the days of the journey, so that \"on the day you reach Jin Bi's camp I shall face north and cut my own throat, to see you off.\"",
+   "after": "The plan covered only the first half; the second half was the bad case. Hou Ying warned, in translation, that a general in the field does not accept every order from his sovereign: even with the tallies matching, if Jin Bi withheld the army and sent to the king instead, the whole enterprise would be in danger. So take the butcher Zhu Hai along: if Jin Bi obeyed, excellent; if not, Zhu Hai could be made to strike him. The prince wept on hearing it; in translation, he said Jin Bi was a battle-seasoned old general who he feared would not obey, and then he would have to be killed — that was why he wept, not because he feared death. What he cried for was the killing of his own country's veteran commander, not the risk to himself. Zhu Hai said he was a butcher who wielded the knife in the marketplace; he had never returned the prince's visits because he thought petty courtesies were of no use — but now that the prince was in need, this was his moment to give his life. Hou Ying, who had already said at the gate that he could not follow, here only asked to count the days of the journey, so that on the day the prince reached Jin Bi's camp he would face north and cut his own throat, to see him off.",
+   "issues": [
+    "F24",
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.story.5.zh",
+   "before": "到了晋鄙军中，公子矫魏王令代晋鄙。合符之后，晋鄙不肯交权（此节据简报转述）。朱亥袖中四十斤铁椎，椎杀晋鄙。公子遂将晋鄙军，随即勒兵下令：「父子俱在軍中，父歸；兄弟俱在軍中，兄歸；獨子無兄弟，歸養。」得选兵八万人，进兵击秦军。",
+   "after": "朱亥袖中四十斤铁椎，椎杀晋鄙。公子遂将晋鄙军，随即勒兵下令：「父子俱在軍中，父歸；兄弟俱在軍中，兄歸；獨子無兄弟，歸養。」得选兵八万人，进兵击秦军。",
+   "issues": [
+    "F25"
+   ]
+  },
+  {
+   "path": "sections.story.5.en",
+   "before": "At Jin Bi's camp, Lord Xinling announced that he came on the king's orders to replace Jin Bi. The tallies matched, but Jin Bi refused to hand over his command (this episode is retold from the briefing). Zhu Hai produced a forty-catty iron mallet from his sleeve and killed him. Lord Xinling then took command of Jin Bi's army and immediately issued an order to the troops: \"Fathers and sons both serving: the father goes home. Brothers both serving: the elder goes home. An only son with no brothers: go home and support your parents.\" He selected eighty thousand men and advanced against the Qin army.",
+   "after": "Zhu Hai, with a forty-catty iron mallet in his sleeve, struck Jin Bi dead. The prince then took command of Jin Bi's army and immediately issued an order to the troops, here in translation: where father and son were both serving, the father should go home; where brothers were both serving, the elder should go home; an only son with no brothers should go home and support his parents. He selected eighty thousand men and advanced against the Qin army.",
+   "issues": [
+    "F25",
+    "F26",
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.story.6.en",
+   "before": "The Qin army broke off and withdrew. Handan was relieved, Zhao preserved. The king of Zhao and Lord Pingyuan came out to the border to receive him in person, Lord Pingyuan carrying the quiver and arrow-case and leading the way. The king of Zhao bowed twice and said: \"Of worthies since ancient times, none has been the lord's equal.\" At that moment Lord Pingyuan dared not compare himself with anyone.",
+   "after": "The Qin army broke off and withdrew. Handan was relieved, Zhao preserved. The king of Zhao and Lord Pingyuan came out to the border to receive him in person, Lord Pingyuan carrying the quiver and arrow-case and leading the way. The king of Zhao bowed twice and said, in translation, that of worthies since ancient times none had been the prince's equal. At that moment Lord Pingyuan dared not compare himself with anyone.",
+   "issues": [
+    "F27"
+   ]
+  },
+  {
+   "path": "sections.story.7.en",
+   "before": "King Xiaocheng of Zhao, grateful that Lord Xinling had overridden the general and seized the army to save Zhao, took counsel with Lord Pingyuan about granting him five cities. The lord's reaction, in the narrator's phrasing, was \"a look of pride and self-congratulation.\" A retainer told him: some things must not be forgotten, others must be. Kindness done to the lord he should remember; kindness the lord has done to others, he should forget. And besides, overriding the king's order and seizing the army to save Zhao was \"a service to Zhao, but not the act of a loyal minister to Wei\" — to swagger over such a credit was beneath him. The lord at once blamed himself, looking as if he had nowhere to hide.",
+   "after": "King Xiaocheng of Zhao, grateful that the prince had seized Jin Bi's army on a forged royal order and saved Zhao, took counsel with Lord Pingyuan about granting him five cities. The prince's reaction, in the narrator's phrasing (here in translation), was a look of pride and self-congratulation. A retainer told him: some things must not be forgotten, others must be. Kindness done to the prince he should remember; kindness the prince had done to others, he should forget. And besides, forging the king of Wei's order and seizing Jin Bi's army to save Zhao was, in translation, a service to Zhao but not the act of a loyal minister to Wei — to swagger over such a credit was beneath him. The prince at once blamed himself, looking as if he had nowhere to hide.",
+   "issues": [
+    "F28",
+    "F29",
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.story.8.en",
+   "before": "The king of Wei was furious that his tally had been stolen and Jin Bi killed on a forged order, and Lord Xinling knew it. Having driven off Qin and saved Zhao, he sent the generals back to Wei with the army and stayed behind in Zhao with his retainers. The part of the rescue of Zhao in which he stole the tally, seized the army and killed Jin Bi carried no royal authorization..",
+   "after": "The king of Wei was furious that the prince had stolen his tally and killed Jin Bi on a forged order, and the prince knew it. Having driven off Qin and saved Zhao, he sent the generals back to Wei with the army and stayed behind in Zhao with his retainers. The part of the rescue of Zhao in which he stole the tally, seized the army and killed Jin Bi carried no royal authorization.",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.zh",
+   "before": "把整件事拆开看，公子一次也不是在好与坏之间挑，摆在面前的是几个都不干净的做法：求魏王（走不通，据简报转述）、赴秦军而死（侯生斥为「以肉投餒虎」）、矫令夺军（侯生所献，伤本国）。作者推断，侯生那句「以肉投餒虎」的作用，是逼他把勇气换成方案。作者提出的反事实：若他不折返，多半带着门客死在秦军阵前，邯郸未必得救，也不会有后来那支进兵的军队。",
+   "after": "作者认为，把整件事拆开看，公子一次也不是在好与坏之间挑，摆在面前的是两条都不干净的路：赴秦军而死（侯生斥为「以肉投餒虎」）、矫令夺军（侯生所献，伤本国）。作者推断，侯生那句「以肉投餒虎」的作用，是逼他把勇气换成方案。作者提出的反事实：若他不折返，多半死在秦军阵前，邯郸未必得救，也不会有后来那支进兵的军队。",
+   "issues": [
+    "F31",
+    "F32"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "before": "Take the whole affair apart and the lord is never choosing between good and bad; what stood before him were courses of action that were all dirty: appeal to the king (a dead end, retold from the briefing), ride to die at the Qin army (which Hou Ying called throwing meat to a starving tiger), forge an order and seize the army (proposed by Hou Ying; a wound to his own state). The author's inference is that Hou Ying's line about throwing meat to a starving tiger is what forced him to trade courage for a plan. The author's counterfactual: had he not turned back, he would most likely have died with his retainers in front of the Qin lines, Handan might never have been relieved, and there would have been no army marching against Qin afterward.",
+   "after": "In the author's reading, take the whole affair apart and the prince is never choosing between good and bad; what stood before him were two courses of action, both dirty: ride to die at the Qin army (which Hou Ying called throwing meat to a starving tiger), or forge an order and seize the army (proposed by Hou Ying; a wound to his own state). The author's inference is that Hou Ying's line about throwing meat to a starving tiger is what forced him to trade courage for a plan. The author's counterfactual: had he not turned back, he would most likely have died in front of the Qin lines, Handan might never have been relieved, and there would have been no army marching against Qin afterward.",
+   "issues": [
+    "F31",
+    "F32"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.zh",
+   "before": "第二处是把坏情况写进计划。侯生提醒将在外、主令有所不受，于是朱亥随行、袖中藏椎，晋鄙听则已，不听则击。作者推断，这一步的难处不在敢不敢：公子听后的反应是流泪说必杀晋鄙，自己并非怕死。从结果看，他欠了自己这方一笔债——杀本国宿将、盗王符、绝于魏王——仍然把方案走完。原文未写他事前是否权衡，能记的只有这句答话。",
+   "after": "第二处是把坏情况写进计划。侯生提醒将在外、主令有所不受，于是朱亥随行、袖中藏椎，晋鄙听则已，不听则击。作者推断，这一步的难处不在敢不敢：公子听后的反应是流泪说，怕晋鄙不听，到时必须杀他，自己并非怕死。从结果看，他欠了自己这方一笔债——杀本国宿将、盗王符、惹魏王怒——仍然把方案走完。原文未写他事前是否权衡，能记的只有这句答话。",
+   "issues": [
+    "F33",
+    "F34"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.en",
+   "before": "The second undignified spot is writing the bad case into the plan. Hou Ying's reminder that a general in the field need not accept every order put Zhu Hai at his side with a mallet up his sleeve: if Jin Bi complied, well; if not, strike. The author's inference: the hard part here was not daring. The lord's response on hearing the plan was tears — he said Jin Bi had to be killed, and that he was not afraid to die. In the outcome he took on a debt to his own side — killing his country's veteran commander, stealing the king's tally, breaking with the king — and he went through with it anyway. Whether he weighed this beforehand goes unrecorded; the only thing on the record is that answer.",
+   "after": "The second undignified spot is writing the bad case into the plan. Hou Ying's reminder that a general in the field need not accept every order put Zhu Hai at his side with a mallet up his sleeve: if Jin Bi complied, well; if not, strike. The author's inference: the hard part here was not daring. The prince's response on hearing the plan was tears — he said he feared Jin Bi would not obey, and that he would then have to be killed, and that he was not afraid to die. In the outcome he took on a debt to his own side — killing his country's veteran commander, stealing the king's tally, angering the king — and he went through with it anyway. Whether he weighed this beforehand goes unrecorded; the only thing on the record is that answer.",
+   "issues": [
+    "F33",
+    "F34"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.zh",
+   "before": "第三处是事后的账。门客那句「於趙則有功矣，於魏則未為忠臣也」把两边算清：功劳是赵国的，亏欠是魏国的。原文只记他立自责，未记辩解之辞，随后遣军归魏、自己留赵，用离开把这笔债认下来（作者推断，原文只写留赵这一行为）。一种解释是，他不居功的姿态与事后自责相呼应：赵王、平原君边界亲迎在前，门客劝谏、公子自责、留赵在后。",
+   "after": "第三处是事后的账。门客那句「於趙則有功矣，於魏則未為忠臣也」把两边算清：功劳是赵国的，亏欠是魏国的。原文只记他立自责，未记辩解之辞；另记退秦存赵之后，他遣军归魏、自己与门客留赵。作者推断，这是用离开把这笔债认下来（原文只写留赵这一行为，也未交代它与五城之议、自责孰先孰后）。一种解释是，他先有居功之色，受劝后立即自责，这一转与留赵相呼应：赵王、平原君边界亲迎在前，门客劝谏、公子自责在后。",
+   "issues": [
+    "F35",
+    "F36"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.en",
+   "before": "The third is the accounting afterward. The retainer's words — \"a service to Zhao, but not the act of a loyal minister to Wei\" — keep both columns straight: the credit belongs to Zhao, the debt to Wei. The source records only that he blamed himself on the spot, and nothing of any argument; then send the army home and stay in Zhao, acknowledging the debt through departure (the author's inference; the source records only the act of staying in Zhao). One reading: his refusal to claim credit chimes with the self-blame that followed — the welcome at the border came first, and the retainer's rebuke, the self-reproach, and staying in Zhao came after.",
+   "after": "The third is the accounting afterward. The retainer's words — in translation, a service to Zhao but not the act of a loyal minister to Wei — keep both columns straight: the credit belongs to Zhao, the debt to Wei. The source records only that he blamed himself on the spot, and nothing of any argument; it also records that, once Qin was driven off and Zhao saved, he sent the army home to Wei and stayed in Zhao with his retainers. The author infers that this acknowledged the debt through departure (the source records only the act of staying in Zhao, and does not say whether it came before or after the five-city offer and the self-reproach). One reading: he first showed a look of self-congratulation, then blamed himself at once when rebuked, and this turn chimes with his staying in Zhao — the welcome at the border came first, the retainer's rebuke and the self-reproach after.",
+   "issues": [
+    "F35",
+    "F36",
+    "F37"
+   ]
+  },
+  {
+   "path": "sections.limits.0.zh",
+   "before": "先说史源。本篇只有一个来源——《史记·魏公子列传》一篇，无旁证可对。文中的密语与对话，如侯嬴献窃符之计、朱亥答话，是史家的记述，未必逐字。公子的「心不快」「意驕矜」「立自責」都是叙述用语，不是实录的心理。纪年照原文写魏安釐王二十年，不换算公元。",
+   "after": "先说史源。本篇只有一个来源——《史记·魏公子列传》一篇，无旁证可对。文中的对话与献计，如侯嬴献窃符之计、朱亥答话，是史家的记述，未必逐字。公子的「心不快」「意驕矜」「立自責」都是叙述用语，不是实录的心理。纪年照原文写魏安釐王二十年，不换算公元。",
+   "issues": [
+    "F40"
+   ]
+  },
+  {
+   "path": "sections.limits.0.en",
+   "before": "Start with the sources. This piece rests on a single source: the \"Hereditary House of Lord Wei\" in the Records of the Grand Historian, with no corroboration to set against it. The whispered schemes and dialogue — Hou Ying's plan to steal the tally, Zhu Hai's reply — are the historian's rendering and need not be verbatim. The lord's \"unease,\" \"self-congratulation,\" and \"blaming himself\" are narrative labels, not recorded psychology. The year is given as the twentieth of King Anxi of Wei, as the source has it, with no conversion to the common era.",
+   "after": "Start with the sources. This piece rests on a single source: the Biography of the Wei Prince in the Records of the Grand Historian, with no corroboration to set against it. The dialogue and the proposed scheme — Hou Ying's plan to steal the tally, Zhu Hai's reply — are the historian's rendering and need not be verbatim. The prince's displeasure, self-congratulation and self-blame, as the narrative describes them, are narrative labels, not recorded psychology. The year is given as the twentieth of King Anxi of Wei, as the source has it, with no conversion to the common era.",
+   "issues": [
+    "F39",
+    "F40"
+   ]
+  },
+  {
+   "path": "sections.limits.1.zh",
+   "before": "细节上更该存疑的是：「得選兵八萬人」这个数字只此一处，无旁证；晋鄙军中合符如何校验、杀将之后如何收场，原文没有记载；侯生自刭的动机、如姬盗符之后的下落，原文只写行为和一句话，没有更多交代。此外，本文转述的几处关键过程——魏王使人止晋鄙留军观望、公子约车骑欲赴秦军、如姬盗出兵符、晋鄙合符起疑——所据摘录未通过逐字核对，只作转述，不引原文。",
+   "after": "细节上更该存疑的是：「得選兵八萬人」这个数字只此一处，无旁证；晋鄙军中合符如何校验，原文没有记载；侯生自刭的动机，原文只写行为和一句话，没有更多交代；侯生所献窃符之计如何执行，证据未载。",
+   "issues": [
+    "F41",
+    "F42"
+   ]
+  },
+  {
+   "path": "sections.limits.1.en",
+   "before": "The detail most worth doubting: the figure of \"eighty thousand picked men\" appears here alone, with no corroboration; how the tallies were verified in Jin Bi's camp and how the affair wound up after the killing of the general go unrecorded; Hou Ying's motive in cutting his own throat, and Lady Ruji's fate after stealing the tally, come down to an act and a single sentence, with nothing further. In addition, several key turns retold here — the king sending men to stop Jin Bi and hold the army in wait-and-see, the lord gathering chariots to go and die against Qin, Lady Ruji stealing the tally, Jin Bi growing suspicious when the tallies matched — rest on extracts that have not been checked word for word, and are retold rather than quoted.",
+   "after": "The detail most worth doubting: the figure of eighty thousand picked men appears here alone, with no corroboration; how the tallies were verified in Jin Bi's camp goes unrecorded; Hou Ying's motive in cutting his own throat comes down to an act and a single sentence, with nothing further; and how Hou Ying's scheme to steal the tally was carried out is not recorded in the evidence.",
+   "issues": [
+    "F41",
+    "F42"
+   ]
+  },
+  {
+   "path": "uncertainty_note.zh",
+   "before": "本篇只有一个史源（《史记·魏公子列传》一处记述），密语与对话是史家记述，未必逐字；「心不快」「意驕矜」「立自責」是叙述用语而非实录心理；不换算公元年份；“得选兵八万人”仅此一处、无旁证；晋鄙军中如何收场、合符如何校验原文未载；侯生自刭的动机、如姬盗符的后续原文只写行为与一句话。另有几处关键过程所据摘录未通过逐字核对（魏王止晋鄙、公子约车骑赴死、如姬盗符、晋鄙合符起疑），本文只作转述、不引原文。",
+   "after": "本篇只有一个史源（《史记·魏公子列传》一处记述），对话与献计是史家记述，未必逐字；「心不快」「意驕矜」「立自責」是叙述用语而非实录心理；不换算公元年份；“得选兵八万人”仅此一处、无旁证；晋鄙军中合符如何校验原文未载；侯生自刭的动机原文只写行为与一句话；侯生所献窃符之计如何执行，证据未载。",
+   "issues": [
+    "F43",
+    "F44",
+    "F45"
+   ]
+  },
+  {
+   "path": "uncertainty_note.en",
+   "before": "This piece rests on a single historical source (one account in the \"Hereditary House of Lord Wei\" in the Records of the Grand Historian). The whispered schemes and dialogue are the historian's rendering and need not be verbatim; \"unease,\" \"self-congratulation,\" and \"blaming himself\" are narrative labels rather than recorded psychology; years are not converted to the common era; \"eighty thousand picked men\" appears in this one place with no corroboration; how the tallies were verified and how the affair ended in Jin Bi's camp are unrecorded in the source; Hou Ying's motive for cutting his own throat and Lady Ruji's story after stealing the tally are given only as an act and a single sentence. Several key processes retold here (the king stopping Jin Bi, the lord gathering chariots to go and die, Lady Ruji stealing the tally, Jin Bi growing suspicious at the matching of the tallies) rest on extracts that have not been verified word for word, and are retold here without quotation.",
+   "after": "This piece rests on a single historical source (one account in the Biography of the Wei Prince in the Records of the Grand Historian). The dialogue and the proposed scheme are the historian's rendering and need not be verbatim; the prince's displeasure, self-congratulation and self-blame are narrative labels rather than recorded psychology; years are not converted to the common era; the figure of eighty thousand picked men appears in this one place with no corroboration; how the tallies were verified in Jin Bi's camp is unrecorded in the source; Hou Ying's motive for cutting his own throat is given only as an act and a single sentence; how Hou Ying's scheme to steal the tally was carried out is not recorded in the evidence.",
+   "issues": [
+    "F43",
+    "F44",
+    "F45"
+   ]
+  },
+  {
+   "path": "sections.context.0.zh",
+   "before": "魏公子在魏国的名声，一半来自养客。《史记》说他「公子為人仁而下士，士無賢不肖皆謙而禮交之」，不敢以富贵骄士，以致食客三千人，方圆数千里的士人争相投奔。这些门客不只是排场：有一回他和魏王下棋，北境举烽报警，说赵寇将入界，公子说是赵王田猎，不久北边传话果然如此。魏王问何以知晓，他说门客中有人能得赵王阴事。",
+   "after": "魏公子在魏国以养客知名。《史记》说他「公子為人仁而下士，士無賢不肖皆謙而禮交之」，不敢以富贵骄士，以致食客三千人，方圆数千里的士人争相投奔。这些门客不只是排场：有一回他和魏王下棋，北境举烽报警，说赵寇将入界，公子说是赵王田猎，不久北边传话果然如此。魏王问何以知晓，他说门客中有人能得赵王阴事。",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.context.0.en",
+   "before": "The Wei prince's standing in Wei rested half on his retainers. The Grand Historian writes, in translation, that he was humane and humble toward men of talent, treating every scholar, worthy or not, with courtesy and respect, never presuming on wealth and rank — so that he had three thousand retainers, and men of ability from a radius of several thousand li competed to attach themselves to him. They were not mere pageantry. One day, while he was playing a board game with the king of Wei, beacon fires on the northern frontier signaled a Zhao raid about to cross the border. The prince said the king of Zhao was out hunting, nothing more. Word later came from the north confirming exactly that. Asked how he knew, he explained that among his retainers was a man who could ferret out the king of Zhao's private business.",
+   "after": "The Wei prince was known in Wei for keeping retainers. The Grand Historian writes, in translation, that he was humane and humble toward men of talent, treating every scholar, worthy or not, with courtesy and respect, never presuming on wealth and rank — so that he had three thousand retainers, and men of ability from a radius of several thousand li competed to attach themselves to him. They were not mere pageantry. One day, while he was playing a board game with the king of Wei, beacon fires on the northern frontier signaled a Zhao raid about to cross the border. The prince said the king of Zhao was out hunting, nothing more. Word later came from the north confirming exactly that. Asked how he knew, he explained that among his retainers was a man who could ferret out the king of Zhao's private business.",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.limits.1.zh",
+   "before": "细节上更该存疑的是：「得選兵八萬人」这个数字只此一处，无旁证；晋鄙军中合符如何校验，原文没有记载；侯生自刭的动机，原文只写行为和一句话，没有更多交代；侯生所献窃符之计如何执行，证据未载。",
+   "after": "细节上更该存疑的是：「得選兵八萬人」这个数字只此一处，无旁证；晋鄙军中实际如何合符，证据未载；侯生许诺北乡自刭以送公子，证据只记这句许诺，是否践行、动机为何均未载；侯生所献窃符之计如何执行，证据未载。",
+   "issues": [
+    "V1-V2",
+    "V1-V3"
+   ]
+  },
+  {
+   "path": "sections.limits.1.en",
+   "before": "The detail most worth doubting: the figure of eighty thousand picked men appears here alone, with no corroboration; how the tallies were verified in Jin Bi's camp goes unrecorded; Hou Ying's motive in cutting his own throat comes down to an act and a single sentence, with nothing further; and how Hou Ying's scheme to steal the tally was carried out is not recorded in the evidence.",
+   "after": "The detail most worth doubting: the figure of eighty thousand picked men appears here alone, with no corroboration; how the tallies were actually matched in Jin Bi's camp is not recorded in the evidence; Hou Ying's pledge to cut his own throat to see the prince off is recorded only as a single sentence — whether he carried it out, and why, is not in the evidence; and how Hou Ying's scheme to steal the tally was carried out is not recorded in the evidence.",
+   "issues": [
+    "V1-V2",
+    "V1-V3"
+   ]
+  },
+  {
+   "path": "uncertainty_note.zh",
+   "before": "本篇只有一个史源（《史记·魏公子列传》一处记述），对话与献计是史家记述，未必逐字；「心不快」「意驕矜」「立自責」是叙述用语而非实录心理；不换算公元年份；“得选兵八万人”仅此一处、无旁证；晋鄙军中合符如何校验原文未载；侯生自刭的动机原文只写行为与一句话；侯生所献窃符之计如何执行，证据未载。",
+   "after": "本篇只有一个史源（《史记·魏公子列传》一处记述），对话与献计是史家记述，未必逐字；「心不快」「意驕矜」「立自責」是叙述用语而非实录心理；不换算公元年份；“得选兵八万人”仅此一处、无旁证；晋鄙军中实际如何合符，证据未载；侯生北乡自刭只见于其许诺之语，是否践行及动机证据未载；侯生所献窃符之计如何执行，证据未载。",
+   "issues": [
+    "V1-V4",
+    "V1-V5"
+   ]
+  },
+  {
+   "path": "uncertainty_note.en",
+   "before": "This piece rests on a single historical source (one account in the Biography of the Wei Prince in the Records of the Grand Historian). The dialogue and the proposed scheme are the historian's rendering and need not be verbatim; the prince's displeasure, self-congratulation and self-blame are narrative labels rather than recorded psychology; years are not converted to the common era; the figure of eighty thousand picked men appears in this one place with no corroboration; how the tallies were verified in Jin Bi's camp is unrecorded in the source; Hou Ying's motive for cutting his own throat is given only as an act and a single sentence; how Hou Ying's scheme to steal the tally was carried out is not recorded in the evidence.",
+   "after": "This piece rests on a single historical source (one account in the Biography of the Wei Prince in the Records of the Grand Historian). The dialogue and the proposed scheme are the historian's rendering and need not be verbatim; the prince's displeasure, self-congratulation and self-blame are narrative labels rather than recorded psychology; years are not converted to the common era; the figure of eighty thousand picked men appears in this one place with no corroboration; how the tallies were actually matched in Jin Bi's camp is not recorded in the evidence; Hou Ying's throat-cutting appears only as a pledge — whether he carried it out, and why, is not in the evidence; how Hou Ying's scheme to steal the tally was carried out is not recorded in the evidence.",
+   "issues": [
+    "V1-V4",
+    "V1-V5"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "F10",
+    "F11",
+    "F12",
+    "F13",
+    "F14",
+    "F15",
+    "F16",
+    "F17",
+    "F18",
+    "F19",
+    "F20",
+    "F21",
+    "F22",
+    "F23",
+    "F24",
+    "F25",
+    "F26",
+    "F27",
+    "F28",
+    "F29",
+    "F31",
+    "F32",
+    "F33",
+    "F34",
+    "F35",
+    "F36",
+    "F37",
+    "F39",
+    "F40",
+    "F41",
+    "F42",
+    "F43",
+    "F44",
+    "F45"
+   ],
+   "changes_applied": 38,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "hook[0] numbers differ zh[20, 100000] en[100000]"
+    ],
+    [
+     "CHECK",
+     "context[2] numbers differ zh[10, 70] en[70]"
+    ],
+    [
+     "CHECK",
+     "limits[0] numbers differ zh[20] en[]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[] en[80000]"
+    ]
+   ],
+   "content_sha256_after": "3b3419ba8e9ebc9201164c065159da28742806353e2b1f741f9351406a046514",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V6"
+      ]
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2",
+       "V3"
+      ]
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4",
+       "V5"
+      ]
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.context.0",
+      "category": "unsupported",
+      "severity": "fix",
+      "problem": "record 段称公子名声“一半来自养客”（en: rested half on his retainers）。这是证据中没有的量化判断，也没有标为解释。",
+      "evidence": [
+       {
+        "id": "SJ0771-E2",
+        "quote": "士以此方數千里爭往歸之，致食客三千人"
+       }
+      ],
+      "proposed": "zh 改为“魏公子在魏国以养客知名”；en 改为“The Wei prince was known in Wei for keeping retainers.”"
+     },
+     {
+      "id": "V2",
+      "path": "sections.limits.1",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "称侯生自刭的动机“原文只写行为和一句话”（en: comes down to an act），等于断言自刭已经发生。证据包只有侯生请求届时北乡自刭的许诺，没有记载他实际自刭。",
+      "evidence": [
+       {
+        "id": "SJ0771-E20",
+        "quote": "請數公子行日，以至晉鄙軍之日，北鄉自剄，以送公子"
+       }
+      ],
+      "proposed": "zh 改为“侯生许诺北乡自刭以送公子，证据只记这句许诺，是否践行、动机为何均未载”；en 相应改为“Hou Ying's pledge to cut his own throat is recorded only as a single sentence; whether he carried it out, and why, is not in the evidence.”"
+     },
+     {
+      "id": "V3",
+      "path": "sections.limits.1",
+      "category": "unsupported",
+      "severity": "fix",
+      "problem": "“晋鄙军中合符如何校验，原文没有记载”是对原文全篇的断言，证据包无法支持，因为包内只有侯生对合符的假设性预案。这一句与同段末句“证据未载”的口径也不一致。",
+      "evidence": [
+       {
+        "id": "SJ0771-E17",
+        "quote": "公子即合符，而晉鄙不授公子兵而復請之，事必危矣"
+       }
+      ],
+      "proposed": "zh 改为“晋鄙军中实际如何合符，证据未载”；en 改为“how the tallies were actually matched in Jin Bi's camp is not recorded in the evidence”。"
+     },
+     {
+      "id": "V4",
+      "path": "uncertainty_note",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "与 V2 相同：“侯生自刭的动机原文只写行为与一句话”（en: given only as an act）把侯生的许诺写成了已发生的行为，证据没有记载他实际自刭。",
+      "evidence": [
+       {
+        "id": "SJ0771-E20",
+        "quote": "請數公子行日，以至晉鄙軍之日，北鄉自剄，以送公子"
+       }
+      ],
+      "proposed": "zh 改为“侯生北乡自刭只见于其许诺之语，是否践行及动机证据未载”；en 改为“Hou Ying's throat-cutting appears only as a pledge; whether he carried it out, and why, is not in the evidence.”"
+     },
+     {
+      "id": "V5",
+      "path": "uncertainty_note",
+      "category": "unsupported",
+      "severity": "fix",
+      "problem": "与 V3 相同：“晋鄙军中合符如何校验原文未载”是对原文全篇的断言，超出证据包可核范围。",
+      "evidence": [
+       {
+        "id": "SJ0771-E17",
+        "quote": "公子即合符，而晉鄙不授公子兵而復請之，事必危矣"
+       }
+      ],
+      "proposed": "zh 改为“晋鄙军中实际如何合符，证据未载”；en 改为“how the tallies were actually matched in Jin Bi's camp is not recorded in the evidence”。"
+     },
+     {
+      "id": "V6",
+      "path": "sections.analysis.2",
+      "category": "style",
+      "severity": "note",
+      "problem": "“这一转与留赵相呼应”之后，冒号所列的是边界亲迎与门客劝谏的先后，与“留赵”无关，论证不连贯。前文刚说明留赵与自责孰先孰后未载，此处容易让读者误以为在暗示一个先后顺序。",
+      "evidence": [
+       {
+        "id": "SJ0771-E25",
+        "quote": "已卻秦存趙，使將將其軍歸魏，而公子獨與客留趙"
+       }
+      ],
+      "proposed": "删去冒号后的分句，或改写为直接说明“自责”与“留赵”在何种意义上相呼应。"
+     }
+    ],
+    "overall": "定稿整体紧扣证据，引语逐字无误，解释均已标注。需修正以下几处：context.0 中无据的“一半”；limits.1 与 uncertainty_note 把侯生的自刭许诺写成已发生的行为，并以“原文未载”超出证据包断言。analysis.2 另有一处论证不连贯的文风提示。",
+    "_content_sha256": "3b3419ba8e9ebc9201164c065159da28742806353e2b1f741f9351406a046514"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1",
+    "V1-V2",
+    "V1-V3",
+    "V1-V4",
+    "V1-V5"
+   ],
+   "changes_applied": 6,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "hook[0] numbers differ zh[20, 100000] en[100000]"
+    ],
+    [
+     "CHECK",
+     "context[2] numbers differ zh[10, 70] en[70]"
+    ],
+    [
+     "CHECK",
+     "limits[0] numbers differ zh[20] en[]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[] en[80000]"
+    ]
+   ],
+   "content_sha256_after": "1ac5bc037386bdc7d5e6427d475209d255942e401077db8640c3d83b73d61ce2",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.0",
+      "category": "attribution",
+      "severity": "fix",
+      "problem": "“公子不是自命能急人之困吗”/“the man who prided himself on rushing to others in distress”把“能急人之困”写成了公子的自我标榜。原文的说法不同：平原君称，自己正是看重公子高义、能急人之困，才与公子结为婚姻。这句话说的是平原君对公子的期许，并非公子的自我宣称。",
+      "evidence": [
+       {
+        "id": "SJ0771-E11",
+        "quote": "勝所以自附為婚姻者，以公子之高義，為能急人之困"
+       },
+       {
+        "id": "SJ0771-E11",
+        "quote": "安在公子能急人之困也"
+       }
+      ],
+      "proposed": "中文改为“当初正是看重公子高义、能急人之困才结为婚姻，如今公子的急人之困在哪里？”；英文改为“had he not married into the prince's family precisely because the prince was known to rush to others in distress — so where was that now?”"
+     },
+     {
+      "id": "V2",
+      "path": "sections.story.2",
+      "category": "style",
+      "severity": "note",
+      "problem": "中文先写“公子必会「恨之復返」”，紧接着又写“他自己说：「以是知公子恨之復返也」”，同一句话引了两遍，读来重复。英文只表述一次，两版详略不一。",
+      "evidence": [
+       {
+        "id": "SJ0771-E14",
+        "quote": "以是知公子恨之復返也"
+       }
+      ],
+      "proposed": "删去“公子必会「恨之復返」”这一半句，中文改为“他还说，公子待他厚，此去而他不相送，「以是知公子恨之復返也」。”"
+     }
+    ],
+    "overall": "定稿整体有证据支撑，引文逐字可核，解释和推断都已标注。只需修正 hook.0 中“自命能急人之困”的归属偏差；story.2 的重复引语属于可选的文风修订。",
+    "_content_sha256": "1ac5bc037386bdc7d5e6427d475209d255942e401077db8640c3d83b73d61ce2"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2",
+     "F3",
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6",
+     "F7"
+    ]
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F8",
+     "F9"
+    ]
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F10",
+     "F11"
+    ]
+   },
+   {
+    "path": "sections.context.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F12",
+     "F13"
+    ]
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F14"
+    ]
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F15",
+     "F16"
+    ]
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F17",
+     "F18",
+     "F19",
+     "F20"
+    ]
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F21",
+     "F22",
+     "F23"
+    ]
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F24"
+    ]
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F25",
+     "F26"
+    ]
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F27"
+    ]
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F28",
+     "F29"
+    ]
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F30"
+    ]
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F31",
+     "F32"
+    ]
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F33",
+     "F34"
+    ]
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F35",
+     "F36",
+     "F37",
+     "F38"
+    ]
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F39",
+     "F40"
+    ]
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F41",
+     "F42"
+    ]
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F43",
+     "F44",
+     "F45"
+    ]
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "dek",
+    "category": "unsupported",
+    "severity": "block",
+    "problem": "「大军未至（据简报转述）」/'the army never reached the city' 沿用已剔除的 E10（K2：魏王止晋鄙、留军观望）。证据里只有平原君使者责问时说的「魏救不至」。这是使者的说法，正文却当成叙述事实来写。",
+    "evidence": [
+     {
+      "id": "SJ0771-E11",
+      "quote": "今邯鄲旦暮降秦而魏救不至"
+     }
+    ],
+    "proposed": "改为'平原君的使者责问魏救不至'（英文同步改为 Lord Pingyuan's envoys complained that Wei's relief had not come），删除'据简报转述'。"
+   },
+   {
+    "id": "F2",
+    "path": "sections.hook.0",
+    "category": "unsupported",
+    "severity": "block",
+    "problem": "括注「留驻不进一节据简报转述」和英文 'the halt of the relief army is retold from the briefing' 都用了已剔除的 E10（K2）。英文还把'援军停驻'当成事实写出。紧接其后的 'Instead' 也以这一说法为前提。",
+    "evidence": [
+     {
+      "id": "SJ0771-E9",
+      "quote": "魏王使將軍晉鄙將十萬眾救趙"
+     }
+    ],
+    "proposed": "中英文都删去括注；英文删去 'Instead'。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.hook.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "「话一句比一句重」/'each message harsher than the last' 写的是语气逐次升级，证据只记使者冠盖相属、责让之辞，没有逐次加重的记载。（使者到大梁一节可由侯嬴为大梁夷门监者、公子过夷门推知，不算问题。）",
+    "evidence": [
+     {
+      "id": "SJ0771-E11",
+      "quote": "平原君使者冠蓋相屬於魏，讓魏公子曰"
+     }
+    ],
+    "proposed": "改为'使者冠盖相属，责让公子'（英文同步），删去'一句比一句重'。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.hook.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "中文的「公子无忌」和英文通篇的 'Lord Xinling' 都超出证据包。证据只称「魏公子」「公子」。",
+    "evidence": [
+     {
+      "id": "SJ0771-E11",
+      "quote": "讓魏公子曰"
+     }
+    ],
+    "proposed": "改称'魏公子'/'the Wei prince (the lord)'；或明确注明人名封号出自证据包以外。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.hook.1",
+    "category": "unsupported",
+    "severity": "block",
+    "problem": "「魏王未再发兵、使人止晋鄙（据简报转述）」出自已剔除的 E10（K2），却写进了 record 段。英文同。",
+    "evidence": [],
+    "proposed": "删去这一句，只保留公子有门客、未得任以国政，以及决意赴秦军而死。"
+   },
+   {
+    "id": "F6",
+    "path": "sections.context.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "「公子无忌」的名字不在证据中。",
+    "evidence": [
+     {
+      "id": "SJ0771-E2",
+      "quote": "公子為人仁而下士"
+     }
+    ],
+    "proposed": "改为'魏公子'。"
+   },
+   {
+    "id": "F7",
+    "path": "sections.context.0",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文用引号引的是译文，没有标明是译述，读来像原文。",
+    "evidence": [
+     {
+      "id": "SJ0771-E2",
+      "quote": "士無賢不肖皆謙而禮交之"
+     }
+    ],
+    "proposed": "在引语前加 'in translation' 或 'as the passage may be rendered'。"
+   },
+   {
+    "id": "F8",
+    "path": "sections.context.1",
+    "category": "interpretation_label",
+    "severity": "fix",
+    "problem": "中文有「一种解释是」，英文 'Read the episode both ways' 没有解释标签，两种语言不一致。",
+    "evidence": [],
+    "proposed": "改为 'One reading is that the episode cuts both ways.'"
+   },
+   {
+    "id": "F9",
+    "path": "sections.context.1",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文引号里是译文，没有标明是译述。",
+    "evidence": [
+     {
+      "id": "SJ0771-E3",
+      "quote": "是後魏王畏公子之賢能，不敢任公子以國政"
+     }
+    ],
+    "proposed": "标明是译文。"
+   },
+   {
+    "id": "F10",
+    "path": "sections.context.2",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "英文 'the eastern gate of Daliang' 中的方位'东门'证据没有。",
+    "evidence": [
+     {
+      "id": "SJ0771-E4",
+      "quote": "為大梁夷門監者"
+     }
+    ],
+    "proposed": "改为 'a gate of Daliang'。"
+   },
+   {
+    "id": "F11",
+    "path": "sections.context.2",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文引号里是侯嬴话的译文，没有标明是译述。",
+    "evidence": [
+     {
+      "id": "SJ0771-E4",
+      "quote": "臣脩身絜行數十年"
+     }
+    ],
+    "proposed": "标明是译文。"
+   },
+   {
+    "id": "F12",
+    "path": "sections.context.3",
+    "category": "interpretation_label",
+    "severity": "fix",
+    "problem": "「这些看似闲棋的往来，邯郸被围那年全用上了」/'came due' 是作者推断，却写在 record 段里，没有标签。",
+    "evidence": [],
+    "proposed": "前面加'作者认为'/'One reading is'。"
+   },
+   {
+    "id": "F13",
+    "path": "sections.context.3",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文引号里是译文，没有标明是译述。",
+    "evidence": [
+     {
+      "id": "SJ0771-E8",
+      "quote": "此子賢者，世莫能知"
+     }
+    ],
+    "proposed": "标明是译文。"
+   },
+   {
+    "id": "F14",
+    "path": "sections.story.0",
+    "category": "unsupported",
+    "severity": "block",
+    "problem": "「据简报转述，他先求魏王发兵不得，遂决意赴秦军而死」用了已剔除的 E12（K3），还用「遂」/'and so' 把它写成因果。证据只记他决意赴死。",
+    "evidence": [
+     {
+      "id": "SJ0771-E13",
+      "quote": "具告所以欲死秦軍狀"
+     }
+    ],
+    "proposed": "删去求魏王一节和'遂'，只写'他决意赴秦军而死'。"
+   },
+   {
+    "id": "F15",
+    "path": "sections.story.1",
+    "category": "inner_life",
+    "severity": "fix",
+    "problem": "英文 'a gnawing unhappiness' 加重了原文「心不快」的心理程度，中文没有这一层。",
+    "evidence": [
+     {
+      "id": "SJ0771-E13",
+      "quote": "公子行數里，心不快"
+     }
+    ],
+    "proposed": "改为 'felt displeased'。"
+   },
+   {
+    "id": "F16",
+    "path": "sections.story.1",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文引号里是译文，没有标明是译述。",
+    "evidence": [
+     {
+      "id": "SJ0771-E13",
+      "quote": "公子勉之矣，老臣不能從"
+     }
+    ],
+    "proposed": "标明是译文。"
+   },
+   {
+    "id": "F17",
+    "path": "sections.story.2",
+    "category": "interpretation_label",
+    "severity": "fix",
+    "problem": "「这一折返是全篇的转折」/'the pivot of the whole story' 是作者判断，写在 record 段里，没有标签。",
+    "evidence": [],
+    "proposed": "加'作者认为'/'In the author's reading'。"
+   },
+   {
+    "id": "F18",
+    "path": "sections.story.2",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "英文 'the retainers squandered besides' 与原文「尚安事客」和中文「还要门客何用」意思不同。",
+    "evidence": [
+     {
+      "id": "SJ0771-E14",
+      "quote": "尚安事客"
+     }
+    ],
+    "proposed": "改为 'and what use, then, are retainers?'"
+   },
+   {
+    "id": "F19",
+    "path": "sections.story.2",
+    "category": "inner_life",
+    "severity": "fix",
+    "problem": "英文 'he had counted on exactly this' 写成侯生有意设计。原文只说「以是知」，即他由此料知。",
+    "evidence": [
+     {
+      "id": "SJ0771-E14",
+      "quote": "以是知公子恨之復返也"
+     }
+    ],
+    "proposed": "改为 'he said he had known the lord would resent it and come back'。"
+   },
+   {
+    "id": "F20",
+    "path": "sections.story.2",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文引号里是译文，没有标明是译述。",
+    "evidence": [
+     {
+      "id": "SJ0771-E14",
+      "quote": "譬若以肉投餒虎"
+     }
+    ],
+    "proposed": "标明是译文。"
+   },
+   {
+    "id": "F21",
+    "path": "sections.story.3",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "「原文记如姬…」/'The source has her…' 把侯生的转述（「嬴聞」）写成了叙述者的记录。",
+    "evidence": [
+     {
+      "id": "SJ0771-E15",
+      "quote": "嬴聞如姬父為人所殺"
+     }
+    ],
+    "proposed": "改为'侯生说如姬…'/'Hou Ying said she was…'。"
+   },
+   {
+    "id": "F22",
+    "path": "sections.story.3",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文引号 'she had no way to repay him' 误译「顧未有路耳」，'repay' 是添加的意思，而且用引号冒充原文。",
+    "evidence": [
+     {
+      "id": "SJ0771-E15",
+      "quote": "顧未有路耳"
+     }
+    ],
+    "proposed": "改为译述：only she had not yet had the opportunity (in translation)。"
+   },
+   {
+    "id": "F23",
+    "path": "sections.story.3",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "英文 'for three years she had sought revenge' 漏掉了没能报仇（自王以下莫能得），中文「三年未能报仇」有这一层。",
+    "evidence": [
+     {
+      "id": "SJ0771-E15",
+      "quote": "自王以下欲求報其父仇，莫能得"
+     }
+    ],
+    "proposed": "补上 'and no one, from the king down, had been able to avenge him'。"
+   },
+   {
+    "id": "F24",
+    "path": "sections.story.4",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文多处引号里是译文，没有标明是译述。",
+    "evidence": [
+     {
+      "id": "SJ0771-E17",
+      "quote": "將在外，主令有所不受"
+     }
+    ],
+    "proposed": "标明是译文。"
+   },
+   {
+    "id": "F25",
+    "path": "sections.story.5",
+    "category": "unsupported",
+    "severity": "block",
+    "problem": "「到了晋鄙军中，公子矫魏王令代晋鄙。合符之后，晋鄙不肯交权」来自已剔除的 E21（K5）。括注只覆盖了后半句，'代晋鄙''合符''不肯交权'都没有证据。",
+    "evidence": [
+     {
+      "id": "SJ0771-E22",
+      "quote": "朱亥袖四十斤鐵椎，椎殺晉鄙"
+     }
+    ],
+    "proposed": "删去这两句，直接从朱亥椎杀晋鄙写起。"
+   },
+   {
+    "id": "F26",
+    "path": "sections.story.5",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文军令用引号，是译文，没有标明是译述。",
+    "evidence": [
+     {
+      "id": "SJ0771-E22",
+      "quote": "父子俱在軍中，父歸"
+     }
+    ],
+    "proposed": "标明是译文。"
+   },
+   {
+    "id": "F27",
+    "path": "sections.story.6",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文引号里是赵王话的译文，没有标明是译述。",
+    "evidence": [
+     {
+      "id": "SJ0771-E23",
+      "quote": "自古賢人未有及公子者也"
+     }
+    ],
+    "proposed": "标明是译文。"
+   },
+   {
+    "id": "F28",
+    "path": "sections.story.7",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "英文 'overridden the general'/'overriding the king's order' 没有译出「矯」（伪托王令）的意思，与中文「矫夺」「矫魏王令」不一致。",
+    "evidence": [
+     {
+      "id": "SJ0771-E24",
+      "quote": "且矯魏王令，奪晉鄙兵以救趙"
+     }
+    ],
+    "proposed": "改为 'forging the king's order'。"
+   },
+   {
+    "id": "F29",
+    "path": "sections.story.7",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文引号里是译文，没有标明是译述。",
+    "evidence": [
+     {
+      "id": "SJ0771-E24",
+      "quote": "於趙則有功矣，於魏則未為忠臣也"
+     }
+    ],
+    "proposed": "标明是译文。"
+   },
+   {
+    "id": "F30",
+    "path": "sections.story.8",
+    "category": "style",
+    "severity": "note",
+    "problem": "英文句末多了一个句号（'authorization..'）。",
+    "evidence": [],
+    "proposed": "删去多余的句号。"
+   },
+   {
+    "id": "F31",
+    "path": "sections.analysis.0",
+    "category": "unsupported",
+    "severity": "block",
+    "problem": "「求魏王（走不通，据简报转述）」用了已剔除的 E12（K3）。「带着门客死在秦军阵前」/'with his retainers' 也沿用了 K3 的'以客往赴秦军'。",
+    "evidence": [
+     {
+      "id": "SJ0771-E13",
+      "quote": "具告所以欲死秦軍狀"
+     }
+    ],
+    "proposed": "删去'求魏王'这一项，选项只列赴秦军而死、矫令夺军；反事实中删去'带着门客'。"
+   },
+   {
+    "id": "F32",
+    "path": "sections.analysis.0",
+    "category": "interpretation_label",
+    "severity": "fix",
+    "problem": "首句「公子一次也不是在好与坏之间挑…都不干净」是作者判断，没有标签。",
+    "evidence": [],
+    "proposed": "句首加'作者认为'/'In the author's reading'。"
+   },
+   {
+    "id": "F33",
+    "path": "sections.analysis.1",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "「流泪说必杀晋鄙」/'he said Jin Bi had to be killed' 丢掉了'恐不听'这个条件。原话是担心晋鄙不听，不听才必杀。",
+    "evidence": [
+     {
+      "id": "SJ0771-E18",
+      "quote": "往恐不聽，必當殺之"
+     }
+    ],
+    "proposed": "改为'流泪说怕晋鄙不听、到时必须杀他'。"
+   },
+   {
+    "id": "F34",
+    "path": "sections.analysis.1",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "「绝于魏王」/'breaking with the king' 证据里没有。证据只记魏王怒、公子留赵。",
+    "evidence": [
+     {
+      "id": "SJ0771-E25",
+      "quote": "魏王怒公子之盜其兵符，矯殺晉鄙"
+     }
+    ],
+    "proposed": "改为'惹魏王怒'/'angering the king'。"
+   },
+   {
+    "id": "F35",
+    "path": "sections.analysis.2",
+    "category": "chronology",
+    "severity": "fix",
+    "problem": "「立自责，随后遣军归魏、自己留赵」以及「门客劝谏、公子自责、留赵在后」排定的先后没有证据支持。E25 把遣军归魏系在'已卻秦存趙'之后，没有说在五城、自责之后。",
+    "evidence": [
+     {
+      "id": "SJ0771-E25",
+      "quote": "已卻秦存趙，使將將其軍歸魏，而公子獨與客留趙"
+     }
+    ],
+    "proposed": "删去'随后'和先后排序，或注明二者先后原文未定。"
+   },
+   {
+    "id": "F36",
+    "path": "sections.analysis.2",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "「他不居功的姿态」/'his refusal to claim credit' 与证据相反。原文先记他「意驕矜而有自功之色」，受劝后才自责。",
+    "evidence": [
+     {
+      "id": "SJ0771-E24",
+      "quote": "意驕矜而有自功之色"
+     }
+    ],
+    "proposed": "改为'他先居功、受劝后立即自责'。"
+   },
+   {
+    "id": "F37",
+    "path": "sections.analysis.2",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文引号里是译文，没有标明是译述。",
+    "evidence": [
+     {
+      "id": "SJ0771-E24",
+      "quote": "於趙則有功矣，於魏則未為忠臣也"
+     }
+    ],
+    "proposed": "标明是译文。"
+   },
+   {
+    "id": "F38",
+    "path": "sections.analysis.2",
+    "category": "style",
+    "severity": "note",
+    "problem": "英文 'then send the army home and stay in Zhao' 语法残缺。",
+    "evidence": [],
+    "proposed": "改为 'he then sent the army home and stayed in Zhao'。"
+   },
+   {
+    "id": "F39",
+    "path": "sections.limits.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "英文篇名 'Hereditary House of Lord Wei' 错了，原篇是列传，不是世家。",
+    "evidence": [],
+    "proposed": "改为 'Biography of the Wei Prince' (Records of the Grand Historian)。"
+   },
+   {
+    "id": "F40",
+    "path": "sections.limits.0",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "「密语」/'whispered schemes' 的说法来自简报（屏人间语），证据包没有密谈的记载。",
+    "evidence": [
+     {
+      "id": "SJ0771-E15",
+      "quote": "嬴聞晉鄙之兵符常在王臥內"
+     }
+    ],
+    "proposed": "删去'密语'，改为'对话与献计'。"
+   },
+   {
+    "id": "F41",
+    "path": "sections.limits.1",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "「杀将之后如何收场，原文没有记载」与证据矛盾。原文记了将军、勒兵下令、选兵、进击。",
+    "evidence": [
+     {
+      "id": "SJ0771-E22",
+      "quote": "公子遂將晉鄙軍。勒兵下令軍中曰"
+     }
+    ],
+    "proposed": "删去'杀将之后如何收场'。"
+   },
+   {
+    "id": "F42",
+    "path": "sections.limits.1",
+    "category": "unsupported",
+    "severity": "block",
+    "problem": "列举的「魏王使人止晋鄙留军观望、公子约车骑欲赴秦军、如姬盗出兵符、晋鄙合符起疑」全部来自已剔除的 E10/E12/E16/E21（K2–K5）。剔除的内容不能转述。「如姬盗符之后的下落」/'after stealing the tally' 也以 E16 为前提。",
+    "evidence": [],
+    "proposed": "删去整句列举；把'如姬盗符之后的下落'改为'侯生所献窃符之计如何执行，证据未载'。"
+   },
+   {
+    "id": "F43",
+    "path": "uncertainty_note",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "「晋鄙军中如何收场…原文未载」/'how the affair ended' 与 E22 矛盾。",
+    "evidence": [
+     {
+      "id": "SJ0771-E22",
+      "quote": "得選兵八萬人，進兵擊秦軍"
+     }
+    ],
+    "proposed": "删去'如何收场'。"
+   },
+   {
+    "id": "F44",
+    "path": "uncertainty_note",
+    "category": "unsupported",
+    "severity": "block",
+    "problem": "「魏王止晋鄙、公子约车骑赴死、如姬盗符、晋鄙合符起疑」以及「如姬盗符的后续」都沿用了已剔除的 E10/E12/E16/E21。",
+    "evidence": [],
+    "proposed": "删去这些内容。"
+   },
+   {
+    "id": "F45",
+    "path": "uncertainty_note",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "英文篇名 'Hereditary House of Lord Wei' 错误；'whispered schemes'/「密语」证据没有。",
+    "evidence": [],
+    "proposed": "同 F39、F40。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "M1",
+    "verdict": "duplicate",
+    "same_as": "F3",
+    "rationale": "'话一句比一句重'确实无据。'大梁'则可由夷门在大梁、公子过夷门推知，这一部分不成立。",
+    "evidence": [
+     {
+      "id": "SJ0771-E4",
+      "quote": "為大梁夷門監者"
+     }
+    ]
+   },
+   {
+    "id": "M2",
+    "verdict": "duplicate",
+    "same_as": "F5",
+    "rationale": "内容来自已剔除的 E10。",
+    "evidence": []
+   },
+   {
+    "id": "M3",
+    "verdict": "duplicate",
+    "same_as": "F14",
+    "rationale": "内容来自已剔除的 E12，并被写成因果。",
+    "evidence": []
+   },
+   {
+    "id": "M4",
+    "verdict": "duplicate",
+    "same_as": "F25",
+    "rationale": "内容来自已剔除的 E21。",
+    "evidence": []
+   },
+   {
+    "id": "M5",
+    "verdict": "duplicate",
+    "same_as": "F41",
+    "rationale": "E22 记有收场。",
+    "evidence": [
+     {
+      "id": "SJ0771-E22",
+      "quote": "公子遂將晉鄙軍"
+     }
+    ]
+   },
+   {
+    "id": "M6",
+    "verdict": "duplicate",
+    "same_as": "F5",
+    "rationale": "同为 K2 污染。",
+    "evidence": []
+   },
+   {
+    "id": "M7",
+    "verdict": "duplicate",
+    "same_as": "F14",
+    "rationale": "同为 K3 污染。",
+    "evidence": []
+   },
+   {
+    "id": "M8",
+    "verdict": "duplicate",
+    "same_as": "F42",
+    "rationale": "如姬盗符来自已剔除的 E16。",
+    "evidence": []
+   },
+   {
+    "id": "M9",
+    "verdict": "duplicate",
+    "same_as": "F25",
+    "rationale": "同为 K5 污染。",
+    "evidence": []
+   },
+   {
+    "id": "M10",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "'大军未至'来自 K2，原文只有使者的责问。",
+    "evidence": [
+     {
+      "id": "SJ0771-E11",
+      "quote": "魏救不至"
+     }
+    ]
+   },
+   {
+    "id": "M11",
+    "verdict": "duplicate",
+    "same_as": "F42",
+    "rationale": "约车骑一节来自已剔除的 E12。",
+    "evidence": []
+   },
+   {
+    "id": "M12",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "该句位于 interpretation 段，已标'作者推断'。证据中侯生斥公子无他端，随后献计，推断有据。",
+    "evidence": [
+     {
+      "id": "SJ0771-E14",
+      "quote": "無他端而欲赴秦軍，譬若以肉投餒虎，何功之有哉"
+     }
+    ]
+   },
+   {
+    "id": "M13",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "已标'作者推断'，并以公子自述'不是怕死'为据。",
+    "evidence": [
+     {
+      "id": "SJ0771-E18",
+      "quote": "是以泣耳，豈畏死哉"
+     }
+    ]
+   },
+   {
+    "id": "M14",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "已标'作者推断'，并说明原文只写留赵这一行为；原文也记公子自知魏王之怒。先后顺序问题另见 F35。",
+    "evidence": [
+     {
+      "id": "SJ0771-E25",
+      "quote": "公子亦自知也"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "1ac5bc037386bdc7d5e6427d475209d255942e401077db8640c3d83b73d61ce2",
+ "open_issues": [
+  "V2-V1"
+ ],
+ "outcome": "pending_review",
+ "failure": null,
+ "finished_at": 1793396428.4502802,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 185.1,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 20995,
+    "output_tokens": 21706
+   },
+   "cost_estimate_usd": 0.602088
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 176.3,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 24910,
+    "output_tokens": 23475
+   },
+   "cost_estimate_usd": 0.6687879999999999
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 135.5,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16154,
+    "output_tokens": 15118
+   },
+   "cost_estimate_usd": 0.4316
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 24.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 17567,
+    "output_tokens": 3127
+   },
+   "cost_estimate_usd": 0.203084
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 82.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16207,
+    "output_tokens": 9600
+   },
+   "cost_estimate_usd": 0.32166399999999995
+  }
+ ],
+ "elapsed_min": 10.1,
+ "model_wall_min": 10.1
+}

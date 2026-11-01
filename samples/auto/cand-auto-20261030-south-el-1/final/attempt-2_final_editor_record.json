@@ -1,0 +1,2697 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-auto-20261030-south-el-1",
+ "edition_id": "cand-auto-20261030-south-el-1",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "0cce3d9",
+ "started_at": 1793415676.5606203,
+ "base_source": "samples/auto/cand-auto-20261030-south-el-1/final/article.json",
+ "base_content_sha256": "09f651c4677cc76b8f3b25aa77bf5467a3b41e5a6ee7061e5d4b71c9b618e792",
+ "evidence_sha256": "5b025cdf540fd234283086717c45d0d6fb46bf58ff0e94d9e15a3cc75e0efc71",
+ "operator_note": null,
+ "model_record_sha256": null,
+ "prior_record_sha256": "2051a2d4f7392cb77690e02d237db5ad2c75e51bfaa44268eb8db64339764f24",
+ "attempt": "attempt-2",
+ "inherited": [
+  {
+   "id": "P1",
+   "model_id": "V2-V1",
+   "source": "final-editor previous attempt",
+   "where": "sections.story.8",
+   "problem": "原文给出的拒绝增加配水的理由只有一条：逆风可能拖长航程。“缺水是人所能承受的最严酷的匮乏”在原文中是描述口渴的一般性感慨，紧接的是盐水加剧口渴，并不是拒绝预支的理由。稿件把它放在冒号之后、与风向理由并列（中文用“而”、英文用“and”连接），写成了拒绝的依据。",
+   "suggestion": "把“缺水是……最严酷的匮乏”从理由句中拆出，单独成句放在描述口渴处。中文改为：……航程拖长许多天。原文感叹，缺水是人所能承受的最严酷的匮乏。英文改为：…lengthen the voyage by many days. Lack of water, the account adds, is the severest privation men can be condemned to endure."
+  }
+ ],
+ "contamination": [
+  {
+   "id": "K1",
+   "brief_line": "方向：这篇讲在象岛上定下的一个求援决策：为什么把目标定在八百英里外的南乔治亚而不是更近的福克兰，谁去谁留、带什么丢什么、走之前怎么交代留守的人 (SOUTH-EL1-E4)(SOUTH-EL1-E7)(SOUTH-EL1-E13)(SOUTH-EL1-E17)。看点是把一个胜算很小的选项对全队讲清楚、让人自愿跟从，并且愿意承担拒绝病号上船的代价 (SOUTH-EL1-E6)(SOUTH-EL1-E10)(SOUTH-EL1-E12)。不要写成英雄赞歌，不要用“他当然会成功”的口吻，也不要把拒绝病号上船写成一句冷酷或高尚的道德判断 (SOUTH-EL1-E12)。",
+   "dropped_ids": [
+    "EL1-E10",
+    "EL1-E12",
+    "EL1-E13",
+    "EL1-E17",
+    "EL1-E4",
+    "EL1-E6",
+    "EL1-E7"
+   ]
+  },
+  {
+   "id": "K2",
+   "brief_line": "- 粮食只够全队按足额吃五个星期，减量可撑三个月，海兽可能不来，于是定为每天一顿热食 (SOUTH-EL1-E2)。",
+   "dropped_ids": [
+    "EL1-E2"
+   ]
+  },
+  {
+   "id": "K3",
+   "brief_line": "- 几名队员的健康和精神状况令人担心，一名队员双脚冻伤、医生说不动手术就保不住脚趾 (SOUTH-EL1-E1)。",
+   "dropped_ids": [
+    "EL1-E1"
+   ]
+  },
+  {
+   "id": "K4",
+   "brief_line": "- 判断必须有人乘船出海求援，而且不能拖 (SOUTH-EL1-E3)。",
+   "dropped_ids": [
+    "EL1-E3"
+   ]
+  },
+  {
+   "id": "K5",
+   "brief_line": "- 福克兰的斯坦利港更近，但要顶着常年西北风用一条脆弱的小船抢风航行；南乔治亚八百英里外，但在西风带内，东岸各捕鲸站可能找到人，冰情允许的话一个月可望往返 (SOUTH-EL1-E4)。",
+   "dropped_ids": [
+    "EL1-E4"
+   ]
+  },
+  {
+   "id": "K6",
+   "brief_line": "- 算过最坏情形：岛上的人风险不会因此增加，冬天少六张嘴，船上只带六人一个月的口粮；而象岛不会有任何人来搜寻他们 (SOUTH-EL1-E5)。",
+   "dropped_ids": [
+    "EL1-E5"
+   ]
+  },
+  {
+   "id": "K7",
+   "brief_line": "- 向全队讲清利害：五月中合恩角以南是世界上最暴虐的水域，出海只为援助的急迫需要 (SOUTH-EL1-E6)。",
+   "dropped_ids": [
+    "EL1-E6"
+   ]
+  },
+  {
+   "id": "K8",
+   "brief_line": "- Worsley 和 Wild 都要求同行；指定 Wild 留守全队，并交代万一求援失败，春季带人去 Deception Island (SOUTH-EL1-E7)。",
+   "dropped_ids": [
+    "EL1-E7"
+   ]
+  },
+  {
+   "id": "K9",
+   "brief_line": "- 选 Worsley 随行，理由是他定位快而准，尤其在困难情况下 (SOUTH-EL1-E8)。",
+   "dropped_ids": [
+    "EL1-E8"
+   ]
+  },
+  {
+   "id": "K10",
+   "brief_line": "- 征求志愿者，但作者写明心里其实已有名单 (SOUTH-EL1-E9)。",
+   "dropped_ids": [
+    "EL1-E9"
+   ]
+  },
+  {
+   "id": "K11",
+   "brief_line": "- Crean 原本要留下当 Wild 的帮手，他恳求上船，与 Wild 商量后带上他 (SOUTH-EL1-E10)。",
+   "dropped_ids": [
+    "EL1-E10"
+   ]
+  },
+  {
+   "id": "K12",
+   "brief_line": "- 有人不够强壮，有人不是熟练水手，虽然近几个月的经历也算得一点水手资格 (SOUTH-EL1-E11)。",
+   "dropped_ids": [
+    "EL1-E11"
+   ]
+  },
+  {
+   "id": "K13",
+   "brief_line": "- 有人提议带上病号让他尽快得到温暖和庇护，被否掉：健康的人在船上都难活，重病躺舱底的人熬不过必定遇到的坏天气 (SOUTH-EL1-E12)。",
+   "dropped_ids": [
+    "EL1-E12"
+   ]
+  },
+  {
+   "id": "K14",
+   "brief_line": "- 最后定下 Worsley、Crean、McNeish、McCarthy、Vincent 和作者六人 (SOUTH-EL1-E13)。",
+   "dropped_ids": [
+    "EL1-E13"
+   ]
+  },
+  {
+   "id": "K15",
+   "brief_line": "- 木匠年过五十、身体不算好，但懂帆船、手快 (SOUTH-EL1-E14)。",
+   "dropped_ids": [
+    "EL1-E14"
+   ]
+  },
+  {
+   "id": "K16",
+   "brief_line": "- 他把另一条船的桅杆横放作龙骨加强，用箱盖和雪橇板搭骨架，冻硬的帆布在油炉上一寸寸烤开再缝成覆罩；覆罩看着像舞台布景，但事后证明确实顶用 (SOUTH-EL1-E15)。",
+   "dropped_ids": [
+    "EL1-E15"
+   ]
+  },
+  {
+   "id": "K17",
+   "brief_line": "- 看到浮冰随时可能合拢，决定次日出发；在象岛的最后一夜又冷又不舒服 (SOUTH-EL1-E16)。",
+   "dropped_ids": [
+    "EL1-E16"
+   ]
+  },
+  {
+   "id": "K18",
+   "brief_line": "- 上岸交代留守的 Wild，写明几乎把整个局面和行动范围都交给他自行判断，并当面说信任他、把队伍托付给他 (SOUTH-EL1-E17)。",
+   "dropped_ids": [
+    "EL1-E17"
+   ]
+  },
+  {
+   "id": "K19",
+   "brief_line": "- 启航时留在岸上的人挥手欢呼 (SOUTH-EL1-E18)。",
+   "dropped_ids": [
+    "EL1-E18"
+   ]
+  },
+  {
+   "id": "K20",
+   "brief_line": "- 船上做饭要三个人：一人护灯、两人护锅 (SOUTH-EL1-E19)。",
+   "dropped_ids": [
+    "EL1-E19"
+   ]
+  },
+  {
+   "id": "K21",
+   "brief_line": "- 出海第六天船因结冰失去弹性，扔掉备用桨和两条湿透冻硬的睡袋，剩下四条，其中一条留给有人彻底垮掉时应急 (SOUTH-EL1-E20)。",
+   "dropped_ids": [
+    "EL1-E20"
+   ]
+  },
+  {
+   "id": "K22",
+   "brief_line": "- 缆绳断、海锚丢失，只能在大风里升帆顶风 (SOUTH-EL1-E21)。",
+   "dropped_ids": [
+    "EL1-E21"
+   ]
+  },
+  {
+   "id": "K23",
+   "brief_line": "- 出海第七天见太阳，观测显示已走三百八十多英里，接近南乔治亚的一半 (SOUTH-EL1-E22)。",
+   "dropped_ids": [
+    "EL1-E22"
+   ]
+  },
+  {
+   "id": "K24",
+   "brief_line": "- 第十一天夜里遇到前所未见的巨浪，船被抛起又挣脱出来 (SOUTH-EL1-E23)。",
+   "dropped_ids": [
+    "EL1-E23"
+   ]
+  },
+  {
+   "id": "K25",
+   "brief_line": "- Vincent 一周来已不再承担船员工作，作者写明无法解释他的垮掉：他身体本来是船上最强的 (SOUTH-EL1-E24)。",
+   "dropped_ids": [
+    "EL1-E24"
+   ]
+  },
+  {
+   "id": "K26",
+   "brief_line": "- 水要减到每人每天半品脱，有人恳求预支第二天的水被拒绝，因为风向一变航程会拖长 (SOUTH-EL1-E25)。",
+   "dropped_ids": [
+    "EL1-E25"
+   ]
+  },
+  {
+   "id": "K27",
+   "brief_line": "必须写明的不确定性：这套记录只有当事人一个史源，是他事后的第一人称自述 (SOUTH-EL1-E3)。文中的对话，例如把队伍托付给 Wild 的那句交代，是记述性的，未必逐字 (SOUTH-EL1-E17)；Crean 恳求随行也是同样情况 (SOUTH-EL1-E10)。不要替人物写心理：作者说看队员时“信心增加”只是自述，不是当时可核实的心理记录 (SOUTH-EL1-E13)；Vincent 为何垮掉作者自己说无法解释 (SOUTH-EL1-E24)。原文按出海后的天数记事，没有公元年份，文章里只用原文的天数与月份，不做换算 (SOUTH-EL1-E20)(SOUTH-EL1-E22)(SOUTH-EL1-E23)。距离、口粮、水的数字都照原文写，如两个距离、走了三百八十多英里、半品脱 (SOUTH-EL1-E4)(SOUTH-EL1-E5)(SOUTH-EL1-E22)(SOUTH-EL1-E25)。原文为扫描识别文本，个别字词有讹误，引用时照原文写法。",
+   "dropped_ids": [
+    "EL1-E10",
+    "EL1-E13",
+    "EL1-E17",
+    "EL1-E20",
+    "EL1-E22",
+    "EL1-E23",
+    "EL1-E24",
+    "EL1-E25",
+    "EL1-E3",
+    "EL1-E4",
+    "EL1-E5"
+   ]
+  },
+  {
+   "id": "K28",
+   "brief_line": "现代应用：资源有限、外部不会主动来救的小团队，要不要派人冒险出去求援、派谁去、谁留下看家、物资砍到什么程度、什么时候必须定下出发时点 (SOUTH-EL1-E2)(SOUTH-EL1-E3)(SOUTH-EL1-E5)(SOUTH-EL1-E13)(SOUTH-EL1-E16)；以及负责人临走前如何把决定权和责任一起交出去，说清楚失败时的后手 (SOUTH-EL1-E7)(SOUTH-EL1-E17)。",
+   "dropped_ids": [
+    "EL1-E13",
+    "EL1-E16",
+    "EL1-E17",
+    "EL1-E2",
+    "EL1-E3",
+    "EL1-E5",
+    "EL1-E7"
+   ]
+  }
+ ],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "dek",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "“一条脆弱的小船/one fragile boat”和“胜算很小的路/a long-odds voyage”在证据中都没有依据。证据只说航程危险极大，没有给出胜算，也没有说船“脆弱”（只有覆罩被称为 flimsy decking）。这两个说法与已知污染 K1（“胜算很小的选项”）和 K5（“一条脆弱的小船”）的措辞一致。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E6",
+     "quote": "all hands knew that the perils of the proposed journey were extreme"
+    }
+   ],
+   "proposed": "中文改为“一条小船……走一条危险极大的路”；英文改为“one small boat … a voyage whose perils were extreme”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去证据外的“脆弱”和“胜算很小”，中文改为“一条小船”“一条危险极大的路”，英文改为 one small boat 和 a voyage whose perils were extreme。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "dek",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "英文通篇称叙述者为“the captain”，但证据没有给出这一职衔。证据中他只以第一人称出现，是作出决定、交出指挥权的人（Wild 随后 remaining in full command）。用一个证据外的具体官职，容易让读者误认人物。此问题适用于全文所有英文“the captain”。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E17",
+     "quote": "who was remaining in full command"
+    }
+   ],
+   "proposed": "英文全文把“the captain”改为“the leader”（与中文“队长”对应），或改为“the narrator”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "证据没有给出 captain 这一职衔。所有英文字段里的 the captain 都改为 the leader，与中文“队长”对应；对应中文字段同步给出，内容不变。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.hook.0",
+   "category": "causality",
+   "severity": "fix",
+   "problem": "“于是全队定为每天只吃一顿热食/So the whole party went onto…”把决定写成燃料状况的直接后果，并改成了无主语的被动句。原文的写法是：作者先初步估量了形势，然后由他本人作出决定。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E2",
+     "quote": "after making a preliminary survey of the situation, I decided that the party must be limited to one hot meal a day"
+    }
+   ],
+   "proposed": "中文改为“初步估量形势后，队长决定全队每天只吃一顿热食”；英文改为“After a preliminary survey of the situation, he decided the party must be limited to one hot meal a day.”",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "去掉“于是/So”造成的直接因果，恢复原文写法：他先初步估量形势，再亲自作出决定。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.hook.2",
+   "category": "style",
+   "severity": "note",
+   "problem": "英文引语后紧接“The conclusion was forced on him.”，与引语内容重复。",
+   "evidence": [],
+   "proposed": "删去英文末句，或改为“in his words”引出原句。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F5",
+   "path": "sections.context.0",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "“一支船队”在中文里指多条船组成的船队，与原文 a boat party（乘一条船的一队人）和英文译法不一致。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E4",
+     "quote": "A boat party might make the voyage"
+    }
+   ],
+   "proposed": "改为“一队人乘船”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "“一支船队”改为“一队人乘船”，与原文 boat party 一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F6",
+   "path": "sections.context.1",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "“冬天还少了六张嘴/six fewer mouths”在证据中没有依据，原文只说 fewer mouths。“六张嘴”来自已知污染 K6。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E5",
+     "quote": "There would be fewer mouths to feed during the winter"
+    }
+   ],
+   "proposed": "中文改为“冬天要吃饭的嘴也少了”；英文改为“fewer mouths to feed through the winter”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去证据外的“六张嘴/six”，中文改为“冬天要吃饭的嘴也少了”，英文改为 fewer mouths to feed。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F7",
+   "path": "sections.context.2",
+   "category": "causality",
+   "severity": "fix",
+   "problem": "“正因为如此/So”把必须详细论证说成上一段最坏情形计算的结果。原文给出的原因是全队都知道航程危险极端。英文还删去了“since”这层因果连接。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E6",
+     "quote": "The case required to be argued in some detail, since all hands knew that the perils of the proposed journey were extreme"
+    }
+   ],
+   "proposed": "删去“正因为如此/So”；英文改为“The case had to be argued in some detail, since everyone knew the journey's perils were extreme.”",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“正因为如此/So”。英文恢复 since 引出的原因：全队都知道航程危险极端。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F8",
+   "path": "sections.story.7",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“船横倒进涌里”容易被读成船翻覆。原文只说船突然横落进浪谷。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E21",
+     "quote": "the boat suddenly fell off into the trough of the sea"
+    }
+   ],
+   "proposed": "改为“船突然横落进浪谷”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文改为“船突然横落进浪谷”，避免读成翻覆；英文同步补上 suddenly 和 of the sea。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F9",
+   "path": "sections.story.8",
+   "category": "causality",
+   "severity": "fix",
+   "problem": "原文不增加配水的理由只有一条，即逆风可能拖长航程。“缺水是最严酷的匮乏”在原文里是描述口渴的一般感慨，稿件却用“而/and”把它并列进冒号后的拒绝理由。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E25",
+     "quote": "I dared not permit the 175 SOUTH allowance of water to be increased since an unfavourable wind might drive us away from the island and lengthen our voyage by many days"
+    },
+    {
+     "id": "SOUTH-EL1-E25",
+     "quote": "Lack of water is always the most severe privation that men can be condemned to endure"
+    }
+   ],
+   "proposed": "把这句感慨从理由句中拆出单独成句。中文：“……航程拖长许多天。原文感叹，缺水是人所能承受的最严酷的匮乏。”英文：“…lengthen the voyage by many days. Lack of water, the account adds, is the severest privation men can be condemned to endure.”",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "拒绝增水的理由只保留逆风可能拖长航程一条。“缺水是最严酷的匮乏”拆出来单独成句，标明是原文的感叹。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F10",
+   "path": "sections.analysis.0",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "“留下的人在冬天少六张嘴/six fewer mouths”在证据中没有依据（原文只说 fewer mouths），沿用了已知污染 K6。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E5",
+     "quote": "There would be fewer mouths to feed during the winter"
+    }
+   ],
+   "proposed": "中文改为“少了几张要吃饭的嘴”；英文改为“fewer mouths to feed”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“六张嘴/six”，中文改为“少了几张要吃饭的嘴”，英文改为 fewer mouths to feed。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F11",
+   "path": "sections.analysis.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“风险的下限/The floor of the risk”方向说反了。原文算的是最坏情形（at worst），即对留守者损害的上界，不是下限。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E5",
+     "quote": "at worst the venture would add nothing to the risks of the men left on the island"
+    }
+   ],
+   "proposed": "中文改为“最坏情形被算成：也不会给留下的人增加风险”；英文改为“The worst case was calculated as adding nothing…”",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "“风险的下限/floor”方向说反了，改为“最坏情形被算成/The worst case was calculated as”。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F12",
+   "path": "sections.limits.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "本段声明“数字都照原文：八百英里/eight hundred miles”，但原文写的是 over 800 miles，稿件丢了“多/over”。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E4",
+     "quote": "South Georgia was over 800 miles away"
+    }
+   ],
+   "proposed": "改为“八百多英里/over eight hundred miles”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "补回原文的“多/over”，改为“八百多英里/over eight hundred miles”；英文同时按 F2 改为 the leader。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F13",
+   "path": "sections.context.2",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "中文漏掉了天气不稳定一项，英文有“unsettled weather”，中英不一致。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E6",
+     "quote": "The weather then is unsettled"
+    }
+   ],
+   "proposed": "中文改为“天气不稳，天色阴沉，大风几乎不停”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文补上“天气不稳”，与英文 unsettled weather 和原文一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "P1",
+   "problem": "原文给出的拒绝增加配水的理由只有一条：逆风可能拖长航程。“缺水是人所能承受的最严酷的匮乏”在原文中是描述口渴的一般性感慨，紧接的是盐水加剧口渴，并不是拒绝预支的理由。稿件把它放在冒号之后、与风向理由并列（中文用“而”、英文用“and”连接），写成了拒绝的依据。",
+   "origin": "inherited final-editor previous attempt V2-V1",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.story.8",
+   "disposition": "duplicate",
+   "same_as": "F9",
+   "rationale": "问题成立。原文不增加配水的唯一理由是逆风拖长航程，“缺水最严酷”是对口渴的一般感慨，稿件把它写成了拒绝依据。与 F9 相同。"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.hook.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "原文说两位医生担心手术“将是必要的”，中英文都弱化成“可能需要/might be necessary”，削弱了原文的判断。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E1",
+     "quote": "the two doctors feared that an operation would be necessary"
+    }
+   ],
+   "proposed": "中文改为“两位医生担心必须动手术”；英文改为“the two doctors feared an operation would be necessary”。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "原文为“would be necessary”，中英文原先弱化为“可能需要/might be necessary”。现中文改为“两位医生担心必须动手术”，英文改为“feared an operation would be necessary”，与证据一致；该字段其余文字未动。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V2",
+   "path": "sections.story.5",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "英文保留了原文的“pathetic little group”，中文只写“站成一小群”，漏掉“可怜”这一层，中英不一致。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E18",
+     "quote": "made a pathetic little group on the beach"
+    }
+   ],
+   "proposed": "中文改为“在海边站成可怜的一小群”。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "中文补上“可怜的”，改为“在海边站成可怜的一小群”，与英文“pathetic little group”及原文一致。英文本已准确，按中英同步规则原样给出完整文字。",
+   "decided_in": "revise_r2"
+  }
+ ],
+ "edits": [
+  {
+   "path": "dek.zh",
+   "before": "足额口粮只够五个星期，一条脆弱的小船，六个名额。队长要说服全队走一条胜算很小的路，还要否掉带病号上船的提议，并在开船前把整支队伍交到留守者手里。",
+   "after": "足额口粮只够五个星期，一条小船，六个名额。队长要说服全队走一条危险极大的路，还要否掉带病号上船的提议，并在开船前把整支队伍交到留守者手里。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "dek.en",
+   "before": "Full rations for five weeks, one fragile boat, six places. The captain had to talk the whole party into a long-odds voyage, veto a proposal to take a sick man along, and hand the stranded party over to the man staying behind before the boat pulled away.",
+   "after": "Full rations for five weeks, one small boat, six places. The leader had to talk the whole party into a voyage whose perils were extreme, veto a proposal to take a sick man along, and hand the stranded party over to the man staying behind before the boat pulled away.",
+   "issues": [
+    "F1",
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.hook.0.zh",
+   "before": "象岛上，口粮按足额只够全队吃五个星期，减量可以撑三个月，或许还能靠海兽补一些，但队长不敢把信心全押在这上面：海滩上的海兽似乎都走了，冬天近了。存量里有三只海豹和两张半带脂肪的兽皮，燃料主要靠脂肪，于是全队定为每天只吃一顿热食。",
+   "after": "象岛上，口粮按足额只够全队吃五个星期，减量可以撑三个月，或许还能靠海兽补一些，但队长不敢把信心全押在这上面：海滩上的海兽似乎都走了，冬天近了。存量里有三只海豹和两张半带脂肪的兽皮，燃料主要靠脂肪。初步估量形势后，队长决定全队每天只吃一顿热食。",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.hook.0.en",
+   "before": "On Elephant Island the food would last the whole party five weeks at full ration. Cut back, it could be spread over three months, and would probably be supplemented to some extent by seals and sea-elephants — but the captain dared not count on that with full confidence. The animals seemed to have deserted the beach and winter was near. Their stocks included three seals and two and a half skins with the blubber attached, and they were mainly dependent on blubber for fuel. So the whole party went onto one hot meal a day.",
+   "after": "On Elephant Island the food would last the whole party five weeks at full ration. Cut back, it could be spread over three months, and would probably be supplemented to some extent by seals and sea-elephants — but the leader dared not count on that with full confidence. The animals seemed to have deserted the beach and winter was near. Their stocks included three seals and two and a half skins with the blubber attached, and they were mainly dependent on blubber for fuel. After a preliminary survey of the situation, he decided the party must be limited to one hot meal a day.",
+   "issues": [
+    "F2",
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.context.0.zh",
+   "before": "求援的去处是南乔治亚。它在八百多英里以外，但位于西风带内，东岸任何一个捕鲸站都可以指望找到捕鲸人；只要海上没有冰、小船撑得过那些巨浪，一支船队可望完成航行，并在一个月之内带着援助返回。",
+   "after": "求援的去处是南乔治亚。它在八百多英里以外，但位于西风带内，东岸任何一个捕鲸站都可以指望找到捕鲸人；只要海上没有冰、小船撑得过那些巨浪，一队人乘船可望完成航行，并在一个月之内带着援助返回。",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.context.1.zh",
+   "before": "出海的风险明摆着。队长算过最坏情形：这趟冒险不会给留在岛上的人增加任何风险，冬天还少了六张嘴吃饭；船上只带六人一个月的口粮——「for if we did not make South Georgia in that time we were sure to go under」，一个月到不了南乔治亚，就是死路。还有一条让他格外看重的考虑：象岛上根本不会有任何搜寻队来找他们。",
+   "after": "出海的风险明摆着。队长算过最坏情形：这趟冒险不会给留在岛上的人增加任何风险，冬天要吃饭的嘴也少了；船上只带六人一个月的口粮——「for if we did not make South Georgia in that time we were sure to go under」，一个月到不了南乔治亚，就是死路。还有一条让他格外看重的考虑：象岛上根本不会有任何搜寻队来找他们。",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.context.1.en",
+   "before": "The hazards of the ocean were plain, but the captain had priced the worst case. At worst the venture would add nothing to the risks of the men left on the island — six fewer mouths to feed through the winter — and the boat needed no more than a month's provisions for six, \"for if we did not make South Georgia in that time we were sure to go under\". And one consideration weighed with him: there was no chance at all of any search being made for them on Elephant Island.",
+   "after": "The hazards of the ocean were plain, but the leader had priced the worst case. At worst the venture would add nothing to the risks of the men left on the island — there would be fewer mouths to feed through the winter — and the boat needed no more than a month's provisions for six, \"for if we did not make South Georgia in that time we were sure to go under\". And one consideration weighed with him: there was no chance at all of any search being made for them on Elephant Island.",
+   "issues": [
+    "F2",
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.context.2.zh",
+   "before": "正因为如此，这件事必须向全队讲清楚。记述写明这个案子需要详细论证，因为所有人都知道航程的危险是极端的，风险只由援助的急迫需要来辩护。五月中，合恩角以南的海域被认为是世界上最暴虐的风暴水域，天色阴沉，大风几乎不停。一种解释是：他没有把出海说成上策，只说成不得已。",
+   "after": "这件事必须向全队讲清楚。记述写明这个案子需要详细论证，因为所有人都知道航程的危险是极端的，风险只由援助的急迫需要来辩护。五月中，合恩角以南的海域被认为是世界上最暴虐的风暴水域，天气不稳，天色阴沉，大风几乎不停。一种解释是：他没有把出海说成上策，只说成不得已。",
+   "issues": [
+    "F7",
+    "F13"
+   ]
+  },
+  {
+   "path": "sections.context.2.en",
+   "before": "So the case had to be argued in detail to the whole party. Everyone knew the journey's perils were extreme, and the risk was justified only by their urgent need of assistance. In mid-May the ocean south of Cape Horn is known to be the most tempestuous storm-swept area of water in the world: unsettled weather, dull overcast skies, gales almost unceasing. One reading is that he did not present the voyage as the best option, only the necessary one.",
+   "after": "The case had to be argued to the whole party in some detail, since everyone knew the journey's perils were extreme, and the risk was justified only by their urgent need of assistance. In mid-May the ocean south of Cape Horn is known to be the most tempestuous storm-swept area of water in the world: unsettled weather, dull overcast skies, gales almost unceasing. One reading is that he did not present the voyage as the best option, only the necessary one.",
+   "issues": [
+    "F7",
+    "F13"
+   ]
+  },
+  {
+   "path": "sections.story.0.en",
+   "before": "Who went and who stayed began with two men who asked to come. Worsley and Wild both realized the attempt must be made, and both asked to accompany him. The captain told Wild at once that he must stay — to hold the party together during the absence and, if the rescue failed, to take the men to Deception Island in the spring. His reason for taking Worsley was practical: \"a very high opinion of his accuracy and quickness as a navigator, and especially in the snapping and working out of positions in difficult circumstances\".",
+   "after": "Who went and who stayed began with two men who asked to come. Worsley and Wild both realized the attempt must be made, and both asked to accompany him. The leader told Wild at once that he must stay — to hold the party together during the absence and, if the rescue failed, to take the men to Deception Island in the spring. His reason for taking Worsley was practical: \"a very high opinion of his accuracy and quickness as a navigator, and especially in the snapping and working out of positions in difficult circumstances\".",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.1.en",
+   "before": "Four more were needed. He called for volunteers while admitting, honestly, that he already knew his choices — \"I pretty well knew which of the people I would select\". Crean had been slated to stay behind as Wild's right-hand man, but he begged so hard for a place in the boat that, after consulting Wild, the captain promised to take him. The criteria were stated openly: some were not fit for the work the boat would demand, and others, not seasoned sailors, would be of little use aboard.",
+   "after": "Four more were needed. He called for volunteers while admitting, honestly, that he already knew his choices — \"I pretty well knew which of the people I would select\". Crean had been slated to stay behind as Wild's right-hand man, but he begged so hard for a place in the boat that, after consulting Wild, the leader promised to take him. The criteria were stated openly: some were not fit for the work the boat would demand, and others, not seasoned sailors, would be of little use aboard.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.2.en",
+   "before": "One proposal was to take Blackborrow, the man with the frostbitten feet, so that he could have shelter and warmth as quickly as possible. The captain vetoed it. The record gives survival reasoning: fit men would find it hard enough to live in the boat, and a sick man lying helpless in the bottom could not be expected to survive the heavy weather they were sure to encounter.",
+   "after": "One proposal was to take Blackborrow, the man with the frostbitten feet, so that he could have shelter and warmth as quickly as possible. The leader vetoed it. The record gives survival reasoning: fit men would find it hard enough to live in the boat, and a sick man lying helpless in the bottom could not be expected to survive the heavy weather they were sure to encounter.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.3.en",
+   "before": "The list closed at six: Worsley, Crean, McNeish, McCarthy, Vincent, and the captain. The captain called the carpenter and asked whether he could do anything to make the boat more seaworthy; the carpenter's first question was whether he was going along, and hearing \"Yes,\" he seemed quite pleased. He was over fifty and not altogether fit.",
+   "after": "The list closed at six: Worsley, Crean, McNeish, McCarthy, Vincent, and the leader himself. The leader called the carpenter and asked whether he could do anything to make the boat more seaworthy; the carpenter's first question was whether he was going along, and hearing \"Yes,\" he seemed quite pleased. He was over fifty and not altogether fit.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.4.en",
+   "before": "What was put together was a patched-up affair, but it provided a base for a canvas covering. The canvas came frozen stiff; it had to be cut and then thawed over the blubber stove foot by foot before it could be sewn into a cover, then nailed and screwed into position. The cover did lend the boat an appearance of safety, but the captain felt uneasy that \"it bore a strong likeness to stage scenery\" — a wall that looks like granite and is in fact no better than canvas and lath. As events proved, the covering served its purpose well.",
+   "after": "What was put together was a patched-up affair, but it provided a base for a canvas covering. The canvas came frozen stiff; it had to be cut and then thawed over the blubber stove foot by foot before it could be sewn into a cover, then nailed and screwed into position. The cover did lend the boat an appearance of safety, but the leader felt uneasy that \"it bore a strong likeness to stage scenery\" — a wall that looks like granite and is in fact no better than canvas and lath. As events proved, the covering served its purpose well.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.5.en",
+   "before": "The pack might close at any time. With that decision made, the captain spent the rest of the day looking over the boat, gear and stores, and discussing plans with Worsley and Wild. The last night on the solid ground of Elephant Island was cold and uncomfortable. Before casting off, the captain went ashore for a final word with Wild, who remained in full command: directions for what to do if no help came, and then, in his words, \"I practically left the whole situation and scope of action and decision to his own judgment\". He told Wild he trusted the party to him and said goodbye to the men. With the jib set and the painter cut, they stood away to the north-east. Those left behind made a pathetic little group on the beach, grim heights at their backs and the sea seething at their feet — but they waved and gave three hearty cheers.",
+   "after": "The pack might close at any time. With that decision made, the leader spent the rest of the day looking over the boat, gear and stores, and discussing plans with Worsley and Wild. The last night on the solid ground of Elephant Island was cold and uncomfortable. Before casting off, the leader went ashore for a final word with Wild, who remained in full command: directions for what to do if no help came, and then, in his words, \"I practically left the whole situation and scope of action and decision to his own judgment\". He told Wild he trusted the party to him and said goodbye to the men. With the jib set and the painter cut, they stood away to the north-east. Those left behind made a pathetic little group on the beach, grim heights at their backs and the sea seething at their feet — but they waved and gave three hearty cheers.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.7.zh",
+   "before": "有一天上午 11 点前后，缆绳断了，海锚丢失，船横倒进涌里，向下风漂去。那是不必冒险在大风中升帆也能让船头顶浪的唯一手段，连同宝贵的绳子都找不回来，只能敲掉帆上的冰，升帆赌它撑得住。航程中一次测算显示：已走 380 多英里，接近南乔治亚的一半。看样子能撑过去。",
+   "after": "有一天上午 11 点前后，缆绳断了，海锚丢失，船突然横落进浪谷，向下风漂去。那是不必冒险在大风中升帆也能让船头顶浪的唯一手段，连同宝贵的绳子都找不回来，只能敲掉帆上的冰，升帆赌它撑得住。航程中一次测算显示：已走 380 多英里，接近南乔治亚的一半。看样子能撑过去。",
+   "issues": [
+    "F8"
+   ]
+  },
+  {
+   "path": "sections.story.7.en",
+   "before": "About 11 a.m. one day the painter parted and the sea-anchor went — the only means of keeping the boat's head up to the seas without the risk of hoisting sail in a gale, lost along with the valuable rope. She fell off into the trough and drifted to leeward. They beat the ice off the frozen canvas and hoisted it, trusting it to hold. One reckoning showed over 380 miles done, getting on for half-way to South Georgia. It looked as though they were going to get through.",
+   "after": "About 11 a.m. one day the painter parted and the sea-anchor went — the only means of keeping the boat's head up to the seas without the risk of hoisting sail in a gale, lost along with the valuable rope. She suddenly fell off into the trough of the sea and drifted to leeward. They beat the ice off the frozen canvas and hoisted it, trusting it to hold. One reckoning showed over 380 miles done, getting on for half-way to South Georgia. It looked as though they were going to get through.",
+   "issues": [
+    "F8"
+   ]
+  },
+  {
+   "path": "sections.story.8.zh",
+   "before": "航程中有一次，遇上了队长二十六年海上经历中从未见过的巨浪，与多日来那些白浪翻卷的大浪完全不同。他高喊大家抓紧。船被像软木塞一样抛起、向前甩出，灌进半船水，在重击下颤抖；所有人拼命用随手抓到的容器掏水，十分钟后才觉得船重新有了生命。Vincent 在过去一周已不再是积极的船员，队长写明难以解释他的垮掉——他是船上体格最强壮的人之一，年轻，在北海拖网船上干过，本该比 McCarthy 更能吃苦，而 McCarthy 没那么强壮，却总是乐呵呵的。淡水减到每人每天半品脱。带上船的冰块早已用完，装船时一只水桶在浪里被撞裂，渗进了一些海水，喝的水发咸，渴得更厉害；队长不肯增加配给，有人恳求预支第二天的水，也被拒绝：万一风向不利，船可能被吹离海岛，航程拖长许多天，而缺水是人所能承受的最严酷的匮乏。",
+   "after": "航程中有一次，遇上了队长二十六年海上经历中从未见过的巨浪，与多日来那些白浪翻卷的大浪完全不同。他高喊大家抓紧。船被像软木塞一样抛起、向前甩出，灌进半船水，在重击下颤抖；所有人拼命用随手抓到的容器掏水，十分钟后才觉得船重新有了生命。Vincent 在过去一周已不再是积极的船员，队长写明难以解释他的垮掉——他是船上体格最强壮的人之一，年轻，在北海拖网船上干过，本该比 McCarthy 更能吃苦，而 McCarthy 没那么强壮，却总是乐呵呵的。淡水减到每人每天半品脱。带上船的冰块早已用完，装船时一只水桶在浪里被撞裂，渗进了一些海水，喝的水发咸，渴得更厉害；队长不肯增加配给，有人恳求预支第二天的水，也被拒绝：万一风向不利，船可能被吹离海岛，航程拖长许多天。原文感叹，缺水是人所能承受的最严酷的匮乏。",
+   "issues": [
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.story.8.en",
+   "before": "At one point came a wave beyond anything the captain had met in twenty-six years at sea — a mighty upheaval of the ocean, quite apart from the white-capped seas that had been their tireless enemies for many days. He shouted for everyone to hold on: \"It's got us!\" The boat was lifted and flung forward like a cork, half-full of water and shuddering under the blow; the men baled with the energy of men fighting for life, and after ten minutes of uncertainty felt her renew her life beneath them. Vincent had for the past week ceased to be an active member of the crew, and the captain could not easily account for his collapse: physically one of the strongest men in the boat, young, with service on North Sea trawlers, he should have borne hardship better than McCarthy, who was not so strong but always happy. The daily water allowance was cut to half a pint a man. The lumps of ice taken aboard were long gone, and the breaker had been slightly stove in during loading, letting in some sea-water, so the brackish water sharpened the thirst; the captain would not raise the allowance or let anyone draw against the morrow's, however he was begged — should the wind turn unfavourable, it might drive them away from the island and lengthen the voyage by many days, and lack of water is the severest privation men can be condemned to endure.",
+   "after": "At one point came a wave beyond anything the leader had met in twenty-six years at sea — a mighty upheaval of the ocean, quite apart from the white-capped seas that had been their tireless enemies for many days. He shouted for everyone to hold on: \"It's got us!\" The boat was lifted and flung forward like a cork, half-full of water and shuddering under the blow; the men baled with the energy of men fighting for life, and after ten minutes of uncertainty felt her renew her life beneath them. Vincent had for the past week ceased to be an active member of the crew, and the leader could not easily account for his collapse: physically one of the strongest men in the boat, young, with service on North Sea trawlers, he should have borne hardship better than McCarthy, who was not so strong but always happy. The daily water allowance was cut to half a pint a man. The lumps of ice taken aboard were long gone, and the breaker had been slightly stove in during loading, letting in some sea-water, so the brackish water sharpened the thirst; the leader would not raise the allowance or let anyone draw against the morrow's, however he was begged — should the wind turn unfavourable, it might drive them away from the island and lengthen the voyage by many days. Lack of water, the account adds, is the severest privation men can be condemned to endure.",
+   "issues": [
+    "F2",
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.zh",
+   "before": "把这几个决定放在一起看，一种解释是：真正让这个方案说得出口的，是最坏情形那笔账。出海的人带一个月口粮，失败就是失败，而留下的人在冬天少六张嘴；风险的下限被算成：最坏也不会给留下的人增加风险。作者推断，当所有选项都糟透时，人们愿意跟从的未必是更有希望的那条路，而可能是把代价算清楚、不把损失转嫁给同伴的那条路。",
+   "after": "把这几个决定放在一起看，一种解释是：真正让这个方案说得出口的，是最坏情形那笔账。出海的人带一个月口粮，失败就是失败，而留下的人在冬天少了几张要吃饭的嘴；最坏情形被算成：也不会给留下的人增加风险。作者推断，当所有选项都糟透时，人们愿意跟从的未必是更有希望的那条路，而可能是把代价算清楚、不把损失转嫁给同伴的那条路。",
+   "issues": [
+    "F10",
+    "F11"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "before": "Read together, these decisions suggest one explanation: what made the plan speakable was the arithmetic of the worst case. The boat party carried a month's provisions; if they failed, they failed. The men left behind would have six fewer mouths to feed through the winter. The floor of the risk was calculated as adding nothing to the risks of the men left on the island. The author infers that when every option is grim, people will follow not necessarily the more hopeful road, but the one that costs its losses honestly and does not shift them onto comrades.",
+   "after": "Read together, these decisions suggest one explanation: what made the plan speakable was the arithmetic of the worst case. The boat party carried a month's provisions; if they failed, they failed. The men left behind would have fewer mouths to feed through the winter. The worst case was calculated as adding nothing to the risks of the men left on the island. The author infers that when every option is grim, people will follow not necessarily the more hopeful road, but the one that costs its losses honestly and does not shift them onto comrades.",
+   "issues": [
+    "F10",
+    "F11"
+   ]
+  },
+  {
+   "path": "sections.limits.0.en",
+   "before": "This record rests on exactly one historical source: a first-person account written after the fact by one of those involved. Its dialogue is reported, not transcribed — the words entrusting the party to Wild, Crean's plea for a place in the boat — and need not be verbatim. The captain's statement that his confidence grew as he looked at the men is retrospective self-description, not a verifiable record of his state of mind at the time.",
+   "after": "This record rests on exactly one historical source: a first-person account written after the fact by one of those involved. Its dialogue is reported, not transcribed — the words entrusting the party to Wild, Crean's plea for a place in the boat — and need not be verbatim. The leader's statement that his confidence grew as he looked at the men is retrospective self-description, not a verifiable record of his state of mind at the time.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.limits.1.zh",
+   "before": "还有两处要留白。Vincent 为什么垮掉，队长自己说难以解释，本文不替他补心理。所引片段未给公元年份，这里不做换算；正文的天数只保留原文明确写出的出海第六天，月份照原文；距离、口粮、水的数字都照原文：八百英里、三百八十多英里、半品脱。原文是扫描识别文本，个别字词有讹误，引文照原文写法。",
+   "after": "还有两处要留白。Vincent 为什么垮掉，队长自己说难以解释，本文不替他补心理。所引片段未给公元年份，这里不做换算；正文的天数只保留原文明确写出的出海第六天，月份照原文；距离、口粮、水的数字都照原文：八百多英里、三百八十多英里、半品脱。原文是扫描识别文本，个别字词有讹误，引文照原文写法。",
+   "issues": [
+    "F12"
+   ]
+  },
+  {
+   "path": "sections.limits.1.en",
+   "before": "Two blanks stay blank. Why Vincent collapsed, the captain himself says he could not easily account for, and this piece supplies no psychology for him. The quoted passages give no calendar year, so none is supplied here; the only day count kept in the text is the sixth day out, which the original states explicitly, and the month follows the original; distances, rations and water figures follow the original: eight hundred miles, over three hundred and eighty miles, half a pint. The source is a scanned, text-recognized print, with occasional garbled words; quotations follow it as printed.",
+   "after": "Two blanks stay blank. Why Vincent collapsed, the leader himself says he could not easily account for, and this piece supplies no psychology for him. The quoted passages give no calendar year, so none is supplied here; the only day count kept in the text is the sixth day out, which the original states explicitly, and the month follows the original; distances, rations and water figures follow the original: over eight hundred miles, over three hundred and eighty miles, half a pint. The source is a scanned, text-recognized print, with occasional garbled words; quotations follow it as printed.",
+   "issues": [
+    "F2",
+    "F12"
+   ]
+  },
+  {
+   "path": "sections.hook.1.zh",
+   "before": "除了粮食，人的状况也令人担心。艰苦与风寒在队伍身上留下了痕迹，几名队员的健康和精神状况令人深感不安；一名队员的双脚在乘船途中冻伤，伤势很糟，两位医生担心可能需要动手术。",
+   "after": "除了粮食，人的状况也令人担心。艰苦与风寒在队伍身上留下了痕迹，几名队员的健康和精神状况令人深感不安；一名队员的双脚在乘船途中冻伤，伤势很糟，两位医生担心必须动手术。",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "Beyond the food, the men's condition was also a worry. Privation and exposure had left their mark on the party, and the health and mental condition of several men were causing serious anxiety. One man's feet, frostbitten during the boat journey, were in a bad way, and the two doctors feared an operation might be necessary.",
+   "after": "Beyond the food, the men's condition was also a worry. Privation and exposure had left their mark on the party, and the health and mental condition of several men were causing serious anxiety. One man's feet, frostbitten during the boat journey, were in a bad way, and the two doctors feared an operation would be necessary.",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.story.5.zh",
+   "before": "浮冰随时可能合拢。决定做出后，队长用当天余下的时间检查船、装备和物资，并与 Worsley、Wild 商量计划。在象岛坚实陆地上的最后一夜又冷又不舒服。开船前，队长乘小艇上岸，与留守并全权指挥的 Wild 作最后交代：交代万一求援失败他该怎么做，同时几乎把整个局面和行动、决定的范围都交给 Wild 自行判断，「I practically left the whole situation and scope of action and decision to his own judgment」，并告诉他把队伍托付给他，随后向众人道别。升帆解缆向东北而去时，留在岸上的人在海边站成一小群，背后是岛上冷硬的高地，脚下的海在翻涌；他们挥手，喊了三声欢呼。",
+   "after": "浮冰随时可能合拢。决定做出后，队长用当天余下的时间检查船、装备和物资，并与 Worsley、Wild 商量计划。在象岛坚实陆地上的最后一夜又冷又不舒服。开船前，队长乘小艇上岸，与留守并全权指挥的 Wild 作最后交代：交代万一求援失败他该怎么做，同时几乎把整个局面和行动、决定的范围都交给 Wild 自行判断，「I practically left the whole situation and scope of action and decision to his own judgment」，并告诉他把队伍托付给他，随后向众人道别。升帆解缆向东北而去时，留在岸上的人在海边站成可怜的一小群，背后是岛上冷硬的高地，脚下的海在翻涌；他们挥手，喊了三声欢呼。",
+   "issues": [
+    "V1-V2"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "F10",
+    "F11",
+    "F12",
+    "F13"
+   ],
+   "changes_applied": 24,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[8] numbers differ zh[26] en[10, 26]"
+    ],
+    [
+     "CHECK",
+     "today[0] resembles the open-question scenario: shared phrases 「最坏情形」「的小团队」; bigram overlap 0.17"
+    ]
+   ],
+   "content_sha256_after": "caeb14503b98547b7491ceaf45bf77f0e2dbd070ee0d2b1163d4d597fd842395",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.hook.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.1",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "原文说两位医生担心手术“将是必要的”，中英文都弱化成“可能需要/might be necessary”，削弱了原文的判断。",
+      "evidence": [
+       {
+        "id": "SOUTH-EL1-E1",
+        "quote": "the two doctors feared that an operation would be necessary"
+       }
+      ],
+      "proposed": "中文改为“两位医生担心必须动手术”；英文改为“the two doctors feared an operation would be necessary”。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.story.5",
+      "category": "parity",
+      "severity": "fix",
+      "problem": "英文保留了原文的“pathetic little group”，中文只写“站成一小群”，漏掉“可怜”这一层，中英不一致。",
+      "evidence": [
+       {
+        "id": "SOUTH-EL1-E18",
+        "quote": "made a pathetic little group on the beach"
+       }
+      ],
+      "proposed": "中文改为“在海边站成可怜的一小群”。"
+     },
+     {
+      "id": "V3",
+      "path": "reflection.example.steps",
+      "category": "style",
+      "severity": "note",
+      "problem": "现代类比的内部逻辑不自洽：出去谈事的人仍然领工资，还要带一个月开销，并不能像“少一张嘴”那样“少一份开销”。这句话与假设中的现金约束相矛盾。",
+      "evidence": [],
+      "proposed": "改为“出去的人不额外增加留守者的开支，只带够一个月开销”，删去“反而少一份开销/removes one salary's worth of cost”。"
+     }
+    ],
+    "overall": "定稿整体忠实于证据：引文逐字、解释均有标注、现代段未冒充记录。仅需修正一处对医生判断的弱化、一处中英措辞不对等；另有一处现代类比的逻辑小瑕疵，可按需调整。",
+    "_content_sha256": "caeb14503b98547b7491ceaf45bf77f0e2dbd070ee0d2b1163d4d597fd842395"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1",
+    "V1-V2"
+   ],
+   "changes_applied": 3,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[8] numbers differ zh[26] en[10, 26]"
+    ],
+    [
+     "CHECK",
+     "today[0] resembles the open-question scenario: shared phrases 「最坏情形」「的小团队」; bigram overlap 0.17"
+    ]
+   ],
+   "content_sha256_after": "91dfff1286194de9326b773f322d6cf859cb1fc4e786f198c7b753ee001cfbd1",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [],
+    "overall": "逐字段复核后，事实、数字、人名与引语均能在证据中逐字或忠实对应；推断段落均已标为解释；现代场景未冒充记录；中英文一致且无截断。定稿可发。",
+    "_content_sha256": "91dfff1286194de9326b773f322d6cf859cb1fc4e786f198c7b753ee001cfbd1"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1",
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F7",
+     "F13"
+    ]
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F8"
+    ]
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F9"
+    ]
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F10",
+     "F11"
+    ]
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F12"
+    ]
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "dek",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "“一条脆弱的小船/one fragile boat”和“胜算很小的路/a long-odds voyage”在证据中都没有依据。证据只说航程危险极大，没有给出胜算，也没有说船“脆弱”（只有覆罩被称为 flimsy decking）。这两个说法与已知污染 K1（“胜算很小的选项”）和 K5（“一条脆弱的小船”）的措辞一致。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E6",
+      "quote": "all hands knew that the perils of the proposed journey were extreme"
+     }
+    ],
+    "proposed": "中文改为“一条小船……走一条危险极大的路”；英文改为“one small boat … a voyage whose perils were extreme”。"
+   },
+   {
+    "id": "F2",
+    "path": "dek",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "英文通篇称叙述者为“the captain”，但证据没有给出这一职衔。证据中他只以第一人称出现，是作出决定、交出指挥权的人（Wild 随后 remaining in full command）。用一个证据外的具体官职，容易让读者误认人物。此问题适用于全文所有英文“the captain”。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E17",
+      "quote": "who was remaining in full command"
+     }
+    ],
+    "proposed": "英文全文把“the captain”改为“the leader”（与中文“队长”对应），或改为“the narrator”。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.hook.0",
+    "category": "causality",
+    "severity": "fix",
+    "problem": "“于是全队定为每天只吃一顿热食/So the whole party went onto…”把决定写成燃料状况的直接后果，并改成了无主语的被动句。原文的写法是：作者先初步估量了形势，然后由他本人作出决定。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E2",
+      "quote": "after making a preliminary survey of the situation, I decided that the party must be limited to one hot meal a day"
+     }
+    ],
+    "proposed": "中文改为“初步估量形势后，队长决定全队每天只吃一顿热食”；英文改为“After a preliminary survey of the situation, he decided the party must be limited to one hot meal a day.”"
+   },
+   {
+    "id": "F4",
+    "path": "sections.hook.2",
+    "category": "style",
+    "severity": "note",
+    "problem": "英文引语后紧接“The conclusion was forced on him.”，与引语内容重复。",
+    "evidence": [],
+    "proposed": "删去英文末句，或改为“in his words”引出原句。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.context.0",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "“一支船队”在中文里指多条船组成的船队，与原文 a boat party（乘一条船的一队人）和英文译法不一致。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E4",
+      "quote": "A boat party might make the voyage"
+     }
+    ],
+    "proposed": "改为“一队人乘船”。"
+   },
+   {
+    "id": "F6",
+    "path": "sections.context.1",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "“冬天还少了六张嘴/six fewer mouths”在证据中没有依据，原文只说 fewer mouths。“六张嘴”来自已知污染 K6。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E5",
+      "quote": "There would be fewer mouths to feed during the winter"
+     }
+    ],
+    "proposed": "中文改为“冬天要吃饭的嘴也少了”；英文改为“fewer mouths to feed through the winter”。"
+   },
+   {
+    "id": "F7",
+    "path": "sections.context.2",
+    "category": "causality",
+    "severity": "fix",
+    "problem": "“正因为如此/So”把必须详细论证说成上一段最坏情形计算的结果。原文给出的原因是全队都知道航程危险极端。英文还删去了“since”这层因果连接。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E6",
+      "quote": "The case required to be argued in some detail, since all hands knew that the perils of the proposed journey were extreme"
+     }
+    ],
+    "proposed": "删去“正因为如此/So”；英文改为“The case had to be argued in some detail, since everyone knew the journey's perils were extreme.”"
+   },
+   {
+    "id": "F8",
+    "path": "sections.story.7",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“船横倒进涌里”容易被读成船翻覆。原文只说船突然横落进浪谷。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E21",
+      "quote": "the boat suddenly fell off into the trough of the sea"
+     }
+    ],
+    "proposed": "改为“船突然横落进浪谷”。"
+   },
+   {
+    "id": "F9",
+    "path": "sections.story.8",
+    "category": "causality",
+    "severity": "fix",
+    "problem": "原文不增加配水的理由只有一条，即逆风可能拖长航程。“缺水是最严酷的匮乏”在原文里是描述口渴的一般感慨，稿件却用“而/and”把它并列进冒号后的拒绝理由。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E25",
+      "quote": "I dared not permit the 175 SOUTH allowance of water to be increased since an unfavourable wind might drive us away from the island and lengthen our voyage by many days"
+     },
+     {
+      "id": "SOUTH-EL1-E25",
+      "quote": "Lack of water is always the most severe privation that men can be condemned to endure"
+     }
+    ],
+    "proposed": "把这句感慨从理由句中拆出单独成句。中文：“……航程拖长许多天。原文感叹，缺水是人所能承受的最严酷的匮乏。”英文：“…lengthen the voyage by many days. Lack of water, the account adds, is the severest privation men can be condemned to endure.”"
+   },
+   {
+    "id": "F10",
+    "path": "sections.analysis.0",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "“留下的人在冬天少六张嘴/six fewer mouths”在证据中没有依据（原文只说 fewer mouths），沿用了已知污染 K6。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E5",
+      "quote": "There would be fewer mouths to feed during the winter"
+     }
+    ],
+    "proposed": "中文改为“少了几张要吃饭的嘴”；英文改为“fewer mouths to feed”。"
+   },
+   {
+    "id": "F11",
+    "path": "sections.analysis.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“风险的下限/The floor of the risk”方向说反了。原文算的是最坏情形（at worst），即对留守者损害的上界，不是下限。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E5",
+      "quote": "at worst the venture would add nothing to the risks of the men left on the island"
+     }
+    ],
+    "proposed": "中文改为“最坏情形被算成：也不会给留下的人增加风险”；英文改为“The worst case was calculated as adding nothing…”"
+   },
+   {
+    "id": "F12",
+    "path": "sections.limits.1",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "本段声明“数字都照原文：八百英里/eight hundred miles”，但原文写的是 over 800 miles，稿件丢了“多/over”。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E4",
+      "quote": "South Georgia was over 800 miles away"
+     }
+    ],
+    "proposed": "改为“八百多英里/over eight hundred miles”。"
+   },
+   {
+    "id": "F13",
+    "path": "sections.context.2",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "中文漏掉了天气不稳定一项，英文有“unsettled weather”，中英不一致。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E6",
+      "quote": "The weather then is unsettled"
+     }
+    ],
+    "proposed": "中文改为“天气不稳，天色阴沉，大风几乎不停”。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "P1",
+    "verdict": "duplicate",
+    "same_as": "F9",
+    "rationale": "问题成立。原文不增加配水的唯一理由是逆风拖长航程，“缺水最严酷”是对口渴的一般感慨，稿件把它写成了拒绝依据。与 F9 相同。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E25",
+      "quote": "since an unfavourable wind might drive us away from the island and lengthen our voyage by many days"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "91dfff1286194de9326b773f322d6cf859cb1fc4e786f198c7b753ee001cfbd1",
+ "open_issues": [],
+ "outcome": "admissible",
+ "failure": null,
+ "finished_at": 1793415998.7829561,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 113.1,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 21928,
+    "output_tokens": 13039
+   },
+   "cost_estimate_usd": 0.43621200000000004
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 74.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 19970,
+    "output_tokens": 10314
+   },
+   "cost_estimate_usd": 0.36604800000000004
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 67.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16943,
+    "output_tokens": 7744
+   },
+   "cost_estimate_usd": 0.290432
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 11.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 17339,
+    "output_tokens": 1321
+   },
+   "cost_estimate_usd": 0.16514
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 55.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16946,
+    "output_tokens": 6462
+   },
+   "cost_estimate_usd": 0.264816
+  }
+ ],
+ "elapsed_min": 5.4,
+ "model_wall_min": 5.4
+}

@@ -1,309 +1,395 @@
-# History in Practice｜每日一鉴
+# 没事儿多读书（repository history-in-practice；原名“每日一鉴 / History in Practice”）
 
-版本：v2，2026-10-29（America/Los_Angeles）  
-状态：仓库已创建，当前交付计划与 prompts；下一步 Fable 评审 → ChatGPT 再评审 → Opus 实施。
+版本：v2.3（用户阅读目标澄清），2026-10-30（America/Los_Angeles）  
+状态：ChatGPT 再评审的必要修订已落实；四篇样稿、证据映射、邮件/网页本地预览与技术验证已完成（见 `samples/` 与 `docs/reviews/OPUS_VALIDATION.md`）。未部署、未启用定时任务、未发送邮件。用户已要求 overnight 继续实施；最新范围见 `prompts/03_OVERNIGHT_OPUS.md`，不因等待读者反馈或邮件账号停下独立工作。
 
-v2 新增：长期每日供稿、事件级去重与 GitHub 可读归档、故事叙事质量、开放问题与示例解答、带说明的延伸阅读。配套规范见 `docs/EDITORIAL_BRIEF.md`。
+修订记录：
+
+- v2：长期每日供稿、事件级去重与 GitHub 可读归档、叙事质量、开放问题与示例解答、带说明的延伸阅读。
+- v2.1（Fable 评审）：实测调用耗时、线上部署行为、Pi 时区、来源可达性、篇幅调整、问题类型轮换、缺失输入清单。
+- v2.2（ChatGPT 再评审 + Opus 验证）：
+  - 取消固定每周人工批准，改为默认自动准入、异常进入待处理、可选人工策划。
+  - Hermes 隔离：在已安装版本上核实 `-z -t "" --ignore-rules` **并不隔离**，改用项目级隔离调用器。
+  - 去重改为不可变 episode 注册表 + 规范出处位置 + 别名/繁简/QID 重定向 + 中文二字召回。
+  - 来源按具体文档记录状态。
+  - 叙事规则改为“有记录的矛盾、约束、行动与后果”，不要求人物二选一。
+  - 篇幅是试稿区间；调用预算来自样稿实测；部署核对覆盖正文哈希。
+
+配套规范见 `docs/EDITORIAL_BRIEF.md`。
 
 ## 1. 产品目标与命名
 
-每天约十分钟，通过一个有史料依据、好读的中英双语故事，积累历史知识，练习对现实问题的判断。历史范围包括中国古代、中国近现代（含毛泽东相关历史）、世界史、美国史，也可纳入有文献依据的现代组织、科学和商业事件。
+中文约十分钟、英文也约十分钟，通过一个有史料依据、好读的中英双语故事，积累历史知识，练习对现实问题的判断。历史范围包括中国古代、中国近现代（含毛泽东相关历史）、世界史、美国史，也可纳入有文献依据的现代组织、科学和商业事件。
 
-推荐 repository：`history-in-practice`。中文栏目：**每日一鉴**；英文栏目：**History in Practice**。建议 description：`A daily bilingual history story, grounded in sources and connected to everyday decisions. Delivered by email and published on StarHub.`
+repository：`history-in-practice`。中文栏目：**每日一鉴**；英文栏目：**History in Practice**。description：`A daily bilingual history story, grounded in sources and connected to everyday decisions. Delivered by email and published on StarHub.`
 
-备选：`daily-history` 更直观但没有体现现实应用；`history-for-life` 更亲切但含义稍宽。无需把 Pi、Hermes 或具体模型写进 repo 名，方便以后迁移。
+核心体验：**一个好读的故事 → 为什么会这样 → 两点可用启发 → 一条适用边界 → 一个开放问题与示例思路 → 出处与延伸阅读。** 不把成功者说过的话一概当真，不把一次成败总结成普遍定律。
 
-核心体验：**一个好读的故事 → 一个判断难题 → 两点可用启发 → 一条适用边界 → 一个开放问题与示例思路 → 延伸阅读。** 不把成功者说过的话一概当真，不把一次成败总结成普遍定律。
+长期目标是机器人每日产出新内容。默认流程不要求维护者每周固定编辑；只有异常需要人处理，并记录实际介入时间。不承诺“完全无人维护”，以试运行实测为准。
 
-## 2. 本轮核实结果及未知项
+## 2. 核实结果、未验证项与缺失输入
 
-### 已核实的仓库代码
+“已核实”指读到了代码、命令输出或 HTTP 响应。日期为核实日期；Pi 指 raspberrypi51。
 
-- `news-intel` 是 Python / SQLite / systemd 项目，已有配置、日志、Telegram 投递和 Git 工作流，可借鉴其运行习惯。
-- `src/news_intel/llm/provider.py` 中，`LLM_PROVIDER=hermes_cli` 会选用 `HermesCliProvider`。
-- `src/news_intel/llm/hermes_cli.py` 的 argv 为 `[hermes_bin, "-z", prompt, "-t", "", "--ignore-rules"]`，通过 `subprocess.run(..., shell=False)` 调用。这个模式关闭工具，因此不能自行查找、打开和核实史料。
-- 当前 Hermes 类实现的是 `enrich_events`；`compose_daily`、`compose_weekly` 和 `explain_event` 仍直接抛出未实现异常。可复用调用思路，不能把新项目长文写作视为已有能力。
-- 该类默认 timeout 为 20 秒，prompt / output 各限制 20,000 字符。长文与史料包需要单独设定限制和测量，不能直接照搬。
-- `website_test/main` 根目录目前主要是 `index.html`、`articles.html`、`css/`、`data/`、`media/`；根目录未见 Wrangler 配置或 Worker 入口。
-- `articles.html` 已有按文章加载内容、中英按钮及 JSON 索引的思路，可以参考。但新的中英切换要单独实现和验证，不能假定原页面可以直接复制使用。
+### 2.1 已核实：news-intel Hermes adapter（2026-10-29/30）
 
-### 用户提供、尚未在 Pi 上独立验证
+- `news-intel` 是 Python / SQLite / systemd 项目；`LLM_PROVIDER=hermes_cli` 选用 `HermesCliProvider`，argv 为 `[hermes_bin, "-z", prompt, "-t", "", "--ignore-rules"]`，`shell=False`，默认 timeout 20 秒，prompt / output 各 20,000 字符。`compose_*` 未实现。
+- 该 adapter 的注释认为 `-t ""` 关闭工具、`--ignore-rules` 跳过规则与记忆。**在 Pi 已安装的 Hermes 上两者都不成立**，见 2.2。
 
-`LLM_PROVIDER=hermes_cli`、`HERMES_BIN=/home/star/.local/bin/hermes`；Hermes 背后使用 Xiaomi MiMo；直接 HTTP 设置为空。实施时以 Pi 实际可执行命令和一次无敏感内容的 smoke test 为准，不读取或输出 Hermes 凭据。
+### 2.2 已核实：Pi 上 Hermes 的实际行为（2026-10-30）
 
-### 尚待实施时确认
+- Hermes Agent v0.14.0（2026.5.16），源码 revision `a6d87153e`（本地分支 `cst-telegram-integration-20260531-1010`）；配置模型 `mimo-v2.6-pro`，provider `xiaomi`；无 fallback 链。只读取了模型名，未读取凭据。
+- **源码检查**（`hermes_cli/oneshot.py`、`hermes_cli/main.py`）：
+  - `-t ""` 经 `_normalize_toolsets` 变成“未指定”，于是启用配置里的全部 CLI 工具集；同时设置 `HERMES_YOLO_MODE=1` 自动批准。
+  - `-z` 的分派发生在设置 `HERMES_IGNORE_RULES` 之前，`AIAgent` 以 `skip_context_files=False`、`skip_memory=False` 构造。
+  - 这与上游 [issue #26633](https://github.com/NousResearch/hermes-agent/issues/26633) 描述一致。
+- **加载器探针**（真实 `hermes` 入口，`AIAgent.chat` 被替换为输出摘要，不调用模型；只打印名称与布尔值）：
 
-- starhub.vip 实际使用 Workers Static Assets、Pages 还是其他部署方式；本轮网站访问工具未能打开在线首页，不能确认线上与 Git 当前一致。
-- Cloudflare 连接的仓库、生产分支、构建根目录、发布命令及自动部署状态。官方支持连接 Git 后按生产分支 push 自动构建部署，但这不证明当前站点已经这样配置。
-- 发信账号/服务及授权方式；两位读者准确邮箱；每日发送时间。
-- Pi 上 Hermes 版本、时区、与新闻任务的调度冲突及检索服务可用性。
+  | 调用方式 | 工具数 | 含 terminal / write_file / send_message | cwd AGENTS.md canary | SOUL.md | memory |
+  |---|---|---|---|---|---|
+  | `hermes -z … -t "" --ignore-rules`（news-intel 方式） | 29 | 是，且 YOLO=1 | 注入 | 注入 | 注入 |
+  | 项目级隔离调用器（`AIAgent(enabled_toolsets=[], skip_context_files=True, skip_memory=True, session_db=None)`） | 0 | 否 | 无 | 无 | 无 |
 
-这些是实施输入，不妨碍先评审本计划。当前默认：太平洋时区、每天 07:30 推送，前一天准备稿件，可配置；未经确认不把示例邮箱写成真实收件人。
+- 模型报错时 `hermes -z` **退出码 0、stdout 为空**（用不存在的模型名实测）。调用方必须把空输出当失败。
+- 隔离调用器实测：最短调用 11.4 秒；调用前后 `~/.hermes` 内文件无变化。prompt 经 stdin 传入，不再受单个 argv 上限约束。
+- 系统时区 America/Chicago；`systemd-analyze calendar "*-*-* 07:30:00 America/Los_Angeles"` 可解析。共享同一 Hermes / MiMo 的任务：`hermes-gateway.service` 常驻；`pi-news-daily.timer` 22:00 LA（写死 05:00 UTC）；`pi-news-daily-zh.timer` 07:00 LA 周一至周六；`pi-news-collect.timer` 每 5 分钟；polymarket 的 Hermes cron。
+- 根分区已用 78%；内存 7.9 G。
+
+**现有生产影响（不在本项目范围内修改）**：Pi 上 news-intel 的 `.env` 使用 `LLM_PROVIDER=hermes_cli`，因此它把外部新闻文本送进了一个带 29 个工具、自动批准的 agent，并注入了个人 SOUL / memory。是否、何时修复由用户决定；本项目不改 news-intel、gateway 或全局 Hermes 配置，也不升级生产 Hermes。
+
+### 2.3 已核实：starhub.vip 线上行为（2026-10-30，只读 HTTP）
+
+- 线上 `data/articles/index.json` 与 git `main` 字节一致；HTML 页面只多出 Cloudflare 注入脚本。与 Git 自动部署相容，但未证明是自动部署。
+- `*.html` 308 跳转到无扩展名路径；**任意不存在的路径都返回 200 并送回首页 HTML**（含 `/data/history/index.json`）；JSON 文件原样提供。
+- `articles.html` 是客户端口令保护的私人付费内容库，新栏目必须与它完全隔离。
+
+### 2.4 已核实：史料来源（2026-10-30，按具体文档，不按域名）
+
+状态阶梯：`unverified → reachable → extractable → evidence_usable`；失败类：`challenge_page`、`wrong_url`、`http_error`、`site_fallback`、`no_relevant_content`（可取回但缺少预期内容）。`evidence_usable` 要求正文中出现预先声明的标记文字（含人名），并在缓存中记录取回时间与 SHA-256。
+
+| 类别 | 文档（适配器） | 状态 | 来源基础 |
+|---|---|---|---|
+| 中国古代 | 《史记·项羽本纪》《陈丞相世家》（zh.wikisource 渲染文本） | evidence_usable | 司马迁 |
+| 中国古代 | 《汉书·张陈王周传》（zh.wikisource） | evidence_usable | 据《史记》改写（同源） |
+| 世界史 | Snow, *On the Mode of Communication of Cholera*, 1855（archive.org OCR） | evidence_usable | Snow |
+| 世界史 | Cholera Inquiry Committee, *Report…St. James, Westminster*, 1855（archive.org OCR） | evidence_usable | 教区委员会 / Whitehead |
+| 中国近现代 | Yung Wing, *My Life in China and America*, 1909, ch. 17, 19（en.wikisource 渲染） | evidence_usable | 容闳（当事人） |
+| 中国近现代 | 《清史纪事本末》卷五十八（zh.wikisource） | evidence_usable | 清官方系统史书 |
+| 中国近现代 | 《游美同学录》（1917）詹天佑条（zh.wikisource） | evidence_usable | 清华校友录 |
+| 中国近现代 | 《清史稿》卷一百七 | no_relevant_content（页面可取，未涉及此事） | — |
+| 美国史 | Washington, Newburgh address（en.wikisource） | evidence_usable | Washington |
+| 美国史 | *Journals of Major Samuel Shaw*, 1847（archive.org OCR） | evidence_usable | 在场者 Shaw |
+| 美国史 | *Journals of the Continental Congress*, vol. 24（archive.org OCR） | evidence_usable | 国会记录 |
+| 对照 | ctext.org / Founders Online / loc.gov | challenge_page（200 JS 验证 / 202 空 / 403） | — |
+| 对照 | starhub.vip `/data/history/index.json` | site_fallback | — |
+
+验证中发现一个提取缺陷：zh.wikisource 原始 wikitext 用 `{{ProperNoun|陳平}}` 包住人名，简单清洗会把人名整体删掉，而不含人名的标记仍能命中。已改为使用渲染文本，并把人名加入必现标记。来源适配器上线前须有同类抽检。
+
+### 2.5 尚待实施时确认
+
+- Cloudflare 资源类型、生产分支、是否 push 即部署；首次部署后正式链接是否可用。现阶段不改 Cloudflare 或 DNS。
+- MiMo 速率限制、与 gateway / polymarket cron 并发时的行为；隔离调用器在 Hermes 升级后是否仍成立（升级后须重跑加载器探针）。
+- 更多来源适配器（Gutenberg 直连在 Pi 上超时；marxists.org 中文文库可达但未做文档级验证）。
+- 真实邮件客户端呈现与真实读者阅读时间。
+
+### 2.6 缺失输入清单（只影响实际发信与上线，不阻塞样稿与 dry run）
+
+| 输入 | 用途 | 状态 |
+|---|---|---|
+| 发信账号与授权方式 | 发信 | 建议 Resend + history@read.starhub.vip；账号、域验证及 key 待配置 |
+| 两位读者的准确邮箱 | 收件人配置（本地私密文件） | 用户已在私密会话提供；只放 repo 外私密配置，不公开列出 |
+| 发送时间确认 | 排期 | 建议 07:30 America/Los_Angeles |
+| Cloudflare 部署方式与生产分支 | 网站发布器 | 未知 |
+| 维护者告警渠道 | 失败与待处理通知 | 建议沿用现有 Telegram bot，未确认 |
 
 ## 3. 阅读长度与栏目设计
 
-默认中文完整正文约 **1,000–1,300 个汉字**，英文对应约 **550–700 words**，以中英都读加短暂停留合计约十分钟为设计目标。不同阅读速度差异很大，前七天用真实阅读时间校准；不能把估算宣称为实测。
+**用户最新澄清：中文完整阅读约十分钟，英文完整阅读也约十分钟；不是双语合计十分钟。** 每个版本包含故事、分析、应用、边界、开放问题与示例解答，延伸点开外部来源的时间不计入。
 
-中文、英文应是同一篇文章的两个版本：同样的事件、判断、数字、限制和结论。英文自然易读，约 B2 水平，避免照字面翻译古文或人为加难。以对应小节为参照单位，不逐句交错。
+初稿可暂以中文约 **2,800–3,600 字**、英文约 **1,800–2,200 words** 为松参考。这不是硬性下限；以两位读者各语言真实阅读体验校准，不凑字数，也不按固定词数字数比例强迫翻译。两版事实、数字、判断、保留条件与来源一致，英文应自然地道，可重组句法和解释文化背景，不逐字硬译或添加无依据细节。
 
-| 栏目 | 要求 |
+已有四篇短样稿与实测见 `samples/README.md`，属于旧的双语合计时长目标。保留其证据和运行记录作为基线；今夜在其基础上补充有依据的背景、过程与解释，重做长篇阅读目标与译文质量检验，不能把旧样稿直接视为新长度目标已达标。两种语言分别给出阅读时间估算，随后据真实读速调整。
+
+| 栏目（section id） | 要求 |
 |---|---|
-| 标题与引子 | 用具体矛盾引起兴趣；不编造人物内心、私密对话或惊险细节 |
-| 时间、地点、人物 | 2–3 句，交代读懂故事必需的背景；日期精度与证据一致 |
-| 故事正文 | 全文约一半篇幅；有情境、选择、转折和结果，而非履历摘要 |
-| 为什么会这样 | 解释利益、信息、信任、制度或约束；区分史料记载与作者推断 |
-| 今天可以怎么用 | 两个具体启发，每个配一个现代小场景，例如团队分工、成果归属、合作或判断传言 |
-| 别照搬的地方 | 至少一条边界、代价、反例或替代解释 |
-| 开放问题与示例解答 | 一个有真实权衡、允许多种合理选择的问题；先想一想，再读含假设、步骤与另一种可能选择的参考思路；可附小行动 |
-| 出处与不确定性 | 默认 2–4 条真正支撑正文的出处，点明哪些细节存在争议 |
-| 想再读一点 | 默认 1–3 个可靠链接，说明能进一步读到什么、语言与已知访问限制，不堆裸链接或虚构下载地址 |
+| 引子 `hook` | 具体矛盾或处境；不编造人物内心、私密对话或惊险细节 |
+| 时间、地点、人物 `context` | 读懂故事必需的背景；日期精度与证据一致 |
+| 故事 `story` | 历史本体占最大篇幅；有记录的矛盾、约束、行动、转折与后果 |
+| 为什么会这样 `analysis` | 解释利益、信息、信任、制度或约束；区分史料记载与作者推断 |
+| 今天可以怎么用 `today` | 可选，默认不写（2026-10-31 读者反馈，取代原“两个启发、各配一个场景”）。全文只设一个简短现代场景，放在开放问题里；确需 today 时只写一段，说明适用条件与不能照搬之处。规则以 `src/history_in_practice/prompts/reader_first_zh.md` 为准 |
+| 别照搬的地方 `limits` | 至少一条边界、代价、反例或替代解释 |
+| 开放问题与示例 `reflection` | 有真实权衡、允许不同合理答案；示例含假设、步骤、另一种合理选择 |
+| 出处与不确定性 | 支撑正文的来源与争议；不计入阅读时间 |
+| 想再读一点 | 1–3 个说明“点开能读到什么”的链接；不计入阅读时间 |
 
-同一份双语结构化内容生成邮件、网页及 GitHub 可读的中英文 Markdown，禁止让模型为各渠道分别自由改写，避免版本不一致。问题与示例解答计入篇幅预算。
+同一份双语结构化内容生成邮件、网页及 GitHub Markdown，禁止为各渠道分别自由改写。
 
-用户喜欢小约翰可汗的历史内容带来的兴趣。落实为具体矛盾、必要背景、有约束的人物选择、可核实细节与自然推进的叙事，形成自己的栏目语言，不复制创作者的标志性表达。趣味不能依赖虚构对白、编造内心或故意省略关键背景。
+用户喜欢小约翰可汗的历史内容带来的兴趣：落实为具体矛盾、必要背景、有约束的人物与制度、可核实细节与自然推进的叙事，形成自己的栏目语言，不复制创作者的标志性表达。
 
-首篇可围绕今天聊天的主题：**“一起做事的人，为什么会逐渐离开？”** 但不直接把私人聊天、真实同事或组内纠纷写入公开文章。以一般合作场景开头，再进入有出处的历史事件。
+## 4. 选题、供稿与去重
 
-## 4. 选题轮换与长期内容
+### 4.1 题材配比与库存
 
-采用连续四期轮换，不按固定星期分配，避免周末缺席使某类长期被跳过。
+~~连续四期轮换~~（已由读者反馈取代，2026-10-31）。**题材配比（读者反馈 2026-10-31，取代等频四类轮换）：** 约每七篇四篇中国（古代与近现代都要有，可先以二比二为参考）、三篇其他地区（欧洲、亚洲其他地区、美国等，不固定国别配额，整个美洲不自动算作美国）。不固定星期几，软目标：实际顺序还看质量、事件/人物去重、主题与地区变化。实现见 `mix.py`：按位置的 C O C O C O C 模式，中国位古今交替，各位优先与上一篇主题、地区不同；某组暂无合格稿时另一组可替补，但任意连续七篇中国保持 3–5 篇；计划按位置持久化（重试/恢复不重选），`hip plan` 只读预览接下来七篇。库存天数 = 已排期 + 合格库存能填满的计划长度；补稿按计划的实际缺口。不为凑配比降低事实标准或重复事件。
 
-| 顺序 | 类别 | 边界与覆盖 |
-|---|---|---|
-| 1 | 中国古代 | 通常取 1840 年前；不局限于帝王和战争，纳入改革、科技、商贸、家庭与普通人 |
-| 2 | 世界史 | 本栏目排除中国和美国，覆盖欧洲、亚洲其他地区、非洲、拉美等，避免“世界史 = 欧洲史” |
-| 3 | 中国近现代 | 1840 年起；含晚清、民国、毛泽东相关史事及后续有可靠文献的事件 |
-| 4 | 美国史 | 独立建国、社会运动、科学、组织与企业等，按故事来源归属防止与世界史重复 |
+| 类别 | 边界 |
+|---|---|
+| 中国古代 | 约 1840 年前；不局限于帝王和战争，纳入改革、科技、商贸、家庭与普通人 |
+| 世界史 | 排除中国和美国，覆盖欧洲、亚洲其他地区、非洲、拉美等 |
+| 中国近现代 | 约 1840 年起；含晚清、民国、毛泽东相关史事及后续有可靠文献的事件 |
+| 美国史 | 独立建国、社会运动、科学、组织与企业等 |
 
-类别是编辑组织方式，不是对跨国历史的绝对切割。跨国事件选一个主类别，保留其他标签；不能一个事件换个标题就占两期。
+跨国事件选一个主类别。目标库存约 14 天已通过检查、尚未发布的成稿，四类均有储备，低于 7 天告警；库存按已分配排期计算。
 
-先建立 **40 个候选选题（每类 10 个）**，其中至少 **8 篇有完整证据包**，逐步备足 **约 14 天经审阅、尚未发布的成稿库存**，四类均有储备，低于 7 天告警；库存按已分配排期计算，不只看总数。之后按实际消耗与候选通过率持续补充；每周至少产出能覆盖下周消耗并带余量的合格新稿。每周 8–12 个候选可作为初始观察值，不能承诺它足以得到七篇合格稿。候选数量不等于已核实数量。
+### 4.2 供稿运行方式（v2.2）
 
-主题包括利益分配、信任、识人、信息失真、纠错、谈判、耐心、判断风险、合作和制度。内部参考比例：组织/合作约 30%，判断/纠错约 30%，生活/关系约 20%，科学/制度/其他约 20%；仅防偏科，不作为硬配额。
+默认自动进行：候选生成 → 证据取回与分级 → 去重 → 提纲 → 起草 → 规则检查 → 进入库存。维护者不承担固定的每周审批。
 
-去重：事件/片段 ID 永久去重，同一事件改标题、翻译、类别或观察角度仍算重复；同一核心教训短期内避免重复；主角和地区避免连续集中；再次讲同一人物必须换不同事件和问题。没有新启发时不硬凑。
+1. **候选生成**：模型可以提出候选事件、检索词和候选 URL；这些只是线索。Python fetcher 按来源政策取回正文、分级并缓存。现有写作调用保持无工具；是否另设允许检索工具的“研究调用”，作为可选实验单独测量，不影响写作调用的隔离。
+2. **自动准入**（全部满足才进入写作队列，并记录每条通过/拒绝原因）：
+   - 来源适配器已在来源政策中；
+   - 每条关键事实有 `evidence_usable` 文档中的逐字摘录支撑；
+   - 至少两个不同来源基础，或已明确披露共同源头且符合 §5 规则；
+   - 去重结论为 `distinct`；
+   - 模型自评分数不能代替证据。
+3. **待处理队列**（不阻塞其他合格候选，先改用其他候选或备用稿）：新来源类型、材料互相冲突、人物或事件身份不确定、核心细节缺乏支撑、去重结论为 `review`、规则检查 BLOCK。
+4. **可选人工策划**：维护者可随时抽查、加题或否决，不是默认流程的必经步骤。试运行若证明某类题材必须人工校核，报告实测劳动量与可靠性限制，再由用户调整服务承诺。
+5. 记录每篇的人工介入时间与原因；样稿阶段的编辑介入见 `samples/README.md`。
 
-建立已发布内容索引：人物别名、事件时间范围、地点、主要冲突、核心决策、主题、来源与已用日期。提纲生成前查重，成稿后再查一次；先用 SQLite 索引、全文检索和结构化标签召回相似历史稿，再辅助语义比较，不强制向量数据库。复习旧内容须明确标注，不计为当天新故事。
+### 4.3 来源政策
 
-第一批待核实选题可包括：刘邦的利益分配与用人、陈平离间楚营、罗马辛辛纳图斯交还权力、沙克尔顿远征中的合作、毛泽东《反对本本主义》的调查思想、晚清留学计划的推进与受阻、华盛顿退役、阿波罗 13 号团队处置。它们是候选，尚未在本计划逐篇完成史料审核。
+- 记录到“适配器 + 具体文档”级别，不以域名作笼统保证；状态与失败类见 §2.4。
+- 同一文本的不同镜像或转载不算独立来源；同一作者的不同篇章（如《史记》两篇）是同一来源基础；经他人书籍转载的文件（如容闳书中所录美国教育者抗议信）须注明转载链。
+- 允许逐步扩展可靠机构与研究材料；白名单不是“永远只用少数站点”。依赖缺失时不得用模型记忆补齐。
+- ctext.org、Founders Online、loc.gov 对脚本封锁；需要时只能人工阅读后以“摘录 + 位置”进入证据包，并如此标注。
 
-不把一周中的一天强制替换成复习日，以保留用户要求的四类节奏。第二阶段可在正文末尾增加不超过 30 秒的旧故事回想，或提供可选每周回顾。
+### 4.4 去重（v2.2）
 
-## 5. 史料与写作质量是核心
+- **episode 注册表**：每个具体片段/决策一条记录，由持久注册表分配不可变的顺序 ID（`ep-000123`）；编号不承担“已查重”的语义。`parent_event` 记录宏观事件（战争、远征、运动），同一宏观事件下可有多篇不同片段。Wikidata QID 为可选外部关联，查询前做重定向规范化。
+- **重复判定**（依次）：
+  1. 规范 QID 相同 → 重复。
+  2. 引用了相同的规范出处位置（作品 + 卷/章 + 段落区间），且至少一个相同人物 → 重复。
+     - 译本和其他版本必须映射到原作的卷/段编号；字符偏移不能跨版本比较。
+  3. 人物、地点、时间相同且行为描述相近 → `review`（进入待处理，由检查调用或人判断）。
+  4. 人物、地点、时间相同但出处与行为不同 → `distinct`。
+- **规范化**：繁简（OpenCC t2s）、人名别名表（中/英/称号，例如 陈平 = 陳平 = Chen Ping，亚父 = 范增）、地名。
+- **检索**：SQLite FTS5 默认 unicode61 与 trigram 都无法用 MATCH 找到二字人名“陈平”（Pi 上 SQLite 3.40.1 复现）。改为“CJK 二字切分列 + `instr` 子串 + 结构化实体”召回，FTS 只作候选召回，最终以出处位置与实体判定。
+- **范围与并发**：查重覆盖 `reserved / prepared / scheduled / published` 全部活动状态；预留在单个 `BEGIN IMMEDIATE` 事务中检查并插入，另以“核心出处位置”唯一索引防止并发双份。
+- **重建**：索引可从 Git 中已发布的结构化内容重建，结论与原库一致。
+- **验证**：`validation/dedup_check.py`，13/13 通过，结果见 `validation/dedup_check.out.txt`。
+- **已知残余风险**：同一片段改用另一部作品转述、且无 QID、行为措辞差异大时，只能落到 `review` 或漏判，须靠检查调用或抽查兜底。
+
+### 4.5 问题类型轮换
+
+`reflection.type` 取自：不确定下决策、分配与归属、何时离开、相信谁、如何纠错、何时等待、如何授权、如何传达坏消息（可扩展）。连续 7 期不重复同一类型。四篇样稿分别为：何时离开、如何纠错、不确定下决策、如何传达坏消息。
+
+## 5. 史料与写作质量
 
 ### 证据规则
 
-1. 默认每篇至少两个具有不同来源基础的材料；优先一份接近原始记录的材料，加一份可靠研究或机构解读。两个互相转载的网站不是独立证据。
-2. “原始记录”不等于客观真相。史书、回忆录、官方材料、自传都可能有立场和记忆局限，需要说明。古代事件如无真正独立史源，不强造第二证据，应披露共同源头及证据局限，必要时换题。
-3. 每个关键事实、引语、动机解释都关联到 source ID 和具体段落、章节或页码。模型补出的 URL、虚构书名或打不开后凭记忆补的段落不可作为证据。
-4. 网页必须实际取回相关正文，或使用此前取回且可追溯的缓存。仅有搜索摘要、状态码 200 或域名可信，不能证明结论得到支持。
-5. 提取并保存短证据片段、获取时间、正文 hash 和出处位置供审查；公开页以原创转述和必要短引为主，不复制受版权保护的长文或全文译文。
-6. 对话和引语只有原文支撑时才加引号；意译、后世说法、传说、小说桥段必须标清。无法核实的传奇故事不进入常规历史正文。
-7. 毛泽东及其他重要政治人物采用相同标准：交代具体时期、材料来源和分歧，允许讨论成功、错误、代价及其他人的作用；不凭未经证实的轶事塑造万能人物。
-
-### 与今天例子有关的一处校正
-
-“财聚则民散，财散则民聚”见《礼记·大学》，不能署名为刘邦语录。《史记·陈丞相世家》记载陈平及离间楚营相关故事，应与刘邦分配利益、用人的讨论分开选题。不能把不同章节、不同年代的材料拼成一段虚构的刘邦讲话。
-
-第一篇若谈团队分配，要指出现代的工资、成果署名、授权和制度承诺，与古代封赏不是同一套制度。“先给手下，成功后再说”也不是可无条件接受的长期原则：成功以后同样需要持续公平，不能把争取人心等同于一次性收买。
+1. 默认每篇至少两个不同来源基础；优先一份接近原始记录的材料，加一份不同立场或机构的材料。互相转载不是独立证据。
+2. “原始记录”不等于客观真相。史书、回忆录、官方材料都有立场和记忆局限，需说明。古代事件如无独立史源，不强造第二证据，须披露共同源头及局限，必要时换题。
+3. 关键事实、引语、动机解释都关联到证据 ID 与逐字摘录；模型补出的 URL、书名或凭记忆的段落不可作为证据。
+4. 网页必须实际取回正文（或可追溯缓存）；搜索摘要、状态码 200、域名可信都不能证明结论得到支持。
+5. 保存短证据片段、获取时间、正文 hash 和出处位置；公开页以原创转述和必要短引为主。
+6. 引号只用于原文有据的话。间接引语保持间接（例如肖对华盛顿戴眼镜一幕的记述是转述，不能改写成直接引语）。
+7. 人物动机、想法、“考虑过的选项”只有材料写了才能写，并标明出处；作者提出的替代选择、反事实与现代讨论放在分析或开放问题中并明确标记。
+8. 毛泽东及其他重要政治人物采用相同标准：交代具体时期、材料来源和分歧，允许讨论成功、错误、代价及其他人的作用。
+9. 遵守来源许可；受版权保护的现代著作只做短引与转述并给出页码。
 
 ### 文章审核
 
-先检查“读完具体知道发生过什么”，再检查“能否练习一个判断”。开头提出具体处境，正文通常用 2–4 个关键场景推进，保留一个可核实、记得住的细节；避免百科履历、千篇一律的反转和泛泛而谈的引子。拒绝只有“格局、智慧、人性”等空话的文章。要保留因果不确定性，提出其他解释，避免以结果倒推当时的选择必然正确。
+先检查“读完具体知道发生过什么”，再检查“能否练习一个判断”。程序检查（`validation/check_article.py`）能核对：
 
-LLM 自审只是辅助。第二次模型调用不能被宣称为独立史学审查；程序能核对 ID、引文是否出现在证据中、字段和数字一致性，但不能自动证明所有历史叙述为真。
+- 证据 ID 是否存在；
+- 古文引语（繁简转换后）与英文引语（逐字）是否出现在所引摘录中；
+- 中英数字是否一致；
+- 栏目结构与篇幅是否合规。
 
-门槛：关键事实没有材料支撑、核心引语归属错、材料相互冲突却未说明、中英文结论漂移、拿现代场景当历史事实，任一出现即不自动发布。进入待处理队列；改用类别合适的未发布备用稿，没有备用则跳过并告警，绝不退回纯模型记忆编故事。
+它不能证明历史叙述为真。LLM 审稿只是辅助，不能宣称为独立史学审查。
 
-## 6. 推荐架构：Pi 生产，现有网站承载阅读
+门槛：关键事实没有材料支撑、核心引语归属错、材料冲突未说明、中英文结论漂移、拿现代场景当历史事实，任一出现即不发布，进入待处理；改用合格备用稿，没有则跳过并告警，绝不退回纯模型记忆。
 
-第一版采用 **Python + SQLite + systemd + Hermes CLI + SMTP + 静态 HTML/JSON**。保持独立新 repo，不把它塞进 news-intel 的新闻流水线。借鉴 adapter、配置和运维方式；复制小段已有实现时保留出处并检查许可与依赖。
+## 6. 架构
 
-职责分离：
+### 6.1 部件
+
+第一版：Python + SQLite + systemd + Hermes（经项目级隔离调用器）+ SMTP + 静态 HTML/JSON。独立 repo，不并入 news-intel。
 
 | 部件 | 职责 |
 |---|---|
-| 选题队列 | 四期轮换、事件去重、覆盖分布、备用稿管理 |
-| 检索与证据缓存 | 取回允许来源的正文、提取相关片段、维护出处与版本 |
-| Hermes adapter | 基于限定证据写作、辅助审核、翻译；不处理发信或 Git 凭据 |
-| 确定性校验 | Schema、引文、source ID、长度、重复、跨语言字段检查 |
-| Renderer | 从同一内容对象生成邮件 HTML / 纯文本和网页内容 |
-| Publisher | 归档、导出网站文件、提交、确认线上可读、按收件人发信 |
-| 状态与调度 | 每日状态机、独立重试、锁、运行统计及维护者告警 |
+| 候选与队列 | 四期轮换、自动准入、待处理队列、备用稿 |
+| 来源适配器与证据缓存 | 取回、分级、提取摘录、hash 与时间戳 |
+| episode 注册表 | 去重、预留、从 Git 重建 |
+| Hermes 隔离调用器 | 无工具、无规则/记忆注入的写作、审稿、翻译调用；不处理发信或 Git 凭据 |
+| 确定性检查 | Schema、引语、证据 ID、数字、长度、跨语言字段 |
+| Renderer | 同一内容对象 → 邮件 HTML/纯文本、网页数据、GitHub Markdown |
+| Publisher | 归档、导出网站文件、提交、线上核对、按收件人发信 |
+| 状态与调度 | 状态机、重试、锁、统计与告警 |
 
-检索与模型明确分开：现有 `hermes -z ... -t "" --ignore-rules` 不能上网。MVP 从预选 URL、可靠原典和机构材料建立证据包，不要求先购买搜索 API。补充检索可配置现有可用的搜索服务；未经检查的检索输出不能直接成为证据。
+### 6.2 Hermes 调用方式
 
-每日流程：
+不使用 `hermes -z`。项目级调用器（验证版见 `validation/hermes_isolated.py` 与 `validation/run_hermes.py`）的约束如下：
 
-1. 根据本地日期和已发布期次确定类别；读取已核实选题和备用库存。
-2. 准备带来源映射的证据包，剔除不相关、冲突未说明和无法取得正文的材料。
-3. Hermes 写中文稿；第二次调用按证据审稿；通过后翻译英文。程序检查结构与一致性，必要时再作有限语义核对。
-4. 每步有明确时间与调用预算；只允许有限纠正重试。初始按每篇约 3–4 次调用、整篇有总超时设计，最终以 Pi 实测设置。
-5. 冻结一个双语内容版本并生成邮件、网页及 GitHub Markdown 预览；通过门槛才进入发布。
-6. 将正式内容保存进新 repo；导出网站 repo 允许路径内的内容，合为单个网站 commit。
-7. 监测部署结果并检查正式文章 URL、当天 ID / revision 和两个语言内容，不能仅以 HTTP 200 判定成功。
-8. 网页确认可用后，分别向两位读者发送同一版本的中英全文邮件。
+- 用 Hermes 自己的 venv 解释器运行，直接构造 `AIAgent(enabled_toolsets=[], skip_context_files=True, skip_memory=True, session_db=None)`。
+- 调用前断言工具数为 0、上下文文件与记忆未加载，否则退出码 5。
+- prompt 走 stdin，上限 200 KB；工作目录必须为空。
+- 空输出视为失败（退出码 3）。
+- 调用方用独立进程组，超时先 SIGTERM 后 SIGKILL。
+- stdout/stderr 在运行中按上限截断并终止，而不是结束后再检查。
+- 不改动用户 SOUL、memory、全局配置，不升级生产 Hermes。Hermes 升级后必须重跑 `validation/hermes_probe.py`。
 
-如果部署失败，保留正式内容并仅重试部署；默认暂缓邮件，避免按钮通向不存在的正文，超过截止时间通知维护者。可在配置中选择失败时仍发无链接全文，但不作为默认行为。
+### 6.3 每日流程与调用预算
 
-LLM 子进程使用绝对路径、argv、`shell=False`、限时和输出上限。与 news-intel 错峰、限制新任务并发为 1，测量共享模型额度与 Hermes 会话行为；若需要全局锁，必须让参与任务共同采用，不能以新项目的单边锁宣称已避免所有冲突。
+1. 前一晚 20:00 America/Los_Angeles 从库存取当日类别的稿件；库存不足时补稿。
+2. 每篇三次调用：中文稿（结构化 JSON）→ 按证据审稿 → 英文版；程序检查后冻结版本。
+3. 生成邮件、网页数据与 Markdown；归档；导出网站并提交；线上核对（§8）；发信。
+
+预算是可配置初值，来自四篇样稿的实测（见下表与 `samples/model_timings.json`）。单次调用超时与输出上限取实测最大值的约 2 倍；库存补充按“分篇截止 + 整批截止”设计，systemd `TimeoutStartSec` 不能设成单篇预算，否则批量补稿会在第一篇后被杀。
+
+2026-10-30 在 Pi 上用隔离调用器实测（mimo-v2.6-pro，串行，共 12 次调用，0 次重试，全部一次返回合法 JSON）：
+
+| 调用 | wall time（4 篇） | 输入 | 输出 | 建议初值（可配置） |
+|---|---|---|---|---|
+| 中文稿 | 163–362 s（均值 231 s） | 8.9–13.5 KB | 10.0–10.5 KB（约 4,600–4,900 字符） | 单次超时 720 s |
+| 按证据审稿 | 129–271 s（均值 209 s） | 14.9–19.4 KB | 3.7–9.4 KB | 600 s |
+| 英文版 | 100–119 s（均值 111 s） | 15.3–19.8 KB | 13.2–14.4 KB（约 13,200–14,400 字符） | 480 s |
+| 每篇合计 | 447–602 s | | | 分篇截止 25 分钟 |
+
+- 输出上限设 64 KB。最大一次输出约 14,400 字符，news-intel 的 20,000 字符上限勉强够用但余量小。
+- 整批补稿的截止时间按“篇数 × 25 分钟 + 余量”计算。
+- 这只是一次运行 12 个样本，provider 波动未测；试运行中继续记录，再调整。
+
+### 6.4 调度与并发
+
+`OnCalendar=*-*-* 20:00:00 America/Los_Angeles`（准备）与 `*-*-* 07:30:00 America/Los_Angeles`（发送），`Persistent=true`；Pi 系统时区是 Chicago，不能依赖它。准备窗口避开 22:00 LA 与 07:00 LA 的 news-intel 任务；本项目 Hermes 并发为 1。全局锁只有在所有参与任务共同采用时才有效。资源上限：`MemoryMax=1G`、`Nice=10`；证据缓存上限约 2 GB 并清理。
 
 ## 7. 内容对象与文件组织
 
-公开内容对象建议包含：`schema_version`、`edition_id`、`event_id`、`edition_date`、`category`、`tags`、`revision`、`published_at`、`title.zh/en`、稳定的 section ID、`sections[].zh/en`、`sources`、`reading_minutes.zh/en`、`correction_note`。
+公开内容对象（样稿实例见 `samples/*/article.json`）：
 
-内容还需稳定的 `reflection.question.zh/en`、`reflection.example_answer.zh/en`、`further_reading[]`（说明、语言、URL、已知访问限制）字段。事件级查重元数据应可从正式内容重建，不依赖单机 SQLite 幸存。
+- 标识与版本：`schema_version`、`edition_id`、`episode_id`、`edition_date`、`category`、`revision`。
+- 双语正文：`title.zh/en`、`dek.zh/en`、`sections[]`（稳定 id，每段 `zh/en/kind/ev[]`）。
+- 开放问题：`reflection`（`type`、`scenario`、`question`，以及 `example.assumptions/steps/alternative`）。
+- 来源与延伸：`uncertainty_note`、`sources[]`（含来源基础、URL、取回时间、文本 hash）、`further_reading[]`（含说明与访问限制）。
+- 篇幅与校验：`length`、`reading_minutes`（标注估算口径）、`content_sha256`（覆盖双语正文、问题、示例与来源字段）、`correction_note`。
 
-生成信息、审核状态、claim→source 映射和简短证据可另存内部审核记录。收件人、SMTP/Git 密钥、邮件投递日志、个人反馈和原始抓取全文不进入公开 JSON。
-
-建议新 repo 目录：
+内部审核记录另存：证据摘录、模型原始输出、审稿意见、编辑修改记录。收件人、密钥、投递日志、私人反馈和原始抓取全文不进入公开 JSON。
 
 ```text
 README.md
-docs/PLAN.md
-docs/EDITORIAL_POLICY.md
-docs/ACCEPTANCE.md
-docs/OPERATIONS.md
-config/rotation.yaml
-config/topics.yaml
-config/sources.yaml
-config/delivery.example.yaml
+docs/PLAN.md  docs/EDITORIAL_BRIEF.md  docs/reviews/
+config/rotation.yaml  config/sources.yaml  config/delivery.example.yaml
 prompts/
-src/history_in_practice/
-  evidence/
-  llm/
-  editorial/
-  render/
-  publish/
-  jobs/
-templates/email.html.j2
-templates/email.txt.j2
-content/YYYY/MM/DD-slug.json
-content/YYYY/MM/DD-slug.zh.md
-content/YYYY/MM/DD-slug.en.md
+src/history_in_practice/{sources,registry,llm,editorial,render,publish,jobs}/
+templates/
+content/YYYY/MM/DD-<edition>.json  .zh.md  .en.md
 deploy/systemd/
 tests/
+samples/      # 本阶段样稿与证据（非正式期次）
+validation/   # 本阶段技术验证脚本（非生产代码）
 ```
 
-本地 `data/`（SQLite、运行日志、抓取缓存、待处理稿）和私密配置不提交。已发布的原创内容 JSON 进入版本控制，作为共同正文依据；中英文 Markdown 由同一个对象派生并提交，便于直接在 GitHub 阅读、追踪来源与更正；当前新 repo 为公开仓库，正式稿与派生 Markdown 可公开浏览；私人原始材料、抓取缓存和收件人配置不能提交。
+本地 `data/`（SQLite、日志、抓取缓存、待处理稿）和私密配置不提交。
 
-建议网站新增：`history/index.html`、`data/history/index.json`、`data/history/YYYY/MM/DD-slug.json`。详情链接初期可用 `history/index.html?story=<id>&lang=zh`，避免在不清楚 Cloudflare 路由时假设 `/history/<slug>` 已能工作；核实目录索引后再选择更短链接。
+网站新增 `history/index.html`、`data/history/index.json`、`data/history/YYYY/MM/DD-<edition>.json`；链接统一 `/history/?story=<id>&lang=zh|en`。
 
 ## 8. 网站阅读体验与部署
 
-栏目默认中文；顶部 `中文 / English` tab，用相同小节 ID 切换内容并尽量保持阅读位置。记住语言偏好，URL 支持指定语言，键盘可操作。邮件中提供各语言的网页直达链接。
+默认中文；顶部 `中文 / English` tab（键盘可操作），切换时按 section id 保持阅读位置；记住语言偏好；URL 可指定语言。列表按日期倒序、四类筛选。示例思路可折叠；来源与延伸阅读分区。正文宽约 720 px、字号 17.5 px、行距 1.8，支持明暗主题。页面只用 `textContent` 渲染数据；取 JSON 时校验 `Content-Type` 与可解析性，取到首页回退时显示明确错误。本地预览见 `samples/preview/`。
 
-首页显示今日标题、类别、预计阅读时间、引子和阅读全文按钮；历史列表按日期倒序，并支持四类筛选。首版不做账户、评论、排行榜或重型搜索。开放问题先显示，示例思路可折叠；来源与延伸阅读清楚分区。GitHub 为持久归档，StarHub 为现有阅读入口，本要求不自动意味着另建 GitHub Pages 网站。文章宽度约 680–760 px，手机单栏，字号 17–18 px、行距约 1.8；支持明暗主题，以长文舒适度优先。保持 StarHub 的导航风格，文章区域无需照搬首页的强视觉效果。
+`website_test` 只新增 `history/`、`data/history/` 与首页一个入口；不触及 `articles.html` 与 `data/articles/`。
 
-`website_test` 只新增栏目、数据及一个首页入口；不要把新故事写进现有 private articles 索引，也不要把收件人与私人素材带入新页面。渲染器使用模板白名单和转义，模型不得输出可直接执行的 HTML/JS。
+**发布核对**：
 
-推荐每日静态导出到现有网站 repo，然后使用已经核实的 Cloudflare Git 部署。每天一篇不必先新增 Worker API、D1、R2 或 KV。若实际部署不适合 Git 导出，再提出具有明确收益的替代方案，不在第一版同时实现两套发布系统。
+1. 取回线上 `index.json` 与当日 JSON。
+2. 比较 `edition_id`、`revision` 与 `content_sha256`，三者都要与本地冻结版本一致；`content_sha256` 覆盖双语正文、问题、示例与来源。
+3. 首次上线与改版时，用无头浏览器打开两种语言的深链，确认正文渲染（本阶段已在本地预览上这样验证）。
 
-Git 约定：开发用短期分支和 PR；Pi 生产各 repo 保留一个干净 main 工作副本。每日内容提交可在授权上线后走约定的自动内容提交路径；若分支保护要求 PR，使用与保护规则兼容的自动内容流程，不能绕过规则。网站发布器只能修改允许的 `history/`、`data/history/` 内容范围；入口改动由开发 PR 完成。发生冲突立即停下，不 force push、不覆盖其他修改。
+JSON 取回成功不等于阅读页面已验证。
+
+Git 约定：开发用短期分支和 PR；Pi 生产各 repo 保留干净 main。发布器只能修改允许路径；冲突立即停下，不 force push。
 
 ## 9. 邮件：中文完整篇在前，英文完整篇在后
 
-首版选用已有、可正常授权的 SMTP 发信账号，使用 TLS 和 HTML + text/plain 双格式。若没有可用账号，再评估事务邮件服务与发信域验证；不因为网站在 Cloudflare 上就假设已经拥有可用发信能力，也不为了这个小项目自建 SMTP 服务器。
+首版使用已有、可授权的 SMTP 账号，TLS，HTML + text/plain。顺序：栏目信息 → 中文全文、问题与参考思路、出处与延伸阅读 → “在网页阅读 / Read in English”按钮与分隔线 → 英文全文 → 页脚（期次、链接、反馈与暂停方法）。table 布局 + inline CSS，约 640 px，不依赖 JS、外部字体或背景图。
 
-邮件按以下顺序：
+HTML 上限 90 KB 作为工程初值（样稿实测字节数见 `samples/README.md`）；真实客户端的呈现与裁剪以实测为准，不作“不截断/不折叠”的保证。
 
-1. 栏目小标、日期、类别、阅读时间。
-2. 中文标题和简短引子；完整中文各节、开放问题与参考思路；出处和延伸阅读。
-3. “在网页阅读 / Read in English”按钮和清楚的分隔线。
-4. 完整英文对应内容、问题与参考思路、出处和延伸阅读。
-5. 简单页脚：期次、文章链接、反馈方式和暂停接收说明。
-
-邮件不依赖折叠交互：问题先列出，以留白与“一个参考思路”小标题分隔示例。
-
-版式：约 640 px 单栏、留白充足、近白背景、深色正文、一个低饱和强调色；小标题、短段落、重点引用卡片。使用兼容邮件客户端的 table 布局和 inline CSS，不依赖 JS、tab、外部字体或背景图。系统中文字体加 serif 标题即可；每封不强制生成插画。
-
-subject 示例：`每日一鉴 #001｜一起做事的人，为什么会离开？`；preheader 补充具体矛盾，不重复标题。完整双语邮件要测实际 HTML 字节数与主流客户端裁剪行为；控制标签冗余，保留顶部网页入口，不作未经实测的“不截断”保证。
-
-分别发给两位读者、分别记录状态，不把一次批量调用视为两人均收到。维护准确的收件人配置，不能依据昵称猜地址。首版无需开放订阅系统；暂停接收由配置管理，并在邮件中写明可执行的方法。
-
-Telegram 不列为首版必需的第三份长文投递。若仍希望保留，可后加“标题 + 一句话问题 + 网站链接”，避免中文英文长文拆成大量消息。
+分别发给两位读者、分别记录状态；不能依据昵称猜地址。
 
 ## 10. 可靠性、重试与恢复
 
-- 状态至少区分：`prepared → checked → archived → site_committed → site_live → email_pending → complete`；邮件另有每收件人的 `pending / sending / accepted / unknown / failed`。SMTP accepted 只代表服务器接受，不能称为读者已收阅或必达收件箱。
-- 唯一键包括期次、渠道和收件人；正文冻结后不因网络失败重新生成。已成功渠道不重复投递。
-- SMTP 无通用严格 exactly-once 保证。发送后进程崩溃或网络中断可能结果不明；记录稳定 Message-ID 和发送事件，标记 `unknown`，禁止盲目自动重发。选用支持幂等键的服务可改善，但不能宣称 Message-ID 自身能保证去重。
-- 网站提交、部署和发信分别重试；有 retry cap、退避和总截止时间。重启默认不补发积压多天邮件，也不把漏发期次标为已发。
-- 轮换以已正式发布期次推进；日期用于排期和链接。漏一天保留下一类别，故障补发使用原期次，不重复占用新一期。
-- 以明确 IANA 时区排期，验证夏令时与 Pi 重启；时钟、日期计算与幂等键使用同一排期规则。
-- 内容更正保留 revision 和说明；网站公开更正。不因修一个错字重发全文，实质错误按明确规则发送简短更正。
-- Pi 上保留 SQLite 及正式内容备份，记录恢复步骤；Hermes 失败可用已审未发备用稿。没有合格稿就停发并告警，不能发送占位“今日故事稍后”。
-- 正文生成和系统发布分进程职责，正文与史料中出现的指令视为数据；Git 与发信密钥不传给 LLM。
-- 记录模型标签、prompt 版本、材料 hash、耗时、调用次数和失败原因。CLI 没有提供 token 或费用时记录 unknown，不能估造。
-- 维护者告警使用部署时确认的渠道；限频，不能把运行错误原文和密钥发给两位读者。
+- 状态：`prepared → checked → archived → site_committed → site_live → email_pending → complete`；每收件人 `pending / sending / accepted / unknown / failed`。SMTP accepted 不等于读者已收到。
+- 正文冻结后不因网络失败重新生成；已成功渠道不重复投递；发送后结果不明标记 `unknown`，禁止盲目自动重发。
+- 网站提交、部署和发信分别重试，有上限、退避和总截止时间；重启不补发积压多天邮件。
+- 轮换按已发布期次推进；故障补发使用原期次。
+- 更正保留 revision 与说明；实质错误发送简短更正。
+- 没有合格稿就停发并告警，不发送占位内容。
+- 正文与史料中的指令视为数据；Git 与发信密钥不进入任何模型调用。
+- 记录模型名、prompt 版本、材料 hash、耗时、字节数、调用次数与失败原因；token 与费用拿不到就记 unknown。
 
-## 11. 实施与评审顺序
+## 10.5 实施状态（2026-10-30 稳定化之后）
 
-### Phase 0：评审计划，不开始上线
+详见 `docs/STABILIZATION_REPORT.md`（overnight 部分见 `docs/OVERNIGHT_REPORT.md`）。简表：
 
-用户已创建 `history-in-practice`；本文位于 `docs/PLAN.md`，配套内容规范位于 `docs/EDITORIAL_BRIEF.md`，Claude prompt 位于 `prompts/`。Fable 先评审并提交一份 Findings + 修订建议；ChatGPT 再根据同一版本及 Findings 评审；形成最终评审版本后交 Opus 实施。本轮无需启动任何后台机器人，也无需发送试信。
+| 部分 | 状态 |
+|---|---|
+| 来源取回、证据摘录、去重、隔离 Hermes 调用、校验、同源渲染 | 已实现，真实运行 |
+| 候选供给（来源目录 → 模型提议 → 锚点机械核对 → 去重 → 候选文件） | 已实现；3 次真实提议，2 个候选 |
+| 编辑阶段（模型修改 → 复审中文 → 英文一致性 → 绑定记录 → 准入） | 已实现；真实运行 9 篇，1 篇收敛入库，8 篇待处理 |
+| 发布：有限等待部署、逾期不迟发、推送补做、退出码 | 已实现；本地 fixture 测试 |
+| 发信：配置校验、Reply-To 必填、冻结预期收件人、一次性真实测试入口 | 已实现；本地 SMTPS 测试，未真实发信 |
+| 库存：按轮换计算连续覆盖天数 | 已实现；当前 0 天（目标 14） |
+| systemd 模板（nightly、send、send-retry） | 已写，未安装、未启用 |
 
-### Phase 1：先证明值得读
+两条新经验：
 
-Opus 准备四类各一篇，共四篇完整双语样稿、证据记录、邮件 HTML 预览和网站本地预览。必须包含一篇中国近现代或毛泽东相关题材，检验复杂材料的表达。先评故事质量、长度、现实应用与边界，再扩展候选题库。若四篇只是重复“识人、分钱、用人”的结论，内容设计不通过。
+1. **同一模型既改又审时，多数稿件在有限轮次内不收敛。** 每轮修好列出的问题，新的复审又列出别的既有问题。需要决定收尾方式（人工、指定编辑或多次复审合并），不降低 fix 门槛。
+2. **证据锚点被删后，简报里引用它们的句子必须一并删掉**，否则初稿会写入无证据的“事实”。已在供给步骤修正。
 
-### Phase 2：跑通一篇完整 dry run
+## 11. 阶段
 
-实现 Hermes 调用、证据包、内容 Schema、审核门槛、同源渲染、SQLite 状态机与命令行入口。完成一篇从材料到邮件/网页文件的离线 dry run，给出真实耗时和失败演示。此时不要依赖生产凭据验证核心逻辑。
+- **Phase 0 评审**：完成（Fable → ChatGPT → 本轮修订）。
+- **Phase 1 证明值得读**：四篇样稿、证据映射、预览与真实耗时已交付（`samples/`）。待两位读者阅读、计时并反馈；若反馈认为空泛或过长，先改样稿再扩展。
+- **Phase 2 自动供稿 dry run**：实现来源适配器、episode 注册表、自动准入与待处理队列、隔离调用器、检查与渲染、SQLite 状态机和 CLI（`doctor / prepare / preview / publish --dry-run / status / retry`）。验收：
+  - 自动完成至少连续两轮四类供稿 dry run（共八篇），无人工点击也能进入合格写作队列；
+  - 异常进入待处理而不停止其他合格稿；
+  - 报告每篇实际人工介入时间与原因；
+  - 这八篇不等于证明全年无需维护。
+- **Phase 3 集成网站与邮件**：核实 Cloudflare 配置，网站小范围 PR，按 §8 核对；确认发信授权与收件人后发测试信。
+- **Phase 4 Pi 七天试运行**：独立 systemd 单元，观察阅读时长、空泛程度、模型耗时、投递与部署问题，再按确定配置持续运行。
 
-建议 CLI 能表达：`doctor`、`prepare`、`preview`、`publish --dry-run`、`status`、`retry`。实际命令名由实施者保持简洁一致；必须能独立重试网站与单个收件人的发送。
-
-### Phase 3：集成现有网站与邮件
-
-核实 Cloudflare 配置并建立 website_test 的小范围 PR；验证页面语言切换、深链、手机阅读及旧页面无回归。确认发信授权与准确收件人，检查两位读者实际收到的测试邮件。现有授权范围内继续完成，不反复请求同一许可；缺失邮箱、账号权限等必要输入时才集中列出。
-
-### Phase 4：Pi 七天试运行，再持续自动化
-
-部署独立 systemd service/timer，先准备备用库存，再启用约定时间发送。连续七天观察实际阅读时长、喜欢程度、空泛程度、模型耗时、投递及部署问题；必要时缩短文章或调整选题。审核合格后按确定的配置持续自动运行，不设置每天必须人工点头的流程。
-
-只交付实际完成的证据；“本地预览正常”“邮件被 SMTP 接受”“Cloudflare 部署成功”“线上双语文章可读”“两位读者已收到”分别报告，不混为一谈。
+分别报告：本地预览、真实 Hermes 调用、Cloudflare 部署、线上双语可读、SMTP accepted、读者实际收到。
 
 ## 12. 验收清单
 
-### 编辑与阅读
+- 四类各有一篇样稿，故事具体、证据可追溯、中英结论一致；叙事与编辑解释逐段标注（`kind`）。
+- 引语与日期经证据对照；间接引语未被改成直接引语；替代选项不写成人物的真实想法。
+- 每篇两个具体应用、一条边界、一个有真实权衡的开放问题，示例含假设、步骤与另一种选择。
+- 两位读者至少数篇真实阅读用时。
+- 自动准入、待处理、去重（含繁简、别名、英文、类别、QID 缺失/重定向、预备中重复、并发）与从 Git 重建均有测试。
+- 隔离调用器的加载器探针为 0 工具、无 canary；模型报错不被当作成功。
+- 网站与邮件来自同一期次与 revision，`content_sha256` 一致；网站未上线时不发坏链接。
+- 私人聊天、收件人和凭据不出现在公开内容或提交中。
+- 关键故障测试：Hermes 超时/空输出/非法 JSON、证据缺失、错误引语、翻译数字漂移、Git 冲突、部署旧版本、部分投递失败、发送结果未知、Pi 重启、SQLite 丢失后重建。
 
-- 四类各有一篇完整样稿，故事本体具体、史料可追溯、中英结论一致。
-- 核心引语和日期经过证据对照，文章明确区分记录、解释和现实类比。
-- 每篇有两个具体应用、一条边界、一个有真实权衡的开放问题与示例解答，示例说明假设、步骤和另一种可能选择；不把复杂因果简化成万能人性定律。
-- 记录两位读者至少数篇真实阅读用时，调整至约十分钟体验。
-- 初始候选与证据库存状态可检查；目标约 14 天合格库存、低于 7 天告警；持续补稿覆盖每日消耗，不能只依靠最初题库。
-- 延伸阅读说明点开能读到什么，依据与推荐链接不混淆；中文、英文都保留相同的问题与示例权衡。
+## 13. 评审与验证记录
 
-### 产品
-
-- 网站今日与归档页面可用，默认中文，英文 tab、带语言深链和手机界面均经验证。
-- 邮件中文全文在前、英文全文在后；HTML 和纯文本都可读，来源链接有效。
-- 邮件、网页与 GitHub 可读 Markdown 来自相同期次和 revision；网站未上线时不提前发坏链接。
-- 私人聊天、收件人和凭据不会出现在公开内容或提交中。
-
-### 关键故障测试
-
-模拟 Hermes 超时、非法 JSON、证据缺失、错误引语、翻译数字漂移；验证拒发或使用合格备用稿。模拟 Git 冲突、部署返回旧页面、第一位发信成功第二位失败、发送中断结果未知和 Pi 重启；验证恢复后不重新生成、不覆盖其他修改、不盲目重复发送。增加跨标题/跨语言/跨类别的同事件查重，以及本地 SQLite 丢失后从 GitHub 归档重建的验收。
-
-测试针对有实际风险的行为；不为低影响样式修改堆积机械测试。样式以桌面/手机截图和真实邮件客户端阅读验证。
-
-## 13. Claude 任务与评审记录
-
-- Fable 完整评审 prompt：`prompts/01_FABLE_REVIEW.md`。
-- Opus 后续实施 prompt：`prompts/02_OPUS_IMPLEMENT.md`；完成两轮评审且用户要求实施时才执行。
-- Fable 结果保存为 `docs/reviews/FABLE_REVIEW.md`，修订文档放短期分支并开 draft PR，供 ChatGPT 再评审。
-- 当前阶段不安装定时任务、不部署网站、不发送邮件，不把尚未实施的功能写成已运行。
+- `docs/reviews/FABLE_REVIEW.md`（v2 → v2.1；其中“-t '' 关闭工具、空 cwd 即可隔离”的结论已被本轮核实推翻，保留原文作为记录）。
+- `docs/reviews/CHATGPT_REVIEW.md`（v2.1 再评审）。
+- `docs/reviews/OPUS_VALIDATION.md`（本轮：修订落实情况、技术验证、样稿与耗时）。
+- 当前阶段不安装定时任务、不部署网站、不发送邮件。
 
 ## 14. 核实来源
 
-- [news-intel README](https://github.com/miraclestar43/news-intel/blob/main/README.md)
-- [Hermes provider 选择](https://github.com/miraclestar43/news-intel/blob/main/src/news_intel/llm/provider.py)
-- [Hermes CLI 实现](https://github.com/miraclestar43/news-intel/blob/main/src/news_intel/llm/hermes_cli.py)
-- [website_test 源码](https://github.com/miraclestar43/website_test)
-- [现有 articles 页面](https://github.com/miraclestar43/website_test/blob/main/articles.html)
+- news-intel：[README](https://github.com/miraclestar43/news-intel/blob/main/README.md)、[provider.py](https://github.com/miraclestar43/news-intel/blob/main/src/news_intel/llm/provider.py)、[hermes_cli.py](https://github.com/miraclestar43/news-intel/blob/main/src/news_intel/llm/hermes_cli.py)
+- Hermes 上游：[issue #26633](https://github.com/NousResearch/hermes-agent/issues/26633)；Pi 已安装源码 `~/.hermes/hermes-agent`（`hermes_cli/oneshot.py`、`hermes_cli/main.py`、`run_agent.py`）
+- [website_test](https://github.com/miraclestar43/website_test)、[articles.html](https://github.com/miraclestar43/website_test/blob/main/articles.html)
 - [Cloudflare Workers Git integration](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/)
-- [Cloudflare Workers build branches](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/)
-- [《礼记·大学》原文索引](https://ctext.org/liji/da-xue/ens)
-- [《史记·陈丞相世家》相关段落索引](https://ctext.org/text.pl?if=en&node=7220&show=parallel)
+- [SQLite FTS5](https://www.sqlite.org/fts5.html)、[Wikidata redirects](https://www.wikidata.org/wiki/Help:Redirects)
+- 史料文档与取回记录：`validation/fetch_results.json`
 
-说明：本轮查看了仓库文件与官方部署文档；古籍相关引文归属通过可检索原文条目核对，部分古籍全文请求返回 403。这里不将检索摘要视为已经建立了可供日常发布的完整史料包，正式样稿仍需实际获取并审阅正文。
+## 最新用户要求与 overnight 入口
+
+`docs/USER_REQUIREMENTS_20261030.md` 优先于旧篇幅和阶段描述；执行 `prompts/03_OVERNIGHT_OPUS.md`。新增长稿需重测调用预算，旧短稿实测仅为基线。邮件建议见 `docs/EMAIL_SETUP.md`。任务文件推送不代表 Pi Claude 已自动启动。

@@ -1,0 +1,922 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261030-qsg412-1",
+ "content_sha256": "4b0e0382d740605199add5fd8bb7a23fd5379b69e7437b5cd40f666e079a06db",
+ "evidence_in_sha256": "e112eb28b39ea69c24d6e266e516a17681fc0fd7cb37a8e0523cd3b3895d4815",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793435663.7674096,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.0",
+   "lang": "zh",
+   "sentence": "传记说李鸿章于此「言之尤力」，却没有记下他本人的具体论据；"
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.2",
+   "lang": "zh",
+   "sentence": "传记只记文祥一人赞成，未记其理由。"
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.4",
+   "lang": "en",
+   "sentence": "The record does not say who issued the notice."
+  },
+  {
+   "id": "A4",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "文祥独善宗棠议、李鸿章言之尤力各只有一句，未记具体论据，本文没有替任何一方补写心理动机。"
+  },
+  {
+   "id": "A5",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "There are no contemporary memorials in their original form, no edicts to check against, and no account from Li Hongzhang, Pasha, the Russian side, or Chong Hou to set against it."
+  },
+  {
+   "id": "A6",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "数字一律照录原文，无法核实口径与范围：岁糜数百万没有说明是常年军费还是协饷缺口，降缠回万余等同样如此。"
+  },
+  {
+   "id": "A7",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "The alternative option below and the two modern scenes are the author's additions, made to show a method of judgment, and appear nowhere in the record."
+  },
+  {
+   "id": "A8",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "数字照录、口径不详；"
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-QSG412": {
+   "title": "趙爾巽等《清史稿·左宗棠傳》（1928，维基文库本）",
+   "url": "https://zh.wikisource.org/w/index.php?title=%E6%B8%85%E5%8F%B2%E7%A8%BF/%E5%8D%B7412&action=render",
+   "ref": "zh:清史稿/卷412",
+   "evidence_text_sha256": "7d27027d04522820ddf2a54e738d3a6518712fa8e8ca655a69b73ac515b40fce",
+   "cache_sha256": "7d27027d04522820ddf2a54e738d3a6518712fa8e8ca655a69b73ac515b40fce",
+   "cjk": true,
+   "source_chars": 7015,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     7015
+    ]
+   ],
+   "chars_reviewed": 7015
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 87.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 9796
+  }
+ ],
+ "finished_at": 1793435751.930718,
+ "elapsed_min": 1.5,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-QSG412",
+    "outcome": "Debate over abandoning the western expedition: Wenxiang alone backed Zuo, and the court decided to march beyond the pass rather than halt.",
+    "quote": "軍機大臣文祥獨善宗棠議，遂決策出塞，不罷兵。",
+    "in_evidence": true
+   },
+   {
+    "source_id": "S-QSG412",
+    "outcome": "The Xinjiang/Ili affair as a whole: Zuo was recalled, the peace agreement was concluded the following year, Ili was returned, and the coastal-defense troops stood down.",
+    "quote": "明年正月，和議成，交還伊犁，防海軍皆罷。",
+    "in_evidence": true
+   },
+   {
+    "source_id": "S-QSG412",
+    "outcome": "Zuo's later course: in Beijing, at the Grand Council and the foreign-affairs office, his colleagues found him hard to bear; he pleaded illness and was posted out to Liangjiang. After the Sino-French war he died in Fuzhou. The draft does not need this to close the story.",
+    "quote": "七月，卒於福州，年七十三，贈太傅，諡文襄。",
+    "in_evidence": false
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-QSG412",
+    "start": "白彥虎走開都河",
+    "end": "宗棠欲遂擒之",
+    "why": "E9 begins mid-sentence at '宗棠欲遂擒之', so the object of the capture is cut off. This piece shows Zuo wanted to pursue Bai Yanhu, which explains why he refused to rest the army."
+   },
+   {
+    "source_id": "S-QSG412",
+    "start": "八月，錦棠會師曲會",
+    "end": "轉遁喀什噶爾。",
+    "why": "This is the gap between E10 and E11. It records the August advance on two routes and Bai Yanhu's flight via Kucha and Aksu to Kashgar. Without it, story.7 cannot explain how Bai Yanhu reached Bokhuli, and '还定乌什' has no context."
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.0",
+    "lang": "zh",
+    "sentence": "传记说李鸿章于此「言之尤力」，却没有记下他本人的具体论据；",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Full text of 清史稿·左宗棠傳 (the guanglü first-year coastal-defense debate passage, plus every mention of 鴻章 in the text)",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "宜徇英人議，許帕夏自立為國稱籓，罷西征，專力海防。鴻章言之尤力。"
+    },
+    "fix": "Keep. Add that the arguments are attributed to '論者' as a group, and Li Hongzhang only 'pressed them hardest'."
+   },
+   {
+    "id": "N1",
+    "path": "sections.story.0",
+    "lang": "zh",
+    "sentence": "赞成一方的理由在史料里仅存「論者多言」一段概述。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Full text of 左宗棠傳 only. This does not cover other historical sources.",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "論者多言自高宗定新疆，歲糜數百萬，此漏卮也。"
+    },
+    "fix": "Change '在史料里' to '在本传里', so it does not suggest that no other historical source records the pro-halt arguments."
+   },
+   {
+    "id": "N2",
+    "path": "sections.story.0",
+    "lang": "en",
+    "sentence": "The biography says Li Hongzhang pressed this hardest of all, but records none of his own specific arguments; for that side of the debate, the record preserves only one summary paragraph of the proponents' case.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Full text of the biography",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "鴻章言之尤力。"
+    },
+    "fix": "Change 'the record preserves' to 'this biography preserves'."
+   },
+   {
+    "id": "A2",
+    "path": "sections.story.2",
+    "lang": "zh",
+    "sentence": "传记只记文祥一人赞成，未记其理由。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Full text of the biography (文祥 appears in this one place only)",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "軍機大臣文祥獨善宗棠議，遂決策出塞，不罷兵。"
+    },
+    "fix": "Keep."
+   },
+   {
+    "id": "N3",
+    "path": "sections.story.2",
+    "lang": "en",
+    "sentence": "The biography records only that Wenxiang agreed, and no reason why.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Full text of the biography",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "軍機大臣文祥獨善宗棠議"
+    },
+    "fix": "Keep."
+   },
+   {
+    "id": "A3",
+    "path": "sections.analysis.4",
+    "lang": "en",
+    "sentence": "The record does not say who issued the notice.",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "The church-tower passage in the biography and the sentences immediately before and after it",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "民間讙言左侯至，樓即毀矣，為示諭曉，乃止。其威望在人如此。"
+    },
+    "fix": "Delete. The subject is omitted, but in the biography's narrative it most naturally refers to Zuo himself. If kept, rewrite as 'the subject is omitted; read in context it is Zuo'."
+   },
+   {
+    "id": "N4",
+    "path": "sections.analysis.4",
+    "lang": "zh",
+    "sentence": "原文未明言示谕者是谁。",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Same as A3",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "為示諭曉，乃止。"
+    },
+    "fix": "Delete, or change to '传文省略主语，语脉上当指左宗棠'."
+   },
+   {
+    "id": "A4",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "文祥独善宗棠议、李鸿章言之尤力各只有一句，未记具体论据，本文没有替任何一方补写心理动机。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Full text of the biography",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "鴻章言之尤力。"
+    },
+    "fix": "Keep."
+   },
+   {
+    "id": "A5",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "There are no contemporary memorials in their original form, no edicts to check against, and no account from Li Hongzhang, Pasha, the Russian side, or Chong Hou to set against it.",
+    "verdict": "unresolved",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Whether such documents exist lies outside the reading scope. The biography itself does excerpt Zuo's memorials and an edict.",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "詔曰：「宗棠以西事自任，國家何惜千萬金。"
+    },
+    "fix": "Turn the statement about how many sources this article uses into a statement about what was consulted: 'This piece did not consult original memorials, edict originals, or accounts by Li Hongzhang, the Russian side and others; the memorial and edict wording quoted in the biography are the compilers' excerpts.' Do not assert that such documents do not exist."
+   },
+   {
+    "id": "N5",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "没有同时期奏疏原文、上谕原件，也没有李鸿章、帕夏、俄方、崇厚一方的记载可作对勘。",
+    "verdict": "unresolved",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Same as A5",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "宗棠奏曰：「自俄踞伊犁，蠶食不已"
+    },
+    "fix": "Change to '本文未查阅……；传中所引奏疏、诏书为史家节录'."
+   },
+   {
+    "id": "N6",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "无同期奏疏、上谕或对方记载可作对勘",
+    "verdict": "unresolved",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Same as A5",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "宗棠奏曰"
+    },
+    "fix": "Change to '本文未查阅同期奏疏、上谕原件或对方记载'."
+   },
+   {
+    "id": "N7",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "there are no contemporary memorials, edicts or opposing accounts to check against.",
+    "verdict": "unresolved",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Same as A5",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "宗棠奏曰"
+    },
+    "fix": "Change to 'this piece did not consult original memorials, edicts or opposing accounts'."
+   },
+   {
+    "id": "A6",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "数字一律照录原文，无法核实口径与范围：岁糜数百万没有说明是常年军费还是协饷缺口，降缠回万余等同样如此。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "The coastal-defense debate passage and the Dabancheng/Turpan passage in the biography",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "論者多言自高宗定新疆，歲糜數百萬，此漏卮也。"
+    },
+    "fix": "Keep the point about '岁糜数百万', and add that it is a figure the critics (論者) cited, not one the biography itself verifies. The '降缠回万余' clause adds nothing for readers and can be deleted."
+   },
+   {
+    "id": "N8",
+    "path": "sections.limits.1",
+    "lang": "en",
+    "sentence": "\"several million a year\" is not identified as standing military spending or as a shortfall in provincial remittances, and \"more than ten thousand\" who submitted is likewise unqualified.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Same as A6",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "降纏回萬餘"
+    },
+    "fix": "Same as A6."
+   },
+   {
+    "id": "A7",
+    "path": "sections.limits.1",
+    "lang": "en",
+    "sentence": "The alternative option below and the two modern scenes are the author's additions, made to show a method of judgment, and appear nowhere in the record.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Full text of the biography",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "宗棠用兵善審機，不常其方略。"
+    },
+    "fix": "Keep."
+   },
+   {
+    "id": "A8",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "数字照录、口径不详；",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Same as A6",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "歲糜數百萬"
+    },
+    "fix": "Keep."
+   },
+   {
+    "id": "N9",
+    "path": "sections.context.1",
+    "lang": "zh",
+    "sentence": "传记记为「當是時」，未系具体年份",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "The Pasha/Russia passage in the biography (offsets of E1–E3)",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "當是時，俄以回數擾其邊境，遽引兵逐回，取伊犁"
+    },
+    "fix": "Keep."
+   },
+   {
+    "id": "N10",
+    "path": "sections.story.8",
+    "lang": "zh",
+    "sentence": "传记本身未作此归纳。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Full text of the biography, including the 論曰",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "宗棠曰：「不可。師不以正，彼有辭矣。」"
+    },
+    "fix": "Keep."
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.story.7",
+    "problem": "Skips the August two-route advance and Bai Yanhu's flight via Kucha and Aksu to Kashgar. As a result, '还定乌什' and '伯克胡里既纳白彦虎' have no lead-in, and readers cannot tell how Bai Yanhu fled from Toksun to Kashgar.",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "白彥虎走庫車，趨阿克蘇，錦棠遮擊之，轉遁喀什噶爾。"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.story.6",
+    "problem": "Because E9 is truncated, the draft leaves out that Zuo's aim at the time was to pursue Bai Yanhu, who had fled to the Kaidu River. That is the immediate reason behind '今時有可乘'.",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "白彥虎走開都河，宗棠欲遂擒之"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.story.3",
+    "problem": "Calls him only '西征将领锦棠' / 'Jintang'. The biography gives his background: he is the nephew of Liu Songshan (劉松山) and took over his uncle's army. This could be added, and the English 'Jintang' reads like a full name.",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "九年，松山陣歿，以其兄子錦棠代之，戰屢捷"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.analysis.3",
+    "problem": "The section treats logistics as 'the ledger in practice' but leaves out the foreign loans in E19 (Shen Baozhen's objection, then an allocation of five million plus five million borrowed abroad). That bears directly on the article's cost debate.",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "始西征，慮各行省協助餉不時至，請一借貸外國。"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "The source was read in full, and the draft's main narrative and outcome (Ili returned) agree with it. Fill in Bai Yanhu's movements. The limits and uncertainty_note sections should say 'this piece did not consult' rather than asserting that no contemporary documents exist. The 'who issued the notice' sentence is unnecessary and should be deleted or rewritten as an omitted subject that most naturally refers to Zuo."
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.0",
+   "lang": "zh",
+   "sentence": "传记说李鸿章于此「言之尤力」，却没有记下他本人的具体论据；",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Full text of 清史稿·左宗棠傳 (the guanglü first-year coastal-defense debate passage, plus every mention of 鴻章 in the text)",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "宜徇英人議，許帕夏自立為國稱籓，罷西征，專力海防。鴻章言之尤力。"
+   },
+   "fix": "Keep. Add that the arguments are attributed to '論者' as a group, and Li Hongzhang only 'pressed them hardest'.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.story.0",
+   "lang": "zh",
+   "sentence": "赞成一方的理由在史料里仅存「論者多言」一段概述。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Full text of 左宗棠傳 only. This does not cover other historical sources.",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "論者多言自高宗定新疆，歲糜數百萬，此漏卮也。"
+   },
+   "fix": "Change '在史料里' to '在本传里', so it does not suggest that no other historical source records the pro-halt arguments.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.story.0",
+   "lang": "en",
+   "sentence": "The biography says Li Hongzhang pressed this hardest of all, but records none of his own specific arguments; for that side of the debate, the record preserves only one summary paragraph of the proponents' case.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Full text of the biography",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "鴻章言之尤力。"
+   },
+   "fix": "Change 'the record preserves' to 'this biography preserves'.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.2",
+   "lang": "zh",
+   "sentence": "传记只记文祥一人赞成，未记其理由。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Full text of the biography (文祥 appears in this one place only)",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "軍機大臣文祥獨善宗棠議，遂決策出塞，不罷兵。"
+   },
+   "fix": "Keep.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.story.2",
+   "lang": "en",
+   "sentence": "The biography records only that Wenxiang agreed, and no reason why.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Full text of the biography",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "軍機大臣文祥獨善宗棠議"
+   },
+   "fix": "Keep.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.4",
+   "lang": "en",
+   "sentence": "The record does not say who issued the notice.",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "The church-tower passage in the biography and the sentences immediately before and after it",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "民間讙言左侯至，樓即毀矣，為示諭曉，乃止。其威望在人如此。"
+   },
+   "fix": "Delete. The subject is omitted, but in the biography's narrative it most naturally refers to Zuo himself. If kept, rewrite as 'the subject is omitted; read in context it is Zuo'.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "sections.analysis.4",
+   "lang": "zh",
+   "sentence": "原文未明言示谕者是谁。",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Same as A3",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "為示諭曉，乃止。"
+   },
+   "fix": "Delete, or change to '传文省略主语，语脉上当指左宗棠'.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "A4",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "文祥独善宗棠议、李鸿章言之尤力各只有一句，未记具体论据，本文没有替任何一方补写心理动机。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Full text of the biography",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "鴻章言之尤力。"
+   },
+   "fix": "Keep.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "A5",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "There are no contemporary memorials in their original form, no edicts to check against, and no account from Li Hongzhang, Pasha, the Russian side, or Chong Hou to set against it.",
+   "verdict": "unresolved",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Whether such documents exist lies outside the reading scope. The biography itself does excerpt Zuo's memorials and an edict.",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "詔曰：「宗棠以西事自任，國家何惜千萬金。"
+   },
+   "fix": "Turn the statement about how many sources this article uses into a statement about what was consulted: 'This piece did not consult original memorials, edict originals, or accounts by Li Hongzhang, the Russian side and others; the memorial and edict wording quoted in the biography are the compilers' excerpts.' Do not assert that such documents do not exist.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "没有同时期奏疏原文、上谕原件，也没有李鸿章、帕夏、俄方、崇厚一方的记载可作对勘。",
+   "verdict": "unresolved",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Same as A5",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "宗棠奏曰：「自俄踞伊犁，蠶食不已"
+   },
+   "fix": "Change to '本文未查阅……；传中所引奏疏、诏书为史家节录'.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N6",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "无同期奏疏、上谕或对方记载可作对勘",
+   "verdict": "unresolved",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Same as A5",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "宗棠奏曰"
+   },
+   "fix": "Change to '本文未查阅同期奏疏、上谕原件或对方记载'.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N7",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "there are no contemporary memorials, edicts or opposing accounts to check against.",
+   "verdict": "unresolved",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Same as A5",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "宗棠奏曰"
+   },
+   "fix": "Change to 'this piece did not consult original memorials, edicts or opposing accounts'.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "A6",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "数字一律照录原文，无法核实口径与范围：岁糜数百万没有说明是常年军费还是协饷缺口，降缠回万余等同样如此。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "The coastal-defense debate passage and the Dabancheng/Turpan passage in the biography",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "論者多言自高宗定新疆，歲糜數百萬，此漏卮也。"
+   },
+   "fix": "Keep the point about '岁糜数百万', and add that it is a figure the critics (論者) cited, not one the biography itself verifies. The '降缠回万余' clause adds nothing for readers and can be deleted.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N8",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "\"several million a year\" is not identified as standing military spending or as a shortfall in provincial remittances, and \"more than ten thousand\" who submitted is likewise unqualified.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Same as A6",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "降纏回萬餘"
+   },
+   "fix": "Same as A6.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "A7",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "The alternative option below and the two modern scenes are the author's additions, made to show a method of judgment, and appear nowhere in the record.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Full text of the biography",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "宗棠用兵善審機，不常其方略。"
+   },
+   "fix": "Keep.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "A8",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "数字照录、口径不详；",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Same as A6",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "歲糜數百萬"
+   },
+   "fix": "Keep.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N9",
+   "path": "sections.context.1",
+   "lang": "zh",
+   "sentence": "传记记为「當是時」，未系具体年份",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "The Pasha/Russia passage in the biography (offsets of E1–E3)",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "當是時，俄以回數擾其邊境，遽引兵逐回，取伊犁"
+   },
+   "fix": "Keep.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N10",
+   "path": "sections.story.8",
+   "lang": "zh",
+   "sentence": "传记本身未作此归纳。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Full text of the biography, including the 論曰",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "宗棠曰：「不可。師不以正，彼有辭矣。」"
+   },
+   "fix": "Keep.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.story.7",
+   "problem": "Skips the August two-route advance and Bai Yanhu's flight via Kucha and Aksu to Kashgar. As a result, '还定乌什' and '伯克胡里既纳白彦虎' have no lead-in, and readers cannot tell how Bai Yanhu fled from Toksun to Kashgar.",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "白彥虎走庫車，趨阿克蘇，錦棠遮擊之，轉遁喀什噶爾。"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.story.6",
+   "problem": "Because E9 is truncated, the draft leaves out that Zuo's aim at the time was to pursue Bai Yanhu, who had fled to the Kaidu River. That is the immediate reason behind '今時有可乘'.",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "白彥虎走開都河，宗棠欲遂擒之"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.story.3",
+   "problem": "Calls him only '西征将领锦棠' / 'Jintang'. The biography gives his background: he is the nephew of Liu Songshan (劉松山) and took over his uncle's army. This could be added, and the English 'Jintang' reads like a full name.",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "九年，松山陣歿，以其兄子錦棠代之，戰屢捷"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.analysis.3",
+   "problem": "The section treats logistics as 'the ledger in practice' but leaves out the foreign loans in E19 (Shen Baozhen's objection, then an allocation of five million plus five million borrowed abroad). That bears directly on the article's cost debate.",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "始西征，慮各行省協助餉不時至，請一借貸外國。"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-QSG412",
+   "outcome": "Debate over abandoning the western expedition: Wenxiang alone backed Zuo, and the court decided to march beyond the pass rather than halt.",
+   "quote": "軍機大臣文祥獨善宗棠議，遂決策出塞，不罷兵。",
+   "in_evidence": true
+  },
+  {
+   "source_id": "S-QSG412",
+   "outcome": "The Xinjiang/Ili affair as a whole: Zuo was recalled, the peace agreement was concluded the following year, Ili was returned, and the coastal-defense troops stood down.",
+   "quote": "明年正月，和議成，交還伊犁，防海軍皆罷。",
+   "in_evidence": true
+  },
+  {
+   "source_id": "S-QSG412",
+   "outcome": "Zuo's later course: in Beijing, at the Grand Council and the foreign-affairs office, his colleagues found him hard to bear; he pleaded illness and was posted out to Liangjiang. After the Sino-French war he died in Fuzhou. The draft does not need this to close the story.",
+   "quote": "七月，卒於福州，年七十三，贈太傅，諡文襄。",
+   "in_evidence": false
+  }
+ ],
+ "additions": [
+  {
+   "id": "QSG4121-E28",
+   "source_id": "S-QSG412",
+   "offset": 5133,
+   "chars": 14,
+   "why": "E9 begins mid-sentence at '宗棠欲遂擒之', so the object of the capture is cut off. This piece shows Zuo wanted to pursue Bai Yanhu, which explains why he refused to rest the army."
+  },
+  {
+   "id": "QSG4121-E29",
+   "source_id": "S-QSG412",
+   "offset": 5261,
+   "chars": 57,
+   "why": "This is the gap between E10 and E11. It records the August advance on two routes and Bai Yanhu's flight via Kucha and Aksu to Kashgar. Without it, story.7 cannot explain how Bai Yanhu reached Bokhuli, and '还定乌什' has no context."
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "e9cf95a6575a56ae8804e7e4ce447dc7182375e01ccdb9528ab7ba63f4331c9f",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.analysis.4.en: unnecessary — The record does not say who issued the notice.",
+  "sections.analysis.4.zh: unnecessary — 原文未明言示谕者是谁。",
+  "sections.limits.0.en: unresolved — There are no contemporary memorials in their original form, no edicts to check a",
+  "sections.limits.0.zh: unresolved — 没有同时期奏疏原文、上谕原件，也没有李鸿章、帕夏、俄方、崇厚一方的记载可作对勘。",
+  "uncertainty_note.zh: unresolved — 无同期奏疏、上谕或对方记载可作对勘",
+  "uncertainty_note.en: unresolved — there are no contemporary memorials, edicts or opposing accounts to check agains",
+  "sections.story.7: Skips the August two-route advance and Bai Yanhu's flight via Kucha and Aksu to Kashgar. As a result",
+  "evidence must be expanded first: 2 addition(s) ['QSG4121-E28', 'QSG4121-E29']"
+ ]
+}

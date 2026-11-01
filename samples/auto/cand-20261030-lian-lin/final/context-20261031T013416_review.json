@@ -1,0 +1,499 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-20261030-lian-lin",
+ "content_sha256": "37971e470057898a2d281a94b7e14ce606a4eff575afd29378b4882255b1ae42",
+ "evidence_in_sha256": "8936fad054de59aaae6503720d959f0f756272e5d645662fa04c50061fc5cb27",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793428456.5199108,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "同时，避让用的是称病、让路这类不上台面的动作，原文只记了称病、引车避匿，没有记他公开回应廉颇；"
+  },
+  {
+   "id": "A2",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "凡原文未写的人物心理，均以“一种解释是”“作者认为”标明为作者解释。"
+  },
+  {
+   "id": "A3",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "凡原文未写的人物心理与动机，均以“一种解释是”“作者认为”标明为解释；"
+  }
+ ],
+ "search": null,
+ "units": {
+  "A2-SJ81": {
+   "title": "司馬遷《史記·廉頗藺相如列傳》（维基文库本）",
+   "url": "https://zh.wikisource.org/w/index.php?title=%E5%8F%B2%E8%A8%98/%E5%8D%B7081&action=render",
+   "ref": "zh:史記/卷081",
+   "evidence_text_sha256": "16769e9914e636465140c96901a916956e7221d254ec9a21bd08bd1a339e8ffa",
+   "cache_sha256": "16769e9914e636465140c96901a916956e7221d254ec9a21bd08bd1a339e8ffa",
+   "cjk": true,
+   "source_chars": 4765,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     4765
+    ]
+   ],
+   "chars_reviewed": 4765
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 69.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 7352
+  }
+ ],
+ "finished_at": 1793428526.082499,
+ "elapsed_min": 1.2,
+ "review": {
+  "episode": [
+   {
+    "source_id": "A2-SJ81",
+    "outcome": "位次之争以廉颇肉袒负荆、登门谢罪告终，两人和好，结为刎颈之交，此后各自领兵攻齐、魏。",
+    "quote": "廉頗聞之，肉袒負荊，因賓客至藺相如門謝罪。曰：「鄙賤之人，不知將軍寬之至此也。」卒相與驩，爲刎頸之交。",
+    "in_evidence": true
+   },
+   {
+    "source_id": "A2-SJ81",
+    "outcome": "完璧一事的收尾：相如归赵后被拜为上大夫；秦始终没有给城，赵也始终没有给璧。",
+    "quote": "相如既歸，趙王以爲賢大夫使不辱於諸侯，拜相如爲上大夫。秦亦不以城予趙，趙亦終不予秦璧。",
+    "in_evidence": false
+   },
+   {
+    "source_id": "A2-SJ81",
+    "outcome": "渑池之会上相如以死相逼，迫使秦王击缻，又以咸阳回敬“十五城”之求；秦终不能占上风，归国后相如因功拜上卿。",
+    "quote": "秦王竟酒，終不能加勝於趙。趙亦盛設兵以待秦，秦不敢動。既罷歸國，以相如功大，拜爲上卿，位在廉頗之右。",
+    "in_evidence": true
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "A2-SJ81",
+    "start": "其後秦伐趙，拔石城。",
+    "end": "秦王竟酒，終不能加勝於趙。",
+    "why": "渑池会上相如逼秦王击缻、张目叱退秦王左右，正是他“功大”拜上卿的具体内容，也是他对舍人说“相如廷叱之，辱其群臣”的所指。稿件完全略去，读者无从理解相如功在何处，也无从理解廉颇所谓“徒以口舌爲勞”的语境。"
+   },
+   {
+    "source_id": "A2-SJ81",
+    "start": "相如既歸，趙王以爲賢大夫",
+    "end": "趙亦終不予秦璧。",
+    "why": "完璧事件的结局与后果，包括相如因此拜上大夫、秦赵最终都没有交换，证据包没有收录。"
+   },
+   {
+    "source_id": "A2-SJ81",
+    "start": "於是王召見，問藺相如曰",
+    "end": "趙王於是遂遣相如奉璧西入秦。",
+    "why": "“曲在趙/曲在秦”的权衡出自相如对赵王的答话，相如还主动请缨，许下“完璧歸趙”的承诺。证据包摘录截掉了说话人，导致稿件把这段话归于“《史记》”。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.analysis.1",
+    "lang": "zh",
+    "sentence": "同时，避让用的是称病、让路这类不上台面的动作，原文只记了称病、引车避匿，没有记他公开回应廉颇；",
+    "verdict": "supported",
+    "source_ids": [
+     "A2-SJ81"
+    ],
+    "scope": "《廉頗藺相如列傳》全文，重点核查“相如聞，不肯與會”至“爲刎頸之交”一段",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "相如聞，不肯與會。相如毎朝時，常稱病，不欲與廉頗爭列。已而相如出，望見廉頗，相如引車避匿。"
+    },
+    "fix": "“没有公开回应”属实。但“只记了称病、引车避匿”不够准确：原文还记了“不肯與會”，以及他对舍人的一番私下解释（廉颇是“聞之”得知的）。建议改为：“原文记他不肯与会、称病、引车避匿，他的理由只对舍人讲过，没有记他公开回应廉颇”。"
+   },
+   {
+    "id": "N1",
+    "path": "sections.analysis.1",
+    "lang": "en",
+    "sentence": "and the record notes no public reply to Lian Po.",
+    "verdict": "supported",
+    "source_ids": [
+     "A2-SJ81"
+    ],
+    "scope": "《廉頗藺相如列傳》全文",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "藺相如固止之，曰：「公之視廉將軍孰與秦王？」"
+    },
+    "fix": "可保留。可补一句：他的理由是对自己的舍人讲的，廉颇是辗转听到的。"
+   },
+   {
+    "id": "A2",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "凡原文未写的人物心理，均以“一种解释是”“作者认为”标明为作者解释。",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "A2-SJ81"
+    ],
+    "scope": "稿件全文的标注做法（不是对来源的断言）",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "相如度秦王特以詐詳爲予趙城，實不可得"
+    },
+    "fix": "与 uncertainty_note 重复，建议删除。另外这句话并不完全成立：analysis.0“说明他不服的不只是排序，还有出身”、analysis.1“相如的避让也不是单纯的忍”都没有标注。若保留，须先补上这些标注。"
+   },
+   {
+    "id": "A3",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "凡原文未写的人物心理与动机，均以“一种解释是”“作者认为”标明为解释；",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "A2-SJ81"
+    ],
+    "scope": "稿件自身的标注规则",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "吾所以爲此者，以先國家之急而後私讎也。"
+    },
+    "fix": "这是对稿件做法的说明，不是对来源的断言。要让它成立，须给 analysis.0 第二句、analysis.1 首句补上“一种解释是/作者认为”。"
+   },
+   {
+    "id": "N2",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "不能断言廉颇知道前一桩事或受其影响（作者提示，非原文所述）。",
+    "verdict": "supported",
+    "source_ids": [
+     "A2-SJ81"
+    ],
+    "scope": "《廉頗藺相如列傳》全文：缪贤旧事（繆賢語）与负荆段",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "君不如肉袒伏斧質請罪，則幸得脱矣。"
+    },
+    "fix": "无需修改。全篇没有任何把两事联系起来的记载。"
+   },
+   {
+    "id": "N3",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "负荆请罪的细节——袒身、背荆条、由宾客引见——在本篇的证据中没有其他材料可以核对。",
+    "verdict": "supported",
+    "source_ids": [
+     "A2-SJ81"
+    ],
+    "scope": "本稿证据包（仅 A2-SJ81 单一来源）",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "廉頗聞之，肉袒負荊，因賓客至藺相如門謝罪。"
+    },
+    "fix": "无需修改。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.story.2",
+    "problem": "从廉颇送王至境直接跳到“终不能加胜于赵”，删去了渑池会的核心冲突：秦王令赵王鼓瑟，相如以死相逼迫使秦王击缻，叱退左右，又以咸阳回敬。删去后，相如“功大”拜上卿成了没有内容的结论；story.6 中“当廷呵斥他、羞辱他的群臣”也失去所指，读者容易误以为说的是秦廷献璧那一次。此前秦攻赵、赵王畏秦不欲行、由廉蔺二人力主赴会的背景也被省掉了。",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "五歩之内，相如請得以頸血濺大王矣！」左右欲刃相如，相如張目叱之，左右皆靡。於是秦王不懌，爲一撃鮓。"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.story.0",
+    "problem": "把“曲在趙/曲在秦”的权衡写成“《史记》记有这样的权衡”，没有交代这是相如被召见时对赵王的回答，也漏掉了他请缨“完璧歸趙”。analysis.2 沿用“《史记》所记的那段权衡”，读者会以为这是朝议或史家的判断，而不是相如本人的谋略。",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "相如曰：「秦以城求璧而趙不許，曲在趙。趙予璧而秦不予趙城，曲在秦。均之二策，甯許以負秦曲。」"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.analysis.2",
+    "problem": "“《史记》所记的那段权衡”应明确为相如对赵王所说。",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "王曰：「誰可使者？」相如曰：「王必無人，臣願奉璧往使。城入趙而璧留秦；城不入，臣請完璧歸趙。」"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.story.1",
+    "problem": "完璧一段止于“畢禮而歸之”，漏掉了紧接着的结局：相如拜上大夫，城与璧最终都没有交换。读者不知道这次出使的直接后果，也不知道相如的地位是怎样一步步升上来的。",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "拜相如爲上大夫。秦亦不以城予趙，趙亦終不予秦璧。"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.limits.1",
+    "problem": "门客离散与复来一事（长平免归之后、鄗之战复用之时）在时间上早于乐乘代将、廉颇奔魏，稿件用“后来……另据记载”的顺序叙述，可能让读者误判先后。",
+    "quote": {
+     "source_id": "A2-SJ81",
+     "quote": "廉頗之免長平歸也，失勢之時，故客盡去。及復用爲將，客又復至。"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "来源为全文，三条待核断言均无被原文推翻的情况（A1 措辞宜微调，A2 可删）；主要问题是渑池会冲突与完璧结局被截掉，以及“曲在赵/秦”的权衡没有标明出自相如之口，需补摘录并修改 story.0 和 story.2。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "同时，避让用的是称病、让路这类不上台面的动作，原文只记了称病、引车避匿，没有记他公开回应廉颇；",
+   "verdict": "supported",
+   "source_ids": [
+    "A2-SJ81"
+   ],
+   "scope": "《廉頗藺相如列傳》全文，重点核查“相如聞，不肯與會”至“爲刎頸之交”一段",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "相如聞，不肯與會。相如毎朝時，常稱病，不欲與廉頗爭列。已而相如出，望見廉頗，相如引車避匿。"
+   },
+   "fix": "“没有公开回应”属实。但“只记了称病、引车避匿”不够准确：原文还记了“不肯與會”，以及他对舍人的一番私下解释（廉颇是“聞之”得知的）。建议改为：“原文记他不肯与会、称病、引车避匿，他的理由只对舍人讲过，没有记他公开回应廉颇”。",
+   "unit_status": {
+    "A2-SJ81": "complete"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.analysis.1",
+   "lang": "en",
+   "sentence": "and the record notes no public reply to Lian Po.",
+   "verdict": "supported",
+   "source_ids": [
+    "A2-SJ81"
+   ],
+   "scope": "《廉頗藺相如列傳》全文",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "藺相如固止之，曰：「公之視廉將軍孰與秦王？」"
+   },
+   "fix": "可保留。可补一句：他的理由是对自己的舍人讲的，廉颇是辗转听到的。",
+   "unit_status": {
+    "A2-SJ81": "complete"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "凡原文未写的人物心理，均以“一种解释是”“作者认为”标明为作者解释。",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "A2-SJ81"
+   ],
+   "scope": "稿件全文的标注做法（不是对来源的断言）",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "相如度秦王特以詐詳爲予趙城，實不可得"
+   },
+   "fix": "与 uncertainty_note 重复，建议删除。另外这句话并不完全成立：analysis.0“说明他不服的不只是排序，还有出身”、analysis.1“相如的避让也不是单纯的忍”都没有标注。若保留，须先补上这些标注。",
+   "unit_status": {
+    "A2-SJ81": "complete"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "凡原文未写的人物心理与动机，均以“一种解释是”“作者认为”标明为解释；",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "A2-SJ81"
+   ],
+   "scope": "稿件自身的标注规则",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "吾所以爲此者，以先國家之急而後私讎也。"
+   },
+   "fix": "这是对稿件做法的说明，不是对来源的断言。要让它成立，须给 analysis.0 第二句、analysis.1 首句补上“一种解释是/作者认为”。",
+   "unit_status": {
+    "A2-SJ81": "complete"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "不能断言廉颇知道前一桩事或受其影响（作者提示，非原文所述）。",
+   "verdict": "supported",
+   "source_ids": [
+    "A2-SJ81"
+   ],
+   "scope": "《廉頗藺相如列傳》全文：缪贤旧事（繆賢語）与负荆段",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "君不如肉袒伏斧質請罪，則幸得脱矣。"
+   },
+   "fix": "无需修改。全篇没有任何把两事联系起来的记载。",
+   "unit_status": {
+    "A2-SJ81": "complete"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "负荆请罪的细节——袒身、背荆条、由宾客引见——在本篇的证据中没有其他材料可以核对。",
+   "verdict": "supported",
+   "source_ids": [
+    "A2-SJ81"
+   ],
+   "scope": "本稿证据包（仅 A2-SJ81 单一来源）",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "廉頗聞之，肉袒負荊，因賓客至藺相如門謝罪。"
+   },
+   "fix": "无需修改。",
+   "unit_status": {
+    "A2-SJ81": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.story.2",
+   "problem": "从廉颇送王至境直接跳到“终不能加胜于赵”，删去了渑池会的核心冲突：秦王令赵王鼓瑟，相如以死相逼迫使秦王击缻，叱退左右，又以咸阳回敬。删去后，相如“功大”拜上卿成了没有内容的结论；story.6 中“当廷呵斥他、羞辱他的群臣”也失去所指，读者容易误以为说的是秦廷献璧那一次。此前秦攻赵、赵王畏秦不欲行、由廉蔺二人力主赴会的背景也被省掉了。",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "五歩之内，相如請得以頸血濺大王矣！」左右欲刃相如，相如張目叱之，左右皆靡。於是秦王不懌，爲一撃鮓。"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.story.0",
+   "problem": "把“曲在趙/曲在秦”的权衡写成“《史记》记有这样的权衡”，没有交代这是相如被召见时对赵王的回答，也漏掉了他请缨“完璧歸趙”。analysis.2 沿用“《史记》所记的那段权衡”，读者会以为这是朝议或史家的判断，而不是相如本人的谋略。",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "相如曰：「秦以城求璧而趙不許，曲在趙。趙予璧而秦不予趙城，曲在秦。均之二策，甯許以負秦曲。」"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.analysis.2",
+   "problem": "“《史记》所记的那段权衡”应明确为相如对赵王所说。",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "王曰：「誰可使者？」相如曰：「王必無人，臣願奉璧往使。城入趙而璧留秦；城不入，臣請完璧歸趙。」"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.story.1",
+   "problem": "完璧一段止于“畢禮而歸之”，漏掉了紧接着的结局：相如拜上大夫，城与璧最终都没有交换。读者不知道这次出使的直接后果，也不知道相如的地位是怎样一步步升上来的。",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "拜相如爲上大夫。秦亦不以城予趙，趙亦終不予秦璧。"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.limits.1",
+   "problem": "门客离散与复来一事（长平免归之后、鄗之战复用之时）在时间上早于乐乘代将、廉颇奔魏，稿件用“后来……另据记载”的顺序叙述，可能让读者误判先后。",
+   "quote": {
+    "source_id": "A2-SJ81",
+    "quote": "廉頗之免長平歸也，失勢之時，故客盡去。及復用爲將，客又復至。"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "A2-SJ81",
+   "outcome": "位次之争以廉颇肉袒负荆、登门谢罪告终，两人和好，结为刎颈之交，此后各自领兵攻齐、魏。",
+   "quote": "廉頗聞之，肉袒負荊，因賓客至藺相如門謝罪。曰：「鄙賤之人，不知將軍寬之至此也。」卒相與驩，爲刎頸之交。",
+   "in_evidence": true
+  },
+  {
+   "source_id": "A2-SJ81",
+   "outcome": "完璧一事的收尾：相如归赵后被拜为上大夫；秦始终没有给城，赵也始终没有给璧。",
+   "quote": "相如既歸，趙王以爲賢大夫使不辱於諸侯，拜相如爲上大夫。秦亦不以城予趙，趙亦終不予秦璧。",
+   "in_evidence": false
+  },
+  {
+   "source_id": "A2-SJ81",
+   "outcome": "渑池之会上相如以死相逼，迫使秦王击缻，又以咸阳回敬“十五城”之求；秦终不能占上风，归国后相如因功拜上卿。",
+   "quote": "秦王竟酒，終不能加勝於趙。趙亦盛設兵以待秦，秦不敢動。既罷歸國，以相如功大，拜爲上卿，位在廉頗之右。",
+   "in_evidence": true
+  }
+ ],
+ "additions": [
+  {
+   "id": "L-E18",
+   "source_id": "A2-SJ81",
+   "offset": 1337,
+   "chars": 391,
+   "why": "渑池会上相如逼秦王击缻、张目叱退秦王左右，正是他“功大”拜上卿的具体内容，也是他对舍人说“相如廷叱之，辱其群臣”的所指。稿件完全略去，读者无从理解相如功在何处，也无从理解廉颇所谓“徒以口舌爲勞”的语境。"
+  },
+  {
+   "id": "L-E19",
+   "source_id": "A2-SJ81",
+   "offset": 1294,
+   "chars": 43,
+   "why": "完璧事件的结局与后果，包括相如因此拜上大夫、秦赵最终都没有交换，证据包没有收录。"
+  },
+  {
+   "id": "L-E20",
+   "source_id": "A2-SJ81",
+   "offset": 425,
+   "chars": 172,
+   "why": "“曲在趙/曲在秦”的权衡出自相如对赵王的答话，相如还主动请缨，许下“完璧歸趙”的承诺。证据包摘录截掉了说话人，导致稿件把这段话归于“《史记》”。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "1557749deb3e193ae541230e58acba6b464ab9a6ac34a5f03ae2c5a9fa23f16e",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.limits.0.zh: unnecessary — 凡原文未写的人物心理，均以“一种解释是”“作者认为”标明为作者解释。",
+  "sections.story.2: 从廉颇送王至境直接跳到“终不能加胜于赵”，删去了渑池会的核心冲突：秦王令赵王鼓瑟，相如以死相逼迫使秦王击缻，叱退左右，又以咸阳回敬。删去后，相如“功大”拜上卿成了没有内容的结论；story.6 中“当",
+  "sections.story.0: 把“曲在趙/曲在秦”的权衡写成“《史记》记有这样的权衡”，没有交代这是相如被召见时对赵王的回答，也漏掉了他请缨“完璧歸趙”。analysis.2 沿用“《史记》所记的那段权衡”，读者会以为这是朝议或史",
+  "evidence must be expanded first: 3 addition(s) ['L-E18', 'L-E19', 'L-E20']"
+ ]
+}

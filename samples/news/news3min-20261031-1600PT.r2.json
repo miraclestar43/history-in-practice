@@ -1,0 +1,124 @@
+{
+ "schema": "news3min/v0-prototype",
+ "snapshot_id": "news3min-20261031-1600PT",
+ "revision": 2,
+ "language": "zh",
+ "intended_edition_date": "2026-10-31",
+ "timezone": "America/Los_Angeles",
+ "as_of": "2026-10-31T16:00:00-07:00",
+ "window": {
+  "start": "2026-10-30T16:00:00-07:00",
+  "end": "2026-10-31T16:00:00-07:00"
+ },
+ "label": {
+  "zh": "截至 2026年10月31日 16:00（洛杉矶时间）· 过去24小时要闻",
+  "en": "As of 16:00 Los Angeles time, 31 October 2026 · the past 24 hours"
+ },
+ "status": "ready",
+ "status_note": "Prototype sample, revision 2 (owner feedback 2026-10-31: why-lines grounded or omitted; no causal or trend links between separate stories; reported fact / source judgment / editor's reading kept apart; quarter scope and actual vs forecast kept; cross-day events say what is new). Items still chosen by the operator, not by news-intel. Not sent anywhere.",
+ "provenance": {
+  "news_intel_checkout": "~/pi-news-intel main @ f97b73c (production checkout, opened read-only)",
+  "news_intel_db": "data/news-intel.db opened with mode=ro; latest raw item fetched 2026-10-31T23:00:10Z",
+  "selection": "editorial selection by the operator (Claude) from news-intel events in the window, for importance and variety. MANUAL, not representative of automatic news quality; compare the automatic snapshot from the news-intel branch feature/news3min-quality.",
+  "text": "written from the cited source headlines/excerpts stored by news-intel; every fact traces to a listed source; no fact from outside these sources"
+ },
+ "items": [
+  {
+   "headline": "刚果（金）埃博拉疫情死亡超过5,000人",
+   "what": "英国广播公司（BBC）10月31日报道，刚果民主共和国这次埃博拉疫情已造成5,000多人死亡，是该国最致命的一次；政府数据显示，感染人数超过1万。",
+   "why": "",
+   "why_kind": "",
+   "qualifiers": "死亡和感染数字来自刚果（金）政府数据（据BBC）。",
+   "sources": [
+    {
+     "name": "BBC News — World",
+     "url": "https://www.bbc.co.uk/news/articles/cj5ynryyep2yo",
+     "published_at": "2026-10-31T15:16:20Z"
+    }
+   ],
+   "news_intel_event_ids": [
+    "E-20261031-0225"
+   ]
+  },
+  {
+   "headline": "币安称已补上约九成被盗损失",
+   "what": "10月29日，全球最大加密货币交易所币安在约20分钟内被转走价值约63.6亿美元的加密货币（区块链分析机构TRM Labs数据）；币安说，入侵源头是一名运维工程师的笔记本电脑。10月31日的新进展：币安表示已动用公司资金补上约90%的损失，其余约10%是流动性较差的代币。",
+   "why": "按TRM Labs的统计，这是有记录以来最大的加密货币盗窃，约为2025年2月Bybit被盗15亿美元的4倍；稳定币发行方Tether、Circle、Ripple已冻结约27亿美元相关资产。",
+   "why_kind": "reported",
+   "qualifiers": "“补上九成”是币安自己的说法（路透社报道）。BBC称朝鲜黑客是头号嫌疑，这是指控，尚未证实。",
+   "sources": [
+    {
+     "name": "IT之家",
+     "url": "https://www.ithome.com/1/020/463.htm",
+     "published_at": "2026-10-31T05:22:44Z"
+    },
+    {
+     "name": "Techmeme（转载路透社）",
+     "url": "https://www.techmeme.com/261031/p9",
+     "published_at": "2026-10-31T15:45:01Z"
+    },
+    {
+     "name": "BBC News — World",
+     "url": "https://www.bbc.co.uk/news/articles/ck9dz3v7z7v3o",
+     "published_at": "2026-10-31T02:12:19Z"
+    }
+   ],
+   "news_intel_event_ids": [
+    "E-20261031-0074",
+    "E-20261031-0228",
+    "E-20261031-0042"
+   ]
+  },
+  {
+   "headline": "美股科技股10月30日大跌，纳指创6月以来最大单日跌幅",
+   "what": "据路透社，10月30日纳斯达克综合指数录得6月以来最大单日跌幅，英特尔和Reddit股价都跌了29%，纳斯达克100指数收跌3.5%。纳斯达克综合指数较此前收盘高点已下跌7.8%。",
+   "why": "经济研究机构凯投宏观指出，过去12个月，微软、Meta、亚马逊和Alphabet的资本支出已占标普500成分股总资本支出的三分之一以上，投资者越来越担心这些投入的规模和资金来源。",
+   "why_kind": "source_judgment",
+   "qualifiers": "下跌原因是分析人士的解读，不是定论。",
+   "sources": [
+    {
+     "name": "IT之家（据路透社）",
+     "url": "https://www.ithome.com/1/020/613.htm",
+     "published_at": "2026-10-31T13:30:27Z"
+    }
+   ],
+   "news_intel_event_ids": [
+    "E-20261031-0204"
+   ]
+  },
+  {
+   "headline": "存储芯片五巨头上季度营业利润合计首超美国科技五巨头",
+   "what": "据日经亚洲引用的QUICK FactSet数据，2026年7月至9月（美光为6月至8月），铠侠、三星、SK海力士、美光、闪迪五家的营业利润合计约32万亿日元，是上年同期的10倍；同期谷歌母公司Alphabet、微软、亚马逊、Meta和苹果合计约25万亿日元，同比增长约20%。",
+   "why": "日经亚洲报道，AI投资推高了存储芯片需求，市场供不应求，是利润大增的原因。",
+   "why_kind": "source_judgment",
+   "qualifiers": "苹果尚未公布本季财报，约25万亿日元中苹果部分是市场预测值，不是实际值；两组公司的统计季度不完全相同。",
+   "sources": [
+    {
+     "name": "IT之家（据日经亚洲）",
+     "url": "https://www.ithome.com/1/020/617.htm",
+     "published_at": "2026-10-31T13:46:12Z"
+    }
+   ],
+   "news_intel_event_ids": [
+    "E-20261031-0208"
+   ]
+  },
+  {
+   "headline": "山东海阳核电三期开工",
+   "what": "国家电投山东海阳核电三期工程10月31日开工。5、6号机组采用国产CAP1000三代非能动压水堆，单台功率提高到130万千瓦；“非能动”指失去全部电源后，可在72小时内依靠重力和自然循环自动维持堆芯冷却。",
+   "why": "按项目方介绍，三期建成后，海阳将成为全球最大的完全采用非能动压水堆技术的核电基地，供热覆盖25个县级市。",
+   "why_kind": "source_judgment",
+   "qualifiers": "“全球最大”是项目方的说法。",
+   "sources": [
+    {
+     "name": "IT之家",
+     "url": "https://www.ithome.com/1/020/591.htm",
+     "published_at": "2026-10-31T11:30:36Z"
+    }
+   ],
+   "news_intel_event_ids": [
+    "E-20261031-0182"
+   ]
+  }
+ ]
+}

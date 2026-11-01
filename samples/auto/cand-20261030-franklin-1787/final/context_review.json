@@ -1,0 +1,344 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-20261030-franklin-1787",
+ "content_sha256": "d2bf94cbd31effcc677b10e83131d8dc26722bac4f70c5abe244b15b9daed852",
+ "evidence_in_sha256": "c4d7000eaa561e788c28b5a1b7840e3df739f2e747e76f2d858e0ebacdc68e1c",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793429945.847965,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.6",
+   "lang": "en",
+   "sentence": "Franklin explained that when drawing up that paper he had not known that any particular member would refuse to sign, and hoped to be so understood."
+  },
+  {
+   "id": "A2",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "另外，本篇只写到1787年9月17日会议散会为止，不涉及宪法此后的批准与修正。"
+  },
+  {
+   "id": "A3",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "In any case, this piece stops at the adjournment of 17 September 1787 and touches neither ratification nor amendment."
+  }
+ ],
+ "search": null,
+ "units": {
+  "U2-ELLIOT": {
+   "title": "James Madison's notes of the Federal Convention, 17 September 1787, in Jonathan Elliot (ed.), Debates in the Several State Conventions, vol. 5 (1845), Wikisource",
+   "url": "https://en.wikisource.org/w/index.php?title=Debates%20in%20the%20Several%20State%20Conventions/Volume%205/September%2017&action=render",
+   "ref": "en:Debates in the Several State Conventions/Volume 5/September 17",
+   "evidence_text_sha256": "37137cdcfca2dde503eac42d70c01776cd87ef89b672778d40bcf5622fdce9a7",
+   "cache_sha256": "37137cdcfca2dde503eac42d70c01776cd87ef89b672778d40bcf5622fdce9a7",
+   "cjk": false,
+   "source_chars": 62049,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     62049
+    ]
+   ],
+   "chars_reviewed": 62049
+  },
+  "U2-FRANK": {
+   "title": "Works of the late Doctor Benjamin Franklin (1793): Final Speech of Dr. Franklin in the late Federal Convention, Wikisource",
+   "url": "https://en.wikisource.org/w/index.php?title=Works%20of%20the%20late%20Doctor%20Benjamin%20Franklin/Final%20Speech%20of%20Dr.%20Franklin%20in%20the%20late%20Federal%20Convention&action=render",
+   "ref": "en:Works of the late Doctor Benjamin Franklin/Final Speech of Dr. Franklin in the late Federal Convention",
+   "evidence_text_sha256": "5fcedf3ce2acefd56025df5c380f7495b7a9b2d0504e20651d8ac9ba59687d6c",
+   "cache_sha256": "5fcedf3ce2acefd56025df5c380f7495b7a9b2d0504e20651d8ac9ba59687d6c",
+   "cjk": false,
+   "source_chars": 5805,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     5805
+    ]
+   ],
+   "chars_reviewed": 5805
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 29.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 3289
+  }
+ ],
+ "finished_at": 1793429975.6709018,
+ "elapsed_min": 0.5,
+ "review": {
+  "episode": [
+   {
+    "source_id": "U2-ELLIOT",
+    "outcome": "All members sign except Randolph, Mason and Gerry. The Convention adjourns sine die. While the last members sign, Franklin remarks that the sun on the president's chair is rising, not setting.",
+    "quote": "The Constitution being signed by all the members, except Mr. Randolph, Mr. Mason, and Mr. Gerry, who declined giving it the sanction of their names, the Convention dissolved itself by an adjournment sine die .",
+    "in_evidence": true
+   },
+   {
+    "source_id": "U2-FRANK",
+    "outcome": "The 1793 printed speech ends with an editorial bracket: the motion to add the final formula was agreed to and the formula added. A footnote then gives the editors' grounds for attributing the speech to Franklin.",
+    "quote": "[The motion was then made for adding the laſt formula, viz. Done in Convention, by the unanimous conſent, &c.: which was agreed to, and added accordingly.]",
+    "in_evidence": true
+   }
+  ],
+  "additions": [],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.6",
+    "lang": "en",
+    "sentence": "Franklin explained that when drawing up that paper he had not known that any particular member would refuse to sign, and hoped to be so understood.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "U2-ELLIOT"
+    ],
+    "scope": "Madison's notes, 17 Sept. 1787, Franklin's reply to Randolph",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "He declared that, when drawing up that paper, he did not know that any particular member would refuse to sign his name to the instrument, and hoped to be so understood."
+    },
+    "fix": "No change needed. This is a correct paraphrase of what the source records, not a claim that the source is silent."
+   },
+   {
+    "id": "A2",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "另外，本篇只写到1787年9月17日会议散会为止，不涉及宪法此后的批准与修正。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [],
+    "scope": "A statement about the piece's own scope, not about what any source records",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "the Convention dissolved itself by an adjournment sine die"
+    },
+    "fix": "Can stay as is."
+   },
+   {
+    "id": "A3",
+    "path": "sections.limits.1",
+    "lang": "en",
+    "sentence": "In any case, this piece stops at the adjournment of 17 September 1787 and touches neither ratification nor amendment.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [],
+    "scope": "A statement about the piece's own scope, not about what any source records",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "the Convention dissolved itself by an adjournment sine die"
+    },
+    "fix": "Can stay as is."
+   },
+   {
+    "id": "N1",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "whether the wording of Franklin's speech differs between the two versions is not asserted.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "U2-ELLIOT",
+     "U2-FRANK"
+    ],
+    "scope": "Full text of both sources",
+    "quote": {
+     "source_id": "U2-FRANK",
+     "quote": "I CONFESS that I do not entirely approve of this conſtitution at preſent"
+    },
+    "fix": "This is the author declining to assert something, so it can stay. However, the reading range shows plain wording differences: the 1793 text has 'do not entirely approve' where Madison's notes have 'several parts … which I do not at present approve', and 'Babylon' where Madison has 'Babel'. The piece could simply state that the two versions differ in wording."
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.limits.1",
+    "problem": "The piece reduces the outcome to 'the Journals and other papers are left with the president'. It omits that the custody vote was 10 to 1, with Maryland voting no, and that Madison footnotes the reason: Maryland's instructions required its deputies to report the proceedings to the state. The evidence pack added this (F-E27) specifically for this paragraph, but the paragraph does not use it.",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "This negative of Maryland was occasioned by the language of the instructions to the deputies of that state, which required them to report to the state the proceedings of the Contention."
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.story.3",
+    "problem": "The piece does not mention Madison's footnote that this was the only time the president took part in the Convention's discussions. That footnote is the key qualifier explaining why Washington's speech carried such weight. The paragraph currently says only that 'his office had restrained him'.",
+    "quote": {
+     "source_id": "U2-ELLIOT",
+     "quote": "This was the only occasion on which the President entered at all inti the discussions of the Convention."
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.limits.0",
+    "problem": "The piece says the two versions were not collated. The reading range, however, shows the 1793 version differing from Madison's notes in several places, including the opening sentence and Babylon versus Babel. Readers could be told plainly that the wording differs.",
+    "quote": {
+     "source_id": "U2-FRANK",
+     "quote": "like thoſe of the builders of Babylon"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "Both sources were read in full, and their outcomes (the signing, the three refusals, the adjournment, and the formula being adopted) are already in the evidence pack. All the claims under review are statements about the piece's own scope or paraphrases of the record, with no false 'not recorded' assertions. Only minor additions are suggested: the Maryland negative vote, the footnote on the president's sole intervention, and the wording differences between the two versions."
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.6",
+   "lang": "en",
+   "sentence": "Franklin explained that when drawing up that paper he had not known that any particular member would refuse to sign, and hoped to be so understood.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "U2-ELLIOT"
+   ],
+   "scope": "Madison's notes, 17 Sept. 1787, Franklin's reply to Randolph",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "He declared that, when drawing up that paper, he did not know that any particular member would refuse to sign his name to the instrument, and hoped to be so understood."
+   },
+   "fix": "No change needed. This is a correct paraphrase of what the source records, not a claim that the source is silent.",
+   "unit_status": {
+    "U2-ELLIOT": "complete"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "另外，本篇只写到1787年9月17日会议散会为止，不涉及宪法此后的批准与修正。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [],
+   "scope": "A statement about the piece's own scope, not about what any source records",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "the Convention dissolved itself by an adjournment sine die"
+   },
+   "fix": "Can stay as is.",
+   "unit_status": {}
+  },
+  {
+   "id": "A3",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "In any case, this piece stops at the adjournment of 17 September 1787 and touches neither ratification nor amendment.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [],
+   "scope": "A statement about the piece's own scope, not about what any source records",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "the Convention dissolved itself by an adjournment sine die"
+   },
+   "fix": "Can stay as is.",
+   "unit_status": {}
+  },
+  {
+   "id": "N1",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "whether the wording of Franklin's speech differs between the two versions is not asserted.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "U2-ELLIOT",
+    "U2-FRANK"
+   ],
+   "scope": "Full text of both sources",
+   "quote": {
+    "source_id": "U2-FRANK",
+    "quote": "I CONFESS that I do not entirely approve of this conſtitution at preſent"
+   },
+   "fix": "This is the author declining to assert something, so it can stay. However, the reading range shows plain wording differences: the 1793 text has 'do not entirely approve' where Madison's notes have 'several parts … which I do not at present approve', and 'Babylon' where Madison has 'Babel'. The piece could simply state that the two versions differ in wording.",
+   "unit_status": {
+    "U2-ELLIOT": "complete",
+    "U2-FRANK": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.limits.1",
+   "problem": "The piece reduces the outcome to 'the Journals and other papers are left with the president'. It omits that the custody vote was 10 to 1, with Maryland voting no, and that Madison footnotes the reason: Maryland's instructions required its deputies to report the proceedings to the state. The evidence pack added this (F-E27) specifically for this paragraph, but the paragraph does not use it.",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "This negative of Maryland was occasioned by the language of the instructions to the deputies of that state, which required them to report to the state the proceedings of the Contention."
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.story.3",
+   "problem": "The piece does not mention Madison's footnote that this was the only time the president took part in the Convention's discussions. That footnote is the key qualifier explaining why Washington's speech carried such weight. The paragraph currently says only that 'his office had restrained him'.",
+   "quote": {
+    "source_id": "U2-ELLIOT",
+    "quote": "This was the only occasion on which the President entered at all inti the discussions of the Convention."
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.limits.0",
+   "problem": "The piece says the two versions were not collated. The reading range, however, shows the 1793 version differing from Madison's notes in several places, including the opening sentence and Babylon versus Babel. Readers could be told plainly that the wording differs.",
+   "quote": {
+    "source_id": "U2-FRANK",
+    "quote": "like thoſe of the builders of Babylon"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "U2-ELLIOT",
+   "outcome": "All members sign except Randolph, Mason and Gerry. The Convention adjourns sine die. While the last members sign, Franklin remarks that the sun on the president's chair is rising, not setting.",
+   "quote": "The Constitution being signed by all the members, except Mr. Randolph, Mr. Mason, and Mr. Gerry, who declined giving it the sanction of their names, the Convention dissolved itself by an adjournment sine die .",
+   "in_evidence": true
+  },
+  {
+   "source_id": "U2-FRANK",
+   "outcome": "The 1793 printed speech ends with an editorial bracket: the motion to add the final formula was agreed to and the formula added. A footnote then gives the editors' grounds for attributing the speech to Franklin.",
+   "quote": "[The motion was then made for adding the laſt formula, viz. Done in Convention, by the unanimous conſent, &c.: which was agreed to, and added accordingly.]",
+   "in_evidence": true
+  }
+ ],
+ "additions": [],
+ "additions_failed": [],
+ "evidence_sha256": "c4d7000eaa561e788c28b5a1b7840e3df739f2e747e76f2d858e0ebacdc68e1c",
+ "outcome": "clean",
+ "blocking": []
+}

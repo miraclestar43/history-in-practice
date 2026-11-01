@@ -1,0 +1,206 @@
+{
+ "candidate_id": "cand-auto-20261031-sj077-2",
+ "category": "china_ancient",
+ "steps": [],
+ "code_rev": "58a8a4b",
+ "drafter": "MiMo (hermes-isolated)",
+ "sources": {
+  "S-SJ077": "evidence_usable"
+ },
+ "dedup": [
+  "distinct",
+  ""
+ ],
+ "episode_id": "ep-cand-auto-20261031-sj077-2",
+ "context_pre_draft": {
+  "outcome": "prepared",
+  "additions": [
+   "SJ0771-E35",
+   "SJ0771-E36",
+   "SJ0771-E37",
+   "SJ0771-E38"
+  ],
+  "failure": null,
+  "elapsed_min": 0.4
+ },
+ "model_calls": [
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 550.5,
+   "prompt_bytes": 29149,
+   "prompt_chars": 11436,
+   "out_bytes": 15209,
+   "out_chars": 7008,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "draft_zh",
+   "attempt": 1,
+   "candidate": "cand-auto-20261031-sj077-2",
+   "prompts": [
+    {
+     "file": "draft_zh_long.md",
+     "sha256": "9097b1b9cc22"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    },
+    {
+     "file": "style_zh.md",
+     "sha256": "a252591c9ee9"
+    }
+   ],
+   "json_ok": true,
+   "schema_ok": true
+  },
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 357.0,
+   "prompt_bytes": 30744,
+   "prompt_chars": 13279,
+   "out_bytes": 4635,
+   "out_chars": 2224,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "review_zh",
+   "attempt": 1,
+   "candidate": "cand-auto-20261031-sj077-2",
+   "prompts": [
+    {
+     "file": "review_zh.md",
+     "sha256": "aefabfb13390"
+    }
+   ],
+   "json_ok": true,
+   "schema_ok": true
+  },
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 273.1,
+   "prompt_bytes": 33869,
+   "prompt_chars": 16858,
+   "out_bytes": 19878,
+   "out_chars": 19834,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "en",
+   "attempt": 1,
+   "candidate": "cand-auto-20261031-sj077-2",
+   "prompts": [
+    {
+     "file": "reader_first_en.md",
+     "sha256": "1d40f5efde25"
+    },
+    {
+     "file": "translate_en_long.md",
+     "sha256": "c880058bb2ed"
+    }
+   ],
+   "json_ok": false
+  },
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 292.7,
+   "prompt_bytes": 33911,
+   "prompt_chars": 16900,
+   "out_bytes": 19787,
+   "out_chars": 19733,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "en",
+   "attempt": 2,
+   "candidate": "cand-auto-20261031-sj077-2",
+   "prompts": [
+    {
+     "file": "reader_first_en.md",
+     "sha256": "1d40f5efde25"
+    },
+    {
+     "file": "translate_en_long.md",
+     "sha256": "c880058bb2ed"
+    }
+   ],
+   "json_ok": true,
+   "schema_ok": true
+  }
+ ],
+ "length": {
+  "zh_chars": 2860,
+  "en_words": 3164,
+  "basis": "body + question + example; excludes sources and read-more"
+ },
+ "reading_minutes": {
+  "zh": 9,
+  "en": 16,
+  "basis": "estimate: 320 zh chars/min, 200 en words/min"
+ },
+ "findings": [
+  [
+   "CHECK",
+   "hook[0] numbers differ zh[20] en[100]"
+  ],
+  [
+   "CHECK",
+   "hook[1] numbers differ zh[100000] en[100, 100000]"
+  ],
+  [
+   "CHECK",
+   "context[0] numbers differ zh[20, 100000] en[100000]"
+  ],
+  [
+   "CHECK",
+   "context[3] numbers differ zh[] en[100]"
+  ],
+  [
+   "CHECK",
+   "context[5] numbers differ zh[10, 70] en[70]"
+  ],
+  [
+   "BLOCK",
+   "analysis[0] zh quote not in cited evidence: 「为朋友两肋插刀」"
+  ],
+  [
+   "BLOCK",
+   "analysis[0] zh quote not in cited evidence: 「要不要送死」"
+  ],
+  [
+   "BLOCK",
+   "analysis[0] zh quote not in cited evidence: 「有没有别的做法」"
+  ],
+  [
+   "CHECK",
+   "analysis[0] numbers differ zh[] en[100]"
+  ],
+  [
+   "CHECK",
+   "analysis[1] numbers differ zh[17, 18, 771] en[]"
+  ],
+  [
+   "CHECK",
+   "analysis[2] numbers differ zh[24, 25, 31, 36, 771] en[]"
+  ],
+  [
+   "CHECK",
+   "analysis[3] numbers differ zh[11, 771] en[]"
+  ],
+  [
+   "CHECK",
+   "analysis[4] numbers differ zh[10, 18, 32, 33, 34, 35, 37, 771] en[10, 18, 20, 10000]"
+  ],
+  [
+   "CHECK",
+   "limits[0] numbers differ zh[15, 19, 24, 771] en[]"
+  ],
+  [
+   "CHECK",
+   "limits[1] numbers differ zh[13, 20, 24, 28, 771] en[]"
+  ],
+  [
+   "CHECK",
+   "limits[2] numbers differ zh[20, 22, 29, 771] en[80000]"
+  ]
+ ],
+ "outcome": "pending_review",
+ "reason": "checker BLOCK; 12 review issues rated fix/block; ",
+ "wall_s": 1497.0
+}

@@ -1,0 +1,2912 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-book-20261031-hushi-baihua",
+ "edition_id": "cand-book-20261031-hushi-baihua",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "fe9fe95",
+ "started_at": 1793467972.3019922,
+ "base_source": "samples/auto/cand-book-20261031-hushi-baihua/final/article.json",
+ "base_content_sha256": "083fae741d514083bc75b8928b3bc3e0a4e62f2d88a64167900b02f3c993c2f1",
+ "evidence_sha256": "0dd80244e4b8ab297cf604612f4bd3ff22bdcdb576c3cf6f0476cfda5e24b1c6",
+ "operator_note": "extra attempt beyond max_attempts: reader-first Chinese sample (owner, prompts/07_READER_FIRST_CHINESE_SAMPLE.md, 76efe74): one recorded attempt carrying the reader issue and the open issues",
+ "model_record_sha256": null,
+ "prior_record_sha256": "a6191004b469983077dd580cec766253fb7529f277ffbf00f455e3add0528dd1",
+ "attempt": "attempt-4",
+ "context_review_sha256": "249090ec502b4bb1a7ca46f5a88a92367255a403f8801f18c35f8d55f2757081",
+ "inherited": [
+  {
+   "id": "X1",
+   "source": "context review",
+   "where": "sections.analysis.0",
+   "problem": "来源上下文核查（zh）「本文把传单和湖上险些翻船引出的争论也放进这一串，这是本文的归并。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-BK-HUSHI〕：「那时还有一桩值得一提的偶然发生的小事，也引起了连锁性的反应。其结果竟使我下定决心不写旧诗，要写就用活的语言来写。就在我记录上述九条的同时，我又收到一封从绮色佳的来信，信中告诉我说，又有一件小小的意外事件在绮色佳的凯约嘉湖畔发生了。」",
+   "suggestion": "改为：胡适本人也把湖上险事称作“小小的意外事件”；只有把钟文鳌传单归入这一串是本文的归并（来源中传单一事出现在“革命的导火线”一节之前，未被他称为意外事件）。"
+  },
+  {
+   "id": "X2",
+   "source": "context review",
+   "where": "uncertainty_note",
+   "problem": "来源上下文核查（zh）「唐德刚的注释属评论而非史实。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-BK-HUSHI〕：「一九五六年当他以这一论调在哈佛大学讲演时（笔者至今尚保存一份那时的录音带），那时尚在哈佛读书，后来曾为他作传的格里德（JeromeB.Grieder）博士简直就嗤之以鼻。」",
+   "suggestion": "改为：唐德刚注释中的评价与推论属评论；注中所记事实（如1956年哈佛讲演、格里德的反应、《展望》杂志出处）是唐德刚的记述，本文未另行核实。"
+  },
+  {
+   "id": "X3",
+   "source": "context review",
+   "where": "uncertainty_note",
+   "problem": "来源上下文核查（en）「and Tang Degang's notes are commentary rather than fact.」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-BK-HUSHI〕：「见DonaldRobinson，“TheWorld’s100MostImportantPeople”，Look，Oct.4，1955，p.40.」",
+   "suggestion": "Tang's evaluations are commentary; the facts he records (the 1956 Harvard lecture, Grieder's reaction, the Look citation) are his testimony, not checked here."
+  },
+  {
+   "id": "X4",
+   "source": "context review",
+   "where": "sections.analysis.3",
+   "problem": "来源上下文核查：段落只交代“部分的胜利”和1920年通令，漏掉了紧接着的转折：胡适明言不满意，认为四十年来白话文始终未成为完全的教育与文学工具，并归咎执政者的保守和文白夹杂的教科书。读者会把中途成果误读为圆满结局。。来源原文〔S-BK-HUSHI〕：「由于多种原因——尤其是政治方面的原因——使白话文在四十年来就始终没有能成为完全的教育工具和文学工具。」",
+   "suggestion": null
+  },
+  {
+   "id": "X5",
+   "source": "context review",
+   "where": "sections.analysis.0",
+   "problem": "来源上下文核查：把湖上事件归入“一连串小意外”说成本文的归并，实际上胡适本人就这样归类，属于错误归属。。来源原文〔S-BK-HUSHI〕：「那时还有一桩值得一提的偶然发生的小事，也引起了连锁性的反应。」",
+   "suggestion": null
+  },
+  {
+   "id": "X6",
+   "source": "context review",
+   "where": "",
+   "problem": "证据包已按来源上下文补入摘录 HS-E37, HS-E38；请据此检查叙事、结局与因果是否完整准确",
+   "suggestion": null
+  },
+  {
+   "id": "O1",
+   "source": "operator request",
+   "where": "",
+   "problem": "读者优先修订（栏目主人 2026-10-31，prompts/07_READER_FIRST_CHINESE_SAMPLE.md）：本篇将作为给读者看的第一篇中国故事样稿。事实一律保持本稿已核实的内容，不补造对白、动机、场面，不删去改变判断的事实或限定。这是重排与精简，不是换词。中英文同步：\n1. 开头先给一个具体、好懂的张力：一群在美国读书的中国朋友，为“诗能不能用白话写”吵了一年多；一九一六年七月湖上一场几乎翻船的风雨和一首用老字写的纪事诗，把争论推到顶点，反对者最后退到只剩“诗”这一处。前两三段里让读者知道：谁想证明什么、朋友为什么反对、难在哪里（从来没有人认真用白话写过诗）。决定写《尝试集》可作为悬念放到后面揭晓，不要在第一句就交底。\n2. 人物：主线只保留胡适、梅光迪、任鸿隽，后段的陈独秀；每人第一次出现用一句话说明他和本事的关系（例如“同学、最坚定的反对者”），此后称呼固定。其他人名（钟文鳌、赵元任、陈衡哲、杨铨、唐钺、钱玄同、白璧德、爱默生等）只在理解必需时出现，否则改为“几位朋友”“一位热心的书记”之类，或删去。\n3. 钟文鳌传单与学生会论文是引子，压缩到一两句（他曾因一张主张废除汉字的传单开始认真想语言问题，并提出文言“半死”），不要放在开头，也不要展开机构名（清华学生监督处、美东中国学生会文学股等）。\n4. 地名机构只留理解所需：康乃尔、哈佛、《新青年》即可；“绮色佳”“剑桥”等可省。\n5. 年份日期只保留推动情节的几处；不要在一段里堆多个日期。\n6. 局限与不确定性：只保留真正影响判断的两三点（唯一来源是胡适晚年口述、经节译回译；朋友的话均经他转述；“改良”的理由是他事后解释；唐德刚的话是评论），合并成一段短文字。删去为凑局限而写的补白（例如“元明之辨”的更正、反事实不作结论）。不要写“书中没有明说……”这类关于完整来源未写什么的断言。\n7. 结尾围绕一个收获：把一场谁也说服不了谁的争论，缩小成一个可以公开检验的试验；以及措辞温和与别人替你“举旗”之间的取舍。不要重复说教。\n中文、英文各约十分钟，不凑字数；英文要自然，与中文事实、解释和保留意见一致。\n",
+   "suggestion": null
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.analysis.0",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "正文说把湖上险些翻船引出的争论放进“一连串小意外”是本文的归并。实际上胡适本人就把凯约嘉湖事件称作偶然发生的小事、小小的意外事件，并说它引起了连锁反应。这样写把他本人的归类错记成作者的归并。",
+   "evidence": [
+    {
+     "id": "HS-E38",
+     "quote": "那时还有一桩值得一提的偶然发生的小事，也引起了连锁性的反应"
+    },
+    {
+     "id": "HS-E38",
+     "quote": "又有一件小小的意外事件在绮色佳的凯约嘉湖畔发生了"
+    }
+   ],
+   "proposed": "中文改为：「胡适本人也把湖上险事称作「小小的意外事件」，说它「引起了连锁性的反应」；本文把钟文鳌传单也放进这一串，这是本文的归并。」英文同步：Hu himself called the Cayuga Lake incident a small accident that set off a chain reaction; adding the leaflet to that chain is this article's own grouping. 不要另外断言来源对传单如何定性。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "analysis.0 中英同步改写：写明胡适本人把湖上险事称作小小的意外事件、说它引起了连锁性的反应；只把传单的归入标为本文的归并。ev 加入 HS-E38。未对来源如何看待传单另作断言。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.analysis.3",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "段落只写了“部分的胜利”和1920年通令，漏掉了胡适紧接着的自我限定：他不满意，认为四十年来白话文始终没有成为完全的教育工具和文学工具，并把原因归于执政者的保守和文白夹杂的教科书。缺了这句，读者会以为结局圆满，改变了对结局的判断。",
+   "evidence": [
+    {
+     "id": "HS-E37",
+     "quote": "我还是感觉到不满意"
+    },
+    {
+     "id": "HS-E37",
+     "quote": "使白话文在四十年来就始终没有能成为完全的教育工具和文学工具"
+    },
+    {
+     "id": "HS-E37",
+     "quote": "那便是文人学者和教育家们不理解死文言和活白话不能在同一本教科书之内并存的"
+    }
+   ],
+   "proposed": "在段末补一句，中英同步：「但他也说自己仍感到不满意：四十年来白话文始终没有成为完全的教育工具和文学工具。他把主要原因归于执政者的保守，以及文白夹杂的教科书。这是他本人的判断，本文未另行核验。」",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "analysis.3 段末中英同步补入胡适的自我限定：他仍不满意，四十年来白话文未成为完全的教育工具和文学工具，并归因于执政者的保守和文白夹杂的教科书，标明是他本人的判断。ev 加入 HS-E37。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "uncertainty_note",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "“唐德刚的注释属评论而非史实”是一刀切的说法。注释里既有评价，也有唐德刚记下的事（1956年哈佛讲演、格里德的反应）。limits.2 正是把后者作为唐德刚的记述来引用的，两处互相矛盾。",
+   "evidence": [
+    {
+     "id": "HS-E28",
+     "quote": "一九五六年当他以这一论调在哈佛大学讲演时"
+    },
+    {
+     "id": "HS-E28",
+     "quote": "格里德（JeromeB.Grieder）博士简直就嗤之以鼻"
+    }
+   ],
+   "proposed": "中文改为：「唐德刚注释中的评价与推论属评论；注中所记之事（如1956年哈佛讲演时格里德的反应）是唐德刚的记述，本文未另行核验。」英文同步：Tang's evaluations are commentary; the events he records (such as Grieder's reaction to the 1956 Harvard lecture) are his testimony, not checked here. 不要加入证据包以外的出处。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "uncertainty_note 中英同步改为区分：唐德刚的评价与推论属评论，注中所记之事（1956年哈佛讲演时格里德的反应）属唐德刚的记述，本文未另行核验。与 limits.2 的用法一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.story.8",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "中文写明“据他事后解释”，说考虑老一辈保守分子反对是胡适事后的解释。英文把这层动机直接写成事实（in view of the undoubted resistance... he kept the wording gentle），丢了归属，等于把事后自述当成当时的内心。",
+   "evidence": [
+    {
+     "id": "HS-E23",
+     "quote": "为考虑到那无可怀疑的老一辈保守分子的反对，我觉得我要把这一文题写得温和而谦虚"
+    }
+   ],
+   "proposed": "英文在 Even the title was modest 后加 by his own later account，或改为 As he later explained, in view of the undoubted resistance...",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "story.8 英文加上 By his own later account，把顾虑老一辈保守分子反对的动机归属于胡适事后的解释，与中文“据他事后解释”一致。中文未改。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.story.5",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“梅光迪说的范围更宽／Mei drew the line more widely”有歧义，可能被读成梅光迪允许白话用于更多领域。证据显示相反：梅光迪在诗之外还把高级散文也排除在外，比任鸿隽限制得更多。",
+   "evidence": [
+    {
+     "id": "HS-E19",
+     "quote": "在小说和民歌里面，白话是可以用的，但是在高级散文里——肯定的是在诗里面——白话千万用不得"
+    }
+   ],
+   "proposed": "中文改为「梅光迪排除得更多」；英文改为 Mei excluded more: ...",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "story.5 中文改为“梅光迪排除得更多”，英文改为 Mei excluded more，明确梅光迪在诗之外还把高级散文排除在外，消除歧义。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F6",
+   "path": "sections.hook.1",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "开头说清了谁（胡适和朋友）、争什么（白话能否作诗），但没说清为什么难。从来没有中国作家认真用白话作诗，所以没有现成的例子可以拿来说服朋友；这一点要到 story.6 才出现，不熟悉背景的读者读完开头说不出难处在哪里。",
+   "evidence": [
+    {
+     "id": "HS-E20",
+     "quote": "从来没有中国作家认真着实用白话来作诗作文"
+    }
+   ],
+   "proposed": "在 hook.1 末尾补一句，中英同步：「难处在于，从来没有中国作家认真用白话作过诗，他手里没有一首现成的例子可以拿来说服朋友。」",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "hook.1 中英同步补写难处：从来没有中国作家认真用白话作诗，可找到的白话诗只有一首、甚至几句。没有采用建议稿中“手里没有一首现成的例子”的写法，因为证据说他能找到一首，照证据收窄。ev 加入 HS-E20。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F7",
+   "path": "sections.context.0",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "context 第一段就展开庚款、华盛顿清华学生监督处、钟文鳌的出身和三条传单原文，这些机构和细节读者此时还用不上，冲淡了开头的主线（白话能否作诗的争论）。",
+   "evidence": [],
+   "proposed": "把 context.0 和 context.1 压缩成一两句，中英同步：「更早，一位热心改革的书记在奖学金支票信封里夹寄主张废除汉字的传单；胡适回了一张不客气的字条，随即懊悔，开始认真想文字问题，并提出文言是「半死的语言」。」保留约1915年和“我想是”这一限定。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "context.0 压缩为两句：删去庚款、清华学生监督处、钟文鳌姓名出身和另两条传单，只留一位热心改革的书记夹寄主张废除汉字的传单，以及胡适的回条。保留约1915年和“我想是”的限定。“半死的语言”仍在 context.2。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F8",
+   "path": "sections.context.1",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "开头第二段堆了赵元任、1910年同进康乃尔、美东中国学生会文学股年会、两篇论文的完整题目。赵元任在主线中只在 story.9 再次出现，这些机构层级读者理解故事并不需要。",
+   "evidence": [],
+   "proposed": "与 context.0 合并压缩（见 F7）。赵元任可改为“一位同学”，或留到 story.9 首次出现时，用一句话说明他是胡适在康乃尔的同学。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "context.1 删去1910年同进康乃尔、美东中国学生会文学股以及两篇论文的完整题目，赵元任改称“一位同学”。story.9 中赵元任首次具名时，用一句话说明他是胡适在康乃尔的同学、当年与他分写论文的人，ev 相应加入 HS-E5、HS-E6。因规则不能删段，context.0 和 context.1 各自保留为短段。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F9",
+   "path": "sections.hook.0",
+   "category": "readability",
+   "severity": "note",
+   "problem": "第一句就交代了结局（不写旧诗、定名《尝试集》），开头的张力因此提前释放了。",
+   "evidence": [],
+   "proposed": "可把争论（白话能否作诗、朋友退到只剩诗）移到首句，把决定写《尝试集》留到 story.7 揭晓。不删任何事实。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F10",
+   "path": "sections.story.0",
+   "category": "readability",
+   "severity": "note",
+   "problem": "梅光迪、任鸿隽是主线人物，但首次出现时没有说明他们在本事中的角色。中文里任鸿隽连“朋友”二字都没有。",
+   "evidence": [
+    {
+     "id": "HS-E10",
+     "quote": "当时在康乃尔的另一位中国朋友任鸿隽"
+    }
+   ],
+   "proposed": "首次出现时各补半句：梅光迪是“胡适的朋友，后来最坚定的反对者”，任鸿隽是“在康乃尔的朋友”。此后称呼固定。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F11",
+   "path": "sections.story.4",
+   "category": "readability",
+   "severity": "note",
+   "problem": "湖上划船者陈衡哲（沃莎女子学院）、杨铨、唐钺此后不再出现，名字堆在一起增加了阅读负担。",
+   "evidence": [],
+   "proposed": "改为“任鸿隽、梅光迪和几位朋友”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F12",
+   "path": "sections.story.9",
+   "category": "readability",
+   "severity": "note",
+   "problem": "钱玄同、章太炎门人、古典音韵学教授等身份层级对主线不是必需的。",
+   "evidence": [],
+   "proposed": "可简为“北大另一位古文大家钱玄同也写长信支持，信在《新青年》发表”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F13",
+   "path": "sections.limits.1",
+   "category": "readability",
+   "severity": "note",
+   "problem": "段末一口气列出九个日期，读者用不上，只是堆砌。",
+   "evidence": [],
+   "proposed": "删去日期清单，或改为一句“文中日期依据本书”。只保留“约1915年（胡适自称“我想是”）”这一限定。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F14",
+   "path": "sections.limits.2",
+   "category": "readability",
+   "severity": "note",
+   "problem": "“元明之辨”的更正已在 story.2 交代过；“作者不作结论，也不替历史排演”属于补白，不改变判断。三段局限文字可以合并精简。",
+   "evidence": [],
+   "proposed": "删去这两句，与 limits.0、limits.1 合并成一段。保留唐德刚所记格里德的反应，并注明是唐德刚的记述。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F15",
+   "path": "sections.story.8",
+   "category": "readability",
+   "severity": "note",
+   "problem": "写“誊了三份”，却只列出两处去向，读者会困惑第三份去了哪里。",
+   "evidence": [
+    {
+     "id": "HS-E24",
+     "quote": "我一共复写了三份"
+    }
+   ],
+   "proposed": "改为“复写了三份，其中一份……另一份……”，避免读者以为文中漏写。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "X1",
+   "problem": "来源上下文核查（zh）「本文把传单和湖上险些翻船引出的争论也放进这一串，这是本文的归并。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-BK-HUSHI〕：「那时还有一桩值得一提的偶然发生的小事，也引起了连锁性的反应。其结果竟使我下定决心不写旧诗，要写就用活的语言来写。就在我记录上述九条的同时，我又收到一封从绮色佳的来信，信中告诉我说，又有一件小小的意外事件在绮色佳的凯约嘉湖畔发生了。」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.analysis.0",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "成立。胡适本人把湖上事件称作小小的意外事件，同 F1。但建议中括注“来源中传单一事出现在……之前，未被他称为意外事件”是对完整来源的断言，不予采用。"
+  },
+  {
+   "id": "X2",
+   "problem": "来源上下文核查（zh）「唐德刚的注释属评论而非史实。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-BK-HUSHI〕：「一九五六年当他以这一论调在哈佛大学讲演时（笔者至今尚保存一份那时的录音带），那时尚在哈佛读书，后来曾为他作传的格里德（JeromeB.Grieder）博士简直就嗤之以鼻。」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "uncertainty_note",
+   "disposition": "duplicate",
+   "same_as": "F3",
+   "rationale": "成立，同 F3。建议中的《展望》杂志出处不在证据包内，不加入。"
+  },
+  {
+   "id": "X3",
+   "problem": "来源上下文核查（en）「and Tang Degang's notes are commentary rather than fact.」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-BK-HUSHI〕：「见DonaldRobinson，“TheWorld’s100MostImportantPeople”，Look，Oct.4，1955，p.40.」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "uncertainty_note",
+   "disposition": "duplicate",
+   "same_as": "F3",
+   "rationale": "英文版同一问题，同 F3。Look 杂志出处不在证据包内，不加入。"
+  },
+  {
+   "id": "X4",
+   "problem": "来源上下文核查：段落只交代“部分的胜利”和1920年通令，漏掉了紧接着的转折：胡适明言不满意，认为四十年来白话文始终未成为完全的教育与文学工具，并归咎执政者的保守和文白夹杂的教科书。读者会把中途成果误读为圆满结局。。来源原文〔S-BK-HUSHI〕：「由于多种原因——尤其是政治方面的原因——使白话文在四十年来就始终没有能成为完全的教育工具和文学工具。」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.analysis.3",
+   "disposition": "duplicate",
+   "same_as": "F2",
+   "rationale": "成立，analysis.3 漏掉了胡适的“不满意”和他所说的原因，同 F2。"
+  },
+  {
+   "id": "X5",
+   "problem": "来源上下文核查：把湖上事件归入“一连串小意外”说成本文的归并，实际上胡适本人就这样归类，属于错误归属。。来源原文〔S-BK-HUSHI〕：「那时还有一桩值得一提的偶然发生的小事，也引起了连锁性的反应。」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.analysis.0",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "与 X1 相同，属于错误归属，同 F1。"
+  },
+  {
+   "id": "X6",
+   "path": "",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "证据包已按来源上下文补入摘录 HS-E37, HS-E38；请据此检查叙事、结局与因果是否完整准确",
+   "origin": "inherited context review None",
+   "audit_rationale": "已据 HS-E37、HS-E38 复核。结局的限定缺失见 F2，湖上事件的归属错误见 F1。其余叙事与因果未见新问题。",
+   "disposition": "fixed",
+   "rationale": "已据 HS-E37、HS-E38 复核。湖上事件的归属已在 analysis.0 更正（见 F1）；结局的自我限定已在 analysis.3 补入（见 F2）。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "O1",
+   "path": "",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "读者优先修订（栏目主人 2026-10-31，prompts/07_READER_FIRST_CHINESE_SAMPLE.md）：本篇将作为给读者看的第一篇中国故事样稿。事实一律保持本稿已核实的内容，不补造对白、动机、场面，不删去改变判断的事实或限定。这是重排与精简，不是换词。中英文同步：\n1. 开头先给一个具体、好懂的张力：一群在美国读书的中国朋友，为“诗能不能用白话写”吵了一年多；一九一六年七月湖上一场几乎翻船的风雨和一首用老字写的纪事诗，把争论推到顶点，反对者最后退到只剩“诗”这一处。前两三段里让读者知道：谁想证明什么、朋友为什么反对、难在哪里（从来没有人认真用白话写过诗）。决定写《尝试集》可作为悬念放到后面揭晓，不要在第一句就交底。\n2. 人物：主线只保留胡适、梅光迪、任鸿隽，后段的陈独秀；每人第一次出现用一句话说明他和本事的关系（例如“同学、最坚定的反对者”），此后称呼固定。其他人名（钟文鳌、赵元任、陈衡哲、杨铨、唐钺、钱玄同、白璧德、爱默生等）只在理解必需时出现，否则改为“几位朋友”“一位热心的书记”之类，或删去。\n3. 钟文鳌传单与学生会论文是引子，压缩到一两句（他曾因一张主张废除汉字的传单开始认真想语言问题，并提出文言“半死”），不要放在开头，也不要展开机构名（清华学生监督处、美东中国学生会文学股等）。\n4. 地名机构只留理解所需：康乃尔、哈佛、《新青年》即可；“绮色佳”“剑桥”等可省。\n5. 年份日期只保留推动情节的几处；不要在一段里堆多个日期。\n6. 局限与不确定性：只保留真正影响判断的两三点（唯一来源是胡适晚年口述、经节译回译；朋友的话均经他转述；“改良”的理由是他事后解释；唐德刚的话是评论），合并成一段短文字。删去为凑局限而写的补白（例如“元明之辨”的更正、反事实不作结论）。不要写“书中没有明说……”这类关于完整来源未写什么的断言。\n7. 结尾围绕一个收获：把一场谁也说服不了谁的争论，缩小成一个可以公开检验的试验；以及措辞温和与别人替你“举旗”之间的取舍。不要重复说教。\n中文、英文各约十分钟，不凑字数；英文要自然，与中文事实、解释和保留意见一致。\n",
+   "origin": "inherited operator request None",
+   "audit_rationale": "易读性要求成立：开头被传单和机构细节占据，难点不清，见 F6、F7、F8；人名过多，见 F10、F11、F12；日期堆砌与补白，见 F13、F14；结局提前交底，见 F9。修改时须保留已核实的事实和限定（如“我想是”、湖上事件的归属、胡适的“不满意”、唐德刚评论的性质），不补造对白、动机或场面。",
+   "disposition": "fixed",
+   "rationale": "按读者优先要求重排，所有改动只删减或改写已有内容。(1) 开头改为朋友间一年多的争吵和湖上风雨引出的新争吵；hook.1 交代反对者、争点和难处，《尝试集》的决定留到 story.7 揭晓。(2) 主线人物固定为胡适、梅光迪、任鸿隽、陈独秀，首次出现时各用一句话说明身份。钟文鳌、白璧德、陈衡哲、杨铨、唐钺、钱玄同和外国人名改为泛称或删去；赵元任只在 story.9 理解必需处出现。(3) 传单与论文压缩为短段。(4) 删去绮色佳、麻州剑桥等地名。(5) limits.1 删去日期罗列。(6) 局限部分删去元明之辨与反事实补白，只保留来源性质、转述、事后解释和唐德刚评论的性质；因规则不得删段，仍分为三段短文字。(7) 结尾 today 两段已围绕可公开检验的试验和措辞取舍，未改。保留了已核实的限定：“我想是”、湖上事件的归属、胡适的“不满意”、唐德刚评论的性质。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.hook.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "稿件写朋友们“为‘诗能不能用白话写’吵了一年多”。按胡适的说法，一年多的讨论起初是关于文学改革，后来才“逐渐约束到”诗能不能用白话这个中心议题。收缩到诗是在1916年7月湖上事件和百句打油诗之后，不是争论一开始的题目。现在的写法把结果说成了起点。",
+   "evidence": [
+    {
+     "id": "HS-E20",
+     "quote": "我们一年多的讨论已逐渐约束到一个中心议题里来。这个中心议题便是：白话文用在文学其他任何部门都很适合，就是不能“用之于诗”"
+    },
+    {
+     "id": "HS-E11",
+     "quote": "愈辩则牵涉愈多，内容也愈复杂愈精湛"
+    }
+   ],
+   "proposed": "中文改为“一群在美国读书的中国朋友，为中国文学该怎样改争了一年多，最后争到一个问题上：诗能不能用白话写。”英文改为“argued for more than a year over how Chinese literature should change, until the quarrel narrowed to one question: could poetry be written in baihua...”。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "Hook.0 now opens with more than a year of argument over how Chinese literature should change. Only after the July 1916 lake incident does it say the dispute narrowed to whether poetry could be written in the vernacular, so the result is no longer presented as the starting point. The English is updated to match.",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V3",
+   "path": "sections.hook.1",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "稿件说把胡适推向“后来那个决定”（只用白话作诗）的是送别诗引起的偶然事件，这把来源的两处说法混在一起了。胡适说送别诗引起的是“这许多严肃性的讨论”和历史研析；让他“下定决心不写旧诗”的，他归于湖上那件“偶然发生的小事”。",
+   "evidence": [
+    {
+     "id": "HS-E15",
+     "quote": "这许多严肃性的讨论，和我后来所做的历史性的研析，实在只是由于我写了一首向去哈佛升学朋友的送别诗所引起的小小偶然事件"
+    },
+    {
+     "id": "HS-E38",
+     "quote": "那时还有一桩值得一提的偶然发生的小事，也引起了连锁性的反应。其结果竟使我下定决心不写旧诗，要写就用活的语言来写"
+    }
+   ],
+   "proposed": "中文改为“按他自己的说法，这许多严肃的讨论都只源于一首送别诗引起的小小偶然事件；让他下定决心不写旧诗的，则是又一件小意外——湖上那场险事。”英文对应改为“In his own telling, all the serious discussion grew out of a small accident set off by a farewell poem, and it was another small accident, the incident on the lake, that made him resolve to stop writing old-style verse.”",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "Hook.1's last sentence now keeps two attributions apart. Hu says the farewell poem gave rise to the serious discussions. He says his resolve to stop writing old-style poetry came from another small accident, the lake incident. HS-E38 is added to ev, and the English is updated to match.",
+   "decided_in": "revise_r2"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.hook.0.zh",
+   "before": "1916年七月底八月初，在美国留学的胡适给自己定了一条规矩：不再写旧诗词，只用白话作诗；诗集名字他都想好了，叫《尝试集》。可他一向说自己是保守的人，认为语言文字是世界上最保守的东西，比宗教还保守，还说这一路是被「逼上梁山」的——这句成语说的是一个人为环境所迫，不得已而做出违反他本意的非常行为。",
+   "after": "一群在美国读书的中国朋友，为“诗能不能用白话写”吵了一年多。1916年7月，湖上一场几乎翻船的风雨，和一位朋友用老字写成的纪事诗，又掀起一轮新的争吵。站在一边的是胡适，而他一向说自己是保守的人，认为语言文字是世界上最保守的东西，比宗教还保守，还说自己这一路是被「逼上梁山」的。这句成语说的是一个人为环境所迫，不得已而做出违反他本意的非常行为。",
+   "issues": [
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.hook.0.en",
+   "before": "In late July and early August of 1916, Hu Shi, a Chinese student in America, gave himself a rule: no more old-style verse. He would write poetry only in baihua, the everyday spoken language, and he had already named the book to come — Changshi ji, or Experiments. Yet he called himself a conservative: language and writing, he liked to say, are the most conservative things in the world, more conservative than religion. And he said he had been pushed here — bi shang Liangshan, driven to Liangshan, an idiom for someone forced by circumstances into extraordinary acts against his own intentions.",
+   "after": "A group of Chinese friends studying in America argued for more than a year over whether poetry could be written in baihua, the everyday spoken language. In July 1916 a storm on a lake that nearly capsized their boat, and a friend's poem about it written in archaic words, set off a fresh round of quarrelling. On one side stood Hu Shi, who called himself a conservative: language and writing, he liked to say, are the most conservative things in the world, more conservative than religion. He also said he had been pushed down this road: bi shang Liangshan, driven to Liangshan, an idiom for someone forced by circumstances into extraordinary acts against his own intentions.",
+   "issues": [
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.hook.0.ev",
+   "before": [
+    "HS-E1",
+    "HS-E2",
+    "HS-E22"
+   ],
+   "after": [
+    "HS-E1",
+    "HS-E2",
+    "HS-E16",
+    "HS-E20"
+   ],
+   "issues": [
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.hook.1.zh",
+   "before": "按他自己的说法，把他推到这一步的，不是什么大事件，而是一首送别诗引起的小小偶然事件，和朋友之间持续一年多的争吵。争的是白话能不能用来写文学：到1916年夏天，朋友们已承认白话可以写小说、演说，唯独不肯承认它能作诗——反对者已经退到只剩一处：诗。",
+   "after": "反对他的主要是两位朋友：一位是去哈佛升学、最坚定的反对者梅光迪，另一位是同在康乃尔、写诗嘲笑过他的任鸿隽。争的是白话能不能用来写文学。到1916年夏天，朋友们已承认白话可以写小说、演说，唯独不肯承认它能作诗，反对者已经退到只剩一处：诗。按胡适的说法，难处在于从来没有中国作家认真着实用白话作诗，他在中国诗词中能找到的白话诗只有一首，甚至只是一首中的几句。按他自己的说法，把他推向后来那个决定的，不是什么大事件，而是一首送别诗引起的小小偶然事件。",
+   "issues": [
+    "F6",
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "In his own telling, what pushed him was no great event, but a small accident set off by a farewell poem, and a quarrel among friends that ran on for over a year. The quarrel was over whether the vernacular could serve literature. By the summer of 1916 his friends granted it would do for fiction and speeches, but not for poetry. Poetry was the last fortress.",
+   "after": "His chief opponents were two friends: Mei Guangdi, bound for Harvard and his most determined opponent, and Ren Hongjun, also at Cornell, who had mocked him in verse. The quarrel was over whether the vernacular could serve literature. By the summer of 1916 his friends granted that it would do for fiction and speeches, but not for poetry. Poetry was the last fortress. The difficulty, as Hu saw it, was that no Chinese writer had ever seriously written poetry in the vernacular; in all of Chinese verse he could find only one such poem, perhaps only a few lines of one. In his own telling, what pushed him toward the decision that followed was no great event, but a small accident set off by a farewell poem.",
+   "issues": [
+    "F6",
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.hook.1.ev",
+   "before": [
+    "HS-E10",
+    "HS-E15",
+    "HS-E19",
+    "HS-E20"
+   ],
+   "after": [
+    "HS-E8",
+    "HS-E10",
+    "HS-E15",
+    "HS-E17",
+    "HS-E19",
+    "HS-E20"
+   ],
+   "issues": [
+    "F6",
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.context.0.zh",
+   "before": "更早的引子，藏在每月的支票信封里。庚款留学生每月从华盛顿的清华学生监督处收到一张支票，主办的书记钟文鳌——一位教会学校出身、热心改革社会风俗的好好先生——总在信封里夹一张小传单，上面写着「不满二十五岁不娶妻。」「废除汉字，改用字母！」「多种树，种树有益。」之类的话。平时大家随手把它丢进纸篓。约在1915年，胡适却坐下来回了一张很不客气的字条，大意是：像你这样既不懂汉字、又不能写汉文的人，「你最好闭起鸟嘴！」",
+   "after": "更早还有一段引子。一位热心改革的书记，总在留学生每月的奖学金支票信封里夹寄小传单，其中一条是「废除汉字，改用字母！」。约在1915年（胡适说“我想是”），胡适回了一张很不客气的字条，叫他「最好闭起鸟嘴！」",
+   "issues": [
+    "F7",
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.context.0.en",
+   "before": "The first trigger hid in a monthly check. Chinese students on the Boxer Indemnity scholarship drew their stipend from the Tsinghua student-supervision office in Washington, and inside every envelope was a leaflet slipped in by the clerk who mailed it: Zhong Wen'ao, a kindly man from the missionary school St. John's in Shanghai, who was keen to reform Chinese society. Its slogans ran, in translation: marry no one under twenty-five; abolish the Chinese characters and switch to an alphabet; plant more trees, for trees do good. Usually it went straight into the wastebasket. Around 1915 Hu sat down and wrote back a rude little note, which ran roughly, in translation: a man like you, who neither understands the characters nor can write the language, had better shut his beak.",
+   "after": "There was an earlier prelude. A clerk keen on reform used to slip leaflets into the envelopes that carried the students' monthly scholarship checks; one slogan, in translation, was to abolish the Chinese characters and switch to an alphabet. Around 1915 (Hu said he thought it was then), Hu wrote back a rude little note telling the man, in translation, that he had better shut his beak.",
+   "issues": [
+    "F7",
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.context.1.zh",
+   "before": "字条寄出后他心中懊悔，觉得不该对一位和善又有心改革语言文字的人如此不礼貌，于是在朋友面前自我谴责，并想到一层：假如钟君这样的人不够资格谈这个问题，那么够资格的人实在更该认真研究，把可行与不可行的问题都摆出来检讨。他找上1910年同进康乃尔的赵元任，两人商定把“中国文字的问题”作为美东中国学生会文学股年会的论题，各写一篇：赵元任论吾国文字能否采用字母制及其进行方法，他论“如何可使吾国文言易于教授”。",
+   "after": "字条寄出后他心中懊悔，觉得不该对一位和善又有心改革的人如此不礼貌。他还想到：假如这样的人不够资格谈这个问题，那么够资格的人实在更该认真研究。于是他和一位同学商定，在留学生会的年会上各写一篇论文讨论中国文字问题，他自己的题目是怎样使文言易于教授。",
+   "issues": [
+    "F7",
+    "F8",
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.context.1.en",
+   "before": "After the note was sent, he regretted it. Zhong was a kind man with a sincere wish to reform Chinese customs and writing; the rudeness was uncalled for, and Hu reproached himself before his friends. Then a further thought: if men like Zhong are not qualified to discuss such questions, then the qualified should do the work — set out what is feasible and what is not, and examine both. He took it up with Zhao Yuanren, who had entered Cornell with him in 1910. They agreed to make the question of China's writing (in our translation) the literature section's topic for the annual meeting of the Chinese Students' Association in the East, and split it: Zhao on whether the Chinese script could adopt an alphabetic system and how to proceed; Hu on, in our translation, how to make our classical written language easier to teach.",
+   "after": "Once the note was sent he regretted it: the man was kind and sincere about reform, and the rudeness was uncalled for. Then a further thought: if men like him were not qualified to discuss the question, the qualified should do the work. So he agreed with a fellow student that each would write a paper on the problem of the Chinese script for the annual meeting of a Chinese students' association. Hu's topic was how to make the classical written language easier to teach.",
+   "issues": [
+    "F7",
+    "F8",
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.story.0.zh",
+   "before": "争论是从一首送别诗开始的。胡适准备离开康乃尔时，朋友梅光迪在绮色佳度假，正要去哈佛跟白璧德深造；梅光迪也是庚款留学生，此前在威斯康辛大学读完英国文学学士学位。胡适写了首相当长的打油诗送行，里面塞进十一个外国人的名字，从爱默生、达尔文到牛顿、爱迪生。在康乃尔的任鸿隽把这些名字连缀起来，作诗嘲笑他「文学今革命，作诗送胡生！」。胡适自认那首送行诗立意严肃：诗里鼓励朋友们留意今后中国文学的发展，并说致力于中国文学革命，贡献不下于征服自然，他叫它作「缩地戡天」。所以他不肯轻轻放过，在从绮色佳去纽约的火车上作答诗，第一次写下“诗国革命”的念头：「诗国革命何自始？要须作诗如作文！」",
+   "after": "争论是从一首送别诗开始的。胡适准备离开康乃尔时，梅光迪正要去哈佛升学。胡适写了首相当长的打油诗为他送行，里面塞进十一个外国人的名字。同在康乃尔的任鸿隽把这些名字连缀起来，作诗嘲笑他「文学今革命，作诗送胡生！」。胡适自认那首送行诗立意严肃：诗里鼓励朋友们留意今后中国文学的发展，并说致力于中国文学革命，贡献不下于征服自然，他叫它作「缩地戡天」。所以他不肯轻轻放过，在去纽约的火车上作了答诗，第一次写下“诗国革命”的念头：「诗国革命何自始？要须作诗如作文！」",
+   "issues": [
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.story.0.en",
+   "before": "It began with a farewell poem. When Hu was preparing to leave Cornell, his friend Mei Guangdi — a Boxer Indemnity scholar with a bachelor's in English literature from Wisconsin — was on holiday in Ithaca before going on to Harvard to study under the critic Irving Babbitt. Hu sent him off with a doggerel poem, long by Chinese standards, stuffed with eleven foreign names — Emerson, Darwin, Newton, Edison and the rest. Another Cornell friend, Ren Hongjun, strung the names into a mock verse of his own, which in our translation runs: literature's revolution today, a poem to send off Hu. Hu would not let it pass. His send-off had been meant in earnest, urging friends to watch where Chinese literature went next and ranking its revolution with conquering nature — what he called, in our translation, shrinking the earth and taming the heavens. So on the train from Ithaca to New York he wrote an answer, and in it first set down the idea of a revolution in the poetry world. His couplet, in our translation, asks where that revolution should begin, and answers that poetry must be written like prose.",
+   "after": "It began with a farewell poem. When Hu was preparing to leave Cornell, Mei Guangdi was about to go on to Harvard. Hu sent him off with a doggerel poem, long by Chinese standards, stuffed with eleven foreign names. Ren Hongjun, also at Cornell, strung the names into a mock verse of his own, which in our translation runs: literature's revolution today, a poem to send off Hu. Hu would not let it pass. His send-off had been meant in earnest. It urged his friends to watch where Chinese literature went next, and it ranked a revolution in Chinese literature with conquering nature, which he called, in our translation, shrinking the earth and taming the heavens. So on the train to New York he wrote an answer, and in it first set down the idea of a revolution in the poetry world. His couplet, in our translation, asks where that revolution should begin, and answers that poetry must be written like prose.",
+   "issues": [
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.story.2.zh",
+   "before": "转机出现在1916年二三月。他形成一个概括观念：整部中国文学史就是一部文学工具变迁史，一个工具替代另一个工具；同时也是一部活文学逐渐代替死文学的历史。工具一旦活力消失、逐渐僵化，就要换一个，在这种嬗递中接受一个活的工具，他称之为“文学革命”。三月，他写长信给在麻州剑桥、正在哈佛的梅光迪，说中古以后老的语言工具已不够用，变迁在唐代便已发生：散文体裁发生革命，逐渐发展出以白话表达的语录体，先为和尚们采用，后来宋代哲学家用它记录哲学讨论，老百姓又用它作歌曲、编戏剧、写短篇和长篇小说。他说用白话写的活文学——最明显的如元曲——是民众不知不觉中完成的文学革命的最高潮，中国文学之复苏实得力于白话戏曲和白话小说之兴起。出乎他意料，这套由历史分析得出的结论，竟被这位保守朋友欣然接受。需要补一句：他们当时以为传统长篇小说都是元代作品，胡适本人晚年更正说，《水浒》一流的故事流传几百年，到明代才写成定稿。",
+   "after": "转机出现在1916年二三月。他形成一个概括观念：整部中国文学史就是一部文学工具变迁史，一个工具替代另一个工具；同时也是一部活文学逐渐代替死文学的历史。工具一旦活力消失、逐渐僵化，就要换一个，在这种嬗递中接受一个活的工具，他称之为“文学革命”。三月，他写长信给在哈佛的梅光迪，说中古以后老的语言工具已不够用，变迁在唐代便已发生：散文体裁发生革命，逐渐发展出以白话表达的语录体，先为和尚们采用，后来宋代哲学家用它记录哲学讨论，老百姓又用它作歌曲、编戏剧、写短篇和长篇小说。他说用白话写的活文学，最明显的如元曲，是民众不知不觉中完成的文学革命的最高潮，中国文学之复苏实得力于白话戏曲和白话小说之兴起。出乎他意料，这套由历史分析得出的结论，竟被这位保守朋友欣然接受。需要补一句：他们当时以为传统长篇小说都是元代作品，胡适本人晚年更正说，《水浒》一流的故事流传几百年，到明代才写成定稿。",
+   "issues": [
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.story.2.en",
+   "before": "The turn came in February and March of 1916. Hu reached a general idea: the history of Chinese literature is a history of changing literary tools, one replacing another, and at the same time a history of living literature gradually displacing dead literature. When a tool loses its vitality and hardens it must be changed, and taking up a living tool in that succession is what he called literary revolution. In March he wrote a long letter to Mei, then at Harvard in Cambridge, Massachusetts: after the medieval period the old language tool could no longer carry people's thoughts, and the change had begun in the Tang, when prose style was revolutionized and a vernacular recorded-sayings style grew up — taken up first by monks, later by Song philosophers for their discussions, and then by ordinary people for songs, plays, stories and novels. Vernacular literature of that kind, Yuan drama most obviously, was, he said, the climax of a literary revolution the masses completed without knowing it; the revival of Chinese literature owed much to the rise of vernacular drama and fiction. To Hu's surprise, this conclusion drawn from historical analysis was gladly accepted by his conservative friend. One note: they then took the great traditional novels for Yuan works; Hu corrected himself in later years, saying that stories like Water Margin circulated for centuries before being written down in final form under the Ming.",
+   "after": "The turn came in February and March of 1916. Hu reached a general idea: the history of Chinese literature is a history of changing literary tools, one replacing another, and at the same time a history of living literature gradually displacing dead literature. When a tool loses its vitality and hardens it must be changed, and taking up a living tool in that succession is what he called literary revolution. In March he wrote a long letter to Mei, then at Harvard. After the medieval period, he wrote, the old language tool could no longer carry people's thoughts. The change had begun in the Tang, when prose style was revolutionized and a vernacular recorded-sayings style grew up. Monks took it up first, then Song philosophers used it for their discussions, and then ordinary people used it for songs, plays, stories and novels. Vernacular literature of that kind, Yuan drama most obviously, was, he said, the climax of a literary revolution the masses completed without knowing it; the revival of Chinese literature owed much to the rise of vernacular drama and fiction. To Hu's surprise, this conclusion drawn from historical analysis was gladly accepted by his conservative friend. One note: they then took the great traditional novels for Yuan works. Hu corrected himself in later years, saying that stories like Water Margin circulated for centuries before being written down in final form under the Ming.",
+   "issues": [
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.story.4.zh",
+   "before": "两天之后，凯约嘉湖上出了桩险事。7月8日，任鸿隽、沃莎女子学院的学生陈衡哲、梅光迪、杨铨、唐钺等人在湖上划船，片云头上黑，忽然刮起风暴，雨落下来，他们急忙往岸边划，几乎把船弄翻，个个淋得狼狈不堪。对这批中国留学生来说，这也算件险事。任鸿隽随后写了一首四言古诗《泛湖即事》附在信里，请胡适批评。诗中用了《诗经》里“言”字一类的老字，而胡适此前恰好写过一篇《言字解》。他不喜欢这种陈腐文字与现代语言夹杂，回信说此诗不好，因为「文字殊不调和」，又有「三千年前之死语」之说。任鸿隽不服，愤愤不平；更有意思的是另一位哈佛朋友梅光迪路见不平，写来一封十分激动的信反击。梅当时正受保守派批评家白璧德的影响，对胡适的一切激进主张都反对到底：他认为语言必须经过第一流的诗人加以锻炼，才能成为诗的语言；文学的文字、尤其是诗的文字，一定要由第一流的诗人和美术家加以美化，才能成为诗之文字。他据此对胡适的观念大加挞伐。",
+   "after": "两天之后，湖上出了桩险事。7月8日，任鸿隽、梅光迪等几位朋友在凯约嘉湖上划船，片云头上黑，忽然刮起风暴，雨落下来。他们急忙往岸边划，几乎把船弄翻，个个淋得狼狈不堪。对这批中国留学生来说，这也算件险事。任鸿隽随后写了一首四言古诗《泛湖即事》附在信里，请胡适批评。诗中用了《诗经》里“言”字一类的老字，而胡适此前恰好写过一篇《言字解》。他不喜欢这种陈腐文字与现代语言夹杂，回信说此诗不好，因为「文字殊不调和」，又有「三千年前之死语」之说。任鸿隽不服，愤愤不平。更有意思的是梅光迪路见不平，写来一封十分激动的信反击。梅当时正受他那位保守派文学批评老师的影响，对胡适的一切激进主张都反对到底。他认为语言必须经过第一流的诗人加以锻炼，才能成为诗的语言；文学的文字，尤其是诗的文字，一定要由第一流的诗人和美术家加以美化，才能成为诗之文字。他据此对胡适的观念大加挞伐。",
+   "issues": [
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.story.4.en",
+   "before": "Two days later came a close call on Cayuga Lake. On July 8 Ren Hongjun, Chen Hengzhe of Vassar, Mei Guangdi, Yang Quan, Tang Yue and others were rowing on the lake when a black cloud gathered overhead, a storm broke and the rain fell; pulling for shore in a hurry they nearly capsized, and all came away soaked and dishevelled. For that band of Chinese students it was a real adventure, and Ren wrote it up in Fanhu jishi (Boating on the Lake), an old four-character-style poem he mailed to Hu for criticism. It used archaic words such as the particle yan, of the kind found in the Book of Songs — Hu had earlier written an essay on that very word — and he disliked dead diction mixed with modern language. He wrote back that the poem was bad because its wording was thoroughly incongruous, and he spoke of dead language of three thousand years ago (both paraphrased from the Chinese). Ren was indignant. More interesting was the letter that followed: Mei, his other friend at Harvard, riding to the rescue in high dudgeon. Under the influence of his conservative teacher Babbitt, Mei opposed all of Hu's radicalism to the end — language becomes poetic only after first-rate poets refine it, and the language of literature, poetry above all, must be beautified by first-rate poets and artists before it counts as poetic diction. On that ground he lashed Hu's ideas.",
+   "after": "Two days later came a close call on Cayuga Lake. On July 8 Ren Hongjun, Mei Guangdi and several other friends were rowing on the lake when a black cloud gathered overhead, a storm broke and the rain fell. Pulling for shore in a hurry they nearly capsized, and all came away soaked and dishevelled. For that band of Chinese students it was a real adventure, and Ren wrote it up in Fanhu jishi (Boating on the Lake), an old four-character-style poem he mailed to Hu for criticism. It used archaic words such as the particle yan, of the kind found in the Book of Songs. Hu had earlier written an essay on that very word, and he disliked dead diction mixed with modern language. He wrote back that the poem was bad because its wording was thoroughly incongruous, and he spoke of dead language of three thousand years ago (both paraphrased from the Chinese). Ren was indignant. More interesting was the letter that followed: Mei, riding to the rescue in high dudgeon. Mei was under the influence of his conservative teacher, a literary critic, and he opposed all of Hu's radicalism to the end. Language becomes poetic, he held, only after first-rate poets refine it, and the language of literature, poetry above all, must be beautified by first-rate poets and artists before it counts as poetic diction. On that ground he lashed Hu's ideas.",
+   "issues": [
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.story.5.zh",
+   "before": "胡适的回应是一首约一百句的滑稽打油诗，他生平写的最长的一首：开头描写老梅大发脾气，再举许多例子开玩笑地驳“文字哪有死活”，并顺着对方的论点反将一军——文字须经诗人长期锻炼，这正是他想做的事，当代的诗人作家正该把这些俗语俗字锻炼起来，提高它们的地位，把它们提到诗歌文学里来。两位朋友读了大发雷霆，复信取笑他企图作白话诗，但胡适在信里发现两人有个共同的论调：白话的生动可以用在评话、故事、长篇小说等写作上，就是不能用在诗里。梅光迪说的范围更宽：在小说和民歌里白话可以用，但在高级散文里——肯定的是在诗里面——白话千万用不得；任鸿隽说得最干脆：「白话自有白话用处（如作小说、演说等），然不能用之于诗！」按胡适的归纳，朋友们在其他方面都已让步，只剩诗这一处还在争。",
+   "after": "胡适的回应是一首约一百句的滑稽打油诗，是他生平写的最长的一首。开头描写老梅大发脾气，再举许多例子开玩笑地驳“文字哪有死活”，并顺着对方的论点反将一军：文字须经诗人长期锻炼，这正是他想做的事，当代的诗人作家正该把这些俗语俗字锻炼起来，提高它们的地位，把它们提到诗歌文学里来。两位朋友读了大发雷霆，复信取笑他企图作白话诗。但胡适在信里发现两人有个共同的论调：白话的生动可以用在评话、故事、长篇小说等写作上，就是不能用在诗里。梅光迪排除得更多：在小说和民歌里白话可以用，但在高级散文里，肯定的是在诗里面，白话千万用不得。任鸿隽说得最干脆：「白话自有白话用处（如作小说、演说等），然不能用之于诗！」按胡适的归纳，朋友们在其他方面都已让步，只剩诗这一处还在争。",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.story.5.en",
+   "before": "Hu answered with a comic doggerel poem of about a hundred lines, the longest he ever wrote: Old Mei in a towering rage, examples piled up to mock the theory that words have no life or death, and Mei's own argument turned against him — if words must be forged by poets over long practice, that is exactly what he wanted. Contemporary poets and writers should take these vulgar, colloquial words, temper them, raise their standing and bring them into poetry. The burlesque threw both friends into a fury; both wrote back to mock his attempt at vernacular verse, yet Hu found a common line in their letters: the liveliness of the vernacular could serve storytelling, tales and novels, but not poetry. Mei drew the line more widely: the vernacular was usable in fiction and folk songs, but in high prose — and certainly in poetry — it must never be used. Ren was bluntest; his letter said, in translation, that the vernacular has its own uses, such as novels and speeches, but cannot be used for poetry. As Hu summed it up, his friends had given way everywhere else; only poetry was still in dispute.",
+   "after": "Hu answered with a comic doggerel poem of about a hundred lines, the longest he ever wrote. It opened with Old Mei in a towering rage, piled up examples to mock the theory that words have no life or death, and turned Mei's own argument against him: if words must be forged by poets over long practice, that is exactly what he wanted. Contemporary poets and writers should take these vulgar, colloquial words, temper them, raise their standing and bring them into poetry. The burlesque threw both friends into a fury, and both wrote back to mock his attempt at vernacular verse. Yet Hu found a common line in their letters: the liveliness of the vernacular could serve storytelling, tales and novels, but not poetry. Mei excluded more: the vernacular was usable in fiction and folk songs, but in high prose, and certainly in poetry, it must never be used. Ren was bluntest; his letter said, in translation, that the vernacular has its own uses, such as novels and speeches, but cannot be used for poetry. As Hu summed it up, his friends had given way everywhere else; only poetry was still in dispute.",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.story.8.en",
+   "before": "In November 1916 he shaped more than a year of argument into an article with eight very moderate suggestions. Even the title was modest: he dropped \"literary revolution,\" a phrase that had come up often in his own poems and letters and in his friends' letters to him, sometimes in jest and sometimes in earnest. This was the first time the conclusions would be sent home to China for publication, and, in view of the undoubted resistance of the older conservatives, he kept the wording gentle — reform, not revolution; a humble opinion, not dogma. Three copies: one to the Chinese Students' Quarterly he edited in America, then printed by the Commercial Press; one to New Youth, which Chen Duxiu — from 1916 dean of arts at National Peking University — had been editing for several years.",
+   "after": "In November 1916 he shaped more than a year of argument into an article with eight very moderate suggestions. Even the title was modest: he dropped \"literary revolution,\" a phrase that had come up often in his own poems and letters and in his friends' letters to him, sometimes in jest and sometimes in earnest. This was the first time the conclusions would be sent home to China for publication. By his own later account, it was in view of the undoubted resistance of the older conservatives that he kept the wording gentle: reform, not revolution; a humble opinion, not dogma. He made three copies. One went to the Chinese Students' Quarterly he edited in America, then printed by the Commercial Press. Another went to New Youth, which Chen Duxiu, from 1916 dean of arts at National Peking University, had been editing for several years.",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.story.9.zh",
+   "before": "1917年一月，文章在《新青年》刊出，文化界反应很大。北大有两位教授重视它：一位是陈独秀本人，本是死硬派的革命人物，随后写《文学革命论》响应，公开支持文学革命，并说首举义旗的是朋友胡适，自己高张大旗作声援；另一位是古典音韵学教授、章太炎门人钱玄同，这位古文大家没有写文章，却写去小批评大捧场的长信，也在《新青年》发表，声势为之一振。赵元任则常说胡适的白话诗文“不够白”，不是一般人常用的真正语体；胡适承认了，打了个比方：像裹了四十年或者二十年小脚的女人，纵使把小脚放大，终究恢复不了天足。",
+   "after": "1917年一月，文章在《新青年》刊出，文化界反应很大。北大有两位教授重视它。一位是陈独秀本人，本是死硬派的革命人物，随后写《文学革命论》响应，公开支持文学革命，并说首举义旗的是朋友胡适，自己高张大旗作声援。另一位是研究古典音韵学的教授，也是古文大家，他没有写文章，却写去小批评大捧场的长信，也在《新青年》发表，声势为之一振。胡适在康乃尔的同学、当年与他分写论文的赵元任，则常说胡适的白话诗文“不够白”，不是一般人常用的真正语体。胡适承认了，还打了个比方：像裹了四十年或者二十年小脚的女人，纵使把小脚放大，终究恢复不了天足。",
+   "issues": [
+    "F8",
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.story.9.en",
+   "before": "It appeared in New Youth in January 1917 and stirred a great response. Two Peking University professors took it seriously. Chen Duxiu, an unbending revolutionary, answered with \"On Literary Revolution,\" publicly backing a literary revolution and saying frankly that the banner had been raised by his friend Hu Shi; he himself was raising the banner high in his friend's support. Qian Xuantong, professor of classical phonology, a master of ancient prose and a disciple of the great scholar Zhang Taiyan, wrote no article but sent Chen and Hu long letters — small criticisms, great praise — also printed in New Youth; that so eminent a classicist should sympathize buoyed their cause. Zhao Yuanren often said, in our translation, that Hu's vernacular poems and essays were not vernacular enough, not the genuine spoken style ordinary people used. Hu admitted it: like a woman who had bound her feet for forty, or even twenty, years, however much she loosened the bindings she would never recover natural feet.",
+   "after": "It appeared in New Youth in January 1917 and stirred a great response. Two Peking University professors took it seriously. One was Chen Duxiu himself, an unbending revolutionary. He answered with \"On Literary Revolution,\" publicly backing a literary revolution and saying frankly that the banner had been raised by his friend Hu Shi; he himself was raising the banner high in his friend's support. The other, a professor of classical phonology and a master of ancient prose, wrote no article but sent Chen and Hu long letters of small criticisms and great praise, also printed in New Youth; that so eminent a classicist should sympathize buoyed their cause. Zhao Yuanren, Hu's fellow student at Cornell and his partner in the earlier pair of papers, often said, in our translation, that Hu's vernacular poems and essays were not vernacular enough, not the genuine spoken style ordinary people used. Hu admitted it. He compared himself to a woman who had bound her feet for forty, or even twenty, years: however much she loosened the bindings, she would never recover natural feet.",
+   "issues": [
+    "F8",
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.story.9.ev",
+   "before": [
+    "HS-E25",
+    "HS-E34",
+    "HS-E26",
+    "HS-E32"
+   ],
+   "after": [
+    "HS-E25",
+    "HS-E34",
+    "HS-E26",
+    "HS-E32",
+    "HS-E5",
+    "HS-E6"
+   ],
+   "issues": [
+    "F8"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.zh",
+   "before": "胡适自己对来龙去脉的解释是反对单因论。他开玩笑说，历史上的意外事件往往比“单因”——经济、色欲、上帝之类——更重要：正因为这些单因对所有事件皆可解释，它们也就不可解释任何事件。就他这段经历而言，他明确把送别诗称作「意外的小事」，并说「一连串的小意外事件，逐渐地强迫我采取了这个立场」；本文把传单和湖上险些翻船引出的争论也放进这一串，这是本文的归并。把一连串小意外看作推力，是他本人的史观，不是本文的结论。",
+   "after": "胡适自己对来龙去脉的解释是反对单因论。他开玩笑说，历史上的意外事件往往比“单因”（经济、色欲、上帝之类）更重要：正因为这些单因对所有事件皆可解释，它们也就不可解释任何事件。就他这段经历而言，他明确把送别诗称作「意外的小事」，并说「一连串的小意外事件，逐渐地强迫我采取了这个立场」。他也把湖上险事称作「小小的意外事件」，说它「引起了连锁性的反应」。本文把那张传单也放进这一串，这是本文的归并。把一连串小意外看作推力，是他本人的史观，不是本文的结论。",
+   "issues": [
+    "F1",
+    "X6"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "before": "Hu's own explanation of how it all happened is that he opposed single-cause theories of history. He used to joke that accidents often matter more than any monistic cause — economics, lust, God and the rest: those single causes explain everything that has ever happened, and precisely because they explain everything, they explain nothing. In this episode he explicitly called the farewell poem a small accident, and said that a chain of small accidents had gradually forced him into his position; placing the leaflet and the dispute that followed the near-capsize on the lake in that chain is this article's own grouping. Reading a chain of small accidents as the push behind his position is Hu's own view of history, not a finding of this article.",
+   "after": "Hu's own explanation of how it all happened is that he opposed single-cause theories of history. He used to joke that accidents often matter more than any monistic cause, such as economics, lust or God: those single causes explain everything that has ever happened, and precisely because they explain everything, they explain nothing. In this episode he explicitly called the farewell poem a small accident, and said that a chain of small accidents had gradually forced him into his position. Hu himself also called the Cayuga Lake incident a small accident that set off a chain reaction. Adding the leaflet to that chain is this article's own grouping. Reading a chain of small accidents as the push behind his position is Hu's own view of history, not a finding of this article.",
+   "issues": [
+    "F1",
+    "X6"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.ev",
+   "before": [
+    "HS-E9",
+    "HS-E10"
+   ],
+   "after": [
+    "HS-E9",
+    "HS-E10",
+    "HS-E38"
+   ],
+   "issues": [
+    "F1",
+    "X6"
+   ]
+  },
+  {
+   "path": "sections.analysis.3.zh",
+   "before": "结局也可以交代一笔。胡适自述，运动约四年就在学校教育上基本成功：1920年北京政府教育部通令，国民小学一、二年级教材一律改用白话，旧教材分期废除。他说这场斗争“至少获得了部分的胜利”，其中重要的部分是以白话为教育工具；他同时说，1919年的学生运动把文化运动变成了政治运动，对文艺复兴运动是一种“干扰”，虽则对传播白话文功不可没。",
+   "after": "结局也可以交代一笔。胡适自述，运动约四年就在学校教育上基本成功：1920年北京政府教育部通令，国民小学一、二年级教材一律改用白话，旧教材分期废除。他说这场斗争“至少获得了部分的胜利”，其中重要的部分是以白话为教育工具。他同时说，1919年的学生运动把文化运动变成了政治运动，对文艺复兴运动是一种“干扰”，虽则对传播白话文功不可没。但他也说自己「还是感觉到不满意」：四十年来白话文始终没有成为完全的教育工具和文学工具。他把主要原因归于执政者的保守，以及文白夹杂的教科书。这是他本人的判断。",
+   "issues": [
+    "F2",
+    "X6"
+   ]
+  },
+  {
+   "path": "sections.analysis.3.en",
+   "before": "The outcome can be set down too. By Hu's account, in only about four years the effort to replace the classical language with the vernacular in the schools had all but succeeded: in 1920 the Ministry of Education of the Beijing government ordered that all first- and second-year textbooks in the national primary schools be written entirely in the vernacular, with the old textbooks abolished in stages. He said the struggle had won at least a partial victory, the important part being the vernacular as the instrument of education. He also said the student movement of 1919 had been an interruption to the Renaissance movement, turning a cultural movement into a political one, though it did much to spread the vernacular.",
+   "after": "The outcome can be set down too. By Hu's account, in only about four years the effort to replace the classical language with the vernacular in the schools had all but succeeded: in 1920 the Ministry of Education of the Beijing government ordered that all first- and second-year textbooks in the national primary schools be written entirely in the vernacular, with the old textbooks abolished in stages. He said the struggle had won at least a partial victory, the important part being the vernacular as the instrument of education. He also said the student movement of 1919 had been an interruption to the Renaissance movement, turning a cultural movement into a political one, though it did much to spread the vernacular. Yet he said he still felt dissatisfied: in forty years the vernacular had never become a complete instrument of education and literature. He blamed this chiefly on the conservatism of those in power and on textbooks that mixed the classical and the vernacular. This is his own judgment.",
+   "issues": [
+    "F2",
+    "X6"
+   ]
+  },
+  {
+   "path": "sections.analysis.3.ev",
+   "before": [
+    "HS-E30"
+   ],
+   "after": [
+    "HS-E30",
+    "HS-E37"
+   ],
+   "issues": [
+    "F2",
+    "X6"
+   ]
+  },
+  {
+   "path": "sections.limits.1.zh",
+   "before": "几处需要降级看待：他为何用“改良”不用“革命”，是本人事后的解释；唐德刚关于“实验主义者”“鸡蛋与鸡，必然和偶然是说不清的”等说法，都是译注者的评论；对“文言是半死的文字”这句口号，唐德刚认为它当年有摧枯拉朽的功能，但真实性值得重新商榷。白话文与白话诗的结局也不同：按唐德刚的说法，白话文是百分之百成功，白话诗则未必——至少还未脱离“尝试”阶段。文中主要日期依据本书：约1915年（胡适说“我想是”）、1916年二三月、1916年三月、7月6日、7月8日、7月26日、7月底8月初、1916年十一月、1917年一月。",
+   "after": "他为何用“改良”不用“革命”，是本人事后的解释。唐德刚的说法则是译注者的评论：他认为“文言是半死的文字”这句口号当年有摧枯拉朽的功能，但真实性值得重新商榷；他又认为白话文是百分之百成功，白话诗则未必，至少还未脱离“尝试”阶段。",
+   "issues": [
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.limits.1.en",
+   "before": "A few things should be read with lowered confidence. Why he used reform rather than revolution is his own retrospective explanation. Tang Degang's remarks about the pragmatist and about the chicken and the egg — necessity and chance are impossible to disentangle — are the annotator's commentary, not fact. On the slogan that the classical language is a half-dead form of writing, Tang thought it had a devastating force in its day but that its truth is worth debating again. The two outcomes also differ: in Tang's judgment vernacular prose was a hundred per cent successful, while vernacular poetry was not necessarily so — at least it has not yet left the experimental stage. The main dates used here follow the book: around 1915 (Hu's own hedge: I think it was); February and March 1916; March 1916; July 6; July 8; July 26; late July and early August; November 1916; January 1917.",
+   "after": "Why he used reform rather than revolution is his own retrospective explanation. Tang Degang's remarks are the annotator's commentary: he thought the slogan that the classical language is a half-dead form of writing had a devastating force in its day, but that its truth is worth debating again; and he judged vernacular prose a hundred per cent successful, while vernacular poetry was not necessarily so, and at least had not yet left the experimental stage.",
+   "issues": [
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.limits.1.ev",
+   "before": [
+    "HS-E23",
+    "HS-E36",
+    "HS-E29",
+    "HS-E4",
+    "HS-E12",
+    "HS-E22"
+   ],
+   "after": [
+    "HS-E23",
+    "HS-E36",
+    "HS-E29"
+   ],
+   "issues": [
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.limits.2.zh",
+   "before": "还有几点作者的补白：文中说小说年代“元明之辨”的修正，来自胡适本人晚年的更正，本文只依据这一更正，未另行核验；至于“若无胡适则运动不会发生”这类反事实，只能当作唐德刚的看法，作者不作结论，也不替历史排演它没有走过的路。唐德刚也记下，反对胡适的人觉得他居功太多；1956年胡适在哈佛大学以这一论调讲演时，后来为他作传的格里德简直嗤之以鼻。",
+   "after": "唐德刚也记下，反对胡适的人觉得他居功太多；1956年胡适在哈佛大学以这一论调讲演时，后来为他作传的格里德简直嗤之以鼻。",
+   "issues": [
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.limits.2.en",
+   "before": "A few further notes from the author. The correction over the dating of the novels — Yuan versus Ming — comes from Hu's own later recantation; this piece relies on that correction alone and has not checked it further. Counterfactuals of the sort that without Hu Shi the movement would not have happened can only be treated as Tang Degang's opinion; the author draws no conclusion, and does not rehearse roads history did not take. Tang also records that Hu's opponents felt he claimed too much credit; when Hu gave this account in a 1956 lecture at Harvard, Jerome B. Grieder, later his biographer, simply scoffed at it.",
+   "after": "Tang also records that Hu's opponents felt he claimed too much credit; when Hu gave this account in a 1956 lecture at Harvard, Jerome B. Grieder, later his biographer, simply scoffed at it.",
+   "issues": [
+    "O1"
+   ]
+  },
+  {
+   "path": "sections.limits.2.ev",
+   "before": [
+    "HS-E33",
+    "HS-E27",
+    "HS-E28"
+   ],
+   "after": [
+    "HS-E28"
+   ],
+   "issues": [
+    "O1"
+   ]
+  },
+  {
+   "path": "uncertainty_note.zh",
+   "before": "本文只有胡适晚年口述一种来源，且经节译、手订与回译；梅光迪、任鸿隽的言行均为胡适转述，胡适对动机的说明是事后自述，唐德刚的注释属评论而非史实。凡标为 interpretation 的段落是作者推断，标为 modern 的段落是为今日读者虚构的场景。",
+   "after": "本文只有胡适晚年口述一种来源，且经节译、手订与回译。梅光迪、任鸿隽的言行均为胡适转述，胡适对动机的说明是事后自述。唐德刚注释中的评价与推论属评论；注中所记之事（如1956年胡适在哈佛讲演时格里德的反应）是唐德刚的记述，本文未另行核验。凡标为 interpretation 的段落是作者推断，标为 modern 的段落是为今日读者虚构的场景。",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "uncertainty_note.en",
+   "before": "This piece rests on a single source: Hu Shi's oral memoir in later life, itself abridged, revised in his own hand and translated back. Mei Guangdi's and Ren Hongjun's words and deeds reach us only through Hu's retelling; Hu's explanations of motive are retrospective; and Tang Degang's notes are commentary rather than fact. Paragraphs marked interpretation are the author's inferences, and paragraphs marked modern are scenarios invented for readers today.",
+   "after": "This piece rests on a single source: Hu Shi's oral memoir in later life, itself abridged, revised in his own hand and translated back. Mei Guangdi's and Ren Hongjun's words and deeds reach us only through Hu's retelling, and Hu's explanations of motive are retrospective. Tang Degang's evaluations and inferences are commentary; the events he records (such as Grieder's reaction to Hu's 1956 Harvard lecture) are his testimony, not checked here. Paragraphs marked interpretation are the author's inferences, and paragraphs marked modern are scenarios invented for readers today.",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.hook.0.zh",
+   "before": "一群在美国读书的中国朋友，为“诗能不能用白话写”吵了一年多。1916年7月，湖上一场几乎翻船的风雨，和一位朋友用老字写成的纪事诗，又掀起一轮新的争吵。站在一边的是胡适，而他一向说自己是保守的人，认为语言文字是世界上最保守的东西，比宗教还保守，还说自己这一路是被「逼上梁山」的。这句成语说的是一个人为环境所迫，不得已而做出违反他本意的非常行为。",
+   "after": "一群在美国读书的中国朋友，为中国文学该怎样改革争论了一年多。1916年7月，湖上一场几乎翻船的风雨，和一位朋友用老字写成的纪事诗，又掀起一轮新的争吵，争论最后收缩到一个问题上：诗能不能用白话写。站在一边的是胡适，而他一向说自己是保守的人，认为语言文字是世界上最保守的东西，比宗教还保守，还说自己这一路是被「逼上梁山」的。这句成语说的是一个人为环境所迫，不得已而做出违反他本意的非常行为。",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.hook.0.en",
+   "before": "A group of Chinese friends studying in America argued for more than a year over whether poetry could be written in baihua, the everyday spoken language. In July 1916 a storm on a lake that nearly capsized their boat, and a friend's poem about it written in archaic words, set off a fresh round of quarrelling. On one side stood Hu Shi, who called himself a conservative: language and writing, he liked to say, are the most conservative things in the world, more conservative than religion. He also said he had been pushed down this road: bi shang Liangshan, driven to Liangshan, an idiom for someone forced by circumstances into extraordinary acts against his own intentions.",
+   "after": "A group of Chinese friends studying in America argued for more than a year over how Chinese literature should change. In July 1916 a storm on a lake that nearly capsized their boat, and a friend's poem about it written in archaic words, set off a fresh round of quarrelling, and the dispute finally narrowed to one question: could poetry be written in baihua, the everyday spoken language? On one side stood Hu Shi, who called himself a conservative: language and writing, he liked to say, are the most conservative things in the world, more conservative than religion. He also said he had been pushed down this road: bi shang Liangshan, driven to Liangshan, an idiom for someone forced by circumstances into extraordinary acts against his own intentions.",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.hook.1.zh",
+   "before": "反对他的主要是两位朋友：一位是去哈佛升学、最坚定的反对者梅光迪，另一位是同在康乃尔、写诗嘲笑过他的任鸿隽。争的是白话能不能用来写文学。到1916年夏天，朋友们已承认白话可以写小说、演说，唯独不肯承认它能作诗，反对者已经退到只剩一处：诗。按胡适的说法，难处在于从来没有中国作家认真着实用白话作诗，他在中国诗词中能找到的白话诗只有一首，甚至只是一首中的几句。按他自己的说法，把他推向后来那个决定的，不是什么大事件，而是一首送别诗引起的小小偶然事件。",
+   "after": "反对他的主要是两位朋友：一位是去哈佛升学、最坚定的反对者梅光迪，另一位是同在康乃尔、写诗嘲笑过他的任鸿隽。争的是白话能不能用来写文学。到1916年夏天，朋友们已承认白话可以写小说、演说，唯独不肯承认它能作诗，反对者已经退到只剩一处：诗。按胡适的说法，难处在于从来没有中国作家认真着实用白话作诗，他在中国诗词中能找到的白话诗只有一首，甚至只是一首中的几句。按他自己的说法，这许多严肃的讨论都只源于一首送别诗引起的小小偶然事件；让他下定决心不写旧诗、要写就用活的语言来写的，则是又一件偶然发生的小事——湖上那场险事。",
+   "issues": [
+    "V1-V3"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "His chief opponents were two friends: Mei Guangdi, bound for Harvard and his most determined opponent, and Ren Hongjun, also at Cornell, who had mocked him in verse. The quarrel was over whether the vernacular could serve literature. By the summer of 1916 his friends granted that it would do for fiction and speeches, but not for poetry. Poetry was the last fortress. The difficulty, as Hu saw it, was that no Chinese writer had ever seriously written poetry in the vernacular; in all of Chinese verse he could find only one such poem, perhaps only a few lines of one. In his own telling, what pushed him toward the decision that followed was no great event, but a small accident set off by a farewell poem.",
+   "after": "His chief opponents were two friends: Mei Guangdi, bound for Harvard and his most determined opponent, and Ren Hongjun, also at Cornell, who had mocked him in verse. The quarrel was over whether the vernacular could serve literature. By the summer of 1916 his friends granted that it would do for fiction and speeches, but not for poetry. Poetry was the last fortress. The difficulty, as Hu saw it, was that no Chinese writer had ever seriously written poetry in the vernacular; in all of Chinese verse he could find only one such poem, perhaps only a few lines of one. In his own telling, all the serious discussion grew out of a small accident set off by a farewell poem; what made him resolve to stop writing old-style verse and write only in the living language was another small accident, the incident on the lake.",
+   "issues": [
+    "V1-V3"
+   ]
+  },
+  {
+   "path": "sections.hook.1.ev",
+   "before": [
+    "HS-E8",
+    "HS-E10",
+    "HS-E15",
+    "HS-E17",
+    "HS-E19",
+    "HS-E20"
+   ],
+   "after": [
+    "HS-E8",
+    "HS-E10",
+    "HS-E15",
+    "HS-E17",
+    "HS-E19",
+    "HS-E20",
+    "HS-E38"
+   ],
+   "issues": [
+    "V1-V3"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "X6",
+    "O1"
+   ],
+   "changes_applied": 36,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[8] numbers differ zh[11, 1916] en[1916]"
+    ],
+    [
+     "CHECK",
+     "today[0] numbers differ zh[] en[10, 12]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[] en[100]"
+    ]
+   ],
+   "content_sha256_after": "0e767b06675a4f3d1edadc08b550060905e85196a3e24f8fe2730843f9198044",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1",
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.9",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.0",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "稿件写朋友们“为‘诗能不能用白话写’吵了一年多”。按胡适的说法，一年多的讨论起初是关于文学改革，后来才“逐渐约束到”诗能不能用白话这个中心议题。收缩到诗是在1916年7月湖上事件和百句打油诗之后，不是争论一开始的题目。现在的写法把结果说成了起点。",
+      "evidence": [
+       {
+        "id": "HS-E20",
+        "quote": "我们一年多的讨论已逐渐约束到一个中心议题里来。这个中心议题便是：白话文用在文学其他任何部门都很适合，就是不能“用之于诗”"
+       },
+       {
+        "id": "HS-E11",
+        "quote": "愈辩则牵涉愈多，内容也愈复杂愈精湛"
+       }
+      ],
+      "proposed": "中文改为“一群在美国读书的中国朋友，为中国文学该怎样改争了一年多，最后争到一个问题上：诗能不能用白话写。”英文改为“argued for more than a year over how Chinese literature should change, until the quarrel narrowed to one question: could poetry be written in baihua...”。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.hook.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“站在一边的是胡适”没有说明他站在哪一边，紧接着又说他自认保守。读者读到下一段“反对他的”之前，分不清他的立场。",
+      "evidence": [
+       {
+        "id": "HS-E20",
+        "quote": "我只有以身作则，来认真尝试用白话作诗"
+       }
+      ],
+      "proposed": "中文改为“站在‘白话也能作诗’这一边的是胡适”；英文改为“On the side arguing that poetry could be written in baihua stood Hu Shi”。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.hook.1",
+      "category": "attribution",
+      "severity": "fix",
+      "problem": "稿件说把胡适推向“后来那个决定”（只用白话作诗）的是送别诗引起的偶然事件，这把来源的两处说法混在一起了。胡适说送别诗引起的是“这许多严肃性的讨论”和历史研析；让他“下定决心不写旧诗”的，他归于湖上那件“偶然发生的小事”。",
+      "evidence": [
+       {
+        "id": "HS-E15",
+        "quote": "这许多严肃性的讨论，和我后来所做的历史性的研析，实在只是由于我写了一首向去哈佛升学朋友的送别诗所引起的小小偶然事件"
+       },
+       {
+        "id": "HS-E38",
+        "quote": "那时还有一桩值得一提的偶然发生的小事，也引起了连锁性的反应。其结果竟使我下定决心不写旧诗，要写就用活的语言来写"
+       }
+      ],
+      "proposed": "中文改为“按他自己的说法，这许多严肃的讨论都只源于一首送别诗引起的小小偶然事件；让他下定决心不写旧诗的，则是又一件小意外——湖上那场险事。”英文对应改为“In his own telling, all the serious discussion grew out of a small accident set off by a farewell poem, and it was another small accident, the incident on the lake, that made him resolve to stop writing old-style verse.”"
+     },
+     {
+      "id": "V4",
+      "path": "sections.limits.2",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“以这一论调讲演”中的“这一论调”找不到前文所指。上一段讲的是唐德刚对“半死的文字”和白话诗的评论，读者不知道格里德嗤之以鼻的是哪种说法。",
+      "evidence": [
+       {
+        "id": "HS-E28",
+        "quote": "适之先生一辈子都坚持着这个论调。反对他的人就觉得他居功太多"
+       },
+       {
+        "id": "HS-E27",
+        "quote": "因而没有“胡适”，恐怕也就没有“白话文运动”"
+       }
+      ],
+      "proposed": "中文改为“胡适一辈子坚持‘一连串意外加上他本人的试验促成了白话文运动’这一说法，唐德刚记下，反对他的人觉得他居功太多……”；英文相应写明“this account”指什么。"
+     }
+    ],
+    "overall": "定稿大体有据，引语逐字、推断已标注，但开头两段需修：一处把争论的终点写成起点，一处把下定决心的诱因从湖上事件误归于送别诗；另有两处易读性小问题。",
+    "_content_sha256": "0e767b06675a4f3d1edadc08b550060905e85196a3e24f8fe2730843f9198044"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1",
+    "V1-V3"
+   ],
+   "changes_applied": 5,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[8] numbers differ zh[11, 1916] en[1916]"
+    ],
+    [
+     "CHECK",
+     "today[0] numbers differ zh[] en[10, 12]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[] en[100]"
+    ]
+   ],
+   "content_sha256_after": "2c026539574d4f0fe495cff31986c7046f876edf069a9e3698ca037741337992",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.story.9",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“站在一边的是胡适”没有说明是哪一边。读者要读到 hook.1 的“反对他的……”才能推断胡适主张诗可以用白话写。开头的立场交代因此略显含糊；后文能够补足，所以只列为 note。",
+      "evidence": [
+       {
+        "id": "HS-E21",
+        "quote": "白话也可以作诗"
+       }
+      ],
+      "proposed": "zh 改为“主张诗也能用白话写的是胡适，而他一向说自己是保守的人……”；en 改为 \"Arguing that it could was Hu Shi, who called himself a conservative...\""
+     },
+     {
+      "id": "V2",
+      "path": "sections.story.8",
+      "category": "readability",
+      "severity": "note",
+      "problem": "稿件写“文章誊了三份”，但只交代了两份的去向，读者会追问第三份去了哪里。证据包只载两份去向，不应补造第三份，只需调整措辞。",
+      "evidence": [
+       {
+        "id": "HS-E24",
+        "quote": "我一共复写了三份。一份给由我自己做主编的《中国留美学生季报》发表。"
+       }
+      ],
+      "proposed": "zh 改为“文章誊了三份，其中一份交给……，另一份寄给……”；en 改为 \"He made three copies; of these, one went to... and another to...\""
+     },
+     {
+      "id": "V3",
+      "path": "sections.story.7",
+      "category": "readability",
+      "severity": "note",
+      "problem": "《尝试集》的英文名前后不统一：title.en 作 Book of Experiments，story.7 与 analysis.1 作 Experiments。英文读者可能误以为是两本书。",
+      "evidence": [
+       {
+        "id": "HS-E22",
+        "quote": "我已决定把我下一个诗集定名为《尝试集》了"
+       }
+      ],
+      "proposed": "全文统一为同一译名。例如 story.7、analysis.1 都改为 \"Book of Experiments (Changshi ji)\"，并与标题保持一致。"
+     }
+    ],
+    "overall": "定稿的事实、引语、归属和推断标注均有证据支持，中英文内容一致，开头可读性达标；仅有三处易读性措辞可作微调（均为 note）。",
+    "_content_sha256": "2c026539574d4f0fe495cff31986c7046f876edf069a9e3698ca037741337992"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F9"
+    ]
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F7"
+    ]
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F8"
+    ]
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F10"
+    ]
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F11"
+    ]
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4",
+     "F15"
+    ]
+   },
+   {
+    "path": "sections.story.9",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F12"
+    ]
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F13"
+    ]
+   },
+   {
+    "path": "sections.limits.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F14"
+    ]
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3"
+    ]
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.analysis.0",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "正文说把湖上险些翻船引出的争论放进“一连串小意外”是本文的归并。实际上胡适本人就把凯约嘉湖事件称作偶然发生的小事、小小的意外事件，并说它引起了连锁反应。这样写把他本人的归类错记成作者的归并。",
+    "evidence": [
+     {
+      "id": "HS-E38",
+      "quote": "那时还有一桩值得一提的偶然发生的小事，也引起了连锁性的反应"
+     },
+     {
+      "id": "HS-E38",
+      "quote": "又有一件小小的意外事件在绮色佳的凯约嘉湖畔发生了"
+     }
+    ],
+    "proposed": "中文改为：「胡适本人也把湖上险事称作「小小的意外事件」，说它「引起了连锁性的反应」；本文把钟文鳌传单也放进这一串，这是本文的归并。」英文同步：Hu himself called the Cayuga Lake incident a small accident that set off a chain reaction; adding the leaflet to that chain is this article's own grouping. 不要另外断言来源对传单如何定性。"
+   },
+   {
+    "id": "F2",
+    "path": "sections.analysis.3",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "段落只写了“部分的胜利”和1920年通令，漏掉了胡适紧接着的自我限定：他不满意，认为四十年来白话文始终没有成为完全的教育工具和文学工具，并把原因归于执政者的保守和文白夹杂的教科书。缺了这句，读者会以为结局圆满，改变了对结局的判断。",
+    "evidence": [
+     {
+      "id": "HS-E37",
+      "quote": "我还是感觉到不满意"
+     },
+     {
+      "id": "HS-E37",
+      "quote": "使白话文在四十年来就始终没有能成为完全的教育工具和文学工具"
+     },
+     {
+      "id": "HS-E37",
+      "quote": "那便是文人学者和教育家们不理解死文言和活白话不能在同一本教科书之内并存的"
+     }
+    ],
+    "proposed": "在段末补一句，中英同步：「但他也说自己仍感到不满意：四十年来白话文始终没有成为完全的教育工具和文学工具。他把主要原因归于执政者的保守，以及文白夹杂的教科书。这是他本人的判断，本文未另行核验。」"
+   },
+   {
+    "id": "F3",
+    "path": "uncertainty_note",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "“唐德刚的注释属评论而非史实”是一刀切的说法。注释里既有评价，也有唐德刚记下的事（1956年哈佛讲演、格里德的反应）。limits.2 正是把后者作为唐德刚的记述来引用的，两处互相矛盾。",
+    "evidence": [
+     {
+      "id": "HS-E28",
+      "quote": "一九五六年当他以这一论调在哈佛大学讲演时"
+     },
+     {
+      "id": "HS-E28",
+      "quote": "格里德（JeromeB.Grieder）博士简直就嗤之以鼻"
+     }
+    ],
+    "proposed": "中文改为：「唐德刚注释中的评价与推论属评论；注中所记之事（如1956年哈佛讲演时格里德的反应）是唐德刚的记述，本文未另行核验。」英文同步：Tang's evaluations are commentary; the events he records (such as Grieder's reaction to the 1956 Harvard lecture) are his testimony, not checked here. 不要加入证据包以外的出处。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.story.8",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "中文写明“据他事后解释”，说考虑老一辈保守分子反对是胡适事后的解释。英文把这层动机直接写成事实（in view of the undoubted resistance... he kept the wording gentle），丢了归属，等于把事后自述当成当时的内心。",
+    "evidence": [
+     {
+      "id": "HS-E23",
+      "quote": "为考虑到那无可怀疑的老一辈保守分子的反对，我觉得我要把这一文题写得温和而谦虚"
+     }
+    ],
+    "proposed": "英文在 Even the title was modest 后加 by his own later account，或改为 As he later explained, in view of the undoubted resistance..."
+   },
+   {
+    "id": "F5",
+    "path": "sections.story.5",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“梅光迪说的范围更宽／Mei drew the line more widely”有歧义，可能被读成梅光迪允许白话用于更多领域。证据显示相反：梅光迪在诗之外还把高级散文也排除在外，比任鸿隽限制得更多。",
+    "evidence": [
+     {
+      "id": "HS-E19",
+      "quote": "在小说和民歌里面，白话是可以用的，但是在高级散文里——肯定的是在诗里面——白话千万用不得"
+     }
+    ],
+    "proposed": "中文改为「梅光迪排除得更多」；英文改为 Mei excluded more: ..."
+   },
+   {
+    "id": "F6",
+    "path": "sections.hook.1",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "开头说清了谁（胡适和朋友）、争什么（白话能否作诗），但没说清为什么难。从来没有中国作家认真用白话作诗，所以没有现成的例子可以拿来说服朋友；这一点要到 story.6 才出现，不熟悉背景的读者读完开头说不出难处在哪里。",
+    "evidence": [
+     {
+      "id": "HS-E20",
+      "quote": "从来没有中国作家认真着实用白话来作诗作文"
+     }
+    ],
+    "proposed": "在 hook.1 末尾补一句，中英同步：「难处在于，从来没有中国作家认真用白话作过诗，他手里没有一首现成的例子可以拿来说服朋友。」"
+   },
+   {
+    "id": "F7",
+    "path": "sections.context.0",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "context 第一段就展开庚款、华盛顿清华学生监督处、钟文鳌的出身和三条传单原文，这些机构和细节读者此时还用不上，冲淡了开头的主线（白话能否作诗的争论）。",
+    "evidence": [],
+    "proposed": "把 context.0 和 context.1 压缩成一两句，中英同步：「更早，一位热心改革的书记在奖学金支票信封里夹寄主张废除汉字的传单；胡适回了一张不客气的字条，随即懊悔，开始认真想文字问题，并提出文言是「半死的语言」。」保留约1915年和“我想是”这一限定。"
+   },
+   {
+    "id": "F8",
+    "path": "sections.context.1",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "开头第二段堆了赵元任、1910年同进康乃尔、美东中国学生会文学股年会、两篇论文的完整题目。赵元任在主线中只在 story.9 再次出现，这些机构层级读者理解故事并不需要。",
+    "evidence": [],
+    "proposed": "与 context.0 合并压缩（见 F7）。赵元任可改为“一位同学”，或留到 story.9 首次出现时，用一句话说明他是胡适在康乃尔的同学。"
+   },
+   {
+    "id": "F9",
+    "path": "sections.hook.0",
+    "category": "readability",
+    "severity": "note",
+    "problem": "第一句就交代了结局（不写旧诗、定名《尝试集》），开头的张力因此提前释放了。",
+    "evidence": [],
+    "proposed": "可把争论（白话能否作诗、朋友退到只剩诗）移到首句，把决定写《尝试集》留到 story.7 揭晓。不删任何事实。"
+   },
+   {
+    "id": "F10",
+    "path": "sections.story.0",
+    "category": "readability",
+    "severity": "note",
+    "problem": "梅光迪、任鸿隽是主线人物，但首次出现时没有说明他们在本事中的角色。中文里任鸿隽连“朋友”二字都没有。",
+    "evidence": [
+     {
+      "id": "HS-E10",
+      "quote": "当时在康乃尔的另一位中国朋友任鸿隽"
+     }
+    ],
+    "proposed": "首次出现时各补半句：梅光迪是“胡适的朋友，后来最坚定的反对者”，任鸿隽是“在康乃尔的朋友”。此后称呼固定。"
+   },
+   {
+    "id": "F11",
+    "path": "sections.story.4",
+    "category": "readability",
+    "severity": "note",
+    "problem": "湖上划船者陈衡哲（沃莎女子学院）、杨铨、唐钺此后不再出现，名字堆在一起增加了阅读负担。",
+    "evidence": [],
+    "proposed": "改为“任鸿隽、梅光迪和几位朋友”。"
+   },
+   {
+    "id": "F12",
+    "path": "sections.story.9",
+    "category": "readability",
+    "severity": "note",
+    "problem": "钱玄同、章太炎门人、古典音韵学教授等身份层级对主线不是必需的。",
+    "evidence": [],
+    "proposed": "可简为“北大另一位古文大家钱玄同也写长信支持，信在《新青年》发表”。"
+   },
+   {
+    "id": "F13",
+    "path": "sections.limits.1",
+    "category": "readability",
+    "severity": "note",
+    "problem": "段末一口气列出九个日期，读者用不上，只是堆砌。",
+    "evidence": [],
+    "proposed": "删去日期清单，或改为一句“文中日期依据本书”。只保留“约1915年（胡适自称“我想是”）”这一限定。"
+   },
+   {
+    "id": "F14",
+    "path": "sections.limits.2",
+    "category": "readability",
+    "severity": "note",
+    "problem": "“元明之辨”的更正已在 story.2 交代过；“作者不作结论，也不替历史排演”属于补白，不改变判断。三段局限文字可以合并精简。",
+    "evidence": [],
+    "proposed": "删去这两句，与 limits.0、limits.1 合并成一段。保留唐德刚所记格里德的反应，并注明是唐德刚的记述。"
+   },
+   {
+    "id": "F15",
+    "path": "sections.story.8",
+    "category": "readability",
+    "severity": "note",
+    "problem": "写“誊了三份”，却只列出两处去向，读者会困惑第三份去了哪里。",
+    "evidence": [
+     {
+      "id": "HS-E24",
+      "quote": "我一共复写了三份"
+     }
+    ],
+    "proposed": "改为“复写了三份，其中一份……另一份……”，避免读者以为文中漏写。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "X1",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "成立。胡适本人把湖上事件称作小小的意外事件，同 F1。但建议中括注“来源中传单一事出现在……之前，未被他称为意外事件”是对完整来源的断言，不予采用。",
+    "evidence": [
+     {
+      "id": "HS-E38",
+      "quote": "又有一件小小的意外事件在绮色佳的凯约嘉湖畔发生了"
+     }
+    ]
+   },
+   {
+    "id": "X2",
+    "verdict": "duplicate",
+    "same_as": "F3",
+    "rationale": "成立，同 F3。建议中的《展望》杂志出处不在证据包内，不加入。",
+    "evidence": [
+     {
+      "id": "HS-E28",
+      "quote": "格里德（JeromeB.Grieder）博士简直就嗤之以鼻"
+     }
+    ]
+   },
+   {
+    "id": "X3",
+    "verdict": "duplicate",
+    "same_as": "F3",
+    "rationale": "英文版同一问题，同 F3。Look 杂志出处不在证据包内，不加入。",
+    "evidence": [
+     {
+      "id": "HS-E28",
+      "quote": "一九五六年当他以这一论调在哈佛大学讲演时"
+     }
+    ]
+   },
+   {
+    "id": "X4",
+    "verdict": "duplicate",
+    "same_as": "F2",
+    "rationale": "成立，analysis.3 漏掉了胡适的“不满意”和他所说的原因，同 F2。",
+    "evidence": [
+     {
+      "id": "HS-E37",
+      "quote": "使白话文在四十年来就始终没有能成为完全的教育工具和文学工具"
+     }
+    ]
+   },
+   {
+    "id": "X5",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "与 X1 相同，属于错误归属，同 F1。",
+    "evidence": [
+     {
+      "id": "HS-E38",
+      "quote": "那时还有一桩值得一提的偶然发生的小事，也引起了连锁性的反应"
+     }
+    ]
+   },
+   {
+    "id": "X6",
+    "verdict": "valid",
+    "same_as": "",
+    "rationale": "已据 HS-E37、HS-E38 复核。结局的限定缺失见 F2，湖上事件的归属错误见 F1。其余叙事与因果未见新问题。",
+    "evidence": [
+     {
+      "id": "HS-E37",
+      "quote": "我还是感觉到不满意"
+     }
+    ]
+   },
+   {
+    "id": "O1",
+    "verdict": "valid",
+    "same_as": "",
+    "rationale": "易读性要求成立：开头被传单和机构细节占据，难点不清，见 F6、F7、F8；人名过多，见 F10、F11、F12；日期堆砌与补白，见 F13、F14；结局提前交底，见 F9。修改时须保留已核实的事实和限定（如“我想是”、湖上事件的归属、胡适的“不满意”、唐德刚评论的性质），不补造对白、动机或场面。",
+    "evidence": []
+   }
+  ]
+ },
+ "final_content_sha256": "2c026539574d4f0fe495cff31986c7046f876edf069a9e3698ca037741337992",
+ "open_issues": [],
+ "outcome": "admissible",
+ "failure": null,
+ "finished_at": 1793468525.0823019,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 147.3,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 33535,
+    "output_tokens": 16841
+   },
+   "cost_estimate_usd": 0.605108
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 156.7,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 34110,
+    "output_tokens": 19154
+   },
+   "cost_estimate_usd": 0.6559680000000001
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 104.3,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 29906,
+    "output_tokens": 12268
+   },
+   "cost_estimate_usd": 0.484616
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 20.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 30382,
+    "output_tokens": 2544
+   },
+   "cost_estimate_usd": 0.293944
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 124.3,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 30026,
+    "output_tokens": 14144
+   },
+   "cost_estimate_usd": 0.523096
+  }
+ ],
+ "elapsed_min": 9.2,
+ "model_wall_min": 9.2
+}

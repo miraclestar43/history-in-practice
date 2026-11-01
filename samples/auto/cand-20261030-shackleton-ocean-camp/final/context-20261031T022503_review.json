@@ -1,0 +1,442 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-20261030-shackleton-ocean-camp",
+ "content_sha256": "d07565529df27dce3ecbad82e855657120861d7942ba211cbfa45327f827d2fd",
+ "evidence_in_sha256": "a47ffc64491443ea8bfcbcc3c3620d5839efd33b44d782bd1ef6601c50cc0eba",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793431503.5327103,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "扉页则被他撕了下来，这段记述没有写它的去向。"
+  },
+  {
+   "id": "A2",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "In his words, \"A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas.\" The fly-leaf was torn out, and the passage does not say what became of it."
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.3",
+   "lang": "zh",
+   "sentence": "作者提出的替代选择（他没有写自己考虑过这些）：比如把队伍分成两支，一支维持最低限度的探路，一支守营保存体力；"
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-SOUTH": {
+   "title": "Ernest Shackleton, South: The Story of Shackleton's Last Expedition, 1914–1917 (1920 printing; archive.org OCR)",
+   "url": "https://archive.org/download/southstoryshack00shac/southstoryshack00shac_djvu.txt",
+   "ref": "southstoryshack00shac",
+   "evidence_text_sha256": "e709edf2dc345da821c4b958cadfccc12ebdb10eecdd4aea9a035b69e54cea92",
+   "cache_sha256": "e709edf2dc345da821c4b958cadfccc12ebdb10eecdd4aea9a035b69e54cea92",
+   "cjk": false,
+   "source_chars": 847815,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     4769,
+     15676
+    ],
+    [
+     185304,
+     224080
+    ],
+    [
+     253033,
+     264405
+    ]
+   ],
+   "chars_reviewed": 61055
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 55.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 5757
+  }
+ ],
+ "finished_at": 1793431559.633413,
+ "elapsed_min": 0.9,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-SOUTH",
+    "outcome": "在阅读范围内，海洋营的决定这样收尾：他们离开海洋营做第二次行军，七天直线只前进七英里半，食物只够四十二天，只好再次在浮冰上扎营，住进耐心营。",
+    "quote": "As we only had food for forty-two days there was no alternative, therefore, but to camp once more on the floe and to possess our souls with what patience we could till conditions should appear more favourable for a renewal of the attempt to escape.",
+    "in_evidence": true
+   },
+   {
+    "source_id": "S-SOUTH",
+    "outcome": "耐心营时期，他们派人回海洋营取回剩余食物和第三条船斯坦科姆·威尔斯号；之后水道张开，再也回不去海洋营。这是海洋营这一据点的最终结局。",
+    "quote": "We were never able to reach Ocean Camp again. Still, there was very little left there that would have been of use to us.",
+    "in_evidence": false
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-SOUTH",
+    "start": "December 29.—After a further reconnaissance",
+    "end": "however disheartening the check may be.”",
+    "why": "这是第二次尝试受挫的转折：前方冰面无法通行，被迫后撤半英里，原文写全队大失所望。story.13 叙述了第二次尝试的失败，补上这段可以交代失败当下的经过。"
+   },
+   {
+    "source_id": "S-SOUTH",
+    "start": "THE apathy which seemed",
+    "end": "was soon dispelled.",
+    "why": "这是原文对队员情绪的直接记述，与 limits.0 所说的“别人怎么想不在证据里”相关。它说明第二次受挫后部分队员一度消沉，随即恢复。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "扉页则被他撕了下来，这段记述没有写它的去向。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "South 第4章抛弃营一段（窗口 185304–224080）。撕下扉页和约伯记一页之后，文字直接转到另一本圣经和手提箱，没有交代扉页的下落。范围限定为“这段记述”，说法准确。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I tore the fly-leaf out of the Bible that Queen Alexandra had given to the ship, with her own writing in it, and also the wonderful page of Job containing the verse"
+    },
+    "fix": "可保留。若想精简，也可以删去“没有写它的去向”这半句，不影响理解。"
+   },
+   {
+    "id": "A2",
+    "path": "sections.analysis.2",
+    "lang": "en",
+    "sentence": "The fly-leaf was torn out, and the passage does not say what became of it.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "同 A1：第4章抛弃营一段，窗口 185304–224080。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I tore the fly-leaf out of the Bible that Queen Alexandra had given to the ship, with her own writing in it, and also the wonderful page of Job containing the verse"
+    },
+    "fix": "可保留，范围已限定为 the passage。"
+   },
+   {
+    "id": "A3",
+    "path": "sections.analysis.3",
+    "lang": "zh",
+    "sentence": "作者提出的替代选择（他没有写自己考虑过这些）：比如把队伍分成两支，一支维持最低限度的探路，一支守营保存体力；",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "第4–5章，从弃船到海洋营决定（窗口 185304–224080）。这一段里他写下的唯一替代方案，是全队在厚浮冰上扎营等漂流，没有提到分队。全书其他部分不在阅读范围内。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "camp on the nearest heavy floe, scour the neighbouring pack for penguins and seals, and await the outward drift of the pack to open and navigable water."
+    },
+    "fix": "建议把括号改为“（在这几章记述里，他没有写自己考虑过分队）”，把范围限定在已核查的章节。"
+   },
+   {
+    "id": "N1",
+    "path": "sections.analysis.3",
+    "lang": "en",
+    "sentence": "Then there are alternatives the author raises for the sake of argument; nothing suggests Shackleton weighed them himself.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "同 A3：第4–5章，窗口 185304–224080。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "camp on the nearest heavy floe, scour the neighbouring pack for penguins and seals, and await the outward drift of the pack to open and navigable water."
+    },
+    "fix": "建议改为 nothing in these chapters suggests…，避免说成全书都没有。"
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "营地里别人怎么想、是否同意这个决定，证据里没有，本篇也不替他们猜测心理。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "证据包，以及第5章海洋营决定一段。原文没有记录其他队员对这一决定的看法。原文记下的队员情绪（第二次受挫后的失望与消沉）属于耐心营之前的事，不涉及海洋营决定。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I decided to find a more solid floe and there camp until condi- tions were more favourable for us to make a second attempt"
+    },
+    "fix": "可保留。"
+   },
+   {
+    "id": "N3",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "What the rest of the camp thought, and whether anyone questioned the decision, is not in the evidence, and this piece does not put feelings in their mouths.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "同 N2。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "I decided to find a more solid floe and there camp until condi- tions were more favourable for us to make a second attempt"
+    },
+    "fix": "可保留。"
+   },
+   {
+    "id": "N4",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "文中那句“喝过更干净的水”出自一位未具名队员的日记，是经沙克尔顿转引的。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SOUTH"
+    ],
+    "scope": "第5章开头。原文只写 one man，没有给出姓名。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "as one man wrote in his diary, “ One has seen and tasted cleaner, but seldom more opportunely found water.”"
+    },
+    "fix": "可保留。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.story.13",
+    "problem": "第二次尝试只写了结果，没有写转折：前方冰面无法通行，队伍被迫后撤，随后又因裂缝再次转移，原文还写了全队的失望。这不算误导，可以选择补充。",
+    "quote": {
+     "source_id": "S-SOUTH",
+     "quote": "we had to retire half a mile so as to get on a stronger floe"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "稿件与阅读范围基本一致；三条待核断言在已读章节内成立，A3 及其英文对应句建议把范围限定在已核查的章节，第二次尝试的受挫与后撤可以酌情补充。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "扉页则被他撕了下来，这段记述没有写它的去向。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "South 第4章抛弃营一段（窗口 185304–224080）。撕下扉页和约伯记一页之后，文字直接转到另一本圣经和手提箱，没有交代扉页的下落。范围限定为“这段记述”，说法准确。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I tore the fly-leaf out of the Bible that Queen Alexandra had given to the ship, with her own writing in it, and also the wonderful page of Job containing the verse"
+   },
+   "fix": "可保留。若想精简，也可以删去“没有写它的去向”这半句，不影响理解。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "In his words, \"A man under such conditions needs something to occupy his thoughts, some tangible memento of his home and people beyond the seas.\" The fly-leaf was torn out, and the passage does not say what became of it.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "同 A1：第4章抛弃营一段，窗口 185304–224080。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I tore the fly-leaf out of the Bible that Queen Alexandra had given to the ship, with her own writing in it, and also the wonderful page of Job containing the verse"
+   },
+   "fix": "可保留，范围已限定为 the passage。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.3",
+   "lang": "zh",
+   "sentence": "作者提出的替代选择（他没有写自己考虑过这些）：比如把队伍分成两支，一支维持最低限度的探路，一支守营保存体力；",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "第4–5章，从弃船到海洋营决定（窗口 185304–224080）。这一段里他写下的唯一替代方案，是全队在厚浮冰上扎营等漂流，没有提到分队。全书其他部分不在阅读范围内。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "camp on the nearest heavy floe, scour the neighbouring pack for penguins and seals, and await the outward drift of the pack to open and navigable water."
+   },
+   "fix": "建议把括号改为“（在这几章记述里，他没有写自己考虑过分队）”，把范围限定在已核查的章节。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.analysis.3",
+   "lang": "en",
+   "sentence": "Then there are alternatives the author raises for the sake of argument; nothing suggests Shackleton weighed them himself.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "同 A3：第4–5章，窗口 185304–224080。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "camp on the nearest heavy floe, scour the neighbouring pack for penguins and seals, and await the outward drift of the pack to open and navigable water."
+   },
+   "fix": "建议改为 nothing in these chapters suggests…，避免说成全书都没有。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "营地里别人怎么想、是否同意这个决定，证据里没有，本篇也不替他们猜测心理。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "证据包，以及第5章海洋营决定一段。原文没有记录其他队员对这一决定的看法。原文记下的队员情绪（第二次受挫后的失望与消沉）属于耐心营之前的事，不涉及海洋营决定。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I decided to find a more solid floe and there camp until condi- tions were more favourable for us to make a second attempt"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "What the rest of the camp thought, and whether anyone questioned the decision, is not in the evidence, and this piece does not put feelings in their mouths.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "同 N2。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "I decided to find a more solid floe and there camp until condi- tions were more favourable for us to make a second attempt"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "文中那句“喝过更干净的水”出自一位未具名队员的日记，是经沙克尔顿转引的。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SOUTH"
+   ],
+   "scope": "第5章开头。原文只写 one man，没有给出姓名。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "as one man wrote in his diary, “ One has seen and tasted cleaner, but seldom more opportunely found water.”"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "S-SOUTH": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.story.13",
+   "problem": "第二次尝试只写了结果，没有写转折：前方冰面无法通行，队伍被迫后撤，随后又因裂缝再次转移，原文还写了全队的失望。这不算误导，可以选择补充。",
+   "quote": {
+    "source_id": "S-SOUTH",
+    "quote": "we had to retire half a mile so as to get on a stronger floe"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-SOUTH",
+   "outcome": "在阅读范围内，海洋营的决定这样收尾：他们离开海洋营做第二次行军，七天直线只前进七英里半，食物只够四十二天，只好再次在浮冰上扎营，住进耐心营。",
+   "quote": "As we only had food for forty-two days there was no alternative, therefore, but to camp once more on the floe and to possess our souls with what patience we could till conditions should appear more favourable for a renewal of the attempt to escape.",
+   "in_evidence": true
+  },
+  {
+   "source_id": "S-SOUTH",
+   "outcome": "耐心营时期，他们派人回海洋营取回剩余食物和第三条船斯坦科姆·威尔斯号；之后水道张开，再也回不去海洋营。这是海洋营这一据点的最终结局。",
+   "quote": "We were never able to reach Ocean Camp again. Still, there was very little left there that would have been of use to us.",
+   "in_evidence": false
+  }
+ ],
+ "additions": [
+  {
+   "id": "S-E24",
+   "source_id": "S-SOUTH",
+   "offset": 254817,
+   "chars": 373,
+   "why": "这是第二次尝试受挫的转折：前方冰面无法通行，被迫后撤半英里，原文写全队大失所望。story.13 叙述了第二次尝试的失败，补上这段可以交代失败当下的经过。"
+  },
+  {
+   "id": "S-E25",
+   "source_id": "S-SOUTH",
+   "offset": 256438,
+   "chars": 115,
+   "why": "这是原文对队员情绪的直接记述，与 limits.0 所说的“别人怎么想不在证据里”相关。它说明第二次受挫后部分队员一度消沉，随即恢复。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "d8dd19c2d101c3422b9aaf842ea525b99439258a75080243e3f07939cfb5047f",
+ "outcome": "needs_work",
+ "blocking": [
+  "evidence must be expanded first: 2 addition(s) ['S-E24', 'S-E25']"
+ ]
+}

@@ -1,0 +1,103 @@
+{
+ "candidate_id": "cand-20261030-darwin-wallace",
+ "category": "world",
+ "steps": [],
+ "sources": {
+  "W2-LINN": "evidence_usable",
+  "W2-PSM": "evidence_usable"
+ },
+ "dedup": [
+  "distinct",
+  ""
+ ],
+ "episode_id": "ep-cand-20261030-darwin-wallace",
+ "model_calls": [
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 186.5,
+   "prompt_bytes": 18061,
+   "prompt_chars": 13929,
+   "out_bytes": 12130,
+   "out_chars": 5813,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "draft_zh",
+   "attempt": 1,
+   "candidate": "cand-20261030-darwin-wallace",
+   "json_ok": true
+  },
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 232.1,
+   "prompt_bytes": 24650,
+   "prompt_chars": 17666,
+   "out_bytes": 7103,
+   "out_chars": 3744,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "review_zh",
+   "attempt": 1,
+   "candidate": "cand-20261030-darwin-wallace",
+   "json_ok": true
+  },
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 189.5,
+   "prompt_bytes": 25455,
+   "prompt_chars": 18795,
+   "out_bytes": 13519,
+   "out_chars": 13493,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "en",
+   "attempt": 1,
+   "candidate": "cand-20261030-darwin-wallace",
+   "json_ok": false
+  },
+  {
+   "rc": 0,
+   "killed": null,
+   "wall_s": 202.9,
+   "prompt_bytes": 25497,
+   "prompt_chars": 18837,
+   "out_bytes": 13984,
+   "out_chars": 13982,
+   "stderr": "{\"model\": \"mimo-v2.6-pro\", \"tools\": 0}\n",
+   "step": "en",
+   "attempt": 2,
+   "candidate": "cand-20261030-darwin-wallace",
+   "json_ok": true
+  }
+ ],
+ "length": {
+  "zh_chars": 2436,
+  "en_words": 1978,
+  "basis": "body + question + example; excludes sources and read-more"
+ },
+ "reading_minutes": {
+  "zh": 8,
+  "en": 10,
+  "basis": "estimate: 320 zh chars/min, 200 en words/min"
+ },
+ "findings": [
+  [
+   "CHECK",
+   "hook[0] numbers differ zh[10, 17, 30, 1858] en[2, 10, 17, 30, 1858]"
+  ],
+  [
+   "CHECK",
+   "limits[1] numbers differ zh[] en[1, 1858]"
+  ],
+  [
+   "BLOCK",
+   "limits[1] English has number(s) [1858] not present in Chinese"
+  ],
+  [
+   "FIX",
+   "today[0] may repeat the open-question scenario"
+  ]
+ ],
+ "outcome": "pending_review",
+ "reason": "checker BLOCK; 6 review issues rated fix/block; ",
+ "wall_s": 811.1
+}

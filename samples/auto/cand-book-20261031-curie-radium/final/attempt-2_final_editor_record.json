@@ -1,0 +1,2829 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-book-20261031-curie-radium",
+ "edition_id": "cand-book-20261031-curie-radium",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "8645cae",
+ "started_at": 1793442618.1165156,
+ "base_source": "samples/auto/cand-book-20261031-curie-radium/final/article.json",
+ "base_content_sha256": "17020d1a0325c423b4961c13dc23d6978b5c4a75ec58127b36a045a6765e2a47",
+ "evidence_sha256": "b49e1a88080ce17bd0e716e28f98387b862a63cd1a30e107eaebfb0cc5421b52",
+ "operator_note": null,
+ "model_record_sha256": null,
+ "prior_record_sha256": "e2e098c68880f651abea374eb205a9ef3f0a75a07b71c8c4c4fda1ab557b2eec",
+ "attempt": "attempt-2",
+ "context_review_sha256": null,
+ "inherited": [
+  {
+   "id": "P1",
+   "model_id": "V2-V1",
+   "source": "final-editor previous attempt",
+   "where": "sections.hook.1",
+   "problem": "开头第一次出现“梅洛尼”时没有交代她是谁、和这件事是什么关系。她的身份要到 story.6 才说明。“皮埃尔·居里”与她的夫妻关系在 hook 里也没有点明。不了解背景的读者读开头时说不清是谁在募捐。",
+   "suggestion": "zh 改为“是她和丈夫皮埃尔·居里多年前……；后来为本书写引言的梅洛尼在美国发起募捐，希望借此让她把研究继续下去”。en 对应改为“by Marie Curie and her husband Pierre Curie … and Meloney, who later wrote the book's introduction, set out to raise a subscription…”。"
+  },
+  {
+   "id": "P2",
+   "model_id": "V2-V2",
+   "source": "final-editor previous attempt",
+   "where": "dek",
+   "problem": "导语里直接写“梅洛尼探访时”，没有说明梅洛尼是谁，读者无从理解这个人物在事件中的角色。",
+   "suggestion": "zh 改为“1921年赠镭之前，后来为本书写引言的梅洛尼去探访时，她的实验室仍设备不足”。en 改为“When Meloney, who later wrote the book's introduction, visited…”。"
+  },
+  {
+   "id": "P3",
+   "model_id": "V2-V4",
+   "source": "final-editor previous attempt",
+   "where": "sections.context.0",
+   "problem": "en 写了“some help from outside sources”，zh 只写“后来才得到少量补助”，漏掉了外部帮助这一项事实。",
+   "suggestion": "zh 改为“后来才得到少量补助和一些外部帮助”。"
+  },
+  {
+   "id": "P4",
+   "model_id": "V2-V6",
+   "source": "final-editor previous attempt",
+   "where": "sections.story.0",
+   "problem": "en 写了庞加莱“anxious to free him from the necessity of quitting France”，zh 删去了这一点。这句话正是日内瓦邀请与索邦获聘之间的联系，删去后中英内容不一致。",
+   "suggestion": "zh 改为“他申请后，在一心想让他不必离开法国的庞加莱的影响下获聘”。"
+  },
+  {
+   "id": "P5",
+   "model_id": "V2-V7",
+   "source": "final-editor previous attempt",
+   "where": "sections.story.1",
+   "problem": "原文用的是“As early as 1899”，表明工业试验早于前文所述的处境。稿件用“同时/Meanwhile……1899年”，暗示试验发生在索邦新职之后或与之同时，时间顺序被改写了。",
+   "suggestion": "zh 改为“除了这些困难，没有工业手段处理原料，研究也推不动。早在1899年，皮埃尔就……”。en 改为“Besides these difficulties… As early as 1899 Pierre Curie organized…”。"
+  },
+  {
+   "id": "P6",
+   "model_id": "V2-V8",
+   "source": "final-editor previous attempt",
+   "where": "sections.story.1",
+   "problem": "zh 漏掉了 en 中的两项事实：公司与皮埃尔因制造天平而有往来；试验取得了良好结果。",
+   "suggestion": "zh 补为“借中央化学产品公司（他因制造天平与之有往来）的一处现成设施……技术细节由德比埃尔纳安排得很成功，试验效果良好”。"
+  },
+  {
+   "id": "P7",
+   "model_id": "V2-V9",
+   "source": "final-editor previous attempt",
+   "where": "sections.story.3",
+   "problem": "en 保留了两点，zh 都删去了：办厂之举“在当时看来很大胆”；医生的兴趣是由各种研究的发表引起的。",
+   "suggestion": "zh 改为“办起一座在当时看来很大胆的真正镭工厂……医生们因各种研究的发表，已对镭的生物效应和可能的疗法产生兴趣”。"
+  },
+  {
+   "id": "P8",
+   "model_id": "V2-V10",
+   "source": "final-editor previous attempt",
+   "where": "sections.story.7",
+   "problem": "en 引用了“I might die tomorrow. Too much is at stake.”，zh 只写“因为第二天就要接收镭”，漏掉了她给出的另一层理由。",
+   "suggestion": "zh 改为“她要求当晚就把文件办好：第二天就要接收镭，而她可能明天就死，事关重大（据梅洛尼转述）”。"
+  },
+  {
+   "id": "P9",
+   "model_id": "V2-V12",
+   "source": "final-editor previous attempt",
+   "where": "sections.limits.0",
+   "problem": "稿件说“本篇内容全部出自同一本书”/“Everything in this piece comes from one book”，说得过满。today 两段是现代场景，analysis 与 reflection 中有作者的解释，这些都不出自该书。uncertainty_note 用的是“本篇事实”，两处说法也不一致。",
+   "suggestion": "zh 改为“本篇的史实全部出自同一本书”。en 改为“Every historical fact in this piece comes from one book”。"
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.hook.1",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "开头第一次出现梅洛尼时，没有交代她是谁、与这件事有什么关系。她的身份要到 story.6 才说明。皮埃尔·居里与居里夫人是夫妻，hook 里也没有点明。读者读完开头说不清是谁在募捐。",
+   "evidence": [
+    {
+     "id": "CUR-E18",
+     "quote": "It was my hope when I arrived in New York, a few weeks afterwards, to find ten women to subscribe ten thousand dollars each"
+    }
+   ],
+   "proposed": "zh 改为“是她和丈夫皮埃尔·居里多年前……；后来为本书写引言的梅洛尼在美国发起募捐……”。en 改为“by Marie Curie and her husband Pierre Curie … and Meloney, who later wrote the book's introduction, set out to raise a subscription…”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "hook.1 中英均点明皮埃尔·居里是她的丈夫，并在梅洛尼首次出现处说明她是后来为本书写引言、在美国发起募捐的人；ev 补入 CUR-E11 以支持“丈夫”。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "dek",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "导语直接写“梅洛尼探访时”/“When Meloney visited”，没有说明梅洛尼是谁，读者不知道这个人物在事件中的角色。",
+   "evidence": [],
+   "proposed": "zh 改为“1921年赠镭之前，后来为本书写引言的梅洛尼去探访时……”。en 改为“When Meloney, who later wrote the book's introduction, visited…”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "导语中英均在梅洛尼首次出现处加注“后来为本书写引言”，交代其身份。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.context.0",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "en 写有“some help from outside sources”，zh 只写“后来才得到少量补助”，漏掉了外部帮助这一项。",
+   "evidence": [
+    {
+     "id": "CUR-E1",
+     "quote": "later we were given a few subventions and some help from outside sources"
+    }
+   ],
+   "proposed": "zh 改为“后来才得到少量补助和一些外部帮助”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文补上“和一些外部帮助”，与英文及原文一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.context.0",
+   "category": "inner_life",
+   "severity": "fix",
+   "problem": "“想把一种新放射性物质提纯到能确认是新元素”/“wanted to purify … far enough to be sure it was a new element”把一个证据没有写出的目标当作事实。证据写的是：他们相信镭和部分钋在残渣里；化学工作的目标是制备纯镭盐。",
+   "evidence": [
+    {
+     "id": "CUR-E1",
+     "quote": "We believed that we would find all the radium and a part of the polonium in the residues of this mine"
+    },
+    {
+     "id": "CUR-E3",
+     "quote": "had as their objective the preparation of pure radium salts"
+    }
+   ],
+   "proposed": "zh 改为“居里夫妇要从矿石里提取镭和钋”。en 改为“The Curies were trying to extract radium and polonium from ore”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去证据未写出的目标“提纯到能确认是新元素”，中英改为“要从矿石里提取镭和钋”。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.context.1",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "en 写有“without any interior arrangements”，zh 漏掉了，只写“里面只有……”。",
+   "evidence": [
+    {
+     "id": "CUR-E2",
+     "quote": "a glass roof which did not keep the rain out, and without any interior arrangements"
+    }
+   ],
+   "proposed": "zh 在“玻璃屋顶挡不住雨”后补“里面没有任何设施”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文补入“里面没有任何设施”，英文原样保留。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F6",
+   "path": "sections.story.0",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "en 写有庞加莱“anxious to free him from the necessity of quitting France”，zh 删去了。这一点正是拒绝日内瓦与在索邦获聘之间的联系。",
+   "evidence": [
+    {
+     "id": "CUR-E21",
+     "quote": "who was anxious to free him from the necessity of quitting France"
+    }
+   ],
+   "proposed": "zh 改为“他申请后，在一心想让他不必离开法国的庞加莱的影响下获聘”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文补入庞加莱一心想让他不必离开法国，英文原样保留。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F7",
+   "path": "sections.story.1",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "稿件用“同时/Meanwhile……1899年”，把工业试验写成与索邦新职的场地困难同时发生。原文作“As early as 1899”，表示这次试验更早。",
+   "evidence": [
+    {
+     "id": "CUR-E6",
+     "quote": "As early as 1899 Pierre Curie succeeded in organizing a first industrial experiment"
+    },
+    {
+     "id": "CUR-E6",
+     "quote": "And besides these difficulties"
+    }
+   ],
+   "proposed": "zh 改为“除了这些困难，没有工业手段处理原料，研究也推不动。早在1899年，皮埃尔就……”。en 改为“Besides these difficulties… As early as 1899 Pierre Curie organized…”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "把“同时/Meanwhile”改为“除了这些困难/Besides these difficulties”，并写明“早在1899年/As early as 1899”，不再暗示工业试验与索邦新职的困难同时发生。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F8",
+   "path": "sections.story.1",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "en 写了两项事实，zh 都漏掉了：该公司因皮埃尔制造天平与他有往来；试验取得了良好结果。",
+   "evidence": [
+    {
+     "id": "CUR-E6",
+     "quote": "with which he had had relations in connection with the construction of his balances"
+    },
+    {
+     "id": "CUR-E6",
+     "quote": "the operations brought good results"
+    }
+   ],
+   "proposed": "zh 改为“借中央化学产品公司（他因制造天平与之有往来）的一处现成设施……技术细节由德比埃尔纳安排得很成功，试验效果良好”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文补入该公司因制造天平与皮埃尔有往来，以及试验效果良好。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F9",
+   "path": "sections.story.1",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "zh 写明附属楼属于索邦，en 只写“the annex at 12 rue Cuvier”，漏掉了 of the Sorbonne。",
+   "evidence": [
+    {
+     "id": "CUR-E5",
+     "quote": "in the annex (12 rue Cuvier) of the Sorbonne"
+    }
+   ],
+   "proposed": "en 改为“In the annex of the Sorbonne at 12 rue Cuvier…”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文改为“the annex of the Sorbonne at 12 rue Cuvier”，与中文一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F10",
+   "path": "sections.story.3",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "en 保留了两点，zh 都删去了：办厂之举在当时看来很大胆；医生的兴趣是由各种研究的发表引起的。",
+   "evidence": [
+    {
+     "id": "CUR-E8",
+     "quote": "which seemed daring at that epoch"
+    },
+    {
+     "id": "CUR-E8",
+     "quote": "had been aroused by the publication of various investigations"
+    }
+   ],
+   "proposed": "zh 改为“办起一座在当时看来很大胆的真正镭工厂……医生们因各种研究的发表，已对镭的生物效应和可能的疗法产生兴趣”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文补入办厂在当时看来很大胆，以及医生的兴趣由各种研究的发表引起。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F11",
+   "path": "sections.story.3",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "zh 把“most important”写成“最大的一笔”，意思变了，也和 en 不一致。",
+   "evidence": [
+    {
+     "id": "CUR-E9",
+     "quote": "of which the most important, accorded in 1902 by the Academy of Sciences, amounted to 20,000 francs"
+    }
+   ],
+   "proposed": "zh 改为“最重要的一笔是1902年科学院给的两万法郎”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文“最大的一笔”改为“最重要的一笔”；同时把金额写作“20,000法郎”，与英文数字一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F12",
+   "path": "sections.story.7",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "en 写了她要当晚办好文件的另一层理由“I might die tomorrow. Too much is at stake.”，zh 只写“因为第二天就要接收镭”，漏掉了这一层。",
+   "evidence": [
+    {
+     "id": "CUR-E26",
+     "quote": "To-morrow I receive the radium, and I might die tomorrow. Too much is at stake."
+    }
+   ],
+   "proposed": "zh 改为“她要求当晚就把文件办好：第二天就要接收镭，而她可能明天就死，事关重大（据梅洛尼转述）”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文补入她可能明天就死、事关重大这一理由，并标明是梅洛尼转述；英文原样保留。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F13",
+   "path": "sections.analysis.2",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "末句“差别不在谁更高尚，而在谁承担风险”/“The difference is not who is nobler; it is who carries the risk”写成了断言，没有标为作者的判断，材料中也没有对应说法。",
+   "evidence": [],
+   "proposed": "zh 改为“作者认为，差别不在谁更高尚，而在谁承担风险”。en 改为“In the author's view, the difference is not who is nobler…”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "末句中英均标为作者的判断（作者认为/In the author's view）。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F14",
+   "path": "sections.limits.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“本篇内容全部出自同一本书”/“Everything in this piece comes from one book”说得过满。today 两段是虚构场景，analysis 与 reflection 中有作者的推断和替代方案，这些都不出自该书。uncertainty_note 用的是“本篇事实”，两处说法也不一致。",
+   "evidence": [],
+   "proposed": "zh 改为“本篇的史实全部出自同一本书”。en 改为“Every historical fact in this piece comes from one book”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中英分别收窄为“本篇的史实/Every historical fact”，不再涵盖虚构场景和作者解释，并与 uncertainty_note 的说法一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F15",
+   "path": "sections.hook.0",
+   "category": "readability",
+   "severity": "note",
+   "problem": "开头出现的“局”/“the Bureau”没有交代是什么机构，读者会困惑。证据也没有写明机构名称。",
+   "evidence": [
+    {
+     "id": "CUR-E28",
+     "quote": "The tubes of radium presented to me were at the Bureau"
+    }
+   ],
+   "proposed": "zh 改为“还在一个机构（书中只称“局”）那里”，不补造机构名称。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F16",
+   "path": "sections.story.3",
+   "category": "readability",
+   "severity": "note",
+   "problem": "zh 先写全名“阿尔梅·德·利尔”，后文改称“德·利尔”。en 始终写“Armet de Lisle”，两种语言的称呼方式不一致。",
+   "evidence": [],
+   "proposed": "zh 后文统一用“阿尔梅·德·利尔”，或首次出现时注明简称“德·利尔”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "P1",
+   "problem": "开头第一次出现“梅洛尼”时没有交代她是谁、和这件事是什么关系。她的身份要到 story.6 才说明。“皮埃尔·居里”与她的夫妻关系在 hook 里也没有点明。不了解背景的读者读开头时说不清是谁在募捐。",
+   "origin": "inherited final-editor previous attempt V2-V1",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.hook.1",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "成立。hook.1 首次出现的梅洛尼未交代身份，皮埃尔与居里夫人的夫妻关系也未点明，与 F1 相同。"
+  },
+  {
+   "id": "P2",
+   "problem": "导语里直接写“梅洛尼探访时”，没有说明梅洛尼是谁，读者无从理解这个人物在事件中的角色。",
+   "origin": "inherited final-editor previous attempt V2-V2",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "dek",
+   "disposition": "duplicate",
+   "same_as": "F2",
+   "rationale": "成立。dek 中的梅洛尼未说明身份，与 F2 相同。"
+  },
+  {
+   "id": "P3",
+   "problem": "en 写了“some help from outside sources”，zh 只写“后来才得到少量补助”，漏掉了外部帮助这一项事实。",
+   "origin": "inherited final-editor previous attempt V2-V4",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.context.0",
+   "disposition": "duplicate",
+   "same_as": "F3",
+   "rationale": "成立。zh 漏掉了外部帮助一项。"
+  },
+  {
+   "id": "P4",
+   "problem": "en 写了庞加莱“anxious to free him from the necessity of quitting France”，zh 删去了这一点。这句话正是日内瓦邀请与索邦获聘之间的联系，删去后中英内容不一致。",
+   "origin": "inherited final-editor previous attempt V2-V6",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.story.0",
+   "disposition": "duplicate",
+   "same_as": "F6",
+   "rationale": "成立。zh 删去了庞加莱的用意。"
+  },
+  {
+   "id": "P5",
+   "problem": "原文用的是“As early as 1899”，表明工业试验早于前文所述的处境。稿件用“同时/Meanwhile……1899年”，暗示试验发生在索邦新职之后或与之同时，时间顺序被改写了。",
+   "origin": "inherited final-editor previous attempt V2-V7",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.story.1",
+   "disposition": "duplicate",
+   "same_as": "F7",
+   "rationale": "成立。原文作“As early as 1899”，稿件的“同时/Meanwhile”改写了先后。"
+  },
+  {
+   "id": "P6",
+   "problem": "zh 漏掉了 en 中的两项事实：公司与皮埃尔因制造天平而有往来；试验取得了良好结果。",
+   "origin": "inherited final-editor previous attempt V2-V8",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.story.1",
+   "disposition": "duplicate",
+   "same_as": "F8",
+   "rationale": "成立。zh 缺天平往来与试验结果良好两项。"
+  },
+  {
+   "id": "P7",
+   "problem": "en 保留了两点，zh 都删去了：办厂之举“在当时看来很大胆”；医生的兴趣是由各种研究的发表引起的。",
+   "origin": "inherited final-editor previous attempt V2-V9",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.story.3",
+   "disposition": "duplicate",
+   "same_as": "F10",
+   "rationale": "成立。zh 删去了“当时看来大胆”与“研究发表引起兴趣”。"
+  },
+  {
+   "id": "P8",
+   "problem": "en 引用了“I might die tomorrow. Too much is at stake.”，zh 只写“因为第二天就要接收镭”，漏掉了她给出的另一层理由。",
+   "origin": "inherited final-editor previous attempt V2-V10",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.story.7",
+   "disposition": "duplicate",
+   "same_as": "F12",
+   "rationale": "成立。zh 漏掉了“可能明天就死、事关重大”这一层理由。"
+  },
+  {
+   "id": "P9",
+   "problem": "稿件说“本篇内容全部出自同一本书”/“Everything in this piece comes from one book”，说得过满。today 两段是现代场景，analysis 与 reflection 中有作者的解释，这些都不出自该书。uncertainty_note 用的是“本篇事实”，两处说法也不一致。",
+   "origin": "inherited final-editor previous attempt V2-V12",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.limits.0",
+   "disposition": "duplicate",
+   "same_as": "F14",
+   "rationale": "成立。现代场景与作者解释不出自该书，说法过满，且与 uncertainty_note 不一致。"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.hook.1",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "段末说“这笔账，她在书里一项一项算过”（EN: In her book she worked through that account line by line）。但本段的市价十万美元、实验室镭的用途和募捐，都出自梅洛尼的引言，不是居里夫人自己算的。她本人在自传笔记里写的，只是放弃的财富与朋友们的反对，谈不上“一项一项”。",
+   "evidence": [
+    {
+     "id": "CUR-E17",
+     "quote": "That week I learned that the market price of a gramme of radium was one hundred thousand dollars."
+    },
+    {
+     "id": "CUR-E13",
+     "quote": "So it is a fortune which we have sacrificed in renouncing the exploitation of our discovery"
+    }
+   ],
+   "proposed": "zh改为：“这笔账书里两边都有记载：梅洛尼在引言里记下了市价和募捐，她自己在自传笔记里算过放弃的那笔财富。”EN改为：\"The book records both sides of that account: Meloney's introduction notes the price and the subscription, and in her autobiographical notes Marie Curie reckons up the fortune she gave up.\"",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "原段末把全段的账都归给居里夫人本人“一项一项算过”。但市价和募捐出自梅洛尼的引言，居里夫人自己写的是放弃的财富。现改为分别归属：梅洛尼记下了市价和募捐，居里夫人在自传笔记里算过放弃的财富。中英同步修改。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V5",
+   "path": "sections.story.0",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "“这时日内瓦方面来请皮埃尔”（EN: Then Geneva came calling）把日内瓦邀请定在木棚两年和分工之后。证据没有给这次邀请任何日期，也没有交代它与木棚工作的先后。",
+   "evidence": [
+    {
+     "id": "CUR-E4",
+     "quote": "This was a grave decision for us to make."
+    },
+    {
+     "id": "CUR-E21",
+     "quote": "At this moment the Chair of Physics in the physics, chemistry and natural history course at the Sorbonne"
+    }
+   ],
+   "proposed": "zh改为“后来有一次（书中未写年份），日内瓦方面来请皮埃尔”。EN改为\"At one point (the book gives no year), Geneva came calling for Pierre\"。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "证据没有给日内瓦邀请任何日期，也没有交代它与木棚工作的先后。现删去“这时/Then”所暗示的时间顺序，改为“后来有一次（书中未写年份）”。后文“此时”仍对应E21中的“At this moment”，予以保留。中英同步修改。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V6",
+   "path": "sections.story.4",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "“今天公认226”（EN: the number accepted now is 226）里的“今天”是原书写作时（1923年）的“now”，现在直接写成“今天”，等于把1923年的说法当成了当下的判断。",
+   "evidence": [
+    {
+     "id": "CUR-E22",
+     "quote": "one accepts now the number 226"
+    }
+   ],
+   "proposed": "zh改为“——她写书时公认的数值是226”。EN改为\"the number accepted when she wrote was 226\"。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "原文的“now”指作者写书时（1923年版），不是今天。现把“今天公认226”改为“她写书时公认的数值是226”，避免把1923年的说法写成当下判断。中英同步修改，数字225.35与226保持一致。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V2-V1",
+   "path": "dek",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "中文句子“后来为本书写引言的梅洛尼去探访时，她的实验室仍设备不足”里，离“她”最近的人是梅洛尼，读者会把实验室理解为梅洛尼的。英文明确写的是 Marie Curie's laboratory，中英两版因此不一致。",
+   "evidence": [
+    {
+     "id": "CUR-E17",
+     "quote": "Madame Curie's laboratory, although practically a new building, was without sufficient equipment"
+    }
+   ],
+   "proposed": "把“她的实验室”改为“居里夫人的实验室”。",
+   "origin": "final-editor verify round 2"
+  },
+  {
+   "id": "V2-V4",
+   "path": "sections.story.2",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "中文把「took no copyright」接在“拒绝从发现中获取任何物质利益”后面，并说“英译此处作”，读起来像是英译用这句话来表达“拒绝获利”。原文中 We took no copyright 是另起的一句，指没有申请版权保护。中文正文也没有说出这层意思。第二处「took out no patent」的“此处”同样指代不清。",
+   "evidence": [
+    {
+     "id": "CUR-E7",
+     "quote": "With my agreement he refused to draw any material profit from our discovery. We took no copyright, and published without reserve"
+    },
+    {
+     "id": "CUR-E11",
+     "quote": "We took out no patent and we did not reserve any advantage in any industrial exploitation."
+    }
+   ],
+   "proposed": "改为“……皮埃尔·居里拒绝从发现中获取任何物质利益；他们没有申请版权（英译作「took no copyright」），把研究结果……”。第二处改为“没有申请专利（英译作「took out no patent」），也不在工业开发中保留任何好处”。",
+   "origin": "final-editor verify round 2"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.hook.1.zh",
+   "before": "一克镭的市价是十万美元。而制备镭的方法，是她和皮埃尔·居里多年前毫无保留地公开的，镭工业正靠它发展起来、高价卖货。公开了方法的她，实验室里那点镭当时只用于为医院提取射气；梅洛尼发起募捐，希望借此让她把研究继续下去。这笔账，她在书里一项一项算过。",
+   "after": "一克镭的市价是十万美元。而制备镭的方法，是她和丈夫皮埃尔·居里多年前毫无保留地公开的，镭工业正靠它发展起来、高价卖货。公开了方法的她，实验室里那点镭当时只用于为医院提取射气；后来为本书写引言的梅洛尼在美国发起募捐，希望借此让她把研究继续下去。这笔账，她在书里一项一项算过。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "A gram of radium then sold for one hundred thousand dollars. The process for preparing it had been published years earlier, without reserve, by Marie Curie and Pierre Curie, and the radium industry was now thriving on that very process and selling its product at a high price. She had helped give the method away, yet the radium in her laboratory was used at that time only for extracting emanations for hospital use, and Meloney set out to raise a subscription to enable her to go on with her work. In her book she worked through that account line by line.",
+   "after": "A gram of radium then sold for one hundred thousand dollars. The process for preparing it had been published years earlier, without reserve, by Marie Curie and her husband Pierre Curie, and the radium industry was now thriving on that very process and selling its product at a high price. She had helped give the method away, yet the radium in her laboratory was used at that time only for extracting emanations for hospital use, and Meloney, who later wrote the book's introduction, set out to raise a subscription in America to enable her to go on with her work. In her book she worked through that account line by line.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.hook.1.ev",
+   "before": [
+    "CUR-E17",
+    "CUR-E7",
+    "CUR-E8",
+    "CUR-E13",
+    "CUR-E18"
+   ],
+   "after": [
+    "CUR-E17",
+    "CUR-E7",
+    "CUR-E8",
+    "CUR-E13",
+    "CUR-E18",
+    "CUR-E11"
+   ],
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "dek.zh",
+   "before": "居里夫妇把制备镭的方法毫无保留地公开，镭工业因此自由发展；他们自己却长期缺钱、缺场地。1921年赠镭之前，梅洛尼探访时，她的实验室仍设备不足；靠美国妇女募捐，居里夫人才得到一克镭。这是一笔两边都有分量的账。",
+   "after": "居里夫妇把制备镭的方法毫无保留地公开，镭工业因此自由发展；他们自己却长期缺钱、缺场地。1921年赠镭之前，后来为本书写引言的梅洛尼去探访时，她的实验室仍设备不足；靠美国妇女募捐，居里夫人才得到一克镭。这是一笔两边都有分量的账。",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "dek.en",
+   "before": "The Curies published their method for preparing radium without reserve, and the radium industry grew freely on it. They themselves long went without money and without a proper workplace. When Meloney visited, before the 1921 gift, Marie Curie's laboratory still lacked sufficient equipment, and a subscription raised by American women finally put a gram in Marie Curie's hands. It is a ledger with weight on both sides.",
+   "after": "The Curies published their method for preparing radium without reserve, and the radium industry grew freely on it. They themselves long went without money and without a proper workplace. When Meloney, who later wrote the book's introduction, visited before the 1921 gift, Marie Curie's laboratory still lacked sufficient equipment, and a subscription raised by American women finally put a gram in Marie Curie's hands. It is a ledger with weight on both sides.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.context.0.zh",
+   "before": "事情要从1890年代末的巴黎说起。居里夫妇想把一种新放射性物质提纯到能确认是新元素，可他们缺合适的工作场所、缺人手，也缺钱。沥青铀矿很贵，他们买不起足够的量。当时这种矿物的主要来源在波希米亚的圣约阿希姆斯塔尔，奥地利政府在那里经营一座提铀的矿。矿上的残渣还从没用过，他们相信镭和一部分钋就在残渣里。靠维也纳科学院的影响，他们以优惠价拿到几吨残渣。起初的费用出自自己的积蓄，后来才得到少量补助。",
+   "after": "事情要从1890年代末的巴黎说起。居里夫妇要从矿石里提取镭和钋，可他们缺合适的工作场所、缺人手，也缺钱。沥青铀矿很贵，他们买不起足够的量。当时这种矿物的主要来源在波希米亚的圣约阿希姆斯塔尔，奥地利政府在那里经营一座提铀的矿。矿上的残渣还从没用过，他们相信镭和一部分钋就在残渣里。靠维也纳科学院的影响，他们以优惠价拿到几吨残渣。起初的费用出自自己的积蓄，后来才得到少量补助和一些外部帮助。",
+   "issues": [
+    "F3",
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.context.0.en",
+   "before": "The story begins in Paris in the late 1890s. The Curies wanted to purify a new radioactive substance far enough to be sure it was a new element, and they lacked a proper place to work in, personnel and money. Pitchblende was an expensive mineral, and they could not afford to buy a sufficient quantity. At that time the principal source of this mineral was at St. Joachimsthal in Bohemia, where the Austrian government worked a mine for the extraction of uranium. Its residues had so far not been used at all, and they believed the radium, and part of the polonium, would be found in them. Through the influence of the Vienna Academy of Sciences they secured several tons of the residues at an advantageous price. In the beginning the costs came out of their own pockets; only later were they given a few subventions and some help from outside sources.",
+   "after": "The story begins in Paris in the late 1890s. The Curies were trying to extract radium and polonium from ore, and they lacked a proper place to work in, personnel and money. Pitchblende was an expensive mineral, and they could not afford to buy a sufficient quantity. At that time the principal source of this mineral was at St. Joachimsthal in Bohemia, where the Austrian government worked a mine for the extraction of uranium. Its residues had so far not been used at all, and they believed the radium, and part of the polonium, would be found in them. Through the influence of the Vienna Academy of Sciences they secured several tons of the residues at an advantageous price. In the beginning the costs came out of their own pockets; only later were they given a few subventions and some help from outside sources.",
+   "issues": [
+    "F3",
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.context.1.zh",
+   "before": "化学处理只能在一间废弃的储藏室里做：木棚、沥青地面、玻璃屋顶挡不住雨，里面只有几张破松木桌、一个不好使的铸铁炉和皮埃尔爱用的黑板。没有排气罩带走化学处理放出的毒气，活儿得搬到院子里做；天气不好的时候就在棚里接着干，把窗子开着。",
+   "after": "化学处理只能在一间废弃的储藏室里做：木棚、沥青地面、玻璃屋顶挡不住雨，里面没有任何设施，只有几张破松木桌、一个不好使的铸铁炉和皮埃尔爱用的黑板。没有排气罩带走化学处理放出的毒气，活儿得搬到院子里做；天气不好的时候就在棚里接着干，把窗子开着。",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.story.0.zh",
+   "before": "这时日内瓦方面来请皮埃尔：那里物质条件更好，还能过上近似乡居的宁静生活。按居里夫人的记述，这个决定很艰难，皮埃尔动了心。最后让他定下来不去的，是他们正对镭做的研究，他怕这样的变动打断它。此时，索邦为医科学生而设的P.C.N.物理教席正好空缺。他申请后，在庞加莱影响下获聘；她则受托在塞夫尔的女子师范学校讲物理课。他们留在巴黎，收入增加了，工作却更难：皮埃尔要兼两处课，其中学生众多的P.C.N.教学让他非常疲惫。",
+   "after": "这时日内瓦方面来请皮埃尔：那里物质条件更好，还能过上近似乡居的宁静生活。按居里夫人的记述，这个决定很艰难，皮埃尔动了心。最后让他定下来不去的，是他们正对镭做的研究，他怕这样的变动打断它。此时，索邦为医科学生而设的P.C.N.物理教席正好空缺。他申请后，在一心想让他不必离开法国的庞加莱的影响下获聘；她则受托在塞夫尔的女子师范学校讲物理课。他们留在巴黎，收入增加了，工作却更难：皮埃尔要兼两处课，其中学生众多的P.C.N.教学让他非常疲惫。",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.story.1.zh",
+   "before": "新职位不带实验室。在索邦设于居维叶街12号、供P.C.N.教学用的附属楼里，他只有一间小办公室和一个工作间。他想接收学生做研究，就去争取更大的场地。照她的说法，做过这类事的人知道那是一堵怎样的墙：公文、登门、请求，有一点成果都要付出很多，这些事彻底让他厌倦和沮丧。同时，没有工业手段处理原料，研究也推不动了。1899年，皮埃尔借中央化学产品公司的一处现成设施组织第一次工业试验，技术细节由德比埃尔纳安排得很成功；这种需要特殊小心的活儿，还得专门训练人手。",
+   "after": "新职位不带实验室。在索邦设于居维叶街12号、供P.C.N.教学用的附属楼里，他只有一间小办公室和一个工作间。他想接收学生做研究，就去争取更大的场地。照她的说法，做过这类事的人知道那是一堵怎样的墙：公文、登门、请求，有一点成果都要付出很多，这些事彻底让他厌倦和沮丧。除了这些困难，没有工业手段处理原料，研究也推不动。早在1899年，皮埃尔就借中央化学产品公司（他因制造天平与之有往来）的一处现成设施，组织了第一次工业试验，技术细节由德比埃尔纳安排得很成功，试验效果良好；这种需要特殊小心的活儿，还得专门训练人手。",
+   "issues": [
+    "F7",
+    "F8",
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.story.1.en",
+   "before": "The new post came without a laboratory. In the annex at 12 rue Cuvier that served as teaching quarters for the P.C.N., all he had at his disposition was a little office and a single work room. He meant to receive students and start them in research, so he took steps to find larger working quarters. Anyone who has taken similar steps knows the wall of financial and administrative obstacles he was throwing himself against: the official letters, the visits, the requests, and what even the least success entailed. It all thoroughly wearied and discouraged him. Meanwhile the research could not advance without industrial means of treating the raw material. In 1899 Pierre Curie organized a first industrial experiment, using for it a chance installation placed at his disposition by the Central Society of Chemical Products, with which he had dealt over the construction of his balances. The technical details were arranged very successfully by André Debierne, and the operations brought good results, though a special crew had to be trained for chemical work that demanded special precautions.",
+   "after": "The new post came without a laboratory. In the annex of the Sorbonne at 12 rue Cuvier, which served as teaching quarters for the P.C.N., all he had at his disposition was a little office and a single work room. He meant to receive students and start them in research, so he took steps to find larger working quarters. Anyone who has taken similar steps knows the wall of financial and administrative obstacles he was throwing himself against: the official letters, the visits, the requests, and what even the least success entailed. It all thoroughly wearied and discouraged him. Besides these difficulties, the research could not advance without industrial means of treating the raw material. As early as 1899 Pierre Curie organized a first industrial experiment, using for it a chance installation placed at his disposition by the Central Society of Chemical Products, with which he had dealt over the construction of his balances. The technical details were arranged very successfully by André Debierne, and the operations brought good results, though a special crew had to be trained for chemical work that demanded special precautions.",
+   "issues": [
+    "F7",
+    "F8",
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.story.3.zh",
+   "before": "钱还是不够。受这次试验启发，法国实业家阿尔梅·德·利尔办起一座真正的镭工厂，把产品卖给医生；医生们对镭的生物效应和可能的疗法已有兴趣。项目成功了，因为他能雇到居里夫妇训练过的人。镭从此有了稳定货源，价格很高：制备条件特殊，制镭所需矿物的价格又立刻上涨。德·利尔出于好意，在厂里给他们一小块工作地方和一部分费用。其余的钱有的是他们自己的，有的来自补助，最大的一笔是1902年科学院给的两万法郎。",
+   "after": "钱还是不够。受这次试验启发，法国实业家阿尔梅·德·利尔办起一座在当时看来很大胆的真正镭工厂，把产品卖给医生；医生们因各种研究的发表，已对镭的生物效应和可能的疗法产生兴趣。项目成功了，因为他能雇到居里夫妇训练过的人。镭从此有了稳定货源，价格很高：制备条件特殊，制镭所需矿物的价格又立刻上涨。德·利尔出于好意，在厂里给他们一小块工作地方和一部分费用。其余的钱有的是他们自己的，有的来自补助，最重要的一笔是1902年科学院给的20,000法郎。",
+   "issues": [
+    "F10",
+    "F11"
+   ]
+  },
+  {
+   "path": "sections.story.7.zh",
+   "before": "据梅洛尼记述，仪式前一夜又出了岔子：文件要把这一克镭放在居里夫人个人名下。她读完说不行。这一克镭代表很多钱，可它更代表美国的妇女，不是给她的，是给科学的。她身体不好，随时可能死；女儿伊夫尚未成年，一旦她去世，镭就会进她的遗产，由两个女儿分掉。她要求当晚就把文件办好，因为第二天就要接收镭。于是那个闷热的五月夜晚，虽然已经很晚，他们还是请到律师，照她自拟的草稿写好文件。她在动身去华盛顿前签了字：她死后，这一克镭归巴黎的镭研究所，供居里实验室专用。第二天在白宫，哈定总统交给她的是一把小金钥匙。",
+   "after": "据梅洛尼记述，仪式前一夜又出了岔子：文件要把这一克镭放在居里夫人个人名下。她读完说不行。这一克镭代表很多钱，可它更代表美国的妇女，不是给她的，是给科学的。她身体不好，随时可能死；女儿伊夫尚未成年，一旦她去世，镭就会进她的遗产，由两个女儿分掉。她要求当晚就把文件办好：第二天就要接收镭，而她可能明天就死，事关重大（据梅洛尼转述）。于是那个闷热的五月夜晚，虽然已经很晚，他们还是请到律师，照她自拟的草稿写好文件。她在动身去华盛顿前签了字：她死后，这一克镭归巴黎的镭研究所，供居里实验室专用。第二天在白宫，哈定总统交给她的是一把小金钥匙。",
+   "issues": [
+    "F12"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.zh",
+   "before": "作者提出另一种做法（书中没有写他们讨论过任何替代方案）：分用途授权，研究与教学免费，商业开发收费；或者只对产品收费，把方法留在公共领域。这条路或许能留下一点收入，代价是谈判、监督，以及与工业界的长期纠缠。朋友们主张的则是保留权利、用收益建研究所。差别不在谁更高尚，而在谁承担风险。",
+   "after": "作者提出另一种做法（书中没有写他们讨论过任何替代方案）：分用途授权，研究与教学免费，商业开发收费；或者只对产品收费，把方法留在公共领域。这条路或许能留下一点收入，代价是谈判、监督，以及与工业界的长期纠缠。朋友们主张的则是保留权利、用收益建研究所。作者认为，差别不在谁更高尚，而在谁承担风险。",
+   "issues": [
+    "F13"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.en",
+   "before": "The author's alternative, and the book records no such discussion: license by use, free for research and teaching and charged for commercial exploitation, or else charge for the product and leave the method in the public domain. Some income might have been kept that way, at the price of negotiation, oversight, and a long entanglement with industry. What the friends urged was retaining the rights and building the institute out of the proceeds. The difference is not who is nobler; it is who carries the risk.",
+   "after": "The author's alternative, and the book records no such discussion: license by use, free for research and teaching and charged for commercial exploitation, or else charge for the product and leave the method in the public domain. Some income might have been kept that way, at the price of negotiation, oversight, and a long entanglement with industry. What the friends urged was retaining the rights and building the institute out of the proceeds. In the author's view, the difference is not who is nobler; it is who carries the risk.",
+   "issues": [
+    "F13"
+   ]
+  },
+  {
+   "path": "sections.limits.0.zh",
+   "before": "边界要交代清楚：本篇内容全部出自同一本书，1923年麦克米伦版《皮埃尔·居里》，C.与V.凯洛格英译。皮埃尔·居里传记和自传笔记都是居里夫人本人的叙述，梅洛尼那几段是她的转述，都不是独立记录。不申请专利的那个决定，书里没写日期，也没留下会议或对话的记录，本文不补写。",
+   "after": "边界要交代清楚：本篇的史实全部出自同一本书，1923年麦克米伦版《皮埃尔·居里》，C.与V.凯洛格英译。皮埃尔·居里传记和自传笔记都是居里夫人本人的叙述，梅洛尼那几段是她的转述，都不是独立记录。不申请专利的那个决定，书里没写日期，也没留下会议或对话的记录，本文不补写。",
+   "issues": [
+    "F14"
+   ]
+  },
+  {
+   "path": "sections.limits.0.en",
+   "before": "The limits need to be stated. Everything in this piece comes from one book: Pierre Curie, Macmillan, 1923, translated by C. and V. Kellogg. The Pierre Curie biography and the autobiographical notes are Marie Curie's own account, and the Meloney passages are her report of what she saw and heard; none of it is an independent record. The decision not to patent is undated in the book, and no minutes or conversations of the deliberations survive there; this piece does not supply them.",
+   "after": "The limits need to be stated. Every historical fact in this piece comes from one book: Pierre Curie, Macmillan, 1923, translated by C. and V. Kellogg. The Pierre Curie biography and the autobiographical notes are Marie Curie's own account, and the Meloney passages are her report of what she saw and heard; none of it is an independent record. The decision not to patent is undated in the book, and no minutes or conversations of the deliberations survive there; this piece does not supply them.",
+   "issues": [
+    "F14"
+   ]
+  },
+  {
+   "path": "sections.hook.1.zh",
+   "before": "一克镭的市价是十万美元。而制备镭的方法，是她和丈夫皮埃尔·居里多年前毫无保留地公开的，镭工业正靠它发展起来、高价卖货。公开了方法的她，实验室里那点镭当时只用于为医院提取射气；后来为本书写引言的梅洛尼在美国发起募捐，希望借此让她把研究继续下去。这笔账，她在书里一项一项算过。",
+   "after": "一克镭的市价是十万美元。而制备镭的方法，是她和丈夫皮埃尔·居里多年前毫无保留地公开的，镭工业正靠它发展起来、高价卖货。公开了方法的她，实验室里那点镭当时只用于为医院提取射气；后来为本书写引言的梅洛尼在美国发起募捐，希望借此让她把研究继续下去。这笔账书里两边都有记载：梅洛尼在引言里记下了市价和募捐，居里夫人自己在自传笔记里算过放弃的那笔财富。",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "A gram of radium then sold for one hundred thousand dollars. The process for preparing it had been published years earlier, without reserve, by Marie Curie and her husband Pierre Curie, and the radium industry was now thriving on that very process and selling its product at a high price. She had helped give the method away, yet the radium in her laboratory was used at that time only for extracting emanations for hospital use, and Meloney, who later wrote the book's introduction, set out to raise a subscription in America to enable her to go on with her work. In her book she worked through that account line by line.",
+   "after": "A gram of radium then sold for one hundred thousand dollars. The process for preparing it had been published years earlier, without reserve, by Marie Curie and her husband Pierre Curie, and the radium industry was now thriving on that very process and selling its product at a high price. She had helped give the method away, yet the radium in her laboratory was used at that time only for extracting emanations for hospital use, and Meloney, who later wrote the book's introduction, set out to raise a subscription in America to enable her to go on with her work. The book records both sides of that account: Meloney's introduction notes the price and the subscription, and in her autobiographical notes Marie Curie reckons up the fortune she gave up.",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.story.0.zh",
+   "before": "这时日内瓦方面来请皮埃尔：那里物质条件更好，还能过上近似乡居的宁静生活。按居里夫人的记述，这个决定很艰难，皮埃尔动了心。最后让他定下来不去的，是他们正对镭做的研究，他怕这样的变动打断它。此时，索邦为医科学生而设的P.C.N.物理教席正好空缺。他申请后，在一心想让他不必离开法国的庞加莱的影响下获聘；她则受托在塞夫尔的女子师范学校讲物理课。他们留在巴黎，收入增加了，工作却更难：皮埃尔要兼两处课，其中学生众多的P.C.N.教学让他非常疲惫。",
+   "after": "后来有一次（书中未写年份），日内瓦方面来请皮埃尔：那里物质条件更好，还能过上近似乡居的宁静生活。按居里夫人的记述，这个决定很艰难，皮埃尔动了心。最后让他定下来不去的，是他们正对镭做的研究，他怕这样的变动打断它。此时，索邦为医科学生而设的P.C.N.物理教席正好空缺。他申请后，在一心想让他不必离开法国的庞加莱的影响下获聘；她则受托在塞夫尔的女子师范学校讲物理课。他们留在巴黎，收入增加了，工作却更难：皮埃尔要兼两处课，其中学生众多的P.C.N.教学让他非常疲惫。",
+   "issues": [
+    "V1-V5"
+   ]
+  },
+  {
+   "path": "sections.story.0.en",
+   "before": "Then Geneva came calling for Pierre, offering material advantages and the opportunity of a life comparable in its tranquillity with that in the country. In Marie Curie's account the decision was a grave one, and Pierre was tempted. What finally settled it was the radium research itself, since he feared the interruption that such a change must involve. At this moment the chair of physics in the Sorbonne's P.C.N. course was vacant; this was the physics, chemistry and natural history curriculum compulsory for medical students. He applied, and was appointed through the influence of Henri Poincaré, who was anxious to free him from the necessity of quitting France. Marie Curie was given charge of the physics lectures at the Normal School for Girls at Sèvres. They stayed in Paris and their income increased, but working conditions grew harder: Pierre was doing double teaching, and the P.C.N., with its very large number of students, fatigued him greatly.",
+   "after": "At one point (the book gives no year), Geneva came calling for Pierre, offering material advantages and the opportunity of a life comparable in its tranquillity with that in the country. In Marie Curie's account the decision was a grave one, and Pierre was tempted. What finally settled it was the radium research itself, since he feared the interruption that such a change must involve. At this moment the chair of physics in the Sorbonne's P.C.N. course was vacant; this was the physics, chemistry and natural history curriculum compulsory for medical students. He applied, and was appointed through the influence of Henri Poincaré, who was anxious to free him from the necessity of quitting France. Marie Curie was given charge of the physics lectures at the Normal School for Girls at Sèvres. They stayed in Paris and their income increased, but working conditions grew harder: Pierre was doing double teaching, and the P.C.N., with its very large number of students, fatigued him greatly.",
+   "issues": [
+    "V1-V5"
+   ]
+  },
+  {
+   "path": "sections.story.4.zh",
+   "before": "1902年，她从矿渣里制得十分之一克纯氯化镭，只呈现新元素镭的谱线，并第一次测定这种元素的原子量，数值远高于钡，镭的化学个体性就此确立。1907年她做了更精确的第二次测定，定为225.35——今天公认226；她还和德比埃尔纳把镭制成了金属态。她亲手从矿石里提取的镭，按皮埃尔的意愿全部给了实验室，总量超过一克元素镭。",
+   "after": "1902年，她从矿渣里制得十分之一克纯氯化镭，只呈现新元素镭的谱线，并第一次测定这种元素的原子量，数值远高于钡，镭的化学个体性就此确立。1907年她做了更精确的第二次测定，定为225.35——她写书时公认的数值是226；她还和德比埃尔纳把镭制成了金属态。她亲手从矿石里提取的镭，按皮埃尔的意愿全部给了实验室，总量超过一克元素镭。",
+   "issues": [
+    "V1-V6"
+   ]
+  },
+  {
+   "path": "sections.story.4.en",
+   "before": "In 1902 Marie Curie succeeded in preparing a decigramme of chloride of pure radium that gave only the spectrum of the new element, radium, and made a first determination of its atomic weight, a value much higher than that of barium. The chemical individuality of radium was completely established. In 1907 she made a second and more precise determination, as 225.35; the number accepted now is 226. She also succeeded, jointly with André Debierne, in obtaining radium in the state of metal. The total quantity she prepared and gave to the laboratory, in agreement with Pierre Curie's desire, amounted to more than a gramme of radium element.",
+   "after": "In 1902 Marie Curie succeeded in preparing a decigramme of chloride of pure radium that gave only the spectrum of the new element, radium, and made a first determination of its atomic weight, a value much higher than that of barium. The chemical individuality of radium was completely established. In 1907 she made a second and more precise determination, as 225.35; the number accepted when she wrote was 226. She also succeeded, jointly with André Debierne, in obtaining radium in the state of metal. The total quantity she prepared and gave to the laboratory, in agreement with Pierre Curie's desire, amounted to more than a gramme of radium element.",
+   "issues": [
+    "V1-V6"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "F10",
+    "F11",
+    "F12",
+    "F13",
+    "F14"
+   ],
+   "changes_applied": 17,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[6] numbers differ zh[50, 10000, 100000] en[10, 50, 10000, 100000]"
+    ],
+    [
+     "CHECK",
+     "today[0] resembles the open-question scenario: shared phrases none of 4+ characters; bigram overlap 0.13"
+    ]
+   ],
+   "content_sha256_after": "72c1630a4a9dcf85b99d0266526c3b8a73638867b140eabb5f09ac3f8e82e2f5",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1",
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V6"
+      ]
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.1",
+      "category": "attribution",
+      "severity": "fix",
+      "problem": "段末说“这笔账，她在书里一项一项算过”（EN: In her book she worked through that account line by line）。但本段的市价十万美元、实验室镭的用途和募捐，都出自梅洛尼的引言，不是居里夫人自己算的。她本人在自传笔记里写的，只是放弃的财富与朋友们的反对，谈不上“一项一项”。",
+      "evidence": [
+       {
+        "id": "CUR-E17",
+        "quote": "That week I learned that the market price of a gramme of radium was one hundred thousand dollars."
+       },
+       {
+        "id": "CUR-E13",
+        "quote": "So it is a fortune which we have sacrificed in renouncing the exploitation of our discovery"
+       }
+      ],
+      "proposed": "zh改为：“这笔账书里两边都有记载：梅洛尼在引言里记下了市价和募捐，她自己在自传笔记里算过放弃的那笔财富。”EN改为：\"The book records both sides of that account: Meloney's introduction notes the price and the subscription, and in her autobiographical notes Marie Curie reckons up the fortune she gave up.\""
+     },
+     {
+      "id": "V2",
+      "path": "sections.hook.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "开头出现的“局”（the Bureau）没有交代是什么机构、和镭有什么关系。证据只写作 the Bureau，不宜补写全名。",
+      "evidence": [
+       {
+        "id": "CUR-E28",
+        "quote": "The tubes of radium presented to me were at the Bureau"
+       }
+      ],
+      "proposed": "zh可写作“还在负责测量的那个‘局’（书中只称the Bureau）里”，不补写机构全名。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.hook.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“射气”（emanations）是术语，开头读者不一定懂。另外本段在一句里叠了价格、公开方法、实验室用途、募捐四件事，信息偏密。",
+      "evidence": [
+       {
+        "id": "CUR-E17",
+        "quote": "the radium held there was used at that time only for extracting emanations for hospital use in cancer treatment"
+       }
+      ],
+      "proposed": "zh改为“只用于为医院提取射气（镭放出的放射性气体）供癌症治疗”。可把募捐一事拆成单独一句。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.context.2",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“学校的实验室主任之一贝蒙”（the School）中的“学校”此前没有出现过，读者不知道指哪所学校、与居里夫妇是什么关系。",
+      "evidence": [
+       {
+        "id": "CUR-E23",
+        "quote": "one of the laboratory chiefs of the School, G. Bemont, had given us temporary aid"
+       }
+      ],
+      "proposed": "zh改为“皮埃尔任教的那所学校（书中称the School）的实验室主任之一贝蒙”，或在首次提到工作间时交代这所学校。"
+     },
+     {
+      "id": "V5",
+      "path": "sections.story.0",
+      "category": "chronology",
+      "severity": "fix",
+      "problem": "“这时日内瓦方面来请皮埃尔”（EN: Then Geneva came calling）把日内瓦邀请定在木棚两年和分工之后。证据没有给这次邀请任何日期，也没有交代它与木棚工作的先后。",
+      "evidence": [
+       {
+        "id": "CUR-E4",
+        "quote": "This was a grave decision for us to make."
+       },
+       {
+        "id": "CUR-E21",
+        "quote": "At this moment the Chair of Physics in the physics, chemistry and natural history course at the Sorbonne"
+       }
+      ],
+      "proposed": "zh改为“后来有一次（书中未写年份），日内瓦方面来请皮埃尔”。EN改为\"At one point (the book gives no year), Geneva came calling for Pierre\"。"
+     },
+     {
+      "id": "V6",
+      "path": "sections.story.4",
+      "category": "chronology",
+      "severity": "fix",
+      "problem": "“今天公认226”（EN: the number accepted now is 226）里的“今天”是原书写作时（1923年）的“now”，现在直接写成“今天”，等于把1923年的说法当成了当下的判断。",
+      "evidence": [
+       {
+        "id": "CUR-E22",
+        "quote": "one accepts now the number 226"
+       }
+      ],
+      "proposed": "zh改为“——她写书时公认的数值是226”。EN改为\"the number accepted when she wrote was 226\"。"
+     }
+    ],
+    "overall": "定稿的事实、引语和中英对照总体有证据支撑，推断段落也已标注；需修正三处：hook.1 的归属、日内瓦邀请的时间定位、“今天公认226”的时态。另有三处易读性小注（“局”“射气”“学校”），不影响开头理解，开头可读性通过。",
+    "_content_sha256": "72c1630a4a9dcf85b99d0266526c3b8a73638867b140eabb5f09ac3f8e82e2f5"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1",
+    "V1-V5",
+    "V1-V6"
+   ],
+   "changes_applied": 6,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[6] numbers differ zh[50, 10000, 100000] en[10, 50, 10000, 100000]"
+    ],
+    [
+     "CHECK",
+     "today[0] resembles the open-question scenario: shared phrases none of 4+ characters; bigram overlap 0.13"
+    ]
+   ],
+   "content_sha256_after": "ab9ab817f34f0ae470ccd304e27d31c17d6283b52d8778304bfe5e2ce06333de",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "dek",
+      "category": "readability",
+      "severity": "fix",
+      "problem": "中文句子“后来为本书写引言的梅洛尼去探访时，她的实验室仍设备不足”里，离“她”最近的人是梅洛尼，读者会把实验室理解为梅洛尼的。英文明确写的是 Marie Curie's laboratory，中英两版因此不一致。",
+      "evidence": [
+       {
+        "id": "CUR-E17",
+        "quote": "Madame Curie's laboratory, although practically a new building, was without sufficient equipment"
+       }
+      ],
+      "proposed": "把“她的实验室”改为“居里夫人的实验室”。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.hook.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "开头的“局”没有交代是什么机构，读者不知道镭放在哪里、由谁保管。证据中也只称作 the Bureau。",
+      "evidence": [
+       {
+        "id": "CUR-E28",
+        "quote": "The tubes of radium presented to me were at the Bureau, whose officials had kindly offered to make the measurements"
+       }
+      ],
+      "proposed": "改为“装镭的管子还在一个书中只称作‘局’的机构里”，不补充证据之外的机构名称。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.hook.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "开头连续出现“本书”“书里”，但读者此时还不知道指的是哪本书，要到结尾的 limits 一节才交代。“射气”是术语，hook 又省去了证据中的“治疗癌症”，读者不容易看出这些镭为什么不能用于研究。",
+      "evidence": [
+       {
+        "id": "CUR-E17",
+        "quote": "the radium held there was used at that time only for extracting emanations for hospital use in cancer treatment"
+       }
+      ],
+      "proposed": "第一次提到时写明“1923年出版的《皮埃尔·居里》一书”；把“只用于为医院提取射气”改为“只用于为医院提取射气、治疗癌症”。英文同步补上 in cancer treatment。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.story.2",
+      "category": "quotes",
+      "severity": "fix",
+      "problem": "中文把「took no copyright」接在“拒绝从发现中获取任何物质利益”后面，并说“英译此处作”，读起来像是英译用这句话来表达“拒绝获利”。原文中 We took no copyright 是另起的一句，指没有申请版权保护。中文正文也没有说出这层意思。第二处「took out no patent」的“此处”同样指代不清。",
+      "evidence": [
+       {
+        "id": "CUR-E7",
+        "quote": "With my agreement he refused to draw any material profit from our discovery. We took no copyright, and published without reserve"
+       },
+       {
+        "id": "CUR-E11",
+        "quote": "We took out no patent and we did not reserve any advantage in any industrial exploitation."
+       }
+      ],
+      "proposed": "改为“……皮埃尔·居里拒绝从发现中获取任何物质利益；他们没有申请版权（英译作「took no copyright」），把研究结果……”。第二处改为“没有申请专利（英译作「took out no patent」），也不在工业开发中保留任何好处”。"
+     }
+    ],
+    "overall": "定稿的史实、日期、数字和英文引语都能在证据中逐一找到出处，解释性段落也已标明；需要修正的是导语中指代不清的“她”和 story.2 中英文引语的挂靠位置，另有两处开头易读性的小问题建议处理。",
+    "_content_sha256": "ab9ab817f34f0ae470ccd304e27d31c17d6283b52d8778304bfe5e2ce06333de"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F15"
+    ]
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3",
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F7",
+     "F8",
+     "F9"
+    ]
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F10",
+     "F11",
+     "F16"
+    ]
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F12"
+    ]
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F13"
+    ]
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F14"
+    ]
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.hook.1",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "开头第一次出现梅洛尼时，没有交代她是谁、与这件事有什么关系。她的身份要到 story.6 才说明。皮埃尔·居里与居里夫人是夫妻，hook 里也没有点明。读者读完开头说不清是谁在募捐。",
+    "evidence": [
+     {
+      "id": "CUR-E18",
+      "quote": "It was my hope when I arrived in New York, a few weeks afterwards, to find ten women to subscribe ten thousand dollars each"
+     }
+    ],
+    "proposed": "zh 改为“是她和丈夫皮埃尔·居里多年前……；后来为本书写引言的梅洛尼在美国发起募捐……”。en 改为“by Marie Curie and her husband Pierre Curie … and Meloney, who later wrote the book's introduction, set out to raise a subscription…”。"
+   },
+   {
+    "id": "F2",
+    "path": "dek",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "导语直接写“梅洛尼探访时”/“When Meloney visited”，没有说明梅洛尼是谁，读者不知道这个人物在事件中的角色。",
+    "evidence": [],
+    "proposed": "zh 改为“1921年赠镭之前，后来为本书写引言的梅洛尼去探访时……”。en 改为“When Meloney, who later wrote the book's introduction, visited…”。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.context.0",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "en 写有“some help from outside sources”，zh 只写“后来才得到少量补助”，漏掉了外部帮助这一项。",
+    "evidence": [
+     {
+      "id": "CUR-E1",
+      "quote": "later we were given a few subventions and some help from outside sources"
+     }
+    ],
+    "proposed": "zh 改为“后来才得到少量补助和一些外部帮助”。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.context.0",
+    "category": "inner_life",
+    "severity": "fix",
+    "problem": "“想把一种新放射性物质提纯到能确认是新元素”/“wanted to purify … far enough to be sure it was a new element”把一个证据没有写出的目标当作事实。证据写的是：他们相信镭和部分钋在残渣里；化学工作的目标是制备纯镭盐。",
+    "evidence": [
+     {
+      "id": "CUR-E1",
+      "quote": "We believed that we would find all the radium and a part of the polonium in the residues of this mine"
+     },
+     {
+      "id": "CUR-E3",
+      "quote": "had as their objective the preparation of pure radium salts"
+     }
+    ],
+    "proposed": "zh 改为“居里夫妇要从矿石里提取镭和钋”。en 改为“The Curies were trying to extract radium and polonium from ore”。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.context.1",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "en 写有“without any interior arrangements”，zh 漏掉了，只写“里面只有……”。",
+    "evidence": [
+     {
+      "id": "CUR-E2",
+      "quote": "a glass roof which did not keep the rain out, and without any interior arrangements"
+     }
+    ],
+    "proposed": "zh 在“玻璃屋顶挡不住雨”后补“里面没有任何设施”。"
+   },
+   {
+    "id": "F6",
+    "path": "sections.story.0",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "en 写有庞加莱“anxious to free him from the necessity of quitting France”，zh 删去了。这一点正是拒绝日内瓦与在索邦获聘之间的联系。",
+    "evidence": [
+     {
+      "id": "CUR-E21",
+      "quote": "who was anxious to free him from the necessity of quitting France"
+     }
+    ],
+    "proposed": "zh 改为“他申请后，在一心想让他不必离开法国的庞加莱的影响下获聘”。"
+   },
+   {
+    "id": "F7",
+    "path": "sections.story.1",
+    "category": "chronology",
+    "severity": "fix",
+    "problem": "稿件用“同时/Meanwhile……1899年”，把工业试验写成与索邦新职的场地困难同时发生。原文作“As early as 1899”，表示这次试验更早。",
+    "evidence": [
+     {
+      "id": "CUR-E6",
+      "quote": "As early as 1899 Pierre Curie succeeded in organizing a first industrial experiment"
+     },
+     {
+      "id": "CUR-E6",
+      "quote": "And besides these difficulties"
+     }
+    ],
+    "proposed": "zh 改为“除了这些困难，没有工业手段处理原料，研究也推不动。早在1899年，皮埃尔就……”。en 改为“Besides these difficulties… As early as 1899 Pierre Curie organized…”。"
+   },
+   {
+    "id": "F8",
+    "path": "sections.story.1",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "en 写了两项事实，zh 都漏掉了：该公司因皮埃尔制造天平与他有往来；试验取得了良好结果。",
+    "evidence": [
+     {
+      "id": "CUR-E6",
+      "quote": "with which he had had relations in connection with the construction of his balances"
+     },
+     {
+      "id": "CUR-E6",
+      "quote": "the operations brought good results"
+     }
+    ],
+    "proposed": "zh 改为“借中央化学产品公司（他因制造天平与之有往来）的一处现成设施……技术细节由德比埃尔纳安排得很成功，试验效果良好”。"
+   },
+   {
+    "id": "F9",
+    "path": "sections.story.1",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "zh 写明附属楼属于索邦，en 只写“the annex at 12 rue Cuvier”，漏掉了 of the Sorbonne。",
+    "evidence": [
+     {
+      "id": "CUR-E5",
+      "quote": "in the annex (12 rue Cuvier) of the Sorbonne"
+     }
+    ],
+    "proposed": "en 改为“In the annex of the Sorbonne at 12 rue Cuvier…”。"
+   },
+   {
+    "id": "F10",
+    "path": "sections.story.3",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "en 保留了两点，zh 都删去了：办厂之举在当时看来很大胆；医生的兴趣是由各种研究的发表引起的。",
+    "evidence": [
+     {
+      "id": "CUR-E8",
+      "quote": "which seemed daring at that epoch"
+     },
+     {
+      "id": "CUR-E8",
+      "quote": "had been aroused by the publication of various investigations"
+     }
+    ],
+    "proposed": "zh 改为“办起一座在当时看来很大胆的真正镭工厂……医生们因各种研究的发表，已对镭的生物效应和可能的疗法产生兴趣”。"
+   },
+   {
+    "id": "F11",
+    "path": "sections.story.3",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "zh 把“most important”写成“最大的一笔”，意思变了，也和 en 不一致。",
+    "evidence": [
+     {
+      "id": "CUR-E9",
+      "quote": "of which the most important, accorded in 1902 by the Academy of Sciences, amounted to 20,000 francs"
+     }
+    ],
+    "proposed": "zh 改为“最重要的一笔是1902年科学院给的两万法郎”。"
+   },
+   {
+    "id": "F12",
+    "path": "sections.story.7",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "en 写了她要当晚办好文件的另一层理由“I might die tomorrow. Too much is at stake.”，zh 只写“因为第二天就要接收镭”，漏掉了这一层。",
+    "evidence": [
+     {
+      "id": "CUR-E26",
+      "quote": "To-morrow I receive the radium, and I might die tomorrow. Too much is at stake."
+     }
+    ],
+    "proposed": "zh 改为“她要求当晚就把文件办好：第二天就要接收镭，而她可能明天就死，事关重大（据梅洛尼转述）”。"
+   },
+   {
+    "id": "F13",
+    "path": "sections.analysis.2",
+    "category": "interpretation_label",
+    "severity": "fix",
+    "problem": "末句“差别不在谁更高尚，而在谁承担风险”/“The difference is not who is nobler; it is who carries the risk”写成了断言，没有标为作者的判断，材料中也没有对应说法。",
+    "evidence": [],
+    "proposed": "zh 改为“作者认为，差别不在谁更高尚，而在谁承担风险”。en 改为“In the author's view, the difference is not who is nobler…”。"
+   },
+   {
+    "id": "F14",
+    "path": "sections.limits.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“本篇内容全部出自同一本书”/“Everything in this piece comes from one book”说得过满。today 两段是虚构场景，analysis 与 reflection 中有作者的推断和替代方案，这些都不出自该书。uncertainty_note 用的是“本篇事实”，两处说法也不一致。",
+    "evidence": [],
+    "proposed": "zh 改为“本篇的史实全部出自同一本书”。en 改为“Every historical fact in this piece comes from one book”。"
+   },
+   {
+    "id": "F15",
+    "path": "sections.hook.0",
+    "category": "readability",
+    "severity": "note",
+    "problem": "开头出现的“局”/“the Bureau”没有交代是什么机构，读者会困惑。证据也没有写明机构名称。",
+    "evidence": [
+     {
+      "id": "CUR-E28",
+      "quote": "The tubes of radium presented to me were at the Bureau"
+     }
+    ],
+    "proposed": "zh 改为“还在一个机构（书中只称“局”）那里”，不补造机构名称。"
+   },
+   {
+    "id": "F16",
+    "path": "sections.story.3",
+    "category": "readability",
+    "severity": "note",
+    "problem": "zh 先写全名“阿尔梅·德·利尔”，后文改称“德·利尔”。en 始终写“Armet de Lisle”，两种语言的称呼方式不一致。",
+    "evidence": [],
+    "proposed": "zh 后文统一用“阿尔梅·德·利尔”，或首次出现时注明简称“德·利尔”。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "P1",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "成立。hook.1 首次出现的梅洛尼未交代身份，皮埃尔与居里夫人的夫妻关系也未点明，与 F1 相同。",
+    "evidence": []
+   },
+   {
+    "id": "P2",
+    "verdict": "duplicate",
+    "same_as": "F2",
+    "rationale": "成立。dek 中的梅洛尼未说明身份，与 F2 相同。",
+    "evidence": []
+   },
+   {
+    "id": "P3",
+    "verdict": "duplicate",
+    "same_as": "F3",
+    "rationale": "成立。zh 漏掉了外部帮助一项。",
+    "evidence": [
+     {
+      "id": "CUR-E1",
+      "quote": "some help from outside sources"
+     }
+    ]
+   },
+   {
+    "id": "P4",
+    "verdict": "duplicate",
+    "same_as": "F6",
+    "rationale": "成立。zh 删去了庞加莱的用意。",
+    "evidence": [
+     {
+      "id": "CUR-E21",
+      "quote": "anxious to free him from the necessity of quitting France"
+     }
+    ]
+   },
+   {
+    "id": "P5",
+    "verdict": "duplicate",
+    "same_as": "F7",
+    "rationale": "成立。原文作“As early as 1899”，稿件的“同时/Meanwhile”改写了先后。",
+    "evidence": [
+     {
+      "id": "CUR-E6",
+      "quote": "As early as 1899"
+     }
+    ]
+   },
+   {
+    "id": "P6",
+    "verdict": "duplicate",
+    "same_as": "F8",
+    "rationale": "成立。zh 缺天平往来与试验结果良好两项。",
+    "evidence": [
+     {
+      "id": "CUR-E6",
+      "quote": "the operations brought good results"
+     }
+    ]
+   },
+   {
+    "id": "P7",
+    "verdict": "duplicate",
+    "same_as": "F10",
+    "rationale": "成立。zh 删去了“当时看来大胆”与“研究发表引起兴趣”。",
+    "evidence": [
+     {
+      "id": "CUR-E8",
+      "quote": "which seemed daring at that epoch"
+     }
+    ]
+   },
+   {
+    "id": "P8",
+    "verdict": "duplicate",
+    "same_as": "F12",
+    "rationale": "成立。zh 漏掉了“可能明天就死、事关重大”这一层理由。",
+    "evidence": [
+     {
+      "id": "CUR-E26",
+      "quote": "I might die tomorrow. Too much is at stake."
+     }
+    ]
+   },
+   {
+    "id": "P9",
+    "verdict": "duplicate",
+    "same_as": "F14",
+    "rationale": "成立。现代场景与作者解释不出自该书，说法过满，且与 uncertainty_note 不一致。",
+    "evidence": []
+   }
+  ]
+ },
+ "final_content_sha256": "ab9ab817f34f0ae470ccd304e27d31c17d6283b52d8778304bfe5e2ce06333de",
+ "open_issues": [
+  "V2-V1",
+  "V2-V4"
+ ],
+ "outcome": "pending_review",
+ "failure": null,
+ "finished_at": 1793443061.017081,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 125.5,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 23777,
+    "output_tokens": 14760
+   },
+   "cost_estimate_usd": 0.485424
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 68.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 24543,
+    "output_tokens": 9663
+   },
+   "cost_estimate_usd": 0.38961199999999996
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 105.5,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 21463,
+    "output_tokens": 11878
+   },
+   "cost_estimate_usd": 0.40927199999999997
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 25.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 22153,
+    "output_tokens": 2394
+   },
+   "cost_estimate_usd": 0.22511199999999998
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 117.9,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 21579,
+    "output_tokens": 13390
+   },
+   "cost_estimate_usd": 0.44044000000000005
+  }
+ ],
+ "elapsed_min": 7.4,
+ "model_wall_min": 7.4
+}

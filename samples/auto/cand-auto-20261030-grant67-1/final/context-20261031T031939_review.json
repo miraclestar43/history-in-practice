@@ -1,0 +1,597 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261030-grant67-1",
+ "content_sha256": "d5eb0433c229187fcbd29906cfc3357dde73dbc812f899aa8929c8f3a8e2734a",
+ "evidence_in_sha256": "bc70aecb7787c210fc259c2222c2b7d171797cf3afac9d778bcb5868194c81e8",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793434779.782128,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "dek",
+   "lang": "zh",
+   "sentence": "士兵的马骡则是李问起后，格兰特先答以按条文不行，李重读条款表示明白，格兰特随后主动口头准许的，没有写进条文。"
+  },
+  {
+   "id": "A2",
+   "path": "sections.hook.0",
+   "lang": "zh",
+   "sentence": "1865年4月8日（原文只写“8日”，月份与年份据原文所录次日电报的日期1865年4月9日推定），联邦一方的格兰特随己方的波托马克军跟在李的后面追击；"
+  },
+  {
+   "id": "A3",
+   "path": "sections.limits.2",
+   "lang": "zh",
+   "sentence": "但本文所据的段落没有写宣誓遣散和马骡宽许的实际执行经过。"
+  },
+  {
+   "id": "A4",
+   "path": "sections.limits.2",
+   "lang": "en",
+   "sentence": "but the passages this piece draws on do not describe how the paroling or the horse-and-mule allowance was actually carried out."
+  },
+  {
+   "id": "A5",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "马骡宽许不在已写成的条文中，是格兰特当面答应李将指示留守军官办理的，本文所据段落未交代其落实情况；"
+  },
+  {
+   "id": "A6",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "原文记有宣誓遣散的执行人员安排，但本文所据段落未写执行经过；"
+  },
+  {
+   "id": "A7",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "the source records who was assigned to carry out the paroling, but the passages used here do not say how it was carried out;"
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-GRANT67": {
+   "title": "Ulysses S. Grant, Personal Memoirs (1885–86), ch. LXVII, Wikisource",
+   "url": "https://en.wikisource.org/w/index.php?title=Personal%20Memoirs%20of%20U.%20S.%20Grant/Chapter%20LXVII&action=render",
+   "ref": "en:Personal Memoirs of U. S. Grant/Chapter LXVII",
+   "evidence_text_sha256": "e94dd7b47aac284748bfb67372496c18c10de4e1a8337fbe62fbc83b808dbe10",
+   "cache_sha256": "e94dd7b47aac284748bfb67372496c18c10de4e1a8337fbe62fbc83b808dbe10",
+   "cjk": false,
+   "source_chars": 19820,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     19820
+    ]
+   ],
+   "chars_reviewed": 19820
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 82.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 8876
+  }
+ ],
+ "finished_at": 1793434862.1679654,
+ "elapsed_min": 1.4,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-GRANT67",
+    "outcome": "李在4月9日接受书面条款，格兰特电告斯坦顿受降完成。次日两人在战线之间交谈，李拒绝在征询总统之前劝告全部南军投降，格兰特不再强求。两军军官在麦克莱恩家相聚约一小时后，格兰特率参谋离开，前往 Burkesville Junction。",
+    "quote": "I knew there was no use to urge him to do anything against his ideas of what was right.",
+    "in_evidence": true
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-GRANT67",
+    "start": "When the white flag was put out by Lee",
+    "end": "until I could be communicated with.",
+    "why": "交代米德、谢里登犹豫的直接起因：李打出白旗，派人向两人请求停火，此时格兰特在途中联系不上。context.0 只写“李再次来信”后两人犹豫，没有说停火请求来自李，因果不清。"
+   },
+   {
+    "source_id": "S-GRANT67",
+    "start": "I received your note of this morning on the picket-line",
+    "end": "I now request an interview in accordance with the offer contained in your letter of yesterday for that purpose.",
+    "why": "李的第二封信明确为“交出这支军队”请求会面，这是从拒绝会面到受降会面的转折，现有证据包未收。"
+   },
+   {
+    "source_id": "S-GRANT67",
+    "start": "I felt like anything rather than rejoicing",
+    "end": "the sincerity of the great mass of those who were opposed to us.",
+    "why": "格兰特自己说明了心情低落的原因：不愿为一个久战而英勇的对手的失败而欢欣，同时认为对方的事业是最坏的之一。这会影响读者对 story.1 和叫停鸣炮的理解，现稿只写了心情低落。"
+   },
+   {
+    "source_id": "S-GRANT67",
+    "start": "I determined to return to Washington at once",
+    "end": "other useless outlay of money.",
+    "why": "受降之后的直接后果：格兰特决定立即回华盛顿，停止采购和其他无用开支。这也解释了他次日离开阿波马托克斯的原因。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "dek",
+    "lang": "zh",
+    "sentence": "士兵的马骡则是李问起后，格兰特先答以按条文不行，李重读条款表示明白，格兰特随后主动口头准许的，没有写进条文。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-GRANT67"
+    ],
+    "scope": "第67章全章，包括所录条款全文、马匹问答段，以及李的接受信",
+    "quote": {
+     "source_id": "S-GRANT67",
+     "quote": "I told him that as the terms were written they would not; that only the officers were permitted to take their private property. He then, after reading over the terms a second time, remarked that that was clear."
+    },
+    "fix": "可保留。另注：格兰特后文说过 \"acceded to the provision about the soldiers retaining their horses\"，用的是 provision 一词，但所录条文中确实没有这一项。"
+   },
+   {
+    "id": "A2",
+    "path": "sections.hook.0",
+    "lang": "zh",
+    "sentence": "1865年4月8日（原文只写“8日”，月份与年份据原文所录次日电报的日期1865年4月9日推定），联邦一方的格兰特随己方的波托马克军跟在李的后面追击；",
+    "verdict": "supported",
+    "source_ids": [
+     "S-GRANT67"
+    ],
+    "scope": "第67章全章：正文只写 \"On the 8th\"，章内没有写明 \"April 8\" 的地方",
+    "quote": {
+     "source_id": "S-GRANT67",
+     "quote": "HEADQUARTERS ARMIES OF THE U. S., April 9, 1865."
+    },
+    "fix": "推定依据宜改为更直接的一件：格兰特当夜（次日）的回信就署1865年4月9日。可改作“月份与年份据格兰特次日回信所署的1865年4月9日推定”，不必绕到下午的电报。"
+   },
+   {
+    "id": "A3",
+    "path": "sections.limits.2",
+    "lang": "zh",
+    "sentence": "但本文所据的段落没有写宣誓遣散和马骡宽许的实际执行经过。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-GRANT67"
+    ],
+    "scope": "第67章全章已通读：只有执行人员安排，没有执行经过。格兰特次日即离开",
+    "quote": {
+     "source_id": "S-GRANT67",
+     "quote": "Generals Gibbon, Griffin and Merritt were designated by me to carry into effect the paroling of Lee′s troops before they should start for their homes"
+    },
+    "fix": "范围可写得更准确：改为“格兰特回忆录第67章全章没有写执行经过”，不要只说“所据段落”。"
+   },
+   {
+    "id": "A4",
+    "path": "sections.limits.2",
+    "lang": "en",
+    "sentence": "but the passages this piece draws on do not describe how the paroling or the horse-and-mule allowance was actually carried out.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-GRANT67"
+    ],
+    "scope": "Whole of ch. LXVII read",
+    "quote": {
+     "source_id": "S-GRANT67",
+     "quote": "After an hour pleasantly passed in this way I set out on horseback, accompanied by my staff and a small escort, for Burkesville Junction"
+    },
+    "fix": "Say \"Chapter LXVII of the memoirs does not describe…\" rather than \"the passages this piece draws on\"."
+   },
+   {
+    "id": "A5",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "马骡宽许不在已写成的条文中，是格兰特当面答应李将指示留守军官办理的，本文所据段落未交代其落实情况；",
+    "verdict": "supported",
+    "source_ids": [
+     "S-GRANT67"
+    ],
+    "scope": "第67章全章",
+    "quote": {
+     "source_id": "S-GRANT67",
+     "quote": "I would, therefore, instruct the officers I left behind to receive the paroles of his troops to let every man of the Confederate army who claimed to own a horse or mule take the animal to his home"
+    },
+    "fix": "把“本文所据段落”改为“第67章全章”。"
+   },
+   {
+    "id": "A6",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "原文记有宣誓遣散的执行人员安排，但本文所据段落未写执行经过；",
+    "verdict": "supported",
+    "source_ids": [
+     "S-GRANT67"
+    ],
+    "scope": "第67章全章",
+    "quote": {
+     "source_id": "S-GRANT67",
+     "quote": "General Lee leaving Generals Longstreet, Gordon and Pendleton for them to confer with in order to facilitate this work"
+    },
+    "fix": "把“本文所据段落”改为“第67章全章”。可与 A5 合并为一句，避免重复。"
+   },
+   {
+    "id": "A7",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "the source records who was assigned to carry out the paroling, but the passages used here do not say how it was carried out;",
+    "verdict": "supported",
+    "source_ids": [
+     "S-GRANT67"
+    ],
+    "scope": "Whole of ch. LXVII",
+    "quote": {
+     "source_id": "S-GRANT67",
+     "quote": "Generals Gibbon, Griffin and Merritt were designated by me to carry into effect the paroling of Lee′s troops"
+    },
+    "fix": "Change to \"Chapter LXVII does not say how it was carried out\"; consider merging with the horse-and-mule sentence."
+   },
+   {
+    "id": "N1",
+    "path": "sections.hook.1",
+    "lang": "en",
+    "sentence": "The horses and mules belonging to the Confederate enlisted men were not in the written terms at all",
+    "verdict": "supported",
+    "source_ids": [
+     "S-GRANT67"
+    ],
+    "scope": "所录条款全文及马匹问答段",
+    "quote": {
+     "source_id": "S-GRANT67",
+     "quote": "I told him that as the terms were written they would not"
+    },
+    "fix": "无需修改。"
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "米德、谢里登、李的说法也都经他一手记录。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-GRANT67"
+    ],
+    "scope": "第67章正文；章内另有出版方据帕克提供的原件所加的脚注[2]",
+    "quote": {
+     "source_id": "S-GRANT67",
+     "quote": "The fac-simile of the terms of Lee′s surrender inserted at this place, was copied from the original document furnished the publishers through the courtesy of General Ely S. Parker"
+    },
+    "fix": "对话部分属实。建议补充一点：李的两封信和接受函是以文件原文录入的，不是格兰特的转述；章内脚注[2]出自出版方，所据是帕克提供的原件。这样写比“经他一手”更准确。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.context.0",
+    "problem": "稿件只写“李再次来信”后米德、谢里登犹豫是否停火，漏掉了起因：李打出白旗，并分别派人向两人请求停火。现写法让读者以为犹豫是针对那封信。李第二封信的内容（为交出军队请求会面）也没有交代。",
+    "quote": {
+     "source_id": "S-GRANT67",
+     "quote": "Lee, therefore, sent a flag to the rear to advise Meade and one to the front to Sheridan, saying that he had sent a message to me for the purpose of having a meeting to consult about the surrender of his army, and asked for a suspension of hostilities until I could be communicated with."
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.story.1",
+    "problem": "只写格兰特心情低落，没有写他给出的理由。原文的理由与后文叫停鸣炮直接呼应；不写出来，读者容易自行补写心理，这也与 limits.1 的原则相悖。",
+    "quote": {
+     "source_id": "S-GRANT67",
+     "quote": "I felt like anything rather than rejoicing at the downfall of a foe who had fought so long and valiantly, and had suffered so much for a cause, though that cause was, I believe, one of the worst for which a people ever fought"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.story.8",
+    "problem": "段落停在李拒绝劝降，读者看不到格兰特的反应。原文紧接着写格兰特不再强求，随后两军军官互访叙旧。",
+    "quote": {
+     "source_id": "S-GRANT67",
+     "quote": "I knew there was no use to urge him to do anything against his ideas of what was right."
+    },
+    "severity": "note"
+   },
+   {
+    "path": "uncertainty_note",
+    "problem": "“全文只有一个史源，即格兰特本人的回忆记述”不够准确：章内脚注[2]出自出版方，依据是帕克提供的条款原件；书中还以原文收录了李的信件。“一个史源”是指一本书，不应读成书中一切内容都是格兰特的转述。",
+    "quote": {
+     "source_id": "S-GRANT67",
+     "quote": "There is a popular error to the effect that Generals Grant and Lee each signed the articles of surrender."
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "S-GRANT67 已通读全文。各条否定性断言在全章范围内成立，但应把核查范围从“本文所据段落”改为“第67章全章”。context.0 漏掉了李请求停火这一起因，必须修改；另有几处次要的上下文补充。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "dek",
+   "lang": "zh",
+   "sentence": "士兵的马骡则是李问起后，格兰特先答以按条文不行，李重读条款表示明白，格兰特随后主动口头准许的，没有写进条文。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-GRANT67"
+   ],
+   "scope": "第67章全章，包括所录条款全文、马匹问答段，以及李的接受信",
+   "quote": {
+    "source_id": "S-GRANT67",
+    "quote": "I told him that as the terms were written they would not; that only the officers were permitted to take their private property. He then, after reading over the terms a second time, remarked that that was clear."
+   },
+   "fix": "可保留。另注：格兰特后文说过 \"acceded to the provision about the soldiers retaining their horses\"，用的是 provision 一词，但所录条文中确实没有这一项。",
+   "unit_status": {
+    "S-GRANT67": "complete"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.hook.0",
+   "lang": "zh",
+   "sentence": "1865年4月8日（原文只写“8日”，月份与年份据原文所录次日电报的日期1865年4月9日推定），联邦一方的格兰特随己方的波托马克军跟在李的后面追击；",
+   "verdict": "supported",
+   "source_ids": [
+    "S-GRANT67"
+   ],
+   "scope": "第67章全章：正文只写 \"On the 8th\"，章内没有写明 \"April 8\" 的地方",
+   "quote": {
+    "source_id": "S-GRANT67",
+    "quote": "HEADQUARTERS ARMIES OF THE U. S., April 9, 1865."
+   },
+   "fix": "推定依据宜改为更直接的一件：格兰特当夜（次日）的回信就署1865年4月9日。可改作“月份与年份据格兰特次日回信所署的1865年4月9日推定”，不必绕到下午的电报。",
+   "unit_status": {
+    "S-GRANT67": "complete"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.limits.2",
+   "lang": "zh",
+   "sentence": "但本文所据的段落没有写宣誓遣散和马骡宽许的实际执行经过。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-GRANT67"
+   ],
+   "scope": "第67章全章已通读：只有执行人员安排，没有执行经过。格兰特次日即离开",
+   "quote": {
+    "source_id": "S-GRANT67",
+    "quote": "Generals Gibbon, Griffin and Merritt were designated by me to carry into effect the paroling of Lee′s troops before they should start for their homes"
+   },
+   "fix": "范围可写得更准确：改为“格兰特回忆录第67章全章没有写执行经过”，不要只说“所据段落”。",
+   "unit_status": {
+    "S-GRANT67": "complete"
+   }
+  },
+  {
+   "id": "A4",
+   "path": "sections.limits.2",
+   "lang": "en",
+   "sentence": "but the passages this piece draws on do not describe how the paroling or the horse-and-mule allowance was actually carried out.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-GRANT67"
+   ],
+   "scope": "Whole of ch. LXVII read",
+   "quote": {
+    "source_id": "S-GRANT67",
+    "quote": "After an hour pleasantly passed in this way I set out on horseback, accompanied by my staff and a small escort, for Burkesville Junction"
+   },
+   "fix": "Say \"Chapter LXVII of the memoirs does not describe…\" rather than \"the passages this piece draws on\".",
+   "unit_status": {
+    "S-GRANT67": "complete"
+   }
+  },
+  {
+   "id": "A5",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "马骡宽许不在已写成的条文中，是格兰特当面答应李将指示留守军官办理的，本文所据段落未交代其落实情况；",
+   "verdict": "supported",
+   "source_ids": [
+    "S-GRANT67"
+   ],
+   "scope": "第67章全章",
+   "quote": {
+    "source_id": "S-GRANT67",
+    "quote": "I would, therefore, instruct the officers I left behind to receive the paroles of his troops to let every man of the Confederate army who claimed to own a horse or mule take the animal to his home"
+   },
+   "fix": "把“本文所据段落”改为“第67章全章”。",
+   "unit_status": {
+    "S-GRANT67": "complete"
+   }
+  },
+  {
+   "id": "A6",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "原文记有宣誓遣散的执行人员安排，但本文所据段落未写执行经过；",
+   "verdict": "supported",
+   "source_ids": [
+    "S-GRANT67"
+   ],
+   "scope": "第67章全章",
+   "quote": {
+    "source_id": "S-GRANT67",
+    "quote": "General Lee leaving Generals Longstreet, Gordon and Pendleton for them to confer with in order to facilitate this work"
+   },
+   "fix": "把“本文所据段落”改为“第67章全章”。可与 A5 合并为一句，避免重复。",
+   "unit_status": {
+    "S-GRANT67": "complete"
+   }
+  },
+  {
+   "id": "A7",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "the source records who was assigned to carry out the paroling, but the passages used here do not say how it was carried out;",
+   "verdict": "supported",
+   "source_ids": [
+    "S-GRANT67"
+   ],
+   "scope": "Whole of ch. LXVII",
+   "quote": {
+    "source_id": "S-GRANT67",
+    "quote": "Generals Gibbon, Griffin and Merritt were designated by me to carry into effect the paroling of Lee′s troops"
+   },
+   "fix": "Change to \"Chapter LXVII does not say how it was carried out\"; consider merging with the horse-and-mule sentence.",
+   "unit_status": {
+    "S-GRANT67": "complete"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.hook.1",
+   "lang": "en",
+   "sentence": "The horses and mules belonging to the Confederate enlisted men were not in the written terms at all",
+   "verdict": "supported",
+   "source_ids": [
+    "S-GRANT67"
+   ],
+   "scope": "所录条款全文及马匹问答段",
+   "quote": {
+    "source_id": "S-GRANT67",
+    "quote": "I told him that as the terms were written they would not"
+   },
+   "fix": "无需修改。",
+   "unit_status": {
+    "S-GRANT67": "complete"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "米德、谢里登、李的说法也都经他一手记录。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-GRANT67"
+   ],
+   "scope": "第67章正文；章内另有出版方据帕克提供的原件所加的脚注[2]",
+   "quote": {
+    "source_id": "S-GRANT67",
+    "quote": "The fac-simile of the terms of Lee′s surrender inserted at this place, was copied from the original document furnished the publishers through the courtesy of General Ely S. Parker"
+   },
+   "fix": "对话部分属实。建议补充一点：李的两封信和接受函是以文件原文录入的，不是格兰特的转述；章内脚注[2]出自出版方，所据是帕克提供的原件。这样写比“经他一手”更准确。",
+   "unit_status": {
+    "S-GRANT67": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.context.0",
+   "problem": "稿件只写“李再次来信”后米德、谢里登犹豫是否停火，漏掉了起因：李打出白旗，并分别派人向两人请求停火。现写法让读者以为犹豫是针对那封信。李第二封信的内容（为交出军队请求会面）也没有交代。",
+   "quote": {
+    "source_id": "S-GRANT67",
+    "quote": "Lee, therefore, sent a flag to the rear to advise Meade and one to the front to Sheridan, saying that he had sent a message to me for the purpose of having a meeting to consult about the surrender of his army, and asked for a suspension of hostilities until I could be communicated with."
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.story.1",
+   "problem": "只写格兰特心情低落，没有写他给出的理由。原文的理由与后文叫停鸣炮直接呼应；不写出来，读者容易自行补写心理，这也与 limits.1 的原则相悖。",
+   "quote": {
+    "source_id": "S-GRANT67",
+    "quote": "I felt like anything rather than rejoicing at the downfall of a foe who had fought so long and valiantly, and had suffered so much for a cause, though that cause was, I believe, one of the worst for which a people ever fought"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.story.8",
+   "problem": "段落停在李拒绝劝降，读者看不到格兰特的反应。原文紧接着写格兰特不再强求，随后两军军官互访叙旧。",
+   "quote": {
+    "source_id": "S-GRANT67",
+    "quote": "I knew there was no use to urge him to do anything against his ideas of what was right."
+   },
+   "severity": "note"
+  },
+  {
+   "path": "uncertainty_note",
+   "problem": "“全文只有一个史源，即格兰特本人的回忆记述”不够准确：章内脚注[2]出自出版方，依据是帕克提供的条款原件；书中还以原文收录了李的信件。“一个史源”是指一本书，不应读成书中一切内容都是格兰特的转述。",
+   "quote": {
+    "source_id": "S-GRANT67",
+    "quote": "There is a popular error to the effect that Generals Grant and Lee each signed the articles of surrender."
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-GRANT67",
+   "outcome": "李在4月9日接受书面条款，格兰特电告斯坦顿受降完成。次日两人在战线之间交谈，李拒绝在征询总统之前劝告全部南军投降，格兰特不再强求。两军军官在麦克莱恩家相聚约一小时后，格兰特率参谋离开，前往 Burkesville Junction。",
+   "quote": "I knew there was no use to urge him to do anything against his ideas of what was right.",
+   "in_evidence": true
+  }
+ ],
+ "additions": [
+  {
+   "id": "GRANT671-E31",
+   "source_id": "S-GRANT67",
+   "offset": 2111,
+   "chars": 505,
+   "why": "交代米德、谢里登犹豫的直接起因：李打出白旗，派人向两人请求停火，此时格兰特在途中联系不上。context.0 只写“李再次来信”后两人犹豫，没有说停火请求来自李，因果不清。"
+  },
+  {
+   "id": "GRANT671-E32",
+   "source_id": "S-GRANT67",
+   "offset": 3420,
+   "chars": 324,
+   "why": "李的第二封信明确为“交出这支军队”请求会面，这是从拒绝会面到受降会面的转折，现有证据包未收。"
+  },
+  {
+   "id": "GRANT671-E33",
+   "source_id": "S-GRANT67",
+   "offset": 7677,
+   "chars": 365,
+   "why": "格兰特自己说明了心情低落的原因：不愿为一个久战而英勇的对手的失败而欢欣，同时认为对方的事业是最坏的之一。这会影响读者对 story.1 和叫停鸣炮的理解，现稿只写了心情低落。"
+  },
+  {
+   "id": "GRANT671-E34",
+   "source_id": "S-GRANT67",
+   "offset": 16278,
+   "chars": 157,
+   "why": "受降之后的直接后果：格兰特决定立即回华盛顿，停止采购和其他无用开支。这也解释了他次日离开阿波马托克斯的原因。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "b2d2a8017ec013c00f23d7ffa3a89099b5681d519dcf6eb408f69293386ea705",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.context.0: 稿件只写“李再次来信”后米德、谢里登犹豫是否停火，漏掉了起因：李打出白旗，并分别派人向两人请求停火。现写法让读者以为犹豫是针对那封信。李第二封信的内容（为交出军队请求会面）也没有交代。",
+  "evidence must be expanded first: 4 addition(s) ['GRANT671-E31', 'GRANT671-E32', 'GRANT671-E33', 'GRANT671-E34']"
+ ]
+}

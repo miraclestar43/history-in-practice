@@ -1,0 +1,3833 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-book-20261031-hushi-baihua",
+ "edition_id": "cand-book-20261031-hushi-baihua",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "cbbe4d8",
+ "started_at": 1793488387.8189414,
+ "base_source": "samples/auto/cand-book-20261031-hushi-baihua/final/article.json",
+ "base_content_sha256": "e6a3ccfcfb44de53aab1c2399a4c2ce74e9bb90674bb69f11e0098ffb0220e5f",
+ "evidence_sha256": "5d71c930c4586dff87cead6fc01c38d07bc448e17f58629699ca3e1d4dfac0c9",
+ "operator_note": null,
+ "model_record_sha256": null,
+ "prior_record_sha256": "6ea11ecc987e8e3fd447cfd7331147bddf1be16141fe955e2ef9f073abbdb627",
+ "attempt": "attempt-7",
+ "context_review_sha256": "b6fb7acadc1fbd181b9b5dcbe55d1e94fc29405b5ad016468ba7b2c1e7b0e812",
+ "inherited": [
+  {
+   "id": "X1",
+   "source": "context review",
+   "where": "uncertainty_note",
+   "problem": "来源上下文核查（zh）「因此这是当事人多年后的回忆，不是当时的独立记录。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-BK-HUSHI〕：「以上九条是记载在我一九一六年七月六日的日记之中」",
+   "suggestion": "改为：这一章整体是胡适晚年的口述回忆，但其中引述了他1916年7月6日的日记和7月26日致任鸿隽的信等当时文字。本文没有查阅这些日记和信件的原件，只能看到经胡适转引、再经英译与回译的文本。"
+  },
+  {
+   "id": "X2",
+   "source": "context review",
+   "where": "uncertainty_note",
+   "problem": "来源上下文核查（en）「It is therefore a participant's recollection many years later, not an independent record from the time.」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-BK-HUSHI〕：「以上九条是记载在我一九一六年七月六日的日记之中」",
+   "suggestion": "Say the chapter is a late recollection that quotes his July 6, 1916 diary and his July 26 letter to Ren. We have not consulted those originals, only the texts as Hu quotes them, translated into English and back."
+  },
+  {
+   "id": "X3",
+   "source": "context review",
+   "where": "uncertainty_note",
+   "problem": "来源上下文核查：关于白话诗结局，读者只能看到唐德刚“白话诗则未必”的评语，看不到胡适本人在同一章对新诗“大有成就”的自评。这样会让读者以为来源对这项试验的结果只有否定判断。应当并列两种看法，并分别标明是谁的观点。。来源原文〔S-BK-HUSHI〕：「四十年来的新诗更是大有成就。」",
+   "suggestion": null
+  },
+  {
+   "id": "X4",
+   "source": "context review",
+   "where": "",
+   "problem": "证据包已按来源上下文补入摘录 HS-E40；请据此检查叙事、结局与因果是否完整准确",
+   "suggestion": null
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.context.0",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "英文把“逼上梁山”释为“being forced by circumstances into a rebel's course”。胡适自己的释义是：为环境所迫，不得已做出违反本意的非常行为。英文的释义偏离了这一点，而且中文版没有这句释义。",
+   "evidence": [
+    {
+     "id": "HS-E2",
+     "quote": "不得已而做出违反他本意的非常行为"
+    }
+   ],
+   "proposed": "英文改为：the Chinese idiom for being forced by circumstances into drastic action against one's own will。或者删去释义，与中文保持一致。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文把释义改为胡适本人的解释：为环境所迫，不得已做出违反本意的非常行为。中文同步补上同一释义，两种语言保持一致。ev 增加 HS-E2。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.story.5",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "英文“privately looking down on the spoken language”意味着有意识地私下轻视。证据说的是“下意识的鄙弃”。",
+   "evidence": [
+    {
+     "id": "HS-E20",
+     "quote": "他们都对白话有一种下意识的鄙弃"
+    }
+   ],
+   "proposed": "英文改为“while unconsciously looking down on the spoken language”。中文“骨子里”可保留，也可改为“下意识里”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文把 privately 改为 unconsciously；中文同步把“骨子里”改为“下意识里”，与证据中的“下意识的鄙弃”一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.story.6",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“找不到同伴”和“with no companions”把话说绝了。原信是“不能多得同志”，即同伴难得，并非完全没有。",
+   "evidence": [
+    {
+     "id": "HS-E22",
+     "quote": "可惜须单身匹马而往，不能多得同志，结伴同行"
+    }
+   ],
+   "proposed": "中文改为“可惜要单身匹马前往，难得同伴”。英文改为“He would have to ride out alone, with few companions”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文把“找不到同伴”改为“难得同伴”，英文把 with no companions 改为 with few companions，与原信“不能多得同志”相符。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.story.6",
+   "category": "inner_life",
+   "severity": "fix",
+   "problem": "本段是记录段（kind=record），却把信中的假设说法写成他的考虑：“给自己留了后路”。证据只记他说可能终归文言诗国，同时还写了“然我去志已决”。",
+   "evidence": [
+    {
+     "id": "HS-E22",
+     "quote": "然我去志已决"
+    },
+    {
+     "id": "HS-E22",
+     "quote": "则我或终归老于"
+    }
+   ],
+   "proposed": "中文改为“他也说：如果这块新地全是不毛之地，他也许终究还要回到‘文言诗国’”。英文改为“He also wrote that if the new land turned out to be barren...”。“留后路”的说法只留在已标明“作者推断”的分析段。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去记录段里带推断色彩的“给自己留了后路”和 left himself a way back，改为照述他信中的说法“他也说……”。同时补上证据中的“去志已决”。“留后路”的解读只保留在已标明“作者推断”的分析段。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.story.8",
+   "category": "readability",
+   "severity": "note",
+   "problem": "“北大另一位……教授”预设读者知道陈独秀在北大任职，但正文从未交代。读者会不明白“另一位”是相对谁而言。",
+   "evidence": [
+    {
+     "id": "HS-E24",
+     "quote": "陈氏于一九一六年受聘为国立北京大学文科学长"
+    },
+    {
+     "id": "HS-E25",
+     "quote": "北京大学一校之内便有两位教授对之极为重视"
+    }
+   ],
+   "proposed": "在 story.7 或 story.8 首次提到陈独秀时补一句“时任北京大学文科学长”，英文同步。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F6",
+   "path": "uncertainty_note",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“这是当事人多年后的回忆，不是当时的独立记录”这句话一概而论，没有区分两类文本。本章确实是晚年口述，但其中引述了1916年7月6日日记和7月26日致任鸿隽信等当时文字。读者会误以为这些引文也只是回忆。",
+   "evidence": [
+    {
+     "id": "HS-E15",
+     "quote": "以上九条是记载在我一九一六年七月六日的日记之中"
+    },
+    {
+     "id": "HS-E21",
+     "quote": "因此在七月二十六日我就写了一封信给吾友任君"
+    },
+    {
+     "id": "HS-E35",
+     "quote": "多少也有点出入"
+    }
+   ],
+   "proposed": "改为：这一章整体是胡适晚年的口述回忆，其中引述了他1916年7月6日的日记和7月26日致任鸿隽的信等当时文字；本文依据的只是经胡适转引、再经英译与回译的文本，没有查阅原件。英文同步修改。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "改写为：这一章整体是晚年口述回忆，其中引述了1916年7月6日日记和7月26日致任鸿隽信等当时文字。本文依据的只是经转引、英译与回译后的文本，未核对原件。英文同步修改。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F7",
+   "path": "uncertainty_note",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "关于白话诗试验的结果，文中只给了唐德刚“白话诗则未必”的评语，没有给出胡适本人在同一章的自评“新诗大有成就”。读者会以为来源对这项试验只有否定判断。",
+   "evidence": [
+    {
+     "id": "HS-E29",
+     "quote": "则未必——至少是还未脱离"
+    },
+    {
+     "id": "HS-E40",
+     "quote": "四十年来的新诗更是大有成就"
+    }
+   ],
+   "proposed": "在唐德刚评语旁并列一句：“胡适本人在同一章则说「四十年来的新诗更是大有成就」，同时承认新文学各部门发展并不平均。”两种看法分别标明是谁的观点。英文同步。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "在唐德刚评语之后，另起一句列出胡适本人的自评「四十年来的新诗更是大有成就」，以及他对各部门发展不平均的承认。两种看法分别标明出处，英文同步修改。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "X1",
+   "problem": "来源上下文核查（zh）「因此这是当事人多年后的回忆，不是当时的独立记录。」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-BK-HUSHI〕：「以上九条是记载在我一九一六年七月六日的日记之中」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "uncertainty_note",
+   "disposition": "duplicate",
+   "same_as": "F6",
+   "rationale": "问题成立。本章引述了当时的日记和信件，“不是当时的独立记录”的说法需要细化。"
+  },
+  {
+   "id": "X2",
+   "problem": "来源上下文核查（en）「It is therefore a participant's recollection many years later, not an independent record from the time.」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-BK-HUSHI〕：「以上九条是记载在我一九一六年七月六日的日记之中」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "uncertainty_note",
+   "disposition": "duplicate",
+   "same_as": "F6",
+   "rationale": "这是 X1 的英文对应项，与 F6 相同。"
+  },
+  {
+   "id": "X3",
+   "problem": "来源上下文核查：关于白话诗结局，读者只能看到唐德刚“白话诗则未必”的评语，看不到胡适本人在同一章对新诗“大有成就”的自评。这样会让读者以为来源对这项试验的结果只有否定判断。应当并列两种看法，并分别标明是谁的观点。。来源原文〔S-BK-HUSHI〕：「四十年来的新诗更是大有成就。」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "uncertainty_note",
+   "disposition": "duplicate",
+   "same_as": "F7",
+   "rationale": "问题成立。文中只有唐德刚对白话诗的保留意见，缺少胡适本人的自评。"
+  },
+  {
+   "id": "X4",
+   "problem": "证据包已按来源上下文补入摘录 HS-E40；请据此检查叙事、结局与因果是否完整准确",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "",
+   "disposition": "duplicate",
+   "same_as": "F7",
+   "rationale": "HS-E40 补入后，影响的是关于白话诗结局的表述是否平衡，这一点已在 F7 列出。其余叙事与因果经核对无新问题。"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.hook.1",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "“朋友们已经承认白话可以写小说、写演说，只剩一处不肯让：诗”被写成叙述者的定论。证据显示这是胡适对两人来信的归纳。梅光迪本人还把“高级散文”排除在外，“演说”一例也只出自任鸿隽。story.5 已经标明这是胡适的话，hook 却没有标明来源。",
+   "evidence": [
+    {
+     "id": "HS-E20",
+     "quote": "则我的朋友们除了“诗”这个堡垒之外，其他方面已经全部向我让步了"
+    },
+    {
+     "id": "HS-E19",
+     "quote": "但是在高级散文里——肯定的是在诗里面——白话千万用不得"
+    }
+   ],
+   "proposed": "zh 改为“到这年夏天，在胡适看来，朋友们已经承认白话可以写小说等，只剩一处不肯让：诗。”en 相应改为“By that summer, as Hu saw it, his friends granted…”。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "把朋友们的让步改为胡适的归纳（“在胡适看来”/as Hu saw it），并把“写小说、写演说”收窄为“写小说等”，避免把只出自任鸿隽的“演说”一例算到两人头上；中英同步。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V2",
+   "path": "sections.context.1",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "英文 marry no one under twenty-five 的意思是“不要娶未满二十五岁的人”，与原传单「不满二十五岁不娶妻」（本人未满二十五岁不娶妻）意思不同，属误译。",
+   "evidence": [
+    {
+     "id": "HS-E3",
+     "quote": "“不满二十五岁不娶妻。”"
+    }
+   ],
+   "proposed": "en 改为 do not marry before twenty-five。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "英文误译改为 do not marry before twenty-five，与传单原意（本人未满二十五岁不娶妻）一致。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V3",
+   "path": "sections.context.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "第一处：“看一眼就丢进纸篓”中的“看一眼”是证据之外补出的细节。第二处：“在留学生的年会上写了篇论文”与证据不符，证据说的是为年会分股讨论准备论文。",
+   "evidence": [
+    {
+     "id": "HS-E4",
+     "quote": "总是把它向纸篓里一丢就算了"
+    },
+    {
+     "id": "HS-E6",
+     "quote": "负有准备年会时分股讨论的责任"
+    }
+   ],
+   "proposed": "第一处改为“大家通常往纸篓里一丢就算了”；第二处改为“他为留学生年会写了篇论文”。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "删去证据外的“看一眼”，改为“往纸篓里一丢就算了”；把“在年会上写了篇论文”改为“为留学生年会写了篇论文”。英文原本已是 went straight into the wastebasket 和 for a conference，未作这两处改动。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V4",
+   "path": "sections.story.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "证据说元曲等白话文学是这场文学革命的“最高潮”。稿件写成“完成的一场文学革命”，与同段“变化在唐代就开始了”的说法互相矛盾。",
+   "evidence": [
+    {
+     "id": "HS-E13",
+     "quote": "便是人民大众在不知不觉中完成的文学革命的最高潮"
+    }
+   ],
+   "proposed": "zh 改为“是老百姓在不知不觉中完成的文学革命的最高潮”；en 改为 was the high point of a literary revolution the common people had carried out without knowing it。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "按证据把元曲改为文学革命的“最高潮”，消除与“变化在唐代就开始了”的矛盾；中英同步。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V5",
+   "path": "sections.analysis.1",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "中英文不一致，有两处。第一处：英文漏译“这段经历最有意思的地方”。第二处：中文“只要写出像样的白话诗”，英文写成 a single good vernacular poem，多出了“一首”的限定。",
+   "evidence": [],
+   "proposed": "en 改为 The author's inference: what is most interesting here is that Hu turned…；同时把 a single good vernacular poem 改为 good vernacular poems。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "英文补上“这段经历最有意思的地方”（what is most interesting here），并把 a single good vernacular poem 改为 good vernacular poems，与中文“只要写出像样的白话诗”一致。中文未改。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V2-V1",
+   "path": "sections.story.3",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "稿件用叙述者口吻直接写出两点：梅光迪受老师影响，以及因此对胡适的一切激进主张反对到底。这既是对梅光迪动机的判断，也是一条因果。证据中这是胡适的说法，稿件没有标明出处。英文 under the influence of his conservative teacher, he opposed everything radical 同样如此。",
+   "evidence": [
+    {
+     "id": "HS-E17",
+     "quote": "这时的梅觐庄正受了他那位保守派文学批评老师白壁德教授的影响。所以我的一切激进他都反对到底。"
+    }
+   ],
+   "proposed": "中文改为“在胡适看来，梅光迪那时正受他那位保守派老师的影响，所以对胡适的一切激进主张都反对到底。”英文相应改为 \"As Hu saw it, Mei was then under the influence of his conservative teacher and so opposed everything radical Hu proposed.\"",
+   "origin": "final-editor verify round 2",
+   "disposition": "fixed",
+   "decided_in": "localfix-attempt-7-3",
+   "rationale": "local fix: local fix (owner rule 2026-10-31): story.3 attribution to Hu (HS-E17) + owner-instructed removal of the zh idiom gloss re-added by attempt-7"
+  },
+  {
+   "id": "OP1",
+   "path": "sections.context.0",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "owner instruction 2026-10-31: no dictionary gloss of 逼上梁山 for Chinese readers; English keeps a short inline gloss",
+   "origin": "operator: owner instruction (local fix)",
+   "evidence": [],
+   "disposition": "fixed",
+   "decided_in": "localfix-attempt-7-3",
+   "rationale": "local fix: local fix (owner rule 2026-10-31): story.3 attribution to Hu (HS-E17) + owner-instructed removal of the zh idiom gloss re-added by attempt-7"
+  },
+  {
+   "id": "OP2",
+   "path": "sections.analysis.0",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "owner 2026-10-31: 明确胡适自己将《尝试集》命名与试验联系到杜威实验主义（HS-E41），杜威一句话介绍",
+   "origin": "operator: owner instruction (local fix)",
+   "evidence": [],
+   "disposition": "fixed",
+   "decided_in": "localfix-attempt-7-4",
+   "rationale": "local fix: owner-authorized 2026-10-31: chapter citation (events ch.7, outcome ch.8; Tang's translation note limited to ch.7) and Hu's own Dewey attribution (HS-E41); author's inference limited to the article's additions"
+  },
+  {
+   "id": "OP3",
+   "path": "sections.analysis.1",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "owner 2026-10-31: 作者推断只保留本文新增的观点，不把胡适自己的说法当作推断",
+   "origin": "operator: owner instruction (local fix)",
+   "evidence": [],
+   "disposition": "fixed",
+   "decided_in": "localfix-attempt-7-4",
+   "rationale": "local fix: owner-authorized 2026-10-31: chapter citation (events ch.7, outcome ch.8; Tang's translation note limited to ch.7) and Hu's own Dewey attribution (HS-E41); author's inference limited to the article's additions"
+  },
+  {
+   "id": "OP4",
+   "path": "sections.limits.0",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "owner 2026-10-31: 材料说明注明事件见第七章、结局见第八章",
+   "origin": "operator: owner instruction (local fix)",
+   "evidence": [],
+   "disposition": "fixed",
+   "decided_in": "localfix-attempt-7-4",
+   "rationale": "local fix: owner-authorized 2026-10-31: chapter citation (events ch.7, outcome ch.8; Tang's translation note limited to ch.7) and Hu's own Dewey attribution (HS-E41); author's inference limited to the article's additions"
+  },
+  {
+   "id": "OP5",
+   "path": "sources.0.citation",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "owner 2026-10-31: 来源元数据改为第七章（事件）与第八章（结局）",
+   "origin": "operator: owner instruction (local fix)",
+   "evidence": [],
+   "disposition": "fixed",
+   "decided_in": "localfix-attempt-7-4",
+   "rationale": "local fix: owner-authorized 2026-10-31: chapter citation (events ch.7, outcome ch.8; Tang's translation note limited to ch.7) and Hu's own Dewey attribution (HS-E41); author's inference limited to the article's additions"
+  },
+  {
+   "id": "OP6",
+   "path": "further_reading.0.title",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "owner 2026-10-31: 延伸阅读改为第七、八章",
+   "origin": "operator: owner instruction (local fix)",
+   "evidence": [],
+   "disposition": "fixed",
+   "decided_in": "localfix-attempt-7-4",
+   "rationale": "local fix: owner-authorized 2026-10-31: chapter citation (events ch.7, outcome ch.8; Tang's translation note limited to ch.7) and Hu's own Dewey attribution (HS-E41); author's inference limited to the article's additions"
+  },
+  {
+   "id": "CTX-X1",
+   "path": "uncertainty_note",
+   "category": "context",
+   "severity": "fix",
+   "problem": "来源上下文核查：章节归属有误。凯约嘉湖、钟文鳌、梅光迪、《尝试集》、“刍议”、陈独秀响应等经过都在第七章《文学革命的结胎时期》；第八章只含1920年通令、“部分的胜利”和“新诗大有成就”等结局。唐德刚关于节译、回译的说明是第七章注〔1〕，指的是“本章”即第七章。稿件写“第八章”“这一章”“同一章”，混淆了章节，也把回译说明套到了第八章的结局材料上。。来源原文〔S-BK-HUSHI〕：「原载《传记文学》第三十四卷第一期第七章文学革命的结胎时期」",
+   "origin": "source-context review 1793489067.7880285 (content b4e3a1632784)",
+   "evidence": [],
+   "disposition": "fixed",
+   "decided_in": "localfix-attempt-7-4",
+   "rationale": "local fix: owner-authorized 2026-10-31: chapter citation (events ch.7, outcome ch.8; Tang's translation note limited to ch.7) and Hu's own Dewey attribution (HS-E41); author's inference limited to the article's additions"
+  },
+  {
+   "id": "CTX-X2",
+   "path": "uncertainty_note",
+   "category": "context",
+   "severity": "fix",
+   "problem": "来源上下文核查：“胡适本人在同一章则说「四十年来的新诗更是大有成就」”一句：这句话出自第八章，与唐德刚“白话诗则未必”的注〔6〕（第七章）不在同一章。应改为“在下一章（第八章）”。。来源原文〔S-BK-HUSHI〕：「第八章从文学革命到文艺复兴」",
+   "origin": "source-context review 1793489067.7880285 (content b4e3a1632784)",
+   "evidence": [],
+   "disposition": "fixed",
+   "decided_in": "localfix-attempt-7-4",
+   "rationale": "local fix: owner-authorized 2026-10-31: chapter citation (events ch.7, outcome ch.8; Tang's translation note limited to ch.7) and Hu's own Dewey attribution (HS-E41); author's inference limited to the article's additions"
+  },
+  {
+   "id": "V4-V1",
+   "path": "sections.limits.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "稿件说事件见原书第七章、结局见第八章。证据包里的每一条（HS-E1 至 HS-E41，包括钟文鳌、梅光迪、湖上事件等经过）都标注为“第八章‘从文学革命到文艺复兴’”，没有任何一条标为第七章。因此“事件见第七章”在本证据包中没有依据，而且与标注冲突。",
+   "evidence": [
+    {
+     "id": "HS-E16",
+     "quote": "第八章“从文学革命到文艺复兴”"
+    },
+    {
+     "id": "HS-E30",
+     "quote": "第八章“从文学革命到文艺复兴”"
+    }
+   ],
+   "proposed": "按证据包统一写成“均见第八章”。如果确认原书分章不同，应先更正证据包和来源标注，再保留分章说法。",
+   "origin": "final-editor verify after local fix (round 4)"
+  },
+  {
+   "id": "V4-V2",
+   "path": "uncertainty_note",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "中英文均有三处与证据包标注不符：（1）写事件出自第七章《文学革命的结胎时期》，但证据包没有这个章名，所有条目都标为第八章；（2）写唐德刚关于英文稿节译、回译的说明出自第七章注释，并称“这一说明只针对第七章”，而 HS-E35 标为第八章，原文说的是“本章”；（3）写唐德刚的评论（HS-E27、HS-E28、HS-E29、HS-E36）是“第七章的注释”，但这些条目都标为第八章。按 HS-E35 的标注，回译限定应适用于第八章，也就是本文依据的全部材料；写成“只针对第七章”会让读者误以为第八章的结局部分没有这层出入。同批改动的来源元数据 further_reading.0.title（“第七、八章”）和 sources.0.citation（“第七章‘文学革命的结胎时期’”）也有同样的问题。",
+   "evidence": [
+    {
+     "id": "HS-E35",
+     "quote": "因此本章的英文稿，原是我们自他《四十自述》的《逼上梁山》那一章里节译出来的"
+    },
+    {
+     "id": "HS-E27",
+     "quote": "第八章“从文学革命到文艺复兴”"
+    }
+   ],
+   "proposed": "中英文都改为“均出自第八章《从文学革命到文艺复兴》”。删去“这一说明只针对第七章”，改为“唐德刚在该章说明，该章英文稿……与原文多少有出入”。唐德刚注释的位置统一写作第八章。further_reading.0.title 改为“第八章”，sources.0.citation 删去第七章及其章名。",
+   "origin": "final-editor verify after local fix (round 4)"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.context.0.zh",
+   "before": "主张白话也能作诗的胡适，其实自称是个保守的人，常对朋友说，语言文字是世界上最保守的东西，比宗教还保守。他最坚定的对手是梅光迪，此时在哈佛随一位保守派文学批评家深造；胡适说，正是梅光迪的强烈反对，把他“逼上梁山”。另一位是在康乃尔的朋友任鸿隽，他曾作打油诗取笑胡适，湖上那首纪事诗也出自他手。",
+   "after": "主张白话也能作诗的胡适，其实自称是个保守的人，常对朋友说，语言文字是世界上最保守的东西，比宗教还保守。他最坚定的对手是梅光迪，此时在哈佛随一位保守派文学批评家深造；胡适说，正是梅光迪的强烈反对，把他“逼上梁山”。按他的解释，这句成语是说一个人为环境所迫，不得已做出违反本意的非常行为。另一位是在康乃尔的朋友任鸿隽，他曾作打油诗取笑胡适，湖上那首纪事诗也出自他手。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.context.0.en",
+   "before": "Hu, the man arguing that it could, called himself a conservative. He used to tell his friends that language and writing are the most conservative things in the world, more conservative than religion. His most determined opponent was Mei Guangdi, then studying at Harvard under a conservative literary critic; it was Mei's fierce opposition, Hu later said, that drove him to Liangshan — the Chinese idiom for being forced by circumstances into a rebel's course. The other was Ren Hongjun, a friend at Cornell who once teased Hu in comic verse, and who had written the poem about the lake.",
+   "after": "Hu, the man arguing that it could, called himself a conservative. He used to tell his friends that language and writing are the most conservative things in the world, more conservative than religion. His most determined opponent was Mei Guangdi, then studying at Harvard under a conservative literary critic; it was Mei's fierce opposition, Hu later said, that drove him to Liangshan. As Hu explained it, the Chinese idiom means being forced by circumstances into drastic action against one's own will. The other was Ren Hongjun, a friend at Cornell who once teased Hu in comic verse, and who had written the poem about the lake.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.context.0.ev",
+   "before": [
+    "HS-E1",
+    "HS-E8",
+    "HS-E10",
+    "HS-E16",
+    "HS-E17"
+   ],
+   "after": [
+    "HS-E1",
+    "HS-E2",
+    "HS-E8",
+    "HS-E10",
+    "HS-E16",
+    "HS-E17"
+   ],
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.story.5.zh",
+   "before": "争论缩到了最后一处。用胡适的话说，朋友们「除了“诗”这个堡垒之外，其他方面已经全部向我让步了」。他把朋友们的理由排了队：一是从来没有诗人用俗语俗字作过诗，他自己也只找到一首、甚至只是一首中的几句；二是更能服人的一条，从来没有中国作家认真着实地用白话作诗，偶尔写几行，骨子里还是看不起白话。他的结论很简单：要说服朋友，只有以身作则，自己认真去试，除此之外没有别的办法。",
+   "after": "争论缩到了最后一处。用胡适的话说，朋友们「除了“诗”这个堡垒之外，其他方面已经全部向我让步了」。他把朋友们的理由排了队：一是从来没有诗人用俗语俗字作过诗，他自己也只找到一首、甚至只是一首中的几句；二是更能服人的一条，从来没有中国作家认真着实地用白话作诗，偶尔写几行，下意识里还是看不起白话。他的结论很简单：要说服朋友，只有以身作则，自己认真去试，除此之外没有别的办法。",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.5.en",
+   "before": "The argument had shrunk to one last point. In Hu's words, his friends had conceded everything to him except the fortress of poetry. He set out their reasons in order. First, no poet had ever written verse in everyday words; Hu himself could find only one poem, perhaps only a few lines of one. Second, and more convincing, no Chinese writer had ever seriously tried; poets had dropped in a few vernacular lines on a whim, while privately looking down on the spoken language. His conclusion was simple. To persuade his friends he had to set the example and seriously try writing vernacular poetry himself. There was no other way.",
+   "after": "The argument had shrunk to one last point. In Hu's words, his friends had conceded everything to him except the fortress of poetry. He set out their reasons in order. First, no poet had ever written verse in everyday words; Hu himself could find only one poem, perhaps only a few lines of one. Second, and more convincing, no Chinese writer had ever seriously tried; poets had dropped in a few vernacular lines on a whim, while unconsciously looking down on the spoken language. His conclusion was simple. To persuade his friends he had to set the example and seriously try writing vernacular poetry himself. There was no other way.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.6.zh",
+   "before": "1916年7月26日，他写信给任鸿隽，说施耐庵、曹雪芹已经证明白话可以写好小说，「今尚需人实地试验白话是否可为韵文之利器耳」。他在给朋友们的信里说，就算失败一两次、甚至无数次，也可以不断试下去，直到证明白话究竟能不能作诗为止。他还打了个比方：「我此时练习白话诗文，颇似新辟一文学殖民地。」可惜要单枪匹马前往，找不到同伴；他也给自己留了后路：如果这块新地全是不毛之地，他也许终究还要回到“文言诗国”。七月底八月初，他决定不再写旧诗词。还没写出几首白话诗，他就先给下一本诗集取好了名字：《尝试集》。",
+   "after": "1916年7月26日，他写信给任鸿隽，说施耐庵、曹雪芹已经证明白话可以写好小说，「今尚需人实地试验白话是否可为韵文之利器耳」。他在给朋友们的信里说，就算失败一两次、甚至无数次，也可以不断试下去，直到证明白话究竟能不能作诗为止。他还打了个比方：「我此时练习白话诗文，颇似新辟一文学殖民地。」可惜要单身匹马前往，难得同伴，但他说自己去志已决。他也说，如果这块新地全是不毛之地，他也许终究还要回到“文言诗国”。七月底八月初，他决定不再写旧诗词。还没写出几首白话诗，他就先给下一本诗集取好了名字：《尝试集》。",
+   "issues": [
+    "F3",
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.story.6.en",
+   "before": "On July 26, 1916, he wrote to Ren — paraphrased here — that Shi Nai'an and Cao Xueqin had already shown in practice that the spoken language was the right tool for the novel; what remained was for someone to test in practice whether it could be the tool of verse. Even if they failed once, twice or countless times, he told these friends, they could keep experimenting until they knew whether the vernacular could be poetry. He compared his practice in vernacular verse and prose to opening up a new literary colony. He would have to ride out alone, with no companions. And he left himself a way back: if the new land turned out to be barren, he might end his days in the old kingdom of classical poetry after all. In late July and early August he decided to stop writing classical verse. Before he had written more than a few vernacular poems, he had already named his next collection: Experiments.",
+   "after": "On July 26, 1916, he wrote to Ren — paraphrased here — that Shi Nai'an and Cao Xueqin had already shown in practice that the spoken language was the right tool for the novel; what remained was for someone to test in practice whether it could be the tool of verse. Even if they failed once, twice or countless times, he told these friends, they could keep experimenting until they knew whether the vernacular could be poetry. He compared his practice in vernacular verse and prose to opening up a new literary colony. He would have to ride out alone, with few companions, but he said his mind was made up. He also wrote that if the new land turned out to be barren, he might end his days in the old kingdom of classical poetry after all. In late July and early August he decided to stop writing classical verse. Before he had written more than a few vernacular poems, he had already named his next collection: Experiments.",
+   "issues": [
+    "F3",
+    "F4"
+   ]
+  },
+  {
+   "path": "uncertainty_note.zh",
+   "before": "本文只依据一本书：胡适口述、唐德刚译注《胡适口述自传》（中国文史出版社，2020）第八章。按唐德刚说明，这一章的英文稿是从胡适《四十自述》的《逼上梁山》一章节译、经胡适手订后再回译成中文的，与原文多少有出入。因此这是当事人多年后的回忆，不是当时的独立记录。梅光迪、任鸿隽的言行都经胡适转述；胡适对“改良”措辞的解释是他事后的说法。唐德刚的注释属评论：他认为“文言是半死的文字”这句口号当年摧枯拉朽，但真实性值得重新商榷；他认为白话文百分之百成功，白话诗则还未脱离“尝试”阶段；他也记下反对者觉得胡适居功太多，1956年胡适在哈佛以此讲演时，后来为他作传的格里德嗤之以鼻。这些都是唐德刚的记述，本文未另行核验。标为“作者推断”的段落是本文的解读，思考题中的场景是虚构的。",
+   "after": "本文只依据一本书：胡适口述、唐德刚译注《胡适口述自传》（中国文史出版社，2020）第八章。按唐德刚说明，这一章的英文稿是从胡适《四十自述》的《逼上梁山》一章节译、经胡适手订后再回译成中文的，与原文多少有出入。因此这一章整体是当事人多年后的口述回忆。其中引述了他1916年7月6日的日记和7月26日致任鸿隽的信等当时文字，但本文依据的只是经胡适转引、再经英译与回译的文本，未核对原件。梅光迪、任鸿隽的言行都经胡适转述；胡适对“改良”措辞的解释是他事后的说法。唐德刚的注释属评论：他认为“文言是半死的文字”这句口号当年摧枯拉朽，但真实性值得重新商榷；他认为白话文百分之百成功，白话诗则还未脱离“尝试”阶段；他也记下反对者觉得胡适居功太多，1956年胡适在哈佛以此讲演时，后来为他作传的格里德嗤之以鼻。这些都是唐德刚的记述，本文未另行核验。关于白话诗的结果，胡适本人在同一章则说「四十年来的新诗更是大有成就」，同时承认新文学各部门发展并不平均。标为“作者推断”的段落是本文的解读，思考题中的场景是虚构的。",
+   "issues": [
+    "F6",
+    "F7"
+   ]
+  },
+  {
+   "path": "uncertainty_note.en",
+   "before": "This piece rests on one book: Hu Shi's oral memoir, translated and annotated by Tang Degang (Chinese Literature and History Press, 2020), chapter 8. As Tang explains, the English draft of this chapter was abridged from the Driven to Liangshan chapter of Hu's Forty Self-Narratives, revised in Hu's own hand and then translated back into Chinese, and it differs from the original to some degree. It is therefore a participant's recollection many years later, not an independent record from the time. Mei Guangdi's and Ren Hongjun's words and actions reach us through Hu, and his explanation of the moderate wording is his own later account. Tang's notes are commentary: he thought the slogan that the classical language is half dead was devastating in its day but that its truth deserves a fresh look; he judged vernacular prose a complete success and vernacular poetry not yet out of the experimental stage; and he records that Hu's opponents felt he claimed too much credit, and that when Hu gave this account in a 1956 lecture at Harvard, Jerome B. Grieder, later his biographer, scoffed. These are Tang's accounts and were not checked separately here. Paragraphs marked as the author's inference are this article's reading; the scenario in the question is fictional.",
+   "after": "This piece rests on one book: Hu Shi's oral memoir, translated and annotated by Tang Degang (Chinese Literature and History Press, 2020), chapter 8. As Tang explains, the English draft of this chapter was abridged from the Driven to Liangshan chapter of Hu's Forty Self-Narratives, revised in Hu's own hand and then translated back into Chinese, and it differs from the original to some degree. The chapter as a whole is therefore a participant's oral recollection many years later. It quotes writings from the time, such as Hu's diary entry of July 6, 1916 and his letter to Ren Hongjun of July 26. This article relies only on those texts as Hu quoted them, then translated into English and back again, and has not checked the originals. Mei Guangdi's and Ren Hongjun's words and actions reach us through Hu, and his explanation of the moderate wording is his own later account. Tang's notes are commentary: he thought the slogan that the classical language is half dead was devastating in its day but that its truth deserves a fresh look; he judged vernacular prose a complete success and vernacular poetry not yet out of the experimental stage; and he records that Hu's opponents felt he claimed too much credit, and that when Hu gave this account in a 1956 lecture at Harvard, Jerome B. Grieder, later his biographer, scoffed. These are Tang's accounts and were not checked separately here. On the outcome for vernacular poetry, Hu himself says in the same chapter that the new poetry of the past forty years had achieved a great deal, while acknowledging that the different branches of the new literature developed unevenly. Paragraphs marked as the author's inference are this article's reading; the scenario in the question is fictional.",
+   "issues": [
+    "F6",
+    "F7"
+   ]
+  },
+  {
+   "path": "sections.hook.1.zh",
+   "before": "胡适回信说这首诗不好：诗里夹着《诗经》式的老字，「文字殊不调和」，还有「三千年前之死语」。这句批评惹恼了两位朋友，一场争了一年多的老问题又被翻了出来，而且越吵越窄。到这年夏天，朋友们已经承认白话可以写小说、写演说，只剩一处不肯让：诗。白话能不能用来写诗？胡适接下来没有只靠辩论，而是决定自己动手去试。",
+   "after": "胡适回信说这首诗不好：诗里夹着《诗经》式的老字，「文字殊不调和」，还有「三千年前之死语」。这句批评惹恼了两位朋友，一场争了一年多的老问题又被翻了出来，而且越吵越窄。到这年夏天，在胡适看来，朋友们已经承认白话可以写小说等，只剩一处不肯让：诗。白话能不能用来写诗？胡适接下来没有只靠辩论，而是决定自己动手去试。",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "Hu wrote back that the poem was bad. It mixed archaic words of the kind found in the ancient Book of Songs with modern language, so that, in his words (translated here), its diction did not hang together; he even spoke of dead words from three thousand years ago. The remark stung two friends and reopened an argument more than a year old, one that kept narrowing. By that summer his friends granted that the spoken language would do for novels and speeches — but not for poetry. Could poetry be written in baihua, the plain spoken language? Hu's next step was not to rely on argument alone: he decided to try it himself.",
+   "after": "Hu wrote back that the poem was bad. It mixed archaic words of the kind found in the ancient Book of Songs with modern language, so that, in his words (translated here), its diction did not hang together; he even spoke of dead words from three thousand years ago. The remark stung two friends and reopened an argument more than a year old, one that kept narrowing. By that summer, as Hu saw it, his friends granted that the spoken language would do for novels and the like — but not for poetry. Could poetry be written in baihua, the plain spoken language? Hu's next step was not to rely on argument alone: he decided to try it himself.",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.context.1.zh",
+   "before": "胡适对文字问题认真起来，起因是一张小传单。留学生每月的奖学金支票信封里，常夹着一位热心改革的书记写的传单，上面写着「不满二十五岁不娶妻。」「废除汉字，改用字母！」之类的话，大家通常看一眼就丢进纸篓。约在1915年，胡适却坐下来回了张很不客气的字条，叫对方「最好闭起鸟嘴！」。字条寄出后他又懊悔，觉得不该对一位和善的改革者这样无礼，觉得够资格的人更该认真研究这个问题。他在留学生的年会上写了篇论文，说文言是「半死的语言」：“狗”字今天还在用，“犬”字已经不用了；“骑马”是日常话，“乘马”早已不通行。",
+   "after": "胡适对文字问题认真起来，起因是一张小传单。留学生每月的奖学金支票信封里，常夹着一位热心改革的书记写的传单，上面写着「不满二十五岁不娶妻。」「废除汉字，改用字母！」之类的话，大家通常往纸篓里一丢就算了。约在1915年，胡适却坐下来回了张很不客气的字条，叫对方「最好闭起鸟嘴！」。字条寄出后他又懊悔，觉得不该对一位和善的改革者这样无礼，觉得够资格的人更该认真研究这个问题。他为留学生年会写了篇论文，说文言是「半死的语言」：“狗”字今天还在用，“犬”字已经不用了；“骑马”是日常话，“乘马”早已不通行。",
+   "issues": [
+    "V1-V3"
+   ]
+  },
+  {
+   "path": "sections.context.1.en",
+   "before": "Hu's serious interest in the written language began with a leaflet. The envelopes that carried Chinese students' monthly scholarship checks often held leaflets slipped in by a reform-minded clerk, with slogans such as marry no one under twenty-five and abolish the Chinese characters for an alphabet. Most went straight into the wastebasket. Around 1915 Hu instead wrote a rude note telling the man, in effect, to shut his beak. He soon regretted it: the man was kind, and those qualified, Hu felt, should study the problem themselves. He wrote a paper for a Chinese students' conference arguing that the classical written language was half dead. Gou, dog, is still in use, he pointed out; quan, the classical word for it, is not. The everyday phrase for riding a horse lives on; the classical one has died.",
+   "after": "Hu's serious interest in the written language began with a leaflet. The envelopes that carried Chinese students' monthly scholarship checks often held leaflets slipped in by a reform-minded clerk, with slogans such as do not marry before twenty-five and abolish the Chinese characters for an alphabet. Most went straight into the wastebasket. Around 1915 Hu instead wrote a rude note telling the man, in effect, to shut his beak. He soon regretted it: the man was kind, and those qualified, Hu felt, should study the problem themselves. He wrote a paper for a Chinese students' conference arguing that the classical written language was half dead. Gou, dog, is still in use, he pointed out; quan, the classical word for it, is not. The everyday phrase for riding a horse lives on; the classical one has died.",
+   "issues": [
+    "V1-V2",
+    "V1-V3"
+   ]
+  },
+  {
+   "path": "sections.story.1.zh",
+   "before": "1916年二三月间，胡适想出一个说法：一部中国文学史，就是文学工具不断更换的历史，活的工具替代死的工具。他说，这个变化在唐代就开始了：先是和尚们用白话记录语录，后来宋代的哲学家也用它，老百姓又用它唱曲、编戏、写小说；元曲这样的白话文学，是老百姓在不知不觉中完成的一场文学革命。他写长信给梅光迪讲这套道理。出乎他的意料，这位保守的朋友竟欣然接受了这个历史结论。",
+   "after": "1916年二三月间，胡适想出一个说法：一部中国文学史，就是文学工具不断更换的历史，活的工具替代死的工具。他说，这个变化在唐代就开始了：先是和尚们用白话记录语录，后来宋代的哲学家也用它，老百姓又用它唱曲、编戏、写小说；元曲这样的白话文学，是老百姓在不知不觉中完成的文学革命的最高潮。他写长信给梅光迪讲这套道理。出乎他的意料，这位保守的朋友竟欣然接受了这个历史结论。",
+   "issues": [
+    "V1-V4"
+   ]
+  },
+  {
+   "path": "sections.story.1.en",
+   "before": "In February and March 1916 Hu arrived at a general idea: the history of Chinese literature was a history of changing tools, a living tool replacing a dead one. The change, he argued, had begun in the Tang dynasty. Buddhist monks first used the spoken language to record their teachers' sayings; Song philosophers adopted it; ordinary people used it for songs, plays and novels. Vernacular literature such as Yuan drama, he said, was a literary revolution the common people had carried out without knowing it. He laid this out in a long letter to Mei. To Hu's surprise, his conservative friend gladly accepted the historical conclusion.",
+   "after": "In February and March 1916 Hu arrived at a general idea: the history of Chinese literature was a history of changing tools, a living tool replacing a dead one. The change, he argued, had begun in the Tang dynasty. Buddhist monks first used the spoken language to record their teachers' sayings; Song philosophers adopted it; ordinary people used it for songs, plays and novels. Vernacular literature such as Yuan drama, he said, was the high point of a literary revolution the common people had carried out without knowing it. He laid this out in a long letter to Mei. To Hu's surprise, his conservative friend gladly accepted the historical conclusion.",
+   "issues": [
+    "V1-V4"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.en",
+   "before": "The author's inference: Hu turned an argument nobody could win into a question that could be tested. The claim that the spoken language cannot be poetry is absolute; a single good vernacular poem would shake it, while without poems, any number of letters would remain a standoff. By naming his collection Experiments in advance, he in effect set himself the task of supplying the proof. In his letters he also wrote down his retreat in case of failure, accepting that the result might prove him wrong — which made it a real experiment rather than the argument continued by other means. When he published, he lowered his voice, and Chen then raised the banner.",
+   "after": "The author's inference: what is most interesting here is that Hu turned an argument nobody could win into a question that could be tested. The claim that the spoken language cannot be poetry is absolute; good vernacular poems would shake it, while without poems, any number of letters would remain a standoff. By naming his collection Experiments in advance, he in effect set himself the task of supplying the proof. In his letters he also wrote down his retreat in case of failure, accepting that the result might prove him wrong — which made it a real experiment rather than the argument continued by other means. When he published, he lowered his voice, and Chen then raised the banner.",
+   "issues": [
+    "V1-V5"
+   ]
+  },
+  {
+   "path": "sections.context.0.zh",
+   "before": "主张白话也能作诗的胡适，其实自称是个保守的人，常对朋友说，语言文字是世界上最保守的东西，比宗教还保守。他最坚定的对手是梅光迪，此时在哈佛随一位保守派文学批评家深造；胡适说，正是梅光迪的强烈反对，把他“逼上梁山”。按他的解释，这句成语是说一个人为环境所迫，不得已做出违反本意的非常行为。另一位是在康乃尔的朋友任鸿隽，他曾作打油诗取笑胡适，湖上那首纪事诗也出自他手。",
+   "after": "主张白话也能作诗的胡适，其实自称是个保守的人，常对朋友说，语言文字是世界上最保守的东西，比宗教还保守。他最坚定的对手是梅光迪，此时在哈佛随一位保守派文学批评家深造；胡适说，正是梅光迪的强烈反对，把他“逼上梁山”。另一位是在康乃尔的朋友任鸿隽，他曾作打油诗取笑胡适，湖上那首纪事诗也出自他手。",
+   "issues": [
+    "V2-V1",
+    "OP1"
+   ]
+  },
+  {
+   "path": "sections.context.0.en",
+   "before": "Hu, the man arguing that it could, called himself a conservative. He used to tell his friends that language and writing are the most conservative things in the world, more conservative than religion. His most determined opponent was Mei Guangdi, then studying at Harvard under a conservative literary critic; it was Mei's fierce opposition, Hu later said, that drove him to Liangshan. As Hu explained it, the Chinese idiom means being forced by circumstances into drastic action against one's own will. The other was Ren Hongjun, a friend at Cornell who once teased Hu in comic verse, and who had written the poem about the lake.",
+   "after": "Hu, the man arguing that it could, called himself a conservative. He used to tell his friends that language and writing are the most conservative things in the world, more conservative than religion. His most determined opponent was Mei Guangdi, then studying at Harvard under a conservative literary critic; it was Mei's fierce opposition, Hu later said, that drove him to Liangshan, the Chinese saying for being forced into a rebel's course against one's will. The other was Ren Hongjun, a friend at Cornell who once teased Hu in comic verse, and who had written the poem about the lake.",
+   "issues": [
+    "V2-V1",
+    "OP1"
+   ]
+  },
+  {
+   "path": "sections.story.3.zh",
+   "before": "他对那首纪事诗的批评，引来一场风波。任鸿隽对“死语”的说法愤愤不平；更激动的是梅光迪，他路见不平，写来一封信猛烈反击。梅光迪那时正受他那位保守派老师的影响，对胡适的一切激进主张都反对到底。他认为文字必须经过第一流诗人的锻炼和美化，才能成为诗的文字。",
+   "after": "他对那首纪事诗的批评，引来一场风波。任鸿隽对“死语”的说法愤愤不平；更激动的是梅光迪，他路见不平，写来一封信猛烈反击。按胡适的说法，梅光迪那时正受他那位保守派老师的影响，对胡适的一切激进主张都反对到底。他认为文字必须经过第一流诗人的锻炼和美化，才能成为诗的文字。",
+   "issues": [
+    "V2-V1",
+    "OP1"
+   ]
+  },
+  {
+   "path": "sections.story.3.en",
+   "before": "His criticism of the lake poem set off a storm of its own. Ren was indignant about the dead words. Mei, angrier still, rushed to his friend's defence with a heated letter; under the influence of his conservative teacher, he opposed everything radical Hu proposed. Words become poetic language, he insisted, only after first-rate poets have refined and beautified them.",
+   "after": "His criticism of the lake poem set off a storm of its own. Ren was indignant about the dead words. Mei, angrier still, rushed to his friend's defence with a heated letter. By Hu's account, Mei was then under the influence of his conservative teacher and opposed everything radical Hu proposed. Words become poetic language, he insisted, only after first-rate poets have refined and beautified them.",
+   "issues": [
+    "V2-V1",
+    "OP1"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.zh",
+   "before": "胡适自己说，把他推上这条路的，是一连串的小意外：一首送别诗，一场湖上的险事。他一向反对用某一个原因解释所有历史，常开玩笑说，意外往往比那些包打天下的“单因”更重要。",
+   "after": "胡适自己说，把他推上这条路的，是一连串的小意外：一首送别诗，一场湖上的险事。他一向反对用某一个原因解释所有历史，常开玩笑说，意外往往比那些包打天下的“单因”更重要。他也说，诗集取名《尝试集》，表明他受了美国哲学家杜威“实验主义”的影响：一切理论都只是假设，要靠实际试验来证明或反证。白话在小说、元曲、民歌里已经得到证明，剩下的诗，正是他要用一段试验来检验的部分。",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP2",
+    "OP3",
+    "OP4",
+    "OP5",
+    "OP6"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "before": "Hu himself said that what pushed him down this road was a chain of small accidents: a farewell poem, a scare on a lake. He distrusted theories that explain all of history by a single cause, and liked to joke that accidents often matter more than any one cause that claims to explain everything.",
+   "after": "Hu himself said that what pushed him down this road was a chain of small accidents: a farewell poem, a scare on a lake. He distrusted theories that explain all of history by a single cause, and liked to joke that accidents often matter more than any one cause that claims to explain everything. He also said the name of the collection, Experiments, showed the influence of the experimentalism of the American philosopher John Dewey: every theory is only a hypothesis, to be proved or disproved by actual trial. The vernacular had already proved itself in novels, Yuan drama and folk songs; poetry was the part left, the part he proposed to test with an experiment.",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP2",
+    "OP3",
+    "OP4",
+    "OP5",
+    "OP6"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.ev",
+   "before": [
+    "HS-E9",
+    "HS-E38"
+   ],
+   "after": [
+    "HS-E9",
+    "HS-E38",
+    "HS-E41"
+   ],
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP2",
+    "OP3",
+    "OP4",
+    "OP5",
+    "OP6"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.zh",
+   "before": "作者推断：这段经历最有意思的地方，是胡适把一场谁也说服不了谁的争论，变成了一个可以检验的问题。“白话不能作诗”是一句绝对的话，只要写出像样的白话诗，就能动摇它；不写，再多书信也只是各说各话。他先给诗集取名《尝试集》，等于先替自己定下了要举证的任务；他还在信里先写好了失败的退路，承认结果可能证明自己错了，这让它更像一场真正的试验，而不是换个方式继续辩论。发表时他把调子放低，陈独秀随后把旗子举高。",
+   "after": "作者推断：把诗当作待检验的假设，是胡适自己的说法；从他的做法里还能多看出两点。一是他还没写出几首白话诗，就先给诗集取好名字，等于先替自己定下要举证的任务；二是他在信里先写好了失败的退路，承认这块新地可能是不毛之地，这让它更像一场真正的试验，而不是换个方式继续辩论。发表时他把调子放低，陈独秀随后把旗子举高。",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP2",
+    "OP3",
+    "OP4",
+    "OP5",
+    "OP6"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.en",
+   "before": "The author's inference: what is most interesting here is that Hu turned an argument nobody could win into a question that could be tested. The claim that the spoken language cannot be poetry is absolute; good vernacular poems would shake it, while without poems, any number of letters would remain a standoff. By naming his collection Experiments in advance, he in effect set himself the task of supplying the proof. In his letters he also wrote down his retreat in case of failure, accepting that the result might prove him wrong — which made it a real experiment rather than the argument continued by other means. When he published, he lowered his voice, and Chen then raised the banner.",
+   "after": "The author's inference: treating poetry as a hypothesis to be tested was Hu's own framing; his conduct shows two things more. First, he named the collection before he had written more than a few vernacular poems, in effect setting himself the task of supplying the proof. Second, in his letters he wrote down his retreat in case of failure, granting that the new land might prove barren — which made it a real experiment rather than the argument continued by other means. When he published, he lowered his voice, and Chen then raised the banner.",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP2",
+    "OP3",
+    "OP4",
+    "OP5",
+    "OP6"
+   ]
+  },
+  {
+   "path": "sections.limits.0.zh",
+   "before": "这段经过来自胡适晚年的口述回忆（唐德刚译注），朋友们的话都经他转述；标明“作者推断”的段落是本文的解读，唐德刚的评语另作评论看待。详细说明见文末“出处与不确定性”。",
+   "after": "这段经过来自胡适晚年的口述回忆（唐德刚译注）：事件见原书第七章，结局见第八章；朋友们的话都经他转述。标明“作者推断”的段落是本文的解读，唐德刚的评语另作评论看待。详细说明见文末“出处与不确定性”。",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP2",
+    "OP3",
+    "OP4",
+    "OP5",
+    "OP6"
+   ]
+  },
+  {
+   "path": "sections.limits.0.en",
+   "before": "This account comes from Hu's oral memoir, given late in life and translated and annotated by Tang Degang; his friends' words all reach us through Hu. Paragraphs marked as the author's inference are this article's reading, and Tang's remarks are treated as commentary. More under Sources and uncertainty at the end.",
+   "after": "This account comes from Hu's oral memoir, given late in life and translated and annotated by Tang Degang: the events are in chapter 7 of the book, the outcome in chapter 8; his friends' words all reach us through Hu. Paragraphs marked as the author's inference are this article's reading, and Tang's remarks are treated as commentary. More under Sources and uncertainty at the end.",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP2",
+    "OP3",
+    "OP4",
+    "OP5",
+    "OP6"
+   ]
+  },
+  {
+   "path": "uncertainty_note.zh",
+   "before": "本文只依据一本书：胡适口述、唐德刚译注《胡适口述自传》（中国文史出版社，2020）第八章。按唐德刚说明，这一章的英文稿是从胡适《四十自述》的《逼上梁山》一章节译、经胡适手订后再回译成中文的，与原文多少有出入。因此这一章整体是当事人多年后的口述回忆。其中引述了他1916年7月6日的日记和7月26日致任鸿隽的信等当时文字，但本文依据的只是经胡适转引、再经英译与回译的文本，未核对原件。梅光迪、任鸿隽的言行都经胡适转述；胡适对“改良”措辞的解释是他事后的说法。唐德刚的注释属评论：他认为“文言是半死的文字”这句口号当年摧枯拉朽，但真实性值得重新商榷；他认为白话文百分之百成功，白话诗则还未脱离“尝试”阶段；他也记下反对者觉得胡适居功太多，1956年胡适在哈佛以此讲演时，后来为他作传的格里德嗤之以鼻。这些都是唐德刚的记述，本文未另行核验。关于白话诗的结果，胡适本人在同一章则说「四十年来的新诗更是大有成就」，同时承认新文学各部门发展并不平均。标为“作者推断”的段落是本文的解读，思考题中的场景是虚构的。",
+   "after": "本文只依据一本书：胡适口述、唐德刚译注《胡适口述自传》（中国文史出版社，2020）。事件经过出自第七章《文学革命的结胎时期》，结局（1920年教育部通令、“部分的胜利”）出自第八章《从文学革命到文艺复兴》，两章都是当事人多年后的口述回忆。按唐德刚在第七章注释里的说明，第七章的英文稿是从胡适《四十自述》的《逼上梁山》一章节译、经胡适手订后再回译成中文的，与原文多少有出入；这一说明只针对第七章。第七章引述了他1916年7月6日的日记和7月26日致任鸿隽的信等当时文字，但本文依据的只是经胡适转引、再经英译与回译的文本，未核对原件。梅光迪、任鸿隽的言行都经胡适转述；胡适对“改良”措辞的解释是他事后的说法。唐德刚在第七章的注释属评论：他认为“文言是半死的文字”这句口号当年摧枯拉朽，但真实性值得重新商榷；他认为白话文百分之百成功，白话诗则还未脱离“尝试”阶段；他也记下反对者觉得胡适居功太多，1956年胡适在哈佛以此讲演时，后来为他作传的格里德嗤之以鼻。这些都是唐德刚的记述，本文未另行核验。关于白话诗的结果，胡适本人在第八章则说「四十年来的新诗更是大有成就」，同时承认新文学各部门发展并不平均。标为“作者推断”的段落是本文的解读，思考题中的场景是虚构的。",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP2",
+    "OP3",
+    "OP4",
+    "OP5",
+    "OP6"
+   ]
+  },
+  {
+   "path": "uncertainty_note.en",
+   "before": "This piece rests on one book: Hu Shi's oral memoir, translated and annotated by Tang Degang (Chinese Literature and History Press, 2020), chapter 8. As Tang explains, the English draft of this chapter was abridged from the Driven to Liangshan chapter of Hu's Forty Self-Narratives, revised in Hu's own hand and then translated back into Chinese, and it differs from the original to some degree. The chapter as a whole is therefore a participant's oral recollection many years later. It quotes writings from the time, such as Hu's diary entry of July 6, 1916 and his letter to Ren Hongjun of July 26. This article relies only on those texts as Hu quoted them, then translated into English and back again, and has not checked the originals. Mei Guangdi's and Ren Hongjun's words and actions reach us through Hu, and his explanation of the moderate wording is his own later account. Tang's notes are commentary: he thought the slogan that the classical language is half dead was devastating in its day but that its truth deserves a fresh look; he judged vernacular prose a complete success and vernacular poetry not yet out of the experimental stage; and he records that Hu's opponents felt he claimed too much credit, and that when Hu gave this account in a 1956 lecture at Harvard, Jerome B. Grieder, later his biographer, scoffed. These are Tang's accounts and were not checked separately here. On the outcome for vernacular poetry, Hu himself says in the same chapter that the new poetry of the past forty years had achieved a great deal, while acknowledging that the different branches of the new literature developed unevenly. Paragraphs marked as the author's inference are this article's reading; the scenario in the question is fictional.",
+   "after": "This piece rests on one book: Hu Shi's oral memoir, translated and annotated by Tang Degang (Chinese Literature and History Press, 2020). The events come from chapter 7, The Gestation of the Literary Revolution; the outcome (the 1920 Ministry of Education order, the partial victory) from chapter 8, From Literary Revolution to Renaissance. Both chapters are a participant's oral recollection many years later. As Tang explains in a note to chapter 7, the English draft of that chapter was abridged from the Driven to Liangshan chapter of Hu's Forty Self-Narratives, revised in Hu's own hand and then translated back into Chinese, and it differs from the original to some degree; this applies to chapter 7 only. Chapter 7 quotes writings from the time, such as Hu's diary entry of July 6, 1916 and his letter to Ren Hongjun of July 26. This article relies only on those texts as Hu quoted them, then translated into English and back again, and has not checked the originals. Mei Guangdi's and Ren Hongjun's words and actions reach us through Hu, and his explanation of the moderate wording is his own later account. Tang's notes to chapter 7 are commentary: he thought the slogan that the classical language is half dead was devastating in its day but that its truth deserves a fresh look; he judged vernacular prose a complete success and vernacular poetry not yet out of the experimental stage; and he records that Hu's opponents felt he claimed too much credit, and that when Hu gave this account in a 1956 lecture at Harvard, Jerome B. Grieder, later his biographer, scoffed. These are Tang's accounts and were not checked separately here. On the outcome for vernacular poetry, Hu himself says in chapter 8 that the new poetry of the past forty years had achieved a great deal, while acknowledging that the different branches of the new literature developed unevenly. Paragraphs marked as the author's inference are this article's reading; the scenario in the question is fictional.",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP2",
+    "OP3",
+    "OP4",
+    "OP5",
+    "OP6"
+   ]
+  },
+  {
+   "path": "sources.0.citation",
+   "before": "胡适口述，唐德刚译注《胡适口述自传》，中国文史出版社 2020（PDF 文字层；第八章“从文学革命到文艺复兴”）",
+   "after": "胡适口述，唐德刚译注《胡适口述自传》，中国文史出版社 2020（PDF 文字层；第七章“文学革命的结胎时期”，结局见第八章“从文学革命到文艺复兴”）",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP2",
+    "OP3",
+    "OP4",
+    "OP5",
+    "OP6"
+   ]
+  },
+  {
+   "path": "further_reading.0.title",
+   "before": "胡适口述、唐德刚译注《胡适口述自传》（中国文史出版社，2020）第八章",
+   "after": "胡适口述、唐德刚译注《胡适口述自传》（中国文史出版社，2020）第七、八章",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP2",
+    "OP3",
+    "OP4",
+    "OP5",
+    "OP6"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F6",
+    "F7"
+   ],
+   "changes_applied": 9,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [],
+   "content_sha256_after": "f4b2219246d6d0f547d58ca014559dd660d354909f10804c79307c4e94bd2441",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V8"
+      ]
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2",
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V7"
+      ]
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V6"
+      ]
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.1",
+      "category": "attribution",
+      "severity": "fix",
+      "problem": "“朋友们已经承认白话可以写小说、写演说，只剩一处不肯让：诗”被写成叙述者的定论。证据显示这是胡适对两人来信的归纳。梅光迪本人还把“高级散文”排除在外，“演说”一例也只出自任鸿隽。story.5 已经标明这是胡适的话，hook 却没有标明来源。",
+      "evidence": [
+       {
+        "id": "HS-E20",
+        "quote": "则我的朋友们除了“诗”这个堡垒之外，其他方面已经全部向我让步了"
+       },
+       {
+        "id": "HS-E19",
+        "quote": "但是在高级散文里——肯定的是在诗里面——白话千万用不得"
+       }
+      ],
+      "proposed": "zh 改为“到这年夏天，在胡适看来，朋友们已经承认白话可以写小说等，只剩一处不肯让：诗。”en 相应改为“By that summer, as Hu saw it, his friends granted…”。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.context.1",
+      "category": "parity",
+      "severity": "fix",
+      "problem": "英文 marry no one under twenty-five 的意思是“不要娶未满二十五岁的人”，与原传单「不满二十五岁不娶妻」（本人未满二十五岁不娶妻）意思不同，属误译。",
+      "evidence": [
+       {
+        "id": "HS-E3",
+        "quote": "“不满二十五岁不娶妻。”"
+       }
+      ],
+      "proposed": "en 改为 do not marry before twenty-five。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.context.1",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "第一处：“看一眼就丢进纸篓”中的“看一眼”是证据之外补出的细节。第二处：“在留学生的年会上写了篇论文”与证据不符，证据说的是为年会分股讨论准备论文。",
+      "evidence": [
+       {
+        "id": "HS-E4",
+        "quote": "总是把它向纸篓里一丢就算了"
+       },
+       {
+        "id": "HS-E6",
+        "quote": "负有准备年会时分股讨论的责任"
+       }
+      ],
+      "proposed": "第一处改为“大家通常往纸篓里一丢就算了”；第二处改为“他为留学生年会写了篇论文”。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.story.1",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "证据说元曲等白话文学是这场文学革命的“最高潮”。稿件写成“完成的一场文学革命”，与同段“变化在唐代就开始了”的说法互相矛盾。",
+      "evidence": [
+       {
+        "id": "HS-E13",
+        "quote": "便是人民大众在不知不觉中完成的文学革命的最高潮"
+       }
+      ],
+      "proposed": "zh 改为“是老百姓在不知不觉中完成的文学革命的最高潮”；en 改为 was the high point of a literary revolution the common people had carried out without knowing it。"
+     },
+     {
+      "id": "V5",
+      "path": "sections.analysis.1",
+      "category": "parity",
+      "severity": "fix",
+      "problem": "中英文不一致，有两处。第一处：英文漏译“这段经历最有意思的地方”。第二处：中文“只要写出像样的白话诗”，英文写成 a single good vernacular poem，多出了“一首”的限定。",
+      "evidence": [],
+      "proposed": "en 改为 The author's inference: what is most interesting here is that Hu turned…；同时把 a single good vernacular poem 改为 good vernacular poems。"
+     },
+     {
+      "id": "V6",
+      "path": "sections.story.8",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“北大另一位……教授”暗示陈独秀在北大任职，但前文从未交代这一身份，读者不明白“另一位”是相对谁而言。",
+      "evidence": [
+       {
+        "id": "HS-E24",
+        "quote": "陈氏于一九一六年受聘为国立北京大学文科学长"
+       }
+      ],
+      "proposed": "在 story.7 介绍陈独秀时补上“1916年起任北京大学文科学长”（en: dean of humanities at Peking University from 1916）。"
+     },
+     {
+      "id": "V7",
+      "path": "sections.story.6",
+      "category": "readability",
+      "severity": "note",
+      "problem": "《尝试集》的英文译名前后不统一：标题作 Book of Experiments，正文作 Experiments，读者可能以为是两本书。",
+      "evidence": [],
+      "proposed": "全文统一为同一个译名，例如都用 Experiments。"
+     },
+     {
+      "id": "V8",
+      "path": "sections.hook.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "开头出现“绮色佳”，但没有说明它是康乃尔大学所在地。读者到 context.0 读到“康乃尔”时，难以把两处地名联系起来。",
+      "evidence": [
+       {
+        "id": "HS-E10",
+        "quote": "所以我在从绮色佳去纽约的火车上"
+       }
+      ],
+      "proposed": "zh 改为“从康乃尔大学所在的绮色佳寄来的信”；en 改为 from Ithaca, home of Cornell University。"
+     }
+    ],
+    "overall": "定稿整体有证据支撑，引语逐字准确，解释段落已标注；但需修正 hook 一处归属、context 一处误译与补出的细节、story.1 一处措辞失真和 analysis.1 的中英不一致，另有三处易读性建议，修正后可通过。",
+    "_content_sha256": "f4b2219246d6d0f547d58ca014559dd660d354909f10804c79307c4e94bd2441"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1",
+    "V1-V2",
+    "V1-V3",
+    "V1-V4",
+    "V1-V5"
+   ],
+   "changes_applied": 7,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [],
+   "content_sha256_after": "d2e88db46a0e0168539c21392d588375643fb740e054a0d3585168a3e3ebc9e2",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.story.3",
+      "category": "attribution",
+      "severity": "fix",
+      "problem": "稿件用叙述者口吻直接写出两点：梅光迪受老师影响，以及因此对胡适的一切激进主张反对到底。这既是对梅光迪动机的判断，也是一条因果。证据中这是胡适的说法，稿件没有标明出处。英文 under the influence of his conservative teacher, he opposed everything radical 同样如此。",
+      "evidence": [
+       {
+        "id": "HS-E17",
+        "quote": "这时的梅觐庄正受了他那位保守派文学批评老师白壁德教授的影响。所以我的一切激进他都反对到底。"
+       }
+      ],
+      "proposed": "中文改为“在胡适看来，梅光迪那时正受他那位保守派老师的影响，所以对胡适的一切激进主张都反对到底。”英文相应改为 \"As Hu saw it, Mei was then under the influence of his conservative teacher and so opposed everything radical Hu proposed.\""
+     },
+     {
+      "id": "V2",
+      "path": "sections.story.8",
+      "category": "readability",
+      "severity": "note",
+      "problem": "story.8 写“北大另一位研究古典音韵学的教授”，“另一位”预设读者已知陈独秀在北大任职。但稿件此前只写到陈独秀主编《新青年》，没有交代他与北大的关系，读者会不明白“另一位”从何说起。",
+      "evidence": [
+       {
+        "id": "HS-E24",
+        "quote": "陈氏于一九一六年受聘为国立北京大学文科学长。"
+       },
+       {
+        "id": "HS-E25",
+        "quote": "北京大学一校之内便有两位教授对之极为重视。其一则为陈独秀本人。"
+       }
+      ],
+      "proposed": "在 story.7 首次提到陈独秀处补半句“陈独秀1916年已受聘为北京大学文科学长”，英文同步补上。"
+     },
+     {
+      "id": "V3",
+      "path": "title",
+      "category": "readability",
+      "severity": "note",
+      "problem": "英文中《尝试集》的译名前后不一：标题作 Book of Experiments，story.6 作 Experiments。读者可能以为是两样东西。",
+      "evidence": [
+       {
+        "id": "HS-E22",
+        "quote": "我已决定把我下一个诗集定名为《尝试集》了"
+       }
+      ],
+      "proposed": "统一一个英文译名，例如两处都用 Experiments，或都用 Book of Experiments。"
+     }
+    ],
+    "overall": "定稿事实、引文、日期和中英对应基本都有证据支持，来源说明也写成了本文依据的范围；只需在 story.3 补上“在胡适看来”的归属，另有两处易读性小问题可以顺手调整。",
+    "_content_sha256": "d2e88db46a0e0168539c21392d588375643fb740e054a0d3585168a3e3ebc9e2"
+   }
+  },
+  {
+   "round": 3,
+   "local_fix": {
+    "by": "operator (owner rule 2026-10-31: small evidence-backed fixes)",
+    "reason": "local fix (owner rule 2026-10-31): story.3 attribution to Hu (HS-E17) + owner-instructed removal of the zh idiom gloss re-added by attempt-7",
+    "issues": [
+     "V2-V1",
+     "OP1"
+    ],
+    "at": 1793488990.641964,
+    "dir": "localfix-attempt-7-3"
+   },
+   "issues_in": [
+    "V2-V1",
+    "OP1"
+   ],
+   "changes_applied": 4,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [],
+   "content_sha256_after": "b4e3a16327846f9d01d889c21f0863e1c92c30a36d4028bdaf5b9d2bb9ac2766",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "title",
+      "category": "readability",
+      "severity": "note",
+      "problem": "英文标题把《尝试集》译作 Book of Experiments。正文 story.6.en 和 analysis.1.en 则只写 Experiments。英文读者可能以为这是两本不同的书。",
+      "evidence": [
+       {
+        "id": "HS-E22",
+        "quote": "我已决定把我下一个诗集定名为《尝试集》了"
+       }
+      ],
+      "proposed": "统一译名。可以把 story.6.en 改为“he had already named his next collection: A Book of Experiments”，analysis.1.en 同步修改；也可以把标题改成只用 Experiments。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.story.8",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“北大另一位研究古典音韵学的教授”（Another Peking University professor）默认读者已经知道陈独秀在北大任职，但前文只介绍他是《新青年》主编。读者看到“另一位”会不明所以。",
+      "evidence": [
+       {
+        "id": "HS-E24",
+        "quote": "陈氏于一九一六年受聘为国立北京大学文科学长"
+       },
+       {
+        "id": "HS-E25",
+        "quote": "北京大学一校之内便有两位教授对之极为重视。其一则为陈独秀本人。"
+       }
+      ],
+      "proposed": "在 story.7 或 story.8 首次提到陈独秀时补一句“时任北京大学文科学长”（en: then dean of letters at Peking University），中英两版同步修改。"
+     }
+    ],
+    "overall": "定稿的事实、引语、归属、时间顺序和解释标注都有证据支持，中英两版内容一致，没有需要修正的事实问题。只有两处轻微的易读性问题：英文译名不统一，以及陈独秀的北大身份没有交代。",
+    "_content_sha256": "b4e3a16327846f9d01d889c21f0863e1c92c30a36d4028bdaf5b9d2bb9ac2766"
+   }
+  },
+  {
+   "round": 4,
+   "local_fix": {
+    "by": "operator (owner rule 2026-10-31: small evidence-backed fixes)",
+    "reason": "owner-authorized 2026-10-31: chapter citation (events ch.7, outcome ch.8; Tang's translation note limited to ch.7) and Hu's own Dewey attribution (HS-E41); author's inference limited to the article's additions",
+    "issues": [
+     "CTX-X1",
+     "CTX-X2",
+     "OP2",
+     "OP3",
+     "OP4",
+     "OP5",
+     "OP6"
+    ],
+    "at": 1793494263.0220675,
+    "dir": "localfix-attempt-7-4"
+   },
+   "issues_in": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP2",
+    "OP3",
+    "OP4",
+    "OP5",
+    "OP6"
+   ],
+   "changes_applied": 11,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "limits[0] numbers differ zh[] en[7, 8]"
+    ]
+   ],
+   "content_sha256_after": "9dc2863a0c79269e460210546740a258f6fb246dd27a5f08b5711f4553fe2a85",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2",
+       "V3"
+      ]
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.limits.0",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "稿件说事件见原书第七章、结局见第八章。证据包里的每一条（HS-E1 至 HS-E41，包括钟文鳌、梅光迪、湖上事件等经过）都标注为“第八章‘从文学革命到文艺复兴’”，没有任何一条标为第七章。因此“事件见第七章”在本证据包中没有依据，而且与标注冲突。",
+      "evidence": [
+       {
+        "id": "HS-E16",
+        "quote": "第八章“从文学革命到文艺复兴”"
+       },
+       {
+        "id": "HS-E30",
+        "quote": "第八章“从文学革命到文艺复兴”"
+       }
+      ],
+      "proposed": "按证据包统一写成“均见第八章”。如果确认原书分章不同，应先更正证据包和来源标注，再保留分章说法。"
+     },
+     {
+      "id": "V2",
+      "path": "uncertainty_note",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "中英文均有三处与证据包标注不符：（1）写事件出自第七章《文学革命的结胎时期》，但证据包没有这个章名，所有条目都标为第八章；（2）写唐德刚关于英文稿节译、回译的说明出自第七章注释，并称“这一说明只针对第七章”，而 HS-E35 标为第八章，原文说的是“本章”；（3）写唐德刚的评论（HS-E27、HS-E28、HS-E29、HS-E36）是“第七章的注释”，但这些条目都标为第八章。按 HS-E35 的标注，回译限定应适用于第八章，也就是本文依据的全部材料；写成“只针对第七章”会让读者误以为第八章的结局部分没有这层出入。同批改动的来源元数据 further_reading.0.title（“第七、八章”）和 sources.0.citation（“第七章‘文学革命的结胎时期’”）也有同样的问题。",
+      "evidence": [
+       {
+        "id": "HS-E35",
+        "quote": "因此本章的英文稿，原是我们自他《四十自述》的《逼上梁山》那一章里节译出来的"
+       },
+       {
+        "id": "HS-E27",
+        "quote": "第八章“从文学革命到文艺复兴”"
+       }
+      ],
+      "proposed": "中英文都改为“均出自第八章《从文学革命到文艺复兴》”。删去“这一说明只针对第七章”，改为“唐德刚在该章说明，该章英文稿……与原文多少有出入”。唐德刚注释的位置统一写作第八章。further_reading.0.title 改为“第八章”，sources.0.citation 删去第七章及其章名。"
+     },
+     {
+      "id": "V3",
+      "path": "uncertainty_note",
+      "category": "readability",
+      "severity": "note",
+      "problem": "英文版把书名译作 Forty Self-Narratives，正文其他地方没有出现过这个书名，读者不容易把它和《四十自述》对上；而且 limits.0 已经说明回译这一点，这里两处重复。这一条不影响事实判断。",
+      "evidence": [
+       {
+        "id": "HS-E35",
+        "quote": "《四十自述》的《逼上梁山》那一章"
+       }
+      ],
+      "proposed": "英文可写作 Hu's autobiography Forty at Forty（《四十自述》），或简写为 an earlier memoir by Hu；中文不必改。"
+     }
+    ],
+    "overall": "引语、日期和人物关系都有证据支持，开头易读性合格；需要修正的是来源章节标注：稿件和来源元数据把事件与唐德刚注释归入第七章，与证据包统一标注的第八章冲突，并据此错误地限定了回译说明的适用范围。",
+    "_content_sha256": "9dc2863a0c79269e460210546740a258f6fb246dd27a5f08b5711f4553fe2a85"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3",
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6",
+     "F7"
+    ]
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.context.0",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "英文把“逼上梁山”释为“being forced by circumstances into a rebel's course”。胡适自己的释义是：为环境所迫，不得已做出违反本意的非常行为。英文的释义偏离了这一点，而且中文版没有这句释义。",
+    "evidence": [
+     {
+      "id": "HS-E2",
+      "quote": "不得已而做出违反他本意的非常行为"
+     }
+    ],
+    "proposed": "英文改为：the Chinese idiom for being forced by circumstances into drastic action against one's own will。或者删去释义，与中文保持一致。"
+   },
+   {
+    "id": "F2",
+    "path": "sections.story.5",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "英文“privately looking down on the spoken language”意味着有意识地私下轻视。证据说的是“下意识的鄙弃”。",
+    "evidence": [
+     {
+      "id": "HS-E20",
+      "quote": "他们都对白话有一种下意识的鄙弃"
+     }
+    ],
+    "proposed": "英文改为“while unconsciously looking down on the spoken language”。中文“骨子里”可保留，也可改为“下意识里”。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.story.6",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“找不到同伴”和“with no companions”把话说绝了。原信是“不能多得同志”，即同伴难得，并非完全没有。",
+    "evidence": [
+     {
+      "id": "HS-E22",
+      "quote": "可惜须单身匹马而往，不能多得同志，结伴同行"
+     }
+    ],
+    "proposed": "中文改为“可惜要单身匹马前往，难得同伴”。英文改为“He would have to ride out alone, with few companions”。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.story.6",
+    "category": "inner_life",
+    "severity": "fix",
+    "problem": "本段是记录段（kind=record），却把信中的假设说法写成他的考虑：“给自己留了后路”。证据只记他说可能终归文言诗国，同时还写了“然我去志已决”。",
+    "evidence": [
+     {
+      "id": "HS-E22",
+      "quote": "然我去志已决"
+     },
+     {
+      "id": "HS-E22",
+      "quote": "则我或终归老于"
+     }
+    ],
+    "proposed": "中文改为“他也说：如果这块新地全是不毛之地，他也许终究还要回到‘文言诗国’”。英文改为“He also wrote that if the new land turned out to be barren...”。“留后路”的说法只留在已标明“作者推断”的分析段。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.story.8",
+    "category": "readability",
+    "severity": "note",
+    "problem": "“北大另一位……教授”预设读者知道陈独秀在北大任职，但正文从未交代。读者会不明白“另一位”是相对谁而言。",
+    "evidence": [
+     {
+      "id": "HS-E24",
+      "quote": "陈氏于一九一六年受聘为国立北京大学文科学长"
+     },
+     {
+      "id": "HS-E25",
+      "quote": "北京大学一校之内便有两位教授对之极为重视"
+     }
+    ],
+    "proposed": "在 story.7 或 story.8 首次提到陈独秀时补一句“时任北京大学文科学长”，英文同步。"
+   },
+   {
+    "id": "F6",
+    "path": "uncertainty_note",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“这是当事人多年后的回忆，不是当时的独立记录”这句话一概而论，没有区分两类文本。本章确实是晚年口述，但其中引述了1916年7月6日日记和7月26日致任鸿隽信等当时文字。读者会误以为这些引文也只是回忆。",
+    "evidence": [
+     {
+      "id": "HS-E15",
+      "quote": "以上九条是记载在我一九一六年七月六日的日记之中"
+     },
+     {
+      "id": "HS-E21",
+      "quote": "因此在七月二十六日我就写了一封信给吾友任君"
+     },
+     {
+      "id": "HS-E35",
+      "quote": "多少也有点出入"
+     }
+    ],
+    "proposed": "改为：这一章整体是胡适晚年的口述回忆，其中引述了他1916年7月6日的日记和7月26日致任鸿隽的信等当时文字；本文依据的只是经胡适转引、再经英译与回译的文本，没有查阅原件。英文同步修改。"
+   },
+   {
+    "id": "F7",
+    "path": "uncertainty_note",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "关于白话诗试验的结果，文中只给了唐德刚“白话诗则未必”的评语，没有给出胡适本人在同一章的自评“新诗大有成就”。读者会以为来源对这项试验只有否定判断。",
+    "evidence": [
+     {
+      "id": "HS-E29",
+      "quote": "则未必——至少是还未脱离"
+     },
+     {
+      "id": "HS-E40",
+      "quote": "四十年来的新诗更是大有成就"
+     }
+    ],
+    "proposed": "在唐德刚评语旁并列一句：“胡适本人在同一章则说「四十年来的新诗更是大有成就」，同时承认新文学各部门发展并不平均。”两种看法分别标明是谁的观点。英文同步。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "X1",
+    "verdict": "duplicate",
+    "same_as": "F6",
+    "rationale": "问题成立。本章引述了当时的日记和信件，“不是当时的独立记录”的说法需要细化。",
+    "evidence": [
+     {
+      "id": "HS-E15",
+      "quote": "以上九条是记载在我一九一六年七月六日的日记之中"
+     }
+    ]
+   },
+   {
+    "id": "X2",
+    "verdict": "duplicate",
+    "same_as": "F6",
+    "rationale": "这是 X1 的英文对应项，与 F6 相同。",
+    "evidence": [
+     {
+      "id": "HS-E15",
+      "quote": "以上九条是记载在我一九一六年七月六日的日记之中"
+     }
+    ]
+   },
+   {
+    "id": "X3",
+    "verdict": "duplicate",
+    "same_as": "F7",
+    "rationale": "问题成立。文中只有唐德刚对白话诗的保留意见，缺少胡适本人的自评。",
+    "evidence": [
+     {
+      "id": "HS-E40",
+      "quote": "四十年来的新诗更是大有成就"
+     }
+    ]
+   },
+   {
+    "id": "X4",
+    "verdict": "duplicate",
+    "same_as": "F7",
+    "rationale": "HS-E40 补入后，影响的是关于白话诗结局的表述是否平衡，这一点已在 F7 列出。其余叙事与因果经核对无新问题。",
+    "evidence": [
+     {
+      "id": "HS-E40",
+      "quote": "新文学各部门的发展并不平均"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "9dc2863a0c79269e460210546740a258f6fb246dd27a5f08b5711f4553fe2a85",
+ "open_issues": [
+  "V4-V1",
+  "V4-V2"
+ ],
+ "outcome": "pending_review",
+ "failure": null,
+ "finished_at": 1793494338.2637827,
+ "calls": [
+  {
+   "step": "verify_r4",
+   "attempt": 1,
+   "wall_s": 75.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 27885,
+    "output_tokens": 8659
+   },
+   "cost_estimate_usd": 0.396268
+  }
+ ],
+ "elapsed_min": 99.2,
+ "model_wall_min": 1.3,
+ "local_fixes": [
+  {
+   "by": "operator (owner rule 2026-10-31: small evidence-backed fixes)",
+   "reason": "local fix (owner rule 2026-10-31): story.3 attribution to Hu (HS-E17) + owner-instructed removal of the zh idiom gloss re-added by attempt-7",
+   "issues": [
+    "V2-V1",
+    "OP1"
+   ],
+   "at": 1793488990.641964,
+   "dir": "localfix-attempt-7-3",
+   "edits": [
+    {
+     "path": "sections.context.0.zh",
+     "before": "主张白话也能作诗的胡适，其实自称是个保守的人，常对朋友说，语言文字是世界上最保守的东西，比宗教还保守。他最坚定的对手是梅光迪，此时在哈佛随一位保守派文学批评家深造；胡适说，正是梅光迪的强烈反对，把他“逼上梁山”。按他的解释，这句成语是说一个人为环境所迫，不得已做出违反本意的非常行为。另一位是在康乃尔的朋友任鸿隽，他曾作打油诗取笑胡适，湖上那首纪事诗也出自他手。",
+     "after": "主张白话也能作诗的胡适，其实自称是个保守的人，常对朋友说，语言文字是世界上最保守的东西，比宗教还保守。他最坚定的对手是梅光迪，此时在哈佛随一位保守派文学批评家深造；胡适说，正是梅光迪的强烈反对，把他“逼上梁山”。另一位是在康乃尔的朋友任鸿隽，他曾作打油诗取笑胡适，湖上那首纪事诗也出自他手。",
+     "issues": [
+      "V2-V1",
+      "OP1"
+     ]
+    },
+    {
+     "path": "sections.context.0.en",
+     "before": "Hu, the man arguing that it could, called himself a conservative. He used to tell his friends that language and writing are the most conservative things in the world, more conservative than religion. His most determined opponent was Mei Guangdi, then studying at Harvard under a conservative literary critic; it was Mei's fierce opposition, Hu later said, that drove him to Liangshan. As Hu explained it, the Chinese idiom means being forced by circumstances into drastic action against one's own will. The other was Ren Hongjun, a friend at Cornell who once teased Hu in comic verse, and who had written the poem about the lake.",
+     "after": "Hu, the man arguing that it could, called himself a conservative. He used to tell his friends that language and writing are the most conservative things in the world, more conservative than religion. His most determined opponent was Mei Guangdi, then studying at Harvard under a conservative literary critic; it was Mei's fierce opposition, Hu later said, that drove him to Liangshan, the Chinese saying for being forced into a rebel's course against one's will. The other was Ren Hongjun, a friend at Cornell who once teased Hu in comic verse, and who had written the poem about the lake.",
+     "issues": [
+      "V2-V1",
+      "OP1"
+     ]
+    },
+    {
+     "path": "sections.story.3.zh",
+     "before": "他对那首纪事诗的批评，引来一场风波。任鸿隽对“死语”的说法愤愤不平；更激动的是梅光迪，他路见不平，写来一封信猛烈反击。梅光迪那时正受他那位保守派老师的影响，对胡适的一切激进主张都反对到底。他认为文字必须经过第一流诗人的锻炼和美化，才能成为诗的文字。",
+     "after": "他对那首纪事诗的批评，引来一场风波。任鸿隽对“死语”的说法愤愤不平；更激动的是梅光迪，他路见不平，写来一封信猛烈反击。按胡适的说法，梅光迪那时正受他那位保守派老师的影响，对胡适的一切激进主张都反对到底。他认为文字必须经过第一流诗人的锻炼和美化，才能成为诗的文字。",
+     "issues": [
+      "V2-V1",
+      "OP1"
+     ]
+    },
+    {
+     "path": "sections.story.3.en",
+     "before": "His criticism of the lake poem set off a storm of its own. Ren was indignant about the dead words. Mei, angrier still, rushed to his friend's defence with a heated letter; under the influence of his conservative teacher, he opposed everything radical Hu proposed. Words become poetic language, he insisted, only after first-rate poets have refined and beautified them.",
+     "after": "His criticism of the lake poem set off a storm of its own. Ren was indignant about the dead words. Mei, angrier still, rushed to his friend's defence with a heated letter. By Hu's account, Mei was then under the influence of his conservative teacher and opposed everything radical Hu proposed. Words become poetic language, he insisted, only after first-rate poets have refined and beautified them.",
+     "issues": [
+      "V2-V1",
+      "OP1"
+     ]
+    }
+   ]
+  },
+  {
+   "by": "operator (owner rule 2026-10-31: small evidence-backed fixes)",
+   "reason": "owner-authorized 2026-10-31: chapter citation (events ch.7, outcome ch.8; Tang's translation note limited to ch.7) and Hu's own Dewey attribution (HS-E41); author's inference limited to the article's additions",
+   "issues": [
+    "CTX-X1",
+    "CTX-X2",
+    "OP2",
+    "OP3",
+    "OP4",
+    "OP5",
+    "OP6"
+   ],
+   "at": 1793494263.0220675,
+   "dir": "localfix-attempt-7-4",
+   "edits": [
+    {
+     "path": "sections.analysis.0.zh",
+     "before": "胡适自己说，把他推上这条路的，是一连串的小意外：一首送别诗，一场湖上的险事。他一向反对用某一个原因解释所有历史，常开玩笑说，意外往往比那些包打天下的“单因”更重要。",
+     "after": "胡适自己说，把他推上这条路的，是一连串的小意外：一首送别诗，一场湖上的险事。他一向反对用某一个原因解释所有历史，常开玩笑说，意外往往比那些包打天下的“单因”更重要。他也说，诗集取名《尝试集》，表明他受了美国哲学家杜威“实验主义”的影响：一切理论都只是假设，要靠实际试验来证明或反证。白话在小说、元曲、民歌里已经得到证明，剩下的诗，正是他要用一段试验来检验的部分。",
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP2",
+      "OP3",
+      "OP4",
+      "OP5",
+      "OP6"
+     ]
+    },
+    {
+     "path": "sections.analysis.0.en",
+     "before": "Hu himself said that what pushed him down this road was a chain of small accidents: a farewell poem, a scare on a lake. He distrusted theories that explain all of history by a single cause, and liked to joke that accidents often matter more than any one cause that claims to explain everything.",
+     "after": "Hu himself said that what pushed him down this road was a chain of small accidents: a farewell poem, a scare on a lake. He distrusted theories that explain all of history by a single cause, and liked to joke that accidents often matter more than any one cause that claims to explain everything. He also said the name of the collection, Experiments, showed the influence of the experimentalism of the American philosopher John Dewey: every theory is only a hypothesis, to be proved or disproved by actual trial. The vernacular had already proved itself in novels, Yuan drama and folk songs; poetry was the part left, the part he proposed to test with an experiment.",
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP2",
+      "OP3",
+      "OP4",
+      "OP5",
+      "OP6"
+     ]
+    },
+    {
+     "path": "sections.analysis.0.ev",
+     "before": [
+      "HS-E9",
+      "HS-E38"
+     ],
+     "after": [
+      "HS-E9",
+      "HS-E38",
+      "HS-E41"
+     ],
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP2",
+      "OP3",
+      "OP4",
+      "OP5",
+      "OP6"
+     ]
+    },
+    {
+     "path": "sections.analysis.1.zh",
+     "before": "作者推断：这段经历最有意思的地方，是胡适把一场谁也说服不了谁的争论，变成了一个可以检验的问题。“白话不能作诗”是一句绝对的话，只要写出像样的白话诗，就能动摇它；不写，再多书信也只是各说各话。他先给诗集取名《尝试集》，等于先替自己定下了要举证的任务；他还在信里先写好了失败的退路，承认结果可能证明自己错了，这让它更像一场真正的试验，而不是换个方式继续辩论。发表时他把调子放低，陈独秀随后把旗子举高。",
+     "after": "作者推断：把诗当作待检验的假设，是胡适自己的说法；从他的做法里还能多看出两点。一是他还没写出几首白话诗，就先给诗集取好名字，等于先替自己定下要举证的任务；二是他在信里先写好了失败的退路，承认这块新地可能是不毛之地，这让它更像一场真正的试验，而不是换个方式继续辩论。发表时他把调子放低，陈独秀随后把旗子举高。",
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP2",
+      "OP3",
+      "OP4",
+      "OP5",
+      "OP6"
+     ]
+    },
+    {
+     "path": "sections.analysis.1.en",
+     "before": "The author's inference: what is most interesting here is that Hu turned an argument nobody could win into a question that could be tested. The claim that the spoken language cannot be poetry is absolute; good vernacular poems would shake it, while without poems, any number of letters would remain a standoff. By naming his collection Experiments in advance, he in effect set himself the task of supplying the proof. In his letters he also wrote down his retreat in case of failure, accepting that the result might prove him wrong — which made it a real experiment rather than the argument continued by other means. When he published, he lowered his voice, and Chen then raised the banner.",
+     "after": "The author's inference: treating poetry as a hypothesis to be tested was Hu's own framing; his conduct shows two things more. First, he named the collection before he had written more than a few vernacular poems, in effect setting himself the task of supplying the proof. Second, in his letters he wrote down his retreat in case of failure, granting that the new land might prove barren — which made it a real experiment rather than the argument continued by other means. When he published, he lowered his voice, and Chen then raised the banner.",
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP2",
+      "OP3",
+      "OP4",
+      "OP5",
+      "OP6"
+     ]
+    },
+    {
+     "path": "sections.limits.0.zh",
+     "before": "这段经过来自胡适晚年的口述回忆（唐德刚译注），朋友们的话都经他转述；标明“作者推断”的段落是本文的解读，唐德刚的评语另作评论看待。详细说明见文末“出处与不确定性”。",
+     "after": "这段经过来自胡适晚年的口述回忆（唐德刚译注）：事件见原书第七章，结局见第八章；朋友们的话都经他转述。标明“作者推断”的段落是本文的解读，唐德刚的评语另作评论看待。详细说明见文末“出处与不确定性”。",
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP2",
+      "OP3",
+      "OP4",
+      "OP5",
+      "OP6"
+     ]
+    },
+    {
+     "path": "sections.limits.0.en",
+     "before": "This account comes from Hu's oral memoir, given late in life and translated and annotated by Tang Degang; his friends' words all reach us through Hu. Paragraphs marked as the author's inference are this article's reading, and Tang's remarks are treated as commentary. More under Sources and uncertainty at the end.",
+     "after": "This account comes from Hu's oral memoir, given late in life and translated and annotated by Tang Degang: the events are in chapter 7 of the book, the outcome in chapter 8; his friends' words all reach us through Hu. Paragraphs marked as the author's inference are this article's reading, and Tang's remarks are treated as commentary. More under Sources and uncertainty at the end.",
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP2",
+      "OP3",
+      "OP4",
+      "OP5",
+      "OP6"
+     ]
+    },
+    {
+     "path": "uncertainty_note.zh",
+     "before": "本文只依据一本书：胡适口述、唐德刚译注《胡适口述自传》（中国文史出版社，2020）第八章。按唐德刚说明，这一章的英文稿是从胡适《四十自述》的《逼上梁山》一章节译、经胡适手订后再回译成中文的，与原文多少有出入。因此这一章整体是当事人多年后的口述回忆。其中引述了他1916年7月6日的日记和7月26日致任鸿隽的信等当时文字，但本文依据的只是经胡适转引、再经英译与回译的文本，未核对原件。梅光迪、任鸿隽的言行都经胡适转述；胡适对“改良”措辞的解释是他事后的说法。唐德刚的注释属评论：他认为“文言是半死的文字”这句口号当年摧枯拉朽，但真实性值得重新商榷；他认为白话文百分之百成功，白话诗则还未脱离“尝试”阶段；他也记下反对者觉得胡适居功太多，1956年胡适在哈佛以此讲演时，后来为他作传的格里德嗤之以鼻。这些都是唐德刚的记述，本文未另行核验。关于白话诗的结果，胡适本人在同一章则说「四十年来的新诗更是大有成就」，同时承认新文学各部门发展并不平均。标为“作者推断”的段落是本文的解读，思考题中的场景是虚构的。",
+     "after": "本文只依据一本书：胡适口述、唐德刚译注《胡适口述自传》（中国文史出版社，2020）。事件经过出自第七章《文学革命的结胎时期》，结局（1920年教育部通令、“部分的胜利”）出自第八章《从文学革命到文艺复兴》，两章都是当事人多年后的口述回忆。按唐德刚在第七章注释里的说明，第七章的英文稿是从胡适《四十自述》的《逼上梁山》一章节译、经胡适手订后再回译成中文的，与原文多少有出入；这一说明只针对第七章。第七章引述了他1916年7月6日的日记和7月26日致任鸿隽的信等当时文字，但本文依据的只是经胡适转引、再经英译与回译的文本，未核对原件。梅光迪、任鸿隽的言行都经胡适转述；胡适对“改良”措辞的解释是他事后的说法。唐德刚在第七章的注释属评论：他认为“文言是半死的文字”这句口号当年摧枯拉朽，但真实性值得重新商榷；他认为白话文百分之百成功，白话诗则还未脱离“尝试”阶段；他也记下反对者觉得胡适居功太多，1956年胡适在哈佛以此讲演时，后来为他作传的格里德嗤之以鼻。这些都是唐德刚的记述，本文未另行核验。关于白话诗的结果，胡适本人在第八章则说「四十年来的新诗更是大有成就」，同时承认新文学各部门发展并不平均。标为“作者推断”的段落是本文的解读，思考题中的场景是虚构的。",
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP2",
+      "OP3",
+      "OP4",
+      "OP5",
+      "OP6"
+     ]
+    },
+    {
+     "path": "uncertainty_note.en",
+     "before": "This piece rests on one book: Hu Shi's oral memoir, translated and annotated by Tang Degang (Chinese Literature and History Press, 2020), chapter 8. As Tang explains, the English draft of this chapter was abridged from the Driven to Liangshan chapter of Hu's Forty Self-Narratives, revised in Hu's own hand and then translated back into Chinese, and it differs from the original to some degree. The chapter as a whole is therefore a participant's oral recollection many years later. It quotes writings from the time, such as Hu's diary entry of July 6, 1916 and his letter to Ren Hongjun of July 26. This article relies only on those texts as Hu quoted them, then translated into English and back again, and has not checked the originals. Mei Guangdi's and Ren Hongjun's words and actions reach us through Hu, and his explanation of the moderate wording is his own later account. Tang's notes are commentary: he thought the slogan that the classical language is half dead was devastating in its day but that its truth deserves a fresh look; he judged vernacular prose a complete success and vernacular poetry not yet out of the experimental stage; and he records that Hu's opponents felt he claimed too much credit, and that when Hu gave this account in a 1956 lecture at Harvard, Jerome B. Grieder, later his biographer, scoffed. These are Tang's accounts and were not checked separately here. On the outcome for vernacular poetry, Hu himself says in the same chapter that the new poetry of the past forty years had achieved a great deal, while acknowledging that the different branches of the new literature developed unevenly. Paragraphs marked as the author's inference are this article's reading; the scenario in the question is fictional.",
+     "after": "This piece rests on one book: Hu Shi's oral memoir, translated and annotated by Tang Degang (Chinese Literature and History Press, 2020). The events come from chapter 7, The Gestation of the Literary Revolution; the outcome (the 1920 Ministry of Education order, the partial victory) from chapter 8, From Literary Revolution to Renaissance. Both chapters are a participant's oral recollection many years later. As Tang explains in a note to chapter 7, the English draft of that chapter was abridged from the Driven to Liangshan chapter of Hu's Forty Self-Narratives, revised in Hu's own hand and then translated back into Chinese, and it differs from the original to some degree; this applies to chapter 7 only. Chapter 7 quotes writings from the time, such as Hu's diary entry of July 6, 1916 and his letter to Ren Hongjun of July 26. This article relies only on those texts as Hu quoted them, then translated into English and back again, and has not checked the originals. Mei Guangdi's and Ren Hongjun's words and actions reach us through Hu, and his explanation of the moderate wording is his own later account. Tang's notes to chapter 7 are commentary: he thought the slogan that the classical language is half dead was devastating in its day but that its truth deserves a fresh look; he judged vernacular prose a complete success and vernacular poetry not yet out of the experimental stage; and he records that Hu's opponents felt he claimed too much credit, and that when Hu gave this account in a 1956 lecture at Harvard, Jerome B. Grieder, later his biographer, scoffed. These are Tang's accounts and were not checked separately here. On the outcome for vernacular poetry, Hu himself says in chapter 8 that the new poetry of the past forty years had achieved a great deal, while acknowledging that the different branches of the new literature developed unevenly. Paragraphs marked as the author's inference are this article's reading; the scenario in the question is fictional.",
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP2",
+      "OP3",
+      "OP4",
+      "OP5",
+      "OP6"
+     ]
+    },
+    {
+     "path": "sources.0.citation",
+     "before": "胡适口述，唐德刚译注《胡适口述自传》，中国文史出版社 2020（PDF 文字层；第八章“从文学革命到文艺复兴”）",
+     "after": "胡适口述，唐德刚译注《胡适口述自传》，中国文史出版社 2020（PDF 文字层；第七章“文学革命的结胎时期”，结局见第八章“从文学革命到文艺复兴”）",
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP2",
+      "OP3",
+      "OP4",
+      "OP5",
+      "OP6"
+     ]
+    },
+    {
+     "path": "further_reading.0.title",
+     "before": "胡适口述、唐德刚译注《胡适口述自传》（中国文史出版社，2020）第八章",
+     "after": "胡适口述、唐德刚译注《胡适口述自传》（中国文史出版社，2020）第七、八章",
+     "issues": [
+      "CTX-X1",
+      "CTX-X2",
+      "OP2",
+      "OP3",
+      "OP4",
+      "OP5",
+      "OP6"
+     ]
+    }
+   ]
+  }
+ ],
+ "calls_before_local_fix": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 112.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 27920,
+    "output_tokens": 13214
+   },
+   "cost_estimate_usd": 0.487648
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 49.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 27823,
+    "output_tokens": 6225
+   },
+   "cost_estimate_usd": 0.347092
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 119.9,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 26843,
+    "output_tokens": 13919
+   },
+   "cost_estimate_usd": 0.493132
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 27.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 27821,
+    "output_tokens": 3474
+   },
+   "cost_estimate_usd": 0.292056
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 101.7,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 26869,
+    "output_tokens": 12007
+   },
+   "cost_estimate_usd": 0.45510000000000006
+  },
+  {
+   "step": "verify_r3",
+   "attempt": 1,
+   "wall_s": 77.1,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 26838,
+    "output_tokens": 9006
+   },
+   "cost_estimate_usd": 0.394832
+  }
+ ],
+ "evidence_expanded": [
+  {
+   "from": "8905ceca763fd9736b8895e4ab63e054811d1401232135d97b078378066566b5",
+   "to": "5d71c930c4586dff87cead6fc01c38d07bc448e17f58629699ca3e1d4dfac0c9",
+   "by": "source-context review 1793489067.7880285",
+   "added": [
+    "HS-E41"
+   ]
+  }
+ ]
+}

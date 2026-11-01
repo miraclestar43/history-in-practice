@@ -1,0 +1,206 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261030-sj065-1",
+ "content_sha256": "21596dbaad4430897e866940c5e5aa69b66286c72fff9b1df9c12f5cc330c7f9",
+ "evidence_in_sha256": "91470ea7108dd602caf566f53a3cb6559c0c2fccf9bd92c36264370653cd6366",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793502825.2970164,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.2",
+   "lang": "en",
+   "sentence": "Wu Qi was silent for a long time, then said: To you."
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-SJ065": {
+   "title": "司馬遷《史記·孫子吳起列傳》（维基文库本）",
+   "url": "https://zh.wikisource.org/w/index.php?title=%E5%8F%B2%E8%A8%98/%E5%8D%B7065&action=render",
+   "ref": "zh:史記/卷065",
+   "evidence_text_sha256": "c6bedf3de6168b486a80b40b2c425409808d8161efb99ac3a05423cb08dbfd24",
+   "cache_sha256": "c6bedf3de6168b486a80b40b2c425409808d8161efb99ac3a05423cb08dbfd24",
+   "cjk": true,
+   "source_chars": 2928,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     2928
+    ]
+   ],
+   "chars_reviewed": 2928
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 22.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "prompts": [
+    {
+     "file": "context_review.md",
+     "sha256": "166543d1f6ca"
+    }
+   ],
+   "output_tokens": 2087
+  }
+ ],
+ "finished_at": 1793502847.6046894,
+ "elapsed_min": 0.4,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-SJ065",
+    "outcome": "吴起在楚国相悼王、变法强兵，招致贵戚怨恨；悼王死后宗室大臣作乱攻杀吴起，射刺吴起时也射中了王尸。太子即位后诛杀这些人，被灭族的有七十余家。司马迁在传末评论吴起在楚「刻暴少恩」以致丧命。",
+    "quote": "悼王既葬，太子立，乃使令尹盡誅射吳起而并中王尸者。坐射起而夷宗死者七十餘家。",
+    "in_evidence": true
+   },
+   {
+    "source_id": "S-SJ065",
+    "outcome": "传末太史公曰对吴起作总评：他劝武侯「在德不在险」，自己在楚国却以刻暴少恩丧身。",
+    "quote": "吳起說武侯以形勢不如德，然行之於楚，以刻暴少恩亡其軀。悲夫！",
+    "in_evidence": true
+   }
+  ],
+  "additions": [],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.2",
+    "lang": "en",
+    "sentence": "Wu Qi was silent for a long time, then said: To you.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ065"
+    ],
+    "scope": "《史記·孫子吳起列傳》吴起与田文论功一段（全文已读）",
+    "quote": {
+     "source_id": "S-SJ065",
+     "quote": "起默然良久，曰：「屬之子矣。」"
+    },
+    "fix": "无需修改。这句叙述人物沉默，有原文依据，不是关于来源有无记载的断言。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "dek",
+    "problem": "导语只写田文承认功劳不如吴起，没有交代这场论功的收尾：吴起被「主少国疑」一问说服，自知不如田文。正文 story.2 已经写到这一点，所以不构成误导；如果篇幅允许，可在导语中稍作呼应。",
+    "quote": {
+     "source_id": "S-SJ065",
+     "quote": "吳起乃自知弗如田文。"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.hook.0",
+    "problem": "按原文计策，顺序是公叔先向武侯进言许婚，再召吴起回家、让公主当面发怒；hook 先写发怒一幕，后写武侯许婚，容易让读者误以为事情的先后正是如此。story.4 已按原顺序交代，影响较小，可考虑在 hook 中避免暗示时间先后。",
+    "quote": {
+     "source_id": "S-SJ065",
+     "quote": "君因先與武侯言曰"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "全文已读。稿件对鲁国辞退、魏国论功、公叔设计、去魏之楚以及楚国结局的交代都与原文相符；待核断言 A1 是有据的人物叙述，不是来源断言。limits 与 uncertainty_note 只说明史源数量和人物评语的性质，没有否定性的来源断言，无需补摘录，只有两处可选的 note。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.2",
+   "lang": "en",
+   "sentence": "Wu Qi was silent for a long time, then said: To you.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ065"
+   ],
+   "scope": "《史記·孫子吳起列傳》吴起与田文论功一段（全文已读）",
+   "quote": {
+    "source_id": "S-SJ065",
+    "quote": "起默然良久，曰：「屬之子矣。」"
+   },
+   "fix": "无需修改。这句叙述人物沉默，有原文依据，不是关于来源有无记载的断言。",
+   "unit_status": {
+    "S-SJ065": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "dek",
+   "problem": "导语只写田文承认功劳不如吴起，没有交代这场论功的收尾：吴起被「主少国疑」一问说服，自知不如田文。正文 story.2 已经写到这一点，所以不构成误导；如果篇幅允许，可在导语中稍作呼应。",
+   "quote": {
+    "source_id": "S-SJ065",
+    "quote": "吳起乃自知弗如田文。"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.hook.0",
+   "problem": "按原文计策，顺序是公叔先向武侯进言许婚，再召吴起回家、让公主当面发怒；hook 先写发怒一幕，后写武侯许婚，容易让读者误以为事情的先后正是如此。story.4 已按原顺序交代，影响较小，可考虑在 hook 中避免暗示时间先后。",
+   "quote": {
+    "source_id": "S-SJ065",
+    "quote": "君因先與武侯言曰"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-SJ065",
+   "outcome": "吴起在楚国相悼王、变法强兵，招致贵戚怨恨；悼王死后宗室大臣作乱攻杀吴起，射刺吴起时也射中了王尸。太子即位后诛杀这些人，被灭族的有七十余家。司马迁在传末评论吴起在楚「刻暴少恩」以致丧命。",
+   "quote": "悼王既葬，太子立，乃使令尹盡誅射吳起而并中王尸者。坐射起而夷宗死者七十餘家。",
+   "in_evidence": true
+  },
+  {
+   "source_id": "S-SJ065",
+   "outcome": "传末太史公曰对吴起作总评：他劝武侯「在德不在险」，自己在楚国却以刻暴少恩丧身。",
+   "quote": "吳起說武侯以形勢不如德，然行之於楚，以刻暴少恩亡其軀。悲夫！",
+   "in_evidence": true
+  }
+ ],
+ "additions": [],
+ "additions_failed": [],
+ "evidence_sha256": "91470ea7108dd602caf566f53a3cb6559c0c2fccf9bd92c36264370653cd6366",
+ "outcome": "clean",
+ "blocking": []
+}

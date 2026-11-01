@@ -1,0 +1,2572 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-auto-20261030-south-el-1",
+ "edition_id": "cand-auto-20261030-south-el-1",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "d3c2d98",
+ "started_at": 1793464888.2023127,
+ "base_source": "samples/auto/cand-auto-20261030-south-el-1/final/article.json",
+ "base_content_sha256": "f14175236373f72a42a3fb9df64c8bae6beb7953817fbd75ffe77d031e8bafcd",
+ "evidence_sha256": "f51398db4e28f5773534d263667ad5e841f9bae5659aea601fb1a4567236e998",
+ "operator_note": "extra attempt beyond max_attempts: owner instruction 2026-10-31 (docs/reviews/SNOW_TEST_INCIDENT_20261031.md, user message): complete the factual repairs; one recorded attempt beyond max_attempts",
+ "model_record_sha256": null,
+ "prior_record_sha256": "d17a741f001a6f11c86907c14761ad4372d51252914db688a3d73af37223e374",
+ "attempt": "attempt-6",
+ "context_review_sha256": "851fb1923593fee5c484ba9cf9e84d35a0f392a0c98a6b57bafb4c630822a63b",
+ "inherited": [
+  {
+   "id": "X1",
+   "source": "context review",
+   "where": "sections.limits.1",
+   "problem": "来源上下文核查（zh）「所引片段未给公元年份，这里不做换算」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SOUTH〕：「We sailed from London on Friday, August 1, 1914」",
+   "suggestion": "来源里有年份：考察队于1914年8月1日从伦敦出发。可以写明这一点，或者删掉这句说明。不要推算航程年份，除非检索到原文明确写出。"
+  },
+  {
+   "id": "X2",
+   "source": "context review",
+   "where": "sections.limits.1",
+   "problem": "来源上下文核查（en）「The quoted passages give no calendar year, so none is supplied here」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SOUTH〕：「We sailed from London on Friday, August 1, 1914」",
+   "suggestion": "与中文版同样修改。"
+  },
+  {
+   "id": "X3",
+   "source": "context review",
+   "where": "uncertainty_note",
+   "problem": "来源上下文核查（zh）「所引片段未给公元年份，不做换算」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SOUTH〕：「We sailed from London on Friday, August 1, 1914」",
+   "suggestion": "改为注明1914年8月1日从伦敦出发，或者删去这句。英文版同步修改。"
+  },
+  {
+   "id": "X4",
+   "source": "context review",
+   "where": "sections.analysis.0",
+   "problem": "来源上下文核查：只写留守二十二人熬了四个半月，没有交代他们最终被智利 Yelcho 号救出。最坏情形账的实际结局被截断，读者无法知道留守者的下场。。来源原文〔S-SOUTH〕：「Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades.」",
+   "suggestion": null
+  },
+  {
+   "id": "X5",
+   "source": "context review",
+   "where": "",
+   "problem": "证据包已按来源上下文补入摘录 SOUTH-EL1-E38, SOUTH-EL1-E39, SOUTH-EL1-E40, SOUTH-EL1-E41；请据此检查叙事、结局与因果是否完整准确",
+   "suggestion": null
+  }
+ ],
+ "contamination": [
+  {
+   "id": "K1",
+   "brief_line": "方向：这篇讲在象岛上定下的一个求援决策：为什么把目标定在八百英里外的南乔治亚而不是更近的福克兰，谁去谁留、带什么丢什么、走之前怎么交代留守的人 (SOUTH-EL1-E4)(SOUTH-EL1-E7)(SOUTH-EL1-E13)(SOUTH-EL1-E17)。看点是把一个胜算很小的选项对全队讲清楚、让人自愿跟从，并且愿意承担拒绝病号上船的代价 (SOUTH-EL1-E6)(SOUTH-EL1-E10)(SOUTH-EL1-E12)。不要写成英雄赞歌，不要用“他当然会成功”的口吻，也不要把拒绝病号上船写成一句冷酷或高尚的道德判断 (SOUTH-EL1-E12)。",
+   "dropped_ids": [
+    "EL1-E10",
+    "EL1-E12",
+    "EL1-E13",
+    "EL1-E17",
+    "EL1-E4",
+    "EL1-E6",
+    "EL1-E7"
+   ]
+  },
+  {
+   "id": "K2",
+   "brief_line": "- 粮食只够全队按足额吃五个星期，减量可撑三个月，海兽可能不来，于是定为每天一顿热食 (SOUTH-EL1-E2)。",
+   "dropped_ids": [
+    "EL1-E2"
+   ]
+  },
+  {
+   "id": "K3",
+   "brief_line": "- 几名队员的健康和精神状况令人担心，一名队员双脚冻伤、医生说不动手术就保不住脚趾 (SOUTH-EL1-E1)。",
+   "dropped_ids": [
+    "EL1-E1"
+   ]
+  },
+  {
+   "id": "K4",
+   "brief_line": "- 判断必须有人乘船出海求援，而且不能拖 (SOUTH-EL1-E3)。",
+   "dropped_ids": [
+    "EL1-E3"
+   ]
+  },
+  {
+   "id": "K5",
+   "brief_line": "- 福克兰的斯坦利港更近，但要顶着常年西北风用一条脆弱的小船抢风航行；南乔治亚八百英里外，但在西风带内，东岸各捕鲸站可能找到人，冰情允许的话一个月可望往返 (SOUTH-EL1-E4)。",
+   "dropped_ids": [
+    "EL1-E4"
+   ]
+  },
+  {
+   "id": "K6",
+   "brief_line": "- 算过最坏情形：岛上的人风险不会因此增加，冬天少六张嘴，船上只带六人一个月的口粮；而象岛不会有任何人来搜寻他们 (SOUTH-EL1-E5)。",
+   "dropped_ids": [
+    "EL1-E5"
+   ]
+  },
+  {
+   "id": "K7",
+   "brief_line": "- 向全队讲清利害：五月中合恩角以南是世界上最暴虐的水域，出海只为援助的急迫需要 (SOUTH-EL1-E6)。",
+   "dropped_ids": [
+    "EL1-E6"
+   ]
+  },
+  {
+   "id": "K8",
+   "brief_line": "- Worsley 和 Wild 都要求同行；指定 Wild 留守全队，并交代万一求援失败，春季带人去 Deception Island (SOUTH-EL1-E7)。",
+   "dropped_ids": [
+    "EL1-E7"
+   ]
+  },
+  {
+   "id": "K9",
+   "brief_line": "- 选 Worsley 随行，理由是他定位快而准，尤其在困难情况下 (SOUTH-EL1-E8)。",
+   "dropped_ids": [
+    "EL1-E8"
+   ]
+  },
+  {
+   "id": "K10",
+   "brief_line": "- 征求志愿者，但作者写明心里其实已有名单 (SOUTH-EL1-E9)。",
+   "dropped_ids": [
+    "EL1-E9"
+   ]
+  },
+  {
+   "id": "K11",
+   "brief_line": "- Crean 原本要留下当 Wild 的帮手，他恳求上船，与 Wild 商量后带上他 (SOUTH-EL1-E10)。",
+   "dropped_ids": [
+    "EL1-E10"
+   ]
+  },
+  {
+   "id": "K12",
+   "brief_line": "- 有人不够强壮，有人不是熟练水手，虽然近几个月的经历也算得一点水手资格 (SOUTH-EL1-E11)。",
+   "dropped_ids": [
+    "EL1-E11"
+   ]
+  },
+  {
+   "id": "K13",
+   "brief_line": "- 有人提议带上病号让他尽快得到温暖和庇护，被否掉：健康的人在船上都难活，重病躺舱底的人熬不过必定遇到的坏天气 (SOUTH-EL1-E12)。",
+   "dropped_ids": [
+    "EL1-E12"
+   ]
+  },
+  {
+   "id": "K14",
+   "brief_line": "- 最后定下 Worsley、Crean、McNeish、McCarthy、Vincent 和作者六人 (SOUTH-EL1-E13)。",
+   "dropped_ids": [
+    "EL1-E13"
+   ]
+  },
+  {
+   "id": "K15",
+   "brief_line": "- 木匠年过五十、身体不算好，但懂帆船、手快 (SOUTH-EL1-E14)。",
+   "dropped_ids": [
+    "EL1-E14"
+   ]
+  },
+  {
+   "id": "K16",
+   "brief_line": "- 他把另一条船的桅杆横放作龙骨加强，用箱盖和雪橇板搭骨架，冻硬的帆布在油炉上一寸寸烤开再缝成覆罩；覆罩看着像舞台布景，但事后证明确实顶用 (SOUTH-EL1-E15)。",
+   "dropped_ids": [
+    "EL1-E15"
+   ]
+  },
+  {
+   "id": "K17",
+   "brief_line": "- 看到浮冰随时可能合拢，决定次日出发；在象岛的最后一夜又冷又不舒服 (SOUTH-EL1-E16)。",
+   "dropped_ids": [
+    "EL1-E16"
+   ]
+  },
+  {
+   "id": "K18",
+   "brief_line": "- 上岸交代留守的 Wild，写明几乎把整个局面和行动范围都交给他自行判断，并当面说信任他、把队伍托付给他 (SOUTH-EL1-E17)。",
+   "dropped_ids": [
+    "EL1-E17"
+   ]
+  },
+  {
+   "id": "K19",
+   "brief_line": "- 启航时留在岸上的人挥手欢呼 (SOUTH-EL1-E18)。",
+   "dropped_ids": [
+    "EL1-E18"
+   ]
+  },
+  {
+   "id": "K20",
+   "brief_line": "- 船上做饭要三个人：一人护灯、两人护锅 (SOUTH-EL1-E19)。",
+   "dropped_ids": [
+    "EL1-E19"
+   ]
+  },
+  {
+   "id": "K21",
+   "brief_line": "- 出海第六天船因结冰失去弹性，扔掉备用桨和两条湿透冻硬的睡袋，剩下四条，其中一条留给有人彻底垮掉时应急 (SOUTH-EL1-E20)。",
+   "dropped_ids": [
+    "EL1-E20"
+   ]
+  },
+  {
+   "id": "K22",
+   "brief_line": "- 缆绳断、海锚丢失，只能在大风里升帆顶风 (SOUTH-EL1-E21)。",
+   "dropped_ids": [
+    "EL1-E21"
+   ]
+  },
+  {
+   "id": "K23",
+   "brief_line": "- 出海第七天见太阳，观测显示已走三百八十多英里，接近南乔治亚的一半 (SOUTH-EL1-E22)。",
+   "dropped_ids": [
+    "EL1-E22"
+   ]
+  },
+  {
+   "id": "K24",
+   "brief_line": "- 第十一天夜里遇到前所未见的巨浪，船被抛起又挣脱出来 (SOUTH-EL1-E23)。",
+   "dropped_ids": [
+    "EL1-E23"
+   ]
+  },
+  {
+   "id": "K25",
+   "brief_line": "- Vincent 一周来已不再承担船员工作，作者写明无法解释他的垮掉：他身体本来是船上最强的 (SOUTH-EL1-E24)。",
+   "dropped_ids": [
+    "EL1-E24"
+   ]
+  },
+  {
+   "id": "K26",
+   "brief_line": "- 水要减到每人每天半品脱，有人恳求预支第二天的水被拒绝，因为风向一变航程会拖长 (SOUTH-EL1-E25)。",
+   "dropped_ids": [
+    "EL1-E25"
+   ]
+  },
+  {
+   "id": "K27",
+   "brief_line": "必须写明的不确定性：这套记录只有当事人一个史源，是他事后的第一人称自述 (SOUTH-EL1-E3)。文中的对话，例如把队伍托付给 Wild 的那句交代，是记述性的，未必逐字 (SOUTH-EL1-E17)；Crean 恳求随行也是同样情况 (SOUTH-EL1-E10)。不要替人物写心理：作者说看队员时“信心增加”只是自述，不是当时可核实的心理记录 (SOUTH-EL1-E13)；Vincent 为何垮掉作者自己说无法解释 (SOUTH-EL1-E24)。原文按出海后的天数记事，没有公元年份，文章里只用原文的天数与月份，不做换算 (SOUTH-EL1-E20)(SOUTH-EL1-E22)(SOUTH-EL1-E23)。距离、口粮、水的数字都照原文写，如两个距离、走了三百八十多英里、半品脱 (SOUTH-EL1-E4)(SOUTH-EL1-E5)(SOUTH-EL1-E22)(SOUTH-EL1-E25)。原文为扫描识别文本，个别字词有讹误，引用时照原文写法。",
+   "dropped_ids": [
+    "EL1-E10",
+    "EL1-E13",
+    "EL1-E17",
+    "EL1-E20",
+    "EL1-E22",
+    "EL1-E23",
+    "EL1-E24",
+    "EL1-E25",
+    "EL1-E3",
+    "EL1-E4",
+    "EL1-E5"
+   ]
+  },
+  {
+   "id": "K28",
+   "brief_line": "现代应用：资源有限、外部不会主动来救的小团队，要不要派人冒险出去求援、派谁去、谁留下看家、物资砍到什么程度、什么时候必须定下出发时点 (SOUTH-EL1-E2)(SOUTH-EL1-E3)(SOUTH-EL1-E5)(SOUTH-EL1-E13)(SOUTH-EL1-E16)；以及负责人临走前如何把决定权和责任一起交出去，说清楚失败时的后手 (SOUTH-EL1-E7)(SOUTH-EL1-E17)。",
+   "dropped_ids": [
+    "EL1-E13",
+    "EL1-E16",
+    "EL1-E17",
+    "EL1-E2",
+    "EL1-E3",
+    "EL1-E5",
+    "EL1-E7"
+   ]
+  }
+ ],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.hook.0",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "开头先讲史源（《南方》作者的第一人称自述），然后才讲处境；全文开头一直没有说明这支队伍有多少人、最后几人出海、几人留下，读者说不清“谁遇到了问题”。同时开头堆了读者此时还用不上的存量细节（三只海豹、两张半兽皮）。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E35",
+     "quote": "twenty-two of my comrades eked out a bare existence for four and a half months"
+    },
+    {
+     "id": "SOUTH-EL1-E13",
+     "quote": "finally selected McNeish, McCarthy, and Vincent in addition to Worsley and Crean"
+    }
+   ],
+   "proposed": "开头先写处境：队长沙克尔顿和他的队伍困在象岛，最后六人乘小船出海求援，二十二人留在岛上。史源说明后移一句。“三只海豹和两张半带脂肪的兽皮”可以移到口粮那句之后或者压缩，但“燃料主要靠海兽脂肪”要保留。英文同步。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "开头改为先写处境：沙克尔顿和队伍困在象岛，最后六人乘小船出海、二十二人留岛。人数依据E13的六人名单和E35的二十二人。史源说明后移一句。删去三只海豹、两张半兽皮的存量细节，保留燃料主要靠海兽脂肪。中英同步，ev补入E35、E13。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.story.8",
+   "category": "causality",
+   "severity": "fix",
+   "problem": "把“风向不利可能拖长航程”写成既是不增加配给的理由，也是拒绝预支第二天的水的理由。证据只把这个理由用于不增加配给，拒绝预支另写一句，没有附理由。这个合并的写法与已知污染 K26 的简报说法一致。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E25",
+     "quote": "allowance of water to be increased since an unfavourable wind might drive us away from the island"
+    },
+    {
+     "id": "SOUTH-EL1-E25",
+     "quote": "refusing to allow any one to anticipate the morrow"
+    }
+   ],
+   "proposed": "中文改为：队长不肯增加配给，因为万一风向不利，船可能被吹离海岛，航程拖长许多天；有人恳求预支第二天的水，他也坚决拒绝。英文同样把理由只挂在不增加配给上。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "把风向不利可能拖长航程这一理由只挂在不增加配给上；拒绝预支第二天的水另写一句，不附理由。中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.story.8",
+   "category": "readability",
+   "severity": "note",
+   "problem": "一段之内连续写了巨浪、文森特垮掉、限水、望见陆地、飓风、销钉、入湾、登陆、上岸后的处境，读者很难分清先后。",
+   "evidence": [],
+   "proposed": "按“航程中段（巨浪、文森特、限水）”“5月8日望见陆地至飓风”“5月10日入湾登陆”拆成三段，内容不删。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F4",
+   "path": "sections.analysis.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "只写了留守的二十二人熬了四个半月，没有交代他们最终获救。读者无法知道这笔“最坏情形账”的实际下场，这一段的结局被截断了。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E38",
+     "quote": "Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades"
+    },
+    {
+     "id": "SOUTH-EL1-E38",
+     "quote": "Captain Luis Pardo, who commanded the Yelcho on our last and successful venture"
+    }
+   ],
+   "proposed": "在“四个半月”之后补一句：据作者序言，经过多次尝试，最后由智利政府派出的Yelcho号把他们救出。保留“本文不据此推出因果评价”。英文同步。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "在四个半月之后补写据序言所载的结局：营救经过不止一次尝试，最终由智利政府直接促成，Luis Pardo指挥的Yelcho号完成最后一次、成功的营救。保留“本文不据此推出因果评价”。ev补入E38，中英同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.analysis.2",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“所引段落没有说明他为什么这样安排”是关于来源没写什么的否定断言。前面已经标明“这只是一种解释”，读者理解不需要这半句。",
+   "evidence": [],
+   "proposed": "删去后半句，改为“这只是本文的解释。”英文删去“and the passages quoted give no reason for the arrangement”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去关于所引段落没有说明理由的否定断言，改为“这只是本文的解释”。英文同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F6",
+   "path": "sections.limits.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“这套记录只有当事人一个史源”和“exactly one historical source”读起来像在断言这段历史只有这一份来源。这超出了证据包能支持的范围，应改为说明本文依据的范围。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E34",
+     "quote": "This record of the voyage to South Georgia is based upon Scanty notes made day by day"
+    }
+   ],
+   "proposed": "改为“本文只依据沙克尔顿《南方》中他事后写下的第一人称自述”。英文改为“This piece relies only on Shackleton's first-person account in South, written after the fact”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "首句改为说明本文依据的范围，即只依据沙克尔顿《南方》中的事后第一人称自述，不再断言这段历史只有这一份来源。英文同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F7",
+   "path": "sections.limits.1",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "“所引片段未给公元年份，这里不做换算”沿用了已知污染K27中“原文没有公元年份”的说法。这类关于来源没写什么的断言读者不需要，而且来源里写有出发年份。删掉之后，“两处要留白”只剩文森特一处。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E41",
+     "quote": "We sailed from London on Friday, August 1, 1914"
+    }
+   ],
+   "proposed": "删去关于公元年份的这半句。中文开头改为“有一处要留白：”，英文开头改为“One blank stays blank.”，并删去“The quoted passages give no calendar year, so none is supplied here;”。不要推算航程年份。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“所引片段未给公元年份”的否定断言，开头改为“有一处要留白”，英文改为“One blank stays blank.”。未推算航程年份。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F8",
+   "path": "uncertainty_note",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "中英文都写“所引片段未给公元年份，不做换算”，沿用了已知污染K27。来源里写有1914年出发，这类否定断言读者也不需要。",
+   "evidence": [
+    {
+     "id": "SOUTH-EL1-E41",
+     "quote": "We sailed from London on Friday, August 1, 1914"
+    }
+   ],
+   "proposed": "中文删去“所引片段未给公元年份，不做换算”，英文删去“and the quoted passages give no calendar year, so none is supplied”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中英文都删去关于未给公元年份、不做换算的说法。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F9",
+   "path": "uncertainty_note",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“全文只有当事人一个史源”和“rests on a single source”与limits.0的问题相同，读起来像断言这段历史别无来源。",
+   "evidence": [],
+   "proposed": "改为“本文只依据沙克尔顿（当事人）事后的第一人称自述《南方》”。英文同步。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "把“只有一个史源”改为“本文只依据沙克尔顿事后的第一人称自述《南方》”，说明的是本文的依据范围。英文同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "X1",
+   "problem": "来源上下文核查（zh）「所引片段未给公元年份，这里不做换算」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SOUTH〕：「We sailed from London on Friday, August 1, 1914」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.limits.1",
+   "disposition": "duplicate",
+   "same_as": "F7",
+   "rationale": "来源中有1914年8月1日从伦敦出发的记载，中文“未给公元年份”的说法应删去。"
+  },
+  {
+   "id": "X2",
+   "problem": "来源上下文核查（en）「The quoted passages give no calendar year, so none is supplied here」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SOUTH〕：「We sailed from London on Friday, August 1, 1914」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.limits.1",
+   "disposition": "duplicate",
+   "same_as": "F7",
+   "rationale": "英文与中文是同一处问题。"
+  },
+  {
+   "id": "X3",
+   "problem": "来源上下文核查（zh）「所引片段未给公元年份，不做换算」：来源里其实有答案，必须按引文改写（不要改成“摘录未写”）。来源原文〔S-SOUTH〕：「We sailed from London on Friday, August 1, 1914」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "uncertainty_note",
+   "disposition": "duplicate",
+   "same_as": "F8",
+   "rationale": "uncertainty_note中英文都重复了同一个无年份断言。"
+  },
+  {
+   "id": "X4",
+   "problem": "来源上下文核查：只写留守二十二人熬了四个半月，没有交代他们最终被智利 Yelcho 号救出。最坏情形账的实际结局被截断，读者无法知道留守者的下场。。来源原文〔S-SOUTH〕：「Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades.」",
+   "origin": "inherited context review None",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.analysis.0",
+   "disposition": "duplicate",
+   "same_as": "F4",
+   "rationale": "analysis.0没有交代留守者最终由Yelcho号救出。"
+  },
+  {
+   "id": "X5",
+   "path": "",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "证据包已按来源上下文补入摘录 SOUTH-EL1-E38, SOUTH-EL1-E39, SOUTH-EL1-E40, SOUTH-EL1-E41；请据此检查叙事、结局与因果是否完整准确",
+   "origin": "inherited context review None",
+   "audit_rationale": "补入的摘录确实带来需要修改的地方：E38对应F4，E41对应F7和F8。E39和E40（丢舵、离Stromness走海路仍有150英里）不改变正文现有的判断：story.8已经据E37写明“上岸并不等于求援成功”，所以不另列问题。",
+   "disposition": "fixed",
+   "rationale": "已逐条核对新补入的摘录。E38：analysis.0 已写明营救经过多次尝试，最终由智利政府直接促成，并由 Pardo 指挥的 Yelcho 号完成，与证据一致，不需改动。E41：正文和不确定性说明都没有“原文未给公元年份”之类的说法，与该证据不冲突，不需改动。E39、E40：登陆当晚丢舵，以及走海路离 Stromness 仍有150英里、另一条路是横越岛屿，这两点让“上岸不等于求援成功”更完整。因此在 story.8 中英文末尾各补一句，内容只限证据原文，并把 E39、E40 加入该段 ev。",
+   "decided_in": "revise_r2"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.hook.0.zh",
+   "before": "这份记述出自《南方》作者欧内斯特·沙克尔顿的第一人称自述，他是这支队伍的队长。经过一段乘船航程后，他和全队困在象岛：粮食有限，有人冻伤，而且象岛上根本不会有人来搜寻他们。口粮按足额只够全队吃五个星期。减量可以撑三个月，或许还能靠海豹和象海豹补一些，但沙克尔顿不敢把信心全押在这上面：海滩上的海兽似乎都走了，冬天近了。燃料主要靠海兽脂肪，存量里有三只海豹和两张半带脂肪的兽皮。初步估量形势后，他决定全队每天只吃一顿热食。",
+   "after": "队长欧内斯特·沙克尔顿和他的队伍困在象岛上，最后六人乘一条小船出海求援，二十二人留在岛上。下面的经过出自他在《南方》中的第一人称自述。经过一段乘船航程后，他们粮食有限，有人冻伤，而且象岛上根本不会有人来搜寻他们。口粮按足额只够全队吃五个星期。减量可以撑三个月，或许还能靠海豹和象海豹补一些。但沙克尔顿不敢把信心全押在这上面：海滩上的海兽似乎都走了，冬天近了。燃料主要靠海兽脂肪。初步估量形势后，他决定全队每天只吃一顿热食。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.hook.0.en",
+   "before": "This account comes from the first-person narrative of Ernest Shackleton, author of South and leader of this party. After a boat journey, he and his men were stranded on Elephant Island: food was limited, a man was frostbitten, and there was no chance at all of any search being made for them there. At full ration the food would last the whole party five weeks. Cut back, it could be spread over three months, and would probably be supplemented to some extent by seals and sea-elephants — but Shackleton dared not count on that with full confidence. The animals seemed to have deserted the beach and winter was near. They were mainly dependent on blubber for fuel, and their stocks included three seals and two and a half skins with the blubber attached. After a preliminary survey of the situation, he decided the party must be limited to one hot meal a day.",
+   "after": "Ernest Shackleton, leader of the party, and his men were stranded on Elephant Island; in the end six sailed for help in one small boat and twenty-two stayed on the island. What follows comes from his first-person account in South. After a boat journey, their food was limited, a man was frostbitten, and there was no chance at all of any search being made for them there. At full ration the food would last the whole party five weeks. Cut back, it could be spread over three months, and would probably be supplemented to some extent by seals and sea-elephants. But Shackleton dared not count on that with full confidence: the animals seemed to have deserted the beach and winter was near. They were mainly dependent on blubber for fuel. After a preliminary survey of the situation, he decided the party must be limited to one hot meal a day.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.hook.0.ev",
+   "before": [
+    "SOUTH-EL1-E2",
+    "SOUTH-EL1-E1",
+    "SOUTH-EL1-E5"
+   ],
+   "after": [
+    "SOUTH-EL1-E2",
+    "SOUTH-EL1-E1",
+    "SOUTH-EL1-E5",
+    "SOUTH-EL1-E35",
+    "SOUTH-EL1-E13"
+   ],
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.story.8.zh",
+   "before": "航程中有一次，遇上了队长二十六年海上经历中从未见过的巨浪，与多日来那些白浪翻卷的大浪完全不同。他高喊大家抓紧。船被像软木塞一样抛起、向前甩出，灌进半船水，在重击下颤抖；所有人拼命用随手抓到的容器掏水，十分钟后才觉得船重新有了生命。文森特在过去一周已不再是积极的船员，队长写明难以解释他的垮掉——他是船上体格最强壮的人之一，年轻，在北海拖网船上干过，本该比麦卡锡更能吃苦，而麦卡锡没那么强壮，却总是乐呵呵的。淡水减到每人每天半品脱。带上船的冰块早已用完，装船时一只水桶在浪里被撞裂，渗进了一些海水，喝的水发咸，渴得更厉害；队长不肯增加配给，有人恳求预支第二天的水，也被拒绝：万一风向不利，船可能被吹离海岛，航程拖长许多天。原文感叹，缺水是人所能承受的最严酷的匮乏。5月8日中午12点30分，麦卡锡从云隙中望见南乔治亚的黑色悬崖，距离开象岛整十四天。但岩岸看似直落入海，夜色将近，天气征兆也不好，那时贸然登陆无异自杀，只能离岸停驶，等待天亮。次日清晨风向转为西北，迅速增强为他们所有人经历过的最猛的飓风之一，风浪把船推向海岸，他们无能为力。直到天黑后风向突然转变，他们才得以重新驶离海岸；大风刚缓，锁住桅杆的销钉就掉了出来——队长写道，飓风中它若脱落，谁也救不了他们。5月10日，他们驶向一处队长认为必定是哈康国王湾（King Haakon Bay）的大海湾；风向转为从湾内吹出，他们在强风中抢风五次，才穿过礁石进入宽阔的湾口。暮色将近，他们转向海湾南岸一处有礁石护着的小湾。小船乘着涌浪触到海滩，几分钟后众人都平安上了岸；他们在脚边发现一条淡水溪流，随即跪下大口痛饮。但上岸并不等于求援成功：冰川和陡峭的山坡挡住了从小湾进入内陆的路，他们还得驶向海湾顶端，而指望找到捕鲸人的捕鲸站在东岸。",
+   "after": "航程中有一次，遇上了队长二十六年海上经历中从未见过的巨浪，与多日来那些白浪翻卷的大浪完全不同。他高喊大家抓紧。船被像软木塞一样抛起、向前甩出，灌进半船水，在重击下颤抖；所有人拼命用随手抓到的容器掏水，十分钟后才觉得船重新有了生命。文森特在过去一周已不再是积极的船员，队长写明难以解释他的垮掉——他是船上体格最强壮的人之一，年轻，在北海拖网船上干过，本该比麦卡锡更能吃苦，而麦卡锡没那么强壮，却总是乐呵呵的。淡水减到每人每天半品脱。带上船的冰块早已用完，装船时一只水桶在浪里被撞裂，渗进了一些海水，喝的水发咸，渴得更厉害。队长不肯增加配给，因为万一风向不利，船可能被吹离海岛，航程拖长许多天；有人恳求预支第二天的水，他也坚决拒绝。原文感叹，缺水是人所能承受的最严酷的匮乏。5月8日中午12点30分，麦卡锡从云隙中望见南乔治亚的黑色悬崖，距离开象岛整十四天。但岩岸看似直落入海，夜色将近，天气征兆也不好，那时贸然登陆无异自杀，只能离岸停驶，等待天亮。次日清晨风向转为西北，迅速增强为他们所有人经历过的最猛的飓风之一，风浪把船推向海岸，他们无能为力。直到天黑后风向突然转变，他们才得以重新驶离海岸；大风刚缓，锁住桅杆的销钉就掉了出来——队长写道，飓风中它若脱落，谁也救不了他们。5月10日，他们驶向一处队长认为必定是哈康国王湾（King Haakon Bay）的大海湾；风向转为从湾内吹出，他们在强风中抢风五次，才穿过礁石进入宽阔的湾口。暮色将近，他们转向海湾南岸一处有礁石护着的小湾。小船乘着涌浪触到海滩，几分钟后众人都平安上了岸；他们在脚边发现一条淡水溪流，随即跪下大口痛饮。但上岸并不等于求援成功：冰川和陡峭的山坡挡住了从小湾进入内陆的路，他们还得驶向海湾顶端，而指望找到捕鲸人的捕鲸站在东岸。",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.8.en",
+   "before": "At one point came a wave beyond anything the leader had met in twenty-six years at sea — a mighty upheaval of the ocean, quite apart from the white-capped seas that had been their tireless enemies for many days. He shouted for everyone to hold on: \"It's got us!\" The boat was lifted and flung forward like a cork, half-full of water and shuddering under the blow; the men baled with the energy of men fighting for life, and after ten minutes of uncertainty felt her renew her life beneath them. Vincent had for the past week ceased to be an active member of the crew, and the leader could not easily account for his collapse: physically one of the strongest men in the boat, young, with service on North Sea trawlers, he should have borne hardship better than McCarthy, who was not so strong but always happy. The daily water allowance was cut to half a pint a man. The lumps of ice taken aboard were long gone, and the breaker had been slightly stove in during loading, letting in some sea-water, so the brackish water sharpened the thirst; the leader would not raise the allowance or let anyone draw against the morrow's, however he was begged — should the wind turn unfavourable, it might drive them away from the island and lengthen the voyage by many days. Lack of water, the account adds, is the severest privation men can be condemned to endure. At 12.30 p.m. on May 8, McCarthy caught a glimpse of the black cliffs of South Georgia through a rift in the clouds, just fourteen days after leaving Elephant Island. But the rocky coast seemed to drop sheer to the sea, night was drawing near and the weather signs were unfavourable; to have attempted a landing then would have been suicidal, so they hauled off and hove to, waiting for dawn. Early the next morning the wind shifted to the north-west and quickly rose to one of the worst hurricanes any of them had ever experienced; wind and sea were driving them ashore, and they could do nothing. Only after dark did the wind suddenly shift and leave them free to make an offing again; almost as soon as the gale eased, the pin that locked the mast to the thwart fell out — had it gone during the hurricane, the leader writes, nothing could have saved them. On May 10 they made for a big indentation the leader thought must be King Haakon Bay; with the wind blowing out of the bay, they tacked five times in the strong wind before getting through the reef into the wide mouth of the bay. With dusk approaching, they turned toward a small cove guarded by a reef on the south side of the bay. The boat ran in on a swell and touched the beach, and in a few minutes they were all safe ashore; finding a stream of fresh water almost at their feet, they were soon down on their knees drinking. But landing was not the same as securing relief: glaciers and precipitous mountain slopes barred the way inland from the cove, they still had to sail to the head of the sound, and the whaling stations where whalers could be counted on lay on the east coast.",
+   "after": "At one point came a wave beyond anything the leader had met in twenty-six years at sea — a mighty upheaval of the ocean, quite apart from the white-capped seas that had been their tireless enemies for many days. He shouted for everyone to hold on: \"It's got us!\" The boat was lifted and flung forward like a cork, half-full of water and shuddering under the blow; the men baled with the energy of men fighting for life, and after ten minutes of uncertainty felt her renew her life beneath them. Vincent had for the past week ceased to be an active member of the crew, and the leader could not easily account for his collapse: physically one of the strongest men in the boat, young, with service on North Sea trawlers, he should have borne hardship better than McCarthy, who was not so strong but always happy. The daily water allowance was cut to half a pint a man. The lumps of ice taken aboard were long gone, and the breaker had been slightly stove in during loading, letting in some sea-water, so the brackish water sharpened the thirst. The leader would not raise the allowance, since an unfavourable wind might drive them away from the island and lengthen the voyage by many days; when he was begged to let anyone draw against the morrow's allowance, he firmly refused. Lack of water, the account adds, is the severest privation men can be condemned to endure. At 12.30 p.m. on May 8, McCarthy caught a glimpse of the black cliffs of South Georgia through a rift in the clouds, just fourteen days after leaving Elephant Island. But the rocky coast seemed to drop sheer to the sea, night was drawing near and the weather signs were unfavourable; to have attempted a landing then would have been suicidal, so they hauled off and hove to, waiting for dawn. Early the next morning the wind shifted to the north-west and quickly rose to one of the worst hurricanes any of them had ever experienced; wind and sea were driving them ashore, and they could do nothing. Only after dark did the wind suddenly shift and leave them free to make an offing again; almost as soon as the gale eased, the pin that locked the mast to the thwart fell out — had it gone during the hurricane, the leader writes, nothing could have saved them. On May 10 they made for a big indentation the leader thought must be King Haakon Bay; with the wind blowing out of the bay, they tacked five times in the strong wind before getting through the reef into the wide mouth of the bay. With dusk approaching, they turned toward a small cove guarded by a reef on the south side of the bay. The boat ran in on a swell and touched the beach, and in a few minutes they were all safe ashore; finding a stream of fresh water almost at their feet, they were soon down on their knees drinking. But landing was not the same as securing relief: glaciers and precipitous mountain slopes barred the way inland from the cove, they still had to sail to the head of the sound, and the whaling stations where whalers could be counted on lay on the east coast.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.zh",
+   "before": "把这几个决定放在一起看，一种解释是：真正让这个方案说得出口的，是最坏情形那笔账。出海的人带一个月口粮，一个月到不了南乔治亚就必死无疑，而留下的人在冬天少了几张要吃饭的嘴；最坏情形被算成：也不会给留下的人增加风险。据作者序言，留在象岛的二十二人在那里勉强熬了四个半月，远超当初一个月内带援助返回的预期；本文不据此推出因果评价。本文推断，当所有选项都糟透时，人们愿意跟从的未必是更有希望的那条路，而可能是把代价算清楚、不把损失转嫁给同伴的那条路。",
+   "after": "把这几个决定放在一起看，一种解释是：真正让这个方案说得出口的，是最坏情形那笔账。出海的人带一个月口粮，一个月到不了南乔治亚就必死无疑，而留下的人在冬天少了几张要吃饭的嘴；最坏情形被算成：也不会给留下的人增加风险。据作者序言，留在象岛的二十二人在那里勉强熬了四个半月，远超当初一个月内带援助返回的预期。同一篇序言写道，营救经过不止一次尝试，最终由智利政府直接促成，帕尔多（Luis Pardo）指挥的耶尔乔号（Yelcho）完成了最后一次、成功的营救。本文不据此推出因果评价。本文推断，当所有选项都糟透时，人们愿意跟从的未必是更有希望的那条路，而可能是把代价算清楚、不把损失转嫁给同伴的那条路。",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "before": "Read together, these decisions suggest one explanation: what made the plan speakable was the arithmetic of the worst case. The boat party carried a month's provisions; if they did not make South Georgia within the month, they were sure to go under. The men left behind would have fewer mouths to feed through the winter. The worst case was calculated as adding nothing to the risks of the men left on the island. According to the author's preface, the twenty-two men left on Elephant Island eked out a bare existence there for four and a half months, far beyond the hoped-for return with relief within a month; this piece draws no causal verdict from that. This piece infers that when every option is grim, people will follow not necessarily the more hopeful road, but the one that costs its losses honestly and does not shift them onto comrades.",
+   "after": "Read together, these decisions suggest one explanation: what made the plan speakable was the arithmetic of the worst case. The boat party carried a month's provisions; if they did not make South Georgia within the month, they were sure to go under. The men left behind would have fewer mouths to feed through the winter. The worst case was calculated as adding nothing to the risks of the men left on the island. According to the author's preface, the twenty-two men left on Elephant Island eked out a bare existence there for four and a half months, far beyond the hoped-for return with relief within a month. The same preface says the relief took more than one attempt, and that the Chilean Government was directly responsible for the rescue, with the Yelcho under Captain Luis Pardo making the last and successful venture. This piece draws no causal verdict from that. This piece infers that when every option is grim, people will follow not necessarily the more hopeful road, but the one that costs its losses honestly and does not shift them onto comrades.",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.ev",
+   "before": [
+    "SOUTH-EL1-E5",
+    "SOUTH-EL1-E35",
+    "SOUTH-EL1-E4"
+   ],
+   "after": [
+    "SOUTH-EL1-E5",
+    "SOUTH-EL1-E35",
+    "SOUTH-EL1-E4",
+    "SOUTH-EL1-E38"
+   ],
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.zh",
+   "before": "还有一处值得留意：记述说他决定征求志愿者，同时心里基本知道会选谁。原文写明，他召集众人、说明计划、征求志愿者，许多人当即站了出来；但最终的人选仍由他选定。本文提出的一种替代做法是直接点名，省掉征求的形式。一种解释是：先向全队说明计划、详细讲清危险和理由，再征求志愿，可能让名单读起来更像共识而不是指派。这只是一种解释，所引段落没有说明他为什么这样安排。",
+   "after": "还有一处值得留意：记述说他决定征求志愿者，同时心里基本知道会选谁。原文写明，他召集众人、说明计划、征求志愿者，许多人当即站了出来；但最终的人选仍由他选定。本文提出的一种替代做法是直接点名，省掉征求的形式。一种解释是：先向全队说明计划、详细讲清危险和理由，再征求志愿，可能让名单读起来更像共识而不是指派。这只是本文的解释。",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.en",
+   "before": "One more detail catches the eye: the account says he decided to call for volunteers while already having a pretty good idea of his choices. The original states that he called the men together, explained his plan and asked for volunteers, and that many came forward at once; yet the final selection was still his. One alternative this piece raises would have been simply to name names and skip the formality. One reading is that explaining the plan and arguing the dangers and reasons to the party in detail before asking for volunteers may make the list read as consensus rather than assignment. This is only one reading, and the passages quoted give no reason for the arrangement.",
+   "after": "One more detail catches the eye: the account says he decided to call for volunteers while already having a pretty good idea of his choices. The original states that he called the men together, explained his plan and asked for volunteers, and that many came forward at once; yet the final selection was still his. One alternative this piece raises would have been simply to name names and skip the formality. One reading is that explaining the plan and arguing the dangers and reasons to the party in detail before asking for volunteers may make the list read as consensus rather than assignment. This is only this piece's reading.",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.limits.0.zh",
+   "before": "这套记录只有当事人一个史源，是他事后写下的第一人称自述。作者说，南乔治亚航程的记述依据逐日写下的简略笔记，笔记通常只记距离、船位和天气，航程中的具体经过则来自记忆。文中的对话都带有记述性质：把队伍托付给怀尔德的那句交代、克林恳求随行，都未必是逐字原话。队长自述看队员时信心在增加，那是回忆中的自我描述，不是当时可核实的心理记录。",
+   "after": "本文只依据沙克尔顿《南方》中他事后写下的第一人称自述。作者说，南乔治亚航程的记述依据逐日写下的简略笔记，笔记通常只记距离、船位和天气，航程中的具体经过则来自记忆。文中的对话都带有记述性质：把队伍托付给怀尔德的那句交代、克林恳求随行，都未必是逐字原话。队长自述看队员时信心在增加，那是回忆中的自我描述，不是当时可核实的心理记录。",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.limits.0.en",
+   "before": "This record rests on exactly one historical source: a first-person account written after the fact by one of those involved. The author says the account of the voyage to South Georgia is based on scanty notes made day by day, which usually dealt with the bare facts of distances, positions and weather, while the incidents themselves came from memory. Its dialogue is reported, not transcribed — the words entrusting the party to Wild, Crean's plea for a place in the boat — and need not be verbatim. The leader's statement that his confidence grew as he looked at the men is retrospective self-description, not a verifiable record of his state of mind at the time.",
+   "after": "This piece relies only on Shackleton's first-person account in South, written after the fact. The author says the account of the voyage to South Georgia is based on scanty notes made day by day, which usually dealt with the bare facts of distances, positions and weather, while the incidents themselves came from memory. Its dialogue is reported, not transcribed — the words entrusting the party to Wild, Crean's plea for a place in the boat — and need not be verbatim. The leader's statement that his confidence grew as he looked at the men is retrospective self-description, not a verifiable record of his state of mind at the time.",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.limits.1.zh",
+   "before": "还有两处要留白。文森特为什么垮掉，队长自己说难以解释，本文不替他补心理。所引片段未给公元年份，这里不做换算；正文的天数只用原文明确写出的出海第六天和离开象岛第十四天，日期照原文写5月8日、5月10日；距离、口粮、水的数字都照原文：八百多英里、三百八十多英里、半品脱。原文是扫描识别文本，个别字词有讹误，引文照原文写法。",
+   "after": "有一处要留白：文森特为什么垮掉，队长自己说难以解释，本文不替他补心理。正文的天数只用原文明确写出的出海第六天和离开象岛第十四天，日期照原文写5月8日、5月10日；距离、口粮、水的数字都照原文：八百多英里、三百八十多英里、半品脱。原文是扫描识别文本，个别字词有讹误，引文照原文写法。",
+   "issues": [
+    "F7"
+   ]
+  },
+  {
+   "path": "sections.limits.1.en",
+   "before": "Two blanks stay blank. Why Vincent collapsed, the leader himself says he could not easily account for, and this piece supplies no psychology for him. The quoted passages give no calendar year, so none is supplied here; the only day counts kept in the text are the sixth day out and the fourteenth day after leaving Elephant Island, both stated explicitly in the original, and dates follow the original: May 8 and May 10; distances, rations and water figures follow the original: over eight hundred miles, over three hundred and eighty miles, half a pint. The source is a scanned, text-recognized print, with occasional garbled words; quotations follow it as printed.",
+   "after": "One blank stays blank. Why Vincent collapsed, the leader himself says he could not easily account for, and this piece supplies no psychology for him. The only day counts kept in the text are the sixth day out and the fourteenth day after leaving Elephant Island, both stated explicitly in the original, and dates follow the original: May 8 and May 10; distances, rations and water figures follow the original: over eight hundred miles, over three hundred and eighty miles, half a pint. The source is a scanned, text-recognized print, with occasional garbled words; quotations follow it as printed.",
+   "issues": [
+    "F7"
+   ]
+  },
+  {
+   "path": "uncertainty_note.zh",
+   "before": "全文只有当事人一个史源（其事后的第一人称自述）；航程部分据其逐日简略笔记（多为距离、船位、天气）与回忆写成；对话与心理均为记述性内容，未必逐字，本文未对照其他当事人的记录核实；天数只用原文明确写出的出海第六天和离开象岛第十四天，日期照原文写5月8日、5月10日，所引片段未给公元年份，不做换算；距离、口粮、水的数字照原文写法；原文为扫描识别文本，个别字词有讹误，引文照原文。",
+   "after": "本文只依据沙克尔顿（当事人）事后的第一人称自述《南方》；航程部分据其逐日简略笔记（多为距离、船位、天气）与回忆写成；对话与心理均为记述性内容，未必逐字，本文未对照其他当事人的记录核实；天数只用原文明确写出的出海第六天和离开象岛第十四天，日期照原文写5月8日、5月10日；距离、口粮、水的数字照原文写法；原文为扫描识别文本，个别字词有讹误，引文照原文。",
+   "issues": [
+    "F8",
+    "F9"
+   ]
+  },
+  {
+   "path": "uncertainty_note.en",
+   "before": "The whole piece rests on a single source — one participant's first-person account written afterwards; the voyage section was written from scanty day-by-day notes (mostly distances, positions and weather) together with memory. Dialogue and psychology are reported rather than transcribed, need not be verbatim, and have not been checked here against other participants' accounts; the only day counts used are the sixth day out and the fourteenth day after leaving Elephant Island, as stated in the original, dates follow the original (May 8 and May 10), and the quoted passages give no calendar year, so none is supplied; distances, rations and water figures follow the original wording; the source is a scanned print in OCR, with individual words occasionally garbled, and quotations follow it as printed.",
+   "after": "This piece relies only on Shackleton's own first-person account, South, written afterwards by a participant; the voyage section was written from scanty day-by-day notes (mostly distances, positions and weather) together with memory. Dialogue and psychology are reported rather than transcribed, need not be verbatim, and have not been checked here against other participants' accounts; the only day counts used are the sixth day out and the fourteenth day after leaving Elephant Island, as stated in the original, and dates follow the original (May 8 and May 10); distances, rations and water figures follow the original wording; the source is a scanned print in OCR, with individual words occasionally garbled, and quotations follow it as printed.",
+   "issues": [
+    "F8",
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.story.8.zh",
+   "before": "航程中有一次，遇上了队长二十六年海上经历中从未见过的巨浪，与多日来那些白浪翻卷的大浪完全不同。他高喊大家抓紧。船被像软木塞一样抛起、向前甩出，灌进半船水，在重击下颤抖；所有人拼命用随手抓到的容器掏水，十分钟后才觉得船重新有了生命。文森特在过去一周已不再是积极的船员，队长写明难以解释他的垮掉——他是船上体格最强壮的人之一，年轻，在北海拖网船上干过，本该比麦卡锡更能吃苦，而麦卡锡没那么强壮，却总是乐呵呵的。淡水减到每人每天半品脱。带上船的冰块早已用完，装船时一只水桶在浪里被撞裂，渗进了一些海水，喝的水发咸，渴得更厉害。队长不肯增加配给，因为万一风向不利，船可能被吹离海岛，航程拖长许多天；有人恳求预支第二天的水，他也坚决拒绝。原文感叹，缺水是人所能承受的最严酷的匮乏。5月8日中午12点30分，麦卡锡从云隙中望见南乔治亚的黑色悬崖，距离开象岛整十四天。但岩岸看似直落入海，夜色将近，天气征兆也不好，那时贸然登陆无异自杀，只能离岸停驶，等待天亮。次日清晨风向转为西北，迅速增强为他们所有人经历过的最猛的飓风之一，风浪把船推向海岸，他们无能为力。直到天黑后风向突然转变，他们才得以重新驶离海岸；大风刚缓，锁住桅杆的销钉就掉了出来——队长写道，飓风中它若脱落，谁也救不了他们。5月10日，他们驶向一处队长认为必定是哈康国王湾（King Haakon Bay）的大海湾；风向转为从湾内吹出，他们在强风中抢风五次，才穿过礁石进入宽阔的湾口。暮色将近，他们转向海湾南岸一处有礁石护着的小湾。小船乘着涌浪触到海滩，几分钟后众人都平安上了岸；他们在脚边发现一条淡水溪流，随即跪下大口痛饮。但上岸并不等于求援成功：冰川和陡峭的山坡挡住了从小湾进入内陆的路，他们还得驶向海湾顶端，而指望找到捕鲸人的捕鲸站在东岸。",
+   "after": "航程中有一次，遇上了队长二十六年海上经历中从未见过的巨浪，与多日来那些白浪翻卷的大浪完全不同。他高喊大家抓紧。船被像软木塞一样抛起、向前甩出，灌进半船水，在重击下颤抖；所有人拼命用随手抓到的容器掏水，十分钟后才觉得船重新有了生命。文森特在过去一周已不再是积极的船员，队长写明难以解释他的垮掉——他是船上体格最强壮的人之一，年轻，在北海拖网船上干过，本该比麦卡锡更能吃苦，而麦卡锡没那么强壮，却总是乐呵呵的。淡水减到每人每天半品脱。带上船的冰块早已用完，装船时一只水桶在浪里被撞裂，渗进了一些海水，喝的水发咸，渴得更厉害。队长不肯增加配给，因为万一风向不利，船可能被吹离海岛，航程拖长许多天；有人恳求预支第二天的水，他也坚决拒绝。原文感叹，缺水是人所能承受的最严酷的匮乏。5月8日中午12点30分，麦卡锡从云隙中望见南乔治亚的黑色悬崖，距离开象岛整十四天。但岩岸看似直落入海，夜色将近，天气征兆也不好，那时贸然登陆无异自杀，只能离岸停驶，等待天亮。次日清晨风向转为西北，迅速增强为他们所有人经历过的最猛的飓风之一，风浪把船推向海岸，他们无能为力。直到天黑后风向突然转变，他们才得以重新驶离海岸；大风刚缓，锁住桅杆的销钉就掉了出来——队长写道，飓风中它若脱落，谁也救不了他们。5月10日，他们驶向一处队长认为必定是哈康国王湾（King Haakon Bay）的大海湾；风向转为从湾内吹出，他们在强风中抢风五次，才穿过礁石进入宽阔的湾口。暮色将近，他们转向海湾南岸一处有礁石护着的小湾。小船乘着涌浪触到海滩，几分钟后众人都平安上了岸；他们在脚边发现一条淡水溪流，随即跪下大口痛饮。但上岸并不等于求援成功：冰川和陡峭的山坡挡住了从小湾进入内陆的路，他们还得驶向海湾顶端，而指望找到捕鲸人的捕鲸站在东岸。登陆那晚，众人往岸上爬时詹姆斯·凯尔德号船尾重重撞击，舵被撞掉了，在海滩和够得着的岩石间仔细搜寻也没找到，这是严重的损失。小船又因割去舷板而变弱，走海路离斯特罗姆内斯（Stromness）捕鲸站仍有150英里；另一条路是尝试横越岛屿，而象岛上还有二十二人在等待只有他们才能带去的援救。",
+   "issues": [
+    "X5"
+   ]
+  },
+  {
+   "path": "sections.story.8.en",
+   "before": "At one point came a wave beyond anything the leader had met in twenty-six years at sea — a mighty upheaval of the ocean, quite apart from the white-capped seas that had been their tireless enemies for many days. He shouted for everyone to hold on: \"It's got us!\" The boat was lifted and flung forward like a cork, half-full of water and shuddering under the blow; the men baled with the energy of men fighting for life, and after ten minutes of uncertainty felt her renew her life beneath them. Vincent had for the past week ceased to be an active member of the crew, and the leader could not easily account for his collapse: physically one of the strongest men in the boat, young, with service on North Sea trawlers, he should have borne hardship better than McCarthy, who was not so strong but always happy. The daily water allowance was cut to half a pint a man. The lumps of ice taken aboard were long gone, and the breaker had been slightly stove in during loading, letting in some sea-water, so the brackish water sharpened the thirst. The leader would not raise the allowance, since an unfavourable wind might drive them away from the island and lengthen the voyage by many days; when he was begged to let anyone draw against the morrow's allowance, he firmly refused. Lack of water, the account adds, is the severest privation men can be condemned to endure. At 12.30 p.m. on May 8, McCarthy caught a glimpse of the black cliffs of South Georgia through a rift in the clouds, just fourteen days after leaving Elephant Island. But the rocky coast seemed to drop sheer to the sea, night was drawing near and the weather signs were unfavourable; to have attempted a landing then would have been suicidal, so they hauled off and hove to, waiting for dawn. Early the next morning the wind shifted to the north-west and quickly rose to one of the worst hurricanes any of them had ever experienced; wind and sea were driving them ashore, and they could do nothing. Only after dark did the wind suddenly shift and leave them free to make an offing again; almost as soon as the gale eased, the pin that locked the mast to the thwart fell out — had it gone during the hurricane, the leader writes, nothing could have saved them. On May 10 they made for a big indentation the leader thought must be King Haakon Bay; with the wind blowing out of the bay, they tacked five times in the strong wind before getting through the reef into the wide mouth of the bay. With dusk approaching, they turned toward a small cove guarded by a reef on the south side of the bay. The boat ran in on a swell and touched the beach, and in a few minutes they were all safe ashore; finding a stream of fresh water almost at their feet, they were soon down on their knees drinking. But landing was not the same as securing relief: glaciers and precipitous mountain slopes barred the way inland from the cove, they still had to sail to the head of the sound, and the whaling stations where whalers could be counted on lay on the east coast.",
+   "after": "At one point came a wave beyond anything the leader had met in twenty-six years at sea — a mighty upheaval of the ocean, quite apart from the white-capped seas that had been their tireless enemies for many days. He shouted for everyone to hold on: \"It's got us!\" The boat was lifted and flung forward like a cork, half-full of water and shuddering under the blow; the men baled with the energy of men fighting for life, and after ten minutes of uncertainty felt her renew her life beneath them. Vincent had for the past week ceased to be an active member of the crew, and the leader could not easily account for his collapse: physically one of the strongest men in the boat, young, with service on North Sea trawlers, he should have borne hardship better than McCarthy, who was not so strong but always happy. The daily water allowance was cut to half a pint a man. The lumps of ice taken aboard were long gone, and the breaker had been slightly stove in during loading, letting in some sea-water, so the brackish water sharpened the thirst. The leader would not raise the allowance, since an unfavourable wind might drive them away from the island and lengthen the voyage by many days; when he was begged to let anyone draw against the morrow's allowance, he firmly refused. Lack of water, the account adds, is the severest privation men can be condemned to endure. At 12.30 p.m. on May 8, McCarthy caught a glimpse of the black cliffs of South Georgia through a rift in the clouds, just fourteen days after leaving Elephant Island. But the rocky coast seemed to drop sheer to the sea, night was drawing near and the weather signs were unfavourable; to have attempted a landing then would have been suicidal, so they hauled off and hove to, waiting for dawn. Early the next morning the wind shifted to the north-west and quickly rose to one of the worst hurricanes any of them had ever experienced; wind and sea were driving them ashore, and they could do nothing. Only after dark did the wind suddenly shift and leave them free to make an offing again; almost as soon as the gale eased, the pin that locked the mast to the thwart fell out — had it gone during the hurricane, the leader writes, nothing could have saved them. On May 10 they made for a big indentation the leader thought must be King Haakon Bay; with the wind blowing out of the bay, they tacked five times in the strong wind before getting through the reef into the wide mouth of the bay. With dusk approaching, they turned toward a small cove guarded by a reef on the south side of the bay. The boat ran in on a swell and touched the beach, and in a few minutes they were all safe ashore; finding a stream of fresh water almost at their feet, they were soon down on their knees drinking. But landing was not the same as securing relief: glaciers and precipitous mountain slopes barred the way inland from the cove, they still had to sail to the head of the sound, and the whaling stations where whalers could be counted on lay on the east coast. On the night of the landing, as the James Caird bumped heavily astern while they scrambled ashore, the rudder was knocked off, and a careful search of the beach and the rocks within reach failed to find it — a serious loss. The boat had also been weakened by the cutting away of the topsides, and they were still 150 miles from Stromness whaling station by sea; the alternative was to attempt the crossing of the island, while twenty-two men on Elephant Island waited for the relief that only they could secure.",
+   "issues": [
+    "X5"
+   ]
+  },
+  {
+   "path": "sections.story.8.ev",
+   "before": [
+    "SOUTH-EL1-E23",
+    "SOUTH-EL1-E24",
+    "SOUTH-EL1-E25",
+    "SOUTH-EL1-E26",
+    "SOUTH-EL1-E36",
+    "SOUTH-EL1-E27",
+    "SOUTH-EL1-E28",
+    "SOUTH-EL1-E32",
+    "SOUTH-EL1-E37",
+    "SOUTH-EL1-E4"
+   ],
+   "after": [
+    "SOUTH-EL1-E23",
+    "SOUTH-EL1-E24",
+    "SOUTH-EL1-E25",
+    "SOUTH-EL1-E26",
+    "SOUTH-EL1-E36",
+    "SOUTH-EL1-E27",
+    "SOUTH-EL1-E28",
+    "SOUTH-EL1-E32",
+    "SOUTH-EL1-E37",
+    "SOUTH-EL1-E4",
+    "SOUTH-EL1-E40",
+    "SOUTH-EL1-E39"
+   ],
+   "issues": [
+    "X5"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "X5"
+   ],
+   "changes_applied": 16,
+   "changes_failed": [],
+   "still_open": [
+    {
+     "issue": "X5",
+     "open_because": "fixed without a change citing it",
+     "claimed": {
+      "issue": "X5",
+      "action": "fixed",
+      "rationale": "已据新补摘录检查全文。E38补入analysis.0，交代留守者获救的结局（见F4）。E41促使删去limits.1和uncertainty_note中关于公元年份的否定断言（见F7、F8）。E39、E40涉及丢舵和离Stromness走海路仍有150英里，不改变story.8据E37写出的“上岸并不等于求援成功”，因此不另作改动。",
+      "evidence": [
+       {
+        "id": "SOUTH-EL1-E38",
+        "quote": "Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades"
+       },
+       {
+        "id": "SOUTH-EL1-E41",
+        "quote": "We sailed from London on Friday, August 1, 1914"
+       }
+      ]
+     }
+    }
+   ],
+   "checker_after": [
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[8, 10, 14, 380, 800] en[8, 10, 380, 800]"
+    ],
+    [
+     "CHECK",
+     "today[0] resembles the open-question scenario: shared phrases 「最坏情形」「的小团队」; bigram overlap 0.17"
+    ]
+   ],
+   "content_sha256_after": "4af170e295a3c44a0986525c673f1c87068dde70bf1d10ce2cb8378a1fd0bfa0",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.2",
+      "category": "style",
+      "severity": "note",
+      "problem": "英文版在引出原文引语之后，又用一句几乎相同的话复述了一遍（\"That conclusion was forced upon me\". The conclusion was forced on him.），读起来重复。中文版的引语后接中文释义，属于正常写法。",
+      "evidence": [
+       {
+        "id": "SOUTH-EL1-E3",
+        "quote": "That conclusion was forced upon me"
+       }
+      ],
+      "proposed": "英文删去末句 \"The conclusion was forced on him.\"，只保留引语。"
+     }
+    ],
+    "overall": "定稿各字段的事实、引语、时序和解释标注都能在证据包中找到依据，中英文一致，开头读者能看懂谁遇到了什么难题；只有一处英文重复属纯文风问题，可以通过。",
+    "_content_sha256": "4af170e295a3c44a0986525c673f1c87068dde70bf1d10ce2cb8378a1fd0bfa0"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "X5"
+   ],
+   "changes_applied": 3,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[8, 10, 14, 380, 800] en[8, 10, 380, 800]"
+    ],
+    [
+     "CHECK",
+     "today[0] resembles the open-question scenario: shared phrases 「最坏情形」「的小团队」; bigram overlap 0.17"
+    ]
+   ],
+   "content_sha256_after": "caa9e448ee9ec558db1fe72de6abe649d0881f40ece56357d79bdf17f23131d3",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.2",
+      "category": "style",
+      "severity": "note",
+      "problem": "英文版先引原句，紧接着又用 \"The conclusion was forced on him.\" 复述一遍，意思重复。中文版的引文后接译文属于正常做法，英文版不需要再复述。",
+      "evidence": [
+       {
+        "id": "SOUTH-EL1-E3",
+        "quote": "That conclusion was forced upon me"
+       }
+      ],
+      "proposed": "英文删去末句 \"The conclusion was forced on him.\""
+     },
+     {
+      "id": "V2",
+      "path": "sections.story.8",
+      "category": "readability",
+      "severity": "note",
+      "problem": "这一段从巨浪一直写到登陆后丢舵、去斯特罗姆内斯还有150英里，串起十余个事件和多个日期，篇幅过长，读者不容易跟上时间线。各处事实本身都有证据支持。",
+      "evidence": [
+       {
+        "id": "SOUTH-EL1-E26",
+        "quote": "at 12.30 p.m, through a rift in the clouds, McCarthy caught a glimpse of the black cliffs of South Georgia"
+       }
+      ],
+      "proposed": "不删任何事实或限定，只在“5月8日中午……”前和“登陆那晚……”前分段，拆成航程途中、望见陆地到登陆、登陆后处境三段。"
+     }
+    ],
+    "overall": "定稿逐字段核对后，事实、引文、归属、因果、推断标注和中英对应均有证据支持，没有需要修正的问题；仅有两处可选的文风与易读性建议。",
+    "_content_sha256": "caa9e448ee9ec558db1fe72de6abe649d0881f40ece56357d79bdf17f23131d3"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2",
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F7"
+    ]
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F8",
+     "F9"
+    ]
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.hook.0",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "开头先讲史源（《南方》作者的第一人称自述），然后才讲处境；全文开头一直没有说明这支队伍有多少人、最后几人出海、几人留下，读者说不清“谁遇到了问题”。同时开头堆了读者此时还用不上的存量细节（三只海豹、两张半兽皮）。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E35",
+      "quote": "twenty-two of my comrades eked out a bare existence for four and a half months"
+     },
+     {
+      "id": "SOUTH-EL1-E13",
+      "quote": "finally selected McNeish, McCarthy, and Vincent in addition to Worsley and Crean"
+     }
+    ],
+    "proposed": "开头先写处境：队长沙克尔顿和他的队伍困在象岛，最后六人乘小船出海求援，二十二人留在岛上。史源说明后移一句。“三只海豹和两张半带脂肪的兽皮”可以移到口粮那句之后或者压缩，但“燃料主要靠海兽脂肪”要保留。英文同步。"
+   },
+   {
+    "id": "F2",
+    "path": "sections.story.8",
+    "category": "causality",
+    "severity": "fix",
+    "problem": "把“风向不利可能拖长航程”写成既是不增加配给的理由，也是拒绝预支第二天的水的理由。证据只把这个理由用于不增加配给，拒绝预支另写一句，没有附理由。这个合并的写法与已知污染 K26 的简报说法一致。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E25",
+      "quote": "allowance of water to be increased since an unfavourable wind might drive us away from the island"
+     },
+     {
+      "id": "SOUTH-EL1-E25",
+      "quote": "refusing to allow any one to anticipate the morrow"
+     }
+    ],
+    "proposed": "中文改为：队长不肯增加配给，因为万一风向不利，船可能被吹离海岛，航程拖长许多天；有人恳求预支第二天的水，他也坚决拒绝。英文同样把理由只挂在不增加配给上。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.story.8",
+    "category": "readability",
+    "severity": "note",
+    "problem": "一段之内连续写了巨浪、文森特垮掉、限水、望见陆地、飓风、销钉、入湾、登陆、上岸后的处境，读者很难分清先后。",
+    "evidence": [],
+    "proposed": "按“航程中段（巨浪、文森特、限水）”“5月8日望见陆地至飓风”“5月10日入湾登陆”拆成三段，内容不删。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.analysis.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "只写了留守的二十二人熬了四个半月，没有交代他们最终获救。读者无法知道这笔“最坏情形账”的实际下场，这一段的结局被截断了。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E38",
+      "quote": "Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades"
+     },
+     {
+      "id": "SOUTH-EL1-E38",
+      "quote": "Captain Luis Pardo, who commanded the Yelcho on our last and successful venture"
+     }
+    ],
+    "proposed": "在“四个半月”之后补一句：据作者序言，经过多次尝试，最后由智利政府派出的Yelcho号把他们救出。保留“本文不据此推出因果评价”。英文同步。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.analysis.2",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“所引段落没有说明他为什么这样安排”是关于来源没写什么的否定断言。前面已经标明“这只是一种解释”，读者理解不需要这半句。",
+    "evidence": [],
+    "proposed": "删去后半句，改为“这只是本文的解释。”英文删去“and the passages quoted give no reason for the arrangement”。"
+   },
+   {
+    "id": "F6",
+    "path": "sections.limits.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“这套记录只有当事人一个史源”和“exactly one historical source”读起来像在断言这段历史只有这一份来源。这超出了证据包能支持的范围，应改为说明本文依据的范围。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E34",
+      "quote": "This record of the voyage to South Georgia is based upon Scanty notes made day by day"
+     }
+    ],
+    "proposed": "改为“本文只依据沙克尔顿《南方》中他事后写下的第一人称自述”。英文改为“This piece relies only on Shackleton's first-person account in South, written after the fact”。"
+   },
+   {
+    "id": "F7",
+    "path": "sections.limits.1",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "“所引片段未给公元年份，这里不做换算”沿用了已知污染K27中“原文没有公元年份”的说法。这类关于来源没写什么的断言读者不需要，而且来源里写有出发年份。删掉之后，“两处要留白”只剩文森特一处。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E41",
+      "quote": "We sailed from London on Friday, August 1, 1914"
+     }
+    ],
+    "proposed": "删去关于公元年份的这半句。中文开头改为“有一处要留白：”，英文开头改为“One blank stays blank.”，并删去“The quoted passages give no calendar year, so none is supplied here;”。不要推算航程年份。"
+   },
+   {
+    "id": "F8",
+    "path": "uncertainty_note",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "中英文都写“所引片段未给公元年份，不做换算”，沿用了已知污染K27。来源里写有1914年出发，这类否定断言读者也不需要。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E41",
+      "quote": "We sailed from London on Friday, August 1, 1914"
+     }
+    ],
+    "proposed": "中文删去“所引片段未给公元年份，不做换算”，英文删去“and the quoted passages give no calendar year, so none is supplied”。"
+   },
+   {
+    "id": "F9",
+    "path": "uncertainty_note",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“全文只有当事人一个史源”和“rests on a single source”与limits.0的问题相同，读起来像断言这段历史别无来源。",
+    "evidence": [],
+    "proposed": "改为“本文只依据沙克尔顿（当事人）事后的第一人称自述《南方》”。英文同步。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "X1",
+    "verdict": "duplicate",
+    "same_as": "F7",
+    "rationale": "来源中有1914年8月1日从伦敦出发的记载，中文“未给公元年份”的说法应删去。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E41",
+      "quote": "We sailed from London on Friday, August 1, 1914"
+     }
+    ]
+   },
+   {
+    "id": "X2",
+    "verdict": "duplicate",
+    "same_as": "F7",
+    "rationale": "英文与中文是同一处问题。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E41",
+      "quote": "We sailed from London on Friday, August 1, 1914"
+     }
+    ]
+   },
+   {
+    "id": "X3",
+    "verdict": "duplicate",
+    "same_as": "F8",
+    "rationale": "uncertainty_note中英文都重复了同一个无年份断言。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E41",
+      "quote": "We sailed from London on Friday, August 1, 1914"
+     }
+    ]
+   },
+   {
+    "id": "X4",
+    "verdict": "duplicate",
+    "same_as": "F4",
+    "rationale": "analysis.0没有交代留守者最终由Yelcho号救出。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E38",
+      "quote": "Finally, it was the Chilian Government that was directly responsible for the rescue of my comrades"
+     }
+    ]
+   },
+   {
+    "id": "X5",
+    "verdict": "valid",
+    "same_as": "",
+    "rationale": "补入的摘录确实带来需要修改的地方：E38对应F4，E41对应F7和F8。E39和E40（丢舵、离Stromness走海路仍有150英里）不改变正文现有的判断：story.8已经据E37写明“上岸并不等于求援成功”，所以不另列问题。",
+    "evidence": [
+     {
+      "id": "SOUTH-EL1-E37",
+      "quote": "We must sail to the head of the sound"
+     },
+     {
+      "id": "SOUTH-EL1-E39",
+      "quote": "We were still 150 miles away from Stromness whaling-station by sea"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "caa9e448ee9ec558db1fe72de6abe649d0881f40ece56357d79bdf17f23131d3",
+ "open_issues": [],
+ "outcome": "admissible",
+ "failure": null,
+ "finished_at": 1793465258.0427928,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 162.9,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 30428,
+    "output_tokens": 18009
+   },
+   "cost_estimate_usd": 0.603612
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 65.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 27012,
+    "output_tokens": 8833
+   },
+   "cost_estimate_usd": 0.392764
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 46.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 24952,
+    "output_tokens": 5343
+   },
+   "cost_estimate_usd": 0.306484
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 36.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 24687,
+    "output_tokens": 4099
+   },
+   "cost_estimate_usd": 0.279484
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 58.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 25303,
+    "output_tokens": 6497
+   },
+   "cost_estimate_usd": 0.332372
+  }
+ ],
+ "elapsed_min": 6.2,
+ "model_wall_min": 6.2
+}

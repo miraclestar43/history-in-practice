@@ -1,0 +1,677 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261030-sj077-1",
+ "content_sha256": "d3854f6f50f43a675958007a0a1ab93a94b7c37df7285337ad3d14feec402a7c",
+ "evidence_in_sha256": "7a628f235f5bc273fe27e8bd4b4735bc8f78aed0a34d92430f2ee4a9899c320f",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793438977.6638393,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.1",
+   "lang": "zh",
+   "sentence": "侯生只说一句「公子勉之矣，老臣不能從」。"
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.7",
+   "lang": "en",
+   "sentence": "The prince at once blamed himself, looking as if he had nowhere to hide."
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "原文未写他事前是否权衡，能记的只有这句答话。"
+  },
+  {
+   "id": "A4",
+   "path": "sections.analysis.1",
+   "lang": "en",
+   "sentence": "Whether he weighed this beforehand goes unrecorded;"
+  },
+  {
+   "id": "A5",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "The prince's displeasure, self-congratulation and self-blame, as the narrative describes them, are narrative labels, not recorded psychology."
+  },
+  {
+   "id": "A6",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "侯生自刭的缘由，原文只记他自言「以送公子」，没有更多交代。"
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-SJ077": {
+   "title": "司馬遷《史記·魏公子列傳》（维基文库本）",
+   "url": "https://zh.wikisource.org/w/index.php?title=%E5%8F%B2%E8%A8%98/%E5%8D%B7077&action=render",
+   "ref": "zh:史記/卷077",
+   "evidence_text_sha256": "4b1d4ec9f91a18e56ebb8b733e1cd11ffa0ada580ac283fa1b715015b54f3370",
+   "cache_sha256": "4b1d4ec9f91a18e56ebb8b733e1cd11ffa0ada580ac283fa1b715015b54f3370",
+   "cjk": true,
+   "source_chars": 3383,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     3383
+    ]
+   ],
+   "chars_reviewed": 3383
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 55.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 5829
+  }
+ ],
+ "finished_at": 1793439033.009651,
+ "elapsed_min": 0.9,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-SJ077",
+    "outcome": "救赵一事这样收尾：侯生如约自刭，邯郸解围；魏王发怒，公子留在赵国；他自言负魏，赵王终未献五城；十年后他被毛公、薛公劝动，归魏受上将军印。",
+    "quote": "公子與侯生決，至軍，侯生果北鄉自剄。魏王怒公子之盜其兵符，矯殺晉鄙，公子亦自知也。已卻秦存趙，使將將其軍歸魏，而公子獨與客留趙。",
+    "in_evidence": true
+   },
+   {
+    "source_id": "S-SJ077",
+    "outcome": "全篇的最终结局：秦国拿重金收买晋鄙的门客，在魏王面前毁谤公子；魏王改派他人代公子为将，公子谢病纵饮四年，病酒而死。",
+    "quote": "秦王患之，乃行金萬斤於魏，求晉鄙客，令毀公子於魏王曰",
+    "in_evidence": false
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-SJ077",
+    "start": "秦王患之，乃行金萬斤於魏",
+    "end": "竟病酒而卒",
+    "why": "矫杀晋鄙这笔账的最终代价在这里：秦国收买的正是「晉鄙客」，他们的毁谤使公子被废，最后病酒而死。稿件讲「付代价、认亏欠」，却停在授上将军印，读者会以为结局圆满。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.1",
+    "lang": "zh",
+    "sentence": "侯生只说一句「公子勉之矣，老臣不能從」。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "夷门辞决一段",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "辭決而行，侯生曰：「公子勉之矣，老臣不能從。」"
+    },
+    "fix": "无需修改。"
+   },
+   {
+    "id": "A2",
+    "path": "sections.story.7",
+    "lang": "en",
+    "sentence": "The prince at once blamed himself, looking as if he had nowhere to hide.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "五城之议一段",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "於是公子立自責，似若無所容者"
+    },
+    "fix": "无需修改。"
+   },
+   {
+    "id": "A3",
+    "path": "sections.analysis.1",
+    "lang": "zh",
+    "sentence": "原文未写他事前是否权衡，能记的只有这句答话。",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "《魏公子列传》全文，窃符至椎杀晋鄙一段",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "晉鄙嚄唶宿將，往恐不聽，必當殺之，是以泣耳，豈畏死哉？"
+    },
+    "fix": "删除这句。这句答话本身就是出发前对「必當殺之」的预估，再说「未写是否权衡」会误导读者。"
+   },
+   {
+    "id": "A4",
+    "path": "sections.analysis.1",
+    "lang": "en",
+    "sentence": "Whether he weighed this beforehand goes unrecorded;",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "《魏公子列传》全文，窃符至椎杀晋鄙一段",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "晉鄙嚄唶宿將，往恐不聽，必當殺之，是以泣耳，豈畏死哉？"
+    },
+    "fix": "Delete the sentence. The answer is itself a pre-departure reckoning that Jin Bi would have to be killed."
+   },
+   {
+    "id": "A5",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "The prince's displeasure, self-congratulation and self-blame, as the narrative describes them, are narrative labels, not recorded psychology.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "史源性质说明",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "公子聞之，意驕矜而有自功之色"
+    },
+    "fix": "可保留。"
+   },
+   {
+    "id": "A6",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "侯生自刭的缘由，原文只记他自言「以送公子」，没有更多交代。",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "《魏公子列传》全文",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "侯生曰：「臣宜從，老不能。請數公子行日，以至晉鄙軍之日，北鄉自剄，以送公子。」"
+    },
+    "fix": "改为：侯生自言「臣宜從，老不能」，所以以自刭相送。或者整句删去，不要说原文没有交代。"
+   },
+   {
+    "id": "N1",
+    "path": "sections.limits.1",
+    "lang": "en",
+    "sentence": "as for why Hou Ying cut his throat, the source records only his own words that it was to see the prince off, and says nothing more.",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "《魏公子列传》全文",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "臣宜從，老不能。請數公子行日，以至晉鄙軍之日，北鄉自剄，以送公子。"
+    },
+    "fix": "State that he said he ought to go with the prince but was too old, and so would cut his throat to see him off."
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "本篇只有一个来源——《史记·魏公子列传》一篇，无旁证可对。",
+    "verdict": "unresolved",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "只读了《魏公子列传》一篇；其他记载（如同书其他篇、他书）不在阅读范围内",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "魏安釐王二十年，秦昭王已破趙長平軍，又進兵圍邯鄲"
+    },
+    "fix": "改为「本文只依据并核对了《史记·魏公子列传》一篇，未与其他记载对照」，不要断言不存在旁证。"
+   },
+   {
+    "id": "N3",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "This piece rests on a single source: the Biography of the Wei Prince in the Records of the Grand Historian, with no corroboration to set against it.",
+    "verdict": "unresolved",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "Only this chapter was read",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "魏安釐王二十年，秦昭王已破趙長平軍，又進兵圍邯鄲"
+    },
+    "fix": "Say this piece relies on and was checked against this one chapter only, without comparison to other accounts."
+   },
+   {
+    "id": "N4",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "「得選兵八萬人」这个数字只此一处，无旁证",
+    "verdict": "unresolved",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "本篇内确实只出现一次；其他史料未读",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "得選兵八萬人，進兵擊秦軍"
+    },
+    "fix": "改为「本篇仅此一处，本文未与其他记载对照」。"
+   },
+   {
+    "id": "N5",
+    "path": "sections.limits.1",
+    "lang": "en",
+    "sentence": "the figure of eighty thousand picked men appears here alone, with no corroboration",
+    "verdict": "unresolved",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "Appears once in this chapter; other sources not read",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "得選兵八萬人，進兵擊秦軍"
+    },
+    "fix": "Say it appears once in this chapter and was not checked against other accounts."
+   },
+   {
+    "id": "N6",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "“得选兵八万人”仅此一处、无旁证。",
+    "verdict": "unresolved",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "本篇内仅此一处；其他史料未读",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "得選兵八萬人"
+    },
+    "fix": "改为「本篇仅此一处，未与他书对照」。"
+   },
+   {
+    "id": "N7",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "the figure of eighty thousand picked men appears in this one place with no corroboration.",
+    "verdict": "unresolved",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "Appears once in this chapter; other sources not read",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "得選兵八萬人"
+    },
+    "fix": "Say it appears once in this chapter and was not checked against other accounts."
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.analysis.2",
+    "problem": "「事后的账」停在归魏受上将军印，读起来像圆满收场。原文紧接着写秦国收买晋鄙的门客毁谤公子，公子被夺兵权、病酒而死。矫杀晋鄙的代价并没有到授印为止。",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "魏王日聞其毀，不能不信，後果使人代公子將。公子自知再以毀廢，乃謝病不朝"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.story.4",
+    "problem": "稿件写侯生「此前已说过老臣不能从，这里只请数着公子的行程」，漏掉了他此处亲口说的「臣宜從，老不能」。这正是他自刭相送的缘由，与 limits.1 的错误断言相关。",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "臣宜從，老不能。請數公子行日"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "叙事主体与原文相符；须改正 limits.1 中「自刭缘由没有更多交代」的错误断言（中英两版），删去 analysis.1 中多余的「未写是否权衡」，并把 limits 和 uncertainty_note 里的「无旁证」改为如实说明只核对了这一篇；建议补上晋鄙门客毁谤、公子被废而死这一最终代价。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.1",
+   "lang": "zh",
+   "sentence": "侯生只说一句「公子勉之矣，老臣不能從」。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "夷门辞决一段",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "辭決而行，侯生曰：「公子勉之矣，老臣不能從。」"
+   },
+   "fix": "无需修改。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.7",
+   "lang": "en",
+   "sentence": "The prince at once blamed himself, looking as if he had nowhere to hide.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "五城之议一段",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "於是公子立自責，似若無所容者"
+   },
+   "fix": "无需修改。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "原文未写他事前是否权衡，能记的只有这句答话。",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "《魏公子列传》全文，窃符至椎杀晋鄙一段",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "晉鄙嚄唶宿將，往恐不聽，必當殺之，是以泣耳，豈畏死哉？"
+   },
+   "fix": "删除这句。这句答话本身就是出发前对「必當殺之」的预估，再说「未写是否权衡」会误导读者。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "A4",
+   "path": "sections.analysis.1",
+   "lang": "en",
+   "sentence": "Whether he weighed this beforehand goes unrecorded;",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "《魏公子列传》全文，窃符至椎杀晋鄙一段",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "晉鄙嚄唶宿將，往恐不聽，必當殺之，是以泣耳，豈畏死哉？"
+   },
+   "fix": "Delete the sentence. The answer is itself a pre-departure reckoning that Jin Bi would have to be killed.",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "A5",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "The prince's displeasure, self-congratulation and self-blame, as the narrative describes them, are narrative labels, not recorded psychology.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "史源性质说明",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "公子聞之，意驕矜而有自功之色"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "A6",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "侯生自刭的缘由，原文只记他自言「以送公子」，没有更多交代。",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "《魏公子列传》全文",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "侯生曰：「臣宜從，老不能。請數公子行日，以至晉鄙軍之日，北鄉自剄，以送公子。」"
+   },
+   "fix": "改为：侯生自言「臣宜從，老不能」，所以以自刭相送。或者整句删去，不要说原文没有交代。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "as for why Hou Ying cut his throat, the source records only his own words that it was to see the prince off, and says nothing more.",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "《魏公子列传》全文",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "臣宜從，老不能。請數公子行日，以至晉鄙軍之日，北鄉自剄，以送公子。"
+   },
+   "fix": "State that he said he ought to go with the prince but was too old, and so would cut his throat to see him off.",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "本篇只有一个来源——《史记·魏公子列传》一篇，无旁证可对。",
+   "verdict": "unresolved",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "只读了《魏公子列传》一篇；其他记载（如同书其他篇、他书）不在阅读范围内",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "魏安釐王二十年，秦昭王已破趙長平軍，又進兵圍邯鄲"
+   },
+   "fix": "改为「本文只依据并核对了《史记·魏公子列传》一篇，未与其他记载对照」，不要断言不存在旁证。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "This piece rests on a single source: the Biography of the Wei Prince in the Records of the Grand Historian, with no corroboration to set against it.",
+   "verdict": "unresolved",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "Only this chapter was read",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "魏安釐王二十年，秦昭王已破趙長平軍，又進兵圍邯鄲"
+   },
+   "fix": "Say this piece relies on and was checked against this one chapter only, without comparison to other accounts.",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "「得選兵八萬人」这个数字只此一处，无旁证",
+   "verdict": "unresolved",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "本篇内确实只出现一次；其他史料未读",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "得選兵八萬人，進兵擊秦軍"
+   },
+   "fix": "改为「本篇仅此一处，本文未与其他记载对照」。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "the figure of eighty thousand picked men appears here alone, with no corroboration",
+   "verdict": "unresolved",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "Appears once in this chapter; other sources not read",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "得選兵八萬人，進兵擊秦軍"
+   },
+   "fix": "Say it appears once in this chapter and was not checked against other accounts.",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "N6",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "“得选兵八万人”仅此一处、无旁证。",
+   "verdict": "unresolved",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "本篇内仅此一处；其他史料未读",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "得選兵八萬人"
+   },
+   "fix": "改为「本篇仅此一处，未与他书对照」。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "N7",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "the figure of eighty thousand picked men appears in this one place with no corroboration.",
+   "verdict": "unresolved",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "Appears once in this chapter; other sources not read",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "得選兵八萬人"
+   },
+   "fix": "Say it appears once in this chapter and was not checked against other accounts.",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.analysis.2",
+   "problem": "「事后的账」停在归魏受上将军印，读起来像圆满收场。原文紧接着写秦国收买晋鄙的门客毁谤公子，公子被夺兵权、病酒而死。矫杀晋鄙的代价并没有到授印为止。",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "魏王日聞其毀，不能不信，後果使人代公子將。公子自知再以毀廢，乃謝病不朝"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.story.4",
+   "problem": "稿件写侯生「此前已说过老臣不能从，这里只请数着公子的行程」，漏掉了他此处亲口说的「臣宜從，老不能」。这正是他自刭相送的缘由，与 limits.1 的错误断言相关。",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "臣宜從，老不能。請數公子行日"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-SJ077",
+   "outcome": "救赵一事这样收尾：侯生如约自刭，邯郸解围；魏王发怒，公子留在赵国；他自言负魏，赵王终未献五城；十年后他被毛公、薛公劝动，归魏受上将军印。",
+   "quote": "公子與侯生決，至軍，侯生果北鄉自剄。魏王怒公子之盜其兵符，矯殺晉鄙，公子亦自知也。已卻秦存趙，使將將其軍歸魏，而公子獨與客留趙。",
+   "in_evidence": true
+  },
+  {
+   "source_id": "S-SJ077",
+   "outcome": "全篇的最终结局：秦国拿重金收买晋鄙的门客，在魏王面前毁谤公子；魏王改派他人代公子为将，公子谢病纵饮四年，病酒而死。",
+   "quote": "秦王患之，乃行金萬斤於魏，求晉鄙客，令毀公子於魏王曰",
+   "in_evidence": false
+  }
+ ],
+ "additions": [
+  {
+   "id": "SJ0771-E33",
+   "source_id": "S-SJ077",
+   "offset": 2869,
+   "chars": 174,
+   "why": "矫杀晋鄙这笔账的最终代价在这里：秦国收买的正是「晉鄙客」，他们的毁谤使公子被废，最后病酒而死。稿件讲「付代价、认亏欠」，却停在授上将军印，读者会以为结局圆满。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "cb45ae6440e0c289f393adbf41ef725d155ea72882e38a1de4553a3f50346e7f",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.analysis.1.zh: unnecessary — 原文未写他事前是否权衡，能记的只有这句答话。",
+  "sections.analysis.1.en: unnecessary — Whether he weighed this beforehand goes unrecorded;",
+  "sections.limits.1.zh: contradicted — 侯生自刭的缘由，原文只记他自言「以送公子」，没有更多交代。",
+  "sections.limits.1.en: contradicted — as for why Hou Ying cut his throat, the source records only his own words that i",
+  "sections.limits.0.zh: unresolved — 本篇只有一个来源——《史记·魏公子列传》一篇，无旁证可对。",
+  "sections.limits.0.en: unresolved — This piece rests on a single source: the Biography of the Wei Prince in the Reco",
+  "sections.limits.1.zh: unresolved — 「得選兵八萬人」这个数字只此一处，无旁证",
+  "sections.limits.1.en: unresolved — the figure of eighty thousand picked men appears here alone, with no corroborati",
+  "uncertainty_note.zh: unresolved — “得选兵八万人”仅此一处、无旁证。",
+  "uncertainty_note.en: unresolved — the figure of eighty thousand picked men appears in this one place with no corro",
+  "evidence must be expanded first: 1 addition(s) ['SJ0771-E33']"
+ ]
+}

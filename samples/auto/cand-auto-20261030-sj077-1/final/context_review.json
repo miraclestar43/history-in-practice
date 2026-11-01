@@ -1,0 +1,489 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261030-sj077-1",
+ "content_sha256": "780a7de4821e65bb9412feec99dfabf04ee288b7d82e9447436b3345e50eaa4c",
+ "evidence_in_sha256": "e96ce50f76155e65340f2eb40e579e04bc200bdeb4b1fd1b29ae5f684c9d318b",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793464824.416701,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.1",
+   "lang": "zh",
+   "sentence": "侯生只说一句「公子勉之矣，老臣不能從」。"
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.7",
+   "lang": "en",
+   "sentence": "The prince at once blamed himself, looking as if he had nowhere to hide."
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "本文依据的记载只写秦王求晋鄙客毁公子。"
+  },
+  {
+   "id": "A4",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "The prince's displeasure, self-congratulation and self-blame, as the narrative describes them, are narrative labels, not recorded psychology."
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-SJ077": {
+   "title": "司馬遷《史記·魏公子列傳》（维基文库本）",
+   "url": "https://zh.wikisource.org/w/index.php?title=%E5%8F%B2%E8%A8%98/%E5%8D%B7077&action=render",
+   "ref": "zh:史記/卷077",
+   "evidence_text_sha256": "4b1d4ec9f91a18e56ebb8b733e1cd11ffa0ada580ac283fa1b715015b54f3370",
+   "cache_sha256": "4b1d4ec9f91a18e56ebb8b733e1cd11ffa0ada580ac283fa1b715015b54f3370",
+   "cjk": true,
+   "source_chars": 3383,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     3383
+    ]
+   ],
+   "chars_reviewed": 3383
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 62.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 6107
+  }
+ ],
+ "finished_at": 1793464887.228928,
+ "elapsed_min": 1.0,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-SJ077",
+    "outcome": "窃符救赵一事收于秦军解去、邯郸得救；公子令部将带军归魏，自己因魏王之怒留赵，辞让五城，只受鄗为汤沐邑。留赵十年后，他经毛公、薛公劝说归魏，率五国之兵破秦。此后秦王收买晋鄙的门客毁谤他，魏王另派人代他为将，公子谢病纵饮四年，病酒而死。他死的当年魏王也死了，秦国趁机攻魏，十八年后虏魏王、屠大梁。",
+    "quote": "日夜為樂飲者四歲，竟病酒而卒。其歲，魏安釐王亦薨。秦聞公子死，使蒙驁攻魏，拔二十城，初置東郡。其後秦稍蠶食魏，十八歲而虜魏王，屠大梁。",
+    "in_evidence": false
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-SJ077",
+    "start": "其歲，魏安釐王亦薨",
+    "end": "十八歲而虜魏王，屠大梁",
+    "why": "这是本传在公子死后的直接后果：秦国听说公子已死，随即攻魏拔城，最终灭魏。稿件写到「竟病酒而卒」就停了，证据包也止于此句。补上这段，读者才知道他被废、身死对魏国意味着什么。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.1",
+    "lang": "zh",
+    "sentence": "侯生只说一句「公子勉之矣，老臣不能從」。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "全篇（夷门辞决段）",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "辭決而行，侯生曰：「公子勉之矣，老臣不能從。」"
+    },
+    "fix": "这是叙述人物当场只说了一句话，不是关于来源有无记载的断言，与原文相符，保留即可。"
+   },
+   {
+    "id": "A2",
+    "path": "sections.story.7",
+    "lang": "en",
+    "sentence": "The prince at once blamed himself, looking as if he had nowhere to hide.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "全篇（五城段）",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "於是公子立自責，似若無所容者"
+    },
+    "fix": "这是对原文的正面转述，准确，保留即可。"
+   },
+   {
+    "id": "A3",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "本文依据的记载只写秦王求晋鄙客毁公子。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "《魏公子列传》全文。传中写了秦王行金、求晋鄙客、毁辞内容和魏王信谗，但没有写晋鄙客是为晋鄙报仇或因旧怨而毁谤。",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "秦王患之，乃行金萬斤於魏，求晉鄙客，令毀公子於魏王"
+    },
+    "fix": "可以收紧为：「原文只记秦王出金求晋鄙客去毁谤公子，没有说这些门客出于为晋鄙报仇。」这样能更准确地标出解释与记载的界线。"
+   },
+   {
+    "id": "A4",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "The prince's displeasure, self-congratulation and self-blame, as the narrative describes them, are narrative labels, not recorded psychology.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "全篇",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "自言罪過，以負於魏，無功於趙"
+    },
+    "fix": "「心不快」「意驕矜」「立自責」确属叙述语，这条提醒可以保留。但「自责」紧接着有公子自己的话「自言罪過」为证，建议注明这一点，以免读者以为自责全无言行依据。"
+   },
+   {
+    "id": "N1",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "关于侯生自刭，本文只依据他「老臣不能從」与「北鄉自剄，以送公子」两句，不推测其动机。",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "全篇（侯生许诺及践诺两处）",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "公子與侯生決，至軍，侯生果北鄉自剄"
+    },
+    "fix": "稿件 story.4 已引用了侯生践诺的这一句，所以「只依据两句」不准确。另外，侯生许诺时自己说明了理由（「臣宜從，老不能」，并说「以送公子」）。建议改为：「本文依据侯生许诺与践诺的原文，以及他自述的『臣宜從，老不能』，不在此之外推测动机。」"
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "八万人这一数字依本篇所记，本文未与他书对照。",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "本文的核查过程说明，不是来源断言",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "得選兵八萬人"
+    },
+    "fix": "limits.0 已经说明全文只核对了本篇，这句与之重复，可以删除或并入 limits.0。"
+   },
+   {
+    "id": "N3",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "本文只依据并核对了《史记·魏公子列传》一篇，未与其他记载对照。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "本文核查过程",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "太史公曰：吾過大梁之墟，求問其所謂夷門"
+    },
+    "fix": "这是对本文自身来源数量的说明，属实，保留。但不应引申为「史家未作考察」：太史公自述曾亲到大梁之墟访问夷门。"
+   },
+   {
+    "id": "N4",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "本篇只依据并核对了《史记·魏公子列传》一篇，未与他书对照",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "本文核查过程",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "吾過大梁之墟，求問其所謂夷門"
+    },
+    "fix": "保留。不要写成「当时无人核实」一类的否定事实。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.story.7",
+    "problem": "稿件写到赵王「终究没有开口献出五城」就停了，漏掉了紧接着的结果：赵王仍以鄗为公子汤沐邑，魏国也恢复以信陵奉他。读者会误以为他辞掉了一切封赏、与魏完全决裂。这也影响 analysis.2 中「认债」和「躲避魏王之怒」两种解读的判断。",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "公子竟留趙。趙王以鄗為公子湯沐邑，魏亦復以信陵奉公子"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.analysis.2",
+    "problem": "叙述停在「竟病酒而卒」，没有交代原文紧接着的后果：秦国闻公子死即攻魏，最终灭魏。这对「最终代价」的完整呈现有影响。",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "秦聞公子死，使蒙驁攻魏，拔二十城"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.hook.0",
+    "problem": "「救兵却停在半路」不够准确：原文是晋鄙停军于邺、屯于本国境上观望，并不是在行军途中。",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "今吾擁十萬之眾，屯於境上"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "来源是全文阅读，主线叙述与原文基本一致，需要改两处：limits.1 称自刭「只依据两句」，与稿件自己所引的践诺句矛盾；story.7 漏掉了鄗地汤沐邑和魏复奉信陵的后续。另外可以补上公子死后秦攻魏、终至灭魏的结局。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.1",
+   "lang": "zh",
+   "sentence": "侯生只说一句「公子勉之矣，老臣不能從」。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "全篇（夷门辞决段）",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "辭決而行，侯生曰：「公子勉之矣，老臣不能從。」"
+   },
+   "fix": "这是叙述人物当场只说了一句话，不是关于来源有无记载的断言，与原文相符，保留即可。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.7",
+   "lang": "en",
+   "sentence": "The prince at once blamed himself, looking as if he had nowhere to hide.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "全篇（五城段）",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "於是公子立自責，似若無所容者"
+   },
+   "fix": "这是对原文的正面转述，准确，保留即可。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "本文依据的记载只写秦王求晋鄙客毁公子。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "《魏公子列传》全文。传中写了秦王行金、求晋鄙客、毁辞内容和魏王信谗，但没有写晋鄙客是为晋鄙报仇或因旧怨而毁谤。",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "秦王患之，乃行金萬斤於魏，求晉鄙客，令毀公子於魏王"
+   },
+   "fix": "可以收紧为：「原文只记秦王出金求晋鄙客去毁谤公子，没有说这些门客出于为晋鄙报仇。」这样能更准确地标出解释与记载的界线。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "A4",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "The prince's displeasure, self-congratulation and self-blame, as the narrative describes them, are narrative labels, not recorded psychology.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "全篇",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "自言罪過，以負於魏，無功於趙"
+   },
+   "fix": "「心不快」「意驕矜」「立自責」确属叙述语，这条提醒可以保留。但「自责」紧接着有公子自己的话「自言罪過」为证，建议注明这一点，以免读者以为自责全无言行依据。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "关于侯生自刭，本文只依据他「老臣不能從」与「北鄉自剄，以送公子」两句，不推测其动机。",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "全篇（侯生许诺及践诺两处）",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "公子與侯生決，至軍，侯生果北鄉自剄"
+   },
+   "fix": "稿件 story.4 已引用了侯生践诺的这一句，所以「只依据两句」不准确。另外，侯生许诺时自己说明了理由（「臣宜從，老不能」，并说「以送公子」）。建议改为：「本文依据侯生许诺与践诺的原文，以及他自述的『臣宜從，老不能』，不在此之外推测动机。」",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "八万人这一数字依本篇所记，本文未与他书对照。",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "本文的核查过程说明，不是来源断言",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "得選兵八萬人"
+   },
+   "fix": "limits.0 已经说明全文只核对了本篇，这句与之重复，可以删除或并入 limits.0。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "本文只依据并核对了《史记·魏公子列传》一篇，未与其他记载对照。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "本文核查过程",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "太史公曰：吾過大梁之墟，求問其所謂夷門"
+   },
+   "fix": "这是对本文自身来源数量的说明，属实，保留。但不应引申为「史家未作考察」：太史公自述曾亲到大梁之墟访问夷门。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "本篇只依据并核对了《史记·魏公子列传》一篇，未与他书对照",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "本文核查过程",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "吾過大梁之墟，求問其所謂夷門"
+   },
+   "fix": "保留。不要写成「当时无人核实」一类的否定事实。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.story.7",
+   "problem": "稿件写到赵王「终究没有开口献出五城」就停了，漏掉了紧接着的结果：赵王仍以鄗为公子汤沐邑，魏国也恢复以信陵奉他。读者会误以为他辞掉了一切封赏、与魏完全决裂。这也影响 analysis.2 中「认债」和「躲避魏王之怒」两种解读的判断。",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "公子竟留趙。趙王以鄗為公子湯沐邑，魏亦復以信陵奉公子"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.analysis.2",
+   "problem": "叙述停在「竟病酒而卒」，没有交代原文紧接着的后果：秦国闻公子死即攻魏，最终灭魏。这对「最终代价」的完整呈现有影响。",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "秦聞公子死，使蒙驁攻魏，拔二十城"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.hook.0",
+   "problem": "「救兵却停在半路」不够准确：原文是晋鄙停军于邺、屯于本国境上观望，并不是在行军途中。",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "今吾擁十萬之眾，屯於境上"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-SJ077",
+   "outcome": "窃符救赵一事收于秦军解去、邯郸得救；公子令部将带军归魏，自己因魏王之怒留赵，辞让五城，只受鄗为汤沐邑。留赵十年后，他经毛公、薛公劝说归魏，率五国之兵破秦。此后秦王收买晋鄙的门客毁谤他，魏王另派人代他为将，公子谢病纵饮四年，病酒而死。他死的当年魏王也死了，秦国趁机攻魏，十八年后虏魏王、屠大梁。",
+   "quote": "日夜為樂飲者四歲，竟病酒而卒。其歲，魏安釐王亦薨。秦聞公子死，使蒙驁攻魏，拔二十城，初置東郡。其後秦稍蠶食魏，十八歲而虜魏王，屠大梁。",
+   "in_evidence": false
+  }
+ ],
+ "additions": [
+  {
+   "id": "SJ0771-E35",
+   "source_id": "S-SJ077",
+   "offset": 3044,
+   "chars": 51,
+   "why": "这是本传在公子死后的直接后果：秦国听说公子已死，随即攻魏拔城，最终灭魏。稿件写到「竟病酒而卒」就停了，证据包也止于此句。补上这段，读者才知道他被废、身死对魏国意味着什么。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "ebc8339316efd32e75d26e9f0c7a02884f16f8d652046aee60a260e1dfe07be5",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.limits.1.zh: contradicted — 关于侯生自刭，本文只依据他「老臣不能從」与「北鄉自剄，以送公子」两句，不推测其动机。",
+  "sections.limits.1.zh: unnecessary — 八万人这一数字依本篇所记，本文未与他书对照。",
+  "sections.story.7: 稿件写到赵王「终究没有开口献出五城」就停了，漏掉了紧接着的结果：赵王仍以鄗为公子汤沐邑，魏国也恢复以信陵奉他。读者会误以为他辞掉了一切封赏、与魏完全决裂。这也影响 analysis.2 中「认债」和「",
+  "evidence must be expanded first: 1 addition(s) ['SJ0771-E35']"
+ ]
+}

@@ -1,0 +1,90 @@
+{
+ "edits": [
+  {
+   "path": "sections.hook.1.zh",
+   "find": "出城之前，他去向一个看城门的老人告别。",
+   "replace": "出城路过夷门时，他向守门的侯生辞决。",
+   "issues": [
+    "R1"
+   ],
+   "reason": "据SJ0771-E13「行過夷門，見侯生……辭決而行」，公子是出城路过夷门时见到侯生、当场辞决，不是事先登门告别；与story.1「路过夷门」保持一致。"
+  },
+  {
+   "path": "sections.hook.1.en",
+   "find": "Before leaving the city, he went to say goodbye to an old man who kept one of the gates.",
+   "replace": "On his way out of the city, passing the Yimen gate, he took his leave of Hou Ying, the gatekeeper.",
+   "issues": [
+    "R1"
+   ],
+   "reason": "英文同步修改，与E13「行過夷門，見侯生……辭決而行」及中文一致。"
+  },
+  {
+   "path": "sections.story.0.zh",
+   "find": "公子能做的第一件事仍是求魏王，魏王不肯松口，宾客辩士轮番劝说也没用（此句据简报转述）。剩下能动的只有他自己：带门客赴秦军，与赵俱死（此句据简报转述）。",
+   "replace": "据简报转述，他先求魏王发兵不得，遂决意赴秦军而死。",
+   "issues": [
+    "R2"
+   ],
+   "reason": "删除record段里无证据支持的选项排序与「魏王不肯松口」「带门客」「与赵俱死」等说法，只保留据简报转述的简短转述；「欲死秦軍狀」见SJ0771-E13，选项罗列已由analysis.0以作者分析呈现。"
+  },
+  {
+   "path": "sections.story.0.en",
+   "find": "The first thing Lord Xinling could do was still to appeal to the king. The king would not budge, and neither the retainers nor the professional persuaders sent to argue the case changed his mind (this detail is retold from the briefing, not quoted from the source). That left only himself: leading his retainers to go and die against the Qin army (this detail, too, is retold from the briefing, not quoted from the source).",
+   "replace": "Retold from the briefing: he first appealed to the king of Wei for troops and was refused, and so resolved to go and die against the Qin army.",
+   "issues": [
+    "R2"
+   ],
+   "reason": "英文同步收窄为据简报转述的一句，删除证据包外的选项排序与细节。"
+  },
+  {
+   "path": "sections.story.2.zh",
+   "find": "作者推断：他料到公子会折返。",
+   "replace": "他自己说：「以是知公子恨之復返也」。",
+   "issues": [
+    "R3"
+   ],
+   "reason": "SJ0771-E14明写「以是知公子恨之復返也」，是侯生自陈其预判而非作者推断；改回直引原文，使本段保持record性质。"
+  },
+  {
+   "path": "sections.story.2.en",
+   "find": "The author's reading: he had foreseen that the lord would turn back.",
+   "replace": "In Hou Ying's own words, he said as much: he knew the lord would resent it and come back.",
+   "issues": [
+    "R3"
+   ],
+   "reason": "同步删去误标的作者推断，改为转述侯生的自陈（E14「以是知公子恨之復返也」），不新增英文引语。"
+  },
+  {
+   "path": "sections.context.0.en",
+   "find": "rank — until he had three thousand retainers and men of ability",
+   "replace": "rank — so that he had three thousand retainers, and men of ability",
+   "issues": [
+    "P4"
+   ],
+   "reason": "把时间性的until改为因果性的so that，恢复中文「以致」的因果链，中英事实一致。"
+  }
+ ],
+ "ev_changes": [],
+ "dispositions": [
+  {
+   "issue": "R1",
+   "action": "fixed",
+   "reason": "hook.1原写作事先登门告别，与SJ0771-E13「行過夷門，見侯生，具告所以欲死秦軍狀。辭決而行」不符；已改为「出城路过夷门时，他向守门的侯生辞决」，英文同步，与story.1「路过夷门」一致。"
+  },
+  {
+   "issue": "R2",
+   "action": "fixed",
+   "reason": "story.0为record段，却把选项排序写成史实，且「魏王不肯松口」「带门客」「与赵俱死」不见于证据包（E13只写「具告所以欲死秦軍狀」）。已收窄为「据简报转述，他先求魏王发兵不得，遂决意赴秦军而死」，中英同步；选项罗列本来就以作者分析形式存在于kind=interpretation的analysis.0（「求魏王（走不通）、只身赴死（无用）、矫令夺军……」并标「作者推断」），无需再移。"
+  },
+  {
+   "issue": "R3",
+   "action": "fixed",
+   "reason": "SJ0771-E14原文「以是知公子恨之復返也」是侯生自陈其预判，「作者推断：他料到公子会折返」把史文明写的内容误标为推断且污染record段。已删去「作者推断」句，改为直引「以是知公子恨之復返也」，英文改为转述同一事实，段落性质仍为record。"
+  },
+  {
+   "issue": "P4",
+   "action": "fixed",
+   "reason": "中文「不敢以富贵骄士，以致食客三千人」是因果（E2「士以此方數千里爭往歸之，致食客三千人」），英文原作「until he had three thousand retainers」把因果变成时限，还暗示谦下就此停止；已按建议改为「— so that he had three thousand retainers, and men of ability from a radius of several thousand li competed to attach themselves to him.」，中文无需改动。"
+  }
+ ]
+}

@@ -1,0 +1,156 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261031-sj077-2",
+ "content_sha256": "3bf0143b4e9310175fa7eb16733e8e9127741c092b22ce0a07b0f09a8f8c9505",
+ "evidence_in_sha256": "c4a0c958625a07d7f432db29c05585a0915a3376b12c9c59c560d763a5cc0519",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793507285.977923,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.7",
+   "lang": "en",
+   "sentence": "Wuji \"at once blamed himself, as if there were nowhere he could hide.\" Later, when the king of Zhao received him with the rites of a host, Wuji stood to the side, declined the honor, and pronounced himself at fault, saying he had failed Wei and done nothing for Zhao."
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-SJ077": {
+   "title": "司馬遷《史記·魏公子列傳》（维基文库本）",
+   "url": "https://zh.wikisource.org/w/index.php?title=%E5%8F%B2%E8%A8%98/%E5%8D%B7077&action=render",
+   "ref": "zh:史記/卷077",
+   "evidence_text_sha256": "4b1d4ec9f91a18e56ebb8b733e1cd11ffa0ada580ac283fa1b715015b54f3370",
+   "cache_sha256": "4b1d4ec9f91a18e56ebb8b733e1cd11ffa0ada580ac283fa1b715015b54f3370",
+   "cjk": true,
+   "source_chars": 3383,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     3383
+    ]
+   ],
+   "chars_reviewed": 3383
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 19.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "prompts": [
+    {
+     "file": "context_review.md",
+     "sha256": "166543d1f6ca"
+    }
+   ],
+   "output_tokens": 1854
+  }
+ ],
+ "finished_at": 1793507305.2894375,
+ "elapsed_min": 0.3,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-SJ077",
+    "outcome": "窃符救赵成功：邯郸解围，赵王亲迎；公子自知负魏，留赵十年。秦攻魏后他归国率五国之兵破秦，后来被秦收买晋鄙客毁谤而夺将，病酒而死。他死后秦攻魏拔二十城，十八年后虏魏王、屠大梁；汉高祖为他置守冢，太史公称其名冠诸侯不虚。",
+    "quote": "秦聞公子死，使蒙驁攻魏，拔二十城，初置東郡。其後秦稍蠶食魏，十八歲而虜魏王，屠大梁。",
+    "in_evidence": true
+   }
+  ],
+  "additions": [],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.7",
+    "lang": "en",
+    "sentence": "Wuji \"at once blamed himself, as if there were nowhere he could hide.\" Later, when the king of Zhao received him with the rites of a host, Wuji stood to the side, declined the honor, and pronounced himself at fault, saying he had failed Wei and done nothing for Zhao.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-SJ077"
+    ],
+    "scope": "《魏公子列传》全文，赵封五城与客谏一段",
+    "quote": {
+     "source_id": "S-SJ077",
+     "quote": "於是公子立自責，似若無所容者。趙王埽除自迎，執主人之禮，引公子就西階。公子側行辭讓，從東階上。自言罪過，以負於魏，無功於趙。"
+    },
+    "fix": "无需修改。这是正面叙述，与原文相符，不是关于来源记载与否的断言。"
+   }
+  ],
+  "context_issues": [],
+  "search": [],
+  "overall": "已通读全文。证据包已覆盖本事的结局与后续：解围、留赵、归魏、被毁而卒、魏亡和太史公评语。稿件中没有否定性来源断言，也没有“无独立核查”一类表述；局限与不确定性字段只是说明来源数量和对话性质，没有编造缺失。未发现因截断造成的误导叙述。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.7",
+   "lang": "en",
+   "sentence": "Wuji \"at once blamed himself, as if there were nowhere he could hide.\" Later, when the king of Zhao received him with the rites of a host, Wuji stood to the side, declined the honor, and pronounced himself at fault, saying he had failed Wei and done nothing for Zhao.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-SJ077"
+   ],
+   "scope": "《魏公子列传》全文，赵封五城与客谏一段",
+   "quote": {
+    "source_id": "S-SJ077",
+    "quote": "於是公子立自責，似若無所容者。趙王埽除自迎，執主人之禮，引公子就西階。公子側行辭讓，從東階上。自言罪過，以負於魏，無功於趙。"
+   },
+   "fix": "无需修改。这是正面叙述，与原文相符，不是关于来源记载与否的断言。",
+   "unit_status": {
+    "S-SJ077": "complete"
+   }
+  }
+ ],
+ "context_issues": [],
+ "episode": [
+  {
+   "source_id": "S-SJ077",
+   "outcome": "窃符救赵成功：邯郸解围，赵王亲迎；公子自知负魏，留赵十年。秦攻魏后他归国率五国之兵破秦，后来被秦收买晋鄙客毁谤而夺将，病酒而死。他死后秦攻魏拔二十城，十八年后虏魏王、屠大梁；汉高祖为他置守冢，太史公称其名冠诸侯不虚。",
+   "quote": "秦聞公子死，使蒙驁攻魏，拔二十城，初置東郡。其後秦稍蠶食魏，十八歲而虜魏王，屠大梁。",
+   "in_evidence": true
+  }
+ ],
+ "additions": [],
+ "additions_failed": [],
+ "evidence_sha256": "c4a0c958625a07d7f432db29c05585a0915a3376b12c9c59c560d763a5cc0519",
+ "outcome": "clean",
+ "blocking": []
+}

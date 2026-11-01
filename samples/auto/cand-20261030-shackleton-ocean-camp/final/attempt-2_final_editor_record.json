@@ -1,0 +1,1266 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-20261030-shackleton-ocean-camp",
+ "edition_id": "cand-20261030-shackleton-ocean-camp",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "215a6b1",
+ "started_at": 1793399024.6649551,
+ "base_source": "samples/auto/cand-20261030-shackleton-ocean-camp/final/article.json",
+ "base_content_sha256": "c795b1c5b596252b1e79a841de94c453a8ad685fde4e82f30e0a03ed534da33f",
+ "evidence_sha256": "2f27ceea809585428ca2a3b87c7d998573be856048dcd64f6dddadf0b8b2cfcf",
+ "model_record_sha256": "6a4351505063bf4a2d30b3e86d2da6d9ede352116f8b0739f53fb486924d835c",
+ "prior_record_sha256": "2cf8ea370f57781d4a247e0f5448243a9d942515823ceb0be6ca7da0e3a716d8",
+ "attempt": "attempt-2",
+ "inherited": [
+  {
+   "id": "P1",
+   "model_id": "V2-V1",
+   "source": "final-editor previous attempt",
+   "where": "sections.analysis.0",
+   "problem": "文中说两次决定“看的是同样的东西：眼前这段路找不找得到、值不值得把船带进去冒险”（en: Both decisions weighed the same things）。这一说法只符合不拔营那次（S-E13）的理由。海洋营决定的记述（S-E7）给出的理由是：雪面松软、四天成果太少、附近可能开出水道。S-E7 没有提到找路，也没有提到让船陷入危险。这里把一次决定的理由安到了另一次决定上，“作者推断”的标签也不能补上这一点。",
+   "suggestion": "改为“两次决定都在衡量眼前的路还能不能走下去”（en: \"Both decisions turned on whether the way ahead could be made\"）。或者删去“值不值得把船带进去冒险”及对应英文 \"and was it worth taking the boats into danger to use it\"。"
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.story.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "原文中“with her own writing in it”在语法上修饰圣经，没有说明亲笔字迹就在被撕下的扉页上。中文“那一页上有她亲笔写的字”和英文“the page with her own writing on it”把一种推断写成了事实。",
+   "evidence": [
+    {
+     "id": "S-E5",
+     "quote": "I tore the fly-leaf out of the Bible that Queen Alexandra had given to the ship, with her own writing in it,"
+    }
+   ],
+   "proposed": "zh：他还从王后赠给船、内有她亲笔字迹的那本圣经上撕下扉页。en：He tore the fly-leaf out of the Bible the Queen had given to the ship, with her own writing in it.",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "原文的“with her own writing in it”修饰圣经，不能断定字迹就在被撕下的扉页上。中文改为“内有她亲笔字迹的那本圣经”，英文改回原文措辞“with her own writing in it”，不再声称字迹在那一页上。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.story.8",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "中文“他看清了两件事”把可能开出水道也写成了他“看清”的事。原文中他“could see”的只有雪面松软、成果太少、走不远。水道只是他“taking into account also”的一种可能。英文写成“a second possibility to weigh”，是对的，中英文不一致。",
+   "evidence": [
+    {
+     "id": "S-E7",
+     "quote": "I could see that with the present loose surface"
+    },
+    {
+     "id": "S-E7",
+     "quote": "Taking into account also the possibility of leads opening close to us"
+    }
+   ],
+   "proposed": "zh 改为：他看清，以眼下松软的雪面，加上四天苦干换来的那点成果，走不了多远；他同时也考虑到，附近有可能开出水道，那样就能划船向西北方向去找陆地。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文原把可能开出水道也算作他“看清”的事。现改为：他看清的只有雪面松软、成果太少、走不远；水道是他“同时也考虑到”的一种可能。“两件事”相应改为“两方面的考虑”，与英文的“a second possibility to weigh”和“The two considerations”一致。英文原本无误，按规则原样给出。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.context.heading",
+   "category": "style",
+   "severity": "note",
+   "problem": "小标题含“两磅的规矩”，但 context 两段都没有写两磅规定，这一规定出现在 story.0。标题与本节内容不对应。",
+   "evidence": [],
+   "proposed": "改为“原计划与弃船时的处境”/“The Original Plan, and Where They Stood”，或把两磅规定移入本节。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F4",
+   "path": "sections.analysis.0",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "文中说两次决定“看的是同样的东西：眼前这段路找不找得到、值不值得把船带进去冒险”。这只是不拔营那次的理由（S-E13）。海洋营决定的理由（S-E7）是雪面松软、四天成果太少、附近可能开出水道，没有提到找路或船的危险。这里把一次决定的理由套到了另一次上，“作者推断”的标签补救不了。",
+   "evidence": [
+    {
+     "id": "S-E13",
+     "quote": "A path over the shattered floes would be hard to find, and to get the boats into a position of peril might be disastrous"
+    },
+    {
+     "id": "S-E7",
+     "quote": "considering how little result we had to show for all our strenuous efforts of the past four days, it would be impossible to proceed for any great distance"
+    }
+   ],
+   "proposed": "改为“两次决定都在衡量眼前的路还能不能走下去”/“Both decisions turned on whether the way ahead could be made”，并删去“值不值得把船带进去冒险”及对应的英文“and was it worth taking the boats into danger to use it”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "“值不值得把船带进去冒险”只是不拔营那次的理由，海洋营那次的理由里没有。现删去这一点，中英文统一改为两次决定都在衡量前路还能不能走下去。这一点两段记述都支持：一次是找路困难，一次是走不了多远。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "P1",
+   "problem": "文中说两次决定“看的是同样的东西：眼前这段路找不找得到、值不值得把船带进去冒险”（en: Both decisions weighed the same things）。这一说法只符合不拔营那次（S-E13）的理由。海洋营决定的记述（S-E7）给出的理由是：雪面松软、四天成果太少、附近可能开出水道。S-E7 没有提到找路，也没有提到让船陷入危险。这里把一次决定的理由安到了另一次决定上，“作者推断”的标签也不能补上这一点。",
+   "origin": "inherited final-editor previous attempt V2-V1",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.analysis.0",
+   "disposition": "duplicate",
+   "same_as": "F4",
+   "rationale": "问题成立。海洋营决定的记述没有提到找路或船的危险，这两条理由只见于不拔营那次。与 F4 相同。"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.story.1.zh",
+   "before": "于是有了那个读完忘不掉的细节：金币被扔掉，照片被留下；他还从王后赠给船的那本圣经上撕下扉页，那一页上有她亲笔写的字。",
+   "after": "于是有了那个读完忘不掉的细节：金币被扔掉，照片被留下；他还从王后赠给船、内有她亲笔字迹的那本圣经上撕下扉页。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.story.1.en",
+   "before": "And so the detail that stays with you: \"sovereigns were thrown away and photographs were kept.\" He tore the fly-leaf out of the Bible the Queen had given to the ship, the page with her own writing on it.",
+   "after": "And so the detail that stays with you: \"sovereigns were thrown away and photographs were kept.\" He tore the fly-leaf out of the Bible the Queen had given to the ship, with her own writing in it.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.story.8.zh",
+   "before": "苦干四天之后的第二天，天冷而平静，还是那种湿雪。他看清了两件事：以眼下松软的雪面，加上四天苦干换来的那点成果，走不了多远；同时，附近有可能开出水道，那样就能划船向西北方向去找陆地。两件事合起来指向同一个决定——找一块更结实的浮冰扎营，等条件更有利时再做第二次挣脱冰牢的尝试。",
+   "after": "苦干四天之后的第二天，天冷而平静，还是那种湿雪。他看清，以眼下松软的雪面，加上四天苦干换来的那点成果，走不了多远；他同时也考虑到，附近有可能开出水道，那样就能划船向西北方向去找陆地。两方面的考虑合起来指向同一个决定——找一块更结实的浮冰扎营，等条件更有利时再做第二次挣脱冰牢的尝试。",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.zh",
+   "before": "一种解释是（作者推断），海洋营不是他第一次决定停下。行军第二天早上，雪大得看不清路，他就决定不拔营；天晴一些后探到一块好走的浮冰，午饭后又继续走。两次决定看的是同样的东西：眼前这段路找不找得到、值不值得把船带进去冒险。海洋营的不同在于，这一次他把等待写成了一个计划：营地选在更结实的浮冰上，理由里挂着一个具体的指望——附近可能开出水道，那时可以划船去找陆地——等条件更有利，再做第二次尝试。",
+   "after": "一种解释是（作者推断），海洋营不是他第一次决定停下。行军第二天早上，雪大得看不清路，他就决定不拔营；天晴一些后探到一块好走的浮冰，午饭后又继续走。两次决定都在衡量眼前的路还能不能走下去。海洋营的不同在于，这一次他把等待写成了一个计划：营地选在更结实的浮冰上，理由里挂着一个具体的指望——附近可能开出水道，那时可以划船去找陆地——等条件更有利，再做第二次尝试。",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "before": "One reading, and it is the author's, is that Ocean Camp was not the first time he chose to stop. On the march's second morning, with snow too thick to see a path, he decided not to strike camp; when it cleared and a good floe turned up, they moved on after lunch. Both decisions weighed the same things: could a road be found, and was it worth taking the boats into danger to use it? What set Ocean Camp apart is that this time he wrote the waiting down as a plan. The camp went onto a more solid floe, the reasoning carried a specific hope (leads opening nearby, boats in the water, land to the north-west), and a second attempt was to follow once conditions improved.",
+   "after": "One reading, and it is the author's, is that Ocean Camp was not the first time he chose to stop. On the march's second morning, with snow too thick to see a path, he decided not to strike camp; when it cleared and a good floe turned up, they moved on after lunch. Both decisions turned on whether the way ahead could be made. What set Ocean Camp apart is that this time he wrote the waiting down as a plan. The camp went onto a more solid floe, the reasoning carried a specific hope (leads opening nearby, boats in the water, land to the north-west), and a second attempt was to follow once conditions improved.",
+   "issues": [
+    "F4"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F4"
+   ],
+   "changes_applied": 5,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[4] numbers differ zh[2, 20] en[2, 10, 20]"
+    ],
+    [
+     "CHECK",
+     "story[6] numbers differ zh[12, 14, 18] en[10, 14, 18]"
+    ]
+   ],
+   "content_sha256_after": "da80dfa470a98123cf2a74cc84a92e2706bcee42447c189daf5071c34902ea49",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.9",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.10",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.11",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.12",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.13",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [],
+    "overall": "逐字段复核后，所有数字、人名、地名和事件都有证据支持。英文引语均逐字取自证据，决定的理由按沙克尔顿本人的表述呈现。推断部分已标明为作者解读，现代场景没有冒充记录，中英文一致且无截断，可以放行。",
+    "_content_sha256": "da80dfa470a98123cf2a74cc84a92e2706bcee42447c189daf5071c34902ea49"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "inner_life",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "chronology",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "chronology",
+     "causality",
+     "inner_life",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.story.9",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.10",
+    "checked": [
+     "facts",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.11",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.12",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.13",
+    "checked": [
+     "facts",
+     "chronology",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "causality",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.3",
+    "checked": [
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.story.1",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "原文中“with her own writing in it”在语法上修饰圣经，没有说明亲笔字迹就在被撕下的扉页上。中文“那一页上有她亲笔写的字”和英文“the page with her own writing on it”把一种推断写成了事实。",
+    "evidence": [
+     {
+      "id": "S-E5",
+      "quote": "I tore the fly-leaf out of the Bible that Queen Alexandra had given to the ship, with her own writing in it,"
+     }
+    ],
+    "proposed": "zh：他还从王后赠给船、内有她亲笔字迹的那本圣经上撕下扉页。en：He tore the fly-leaf out of the Bible the Queen had given to the ship, with her own writing in it."
+   },
+   {
+    "id": "F2",
+    "path": "sections.story.8",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "中文“他看清了两件事”把可能开出水道也写成了他“看清”的事。原文中他“could see”的只有雪面松软、成果太少、走不远。水道只是他“taking into account also”的一种可能。英文写成“a second possibility to weigh”，是对的，中英文不一致。",
+    "evidence": [
+     {
+      "id": "S-E7",
+      "quote": "I could see that with the present loose surface"
+     },
+     {
+      "id": "S-E7",
+      "quote": "Taking into account also the possibility of leads opening close to us"
+     }
+    ],
+    "proposed": "zh 改为：他看清，以眼下松软的雪面，加上四天苦干换来的那点成果，走不了多远；他同时也考虑到，附近有可能开出水道，那样就能划船向西北方向去找陆地。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.context.heading",
+    "category": "style",
+    "severity": "note",
+    "problem": "小标题含“两磅的规矩”，但 context 两段都没有写两磅规定，这一规定出现在 story.0。标题与本节内容不对应。",
+    "evidence": [],
+    "proposed": "改为“原计划与弃船时的处境”/“The Original Plan, and Where They Stood”，或把两磅规定移入本节。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.analysis.0",
+    "category": "attribution",
+    "severity": "fix",
+    "problem": "文中说两次决定“看的是同样的东西：眼前这段路找不找得到、值不值得把船带进去冒险”。这只是不拔营那次的理由（S-E13）。海洋营决定的理由（S-E7）是雪面松软、四天成果太少、附近可能开出水道，没有提到找路或船的危险。这里把一次决定的理由套到了另一次上，“作者推断”的标签补救不了。",
+    "evidence": [
+     {
+      "id": "S-E13",
+      "quote": "A path over the shattered floes would be hard to find, and to get the boats into a position of peril might be disastrous"
+     },
+     {
+      "id": "S-E7",
+      "quote": "considering how little result we had to show for all our strenuous efforts of the past four days, it would be impossible to proceed for any great distance"
+     }
+    ],
+    "proposed": "改为“两次决定都在衡量眼前的路还能不能走下去”/“Both decisions turned on whether the way ahead could be made”，并删去“值不值得把船带进去冒险”及对应的英文“and was it worth taking the boats into danger to use it”。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "P1",
+    "verdict": "duplicate",
+    "same_as": "F4",
+    "rationale": "问题成立。海洋营决定的记述没有提到找路或船的危险，这两条理由只见于不拔营那次。与 F4 相同。",
+    "evidence": [
+     {
+      "id": "S-E13",
+      "quote": "to get the boats into a position of peril might be disastrous"
+     },
+     {
+      "id": "S-E7",
+      "quote": "Taking into account also the possibility of leads opening close to us"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "da80dfa470a98123cf2a74cc84a92e2706bcee42447c189daf5071c34902ea49",
+ "open_issues": [],
+ "outcome": "admissible",
+ "failure": null,
+ "finished_at": 1793399184.985946,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 76.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16747,
+    "output_tokens": 9165
+   },
+   "cost_estimate_usd": 0.317284
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 20.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16804,
+    "output_tokens": 2547
+   },
+   "cost_estimate_usd": 0.18538
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 62.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15741,
+    "output_tokens": 7330
+   },
+   "cost_estimate_usd": 0.272536
+  }
+ ],
+ "elapsed_min": 2.7,
+ "model_wall_min": 2.7
+}

@@ -1,0 +1,75 @@
+{
+ "candidate_id": "cand-20261030-washington-resigns",
+ "category": "us",
+ "steps": [],
+ "sources": {
+  "D-JCC25": "evidence_usable"
+ },
+ "dedup": [
+  "distinct",
+  "resumed own reservation (prepared)"
+ ],
+ "episode_id": "ep-cand-20261030-washington-resigns",
+ "model_calls": [
+  {
+   "step": "draft_zh",
+   "candidate": "cand-20261030-washington-resigns",
+   "reused": true,
+   "json_ok": true,
+   "wall_s": 0.0
+  },
+  {
+   "step": "review_zh",
+   "candidate": "cand-20261030-washington-resigns",
+   "reused": true,
+   "json_ok": true,
+   "wall_s": 0.0
+  },
+  {
+   "step": "en",
+   "candidate": "cand-20261030-washington-resigns",
+   "reused": true,
+   "json_ok": true,
+   "wall_s": 0.0
+  }
+ ],
+ "length": {
+  "zh_chars": 2273,
+  "en_words": 1915,
+  "basis": "body + question + example; excludes sources and read-more"
+ },
+ "reading_minutes": {
+  "zh": 7,
+  "en": 10,
+  "basis": "estimate: 320 zh chars/min, 200 en words/min"
+ },
+ "findings": [
+  [
+   "CHECK",
+   "hook[0] numbers differ zh[22, 1783] en[20, 22, 1783]"
+  ],
+  [
+   "CHECK",
+   "story[6] numbers differ zh[] en[10]"
+  ],
+  [
+   "CHECK",
+   "analysis[0] numbers differ zh[22, 23] en[20]"
+  ],
+  [
+   "CHECK",
+   "analysis[1] numbers differ zh[18] en[]"
+  ],
+  [
+   "BLOCK",
+   "limits[0] en quote not verbatim in cited evidence: “options he considered”"
+  ],
+  [
+   "CHECK",
+   "limits[0] numbers differ zh[22, 23, 25] en[20, 22, 25]"
+  ]
+ ],
+ "outcome": "pending_review",
+ "reason": "checker BLOCK; 6 review issues rated fix/block; ",
+ "wall_s": 0.7
+}

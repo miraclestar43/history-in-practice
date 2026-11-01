@@ -1,0 +1,959 @@
+"""hip — 没事儿多读书 (history-in-practice) command line.
+
+  hip doctor                         environment, isolation probe, config (no secret values)
+  hip prepare CANDIDATE.json
+  hip check ARTICLE.json EVIDENCE.json
+  hip render ARTICLE.json... --out DIR        email html/txt/.eml (fictional To), site data, markdown
+  hip export-site ARTICLE.json... --site-root DIR
+  hip verify-site ARTICLE.json --base-url URL
+  hip send ARTICLE.json --dry-run | --local-smtp HOST:PORT [--recipients-file F] | --real
+  hip test-edition prepare ARTICLE.json --test-id test-YYYYMMDD-name --site-base PREVIEW_URL [--site-root DIR] [--window-hours H]
+  hip test-edition verify-site|status|send --test-id ID [--confirm-real-email]
+                                   one tracked TEST (persisted identity, TEST labels, bounded window, live preview verified
+                                   before email, frozen recipients, no resend of accepted/unknown); works while
+                                   EMAIL_SEND_ENABLED=false; never touches rotation, coverage or publication state
+  hip supply [--category C] [--max N] | --check    catalogue -> model proposal -> anchors verified -> new candidate file
+  hip prepare-queue [--max-articles N --budget-minutes M]   (config/candidates/*.json, file lock)
+  hip edit EDITION | hip edit-queue [--max N]       editor stage: bounded edit rounds -> re-review + English parity -> admit or stay pending
+  hip rereview EDITION [--article FILE]             bind a fresh review + parity check to an edition's current (or given) content
+  hip nightly                                       supply (if few candidates) -> prepare-queue -> edit-queue, one batch budget
+  hip publish-today [--date YYYY-MM-DD]             (schedule -> archive -> site -> bounded live wait -> email); exit 0 complete,
+                                                   3 partial, 4 skipped, 5 waiting, 6 overdue
+  hip status | hip inventory | hip recover
+  hip retry-send ARTICLE.json --real|--local-smtp HOST:PORT   (retries `failed` only, never `unknown`)
+  hip requeue EDITION --reason TEXT        (checked -> pending, e.g. after a stricter rule)
+  hip final-edit EDITION [EDITION ...]     named final editor (Pi-local Claude Code CLI, subscription); admits only via a verified record
+  hip admit ARTICLE.json EVIDENCE.json --record RECORD.json [--exception ISSUE_ID=REASON ...]
+                                           (record must match the article and evidence; each open FIX needs its own named reason;
+                                            final-editor records accept no exceptions)
+  hip admit ARTICLE.json EVIDENCE.json --as-sample   (register a sample: never schedulable until `hip approve-sample`)
+  hip approve-sample EDITION --reason TEXT
+  hip registry-rebuild CONTENT.json...
+  hip books import-catalogue --path BOOKS.json [--source NAME]     catalogue metadata -> discovery leads (never evidence)
+  hip books ingest --book ID [--sid S] [--must-contain X ...] [--verified NOTE]   parsed TXT/EPUB -> source cache + location map
+  hip books locate --book ID --text NEEDLE                          stable location (EPUB spine/para, TXT offset) of a passage
+"""
+from __future__ import annotations
+import argparse, json, os, subprocess, sys, urllib.request
+from pathlib import Path
+import shutil
+from . import config, state, registry, checks, render, pipeline, site_export, mailer, llm, publish, editor, supply
+from .config import REPO, data_dir
+
+
+def db():
+    d = state.connect(data_dir() / "hip.sqlite"); registry.init(d, _aliases())
+    return d
+
+
+def _aliases():
+    p = REPO / "config/aliases.json"
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+
+
+def _load(p):
+    return json.loads(Path(p).read_text(encoding="utf-8"))
+
+
+def cmd_doctor(a):
+    out = {"python": sys.version.split()[0]}
+    from .textnorm import HAVE_OPENCC
+    out["opencc"] = HAVE_OPENCC
+    out["hermes_python"] = os.path.exists(llm.HERMES_PY)          # legacy (MiMo runs before 2026-11-01); not in the main chain
+    from . import claude_cli, writer
+    out["writer"] = {"runtime": writer.RUNTIME, "configured_model": claude_cli.MODEL, "preflight_problems": writer.preflight()}
+    if a.probe and not out["writer"]["preflight_problems"]:     # one minimal real call: what the CLI itself reports
+        r = writer.call('Reply with the JSON object {"ok": true} and nothing else.', timeout_s=300)
+        out["writer"]["probe"] = {"rc": r["rc"], "killed": r["killed"], "reply": r["text"].strip()[:40], **writer.label([r]),
+                                  "error": (r.get("meta") or {}).get("error")}
+    hp = data_dir() / "health" / "final_editor.json"
+    out["final_editor"] = {"preflight_problems": claude_cli.preflight(), "warnings": claude_cli.warnings(),
+                           "last_nightly_health": json.loads(hp.read_text()) if hp.exists() else None}
+    rt = config.load_runtime()
+    out["runtime_env"] = {"path_exists": bool(rt.path and rt.path.exists()), "insecure_permissions": rt.insecure_permissions,
+                          "keys": rt.describe(), "send_enabled": rt.send_enabled}
+    if a.probe and out["hermes_python"] and os.environ.get("HIP_PROBE_HERMES"):    # legacy isolation probe, opt-in only
+        probe = REPO / "validation/hermes_probe.py"
+        with __import__("tempfile").TemporaryDirectory() as wd:
+            r = subprocess.run([llm.HERMES_PY, str(probe), "direct", "[]"], capture_output=True, text=True, timeout=180, cwd=wd)
+        try:
+            p = json.loads(r.stdout.strip().splitlines()[-1])
+            out["isolation_probe"] = {k: p[k] for k in ("tool_count", "cwd_canary_in_prompt", "soul_text_in_prompt", "memory_store_loaded")}
+            out["isolation_ok"] = p["tool_count"] == 0 and not p["soul_text_in_prompt"] and not p["memory_store_loaded"]
+        except Exception as e:
+            out["isolation_probe"] = f"failed: {type(e).__name__}"; out["isolation_ok"] = False
+    logs = data_dir() / "logs"; size = sum(f.stat().st_size for f in logs.rglob("*") if f.is_file()) if logs.exists() else 0
+    cache = data_dir() / "source_cache"; csize = sum(f.stat().st_size for f in cache.rglob("*") if f.is_file()) if cache.exists() else 0
+    out["disk"] = {"logs_mb": round(size / 1e6, 1), "source_cache_mb": round(csize / 1e6, 1),
+                   "warnings": [w for w, bad in (("logs over 200 MB: rotate", size > 200e6), ("source cache over 2 GB: prune", csize > 2e9)) if bad]}
+    out["email_config_problems"] = mailer.validate_config(rt)
+    d = db(); out["state"] = state.summary(d); out["inventory"] = pipeline.inventory(d, verify=True)
+    out["alerts"] = ([f"{n} overdue edition(s): not sent late; check `hip status`" for n in [d.execute("SELECT count(*) FROM edition WHERE status='overdue'").fetchone()[0]] if n]
+                     + (["inventory coverage below alert threshold"] if out["inventory"]["alert"] else []))
+    print(json.dumps(out, ensure_ascii=False, indent=1))
+    return 0 if out.get("isolation_ok", True) and out["opencc"] else 1
+
+
+def _prepare_claude(d, c) -> dict:
+    """Owner decision 2026-10-30: when MiMo's provider refuses a normal history topic, the Pi-local Claude CLI
+    drafts under the same prompts, evidence pack and checks. Only for recorded refusals; MiMo stays the default."""
+    from . import claude_cli
+    cur = state.get(d, c["candidate_id"])
+    if not cur or "provider refusal" not in (cur.get("reason") or ""):
+        return {"outcome": "not_run", "reason": "--drafter claude is only for candidates with a recorded MiMo provider refusal"}
+    pre = claude_cli.preflight()
+    if pre:
+        return {"outcome": "not_run", "reason": "; ".join(pre)}
+    w = data_dir() / "drafts" / c["candidate_id"]; keep = w / "mimo-refused"
+    if w.exists():                                   # keep the refused MiMo attempts; the new drafter writes fresh files
+        keep.mkdir(exist_ok=True)
+        for f in list(w.glob("*.raw.txt")) + list(w.glob("calls.jsonl")) + list(w.glob("report.json")):
+            shutil.move(str(f), keep / f.name)
+    return pipeline.prepare(c, d, call=claude_cli.call, drafter=f"Pi Claude ({claude_cli.MODEL}, {claude_cli.version()}) after MiMo provider refusal",
+                            context_call=claude_cli.call)
+
+
+def cmd_prepare(a):
+    c = pipeline.load_candidate(a.candidate); d = db()
+    from . import claude_cli
+    rep = pipeline.prepare(c, d, context_call=claude_cli.call)       # writer = Claude (writer.py); unavailable -> not_run
+    if rep.get("outcome") == "not_run":
+        print(json.dumps({"prepared": False, "reason": rep["reason"]}, ensure_ascii=False)); return 1
+    print(json.dumps({k: v for k, v in rep.items() if k != "findings"} | {"findings": rep.get("findings", [])[:20]}, ensure_ascii=False, indent=1))
+    return 0 if rep.get("outcome") == "checked" else 2
+
+
+def cmd_check(a):
+    f, st = checks.check(_load(a.article), _load(a.evidence))
+    print(json.dumps({"stats": st, "findings": f, "blocked": checks.blocked(f)}, ensure_ascii=False, indent=1))
+    return 1 if checks.blocked(f) else 0
+
+
+FICTIONAL = ["reader1@example.invalid", "reader2@example.invalid"]
+
+
+def cmd_render(a):
+    objs = [_load(p) for p in a.articles]; out = Path(a.out)
+    render.build(objs, out, a.base_url)
+    for o in objs:
+        html = (out / "email" / f"{o['edition_id']}.html").read_text(encoding="utf-8")
+        text = (out / "email" / f"{o['edition_id']}.txt").read_text(encoding="utf-8")
+        for i, r in enumerate(FICTIONAL):
+            m = mailer.build_message(o, html, text, "没事儿多读书 <history@read.starhub.vip>", r,
+                                     mailer.message_id(o["edition_id"], o["revision"], state.recipient_key(r), "read.starhub.vip"))
+            (out / "email" / f"{o['edition_id']}.reader{i+1}.eml").write_bytes(bytes(m))
+        print(json.dumps({"edition": o["edition_id"], "html_bytes": len(html.encode()), "text_bytes": len(text.encode()),
+                          "content_sha256": o["content_sha256"][:16], "reading_minutes": o["reading_minutes"]}, ensure_ascii=False))
+    return 0
+
+
+def cmd_export_site(a):
+    written = site_export.export([_load(p) for p in a.articles], Path(a.site_root))
+    print(json.dumps({"written": written}, ensure_ascii=False, indent=1)); return 0
+
+
+def cmd_revise_base(a):
+    """Owner-authorized whole-article revision of an admitted edition: archive the admitted revision, record the
+    authorization, demote, then exactly ONE final-editor attempt and ONE context review on the new text (no loop; prior
+    attempts are kept and not reset in the record). Admitted only if both pass; otherwise it stays pending with reasons."""
+    from . import final_edit
+    d = db(); r = final_edit.revise_base(a.edition, d, _load(a.article), a.reason)
+    if not r.get("revised"):
+        print(json.dumps(r, ensure_ascii=False, indent=1)); return 1
+    _demote(d, a.edition, state.get(d, a.edition), f"requeued: owner-authorized revision rev{r['to_revision']}: {a.reason}")
+    res = {"revision": r, "runs": []}
+    rec = final_edit.run(a.edition, d, operator_note=f"owner-authorized whole-article revision rev{r['to_revision']} "
+                                                     f"(one attempt; {r['attempts_before']} earlier attempts kept): {a.reason}")
+    res["runs"].append({"step": "final edit", "attempt": rec.get("attempt"), "outcome": rec.get("outcome"), "open_issues": rec.get("open_issues"),
+                        "failure": rec.get("failure")})
+    if final_edit.awaiting_context(a.edition):
+        cx = final_edit.run_context(a.edition)
+        res["runs"].append({"step": "context review", "outcome": cx.get("outcome"), "blocking": (cx.get("blocking") or [])[:8],
+                            "additions": [x["id"] for x in cx.get("additions") or []]})
+        if cx.get("outcome") == "clean":
+            out = final_edit.OUT_ROOT / a.edition / "final"
+            res["admission"] = final_edit.admit(d, out / "article.json", out / "evidence.json",
+                                                json.loads((out / "final_editor_record.json").read_text(encoding="utf-8")))
+    res["status"] = state.get(d, a.edition)["status"]
+    print(json.dumps(res, ensure_ascii=False, indent=1)); return 0 if res["status"] == "checked" else 2
+
+
+def cmd_local_fix(a):
+    """Owner rule 2026-10-31: a small, evidence-backed wording/attribution fix of named open final-editor issues, recorded
+    in the same record and re-verified (full verify pass, then context review and admission as usual). Not an attempt:
+    max_attempts still limits whole-article retries, and no further attempt is started here."""
+    from . import final_edit
+    d = db(); ops = [dict(zip(("path", "problem"), x.split("|", 1))) for x in a.operator_issue]
+    r = final_edit.local_fix(a.edition, d, _load(a.changes) if a.changes else [], a.issue, a.reason, operator_issues=ops,
+                             pack_fix=_load(a.pack_fix) if getattr(a, "pack_fix", None) else None,
+                             rejections=_load(a.rejections) if getattr(a, "rejections", None) else None)
+    res = {"local_fix": {k: r.get(k) for k in ("outcome", "reason", "open_issues", "final_content_sha256", "failure")}}
+    # Only the context review of the new text and admission follow. Never a whole-article attempt: on 2026-10-31 handing
+    # off to _final_one here started unrequested attempts after a revision's demotion had reset the allowance.
+    if r.get("outcome") == "admissible" and final_edit.awaiting_context(a.edition):
+        cx = final_edit.run_context(a.edition)
+        res["context_review"] = {"outcome": cx.get("outcome"), "blocking": (cx.get("blocking") or [])[:8],
+                                 "additions": [x["id"] for x in cx.get("additions") or []]}
+        if cx.get("outcome") == "clean":
+            out = final_edit.OUT_ROOT / a.edition / "final"
+            res["admission"] = final_edit.admit(d, out / "article.json", out / "evidence.json",
+                                                json.loads((out / "final_editor_record.json").read_text(encoding="utf-8")))
+    res["status"] = state.get(d, a.edition)["status"]
+    print(json.dumps(res, ensure_ascii=False, indent=1)); return 0 if res["status"] == "checked" else 2
+
+
+def cmd_site_preview(a):
+    """TEST preview only: list admitted editions as reader samples (样稿) and attach dated notices (e.g. Snow 待修订) to
+    items already listed. Each sample is re-verified as admitted *now* (final-editor record + clean context review bound to
+    its content); nothing is scheduled, archived or emailed, and existing edition files keep their bytes."""
+    from . import final_edit
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    d = db(); samples, refused = [], {}
+    for eid in a.sample:
+        problems, o = final_edit.current_eligibility(d, eid)
+        if problems or o is None:
+            refused[eid] = problems or ["not a checked edition"]; continue
+        o = json.loads(json.dumps(o)); o.update(status="reader_sample", preview_date=a.date or datetime.now(ZoneInfo("America/Los_Angeles")).date().isoformat())
+        o.pop("edition_date", None); samples.append(render.finalize(o))
+    if refused:
+        print(json.dumps({"refused": refused}, ensure_ascii=False, indent=1)); return 1
+    notices = {}
+    for spec in a.notice:
+        eid, f = spec.split("=", 1); notices[eid] = _load(f)
+    written = site_export.preview(Path(a.site_root), samples, notices)
+    print(json.dumps({"written": written, "samples": {o["edition_id"]: o["content_sha256"] for o in samples}, "notices": list(notices)},
+                     ensure_ascii=False, indent=1)); return 0
+
+
+def cmd_verify_site(a):
+    ok, problems = site_export.verify(_load(a.article), a.base_url)
+    print(json.dumps({"ok": ok, "problems": problems}, ensure_ascii=False, indent=1)); return 0 if ok else 1
+
+
+def _send(a, retry=False):
+    o = _load(a.article); d = db()
+    out = Path(a.out) if getattr(a, "out", None) else data_dir() / "outbox"
+    render.build([dict(o)], out, a.base_url)
+    html = (out / "email" / f"{o['edition_id']}.html").read_text(encoding="utf-8")
+    text = (out / "email" / f"{o['edition_id']}.txt").read_text(encoding="utf-8")
+    if a.dry_run:
+        print(json.dumps({"dry_run": True, "html_bytes": len(html.encode()), "note": "nothing sent; see `hip render` for .eml"}, ensure_ascii=False)); return 0
+    if retry:
+        for k, in d.execute("SELECT recipient_key FROM delivery WHERE edition_id=? AND revision=? AND status='failed'", (o["edition_id"], o["revision"])):
+            state.set_delivery(d, o["edition_id"], o["revision"], k, None, "pending")
+    if a.local_smtp:
+        host, port = a.local_smtp.rsplit(":", 1)
+        rcpts = Path(a.recipients_file).read_text().split() if a.recipients_file else FICTIONAL
+        cfg = {"host": host, "port": port, "security": a.security, "username": "", "password": "", "from": "history@read.starhub.vip"}
+        if a.security != "plain":
+            import ssl; ctx = ssl.create_default_context(); ctx.check_hostname = False; ctx.verify_mode = ssl.CERT_NONE; cfg["ssl_context"] = ctx
+        rep = mailer.send_edition(d, o, html, text, None, mode="local-test", smtp_cfg=cfg, recipients=rcpts)
+    elif a.real:
+        from . import final_edit
+        if not config.load_runtime().send_enabled:
+            print(json.dumps({"sent": False, "reason": "EMAIL_SEND_ENABLED is not true; refusing to send (use `hip test-edition send` for a one-off test)"},
+                             ensure_ascii=False)); return 2
+        sp = final_edit.send_problems(d, o)
+        if sp:
+            print(json.dumps({"sent": False, "reason": "not currently eligible to send: " + "; ".join(sp[:4])}, ensure_ascii=False)); return 2
+        def may_start():
+            sp = final_edit.send_problems(d, o)
+            return True if not sp else "not currently eligible: " + "; ".join(sp[:2])
+        try:
+            rep = mailer.send_edition(d, o, html, text, config.load_runtime(), mode="real", may_start=may_start)
+        except (mailer.SendDisabled, mailer.ConfigIncomplete) as e:
+            print(json.dumps({"sent": False, "reason": str(e)}, ensure_ascii=False)); return 2
+    else:
+        raise SystemExit("choose --dry-run, --local-smtp HOST:PORT or --real")
+    print(json.dumps(rep, ensure_ascii=False, indent=1))
+    return 0 if state.delivery_complete(d, o["edition_id"], o["revision"]) else 3   # every frozen recipient accepted, or attention needed
+
+
+def cmd_send_test(a):
+    raise SystemExit("send-test made a new timestamped identity on every run and is retired; use "
+                     "`hip test-edition prepare|verify-site|send|status --test-id test-YYYYMMDD-name` (one persisted test identity)")
+
+
+def cmd_test_edition(a):
+    """One tracked TEST: persisted identity, labelled copy of an admitted article, site preview verified before any email."""
+    from . import testrun
+    d = db(); testrun.init(d); out = data_dir() / "outbox-test" / a.test_id
+    if a.action == "prepare":
+        if not a.article:
+            raise SystemExit("prepare needs ARTICLE")
+        rec, test = testrun.create_or_load(d, a.test_id, Path(a.article).resolve(), site_base=a.site_base or "", window_hours=a.window_hours)
+        render.build([dict(test)], out, rec["site_base"] or "https://starhub.vip")
+        (out / "test_article.json").write_text(json.dumps(test, ensure_ascii=False, indent=1), encoding="utf-8")
+        for i, r in enumerate(FICTIONAL):                         # preview .eml with fictional recipients only
+            html = (out / "email" / f"{a.test_id}.html").read_text(encoding="utf-8"); text = (out / "email" / f"{a.test_id}.txt").read_text(encoding="utf-8")
+            m = mailer.build_message(test, html, text, "没事儿多读书 <history@read.starhub.vip>", r,
+                                     mailer.message_id(a.test_id, test["revision"], state.recipient_key(r), "read.starhub.vip"), reply_to="reply@example.invalid")
+            (out / "email" / f"{a.test_id}.reader{i+1}.eml").write_bytes(bytes(m))
+        written = site_export.export([test], Path(a.site_root)) if a.site_root else []
+        print(json.dumps({"test_id": a.test_id, "source": rec["source_edition"], "source_sha256": rec["source_sha256"],
+                          "test_sha256": test["content_sha256"], "revision": test["revision"], "site_base": rec["site_base"],
+                          "window_expires_la": testrun.datetime.fromtimestamp(rec["window_expires"], testrun.TZ).isoformat(timespec="minutes"),
+                          "html_bytes": len((out / "email" / f"{a.test_id}.html").read_bytes()), "reading_minutes": test["reading_minutes"],
+                          "length": test["length"], "out": str(out), "site_written": written}, ensure_ascii=False, indent=1))
+        return 0
+    rec = testrun.get(d, a.test_id)
+    if not rec:
+        raise SystemExit(f"no test {a.test_id}; run `hip test-edition prepare` first")
+    rec, test = testrun.create_or_load(d, a.test_id, Path(rec["source_path"]), site_base=rec["site_base"] or "", window_hours=1,
+                                       check_admission=False)   # send re-checks admission itself, under the publish lock
+    if a.action == "status":
+        sp = testrun.source_problems(d, rec["source_edition"], rec["source_sha256"])
+        print(json.dumps({k: v for k, v in rec.items() if k != "source_path"} | {"window_open": testrun.window_open(rec),
+                          "source_admitted_now": not sp, "source_problems": sp,
+                          "deliveries": testrun.deliveries(d, a.test_id, test["revision"])}, ensure_ascii=False, indent=1)); return 0
+    if a.action == "verify-site":
+        ok, problems = testrun.verify_site(d, rec, test)
+        print(json.dumps({"ok": ok, "problems": problems, "site_base": rec["site_base"]}, ensure_ascii=False, indent=1)); return 0 if ok else 1
+    if a.action == "correct":                         # dated, versioned correction page; never emails
+        if not (a.article and a.note_zh and a.note_en and a.site_root):
+            raise SystemExit("correct needs ARTICLE (the corrected admitted source), --note-zh, --note-en and --site-root")
+        at = a.at or testrun.datetime.now(testrun.TZ).isoformat(timespec="minutes")
+        new = testrun.correction(d, a.test_id, Path(a.article).resolve(), {"zh": a.note_zh, "en": a.note_en}, at=at)
+        y, m, dd = new["edition_date"].split("-"); cur_file = Path(a.site_root) / f"data/history/{y}/{m}/{dd}-{a.test_id}.json"
+        new["correction"]["previous"]["json"] = cur_file.read_text(encoding="utf-8")   # the revision readers saw, byte for byte
+        prev = json.loads(new["correction"]["previous"]["json"])
+        if prev.get("revision") != new["correction"]["previous"]["revision"]:
+            raise SystemExit(f"site copy is revision {prev.get('revision')}, expected {new['correction']['previous']['revision']}")
+        new["correction"]["previous"]["content_sha256"] = prev.get("content_sha256")
+        written = site_export.export([new], Path(a.site_root))
+        keep = json.loads(json.dumps(new)); keep["correction"]["previous"].pop("json", None)
+        (out / f"test_article.r{new['revision']}.json").parent.mkdir(parents=True, exist_ok=True)
+        (out / f"test_article.r{new['revision']}.json").write_text(json.dumps(keep, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(json.dumps({"test_id": a.test_id, "revision": new["revision"], "test_sha256": new["content_sha256"], "previous": keep["correction"]["previous"],
+                          "at": at, "written": written, "emailed": False}, ensure_ascii=False, indent=1)); return 0
+    if a.action == "verify-correction":
+        revs = sorted(out.glob("test_article.r*.json"), key=lambda f: int(f.stem.split(".r")[1]))
+        if not revs:
+            raise SystemExit("no correction recorded")
+        new = json.loads(revs[-1].read_text(encoding="utf-8"))
+        ok, problems = site_export.verify(new, a.site_base or rec["site_base"])
+        testrun._log(d, a.test_id, "correction_site_verify", ok=ok, revision=new["revision"], base=a.site_base or rec["site_base"], problems=problems[:5])
+        print(json.dumps({"ok": ok, "revision": new["revision"], "problems": problems}, ensure_ascii=False, indent=1)); return 0 if ok else 1
+    if a.action == "renew-window":
+        rec = testrun.renew_window(d, a.test_id, a.window_hours)
+        print(json.dumps({"window_expires": rec["window_expires"]})); return 0
+    if a.action == "send":
+        if not a.confirm_real_email:
+            raise SystemExit("this sends REAL email to the configured recipients; add --confirm-real-email")
+        with publish.lock("publish"):
+            rep = testrun.send(d, rec, test, config.load_runtime(), base=rec["site_base"], out=out)
+        print(json.dumps(rep, ensure_ascii=False, indent=1))
+        return 0 if rep.get("all_accepted") else (2 if not rep.get("sent") else 3)
+    raise SystemExit(a.action)
+
+
+def cmd_prepare_queue(a):
+    import time
+    d = db(); t0 = time.monotonic(); done = []
+    with publish.lock("prepare"):
+        for p in sorted((REPO / "config/candidates").glob("*.json")):
+            c = pipeline.load_candidate(p)
+            if state.get(d, c["candidate_id"]):
+                continue
+            if len(done) >= a.max_articles or (time.monotonic() - t0) / 60 > a.budget_minutes:
+                break
+            try:
+                rep = pipeline.prepare(c, d)
+            except Exception as e:             # one bad candidate must not stop the queue
+                rep = {"outcome": "error", "reason": f"{type(e).__name__}: {e}"[:300], "wall_s": round(time.monotonic() - t0, 1)}
+            done.append({"candidate": c["candidate_id"], "outcome": rep.get("outcome"), "reason": rep.get("reason", "")[:200], "wall_s": rep.get("wall_s")})
+    print(json.dumps({"processed": done, "inventory": pipeline.inventory(d, verify=True)}, ensure_ascii=False, indent=1)); return 0
+
+
+def cmd_publish_today(a):
+    with publish.lock("publish"):
+        rep = publish.publish_today(db(), config.load_runtime(), date=a.date)
+    from . import alert
+    alert.record("publish_last.json", rep)                  # read by `hip alert` (ExecStopPost)
+    print(json.dumps(rep, ensure_ascii=False, indent=1)); return publish.EXIT.get(rep.get("outcome"), 4)
+
+
+def cmd_alert(a):
+    """Maintainer alert from the jobs' last records (alert.py): one email to ALERT_EMAIL / EMAIL_REPLY_TO, never subscribers,
+    once per problem per LA day. Exit 0 always: an alert failure must not mask the job's own exit status."""
+    from . import alert
+    now = publish.now_la()
+    r = alert.run(config.load_runtime(), now, source=a.source, deadline_s_left=publish.seconds_left(now.date().isoformat(), now),
+                  dry_run=a.dry_run)
+    print(json.dumps(r, ensure_ascii=False, indent=1)); return 0
+
+
+def cmd_supply(a):
+    d = db()
+    if a.check:
+        print(json.dumps(supply.check_catalogue(), ensure_ascii=False, indent=1)); return 0
+    from . import mix
+    inv = pipeline.inventory(d, verify=True); rot = list(mix.GROUP)
+    cats = [a.category] if a.category else sorted(rot, key=lambda c: (-inv["gaps_to_target"].get(c, 0), inv["schedulable_by_category"].get(c, 0)))
+    out = []
+    with publish.lock("prepare"):
+        for c in cats[: a.max]:
+            e = supply.pick_entry(c)
+            out.append(supply.propose(e, d) if e else {"category": c, "outcome": "rejected", "reason": "no catalogue entry for category"})
+    print(json.dumps([{k: v for k, v in r.items() if k != "raw"} for r in out], ensure_ascii=False, indent=1))
+    return 0 if any(r.get("outcome") == "candidate" for r in out) else 2
+
+
+EDITABLE = ("checker BLOCK", "awaiting editor stage", "review missing", "editor:", "requeued for editor")
+
+
+def _evidence_for(article_path: Path) -> Path:
+    p = article_path.parent / "evidence.json"
+    if p.exists():
+        return p
+    m = REPO / "samples" / f"evidence_{article_path.parent.name}.json"
+    return m
+
+
+def _workdir(d, cid: str, article: Path | None = None) -> Path | None:
+    """Fresh editor attempt dir seeded from: an explicit article file (manual edit) > previous attempt > admitted path > model draft."""
+    root = data_dir() / "editor" / cid; prev = sorted(root.glob("attempt-*"), key=lambda p: int(p.name.split("-")[1])) if root.exists() else []
+    w = root / f"attempt-{len(prev) + 1}"; w.mkdir(parents=True, exist_ok=True)
+    draft = data_dir() / "drafts" / cid; cur = state.get(d, cid)
+    if article:
+        src_art = Path(article); src_ev, src_rv = _evidence_for(src_art), None
+    elif prev and (prev[-1] / "edited.json").exists():
+        src_art, src_ev, src_rv = prev[-1] / "edited.json", prev[-1] / "evidence.json", None
+        rec = prev[-1] / "editor_record.json"
+        if rec.exists():                               # carry the open issues into this attempt
+            (w / "seed_issues.json").write_text(json.dumps(_load(rec).get("remaining", []), ensure_ascii=False, indent=1), encoding="utf-8")
+    elif cur and cur.get("path") and Path(cur["path"]).exists() and Path(cur["path"]).parent != draft:
+        src_art = Path(cur["path"]); src_ev, src_rv = _evidence_for(src_art), None
+    elif (draft / "article.json").exists():
+        src_art, src_ev, src_rv = draft / "article.json", draft / "evidence.json", draft / "review_zh.json"
+    else:
+        return None
+    shutil.copy(src_art, w / "article.json"); shutil.copy(src_ev, w / "evidence.json")
+    if src_rv and src_rv.exists():
+        shutil.copy(src_rv, w / "review_zh.json")
+    return w
+
+
+def _publish_attempt(w: Path, cid: str, record: dict) -> Path:
+    """Copy the edited article, evidence, record and model outputs into samples/auto/<cid>/ (git)."""
+    out = REPO / "samples/auto" / cid; out.mkdir(parents=True, exist_ok=True)
+    o = _load(w / "edited.json"); render.finalize(o)
+    (out / "article.json").write_text(json.dumps(o, ensure_ascii=False, indent=1), encoding="utf-8")
+    shutil.copy(w / "evidence.json", out / "evidence.json"); shutil.copy(w / "editor_record.json", out / "editor_record.json")
+    for f in w.glob("*.json"):
+        if f.name.startswith(("edit_r", "rereview_", "parity_")):
+            shutil.copy(f, out / f"{w.name}_{f.name}")
+    (out / "article.zh.md").write_text(render.markdown(o, "zh"), encoding="utf-8"); (out / "article.en.md").write_text(render.markdown(o, "en"), encoding="utf-8")
+    return out
+
+
+def _edit_one(d, cid: str, max_rounds=editor.MAX_ROUNDS, article: Path | None = None) -> dict:
+    cur = state.get(d, cid)
+    if not cur or cur["status"] != "pending_review":
+        return {"edition": cid, "outcome": "skipped", "reason": f"status {cur['status'] if cur else 'unknown'}"}
+    w = _workdir(d, cid, article)
+    if not w:
+        return {"edition": cid, "outcome": "skipped", "reason": "no draft to edit"}
+    rec = editor.edit(w, max_rounds=max_rounds)
+    out = _publish_attempt(w, cid, rec)
+    res = {"edition": cid, "attempt": w.name, "edits": rec["edits_total"], "model_calls": rec["model_calls"],
+           "model_wall_s": rec["model_wall_s"], "remaining": len(rec["remaining"])}
+    if rec["outcome"] == "admissible":
+        res.update(editor.admit_with_record(d, out / "article.json", out / "evidence.json", rec))
+        res["outcome"] = "admitted" if res.get("admitted") else "pending_review"
+    else:
+        why = f"editor: {len(rec['remaining'])} issues remain after {len([r for r in rec['rounds'] if r['round']])} round(s) ({w.name})"
+        state.transition(d, cid, "prepared", note=why); state.transition(d, cid, "pending_review", note=why, reason=why)
+        res.update(outcome="pending_review", reason=why)
+    return res
+
+
+def cmd_edit(a):
+    d = db()
+    with publish.lock("prepare"):
+        r = _edit_one(d, a.edition, max_rounds=a.rounds or editor.MAX_ROUNDS)
+    print(json.dumps(r, ensure_ascii=False, indent=1)); return 0 if r.get("outcome") == "admitted" else 2
+
+
+def _edit_queue(d, max_n, budget_min, max_attempts=None):
+    max_attempts = max_attempts or int(config.load_project().get("editor", {}).get("max_attempts", 2))
+    import time as _t
+    t0 = _t.monotonic(); out = []
+    rows = d.execute("SELECT edition_id, COALESCE(reason,'') FROM edition WHERE status='pending_review' ORDER BY updated_at").fetchall()
+    for cid, why in rows:
+        if len(out) >= max_n or (_t.monotonic() - t0) / 60 > budget_min:
+            break
+        tries = len(list((data_dir() / "editor" / cid).glob("attempt-*"))) if (data_dir() / "editor" / cid).exists() else 0
+        if not why.startswith(EDITABLE) or tries >= max_attempts:
+            continue                     # refusals, failed model steps, duplicates and exhausted drafts wait for a person
+        try:
+            out.append(_edit_one(d, cid))
+        except Exception as e:
+            out.append({"edition": cid, "outcome": "error", "reason": f"{type(e).__name__}: {e}"[:300]})
+    return out
+
+
+def cmd_edit_queue(a):
+    d = db()
+    with publish.lock("prepare"):
+        out = _edit_queue(d, a.max, a.budget_minutes)
+    print(json.dumps({"edited": out, "inventory": pipeline.inventory(d, verify=True)}, ensure_ascii=False, indent=1)); return 0
+
+
+def _final_one(d, cid: str, extra: str | None = None, deadline: float | None = None) -> dict:
+    """Final-edit one pending edition: up to final_editor.max_attempts genuine attempts (counted since its last demotion
+    from `checked`), each continuing from the previous final text and its open issues. An attempt that ends admissible
+    gets a source-context review of that exact text; only a clean review lets it be admitted, otherwise the review's
+    additions and findings go into the next attempt. A new attempt starts only if the job's deadline (time.time()) leaves
+    final_editor.min_minutes_per_attempt. Health failures (subscription, auth, CLI) stop at once and are not counted.
+    extra: an owner-directed reason for ONE attempt beyond max_attempts (recorded in the hash-bound record); never used
+    by the nightly queue."""
+    import time as _t
+    from . import final_edit
+    cur = state.get(d, cid)
+    if not cur or cur["status"] != "pending_review":
+        return {"edition": cid, "outcome": "skipped", "reason": f"status {cur['status'] if cur else 'unknown'}"}
+    allowed = final_edit.MAX_ATTEMPTS + (1 if extra else 0); runs = []; res = {"edition": cid, "outcome": "pending_review", "runs": runs}
+
+    def pend(why):
+        state.transition(d, cid, "prepared", note=why[:500]); state.transition(d, cid, "pending_review", note=why[:500], reason=why[:2000])
+        res.update(outcome="pending_review", reason=why)
+
+    while True:
+        if deadline is not None and deadline - _t.time() < final_edit.MIN_ATTEMPT_MIN * 60:
+            res["stopped"] = "job deadline: not enough time left for another step"; break
+        if final_edit.awaiting_context(cid):            # the final editor passed this exact text: only its context review is due
+            cx = final_edit.run_context(cid)
+            runs.append({"step": "context review", "outcome": cx.get("outcome"), "elapsed_min": cx.get("elapsed_min"),
+                         "blocking": (cx.get("blocking") or [])[:5], "additions": [a["id"] for a in cx.get("additions") or []]})
+            if cx.get("outcome") in ("not_run", "failed"):
+                pend(f"context review: not completed ({str(cx.get('failure'))[:200]})")
+                if final_edit.health_failure(cx.get("failure")):
+                    res["outcome"] = "health"
+                break
+            if cx["outcome"] == "clean":
+                out = final_edit.OUT_ROOT / cid / "final"
+                rec = json.loads((out / "final_editor_record.json").read_text(encoding="utf-8"))
+                res.update(final_edit.admit(d, out / "article.json", out / "evidence.json", rec))
+                res["outcome"] = "admitted" if res.get("admitted") else "pending_review"
+                if not res.get("admitted"):
+                    pend("final editor: admission refused: " + "; ".join(res.get("problems", []))[:300])
+                break
+            pend("context review: " + "; ".join(cx.get("blocking") or [])[:400])
+            continue                                   # its additions and findings go into the next attempt
+        n = final_edit.attempts_used(cid, d)
+        if extra and n == allowed and allowed == final_edit.MAX_ATTEMPTS + 1:
+            added = final_edit.evidence_added_since_last_attempt(cid)
+            if added:                                  # the editor passed the text; the context review then expanded the
+                allowed += 1                           # evidence: one more owner-directed attempt with that new input (max + 2)
+                res["evidence_added"] = added
+        if n >= allowed:
+            res.setdefault("reason", f"{n} final-editor attempts used (max {final_edit.MAX_ATTEMPTS}{' + ' + str(max(allowed, n) - final_edit.MAX_ATTEMPTS) + ' owner-directed' if extra else ''}); needs a person")
+            res["stopped"] = f"{n} attempts used"
+            if not runs:
+                res["outcome"] = "skipped"
+            break
+        rec = final_edit.run(cid, d, operator_note=f"extra attempt beyond max_attempts: {extra}" if n >= final_edit.MAX_ATTEMPTS else None)
+        if rec["outcome"] == "not_run" or final_edit.health_failure(rec.get("failure")):
+            return {"edition": cid, "outcome": "health", "reason": rec.get("reason") or rec.get("failure"), "runs": runs}   # not counted
+        runs.append({"step": "final edit", "attempt": rec.get("attempt"), "outcome": rec["outcome"], "elapsed_min": rec.get("elapsed_min"),
+                     "open_issues": rec.get("open_issues"), "edits": len(rec.get("edits", [])), "issues": len(rec.get("issues", [])),
+                     "failure": rec.get("failure")})
+        res.update(attempts=final_edit.attempts_used(cid, d), elapsed_min=rec.get("elapsed_min"), open_issues=rec.get("open_issues"))
+        if final_edit.awaiting_context(cid):
+            continue                                   # the record verifies: next, its context review
+        pend(f"final editor: {len(rec.get('open_issues') or [])} open issue(s)" + (f"; {rec['failure']}" if rec.get("failure") else ""))
+        if rec.get("failure"):
+            break                                      # a failed step, not an editorial outcome: no further attempt now
+    return res
+
+
+def cmd_context_review(a):
+    """Source-context review of admitted or final-edited editions (context.py). An admitted edition whose review is not
+    clean is demoted to pending_review (publish lock) so the final editor handles the findings; a clean one stays admitted
+    and now satisfies the admission gate. Records go to samples/auto/<cid>/final/context_review.json."""
+    from . import final_edit
+    d = db(); out = []
+    with publish.lock("prepare"):
+        for cid in a.editions:
+            cur = state.get(d, cid)
+            if not cur or cur["status"] not in ("checked", "pending_review") or not (final_edit.OUT_ROOT / cid / "final" / "article.json").exists():
+                out.append({"edition": cid, "outcome": "skipped", "reason": f"status {cur['status'] if cur else 'unknown'} or no final text"}); continue
+            cx = final_edit.run_context(cid)
+            r = {"edition": cid, "outcome": cx.get("outcome"), "elapsed_min": cx.get("elapsed_min"), "blocking": (cx.get("blocking") or [])[:6],
+                 "flagged": len(cx.get("flagged") or []), "additions": [x["id"] for x in cx.get("additions") or []],
+                 "units": {s: m.get("status") for s, m in (cx.get("units") or {}).items()}, "failure": cx.get("failure")}
+            if cx.get("outcome") == "needs_work" and cur["status"] == "checked":
+                _demote(d, cid, cur, ("context review: " + "; ".join(cx.get("blocking") or []))[:2000]); r["requeued"] = True
+            out.append(r)
+    print(json.dumps({"context_review": out, "inventory": pipeline.inventory(d, verify=True)}, ensure_ascii=False, indent=1))
+    return 0 if all(r["outcome"] == "clean" for r in out) else 2
+
+
+def cmd_final_edit(a):
+    """Named final editor (Pi-local Claude Code CLI) on pending editions; admits only through a verified record."""
+    d = db(); out = []
+    with publish.lock("prepare"):
+        for cid in a.editions:
+            try:
+                out.append(_final_one(d, cid, a.extra_attempt))
+            except Exception as e:
+                out.append({"edition": cid, "outcome": "error", "reason": f"{type(e).__name__}: {e}"[:300]})
+    print(json.dumps({"final_edit": out, "inventory": pipeline.inventory(d, verify=True)}, ensure_ascii=False, indent=1))
+    return 0 if all(r.get("outcome") == "admitted" for r in out) else 2
+
+
+def cmd_rereview(a):
+    """Admitted edition without a bound review (e.g. a manual editor pass): requeue, then run the editor stage
+    with zero edit rounds; it is re-admitted only if the fresh review and parity check of its current content are clean."""
+    d = db(); cur = state.get(d, a.edition)
+    if not cur or cur["status"] not in ("checked", "pending_review"):
+        print(json.dumps({"edition": a.edition, "error": f"status {cur['status'] if cur else 'unknown'}"})); return 1
+    with publish.lock("prepare"):
+        if cur["status"] == "checked":
+            _demote(d, a.edition, cur, "requeued for editor re-review")
+        r = _edit_one(d, a.edition, max_rounds=a.rounds, article=Path(a.article) if a.article else None)
+    print(json.dumps(r, ensure_ascii=False, indent=1)); return 0 if r.get("outcome") == "admitted" else 2
+
+
+FINAL_EDITABLE = EDITABLE + ("final editor:", "context review:", "post-admission", "requeued")
+
+
+def _health_write(h: dict):
+    p = data_dir() / "health" / "final_editor.json"; p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(h, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
+def _final_queue(d, max_n, budget_min) -> tuple[list, dict]:
+    """Nightly editor stage: the Pi-local Claude final editor on pending drafts (MiMo edit rounds are no longer run).
+    A failed preflight or a runtime health failure (subscription limit, auth) stops the queue and leaves drafts pending."""
+    import time as _t
+    from . import claude_cli, final_edit
+    t0 = _t.time(); out = []
+    pre = claude_cli.preflight()
+    health = {"checked_at": round(t0), "final_editor": "unavailable" if pre else "ok", "problems": pre, "warnings": claude_cli.warnings()}
+    if not pre:
+        rows = d.execute("SELECT edition_id, COALESCE(reason,'') FROM edition WHERE status='pending_review' ORDER BY updated_at").fetchall()
+        for cid, why in rows:
+            if len(out) >= max_n or (_t.time() - t0) / 60 > budget_min:
+                break
+            if not why.startswith(FINAL_EDITABLE) or final_edit.attempts_used(cid, d) >= final_edit.MAX_ATTEMPTS:
+                continue                 # refusals (see _claude_redrafts), duplicates and exhausted drafts are not edited here
+            if t0 + budget_min * 60 - _t.time() < final_edit.MIN_ATTEMPT_MIN * 60:
+                break
+            try:
+                r = _final_one(d, cid, deadline=t0 + budget_min * 60)
+            except Exception as e:
+                r = {"edition": cid, "outcome": "error", "reason": f"{type(e).__name__}: {e}"[:300]}
+            out.append(r)
+            if r.get("outcome") == "health":
+                health.update(final_editor="degraded", problems=[str(r.get("reason"))[:300]]); break
+    _health_write(health)
+    return out, health
+
+
+def _claude_redrafts(d, max_n) -> list:
+    """Candidates whose MiMo draft hit a recorded provider refusal get ONE Pi Claude draft under the same prompts,
+    evidence and checks (owner decision 2026-10-30). No rewording of the refused prompt, no second redraft."""
+    from . import claude_cli
+    out = []
+    if claude_cli.preflight():
+        return out
+    for p in sorted((REPO / "config/candidates").glob("*.json")):
+        if len(out) >= max_n:
+            break
+        c = pipeline.load_candidate(p); cur = state.get(d, c["candidate_id"])
+        if not cur or cur["status"] != "pending_review" or "provider refusal" not in (cur.get("reason") or ""):
+            continue
+        if (data_dir() / "drafts" / c["candidate_id"] / "mimo-refused").exists():
+            continue
+        try:
+            r = _prepare_claude(d, c)
+        except Exception as e:
+            r = {"outcome": "error", "reason": f"{type(e).__name__}: {e}"[:300]}
+        out.append({"candidate": c["candidate_id"], "outcome": r.get("outcome"), "reason": str(r.get("reason", ""))[:200]})
+    return out
+
+
+def cmd_nightly(a):
+    """One batch: top up candidates (if fewer than --min-candidates), Claude (writer.py) prepares drafts, then the Pi-local
+    Claude final editor admits or leaves pending. Claude unavailable -> nothing is drafted (no other model), exit 4.
+    Never schedules, publishes or sends.
+    Exit: 0 ok; 1 inventory below the alert threshold; 4 final editor unavailable/degraded (drafts stay pending)."""
+    import time as _t
+    d = db(); t0 = _t.monotonic(); rep = {}
+    with publish.lock("prepare"):
+        inv = pipeline.inventory(d, verify=True)
+        if inv["candidates_unprocessed"] < a.min_candidates:
+            from . import mix
+            rot = list(mix.GROUP)                        # supply follows the mix plan's actual gaps, not equal counts
+            cats = sorted(rot, key=lambda c: (-inv["gaps_to_target"].get(c, 0), inv["schedulable_by_category"].get(c, 0)))
+            rep["supply"] = [{k: v for k, v in supply.propose(supply.pick_entry(c), d).items() if k not in ("raw", "dropped")}
+                             for c in cats[: a.min_candidates - inv["candidates_unprocessed"]] if supply.pick_entry(c)]
+        rep["prepare"] = []
+        for p in sorted((REPO / "config/candidates").glob("*.json")):
+            c = pipeline.load_candidate(p)
+            if state.get(d, c["candidate_id"]) or len(rep["prepare"]) >= a.max_articles or (_t.monotonic() - t0) / 60 > a.budget_minutes:
+                continue
+            try:
+                from . import claude_cli
+                r = pipeline.prepare(c, d, context_call=claude_cli.call)
+                if r.get("health"):                      # Claude unavailable: stop drafting; the final queue reports health
+                    rep["prepare"].append({"candidate": c["candidate_id"], "outcome": "not_run", "reason": r["reason"][:200]}); break
+            except Exception as e:
+                r = {"outcome": "error", "reason": f"{type(e).__name__}: {e}"[:300]}
+            rep["prepare"].append({"candidate": c["candidate_id"], "outcome": r.get("outcome"), "reason": str(r.get("reason", ""))[:200]})
+        rep["claude_redraft"] = _claude_redrafts(d, 1)
+        rep["final_edit"], rep["health"] = _final_queue(d, a.max_articles + 1, max(0, a.budget_minutes - (_t.monotonic() - t0) / 60))
+    rep["inventory"] = pipeline.inventory(d, verify=True)
+    from . import alert
+    na = next((x["reason"] for x in rep["prepare"] if x.get("outcome") == "not_run"), None)
+    alert.record("nightly_last.json", {"writer_unavailable": na, "inventory_alert": rep["inventory"]["alert"],
+                                       "coverage_days": rep["inventory"].get("coverage_days"), "final_editor": rep["health"]["final_editor"]})
+    print(json.dumps(rep, ensure_ascii=False, indent=1))
+    return 4 if rep["health"]["final_editor"] != "ok" or na else 1 if rep["inventory"]["alert"] else 0
+
+
+def cmd_books(a):
+    """Book intake pilot (see books.py). Book files, parsed text and the discovery DB stay under data/books (not in Git)."""
+    from . import books
+    root = data_dir() / "books"
+    if a.action == "import-catalogue":
+        items = json.loads(Path(a.path).read_text(encoding="utf-8"))
+        rep = books.import_catalogue(books.catalogue_db(root / "discovery.sqlite"), items, a.source or Path(a.path).name)
+        print(json.dumps(rep, ensure_ascii=False, indent=1)); return 0
+    if a.action == "fetch-fork":                      # one file from a pinned fork snapshot, blob-verified; tree read remotely
+        tree = json.loads(urllib.request.urlopen(urllib.request.Request(f"https://api.github.com/repos/{a.repo}/git/trees/{a.ref}?recursive=1",
+                          headers={"User-Agent": books.UA, "Accept": "application/vnd.github+json"}), timeout=60).read())["tree"]
+        loc = books.fork_file(a.repo, a.ref, tree, a.path); m = json.loads(a.meta or "{}")
+        fmt = Path(a.path).suffix.lower().lstrip(".")
+        rec = books.acquire(loc["url"], root / "files", root / "manifest.json",
+                            dict(m, book_id=a.book, format=fmt, git_blob=loc["git_blob"], repo=a.repo, ref=a.ref, repo_path=a.path,
+                                 upstream=a.upstream, provenance=f"fork {a.repo} of {a.upstream} at {a.ref}; path {a.path}"))
+        print(json.dumps({k: v for k, v in rec.items() if k != "url"}, ensure_ascii=False, indent=1)); return 0
+    man = json.loads((root / "manifest.json").read_text(encoding="utf-8")); f = next(x for x in man["files"] if x["book_id"] == a.book)
+    b = books.parse(root / "files" / f["path"])
+    if a.action == "probe":
+        q = {k: b.get(k) for k in ("format", "pdf_text_status", "pdf_info", "quality")} | {"paragraphs": len(b["paragraphs"]), "chapters": [c["title"] for c in b["chapters"]][:40]}
+        mid = b["paragraphs"][len(b["paragraphs"]) // 2] if b["paragraphs"] else None
+        q["sample"] = [{"location": books.locator(b, p["loc"]), "text": p["text"][:160]} for p in (b["paragraphs"][:3] + ([mid] if mid else []))]
+        print(json.dumps(q, ensure_ascii=False, indent=1)); return 0
+    if b["file_sha256"] != f["file_sha256"]:
+        raise SystemExit("file changed since acquisition (sha256 mismatch)")
+    if a.action == "ingest":
+        meta = {k: f.get(k) for k in ("title", "author", "translator", "year", "language", "genre", "license_basis", "url")} | {
+            "must_contain": a.must_contain or [], "verified": bool(a.verified), "verified_note": a.verified}
+        rep = books.to_source(b, a.sid or f["book_id"], data_dir() / "source_cache", meta, cjk=f.get("language") == "zh")
+        print(json.dumps({k: rep[k] for k in ("source_id", "status", "missing_markers", "text_sha256", "format")} |
+                         {"paragraphs": len(b["paragraphs"]), "chapters": len(b["chapters"])}, ensure_ascii=False, indent=1)); return 0
+    if a.action == "locate":
+        cjk = f.get("language") == "zh"; needle = books.evidence.normalise(a.text, cjk); out = []
+        for p in b["paragraphs"]:
+            if needle and needle in books.evidence.normalise(p["text"], cjk):
+                out.append({"location": books.locator(b, p["loc"]), "loc": p["loc"], "text": p["text"][:300]})
+        print(json.dumps(out[:5], ensure_ascii=False, indent=1)); return 0 if out else 1
+    raise SystemExit(a.action)
+
+
+def cmd_admit(a):
+    """Admit an article into inventory. Pending drafts need an editor record bound to this exact content and evidence;
+    remaining FIX-level issues need a named --exception. --as-sample registers a sample that is never schedulable
+    until `hip approve-sample`."""
+    o = _load(a.article); ev = _load(a.evidence); render.finalize(o); d = db()
+    f, st = checks.check(o, ev)
+    if checks.blocked(f):
+        print(json.dumps({"admitted": False, "reason": "checker BLOCK", "findings": f}, ensure_ascii=False, indent=1)); return 1
+    if not o.get("episode"):
+        print(json.dumps({"admitted": False, "reason": "article has no episode metadata"}, ensure_ascii=False)); return 1
+    cur = state.get(d, o["edition_id"])
+    if cur and cur["status"] == "pending_review":
+        if not a.record:
+            print(json.dumps({"admitted": False, "reason": "pending draft: --record EDITOR_RECORD.json required (run `hip edit`)"}, ensure_ascii=False)); return 1
+        exc = dict(x.split("=", 1) for x in a.exception if "=" in x) if a.exception else None
+        if a.exception and any("=" not in x for x in a.exception):
+            exc = " ".join(a.exception)                # refused downstream: a whole-article exception
+        r = editor.admit_with_record(d, Path(a.article), Path(a.evidence), _load(a.record), exception=exc)
+        print(json.dumps(r, ensure_ascii=False, indent=1)); return 0 if r.get("admitted") else 1
+    if cur:
+        print(json.dumps({"admitted": False, "reason": f"already known: {cur['status']}"}, ensure_ascii=False)); return 0
+    if not a.as_sample:
+        print(json.dumps({"admitted": False, "reason": "new articles enter through the pipeline (prepare -> edit) or as samples (--as-sample)"},
+                         ensure_ascii=False)); return 1
+    eid, v = registry.reserve(d, dict(o["episode"], episode_id=o.get("episode_id"), title=o["title"]["zh"], category=o["category"]), status="checked")
+    if not eid:
+        print(json.dumps({"admitted": False, "reason": f"{v[0]}: {v[1]}"}, ensure_ascii=False)); return 1
+    state.transition(d, o["edition_id"], "prepared", note="sample registered", episode_id=eid, category=o["category"], path=str(Path(a.article).resolve()))
+    state.transition(d, o["edition_id"], "checked", note="sample: not schedulable until approve-sample", content_sha256=o["content_sha256"], origin="sample")
+    print(json.dumps({"admitted": True, "edition_id": o["edition_id"], "episode_id": eid, "origin": "sample", "schedulable": False, "stats": st},
+                     ensure_ascii=False)); return 0
+
+
+def cmd_approve_sample(a):
+    d = db(); cur = state.get(d, a.edition)
+    if not cur or cur["status"] != "checked" or (cur.get("origin") or "") != "sample":
+        print(json.dumps({"approved": False, "reason": "not a checked sample"})); return 1
+    d.execute("UPDATE edition SET approval=? WHERE edition_id=?", (f"sample-approved: {a.reason}", a.edition))
+    d.execute("INSERT INTO transition(edition_id,from_status,to_status,at,note) VALUES(?,?,?,?,?)",
+              (a.edition, "checked", "checked", __import__("time").time(), f"sample approved: {a.reason}"))
+    print(json.dumps({"approved": True, "edition": a.edition}, ensure_ascii=False)); return 0
+
+
+def _demote(d, eid, cur, reason):
+    """checked -> pending_review under the publish lock, so a TEST send (which re-checks its source's admission before each
+    recipient under that lock) can never act on a check made just before a requeue."""
+    with publish.lock("publish"):
+        state.transition(d, eid, "pending_review", note=reason, reason=reason)
+        if cur.get("episode_id"): registry.set_status(d, cur["episode_id"], "prepared")
+
+
+def cmd_requeue(a):
+    """Send a `checked` (not yet scheduled) edition back to the pending queue, with a reason."""
+    d = db(); cur = state.get(d, a.edition)
+    if not cur or cur["status"] != "checked":
+        print(json.dumps({"requeued": False, "reason": f"status is {cur['status'] if cur else 'unknown'}"})); return 1
+    if a.issue:
+        from . import final_edit
+        final_edit.write_operator_issues(a.edition, a.issue, a.reason)
+    _demote(d, a.edition, cur, ("requeued: " + a.reason) if not a.reason.startswith(FINAL_EDITABLE) else a.reason)
+    print(json.dumps({"requeued": True, "edition": a.edition}, ensure_ascii=False)); return 0
+
+
+def cmd_status(a):
+    d = db(); s = state.summary(d)
+    s["recent"] = [dict(zip(("edition_id", "status", "category", "reason"), r)) for r in
+                   d.execute("SELECT edition_id,status,category,substr(COALESCE(reason,''),1,160) FROM edition ORDER BY updated_at DESC LIMIT 15")]
+    s["deliveries"] = [dict(zip(("edition", "rev", "recipient", "status", "attempts", "error"), r)) for r in
+                       d.execute("SELECT edition_id,revision,recipient_label,status,attempts,last_error FROM delivery ORDER BY updated_at DESC LIMIT 20")]
+    print(json.dumps(s, ensure_ascii=False, indent=1)); return 0
+
+
+def cmd_inventory(a):
+    if a.what_if:                      # arithmetic only: counts you name, not editions that exist or are approved
+        from . import mix
+        ab = {"A": "china_ancient", "W": "world", "M": "china_modern", "U": "us"}; counts = {c: 0 for c in mix.GROUP}
+        for part in a.what_if.split(","):
+            k, n = part.split("="); counts[ab.get(k.strip(), k.strip())] += int(n)
+        pool = [mix.item(f"{c}-{i}", c, None, i) for c, n in counts.items() for i in range(n)]
+        start = int(a.start or 0); seq = mix.plan(pool, len(pool), start)
+        print(json.dumps({"what_if": counts, "start_position": start, "coverage_days": len(seq), "sequence": [x["category"] for x in seq],
+                          "basis": "hypothetical counts; same mix.plan() as `hip inventory` (themes/regions unknown here)"}, ensure_ascii=False, indent=1)); return 0
+    inv = pipeline.inventory(db(), verify=True); print(json.dumps(inv, ensure_ascii=False, indent=1)); return 1 if inv["alert"] else 0
+
+
+def cmd_plan(a):
+    """Read-only preview of the next N editions the mix would schedule (category, region, themes, why). Nothing is persisted
+    unless --commit (scheduling persists the plan itself when it runs); never schedules, publishes or sends."""
+    from . import mix
+    d = db(); inv = pipeline.inventory(d, verify=True); pos = publish.position(d)
+    pool = []
+    for eid, c, upd in d.execute("SELECT edition_id, category, updated_at FROM edition WHERE status='checked'").fetchall():
+        if c in mix.GROUP and eid not in inv.get("not_currently_eligible", {}) and pipeline._schedulable(*d.execute(
+                "SELECT approval, origin FROM edition WHERE edition_id=?", (eid,)).fetchone()):
+            o = pipeline._article_at(d, eid); pool.append(mix.item(eid, c, o, upd or 0) | {"minutes": (o or {}).get("reading_minutes")})
+    seq = mix.plan(pool, a.n, pos, history=pipeline.mix_history(d))
+    if a.commit:
+        mix.persist(d, pos, seq, "committed by hip plan --commit")
+    cn = {"china_ancient": "中国古代", "china_modern": "中国近现代", "world": "世界", "us": "美国"}
+    print(json.dumps({"read_only": not a.commit, "next_position": pos, "china_of_planned": sum(x["group"] == "china" for x in seq), "planned": len(seq),
+                      "plan": [{"#": k + 1, "edition": x["edition_id"], "category": cn[x["category"]], "region": x["region"], "themes": x["tags"],
+                                "title": x["title"], "minutes": x.get("minutes"), "why": x["reason"]} for k, x in enumerate(seq)],
+                      "note": "拟排不等于已发布；不启用定时任务。"}, ensure_ascii=False, indent=1))
+    return 0 if len(seq) >= a.n else 1
+
+
+def cmd_recover(a):
+    print(json.dumps({"marked_unknown": state.recover(db())}, ensure_ascii=False)); return 0
+
+
+def cmd_registry_rebuild(a):
+    d = state.connect(Path(a.db)) if a.db else db(); registry.init(d, _aliases())
+    n = registry.rebuild_from_content(d, [Path(p) for p in a.content])
+    print(json.dumps({"episodes_registered": n}, ensure_ascii=False)); return 0
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(prog="hip", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    sp = ap.add_subparsers(dest="cmd", required=True)
+    p = sp.add_parser("doctor"); p.add_argument("--probe", action="store_true"); p.set_defaults(f=cmd_doctor)
+    p = sp.add_parser("prepare"); p.add_argument("candidate"); p.add_argument("--drafter", choices=["claude"], default="claude", help="kept for compatibility; Claude is the only writer")
+    p.set_defaults(f=cmd_prepare)
+    p = sp.add_parser("check"); p.add_argument("article"); p.add_argument("evidence"); p.set_defaults(f=cmd_check)
+    p = sp.add_parser("render"); p.add_argument("articles", nargs="+"); p.add_argument("--out", required=True)
+    p.add_argument("--base-url", default="https://starhub.vip"); p.set_defaults(f=cmd_render)
+    p = sp.add_parser("export-site"); p.add_argument("articles", nargs="+"); p.add_argument("--site-root", required=True); p.set_defaults(f=cmd_export_site)
+    p = sp.add_parser("revise-base", help="owner-authorized whole-article revision of an admitted edition: one attempt + one context review")
+    p.add_argument("edition"); p.add_argument("article", metavar="NEW_ARTICLE.json"); p.add_argument("--reason", required=True)
+    p.set_defaults(f=cmd_revise_base)
+    p = sp.add_parser("local-fix", help="recorded small evidence-backed fix of named open final-editor issues (not an attempt)")
+    p.add_argument("edition"); p.add_argument("--issue", action="append", default=[]); p.add_argument("--changes", metavar="CHANGES.json")
+    p.add_argument("--pack-fix", metavar="PACK_FIX.json", help='{"titles": {SID: title}, "add": [{"source_id", "start", "end", "why"}]}: correct the pack (old excerpts unchanged)')
+    p.add_argument("--rejections", metavar="REJECT.json", help='[{"issue", "rationale", "evidence": [{"id", "quote"}]}]: quotes verified in the (corrected) pack')
+    p.add_argument("--operator-issue", action="append", default=[], metavar="FIELD_PATH|PROBLEM", help="an owner-instructed wording fix of one field (recorded; basis = the owner instruction)")
+    p.add_argument("--reason", required=True); p.set_defaults(f=cmd_local_fix)
+    p = sp.add_parser("site-preview", help="TEST preview: add admitted reader samples and dated notices (never emails)")
+    p.add_argument("--site-root", required=True); p.add_argument("--sample", action="append", default=[], metavar="EDITION_ID")
+    p.add_argument("--notice", action="append", default=[], metavar="EDITION_ID=NOTICE.json"); p.add_argument("--date", help="preview date (LA)")
+    p.set_defaults(f=cmd_site_preview)
+    p = sp.add_parser("verify-site"); p.add_argument("article"); p.add_argument("--base-url", required=True); p.set_defaults(f=cmd_verify_site)
+    for name, retry in (("send", False), ("retry-send", True)):
+        p = sp.add_parser(name); p.add_argument("article"); p.add_argument("--dry-run", action="store_true"); p.add_argument("--real", action="store_true")
+        p.add_argument("--local-smtp"); p.add_argument("--security", default="ssl", choices=["ssl", "starttls", "plain"])
+        p.add_argument("--recipients-file"); p.add_argument("--out"); p.add_argument("--base-url", default="https://starhub.vip")
+        p.set_defaults(f=(lambda a, r=retry: _send(a, r)))
+    p = sp.add_parser("prepare-queue"); p.add_argument("--max-articles", type=int, default=3); p.add_argument("--budget-minutes", type=float, default=150)
+    p.set_defaults(f=cmd_prepare_queue)
+    p = sp.add_parser("publish-today"); p.add_argument("--date"); p.set_defaults(f=cmd_publish_today)
+    p = sp.add_parser("alert", help="maintainer alert from the jobs' last records (never to subscribers)")
+    p.add_argument("--source", default="manual"); p.add_argument("--dry-run", action="store_true"); p.set_defaults(f=cmd_alert)
+    p = sp.add_parser("send-test"); p.add_argument("rest", nargs="*"); p.add_argument("--confirm-real-email", action="store_true")
+    p.set_defaults(f=cmd_send_test)
+    p = sp.add_parser("test-edition"); p.add_argument("action", choices=["prepare", "status", "verify-site", "send", "renew-window", "correct", "verify-correction"])
+    p.add_argument("--note-zh"); p.add_argument("--note-en"); p.add_argument("--at", help="correction time, America/Los_Angeles ISO minutes")
+    p.add_argument("article", nargs="?"); p.add_argument("--test-id", required=True); p.add_argument("--site-base")
+    p.add_argument("--site-root", help="website working copy to export the test page into (prepare only)")
+    p.add_argument("--window-hours", type=float, default=6); p.add_argument("--confirm-real-email", action="store_true")
+    p.set_defaults(f=cmd_test_edition)
+    p = sp.add_parser("supply"); p.add_argument("--category"); p.add_argument("--max", type=int, default=1); p.add_argument("--check", action="store_true")
+    p.set_defaults(f=cmd_supply)
+    p = sp.add_parser("edit"); p.add_argument("edition"); p.add_argument("--rounds", type=int, help="override editor.max_rounds for this attempt")
+    p.set_defaults(f=cmd_edit)
+    p = sp.add_parser("edit-queue"); p.add_argument("--max", type=int, default=3); p.add_argument("--budget-minutes", type=float, default=120)
+    p.set_defaults(f=cmd_edit_queue)
+    p = sp.add_parser("rereview"); p.add_argument("edition"); p.add_argument("--rounds", type=int, default=0)
+    p.add_argument("--article", help="re-review this file (e.g. after a manual editor pass) instead of the stored version"); p.set_defaults(f=cmd_rereview)
+    p = sp.add_parser("plan"); p.add_argument("-n", type=int, default=7); p.add_argument("--commit", action="store_true"); p.set_defaults(f=cmd_plan)
+    p = sp.add_parser("context-review"); p.add_argument("editions", nargs="+"); p.set_defaults(f=cmd_context_review)
+    p = sp.add_parser("final-edit"); p.add_argument("editions", nargs="+")
+    p.add_argument("--extra-attempt", metavar="REASON", help="owner-directed: allow ONE attempt beyond max_attempts (one more only if the final editor passed the text and the context review then added evidence it has not seen); the reason is recorded")
+    p.set_defaults(f=cmd_final_edit)
+    p = sp.add_parser("nightly"); p.add_argument("--max-articles", type=int, default=2); p.add_argument("--budget-minutes", type=float, default=150)
+    p.add_argument("--min-candidates", type=int, default=2); p.set_defaults(f=cmd_nightly)
+    p = sp.add_parser("approve-sample"); p.add_argument("edition"); p.add_argument("--reason", required=True); p.set_defaults(f=cmd_approve_sample)
+    for name, f in (("status", cmd_status), ("recover", cmd_recover)):
+        sp.add_parser(name).set_defaults(f=f)
+    p = sp.add_parser("inventory"); p.add_argument("--what-if", help="hypothetical counts, e.g. A=1,W=2,M=2,U=1"); p.add_argument("--start")
+    p.set_defaults(f=cmd_inventory)
+    p = sp.add_parser("requeue"); p.add_argument("edition"); p.add_argument("--reason", required=True)
+    p.add_argument("--issue", action="append", default=[], help="an editorial request for the next final-editor attempt (recorded, bound to the current text)")
+    p.set_defaults(f=cmd_requeue)
+    p = sp.add_parser("admit"); p.add_argument("article"); p.add_argument("evidence"); p.add_argument("--record")
+    p.add_argument("--exception", action="append", metavar="ISSUE_ID=REASON", help="per-issue owner exception; repeat once per open issue")
+    p.add_argument("--as-sample", action="store_true"); p.add_argument("--from-pending", action="store_true", help="kept for compatibility; implied")
+    p.set_defaults(f=cmd_admit)
+    p = sp.add_parser("books"); p.add_argument("action", choices=["import-catalogue", "fetch-fork", "probe", "ingest", "locate"])
+    p.add_argument("--path"); p.add_argument("--source"); p.add_argument("--book"); p.add_argument("--sid")
+    p.add_argument("--repo", help="fork, e.g. miraclestar43/bo-guan-yue-qu"); p.add_argument("--ref", help="pinned snapshot commit")
+    p.add_argument("--upstream"); p.add_argument("--meta", help="JSON: title, author, translator, year, language, genre, edition")
+    p.add_argument("--must-contain", action="append"); p.add_argument("--verified", metavar="NOTE", help="who/how the edition was verified")
+    p.add_argument("--text"); p.set_defaults(f=cmd_books)
+    p = sp.add_parser("registry-rebuild"); p.add_argument("content", nargs="+"); p.add_argument("--db"); p.set_defaults(f=cmd_registry_rebuild)
+    a = ap.parse_args(argv)
+    import signal as _sig                              # systemd stop/timeout sends SIGTERM: unwind so model children are killed
+    _sig.signal(_sig.SIGTERM, lambda *_: sys.exit(143))
+    state.recover(db()) if a.cmd not in ("doctor",) else None
+    return a.f(a)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

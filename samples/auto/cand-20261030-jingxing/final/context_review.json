@@ -1,0 +1,398 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-20261030-jingxing",
+ "content_sha256": "6f52484dfeaddefc36e2dd5a044312d618b562e906bd70ce5099568fe1d566e0",
+ "evidence_in_sha256": "7d653634b3f1e4b5a6f87457fab6d31579d944d5c2ef596409a6504a7a68754d",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793462632.0641518,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "the alternative scenario the author offers serves analysis only and is not stated as fact."
+  }
+ ],
+ "search": null,
+ "units": {
+  "A-SJ92": {
+   "title": "司馬遷《史記·淮陰侯列傳》（维基文库本）",
+   "url": "https://zh.wikisource.org/w/index.php?title=%E5%8F%B2%E8%A8%98/%E5%8D%B7092&action=render",
+   "ref": "zh:史記/卷092",
+   "evidence_text_sha256": "3e666f471ff63242b38851d81122c565e543f0fe65db2ab0374bf0c55c188e2e",
+   "cache_sha256": "3e666f471ff63242b38851d81122c565e543f0fe65db2ab0374bf0c55c188e2e",
+   "cjk": true,
+   "source_chars": 8513,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     8513
+    ]
+   ],
+   "chars_reviewed": 8513
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 41.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 4334
+  }
+ ],
+ "finished_at": 1793462673.801128,
+ "elapsed_min": 0.7,
+ "review": {
+  "episode": [
+   {
+    "source_id": "A-SJ92",
+    "outcome": "井陉之战以汉军大破赵军、斩陈馀、擒赵王歇告终。韩信师事李左车后再向他问计，采纳其“先声后实”之策，燕国望风归附；随后韩信请立张耳为赵王，汉王许之。",
+    "quote": "韓信曰：『善。』從其策，發使使燕，燕從風而靡。乃遣使報漢，因請立張耳爲趙王，以鎮撫其國。漢王許之，乃立張耳爲趙王。",
+    "in_evidence": true
+   }
+  ],
+  "additions": [],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "the alternative scenario the author offers serves analysis only and is not stated as fact.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "A-SJ92"
+    ],
+    "scope": "这是本文对自身写法的说明，不涉及来源有没有记载。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "誠令成安君聽足下計，若信者亦已爲禽矣。"
+    },
+    "fix": "可保留。"
+   },
+   {
+    "id": "N1",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "本文所有事实都来自司马迁《史记·淮阴侯列传》一篇，本文没有使用第二个史源作交叉验证。",
+    "verdict": "supported",
+    "source_ids": [
+     "A-SJ92"
+    ],
+    "scope": "本文证据包：全部摘录都来自 A-SJ92 一个来源。该句只说明本文的取材范围，并未断言历史上无人核查，表述准确。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "信與張耳以兵數萬，欲東下井陘擊趙。"
+    },
+    "fix": "保留。不要引申为“当时没有他人记载或核查”。"
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "Every fact here comes from one text, Sima Qian's \"Account of the Marquis of Huaiyin\"; this piece uses no second source to cross-check against.",
+    "verdict": "supported",
+    "source_ids": [
+     "A-SJ92"
+    ],
+    "scope": "本文证据包只有 A-SJ92 一个来源；该句是对本文取材的说明。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "信與張耳以兵數萬，欲東下井陘擊趙。"
+    },
+    "fix": "保留。"
+   },
+   {
+    "id": "N3",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "本文唯一史源为司马迁《史记·淮阴侯列传》。",
+    "verdict": "supported",
+    "source_ids": [
+     "A-SJ92"
+    ],
+    "scope": "本文证据包的来源数量说明。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "信與張耳以兵數萬，欲東下井陘擊趙。"
+    },
+    "fix": "保留。"
+   },
+   {
+    "id": "N4",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "在诸将战后问答这一段里，没有人问“那条计当初为什么没被采纳”。",
+    "verdict": "supported",
+    "source_ids": [
+     "A-SJ92"
+    ],
+    "scope": "《淮阴侯列传》“諸將效首虜”至“非臣所及也”一段：诸将只问背水之术。不过紧接着韩信自己就主动谈到了那条计未被采纳（见 context_issues）。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "今者將軍令臣等反背水陳，曰破趙會食，臣等不服。然竟以勝，此何術也？"
+    },
+    "fix": "可保留原句，但宜补一句：随后韩信本人向李左车点明“誠令成安君聽足下計，若信者亦已爲禽矣”。"
+   },
+   {
+    "id": "N5",
+    "path": "sections.analysis.2",
+    "lang": "en",
+    "sentence": "In the generals' post-battle exchange as recorded, no one asks why that plan had not been adopted before the fighting.",
+    "verdict": "supported",
+    "source_ids": [
+     "A-SJ92"
+    ],
+    "scope": "同 N4，范围限于诸将问答一段。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "今者將軍令臣等反背水陳，曰破趙會食，臣等不服。然竟以勝，此何術也？"
+    },
+    "fix": "同 N4。"
+   },
+   {
+    "id": "N6",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "陈馀的想法，本文严格按原文所记的理由写，不替他补充任何心理活动",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "A-SJ92"
+    ],
+    "scope": "这是本文对自身写法的说明。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "不聽廣武君策，廣武君策不用。"
+    },
+    "fix": "可保留。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.analysis.2",
+    "problem": "文中称复盘只聚焦胜者技巧、无人追问那次否决。但全文显示，紧接诸将问答之后，韩信本人就把胜负归因于“用與不用，聽與不聽”，明确点出了那次否决。所谓“不对称”只适用于诸将，不适用于整场复盘。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "誠令成安君聽足下計，若信者亦已爲禽矣。以不用足下，故信得侍耳。"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.today.1",
+    "problem": "把韩信写成重视对手一方逆耳之言的典范，没有交代全文中韩信自己后来不用蒯通之计，临刑前为此后悔。这一转折与全篇“用與不用”的主题形成反照，可考虑在 limits 或 today 中加一句提示。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "信方斬，曰：『吾悔不用蒯通之計，乃爲兒女子所詐，豈非天哉！』"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "来源为全文阅读，井陉一役的结局（采纳李左车之策、燕国归附）已在证据包内并写入稿件。几处否定性断言都是对本文取材或写法的准确说明，无需改动；只有两处 note 级的语境提示，可酌情补写。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "the alternative scenario the author offers serves analysis only and is not stated as fact.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "A-SJ92"
+   ],
+   "scope": "这是本文对自身写法的说明，不涉及来源有没有记载。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "誠令成安君聽足下計，若信者亦已爲禽矣。"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "A-SJ92": "complete"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "本文所有事实都来自司马迁《史记·淮阴侯列传》一篇，本文没有使用第二个史源作交叉验证。",
+   "verdict": "supported",
+   "source_ids": [
+    "A-SJ92"
+   ],
+   "scope": "本文证据包：全部摘录都来自 A-SJ92 一个来源。该句只说明本文的取材范围，并未断言历史上无人核查，表述准确。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "信與張耳以兵數萬，欲東下井陘擊趙。"
+   },
+   "fix": "保留。不要引申为“当时没有他人记载或核查”。",
+   "unit_status": {
+    "A-SJ92": "complete"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "Every fact here comes from one text, Sima Qian's \"Account of the Marquis of Huaiyin\"; this piece uses no second source to cross-check against.",
+   "verdict": "supported",
+   "source_ids": [
+    "A-SJ92"
+   ],
+   "scope": "本文证据包只有 A-SJ92 一个来源；该句是对本文取材的说明。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "信與張耳以兵數萬，欲東下井陘擊趙。"
+   },
+   "fix": "保留。",
+   "unit_status": {
+    "A-SJ92": "complete"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "本文唯一史源为司马迁《史记·淮阴侯列传》。",
+   "verdict": "supported",
+   "source_ids": [
+    "A-SJ92"
+   ],
+   "scope": "本文证据包的来源数量说明。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "信與張耳以兵數萬，欲東下井陘擊趙。"
+   },
+   "fix": "保留。",
+   "unit_status": {
+    "A-SJ92": "complete"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "在诸将战后问答这一段里，没有人问“那条计当初为什么没被采纳”。",
+   "verdict": "supported",
+   "source_ids": [
+    "A-SJ92"
+   ],
+   "scope": "《淮阴侯列传》“諸將效首虜”至“非臣所及也”一段：诸将只问背水之术。不过紧接着韩信自己就主动谈到了那条计未被采纳（见 context_issues）。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "今者將軍令臣等反背水陳，曰破趙會食，臣等不服。然竟以勝，此何術也？"
+   },
+   "fix": "可保留原句，但宜补一句：随后韩信本人向李左车点明“誠令成安君聽足下計，若信者亦已爲禽矣”。",
+   "unit_status": {
+    "A-SJ92": "complete"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "In the generals' post-battle exchange as recorded, no one asks why that plan had not been adopted before the fighting.",
+   "verdict": "supported",
+   "source_ids": [
+    "A-SJ92"
+   ],
+   "scope": "同 N4，范围限于诸将问答一段。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "今者將軍令臣等反背水陳，曰破趙會食，臣等不服。然竟以勝，此何術也？"
+   },
+   "fix": "同 N4。",
+   "unit_status": {
+    "A-SJ92": "complete"
+   }
+  },
+  {
+   "id": "N6",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "陈馀的想法，本文严格按原文所记的理由写，不替他补充任何心理活动",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "A-SJ92"
+   ],
+   "scope": "这是本文对自身写法的说明。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "不聽廣武君策，廣武君策不用。"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "A-SJ92": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.analysis.2",
+   "problem": "文中称复盘只聚焦胜者技巧、无人追问那次否决。但全文显示，紧接诸将问答之后，韩信本人就把胜负归因于“用與不用，聽與不聽”，明确点出了那次否决。所谓“不对称”只适用于诸将，不适用于整场复盘。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "誠令成安君聽足下計，若信者亦已爲禽矣。以不用足下，故信得侍耳。"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.today.1",
+   "problem": "把韩信写成重视对手一方逆耳之言的典范，没有交代全文中韩信自己后来不用蒯通之计，临刑前为此后悔。这一转折与全篇“用與不用”的主题形成反照，可考虑在 limits 或 today 中加一句提示。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "信方斬，曰：『吾悔不用蒯通之計，乃爲兒女子所詐，豈非天哉！』"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "A-SJ92",
+   "outcome": "井陉之战以汉军大破赵军、斩陈馀、擒赵王歇告终。韩信师事李左车后再向他问计，采纳其“先声后实”之策，燕国望风归附；随后韩信请立张耳为赵王，汉王许之。",
+   "quote": "韓信曰：『善。』從其策，發使使燕，燕從風而靡。乃遣使報漢，因請立張耳爲趙王，以鎮撫其國。漢王許之，乃立張耳爲趙王。",
+   "in_evidence": true
+  }
+ ],
+ "additions": [],
+ "additions_failed": [],
+ "evidence_sha256": "7d653634b3f1e4b5a6f87457fab6d31579d944d5c2ef596409a6504a7a68754d",
+ "outcome": "clean",
+ "blocking": []
+}

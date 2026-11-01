@@ -1,0 +1,291 @@
+"""Render one bilingual content object to email HTML + text/plain, site data
+JSON (+ index) and GitHub Markdown (zh/en). Stdlib only; every text field is
+HTML-escaped; no model-produced HTML is ever emitted. All channels come from
+the same object, so they share edition_id, revision and content_sha256."""
+from __future__ import annotations
+import hashlib, html, json, re, sys
+from pathlib import Path
+
+CAT = {"china_ancient": ("中国古代", "Ancient China"), "world": ("世界史", "World History"),
+       "china_modern": ("中国近现代", "Modern China"), "us": ("美国史", "U.S. History")}
+BRAND = "没事儿多读书"          # column name (owner decision 2026-10-31, docs/ADDENDUM_READER_FEEDBACK_20261031.md); was 每日一鉴
+
+
+def dotted(date) -> str:
+    """YYYY-MM-DD (edition date in the project timezone, Asia/Shanghai since 2026-11-01) -> YYYY.MM.DD; empty if the object has no real date."""
+    return str(date).replace("-", ".") if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(date or "")) else ""
+
+
+def headline(obj, lang="zh") -> str:
+    """没事儿多读书｜YYYY.MM.DD｜title (the date segment is omitted when the object has no edition date)."""
+    return "｜".join(x for x in (BRAND, dotted(obj.get("edition_date")), obj["title"][lang]) if x)
+
+
+LBL = {"zh": dict(col=BRAND, today="今天可以怎么用", q="想一想", ex="一个参考思路", assume="假设", steps="可以怎么做",
+                  alt="另一种合理选择", src="本篇依据", more="想再读一点", unc="出处与不确定性", min="分钟", read_web="在网页阅读",
+                  read_en="Read in English", pause="想暂停接收？直接回复这封邮件写“暂停”，维护者会在配置中停发。", feedback="反馈：直接回复本邮件。",
+                  edition="期次", stop="先停十秒，想想你会怎么做。"),
+       "en": dict(col=BRAND, today="Using it today", q="Think about it", ex="One possible approach", assume="Assumptions",
+                  steps="What you could do", alt="Another reasonable choice", src="Sources", more="Read more",
+                  unc="Sources and uncertainty", min="min", read_web="Read on the web", read_en="", pause="", feedback="", edition="Edition",
+                  stop="Pause for ten seconds and decide what you would do.")}
+ACCENT = "#7a5c3e"
+TEST_NOTE = {"zh": "测试邮件：用于检查排版与投递，不是正式的一期；每日订阅尚未开始，之后不会自动收到下一期。",
+             "en": "TEST: this checks layout and delivery. It is not an official edition; the daily subscription has not started."}
+ZH_CPM, EN_WPM = 320, 200   # reading-rate assumptions for the per-language estimate
+e = lambda s: html.escape(s or "", quote=True)
+
+def web_url(u) -> bool:
+    """Only a real http(s) URL becomes a link; a missing one (None) is shown as plain text, never as "None"/"null"."""
+    return isinstance(u, str) and bool(re.fullmatch(r"https?://\S+", u))
+
+def canonical(obj) -> str:
+    keep = {k: obj[k] for k in ("edition_id","revision","title","dek","sections","reflection","uncertainty_note","sources","further_reading")}
+    return json.dumps(keep, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+
+def stats(obj):
+    zh = en = 0
+    for s in obj["sections"]:
+        for p in s["paras"]:
+            zh += len(re.findall(r"[一-鿿]", p["zh"])); en += len(re.findall(r"[A-Za-z']+", p["en"]))
+    r = obj["reflection"]
+    for k in ("scenario","question"): zh += len(re.findall(r"[一-鿿]", r[k]["zh"])); en += len(re.findall(r"[A-Za-z']+", r[k]["en"]))
+    for k in ("assumptions","steps","alternative"):
+        zh += len(re.findall(r"[一-鿿]", r["example"][k]["zh"])); en += len(re.findall(r"[A-Za-z']+", r["example"][k]["en"]))
+    return zh, en
+
+def finalize(obj):
+    zh, en = stats(obj)
+    # estimates only; calibrate with real readers (rates are configurable)
+    obj["length"] = {"zh_chars": zh, "en_words": en, "basis": "body + question + example; excludes sources and read-more"}
+    obj["reading_minutes"] = {"zh": max(1, round(zh / ZH_CPM)), "en": max(1, round(en / EN_WPM)),
+                              "basis": f"estimate: {ZH_CPM} zh chars/min, {EN_WPM} en words/min"}
+    obj["content_sha256"] = hashlib.sha256(canonical(obj).encode()).hexdigest()
+    return obj
+
+def link(obj, lang, base):
+    return f"{base}/history/?story={obj['edition_id']}&lang={lang}"
+
+# ---------------- email ----------------
+NEWS_SCHEMA = "news3min/v0-prototype"
+NEWS_MAX_AGE_H = 26
+
+
+# What kind of statement the "why" line is (owner feedback 2026-10-31: keep reported fact, a source's judgment and the
+# editor's interpretation apart). reported: a stated consequence from the sources; source_judgment: an attributed
+# opinion (analyst, publisher, the company itself); interpretation: the editor's own reading.
+NEWS_WHY_LABELS = {"reported": "为什么值得知道：", "source_judgment": "来源观点：", "interpretation": "编辑解读："}
+
+
+def news_why(it: dict) -> str:
+    return (NEWS_WHY_LABELS.get(it.get("why_kind"), "为什么值得知道：") + it["why"]) if it.get("why") else ""
+
+
+def news_problems(snap: dict | None, now_iso: str | None = None) -> list[str]:
+    """Consumer-side check of a frozen 3-minute news snapshot (prompts/08 §4). Any problem means the edition goes out
+    without news and says so briefly; a stale, degraded or unsourced snapshot is never shown as today's news."""
+    from datetime import datetime, timezone
+    if not snap:
+        return ["no snapshot"]
+    p = []
+    if snap.get("schema") != NEWS_SCHEMA: p.append(f"schema {snap.get('schema')!r}")
+    if snap.get("status") != "ready": p.append(f"status {snap.get('status')!r}")
+    items = snap.get("items") or []
+    if not 3 <= len(items) <= 5: p.append(f"{len(items)} items (3-5 expected)")
+    for i, it in enumerate(items):
+        if not (it.get("headline") and it.get("what")): p.append(f"item {i + 1}: headline/what missing")
+        if not any(web_url(s.get("url")) for s in it.get("sources") or []): p.append(f"item {i + 1}: no source link")
+        if it.get("why") and it.get("why_kind") not in NEWS_WHY_LABELS: p.append(f"item {i + 1}: why_kind must be one of {sorted(NEWS_WHY_LABELS)}")
+        if it.get("why") and _restates(it["why"], it.get("headline", "")): p.append(f"item {i + 1}: why restates the headline (omit it instead)")
+    try:
+        as_of = datetime.fromisoformat(snap["as_of"]); now = datetime.fromisoformat(now_iso) if now_iso else datetime.now(timezone.utc)
+        age = (now - as_of).total_seconds() / 3600
+        if age > NEWS_MAX_AGE_H or age < -0.1: p.append(f"as_of {snap['as_of']} is {age:.1f} h from now (max {NEWS_MAX_AGE_H} h)")
+    except (KeyError, ValueError, TypeError):
+        p.append("as_of missing or not ISO")
+    return p
+
+
+def _restates(why: str, headline: str) -> bool:
+    """Most of the why line's 2-character runs already occur in the headline: it adds nothing."""
+    grams = lambda t: {t[i:i + 2] for i in range(len(t) - 1) if re.match(r"[一-鿿]{2}", t[i:i + 2])}
+    w, h = grams(why), grams(headline)
+    return len(w) >= 4 and len(w & h) / len(w) >= 0.6
+
+
+def news_minutes(snap: dict) -> int:
+    t = "".join(it.get(k, "") for it in snap.get("items") or [] for k in ("headline", "what", "why", "qualifiers"))
+    return max(1, round(len(re.findall(r"[一-鿿]", t)) / ZH_CPM))
+
+
+def news_html(snap: dict | None, ok: bool) -> str:
+    h = f'<h2 id="news" style="font-size:19px;color:#1d1d1f;margin:6px 0 4px;">今日新闻 · 约 {news_minutes(snap) if ok else 1} 分钟</h2>'
+    if not ok:
+        return h + '<p style="font-size:15px;line-height:1.8;color:#55524d;margin:0 0 24px;">今天的新闻简报暂缺（没有及时、可核对来源的版本），下面直接进入今日故事。</p>'
+    out = [h, f'<p style="font-size:13px;color:#8a857d;margin:0 0 14px;">{e(snap["label"]["zh"])}</p>']
+    for i, it in enumerate(snap["items"]):
+        why = news_why(it)
+        srcs = " · ".join(f'<a href="{e(s["url"])}" style="color:{ACCENT};">{e(s["name"])}</a>' if web_url(s.get("url")) else e(s["name"])
+                          for s in it.get("sources") or [])
+        out.append(f'<p style="font-size:16px;line-height:1.8;margin:0 0 4px;color:#1d1d1f;"><b>{i + 1}. {e(it["headline"])}</b></p>'
+                   f'<p style="font-size:15px;line-height:1.85;margin:0 0 4px;color:#24221f;">{e(it["what"])}</p>'
+                   + (f'<p style="font-size:15px;line-height:1.85;margin:0 0 4px;color:#3a3732;">{e(why)}</p>' if why else "")
+                   + (f'<p style="font-size:13px;line-height:1.7;margin:0 0 4px;color:#8a857d;">{e(it["qualifiers"])}</p>' if it.get("qualifiers") else "")
+                   + f'<p style="font-size:13px;line-height:1.7;margin:0 0 16px;color:#8a857d;">来源：{srcs}</p>')
+    out.append('<hr style="border:none;border-top:1px solid #d8d2c8;margin:8px 0 22px;">')
+    return "\n".join(out)
+
+
+def email_html(obj, base, news: dict | None = None, now_iso: str | None = None):
+    def block(lang):
+        L = LBL[lang]; out = []
+        out.append(f'<h1 style="font-family:Georgia,\'Songti SC\',serif;font-size:26px;line-height:1.35;margin:8px 0 6px;color:#1d1d1f;">{e(obj["title"][lang])}</h1>')
+        out.append(f'<p style="font-size:16px;line-height:1.7;color:#55524d;margin:0 0 18px;">{e(obj["dek"][lang])}</p>')
+        for s in obj["sections"]:
+            out.append(f'<h2 style="font-size:17px;color:{ACCENT};margin:26px 0 8px;letter-spacing:.02em;">{e(s["heading"][lang])}</h2>')
+            for p in s["paras"]:
+                style = "font-size:16px;line-height:1.85;margin:0 0 14px;color:#24221f;"
+                if p["kind"] == "modern": style += "background:#f6f2ec;padding:10px 14px;border-radius:4px;"
+                out.append(f'<p style="{style}">{e(p[lang])}</p>')
+        r = obj["reflection"]
+        out.append(f'<h2 style="font-size:17px;color:{ACCENT};margin:28px 0 8px;">{L["q"]}</h2>')
+        out.append(f'<p style="font-size:16px;line-height:1.85;margin:0 0 10px;color:#24221f;">{e(r["scenario"][lang])}</p>')
+        out.append(f'<p style="font-size:17px;line-height:1.8;margin:0 0 10px;font-weight:bold;color:#1d1d1f;border-left:3px solid {ACCENT};padding-left:12px;">{e(r["question"][lang])}</p>')
+        out.append(f'<p style="font-size:14px;color:#8a857d;margin:0 0 30px;">{L["stop"]}</p>')
+        out.append(f'<h3 style="font-size:15px;color:#55524d;margin:30px 0 8px;border-top:1px dashed #d8d2c8;padding-top:14px;">{L["ex"]}</h3>')
+        sep = "：" if lang == "zh" else ": "
+        for k, lab in (("assumptions", L["assume"]), ("steps", L["steps"]), ("alternative", L["alt"])):
+            out.append(f'<p style="font-size:15px;line-height:1.8;margin:0 0 10px;color:#3a3732;"><b>{lab}{sep}</b>{e(r["example"][k][lang])}</p>')
+        out.append(f'<h3 style="font-size:15px;color:#55524d;margin:24px 0 6px;">{L["unc"]}</h3><p style="font-size:14px;line-height:1.75;color:#55524d;margin:0 0 10px;">{e(obj["uncertainty_note"][lang])}</p>')
+        out.append(f'<h3 style="font-size:15px;color:#55524d;margin:18px 0 6px;">{L["src"]}</h3><ol style="font-size:13px;line-height:1.7;color:#55524d;padding-left:20px;margin:0 0 12px;">')
+        for s in obj["sources"]:
+            a = ""
+            if s.get("url"):
+                a = ' · <a href="%s" style="color:%s;">%s</a>' % (e(s["url"]), ACCENT, e(s.get("link_label", "link")))
+            out.append(f'<li>{e(s["citation"])}{a}</li>')
+        out.append("</ol>")
+        out.append(f'<h3 style="font-size:15px;color:#55524d;margin:18px 0 6px;">{L["more"]}</h3><ul style="font-size:13px;line-height:1.7;color:#55524d;padding-left:20px;margin:0;">')
+        for m in obj["further_reading"]:
+            title = f'<a href="{e(m["url"])}" style="color:{ACCENT};">{e(m["title"])}</a>' if web_url(m.get("url")) else e(m["title"])
+            out.append(f'<li>{title} — {e(m["what"][lang])} <span style="color:#8a857d;">({e(m["access"][lang])})</span></li>')
+        out.append("</ul>")
+        return "\n".join(out)
+    cz, ce = CAT[obj["category"]]
+    head = (f'<p style="font-size:13px;color:#8a857d;margin:0;letter-spacing:.04em;">{LBL["zh"]["col"]}｜{e(dotted(obj["edition_date"]) or obj["edition_date"])} · {cz} · '
+            f'中文约 {obj["reading_minutes"]["zh"]} 分钟 · English ~{obj["reading_minutes"]["en"]} min（估算）</p>')
+    btn = (f'<table role="presentation" cellpadding="0" cellspacing="0" style="margin:34px 0;"><tr>'
+           f'<td style="background:{ACCENT};border-radius:4px;"><a href="{e(link(obj,"zh",base))}" style="display:inline-block;padding:10px 18px;color:#fff;text-decoration:none;font-size:15px;">{LBL["zh"]["read_web"]}</a></td>'
+           f'<td style="width:10px;"></td><td style="border:1px solid {ACCENT};border-radius:4px;"><a href="{e(link(obj,"en",base))}" style="display:inline-block;padding:9px 18px;color:{ACCENT};text-decoration:none;font-size:15px;">Read in English</a></td></tr></table>'
+           f'<hr style="border:none;border-top:1px solid #d8d2c8;margin:0 0 30px;">')
+    foot = (f'<p style="font-size:12px;line-height:1.7;color:#8a857d;margin:36px 0 0;border-top:1px solid #e6e1d8;padding-top:14px;">'
+            f'{LBL["zh"]["edition"]} {e(obj["edition_id"])} · rev {obj["revision"]} · {e(obj["edition_date"])} · '
+            f'<a href="{e(link(obj,"zh",base))}" style="color:{ACCENT};">{e(link(obj,"zh",base))}</a><br>{LBL["zh"]["feedback"]} {LBL["zh"]["pause"]}</p>')
+    pre = e(obj["preheader"]["zh"])
+    nav = newsblock = ""
+    if news is not None:                     # one reading edition, two modules (prompts/08 §1); same text goes to the web copy
+        ok = not news_problems(news, now_iso)
+        nav = (f'<p style="font-size:14px;margin:10px 0 18px;"><a href="#news" style="color:{ACCENT};">今日新闻 · 约 {news_minutes(news) if ok else 1} 分钟</a>'
+               f' · <a href="#story" style="color:{ACCENT};">今日故事 · 约 {obj["reading_minutes"]["zh"]} 分钟</a></p>')
+        newsblock = news_html(news, ok)
+    if obj.get("status") == "test":
+        head = (f'<p style="font-size:14px;line-height:1.7;margin:0 0 16px;padding:10px 14px;border:2px solid #b5542f;color:#7a2e12;border-radius:4px;">'
+                f'<b>测试 TEST</b> · {e(TEST_NOTE["zh"])}<br>{e(TEST_NOTE["en"])}</p>') + head
+    return f'''<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(obj["title"]["zh"])}</title></head>
+<body style="margin:0;padding:0;background:#faf8f4;">
+<div style="display:none;max-height:0;overflow:hidden;">{pre}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#faf8f4;"><tr><td align="center" style="padding:24px 12px;">
+<table role="presentation" width="640" cellpadding="0" cellspacing="0" style="max-width:640px;width:100%;background:#ffffff;border:1px solid #ece7de;">
+<tr><td style="padding:28px 30px 34px;font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',Helvetica,Arial,sans-serif;">
+{head}
+{nav}{newsblock}<a id="story"></a>
+{block("zh")}
+{btn}
+<p style="font-size:13px;color:#8a857d;margin:0;letter-spacing:.04em;">{LBL["en"]["col"]}｜{e(dotted(obj["edition_date"]) or obj["edition_date"])} · {ce}</p>
+{block("en")}
+{foot}
+</td></tr></table></td></tr></table></body></html>'''
+
+def email_text(obj, base, news: dict | None = None, now_iso: str | None = None):
+    def block(lang):
+        L = LBL[lang]; r = obj["reflection"]; out = [obj["title"][lang], obj["dek"][lang], ""]
+        for s in obj["sections"]:
+            out += [f"== {s['heading'][lang]} ==", *[p[lang] + "\n" for p in s["paras"]]]
+        out += [f"== {L['q']} ==", r["scenario"][lang], "", r["question"][lang], "", L["stop"], "", "-" * 20, f"{L['ex']}",
+                f"{L['assume']}: {r['example']['assumptions'][lang]}", f"{L['steps']}: {r['example']['steps'][lang]}",
+                f"{L['alt']}: {r['example']['alternative'][lang]}", "", f"== {L['unc']} ==", obj["uncertainty_note"][lang], "", f"== {L['src']} =="]
+        out += [f"[{i+1}] {s['citation']} {s.get('url') or ''}".strip() for i, s in enumerate(obj["sources"])]
+        out += ["", f"== {L['more']} =="] + [f"- {m['title']}: {m['what'][lang]} ({m['access'][lang]})" + (f" {m['url']}" if web_url(m.get("url")) else "") for m in obj["further_reading"]]
+        return "\n".join(out)
+    test = [f"【测试 TEST】{TEST_NOTE['zh']}", TEST_NOTE["en"], ""] if obj.get("status") == "test" else []
+    nw = []
+    if news is not None:
+        if news_problems(news, now_iso):
+            nw = ["== 今日新闻 ==", "今天的新闻简报暂缺（没有及时、可核对来源的版本），下面直接进入今日故事。", ""]
+        else:
+            nw = [f"== 今日新闻 · 约 {news_minutes(news)} 分钟 ==", news["label"]["zh"], ""]
+            for i, it in enumerate(news["items"]):
+                nw += [f"{i + 1}. {it['headline']}", it["what"]]
+                if it.get("why"): nw.append(news_why(it))
+                if it.get("qualifiers"): nw.append(it["qualifiers"])
+                nw += ["来源：" + "；".join(s["name"] + (f" {s['url']}" if web_url(s.get("url")) else "") for s in it.get("sources") or []), ""]
+            nw += ["=" * 20, "== 今日故事 ==", ""]
+    return "\n".join(test + nw + [f"{LBL['zh']['col']}｜{dotted(obj['edition_date']) or obj['edition_date']} · {CAT[obj['category']][0]}", "", block("zh"), "",
+                      f"在网页阅读：{link(obj,'zh',base)}", f"Read in English: {link(obj,'en',base)}", "=" * 40, "", block("en"), "",
+                      f"{obj['edition_id']} rev {obj['revision']} · {LBL['zh']['feedback']} {LBL['zh']['pause']}"])
+
+def markdown(obj, lang):
+    L = LBL[lang]; r = obj["reflection"]
+    out = [f"# {obj['title'][lang]}", "", f"*{obj['dek'][lang]}*", "",
+           f"{obj['edition_date']} · {CAT[obj['category']][0 if lang=='zh' else 1]} · {obj['edition_id']} rev {obj['revision']}", ""]
+    for s in obj["sections"]:
+        out += [f"## {s['heading'][lang]}", ""]
+        for p in s["paras"]:
+            tag = "" if not p["ev"] else " " + "".join(f"[{x}]" for x in p["ev"])
+            out += [(("> " if p["kind"] == "modern" else "") + p[lang] + tag), ""]
+    out += [f"## {L['q']}", "", r["scenario"][lang], "", f"**{r['question'][lang]}**", "", f"<details><summary>{L['ex']}</summary>", "",
+            f"- **{L['assume']}**: {r['example']['assumptions'][lang]}", f"- **{L['steps']}**: {r['example']['steps'][lang]}",
+            f"- **{L['alt']}**: {r['example']['alternative'][lang]}", "", "</details>", "",
+            f"## {L['unc']}", "", obj["uncertainty_note"][lang], "", f"## {L['src']}", ""]
+    out += [f"{i+1}. {s['citation']}" + (f" — <{s['url']}>" if s.get("url") else "") for i, s in enumerate(obj["sources"])]
+    out += ["", f"## {L['more']}", ""] + [(f"- [{m['title']}]({m['url']})" if web_url(m.get("url")) else f"- {m['title']}") + f" — {m['what'][lang]} ({m['access'][lang]})" for m in obj["further_reading"]]
+    out += ["", "---", "", ("证据编号 [X-En] 对应同目录 evidence 文件中的逐字摘录。" if lang == "zh" else "Evidence ids [X-En] map to verbatim excerpts in the evidence file.")]
+    return "\n".join(out) + "\n"
+
+def build(objs, out: Path, base):
+    (out/"email").mkdir(parents=True, exist_ok=True); (out/"site/history").mkdir(parents=True, exist_ok=True); (out/"site/data/history").mkdir(parents=True, exist_ok=True)
+    index = []
+    for o in objs:
+        finalize(o)
+        if o.get("status") == "reader_sample":
+            # reader sample on the TEST preview: an admitted article shown before any schedule; listed as 样稿, never emailed
+            public = {k: v for k, v in o.items() if k not in ("evidence_map", "preheader", "editor_log")}
+            rel = f"data/history/samples/{o['edition_id']}.json"; p = out/"site"/rel; p.parent.mkdir(parents=True, exist_ok=True)
+            p.write_text(json.dumps(public, ensure_ascii=False, indent=1), encoding="utf-8")
+            index.append({"edition_id": o["edition_id"], "revision": o["revision"], "edition_date": o["preview_date"], "category": o["category"],
+                          "title": o["title"], "dek": o["dek"], "reading_minutes": o["reading_minutes"], "content_sha256": o["content_sha256"],
+                          "path": rel, "sample": True})
+            continue
+        (out/f"email/{o['edition_id']}.html").write_text(email_html(o, base), encoding="utf-8")
+        (out/f"email/{o['edition_id']}.txt").write_text(email_text(o, base), encoding="utf-8")
+        public = {k: v for k, v in o.items() if k not in ("evidence_map", "preheader", "editor_log")}
+        prev_json = None
+        if o.get("correction") and (o["correction"].get("previous") or {}).get("json"):
+            public = json.loads(json.dumps(public)); prev_json = public["correction"]["previous"].pop("json")
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(o.get("edition_date", ""))):
+            # inventory not yet scheduled: preview JSON only, never listed in the public index
+            p = out/f"site/data/history/unscheduled/{o['edition_id']}.json"; p.parent.mkdir(parents=True, exist_ok=True)
+            p.write_text(json.dumps(public, ensure_ascii=False, indent=1), encoding="utf-8"); continue
+        y, m, d = o["edition_date"].split("-")
+        p = out/f"site/data/history/{y}/{m}/{d}-{o['edition_id']}.json"; p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(json.dumps(public, ensure_ascii=False, indent=1), encoding="utf-8")
+        index.append({"edition_id": o["edition_id"], "revision": o["revision"], "edition_date": o["edition_date"], "category": o["category"],
+                      "title": o["title"], "dek": o["dek"], "reading_minutes": o["reading_minutes"], "content_sha256": o["content_sha256"],
+                      "path": f"data/history/{y}/{m}/{d}-{o['edition_id']}.json", **({"test": True} if o.get("status") == "test" else {}),
+                      **({"corrected_at": o["correction"]["at"]} if o.get("correction") else {})})
+        if prev_json is not None:                                     # the superseded revision stays published, byte for byte
+            q = out/"site"/o["correction"]["previous"]["path"]; q.parent.mkdir(parents=True, exist_ok=True)
+            q.write_text(prev_json, encoding="utf-8")
+    index.sort(key=lambda x: x["edition_date"], reverse=True)
+    (out/"site/data/history/index.json").write_text(json.dumps({"schema_version": "0.2", "items": index}, ensure_ascii=False, indent=1), encoding="utf-8")
+    tpl = Path(__file__).with_name("templates")/"history_index.html"
+    (out/"site/history/index.html").write_text(tpl.read_text(encoding="utf-8"), encoding="utf-8")

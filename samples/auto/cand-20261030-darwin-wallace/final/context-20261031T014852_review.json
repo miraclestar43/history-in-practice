@@ -1,0 +1,622 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-20261030-darwin-wallace",
+ "content_sha256": "805fcf98278a90031b78061c320473e721b56839ea8e9a231bad488863a0f772",
+ "evidence_in_sha256": "e28c8316436943c5f38bd9ba3f8b82508f60363d07336bf308167b7c3a75fa0d",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793429332.9280536,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.6",
+   "lang": "zh",
+   "sentence": "当天按什么顺序宣读，材料没有记。"
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.6",
+   "lang": "en",
+   "sentence": "the order in which they were read that day is not recorded."
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.0",
+   "lang": "en",
+   "sentence": "Wallace's essay, with its dateline and the manner of its sending, was consistent with Lyell and Hooker's statement that the two men had worked unknown to one another, and it was Wallace himself who had sent the essay to Darwin, with the express wish that Darwin forward it to Lyell if he thought it sufficiently novel and interesting."
+  },
+  {
+   "id": "A4",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "同样，证据包没有说明华莱士在宣读之前是否知情、是否同意，这一点本文不作任何陈述。"
+  },
+  {
+   "id": "A5",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "Likewise, the evidence does not say whether Wallace knew of the reading beforehand or consented to it, and this article makes no statement either way."
+  },
+  {
+   "id": "A6",
+   "path": "reflection.example.alternative",
+   "lang": "en",
+   "sentence": "The price is that it leaves no record of who did what."
+  },
+  {
+   "id": "A7",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "华莱士在宣读前是否知情或同意，材料未载，本文不作陈述；"
+  },
+  {
+   "id": "A8",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "whether Wallace knew of or consented to the reading beforehand is not recorded in the material and no statement is made;"
+  }
+ ],
+ "search": null,
+ "units": {
+  "W2-LINN": {
+   "title": "Darwin and Wallace, 'On the Tendency of Species to form Varieties…', Journal of the Proceedings of the Linnean Society (1858), with the covering letter of Lyell and Hooker, Wikisource",
+   "url": "https://en.wikisource.org/w/index.php?title=On%20the%20tendency%20of%20species%20to%20form%20varieties%3B%20and%20on%20the%20Perpetuation%20of%20Varieties%20and%20Species%20by%20Natural%20Means%20of%20Selection&action=render",
+   "ref": "en:On the tendency of species to form varieties; and on the Perpetuation of Varieties and Species by Natural Means of Selection",
+   "evidence_text_sha256": "399ad914938f7798ba7e77b8ed67e1bd94f6a79dae8a2f2404f755f038280f6e",
+   "cache_sha256": "399ad914938f7798ba7e77b8ed67e1bd94f6a79dae8a2f2404f755f038280f6e",
+   "cjk": false,
+   "source_chars": 53723,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     53723
+    ]
+   ],
+   "chars_reviewed": 53723
+  },
+  "W2-PSM": {
+   "title": "'Sketch of Alfred Russel Wallace', Popular Science Monthly, vol. 11 (June 1877), Wikisource",
+   "url": "https://en.wikisource.org/w/index.php?title=Popular%20Science%20Monthly/Volume%2011/June%201877/Sketch%20of%20Alfred%20Russel%20Wallace&action=render",
+   "ref": "en:Popular Science Monthly/Volume 11/June 1877/Sketch of Alfred Russel Wallace",
+   "evidence_text_sha256": "8ed2e7998226f838bd71c4a9615029751447ab8e1762406d87b86802f359e565",
+   "cache_sha256": "8ed2e7998226f838bd71c4a9615029751447ab8e1762406d87b86802f359e565",
+   "cjk": false,
+   "source_chars": 3560,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     3560
+    ]
+   ],
+   "chars_reviewed": 3560
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 54.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 6115
+  }
+ ],
+ "finished_at": 1793429387.9465632,
+ "elapsed_min": 0.9,
+ "review": {
+  "episode": [
+   {
+    "source_id": "W2-LINN",
+    "outcome": "The source closes with the three papers read to the Linnean Society on 1 July 1858. Darwin had given Lyell and Hooker permission to use his memoir as they saw fit, and they explained to him that the arrangement served the interests of science generally, not only the question of priority.",
+    "quote": "On representing this to Mr. Darwin, he gave us permission to make what use we thought proper of his memoir, &c.; and in adopting our present course, of presenting it to the Linnean Society, we have explained to him that we are not solely considering the relative claims to priority of himself and his friend, but the interests of science generally",
+    "in_evidence": true
+   },
+   {
+    "source_id": "W2-PSM",
+    "outcome": "The sketch records that Wallace's paper reached the Society through Lyell and was read on 1 July 1858 alongside Darwin's. It then records Wallace's later disagreement with Darwin on whether natural selection alone could explain human origins, his return to England, his medals and his publications.",
+    "quote": "was read before that body on July 1, 1858, coincidently with the reading of Mr, Darwin's paper",
+    "in_evidence": true
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "W2-LINN",
+    "start": "Taken in the order of their dates",
+    "end": "they consist of:—",
+    "why": "The letter says the three items are listed by date. It does not say this was the order of reading. Readers need this to understand the scope of the A1/A2 claim that the reading order is not recorded."
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.6",
+    "lang": "zh",
+    "sentence": "当天按什么顺序宣读，材料没有记。",
+    "verdict": "supported",
+    "source_ids": [
+     "W2-LINN",
+     "W2-PSM"
+    ],
+    "scope": "Full text of W2-LINN (Lyell–Hooker letter, headings of parts I–III, body text, footnotes) and full text of W2-PSM. The letter lists the items only 'in the order of their dates'. The print order is I, II, III. Neither source states the order of reading on the day.",
+    "quote": {
+     "source_id": "W2-LINN",
+     "quote": "Taken in the order of their dates, they consist of:—"
+    },
+    "fix": "Keep the claim. Consider adding that the letter lists the items by date and the journal prints them as I, II, III, but neither says this was the reading order."
+   },
+   {
+    "id": "A2",
+    "path": "sections.story.6",
+    "lang": "en",
+    "sentence": "the order in which they were read that day is not recorded.",
+    "verdict": "supported",
+    "source_ids": [
+     "W2-LINN",
+     "W2-PSM"
+    ],
+    "scope": "Same as A1: full text of W2-LINN and W2-PSM.",
+    "quote": {
+     "source_id": "W2-LINN",
+     "quote": "Taken in the order of their dates, they consist of:—"
+    },
+    "fix": "Same as A1. Could read: 'the letter lists them by date, but neither source records the order of reading.'"
+   },
+   {
+    "id": "A3",
+    "path": "sections.analysis.0",
+    "lang": "en",
+    "sentence": "Wallace's essay, with its dateline and the manner of its sending, was consistent with Lyell and Hooker's statement that the two men had worked unknown to one another, and it was Wallace himself who had sent the essay to Darwin, with the express wish that Darwin forward it to Lyell if he thought it sufficiently novel and interesting.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "W2-LINN"
+    ],
+    "scope": "Lyell–Hooker letter, item 3",
+    "quote": {
+     "source_id": "W2-LINN",
+     "quote": "sent to him with the expressed wish that it should be forwarded to Sir Charles Lyell, if Mr. Darwin thought it sufficiently novel and interesting"
+    },
+    "fix": "This is a positive statement, and it agrees with the source. No change needed."
+   },
+   {
+    "id": "A4",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "同样，证据包没有说明华莱士在宣读之前是否知情、是否同意，这一点本文不作任何陈述。",
+    "verdict": "supported",
+    "source_ids": [
+     "W2-LINN",
+     "W2-PSM"
+    ],
+    "scope": "Full text of W2-LINN and W2-PSM. Neither records a reply from Wallace or any notice to him about the reading. However, the letter says both authors 'unreservedly placed their papers in our hands'. It also says Darwin only 'proposed' to obtain Wallace's consent to publication, and was not consulted about the reading.",
+    "quote": {
+     "source_id": "W2-LINN",
+     "quote": "both authors having now unreservedly placed their papers in our hands"
+    },
+    "fix": "Change '证据包没有说明' to '来源没有记载' (the full sources also lack it, not just the excerpts). Add a qualification: Lyell and Hooker say both authors had 'unreservedly' placed their papers in their hands, and Darwin had proposed to seek Wallace's consent to publication. Neither source records whether Wallace knew of or agreed to the reading."
+   },
+   {
+    "id": "A5",
+    "path": "sections.limits.1",
+    "lang": "en",
+    "sentence": "Likewise, the evidence does not say whether Wallace knew of the reading beforehand or consented to it, and this article makes no statement either way.",
+    "verdict": "supported",
+    "source_ids": [
+     "W2-LINN",
+     "W2-PSM"
+    ],
+    "scope": "Same as A4",
+    "quote": {
+     "source_id": "W2-LINN",
+     "quote": "he proposed, in a letter to Sir Charles Lyell, to obtain Mr. Wallace's consent to allow the Essay to be published as soon as possible"
+    },
+    "fix": "Say 'neither source records…'. Add that Lyell and Hooker assert both authors 'unreservedly placed their papers in our hands', and that Darwin only proposed to seek Wallace's consent to publication."
+   },
+   {
+    "id": "A6",
+    "path": "reflection.example.alternative",
+    "lang": "en",
+    "sentence": "The price is that it leaves no record of who did what.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [],
+    "scope": "A fictional scenario; it says nothing about the sources.",
+    "quote": {
+     "source_id": "W2-LINN",
+     "quote": "Taken in the order of their dates, they consist of:—"
+    },
+    "fix": "No change needed."
+   },
+   {
+    "id": "A7",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "华莱士在宣读前是否知情或同意，材料未载，本文不作陈述；",
+    "verdict": "supported",
+    "source_ids": [
+     "W2-LINN",
+     "W2-PSM"
+    ],
+    "scope": "Same as A4",
+    "quote": {
+     "source_id": "W2-LINN",
+     "quote": "both authors having now unreservedly placed their papers in our hands"
+    },
+    "fix": "Keep the claim. Briefly add that Lyell and Hooker call the authors' handing-over 'unreserved', but no reply from Wallace is recorded."
+   },
+   {
+    "id": "A8",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "whether Wallace knew of or consented to the reading beforehand is not recorded in the material and no statement is made;",
+    "verdict": "supported",
+    "source_ids": [
+     "W2-LINN",
+     "W2-PSM"
+    ],
+    "scope": "Same as A4",
+    "quote": {
+     "source_id": "W2-LINN",
+     "quote": "both authors having now unreservedly placed their papers in our hands"
+    },
+    "fix": "Same as A7."
+   },
+   {
+    "id": "N1",
+    "path": "sections.story.2",
+    "lang": "zh",
+    "sentence": "两说并存，证据里没有更多材料可以判谁对，本文也不替它们裁决。",
+    "verdict": "supported",
+    "source_ids": [
+     "W2-LINN"
+    ],
+    "scope": "Full text of W2-LINN. The only datings are 'October 1857' in the letter and 'September 5th, 1857' in the heading; no other dating appears. W2-PSM does not mention the Gray letter.",
+    "quote": {
+     "source_id": "W2-LINN",
+     "quote": "dated Down, September 5th , 1857"
+    },
+    "fix": "Keep the claim. Change '证据里' to '两份来源里'."
+   },
+   {
+    "id": "N2",
+    "path": "sections.analysis.1",
+    "lang": "en",
+    "sentence": "the other two are options constructed by the author for contrast, not episodes recorded in the documents.",
+    "verdict": "supported",
+    "source_ids": [
+     "W2-LINN"
+    ],
+    "scope": "Full text of the Lyell–Hooker letter. The letter mentions that Darwin was urged to publish and that the world was awaiting his complete work. It does not present either point as an option that was considered.",
+    "quote": {
+     "source_id": "W2-LINN",
+     "quote": "while the scientific world is waiting for the appearance of Mr. Darwin's complete work"
+    },
+    "fix": "Keep the claim."
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.story.6",
+    "problem": "The title given in the sketch differs from the actual heading in the Linnean journal. The draft says '小传给出的标题', which is accurate, but it does not give the journal's own title, so readers may take the sketch's version as the original.",
+    "quote": {
+     "source_id": "W2-LINN",
+     "quote": "On the Tendency of Species to form Varieties; and on the Perpetuation of Varieties and Species by Natural Means of Selection."
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.story.6",
+    "problem": "The sketch says Wallace's paper was 'transmitted through Sir Charles Lyell'. The Linnean letter says Wallace sent the essay to Darwin, who was to forward it to Lyell. The draft quotes the sketch without noting this difference in the route of transmission.",
+    "quote": {
+     "source_id": "W2-LINN",
+     "quote": "for the perusal of his friend and correspondent Mr. Darwin, and sent to him with the expressed wish that it should be forwarded to Sir Charles Lyell"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.limits.1",
+    "problem": "The draft says only that 'the evidence does not say'. It leaves out the letter's claim that both authors handed over their papers 'unreservedly'. Readers lose a source statement that bears on the question of consent.",
+    "quote": {
+     "source_id": "W2-LINN",
+     "quote": "both authors having now unreservedly placed their papers in our hands"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "Both sources were read in full. The draft's account of how events ended matches the sources, and the claims that something is not recorded are broadly sound. Two fixes are recommended: change 'the evidence pack does not say' to 'neither source records', and add that the letter says both authors handed over their papers 'unreservedly'."
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.6",
+   "lang": "zh",
+   "sentence": "当天按什么顺序宣读，材料没有记。",
+   "verdict": "supported",
+   "source_ids": [
+    "W2-LINN",
+    "W2-PSM"
+   ],
+   "scope": "Full text of W2-LINN (Lyell–Hooker letter, headings of parts I–III, body text, footnotes) and full text of W2-PSM. The letter lists the items only 'in the order of their dates'. The print order is I, II, III. Neither source states the order of reading on the day.",
+   "quote": {
+    "source_id": "W2-LINN",
+    "quote": "Taken in the order of their dates, they consist of:—"
+   },
+   "fix": "Keep the claim. Consider adding that the letter lists the items by date and the journal prints them as I, II, III, but neither says this was the reading order.",
+   "unit_status": {
+    "W2-LINN": "complete",
+    "W2-PSM": "complete"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.6",
+   "lang": "en",
+   "sentence": "the order in which they were read that day is not recorded.",
+   "verdict": "supported",
+   "source_ids": [
+    "W2-LINN",
+    "W2-PSM"
+   ],
+   "scope": "Same as A1: full text of W2-LINN and W2-PSM.",
+   "quote": {
+    "source_id": "W2-LINN",
+    "quote": "Taken in the order of their dates, they consist of:—"
+   },
+   "fix": "Same as A1. Could read: 'the letter lists them by date, but neither source records the order of reading.'",
+   "unit_status": {
+    "W2-LINN": "complete",
+    "W2-PSM": "complete"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.0",
+   "lang": "en",
+   "sentence": "Wallace's essay, with its dateline and the manner of its sending, was consistent with Lyell and Hooker's statement that the two men had worked unknown to one another, and it was Wallace himself who had sent the essay to Darwin, with the express wish that Darwin forward it to Lyell if he thought it sufficiently novel and interesting.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "W2-LINN"
+   ],
+   "scope": "Lyell–Hooker letter, item 3",
+   "quote": {
+    "source_id": "W2-LINN",
+    "quote": "sent to him with the expressed wish that it should be forwarded to Sir Charles Lyell, if Mr. Darwin thought it sufficiently novel and interesting"
+   },
+   "fix": "This is a positive statement, and it agrees with the source. No change needed.",
+   "unit_status": {
+    "W2-LINN": "complete"
+   }
+  },
+  {
+   "id": "A4",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "同样，证据包没有说明华莱士在宣读之前是否知情、是否同意，这一点本文不作任何陈述。",
+   "verdict": "supported",
+   "source_ids": [
+    "W2-LINN",
+    "W2-PSM"
+   ],
+   "scope": "Full text of W2-LINN and W2-PSM. Neither records a reply from Wallace or any notice to him about the reading. However, the letter says both authors 'unreservedly placed their papers in our hands'. It also says Darwin only 'proposed' to obtain Wallace's consent to publication, and was not consulted about the reading.",
+   "quote": {
+    "source_id": "W2-LINN",
+    "quote": "both authors having now unreservedly placed their papers in our hands"
+   },
+   "fix": "Change '证据包没有说明' to '来源没有记载' (the full sources also lack it, not just the excerpts). Add a qualification: Lyell and Hooker say both authors had 'unreservedly' placed their papers in their hands, and Darwin had proposed to seek Wallace's consent to publication. Neither source records whether Wallace knew of or agreed to the reading.",
+   "unit_status": {
+    "W2-LINN": "complete",
+    "W2-PSM": "complete"
+   }
+  },
+  {
+   "id": "A5",
+   "path": "sections.limits.1",
+   "lang": "en",
+   "sentence": "Likewise, the evidence does not say whether Wallace knew of the reading beforehand or consented to it, and this article makes no statement either way.",
+   "verdict": "supported",
+   "source_ids": [
+    "W2-LINN",
+    "W2-PSM"
+   ],
+   "scope": "Same as A4",
+   "quote": {
+    "source_id": "W2-LINN",
+    "quote": "he proposed, in a letter to Sir Charles Lyell, to obtain Mr. Wallace's consent to allow the Essay to be published as soon as possible"
+   },
+   "fix": "Say 'neither source records…'. Add that Lyell and Hooker assert both authors 'unreservedly placed their papers in our hands', and that Darwin only proposed to seek Wallace's consent to publication.",
+   "unit_status": {
+    "W2-LINN": "complete",
+    "W2-PSM": "complete"
+   }
+  },
+  {
+   "id": "A6",
+   "path": "reflection.example.alternative",
+   "lang": "en",
+   "sentence": "The price is that it leaves no record of who did what.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [],
+   "scope": "A fictional scenario; it says nothing about the sources.",
+   "quote": {
+    "source_id": "W2-LINN",
+    "quote": "Taken in the order of their dates, they consist of:—"
+   },
+   "fix": "No change needed.",
+   "unit_status": {}
+  },
+  {
+   "id": "A7",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "华莱士在宣读前是否知情或同意，材料未载，本文不作陈述；",
+   "verdict": "supported",
+   "source_ids": [
+    "W2-LINN",
+    "W2-PSM"
+   ],
+   "scope": "Same as A4",
+   "quote": {
+    "source_id": "W2-LINN",
+    "quote": "both authors having now unreservedly placed their papers in our hands"
+   },
+   "fix": "Keep the claim. Briefly add that Lyell and Hooker call the authors' handing-over 'unreserved', but no reply from Wallace is recorded.",
+   "unit_status": {
+    "W2-LINN": "complete",
+    "W2-PSM": "complete"
+   }
+  },
+  {
+   "id": "A8",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "whether Wallace knew of or consented to the reading beforehand is not recorded in the material and no statement is made;",
+   "verdict": "supported",
+   "source_ids": [
+    "W2-LINN",
+    "W2-PSM"
+   ],
+   "scope": "Same as A4",
+   "quote": {
+    "source_id": "W2-LINN",
+    "quote": "both authors having now unreservedly placed their papers in our hands"
+   },
+   "fix": "Same as A7.",
+   "unit_status": {
+    "W2-LINN": "complete",
+    "W2-PSM": "complete"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.story.2",
+   "lang": "zh",
+   "sentence": "两说并存，证据里没有更多材料可以判谁对，本文也不替它们裁决。",
+   "verdict": "supported",
+   "source_ids": [
+    "W2-LINN"
+   ],
+   "scope": "Full text of W2-LINN. The only datings are 'October 1857' in the letter and 'September 5th, 1857' in the heading; no other dating appears. W2-PSM does not mention the Gray letter.",
+   "quote": {
+    "source_id": "W2-LINN",
+    "quote": "dated Down, September 5th , 1857"
+   },
+   "fix": "Keep the claim. Change '证据里' to '两份来源里'.",
+   "unit_status": {
+    "W2-LINN": "complete"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.analysis.1",
+   "lang": "en",
+   "sentence": "the other two are options constructed by the author for contrast, not episodes recorded in the documents.",
+   "verdict": "supported",
+   "source_ids": [
+    "W2-LINN"
+   ],
+   "scope": "Full text of the Lyell–Hooker letter. The letter mentions that Darwin was urged to publish and that the world was awaiting his complete work. It does not present either point as an option that was considered.",
+   "quote": {
+    "source_id": "W2-LINN",
+    "quote": "while the scientific world is waiting for the appearance of Mr. Darwin's complete work"
+   },
+   "fix": "Keep the claim.",
+   "unit_status": {
+    "W2-LINN": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.story.6",
+   "problem": "The title given in the sketch differs from the actual heading in the Linnean journal. The draft says '小传给出的标题', which is accurate, but it does not give the journal's own title, so readers may take the sketch's version as the original.",
+   "quote": {
+    "source_id": "W2-LINN",
+    "quote": "On the Tendency of Species to form Varieties; and on the Perpetuation of Varieties and Species by Natural Means of Selection."
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.story.6",
+   "problem": "The sketch says Wallace's paper was 'transmitted through Sir Charles Lyell'. The Linnean letter says Wallace sent the essay to Darwin, who was to forward it to Lyell. The draft quotes the sketch without noting this difference in the route of transmission.",
+   "quote": {
+    "source_id": "W2-LINN",
+    "quote": "for the perusal of his friend and correspondent Mr. Darwin, and sent to him with the expressed wish that it should be forwarded to Sir Charles Lyell"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.limits.1",
+   "problem": "The draft says only that 'the evidence does not say'. It leaves out the letter's claim that both authors handed over their papers 'unreservedly'. Readers lose a source statement that bears on the question of consent.",
+   "quote": {
+    "source_id": "W2-LINN",
+    "quote": "both authors having now unreservedly placed their papers in our hands"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "W2-LINN",
+   "outcome": "The source closes with the three papers read to the Linnean Society on 1 July 1858. Darwin had given Lyell and Hooker permission to use his memoir as they saw fit, and they explained to him that the arrangement served the interests of science generally, not only the question of priority.",
+   "quote": "On representing this to Mr. Darwin, he gave us permission to make what use we thought proper of his memoir, &c.; and in adopting our present course, of presenting it to the Linnean Society, we have explained to him that we are not solely considering the relative claims to priority of himself and his friend, but the interests of science generally",
+   "in_evidence": true
+  },
+  {
+   "source_id": "W2-PSM",
+   "outcome": "The sketch records that Wallace's paper reached the Society through Lyell and was read on 1 July 1858 alongside Darwin's. It then records Wallace's later disagreement with Darwin on whether natural selection alone could explain human origins, his return to England, his medals and his publications.",
+   "quote": "was read before that body on July 1, 1858, coincidently with the reading of Mr, Darwin's paper",
+   "in_evidence": true
+  }
+ ],
+ "additions": [
+  {
+   "id": "V-E24",
+   "source_id": "W2-LINN",
+   "offset": 8459,
+   "chars": 52,
+   "why": "The letter says the three items are listed by date. It does not say this was the order of reading. Readers need this to understand the scope of the A1/A2 claim that the reading order is not recorded."
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "b9c87f8aeb8e29db85055ea350a1e7c36bb8f1bd8728d0030d472afb012df8e1",
+ "outcome": "needs_work",
+ "blocking": [
+  "evidence must be expanded first: 1 addition(s) ['V-E24']"
+ ]
+}

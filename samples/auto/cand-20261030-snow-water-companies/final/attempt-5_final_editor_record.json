@@ -1,0 +1,1826 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-20261030-snow-water-companies",
+ "edition_id": "cand-20261030-snow-water-companies",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "2af9f62",
+ "started_at": 1793432623.0855203,
+ "base_source": "samples/auto/cand-20261030-snow-water-companies/final/article.json",
+ "base_content_sha256": "d464157c74ce9cc3b87bf4a08dd6c8a3b68082546e293b205cd6b973b3c5da78",
+ "evidence_sha256": "f506117fa0b0dc6fda83989396a374810d03e4223d30961657d15e950425841f",
+ "operator_note": null,
+ "model_record_sha256": "3f116fb4f0f74ecdf31b1fd8e60531891e71987f8f8fd682ddec96b21f174ac6",
+ "prior_record_sha256": "201ebf331ec4b90ac7f6abbbb161e73a60060844a3113727a4de0b4661035bab",
+ "attempt": "attempt-5",
+ "context_review_sha256": null,
+ "inherited": [
+  {
+   "id": "P1",
+   "model_id": "V2-V1",
+   "source": "final-editor previous attempt",
+   "where": "sections.analysis.1",
+   "problem": "中文写“必要时装瓶回家化验”，与证据相符。英文写成“water carried home in phials”，丢掉了“必要时”的限定，读起来像每户都装瓶化验。证据显示，只有住户说不清供水公司时，斯诺才取水样。",
+   "suggestion": "英文改为：“death addresses, house by house, and, where needed, water carried home in phials.”"
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.analysis.1",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "中文写“必要时装瓶回家化验”。英文写成“water carried home in phials”，丢掉了“必要时”这一限定，读起来像每户都取水样化验。证据显示，只有住户说不清供水公司时斯诺才取水样。",
+   "evidence": [
+    {
+     "id": "W-E7",
+     "quote": "when the resident could not give clear and conclusive evidence about the Water Company, I obtained some of the water in a small phial"
+    }
+   ],
+   "proposed": "英文改为：“death addresses, house by house, and, where needed, water carried home in phials.”",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文原句丢掉了中文“必要时”的限定。按证据，斯诺只在住户说不清供水公司时才取水样。现已在英文中加入“where needed”，与中文一致。中文字段原本准确，未改动。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "P1",
+   "problem": "中文写“必要时装瓶回家化验”，与证据相符。英文写成“water carried home in phials”，丢掉了“必要时”的限定，读起来像每户都装瓶化验。证据显示，只有住户说不清供水公司时，斯诺才取水样。",
+   "origin": "inherited final-editor previous attempt V2-V1",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "sections.analysis.1",
+   "disposition": "duplicate",
+   "same_as": "F1",
+   "rationale": "问题成立：英文漏掉了中文“必要时”的限定。按证据，取水样只用于住户说不清供水公司的情况。该问题已列为F1。"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.limits.0",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "段末称“学说、统计和呈现它们的这本书都出自斯诺”（en: \"the statistics ... are all Snow's\"）。这把统计整体归于斯诺，与证据不符。同段已说明部分调查由怀廷完成，后期数据来自各区登记员。此外，表九的户数基数来自1853年的议会报表，14周统计中两家公司供水户的人口是登记总长的估计数。这些数据只是由斯诺整理和呈现。",
+   "evidence": [
+    {
+     "id": "W-E14",
+     "quote": "According to a return which was made to Parliament, the Southwark and Vauxhall Company supplied 40,046 houses from January 1st to December 31st, 1853"
+    },
+    {
+     "id": "W-E17",
+     "quote": "where the population of the houses supplied by the two water companies is that estimated by the Registrar General."
+    },
+    {
+     "id": "W-E13",
+     "quote": "I was fortunate enough to obtain the assistance of a medical man, Mr. John Joseph Whiting, L.A.C."
+    }
+   ],
+   "proposed": "zh改为“即便如此，学说、统计的整理以及呈现它们的这本书都出自斯诺（户数基数来自1853年议会报表，人口为登记总长的估计）。”en同步改为\"Still, the doctrine, the compilation of the statistics (house counts from an 1853 return to Parliament, populations estimated by the Registrar General) and the book that presents them are all Snow's.\"",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "原段末把统计整体归于斯诺，与证据不符。现收窄为斯诺负责“统计的整理”，并注明两点：表九的户数基数来自1853年的议会报表，14周统计中两家公司供水户的人口是登记总长的估计数。中英文同步修改，ev 补入 W-E14 和 W-E17。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V2-V1",
+   "path": "sections.limits.1",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "英文写成“it is the author's question, not Snow's”，比中文“这是作者提出的疑问”多出一层断言：斯诺从未提出过这个问题。证据只显示斯诺断言两组“没有任何差别”，并不能证明全书中他没有讨论过这个问题。中英因此不一致，英文多出的这层断言也缺少证据支持。",
+   "evidence": [
+    {
+     "id": "W-E4",
+     "quote": "As there is no difference whatever, either in the houses or the people receiving the supply of the two Water Companies"
+    }
+   ],
+   "proposed": "英文删去“, not Snow's”，改为“and it is the author's question”，与中文一致。",
+   "origin": "final-editor verify round 2"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.analysis.1.en",
+   "before": "Another approach, and this is the author's counterfactual rather than history, would have been to compare average death rates by district, or rich districts against poor ones. Wealth, housing and occupation would then have crowded in, and the effect of the water would have been hard to separate out. What Snow actually did was more laborious. He inquired himself into every cholera death in the districts the Lambeth Company supplied: death addresses, house by house, and water carried home in phials. Some districts supplied only by the Southwark and Vauxhall Company, such as Bermondsey, were covered for the first four weeks by a medical man, Mr Whiting. In some of those sub-districts the figures for the last three weeks were calculated in the same proportion as in the first four weeks. This yielded two things. One was counts of deaths by water supply for houses in the same intermixed streets. The other was a company-wide comparison per 10,000 houses.",
+   "after": "Another approach, and this is the author's counterfactual rather than history, would have been to compare average death rates by district, or rich districts against poor ones. Wealth, housing and occupation would then have crowded in, and the effect of the water would have been hard to separate out. What Snow actually did was more laborious. He inquired himself into every cholera death in the districts the Lambeth Company supplied: death addresses, house by house, and, where needed, water carried home in phials. Some districts supplied only by the Southwark and Vauxhall Company, such as Bermondsey, were covered for the first four weeks by a medical man, Mr Whiting. In some of those sub-districts the figures for the last three weeks were calculated in the same proportion as in the first four weeks. This yielded two things. One was counts of deaths by water supply for houses in the same intermixed streets. The other was a company-wide comparison per 10,000 houses.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.limits.0.zh",
+   "before": "必须说清楚：本篇所有数字与叙述都出自斯诺本人的书和表格。死者住址来自登记总署。8月26日以后，各区登记员应登记总长的要求，填报了霍乱死亡病例发病房屋的供水情况。这些填报并不完整，仍有一批个案的供水没有查明。斯诺写道，这些填报与他对疫情早期的调查结果“完全一致”。这算是来自登记数据的部分印证，不过我们也只是通过斯诺的书才知道这一点。另外，调查并非全部出自斯诺之手：伯蒙德西等一些只由南华克和沃克斯霍尔公司供水的地区，是由医生约翰·约瑟夫·怀廷（John Joseph Whiting）去调查的。怀廷的调查只覆盖疫情头四周（7月8日至8月5日），查的是死亡发生的房屋接的是公司的水、自家水井还是别的水源；在部分这类分区，后三周的供水是按头四周的比例推算的，并非逐户查得。即便如此，学说、统计和呈现它们的这本书都出自斯诺。这不意味着数据有错，但意味着我们读到的是一方的记录。",
+   "after": "必须说清楚：本篇所有数字与叙述都出自斯诺本人的书和表格。死者住址来自登记总署。8月26日以后，各区登记员应登记总长的要求，填报了霍乱死亡病例发病房屋的供水情况。这些填报并不完整，仍有一批个案的供水没有查明。斯诺写道，这些填报与他对疫情早期的调查结果“完全一致”。这算是来自登记数据的部分印证，不过我们也只是通过斯诺的书才知道这一点。另外，调查并非全部出自斯诺之手：伯蒙德西等一些只由南华克和沃克斯霍尔公司供水的地区，是由医生约翰·约瑟夫·怀廷（John Joseph Whiting）去调查的。怀廷的调查只覆盖疫情头四周（7月8日至8月5日），查的是死亡发生的房屋接的是公司的水、自家水井还是别的水源；在部分这类分区，后三周的供水是按头四周的比例推算的，并非逐户查得。即便如此，学说、统计的整理以及呈现它们的这本书都出自斯诺；表九的户数基数来自1853年的议会报表，14周统计中两家公司供水户的人口是登记总长的估计数。这不意味着数据有错，但意味着我们读到的是一方的记录。",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.limits.0.en",
+   "before": "Plainly: every figure and every account in this piece comes from Snow's own book and his own tables. The addresses of the dead came from the General Register Office. After 26 August the district registrars, at the Registrar General's request, returned the water supply of the house of attack in cholera deaths. The returns were incomplete, and the supply \"remained unascertained in a number of cases\". Even so, Snow says they \"agree entirely\" with the results of his inquiry into the earlier part of the epidemic. That is partial corroboration from registration data, though it reaches us only through Snow's book. Nor was the whole inquiry Snow's own work. A medical man, John Joseph Whiting, made the inquiries in Bermondsey and certain other districts supplied only by the Southwark and Vauxhall Company. Whiting's part covered only the first four weeks of the epidemic, from 8 July to 5 August, and asked whether each house had the company's water, a pump-well or some other source; in some of these sub-districts the water supply of the last three weeks was calculated in the same proportion as in the first four weeks, not ascertained house by house. Still, the doctrine, the statistics and the book that presents them are all Snow's. That does not make the data wrong, but it does mean we are reading one side's record.",
+   "after": "Plainly: every figure and every account in this piece comes from Snow's own book and his own tables. The addresses of the dead came from the General Register Office. After 26 August the district registrars, at the Registrar General's request, returned the water supply of the house of attack in cholera deaths. The returns were incomplete, and the supply \"remained unascertained in a number of cases\". Even so, Snow says they \"agree entirely\" with the results of his inquiry into the earlier part of the epidemic. That is partial corroboration from registration data, though it reaches us only through Snow's book. Nor was the whole inquiry Snow's own work. A medical man, John Joseph Whiting, made the inquiries in Bermondsey and certain other districts supplied only by the Southwark and Vauxhall Company. Whiting's part covered only the first four weeks of the epidemic, from 8 July to 5 August, and asked whether each house had the company's water, a pump-well or some other source; in some of these sub-districts the water supply of the last three weeks was calculated in the same proportion as in the first four weeks, not ascertained house by house. Still, the doctrine, the compilation of the statistics and the book that presents them are all Snow's; the house counts behind Table IX come from a return made to Parliament for 1853, and the populations of the houses supplied by the two companies in the 14-week figures were estimated by the Registrar General. That does not make the data wrong, but it does mean we are reading one side's record.",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.limits.0.ev",
+   "before": [
+    "W-E8",
+    "W-E11",
+    "W-E13",
+    "W-E16",
+    "W-E18",
+    "W-E19"
+   ],
+   "after": [
+    "W-E8",
+    "W-E11",
+    "W-E13",
+    "W-E14",
+    "W-E16",
+    "W-E17",
+    "W-E18",
+    "W-E19"
+   ],
+   "issues": [
+    "V1-V1"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1"
+   ],
+   "changes_applied": 1,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[6] numbers differ zh[5, 14, 26, 37, 59, 71, 98, 115, 153, 315, 537, 795, 1263, 1422, 10000, 26107, 40046, 256423] en[5, 14, 17, 26, 37, 59, 71, 98, 115, 153, 315, 537, 795, 1263, 1422, 10000, 26107, 40046, 256423]"
+    ]
+   ],
+   "content_sha256_after": "edb2b12f082c60cb8ecc6d560fc29259899f2106c4acf60dd6c964e8e6d66974",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.limits.0",
+      "category": "attribution",
+      "severity": "fix",
+      "problem": "段末称“学说、统计和呈现它们的这本书都出自斯诺”（en: \"the statistics ... are all Snow's\"）。这把统计整体归于斯诺，与证据不符。同段已说明部分调查由怀廷完成，后期数据来自各区登记员。此外，表九的户数基数来自1853年的议会报表，14周统计中两家公司供水户的人口是登记总长的估计数。这些数据只是由斯诺整理和呈现。",
+      "evidence": [
+       {
+        "id": "W-E14",
+        "quote": "According to a return which was made to Parliament, the Southwark and Vauxhall Company supplied 40,046 houses from January 1st to December 31st, 1853"
+       },
+       {
+        "id": "W-E17",
+        "quote": "where the population of the houses supplied by the two water companies is that estimated by the Registrar General."
+       },
+       {
+        "id": "W-E13",
+        "quote": "I was fortunate enough to obtain the assistance of a medical man, Mr. John Joseph Whiting, L.A.C."
+       }
+      ],
+      "proposed": "zh改为“即便如此，学说、统计的整理以及呈现它们的这本书都出自斯诺（户数基数来自1853年议会报表，人口为登记总长的估计）。”en同步改为\"Still, the doctrine, the compilation of the statistics (house counts from an 1853 return to Parliament, populations estimated by the Registrar General) and the book that presents them are all Snow's.\""
+     }
+    ],
+    "overall": "定稿整体与证据吻合：引语逐字、推断均已标注、中英一致。仅limits.0把统计整体归于斯诺，归属表述过宽，需做一处最小修正。",
+    "_content_sha256": "edb2b12f082c60cb8ecc6d560fc29259899f2106c4acf60dd6c964e8e6d66974"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1"
+   ],
+   "changes_applied": 3,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[6] numbers differ zh[5, 14, 26, 37, 59, 71, 98, 115, 153, 315, 537, 795, 1263, 1422, 10000, 26107, 40046, 256423] en[5, 14, 17, 26, 37, 59, 71, 98, 115, 153, 315, 537, 795, 1263, 1422, 10000, 26107, 40046, 256423]"
+    ]
+   ],
+   "content_sha256_after": "03b2a5f1229e277fd3b78810d6eee8d80d1ec6c38f35343fb543cb361b2a6bf8",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.limits.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.limits.1",
+      "category": "parity",
+      "severity": "fix",
+      "problem": "英文写成“it is the author's question, not Snow's”，比中文“这是作者提出的疑问”多出一层断言：斯诺从未提出过这个问题。证据只显示斯诺断言两组“没有任何差别”，并不能证明全书中他没有讨论过这个问题。中英因此不一致，英文多出的这层断言也缺少证据支持。",
+      "evidence": [
+       {
+        "id": "W-E4",
+        "quote": "As there is no difference whatever, either in the houses or the people receiving the supply of the two Water Companies"
+       }
+      ],
+      "proposed": "英文删去“, not Snow's”，改为“and it is the author's question”，与中文一致。"
+     }
+    ],
+    "overall": "定稿的事实、数字、引语和解释标注整体都有证据支持，中英基本一致；只有limits.1的英文多出“not Snow's”这一无据断言，删去后即可发布。",
+    "_content_sha256": "03b2a5f1229e277fd3b78810d6eee8d80d1ec6c38f35343fb543cb361b2a6bf8"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.analysis.1",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "中文写“必要时装瓶回家化验”。英文写成“water carried home in phials”，丢掉了“必要时”这一限定，读起来像每户都取水样化验。证据显示，只有住户说不清供水公司时斯诺才取水样。",
+    "evidence": [
+     {
+      "id": "W-E7",
+      "quote": "when the resident could not give clear and conclusive evidence about the Water Company, I obtained some of the water in a small phial"
+     }
+    ],
+    "proposed": "英文改为：“death addresses, house by house, and, where needed, water carried home in phials.”"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "P1",
+    "verdict": "duplicate",
+    "same_as": "F1",
+    "rationale": "问题成立：英文漏掉了中文“必要时”的限定。按证据，取水样只用于住户说不清供水公司的情况。该问题已列为F1。",
+    "evidence": [
+     {
+      "id": "W-E7",
+      "quote": "when the resident could not give clear and conclusive evidence about the Water Company, I obtained some of the water in a small phial"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "03b2a5f1229e277fd3b78810d6eee8d80d1ec6c38f35343fb543cb361b2a6bf8",
+ "open_issues": [
+  "V2-V1"
+ ],
+ "outcome": "pending_review",
+ "failure": null,
+ "finished_at": 1793432855.6466308,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 67.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 21527,
+    "output_tokens": 8159
+   },
+   "cost_estimate_usd": 0.33540400000000004
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 8.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 20939,
+    "output_tokens": 499
+   },
+   "cost_estimate_usd": 0.1775
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 62.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 20718,
+    "output_tokens": 7628
+   },
+   "cost_estimate_usd": 0.31831200000000004
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 14.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 21263,
+    "output_tokens": 1736
+   },
+   "cost_estimate_usd": 0.20483200000000001
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 79.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 20840,
+    "output_tokens": 9429
+   },
+   "cost_estimate_usd": 0.355308
+  }
+ ],
+ "elapsed_min": 3.9,
+ "model_wall_min": 3.9
+}

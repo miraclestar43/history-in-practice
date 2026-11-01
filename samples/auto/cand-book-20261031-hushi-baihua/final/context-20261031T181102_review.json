@@ -1,0 +1,541 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-book-20261031-hushi-baihua",
+ "content_sha256": "e6a3ccfcfb44de53aab1c2399a4c2ce74e9bb90674bb69f11e0098ffb0220e5f",
+ "evidence_in_sha256": "cd30b7995084fe913bd91532a83997fec606091d45a4cd255cd94fa85d69941a",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793488262.9991453,
+ "flagged": [],
+ "search": null,
+ "units": {
+  "S-BK-HUSHI": {
+   "title": "胡适口述，唐德刚译注《胡适口述自传》，中国文史出版社 2020（PDF 文字层；第八章“从文学革命到文艺复兴”）",
+   "url": "https://raw.githubusercontent.com/miraclestar43/bo-guan-yue-qu/1b0d81a1ada44c920d5c19798447616127cec825/13-%E4%BA%BA%E7%89%A9%E4%BC%A0%E8%AE%B0/%E8%83%A1%E9%80%82%E5%8F%A3%E8%BF%B0%E8%87%AA%E4%BC%A0.pdf",
+   "ref": "book:BK-HUSHI-KS",
+   "evidence_text_sha256": "11a8350c0f89bc7fe786a0d88fefbd19620d0e8ed664ec3ed375b2caceb630ec",
+   "cache_sha256": "11a8350c0f89bc7fe786a0d88fefbd19620d0e8ed664ec3ed375b2caceb630ec",
+   "cjk": true,
+   "source_chars": 198290,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     98706,
+     124007
+    ]
+   ],
+   "chars_reviewed": 25301
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 68.4,
+   "json_ok": true,
+   "schema_ok": false,
+   "schema_problems": [
+    "duplicate claim ids"
+   ],
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 7219
+  },
+  {
+   "step": "context_r1",
+   "attempt": 2,
+   "wall_s": 55.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 6217
+  }
+ ],
+ "finished_at": 1793488387.4209797,
+ "elapsed_min": 2.1,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-BK-HUSHI",
+    "outcome": "胡适晚年回顾，五四后学生刊物全用白话，1920年教育部通令小学一、二年级教材改用白话，他称之为“部分的胜利”。他又说自己仍不满意：四十年来白话文没有成为完全的教育和文学工具。就白话诗而言，他本人评价“四十年来的新诗更是大有成就”；唐德刚的注则认为白话诗“还未脱离‘尝试’阶段”。",
+    "quote": "因此在我们的斗争中，至少获得了部分的胜利。其中重要的部分就是以白话文为教育的工具。",
+    "in_evidence": true
+   },
+   {
+    "source_id": "S-BK-HUSHI",
+    "outcome": "关于白话诗这项试验本身的结局，胡适自评新诗大有成就。这句不在证据包里。",
+    "quote": "四十年来的新诗更是大有成就。",
+    "in_evidence": false
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-BK-HUSHI",
+    "start": "一九一六年以后我们就试用活的文字",
+    "end": "四十年来的新诗更是大有成就。",
+    "why": "本文主题是白话诗试验。这段是胡适本人对这项试验后续结果的评价：《新青年》自1918年起全用白话，新诗大有成就，各部门发展不平均。证据包只收了唐德刚“白话诗则未必”的评语（HS-E29），缺了当事人自己的结论，读者只能看到单方面的判断。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "N1",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "因此这是当事人多年后的回忆，不是当时的独立记录。",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章“文学革命的结胎时期”全章及唐德刚注〔1〕（阅读窗口98706–124007）",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "以上九条是记载在我一九一六年七月六日的日记之中"
+    },
+    "fix": "改为：这一章整体是胡适晚年的口述回忆，但其中引述了他1916年7月6日的日记和7月26日致任鸿隽的信等当时文字。本文没有查阅这些日记和信件的原件，只能看到经胡适转引、再经英译与回译的文本。"
+   },
+   {
+    "id": "N2",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "It is therefore a participant's recollection many years later, not an independent record from the time.",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章全章及唐德刚注〔1〕（阅读窗口98706–124007）",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "以上九条是记载在我一九一六年七月六日的日记之中"
+    },
+    "fix": "Say the chapter is a late recollection that quotes his July 6, 1916 diary and his July 26 letter to Ren. We have not consulted those originals, only the texts as Hu quotes them, translated into English and back."
+   },
+   {
+    "id": "N3",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "这些都是唐德刚的记述，本文未另行核验。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "本文实际查阅的来源只有这一本书；这句说的是本文自己的核查范围，不是断言别人没有核查过",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "一九五六年当他以这一论调在哈佛大学讲演时（笔者至今尚保存一份那时的录音带）"
+    },
+    "fix": "可保留。不要把这句扩写成“没有任何第三方核查过”。"
+   },
+   {
+    "id": "N4",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "These are Tang's accounts and were not checked separately here.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "本文自身的核查范围（只查了一本书）",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "一九五六年当他以这一论调在哈佛大学讲演时（笔者至今尚保存一份那时的录音带）"
+    },
+    "fix": "Keep as is; do not broaden it to a claim that no one else ever verified this."
+   },
+   {
+    "id": "N5",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "梅光迪、任鸿隽的言行都经胡适转述",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章中所有涉及梅光迪、任鸿隽的段落（任鸿隽的诗句和信句都是胡适引述的）",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "任君的信上则说：“白话自有白话用处（如作小说、演说等），然不能用之于诗！”"
+    },
+    "fix": "可保留。"
+   },
+   {
+    "id": "N6",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "Mei Guangdi's and Ren Hongjun's words and actions reach us through Hu",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章涉及梅、任的段落",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "任君的信上则说：“白话自有白话用处（如作小说、演说等），然不能用之于诗！”"
+    },
+    "fix": "Keep."
+   },
+   {
+    "id": "N7",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "朋友们的话都经他转述",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章涉及朋友言论的段落",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "例如梅君说，文学之中有各种部门，在小说和民歌里面，白话是可以用的"
+    },
+    "fix": "可保留。"
+   },
+   {
+    "id": "N8",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "his friends' words all reach us through Hu",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章涉及朋友言论的段落",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "例如梅君说，文学之中有各种部门，在小说和民歌里面，白话是可以用的"
+    },
+    "fix": "Keep."
+   },
+   {
+    "id": "N9",
+    "path": "sections.story.2",
+    "lang": "zh",
+    "sentence": "这两处日期并不完全吻合，本文照录胡适的说法。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "第七章“革命的导火线”节中九条日记与凯约嘉湖事件两段",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "就在我记录上述九条的同时，我又收到一封从绮色佳的来信"
+    },
+    "fix": "这是本文对两处日期的比对，不是关于来源有无记载的断言。比对属实，可保留。"
+   },
+   {
+    "id": "N10",
+    "path": "sections.story.2",
+    "lang": "en",
+    "sentence": "The two dates do not quite fit together; this article reports Hu's account as given.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-BK-HUSHI"
+    ],
+    "scope": "同上",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "原来那年七月八日我的朋友任鸿隽"
+    },
+    "fix": "Keep."
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "uncertainty_note",
+    "problem": "关于白话诗结局，读者只能看到唐德刚“白话诗则未必”的评语，看不到胡适本人在同一章对新诗“大有成就”的自评。这样会让读者以为来源对这项试验的结果只有否定判断。应当并列两种看法，并分别标明是谁的观点。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "四十年来的新诗更是大有成就。"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "uncertainty_note",
+    "problem": "稿件把整章定性为“不是当时的独立记录”，没有区分其中引述的1916年日记和书信（当时的文字）与晚年口述框架（后来的回忆），时期与记录者混在了一起。",
+    "quote": {
+     "source_id": "S-BK-HUSHI",
+     "quote": "因此在七月二十六日我就写了一封信给吾友任君"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "证据包已覆盖主要结局与限定。需要补上胡适对新诗“大有成就”的自评，使白话诗结局的两种看法并陈；“不是当时的独立记录”一句应改为区分晚年口述与书中引述的1916年日记、书信，并说明本文没有查阅这些原件。"
+ },
+ "claims": [
+  {
+   "id": "N1",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "因此这是当事人多年后的回忆，不是当时的独立记录。",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章“文学革命的结胎时期”全章及唐德刚注〔1〕（阅读窗口98706–124007）",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "以上九条是记载在我一九一六年七月六日的日记之中"
+   },
+   "fix": "改为：这一章整体是胡适晚年的口述回忆，但其中引述了他1916年7月6日的日记和7月26日致任鸿隽的信等当时文字。本文没有查阅这些日记和信件的原件，只能看到经胡适转引、再经英译与回译的文本。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "It is therefore a participant's recollection many years later, not an independent record from the time.",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章全章及唐德刚注〔1〕（阅读窗口98706–124007）",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "以上九条是记载在我一九一六年七月六日的日记之中"
+   },
+   "fix": "Say the chapter is a late recollection that quotes his July 6, 1916 diary and his July 26 letter to Ren. We have not consulted those originals, only the texts as Hu quotes them, translated into English and back.",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "这些都是唐德刚的记述，本文未另行核验。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "本文实际查阅的来源只有这一本书；这句说的是本文自己的核查范围，不是断言别人没有核查过",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "一九五六年当他以这一论调在哈佛大学讲演时（笔者至今尚保存一份那时的录音带）"
+   },
+   "fix": "可保留。不要把这句扩写成“没有任何第三方核查过”。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "These are Tang's accounts and were not checked separately here.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "本文自身的核查范围（只查了一本书）",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "一九五六年当他以这一论调在哈佛大学讲演时（笔者至今尚保存一份那时的录音带）"
+   },
+   "fix": "Keep as is; do not broaden it to a claim that no one else ever verified this.",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "梅光迪、任鸿隽的言行都经胡适转述",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章中所有涉及梅光迪、任鸿隽的段落（任鸿隽的诗句和信句都是胡适引述的）",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "任君的信上则说：“白话自有白话用处（如作小说、演说等），然不能用之于诗！”"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N6",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "Mei Guangdi's and Ren Hongjun's words and actions reach us through Hu",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章涉及梅、任的段落",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "任君的信上则说：“白话自有白话用处（如作小说、演说等），然不能用之于诗！”"
+   },
+   "fix": "Keep.",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N7",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "朋友们的话都经他转述",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章涉及朋友言论的段落",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "例如梅君说，文学之中有各种部门，在小说和民歌里面，白话是可以用的"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N8",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "his friends' words all reach us through Hu",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章涉及朋友言论的段落",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "例如梅君说，文学之中有各种部门，在小说和民歌里面，白话是可以用的"
+   },
+   "fix": "Keep.",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N9",
+   "path": "sections.story.2",
+   "lang": "zh",
+   "sentence": "这两处日期并不完全吻合，本文照录胡适的说法。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "第七章“革命的导火线”节中九条日记与凯约嘉湖事件两段",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "就在我记录上述九条的同时，我又收到一封从绮色佳的来信"
+   },
+   "fix": "这是本文对两处日期的比对，不是关于来源有无记载的断言。比对属实，可保留。",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  },
+  {
+   "id": "N10",
+   "path": "sections.story.2",
+   "lang": "en",
+   "sentence": "The two dates do not quite fit together; this article reports Hu's account as given.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-BK-HUSHI"
+   ],
+   "scope": "同上",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "原来那年七月八日我的朋友任鸿隽"
+   },
+   "fix": "Keep.",
+   "unit_status": {
+    "S-BK-HUSHI": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "uncertainty_note",
+   "problem": "关于白话诗结局，读者只能看到唐德刚“白话诗则未必”的评语，看不到胡适本人在同一章对新诗“大有成就”的自评。这样会让读者以为来源对这项试验的结果只有否定判断。应当并列两种看法，并分别标明是谁的观点。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "四十年来的新诗更是大有成就。"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "uncertainty_note",
+   "problem": "稿件把整章定性为“不是当时的独立记录”，没有区分其中引述的1916年日记和书信（当时的文字）与晚年口述框架（后来的回忆），时期与记录者混在了一起。",
+   "quote": {
+    "source_id": "S-BK-HUSHI",
+    "quote": "因此在七月二十六日我就写了一封信给吾友任君"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-BK-HUSHI",
+   "outcome": "胡适晚年回顾，五四后学生刊物全用白话，1920年教育部通令小学一、二年级教材改用白话，他称之为“部分的胜利”。他又说自己仍不满意：四十年来白话文没有成为完全的教育和文学工具。就白话诗而言，他本人评价“四十年来的新诗更是大有成就”；唐德刚的注则认为白话诗“还未脱离‘尝试’阶段”。",
+   "quote": "因此在我们的斗争中，至少获得了部分的胜利。其中重要的部分就是以白话文为教育的工具。",
+   "in_evidence": true
+  },
+  {
+   "source_id": "S-BK-HUSHI",
+   "outcome": "关于白话诗这项试验本身的结局，胡适自评新诗大有成就。这句不在证据包里。",
+   "quote": "四十年来的新诗更是大有成就。",
+   "in_evidence": false
+  }
+ ],
+ "additions": [
+  {
+   "id": "HS-E40",
+   "source_id": "S-BK-HUSHI",
+   "offset": 118223,
+   "chars": 465,
+   "why": "本文主题是白话诗试验。这段是胡适本人对这项试验后续结果的评价：《新青年》自1918年起全用白话，新诗大有成就，各部门发展不平均。证据包只收了唐德刚“白话诗则未必”的评语（HS-E29），缺了当事人自己的结论，读者只能看到单方面的判断。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "8905ceca763fd9736b8895e4ab63e054811d1401232135d97b078378066566b5",
+ "outcome": "needs_work",
+ "blocking": [
+  "uncertainty_note.zh: contradicted — 因此这是当事人多年后的回忆，不是当时的独立记录。",
+  "uncertainty_note.en: contradicted — It is therefore a participant's recollection many years later, not an independen",
+  "uncertainty_note: 关于白话诗结局，读者只能看到唐德刚“白话诗则未必”的评语，看不到胡适本人在同一章对新诗“大有成就”的自评。这样会让读者以为来源对这项试验的结果只有否定判断。应当并列两种看法，并分别标明是谁的观点。",
+  "evidence must be expanded first: 1 addition(s) ['HS-E40']"
+ ]
+}

@@ -1,0 +1,2255 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-auto-20261030-sj065-1",
+ "edition_id": "cand-auto-20261030-sj065-1",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "d739d04",
+ "started_at": 1793495052.1198375,
+ "base_source": "samples/auto/cand-auto-20261030-sj065-1/final/article.json",
+ "base_content_sha256": "6fc60398153b2e19d820dd788694c7a64f6f6c36b4144b16827ecf3b74bc22f0",
+ "evidence_sha256": "9101c2145b547e762c8cf363c18a7a0c4399e0201d672e8027bf617600528779",
+ "operator_note": "owner-authorized whole-article revision rev2 (one attempt; 3 earlier attempts kept): owner reader feedback 2026-10-31 (scoped readability revision, authorized): 猜忍 translated and attributed to the accuser; review-process notes and reader-feeling verdicts removed from the body, limits gathered at the end; key classical lines narrated in the vernacular with a few original phrases (田文's answer explained: young ruler, unsettled state, personal merit vs the chief minister's duty); 公叔 = chief minister, the princess = his wife, the home scene and the marriage offer as two steps of one test; 贪而好色 etc. attributed; early life and Chu ending reduced to the background the main line needs; today section dropped (modern scene only in the question)",
+ "model_record_sha256": null,
+ "prior_record_sha256": "b652ca2e4b4ae387ed0afa9d373dce107015b3b19a49664c21a4920f21e04e1b",
+ "attempt": "attempt-4",
+ "context_review_sha256": null,
+ "inherited": [],
+ "contamination": [
+  {
+   "id": "K1",
+   "brief_line": "注意：以下摘录的锚点未通过逐字核对，已删除；简报中引用它们的句子也已删除，不得写入相关内容：SJ0651-E9。",
+   "dropped_ids": [
+    "SJ0651-E9"
+   ]
+  }
+ ],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "dek",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“功劳无人能比 / no one in Wei could match his record”超出证据。证据中只有田文一人在比功时承认不如吴起，没有说魏国无人能比。",
+   "evidence": [
+    {
+     "id": "SJ0651-E13",
+     "quote": "守西河而秦兵不敢東鄉，韓趙賓從，子孰與起？」文曰：「不如子。」"
+    }
+   ],
+   "proposed": "中文改为“吴起替魏国守住西河，战功卓著”；英文改为“Wu Qi held Wei's western frontier at Xihe and had a formidable record”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“功劳无人能比 / no one in Wei could match his record”。中英文都改为只说宰相田文承认功劳不如他，这一点有证据支持。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "dek",
+   "category": "inner_life",
+   "severity": "fix",
+   "problem": "中文“想除掉他”比证据的“害吳起”“起易去也”更重，容易读成要取他性命。证据只支持公叔忌恨吴起、想把他赶走。",
+   "evidence": [
+    {
+     "id": "SJ0651-E17",
+     "quote": "而害吳起。公叔之僕曰：「起易去也。」"
+    }
+   ],
+   "proposed": "改为“魏相公叔忌恨他，想把他赶走”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文“想除掉他”改为“忌恨他，想把他赶走”。英文同步改为 resented him and wanted to drive him out。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "dek",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "英文“the ruler never trusted him again”把证据中的“疑之而弗信”写成永久不再信任，语气过重；中文“从此不再信他”尚可。",
+   "evidence": [
+    {
+     "id": "SJ0651-E20",
+     "quote": "武侯疑之而弗信也"
+    }
+   ],
+   "proposed": "英文改为“and the ruler grew suspicious and stopped trusting him”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文改为 grew suspicious and stopped trusting him。中文同步改为“国君起了疑心，不再信他”，与“疑之而弗信”对应。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.hook.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“功劳谁也比不上 / whose record no one in Wei could match”无证据支持。证据只有田文本人承认“不如子”。",
+   "evidence": [
+    {
+     "id": "SJ0651-E12",
+     "quote": "子孰與起？」文曰：「不如子。」"
+    }
+   ],
+   "proposed": "中文改为“一位替魏国守住西河、连宰相田文都承认功劳不如他的将军”；英文同步修改。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文改为“连宰相田文都承认功劳不如他”，英文同步修改，删去“谁也比不上”的说法。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.context.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“第一句就是 / The first charge was”断言了完整进言的开头结构。证据摘录起于话语中段，无法确认这是第一句。",
+   "evidence": [
+    {
+     "id": "SJ0651-E3",
+     "quote": "起之為人，猜忍人也。"
+    }
+   ],
+   "proposed": "改为“他说吴起「猜忍」，意思是为人多疑狠厉”；英文改为“He charged that Wu Qi was suspicious and ruthless.”",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“第一句就是 / The first charge was”，改为直接转述进言者说吴起「猜忍」。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F6",
+   "path": "sections.context.1",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "中文首次出现“魏文侯”时没有说明身份，英文则写了“a worthy ruler”，两版不一致。后文还会出现魏武侯，读者容易分不清两位国君。",
+   "evidence": [
+    {
+     "id": "SJ0651-E26",
+     "quote": "吳起於是聞魏文侯賢，欲事之。"
+    }
+   ],
+   "proposed": "改为“吴起听说魏国国君魏文侯贤明，便去投奔魏国”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文写明“魏国国君魏文侯”。英文同步改为 Marquis Wen, the ruler of Wei，两版一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F7",
+   "path": "sections.story.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“大臣李克 / his minister Li Ke”：证据没有写明李克的职务。",
+   "evidence": [
+    {
+     "id": "SJ0651-E4",
+     "quote": "文侯問李克曰：「吳起何如人哉？」"
+    }
+   ],
+   "proposed": "中文删去“大臣”，写作“魏文侯先问李克”；英文改为“Marquis Wen first asked Li Ke”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去李克的职务“大臣 / his minister”。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F8",
+   "path": "sections.story.1",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "“魏国设立宰相 / Wei created the office of chief minister”把“置相”（任命宰相）误读成新设官职。",
+   "evidence": [
+    {
+     "id": "SJ0651-E11",
+     "quote": "魏置相，相田文。"
+    }
+   ],
+   "proposed": "中文改为“后来魏国任命宰相，用了田文”；英文改为“Later, when Wei appointed a chief minister, it chose Tian Wen”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "“设立宰相”改为“任命宰相”。英文改为 when Wei appointed a chief minister, it chose Tian Wen。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F9",
+   "path": "sections.story.1",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "正文只写了两项比较，却接着说“三件比完 / When the three were done”，读者无从知道第三件是什么，转折处读不通。",
+   "evidence": [
+    {
+     "id": "SJ0651-E14",
+     "quote": "此三者，子皆出吾下，而位加吾上，何也？"
+    }
+   ],
+   "proposed": "开头改为“吴起一连比了三件事，其中两件是：……”，再接现有两问；英文同步改为“He compared them on three counts; two of them were…”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "先交代吴起一连比了三件事，正文列出其中两件，后文“三件比完”因此读得通。英文同步修改。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F10",
+   "path": "sections.story.3",
+   "category": "inner_life",
+   "severity": "fix",
+   "problem": "中文“想把他除掉”超出“害吳起”“起易去也”，暗示要取他性命。证据只支持排挤、赶走。",
+   "evidence": [
+    {
+     "id": "SJ0651-E17",
+     "quote": "公叔為相，尚魏公主，而害吳起。"
+    }
+   ],
+   "proposed": "改为“他忌恨吴起，想把他赶走”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "“想把他除掉”改为“想把他赶走”。英文同步改为 wanted to drive him out。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F11",
+   "path": "sections.story.4",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "正文先写文侯任用吴起，后面突然改由武侯出场，story.2里还有“国君年纪还轻”。读者分不清文侯和武侯是不是同一人，也不知道此时在位的是谁。",
+   "evidence": [
+    {
+     "id": "SJ0651-E18",
+     "quote": "君因先與武侯言曰"
+    }
+   ],
+   "proposed": "在正文首次提到武侯处写明“当时的魏国国君武侯”（英文“Marquis Wu, then ruler of Wei”）；不要补写二人的亲属关系或继位时间。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "在故事部分首次提到武侯处写明“当时的魏国国君武侯 / Marquis Wu, then ruler of Wei”，没有补写他与文侯的亲属关系或继位时间。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F12",
+   "path": "sections.story.6",
+   "category": "causality",
+   "severity": "fix",
+   "problem": "史书用“故”把贵戚想害吴起写成他变法的结果，正文却改成转折“却 / But”，削弱了史书原有的因果。",
+   "evidence": [
+    {
+     "id": "SJ0651-E23",
+     "quote": "故楚之貴戚盡欲害吳起。"
+    }
+   ],
+   "proposed": "中文改为“史书写道，因此楚国的贵戚都想害他”；英文改为“For this reason, the history says, Chu's nobles all wanted him dead.”",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "把转折“却 / But”改为史书原有的因果，并标明是史书的说法：“史书写道，因此…… / For this reason, the history says”。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F13",
+   "path": "sections.story.6",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "有三处细节与证据或英文版不符：一，中文“跑到悼王的遗体旁伏下”与“伏之”不符，英文已写作“threw himself on it”，两版不一致；二，“围攻”添加了包围的细节，原文只是“攻”；三，原文“射刺”（又射又刺），正文只写了射。",
+   "evidence": [
+    {
+     "id": "SJ0651-E23",
+     "quote": "吳起走之王尸而伏之。擊起之徒因射刺吳起，并中悼王。"
+    }
+   ],
+   "proposed": "中文改为“王族大臣作乱，攻击吴起；吴起跑到悼王遗体处，伏在遗体上，攻击他的人射杀、刺杀吴起，也射中了悼王的遗体”；英文改为“shot and stabbed him”。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "三处都已改正：“围攻”改为“攻击”；“伏下”改为“伏在遗体上”，与英文一致；“射中”改为“又射又刺”，英文改为 shot and stabbed him。“并中”写作“击中 / struck”，没有添加致死的细节。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F14",
+   "path": "sections.context.0",
+   "category": "readability",
+   "severity": "note",
+   "problem": "英文用“Wey”（卫）和“Wei”（魏）区分两国，但没有说明，读者容易混淆。",
+   "evidence": [],
+   "proposed": "在“Wey”首次出现处加短注，例如“Wey (a different state from Wei, where he later served)”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F15",
+   "path": "sections.limits.0",
+   "category": "style",
+   "severity": "note",
+   "problem": "本段与uncertainty_note内容几乎重复。",
+   "evidence": [],
+   "proposed": "二者保留其一，或把limits.0压缩为一句。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F16",
+   "path": "reflection.scenario",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "现代虚构场景用引号引了证据原词“无留心”，等于在现代场景中引用证据；英文版没有这个引用，两版也不一致。",
+   "evidence": [
+    {
+     "id": "SJ0651-E18",
+     "quote": "無留心則必辭矣"
+    }
+   ],
+   "proposed": "改为“管理层反而认定他本来就没打算留下”，去掉引号和原词。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去现代场景中带引号的原词“无留心”，改为“认定他本来就没打算留下”，与英文 proof that he never meant to stay 一致。英文原文无需改动，按同步规则照录。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F17",
+   "path": "reflection.example.assumptions",
+   "category": "style",
+   "severity": "note",
+   "problem": "中文“试探已经执行，且不止一次的可能”语句残缺，与英文“may well be run again”不完全对应。",
+   "evidence": [],
+   "proposed": "改为“试探已经执行过，而且很可能还会再来”。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.hook.1",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "开头连续出现两位“宰相”。hook.0 称公叔为“魏国宰相”，hook.1 又称“宰相田文”，没有说明两人先后任职。不了解背景的读者会分不清谁是现任宰相、田文与公叔是什么关系。dek 已写明“当时的宰相田文”“后来的魏相公叔”，hook 中却丢了这一层。",
+   "evidence": [
+    {
+     "id": "SJ0651-E17",
+     "quote": "田文既死，公叔為相"
+    }
+   ],
+   "proposed": "中文改为“连前任宰相田文都承认功劳不如他”；英文改为“whose record even Tian Wen, the chief minister before Gongshu, admitted was greater than his own”。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "在中英文中都写明田文是公叔之前的宰相，让读者分清两人先后任职，与dek的说法一致。依据是史书所记田文死后公叔才做宰相。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V8",
+   "path": "sections.analysis.1",
+   "category": "causality",
+   "severity": "fix",
+   "problem": "司马迁原文用“以”字写明因果：因刻暴少恩而亡其躯。中文写成“施政「刻暴少恩」……最后丢了性命”，弱化成先后并置，与英文的“it cost him his life”也不一致。另外“这是史家对他一生的评价”扩大了评语范围，原文针对的是他在楚国施政致死这一点。",
+   "evidence": [
+    {
+     "id": "SJ0651-E25",
+     "quote": "然行之於楚，以刻暴少恩亡其軀。悲夫！"
+    }
+   ],
+   "proposed": "中文改为“可他自己在楚国施政「刻暴少恩」，严苛暴烈、少有恩惠，因此丢了性命。这是司马迁的评语。”英文末句改为“That is Sima Qian's own verdict.”",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "中文把“最后丢了性命”改为“因此丢了性命”，按司马迁原文的“以”字恢复因果关系，并与英文的说法对齐。末句把“这是史家对他一生的评价”收窄为“这是司马迁的评语”，英文相应改为Sima Qian's own verdict，不再扩大评语的范围。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V2-V5",
+   "path": "sections.story.6",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "英文 \"removed royal kinsmen of distant blood from their privileges\" 补出了“特权”这一具体内容。中文“罢免与王室血缘疏远的公族”和原文“廢公族疏遠者”都没有这一层，中英不一致，也超出了证据。",
+   "evidence": [
+    {
+     "id": "SJ0651-E21",
+     "quote": "廢公族疏遠者"
+    }
+   ],
+   "proposed": "英文改为 \"dismissed royal kinsmen of distant blood\"。",
+   "origin": "final-editor verify round 2"
+  }
+ ],
+ "edits": [
+  {
+   "path": "dek.zh",
+   "before": "吴起替魏国守住西河，功劳无人能比。魏相公叔想除掉他，设了一个两步的局：先劝国君把公主许配给吴起，再请吴起到家里，看自己的公主妻子当面轻慢自己。吴起辞了婚，国君从此不再信他。",
+   "after": "吴起替魏国守住西河，连当时的宰相田文都承认功劳不如他。后来的魏相公叔忌恨他，想把他赶走，设了一个两步的局：先劝国君把公主许配给吴起，再请吴起到家里，看自己的公主妻子当面轻慢自己。吴起辞了婚，国君起了疑心，不再信他。",
+   "issues": [
+    "F1",
+    "F2",
+    "F3"
+   ]
+  },
+  {
+   "path": "dek.en",
+   "before": "Wu Qi held Wei's western frontier at Xihe, and no one in Wei could match his record. The chief minister Gongshu wanted him gone and laid a two-step trap: persuade the ruler to offer Wu Qi a princess in marriage, then bring Wu Qi home to watch Gongshu's own wife, a princess, treat her husband with contempt. Wu Qi declined the marriage, and the ruler never trusted him again.",
+   "after": "Wu Qi held Wei's western frontier at Xihe, and even Tian Wen, chief minister at the time, admitted that his record was the greater. A later chief minister, Gongshu, resented him and wanted to drive him out, so he laid a two-step trap: persuade the ruler to offer Wu Qi a princess in marriage, then bring Wu Qi home to watch Gongshu's own wife, a princess, treat her husband with contempt. Wu Qi declined the marriage, and the ruler grew suspicious and stopped trusting him.",
+   "issues": [
+    "F1",
+    "F2",
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.hook.1.zh",
+   "before": "那场脾气和那门婚事都不是巧合，而是公叔按照自家仆人的计策一手安排的。一位替魏国守住西河、功劳谁也比不上的将军，为什么一门婚事就让他在魏国待不下去？",
+   "after": "那场脾气和那门婚事都不是巧合，而是公叔按照自家仆人的计策一手安排的。一位替魏国守住西河、连宰相田文都承认功劳不如他的将军，为什么一门婚事就让他在魏国待不下去？",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "Neither the temper nor the marriage offer was an accident: both were arranged by Gongshu, following a plan from one of his own servants. How could a single marriage offer drive out a general who had held Wei's western frontier and whose record no one in Wei could match?",
+   "after": "Neither the temper nor the marriage offer was an accident: both were arranged by Gongshu, following a plan from one of his own servants. How could a single marriage offer drive out a general who had held Wei's western frontier, and whose record even the chief minister Tian Wen admitted was greater than his own?",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.context.1.zh",
+   "before": "仗打赢了，鲁国却有人在国君面前指责他，第一句就是吴起「猜忍」，意思是为人多疑狠厉。这人翻出他的旧事：年轻时家有千金，出外求官不成，把家产败光，被乡邻嘲笑，他杀了三十多个讥讽他的人，离开卫国；临走咬破胳膊向母亲发誓，不做卿相不回卫国；后来母亲去世，他也没有回去，老师曾子因此和他断绝来往。这人还替鲁君算了一笔账：鲁国是小国，有了打胜仗的名声，各国就会来打鲁国的主意；鲁、卫是兄弟之国，重用吴起，等于抛弃卫国。鲁君起了疑心，辞退了吴起。吴起听说魏文侯贤明，便去投奔魏国。",
+   "after": "仗打赢了，鲁国却有人在国君面前指责他，说吴起「猜忍」，意思是为人多疑狠厉。这人翻出他的旧事：年轻时家有千金，出外求官不成，把家产败光，被乡邻嘲笑，他杀了三十多个讥讽他的人，离开卫国；临走咬破胳膊向母亲发誓，不做卿相不回卫国；后来母亲去世，他也没有回去，老师曾子因此和他断绝来往。这人还替鲁君算了一笔账：鲁国是小国，有了打胜仗的名声，各国就会来打鲁国的主意；鲁、卫是兄弟之国，重用吴起，等于抛弃卫国。鲁君起了疑心，辞退了吴起。吴起听说魏国国君魏文侯贤明，便去投奔魏国。",
+   "issues": [
+    "F5",
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.context.1.en",
+   "before": "After the victory, someone in Lu denounced him to its ruler. The first charge was that Wu Qi was suspicious and ruthless. The accuser dug up his past: as a young man from a rich family he had sought office abroad and failed, squandering the family fortune; when his neighbours laughed at him, he killed more than thirty of those who mocked him and left Wey. Parting from his mother, he bit his arm and swore never to return to Wey until he was a chief minister. When his mother later died he did not go back, and his teacher Zengzi broke with him. The accuser also did the sums for Lu's ruler: Lu was a small state, and a name for victories would make the other states eye it greedily; Lu and Wey were brother states, so to employ Wu Qi was to abandon Wey. The ruler of Lu grew suspicious and dismissed him. Hearing that Marquis Wen of Wei was a worthy ruler, Wu Qi went to serve him.",
+   "after": "After the victory, someone in Lu denounced him to its ruler, charging that Wu Qi was suspicious and ruthless. The accuser dug up his past: as a young man from a rich family he had sought office abroad and failed, squandering the family fortune; when his neighbours laughed at him, he killed more than thirty of those who mocked him and left Wey. Parting from his mother, he bit his arm and swore never to return to Wey until he was a chief minister. When his mother later died he did not go back, and his teacher Zengzi broke with him. The accuser also did the sums for Lu's ruler: Lu was a small state, and a name for victories would make the other states eye it greedily; Lu and Wey were brother states, so to employ Wu Qi was to abandon Wey. The ruler of Lu grew suspicious and dismissed him. Hearing that Marquis Wen, the ruler of Wei, was a worthy ruler, Wu Qi went to serve him.",
+   "issues": [
+    "F5",
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.story.0.zh",
+   "before": "魏文侯先问大臣李克，吴起是个什么样的人。李克的评价毁誉参半：「起貪而好色，然用兵司馬穰苴不能過也」，说吴起贪婪又好色，可论带兵，连司马穰苴也超不过他。吴起带兵，和最下等的士兵吃穿一样，睡觉不铺席子，行军不骑马坐车，自己背粮食。有个士兵生了毒疮，吴起亲口替他吸脓。士兵的母亲听说后大哭：当年吴将军也替孩子的父亲吸过疮，他父亲打仗从不回头，死在敌阵里；如今又替她儿子吸，她不知道儿子会死在哪里了。文侯看重吴起会用兵、廉洁公平、深得士兵之心，派他镇守西河，抵御秦国和韩国。",
+   "after": "魏文侯先问李克，吴起是个什么样的人。李克的评价毁誉参半：「起貪而好色，然用兵司馬穰苴不能過也」，说吴起贪婪又好色，可论带兵，连司马穰苴也超不过他。吴起带兵，和最下等的士兵吃穿一样，睡觉不铺席子，行军不骑马坐车，自己背粮食。有个士兵生了毒疮，吴起亲口替他吸脓。士兵的母亲听说后大哭：当年吴将军也替孩子的父亲吸过疮，他父亲打仗从不回头，死在敌阵里；如今又替她儿子吸，她不知道儿子会死在哪里了。文侯看重吴起会用兵、廉洁公平、深得士兵之心，派他镇守西河，抵御秦国和韩国。",
+   "issues": [
+    "F7"
+   ]
+  },
+  {
+   "path": "sections.story.0.en",
+   "before": "Marquis Wen first asked his minister Li Ke what sort of man Wu Qi was. Li Ke's verdict was mixed: Wu Qi was greedy and fond of women, but in the use of troops not even Sima Rangju could surpass him. As a commander, Wu Qi dressed and ate like the lowest of his soldiers, slept without a mat, marched instead of riding, and carried his own rations. When one soldier had an abscess, Wu Qi sucked out the pus himself. The soldier's mother wept when she heard. Years before, she said, General Wu had done the same for the boy's father, who then fought without ever turning back and died among the enemy; now he had done it for her son, and she did not know where her son would die. Valuing Wu Qi's skill with troops, his honesty and fairness, and the loyalty he won from his men, Marquis Wen made him governor of Xihe, to hold off Qin and Han.",
+   "after": "Marquis Wen first asked Li Ke what sort of man Wu Qi was. Li Ke's verdict was mixed: Wu Qi was greedy and fond of women, but in the use of troops not even Sima Rangju could surpass him. As a commander, Wu Qi dressed and ate like the lowest of his soldiers, slept without a mat, marched instead of riding, and carried his own rations. When one soldier had an abscess, Wu Qi sucked out the pus himself. The soldier's mother wept when she heard. Years before, she said, General Wu had done the same for the boy's father, who then fought without ever turning back and died among the enemy; now he had done it for her son, and she did not know where her son would die. Valuing Wu Qi's skill with troops, his honesty and fairness, and the loyalty he won from his men, Marquis Wen made him governor of Xihe, to hold off Qin and Han.",
+   "issues": [
+    "F7"
+   ]
+  },
+  {
+   "path": "sections.story.1.zh",
+   "before": "后来魏国设立宰相，用了田文。吴起很不高兴，去找田文比功劳。他问：统领三军，让士兵乐意为国拼命，敌国不敢打魏国的主意，你比我怎样？田文说：「不如子」，不如你。又问：镇守西河，让秦兵不敢向东进犯，韩、赵两国都来归附，你比我怎样？田文还是说不如你。三件比完，吴起问：这三件你都在我之下，职位却在我之上，这是为什么？",
+   "after": "后来魏国任命宰相，用了田文。吴起很不高兴，去找田文比功劳。他一连比了三件事，其中两件是：统领三军，让士兵乐意为国拼命，敌国不敢打魏国的主意，你比我怎样？田文说：「不如子」，不如你。镇守西河，让秦兵不敢向东进犯，韩、赵两国都来归附，你比我怎样？田文还是说不如你。三件比完，吴起问：这三件你都在我之下，职位却在我之上，这是为什么？",
+   "issues": [
+    "F8",
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.story.1.en",
+   "before": "Later Wei created the office of chief minister and gave it to Tian Wen. Wu Qi was displeased and challenged Tian Wen to compare their merits. In command of the armies, he asked, making soldiers glad to die and enemy states afraid to plot against Wei, how do you compare with me? Tian Wen said: Not as well as you. Holding Xihe, so that Qin's troops dare not march east and Han and Zhao come as guests, how do you compare with me? Again Tian Wen said he could not match him. When the three were done, Wu Qi asked: in all three you rank below me, yet your post ranks above mine. Why?",
+   "after": "Later, when Wei appointed a chief minister, it chose Tian Wen. Wu Qi was displeased and challenged Tian Wen to compare their merits. He compared them on three counts; two of them were these. In command of the armies, making soldiers glad to die and enemy states afraid to plot against Wei, how do you compare with me? Tian Wen said: Not as well as you. Holding Xihe, so that Qin's troops dare not march east and Han and Zhao come as guests, how do you compare with me? Again Tian Wen said he could not match him. When the three were done, Wu Qi asked: in all three you rank below me, yet your post ranks above mine. Why?",
+   "issues": [
+    "F8",
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.story.3.zh",
+   "before": "田文死后，公叔做了宰相。公叔娶的是魏国公主，他忌恨吴起，想把他除掉。公叔的仆人说：吴起很容易赶走。公叔问怎么办，仆人先说吴起的为人：「吳起為人節廉而自喜名也」，有节操、清廉，又看重自己的名声。接着献上一个两步的计策。",
+   "after": "田文死后，公叔做了宰相。公叔娶的是魏国公主，他忌恨吴起，想把他赶走。公叔的仆人说：吴起很容易赶走。公叔问怎么办，仆人先说吴起的为人：「吳起為人節廉而自喜名也」，有节操、清廉，又看重自己的名声。接着献上一个两步的计策。",
+   "issues": [
+    "F10"
+   ]
+  },
+  {
+   "path": "sections.story.3.en",
+   "before": "After Tian Wen died, Gongshu became chief minister. Gongshu was married to a princess of Wei, and he resented Wu Qi and wanted to be rid of him. His servant said: Wu Qi is easy to drive away. When Gongshu asked how, the servant first described the man: Wu Qi had integrity, kept his hands clean, and prized his good name. Then he laid out a plan in two steps.",
+   "after": "After Tian Wen died, Gongshu became chief minister. Gongshu was married to a princess of Wei, and he resented Wu Qi and wanted to drive him out. His servant said: Wu Qi is easy to drive away. When Gongshu asked how, the servant first described the man: Wu Qi had integrity, kept his hands clean, and prized his good name. Then he laid out a plan in two steps.",
+   "issues": [
+    "F10"
+   ]
+  },
+  {
+   "path": "sections.story.4.zh",
+   "before": "第一步，公叔先去对武侯说：吴起是个贤人，可是您的国家小，又和强大的秦国接壤，我私下担心吴起没有长久留下的心。照仆人的设计，武侯会问：那怎么办？公叔就建议「試延以公主」，拿把公主许配给吴起来试探他：有心留下，一定会接受；无心留下，一定会推辞，「以此卜之」，就用这件事来占卜他的去留。第二步，公叔请吴起到家里，让自己的妻子，也就是那位公主，当着吴起的面发怒、轻慢公叔。仆人断定，吴起看到公主这样轻贱自己的丈夫，一定会推辞这门婚事。",
+   "after": "第一步，公叔先去对当时的魏国国君武侯说：吴起是个贤人，可是您的国家小，又和强大的秦国接壤，我私下担心吴起没有长久留下的心。照仆人的设计，武侯会问：那怎么办？公叔就建议「試延以公主」，拿把公主许配给吴起来试探他：有心留下，一定会接受；无心留下，一定会推辞，「以此卜之」，就用这件事来占卜他的去留。第二步，公叔请吴起到家里，让自己的妻子，也就是那位公主，当着吴起的面发怒、轻慢公叔。仆人断定，吴起看到公主这样轻贱自己的丈夫，一定会推辞这门婚事。",
+   "issues": [
+    "F11"
+   ]
+  },
+  {
+   "path": "sections.story.4.en",
+   "before": "Step one: Gongshu would tell Marquis Wu that Wu Qi was a man of worth, but that the marquis's state was small and bordered on mighty Qin, and he privately feared Wu Qi had no mind to stay. In the servant's script, the marquis would ask what to do. Gongshu would then propose testing Wu Qi with the offer of a princess: if he meant to stay he would surely accept, and if not he would surely decline, so the offer would serve as a divination of his intentions. Step two: Gongshu would invite Wu Qi home and have his own wife, the princess, flare up and slight her husband in front of him. Seeing a princess treat her husband with such contempt, the servant predicted, Wu Qi would surely turn the marriage down.",
+   "after": "Step one: Gongshu would tell Marquis Wu, then ruler of Wei, that Wu Qi was a man of worth, but that the marquis's state was small and bordered on mighty Qin, and he privately feared Wu Qi had no mind to stay. In the servant's script, the marquis would ask what to do. Gongshu would then propose testing Wu Qi with the offer of a princess: if he meant to stay he would surely accept, and if not he would surely decline, so the offer would serve as a divination of his intentions. Step two: Gongshu would invite Wu Qi home and have his own wife, the princess, flare up and slight her husband in front of him. Seeing a princess treat her husband with such contempt, the servant predicted, Wu Qi would surely turn the marriage down.",
+   "issues": [
+    "F11"
+   ]
+  },
+  {
+   "path": "sections.story.6.zh",
+   "before": "在楚国，楚悼王早就听说他贤能，让他做了宰相。他严明法令，裁掉不急需的官员，罢免与王室血缘疏远的公族，集中力量强兵，楚国强盛起来，各国都忧虑楚国的强大。楚国的贵族却都想害他。悼王一死，王族大臣作乱，围攻吴起；吴起跑到悼王的遗体旁伏下，攻击他的人射中了吴起，也射中了悼王的遗体。太子即位后，下令把射中王尸的人全部处死，因此被灭族的有七十多家。",
+   "after": "在楚国，楚悼王早就听说他贤能，让他做了宰相。他严明法令，裁掉不急需的官员，罢免与王室血缘疏远的公族，集中力量强兵，楚国强盛起来，各国都忧虑楚国的强大。史书写道，因此楚国的贵戚都想害他。悼王一死，王族大臣作乱，攻击吴起；吴起跑到悼王遗体处，伏在遗体上，攻击他的人又射又刺吴起，也击中了悼王的遗体。太子即位后，下令把射中王尸的人全部处死，因此被灭族的有七十多家。",
+   "issues": [
+    "F12",
+    "F13"
+   ]
+  },
+  {
+   "path": "sections.story.6.en",
+   "before": "In Chu, King Dao, who had long heard of his ability, made him chief minister. He made the laws clear and strict, cut offices that were not needed, removed royal kinsmen of distant blood from their privileges, and put the state's strength into its army; Chu grew strong, and the other states feared its power. But Chu's nobles all wanted him dead. When King Dao died, members of the royal clan rose against Wu Qi. He ran to the king's body and threw himself on it; his attackers shot him, and their arrows struck the king's body too. Once the crown prince came to the throne, he had everyone who had struck the king's body put to death, and more than seventy families were wiped out for it.",
+   "after": "In Chu, King Dao, who had long heard of his ability, made him chief minister. He made the laws clear and strict, cut offices that were not needed, removed royal kinsmen of distant blood from their privileges, and put the state's strength into its army; Chu grew strong, and the other states feared its power. For this reason, the history says, Chu's nobles all wanted him dead. When King Dao died, members of the royal clan rose up and attacked Wu Qi. He ran to the king's body and threw himself on it; his attackers shot and stabbed him, and struck the king's body too. Once the crown prince came to the throne, he had everyone who had struck the king's body put to death, and more than seventy families were wiped out for it.",
+   "issues": [
+    "F12",
+    "F13"
+   ]
+  },
+  {
+   "path": "reflection.scenario.zh",
+   "before": "一家小公司里，一位功劳清楚的核心成员被安排了一次试探：管理层假装公司要与另一家合并，想看他是立刻站队还是观望。他看出这是试探后当场请辞，管理层反而觉得坐实了他“无留心”。",
+   "after": "一家小公司里，一位功劳清楚的核心成员被安排了一次试探：管理层假装公司要与另一家合并，想看他是立刻站队还是观望。他看出这是试探后当场请辞，管理层反而认定他本来就没打算留下。",
+   "issues": [
+    "F16"
+   ]
+  },
+  {
+   "path": "sections.hook.1.zh",
+   "before": "那场脾气和那门婚事都不是巧合，而是公叔按照自家仆人的计策一手安排的。一位替魏国守住西河、连宰相田文都承认功劳不如他的将军，为什么一门婚事就让他在魏国待不下去？",
+   "after": "那场脾气和那门婚事都不是巧合，而是公叔按照自家仆人的计策一手安排的。一位替魏国守住西河、连公叔的前任宰相田文都承认功劳不如他的将军，为什么一门婚事就让他在魏国待不下去？",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "Neither the temper nor the marriage offer was an accident: both were arranged by Gongshu, following a plan from one of his own servants. How could a single marriage offer drive out a general who had held Wei's western frontier, and whose record even the chief minister Tian Wen admitted was greater than his own?",
+   "after": "Neither the temper nor the marriage offer was an accident: both were arranged by Gongshu, following a plan from one of his own servants. How could a single marriage offer drive out a general who had held Wei's western frontier, and whose record even Tian Wen, the chief minister before Gongshu, admitted was greater than his own?",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.zh",
+   "before": "司马迁在传末评论说：吴起曾劝武侯，地形的险要比不上君主的德行，可他自己在楚国施政「刻暴少恩」，严苛暴烈、少有恩惠，最后丢了性命。这是史家对他一生的评价。",
+   "after": "司马迁在传末评论说：吴起曾劝武侯，地形的险要比不上君主的德行，可他自己在楚国施政「刻暴少恩」，严苛暴烈、少有恩惠，因此丢了性命。这是司马迁的评语。",
+   "issues": [
+    "V1-V8"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.en",
+   "before": "At the end of the biography, Sima Qian remarked that Wu Qi had once told Marquis Wu that strong terrain counts for less than virtue, yet in Chu he himself governed harshly and with little kindness, and it cost him his life. That is the historian's verdict on his career.",
+   "after": "At the end of the biography, Sima Qian remarked that Wu Qi had once told Marquis Wu that strong terrain counts for less than virtue, yet in Chu he himself governed harshly and with little kindness, and that cost him his life. That is Sima Qian's own verdict.",
+   "issues": [
+    "V1-V8"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "F10",
+    "F11",
+    "F12",
+    "F13",
+    "F16"
+   ],
+   "changes_applied": 17,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [],
+   "content_sha256_after": "aebbfd7d6d6a3cd40a3ff1ed729fb38ee8463d8a52df6391ac4c39ec948e3103",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1",
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4",
+       "V5"
+      ]
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V6"
+      ]
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V7"
+      ]
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V8"
+      ]
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V9"
+      ]
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.1",
+      "category": "readability",
+      "severity": "fix",
+      "problem": "开头连续出现两位“宰相”。hook.0 称公叔为“魏国宰相”，hook.1 又称“宰相田文”，没有说明两人先后任职。不了解背景的读者会分不清谁是现任宰相、田文与公叔是什么关系。dek 已写明“当时的宰相田文”“后来的魏相公叔”，hook 中却丢了这一层。",
+      "evidence": [
+       {
+        "id": "SJ0651-E17",
+        "quote": "田文既死，公叔為相"
+       }
+      ],
+      "proposed": "中文改为“连前任宰相田文都承认功劳不如他”；英文改为“whose record even Tian Wen, the chief minister before Gongshu, admitted was greater than his own”。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.hook.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "中文开头直接写“守住西河”，没有交代西河是什么。英文已译为 western frontier，中英信息量不一致，中文读者在开头无从理解这项功劳。",
+      "evidence": [
+       {
+        "id": "SJ0651-E7",
+        "quote": "乃以為西河守，以拒秦、韓"
+       }
+      ],
+      "proposed": "改为“替魏国镇守西河、抵御秦韩的将军”。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.story.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "李克、司马穰苴首次出现，都没有说明身份。读者不知道为何拿司马穰苴作比较。证据包没有提供两人的身份，不宜补写具体职务。",
+      "evidence": [
+       {
+        "id": "SJ0651-E4",
+        "quote": "然用兵司馬穰苴不能過也"
+       }
+      ],
+      "proposed": "白话部分改为“可论带兵，连以善于用兵著称的司马穰苴也超不过他”。李克处可写“文侯向李克打听”，不补职务。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.story.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“其中两件是”带有“此处录其二”式的取材说明口吻。",
+      "evidence": [
+       {
+        "id": "SJ0651-E14",
+        "quote": "此三者，子皆出吾下"
+       }
+      ],
+      "proposed": "改为“他一连比了三件事，比如……；又如……”，英文相应改为“He compared them on three counts, for example…”。"
+     },
+     {
+      "id": "V5",
+      "path": "sections.story.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "story.0 的国君是魏文侯，story.2 的田文却说“主少国疑”，story.4 又出现“当时的魏国国君武侯”。正文没有交代国君已由文侯换成武侯，读者难以理解“主少”指谁。证据包没有直接记载君位更替，只显示吴起后来侍奉武侯。",
+      "evidence": [
+       {
+        "id": "SJ0651-E8",
+        "quote": "武侯浮西河而下，中流，顧而謂吳起曰"
+       }
+      ],
+      "proposed": "在 story.2 的白话解释中写明“国君（此时已是年轻的武侯）年纪还轻”，或在 story.1 写“后来，吴起侍奉魏武侯期间”。不补写文侯去世的细节。"
+     },
+     {
+      "id": "V6",
+      "path": "sections.story.4",
+      "category": "style",
+      "severity": "note",
+      "problem": "“拿把公主许配给吴起来试探他”语句别扭。",
+      "evidence": [
+       {
+        "id": "SJ0651-E18",
+        "quote": "試延以公主"
+       }
+      ],
+      "proposed": "改为“用许配公主这件事来试探他”。"
+     },
+     {
+      "id": "V7",
+      "path": "sections.story.6",
+      "category": "readability",
+      "severity": "note",
+      "problem": "只写攻击者“又射又刺吴起”，没有明说吴起因此而死，读者要到 analysis.1 才知道他的结局。",
+      "evidence": [
+       {
+        "id": "SJ0651-E23",
+        "quote": "擊起之徒因射刺吳起，并中悼王"
+       },
+       {
+        "id": "SJ0651-E25",
+        "quote": "以刻暴少恩亡其軀"
+       }
+      ],
+      "proposed": "中文改为“攻击他的人又射又刺，杀死了吴起，也击中了悼王的遗体”，英文相应补“and killed him”。"
+     },
+     {
+      "id": "V8",
+      "path": "sections.analysis.1",
+      "category": "causality",
+      "severity": "fix",
+      "problem": "司马迁原文用“以”字写明因果：因刻暴少恩而亡其躯。中文写成“施政「刻暴少恩」……最后丢了性命”，弱化成先后并置，与英文的“it cost him his life”也不一致。另外“这是史家对他一生的评价”扩大了评语范围，原文针对的是他在楚国施政致死这一点。",
+      "evidence": [
+       {
+        "id": "SJ0651-E25",
+        "quote": "然行之於楚，以刻暴少恩亡其軀。悲夫！"
+       }
+      ],
+      "proposed": "中文改为“可他自己在楚国施政「刻暴少恩」，严苛暴烈、少有恩惠，因此丢了性命。这是司马迁的评语。”英文末句改为“That is Sima Qian's own verdict.”"
+     },
+     {
+      "id": "V9",
+      "path": "reflection.example.assumptions",
+      "category": "style",
+      "severity": "note",
+      "problem": "中文“试探已经执行，且不止一次的可能”语句残缺，与英文“may well be run again”不完全对应。",
+      "evidence": [],
+      "proposed": "改为“试探已经执行过，而且可能还会再来”。"
+     }
+    ],
+    "overall": "定稿史实、引语与归属基本都有证据支持；需修正结尾太史公评语被弱化的因果和开头两位宰相易混的问题，其余为易读性与文风小改。",
+    "_content_sha256": "aebbfd7d6d6a3cd40a3ff1ed729fb38ee8463d8a52df6391ac4c39ec948e3103"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1",
+    "V1-V8"
+   ],
+   "changes_applied": 4,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [],
+   "content_sha256_after": "aa094f23345efd4374449345ee2e3ec59d543513f578460b9498fe11772b92d9",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3",
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "中文首次提到“西河”时没有说明它是什么。英文已写 western frontier，中文读者到 story.0 才知道它的作用是抵御秦、韩。",
+      "evidence": [
+       {
+        "id": "SJ0651-E7",
+        "quote": "乃以為西河守，以拒秦、韓"
+       }
+      ],
+      "proposed": "改为“一位替魏国守住西河（魏国抵御秦、韩的边地）……的将军”。"
+     },
+     {
+      "path": "sections.story.0",
+      "id": "V2",
+      "category": "readability",
+      "severity": "note",
+      "problem": "司马穰苴首次出现时没有说明身份，读者不知道这句比较的分量。",
+      "evidence": [
+       {
+        "id": "SJ0651-E4",
+        "quote": "然用兵司馬穰苴不能過也"
+       }
+      ],
+      "proposed": "改为“可论带兵，连以用兵著称的司马穰苴也超不过他”。只依据原句的比较关系，不补其他生平。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.story.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "story.0 的国君还是魏文侯，story.2 却出现“国君年纪还轻”，story.4 又出现“当时的魏国国君武侯”。正文没有交代国君已经换成武侯，读者可能分不清田文所说的“主少”指谁。",
+      "evidence": [
+       {
+        "id": "SJ0651-E8",
+        "quote": "武侯浮西河而下"
+       },
+       {
+        "id": "SJ0651-E15",
+        "quote": "主少國疑"
+       }
+      ],
+      "proposed": "在 story.1 开头改为“到了魏武侯在位时，魏国任命宰相，用了田文”。不添加证据以外的亲属关系或年份。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.story.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“其中两件是”近似“此处录其二”式的选材说明，会让读者追问第三件是什么。",
+      "evidence": [
+       {
+        "id": "SJ0651-E14",
+        "quote": "此三者，子皆出吾下"
+       }
+      ],
+      "proposed": "改为“他一连比了三件事，比如：……”，不再写“其中两件是”。英文同步改为 \"He compared them on three counts, for example:\"。"
+     },
+     {
+      "id": "V5",
+      "path": "sections.story.6",
+      "category": "parity",
+      "severity": "fix",
+      "problem": "英文 \"removed royal kinsmen of distant blood from their privileges\" 补出了“特权”这一具体内容。中文“罢免与王室血缘疏远的公族”和原文“廢公族疏遠者”都没有这一层，中英不一致，也超出了证据。",
+      "evidence": [
+       {
+        "id": "SJ0651-E21",
+        "quote": "廢公族疏遠者"
+       }
+      ],
+      "proposed": "英文改为 \"dismissed royal kinsmen of distant blood\"。"
+     }
+    ],
+    "overall": "史实、引语、归属与解释标注均有证据支持；需修正 story.6 英文多出的“特权”一处，另有四处易读性小问题建议顺手改善，整体可放行。",
+    "_content_sha256": "aa094f23345efd4374449345ee2e3ec59d543513f578460b9498fe11772b92d9"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1",
+     "F2",
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "chronology",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F14"
+    ]
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5",
+     "F6"
+    ]
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "chronology",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F7"
+    ]
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F8",
+     "F9"
+    ]
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F10"
+    ]
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F11"
+    ]
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F12",
+     "F13"
+    ]
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F15"
+    ]
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F16"
+    ]
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F17"
+    ]
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "dek",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“功劳无人能比 / no one in Wei could match his record”超出证据。证据中只有田文一人在比功时承认不如吴起，没有说魏国无人能比。",
+    "evidence": [
+     {
+      "id": "SJ0651-E13",
+      "quote": "守西河而秦兵不敢東鄉，韓趙賓從，子孰與起？」文曰：「不如子。」"
+     }
+    ],
+    "proposed": "中文改为“吴起替魏国守住西河，战功卓著”；英文改为“Wu Qi held Wei's western frontier at Xihe and had a formidable record”。"
+   },
+   {
+    "id": "F2",
+    "path": "dek",
+    "category": "inner_life",
+    "severity": "fix",
+    "problem": "中文“想除掉他”比证据的“害吳起”“起易去也”更重，容易读成要取他性命。证据只支持公叔忌恨吴起、想把他赶走。",
+    "evidence": [
+     {
+      "id": "SJ0651-E17",
+      "quote": "而害吳起。公叔之僕曰：「起易去也。」"
+     }
+    ],
+    "proposed": "改为“魏相公叔忌恨他，想把他赶走”。"
+   },
+   {
+    "id": "F3",
+    "path": "dek",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "英文“the ruler never trusted him again”把证据中的“疑之而弗信”写成永久不再信任，语气过重；中文“从此不再信他”尚可。",
+    "evidence": [
+     {
+      "id": "SJ0651-E20",
+      "quote": "武侯疑之而弗信也"
+     }
+    ],
+    "proposed": "英文改为“and the ruler grew suspicious and stopped trusting him”。"
+   },
+   {
+    "id": "F4",
+    "path": "sections.hook.1",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“功劳谁也比不上 / whose record no one in Wei could match”无证据支持。证据只有田文本人承认“不如子”。",
+    "evidence": [
+     {
+      "id": "SJ0651-E12",
+      "quote": "子孰與起？」文曰：「不如子。」"
+     }
+    ],
+    "proposed": "中文改为“一位替魏国守住西河、连宰相田文都承认功劳不如他的将军”；英文同步修改。"
+   },
+   {
+    "id": "F5",
+    "path": "sections.context.1",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“第一句就是 / The first charge was”断言了完整进言的开头结构。证据摘录起于话语中段，无法确认这是第一句。",
+    "evidence": [
+     {
+      "id": "SJ0651-E3",
+      "quote": "起之為人，猜忍人也。"
+     }
+    ],
+    "proposed": "改为“他说吴起「猜忍」，意思是为人多疑狠厉”；英文改为“He charged that Wu Qi was suspicious and ruthless.”"
+   },
+   {
+    "id": "F6",
+    "path": "sections.context.1",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "中文首次出现“魏文侯”时没有说明身份，英文则写了“a worthy ruler”，两版不一致。后文还会出现魏武侯，读者容易分不清两位国君。",
+    "evidence": [
+     {
+      "id": "SJ0651-E26",
+      "quote": "吳起於是聞魏文侯賢，欲事之。"
+     }
+    ],
+    "proposed": "改为“吴起听说魏国国君魏文侯贤明，便去投奔魏国”。"
+   },
+   {
+    "id": "F7",
+    "path": "sections.story.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“大臣李克 / his minister Li Ke”：证据没有写明李克的职务。",
+    "evidence": [
+     {
+      "id": "SJ0651-E4",
+      "quote": "文侯問李克曰：「吳起何如人哉？」"
+     }
+    ],
+    "proposed": "中文删去“大臣”，写作“魏文侯先问李克”；英文改为“Marquis Wen first asked Li Ke”。"
+   },
+   {
+    "id": "F8",
+    "path": "sections.story.1",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "“魏国设立宰相 / Wei created the office of chief minister”把“置相”（任命宰相）误读成新设官职。",
+    "evidence": [
+     {
+      "id": "SJ0651-E11",
+      "quote": "魏置相，相田文。"
+     }
+    ],
+    "proposed": "中文改为“后来魏国任命宰相，用了田文”；英文改为“Later, when Wei appointed a chief minister, it chose Tian Wen”。"
+   },
+   {
+    "id": "F9",
+    "path": "sections.story.1",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "正文只写了两项比较，却接着说“三件比完 / When the three were done”，读者无从知道第三件是什么，转折处读不通。",
+    "evidence": [
+     {
+      "id": "SJ0651-E14",
+      "quote": "此三者，子皆出吾下，而位加吾上，何也？"
+     }
+    ],
+    "proposed": "开头改为“吴起一连比了三件事，其中两件是：……”，再接现有两问；英文同步改为“He compared them on three counts; two of them were…”。"
+   },
+   {
+    "id": "F10",
+    "path": "sections.story.3",
+    "category": "inner_life",
+    "severity": "fix",
+    "problem": "中文“想把他除掉”超出“害吳起”“起易去也”，暗示要取他性命。证据只支持排挤、赶走。",
+    "evidence": [
+     {
+      "id": "SJ0651-E17",
+      "quote": "公叔為相，尚魏公主，而害吳起。"
+     }
+    ],
+    "proposed": "改为“他忌恨吴起，想把他赶走”。"
+   },
+   {
+    "id": "F11",
+    "path": "sections.story.4",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "正文先写文侯任用吴起，后面突然改由武侯出场，story.2里还有“国君年纪还轻”。读者分不清文侯和武侯是不是同一人，也不知道此时在位的是谁。",
+    "evidence": [
+     {
+      "id": "SJ0651-E18",
+      "quote": "君因先與武侯言曰"
+     }
+    ],
+    "proposed": "在正文首次提到武侯处写明“当时的魏国国君武侯”（英文“Marquis Wu, then ruler of Wei”）；不要补写二人的亲属关系或继位时间。"
+   },
+   {
+    "id": "F12",
+    "path": "sections.story.6",
+    "category": "causality",
+    "severity": "fix",
+    "problem": "史书用“故”把贵戚想害吴起写成他变法的结果，正文却改成转折“却 / But”，削弱了史书原有的因果。",
+    "evidence": [
+     {
+      "id": "SJ0651-E23",
+      "quote": "故楚之貴戚盡欲害吳起。"
+     }
+    ],
+    "proposed": "中文改为“史书写道，因此楚国的贵戚都想害他”；英文改为“For this reason, the history says, Chu's nobles all wanted him dead.”"
+   },
+   {
+    "id": "F13",
+    "path": "sections.story.6",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "有三处细节与证据或英文版不符：一，中文“跑到悼王的遗体旁伏下”与“伏之”不符，英文已写作“threw himself on it”，两版不一致；二，“围攻”添加了包围的细节，原文只是“攻”；三，原文“射刺”（又射又刺），正文只写了射。",
+    "evidence": [
+     {
+      "id": "SJ0651-E23",
+      "quote": "吳起走之王尸而伏之。擊起之徒因射刺吳起，并中悼王。"
+     }
+    ],
+    "proposed": "中文改为“王族大臣作乱，攻击吴起；吴起跑到悼王遗体处，伏在遗体上，攻击他的人射杀、刺杀吴起，也射中了悼王的遗体”；英文改为“shot and stabbed him”。"
+   },
+   {
+    "id": "F14",
+    "path": "sections.context.0",
+    "category": "readability",
+    "severity": "note",
+    "problem": "英文用“Wey”（卫）和“Wei”（魏）区分两国，但没有说明，读者容易混淆。",
+    "evidence": [],
+    "proposed": "在“Wey”首次出现处加短注，例如“Wey (a different state from Wei, where he later served)”。"
+   },
+   {
+    "id": "F15",
+    "path": "sections.limits.0",
+    "category": "style",
+    "severity": "note",
+    "problem": "本段与uncertainty_note内容几乎重复。",
+    "evidence": [],
+    "proposed": "二者保留其一，或把limits.0压缩为一句。"
+   },
+   {
+    "id": "F16",
+    "path": "reflection.scenario",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "现代虚构场景用引号引了证据原词“无留心”，等于在现代场景中引用证据；英文版没有这个引用，两版也不一致。",
+    "evidence": [
+     {
+      "id": "SJ0651-E18",
+      "quote": "無留心則必辭矣"
+     }
+    ],
+    "proposed": "改为“管理层反而认定他本来就没打算留下”，去掉引号和原词。"
+   },
+   {
+    "id": "F17",
+    "path": "reflection.example.assumptions",
+    "category": "style",
+    "severity": "note",
+    "problem": "中文“试探已经执行，且不止一次的可能”语句残缺，与英文“may well be run again”不完全对应。",
+    "evidence": [],
+    "proposed": "改为“试探已经执行过，而且很可能还会再来”。"
+   }
+  ],
+  "inherited": []
+ },
+ "final_content_sha256": "aa094f23345efd4374449345ee2e3ec59d543513f578460b9498fe11772b92d9",
+ "open_issues": [
+  "V2-V5"
+ ],
+ "outcome": "pending_review",
+ "failure": null,
+ "finished_at": 1793495450.7659886,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 155.7,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 14527,
+    "output_tokens": 16548
+   },
+   "cost_estimate_usd": 0.447184
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 62.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16398,
+    "output_tokens": 8191
+   },
+   "cost_estimate_usd": 0.29501200000000005
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 97.7,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13944,
+    "output_tokens": 10617
+   },
+   "cost_estimate_usd": 0.3239
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 12.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13856,
+    "output_tokens": 1417
+   },
+   "cost_estimate_usd": 0.13919600000000001
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 69.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13956,
+    "output_tokens": 7515
+   },
+   "cost_estimate_usd": 0.26195599999999997
+  }
+ ],
+ "elapsed_min": 6.6,
+ "model_wall_min": 6.6
+}

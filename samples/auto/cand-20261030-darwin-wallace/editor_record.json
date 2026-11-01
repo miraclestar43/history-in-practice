@@ -1,0 +1,383 @@
+{
+ "candidate_id": "attempt-2",
+ "editor": "hermes-isolated editor (prompts/edit_zh_en.md)",
+ "code_rev": "a61c045",
+ "started_at": 1793384888.2039118,
+ "evidence_sha256": "87639667ec75bbc8d4aa62dad58182f479793eeec24ba472cd06d015a19571cf",
+ "original_content_sha256": "126498622b3d7c9b4ae32da12e377d6a6ca408d59515e23b77f6256dd0f2da43",
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    {
+     "id": "S1",
+     "source": "review",
+     "severity": "fix",
+     "where": "analysis.1",
+     "problem": "“他们给出的回答是：算，但要公开兑现”把作者的解释写成了莱尔和胡克的表态；信中没有说“想到而不发表算占住位置”这类话",
+     "suggestion": "改为“作者把他们的做法概括为：算，但要公开兑现”",
+     "seeded_from": "R1"
+    },
+    {
+     "id": "S2",
+     "source": "parity",
+     "severity": "fix",
+     "where": "sections.story.6",
+     "problem": "The English adds a quoted essay title from the 1877 sketch — \"On the Tendency of Species to form Varieties, and on the Perpetuation of Species and Varieties by means of Natural Selection\" — which has no counterpart in the Chinese text; the Chinese only reports the date, the transmission through Lyell, and the reading alongside Darwin's paper.",
+     "suggestion": "Add the essay title quoted in the sketch to the Chinese sentence (e.g. 小传给出的标题是《论物种形成变种的倾向，以及物种与变种借自然选择得以延续》), or delete the title clause from the English.",
+     "seeded_from": "P2"
+    }
+   ],
+   "edits_applied": [
+    {
+     "path": "sections.analysis.1.zh",
+     "before": "他们给出的回答是：算，但要公开兑现。作者提出的替代做法至少有三种，各有代价：由达尔文先单独发表；只发华莱士，把达尔文的优先权留给他日后自述；或者都等达尔文的完整著作出来再说。列在这里作对照的是作者提出的选项，不是材料里的记载。实际被选中的是第四条：三份材料同场宣读，日期写进正文，理由写给一位秘书并公开发表。莱尔和胡克自己说，这样做的依据是让经年思考、建立在大量事实上的观点立刻成为别人可以出发的目标。分配交给了程序，当事人的让步只是其中一步。",
+     "after": "作者把他们的做法概括为：算，但要公开兑现。作者提出的替代做法至少有三种，各有代价：由达尔文先单独发表；只发华莱士，把达尔文的优先权留给他日后自述；或者都等达尔文的完整著作出来再说。列在这里作对照的是作者提出的选项，不是材料里的记载。实际被选中的是第四条：三份材料同场宣读，日期写进正文，理由写给一位秘书并公开发表。莱尔和胡克自己说，这样做的依据是让经年思考、建立在大量事实上的观点立刻成为别人可以出发的目标。分配交给了程序，当事人的让步只是其中一步。",
+     "reason": "把被写成莱尔和胡克表态的判断收回为作者的概括，与本段kind=interpretation一致；信中（V-E7）只说出于科学的整体利益和给别人一个可出发的目标，没有“想到而不发表算占住位置”的说法。",
+     "issues": [
+      "S1"
+     ]
+    },
+    {
+     "path": "sections.analysis.1.en",
+     "before": "Their answer was: yes, but it has to be cashed in publicly. The author sets out at least three alternative courses, each with its own price: Darwin publishing alone first; only Wallace published, with Darwin left to state his own priority later; or everyone waiting for Darwin's complete book. What is listed here for contrast are options constructed by the author, not episodes recorded in the documents. The course actually taken was a fourth: three sets of material read together in one session, the dates printed in the body of the text, the reasoning addressed to a secretary and made public. The warrant Lyell and Hooker gave was that views founded on a wide deduction from facts and matured by years of reflection should at once become a goal from which others might start. The allocation was handed to a procedure; a party's willingness to give way was one step in it, not the deciding one.",
+     "after": "The author's summary of their course is: yes, but it has to be cashed in publicly. The author sets out at least three alternative courses, each with its own price: Darwin publishing alone first; only Wallace published, with Darwin left to state his own priority later; or everyone waiting for Darwin's complete book. What is listed here for contrast are options constructed by the author, not episodes recorded in the documents. The course actually taken was a fourth: three sets of material read together in one session, the dates printed in the body of the text, the reasoning addressed to a secretary and made public. The warrant Lyell and Hooker gave was that views founded on a wide deduction from facts and matured by years of reflection should at once become a goal from which others might start. The allocation was handed to a procedure; a party's willingness to give way was one step in it, not the deciding one.",
+     "reason": "英文同步：同样把该判断明确标为作者的概括（The author's summary），不冒充Lyell和Hooker的原话。",
+     "issues": [
+      "S1"
+     ]
+    },
+    {
+     "path": "sections.story.6.zh",
+     "before": "1858年7月1日，林奈学会宣读了这批材料。信中把三份材料按日期排列：1839年草拟、1844年誊写的手稿摘录，1857年致格雷信的摘要，华莱士1858年2月的论文；当天按什么顺序宣读，材料没有记。十九年后那篇小传的记述是：华莱士的论文经莱尔转交林奈学会，1858年7月1日宣读，与达尔文的论文同场。",
+     "after": "1858年7月1日，林奈学会宣读了这批材料。信中把三份材料按日期排列：1839年草拟、1844年誊写的手稿摘录，1857年致格雷信的摘要，华莱士1858年2月的论文；当天按什么顺序宣读，材料没有记。十九年后那篇小传的记述是：华莱士的论文经莱尔转交林奈学会，1858年7月1日宣读，与达尔文的论文同场；小传给出的标题是《论物种形成变种的倾向，以及物种与变种借自然选择得以延续》。",
+     "reason": "补齐英文字段中1877年小传所记的论文标题（V-E19逐字引语的中译），消除中英事实不对称；标题用《》，正文不嵌入英文句子。",
+     "issues": [
+      "S2"
+     ]
+    }
+   ],
+   "edits_failed": [],
+   "dispositions": [
+    {
+     "issue": "S1",
+     "action": "fixed",
+     "reason": "已按建议改为“作者把他们的做法概括为：算，但要公开兑现”（英文“The author's summary of their course is”），把这句明确标为作者的解释。理由是V-E7中信的原话只是“we are not solely considering the relative claims to priority of himself and his friend, but the interests of science generally”和让观点成为“a goal from which others may start”，并没有“想到而不发表算占住位置”之类表态，故不能写成他们的回答。"
+    },
+    {
+     "issue": "S2",
+     "action": "fixed",
+     "reason": "英文多出的标题是V-E19逐字引语（“On the Tendency of Species to form Varieties, and on the Perpetuation of Species and Varieties by means of Natural Selection”），有证据支持，故保留英文并把其中译补进中文：“小传给出的标题是《论物种形成变种的倾向，以及物种与变种借自然选择得以延续》”，使两语事实一致。"
+    }
+   ],
+   "checker_after": [],
+   "content_sha256_after": "84e7e4d27846c334048f98ee9dd5ccc42d33ab21f1da98dbc8d2a5adf04a438f",
+   "review_after": {
+    "issues": [
+     {
+      "section": "hook",
+      "para": 0,
+      "severity": "fix",
+      "problem": "该段标为 record，但“功劳算谁的、由谁来定，得有人先拿出个说法”是作者设置的框架，不是材料记载；V-E2 只说两人“都可公平地称为原创思想者”，且 V-E7 明说他们“不只是考虑相对优先权”。",
+      "suggestion": "删去该句或把该段改标 interpretation，并改为转述：信中称二人“可公平地声称是这一研究方向上的原创思想者”。"
+     },
+     {
+      "section": "story",
+      "para": 0,
+      "severity": "fix",
+      "problem": "“它从没打算给人看”超出 V-E12 “never intended for publication”的含义：1844年誊本曾被胡克阅读（V-E3）。",
+      "suggestion": "改为“它从未打算发表”。"
+     },
+     {
+      "section": "story",
+      "para": 3,
+      "severity": "note",
+      "problem": "“出发点不同，落点接近”是结论性判断，本段所引 V-E13/14/5/15/16 不能支持“落点接近”（该结论见于 V-E8/V-E2）。",
+      "suggestion": "补引 V-E8（“almost the same general conclusions”）或删去“落点接近”。"
+     },
+     {
+      "section": "story",
+      "para": 6,
+      "severity": "note",
+      "problem": "“信中把三份材料按日期排列”是作者对列举顺序的解读，信中只按 1/2/3 列举，未说明排序原则。",
+      "suggestion": "改为“信中依次列出三份材料：……（顺序恰为时间先后）”。"
+     },
+     {
+      "section": "analysis",
+      "para": 0,
+      "severity": "fix",
+      "problem": "“论文是他自己寄出的”表述含混：V-E5 说华莱士把论文寄给达尔文并请其转交莱尔，V-E19 说论文是经莱尔转交林奈学会；现表述易被读成他自己寄到学会，与材料冲突。",
+      "suggestion": "改为“论文由华莱士本人寄给达尔文，并请达尔文认为足够新颖就转交莱尔”。"
+     }
+    ],
+    "unsupported_claims": [
+     "hook段“得有人先拿出个说法”——材料无“需要有人出面定功劳”的表述",
+     "analysis段“论文是他自己寄出的”（证据包只支持寄给达尔文、由莱尔转交林奈学会）"
+    ],
+    "invented_inner_life": [
+     "analysis段“作者推断，他们之所以特意强调两人互不知情、且都没发表，正是因为在谁先想到之外，还有一个更难回答的问题……”——对莱尔与胡克动机的归因，信中无此表述（虽标为推断，仍是对人物动机的补写）"
+    ],
+    "quote_mismatches": [],
+    "overall": "日期、数字、人名、引语与归属逐项核对基本无误（含1857年10月／9月5日两说的诚实处理），仅一处把作者框架混入record、一处“没打算给人看”说过头、一处寄送方式表述需澄清。",
+    "_content_sha256": "84e7e4d27846c334048f98ee9dd5ccc42d33ab21f1da98dbc8d2a5adf04a438f"
+   },
+   "parity_after": {
+    "issues": [
+     {
+      "path": "analysis.1",
+      "severity": "note",
+      "problem": "ZH says the parties' concession was '只是其中一步' (merely one step in the procedure); EN adds 'not the deciding one', a further claim about its weight that ZH does not state.",
+      "suggestion": "Drop 'not the deciding one' so EN ends '...was one step in it.'"
+     },
+     {
+      "path": "reflection.scenario",
+      "severity": "note",
+      "problem": "ZH '要求先定下署名方式' asks for the manner of attribution/byline to be settled; EN narrows this to 'the order of the names settled first', while ZH reserves '署名顺序' (order of names) for the alternative in example.alternative.",
+      "suggestion": "Change EN to 'wants the way of signing settled first'."
+     }
+    ],
+    "overall": "The English edition faithfully carries every fact, date, name, quotation and hedge of the Chinese edition, with only two negligible elaborations of nuance.",
+    "_content_sha256": "84e7e4d27846c334048f98ee9dd5ccc42d33ab21f1da98dbc8d2a5adf04a438f"
+   },
+   "carried_over": []
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    {
+     "id": "R1",
+     "source": "review",
+     "severity": "fix",
+     "where": "hook.0",
+     "problem": "该段标为 record，但“功劳算谁的、由谁来定，得有人先拿出个说法”是作者设置的框架，不是材料记载；V-E2 只说两人“都可公平地称为原创思想者”，且 V-E7 明说他们“不只是考虑相对优先权”。",
+     "suggestion": "删去该句或把该段改标 interpretation，并改为转述：信中称二人“可公平地声称是这一研究方向上的原创思想者”。"
+    },
+    {
+     "id": "R2",
+     "source": "review",
+     "severity": "fix",
+     "where": "story.0",
+     "problem": "“它从没打算给人看”超出 V-E12 “never intended for publication”的含义：1844年誊本曾被胡克阅读（V-E3）。",
+     "suggestion": "改为“它从未打算发表”。"
+    },
+    {
+     "id": "R3",
+     "source": "review",
+     "severity": "fix",
+     "where": "analysis.0",
+     "problem": "“论文是他自己寄出的”表述含混：V-E5 说华莱士把论文寄给达尔文并请其转交莱尔，V-E19 说论文是经莱尔转交林奈学会；现表述易被读成他自己寄到学会，与材料冲突。",
+     "suggestion": "改为“论文由华莱士本人寄给达尔文，并请达尔文认为足够新颖就转交莱尔”。"
+    }
+   ],
+   "edits_applied": [
+    {
+     "path": "sections.hook.0.zh",
+     "before": "1858年6月30日，伦敦。两位皇家学会会员莱尔与胡克联名给林奈学会秘书贝内特写信，随信附上几份材料；信里说，这些材料都关于同一个主题。麻烦在于：同一套理论被两个人各自独立想了出来，而两个人都没把它发表出去。功劳算谁的、由谁来定，得有人先拿出个说法。",
+     "after": "1858年6月30日，伦敦。两位皇家学会会员莱尔与胡克联名给林奈学会秘书贝内特写信，随信附上几份材料；信里说，这些材料都关于同一个主题。麻烦在于：同一套理论被两个人各自独立想了出来，而两个人都没把它发表出去。信里称二人“可公平地声称是这一重要的研究方向上的原创思想者”。",
+     "reason": "删除作者框架句，改为转述 V-E2 的原话“may both fairly claim the merit of being original thinkers in this important line of inquiry”，使 record 段只保留材料记载。",
+     "issues": [
+      "R1"
+     ]
+    },
+    {
+     "path": "sections.hook.0.en",
+     "before": "London, 30 June 1858. Charles Lyell and Joseph Dalton Hooker, both Fellows of the Royal Society, wrote a joint letter to J. J. Bennett, secretary of the Linnean Society, enclosing papers which, they said, \"all relate to the same subject\". The difficulty was plain to state and awkward to resolve: the same theory had occurred to two men working independently of each other, and neither had published. Whose achievement was it, and who had the standing to say so? Someone had to put a version of events on paper first.",
+     "after": "London, 30 June 1858. Charles Lyell and Joseph Dalton Hooker, both Fellows of the Royal Society, wrote a joint letter to J. J. Bennett, secretary of the Linnean Society, enclosing papers which, they said, \"all relate to the same subject\". The difficulty was: the same theory had occurred to two men working independently of each other, and neither had published. Whose achievement was it, and who had the standing to say so? Someone had to put a version of events on paper first.",
+     "reason": "删去“plain to state and awkward to resolve”这类作者框架性评价，与中文“麻烦在于：”对齐。",
+     "issues": [
+      "R1"
+     ]
+    },
+    {
+     "path": "sections.hook.0.en",
+     "before": "London, 30 June 1858. Charles Lyell and Joseph Dalton Hooker, both Fellows of the Royal Society, wrote a joint letter to J. J. Bennett, secretary of the Linnean Society, enclosing papers which, they said, \"all relate to the same subject\". The difficulty was: the same theory had occurred to two men working independently of each other, and neither had published. Whose achievement was it, and who had the standing to say so? Someone had to put a version of events on paper first.",
+     "after": "London, 30 June 1858. Charles Lyell and Joseph Dalton Hooker, both Fellows of the Royal Society, wrote a joint letter to J. J. Bennett, secretary of the Linnean Society, enclosing papers which, they said, \"all relate to the same subject\". The difficulty was: the same theory had occurred to two men working independently of each other, and neither had published. Both men, the letter says, \"may both fairly claim the merit of being original thinkers in this important line of inquiry.\"",
+     "reason": "以 V-E2 的逐字引语替换作者自设的设问与框架句，英文引语与证据原文逐字一致。",
+     "issues": [
+      "R1"
+     ]
+    },
+    {
+     "path": "sections.story.0.zh",
+     "before": "达尔文的那份旧手稿有点尴尬：它从没打算给人看。1858年，达尔文为这份手稿加了一条脚注，署“C. D. 1858”：这份手稿从未打算发表，因此写得并不仔细。",
+     "after": "达尔文的那份旧手稿有点尴尬：它从未打算发表。1858年，达尔文为这份手稿加了一条脚注，署“C. D. 1858”：这份手稿从未打算发表，因此写得并不仔细。",
+     "reason": "收窄为 V-E12 的“never intended for publication”；1844 年誊本曾被胡克阅读（V-E3），“没打算给人看”不成立。",
+     "issues": [
+      "R2"
+     ]
+    },
+    {
+     "path": "sections.story.0.en",
+     "before": "Darwin's old manuscript was awkward in a particular way: it had never been meant for other eyes. In 1858 he added a footnote to it: \"This MS. work was never intended for publication, and therefore was not written with care.—C. D. 1858.\".",
+     "after": "Darwin's old manuscript was awkward in a particular way: it was never intended for publication. In 1858 he added a footnote to it: \"This MS. work was never intended for publication, and therefore was not written with care.—C. D. 1858.\".",
+     "reason": "与中文同步，改为与 V-E12 一致的“never intended for publication”。",
+     "issues": [
+      "R2"
+     ]
+    },
+    {
+     "path": "sections.analysis.0.zh",
+     "before": "一种解释是：莱尔和胡克这套安排，实质上是把功劳归属从两个人之间的争议，改写成一个程序问题。他们能拿得出手的依据有三样：此前未公开的文本、可查的日期、两位中间人的说明。达尔文的旧手稿和致格雷的信摘要显示他想得早；华莱士的论文、落款与寄送方式，与莱尔和胡克关于两人互不知情的说法相符，而且论文是他自己寄出的。作者推断，他们之所以特意强调两人互不知情、且都没发表，正是因为在谁先想到之外，还有一个更难回答的问题：想到而不发表，算不算占住了位置。",
+     "after": "一种解释是：莱尔和胡克这套安排，实质上是把功劳归属从两个人之间的争议，改写成一个程序问题。他们能拿得出手的依据有三样：此前未公开的文本、可查的日期、两位中间人的说明。达尔文的旧手稿和致格雷的信摘要显示他想得早；华莱士的论文、落款与寄送方式，与莱尔和胡克关于两人互不知情的说法相符，而且论文由华莱士本人寄给达尔文，并请达尔文若认为它足够新颖、有意思，就转给莱尔。作者推断，他们之所以特意强调两人互不知情、且都没发表，正是因为在谁先想到之外，还有一个更难回答的问题：想到而不发表，算不算占住了位置。",
+     "reason": "按 V-E5“sent to him with the expressed wish that it should be forwarded to Sir Charles Lyell, if Mr. Darwin thought it sufficiently novel and interesting”写清寄送路径，避免被读成华莱士自己寄到学会（V-E19 为经莱尔转交）。",
+     "issues": [
+      "R3"
+     ]
+    },
+    {
+     "path": "sections.analysis.0.en",
+     "before": "One reading of the arrangement is this: Lyell and Hooker rewrote a dispute between two men over credit as a question of procedure. What they could put on the table was of three kinds - texts not previously published, dates that could be checked, and the account of two intermediaries. Darwin's old manuscript and the abstract of the Gray letter showed how early he had reached the idea; Wallace's essay, with its dateline and the manner of its sending, was consistent with Lyell and Hooker's statement that the two men had worked unknown to one another, and it was Wallace himself who had sent it. The author's inference: they stressed so heavily that the two men did not know of each other's work and that neither had published, because beyond who thought of it first there sits a harder question - whether thinking of something and never publishing is enough to hold your place.",
+     "after": "One reading of the arrangement is this: Lyell and Hooker rewrote a dispute between two men over credit as a question of procedure. What they could put on the table was of three kinds - texts not previously published, dates that could be checked, and the account of two intermediaries. Darwin's old manuscript and the abstract of the Gray letter showed how early he had reached the idea; Wallace's essay, with its dateline and the manner of its sending, was consistent with Lyell and Hooker's statement that the two men had worked unknown to one another, and it was Wallace himself who had sent the essay to Darwin, with the express wish that Darwin forward it to Lyell if he thought it sufficiently novel and interesting. The author's inference: they stressed so heavily that the two men did not know of each other's work and that neither had published, because beyond who thought of it first there sits a harder question - whether thinking of something and never publishing is enough to hold your place.",
+     "reason": "与中文同步，按 V-E5 写明论文是华莱士寄给达尔文、并请其视新颖与否转交莱尔。",
+     "issues": [
+      "R3"
+     ]
+    }
+   ],
+   "edits_failed": [],
+   "dispositions": [
+    {
+     "issue": "R1",
+     "action": "fixed",
+     "reason": "删去“功劳算谁的、由谁来定，得有人先拿出个说法”这一作者框架句及英文对应设问，改为转述 V-E2 原文“may both fairly claim the merit of being original thinkers in this important line of inquiry”，中英同步；该段仍为 record，只保留材料记载。"
+    },
+    {
+     "issue": "R2",
+     "action": "fixed",
+     "reason": "“它从没打算给人看”改为“它从未打算发表”，与 V-E12“never intended for publication”一致，不再排除 1844 年胡克读过誊本（V-E3）的事实；英文字段同步改为“it was never intended for publication”。"
+    },
+    {
+     "issue": "R3",
+     "action": "fixed",
+     "reason": "“论文是他自己寄出的”改为按 V-E5 的寄送路径表述：华莱士本人把论文寄给达尔文，并请达尔文若认为足够新颖、有意思就转交莱尔（V-E19 记论文经莱尔转交林奈学会），中英同步。"
+    }
+   ],
+   "checker_after": [],
+   "content_sha256_after": "0a3f5afa2796ae3f919f2c1a939489b00f088a7ab3cb3359c9e0c7a310e54def",
+   "review_after": {
+    "issues": [
+     {
+      "section": "dek",
+      "para": 0,
+      "severity": "note",
+      "problem": "“华莱士从马来群岛寄来一篇论文”：证据只记落款“特尔纳特，1858年2月”(V-E14)与他在马来群岛考察(V-E9)，未写特尔纳特属马来群岛、也未写该文从马来群岛寄出",
+      "suggestion": "改为“华莱士寄来一篇落款特尔纳特、1858年2月的论文”"
+     },
+     {
+      "section": "context",
+      "para": 0,
+      "severity": "note",
+      "problem": "“却得出了几乎相同的结论”省略了V-E8中的“同时(simultaneously)达到”，而这正是两人独立且同时做出同一件事的关键限定",
+      "suggestion": "改为“却几乎同时得出了几乎相同的结论”"
+     },
+     {
+      "section": "story",
+      "para": 1,
+      "severity": "note",
+      "problem": "“为了显示他的看法多年没有改变，莱尔和胡克选了第二份材料”把选材动机写成史实；V-E4只说该摘要“显示”其看法自1839至1857未变，未写选材目的",
+      "suggestion": "改为“这份材料按信中说法可显示他的看法从1839年到1857年没有改变”"
+     },
+     {
+      "section": "story",
+      "para": 1,
+      "severity": "note",
+      "problem": "把致格雷信写作“1857年10月”作确定陈述，而下一段又说与摘要标题的1857年9月5日两说并存，前后口径不一",
+      "suggestion": "改为“据莱尔和胡克的信，是1857年10月；据摘要标题，是1857年9月5日”"
+     },
+     {
+      "section": "story",
+      "para": 3,
+      "severity": "note",
+      "problem": "“出发点不同，落点接近”是作者判断，混在标为record的段落里",
+      "suggestion": "标注为作者解释或删去"
+     },
+     {
+      "section": "story",
+      "para": 6,
+      "severity": "note",
+      "problem": "“信中把三份材料按日期排列”是对信件编排的解释；信中只是依次列出三项并各注日期(V-E3/V-E4/V-E5)",
+      "suggestion": "改为“信中依次列出三份材料，各注日期：……”"
+     },
+     {
+      "section": "story",
+      "para": 7,
+      "severity": "fix",
+      "problem": "“作者的看法：被放在共同发现者位置上的人……”混在record段；且“共同发现者”不见于证据，V-E2称二人为original thinkers，V-E8称结论几乎同时得出",
+      "suggestion": "将该句移入interpretation，并改作“被并列宣读材料的那个人”"
+     },
+     {
+      "section": "story",
+      "para": 7,
+      "severity": "fix",
+      "problem": "“他不接受达尔文的结论”把有限度的否认扩大化；V-E20明确说他承认自然选择对达尔文所归于它的多数变化有效，只否认其单凭自身能完成从类人猿到人的过渡",
+      "suggestion": "改为“他承认自然选择的效力，但否认单靠它能完成从类人猿到人的过渡”"
+     },
+     {
+      "section": "analysis",
+      "para": 0,
+      "severity": "note",
+      "problem": "“作者推断，他们之所以特意强调……正是因为……想到而不发表，算不算占住了位置”是对莱尔与胡克动机的归因，V-E2、V-E6均未写他们强调此事的理由",
+      "suggestion": "保留“作者推断”字样并加“材料未写他们为何如此强调”"
+     },
+     {
+      "section": "analysis",
+      "para": 1,
+      "severity": "note",
+      "problem": "三种替代做法与“第四条”均非材料记载，虽已声明为作者提出，但“实际被选中的”一句与并列容易被读成史实对照",
+      "suggestion": "在“实际被选中的”前加“材料记载的实际做法是”"
+     }
+    ],
+    "unsupported_claims": [
+     "dek：“华莱士从马来群岛寄来一篇论文”——证据只记落款“特尔纳特，1858年2月”(V-E14)，未载寄出地",
+     "story段6：“信中把三份材料按日期排列”——信中只依次列出三项，未说明按日期排列",
+     "story段7：“被放在共同发现者位置上的人”——证据用语为“original thinkers”(V-E2)与“几乎同时得出相同结论”(V-E8)，无“共同发现者”之说",
+     "story段7：“他不接受达尔文的结论”——V-E20只否认自然选择单独完成从类人猿到人的过渡，且明确认可其对多数变化的效力",
+     "limits段0：“动笔时距1858年已近二十年”——证据只记该刊1877年6月刊出，未载动笔时间；且与正文“十九年后”口径不一"
+    ],
+    "invented_inner_life": [
+     "story段1：“为了显示他的看法多年没有改变，莱尔和胡克选了第二份材料”——V-E4未写二人选材的动机，只说该摘要显示看法未变",
+     "story段0：“达尔文的那份旧手稿有点尴尬”——作者对处境的评价，非材料记载",
+     "analysis段0：“作者推断，他们之所以特意强调两人互不知情、且都没发表，正是因为在谁先想到之外，还有一个更难回答的问题：想到而不发表，算不算占住了位置”——莱尔与胡克(V-E2、V-E6)未写下任何此类理由",
+     "analysis段1：“作者提出的替代做法至少有三种，各有代价：由达尔文先单独发表；只发华莱士，把达尔文的优先权留给他日后自述；或者都等达尔文的完整著作出来再说”——材料中无人考虑过这些选项（已声明为作者提出，仍属材料外的设想）"
+    ],
+    "quote_mismatches": [
+     "hook段0：“可公平地声称是这一重要的研究方向上的原创思想者”——原文为“may both fairly claim the merit of being original thinkers in this important line of inquiry”，是“可公平地声称具有作为原创思想者的功绩”，且含“两人均(both)”，现译把claim the merit of being简化为“声称是”"
+    ],
+    "overall": "日期、数字、引语归属与两处材料矛盾的处理基本可靠，主要问题是把选材动机、中间人动机等作者推断混入记录段，以及“共同发现者”“不接受达尔文的结论”两处表述超出证据范围。",
+    "_content_sha256": "0a3f5afa2796ae3f919f2c1a939489b00f088a7ab3cb3359c9e0c7a310e54def"
+   },
+   "parity_after": {
+    "issues": [],
+    "overall": "The English edition matches the Chinese edition field by field, with all facts, dates, numbers, names, quotations and hedges preserved and no missing or truncated text.",
+    "_content_sha256": "0a3f5afa2796ae3f919f2c1a939489b00f088a7ab3cb3359c9e0c7a310e54def"
+   },
+   "carried_over": []
+  }
+ ],
+ "seeded_issues": 2,
+ "final_content_sha256": "0a3f5afa2796ae3f919f2c1a939489b00f088a7ab3cb3359c9e0c7a310e54def",
+ "remaining": [
+  {
+   "id": "R1",
+   "source": "review",
+   "severity": "fix",
+   "where": "story.7",
+   "problem": "“作者的看法：被放在共同发现者位置上的人……”混在record段；且“共同发现者”不见于证据，V-E2称二人为original thinkers，V-E8称结论几乎同时得出",
+   "suggestion": "将该句移入interpretation，并改作“被并列宣读材料的那个人”"
+  },
+  {
+   "id": "R2",
+   "source": "review",
+   "severity": "fix",
+   "where": "story.7",
+   "problem": "“他不接受达尔文的结论”把有限度的否认扩大化；V-E20明确说他承认自然选择对达尔文所归于它的多数变化有效，只否认其单凭自身能完成从类人猿到人的过渡",
+   "suggestion": "改为“他承认自然选择的效力，但否认单靠它能完成从类人猿到人的过渡”"
+  }
+ ],
+ "final_reviewed": true,
+ "outcome": "pending_review",
+ "model_calls": 8,
+ "model_wall_s": 1138.3,
+ "edits_total": 10,
+ "finished_at": 1793386026.6523728
+}

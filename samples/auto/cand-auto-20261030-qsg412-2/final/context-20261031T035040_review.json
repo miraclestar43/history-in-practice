@@ -1,0 +1,757 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261030-qsg412-2",
+ "content_sha256": "7aadd8a34cdb162487382597a98dd08ee0c8292dac005b289c865176e4e0f900",
+ "evidence_in_sha256": "22db182bd270dad2d660f8b90221eeadec94562709903d2e5af603849e0bdc01",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793436640.9395726,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.context.0",
+   "lang": "zh",
+   "sentence": "本文所据材料未录其名，也未写明他与伊犁之事的直接关系；"
+  },
+  {
+   "id": "A2",
+   "path": "sections.context.0",
+   "lang": "en",
+   "sentence": "The material used here does not give his name or spell out his direct connection to the Ili affair;"
+  },
+  {
+   "id": "A3",
+   "path": "sections.story.6",
+   "lang": "zh",
+   "sentence": "于是左宗棠自请出屯哈密，规复伊犁：金顺出精河为东路，张曜沿特克斯河为中路，锦棠经布鲁特游牧为西路，谭上连等分屯喀什噶尔、阿克苏、哈密为后路声援，合马步卒四万余人——原文只记这一合计数，未记实际投入兵力。"
+  },
+  {
+   "id": "A4",
+   "path": "sections.story.6",
+   "lang": "en",
+   "sentence": "The source gives only this combined figure and does not record how many troops were actually committed."
+  },
+  {
+   "id": "A5",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "本文所据材料未记伊犁对峙时的钱粮，不能把两者写成同一时期。"
+  },
+  {
+   "id": "A6",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "史书没有记曾纪泽改约的具体内容，也没有把结果归在某一个人名下。"
+  },
+  {
+   "id": "A7",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "崇厚所定约的完整条款、曾纪泽改约的具体内容、交还伊犁之外还议了什么，原文未载，本文不补写。"
+  },
+  {
+   "id": "A8",
+   "path": "reflection.example.alternative",
+   "lang": "zh",
+   "sentence": "历史原文没有记下这类权衡，这里只是作者给的备选。"
+  },
+  {
+   "id": "A9",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "崇厚约文与曾纪泽改约内容原文未载，不作补写。"
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-QSG412": {
+   "title": "趙爾巽等《清史稿·左宗棠傳》（1928，维基文库本）",
+   "url": "https://zh.wikisource.org/w/index.php?title=%E6%B8%85%E5%8F%B2%E7%A8%BF/%E5%8D%B7412&action=render",
+   "ref": "zh:清史稿/卷412",
+   "evidence_text_sha256": "7d27027d04522820ddf2a54e738d3a6518712fa8e8ca655a69b73ac515b40fce",
+   "cache_sha256": "7d27027d04522820ddf2a54e738d3a6518712fa8e8ca655a69b73ac515b40fce",
+   "cjk": true,
+   "source_chars": 7015,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     7015
+    ]
+   ],
+   "chars_reviewed": 7015
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 82.6,
+   "json_ok": true,
+   "schema_ok": false,
+   "schema_problems": [
+    "claim A1: contradicted needs a verbatim quote from the reviewed text"
+   ],
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 8967
+  },
+  {
+   "step": "context_r1",
+   "attempt": 2,
+   "wall_s": 67.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 7565
+  }
+ ],
+ "finished_at": 1793436791.7322762,
+ "elapsed_min": 2.5,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-QSG412",
+    "outcome": "伊犁交涉的收尾：左宗棠被召入都，由锦棠接替；次年正月和议成，俄国交还伊犁，海防各军撤防。传文在此句前用「而」连接了「俄亦懾我兵威，恐事遂決裂」。",
+    "quote": "七月，詔宗棠入都備顧問，以錦棠代之。而俄亦懾我兵威，恐事遂決裂。明年正月，和議成，交還伊犁，防海軍皆罷",
+    "in_evidence": true
+   },
+   {
+    "source_id": "S-QSG412",
+    "outcome": "帕夏一线的收尾：吐鲁番收复后帕夏服药自尽；其子伯克胡里收纳白彦虎，大军到后逃入俄境；南疆西四城相继攻下，伊犁成为新疆唯一未收回之地。稿件把帕夏写成与伊犁无关的背景人物，但传文交代了他的结局。",
+    "quote": "帕夏飲藥死，其子伯克胡里戕其弟，走喀什噶爾",
+    "in_evidence": false
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-QSG412",
+    "start": "塞外回酋曰帕夏，本安集延部之和碩伯克也",
+    "end": "且言將代取烏魯木齊",
+    "why": "传文交代了帕夏的出身，以及他吞并北路伊犁诸城、收其赋入；俄国随后「逐回，取伊犁」。帕夏与伊犁之事有直接关系，不只是英、俄插手的背景。context.0 需据此改写。"
+   },
+   {
+    "source_id": "S-QSG412",
+    "start": "帕夏飲藥死",
+    "end": "西四城相繼下",
+    "why": "这一段交代了帕夏的结局，以及白彦虎、伯克胡里逃入俄境。它是四年正月「議還伊犁、交叛人二事」中「叛人」的来由，也说明请议还伊犁时新疆其余各城已经收复。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.context.0",
+    "lang": "zh",
+    "sentence": "本文所据材料未录其名，也未写明他与伊犁之事的直接关系；",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "《清史稿·左宗棠传》全文",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "帕夏既攻敗妥明降之，遂並有北路伊犁諸城，收其賦入"
+    },
+    "fix": "删去此句，改为：帕夏本是安集延部的和硕伯克，曾吞并北路伊犁诸城并收其赋入；其后俄国以回众扰边为由出兵逐回，占了伊犁。"
+   },
+   {
+    "id": "A2",
+    "path": "sections.context.0",
+    "lang": "en",
+    "sentence": "The material used here does not give his name or spell out his direct connection to the Ili affair;",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Full biography of Zuo Zongtang in the Draft History of the Qing",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "帕夏既攻敗妥明降之，遂並有北路伊犁諸城，收其賦入"
+    },
+    "fix": "Replace with: the Pasha, originally a beg of the Andijan, had taken over the northern Ili cities and collected their revenue; Russia then drove out the Muslim forces and seized Ili."
+   },
+   {
+    "id": "A3",
+    "path": "sections.story.6",
+    "lang": "zh",
+    "sentence": "原文只记这一合计数，未记实际投入兵力。",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "全传核查。三路部署之外，传文没有另外的兵力数字，但部署之后随即和议成，并未开战。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "合馬步卒四萬餘人"
+    },
+    "fix": "删去此半句。若要提示，可写「此为部署合计，其后和议成，未交战」。"
+   },
+   {
+    "id": "A4",
+    "path": "sections.story.6",
+    "lang": "en",
+    "sentence": "The source gives only this combined figure and does not record how many troops were actually committed.",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Full biography; no other troop figure is given for the Ili deployment, which never went into battle.",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "合馬步卒四萬餘人"
+    },
+    "fix": "Delete the sentence."
+   },
+   {
+    "id": "A5",
+    "path": "sections.analysis.1",
+    "lang": "zh",
+    "sentence": "本文所据材料未记伊犁对峙时的钱粮，不能把两者写成同一时期。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "全传。借款与馈运两段都属于「始西征」「出塞凡二十月」的西征时期；传文对伊犁对峙期只有「籌西事，尤以節兵裕餉為本謀」这类概括，没有具体的钱粮记载。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "籌西事，尤以節兵裕餉為本謀"
+    },
+    "fix": "保留此句。"
+   },
+   {
+    "id": "A6",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "史书没有记曾纪泽改约的具体内容，也没有把结果归在某一个人名下。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "全传。传文只写「命曾紀澤使俄，更前約」。结局句以「而俄亦懾我兵威」连接「和議成」，没有归功于某一个人。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "崇厚得罪去，命曾紀澤使俄，更前約"
+    },
+    "fix": "保留此句。但同段「只是并置叙述」应改为「传文以『而』字连接，暗示两者有关，但未具体说明」。"
+   },
+   {
+    "id": "A7",
+    "path": "sections.limits.1",
+    "lang": "zh",
+    "sentence": "崇厚所定约的完整条款、曾纪泽改约的具体内容、交还伊犁之外还议了什么，原文未载，本文不补写。",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "全传。「完整条款」「改约内容」两项确未载；但交还伊犁之外还议了哪些事，传文有记载。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "並請與俄議還伊犁、交叛人二事。詔遣全權大臣崇厚使俄。俄以通商、分界、償款三端相要"
+    },
+    "fix": "改为：传文记有议题，即还伊犁、交叛人，以及俄方所提的通商、分界、偿款；崇厚约只录了偿款五百万卢布、割陬尔果斯河与帖克斯河一带、广设领事等要点，未载全文；曾纪泽改约的具体内容未载。"
+   },
+   {
+    "id": "A8",
+    "path": "reflection.example.alternative",
+    "lang": "zh",
+    "sentence": "历史原文没有记下这类权衡，这里只是作者给的备选。",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "全传。传文没有关于「认约而缩短期限、加复议点」一类权衡的记载，只有「議久不決」。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "崇厚遽定約，為朝士所糾，議久不決"
+    },
+    "fix": "删去前半句，保留「这是作者给的备选」。"
+   },
+   {
+    "id": "A9",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "崇厚约文与曾纪泽改约内容原文未载，不作补写。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "全传。约文全文与改约内容确未载，但传文摘述了崇厚约的部分条款。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "今崇厚又議畀俄陬爾果斯河及帖克斯河，是劃伊犁西南之地歸俄也"
+    },
+    "fix": "改为「崇厚约全文（传中仅录其要点）与曾纪泽改约内容原文未载」。"
+   },
+   {
+    "id": "N1",
+    "path": "sections.hook.1",
+    "lang": "zh",
+    "sentence": "由西路统兵的锦棠（原文仅作此称，与东路统兵的金顺并非一人）接替。",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "全传",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "九年，松山陣歿，以其兄子錦棠代之"
+    },
+    "fix": "改为「刘松山之侄锦棠（即刘锦棠）」，删去「原文仅作此称」。"
+   },
+   {
+    "id": "N2",
+    "path": "sections.hook.1",
+    "lang": "en",
+    "sentence": "Jintang (as the source calls him; a different man from Jin Shun, who led the eastern column)",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "Full biography",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "九年，松山陣歿，以其兄子錦棠代之"
+    },
+    "fix": "Say Liu Jintang, nephew of Liu Songshan, and drop \"as the source calls him\"."
+   },
+   {
+    "id": "N3",
+    "path": "sections.story.1",
+    "lang": "zh",
+    "sentence": "数字照史书所录，未经核实。",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "这是本文自身核查程度的说明，与 limits.1 重复。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "則索償盧布五百萬元"
+    },
+    "fix": "删去此句，保留 limits.1 中的统一说明。"
+   },
+   {
+    "id": "N4",
+    "path": "sections.context.2",
+    "lang": "zh",
+    "sentence": "至于他当时怎么权衡，本文所据材料只录了这一句，不作推测。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-QSG412"
+    ],
+    "scope": "全传中有关金顺请袭伊犁一事的段落。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "宗棠曰：「不可。師不以正，彼有辭矣。」"
+    },
+    "fix": "保留此句。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.context.0",
+    "problem": "稿件把帕夏写成只交代英、俄插手背景的人物。实际上传文先写他吞并北路伊犁诸城，紧接着写俄国「逐回，取伊犁」，因果链被截断了。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "帕夏既攻敗妥明降之，遂並有北路伊犁諸城，收其賦入"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.context.3",
+    "problem": "稿件未交代「叛人」是谁。传文前文写白彦虎、伯克胡里遁入俄境，读者需要这一背景才能理解「交叛人」。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "伯克胡里既納白彥虎，乃效力攻漢城。大軍至，复遁走俄"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.context.1",
+    "problem": "稿件称金顺为「左宗棠部下统兵」。传文写的是金顺为副帅。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "授宗棠欽差大臣，督軍事，金順副之"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.analysis.2",
+    "problem": "稿件称两句「只是并置叙述」。传文用「而」字连接，并有「恐事遂決裂」之语，叙述上已暗示兵威与和议有关；可以说因果未经证实，但不宜说「只是并置」。",
+    "quote": {
+     "source_id": "S-QSG412",
+     "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "伊犁交涉的结局已在证据包中；但 context.0 关于帕夏与伊犁无关的否定断言、limits.1 关于「交还伊犁之外议了什么原文未载」、以及「锦棠原文仅作此称」都被全文反驳，必须修改；另有两处冗余的否定性说明应删除。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.context.0",
+   "lang": "zh",
+   "sentence": "本文所据材料未录其名，也未写明他与伊犁之事的直接关系；",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "《清史稿·左宗棠传》全文",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "帕夏既攻敗妥明降之，遂並有北路伊犁諸城，收其賦入"
+   },
+   "fix": "删去此句，改为：帕夏本是安集延部的和硕伯克，曾吞并北路伊犁诸城并收其赋入；其后俄国以回众扰边为由出兵逐回，占了伊犁。",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.context.0",
+   "lang": "en",
+   "sentence": "The material used here does not give his name or spell out his direct connection to the Ili affair;",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Full biography of Zuo Zongtang in the Draft History of the Qing",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "帕夏既攻敗妥明降之，遂並有北路伊犁諸城，收其賦入"
+   },
+   "fix": "Replace with: the Pasha, originally a beg of the Andijan, had taken over the northern Ili cities and collected their revenue; Russia then drove out the Muslim forces and seized Ili.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.story.6",
+   "lang": "zh",
+   "sentence": "于是左宗棠自请出屯哈密，规复伊犁：金顺出精河为东路，张曜沿特克斯河为中路，锦棠经布鲁特游牧为西路，谭上连等分屯喀什噶尔、阿克苏、哈密为后路声援，合马步卒四万余人——原文只记这一合计数，未记实际投入兵力。",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "全传核查。三路部署之外，传文没有另外的兵力数字，但部署之后随即和议成，并未开战。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "合馬步卒四萬餘人"
+   },
+   "fix": "删去此半句。若要提示，可写「此为部署合计，其后和议成，未交战」。",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "A4",
+   "path": "sections.story.6",
+   "lang": "en",
+   "sentence": "The source gives only this combined figure and does not record how many troops were actually committed.",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Full biography; no other troop figure is given for the Ili deployment, which never went into battle.",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "合馬步卒四萬餘人"
+   },
+   "fix": "Delete the sentence.",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "A5",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "本文所据材料未记伊犁对峙时的钱粮，不能把两者写成同一时期。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "全传。借款与馈运两段都属于「始西征」「出塞凡二十月」的西征时期；传文对伊犁对峙期只有「籌西事，尤以節兵裕餉為本謀」这类概括，没有具体的钱粮记载。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "籌西事，尤以節兵裕餉為本謀"
+   },
+   "fix": "保留此句。",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "A6",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "史书没有记曾纪泽改约的具体内容，也没有把结果归在某一个人名下。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "全传。传文只写「命曾紀澤使俄，更前約」。结局句以「而俄亦懾我兵威」连接「和議成」，没有归功于某一个人。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "崇厚得罪去，命曾紀澤使俄，更前約"
+   },
+   "fix": "保留此句。但同段「只是并置叙述」应改为「传文以『而』字连接，暗示两者有关，但未具体说明」。",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "A7",
+   "path": "sections.limits.1",
+   "lang": "zh",
+   "sentence": "崇厚所定约的完整条款、曾纪泽改约的具体内容、交还伊犁之外还议了什么，原文未载，本文不补写。",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "全传。「完整条款」「改约内容」两项确未载；但交还伊犁之外还议了哪些事，传文有记载。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "並請與俄議還伊犁、交叛人二事。詔遣全權大臣崇厚使俄。俄以通商、分界、償款三端相要"
+   },
+   "fix": "改为：传文记有议题，即还伊犁、交叛人，以及俄方所提的通商、分界、偿款；崇厚约只录了偿款五百万卢布、割陬尔果斯河与帖克斯河一带、广设领事等要点，未载全文；曾纪泽改约的具体内容未载。",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "A8",
+   "path": "reflection.example.alternative",
+   "lang": "zh",
+   "sentence": "历史原文没有记下这类权衡，这里只是作者给的备选。",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "全传。传文没有关于「认约而缩短期限、加复议点」一类权衡的记载，只有「議久不決」。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "崇厚遽定約，為朝士所糾，議久不決"
+   },
+   "fix": "删去前半句，保留「这是作者给的备选」。",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "A9",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "崇厚约文与曾纪泽改约内容原文未载，不作补写。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "全传。约文全文与改约内容确未载，但传文摘述了崇厚约的部分条款。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "今崇厚又議畀俄陬爾果斯河及帖克斯河，是劃伊犁西南之地歸俄也"
+   },
+   "fix": "改为「崇厚约全文（传中仅录其要点）与曾纪泽改约内容原文未载」。",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.hook.1",
+   "lang": "zh",
+   "sentence": "由西路统兵的锦棠（原文仅作此称，与东路统兵的金顺并非一人）接替。",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "全传",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "九年，松山陣歿，以其兄子錦棠代之"
+   },
+   "fix": "改为「刘松山之侄锦棠（即刘锦棠）」，删去「原文仅作此称」。",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.hook.1",
+   "lang": "en",
+   "sentence": "Jintang (as the source calls him; a different man from Jin Shun, who led the eastern column)",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "Full biography",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "九年，松山陣歿，以其兄子錦棠代之"
+   },
+   "fix": "Say Liu Jintang, nephew of Liu Songshan, and drop \"as the source calls him\".",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.story.1",
+   "lang": "zh",
+   "sentence": "数字照史书所录，未经核实。",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "这是本文自身核查程度的说明，与 limits.1 重复。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "則索償盧布五百萬元"
+   },
+   "fix": "删去此句，保留 limits.1 中的统一说明。",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "sections.context.2",
+   "lang": "zh",
+   "sentence": "至于他当时怎么权衡，本文所据材料只录了这一句，不作推测。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-QSG412"
+   ],
+   "scope": "全传中有关金顺请袭伊犁一事的段落。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "宗棠曰：「不可。師不以正，彼有辭矣。」"
+   },
+   "fix": "保留此句。",
+   "unit_status": {
+    "S-QSG412": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.context.0",
+   "problem": "稿件把帕夏写成只交代英、俄插手背景的人物。实际上传文先写他吞并北路伊犁诸城，紧接着写俄国「逐回，取伊犁」，因果链被截断了。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "帕夏既攻敗妥明降之，遂並有北路伊犁諸城，收其賦入"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.context.3",
+   "problem": "稿件未交代「叛人」是谁。传文前文写白彦虎、伯克胡里遁入俄境，读者需要这一背景才能理解「交叛人」。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "伯克胡里既納白彥虎，乃效力攻漢城。大軍至，复遁走俄"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.context.1",
+   "problem": "稿件称金顺为「左宗棠部下统兵」。传文写的是金顺为副帅。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "授宗棠欽差大臣，督軍事，金順副之"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.analysis.2",
+   "problem": "稿件称两句「只是并置叙述」。传文用「而」字连接，并有「恐事遂決裂」之语，叙述上已暗示兵威与和议有关；可以说因果未经证实，但不宜说「只是并置」。",
+   "quote": {
+    "source_id": "S-QSG412",
+    "quote": "而俄亦懾我兵威，恐事遂決裂。明年正月，和議成"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-QSG412",
+   "outcome": "伊犁交涉的收尾：左宗棠被召入都，由锦棠接替；次年正月和议成，俄国交还伊犁，海防各军撤防。传文在此句前用「而」连接了「俄亦懾我兵威，恐事遂決裂」。",
+   "quote": "七月，詔宗棠入都備顧問，以錦棠代之。而俄亦懾我兵威，恐事遂決裂。明年正月，和議成，交還伊犁，防海軍皆罷",
+   "in_evidence": true
+  },
+  {
+   "source_id": "S-QSG412",
+   "outcome": "帕夏一线的收尾：吐鲁番收复后帕夏服药自尽；其子伯克胡里收纳白彦虎，大军到后逃入俄境；南疆西四城相继攻下，伊犁成为新疆唯一未收回之地。稿件把帕夏写成与伊犁无关的背景人物，但传文交代了他的结局。",
+   "quote": "帕夏飲藥死，其子伯克胡里戕其弟，走喀什噶爾",
+   "in_evidence": false
+  }
+ ],
+ "additions": [
+  {
+   "id": "QSG4122-E19",
+   "source_id": "S-QSG412",
+   "offset": 4465,
+   "chars": 235,
+   "why": "传文交代了帕夏的出身，以及他吞并北路伊犁诸城、收其赋入；俄国随后「逐回，取伊犁」。帕夏与伊犁之事有直接关系，不只是英、俄插手的背景。context.0 需据此改写。"
+  },
+  {
+   "id": "QSG4122-E20",
+   "source_id": "S-QSG412",
+   "offset": 5111,
+   "chars": 264,
+   "why": "这一段交代了帕夏的结局，以及白彦虎、伯克胡里逃入俄境。它是四年正月「議還伊犁、交叛人二事」中「叛人」的来由，也说明请议还伊犁时新疆其余各城已经收复。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "16e98691592f2f549b7263a349f0248630e763aaecce04b8fb381d20a822c189",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.context.0.zh: contradicted — 本文所据材料未录其名，也未写明他与伊犁之事的直接关系；",
+  "sections.context.0.en: contradicted — The material used here does not give his name or spell out his direct connection",
+  "sections.story.6.zh: unnecessary — 于是左宗棠自请出屯哈密，规复伊犁：金顺出精河为东路，张曜沿特克斯河为中路，锦棠经布鲁特游牧为西路，谭上连等分屯喀什噶尔、阿克苏、哈密为后路声援，合马步卒四万余人",
+  "sections.story.6.en: unnecessary — The source gives only this combined figure and does not record how many troops w",
+  "sections.limits.1.zh: contradicted — 崇厚所定约的完整条款、曾纪泽改约的具体内容、交还伊犁之外还议了什么，原文未载，本文不补写。",
+  "reflection.example.alternative.zh: unnecessary — 历史原文没有记下这类权衡，这里只是作者给的备选。",
+  "sections.hook.1.zh: contradicted — 由西路统兵的锦棠（原文仅作此称，与东路统兵的金顺并非一人）接替。",
+  "sections.hook.1.en: contradicted — Jintang (as the source calls him; a different man from Jin Shun, who led the eas",
+  "sections.story.1.zh: unnecessary — 数字照史书所录，未经核实。",
+  "sections.context.0: 稿件把帕夏写成只交代英、俄插手背景的人物。实际上传文先写他吞并北路伊犁诸城，紧接着写俄国「逐回，取伊犁」，因果链被截断了。",
+  "evidence must be expanded first: 2 addition(s) ['QSG4122-E19', 'QSG4122-E20']"
+ ]
+}

@@ -1,0 +1,590 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-20261030-jingxing",
+ "content_sha256": "68f19de462a0fc6801a51137bc32826cd6149ba974631838572da0faec0c412b",
+ "evidence_in_sha256": "5e22b76ed7a13ca1715b4f66de7995fdae0235aa624417089f9df7e3358e575d",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793428390.1158164,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.1",
+   "lang": "zh",
+   "sentence": "但原文只记了大笑，没有说他们笑什么。"
+  },
+  {
+   "id": "A2",
+   "path": "sections.analysis.0",
+   "lang": "en",
+   "sentence": "One explanation: that rule runs directly against Li Zuoche's surprise-force plan, and the two may be connected, but the text does not record it as a ground for this refusal."
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "原文没有记下有人问“那条计当初为什么没被采纳”。"
+  },
+  {
+   "id": "A4",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "The text does not record anyone asking why that plan had not been adopted before the fighting."
+  },
+  {
+   "id": "A5",
+   "path": "sections.analysis.3",
+   "lang": "zh",
+   "sentence": "作者提出的替代情形是：如果陈馀采纳李左车之计、坚壁不出并断其辎重，韩信会怎么改，史书没有记载，任何人都只能推测。"
+  },
+  {
+   "id": "A6",
+   "path": "sections.analysis.3",
+   "lang": "en",
+   "sentence": "The alternative the author raises: had Chen Yu adopted the plan, held his walls and cut the supplies, what Han Xin would have done instead is unrecorded and can only be guessed at."
+  },
+  {
+   "id": "A7",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "the alternative scenario the author offers serves analysis only and is not stated as fact."
+  }
+ ],
+ "search": null,
+ "units": {
+  "A-SJ92": {
+   "title": "司馬遷《史記·淮陰侯列傳》（维基文库本）",
+   "url": "https://zh.wikisource.org/w/index.php?title=%E5%8F%B2%E8%A8%98/%E5%8D%B7092&action=render",
+   "ref": "zh:史記/卷092",
+   "evidence_text_sha256": "3e666f471ff63242b38851d81122c565e543f0fe65db2ab0374bf0c55c188e2e",
+   "cache_sha256": "3e666f471ff63242b38851d81122c565e543f0fe65db2ab0374bf0c55c188e2e",
+   "cjk": true,
+   "source_chars": 8513,
+   "status": "complete",
+   "whole_source": true,
+   "spans": [
+    [
+     0,
+     8513
+    ]
+   ],
+   "chars_reviewed": 8513
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 66.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "output_tokens": 6785
+  }
+ ],
+ "finished_at": 1793428456.49938,
+ "elapsed_min": 1.1,
+ "review": {
+  "episode": [
+   {
+    "source_id": "A-SJ92",
+    "outcome": "井陉之战以汉军大破赵军、斩陈馀、擒赵王歇收场。韩信生得李左车并师事之；李左车谦辞之后献出“按甲休兵、先声后实”之策。韩信称“善”并照此遣使，燕国望风归附，随后请立张耳为赵王。破赵部分已在证据包内（J-E6、J-E7），但这条计被采用及其后果不在证据包内。",
+    "quote": "韓信曰：『善。』從其策，發使使燕，燕從風而靡。乃遣使報漢，因請立張耳爲趙王，以鎮撫其國。漢王許之，乃立張耳爲趙王。",
+    "in_evidence": false
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "A-SJ92",
+    "start": "顧恐臣計未必足用，願效愚忠。",
+    "end": "燕從風而靡。",
+    "why": "J-E10 截在李左车的谦辞上。紧接着他就献了计，韩信“善”而“從其策”，燕国随即归附。这是全篇主题“赢家怎样对待提建议的人”的真正结局：韩信不只是礼遇他，还实际采用了他的计。没有这一段，读者会以为故事停在礼节和谦辞上，也会误读“智者千慮”一句的用意（那是献计前的铺垫）。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.1",
+    "lang": "zh",
+    "sentence": "但原文只记了大笑，没有说他们笑什么。",
+    "verdict": "supported",
+    "source_ids": [
+     "A-SJ92"
+    ],
+    "scope": "《淮陰侯列傳》全文（completeness: complete）。“趙軍望見而大笑”前后都没有交代赵军发笑的原因。诸将事后引兵法“右倍山陵，前左水澤”，是汉军将领自己的疑问，不是赵军发笑的理由。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "信乃使萬人先行，出，背水陳。趙軍望見而大笑。"
+    },
+    "fix": "可保留。已标明“作者推测”，表述准确。"
+   },
+   {
+    "id": "A2",
+    "path": "sections.analysis.0",
+    "lang": "en",
+    "sentence": "One explanation: that rule runs directly against Li Zuoche's surprise-force plan, and the two may be connected, but the text does not record it as a ground for this refusal.",
+    "verdict": "supported",
+    "source_ids": [
+     "A-SJ92"
+    ],
+    "scope": "《淮陰侯列傳》陈馀拒计一段（J-E3）。陈馀“曰”之下给出的理由只有兵力算术和怕诸侯谓其怯两条；“常稱義兵不用詐謀奇計”是史家对其平素立场的叙述。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "成安君，儒者也，常稱義兵不用詐謀奇計，曰：『吾聞兵法十則圍之，倍則戰。"
+    },
+    "fix": "可保留。可补一句：史家把这句定性紧贴在陈馀发言之前（“常稱……曰”），这种并置本身就提示了二者的关联。"
+   },
+   {
+    "id": "N1",
+    "path": "sections.analysis.0",
+    "lang": "zh",
+    "sentence": "一种解释是：这条规矩与李左车的奇兵之计正好相冲，二者或有关联，但原文并没有把它记为这次拒绝的理由。",
+    "verdict": "supported",
+    "source_ids": [
+     "A-SJ92"
+    ],
+    "scope": "同 A2，《淮陰侯列傳》J-E3 段。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "不聽廣武君策，廣武君策不用。"
+    },
+    "fix": "可保留，与 A2 同。"
+   },
+   {
+    "id": "A3",
+    "path": "sections.analysis.2",
+    "lang": "zh",
+    "sentence": "原文没有记下有人问“那条计当初为什么没被采纳”。",
+    "verdict": "supported",
+    "source_ids": [
+     "A-SJ92"
+    ],
+    "scope": "《淮陰侯列傳》全文，重点核查破赵后诸将问术、韩信问广武君两段。诸将只问背水之术；韩信自己说出“以不用足下”，但没有人提出“为何未被采纳”的问题。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "此何術也？"
+    },
+    "fix": "可保留。可顺带指出：韩信本人主动提到了“不用”，只是没有人把它当作问题来问。"
+   },
+   {
+    "id": "A4",
+    "path": "sections.analysis.2",
+    "lang": "en",
+    "sentence": "The text does not record anyone asking why that plan had not been adopted before the fighting.",
+    "verdict": "supported",
+    "source_ids": [
+     "A-SJ92"
+    ],
+    "scope": "同 A3，《淮陰侯列傳》全文。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "誠令成安君聽足下計，若信者亦已爲禽矣。以不用足下，故信得侍耳。"
+    },
+    "fix": "可保留。"
+   },
+   {
+    "id": "A5",
+    "path": "sections.analysis.3",
+    "lang": "zh",
+    "sentence": "作者提出的替代情形是：如果陈馀采纳李左车之计、坚壁不出并断其辎重，韩信会怎么改，史书没有记载，任何人都只能推测。",
+    "verdict": "supported",
+    "source_ids": [
+     "A-SJ92"
+    ],
+    "scope": "《淮陰侯列傳》全文。没有记载韩信的备用方案。但有两条相关记载：一是韩信探知计策不用后“乃敢引兵遂下”，暗示若计被采用他不会贸然进兵；二是韩信自述“亦已爲禽矣”。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "知其不用，還報，則大喜，乃敢引兵遂下。"
+    },
+    "fix": "可保留。宜把“史书”收窄为“本传”，并补一句：原文“乃敢”暗示，若计被采用，韩信本不敢下井陉。"
+   },
+   {
+    "id": "A6",
+    "path": "sections.analysis.3",
+    "lang": "en",
+    "sentence": "The alternative the author raises: had Chen Yu adopted the plan, held his walls and cut the supplies, what Han Xin would have done instead is unrecorded and can only be guessed at.",
+    "verdict": "supported",
+    "source_ids": [
+     "A-SJ92"
+    ],
+    "scope": "同 A5，《淮陰侯列傳》全文。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "乃敢引兵遂下"
+    },
+    "fix": "同 A5：可注明 \"only then did he dare\" 已暗示他在相反情形下不会进兵。"
+   },
+   {
+    "id": "A7",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "the alternative scenario the author offers serves analysis only and is not stated as fact.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [],
+    "scope": "关于本文写法的声明，不是关于来源记载与否的断言。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "誠令成安君聽足下計，若信者亦已爲禽矣。"
+    },
+    "fix": "无需改动。"
+   },
+   {
+    "id": "N2",
+    "path": "sections.context.2",
+    "lang": "zh",
+    "sentence": "赵国这边的主帅成安君陈馀，史书对他的定性只有一句：「儒者也，常稱義兵不用詐謀奇計」。",
+    "verdict": "unresolved",
+    "source_ids": [
+     "A-SJ92"
+    ],
+    "scope": "在《淮陰侯列傳》内，史家叙述层面对陈馀的定性确实只有这一句（另有李左车、蒯通等人物之口的评说）。但“史书”泛指整部《史记》，《張耳陳餘列傳》等不在阅读范围内，无法确认。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "成安君，儒者也，常稱義兵不用詐謀奇計"
+    },
+    "fix": "改为“本传叙述中对他的定性只有一句”。"
+   },
+   {
+    "id": "N3",
+    "path": "sections.context.2",
+    "lang": "en",
+    "sentence": "Chen Yu, the Lord of Cheng'an and Zhao's commander-in-chief, gets one line of characterization from the historian",
+    "verdict": "unresolved",
+    "source_ids": [
+     "A-SJ92"
+    ],
+    "scope": "同 N2：仅能确认《淮陰侯列傳》范围内成立。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "成安君，儒者也"
+    },
+    "fix": "改为 \"gets one line of characterization from the historian in this chapter\"。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.story.7",
+    "problem": "稿件在李左车“智者千慮”一句处收尾，并把它解读为“任何人都可能出错”的感慨。原文中这句是献计前的谦辞铺垫，紧接着他就献出“按甲休兵、先声后实”之策，韩信称善并采用，燕国随即归附。截断把中途写成了结局，也让“赢家怎样对待出计的人”缺了最关键的一环：不只是礼遇，而是真的照他的计去做。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "顧恐臣計未必足用，願效愚忠。"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.today.1",
+    "problem": "“把他的思路当成课程”的类比依赖于韩信实际采用了李左车的计，但正文从未交代这一点。应在正文补上“從其策，發使使燕，燕從風而靡”，类比才有依据。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "從其策，發使使燕，燕從風而靡。"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.story.5",
+    "problem": "诸将所引“曰破趙會食”在正文中没有交代来由。原文在背水列阵之前有韩信令裨将传飱、“今日破趙會食”而诸将皆莫信的情节，还有韩信判断赵军不会先击前军的话，稿件把这些略去了。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "令其裨將傳飱，曰：『今日破趙會食！』諸將皆莫信，詳應曰：『諾。』"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.analysis.3",
+    "problem": "可选的限定：同一篇传记后文中，韩信自己也没有听蒯通之计，临刑时悔之。这与“用與不用，聽與不聽”形成对照，可作补充，但不影响本段准确性。",
+    "quote": {
+     "source_id": "A-SJ92",
+     "quote": "吾悔不用蒯通之計，乃爲兒女子所詐，豈非天哉！"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "稿件对井陉之战的叙述与原文相符，各条“原文未记”断言基本成立，只有“史书对他的定性只有一句”需把范围收窄为本传。主要问题是截断：稿件停在李左车的谦辞上，漏掉了他随即献计、韩信采纳、燕国归附这一结局，必须补入。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.1",
+   "lang": "zh",
+   "sentence": "但原文只记了大笑，没有说他们笑什么。",
+   "verdict": "supported",
+   "source_ids": [
+    "A-SJ92"
+   ],
+   "scope": "《淮陰侯列傳》全文（completeness: complete）。“趙軍望見而大笑”前后都没有交代赵军发笑的原因。诸将事后引兵法“右倍山陵，前左水澤”，是汉军将领自己的疑问，不是赵军发笑的理由。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "信乃使萬人先行，出，背水陳。趙軍望見而大笑。"
+   },
+   "fix": "可保留。已标明“作者推测”，表述准确。",
+   "unit_status": {
+    "A-SJ92": "complete"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.analysis.0",
+   "lang": "en",
+   "sentence": "One explanation: that rule runs directly against Li Zuoche's surprise-force plan, and the two may be connected, but the text does not record it as a ground for this refusal.",
+   "verdict": "supported",
+   "source_ids": [
+    "A-SJ92"
+   ],
+   "scope": "《淮陰侯列傳》陈馀拒计一段（J-E3）。陈馀“曰”之下给出的理由只有兵力算术和怕诸侯谓其怯两条；“常稱義兵不用詐謀奇計”是史家对其平素立场的叙述。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "成安君，儒者也，常稱義兵不用詐謀奇計，曰：『吾聞兵法十則圍之，倍則戰。"
+   },
+   "fix": "可保留。可补一句：史家把这句定性紧贴在陈馀发言之前（“常稱……曰”），这种并置本身就提示了二者的关联。",
+   "unit_status": {
+    "A-SJ92": "complete"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "sections.analysis.0",
+   "lang": "zh",
+   "sentence": "一种解释是：这条规矩与李左车的奇兵之计正好相冲，二者或有关联，但原文并没有把它记为这次拒绝的理由。",
+   "verdict": "supported",
+   "source_ids": [
+    "A-SJ92"
+   ],
+   "scope": "同 A2，《淮陰侯列傳》J-E3 段。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "不聽廣武君策，廣武君策不用。"
+   },
+   "fix": "可保留，与 A2 同。",
+   "unit_status": {
+    "A-SJ92": "complete"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.2",
+   "lang": "zh",
+   "sentence": "原文没有记下有人问“那条计当初为什么没被采纳”。",
+   "verdict": "supported",
+   "source_ids": [
+    "A-SJ92"
+   ],
+   "scope": "《淮陰侯列傳》全文，重点核查破赵后诸将问术、韩信问广武君两段。诸将只问背水之术；韩信自己说出“以不用足下”，但没有人提出“为何未被采纳”的问题。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "此何術也？"
+   },
+   "fix": "可保留。可顺带指出：韩信本人主动提到了“不用”，只是没有人把它当作问题来问。",
+   "unit_status": {
+    "A-SJ92": "complete"
+   }
+  },
+  {
+   "id": "A4",
+   "path": "sections.analysis.2",
+   "lang": "en",
+   "sentence": "The text does not record anyone asking why that plan had not been adopted before the fighting.",
+   "verdict": "supported",
+   "source_ids": [
+    "A-SJ92"
+   ],
+   "scope": "同 A3，《淮陰侯列傳》全文。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "誠令成安君聽足下計，若信者亦已爲禽矣。以不用足下，故信得侍耳。"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "A-SJ92": "complete"
+   }
+  },
+  {
+   "id": "A5",
+   "path": "sections.analysis.3",
+   "lang": "zh",
+   "sentence": "作者提出的替代情形是：如果陈馀采纳李左车之计、坚壁不出并断其辎重，韩信会怎么改，史书没有记载，任何人都只能推测。",
+   "verdict": "supported",
+   "source_ids": [
+    "A-SJ92"
+   ],
+   "scope": "《淮陰侯列傳》全文。没有记载韩信的备用方案。但有两条相关记载：一是韩信探知计策不用后“乃敢引兵遂下”，暗示若计被采用他不会贸然进兵；二是韩信自述“亦已爲禽矣”。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "知其不用，還報，則大喜，乃敢引兵遂下。"
+   },
+   "fix": "可保留。宜把“史书”收窄为“本传”，并补一句：原文“乃敢”暗示，若计被采用，韩信本不敢下井陉。",
+   "unit_status": {
+    "A-SJ92": "complete"
+   }
+  },
+  {
+   "id": "A6",
+   "path": "sections.analysis.3",
+   "lang": "en",
+   "sentence": "The alternative the author raises: had Chen Yu adopted the plan, held his walls and cut the supplies, what Han Xin would have done instead is unrecorded and can only be guessed at.",
+   "verdict": "supported",
+   "source_ids": [
+    "A-SJ92"
+   ],
+   "scope": "同 A5，《淮陰侯列傳》全文。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "乃敢引兵遂下"
+   },
+   "fix": "同 A5：可注明 \"only then did he dare\" 已暗示他在相反情形下不会进兵。",
+   "unit_status": {
+    "A-SJ92": "complete"
+   }
+  },
+  {
+   "id": "A7",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "the alternative scenario the author offers serves analysis only and is not stated as fact.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [],
+   "scope": "关于本文写法的声明，不是关于来源记载与否的断言。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "誠令成安君聽足下計，若信者亦已爲禽矣。"
+   },
+   "fix": "无需改动。",
+   "unit_status": {}
+  },
+  {
+   "id": "N2",
+   "path": "sections.context.2",
+   "lang": "zh",
+   "sentence": "赵国这边的主帅成安君陈馀，史书对他的定性只有一句：「儒者也，常稱義兵不用詐謀奇計」。",
+   "verdict": "unresolved",
+   "source_ids": [
+    "A-SJ92"
+   ],
+   "scope": "在《淮陰侯列傳》内，史家叙述层面对陈馀的定性确实只有这一句（另有李左车、蒯通等人物之口的评说）。但“史书”泛指整部《史记》，《張耳陳餘列傳》等不在阅读范围内，无法确认。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "成安君，儒者也，常稱義兵不用詐謀奇計"
+   },
+   "fix": "改为“本传叙述中对他的定性只有一句”。",
+   "unit_status": {
+    "A-SJ92": "complete"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.context.2",
+   "lang": "en",
+   "sentence": "Chen Yu, the Lord of Cheng'an and Zhao's commander-in-chief, gets one line of characterization from the historian",
+   "verdict": "unresolved",
+   "source_ids": [
+    "A-SJ92"
+   ],
+   "scope": "同 N2：仅能确认《淮陰侯列傳》范围内成立。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "成安君，儒者也"
+   },
+   "fix": "改为 \"gets one line of characterization from the historian in this chapter\"。",
+   "unit_status": {
+    "A-SJ92": "complete"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.story.7",
+   "problem": "稿件在李左车“智者千慮”一句处收尾，并把它解读为“任何人都可能出错”的感慨。原文中这句是献计前的谦辞铺垫，紧接着他就献出“按甲休兵、先声后实”之策，韩信称善并采用，燕国随即归附。截断把中途写成了结局，也让“赢家怎样对待出计的人”缺了最关键的一环：不只是礼遇，而是真的照他的计去做。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "顧恐臣計未必足用，願效愚忠。"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.today.1",
+   "problem": "“把他的思路当成课程”的类比依赖于韩信实际采用了李左车的计，但正文从未交代这一点。应在正文补上“從其策，發使使燕，燕從風而靡”，类比才有依据。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "從其策，發使使燕，燕從風而靡。"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.story.5",
+   "problem": "诸将所引“曰破趙會食”在正文中没有交代来由。原文在背水列阵之前有韩信令裨将传飱、“今日破趙會食”而诸将皆莫信的情节，还有韩信判断赵军不会先击前军的话，稿件把这些略去了。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "令其裨將傳飱，曰：『今日破趙會食！』諸將皆莫信，詳應曰：『諾。』"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.analysis.3",
+   "problem": "可选的限定：同一篇传记后文中，韩信自己也没有听蒯通之计，临刑时悔之。这与“用與不用，聽與不聽”形成对照，可作补充，但不影响本段准确性。",
+   "quote": {
+    "source_id": "A-SJ92",
+    "quote": "吾悔不用蒯通之計，乃爲兒女子所詐，豈非天哉！"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "A-SJ92",
+   "outcome": "井陉之战以汉军大破赵军、斩陈馀、擒赵王歇收场。韩信生得李左车并师事之；李左车谦辞之后献出“按甲休兵、先声后实”之策。韩信称“善”并照此遣使，燕国望风归附，随后请立张耳为赵王。破赵部分已在证据包内（J-E6、J-E7），但这条计被采用及其后果不在证据包内。",
+   "quote": "韓信曰：『善。』從其策，發使使燕，燕從風而靡。乃遣使報漢，因請立張耳爲趙王，以鎮撫其國。漢王許之，乃立張耳爲趙王。",
+   "in_evidence": false
+  }
+ ],
+ "additions": [
+  {
+   "id": "J-E11",
+   "source_id": "A-SJ92",
+   "offset": 2941,
+   "chars": 413,
+   "why": "J-E10 截在李左车的谦辞上。紧接着他就献了计，韩信“善”而“從其策”，燕国随即归附。这是全篇主题“赢家怎样对待提建议的人”的真正结局：韩信不只是礼遇他，还实际采用了他的计。没有这一段，读者会以为故事停在礼节和谦辞上，也会误读“智者千慮”一句的用意（那是献计前的铺垫）。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "1e31d5ae572d9ec8e27d1986a75e544a25296b9376d51327cbdb8d774f205249",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.context.2.zh: unresolved — 赵国这边的主帅成安君陈馀，史书对他的定性只有一句：「儒者也，常稱義兵不用詐謀奇計」。",
+  "sections.context.2.en: unresolved — Chen Yu, the Lord of Cheng'an and Zhao's commander-in-chief, gets one line of ch",
+  "sections.story.7: 稿件在李左车“智者千慮”一句处收尾，并把它解读为“任何人都可能出错”的感慨。原文中这句是献计前的谦辞铺垫，紧接着他就献出“按甲休兵、先声后实”之策，韩信称善并采用，燕国随即归附。截断把中途写成了结局，",
+  "sections.today.1: “把他的思路当成课程”的类比依赖于韩信实际采用了李左车的计，但正文从未交代这一点。应在正文补上“從其策，發使使燕，燕從風而靡”，类比才有依据。",
+  "evidence must be expanded first: 1 addition(s) ['J-E11']"
+ ]
+}

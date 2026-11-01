@@ -1,0 +1,2059 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-20261030-shackleton-ocean-camp",
+ "edition_id": "cand-20261030-shackleton-ocean-camp",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "2af9f62",
+ "started_at": 1793431559.9717898,
+ "base_source": "samples/auto/cand-20261030-shackleton-ocean-camp/final/article.json",
+ "base_content_sha256": "d07565529df27dce3ecbad82e855657120861d7942ba211cbfa45327f827d2fd",
+ "evidence_sha256": "d8dd19c2d101c3422b9aaf842ea525b99439258a75080243e3f07939cfb5047f",
+ "operator_note": null,
+ "model_record_sha256": "6a4351505063bf4a2d30b3e86d2da6d9ede352116f8b0739f53fb486924d835c",
+ "prior_record_sha256": "fb19cd9f962a0144729495d683848eb6d3e72cfae2029978746a2fe9cc0d3185",
+ "attempt": "attempt-4",
+ "context_review_sha256": "59545ff00f96c978e9722dc680c68b60dfd49f0648a9e43e6f21e53911a50a89",
+ "inherited": [
+  {
+   "id": "X1",
+   "source": "context review",
+   "where": "",
+   "problem": "证据包已按来源上下文补入摘录 S-E24, S-E25；请据此检查叙事、结局与因果是否完整准确",
+   "suggestion": null
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "sections.limits.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "中文写“营地里别人怎么想……证据里没有”，英文写“What the rest of the camp thought……is not in the evidence”。这与证据不符。沙克尔顿的叙述记有队员的状态和情绪：队员筋疲力尽；第二次尝试受挫时全队大失所望；部分队员一度消沉，随即恢复。证据里确实没有的，只是别人是否同意海洋营的决定。",
+   "evidence": [
+    {
+     "id": "S-E15",
+     "quote": "the men were all exhausted"
+    },
+    {
+     "id": "S-E24",
+     "quote": "to the intense disappointment of all"
+    },
+    {
+     "id": "S-E25",
+     "quote": "THE apathy which seemed to take possession of some of the men at the frustration of their hopes was soon dispelled."
+    }
+   ],
+   "proposed": "中文改为：“营地里其他人是否同意海洋营的决定，证据里没有。沙克尔顿的叙述只转述了队员的疲惫、第二次受挫时全队的失望，以及部分人一度消沉、随即恢复，这些也都出自他本人笔下。本篇不另替他们猜测心理。”英文同步改为：“Whether anyone else agreed with the Ocean Camp decision is not in the evidence; Shackleton's narrative reports only the men's exhaustion, the disappointment of all at the second setback, and a passing apathy among some, all in his own words.”",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "limits.0 原称别人怎么想不在证据里，与证据矛盾。现改为：他的叙述记有队员筋疲力尽、第二次受挫时全队失望、部分人一度消沉随即恢复；证据里确实没有的，只是其他人是否同意海洋营的决定。中英文已同步，并在 ev 中补入相应证据。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.analysis.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "中文称海洋营是回到“这个先前否决过的方案”。证据中，在厚浮冰上扎营等待是一个附条件的备选：行进太难、太伤船时才采用。他当时决定先尝试行军，并没有否决这个方案。英文用的是“set aside”，较准确，中英也因此不一致。",
+   "evidence": [
+    {
+     "id": "S-E19",
+     "quote": "We could even, if progress proved too difficult and too injurious to the boats"
+    },
+    {
+     "id": "S-E19",
+     "quote": "We will make an attempt to move."
+    }
+   ],
+   "proposed": "中文把“先前否决过的方案”改为“先前暂且搁置、留作退路的方案”，与英文“set aside”一致。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文“先前否决过的方案”改为“先前暂且搁置、留作退路的方案”。证据表明，在厚浮冰上扎营等待是附条件的备选，他只是决定先尝试行军，并未否决这个方案。改后与英文“set aside”一致，英文不变。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.context.heading",
+   "category": "style",
+   "severity": "note",
+   "problem": "标题中的“两磅的规矩”不在 context 段落里，而是在 story.0 才出现，标题与内容对不上。",
+   "evidence": [],
+   "proposed": "标题改为“原计划与眼下的处境”/“The Original Plan and Where They Stood”，或保留现标题、把两磅规矩移到本节。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "X1",
+   "path": "",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "证据包已按来源上下文补入摘录 S-E24, S-E25；请据此检查叙事、结局与因果是否完整准确",
+   "origin": "inherited context review None",
+   "audit_rationale": "按补入的 S-E24、S-E25 核对后：story.13 对第二次尝试失败及转入耐心营的叙述与证据一致，没有事实错误。但 limits.0 声称别人怎么想不在证据里，这与 S-E24、S-E25 冲突，已列为 F1。story.13 也可选择性补一句：前方冰面无法通行，被迫后撤半英里，全队大失所望。",
+   "disposition": "fixed",
+   "rationale": "已按补入的 S-E24、S-E25 核对。limits.0 关于队员情绪的错误说法已随 F1 一并修正。story.13 补入第二次尝试受挫的经过：前方冰面无法通行，被迫后撤半英里，全队大失所望；ev 加入 S-E24。其余结局叙述与 S-E21、S-E8 一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.story.4",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "本段紧接“第一天”的叙述，把 S-E6 的内容并入第一夜：一英里/两英里/六英里的账，以及在“年轻又咸”的平冰上扎营。S-E12 是第一夜的记述（凌晨2点裂缝、冰薄）。证据只把 S-E6 定位在“行军头几天”，没有说它是第一天或第一夜。“当晚只能在……年轻又咸的冰上扎营。夜里虎鲸一直在喷气”这一衔接缺少证据。",
+   "evidence": [
+    {
+     "id": "S-E6",
+     "quote": "So I gave the order to pitch camp for the night on flat ice, which, unfortunately, proved to be young and salty."
+    },
+    {
+     "id": "S-E12",
+     "quote": "The killers were blowing all night, and a crack appeared about 20 ft. from the camp at 2 a.m."
+    },
+    {
+     "id": "S-E11",
+     "quote": "by 5 p.m. had covered a mile in a north-northwesterly direction."
+    }
+   ],
+   "proposed": "把两件事拆开写，不要标成同一天。可改为：“行军头几天里，有一天的账是这样的：直线约一英里……；那晚的营地扎在平坦但年轻又咸的冰上。”第一夜单独另起一句：“第一夜，虎鲸一直在喷气……”英文同步修改，例如“On one of the first days…”。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "S-E6 的位置只标为“行军头几天”，S-E12 才是第一夜的记述。修改后，S-E6 的距离账和“年轻又咸”冰面上的营地改写为头几天中“有一天”的情况；第一夜的虎鲸、凌晨2点的裂缝和薄冰另起一句单独叙述，不再把两者标为同一天。英文同步修改。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V2",
+   "path": "sections.analysis.0",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "“在第一个营地，冰面一夜裂开两次”没有交代这是哪个营地。按 S-E19 的语境，这个方案写于行军开始之前，所以“第一个营地”是弃船后的营地，不是行军第一夜。读者读过 story.4 的行军第一夜（只记一道裂缝），容易把两处混为一谈，觉得前后矛盾。",
+   "evidence": [
+    {
+     "id": "S-E19",
+     "quote": "it would also minimize the peril of the ice splitting under us, as it did twice during the night at our first camp, Yet I feel sure that it is the right thing to attempt a march"
+    }
+   ],
+   "proposed": "改为“在弃船后的第一个营地，冰面一夜裂开两次；行军开始前，他已经写下过……的方案”。英文同步改为“At their first camp after leaving the ship… Before the march began he had already written down…”。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "删去容易与行军第一夜混淆的“在第一个营地，冰面一夜裂开两次；那一夜之后”这一写法。“第一个营地”改为加引号的转述，并明确说明原文没有交代是哪个营地，不能等同于前文的行军第一夜。时间点只写到“在海洋营之前”。没有采纳建议中的“行军开始前”，因为 S-E19 原文提到“we are now incurring”的危险，证据文字本身不能确定这段写于行军之前；在海洋营之前写下，则有该段末尾的“We will make an attempt to move”为据。英文同步修改。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V2-V1",
+   "path": "sections.limits.0",
+   "category": "inner_life",
+   "severity": "fix",
+   "problem": "原文对队员消沉的记述带有保留（seemed），中英文都去掉了这层保留，把部分队员的消沉写成了确定的状态。",
+   "evidence": [
+    {
+     "id": "S-E25",
+     "quote": "THE apathy which seemed to take possession of some of the men at the frustration of their hopes was soon dispelled."
+    }
+   ],
+   "proposed": "中文改为“部分人似乎一度消沉，随即恢复”；英文改为“and an apathy that seemed to take hold of some of the men soon passed”。",
+   "origin": "final-editor verify round 2"
+  }
+ ],
+ "edits": [
+  {
+   "path": "sections.limits.0.zh",
+   "before": "本篇的全部过程都出自沙克尔顿本人的叙述（这里用的是1920年印本的 OCR 文本），是当事人、领导者的记述。没有取得其他队员的日记作对照，营地里别人怎么想、是否同意这个决定，证据里没有，本篇也不替他们猜测心理。文中那句“喝过更干净的水”出自一位未具名队员的日记，是经沙克尔顿转引的。",
+   "after": "本篇的全部过程都出自沙克尔顿本人的叙述（这里用的是1920年印本的 OCR 文本），是当事人、领导者的记述。没有取得其他队员的日记作对照。他的叙述写到了队员的状态：大家筋疲力尽；第二次尝试受挫、被迫后撤时，全队大失所望；部分人一度消沉，随即恢复。这些也都出自他的叙述。但营地里其他人是否同意海洋营的决定，证据里没有，本篇也不另替他们猜测心理。文中那句“喝过更干净的水”出自一位未具名队员的日记，是经沙克尔顿转引的。",
+   "issues": [
+    "F1",
+    "X1"
+   ]
+  },
+  {
+   "path": "sections.limits.0.en",
+   "before": "Everything in this piece comes from Shackleton's own narrative, read here through the OCR text of the 1920 printing: the account of a participant who led the party. No other member's diary has been brought in for comparison. What the rest of the camp thought, and whether anyone questioned the decision, is not in the evidence, and this piece does not put feelings in their mouths. The line about the sip of water comes from an unnamed member's diary, as quoted by Shackleton.",
+   "after": "Everything in this piece comes from Shackleton's own narrative, read here through the OCR text of the 1920 printing: the account of a participant who led the party. No other member's diary has been brought in for comparison. His narrative does report the men's state: they were all exhausted; at the second setback, when they had to retreat, there was intense disappointment among all of them; and an apathy that took hold of some of the men soon passed. These reports, too, come from his narrative. Whether anyone else in the camp agreed with the Ocean Camp decision is not in the evidence, and this piece does not put further feelings in their mouths. The line about the sip of water comes from an unnamed member's diary, as quoted by Shackleton.",
+   "issues": [
+    "F1",
+    "X1"
+   ]
+  },
+  {
+   "path": "sections.limits.0.ev",
+   "before": [],
+   "after": [
+    "S-E15",
+    "S-E24",
+    "S-E25"
+   ],
+   "issues": [
+    "F1",
+    "X1"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.zh",
+   "before": "一种解释是（作者推断），海洋营不是他第一次决定停下。行军第二天早上，雪大得看不清路，他就决定不拔营；天晴一些后探到一块好走的浮冰，午饭后又继续走。两次决定都在衡量眼前的路还能不能走下去。扎营等待也不是新想法：在第一个营地，冰面一夜裂开两次；那一夜之后，他已经写下过在最近的厚浮冰上扎营、等浮冰外漂到开阔水面的方案。但他确信应当先尝试行军，还特别提到这个问题有心理层面的考虑：让大家觉得自己正在朝陆地走，比坐等漂流要好。海洋营是在四天苦干之后回到这个先前否决过的方案。营地选在更结实的浮冰上，理由里挂着一个具体的指望：附近可能开出水道，那时可以划船去找陆地。等条件更有利，再做第二次尝试。",
+   "after": "一种解释是（作者推断），海洋营不是他第一次决定停下。行军第二天早上，雪大得看不清路，他就决定不拔营；天晴一些后探到一块好走的浮冰，午饭后又继续走。两次决定都在衡量眼前的路还能不能走下去。扎营等待也不是新想法：在第一个营地，冰面一夜裂开两次；那一夜之后，他已经写下过在最近的厚浮冰上扎营、等浮冰外漂到开阔水面的方案。但他确信应当先尝试行军，还特别提到这个问题有心理层面的考虑：让大家觉得自己正在朝陆地走，比坐等漂流要好。海洋营是在四天苦干之后回到这个先前暂且搁置、留作退路的方案。营地选在更结实的浮冰上，理由里挂着一个具体的指望：附近可能开出水道，那时可以划船去找陆地。等条件更有利，再做第二次尝试。",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.13.zh",
+   "before": "后来他们真的做了第二次尝试：行军七天，直线只前进了七英里半；照这个速度，要三百多天才能到西边的陆地，而食物只够四十二天，只好再次在浮冰上扎营。新的营地叫耐心营，他们在那里住了将近三个半月。",
+   "after": "后来他们真的做了第二次尝试。途中一度因前方冰面无法通行，只好后撤半英里，换到更结实的浮冰上扎营，全队大失所望。行军七天，直线只前进了七英里半；照这个速度，要三百多天才能到西边的陆地，而食物只够四十二天，只好再次在浮冰上扎营。新的营地叫耐心营，他们在那里住了将近三个半月。",
+   "issues": [
+    "X1"
+   ]
+  },
+  {
+   "path": "sections.story.13.en",
+   "before": "Later they did make that second attempt. They marched for seven days and gained seven and a half miles in a direct line; at that rate it would take over three hundred days to reach the land to the west, and they had food for only forty-two days. So they camped once more on the floe. They called the new camp Patience Camp and lived there for nearly three and a half months.",
+   "after": "Later they did make that second attempt. At one point the ice ahead proved impassable, and, to the intense disappointment of all, they had to retreat half a mile to get onto a stronger floe and camp. They marched for seven days and gained seven and a half miles in a direct line; at that rate it would take over three hundred days to reach the land to the west, and they had food for only forty-two days. So they camped once more on the floe. They called the new camp Patience Camp and lived there for nearly three and a half months.",
+   "issues": [
+    "X1"
+   ]
+  },
+  {
+   "path": "sections.story.13.ev",
+   "before": [
+    "S-E7",
+    "S-E21",
+    "S-E8"
+   ],
+   "after": [
+    "S-E7",
+    "S-E21",
+    "S-E24",
+    "S-E8"
+   ],
+   "issues": [
+    "X1"
+   ]
+  },
+  {
+   "path": "sections.story.4.zh",
+   "before": "行军的账很难看。一天下来，直线只前进了约一英里；为了绕开障碍，实际走过的距离至少两英里；分批搬运、来回接力，又把当天走过的路程推到了六英里，有几组狗队至少跑了十英里。当晚只能在平坦但又年轻又咸的冰上扎营。夜里虎鲸一直在喷气，凌晨2点，离营地约20英尺处裂开一道缝。他写道，脚下的冰薄得足以让虎鲸撞破，可近处没有别的地方能扎营，只好冒这个险。",
+   "after": "行军的账很难看。头几天里有一天，直线只前进了约一英里；为了绕开障碍，实际走过的距离至少两英里；分批搬运、来回接力，又把当天走过的路程推到了六英里，有几组狗队至少跑了十英里。那晚的营地扎在平坦但又年轻又咸的冰上。行军第一夜，虎鲸一直在喷气，凌晨2点，离营地约20英尺处裂开一道缝。他写道，脚下的冰薄得足以让虎鲸撞破，可近处没有别的地方能扎营，只好冒这个险。",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.story.4.en",
+   "before": "The arithmetic of the march made ugly reading. They had gained about one mile in a direct line; the detours made the ground actually covered at least two miles, and the relays pushed the day's marching up to six. Some of the dog teams had covered at least ten miles. That night they camped on flat ice that \"proved to be young and salty.\" The killers were blowing all night, and at 2 a.m. a crack opened about 20 feet from the camp. The ice was thin enough for the killers to break through, he wrote, \"but there was no other camping-ground within our reach and we had to take the risk.\"",
+   "after": "The arithmetic of the march made ugly reading. On one of the first days they gained about one mile in a direct line; the detours made the ground actually covered at least two miles, and the relays pushed the day's marching up to six. Some of the dog teams had covered at least ten miles. That night they camped on flat ice that \"proved to be young and salty.\" On the first night of the march, killer whales blew all night, and at 2 a.m. a crack opened about 20 feet from the camp. The ice was thin enough for the killers to break through, he wrote, \"but there was no other camping-ground within our reach and we had to take the risk.\"",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.zh",
+   "before": "一种解释是（作者推断），海洋营不是他第一次决定停下。行军第二天早上，雪大得看不清路，他就决定不拔营；天晴一些后探到一块好走的浮冰，午饭后又继续走。两次决定都在衡量眼前的路还能不能走下去。扎营等待也不是新想法：在第一个营地，冰面一夜裂开两次；那一夜之后，他已经写下过在最近的厚浮冰上扎营、等浮冰外漂到开阔水面的方案。但他确信应当先尝试行军，还特别提到这个问题有心理层面的考虑：让大家觉得自己正在朝陆地走，比坐等漂流要好。海洋营是在四天苦干之后回到这个先前暂且搁置、留作退路的方案。营地选在更结实的浮冰上，理由里挂着一个具体的指望：附近可能开出水道，那时可以划船去找陆地。等条件更有利，再做第二次尝试。",
+   "after": "一种解释是（作者推断），海洋营不是他第一次决定停下。行军第二天早上，雪大得看不清路，他就决定不拔营；天晴一些后探到一块好走的浮冰，午饭后又继续走。两次决定都在衡量眼前的路还能不能走下去。扎营等待也不是新想法：在海洋营之前，他已经写下过在最近的厚浮冰上扎营、等浮冰外漂到开阔水面的方案，并说这样还能减少冰面在脚下开裂的危险。他写道，在他们的“第一个营地”，冰面曾一夜裂开两次；这段记述没有交代那是哪个营地，不能直接等同于前文所记的行军第一夜。但他确信应当先尝试行军，还特别提到这个问题有心理层面的考虑：让大家觉得自己正在朝陆地走，比坐等漂流要好。海洋营是在四天苦干之后回到这个先前暂且搁置、留作退路的方案。营地选在更结实的浮冰上，理由里挂着一个具体的指望：附近可能开出水道，那时可以划船去找陆地。等条件更有利，再做第二次尝试。",
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "before": "One reading, and it is the author's, is that Ocean Camp was not the first time he chose to stop. On the march's second morning, with snow too thick to see a path, he decided not to strike camp; when it cleared and a good floe turned up, they moved on after lunch. Both decisions turned on whether the way ahead could be made. Nor was camping to wait a new idea. At their first camp the ice split twice in one night. After that night he had already written down the option of camping on the nearest heavy floe and awaiting the outward drift of the pack to open water. But he felt sure it was right to attempt a march first, noting that there was a psychological aspect too: the men would be better off feeling they were on their way to land than simply sitting and waiting for the drift. Ocean Camp, after four days of hard effort, was a return to that option he had set aside. The camp went onto a more solid floe, and the reasoning carried a specific hope: leads opening nearby, boats in the water, land to the north-west. A second attempt was to follow once conditions improved.",
+   "after": "One reading, and it is the author's, is that Ocean Camp was not the first time he chose to stop. On the march's second morning, with snow too thick to see a path, he decided not to strike camp; when it cleared and a good floe turned up, they moved on after lunch. Both decisions turned on whether the way ahead could be made. Nor was camping to wait a new idea. Before Ocean Camp he had already written down the option of camping on the nearest heavy floe and awaiting the outward drift of the pack to open water, noting that it would also lessen the peril of the ice splitting under them. He wrote that at their \"first camp\" the ice had split twice in one night; the passage does not say which camp that was, and it should not simply be equated with the march's first night described earlier. But he felt sure it was right to attempt a march first, noting that there was a psychological aspect too: the men would be better off feeling they were on their way to land than simply sitting and waiting for the drift. Ocean Camp, after four days of hard effort, was a return to that option he had set aside. The camp went onto a more solid floe, and the reasoning carried a specific hope: leads opening nearby, boats in the water, land to the north-west. A second attempt was to follow once conditions improved.",
+   "issues": [
+    "V1-V2"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "X1"
+   ],
+   "changes_applied": 7,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[4] numbers differ zh[2, 20] en[2, 10, 20]"
+    ],
+    [
+     "CHECK",
+     "story[6] numbers differ zh[12, 14, 18] en[10, 14, 18]"
+    ]
+   ],
+   "content_sha256_after": "bc1abcfe9f83d24c833e434d6335209c8f2bc282ee9dbf12fabf8af3f02f0eae",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.9",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.10",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.11",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.12",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.13",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.story.4",
+      "category": "chronology",
+      "severity": "fix",
+      "problem": "本段紧接“第一天”的叙述，把 S-E6 的内容并入第一夜：一英里/两英里/六英里的账，以及在“年轻又咸”的平冰上扎营。S-E12 是第一夜的记述（凌晨2点裂缝、冰薄）。证据只把 S-E6 定位在“行军头几天”，没有说它是第一天或第一夜。“当晚只能在……年轻又咸的冰上扎营。夜里虎鲸一直在喷气”这一衔接缺少证据。",
+      "evidence": [
+       {
+        "id": "S-E6",
+        "quote": "So I gave the order to pitch camp for the night on flat ice, which, unfortunately, proved to be young and salty."
+       },
+       {
+        "id": "S-E12",
+        "quote": "The killers were blowing all night, and a crack appeared about 20 ft. from the camp at 2 a.m."
+       },
+       {
+        "id": "S-E11",
+        "quote": "by 5 p.m. had covered a mile in a north-northwesterly direction."
+       }
+      ],
+      "proposed": "把两件事拆开写，不要标成同一天。可改为：“行军头几天里，有一天的账是这样的：直线约一英里……；那晚的营地扎在平坦但年轻又咸的冰上。”第一夜单独另起一句：“第一夜，虎鲸一直在喷气……”英文同步修改，例如“On one of the first days…”。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.analysis.0",
+      "category": "chronology",
+      "severity": "fix",
+      "problem": "“在第一个营地，冰面一夜裂开两次”没有交代这是哪个营地。按 S-E19 的语境，这个方案写于行军开始之前，所以“第一个营地”是弃船后的营地，不是行军第一夜。读者读过 story.4 的行军第一夜（只记一道裂缝），容易把两处混为一谈，觉得前后矛盾。",
+      "evidence": [
+       {
+        "id": "S-E19",
+        "quote": "it would also minimize the peril of the ice splitting under us, as it did twice during the night at our first camp, Yet I feel sure that it is the right thing to attempt a march"
+       }
+      ],
+      "proposed": "改为“在弃船后的第一个营地，冰面一夜裂开两次；行军开始前，他已经写下过……的方案”。英文同步改为“At their first camp after leaving the ship… Before the march began he had already written down…”。"
+     }
+    ],
+    "overall": "引文均逐字可查，解释段已标注，中英基本一致。需修正两处时间线问题后再发：一是 story.4 把 S-E6 的扎营和里程账并进了第一夜，二是 analysis.0 没有说明“第一个营地”指弃船后的营地。",
+    "_content_sha256": "bc1abcfe9f83d24c833e434d6335209c8f2bc282ee9dbf12fabf8af3f02f0eae"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1",
+    "V1-V2"
+   ],
+   "changes_applied": 4,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[4] numbers differ zh[2, 20] en[2, 10, 20]"
+    ],
+    [
+     "CHECK",
+     "story[6] numbers differ zh[12, 14, 18] en[10, 14, 18]"
+    ]
+   ],
+   "content_sha256_after": "2319f5ecd40fae171cbc3e69a73b7ecef70db5887fd96c7f1f2bb58dc85d69e7",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.9",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.10",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.11",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.12",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.13",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.limits.0",
+      "category": "inner_life",
+      "severity": "fix",
+      "problem": "原文对队员消沉的记述带有保留（seemed），中英文都去掉了这层保留，把部分队员的消沉写成了确定的状态。",
+      "evidence": [
+       {
+        "id": "S-E25",
+        "quote": "THE apathy which seemed to take possession of some of the men at the frustration of their hopes was soon dispelled."
+       }
+      ],
+      "proposed": "中文改为“部分人似乎一度消沉，随即恢复”；英文改为“and an apathy that seemed to take hold of some of the men soon passed”。"
+     }
+    ],
+    "overall": "定稿的事实、引语、时序和解释标注基本都有证据支持，中英文一致。只有 limits.0 在转述队员情绪时去掉了原文的保留语气（seemed），需要小修。",
+    "_content_sha256": "2319f5ecd40fae171cbc3e69a73b7ecef70db5887fd96c7f1f2bb58dc85d69e7"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "inner_life",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "chronology",
+     "causality",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "inner_life",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.9",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.10",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.11",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.12",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.13",
+    "checked": [
+     "facts",
+     "chronology",
+     "causality",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "causality",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.3",
+    "checked": [
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "quotes",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "inner_life",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "sections.limits.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "中文写“营地里别人怎么想……证据里没有”，英文写“What the rest of the camp thought……is not in the evidence”。这与证据不符。沙克尔顿的叙述记有队员的状态和情绪：队员筋疲力尽；第二次尝试受挫时全队大失所望；部分队员一度消沉，随即恢复。证据里确实没有的，只是别人是否同意海洋营的决定。",
+    "evidence": [
+     {
+      "id": "S-E15",
+      "quote": "the men were all exhausted"
+     },
+     {
+      "id": "S-E24",
+      "quote": "to the intense disappointment of all"
+     },
+     {
+      "id": "S-E25",
+      "quote": "THE apathy which seemed to take possession of some of the men at the frustration of their hopes was soon dispelled."
+     }
+    ],
+    "proposed": "中文改为：“营地里其他人是否同意海洋营的决定，证据里没有。沙克尔顿的叙述只转述了队员的疲惫、第二次受挫时全队的失望，以及部分人一度消沉、随即恢复，这些也都出自他本人笔下。本篇不另替他们猜测心理。”英文同步改为：“Whether anyone else agreed with the Ocean Camp decision is not in the evidence; Shackleton's narrative reports only the men's exhaustion, the disappointment of all at the second setback, and a passing apathy among some, all in his own words.”"
+   },
+   {
+    "id": "F2",
+    "path": "sections.analysis.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "中文称海洋营是回到“这个先前否决过的方案”。证据中，在厚浮冰上扎营等待是一个附条件的备选：行进太难、太伤船时才采用。他当时决定先尝试行军，并没有否决这个方案。英文用的是“set aside”，较准确，中英也因此不一致。",
+    "evidence": [
+     {
+      "id": "S-E19",
+      "quote": "We could even, if progress proved too difficult and too injurious to the boats"
+     },
+     {
+      "id": "S-E19",
+      "quote": "We will make an attempt to move."
+     }
+    ],
+    "proposed": "中文把“先前否决过的方案”改为“先前暂且搁置、留作退路的方案”，与英文“set aside”一致。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.context.heading",
+    "category": "style",
+    "severity": "note",
+    "problem": "标题中的“两磅的规矩”不在 context 段落里，而是在 story.0 才出现，标题与内容对不上。",
+    "evidence": [],
+    "proposed": "标题改为“原计划与眼下的处境”/“The Original Plan and Where They Stood”，或保留现标题、把两磅规矩移到本节。"
+   }
+  ],
+  "inherited": [
+   {
+    "id": "X1",
+    "verdict": "valid",
+    "same_as": "",
+    "rationale": "按补入的 S-E24、S-E25 核对后：story.13 对第二次尝试失败及转入耐心营的叙述与证据一致，没有事实错误。但 limits.0 声称别人怎么想不在证据里，这与 S-E24、S-E25 冲突，已列为 F1。story.13 也可选择性补一句：前方冰面无法通行，被迫后撤半英里，全队大失所望。",
+    "evidence": [
+     {
+      "id": "S-E24",
+      "quote": "the ice ahead proved quite unnegotiable, so at 8.30 p.m. last night, to the intense disappointment of all, instead of forging ahead, we had to retire half a mile"
+     },
+     {
+      "id": "S-E25",
+      "quote": "was soon dispelled"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "2319f5ecd40fae171cbc3e69a73b7ecef70db5887fd96c7f1f2bb58dc85d69e7",
+ "open_issues": [
+  "V2-V1"
+ ],
+ "outcome": "pending_review",
+ "failure": null,
+ "finished_at": 1793431872.96867,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 90.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 19433,
+    "output_tokens": 10370
+   },
+   "cost_estimate_usd": 0.36287200000000003
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 29.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 19795,
+    "output_tokens": 3612
+   },
+   "cost_estimate_usd": 0.23060799999999998
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 86.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 19008,
+    "output_tokens": 10083
+   },
+   "cost_estimate_usd": 0.35373200000000005
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 35.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 19879,
+    "output_tokens": 3942
+   },
+   "cost_estimate_usd": 0.23788
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 70.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 19163,
+    "output_tokens": 8729
+   },
+   "cost_estimate_usd": 0.327892
+  }
+ ],
+ "elapsed_min": 5.2,
+ "model_wall_min": 5.2
+}

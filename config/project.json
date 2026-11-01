@@ -1,0 +1,99 @@
+{
+  "timezone": "Asia/Shanghai",
+  "prepare_time": "10:00",
+  "send_time": "22:08",
+  "rotation": [
+    "china_ancient",
+    "world",
+    "china_modern",
+    "us"
+  ],
+  "inventory": {
+    "target_days": 14,
+    "alert_below_days": 7
+  },
+  "site": {
+    "base_url": "https://starhub.vip",
+    "allowed_paths": [
+      "history/",
+      "data/history/"
+    ],
+    "link": "/history/?story={id}&lang={lang}"
+  },
+  "email": {
+    "html_budget_bytes": 92160,
+    "from_display": "没事儿多读书"
+  },
+  "length_reference": {
+    "zh_chars": [
+      2800,
+      3600
+    ],
+    "en_words": [
+      1800,
+      2200
+    ],
+    "basis": "body + question + example; per language ~10 min; reference only"
+  },
+  "send_deadline": "23:40",
+  "site_wait": {
+    "backoff_s": [
+      60,
+      120,
+      240,
+      300,
+      300,
+      300
+    ],
+    "note": "live-check retries after the site commit (~22 min); the retry timer resumes later runs until send_deadline"
+  },
+  "editor": {
+    "max_rounds": 2,
+    "max_attempts": 2,
+    "note": "bounded editor loop per draft; drafts still open after max_attempts wait for a person. The fix/block threshold is never relaxed here."
+  },
+  "final_editor": {
+    "max_rounds": 2,
+    "runtime": "claude_cli (official Claude Code CLI on the Pi, claude.ai subscription)",
+    "max_attempts": 3,
+    "min_minutes_per_attempt": 20,
+    "note": "attempts are genuine editorial attempts (health failures not counted), counted since the last demotion from checked; each continues from the previous final text and open issues; a new attempt starts only if the job deadline leaves min_minutes_per_attempt; after max_attempts the draft stays pending. Thresholds are never relaxed."
+  },
+  "context_review": {
+    "before_cjk": 1200,
+    "after_cjk": 4000,
+    "before_latin": 2500,
+    "after_latin": 8000,
+    "cap_cjk": 60000,
+    "cap_latin": 150000,
+    "timeout_s": 1500,
+    "note": "normalised characters around each excerpt (more after than before), one bounded search round for long sources; see context.py"
+  },
+  "mix": {
+    "pattern": [
+      "china",
+      "other",
+      "china",
+      "other",
+      "china",
+      "other",
+      "china"
+    ],
+    "min_china_per_7": 3,
+    "max_china_per_7": 5,
+    "note": "owner decision 2026-10-31 (docs/ADDENDUM_READER_FEEDBACK_20261031.md): ~4 China (ancient+modern) / 3 elsewhere per 7, soft target; see mix.py. Replaces the equal rotation below, which is kept only as the list of categories."
+  },
+  "rotation_legacy_note": "rotation is no longer used for scheduling (mix.py); kept for old reports",
+  "writer": {
+    "model": "claude-opus-5-5 (claude_cli.MODEL; the CLI reports the model actually used)",
+    "runtime": "claude_cli (official Claude Code CLI on the Pi, claude.ai subscription)",
+    "concurrency": 1,
+    "timeouts_s": {
+      "draft_zh": 1800,
+      "review_zh": 1200,
+      "en": 2100
+    },
+    "note": "owner decision 2026-11-01: Claude drafts, writes the English and edits; MiMo/Hermes left the main chain (no fallback). Writing and review stay separate calls and records."
+  },
+  "schedule_note": "owner decision 2026-11-01: daily send 22:08 Beijing time (Asia/Shanghai; = 06:08 PST / 07:08 PDT in Los Angeles). Edition dates, subjects and duplicate checks use the Beijing date; the send window closes at 23:40 the same Beijing day (never sent on a later day). Nightly drafting at 10:00 Beijing time."
+}

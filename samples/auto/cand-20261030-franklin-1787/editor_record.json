@@ -1,0 +1,567 @@
+{
+ "candidate_id": "attempt-2",
+ "editor": "hermes-isolated editor (prompts/edit_zh_en.md)",
+ "code_rev": "a61c045",
+ "started_at": 1793383503.6049428,
+ "evidence_sha256": "8c434074f7d2164d4fceca0272f297916ec41c8bb4722e8eda07941801ef801f",
+ "original_content_sha256": "e94648f200a2701f352acb509b63a050d168076f89a158ad8d7a1a88fbc1b7d9",
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    {
+     "id": "S1",
+     "source": "review",
+     "severity": "fix",
+     "where": "story.4",
+     "problem": "'他拒签，是因为他认为方案交给民众的“要么全收、要么全拒”……'把伦道夫的动机写成定论：F-E8 只记他致歉拒签并保留日后自由；'in toto'一段出自 F-E19（第二次发言），原文是他的 persuasion（对后果的预判），而他陈述的拒签理由是良知（F-E19），不是'让会议的目的落空'",
+     "suggestion": "改为'伦道夫后来又说，他认为把方案以“要么全收、要么全拒”的方式交给民众，会带来无政府和内乱'，并把证据标注补上 F-E19",
+     "seeded_from": "R1"
+    },
+    {
+     "id": "S2",
+     "source": "review",
+     "severity": "fix",
+     "where": "story.4",
+     "problem": "'九个州批准不了'是证据包中没有的具体数字，属新增史实；'混乱必然随之而来'的'必然'也强于 F-E19 的 would really produce",
+     "suggestion": "删去'九个州批准不了'，把'必然'改为'可能'或'真的会'，只保留 F-E19 的'无政府与内乱'",
+     "seeded_from": "R2"
+    },
+    {
+     "id": "S3",
+     "source": "review",
+     "severity": "fix",
+     "where": "story.4",
+     "problem": "'伦道夫随即起身'紧接戈勒姆修数与付签表决（F-E12至F-E14）之后，与证据包中 F-E8 排在 F-E12 之前的顺序不符，伦道夫的拒签致歉发生在戈勒姆动议之前",
+     "suggestion": "把伦道夫一段前移到戈勒姆一段之前，或删去'随即'，改为不表时序的过渡（如'在此前后'）",
+     "seeded_from": "R3"
+    },
+    {
+     "id": "S4",
+     "source": "parity",
+     "severity": "fix",
+     "where": "sections.context.2",
+     "problem": "EN adds \"— and asked what the alternative was\" to Hamilton's remark, a piece of content (his asking what the alternative was) absent from the ZH text.",
+     "suggestion": "Add to ZH after the Hamilton sentence: 「并问除此之外还有什么别的选择」, or delete the clause from EN.",
+     "seeded_from": "P4"
+    },
+    {
+     "id": "S5",
+     "source": "parity",
+     "severity": "fix",
+     "where": "sections.story.3",
+     "problem": "Stated motive for Gorham's motion differs: ZH says the change was proposed 以减少反对意见 (to reduce objections), while EN says only that the clause \"had produced so much discussion\", giving a different cause.",
+     "suggestion": "Change EN to \"— a clause that had produced so much discussion and whose objections this might lessen —\" or align ZH to \"这一条引发了很多讨论\".",
+     "seeded_from": "P5"
+    },
+    {
+     "id": "S6",
+     "source": "parity",
+     "severity": "fix",
+     "where": "sections.story.3",
+     "problem": "EN adds content not in ZH: \"Many members had thought the small proportion of representatives thin security for the rights and interests of the people\", plus \"deputy from Virginia\" for Washington; ZH only has the president's own admission that the small ratio was exceptionable.",
+     "suggestion": "Add to ZH: 「许多人认为代表比例偏小不足以保障人民的权利和利益」 (and optionally 「弗吉尼亚代表」 after 华盛顿), or trim these from EN.",
+     "seeded_from": "P6"
+    }
+   ],
+   "edits_applied": [
+    {
+     "path": "sections.story.4.zh",
+     "before": "伦道夫随即起身，影射着富兰克林的话，为自己拒签致歉：尽管有压倒多数和德高望重的名字为这份方案背书。他说，拒签不等于他要在会外反对宪法，他只是要保留按日后的判断、照自己的职责行事的自由。他拒签，是因为他认为方案交给民众的“要么全收、要么全拒”会让会议的目的落空：九个州批准不了，混乱必然随之而来。",
+     "after": "伦道夫随即起身，影射着富兰克林的话，为自己拒签致歉：尽管有压倒多数和德高望重的名字为这份方案背书。他说，拒签不等于他要在会外反对宪法，他只是要保留按日后的判断、照自己的职责行事的自由。伦道夫后来又说，他认为把方案以“要么全收、要么全拒”的方式交给民众，会真的带来无政府和内乱。",
+     "reason": "拒签理由不再写成定论动机，改为转述他第二次发言的预判（F-E19: the holding out this plan, with a final alternative to the people of accepting or rejecting it in toto, would really produce the anarchy and civil convulsions）；删去证据包没有的“九个州批准不了”，把“必然”降为“真的会”，与 would really produce 相当。",
+     "issues": [
+      "S1",
+      "S2"
+     ]
+    },
+    {
+     "path": "sections.story.4.zh",
+     "before": "伦道夫随即起身，影射着富兰克林的话，为自己拒签致歉：尽管有压倒多数和德高望重的名字为这份方案背书。他说，拒签不等于他要在会外反对宪法，他只是要保留按日后的判断、照自己的职责行事的自由。伦道夫后来又说，他认为把方案以“要么全收、要么全拒”的方式交给民众，会真的带来无政府和内乱。",
+     "after": "伦道夫起身，影射着富兰克林的话，为自己拒签致歉：尽管有压倒多数和德高望重的名字为这份方案背书。他说，拒签不等于他要在会外反对宪法，他只是要保留按日后的判断、照自己的职责行事的自由。伦道夫后来又说，他认为把方案以“要么全收、要么全拒”的方式交给民众，会真的带来无政府和内乱。",
+     "reason": "删去“随即”，不再把伦道夫致歉写成紧跟戈勒姆修数与付签表决之后的动作，避免与 F-E8 的时序矛盾；其余过渡不动。",
+     "issues": [
+      "S3"
+     ]
+    },
+    {
+     "path": "sections.story.4.en",
+     "before": "Randolph then rose and, alluding to Franklin's observations, apologized for refusing to sign, notwithstanding the vast majority and venerable names that would give the plan their sanction. Refusing, he said, did not mean he would oppose the Constitution outside the convention's doors: \"He meant only to keep himself free to be governed by his duty, as it should be prescribed by his future judgment.\" He refused because he thought the alternative put to the people would frustrate the object of the convention: nine states would fail to ratify the plan, and confusion must follow.",
+     "after": "Randolph then rose and, alluding to Franklin's observations, apologized for refusing to sign, notwithstanding the vast majority and venerable names that would give the plan their sanction. Refusing, he said, did not mean he would oppose the Constitution outside the convention's doors: \"He meant only to keep himself free to be governed by his duty, as it should be prescribed by his future judgment.\" He later added that he thought putting the plan to the people with a final alternative of accepting or rejecting it in toto would really produce the anarchy and civil convulsions that were apprehended.",
+     "reason": "与中文同步：动机改为转述其后来的预判（F-E19），删去证据包没有的九个州与 must follow 的过强断言，只保留 would really produce 的无政府与内乱。",
+     "issues": [
+      "S1",
+      "S2"
+     ]
+    },
+    {
+     "path": "sections.story.4.en",
+     "before": "Randolph then rose and, alluding to Franklin's observations, apologized for refusing to sign, notwithstanding the vast majority and venerable names that would give the plan their sanction. Refusing, he said, did not mean he would oppose the Constitution outside the convention's doors: \"He meant only to keep himself free to be governed by his duty, as it should be prescribed by his future judgment.\" He later added that he thought putting the plan to the people with a final alternative of accepting or rejecting it in toto would really produce the anarchy and civil convulsions that were apprehended.",
+     "after": "Randolph rose and, alluding to Franklin's observations, apologized for refusing to sign, notwithstanding the vast majority and venerable names that would give the plan their sanction. Refusing, he said, did not mean he would oppose the Constitution outside the convention's doors: \"He meant only to keep himself free to be governed by his duty, as it should be prescribed by his future judgment.\" He later added that he thought putting the plan to the people with a final alternative of accepting or rejecting it in toto would really produce the anarchy and civil convulsions that were apprehended.",
+     "reason": "与中文同步删除表时序的“随即/then”，避免与 F-E8 排在 F-E12 之前的顺序冲突。",
+     "issues": [
+      "S3"
+     ]
+    },
+    {
+     "path": "sections.context.2.zh",
+     "before": "有保留的人远不止他一个。古弗尼尔·莫里斯说他也有异议，只是视这份方案为能得到的最好方案；汉密尔顿则说，众所周知，没有谁的想法比他离这个方案更远。于是当天真正的争点浮出水面：签名这件事本身，到底算什么。",
+     "after": "有保留的人远不止他一个。古弗尼尔·莫里斯说他也有异议，只是视这份方案为能得到的最好方案；汉密尔顿则说，众所周知，没有谁的想法比他离这个方案更远，并问除此之外还有什么别的选择。于是当天真正的争点浮出水面：签名这件事本身，到底算什么。",
+     "reason": "中英同步：补上英文已有的“问还有什么别的选择”，依据 F-E16（but is it possible to deliberate between anarchy and convulsion... and the chance of good to be expected from the plan），不新增证据外内容。",
+     "issues": [
+      "S4"
+     ]
+    },
+    {
+     "path": "sections.story.3.en",
+     "before": "In the same closing stretch the convention was still adjusting a number. Gorham asked, if it was not too late, to reconsider the clause capping representation at one member for every forty thousand people — a clause that had produced so much discussion — and to strike out forty thousand in favour of thirty thousand. That would fix no absolute rule, he remarked, only give Congress greater latitude. When the president rose to put the question — the signature block names him George Washington, deputy from Virginia — he said his office had restrained him from speaking on questions before the House, yet he could not forbear this wish. Many members had thought the small proportion of representatives thin security for the rights and interests of the people; he acknowledged it had always appeared to himself among the exceptionable parts of the plan. The change passed without opposition, and the engrossed Constitution was agreed to for signing, every state answering aye.",
+     "after": "In the same closing stretch the convention was still adjusting a number. Gorham asked, if it was not too late, for the purpose of lessening objections to the Constitution, to reconsider the clause capping representation at one member for every forty thousand people — a clause that had produced so much discussion — and to strike out forty thousand in favour of thirty thousand. That would fix no absolute rule, he remarked, only give Congress greater latitude. When the president rose to put the question — the signature block names him George Washington, deputy from Virginia — he said his office had restrained him from speaking on questions before the House, yet he could not forbear this wish. Many members had thought the small proportion of representatives thin security for the rights and interests of the people; he acknowledged it had always appeared to himself among the exceptionable parts of the plan. The change passed without opposition, and the engrossed Constitution was agreed to for signing, every state answering aye.",
+     "reason": "中英同步：补上戈勒姆的动机，与中文“以减少反对意见”一致，直接取自 F-E12（for the purpose of lessening objections to the Constitution）。",
+     "issues": [
+      "S5"
+     ]
+    },
+    {
+     "path": "sections.story.3.zh",
+     "before": "就在收尾的同一段时间里，会议还在改一个数字。戈勒姆提出，趁还来得及，把“众议员人数不得超过每四万人一名”中的四万改为三万，以减少反对意见——这不是绝对规则，只是给国会更大的余地。会议主席（签名栏作乔治·华盛顿）起身付表决时说，自己的位置一向使他不就待决问题发表意见，这次却忍不住表示希望通过这项修改，并承认代表比例偏小，一直是他自己认为方案中可以挑剔的地方。修改无异议通过，宪法誊清本付签获全体州赞成。",
+     "after": "就在收尾的同一段时间里，会议还在改一个数字。戈勒姆提出，趁还来得及，把“众议员人数不得超过每四万人一名”中的四万改为三万，以减少反对意见——这不是绝对规则，只是给国会更大的余地。会议主席（签名栏作乔治·华盛顿，弗吉尼亚代表）起身付表决时说，自己的位置一向使他不就待决问题发表意见，这次却忍不住表示希望通过这项修改，并承认代表比例偏小，一直是他自己认为方案中可以挑剔的地方。修改无异议通过，宪法誊清本付签获全体州赞成。",
+     "reason": "中英同步：补上英文已有的“deputy from Virginia”，依据 F-E24 签名栏原文（President, and Deputy from Virginia）。",
+     "issues": [
+      "S6"
+     ]
+    },
+    {
+     "path": "sections.story.3.zh",
+     "before": "就在收尾的同一段时间里，会议还在改一个数字。戈勒姆提出，趁还来得及，把“众议员人数不得超过每四万人一名”中的四万改为三万，以减少反对意见——这不是绝对规则，只是给国会更大的余地。会议主席（签名栏作乔治·华盛顿，弗吉尼亚代表）起身付表决时说，自己的位置一向使他不就待决问题发表意见，这次却忍不住表示希望通过这项修改，并承认代表比例偏小，一直是他自己认为方案中可以挑剔的地方。修改无异议通过，宪法誊清本付签获全体州赞成。",
+     "after": "就在收尾的同一段时间里，会议还在改一个数字。戈勒姆提出，趁还来得及，把“众议员人数不得超过每四万人一名”中的四万改为三万，以减少反对意见——这不是绝对规则，只是给国会更大的余地。会议主席（签名栏作乔治·华盛顿，弗吉尼亚代表）起身付表决时说，自己的位置一向使他不就待决问题发表意见，这次却忍不住表示希望通过这项修改，并说许多成员认为代表比例偏小不足以保障人民的权利和利益，他也承认这一直是他自己认为方案中可以挑剔的地方。修改无异议通过，宪法誊清本付签获全体州赞成。",
+     "reason": "中英同步：补上英文已有的“许多成员认为代表比例偏小不足以保障人民权利和利益”，依据 F-E13（The smallness of the proportion of representatives had been considered, by many members of the Convention, an insufficient security for the rights and interests of the people）。",
+     "issues": [
+      "S6"
+     ]
+    },
+    {
+     "path": "sections.story.4.ev",
+     "before": [
+      "F-E8"
+     ],
+     "after": [
+      "F-E8",
+      "F-E19"
+     ],
+     "reason": "伦道夫段现有内容含“要么全收、要么全拒”一段及其后果预判，出自 F-E19 的第二次发言，故在 F-E8 之外补标 F-E19。",
+     "issues": [
+      "S1"
+     ]
+    }
+   ],
+   "edits_failed": [],
+   "dispositions": [
+    {
+     "issue": "S1",
+     "action": "fixed",
+     "reason": "已把“他拒签，是因为……会让会议的目的落空”改为“伦道夫后来又说……”的预判式转述：F-E8 只记他致歉拒签并保留日后自由（keep himself free to be governed by his duty, as it should be prescribed by his future judgment），in toto 一段属 F-E19 的 persuasion（would really produce the anarchy and civil convulsions）；并在 ev 中补上 F-E19。"
+    },
+    {
+     "issue": "S2",
+     "action": "fixed",
+     "reason": "删除证据包中不存在的“九个州批准不了”（F-E19 无此数字），把“必然”改为“真的会”，对应 F-E19 原文 would really produce 的语气；只保留“无政府和内乱”（anarchy and civil convulsions）。"
+    },
+    {
+     "issue": "S3",
+     "action": "fixed",
+     "reason": "删去“随即/then”，改为不表时序的“伦道夫起身/Randolph rose”，避免与证据顺序（F-E8 排在 F-E12 之前）矛盾；按问题建议的最小改法处理，未整段调序。"
+    },
+    {
+     "issue": "S4",
+     "action": "fixed",
+     "reason": "在中文 Hamilton 句后补“并问除此之外还有什么别的选择”，与英文的“— and asked what the alternative was”对齐；该内容由 F-E16 支持（but is it possible to deliberate between anarchy, and convulsion... and the chance of good to be expected from the plan），故选补中文而非删英文。"
+    },
+    {
+     "issue": "S5",
+     "action": "fixed",
+     "reason": "英文补入动机短语“for the purpose of lessening objections to the Constitution”，与中文“以减少反对意见”一致，措辞取自 F-E12（for the purpose of lessening objections to the Constitution）。中文原有写法有证据支持，故不动中文。"
+    },
+    {
+     "issue": "S6",
+     "action": "fixed",
+     "reason": "在中文补入“许多成员认为代表比例偏小不足以保障人民的权利和利益”与“弗吉尼亚代表”，与英文对齐：前者依 F-E13（had been considered, by many members of the Convention, an insufficient security for the rights and interests of the people），后者依 F-E24（Deputy from Virginia）。"
+    }
+   ],
+   "checker_after": [],
+   "content_sha256_after": "db025693c476739b44ad5b8efef811d388dccef1f4ccc6983a3a6742e9862272",
+   "review_after": {
+    "issues": [
+     {
+      "section": "context",
+      "para": 2,
+      "severity": "fix",
+      "problem": "汉密尔顿的话被改写失真：证据（F-E16）中他的设问是\"在无政府与动荡，同方案可能带来的好处之间，还能犹豫吗\"，稿件写成\"并问除此之外还有什么别的选择\"，把权衡式的反问变成了泛泛追问替代方案。同一段还把莫里斯、汉密尔顿（F-E15、F-E16）在此概述一遍，与 story 第6段重复。",
+      "suggestion": "改为\"汉密尔顿则问：一边是无政府与动荡，一边是方案可能带来的好处，这中间还有什么可犹豫的？\"；并把莫里斯、汉密尔顿的概述只保留在 story 第6段，此段只留过渡句。"
+     },
+     {
+      "section": "story",
+      "para": 4,
+      "severity": "fix",
+      "problem": "次序错置且材料重复：麦迪逊笔记中伦道夫为拒签致歉（F-E8）在莫里斯、汉密尔顿、布朗特发言之后，稿件把它提到之前；同时本段\"伦道夫后来又说\"所用的\"要么全收、要么全拒\"一段出自 F-E19（伦道夫第二次发言），而 F-E19 又在第6段被完整再用一次，同一段发言被拆到两处并倒置时序。",
+      "suggestion": "本段只保留 F-E8 的致歉与\"保留按日后判断行事的自由\"，删去\"伦道夫后来又说\"一句；把 F-E19 的全部内容（含\"要么全收、要么全拒\"）并入第6段伦道夫的回应。"
+     },
+     {
+      "section": "story",
+      "para": 7,
+      "severity": "note",
+      "problem": "格里的话有一处轻微误译：证据（F-E20）为\"if it were not otherwise apparent, the refusals to sign should never be known from him\"（若非另有途径为人所知，拒签之事绝不自他传出），稿件作\"如果别处不会让人知道\"，把 otherwise（另有途径/从别的方面）说成了\"别处\"。",
+      "suggestion": "改为\"即使不从别的途径为人所知，拒签的事也绝不会由他传出去\"。"
+     },
+     {
+      "section": "context",
+      "para": 0,
+      "severity": "note",
+      "problem": "本段标为 record，但结尾\"争的已经不是文本好不好，而是手上有没有更好的东西可拿\"是作者解释（对应 F-E4、F-E5 的推论），写成了史实叙述；hook 段\"问题只剩一个：签不签，怎么签\"同属作者概括。",
+      "suggestion": "在句首加\"在作者看来\"或移入 analysis 段，保持 record 段只述记录内容。"
+     }
+    ],
+    "unsupported_claims": [
+     "汉密尔顿\"并问除此之外还有什么别的选择\"（其原话是在无政府/动荡与方案可能带来的好处之间作权衡，并未追问还有别的选项）",
+     "context 段\"争的已经不是文本好不好，而是手上有没有更好的东西可拿\"（证据无此表述，系作者对 F-E4/F-E5 的推论）"
+    ],
+    "invented_inner_life": [
+     "\"他要的不是人人说好，而是名字出现在同一份文件上\"（对富兰克林动机的归结；F-E6 只到\"怀疑自己的不会出错、签名以显示一致\"为止）"
+    ],
+    "quote_mismatches": [
+     "汉密尔顿的反问被间接引述为\"除此之外还有什么别的选择\"，与 F-E16 原意（anarchy and convulsion 与 the chance of good 之间无从犹豫）不符"
+    ],
+    "overall": "日期、数字、人名、引语基本忠实于麦迪逊笔记，主要问题是发言次序被重排、伦道夫与莫里斯/汉密尔顿的材料重复使用，以及一处设问被改写偏离原意，另有少量作者解释混入记录段。",
+    "_content_sha256": "db025693c476739b44ad5b8efef811d388dccef1f4ccc6983a3a6742e9862272"
+   },
+   "parity_after": {
+    "issues": [
+     {
+      "path": "sections.story.5",
+      "severity": "fix",
+      "problem": "Chinese has a second clause in Hamilton's remark — that between anarchy and turmoil, on one side, and the good the plan might bring, on the other, there was nothing to hesitate over — but the English stops at 'kindling the latent sparks' and omits that argument entirely.",
+      "suggestion": "After 'which might soon subside' add: '— and that between anarchy and convulsions and the good the plan might bring there was nothing to hesitate over.'"
+     },
+     {
+      "path": "sections.story.10",
+      "severity": "fix",
+      "problem": "English says the back of the chair bore 'a rising sun' painted on it; Chinese only says a sun was painted (议长椅背上画着的太阳), leaving the rising/setting ambiguity intact as in the title and the Franklin quote.",
+      "suggestion": "Change 'at the back of which a rising sun happened to be painted' to 'at the back of which a sun happened to be painted'."
+     },
+     {
+      "path": "sections.limits.1",
+      "severity": "note",
+      "problem": "English hedges with 'subject to the order of Congress, if ever formed under the Constitution'; Chinese '听候依宪法成立的国会处置' drops the 'if ever' uncertainty.",
+      "suggestion": "Render as '听候依宪法成立的国会处置（若国会得以成立）' or add 'if ever' to the Chinese."
+     }
+    ],
+    "overall": "The two editions match closely on facts, dates, names, quotations and attributions, with one argument clause dropped from the English and only a couple of small hedges or descriptive glosses out of step.",
+    "_content_sha256": "db025693c476739b44ad5b8efef811d388dccef1f4ccc6983a3a6742e9862272"
+   },
+   "carried_over": []
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    {
+     "id": "R1",
+     "source": "review",
+     "severity": "fix",
+     "where": "context.2",
+     "problem": "汉密尔顿的话被改写失真：证据（F-E16）中他的设问是\"在无政府与动荡，同方案可能带来的好处之间，还能犹豫吗\"，稿件写成\"并问除此之外还有什么别的选择\"，把权衡式的反问变成了泛泛追问替代方案。同一段还把莫里斯、汉密尔顿（F-E15、F-E16）在此概述一遍，与 story 第6段重复。",
+     "suggestion": "改为\"汉密尔顿则问：一边是无政府与动荡，一边是方案可能带来的好处，这中间还有什么可犹豫的？\"；并把莫里斯、汉密尔顿的概述只保留在 story 第6段，此段只留过渡句。"
+    },
+    {
+     "id": "R2",
+     "source": "review",
+     "severity": "fix",
+     "where": "story.4",
+     "problem": "次序错置且材料重复：麦迪逊笔记中伦道夫为拒签致歉（F-E8）在莫里斯、汉密尔顿、布朗特发言之后，稿件把它提到之前；同时本段\"伦道夫后来又说\"所用的\"要么全收、要么全拒\"一段出自 F-E19（伦道夫第二次发言），而 F-E19 又在第6段被完整再用一次，同一段发言被拆到两处并倒置时序。",
+     "suggestion": "本段只保留 F-E8 的致歉与\"保留按日后判断行事的自由\"，删去\"伦道夫后来又说\"一句；把 F-E19 的全部内容（含\"要么全收、要么全拒\"）并入第6段伦道夫的回应。"
+    },
+    {
+     "id": "P3",
+     "source": "parity",
+     "severity": "fix",
+     "where": "sections.story.5",
+     "problem": "Chinese has a second clause in Hamilton's remark — that between anarchy and turmoil, on one side, and the good the plan might bring, on the other, there was nothing to hesitate over — but the English stops at 'kindling the latent sparks' and omits that argument entirely.",
+     "suggestion": "After 'which might soon subside' add: '— and that between anarchy and convulsions and the good the plan might bring there was nothing to hesitate over.'"
+    },
+    {
+     "id": "P4",
+     "source": "parity",
+     "severity": "fix",
+     "where": "sections.story.10",
+     "problem": "English says the back of the chair bore 'a rising sun' painted on it; Chinese only says a sun was painted (议长椅背上画着的太阳), leaving the rising/setting ambiguity intact as in the title and the Franklin quote.",
+     "suggestion": "Change 'at the back of which a rising sun happened to be painted' to 'at the back of which a sun happened to be painted'."
+    }
+   ],
+   "edits_applied": [
+    {
+     "path": "sections.context.2.zh",
+     "before": "有保留的人远不止他一个。古弗尼尔·莫里斯说他也有异议，只是视这份方案为能得到的最好方案；汉密尔顿则说，众所周知，没有谁的想法比他离这个方案更远，并问除此之外还有什么别的选择。于是当天真正的争点浮出水面：签名这件事本身，到底算什么。",
+     "after": "有保留的人远不止他一个。于是当天真正的争点浮出水面：签名这件事本身，到底算什么。",
+     "reason": "删除与 story.5（第6段）重复的莫里斯、汉密尔顿概述，该段只留过渡句；由此一并消除把汉密尔顿的权衡式设问（F-E16 的 anarchy/convulsion 与方案之好处之间的取舍）失真成“除此之外还有什么别的选择”的问题，正确表述留在 story.5 中文。",
+     "issues": [
+      "R1"
+     ]
+    },
+    {
+     "path": "sections.context.2.en",
+     "before": "Plenty of others had reservations of their own. Gouverneur Morris said he had objections too, but regarded this plan as the best attainable and would take it with all its faults. Hamilton allowed that \"No man's ideas were more remote from the plan than his own were known to be\" — and asked what the alternative was. So the day's real dispute came into view: what did the act of signing actually mean?",
+     "after": "Plenty of others had reservations of their own. So the day's real dispute came into view: what did the act of signing actually mean?",
+     "reason": "与中文同步：删除与 story.5 重复的 Morris、Hamilton 概述及对 Hamilton 设问的失真改写，只留过渡句。",
+     "issues": [
+      "R1"
+     ]
+    },
+    {
+     "path": "sections.story.4.zh",
+     "before": "伦道夫起身，影射着富兰克林的话，为自己拒签致歉：尽管有压倒多数和德高望重的名字为这份方案背书。他说，拒签不等于他要在会外反对宪法，他只是要保留按日后的判断、照自己的职责行事的自由。伦道夫后来又说，他认为把方案以“要么全收、要么全拒”的方式交给民众，会真的带来无政府和内乱。",
+     "after": "伦道夫起身，影射着富兰克林的话，为自己拒签致歉：尽管有压倒多数和德高望重的名字为这份方案背书。他说，拒签不等于他要在会外反对宪法，他只是要保留按日后的判断、照自己的职责行事的自由。",
+     "reason": "删去出自 F-E19（伦道夫第二次发言）的这句，本段只保留 F-E8 的致歉与“保留按日后判断行事的自由”，避免同一段发言被拆到两处并倒置时序；该内容移入 story.6。",
+     "issues": [
+      "R2"
+     ]
+    },
+    {
+     "path": "sections.story.4.en",
+     "before": "Randolph rose and, alluding to Franklin's observations, apologized for refusing to sign, notwithstanding the vast majority and venerable names that would give the plan their sanction. Refusing, he said, did not mean he would oppose the Constitution outside the convention's doors: \"He meant only to keep himself free to be governed by his duty, as it should be prescribed by his future judgment.\" He later added that he thought putting the plan to the people with a final alternative of accepting or rejecting it in toto would really produce the anarchy and civil convulsions that were apprehended.",
+     "after": "Randolph rose and, alluding to Franklin's observations, apologized for refusing to sign, notwithstanding the vast majority and venerable names that would give the plan their sanction. Refusing, he said, did not mean he would oppose the Constitution outside the convention's doors: \"He meant only to keep himself free to be governed by his duty, as it should be prescribed by his future judgment.\"",
+     "reason": "与中文同步：删去 F-E19 的内容，本段只保留 F-E8 的致歉与保留自由，内容移入 story.6。",
+     "issues": [
+      "R2"
+     ]
+    },
+    {
+     "path": "sections.story.6.zh",
+     "before": "富兰克林随即说明：写那篇讲稿时，他并不知道会有哪位成员拒签，希望大家这样理解；他感谢伦道夫最早提出方案、一路襄助，希望他放下异议，免得他的名字缺席带来大的祸害。伦道夫没有被说动。他说，以这个格式签名，与签宪法本身无异，换形式对他没有区别；拒签可能是他一生中最可怕的一步，但出于良知，他不能犹豫，更不能改变。",
+     "after": "富兰克林随即说明：写那篇讲稿时，他并不知道会有哪位成员拒签，希望大家这样理解；他感谢伦道夫最早提出方案、一路襄助，希望他放下异议，免得他的名字缺席带来大的祸害。伦道夫没有被说动。他说，以这个格式签名，与签宪法本身无异，换形式对他没有区别；拒签可能是他一生中最可怕的一步，但出于良知，他不能犹豫，更不能改变。他还说，把方案以“要么全收、要么全拒”的最终选择交给民众，会真的带来人们担心的无政府和内乱。",
+     "reason": "把 F-E19 伦道夫第二次发言的全部内容（含“要么全收、要么全拒”一段）并入本段，与富兰克林—伦道夫往还（F-E18、F-E19）同处一处。",
+     "issues": [
+      "R2"
+     ]
+    },
+    {
+     "path": "sections.story.6.en",
+     "before": "Franklin explained that when drawing up that paper he had not known that any particular member would refuse to sign, and hoped to be so understood. He felt a high sense of obligation to Randolph for bringing the plan forward in the first instance and for his help along the way, and hoped he would yet lay aside his objections and prevent the great mischief that the refusal of his name might produce. Randolph was not moved. To sign in the proposed form was, for him, the same as signing the Constitution; the change of form made no difference. Refusing might be the most awful step of his life, but conscience dictated it, and he could not hesitate, much less change.",
+     "after": "Franklin explained that when drawing up that paper he had not known that any particular member would refuse to sign, and hoped to be so understood. He felt a high sense of obligation to Randolph for bringing the plan forward in the first instance and for his help along the way, and hoped he would yet lay aside his objections and prevent the great mischief that the refusal of his name might produce. Randolph was not moved. To sign in the proposed form was, for him, the same as signing the Constitution; the change of form made no difference. Refusing might be the most awful step of his life, but conscience dictated it, and he could not hesitate, much less change. He added that holding out the plan to the people with a final alternative of accepting or rejecting it in toto would really produce the anarchy and civil convulsions that were apprehended.",
+     "reason": "与中文同步：把 F-E19 伦道夫第二次发言的余下内容（in toto 一段）并入本段。",
+     "issues": [
+      "R2"
+     ]
+    },
+    {
+     "path": "sections.story.5.en",
+     "before": "Then several members explained why they would sign. Morris said he had objections, but this was the best that was to be attained, and he would take it with all its faults; the majority had decided and he would abide by that determination. The moment the plan went forth, every other consideration would be laid aside and the great question would be whether there was to be a national government at all — with anarchy as the alternative. The signing in the proposed form, he pointed out, related only to the fact that the states present were unanimous. Hamilton urged that every member sign: a few characters of consequence, by opposing or even refusing, might do infinite mischief, kindling the latent sparks that lurked under an enthusiasm for the convention which might soon subside. Blount said he had declared he would not sign so as to pledge himself to support the plan, but the form relieved him: without committing himself, he could attest the fact that the plan was the unanimous act of the states in convention.",
+     "after": "Then several members explained why they would sign. Morris said he had objections, but this was the best that was to be attained, and he would take it with all its faults; the majority had decided and he would abide by that determination. The moment the plan went forth, every other consideration would be laid aside and the great question would be whether there was to be a national government at all — with anarchy as the alternative. The signing in the proposed form, he pointed out, related only to the fact that the states present were unanimous. Hamilton urged that every member sign: a few characters of consequence, by opposing or even refusing, might do infinite mischief, kindling the latent sparks that lurked under an enthusiasm for the convention which might soon subside — and that between anarchy and convulsions and the good the plan might bring there was nothing to hesitate over. Blount said he had declared he would not sign so as to pledge himself to support the plan, but the form relieved him: without committing himself, he could attest the fact that the plan was the unanimous act of the states in convention.",
+     "reason": "补上英文缺失的汉密尔顿设问后半（无政府与动荡对方案可能带来的好处，无可犹豫），与本段中文一致；内容据 F-E16。",
+     "issues": [
+      "P3"
+     ]
+    },
+    {
+     "path": "sections.story.10.en",
+     "before": "In the end every member signed except Randolph, Mason and Gerry, who declined to give the Constitution the sanction of their names; the convention then dissolved itself by an adjournment sine die, without naming a day to return. While the last members were signing, Franklin looked toward the president's chair, at the back of which a rising sun happened to be painted, and remarked to the few members near him that painters had found it difficult in their art to tell a rising sun from a setting one. \"I have,\" said he, \"often and often, in the course of the session, and the vicissitudes of my hopes and fears as to its issue, looked at that behind the president, without being able to tell whether it was rising or setting; but now, at length, I have the happiness to know that it is a rising, and not a setting sun.\"",
+     "after": "In the end every member signed except Randolph, Mason and Gerry, who declined to give the Constitution the sanction of their names; the convention then dissolved itself by an adjournment sine die, without naming a day to return. While the last members were signing, Franklin looked toward the president's chair, at the back of which a sun happened to be painted, and remarked to the few members near him that painters had found it difficult in their art to tell a rising sun from a setting one. \"I have,\" said he, \"often and often, in the course of the session, and the vicissitudes of my hopes and fears as to its issue, looked at that behind the president, without being able to tell whether it was rising or setting; but now, at length, I have the happiness to know that it is a rising, and not a setting sun.\"",
+     "reason": "按 parity 建议把英文收窄为“a sun”，与中文“椅背上画着的太阳”一致，保留升/落未辨的含混（删除细节属规则3允许的收窄）。",
+     "issues": [
+      "P4"
+     ]
+    }
+   ],
+   "edits_failed": [
+    {
+     "edit": {
+      "path": "sections.story.4",
+      "new": [
+       "F-E8"
+      ],
+      "issues": [
+       "R2"
+      ],
+      "reason": "本段现只使用 F-E8（伦道夫致歉与保留自由），F-E19 的内容已移入 story.6（其 ev 仍为 F-E18,F-E19，无需改动）。"
+     },
+     "error": "IndexError: list index out of range"
+    }
+   ],
+   "dispositions": [
+    {
+     "issue": "R1",
+     "action": "fixed",
+     "reason": "删除了 context.2 中莫里斯、汉密尔顿的整段概述（与 story.5 重复），并由此消除失真改写：稿件原写“并问除此之外还有什么别的选择”，而 F-E16 的原话是“is it possible to deliberate between anarchy, and convulsion, on one side, and the chance of good to be expected from the plan, on the other?”，是权衡式反问。该段只留过渡句，汉密尔顿的设问以正确表述留在 story.5（并按 P3 补齐英文）。"
+    },
+    {
+     "issue": "R2",
+     "action": "fixed",
+     "reason": "story.4 现只保留 F-E8 的致歉与“keep himself free to be governed by his duty, as it should be prescribed by his future judgment”（保留按日后判断行事的自由），删去“伦道夫后来又说”一句；F-E19 的全部内容（含“要么全收、要么全拒”/accepting or rejecting it in toto 一段）已并入 story.6，与 F-E18 同段，不再同一发言被拆两处、倒置时序。ev 相应改为 story.4=[F-E8]。"
+    },
+    {
+     "issue": "P3",
+     "action": "fixed",
+     "reason": "英文 story.5 在“which might soon subside”后补入“— and that between anarchy and convulsions and the good the plan might bring there was nothing to hesitate over.”，与中文“在无政府与动荡、和方案可能带来的好处之间，没有什么可犹豫的”对齐，两种语言的论点一致。"
+    },
+    {
+     "issue": "P4",
+     "action": "fixed",
+     "reason": "英文 story.10 由“a rising sun happened to be painted”收窄为“a sun happened to be painted”，与中文“议长椅背上画着的太阳”一致，保住“分不出升起还是落下”的含混（规则3允许删除细节以收窄；两种语言现在对同一事实表述相同）。"
+    }
+   ],
+   "checker_after": [],
+   "content_sha256_after": "082933568485567b636cc08d506f8c635848e1dfb981f0404fadc7c0eb45fe9a",
+   "review_after": {
+    "issues": [
+     {
+      "section": "hook",
+      "para": 0,
+      "severity": "fix",
+      "problem": "'问题只剩一个：签不签，怎么签'把当天说成只剩签字一件事，与证据不符——同日会议还在通过戈勒姆的修正案、表决宪法付签、处置会议记录（F-E12–E14、F-E23）。",
+      "suggestion": "改为'最后的焦点是：签不签、怎么签'。"
+     },
+     {
+      "section": "hook",
+      "para": 0,
+      "severity": "note",
+      "problem": "'詹姆斯·威尔逊'的名'詹姆斯'未见于证据包（F-E1 只作 Mr. Wilson）。",
+      "suggestion": "改为'威尔逊'。"
+     },
+     {
+      "section": "hook",
+      "para": 1,
+      "severity": "note",
+      "problem": "'不少人心知有缺点'写成人物内心状态；证据只显示富兰克林、莫里斯、汉密尔顿等公开陈述异议（F-E2、F-E15、F-E16）。",
+      "suggestion": "改为'不少人当众说它有缺点'。"
+     },
+     {
+      "section": "context",
+      "para": 0,
+      "severity": "note",
+      "problem": "'争的已经不是文本好不好，而是手上有没有更好的东西可拿'是作者概括却写成当日实况，且'未必更好'的理由在下一段（F-E4）才出现。",
+      "suggestion": "改为'富兰克林接着给出的理由是：未必能有比这更好的宪法'，或加'在作者看来'。"
+     },
+     {
+      "section": "context",
+      "para": 2,
+      "severity": "note",
+      "problem": "'于是当天真正的争点浮出水面'把作者归纳写成史实。",
+      "suggestion": "删去'真正的'，或改为'在本文看来，当天的争点在于'。"
+     },
+     {
+      "section": "story",
+      "para": 2,
+      "severity": "note",
+      "problem": "'现成的格式'与 F-E7 的 'a convenient form'（便利/便于使用的格式）含义有出入。",
+      "suggestion": "译作'一个便于使用的格式'。"
+     },
+     {
+      "section": "story",
+      "para": 4,
+      "severity": "note",
+      "problem": "'德高望重的名字为这份方案背书'把 F-E8 的 'give sanction to its wisdom and its worth' 简并；且该段标注 F-E19，实际内容只用到 F-E8。",
+      "suggestion": "改为'为它的智慧与价值作证'，ev 只留 F-E8。"
+     },
+     {
+      "section": "analysis",
+      "para": 1,
+      "severity": "note",
+      "problem": "'作者提出的替代选择是要求在签名旁写明保留意见'是本文新提的做法，证据包中无人提出；'那正是当天有人最想要的东西'中'最想要'超出 F-E6（富兰克林要'显示一致'）与 F-E7（莫里斯要争取异议者）的表述。",
+      "suggestion": "改为'这正是富兰克林要显示一致、莫里斯要争取异议者时看重的效果；本文另建议（当时无人提出）在签名旁注明保留说明'。"
+     },
+     {
+      "section": "today",
+      "para": 0,
+      "severity": "fix",
+      "problem": "把富兰克林那句话'提供'的做法写成'把反对讲透、记进纪要'：F-E5 只说他把意见留在墙内、从未外传；'记进纪要'与原文'在这里消亡'相悖，且无证据支持。",
+      "suggestion": "删'、记进纪要'，改为'会内把话讲透，出了门不再外传'。"
+     },
+     {
+      "section": "limits",
+      "para": 0,
+      "severity": "note",
+      "problem": "'正文的英文引语都取自麦迪逊笔记一版'不准确：正文引语全是中译，并无英文；'逐字'只适用于英文原文。uncertainty_note 的'英文引语均为……逐字片段'同此问题。",
+      "suggestion": "改为'正文引语均译自麦迪逊笔记一版的英文原文'。"
+     },
+     {
+      "section": "limits",
+      "para": 0,
+      "severity": "note",
+      "problem": "'是一位与会者写下的记录'：证据包只写 James Madison's notes，未言麦迪逊为与会代表。",
+      "suggestion": "改为'是麦迪逊本人的会议笔记'。"
+     },
+     {
+      "section": "limits",
+      "para": 1,
+      "severity": "note",
+      "problem": "'威尔逊反对销毁'与 F-E23 有出入：威尔逊是两者中倾向交主席保管，且'一度更喜欢第一种（销毁）'。",
+      "suggestion": "改为'威尔逊倾向交主席保管（他一度也赞成销毁）'。"
+     },
+     {
+      "section": "limits",
+      "para": 1,
+      "severity": "note",
+      "problem": "'听候依宪法成立的国会处置'略去了 F-E23 的条件 'if ever formed under the Constitution'（若国会依宪法成立）。",
+      "suggestion": "改为'听候将来依宪法成立的国会（如果成立）处置'。"
+     }
+    ],
+    "unsupported_claims": [
+     "'问题只剩一个：签不签，怎么签'（当天还有修正案表决与会议记录处置）",
+     "'詹姆斯·威尔逊'之名'詹姆斯'（F-E1 只作 Mr. Wilson）",
+     "'不少人心知有缺点'（内心知悉，证据只有公开陈述的异议）",
+     "'争的已经不是文本好不好，而是手上有没有更好的东西可拿'（作者概括）",
+     "'正文的英文引语……逐字片段'（正文并无英文引语）",
+     "'是一位与会者写下的记录'（证据未言麦迪逊为与会代表）",
+     "'会议室里把反对……记进纪要'作为富兰克林那句话提供的做法",
+     "'那正是当天有人最想要的东西'（'最想要'无所据）",
+     "'威尔逊反对销毁'（实为倾向保管，一度赞成销毁）",
+     "'听候依宪法成立的国会处置'（原文为 if ever formed 的条件句）"
+    ],
+    "invented_inner_life": [
+     "'会要散了，桌上这份文件不少人心知有缺点'——'心知'是内心状态，原文未写",
+     "'到这里，争的已经不是文本好不好，而是手上有没有更好的东西可拿'——把作者对形势的推断写成当日实况",
+     "'他要的不是人人说好，而是名字出现在同一份文件上'——对富兰克林意图的正反界定，原文只写'doubt a little of his own infallibility…put his name to this instrument'"
+    ],
+    "quote_mismatches": [],
+    "overall": "引语译文与人名、日期、数字、票数基本忠实于麦迪逊笔记，问题集中在几处把作者概括写成实况、一处与'留在墙内'相悖的现代引申，以及'英文引语/逐字''if ever formed'等表述不实，小修即可，无硬伤。",
+    "_content_sha256": "082933568485567b636cc08d506f8c635848e1dfb981f0404fadc7c0eb45fe9a"
+   },
+   "parity_after": {
+    "issues": [
+     {
+      "path": "sections.story.3",
+      "severity": "note",
+      "problem": "The English adds the descriptive clause \"a clause that had produced so much discussion\" to the representation clause, which has no counterpart in the Chinese text.",
+      "suggestion": "Add to ZH something like \"——这项条款此前引发了许多讨论——\" after \"每四万人一名\" to match, or delete the clause from the English."
+     }
+    ],
+    "overall": "The two editions match closely on all facts, dates, numbers, names, quotations and attributions; the only difference found is one minor extra descriptive clause in the English of sections.story.3.",
+    "_content_sha256": "082933568485567b636cc08d506f8c635848e1dfb981f0404fadc7c0eb45fe9a"
+   },
+   "carried_over": []
+  }
+ ],
+ "seeded_issues": 6,
+ "final_content_sha256": "082933568485567b636cc08d506f8c635848e1dfb981f0404fadc7c0eb45fe9a",
+ "remaining": [
+  {
+   "id": "R1",
+   "source": "review",
+   "severity": "fix",
+   "where": "hook.0",
+   "problem": "'问题只剩一个：签不签，怎么签'把当天说成只剩签字一件事，与证据不符——同日会议还在通过戈勒姆的修正案、表决宪法付签、处置会议记录（F-E12–E14、F-E23）。",
+   "suggestion": "改为'最后的焦点是：签不签、怎么签'。"
+  },
+  {
+   "id": "R2",
+   "source": "review",
+   "severity": "fix",
+   "where": "today.0",
+   "problem": "把富兰克林那句话'提供'的做法写成'把反对讲透、记进纪要'：F-E5 只说他把意见留在墙内、从未外传；'记进纪要'与原文'在这里消亡'相悖，且无证据支持。",
+   "suggestion": "删'、记进纪要'，改为'会内把话讲透，出了门不再外传'。"
+  }
+ ],
+ "final_reviewed": true,
+ "outcome": "pending_review",
+ "model_calls": 8,
+ "model_wall_s": 1384.4,
+ "edits_total": 17,
+ "finished_at": 1793384888.1743255
+}

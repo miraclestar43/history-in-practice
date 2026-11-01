@@ -1,0 +1,30 @@
+# Launched 2026-11-01 (10:00 Asia/Shanghai).
+# Builds inventory in one batch: tops up candidates from the source catalogue
+# when fewer than 2 are waiting (hip supply), runs new candidates through the
+# pipeline -- Claude (Claude Code CLI, subscription login, writer.py) drafts, writes the
+# English and edits; MiMo is no longer used and there is no fallback -- then the
+# Pi-local Claude final editor (preflight first, no API fallback) admits only
+# verified, record-bound articles. Claude unavailable -> nothing drafted, exit 4, alert.
+# One article is ~15–40 min of model time; the timeout is a whole-batch budget.
+# Exit 1 = coverage below the alert threshold; exit 4 = final editor unavailable or
+# degraded (drafts stay pending; see data/health/final_editor.json, `hip doctor`).
+# Validated 2026-10-30 as a transient unit with these limits (LimitAS=3G, Nice=10):
+# validation/claude_runtime_check.py 10/10 and one real `hip nightly` batch.
+[Unit]
+Description=History in Practice: prepare inventory (batch)
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/history-in-practice
+ExecStart=%h/history-in-practice/bin/hip nightly --max-articles 2 --budget-minutes 150 --min-candidates 2
+TimeoutStartSec=3h
+Nice=10
+IOSchedulingClass=idle
+# The Pi's user cgroup has no memory controller (MemoryMax is silently ignored),
+# so cap address space instead; the pipeline streams its inputs.
+LimitAS=3G
+StandardOutput=append:%h/history-in-practice/data/logs/prepare.log
+StandardError=append:%h/history-in-practice/data/logs/prepare.log
+# Maintainer alert (alert.py): runs whatever the exit code; one email to the maintainer, never subscribers.
+ExecStopPost=-%h/history-in-practice/bin/hip alert --source prepare

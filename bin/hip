@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# History in Practice CLI. Uses the project venv; data defaults to ./data (git-ignored).
+here="$(cd "$(dirname "$0")/.." && pwd)"
+PYTHONPATH="$here/src${PYTHONPATH:+:$PYTHONPATH}" exec "$here/.venv/bin/python" -m history_in_practice "$@"

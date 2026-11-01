@@ -1,0 +1,3224 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-auto-20261030-qsg412-2",
+ "edition_id": "cand-auto-20261030-qsg412-2",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "63f43a3",
+ "started_at": 1793410593.6968749,
+ "base_source": "data/drafts/cand-auto-20261030-qsg412-2/article.json",
+ "base_content_sha256": "a9dcf732a14ae161e35bd9f73f8d5097023ff109806608e00bc94a75caa0b32d",
+ "evidence_sha256": "22db182bd270dad2d660f8b90221eeadec94562709903d2e5af603849e0bdc01",
+ "operator_note": null,
+ "model_record_sha256": null,
+ "prior_record_sha256": null,
+ "attempt": "attempt-1",
+ "inherited": [
+  {
+   "id": "M1",
+   "model_id": "R1",
+   "source": "mimo-review",
+   "where": "hook.0",
+   "problem": "整段标为 record，但「认账，是失地失利权在先；翻案，得有人去谈，还得有让对方重新坐下来的筹码」是作者的利害权衡，证据包只记「為朝士所糾，議久不決」，没有这类分析",
+   "suggestion": "把后半段改标 interpretation，或删去「还得有让对方重新坐下来的筹码」这句无来源推断"
+  },
+  {
+   "id": "M2",
+   "model_id": "R2",
+   "source": "mimo-review",
+   "where": "story.0",
+   "problem": "「签它的人却被自己人否定了合法性」超出「為朝士所糾」：被纠弹不等于合法性被否定",
+   "suggestion": "改为「成约为朝士所纠，议久不决」"
+  },
+  {
+   "id": "M3",
+   "model_id": "R3",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] 「认账，是失地失利权在先；翻案，得有人去谈，还得有让对方重新坐下来的筹码」（证据包无此类权衡记述）",
+   "suggestion": ""
+  },
+  {
+   "id": "M4",
+   "model_id": "R4",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] 「签它的人却被自己人否定了合法性」（原文仅「為朝士所糾」）",
+   "suggestion": ""
+  },
+  {
+   "id": "M5",
+   "model_id": "R5",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] 「朝中官员纷纷纠弹」（原文仅「為朝士所糾」，无「纷纷」）",
+   "suggestion": ""
+  },
+  {
+   "id": "M6",
+   "model_id": "R6",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] 「崇厚又议定把陬尔果斯河、帖克斯河一带给俄国」（原文「議畀」为提议，非定案）",
+   "suggestion": ""
+  },
+  {
+   "id": "M7",
+   "model_id": "R7",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[unsupported_claims] 「同时左宗棠自请出屯哈密」（原文「於是」为先后，非同时）",
+   "suggestion": ""
+  },
+  {
+   "id": "M8",
+   "model_id": "R8",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[invented_inner_life] 难处不在于要不要伊犁，而在于约已经签了：认账，是失地失利权在先；翻案，得有人去谈，还得有让对方重新坐下来的筹码。",
+   "suggestion": ""
+  },
+  {
+   "id": "M9",
+   "model_id": "R9",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[invented_inner_life] 一种解释是，他宁可错过一次得手的机会，也不让对方事后找到说辞。",
+   "suggestion": ""
+  },
+  {
+   "id": "M10",
+   "model_id": "R10",
+   "source": "mimo-review",
+   "where": "(location not given)",
+   "problem": "[invented_inner_life] 奏中还点破对方的算计：……俄方认定我方或厌用兵，便用一位全权使臣把疆臣的手捆住。（「算计」「把手捆住」为作者描摹，原文只作「包藏禍心」「牽制疆臣」）",
+   "suggestion": ""
+  }
+ ],
+ "contamination": [],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "dek",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "英文写 \"argued it out for months\"，证据只说「議久不決」，没有给出“数月”这一时间跨度；中文「久争不决」则无此问题，两种语言也因此不一致。",
+   "evidence": [
+    {
+     "id": "QSG4122-E5",
+     "quote": "議久不決"
+    }
+   ],
+   "proposed": "英文改为 \"the court debated it at length without reaching a decision\"",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文删去无据的“for months”，改为“debated it at length without reaching a decision”，与原文「議久不決」及中文「久争不决」一致；中文未改，按同步规则一并给出。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.hook.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "「纷纷纠弹」/\"one after another\" 在原文之外添加了接连、众多的情状。原文只作「為朝士所糾」。",
+   "evidence": [
+    {
+     "id": "QSG4122-E5",
+     "quote": "為朝士所糾"
+    }
+   ],
+   "proposed": "中文改为「为朝士所纠」；英文改为 \"it was denounced by court officials\"",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文「纷纷纠弹」改为「为朝士所纠」，英文改为“It was denounced by court officials”，去掉原文没有的接连、众多之意。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.hook.0",
+   "category": "interpretation_label",
+   "severity": "fix",
+   "problem": "本段标为 record。「难处不在于要不要伊犁……还得有让对方重新坐下来的筹码」是作者对利害的分析，证据中没有，却被当作记录叙述。",
+   "evidence": [
+    {
+     "id": "QSG4122-E5",
+     "quote": "為朝士所糾，議久不決"
+    }
+   ],
+   "proposed": "在该句前加「一种解释是」/\"One reading is that\"，或删去这一句",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "利害分析一句前加「作者的一种解释是」/“One reading, the author's, is that”，明确标为作者解释，不再当作记录叙述。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.context.0",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "英文 \"kept envoys in touch with Britain and Russia\" 丢掉了「结援」中求援、结盟的含义，与中文和原文不一致。",
+   "evidence": [
+    {
+     "id": "QSG4122-E1",
+     "quote": "通使結援英、俄"
+    }
+   ],
+   "proposed": "英文改为 \"sent envoys to seek support from Britain and Russia\"",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文改为“sent envoys to seek support from Britain and Russia”，补回「结援」中的求援之意；中文未改，一并给出。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.context.1",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "伊犁之变时分兵屯肃州（E3）与俄土交战时金顺请袭伊犁（E16）分属传中不同时间点。正文用「俄方正与土耳其交战」/\"was then at war\" 紧接前文，读来像是同一时间。",
+   "evidence": [
+    {
+     "id": "QSG4122-E3",
+     "quote": "而是時有伊犁之變"
+    },
+    {
+     "id": "QSG4122-E16",
+     "quote": "時俄方與土耳其戰"
+    }
+   ],
+   "proposed": "中文改为「后来俄方与土耳其交战时，金顺请……」；英文改为 \"Later, when Russia was at war with Turkey, ...\"",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "改为“传中另记一事：俄方与土耳其交战时……”/“The biography records a separate episode: when…”，把两事分开叙述，不暗示二者同时。证据没有交代两事的先后，所以也不写“后来”。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F6",
+   "path": "sections.context.3",
+   "category": "causality",
+   "severity": "fix",
+   "problem": "「朝廷于是遣……崇厚使俄」/\"accordingly\" 把左宗棠的请求写成遣使的原因。证据只分别记载了这两件事，没有说明二者有因果。",
+   "evidence": [
+    {
+     "id": "QSG4122-E4",
+     "quote": "並請與俄議還伊犁、交叛人二事"
+    },
+    {
+     "id": "QSG4122-E5",
+     "quote": "詔遣全權大臣崇厚使俄"
+    }
+   ],
+   "proposed": "删去「于是」/\"accordingly\"，改为「其后朝廷诏遣全权大臣崇厚使俄」/\"The court then sent...\"",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去「于是」/“accordingly”，只陈述朝廷诏遣崇厚使俄这件事，不断言它与左宗棠的请求有因果关系。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F7",
+   "path": "sections.story.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "「签它的人却被自己人否定了合法性」/\"had his authority questioned\" 超出了证据：原文只说条约被朝士纠弹，没有说签约人的合法性被否定。",
+   "evidence": [
+    {
+     "id": "QSG4122-E5",
+     "quote": "崇厚遽定約，為朝士所糾，議久不決"
+    }
+   ],
+   "proposed": "改为「条约是签了，却为朝士所纠，议久不决」；英文改为 \"the treaty had been signed, yet court officials denounced it and the debate stalled\"",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去签约人合法性被否定的说法，改为条约为朝士所纠、议久不决，中英文同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F8",
+   "path": "sections.story.2",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "「议定把……给俄国」/\"had further agreed to hand\"：原文是「議畀」，即议欲给予，不能写成已成定案。",
+   "evidence": [
+    {
+     "id": "QSG4122-E7",
+     "quote": "今崇厚又議畀俄陬爾果斯河及帖克斯河"
+    }
+   ],
+   "proposed": "中文改为「崇厚又议将……给俄国」；英文改为 \"had further proposed to hand Russia\"",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "「议定把」改为「议将」，英文改为“had further proposed to hand”，按「議畀」表达议欲给予，不写成已成定案。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F9",
+   "path": "sections.story.5",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "「被看穿的是怕打仗」/\"what they had spotted was our fear of war\" 等于承认俄方判断正确。原文作「妄忖」，即俄方妄自揣度，奏疏的意思恰好相反。",
+   "evidence": [
+    {
+     "id": "QSG4122-E9",
+     "quote": "妄忖吾國或厭用兵"
+    }
+   ],
+   "proposed": "中文改为「既然对方妄忖我方厌战」；英文改为 \"If the Russians had wrongly presumed we were weary of war\"",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "改为「既然对方妄忖我方厌战」/“If the Russians had wrongly presumed we were weary of war”，不再暗示俄方判断正确。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F10",
+   "path": "sections.story.6",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "「同时左宗棠自请出屯哈密」/\"At the same time\" 与原文不符。原文作「於是」，表示此事在崇厚得罪、曾纪泽使俄之后，而不是与之同时。",
+   "evidence": [
+    {
+     "id": "QSG4122-E12",
+     "quote": "於是宗棠乃自請出屯哈密"
+    }
+   ],
+   "proposed": "中文改为「于是左宗棠自请出屯哈密」；英文改为 \"Thereupon Zuo volunteered...\"",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "「同时」改为「于是」，英文“At the same time”改为“Thereupon”，与原文「於是」一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F11",
+   "path": "sections.story.6",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "「这是部署总数，不是实际开战的兵力」是证据之外的断言。原文只记合计人数，没有说明实际投入了多少兵力、是否开战。",
+   "evidence": [
+    {
+     "id": "QSG4122-E12",
+     "quote": "合馬步卒四萬餘人"
+    }
+   ],
+   "proposed": "改为「原文只记这一合计数，未记实际投入兵力」；英文相应改为 \"The source gives only this combined figure.\"",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去关于实际开战兵力的断言，改为原文只记这一合计数、未记实际投入兵力，中英文同步。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F12",
+   "path": "sections.story.7",
+   "category": "parity",
+   "severity": "fix",
+   "problem": "中文漏掉了兵船出海「用震撼京師」的目的，英文则有 \"to shake the capital\"，两种语言不一致。",
+   "evidence": [
+    {
+     "id": "QSG4122-E14",
+     "quote": "別以兵船翔海上，用震撼京師"
+    }
+   ],
+   "proposed": "中文改为「另派兵船在海上出没，用以震撼京师」",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "中文补入「用以震撼京师」，与英文“to shake the capital”及原文一致；英文未改，一并给出。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F13",
+   "path": "sections.story.7",
+   "category": "style",
+   "severity": "note",
+   "problem": "「宗棠輿櫬發肅州」整句照抄原文的繁体文字，却没有加引号，读者分不清是叙述还是引文。",
+   "evidence": [
+    {
+     "id": "QSG4122-E13",
+     "quote": "宗棠輿櫬發肅州"
+    }
+   ],
+   "proposed": "加「」作为引文，或改写为简体叙述",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F14",
+   "path": "sections.analysis.2",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "「史书只记了和议成、交还伊犁」/\"records only\" 不准确。史书在和议成之前还写了「俄亦懾我兵威，恐事遂決裂」，即对俄方动机有所叙述，正文的说法遗漏了这一点。",
+   "evidence": [
+    {
+     "id": "QSG4122-E15",
+     "quote": "而俄亦懾我兵威，恐事遂決裂"
+    }
+   ],
+   "proposed": "补一句：史书另称「俄亦懾我兵威」，但与和议成只是并置叙述",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "删去“只记”的说法，补述史书另称俄亦慑我兵威、恐事决裂，并说明这与和议成只是并置叙述，因果未经证实；英文用译述，不加引号。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F15",
+   "path": "sections.limits.0",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "「先之以议论」「师不以正」用了简体字，与证据原文不是逐字一致。",
+   "evidence": [
+    {
+     "id": "QSG4122-E10",
+     "quote": "先之以議論"
+    },
+    {
+     "id": "QSG4122-E16",
+     "quote": "師不以正"
+    }
+   ],
+   "proposed": "改为「先之以議論」「師不以正」",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "古文引语改为与证据逐字一致的繁体：「先之以議論」「師不以正」。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F16",
+   "path": "sections.limits.0",
+   "category": "quotes",
+   "severity": "fix",
+   "problem": "英文全文的引号内都是作者的英译，却没有任何地方告诉读者这些是译述，容易被当作原文引语。",
+   "evidence": [],
+   "proposed": "英文加一句：\"Quoted passages in English are the author's translations of the classical Chinese.\"",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文加入“Quoted passages in English are the author's translations of the classical Chinese.”，中文相应说明英文版引号内的文字是作者对古文的译述，两种语言保持一致。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F17",
+   "path": "sections.story.3",
+   "category": "style",
+   "severity": "note",
+   "problem": "「想「欲藉通商……」」中“想”与“欲”语义重复。",
+   "evidence": [
+    {
+     "id": "QSG4122-E8",
+     "quote": "欲藉通商深入腹地"
+    }
+   ],
+   "proposed": "删去「想」",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F18",
+   "path": "sections.story.4",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "转述写成「俄方认定我方或厌用兵」，丢掉了原文「妄忖」中“妄”这一层，即这是俄方没有根据的揣度。",
+   "evidence": [
+    {
+     "id": "QSG4122-E9",
+     "quote": "妄忖吾國或厭用兵"
+    }
+   ],
+   "proposed": "改为「俄方妄自揣度我方或厌用兵」；英文 \"They had read us as\" 改为 \"They had wrongly presumed us\"",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "转述改为「俄方妄自揣度我方或厌用兵」，英文改为“They had wrongly presumed us tired of fighting”，保留「妄」字的意思。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "M1",
+   "problem": "整段标为 record，但「认账，是失地失利权在先；翻案，得有人去谈，还得有让对方重新坐下来的筹码」是作者的利害权衡，证据包只记「為朝士所糾，議久不決」，没有这类分析",
+   "origin": "inherited mimo-review R1",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "hook.0",
+   "disposition": "duplicate",
+   "same_as": "F3",
+   "rationale": "同 F3：hook.0 中的利害分析写在 record 段里，没有标为解释。"
+  },
+  {
+   "id": "M2",
+   "problem": "「签它的人却被自己人否定了合法性」超出「為朝士所糾」：被纠弹不等于合法性被否定",
+   "origin": "inherited mimo-review R2",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "story.0",
+   "disposition": "duplicate",
+   "same_as": "F7",
+   "rationale": "同 F7：被纠弹不等于合法性被否定。"
+  },
+  {
+   "id": "M3",
+   "problem": "[unsupported_claims] 「认账，是失地失利权在先；翻案，得有人去谈，还得有让对方重新坐下来的筹码」（证据包无此类权衡记述）",
+   "origin": "inherited mimo-review R3",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F3",
+   "rationale": "同 F3，指的是同一句无来源的权衡。"
+  },
+  {
+   "id": "M4",
+   "problem": "[unsupported_claims] 「签它的人却被自己人否定了合法性」（原文仅「為朝士所糾」）",
+   "origin": "inherited mimo-review R4",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F7",
+   "rationale": "同 F7。"
+  },
+  {
+   "id": "M5",
+   "problem": "[unsupported_claims] 「朝中官员纷纷纠弹」（原文仅「為朝士所糾」，无「纷纷」）",
+   "origin": "inherited mimo-review R5",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F2",
+   "rationale": "同 F2：「纷纷」在原文之外增添了情状。"
+  },
+  {
+   "id": "M6",
+   "problem": "[unsupported_claims] 「崇厚又议定把陬尔果斯河、帖克斯河一带给俄国」（原文「議畀」为提议，非定案）",
+   "origin": "inherited mimo-review R6",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F8",
+   "rationale": "同 F8：「議畀」是议欲给予，不是定案。"
+  },
+  {
+   "id": "M7",
+   "problem": "[unsupported_claims] 「同时左宗棠自请出屯哈密」（原文「於是」为先后，非同时）",
+   "origin": "inherited mimo-review R7",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F10",
+   "rationale": "同 F10：原文「於是」表示先后，不是同时。"
+  },
+  {
+   "id": "M8",
+   "problem": "[invented_inner_life] 难处不在于要不要伊犁，而在于约已经签了：认账，是失地失利权在先；翻案，得有人去谈，还得有让对方重新坐下来的筹码。",
+   "origin": "inherited mimo-review R8",
+   "severity": "fix",
+   "category": "unsupported",
+   "path": "(location not given)",
+   "disposition": "duplicate",
+   "same_as": "F3",
+   "rationale": "这句话写的不是人物内心，而是作者分析未加解释标签，问题与 F3 相同。"
+  },
+  {
+   "id": "M9",
+   "path": "(location not given)",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "[invented_inner_life] 一种解释是，他宁可错过一次得手的机会，也不让对方事后找到说辞。",
+   "origin": "inherited mimo-review R9",
+   "disposition": "rejected",
+   "rationale": "该句已明确标为「一种解释是」，并说明原文只有这一句话；推断的依据就是左宗棠所说「彼有辭矣」，不构成虚构心理。",
+   "evidence": [
+    {
+     "id": "QSG4122-E16",
+     "quote": "師不以正，彼有辭矣"
+    }
+   ],
+   "decided_in": "audit"
+  },
+  {
+   "id": "M10",
+   "path": "(location not given)",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "[invented_inner_life] 奏中还点破对方的算计：……俄方认定我方或厌用兵，便用一位全权使臣把疆臣的手捆住。（「算计」「把手捆住」为作者描摹，原文只作「包藏禍心」「牽制疆臣」）",
+   "origin": "inherited mimo-review R10",
+   "disposition": "rejected",
+   "rationale": "俄方的“算计”是奏疏本身的判断，正文以「奏中还点破」明确归于奏疏，「把疆臣的手捆住」是对「牽制疆臣」的转述，不是作者虚构的内心描写。「认定」漏掉“妄”字的问题另列为 F18。",
+   "evidence": [
+    {
+     "id": "QSG4122-E9",
+     "quote": "臣維俄人包藏禍心，妄忖吾國或厭用兵，遂以全權之使臣牽制疆臣"
+    }
+   ],
+   "decided_in": "audit"
+  },
+  {
+   "id": "V1-V1",
+   "path": "dek",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "英文版写成奏疏本身\"volunteered to take command at Hami\"。中文版把上奏与自请出屯哈密并列，同样容易被读成同一时刻。按原文，自请出屯哈密发生在朝廷嘉许奏疏、崇厚得罪、命曾纪泽使俄之后（「於是」），并不在奏疏之内。",
+   "evidence": [
+    {
+     "id": "QSG4122-E11",
+     "quote": "上壯其言，嘉許之。崇厚得罪去，命曾紀澤使俄，更前約"
+    },
+    {
+     "id": "QSG4122-E12",
+     "quote": "於是宗棠乃自請出屯哈密，規复伊犁"
+    }
+   ],
+   "proposed": "中文改为「……给出议论与战阵两步的方案；奏上获嘉许后，又自请出屯哈密」。英文改为\"...set out a two-stage plan of negotiation followed by battle; after the memorial was commended, he volunteered to take command at Hami.\"",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "原文中朝廷先嘉许奏疏、崇厚得罪、命曾纪泽使俄，「於是」左宗棠才自请出屯哈密。导语中英文都改为奏上获嘉许后再自请出屯哈密，不再写成奏疏本身的内容。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V2",
+   "path": "sections.hook.1",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "「僵局之中，左宗棠上奏……并自请出屯哈密」把自请出屯哈密并入上奏这一动作。原文中，这一请求在朝廷嘉许、命曾纪泽更约之后才提出。",
+   "evidence": [
+    {
+     "id": "QSG4122-E11",
+     "quote": "上壯其言，嘉許之。崇厚得罪去，命曾紀澤使俄，更前約"
+    },
+    {
+     "id": "QSG4122-E12",
+     "quote": "於是宗棠乃自請出屯哈密"
+    }
+   ],
+   "proposed": "中文改为「……主张『先之以議論……堅忍而求勝』。奏上获嘉许，他随即自请出屯哈密。」英文同步改为\"...The throne commended it, and he then asked leave to move his headquarters to Hami.\"",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "把自请出屯哈密从上奏动作中拆出，改为奏上获嘉许之后的单独一步，中英同步。ev 补入 E11、E12 以支撑新增的时序表述。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V1-V3",
+   "path": "sections.analysis.0",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "此段把「再用自请出屯哈密」写成这道奏疏结构的一部分，并作为奏疏获得分量的原因之一。原文中，自请出屯是在奏疏获嘉许、崇厚得罪之后才发生的，不能用来解释奏疏的说服力。",
+   "evidence": [
+    {
+     "id": "QSG4122-E11",
+     "quote": "上壯其言，嘉許之。崇厚得罪去"
+    },
+    {
+     "id": "QSG4122-E12",
+     "quote": "於是宗棠乃自請出屯哈密"
+    }
+   ],
+   "proposed": "中文改为「……把方案写成顺序——先议论、后战阵。奏疏获嘉许之后，他又自请出屯哈密，把第二步落到具体的人和地上。」英文同步改为\"...After the memorial was commended, he volunteered to hold Hami, making the second step concrete.\"",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "奏疏的结构只保留拆条目、排顺序两点。自请出屯哈密移到朝廷嘉许、崇厚得罪的记录之后，明确写成奏疏获嘉许之后的行动，不再作为奏疏有说服力的原因。ev 补入 E12，中英同步。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "C1-32",
+   "path": "",
+   "category": "unsupported",
+   "severity": "block",
+   "problem": "checker: analysis[1] zh quote not in cited evidence: 「堅忍而求勝」",
+   "origin": "checker",
+   "disposition": "fixed",
+   "rationale": "「堅忍而求勝」逐字出自 E10，但该段 ev 未引用 E10。现将 E10 加入 analysis.1 的 ev，正文不改。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "C1-33",
+   "path": "",
+   "category": "unsupported",
+   "severity": "fix",
+   "problem": "checker: today[0] repeats the open-question scenario: shared phrases 「有人主张全部推翻」「摆在桌上」「有人主张」; bigram overlap 0.21",
+   "origin": "checker",
+   "disposition": "fixed",
+   "rationale": "today.0 的开头与反思情境用语重复，已改写为“送到手上”“内部有两种声音”等不同表述，去掉「摆在桌上」「有人主张……全部推翻」等重合词组。条款拆分的建议不变，中英同步。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V2-V1",
+   "path": "sections.hook.0",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "原文「為朝士所糾」的主语是崇厚（定约者被纠劾），稿件写成条约本身「为朝士所纠」/\"It was denounced by court officials\"，把被纠的对象从人换成了约。",
+   "evidence": [
+    {
+     "id": "QSG4122-E5",
+     "quote": "崇厚遽定約，為朝士所糾，議久不決"
+    }
+   ],
+   "proposed": "中文改为「……送回朝廷，崇厚为朝士所纠，议了很久，议不出结果」；英文改为\"Chong Hou was censured by court officials, and the debate dragged on toward no conclusion.\"",
+   "origin": "final-editor verify round 2"
+  },
+  {
+   "id": "V2-V2",
+   "path": "sections.context.3",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "末句「朝廷诏遣全权大臣崇厚使俄」出自E5，但本段证据只列了E4，该句缺少对应证据。",
+   "evidence": [
+    {
+     "id": "QSG4122-E5",
+     "quote": "詔遣全權大臣崇厚使俄"
+    }
+   ],
+   "proposed": "在本段证据中补列QSG4122-E5；或把该句移到sections.story.0。",
+   "origin": "final-editor verify round 2"
+  },
+  {
+   "id": "V2-V3",
+   "path": "sections.story.0",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "「為朝士所糾」的对象是崇厚。中文「约成之后为朝士所纠」「条约是签了，却为朝士所纠」与英文\"the court officials impeached it\"\"court officials denounced it\"都把被纠劾者写成了条约；\"impeached\"用于条约也不通。",
+   "evidence": [
+    {
+     "id": "QSG4122-E5",
+     "quote": "崇厚遽定約，為朝士所糾，議久不決"
+    }
+   ],
+   "proposed": "中文改为「约成之后，崇厚为朝士所纠……」；英文改为\"Chong Hou was then censured by court officials, and the debate went on without decision.\"",
+   "origin": "final-editor verify round 2"
+  }
+ ],
+ "edits": [
+  {
+   "path": "dek.en",
+   "before": "After Chong Hou concluded a treaty with Russia, the court argued it out for months without reaching a decision. Zuo Zongtang's memorial put the objection into items — the border terms and the trade terms, each marked as unacceptable — set out a two-stage plan of negotiation followed by battle, and volunteered to take command at Hami. Faced with a badly negotiated agreement, opposing it is not enough: you have to say which clauses cannot move, and what stands behind your demand to talk again.",
+   "after": "After Chong Hou concluded a treaty with Russia, the court debated it at length without reaching a decision. Zuo Zongtang's memorial put the objection into items — the border terms and the trade terms, each marked as unacceptable — set out a two-stage plan of negotiation followed by battle, and volunteered to take command at Hami. Faced with a badly negotiated agreement, opposing it is not enough: you have to say which clauses cannot move, and what stands behind your demand to talk again.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.hook.0.zh",
+   "before": "一份由全权大臣在国外谈成的条约送回朝廷，朝中官员纷纷纠弹，议了很久，议不出结果。难处不在于要不要伊犁，而在于约已经签了：认账，是失地失利权在先；翻案，得有人去谈，还得有让对方重新坐下来的筹码。",
+   "after": "一份由全权大臣在国外谈成的条约送回朝廷，为朝士所纠，议了很久，议不出结果。作者的一种解释是：难处不在于要不要伊犁，而在于约已经签了；认账，是失地失利权在先；翻案，得有人去谈，还得有让对方重新坐下来的筹码。",
+   "issues": [
+    "F2",
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.hook.0.en",
+   "before": "A treaty negotiated abroad by a plenipotentiary envoy had been sent home to the capital. Officials impeached it one after another, and the debate dragged on toward no conclusion. The trouble was never whether Ili mattered. The trouble was that the treaty had already been signed. Accept it, and the lost territory and compromised rights stood as a fait accompli. Repudiate it, and someone had to go back to the table carrying enough leverage to make the other side sit down again.",
+   "after": "A treaty negotiated abroad by a plenipotentiary envoy had been sent home to the capital. It was denounced by court officials, and the debate dragged on toward no conclusion. One reading, the author's, is that the trouble was never whether Ili mattered, but that the treaty had already been signed. Accept it, and the lost territory and compromised rights stood as a fait accompli. Repudiate it, and someone had to go back to the table carrying enough leverage to make the other side sit down again.",
+   "issues": [
+    "F2",
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.context.0.en",
+   "before": "Start with the situation the memorial landed in. The Pasha could command the Muslim population, kept envoys in touch with Britain and Russia, and bought weapons to arm his own forces. The British backed him quietly, hoping to see him set up a separate state that would stand as a shield against Russia. Russia, for its part, cited repeated raids against its border, sent troops to drive the raiders out, seized Ili, and announced that it would go on to take Urumqi on China's behalf.",
+   "after": "Start with the situation the memorial landed in. The Pasha could command the Muslim population, sent envoys to seek support from Britain and Russia, and bought weapons to arm his own forces. The British backed him quietly, hoping to see him set up a separate state that would stand as a shield against Russia. Russia, for its part, cited repeated raids against its border, sent troops to drive the raiders out, seized Ili, and announced that it would go on to take Urumqi on China's behalf.",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.context.1.zh",
+   "before": "伊犁之变后，朝廷诏左宗棠分兵屯肃州，他遣徐占彪带六千人前往。俄方正与土耳其交战，金顺请求乘虚袭击伊犁，左宗棠不许，说「不可。師不以正，彼有辭矣」。",
+   "after": "伊犁之变后，朝廷诏左宗棠分兵屯肃州，他遣徐占彪带六千人前往。传中另记一事：俄方与土耳其交战时，金顺请求乘虚袭击伊犁，左宗棠不许，说「不可。師不以正，彼有辭矣」。",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.context.1.en",
+   "before": "After the Ili crisis, the court ordered Zuo Zongtang to detach troops to garrison Suzhou, and he sent Xu Zhanbiao with six thousand men. Russia was then at war with Turkey, and Jin Shun asked to exploit the opening and strike Ili. Zuo refused: \"No. If our army does not act from a position of right, we hand them their excuse.\"",
+   "after": "After the Ili crisis, the court ordered Zuo Zongtang to detach troops to garrison Suzhou, and he sent Xu Zhanbiao with six thousand men. The biography records a separate episode: when Russia was at war with Turkey, Jin Shun asked to exploit the opening and strike Ili. Zuo refused: \"No. If our army does not act from a position of right, we hand them their excuse.\"",
+   "issues": [
+    "F5"
+   ]
+  },
+  {
+   "path": "sections.context.3.zh",
+   "before": "四年正月，他条上新疆建行省事宜，并请与俄国议两件事：还伊犁、交叛人。朝廷于是遣全权大臣崇厚使俄。",
+   "after": "四年正月，他条上新疆建行省事宜，并请与俄国议两件事：还伊犁、交叛人。朝廷诏遣全权大臣崇厚使俄。",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.context.3.en",
+   "before": "In the first month of the fourth year, he submitted a plan for turning Xinjiang into a regular province, and asked the court to negotiate two matters with Russia: the return of Ili, and the surrender of the defectors. The court accordingly sent Chong Hou, a plenipotentiary, to Russia.",
+   "after": "In the first month of the fourth year, he submitted a plan for turning Xinjiang into a regular province, and asked the court to negotiate two matters with Russia: the return of Ili, and the surrender of the defectors. The court sent Chong Hou, a plenipotentiary, to Russia.",
+   "issues": [
+    "F6"
+   ]
+  },
+  {
+   "path": "sections.story.0.zh",
+   "before": "俄方开出通商、分界、偿款三项条件，崇厚在俄定约，动作很快——史书用一个「遽」字：「崇厚遽定約」。约成之后为朝士所纠，朝廷议论长久不能决定。条约是签了，签它的人却被自己人否定了合法性，事情悬在半空。",
+   "after": "俄方开出通商、分界、偿款三项条件，崇厚在俄定约，动作很快——史书用一个「遽」字：「崇厚遽定約」。约成之后为朝士所纠，朝廷议论长久不能决定。条约是签了，却为朝士所纠，议久不决，事情悬在半空。",
+   "issues": [
+    "F7"
+   ]
+  },
+  {
+   "path": "sections.story.0.en",
+   "before": "The Russian side laid out three heads of demand: trade, borders, and indemnity. Chong Hou concluded the treaty on the spot, and he moved fast — the history reaches for one blunt word: \"Chong Hou hastily concluded the treaty.\" Once the treaty existed, the court officials impeached it, and the debate went on without decision. The document had been signed; the man who signed it had his authority questioned by his own side; the whole affair hung in mid-air.",
+   "after": "The Russian side laid out three heads of demand: trade, borders, and indemnity. Chong Hou concluded the treaty on the spot, and he moved fast — the history reaches for one blunt word: \"Chong Hou hastily concluded the treaty.\" Once the treaty existed, the court officials impeached it, and the debate went on without decision. The treaty had been signed, yet court officials denounced it and the debate stalled; the whole affair hung in mid-air.",
+   "issues": [
+    "F7"
+   ]
+  },
+  {
+   "path": "sections.story.2.zh",
+   "before": "然后是界务。崇厚又议定把陬尔果斯河、帖克斯河一带给俄国，等于划伊犁西南之地归俄。奏中说：「武事不競之秋，有割地求和者矣。茲一矢未加，遽捐要地，此界務之不可許者也」——一仗没打，先捐要地，这是不可许的第一条。",
+   "after": "然后是界务。崇厚又议将陬尔果斯河、帖克斯河一带给俄国，等于划伊犁西南之地归俄。奏中说：「武事不競之秋，有割地求和者矣。茲一矢未加，遽捐要地，此界務之不可許者也」——一仗没打，先捐要地，这是不可许的第一条。",
+   "issues": [
+    "F8"
+   ]
+  },
+  {
+   "path": "sections.story.2.en",
+   "before": "Next, the border. Chong Hou had further agreed to hand Russia the country around the Chorgos and Tekes rivers, which amounted to cutting away the land southwest of Ili. The memorial pressed the point: \"In an age when our arms are not strong, there have been those who carved up territory to buy peace. Here, without a single arrow loosed, we would cast away a vital place — this is the border term that cannot be accepted.\" Not one battle fought, and the key ground surrendered first.",
+   "after": "Next, the border. Chong Hou had further proposed to hand Russia the country around the Chorgos and Tekes rivers, which amounted to cutting away the land southwest of Ili. The memorial pressed the point: \"In an age when our arms are not strong, there have been those who carved up territory to buy peace. Here, without a single arrow loosed, we would cast away a vital place — this is the border term that cannot be accepted.\" Not one battle fought, and the key ground surrendered first.",
+   "issues": [
+    "F8"
+   ]
+  },
+  {
+   "path": "sections.story.4.zh",
+   "before": "奏中还点破对方的算计：「臣維俄人包藏禍心，妄忖吾國或厭用兵，遂以全權之使臣牽制疆臣」——俄方认定我方或厌用兵，便用一位全权使臣把疆臣的手捆住。",
+   "after": "奏中还点破对方的算计：「臣維俄人包藏禍心，妄忖吾國或厭用兵，遂以全權之使臣牽制疆臣」——俄方妄自揣度我方或厌用兵，便用一位全权使臣把疆臣的手捆住。",
+   "issues": [
+    "F18"
+   ]
+  },
+  {
+   "path": "sections.story.4.en",
+   "before": "The memorial also named the calculation on the other side: \"I observe that the Russians harbor ill intent, presuming that our country may be weary of war, and so they use a fully empowered envoy to bind the hands of the frontier commander.\" They had read us as tired of fighting, and turned a plenipotentiary into a leash on the man in the field.",
+   "after": "The memorial also named the calculation on the other side: \"I observe that the Russians harbor ill intent, presuming that our country may be weary of war, and so they use a fully empowered envoy to bind the hands of the frontier commander.\" They had wrongly presumed us tired of fighting, and turned a plenipotentiary into a leash on the man in the field.",
+   "issues": [
+    "F18"
+   ]
+  },
+  {
+   "path": "sections.story.5.zh",
+   "before": "既然被看穿的是怕打仗，对策就要把两头都摆出来：「先之以議論，委婉而用機，次決之以戰陣，堅忍而求勝」，末了又说「臣雖衰慵無似，敢不勉旃」。议论与战阵不是二选一，是有先后的两步。",
+   "after": "既然对方妄忖我方厌战，对策就要把两头都摆出来：「先之以議論，委婉而用機，次決之以戰陣，堅忍而求勝」，末了又说「臣雖衰慵無似，敢不勉旃」。议论与战阵不是二选一，是有先后的两步。",
+   "issues": [
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.story.5.en",
+   "before": "If what they had spotted was our fear of war, the answer had to put both options on the table at once: \"first take the matter up in negotiation, tactful and alert to opportunity, then settle it on the field of battle, patient and set on victory\" — closing with \"Though I am old, tired, and of no great ability, how dare I not do my best.\" Negotiation and battle were not alternatives to choose between; they were two steps in a fixed order.",
+   "after": "If the Russians had wrongly presumed we were weary of war, the answer had to put both options on the table at once: \"first take the matter up in negotiation, tactful and alert to opportunity, then settle it on the field of battle, patient and set on victory\" — closing with \"Though I am old, tired, and of no great ability, how dare I not do my best.\" Negotiation and battle were not alternatives to choose between; they were two steps in a fixed order.",
+   "issues": [
+    "F9"
+   ]
+  },
+  {
+   "path": "sections.story.6.zh",
+   "before": "奏上，上壮其言，嘉许之，崇厚得罪去，命曾纪泽使俄更前约。同时左宗棠自请出屯哈密，规复伊犁：金顺出精河为东路，张曜沿特克斯河为中路，锦棠经布鲁特游牧为西路，谭上连等分屯喀什噶尔、阿克苏、哈密为后路声援，合马步卒四万余人——这是部署总数，不是实际开战的兵力。",
+   "after": "奏上，上壮其言，嘉许之，崇厚得罪去，命曾纪泽使俄更前约。于是左宗棠自请出屯哈密，规复伊犁：金顺出精河为东路，张曜沿特克斯河为中路，锦棠经布鲁特游牧为西路，谭上连等分屯喀什噶尔、阿克苏、哈密为后路声援，合马步卒四万余人——原文只记这一合计数，未记实际投入兵力。",
+   "issues": [
+    "F10",
+    "F11"
+   ]
+  },
+  {
+   "path": "sections.story.6.en",
+   "before": "The memorial went up. The throne found the words stirring and commended them; Chong Hou was punished and dismissed, and Zeng Jize was sent to Russia to revise the earlier treaty. At the same time Zuo volunteered to take the field at Hami and plan the recovery of Ili: Jin Shun would advance on Jinghe as the eastern column, Zhang Yao along the Tekes as the central column, and Jintang through the Burut grazing lands as the western column, while Tan Shanglian and others garrisoned Kashgar, Aksu, and Hami in support along the line of communications — more than forty thousand cavalry and infantry all told. That is the total of the deployment, not the strength that actually took the field.",
+   "after": "The memorial went up. The throne found the words stirring and commended them; Chong Hou was punished and dismissed, and Zeng Jize was sent to Russia to revise the earlier treaty. Thereupon Zuo volunteered to take the field at Hami and plan the recovery of Ili: Jin Shun would advance on Jinghe as the eastern column, Zhang Yao along the Tekes as the central column, and Jintang through the Burut grazing lands as the western column, while Tan Shanglian and others garrisoned Kashgar, Aksu, and Hami in support along the line of communications — more than forty thousand cavalry and infantry all told. The source gives only this combined figure and does not record how many troops were actually committed.",
+   "issues": [
+    "F10",
+    "F11"
+   ]
+  },
+  {
+   "path": "sections.story.7.zh",
+   "before": "六年四月，宗棠輿櫬發肅州，五月抵哈密。俄方闻王师大出，增兵守伊犁、纳林河，另派兵船在海上出没，天津、奉天、山东同时告警。谈判桌之外，两边都在调动。",
+   "after": "六年四月，宗棠輿櫬發肅州，五月抵哈密。俄方闻王师大出，增兵守伊犁、纳林河，另派兵船在海上出没，用以震撼京师，天津、奉天、山东同时告警。谈判桌之外，两边都在调动。",
+   "issues": [
+    "F12"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.zh",
+   "before": "至于成败，史书只记了和议成、交还伊犁，没有记曾纪泽改约的具体内容，也没有把结果归在某一个人名下。把这段读成主战就对、主和就错的教训，超出了材料能说的话。",
+   "after": "至于成败，史书记了和议成、交还伊犁；在此之前另称「俄亦懾我兵威，恐事遂決裂」，但这与和议成只是并置叙述。史书没有记曾纪泽改约的具体内容，也没有把结果归在某一个人名下。把这段读成主战就对、主和就错的教训，超出了材料能说的话。",
+   "issues": [
+    "F14"
+   ]
+  },
+  {
+   "path": "sections.analysis.2.en",
+   "before": "As for success and failure, the history records only that peace was concluded and Ili returned. It gives no substance for Zeng Jize's revision of the treaty, and it does not attach the outcome to any one man's name. To read this episode as a lesson that the war party was right and the peace party wrong goes beyond what the material can support.",
+   "after": "As for success and failure, the history records that peace was concluded and Ili returned; just before that, it says that Russia, too, was awed by our military might and feared an outright rupture, but this is merely set alongside the conclusion of peace. It gives no substance for Zeng Jize's revision of the treaty, and it does not attach the outcome to any one man's name. To read this episode as a lesson that the war party was right and the peace party wrong goes beyond what the material can support.",
+   "issues": [
+    "F14"
+   ]
+  },
+  {
+   "path": "sections.limits.0.zh",
+   "before": "本文只有一个史源，即《清史稿·左宗棠传》，成书在传主身后，所述与当时档案未必一致。奏疏与对话（如「先之以议论」「师不以正」）是史书的记述，未必是逐字原话。",
+   "after": "本文只有一个史源，即《清史稿·左宗棠传》，成书在传主身后，所述与当时档案未必一致。奏疏与对话（如「先之以議論」「師不以正」）是史书的记述，未必是逐字原话。英文版引号内的文字是作者对古文的译述。",
+   "issues": [
+    "F15",
+    "F16"
+   ]
+  },
+  {
+   "path": "sections.limits.0.en",
+   "before": "This piece rests on a single source, the biography of Zuo Zongtang in the Draft History of the Qing, compiled after his death; its account may not match the archives of the time. The memorial and the dialogue — such as \"first take the matter up in negotiation\" and \"our army does not act from a position of right\" — are the history's rendering and may not be verbatim.",
+   "after": "This piece rests on a single source, the biography of Zuo Zongtang in the Draft History of the Qing, compiled after his death; its account may not match the archives of the time. The memorial and the dialogue — such as \"first take the matter up in negotiation\" and \"our army does not act from a position of right\" — are the history's rendering and may not be verbatim. Quoted passages in English are the author's translations of the classical Chinese.",
+   "issues": [
+    "F15",
+    "F16"
+   ]
+  },
+  {
+   "path": "dek.zh",
+   "before": "崇厚与俄国定约后，朝议久争不决。左宗棠上奏逐条指出界务、商务两处不可许，给出议论与战阵两步的方案，自请出屯哈密。一份谈砸的协议面前，光说反对不够，还得说清哪几条不能让、以及凭什么再谈。",
+   "after": "崇厚与俄国定约后，朝议久争不决。左宗棠上奏逐条指出界务、商务两处不可许，给出议论与战阵两步的方案；奏上获嘉许后，他又自请出屯哈密。一份谈砸的协议面前，光说反对不够，还得说清哪几条不能让、以及凭什么再谈。",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "dek.en",
+   "before": "After Chong Hou concluded a treaty with Russia, the court debated it at length without reaching a decision. Zuo Zongtang's memorial put the objection into items — the border terms and the trade terms, each marked as unacceptable — set out a two-stage plan of negotiation followed by battle, and volunteered to take command at Hami. Faced with a badly negotiated agreement, opposing it is not enough: you have to say which clauses cannot move, and what stands behind your demand to talk again.",
+   "after": "After Chong Hou concluded a treaty with Russia, the court debated it at length without reaching a decision. Zuo Zongtang's memorial put the objection into items — the border terms and the trade terms, each marked as unacceptable — and set out a two-stage plan of negotiation followed by battle. After the memorial was commended, he volunteered to take command at Hami. Faced with a badly negotiated agreement, opposing it is not enough: you have to say which clauses cannot move, and what stands behind your demand to talk again.",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.hook.1.zh",
+   "before": "僵局之中，左宗棠上奏，逐条点出哪几处不可许，主张「先之以議論，委婉而用機，次決之以戰陣，堅忍而求勝」，并自请出屯哈密。六年四月，他「輿櫬發肅州」，五月抵哈密。明年正月，和议成，交还伊犁。",
+   "after": "僵局之中，左宗棠上奏，逐条点出哪几处不可许，主张「先之以議論，委婉而用機，次決之以戰陣，堅忍而求勝」。奏上获嘉许，他于是自请出屯哈密。六年四月，他「輿櫬發肅州」，五月抵哈密。明年正月，和议成，交还伊犁。",
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "Into that deadlock stepped Zuo Zongtang with a memorial. Item by item he named the terms that must not be accepted, argued that one should \"first take the matter up in negotiation, tactful and alert to opportunity, then settle it on the field of battle, patient and set on victory,\" and asked leave to move his headquarters to Hami. In the fourth month of the sixth year he \"set out from Suzhou with a coffin in his carriage,\" and reached Hami in the fifth month. In the first month of the following year, peace was concluded and Ili was returned.",
+   "after": "Into that deadlock stepped Zuo Zongtang with a memorial. Item by item he named the terms that must not be accepted, and argued that one should \"first take the matter up in negotiation, tactful and alert to opportunity, then settle it on the field of battle, patient and set on victory.\" The throne commended it, and he then asked leave to move his headquarters to Hami. In the fourth month of the sixth year he \"set out from Suzhou with a coffin in his carriage,\" and reached Hami in the fifth month. In the first month of the following year, peace was concluded and Ili was returned.",
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.hook.1.ev",
+   "before": [
+    "QSG4122-E10",
+    "QSG4122-E13",
+    "QSG4122-E15"
+   ],
+   "after": [
+    "QSG4122-E10",
+    "QSG4122-E11",
+    "QSG4122-E12",
+    "QSG4122-E13",
+    "QSG4122-E15"
+   ],
+   "issues": [
+    "V1-V2"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.zh",
+   "before": "作者推断，这道奏疏的分量来自结构，不只来自立场。它把反对拆成条目——界务一处、商务一处，各自说明为何不可许；把方案写成顺序——先议论、后战阵；再用自请出屯哈密，把第二步落到具体的人和地上。朝廷随后命曾纪泽更前约，崇厚得罪去，这一段是有记录的。",
+   "after": "作者推断，这道奏疏的分量来自结构，不只来自立场。它把反对拆成条目——界务一处、商务一处，各自说明为何不可许；把方案写成顺序——先议论、后战阵。朝廷随后命曾纪泽更前约，崇厚得罪去，这一段是有记录的。奏疏获嘉许之后，他又自请出屯哈密，把第二步落到具体的人和地上。",
+   "issues": [
+    "V1-V3"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.en",
+   "before": "The author's reading is that this memorial carried weight through its structure, not merely its stance. It broke the objection into items — one for the border terms, one for trade, each with its own stated reason for refusal. It wrote the plan as a sequence: negotiation first, battle second. And by volunteering to hold Hami, it made the second step concrete — a named man in a named place. That the court then sent Zeng Jize to revise the earlier treaty, and that Chong Hou was punished and dismissed, is on the record.",
+   "after": "The author's reading is that this memorial carried weight through its structure, not merely its stance. It broke the objection into items — one for the border terms, one for trade, each with its own stated reason for refusal. It wrote the plan as a sequence: negotiation first, battle second. That the court then sent Zeng Jize to revise the earlier treaty, and that Chong Hou was punished and dismissed, is on the record. After the memorial was commended, he volunteered to hold Hami, making the second step concrete — a named man in a named place.",
+   "issues": [
+    "V1-V3"
+   ]
+  },
+  {
+   "path": "sections.analysis.0.ev",
+   "before": [
+    "QSG4122-E7",
+    "QSG4122-E8",
+    "QSG4122-E10",
+    "QSG4122-E11"
+   ],
+   "after": [
+    "QSG4122-E7",
+    "QSG4122-E8",
+    "QSG4122-E10",
+    "QSG4122-E11",
+    "QSG4122-E12"
+   ],
+   "issues": [
+    "V1-V3"
+   ]
+  },
+  {
+   "path": "sections.analysis.1.ev",
+   "before": [
+    "QSG4122-E17",
+    "QSG4122-E18"
+   ],
+   "after": [
+    "QSG4122-E10",
+    "QSG4122-E17",
+    "QSG4122-E18"
+   ],
+   "issues": [
+    "C1-32"
+   ]
+  },
+  {
+   "path": "sections.today.0.zh",
+   "before": "一份采购续约摆在桌上，里面有随行情调价、有最低采购量。有人主张整包接受，有人主张全部推翻。可用的做法是把条款拆开：哪两条不让、哪几条可以换、拿什么换，一条一条写出来——反对写成条目，才有得谈。",
+   "after": "一份采购续约送到手上，里面有随行情调价、有最低采购量。内部有两种声音：一边想整包签下，一边想推倒重来。可用的做法是把条款拆开：哪两条不让、哪几条可以换、拿什么换，一条一条写出来——反对写成条目，才有得谈。",
+   "issues": [
+    "C1-33"
+   ]
+  },
+  {
+   "path": "sections.today.0.en",
+   "before": "A procurement renewal is on the desk, with prices that adjust to the market and a minimum purchase commitment inside it. One camp wants to accept the whole package; another wants to scrap it outright. The usable move is to break the clauses apart: which two are not open to concession, which few can be traded, and what you would take in exchange — written out one line at a time. An objection becomes negotiable only when it is itemized.",
+   "after": "A procurement renewal lands in your hands, with prices that adjust to the market and a minimum purchase commitment inside it. There are two voices internally: one wants to sign the whole package, the other wants to start over. The usable move is to break the clauses apart: which two are not open to concession, which few can be traded, and what you would take in exchange — written out one line at a time. An objection becomes negotiable only when it is itemized.",
+   "issues": [
+    "C1-33"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "F10",
+    "F11",
+    "F12",
+    "F14",
+    "F15",
+    "F16",
+    "F18"
+   ],
+   "changes_applied": 23,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[1] numbers differ zh[5000000] en[100]"
+    ],
+    [
+     "BLOCK",
+     "analysis[1] zh quote not in cited evidence: 「堅忍而求勝」"
+    ],
+    [
+     "CHECK",
+     "analysis[1] numbers differ zh[20, 5000000] en[20]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[20, 40000, 5000000] en[20, 40000]"
+    ],
+    [
+     "FIX",
+     "today[0] repeats the open-question scenario: shared phrases 「有人主张全部推翻」「摆在桌上」「有人主张」; bigram overlap 0.21"
+    ]
+   ],
+   "content_sha256_after": "86bc85281391ab489152b9255080677beb37a7fe420c973b00a5d27ba5a2d596",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "dek",
+      "category": "chronology",
+      "severity": "fix",
+      "problem": "英文版写成奏疏本身\"volunteered to take command at Hami\"。中文版把上奏与自请出屯哈密并列，同样容易被读成同一时刻。按原文，自请出屯哈密发生在朝廷嘉许奏疏、崇厚得罪、命曾纪泽使俄之后（「於是」），并不在奏疏之内。",
+      "evidence": [
+       {
+        "id": "QSG4122-E11",
+        "quote": "上壯其言，嘉許之。崇厚得罪去，命曾紀澤使俄，更前約"
+       },
+       {
+        "id": "QSG4122-E12",
+        "quote": "於是宗棠乃自請出屯哈密，規复伊犁"
+       }
+      ],
+      "proposed": "中文改为「……给出议论与战阵两步的方案；奏上获嘉许后，又自请出屯哈密」。英文改为\"...set out a two-stage plan of negotiation followed by battle; after the memorial was commended, he volunteered to take command at Hami.\""
+     },
+     {
+      "id": "V2",
+      "path": "sections.hook.1",
+      "category": "chronology",
+      "severity": "fix",
+      "problem": "「僵局之中，左宗棠上奏……并自请出屯哈密」把自请出屯哈密并入上奏这一动作。原文中，这一请求在朝廷嘉许、命曾纪泽更约之后才提出。",
+      "evidence": [
+       {
+        "id": "QSG4122-E11",
+        "quote": "上壯其言，嘉許之。崇厚得罪去，命曾紀澤使俄，更前約"
+       },
+       {
+        "id": "QSG4122-E12",
+        "quote": "於是宗棠乃自請出屯哈密"
+       }
+      ],
+      "proposed": "中文改为「……主张『先之以議論……堅忍而求勝』。奏上获嘉许，他随即自请出屯哈密。」英文同步改为\"...The throne commended it, and he then asked leave to move his headquarters to Hami.\""
+     },
+     {
+      "id": "V3",
+      "path": "sections.analysis.0",
+      "category": "chronology",
+      "severity": "fix",
+      "problem": "此段把「再用自请出屯哈密」写成这道奏疏结构的一部分，并作为奏疏获得分量的原因之一。原文中，自请出屯是在奏疏获嘉许、崇厚得罪之后才发生的，不能用来解释奏疏的说服力。",
+      "evidence": [
+       {
+        "id": "QSG4122-E11",
+        "quote": "上壯其言，嘉許之。崇厚得罪去"
+       },
+       {
+        "id": "QSG4122-E12",
+        "quote": "於是宗棠乃自請出屯哈密"
+       }
+      ],
+      "proposed": "中文改为「……把方案写成顺序——先议论、后战阵。奏疏获嘉许之后，他又自请出屯哈密，把第二步落到具体的人和地上。」英文同步改为\"...After the memorial was commended, he volunteered to hold Hami, making the second step concrete.\""
+     },
+     {
+      "id": "V4",
+      "path": "sections.story.0",
+      "category": "style",
+      "severity": "note",
+      "problem": "「为朝士所纠……议久不决」在同一段里连说两遍，英文也重复了一遍（\"impeached it ... denounced it and the debate stalled\"），读来冗余。",
+      "evidence": [
+       {
+        "id": "QSG4122-E5",
+        "quote": "崇厚遽定約，為朝士所糾，議久不決"
+       }
+      ],
+      "proposed": "中文删去第二处，改为「约成之后为朝士所纠，议久不决，事情悬在半空。」英文相应合并为一句。"
+     }
+    ],
+    "overall": "引文和数字都与证据一致，解释也均已标明；需要改的是三处把「自请出屯哈密」并入奏疏的时序错位，另有一处冗余文风问题，修改后可发。",
+    "_content_sha256": "86bc85281391ab489152b9255080677beb37a7fe420c973b00a5d27ba5a2d596"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1",
+    "V1-V2",
+    "V1-V3",
+    "C1-32",
+    "C1-33"
+   ],
+   "changes_applied": 11,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [
+    [
+     "CHECK",
+     "story[1] numbers differ zh[5000000] en[100]"
+    ],
+    [
+     "CHECK",
+     "analysis[1] numbers differ zh[20, 5000000] en[20]"
+    ],
+    [
+     "CHECK",
+     "limits[1] numbers differ zh[20, 40000, 5000000] en[20, 40000]"
+    ]
+   ],
+   "content_sha256_after": "d198f578b846588cd80c62cc9496e251216c680fab1cec58668f916b3f3a13b4",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3",
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.7",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.8",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.today.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.0",
+      "category": "attribution",
+      "severity": "fix",
+      "problem": "原文「為朝士所糾」的主语是崇厚（定约者被纠劾），稿件写成条约本身「为朝士所纠」/\"It was denounced by court officials\"，把被纠的对象从人换成了约。",
+      "evidence": [
+       {
+        "id": "QSG4122-E5",
+        "quote": "崇厚遽定約，為朝士所糾，議久不決"
+       }
+      ],
+      "proposed": "中文改为「……送回朝廷，崇厚为朝士所纠，议了很久，议不出结果」；英文改为\"Chong Hou was censured by court officials, and the debate dragged on toward no conclusion.\""
+     },
+     {
+      "id": "V2",
+      "path": "sections.context.3",
+      "category": "attribution",
+      "severity": "fix",
+      "problem": "末句「朝廷诏遣全权大臣崇厚使俄」出自E5，但本段证据只列了E4，该句缺少对应证据。",
+      "evidence": [
+       {
+        "id": "QSG4122-E5",
+        "quote": "詔遣全權大臣崇厚使俄"
+       }
+      ],
+      "proposed": "在本段证据中补列QSG4122-E5；或把该句移到sections.story.0。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.story.0",
+      "category": "attribution",
+      "severity": "fix",
+      "problem": "「為朝士所糾」的对象是崇厚。中文「约成之后为朝士所纠」「条约是签了，却为朝士所纠」与英文\"the court officials impeached it\"\"court officials denounced it\"都把被纠劾者写成了条约；\"impeached\"用于条约也不通。",
+      "evidence": [
+       {
+        "id": "QSG4122-E5",
+        "quote": "崇厚遽定約，為朝士所糾，議久不決"
+       }
+      ],
+      "proposed": "中文改为「约成之后，崇厚为朝士所纠……」；英文改为\"Chong Hou was then censured by court officials, and the debate went on without decision.\""
+     },
+     {
+      "id": "V4",
+      "path": "sections.story.0",
+      "category": "style",
+      "severity": "note",
+      "problem": "「为朝士所纠，议久不决」在同一段内重复出现两次，英文也同样重复。",
+      "evidence": [],
+      "proposed": "删去末句中重复的部分，只保留「条约是签了，事情悬在半空」及对应英文。"
+     },
+     {
+      "id": "V5",
+      "path": "sections.story.3",
+      "category": "style",
+      "severity": "note",
+      "problem": "「想「欲藉通商深入腹地」」中「想」与「欲」语义重复。引文本身是逐字的。",
+      "evidence": [
+       {
+        "id": "QSG4122-E8",
+        "quote": "欲藉通商深入腹地"
+       }
+      ],
+      "proposed": "改为「俄国政府广设领事，「欲藉通商深入腹地」」。"
+     }
+    ],
+    "overall": "定稿整体有据，引文逐字可核，推断均已标为解释，中英文一致；需修正两处把「為朝士所糾」的对象由崇厚误作条约的写法，并为context.3补列E5证据，另有两处文风小问题。",
+    "_content_sha256": "d198f578b846588cd80c62cc9496e251216c680fab1cec58668f916b3f3a13b4"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2",
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.context.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F7"
+    ]
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F8"
+    ]
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F17"
+    ]
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F18"
+    ]
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F9"
+    ]
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F10",
+     "F11"
+    ]
+   },
+   {
+    "path": "sections.story.7",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F12",
+     "F13"
+    ]
+   },
+   {
+    "path": "sections.story.8",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F14"
+    ]
+   },
+   {
+    "path": "sections.today.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.today.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F15",
+     "F16"
+    ]
+   },
+   {
+    "path": "sections.limits.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "dek",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "英文写 \"argued it out for months\"，证据只说「議久不決」，没有给出“数月”这一时间跨度；中文「久争不决」则无此问题，两种语言也因此不一致。",
+    "evidence": [
+     {
+      "id": "QSG4122-E5",
+      "quote": "議久不決"
+     }
+    ],
+    "proposed": "英文改为 \"the court debated it at length without reaching a decision\""
+   },
+   {
+    "id": "F2",
+    "path": "sections.hook.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "「纷纷纠弹」/\"one after another\" 在原文之外添加了接连、众多的情状。原文只作「為朝士所糾」。",
+    "evidence": [
+     {
+      "id": "QSG4122-E5",
+      "quote": "為朝士所糾"
+     }
+    ],
+    "proposed": "中文改为「为朝士所纠」；英文改为 \"it was denounced by court officials\""
+   },
+   {
+    "id": "F3",
+    "path": "sections.hook.0",
+    "category": "interpretation_label",
+    "severity": "fix",
+    "problem": "本段标为 record。「难处不在于要不要伊犁……还得有让对方重新坐下来的筹码」是作者对利害的分析，证据中没有，却被当作记录叙述。",
+    "evidence": [
+     {
+      "id": "QSG4122-E5",
+      "quote": "為朝士所糾，議久不決"
+     }
+    ],
+    "proposed": "在该句前加「一种解释是」/\"One reading is that\"，或删去这一句"
+   },
+   {
+    "id": "F4",
+    "path": "sections.context.0",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "英文 \"kept envoys in touch with Britain and Russia\" 丢掉了「结援」中求援、结盟的含义，与中文和原文不一致。",
+    "evidence": [
+     {
+      "id": "QSG4122-E1",
+      "quote": "通使結援英、俄"
+     }
+    ],
+    "proposed": "英文改为 \"sent envoys to seek support from Britain and Russia\""
+   },
+   {
+    "id": "F5",
+    "path": "sections.context.1",
+    "category": "chronology",
+    "severity": "fix",
+    "problem": "伊犁之变时分兵屯肃州（E3）与俄土交战时金顺请袭伊犁（E16）分属传中不同时间点。正文用「俄方正与土耳其交战」/\"was then at war\" 紧接前文，读来像是同一时间。",
+    "evidence": [
+     {
+      "id": "QSG4122-E3",
+      "quote": "而是時有伊犁之變"
+     },
+     {
+      "id": "QSG4122-E16",
+      "quote": "時俄方與土耳其戰"
+     }
+    ],
+    "proposed": "中文改为「后来俄方与土耳其交战时，金顺请……」；英文改为 \"Later, when Russia was at war with Turkey, ...\""
+   },
+   {
+    "id": "F6",
+    "path": "sections.context.3",
+    "category": "causality",
+    "severity": "fix",
+    "problem": "「朝廷于是遣……崇厚使俄」/\"accordingly\" 把左宗棠的请求写成遣使的原因。证据只分别记载了这两件事，没有说明二者有因果。",
+    "evidence": [
+     {
+      "id": "QSG4122-E4",
+      "quote": "並請與俄議還伊犁、交叛人二事"
+     },
+     {
+      "id": "QSG4122-E5",
+      "quote": "詔遣全權大臣崇厚使俄"
+     }
+    ],
+    "proposed": "删去「于是」/\"accordingly\"，改为「其后朝廷诏遣全权大臣崇厚使俄」/\"The court then sent...\""
+   },
+   {
+    "id": "F7",
+    "path": "sections.story.0",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "「签它的人却被自己人否定了合法性」/\"had his authority questioned\" 超出了证据：原文只说条约被朝士纠弹，没有说签约人的合法性被否定。",
+    "evidence": [
+     {
+      "id": "QSG4122-E5",
+      "quote": "崇厚遽定約，為朝士所糾，議久不決"
+     }
+    ],
+    "proposed": "改为「条约是签了，却为朝士所纠，议久不决」；英文改为 \"the treaty had been signed, yet court officials denounced it and the debate stalled\""
+   },
+   {
+    "id": "F8",
+    "path": "sections.story.2",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "「议定把……给俄国」/\"had further agreed to hand\"：原文是「議畀」，即议欲给予，不能写成已成定案。",
+    "evidence": [
+     {
+      "id": "QSG4122-E7",
+      "quote": "今崇厚又議畀俄陬爾果斯河及帖克斯河"
+     }
+    ],
+    "proposed": "中文改为「崇厚又议将……给俄国」；英文改为 \"had further proposed to hand Russia\""
+   },
+   {
+    "id": "F9",
+    "path": "sections.story.5",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "「被看穿的是怕打仗」/\"what they had spotted was our fear of war\" 等于承认俄方判断正确。原文作「妄忖」，即俄方妄自揣度，奏疏的意思恰好相反。",
+    "evidence": [
+     {
+      "id": "QSG4122-E9",
+      "quote": "妄忖吾國或厭用兵"
+     }
+    ],
+    "proposed": "中文改为「既然对方妄忖我方厌战」；英文改为 \"If the Russians had wrongly presumed we were weary of war\""
+   },
+   {
+    "id": "F10",
+    "path": "sections.story.6",
+    "category": "chronology",
+    "severity": "fix",
+    "problem": "「同时左宗棠自请出屯哈密」/\"At the same time\" 与原文不符。原文作「於是」，表示此事在崇厚得罪、曾纪泽使俄之后，而不是与之同时。",
+    "evidence": [
+     {
+      "id": "QSG4122-E12",
+      "quote": "於是宗棠乃自請出屯哈密"
+     }
+    ],
+    "proposed": "中文改为「于是左宗棠自请出屯哈密」；英文改为 \"Thereupon Zuo volunteered...\""
+   },
+   {
+    "id": "F11",
+    "path": "sections.story.6",
+    "category": "unsupported",
+    "severity": "fix",
+    "problem": "「这是部署总数，不是实际开战的兵力」是证据之外的断言。原文只记合计人数，没有说明实际投入了多少兵力、是否开战。",
+    "evidence": [
+     {
+      "id": "QSG4122-E12",
+      "quote": "合馬步卒四萬餘人"
+     }
+    ],
+    "proposed": "改为「原文只记这一合计数，未记实际投入兵力」；英文相应改为 \"The source gives only this combined figure.\""
+   },
+   {
+    "id": "F12",
+    "path": "sections.story.7",
+    "category": "parity",
+    "severity": "fix",
+    "problem": "中文漏掉了兵船出海「用震撼京師」的目的，英文则有 \"to shake the capital\"，两种语言不一致。",
+    "evidence": [
+     {
+      "id": "QSG4122-E14",
+      "quote": "別以兵船翔海上，用震撼京師"
+     }
+    ],
+    "proposed": "中文改为「另派兵船在海上出没，用以震撼京师」"
+   },
+   {
+    "id": "F13",
+    "path": "sections.story.7",
+    "category": "style",
+    "severity": "note",
+    "problem": "「宗棠輿櫬發肅州」整句照抄原文的繁体文字，却没有加引号，读者分不清是叙述还是引文。",
+    "evidence": [
+     {
+      "id": "QSG4122-E13",
+      "quote": "宗棠輿櫬發肅州"
+     }
+    ],
+    "proposed": "加「」作为引文，或改写为简体叙述"
+   },
+   {
+    "id": "F14",
+    "path": "sections.analysis.2",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "「史书只记了和议成、交还伊犁」/\"records only\" 不准确。史书在和议成之前还写了「俄亦懾我兵威，恐事遂決裂」，即对俄方动机有所叙述，正文的说法遗漏了这一点。",
+    "evidence": [
+     {
+      "id": "QSG4122-E15",
+      "quote": "而俄亦懾我兵威，恐事遂決裂"
+     }
+    ],
+    "proposed": "补一句：史书另称「俄亦懾我兵威」，但与和议成只是并置叙述"
+   },
+   {
+    "id": "F15",
+    "path": "sections.limits.0",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "「先之以议论」「师不以正」用了简体字，与证据原文不是逐字一致。",
+    "evidence": [
+     {
+      "id": "QSG4122-E10",
+      "quote": "先之以議論"
+     },
+     {
+      "id": "QSG4122-E16",
+      "quote": "師不以正"
+     }
+    ],
+    "proposed": "改为「先之以議論」「師不以正」"
+   },
+   {
+    "id": "F16",
+    "path": "sections.limits.0",
+    "category": "quotes",
+    "severity": "fix",
+    "problem": "英文全文的引号内都是作者的英译，却没有任何地方告诉读者这些是译述，容易被当作原文引语。",
+    "evidence": [],
+    "proposed": "英文加一句：\"Quoted passages in English are the author's translations of the classical Chinese.\""
+   },
+   {
+    "id": "F17",
+    "path": "sections.story.3",
+    "category": "style",
+    "severity": "note",
+    "problem": "「想「欲藉通商……」」中“想”与“欲”语义重复。",
+    "evidence": [
+     {
+      "id": "QSG4122-E8",
+      "quote": "欲藉通商深入腹地"
+     }
+    ],
+    "proposed": "删去「想」"
+   },
+   {
+    "id": "F18",
+    "path": "sections.story.4",
+    "category": "facts",
+    "severity": "fix",
+    "problem": "转述写成「俄方认定我方或厌用兵」，丢掉了原文「妄忖」中“妄”这一层，即这是俄方没有根据的揣度。",
+    "evidence": [
+     {
+      "id": "QSG4122-E9",
+      "quote": "妄忖吾國或厭用兵"
+     }
+    ],
+    "proposed": "改为「俄方妄自揣度我方或厌用兵」；英文 \"They had read us as\" 改为 \"They had wrongly presumed us\""
+   }
+  ],
+  "inherited": [
+   {
+    "id": "M1",
+    "verdict": "duplicate",
+    "same_as": "F3",
+    "rationale": "同 F3：hook.0 中的利害分析写在 record 段里，没有标为解释。",
+    "evidence": []
+   },
+   {
+    "id": "M2",
+    "verdict": "duplicate",
+    "same_as": "F7",
+    "rationale": "同 F7：被纠弹不等于合法性被否定。",
+    "evidence": []
+   },
+   {
+    "id": "M3",
+    "verdict": "duplicate",
+    "same_as": "F3",
+    "rationale": "同 F3，指的是同一句无来源的权衡。",
+    "evidence": []
+   },
+   {
+    "id": "M4",
+    "verdict": "duplicate",
+    "same_as": "F7",
+    "rationale": "同 F7。",
+    "evidence": []
+   },
+   {
+    "id": "M5",
+    "verdict": "duplicate",
+    "same_as": "F2",
+    "rationale": "同 F2：「纷纷」在原文之外增添了情状。",
+    "evidence": []
+   },
+   {
+    "id": "M6",
+    "verdict": "duplicate",
+    "same_as": "F8",
+    "rationale": "同 F8：「議畀」是议欲给予，不是定案。",
+    "evidence": []
+   },
+   {
+    "id": "M7",
+    "verdict": "duplicate",
+    "same_as": "F10",
+    "rationale": "同 F10：原文「於是」表示先后，不是同时。",
+    "evidence": []
+   },
+   {
+    "id": "M8",
+    "verdict": "duplicate",
+    "same_as": "F3",
+    "rationale": "这句话写的不是人物内心，而是作者分析未加解释标签，问题与 F3 相同。",
+    "evidence": []
+   },
+   {
+    "id": "M9",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "该句已明确标为「一种解释是」，并说明原文只有这一句话；推断的依据就是左宗棠所说「彼有辭矣」，不构成虚构心理。",
+    "evidence": [
+     {
+      "id": "QSG4122-E16",
+      "quote": "師不以正，彼有辭矣"
+     }
+    ]
+   },
+   {
+    "id": "M10",
+    "verdict": "invalid",
+    "same_as": "",
+    "rationale": "俄方的“算计”是奏疏本身的判断，正文以「奏中还点破」明确归于奏疏，「把疆臣的手捆住」是对「牽制疆臣」的转述，不是作者虚构的内心描写。「认定」漏掉“妄”字的问题另列为 F18。",
+    "evidence": [
+     {
+      "id": "QSG4122-E9",
+      "quote": "臣維俄人包藏禍心，妄忖吾國或厭用兵，遂以全權之使臣牽制疆臣"
+     }
+    ]
+   }
+  ]
+ },
+ "final_content_sha256": "d198f578b846588cd80c62cc9496e251216c680fab1cec58668f916b3f3a13b4",
+ "open_issues": [
+  "V2-V1",
+  "V2-V2",
+  "V2-V3"
+ ],
+ "outcome": "pending_review",
+ "failure": null,
+ "finished_at": 1793410932.5099847,
+ "calls": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 127.9,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 14299,
+    "output_tokens": 14710
+   },
+   "cost_estimate_usd": 0.4086
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 67.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16107,
+    "output_tokens": 8703
+   },
+   "cost_estimate_usd": 0.302924
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 53.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 12537,
+    "output_tokens": 6330
+   },
+   "cost_estimate_usd": 0.226904
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 26.6,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13889,
+    "output_tokens": 3387
+   },
+   "cost_estimate_usd": 0.17886
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 63.8,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 12641,
+    "output_tokens": 7395
+   },
+   "cost_estimate_usd": 0.249036
+  }
+ ],
+ "elapsed_min": 5.6,
+ "model_wall_min": 5.6
+}
