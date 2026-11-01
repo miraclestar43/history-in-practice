@@ -2,10 +2,10 @@
 (front matter left out), offered to the supply picker before the catalogue, and a model proposal from a unit becomes a
 candidate whose excerpts carry their voice and book location; 【文学化】 passages are kept with their voice (2026-11-01); a unit with no complete
 episode is skipped and logged; every attempt records which source it used. The model is a fake."""
-import hashlib, json, os, sys, tempfile, unittest
+import hashlib, json, os, sys, tempfile, unittest, urllib.parse
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from history_in_practice import library, supply, state, registry, evidence
+from history_in_practice import library, supply, state, registry, evidence, books
 
 HAN = "甲乙丙丁戊己庚辛壬癸子丑寅卯辰巳午未申酉戌亥天地玄黄宇宙洪荒日月盈昃辰宿列张寒来暑往秋收冬藏闰余成岁律吕调阳云腾致雨露结为霜"
 
@@ -84,6 +84,32 @@ class Library(unittest.TestCase):
         self.assertEqual(len(rs), 2)                                            # the night's call cap holds
         self.assertEqual(len({r["catalogue_id"] for r in rs}), 2)               # never the same unit twice
         self.assertTrue(all(r["source_kind"] == "book" and "no suitable episode" in r["reason"] for r in rs))
+
+    def test_sync_takes_a_selected_markdown_book_resumably_within_a_per_run_cap(self):
+        chapters = {"src/卷一/第一章开局.md": "# 第一章开局\n\n" + "\n\n".join(para(300 + i) for i in range(30)),
+                    "src/卷一/第二章收场.md": "# 第二章收场\n\n" + "\n\n".join(para(400 + i) for i in range(30))}
+        summary = "# Summary\n\n# 卷一\n\n- [第一章开局](卷一/第一章开局.md)\n- [第二章收场](卷一/第二章收场.md)\n"
+        files = {"src/SUMMARY.md": summary, **chapters}
+        tree = [{"path": k, "type": "blob", "size": len(v.encode()), "sha": books.git_blob_sha(v.encode())} for k, v in files.items()]
+        fetched = []
+        class R:
+            def __init__(self, b): self.b = b
+            def read(self, n=-1): return self.b
+            def __enter__(self): return self
+            def __exit__(self, *a): return False
+        def opener(req, timeout=0):
+            path = urllib.parse.unquote(req.full_url.split("/abc123/", 1)[1]); fetched.append(path); return R(files[path].encode())
+        lib = library.load()
+        lib["books"].append({"book_id": "BK-MD", "title": "讲史", "author": "某", "language": "zh", "genre": "novelised", "categories": ["china_ancient"],
+                             "level": "selected", "repo": "x/y", "ref": "abc123", "md_summary": "src/SUMMARY.md"})
+        library.save(lib)
+        r = {x["book_id"]: x for x in library.sync(opener=opener, tree_of=lambda repo, ref: tree, max_new=0)}
+        self.assertEqual(r["BK-MD"]["outcome"], "deferred"); self.assertEqual(fetched, [])        # the per-run cap holds
+        r = {x["book_id"]: x for x in library.sync(opener=opener, tree_of=lambda repo, ref: tree, max_new=1)}
+        self.assertEqual(r["BK-MD"]["outcome"], "usable"); self.assertEqual(len(fetched), 3)       # SUMMARY + 2 chapters, blob-verified
+        self.assertTrue(any("第二章收场" in u["unit_title"] for u in library.entries() if u["book_id"] == "BK-MD"))
+        r = {x["book_id"]: x for x in library.sync(opener=opener, tree_of=lambda repo, ref: tree, max_new=1)}
+        self.assertTrue(r["BK-MD"].get("unchanged")); self.assertEqual(len(fetched), 3)           # resumable: nothing fetched or parsed again
 
     def test_scanned_pdf_is_unsuitable(self):
         why = library.readability({"format": "pdf", "pdf_text_status": "needs_ocr", "paragraphs": []}, "zh")

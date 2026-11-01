@@ -23,7 +23,7 @@ from xml.etree import ElementTree as ET
 from . import evidence
 from .textnorm import t2s
 
-LIMITS = {"max_files": 15, "max_file_bytes": 50 * 2**20, "max_total_bytes": 200 * 2**20,     # phase 3 (2026-10-31): 15 files; byte caps unchanged
+LIMITS = {"max_files": 40, "max_file_bytes": 50 * 2**20, "max_total_bytes": 200 * 2**20,     # 2026-11-01: 40 files (book supply); byte caps unchanged
           "zip_members": 3000, "zip_member_bytes": 30 * 2**20, "zip_total_bytes": 300 * 2**20, "zip_ratio": 200}
 UA = "history-in-practice-books/0.1 (+https://github.com/miraclestar43/history-in-practice)"
 BLOCK = {"p", "h1", "h2", "h3", "h4", "h5", "h6", "li", "blockquote", "dd", "dt", "pre", "td", "th", "div", "section", "tr", "table", "ul", "ol"}

@@ -776,7 +776,7 @@ def cmd_library(a):
         print(json.dumps(library.inventory(), ensure_ascii=False, indent=1)); return 0
     if a.action == "ingest":
         if a.book == "all":
-            print(json.dumps(library.sync(), ensure_ascii=False, indent=1)); return 0
+            print(json.dumps(library.sync(max_new=a.max_new), ensure_ascii=False, indent=1)); return 0
         e = library.ingest(a.book, verified=a.verified or "file blob-verified against the pinned repository commit; edition = that file")
         print(json.dumps({k: e.get(k) for k in ("book_id", "title", "level", "reason", "format", "paragraphs", "chapters_detected", "units")},
                          ensure_ascii=False, indent=1)); return 0 if e.get("level") == "usable" else 2
@@ -996,7 +996,8 @@ def main(argv=None):
     p = sp.add_parser("adopt", help="admit articles finished in another data directory (records in samples/auto/<id>/final), same checks")
     p.add_argument("editions", nargs="+"); p.set_defaults(f=cmd_adopt)
     p = sp.add_parser("library", help="book library for supply: status | ingest --book ID | units --book ID")
-    p.add_argument("action", choices=["status", "check", "ingest", "units"]); p.add_argument("--book", help="book id; `ingest --book all` = sync the library"); p.add_argument("--verified"); p.set_defaults(f=cmd_library)
+    p.add_argument("action", choices=["status", "check", "ingest", "units"]); p.add_argument("--book", help="book id; `ingest --book all` = sync the library"); p.add_argument("--verified")
+    p.add_argument("--max-new", type=int, default=3, help="ingest --book all: at most this many new files per run (resumable)"); p.set_defaults(f=cmd_library)
     p = sp.add_parser("registry-rebuild"); p.add_argument("content", nargs="+"); p.add_argument("--db"); p.set_defaults(f=cmd_registry_rebuild)
     a = ap.parse_args(argv)
     import signal as _sig                              # systemd stop/timeout sends SIGTERM: unwind so model children are killed

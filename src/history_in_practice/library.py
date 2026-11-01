@@ -3,6 +3,7 @@ nightly candidate pool -- by chapter, with stable locations back into the book.
 
 Levels (a catalogue count is never a count of usable books):
   catalogued  listed in a repository tree or a catalogue only (data/books/remote, forks, discovery DB)
+  selected    chosen for intake (pinned file): `hip library ingest --book all` fetches and ingests it
   acquired    the file is on the Pi: pinned repo commit + path, git blob verified, sha256 (data/books/manifest.json)
   readable    parsed: TXT/EPUB text, or a PDF with a real text layer (scans are refused), enough paragraphs
   usable      ingested as a book_file source (source cache + location map) with chapter units: in the supply pool
@@ -23,7 +24,7 @@ from . import books, evidence
 from .config import REPO, data_dir
 
 LIB = REPO / "config/books/library.json"
-LEVELS = ("catalogued", "acquired", "readable", "usable", "unsuitable")
+LEVELS = ("catalogued", "selected", "acquired", "readable", "usable", "unsuitable")
 GENRES = ("memoir", "biography", "scholarly_history", "popular_history", "essay", "letters", "business", "novelised", "fable")
 UNIT_MAX = {True: 14000, False: 40000}          # normalised characters per unit (below supply.MAX_WINDOW)
 UNIT_MIN = {True: 2500, False: 6000}
@@ -101,7 +102,11 @@ def units(b: dict, lmap: list[dict], cjk: bool) -> list[dict]:
         s, e = lmap[a]["start"], lmap[z - 1]["end"]
         if e - s >= UNIT_MIN[cjk]:
             covered = [title] * bool(title) + [starts[k] for k in range(a + 1, z) if k in starts]
-            out.append({"title": " / ".join(dict.fromkeys(x[:30] for x in covered if x))[:90], "a": s, "b": e, "first_para": a, "location": books.locator(b, b["paragraphs"][a]["loc"])})
+            t = " / ".join(dict.fromkeys(x[:30] for x in covered if x))[:90]
+            if not t or re.fullmatch(r"(第[一二三四五六七八九十百零〇\d]+[章回节節篇卷]\s*/?\s*)+", t):   # no usable heading: name it by its opening words
+                first = next((x for x in (re.sub(r"\s+", "", b["paragraphs"][k]["text"]) for k in range(a, z)) if len(x) >= 12), "")
+                t = (t + "：" if t else "") + "“" + first[:18] + "…”"
+            out.append({"title": t, "a": s, "b": e, "first_para": a, "location": books.locator(b, b["paragraphs"][a]["loc"])})
     chapter = ""                                          # the chapter paragraph k belongs to
     for k in range(len(lmap)):
         chapter = starts.get(k, chapter)
@@ -165,28 +170,76 @@ def ingest(book_id: str, *, verified: str) -> dict:
     save(lib); return e
 
 
-def sync(*, opener=None, tree_of=None) -> list[dict]:
-    """Make this data directory match config/books/library.json: every book recorded as usable is acquired (one file
-    from its pinned repository commit, git blob verified) if missing, then ingested. Used to deploy the library."""
+def _tree(repo, ref, tree_of=None):
     import urllib.request
-    out, have = [], {f["book_id"] for f in manifest()}
-    for e in [x for x in load()["books"] if x.get("level") == "usable"]:
+    return (tree_of or (lambda r, f: json.loads(urllib.request.urlopen(urllib.request.Request(
+        f"https://api.github.com/repos/{r}/git/trees/{f}?recursive=1", headers={"User-Agent": books.UA,
+        "Accept": "application/vnd.github+json"}), timeout=60).read())["tree"]))(repo, ref)
+
+
+def _meta(e: dict) -> dict:
+    return {k: e.get(k) for k in ("title", "author", "translator", "year", "language", "genre")} | {"book_id": e["book_id"]}
+
+
+def _acquire_md(e: dict, *, opener=None, tree_of=None) -> dict:
+    """A Markdown (mdBook) book: SUMMARY.md + every chapter from the pinned commit, each verified against its Git blob
+    (books.fetch_md_book, size-capped), joined in SUMMARY order into one UTF-8 TXT with one heading line per chapter.
+    Deterministic for a given commit; the per-chapter manifest stays next to the chapters (data/books/md/<book_id>)."""
+    import hashlib, time
+    dest = data_dir() / "books" / "md" / e["book_id"]
+    got = books.fetch_md_book(e["repo"], e["ref"], _tree(e["repo"], e["ref"], tree_of), e["md_summary"], lambda x: True, dest, opener=opener)
+    out = []
+    for ch in got["chapters"]:
+        head = ch["title"] + (f"（{ch['part']}）" if ch.get("part") else "")
+        out.append(head)
+        out += [t for k, t in books.md_text(ch["text"]) if not (k == "h" and t.replace(" ", "") == ch["title"].replace(" ", ""))]
+    body = ("\n\n".join(out) + "\n").encode("utf-8")
+    files = data_dir() / "books" / "files"; files.mkdir(parents=True, exist_ok=True); mp = data_dir() / "books" / "manifest.json"
+    man = json.loads(mp.read_text()) if mp.exists() else {"files": []}
+    if len(man["files"]) >= books.LIMITS["max_files"]:
+        raise books.BookError(f"limit: {books.LIMITS['max_files']} files already acquired")
+    (files / f"{e['book_id']}.txt").write_bytes(body)
+    rec = _meta(e) | {"format": "txt", "path": f"{e['book_id']}.txt", "bytes": len(body), "file_sha256": hashlib.sha256(body).hexdigest(),
+                      "repo": e["repo"], "ref": e["ref"], "md_summary": e["md_summary"], "md_chapters": len(got["chapters"]),
+                      "md_manifest_sha256": hashlib.sha256((dest / "manifest.json").read_bytes()).hexdigest(),
+                      "provenance": f"{e['repo']} at {e['ref']}: {len(got['chapters'])} Markdown chapters (each Git-blob verified), joined in SUMMARY order",
+                      "acquired_at": time.strftime("%Y-%m-%dT%H:%M:%S%z")}
+    man["files"] = [f for f in man["files"] if f["book_id"] != e["book_id"]] + [rec]
+    mp.write_text(json.dumps(man, ensure_ascii=False, indent=1)); return rec
+
+
+def sync(*, opener=None, tree_of=None, max_new: int = 3) -> list[dict]:
+    """Make this data directory match config/books/library.json. Books recorded as usable, and books `selected` for intake,
+    are acquired if missing (one file from the pinned repository commit, Git blob verified; or a Markdown book chapter by
+    chapter) and ingested. Resumable and idempotent: the local manifest is the checkpoint, a book whose file and units are
+    already in place is not parsed again, at most `max_new` files are fetched per run, and one book's failure is recorded
+    without stopping the others. Used to deploy the library and for continuous intake."""
+    out, have, new = [], {f["book_id"]: f for f in manifest()}, 0
+    for e in [x for x in load()["books"] if x.get("level") in ("usable", "selected")]:
         r = {"book_id": e["book_id"]}
-        if e["book_id"] not in have:
-            if not (e.get("repo") and e.get("ref") and e.get("repo_path")):
-                out.append(dict(r, outcome="missing", reason="file not on this Pi and no pinned repository path")); continue
-            tree = (tree_of or (lambda repo, ref: json.loads(urllib.request.urlopen(urllib.request.Request(
-                f"https://api.github.com/repos/{repo}/git/trees/{ref}?recursive=1", headers={"User-Agent": books.UA,
-                "Accept": "application/vnd.github+json"}), timeout=60).read())["tree"]))(e["repo"], e["ref"])
-            loc = books.fork_file(e["repo"], e["ref"], tree, e["repo_path"])
-            books.acquire(loc["url"], data_dir() / "books" / "files", data_dir() / "books" / "manifest.json",
-                          {k: e.get(k) for k in ("title", "author", "translator", "year", "language", "genre")} | {
-                              "book_id": e["book_id"], "format": Path(e["repo_path"]).suffix.lstrip(".").lower(), "git_blob": loc["git_blob"],
-                              "repo": e["repo"], "ref": e["ref"], "repo_path": e["repo_path"], "upstream": e["repo"],
-                              "provenance": f"{e['repo']} at {e['ref']}; path {e['repo_path']}"}, opener=opener)
-            r["acquired"] = True
-        got = ingest(e["book_id"], verified="file blob-verified against the pinned repository commit; edition = that file")
-        out.append(dict(r, outcome=got.get("level"), units=got.get("units"), reason=got.get("reason")))
+        try:
+            if e["book_id"] not in have:
+                if new >= max_new:
+                    out.append(dict(r, outcome="deferred", reason=f"at most {max_new} new files per run")); continue
+                if e.get("md_summary"):
+                    _acquire_md(e, opener=opener, tree_of=tree_of)
+                elif e.get("repo") and e.get("ref") and e.get("repo_path"):
+                    loc = books.fork_file(e["repo"], e["ref"], _tree(e["repo"], e["ref"], tree_of), e["repo_path"])
+                    books.acquire(loc["url"], data_dir() / "books" / "files", data_dir() / "books" / "manifest.json",
+                                  _meta(e) | {"format": Path(e["repo_path"]).suffix.lstrip(".").lower(), "git_blob": loc["git_blob"],
+                                              "repo": e["repo"], "ref": e["ref"], "repo_path": e["repo_path"], "upstream": e["repo"],
+                                              "provenance": f"{e['repo']} at {e['ref']}; path {e['repo_path']}"}, opener=opener)
+                else:
+                    out.append(dict(r, outcome="missing", reason="file not on this Pi and no pinned repository path")); continue
+                new += 1; r["acquired"] = True
+            elif (e.get("level") == "usable" and e.get("file_sha256") == have[e["book_id"]].get("file_sha256")
+                  and (data_dir() / "books" / "units" / f"{e['book_id']}.json").exists()
+                  and (data_dir() / "source_cache" / f"{e.get('source_id')}.txt").exists()):
+                out.append(dict(r, outcome="usable", units=e.get("units"), reason=None, unchanged=True)); continue
+            got = ingest(e["book_id"], verified="file blob-verified against the pinned repository commit; edition = that file")
+            out.append(dict(r, outcome=got.get("level"), units=got.get("units"), reason=got.get("reason")))
+        except Exception as x:                       # network, caps, a broken file: record it, keep going
+            out.append(dict(r, outcome="error", reason=f"{type(x).__name__}: {x}"[:300]))
     return out
 
 
