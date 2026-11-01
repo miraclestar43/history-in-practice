@@ -27,7 +27,7 @@ from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
-from . import state, render, site_export, mailer
+from . import state, render, site_export, mailer, news
 from .state import SCHEDULABLE_SQL
 from .config import REPO, data_dir, load_project
 
@@ -149,8 +149,18 @@ def archive(db, ed: dict, content_root: Path | None = None) -> Path:
     return base.with_suffix(".json")
 
 
-def commit_site(db, ed: dict, site_repo: Path, objs: list[dict], push: bool) -> str:
+def news_binding(ed: dict, runtime, now: datetime) -> dict:
+    """The news digest this edition revision carries -- frozen on first use, reused by every retry (news.bind).
+    Never raises: missing, stale, damaged or unqualified news binds "absent" and the story goes out alone."""
+    return news.bind(data_dir() / "news_bindings", ed, runtime.get("NEWS_EXPORT_DIR"),
+                     runtime.get("SITE_BASE_URL", "https://starhub.vip"), now)
+
+
+def commit_site(db, ed: dict, site_repo: Path, objs: list[dict], push: bool, extra: dict[str, str] | None = None) -> str:
     written = site_export.export(objs, site_repo)
+    for rel, text in (extra or {}).items():                 # the bound news archive page (history/news/<date>/)
+        dest = site_export._safe_dest(site_repo, rel); dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_text(text, encoding="utf-8"); written.append(rel)
     git = ["git", "-C", str(site_repo)]
     subprocess.run(git + ["add", "--", *site_export.ALLOWED_PREFIXES], check=True)
     staged = subprocess.run(git + ["diff", "--cached", "--name-only"], capture_output=True, text=True, check=True).stdout.split()
@@ -233,7 +243,10 @@ def publish_today(db, runtime, *, date: str | None = None, fetch=site_export.htt
         if not site_repo:
             rep.update(outcome="waiting", reason="SITE_REPO_PATH not configured; site step not run"); return rep
         archived = [json.loads(p.read_text()) for p in sorted(content_dir().rglob("*.json"))]
-        rep["site_commit"] = commit_site(db, ed, Path(site_repo), archived, push=runtime.get("SITE_PUSH_ENABLED", "false") == "true")
+        nb = news_binding({**ed, "edition_date": obj.get("edition_date") or date}, runtime, now)
+        rep["news"] = {k: nb.get(k) for k in ("status", "snapshot_id", "text_sha256", "reason")}
+        rep["site_commit"] = commit_site(db, ed, Path(site_repo), archived, push=runtime.get("SITE_PUSH_ENABLED", "false") == "true",
+                                         extra=news.site_files(nb))
         ed = state.get(db, ed["edition_id"])
     if ed["status"] == "site_committed":
         push_ok = runtime.get("SITE_PUSH_ENABLED", "false") == "true"
@@ -261,7 +274,10 @@ def publish_today(db, runtime, *, date: str | None = None, fetch=site_export.htt
             rep.update(outcome="waiting", reason="email configuration incomplete: " + "; ".join(problems)); return rep
         if past_deadline(date, clock()):
             return late(f"past the {date} send deadline before email started; nothing sent")
-        out = data_dir() / "outbox"; render.build([dict(obj)], out, runtime.get("SITE_BASE_URL", "https://starhub.vip"))
+        nb = news_binding({**ed, "edition_date": obj.get("edition_date") or date}, runtime, clock())
+        rep["news"] = {k: nb.get(k) for k in ("status", "snapshot_id", "text_sha256", "reason")}
+        out = data_dir() / "outbox"; render.build([dict(obj)], out, runtime.get("SITE_BASE_URL", "https://starhub.vip"),
+                                                  news={obj["edition_id"]: nb})
         html = (out / "email" / f"{obj['edition_id']}.html").read_text(encoding="utf-8"); text = (out / "email" / f"{obj['edition_id']}.txt").read_text(encoding="utf-8")
         from .final_edit import send_problems
         sp = send_problems(db, obj)
