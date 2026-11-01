@@ -59,6 +59,11 @@ a{color:var(--accent)}
 @media (prefers-color-scheme:dark){.pending{background:#2b2410;color:#e0b85c;border-color:#c99a2e}}
 .langs{font-size:14px;margin:-4px 0 6px}
 .back{font-size:14px;color:var(--muted);text-decoration:none}
+.search{display:flex;gap:8px;margin:14px 0 6px}
+.search input{flex:1;min-width:0;font:inherit;font-size:17px;min-height:44px;padding:8px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--fg);-webkit-appearance:none;appearance:none}
+.search input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.search .clear{font:inherit;font-size:15px;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--fg);cursor:pointer}
+[hidden]{display:none !important}
 </style>
 </head>
 <body>
@@ -120,7 +125,65 @@ function renderList(index){
     b.onclick = () => { active=k; f.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b))); draw(); };
     f.append(b);
   }
-  wrap.append(f, list); app.replaceChildren(wrap); draw();
+  // search (2026-11-01): a static index of published issues, built with the site; searched here in the browser
+  const S = {zh:{ph:"搜索标题、人物、书名、关键词",clear:"清除",label:"搜索故事",found:n=>"找到 "+n+" 篇",none:q=>"没有找到与“"+q+"”相关的故事。可以试试人物名、书名或更短的关键词。",fail:"搜索暂时不可用。"},
+             en:{ph:"Search titles, people, books, keywords",clear:"Clear",label:"Search stories",found:n=>n+(n===1?" story":" stories"),none:q=>"No stories match “"+q+"”. Try a name, a book title or a shorter word.",fail:"Search is unavailable right now."}}[lang];
+  const box = el("form",{class:"search",role:"search"}), inp = el("input",{type:"search",placeholder:S.ph,"aria-label":S.label,enterkeyhint:"search",autocomplete:"off"});
+  const clr = el("button",{type:"button",class:"clear","aria-label":S.clear},S.clear), status = el("p",{class:"small",role:"status","aria-live":"polite"});
+  box.append(inp, clr); box.onsubmit = ev => { ev.preventDefault(); inp.blur(); };
+  let timer = null;
+  const run = async () => {
+    const q = inp.value.trim(); clr.hidden = !inp.value; const u2 = new URL(location.href);
+    q ? u2.searchParams.set("q", q) : u2.searchParams.delete("q"); history.replaceState(null, "", u2);
+    if (!q){ status.textContent = ""; f.hidden = false; draw(); return; }
+    f.hidden = true;
+    try {
+      const hits = await searchStories(q);
+      if (inp.value.trim() !== q) return;                   // a newer query is on its way
+      status.textContent = hits.length ? S.found(hits.length) : S.none(q); list.replaceChildren();
+      for (const h of hits){
+        const d = el("div",{class:"item"}), t = h.it.title[lang] || h.it.title.zh;
+        d.append(el("a",{href:"?story="+encodeURIComponent(h.it.id)+"&lang="+lang}, t),
+                 el("div",{class:"meta"}, h.it.date+" · "+CAT[h.it.category][lang==="zh"?0:1]+(h.it.minutes ? " · "+h.it.minutes[lang]+" "+T[lang].min : "")),
+                 el("div",{class:"small"}, h.snippet || h.it.dek[lang]));
+        list.append(d);
+      }
+    } catch (err) { status.textContent = S.fail; }
+  };
+  inp.oninput = () => { clearTimeout(timer); timer = setTimeout(run, 150); };
+  inp.onkeydown = ev => { if (ev.key === "Escape"){ inp.value = ""; run(); } };
+  clr.onclick = () => { inp.value = ""; run(); inp.focus(); };
+  clr.hidden = true;
+  wrap.append(box, status, f, list); app.replaceChildren(wrap); draw();
+  if (params.get("q")){ inp.value = params.get("q"); run(); }
+}
+
+let SEARCH = null, SEARCH_TEXT = null;
+const norm = x => (x || "").toLowerCase();
+async function searchStories(q){
+  SEARCH = SEARCH || getJSON("../data/history/search.json");
+  SEARCH_TEXT = SEARCH_TEXT || getJSON("../data/history/search_text.json").catch(() => ({items:[]}));
+  const [meta, body] = await Promise.all([SEARCH, SEARCH_TEXT]);
+  const text = Object.fromEntries(body.items.map(t => [t.id, t]));
+  const terms = norm(q).split(/\s+/).filter(Boolean), out = [];
+  for (const it of meta.items){
+    const tx = text[it.id] || {zh:"",en:""};
+    const fields = [[10, it.title.zh+" "+it.title.en], [6, it.people.join(" ")+" "+it.tags.join(" ")+" "+it.books.join(" ")], [4, it.dek.zh+" "+it.dek.en], [1, tx.zh+" "+tx.en]];
+    let score = 0, ok = true, onlyBody = true;
+    for (const t of terms){
+      const best = fields.find(([w, s]) => norm(s).includes(t));
+      if (!best){ ok = false; break; }
+      score += best[0]; if (best[0] > 1) onlyBody = false;
+    }
+    if (!ok) continue;
+    let snippet = "";
+    if (onlyBody){                                         // matched in the body only: show where
+      const src = norm(tx[lang]).includes(terms[0]) ? tx[lang] : (lang==="zh" ? tx.en : tx.zh), i = norm(src).indexOf(terms[0]);
+      snippet = (i > 30 ? "…" : "") + src.slice(Math.max(0, i - 30), i + terms[0].length + 50).replace(/\n/g, " ") + "…";
+    }
+    out.push({it, score, snippet});
+  }
+  return out.sort((a, b) => b.score - a.score || (a.it.date < b.it.date ? 1 : -1));
 }
 
 function currentPara(){                                 // the first paragraph whose bottom is still on screen

@@ -284,6 +284,54 @@ def markdown(obj, lang):
     out += ["", "---", "", ("证据编号 [X-En] 对应同目录 evidence 文件中的逐字摘录。" if lang == "zh" else "Evidence ids [X-En] map to verbatim excerpts in the evidence file.")]
     return "\n".join(out) + "\n"
 
+def _tag_maps() -> tuple[dict, dict]:
+    """Theme tags and regions for the search index: config/edition_tags.json, config/regions.json, else the candidate file."""
+    cfg = Path(__file__).resolve().parents[2] / "config"
+    def load(name):
+        p = cfg / name
+        return {k: v for k, v in json.loads(p.read_text(encoding="utf-8")).items() if not k.startswith("_")} if p.exists() else {}
+    tags, regions = load("edition_tags.json"), load("regions.json")
+    for c in sorted((cfg / "candidates").glob("*.json")) if (cfg / "candidates").exists() else []:
+        try:
+            j = json.loads(c.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        if j.get("candidate_id") and j.get("tags") and j["candidate_id"] not in tags:
+            tags[j["candidate_id"]] = j["tags"]
+    return tags, regions
+
+
+def search_index(objs) -> tuple[dict, dict]:
+    """Reader search (2026-11-01), built with the site from PUBLISHED editions only: never samples, TEST editions,
+    unscheduled inventory, evidence or review records. Two static files: search.json (title, dek, people, tags, book
+    titles; loaded when the reader starts typing) and search_text.json (the article body, both languages; loaded on the
+    first query). One entry per story; both languages in the same entry."""
+    tags, regions = _tag_maps(); meta, text = [], []
+    try:                                             # traditional names (吳起) also findable as typed (吴起)
+        from .textnorm import t2s
+    except Exception:
+        t2s = lambda x: x
+    both = lambda xs: list(dict.fromkeys(y for x in xs for y in (x, t2s(x)) if y))
+    for o in objs:
+        if o.get("status") in ("test", "reader_sample") or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(o.get("edition_date", ""))):
+            continue
+        books = []
+        for x in list(o.get("sources") or []) + list(o.get("further_reading") or []):
+            t = x.get("citation") or x.get("title") or ""
+            books += re.findall(r"《([^》]{1,40})》", t) or ([t[:80]] if x.get("title") else [])
+        y, m, d = o["edition_date"].split("-")
+        meta.append({"id": o["edition_id"], "date": o["edition_date"], "category": o["category"], "title": o["title"], "dek": o["dek"],
+                     "people": both((o.get("episode") or {}).get("persons") or []),
+                     "tags": list(dict.fromkeys(list(tags.get(o["edition_id"]) or []) + ([regions[o["edition_id"]]] if regions.get(o["edition_id"]) else [])
+                                                + list(CAT[o["category"]]))),
+                     "books": both(b.strip() for b in books if b.strip()),
+                     "minutes": o.get("reading_minutes"), "path": f"data/history/{y}/{m}/{d}-{o['edition_id']}.json"})
+        text.append({"id": o["edition_id"], "zh": "\n".join(p["zh"] for s in o["sections"] for p in s["paras"]),
+                     "en": "\n".join(p["en"] for s in o["sections"] for p in s["paras"])})
+    meta.sort(key=lambda x: x["date"], reverse=True)
+    return ({"schema": "history-search/v1", "items": meta}, {"schema": "history-search-text/v1", "items": text})
+
+
 def build(objs, out: Path, base):
     (out/"email").mkdir(parents=True, exist_ok=True); (out/"site/history").mkdir(parents=True, exist_ok=True); (out/"site/data/history").mkdir(parents=True, exist_ok=True)
     index = []
@@ -320,5 +368,8 @@ def build(objs, out: Path, base):
             q.write_text(prev_json, encoding="utf-8")
     index.sort(key=lambda x: x["edition_date"], reverse=True)
     (out/"site/data/history/index.json").write_text(json.dumps({"schema_version": "0.2", "items": index}, ensure_ascii=False, indent=1), encoding="utf-8")
+    meta, text = search_index(objs)                  # rebuilt with every published issue (publish.commit_site -> site_export.export)
+    (out/"site/data/history/search.json").write_text(json.dumps(meta, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    (out/"site/data/history/search_text.json").write_text(json.dumps(text, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     tpl = Path(__file__).with_name("templates")/"history_index.html"
     (out/"site/history/index.html").write_text(tpl.read_text(encoding="utf-8"), encoding="utf-8")

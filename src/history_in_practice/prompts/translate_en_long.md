@@ -1,4 +1,4 @@
-Task: write the English edition of the Chinese article below as a natural, well-written English history piece that an English-speaking reader would finish in about ten minutes (roughly 1,900–2,200 words including the question and the example answer; a guide, not a quota). Output ONE JSON object only, no other text.
+Task: write the English edition of the Chinese article below as a natural, well-written English history piece that an English-speaking reader would finish in about 10–15 minutes (roughly 2,000–3,000 words including the question and the example answer). This is a guide, not a quota, and the English need not take as long as the Chinese: keep everything that helps the reader follow the story, the people and the turning points; tighten only obvious repetition. Output ONE JSON object only, no other text.
 
 Rules:
 - Same structure: identical section ids, paragraph order, kinds and evidence ids.
