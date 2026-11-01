@@ -302,7 +302,8 @@ def review(o: dict | None, ev: dict, cache: Path, outdir: Path, *, call=None, ci
             return dict(rec, units=meta, outcome="not_run", failure="; ".join(pre), blocking=["context review not run: " + "; ".join(pre)]), ev
     art = (f"\n\n【稿件】\n{editor.article_view(o)}\n\n【待核断言】\n{json.dumps(flagged, ensure_ascii=False, indent=1)}" if o is not None
            else "\n\n（尚无稿件：只做 episode 与 additions；claims 与 context_issues 给空数组。）")
-    tmpl = PROMPT.read_text(encoding="utf-8").replace("{稿件模式}", "" if o is not None else "（预备阶段无稿件，此项给空数组。）")
+    from .pipeline import load_prompt
+    tmpl = load_prompt(PROMPT.stem).replace("{稿件模式}", "" if o is not None else "（预备阶段无稿件，此项给空数组。）")
     def ask(step, allow_search):
         body = f"{tmpl}\n\n【阅读范围】\n{render_units(meta, texts)}\n\n【证据包】\n{json.dumps(ev['excerpts'], ensure_ascii=False)}{art}"
         return caller(step, body, TIMEOUT, "\n\n[Reply with one valid JSON object only, matching the schema.]",
@@ -315,7 +316,7 @@ def review(o: dict | None, ev: dict, cache: Path, outdir: Path, *, call=None, ci
         meta, texts = units(ev, cache, extra)
         rep = ask("context_r2", False)
     rec["units"] = meta
-    rec["calls"] = [{k: m.get(k) for k in ("step", "attempt", "wall_s", "json_ok", "schema_ok", "schema_problems", "killed", "provider_refusal")}
+    rec["calls"] = [{k: m.get(k) for k in ("step", "attempt", "wall_s", "json_ok", "schema_ok", "schema_problems", "killed", "provider_refusal", "prompts")}
                     | {"output_tokens": ((m.get("meta") or {}).get("usage") or {}).get("output_tokens")} for m in caller.metrics]
     rec["finished_at"] = time.time(); rec["elapsed_min"] = round((rec["finished_at"] - t0) / 60, 1)
     if rep is None:

@@ -6,6 +6,10 @@ Rules:
 - Write it as English prose, not a translation: restructure sentences, vary rhythm, use idiomatic phrasing, briefly explain Chinese terms or titles where an English reader needs it (from what the article already says). Avoid Chinglish, calques, filler and stock phrases such as "it is worth noting".
 - Quotations: when the article quotes an English-language source, copy the ORIGINAL English wording exactly from the evidence. When it quotes classical Chinese, give a faithful, readable translation in quotation marks.
 - Use straight double quotes only around words that are genuinely quoted from a source.
+- If the Chinese omits the "today" section, so does the English; do not add modern scenes or morals.
+
+{{include:reader_first_en}}
+
 Structure:
 {"title":"","dek":"","sections":[{"id":"","heading":"","paras":[{"t":"","kind":"","ev":[]}]}],
  "reflection":{"type":"","scenario":"","question":"","example":{"assumptions":"","steps":"","alternative":""}},

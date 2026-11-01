@@ -15,7 +15,7 @@ import json, re, time
 from pathlib import Path
 from . import evidence, llm, registry, sources as src_mod
 from .config import REPO, data_dir, load_project
-from .pipeline import PROMPTS, REFUSAL, CODE_REV, fetch_sources
+from .pipeline import PROMPTS, REFUSAL, CODE_REV, fetch_sources, load_prompt
 
 CATALOGUE = REPO / "config/source_catalogue.json"
 MIN_EXCERPTS = 12
@@ -117,7 +117,7 @@ def propose(entry: dict, db, *, call=llm.call, cache: Path | None = None, date: 
     spec = source_spec(entry); taken = used_spans(db, spec["ref"])
     used_titles = [r[0] for r in db.execute("SELECT title FROM episode WHERE status NOT IN ('rejected')")]
     used_text = "\n".join(f"- {full[a:a + (60 if cjk else 160)]}……" for a, _ in sorted(taken)[:40]) or "（无）"
-    prompt = (f"{(PROMPTS / 'propose_candidate.md').read_text(encoding='utf-8')}\n\n类别：{entry['category']}\n"
+    prompt = (f"{load_prompt('propose_candidate')}\n\n类别：{entry['category']}\n"
               f"【已用过的段落（开头）】\n{used_text}\n\n【已有选题标题】\n" + "\n".join(f"- {t}" for t in used_titles[-60:]) +
               f"\n\n【原文】（{entry['title']}）\n<source>\n{text}\n</source>")
     r = call(prompt, timeout_s=1800); m = {k: v for k, v in r.items() if k != "text"}

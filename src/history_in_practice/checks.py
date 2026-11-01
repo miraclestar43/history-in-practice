@@ -76,12 +76,19 @@ def check(o: dict, ev: dict):
     ex = {e["id"]: e for e in ev["excerpts"]}
     find = []  # (level, msg)
     ids = [s["id"] for s in o["sections"]]
-    # owner decision 2026-10-31 (reader feedback): the "today" section is optional — one modern scene may live in the
-    # open question instead — and holds one or two applications when present. Fact checks are unchanged.
+    # owner decision 2026-10-31 (reader feedback): one short modern scene, in the open question; the "today" section is
+    # optional and, when present, one paragraph (prompts/reader_first_zh.md rule 13). Two paragraphs -- the older
+    # admitted format -- are a CHECK, not a FIX, so existing inventory keeps its standing. Fact checks are unchanged.
     if ids not in (SECTIONS, [x for x in SECTIONS if x != "today"]):
         find.append(("BLOCK", f"section ids {ids} != {SECTIONS} (today optional)"))
     today = next((s for s in o["sections"] if s["id"] == "today"), None)
     if today and not 1 <= len(today["paras"]) <= 2: find.append(("FIX", "today should have one or two applications"))
+    elif today and len(today["paras"]) == 2:
+        find.append(("CHECK", "readability: today has two paragraphs; the rule is one short application (the scene lives in the question)"))
+    hook0 = next((s["paras"][0]["zh"] for s in o["sections"] if s["id"] == "hook" and s["paras"]), "")
+    dup = [x for x in shared_phrases(o.get("dek", {}).get("zh", ""), hook0) if len(x) >= 8] if hook0 else []
+    if dup:   # reader feedback 2026-10-31: the dek invites, the opening unfolds; they should not retell the same plot
+        find.append(("CHECK", f"readability: dek and hook[0] retell the same wording: 「{dup[0]}」"))
     for s in o["sections"]:
         for i, p in enumerate(s["paras"]):
             where = f"{s['id']}[{i}]"

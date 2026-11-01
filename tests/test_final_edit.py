@@ -36,7 +36,7 @@ class FinalEditor(unittest.TestCase):
                 r["text"] = json.dumps({"issues": [{"severity": "fix", "section": "hook", "para": 0, "problem": "陈平降汉写得太满"}], "overall": "x"},
                                        ensure_ascii=False)
             return r
-        wd = t / "wd" / CID
+        wd = self.wd = t / "wd" / CID
         pipeline.prepare(CANDIDATE, self.db, call=mimo, workdir=wd, cache=self.cache)
         rec = editor.edit(wd, call=mimo)
         out = final_edit.OUT_ROOT / CID; out.mkdir(parents=True)
@@ -522,6 +522,87 @@ class FinalEditor(unittest.TestCase):
             t = (pipeline.PROMPTS / name).read_text()
             self.assertIn("来源未载类断言", t); self.assertIn("你看到的是证据包，不是完整来源", t)
         self.assertIn("证据包没有不等于来源没有", (pipeline.PROMPTS / "final_revise.md").read_text())
+
+    # Owner request 2026-10-31 (reader feedback on 吴起, applied to the writing agent): the reader-first rules must reach
+    # every stage that actually writes or judges text -- MiMo draft and English, the MiMo edit rounds, the Claude final
+    # audit / revise / verify (also on the owner-authorized revision and local-fix paths) -- and every call records which
+    # prompt files it was sent, so a run can show what was loaded rather than what the docs say.
+    RULE_ZH = "【讲清楚：读者优先的写法】"
+    RULE_EN = "[Make it clear: reader-first rules"
+
+    def _calls(self, path):
+        return [json.loads(x) for x in Path(path).read_text().splitlines()]
+
+    def test_every_writing_and_review_stage_loads_the_reader_first_rules_and_records_it(self):
+        files = lambda m: {f["file"] for f in m["prompts"]}
+        mimo = {m["step"]: files(m) for m in self._calls(self.wd / "calls.jsonl")}       # prepare + editor.edit (setUp)
+        self.assertLessEqual({"style_zh.md", "draft_zh_long.md", "reader_first_zh.md"}, mimo["draft_zh"])
+        self.assertLessEqual({"translate_en_long.md", "reader_first_en.md"}, mimo["en"])
+        self.assertLessEqual({"edit_zh_en.md", "reader_first_zh.md"}, mimo["edit_r1"])
+        self.assertIn("parity_en.md", mimo["parity_r1"]); self.assertIn("review_zh.md", mimo["review_zh"])
+        sent = {}
+        def rec(inner):
+            def call(prompt, timeout_s=0, **kw):
+                key = ("context" if "【阅读范围】" in prompt else "revise" if "【问题清单】" in prompt else "verify" if "定稿" in prompt else "audit")
+                sent.setdefault(key, []).append(prompt); return inner(prompt, timeout_s=timeout_s, **kw)
+            return call
+        issue = {"id": "1", "path": "sections.story.0", "category": "readability", "severity": "fix", "problem": "两位公主分不清",
+                 "evidence": [self.real_quote], "proposed": "写明是谁的妻子"}
+        story0 = self.o["sections"][2]["paras"][0]
+        def fix_all(prompt):
+            todo = json.loads(prompt.rsplit("【问题清单】", 1)[1].split("\n\n[", 1)[0])
+            return {"changes": [{"path": "sections.story.0.zh", "text": story0["zh"] + "改", "issues": [x["id"] for x in todo]}],
+                    "dispositions": [{"issue": x["id"], "action": "fixed", "rationale": "改"} for x in todo]}
+        r = final_edit.run(CID, self.db, call=rec(self.script(revise=fix_all, verify_issues=lambda k: [issue])))
+        for k in ("audit", "revise", "verify"):
+            self.assertIn(self.RULE_ZH, sent[k][0], k); self.assertNotIn("{{include", sent[k][0])
+        self.assertIn("reader_first_zh.md", {f["file"] for c in r["calls"] if c["step"] == "audit" for f in c["prompts"]})
+        out = final_edit.OUT_ROOT / CID / "final"; story = json.loads((out / "article.json").read_text())["sections"][2]["paras"][0]
+        n = len(sent["verify"])
+        final_edit.local_fix(CID, self.db, [{"path": "sections.story.0.zh", "text": story["zh"] + "（公叔的妻子）"},
+                                            {"path": "sections.story.0.en", "text": story["en"] + " (Gongshu's wife)"}],
+                             [r["open_issues"][-1]], "t", call=rec(self.script()))
+        self.assertIn(self.RULE_ZH, sent["verify"][n])                                       # local-fix re-verification
+        final_edit.run_context(CID, call=rec(self.script()))
+        self.assertTrue(sent["context"][0].startswith(pipeline.load_prompt("context_review")[:40]))
+
+    def test_owner_revision_path_audits_with_the_same_rules(self):
+        from history_in_practice import cli
+        rec, a = self.run_admit(self.script()); self.assertTrue(a["admitted"], a)
+        out = final_edit.OUT_ROOT / CID / "final"; new = json.loads((out / "article.json").read_text()); render.finalize(new)
+        new["revision"] += 1; new["dek"]["zh"] = "一门婚事，为什么让一位功臣待不下去？"
+        self.assertTrue(final_edit.revise_base(CID, self.db, new, "reader-first")["revised"])
+        cli._demote(self.db, CID, state.get(self.db, CID), "requeued: owner-authorized revision")
+        seen = []
+        def call(prompt, timeout_s=0, **kw):
+            seen.append(prompt); return self.script(audit={"fields": self.fields(), "issues": [], "inherited": []})(prompt, timeout_s=timeout_s)
+        final_edit.run(CID, self.db, call=call)
+        self.assertTrue(seen and all(self.RULE_ZH in p for p in seen))
+
+    def test_old_conflicting_rules_are_gone_and_the_application_rule_is_one_scene(self):
+        every = {p.stem: pipeline.load_prompt(p.stem) for p in pipeline.PROMPTS.glob("*.md")}
+        for name, t in every.items():
+            for old in ("恰好两段", "两个场景都不能", "today 仍", "两个具体启发"):
+                self.assertNotIn(old, t, name)
+        draft = every["style_zh"] + every["draft_zh_long"]
+        self.assertIn("today 一节默认不写", draft); self.assertIn("全文只设一个简短的现代应用场景", draft)
+        self.assertIn("不要先把全部经过和结局概述一遍", draft)                     # dek/hook division of labour
+        self.assertIn("同一称谓指不同的人", draft)
+        self.assertIn("Same title, different people", every["translate_en_long"])
+        for name in ("final_revise", "edit_zh_en"):                                 # fixing must not move backwards
+            self.assertIn("不要恢复初稿或上一轮已经删去的内容", every[name], name)
+
+    def test_checker_signals_two_paragraph_today_and_a_dek_that_retells_the_opening(self):
+        from history_in_practice import checks
+        o = json.loads(json.dumps(self.o))
+        today = next(s for s in o["sections"] if s["id"] == "today")
+        if len(today["paras"]) == 1:
+            today["paras"].append(dict(today["paras"][0]))
+        o["sections"][0]["paras"][0]["zh"] = o["dek"]["zh"] = "公叔先劝国君把公主许配给吴起，再请吴起到家里。"
+        f = checks.check(o, self.ev)[0]
+        self.assertIn(("CHECK", "readability: today has two paragraphs; the rule is one short application (the scene lives in the question)"), f)
+        self.assertTrue(any(lvl == "CHECK" and "dek and hook[0]" in m for lvl, m in f), f)
+        self.assertFalse(any(lvl in ("FIX", "BLOCK") and ("today" in m and "two" in m or "dek" in m) for lvl, m in f))
 
 
 if __name__ == "__main__":

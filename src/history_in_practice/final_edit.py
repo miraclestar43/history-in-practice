@@ -29,7 +29,7 @@ import copy, json, re, shutil, time
 from pathlib import Path
 from . import checks, render, state, registry, editor, schemas, claude_cli, context, evidence
 from .config import REPO, data_dir, load_project
-from .pipeline import PROMPTS, CODE_REV, _evidence_block
+from .pipeline import PROMPTS, CODE_REV, _evidence_block, load_prompt
 from .textnorm import t2s
 
 RECORD_SCHEMA = "final-editor/v1"
@@ -530,7 +530,7 @@ def run(cid: str, db, *, call=None, max_rounds: int = MAX_ROUNDS, operator_note:
            "inherited": inh, "contamination": cont, "issues": [], "edits": [], "rounds": []}
     ctx = (f"\n\n【遗留问题】\n{json.dumps(inh, ensure_ascii=False, indent=1)}\n\n【已知污染】\n{json.dumps(cont, ensure_ascii=False, indent=1)}"
            f"\n\n【必须覆盖的字段路径】\n{json.dumps(paths, ensure_ascii=False)}")
-    audit = caller("audit", f"{(PROMPTS / 'final_audit.md').read_text()}\n\n{_view(o, ev, ctx)}", TIMEOUTS["audit"],
+    audit = caller("audit", f"{load_prompt('final_audit')}\n\n{_view(o, ev, ctx)}", TIMEOUTS["audit"],
                    "\n\n[Reply with one valid JSON object only, matching the schema.]", validate=audit_schema(paths, [i["id"] for i in inh]))
     rec["audit"] = audit
     if audit is None:
@@ -561,7 +561,7 @@ def run(cid: str, db, *, call=None, max_rounds: int = MAX_ROUNDS, operator_note:
         r = {"round": rnd, "issues_in": list(open_ids)}
         if open_ids:
             todo = [issues[k] for k in open_ids]
-            rev = caller(f"revise_r{rnd}", f"{(PROMPTS / 'final_revise.md').read_text()}\n\n{_view(o, ev)}\n\n【问题清单】\n"
+            rev = caller(f"revise_r{rnd}", f"{load_prompt('final_revise')}\n\n{_view(o, ev)}\n\n【问题清单】\n"
                          f"{json.dumps(todo, ensure_ascii=False, indent=1)}", TIMEOUTS["revise"],
                          "\n\n[Reply with one valid JSON object only, matching the schema.]", validate=revise_schema(open_ids))
             if rev is None:
@@ -573,7 +573,7 @@ def run(cid: str, db, *, call=None, max_rounds: int = MAX_ROUNDS, operator_note:
             rec["edits"] += applied; render.finalize(o)
             r.update(changes_applied=len(applied), changes_failed=failed, still_open=still)
         findings, _ = checks.check(o, ev)
-        ver = caller(f"verify_r{rnd}", f"{(PROMPTS / 'final_verify.md').read_text()}\n\n{_view(o, ev)}\n\n【必须覆盖的字段路径】\n{json.dumps(paths, ensure_ascii=False)}",
+        ver = caller(f"verify_r{rnd}", f"{load_prompt('final_verify')}\n\n{_view(o, ev)}\n\n【必须覆盖的字段路径】\n{json.dumps(paths, ensure_ascii=False)}",
                      TIMEOUTS["verify"], "\n\n[Reply with one valid JSON object only, matching the schema.]", validate=verify_schema(paths))
         r.update(checker_after=findings, content_sha256_after=o["content_sha256"])
         if ver is None:
@@ -699,7 +699,7 @@ def local_fix(cid: str, db, changes: list, issue_ids: list[str], reason: str, *,
          "content_sha256_after": o["content_sha256"]}
     meta = [f"{p} ⟨{editor.ref(o, p)[0][editor.ref(o, p)[1]]}⟩" for p in sorted(fields) if META_FIELD.match(p)]
     extra = ("\n\n【本次局部修正同时改动的来源元数据（请一并核对其与证据包是否一致；有问题记在 uncertainty_note 下）】\n" + "\n".join(meta)) if meta else ""
-    ver = caller(f"verify_r{rnd}", f"{(PROMPTS / 'final_verify.md').read_text()}\n\n{_view(o, ev, extra)}\n\n【必须覆盖的字段路径】\n{json.dumps(paths, ensure_ascii=False)}",
+    ver = caller(f"verify_r{rnd}", f"{load_prompt('final_verify')}\n\n{_view(o, ev, extra)}\n\n【必须覆盖的字段路径】\n{json.dumps(paths, ensure_ascii=False)}",
                  TIMEOUTS["verify"], "\n\n[Reply with one valid JSON object only, matching the schema.]", validate=verify_schema(paths))
     rec.setdefault("local_fixes", []).append(r["local_fix"] | {"edits": applied})
     rec["calls_before_local_fix"] = (rec.get("calls_before_local_fix") or []) + (rec.get("calls") or [])
@@ -732,7 +732,7 @@ def _finish(rec, w, o, cid, caller, failure, issues=None) -> dict:
     bound = bool(last.get("verify")) and last["verify"].get("_content_sha256") == o["content_sha256"]
     rec.update(final_content_sha256=o["content_sha256"], open_issues=[i["id"] for i in open_],
                outcome="admissible" if not failure and bound and not open_ else "pending_review", failure=failure,
-               finished_at=time.time(), calls=[{k: m.get(k) for k in ("step", "attempt", "wall_s", "json_ok", "schema_ok", "schema_problems", "killed")}
+               finished_at=time.time(), calls=[{k: m.get(k) for k in ("step", "attempt", "wall_s", "json_ok", "schema_ok", "schema_problems", "killed", "prompts")}
                                                | {"tokens": {k: ((m.get("meta") or {}).get("usage") or {}).get(k) for k in
                                                              ("input_tokens", "cache_read_input_tokens", "cache_creation_input_tokens", "output_tokens")},
                                                   "cost_estimate_usd": (m.get("meta") or {}).get("total_cost_usd")} for m in caller.metrics])

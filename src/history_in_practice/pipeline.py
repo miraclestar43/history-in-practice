@@ -12,6 +12,26 @@ from . import sources as src_mod, evidence, registry, render, checks, llm, state
 from .config import REPO, data_dir, load_project
 
 PROMPTS = Path(__file__).with_name("prompts")
+_INCLUDE = __import__("re").compile(r"\{\{include:([a-z0-9_]+)\}\}")
+
+
+def load_prompt(name: str) -> str:
+    """A stage prompt as the model receives it: prompts/<name>.md with each {{include:x}} replaced by prompts/x.md.
+    Every stage loads its prompt through here, so a shared rule file (reader_first_zh/en) reaches every call path."""
+    t = (PROMPTS / f"{name}.md").read_text(encoding="utf-8")
+    return _INCLUDE.sub(lambda m: (PROMPTS / f"{m.group(1)}.md").read_text(encoding="utf-8").rstrip("\n"), t)
+
+
+def prompt_files(sent: str) -> list[dict]:
+    """Which prompt files are actually inside a prompt that was sent (stage files fully expanded, shared files as
+    included), with their sha256: recorded with every model call so a run shows what each stage really loaded."""
+    import hashlib
+    out = []
+    for p in sorted(PROMPTS.glob("*.md")):
+        body = load_prompt(p.stem)
+        if body.strip() and body.strip() in sent:
+            out.append({"file": p.name, "sha256": hashlib.sha256(p.read_bytes()).hexdigest()[:12]})
+    return out
 import re as _re
 import subprocess as _sp
 
@@ -117,7 +137,7 @@ def merge(zh, en):
 def run_model_steps(c, pack, outdir: Path, call=llm.call, timeouts=None) -> tuple[dict | None, dict | None, dict | None, list]:
     cfg = load_project().get("hermes", {}); t = timeouts or cfg.get("timeouts_s", {"draft_zh": 1800, "review_zh": 1200, "en": 2100})
     ev = _evidence_block(pack); metrics = []
-    style = (PROMPTS / "style_zh.md").read_text(encoding="utf-8")
+    style = load_prompt("style_zh")
 
     def step(name, prompt, timeout, retry_suffix, validate):
         saved = outdir / f"{name}.json"
@@ -126,7 +146,7 @@ def run_model_steps(c, pack, outdir: Path, call=llm.call, timeouts=None) -> tupl
             return json.loads(saved.read_text(encoding="utf-8"))
         for attempt in (1, 2):
             r = call(prompt if attempt == 1 else prompt + retry_suffix, timeout_s=timeout)
-            m = {k: v for k, v in r.items() if k != "text"}; m.update(step=name, attempt=attempt, candidate=c["candidate_id"])
+            m = {k: v for k, v in r.items() if k != "text"}; m.update(step=name, attempt=attempt, candidate=c["candidate_id"], prompts=prompt_files(prompt))
             (outdir / f"{name}.a{attempt}.raw.txt").write_text(r["text"], encoding="utf-8")
             try:
                 obj = llm.parse_json(r["text"]) if r["rc"] == 0 and not r["killed"] else None
@@ -153,13 +173,13 @@ def run_model_steps(c, pack, outdir: Path, call=llm.call, timeouts=None) -> tupl
                 return None          # do not burn another full timeout
         return None
 
-    zh = step("draft_zh", f"{style}\n\n{(PROMPTS/'draft_zh_long.md').read_text()}\n\n【编辑简报】\n{c['brief']}\n\n【证据包】\n{ev}",
+    zh = step("draft_zh", f"{style}\n\n{load_prompt('draft_zh_long')}\n\n【编辑简报】\n{c['brief']}\n\n【证据包】\n{ev}",
               t["draft_zh"], "\n\n[上一次输出不是合法 JSON。只输出一个合法 JSON 对象。]", schemas.draft_zh)
     if zh is None:
         return None, None, None, metrics
-    review = step("review_zh", f"{(PROMPTS/'review_zh.md').read_text()}\n\n【证据包】\n{ev}\n\n【稿件】\n{json.dumps(zh, ensure_ascii=False)}",
+    review = step("review_zh", f"{load_prompt('review_zh')}\n\n【证据包】\n{ev}\n\n【稿件】\n{json.dumps(zh, ensure_ascii=False)}",
                   t["review_zh"], "\n\n[只输出一个合法 JSON 对象。]", schemas.review)
-    en = step("en", f"{(PROMPTS/'translate_en_long.md').read_text()}\n\n{ev}\n\n<article_zh>\n{json.dumps(zh, ensure_ascii=False)}\n</article_zh>",
+    en = step("en", f"{load_prompt('translate_en_long')}\n\n{ev}\n\n<article_zh>\n{json.dumps(zh, ensure_ascii=False)}\n</article_zh>",
               t["en"], "\n\n[Reply with one valid JSON object only.]", schemas.draft_en)
     return zh, review, en, metrics
 

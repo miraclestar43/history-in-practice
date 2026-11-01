@@ -17,7 +17,7 @@ import copy, hashlib, json, time
 from pathlib import Path
 from . import checks, render, llm, state, registry, schemas
 from .config import REPO
-from .pipeline import PROMPTS, REFUSAL, CODE_REV, _evidence_block
+from .pipeline import PROMPTS, REFUSAL, CODE_REV, _evidence_block, load_prompt, prompt_files
 
 from .config import load_project as _lp
 MAX_ROUNDS = int(_lp().get("editor", {}).get("max_rounds", 2))
@@ -91,7 +91,7 @@ class Caller:
         suffix = retry_suffix
         for attempt in (1, 2):
             r = self.call(prompt if attempt == 1 else prompt + suffix, timeout_s=timeout)
-            m = {k: v for k, v in r.items() if k != "text"}; m.update(step=name, attempt=attempt, candidate=self.cid)
+            m = {k: v for k, v in r.items() if k != "text"}; m.update(step=name, attempt=attempt, candidate=self.cid, prompts=prompt_files(prompt))
             (self.outdir / f"{name}.a{attempt}.raw.txt").write_text(r["text"], encoding="utf-8")
             try:
                 obj = llm.parse_json(r["text"]) if r["rc"] == 0 and not r["killed"] else None
@@ -181,9 +181,9 @@ def apply_edits(o: dict, ev_ids: set, edits: list, ev_changes: list) -> tuple[li
 
 def reviews(o, ev, caller: Caller, tag: str) -> tuple[dict | None, dict | None]:
     evb = _evidence_block(ev); h = o["content_sha256"]
-    rv = caller(f"rereview_{tag}", f"{(PROMPTS / 'review_zh.md').read_text()}\n\n【证据包】\n{evb}\n\n【稿件】\n{json.dumps(zh_view(o), ensure_ascii=False)}",
+    rv = caller(f"rereview_{tag}", f"{load_prompt('review_zh')}\n\n【证据包】\n{evb}\n\n【稿件】\n{json.dumps(zh_view(o), ensure_ascii=False)}",
                 TIMEOUTS["review"], "\n\n[只输出一个合法 JSON 对象。]", validate=schemas.review)
-    pv = caller(f"parity_{tag}", f"{(PROMPTS / 'parity_en.md').read_text()}\n\n<fields>\n{parity_view(o)}\n</fields>",
+    pv = caller(f"parity_{tag}", f"{load_prompt('parity_en')}\n\n<fields>\n{parity_view(o)}\n</fields>",
                 TIMEOUTS["parity"], "\n\n[Reply with one valid JSON object only.]", validate=schemas.parity)
     for x, sch in ((rv, schemas.REVIEW_SCHEMA), (pv, schemas.PARITY_SCHEMA)):
         if x is not None:
@@ -238,7 +238,7 @@ def edit(draft_dir: Path, call=None, max_rounds: int = MAX_ROUNDS) -> dict:
     for rnd in range(1, max_rounds + 1):
         if not issues:
             break
-        prompt = (f"{(PROMPTS / 'edit_zh_en.md').read_text()}\n\n【证据包】\n{_evidence_block(ev)}\n\n【稿件】\n{article_view(o)}\n\n"
+        prompt = (f"{load_prompt('edit_zh_en')}\n\n【证据包】\n{_evidence_block(ev)}\n\n【稿件】\n{article_view(o)}\n\n"
                   f"【待处理问题】\n{json.dumps(issues, ensure_ascii=False, indent=1)}")
         out = caller(f"edit_r{rnd}", prompt, TIMEOUTS["edit"], "\n\n[只输出一个合法 JSON 对象。]", validate=schemas.edit)
         rec = {"round": rnd, "issues_in": issues}
