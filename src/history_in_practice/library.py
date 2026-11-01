@@ -121,6 +121,19 @@ def units(b: dict, lmap: list[dict], cjk: bool) -> list[dict]:
     return out
 
 
+def check(book_id: str) -> dict:
+    """acquired -> readable or unsuitable, without entering the supply pool (parse + readability only)."""
+    lib = load(); e = get(lib, book_id); f = next(x for x in manifest() if x["book_id"] == book_id)
+    b = books.parse(data_dir() / "books" / "files" / f["path"])
+    if b["file_sha256"] != f["file_sha256"]:
+        raise books.BookError(f"{book_id}: file changed since acquisition")
+    why = readability(b, e.get("language", "zh"))
+    e.update(file_sha256=b["file_sha256"], bytes=b["bytes"], format=b["format"], paragraphs=len(b["paragraphs"]),
+             chapters_detected=len(b.get("chapters") or []), level="unsuitable" if why else "readable",
+             reason="; ".join(why) or ("not in the pool: " + e["exclude"] if e.get("exclude") else "readable; not ingested yet (alternate)"))
+    save(lib); return e
+
+
 def ingest(book_id: str, *, verified: str) -> dict:
     """acquired -> readable -> usable (or unsuitable with reasons). Writes the source cache, its location map and the unit list."""
     lib = load(); e = get(lib, book_id); f = next(x for x in manifest() if x["book_id"] == book_id)

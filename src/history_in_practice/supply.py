@@ -100,9 +100,18 @@ def _log(rec: dict):
         f.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
 
+LEDGER = REPO / "config/books/attempts.jsonl"     # book units already tried elsewhere (e.g. the 2026-11-01 validation run)
+
+
 def attempts() -> list[dict]:
     p = data_dir() / "supply" / "attempts.jsonl"
     return [json.loads(l) for l in p.read_text(encoding="utf-8").splitlines() if l.strip()] if p.exists() else []
+
+
+def _all_attempts() -> list[dict]:
+    """This data directory's attempts plus the tracked ledger of book units tried elsewhere (pickers only)."""
+    led = [json.loads(l) for l in LEDGER.read_text(encoding="utf-8").splitlines() if l.strip()] if LEDGER.exists() else []
+    return led + attempts()
 
 
 # Theme tags (owner, 2026-10-30): breadth across the four rotation slots; war is one theme among many, no quota.
@@ -119,7 +128,7 @@ def _spread(e: dict) -> str:
 def pick_book_unit(book_id: str, category: str | None = None) -> dict | None:
     """The next untried unit of one book (operator/validation runs: `hip supply --book ID`)."""
     from . import library
-    tried = {a.get("catalogue_id") for a in attempts()}
+    tried = {a.get("catalogue_id") for a in _all_attempts()}
     us = [e for e in library.entries(category) if e["book_id"] == book_id and e["id"] not in tried]
     return min(us, key=_spread) if us else None
 
@@ -130,7 +139,7 @@ def pick_entry(category: str) -> dict | None:
     source it used."""
     from . import library
     tried, per_book = {}, {}
-    for a in attempts():
+    for a in _all_attempts():
         tried[a.get("catalogue_id")] = tried.get(a.get("catalogue_id"), 0) + 1
         if a.get("book_id"):
             per_book[a["book_id"]] = per_book.get(a["book_id"], 0) + 1
@@ -251,6 +260,28 @@ def propose(entry: dict, db, *, call=None, cache: Path | None = None, date: str 
     path.write_text(json.dumps(cand, ensure_ascii=False, indent=1), encoding="utf-8")
     rec.update(outcome="candidate", path=str(path), wall_s=round(time.monotonic() - t0, 1)); _log(rec)
     return rec
+
+
+def fill(categories: list[str], db, *, tries_per_category: int = 3, max_calls: int = 8, call=None) -> list[dict]:
+    """Nightly top-up (2026-11-01): for each category the mix needs, propose from the next units (books first) until one
+    yields a candidate -- a book unit is often theory or a survey and is skipped with a reason -- at most
+    `tries_per_category` per category and `max_calls` model calls per night. Stops at once when the writer (Claude) is
+    unavailable (a health result: nothing else is tried, no other model)."""
+    out, calls = [], 0
+    for c in categories:
+        for _ in range(tries_per_category):
+            if calls >= max_calls:
+                return out
+            e = pick_entry(c)
+            if not e:
+                out.append({"category": c, "outcome": "rejected", "reason": "no untried book unit or catalogue entry"}); break
+            r = propose(e, db, call=call) if call else propose(e, db); calls += 1
+            out.append(r)
+            if r.get("health"):
+                return out
+            if r.get("outcome") == "candidate":
+                break
+    return out
 
 
 def check_catalogue(cache: Path | None = None) -> list[dict]:

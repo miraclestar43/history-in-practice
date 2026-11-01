@@ -75,6 +75,14 @@ class Library(unittest.TestCase):
                                         "S", "P", [], book=True)
         self.assertEqual(rows, []); self.assertIn("voice label", dropped[0]["reason"])
 
+    def test_nightly_fill_tries_further_units_within_bounds(self):
+        library.ingest("BK-T", verified="test")
+        skip = lambda p, timeout_s=0, **k: {"rc": 0, "killed": None, "wall_s": 0, "prompt_bytes": 1, "out_bytes": 1, "text": '{"skip": "理论章节"}'}
+        rs = supply.fill(["china_ancient"], self.db, tries_per_category=5, max_calls=2, call=skip)
+        self.assertEqual(len(rs), 2)                                            # the night's call cap holds
+        self.assertEqual(len({r["catalogue_id"] for r in rs}), 2)               # never the same unit twice
+        self.assertTrue(all(r["source_kind"] == "book" and "no suitable episode" in r["reason"] for r in rs))
+
     def test_scanned_pdf_is_unsuitable(self):
         why = library.readability({"format": "pdf", "pdf_text_status": "needs_ocr", "paragraphs": []}, "zh")
         self.assertTrue(any("text layer" in w for w in why))

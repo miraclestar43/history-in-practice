@@ -597,7 +597,8 @@ LOCAL_FIX_MAX_FIELDS = 4          # per named issue: e.g. one sentence's field i
 
 
 def local_fix(cid: str, db, changes: list, issue_ids: list[str], reason: str, *, call=None, operator_issues: list[dict] | None = None,
-              pack_fix: dict | None = None, rejections: list[dict] | None = None, cache: Path | None = None) -> dict:
+              pack_fix: dict | None = None, rejections: list[dict] | None = None, cache: Path | None = None,
+              basis: dict | None = None) -> dict:
     """A recorded *local* fix of open final-editor issues (owner rule 2026-10-31): small, evidence-backed wording or
     attribution corrections, not a whole-article retry. Allowed only for open fix issues of the latest record that carry
     a verifiable evidence quote, for the fix issues of a needs-work context review bound to this exact text (CTX-X<n>,
@@ -648,6 +649,11 @@ def local_fix(cid: str, db, changes: list, issue_ids: list[str], reason: str, *,
             issues[k] = ctx[k]; continue
         if not i or k not in (rec.get("open_issues") or []):
             problems.append(f"{k}: not an open issue of the latest record")
+        elif basis and k in basis:                       # the operator's own basis: every quote must be verbatim in the pack
+            if not (basis[k] and all(quote_ok(ev, c) for c in basis[k])):
+                problems.append(f"{k}: the supplied basis quotes are not verbatim in the evidence pack")
+            else:
+                issues[k] = dict(i, basis_supplied=basis[k])
         elif not (i.get("evidence") and all(quote_ok(ev, c) for c in i["evidence"])):
             problems.append(f"{k}: no verifiable evidence quote (not a clear-basis local fix)")
     allowed = {issues[k].get("path") for k in issue_ids if k in issues}
@@ -894,6 +900,33 @@ def send_problems(db, o: dict, cache: Path | None = None) -> list[str]:
     if src is not None:
         p += [f"{k} differs from the admitted article" for k in SEND_BODY_KEYS if src.get(k) != o.get(k)]
     return p
+
+
+def adopt(db, edition_id: str, cache: Path | None = None) -> dict:
+    """Bring an article finished elsewhere in this repository (e.g. the 2026-11-01 book-supply validation worktree) into
+    this data directory through the same admission: samples/auto/<id>/final/ must hold the article, its evidence, the
+    final-editor record and a clean source-context review bound to exactly this content and evidence, with the sources
+    re-hashed from THIS machine's source cache. The episode is registered first (duplicate check). Nothing is relaxed:
+    any mismatch leaves the edition pending with the reasons."""
+    out = OUT_ROOT / edition_id / "final"; art, evp, recp = out / "article.json", out / "evidence.json", out / "final_editor_record.json"
+    if state.get(db, edition_id):
+        return {"adopted": False, "reason": f"already known here: {state.get(db, edition_id)['status']}"}
+    if not (art.exists() and evp.exists() and recp.exists()):
+        return {"adopted": False, "reason": f"{out}: article, evidence or final-editor record missing"}
+    o = json.loads(art.read_text(encoding="utf-8")); render.finalize(o)
+    ep = dict(o.get("episode") or {}, episode_id=o.get("episode_id"), title=o["title"]["zh"], category=o["category"])
+    eid, v = registry.reserve(db, ep, status="prepared")
+    if not eid:
+        return {"adopted": False, "reason": f"episode {v[0]}: {v[1]}"}
+    state.transition(db, edition_id, "prepared", note="adopted: records from samples/auto (verifying)", episode_id=eid,
+                     category=o["category"], path=str(art.resolve()))
+    state.transition(db, edition_id, "pending_review", note="adopted: verifying final-editor record and context review",
+                     reason="adopt: verifying records")
+    r = admit(db, art, evp, json.loads(recp.read_text(encoding="utf-8")), cache=cache)
+    if not r.get("admitted"):
+        state.transition(db, edition_id, "prepared", note="adopt refused"); state.transition(db, edition_id, "pending_review",
+                         note="adopt refused", reason="adopt refused: " + "; ".join(r.get("problems") or [])[:1500])
+    return dict(r, adopted=bool(r.get("admitted")))
 
 
 def admit(db, article_path: Path, evidence_path: Path, rec: dict, exception=None, cache: Path | None = None) -> dict:

@@ -523,6 +523,40 @@ class FinalEditor(unittest.TestCase):
             self.assertIn("来源未载类断言", t); self.assertIn("你看到的是证据包，不是完整来源", t)
         self.assertIn("证据包没有不等于来源没有", (pipeline.PROMPTS / "final_revise.md").read_text())
 
+    def test_adopt_admits_records_from_another_data_directory_with_the_same_checks(self):
+        """2026-11-01: an article finished in the validation worktree is admitted in production only through admit()."""
+        rec, a = self.run_admit(self.script()); self.assertTrue(a["admitted"], a)
+        fresh = state.connect(Path(self.td.name) / "other.sqlite"); registry.init(fresh, ALIASES)
+        r = final_edit.adopt(fresh, CID); self.assertTrue(r["adopted"], r)
+        self.assertEqual(state.get(fresh, CID)["status"], "checked"); self.assertEqual(final_edit.current_eligibility(fresh, CID)[0], [])
+        self.assertIn("already known", final_edit.adopt(fresh, CID)["reason"])
+        fresh2 = state.connect(Path(self.td.name) / "other2.sqlite"); registry.init(fresh2, ALIASES)
+        out = final_edit.OUT_ROOT / CID / "final"; art = json.loads((out / "article.json").read_text())
+        art["sections"][2]["paras"][0]["zh"] += "（改动）"; (out / "article.json").write_text(json.dumps(art, ensure_ascii=False))
+        r2 = final_edit.adopt(fresh2, CID)                                     # content no longer matches the record
+        self.assertFalse(r2["adopted"]); self.assertEqual(state.get(fresh2, CID)["status"], "pending_review")
+
+    def test_local_fix_basis_must_be_verbatim_in_the_pack(self):
+        """2026-11-01: a verifier quote with a typo blocks a clear-basis fix; the operator may supply the verbatim basis,
+        which is checked against the pack like any other quote."""
+        out = final_edit.OUT_ROOT / CID / "final"; e = self.ev["excerpts"][0]
+        issue = {"id": "1", "path": "sections.story.0", "category": "attribution", "severity": "fix", "problem": "归属",
+                 "evidence": [{"id": e["id"], "quote": "并不存在的引文"}], "proposed": "改归属"}
+        story0 = self.o["sections"][2]["paras"][0]
+        def fix_all(prompt):
+            todo = json.loads(prompt.rsplit("【问题清单】", 1)[1].split("\n\n[", 1)[0])
+            return {"changes": [{"path": "sections.story.0.zh", "text": story0["zh"] + "改", "issues": [x["id"] for x in todo]}],
+                    "dispositions": [{"issue": x["id"], "action": "fixed", "rationale": "改"} for x in todo]}
+        rec = final_edit.run(CID, self.db, call=self.script(revise=fix_all, verify_issues=lambda k: [issue])); vids = rec["open_issues"]
+        story = json.loads((out / "article.json").read_text())["sections"][2]["paras"][0]
+        ch = [{"path": "sections.story.0.zh", "text": story["zh"] + "（归属）"}, {"path": "sections.story.0.en", "text": story["en"] + " (attribution)"}]
+        clean = self.script(verify_issues=lambda k: [])
+        self.assertEqual(final_edit.local_fix(CID, self.db, ch, vids, "t", call=clean)["outcome"], "refused")
+        bad = final_edit.local_fix(CID, self.db, ch, vids, "t", call=clean, basis={v: [{"id": e["id"], "quote": "也不存在"}] for v in vids})
+        self.assertIn("not verbatim", bad["reason"])
+        ok = final_edit.local_fix(CID, self.db, ch, vids, "t", call=clean, basis={v: [self.real_quote] for v in vids})
+        self.assertEqual(ok["outcome"], "admissible", ok.get("reason"))
+
     # Owner request 2026-10-31 (reader feedback on 吴起, applied to the writing agent): the reader-first rules must reach
     # every stage that actually writes or judges text -- MiMo draft and English, the MiMo edit rounds, the Claude final
     # audit / revise / verify (also on the owner-authorized revision and local-fix paths) -- and every call records which
