@@ -12,8 +12,8 @@
 |---|---|---|
 | catalogued | listed in a saved repository tree or catalogue only | **1,270** book-like files in the saved trees (HarborLibrary ×9, two forks, Markdown repos), plus the Drive listing. Leads, not books |
 | acquired | the file is on the Pi: pinned repository commit + path, git blob verified, sha256 | 13 |
-| readable | parsed text: TXT/EPUB, or a PDF with a real text layer (scans refused) | (all 6 of the first batch passed and moved on to usable) |
-| usable | ingested with chapter units; in the nightly pool | **6 books, 153 units** |
+| readable | parsed text: TXT/EPUB, or a PDF with a real text layer (scans refused) | 5 alternates (below), checked, not yet in the pool |
+| usable | ingested with chapter units; in the nightly pool | **8 books, 233 units** (the first batch of 6, plus Mackay and Shoe Dog) |
 | unsuitable | with a reason | the novelised Markdown 《明朝那些事儿》 (discovery only, never evidence) |
 
 **First batch:**
@@ -32,7 +32,9 @@
 - The three PDFs were checked for a real text layer: CJK share 0.79–0.88, no junk.
 - The 财政史 PDF does not name its author in the text layer (it presents itself as a 上海财经大学 textbook). The author is recorded as unverified rather than guessed. It is the low-yield book: theory chapters are skipped.
 
-**Acquired, not ingested this round** (alternates): 黄仁宇《赫逊河畔谈中国历史》, 钱穆《中国历代政治得失》, Mackay, Shoe Dog, The Worlds I See, Curie. 《胡适口述自传》 is excluded for now (owner).
+**Also usable** (ingested after the first batch, so that the 世界 and 美国 categories have books too): Charles Mackay, *Extraordinary Popular Delusions and the Madness of Crowds* (EPUB, Project Gutenberg; 世界; 54 units) and Phil Knight, *Shoe Dog* (EPUB; 美国; 25 units).
+
+**Readable, not ingested** (alternates): 黄仁宇《赫逊河畔谈中国历史》, 钱穆《中国历代政治得失》, *The Worlds I See*, *Pierre Curie*. 《胡适口述自传》 is readable but kept out of the pool (owner: no further 胡适 stories for now).
 
 **Google Drive** is a later source: the listing exists, but the download path was not connected this round.
 
@@ -58,7 +60,7 @@
 
 ## 3. Candidates proposed automatically from the imported books (this run)
 
-22 units tried; 8 candidates; 14 skipped. Each skip has a stated reason, e.g. "本章是盛世经济与社会背景的概论…没有结局".
+20 units tried (18 in the validation run, 2 by the simulated nightly top-up); **10 candidates; 10 skipped**. Each skip has a stated reason, e.g. "本章是盛世经济与社会背景的概论…没有结局". 《中国财政史十六讲》 yields least: 4 of its 5 units were theory chapters.
 
 | Candidate | Episode | Book · location |
 |---|---|---|
@@ -70,26 +72,49 @@
 | `bk-wq70-u22-1` | 李鸿章保举醇亲王掌海军衙门，此后对挪用海军经费一再退让 (1884–94) | 《晚清七十年》【三】二 · EPUB spine 22 |
 | `bk-czs16-u27-1` | 王安石“候法已成即逐之”：先用能办事的人，后来换不掉 (1069–76) | 《中国财政史十六讲》PDF p.250– |
 | `bk-jingdu-u14-1` | 经度局面对阿诺德与厄恩肖的擒纵器发明权之争，各颁3000英镑 (1782–1805) | 《经度》第十四章 · PDF p.112– |
+| `bk-jiaohun-u13-1` | 军机处在承德复审叫魂诸案：衙役蔡瑞的“捏陷”供认、验辫尖，最终释放和尚、石匠与乞丐 (1768) | 《叫魂》第八、九章 · TXT offset 136038+ (nightly top-up) |
+| `bk-mackay-u37-1` | 巴黎高等法院复审十四名被判死刑的“女巫”，医生报告她们“更需要药物而非惩罚”，全部释放 (1589) | Mackay · EPUB spine 37 (nightly top-up) |
 
 ## 4. Two articles through the normal chain
 
-(see section 4 results below)
+Both went through the chain every article uses: pre-draft source-context review → Claude draft / review / English → final editor (audit, revise, verify) → post-draft source-context review → admission. The model was Claude Opus (`claude-opus-5-5`, Claude Code CLI 2.1.308) at every step, as the final-editor records report it. The records are in `samples/auto/<id>/final/`.
+
+**苏州城下的一份降约 / A Surrender Pact Outside Suzhou** (`cand-auto-20261101-bk-lhzz-u1-1`, 梁启超《李鸿章传》第三、四章). **Admitted.**
+- Final editor attempt 1 left open issues; attempt 2 was admissible with no open issues. Across the record: 24 issues (8 facts, 7 unsupported, 2 quotes, 1 attribution, 1 parity, all fixed; 5 notes), 32 edits.
+- Post-draft context review: clean, 2 notes, no evidence additions.
+- Reading time: about 8 minutes (zh) / 11 (en).
+
+**叫魂 (`cand-auto-20261101-bk-jiaohun-u14-1`, 孔飞力《叫魂》第九章).** JIAOHUN_RESULT
+
+**Using an article finished here in production: `hip adopt`.** Production does not re-run the model. `hip adopt ID` reads the records from `samples/auto/ID/final/`, registers the episode (dedupe check) and runs the unchanged admission: the final-editor record and the context review must be bound to exactly this content and evidence, and the sources are re-hashed from production's own source cache. Any mismatch leaves the edition pending with the reasons.
+
+**Rehearsed on a copy of production data** (scratch directory; production untouched):
+1. `hip library ingest --book all` fetched 叫魂 and 晚清七十年 (blob verified) and rebuilt all 8 books and 233 units. The units and source-cache text came out byte-identical to the worktree's.
+2. `hip adopt cand-auto-20261101-bk-lhzz-u1-1` → admitted.
+3. The stored plan (胡适, 吴起, then the mix) was unchanged.
+4. The picker then offered an untried book unit in every category (none from the ledger).
 
 ## 5. How the nightly job keeps supplying
 
 **No new timer.** `hip-prepare` (10:00 Beijing) already runs `hip nightly`. When fewer than 2 unprocessed candidates are waiting, it proposes for the categories the mix needs most; `pick_entry` now offers book units first. Then it drafts (at most 2 articles per batch) and runs the final editor.
 
-**Pool size.** 153 units in 6 books. At today's yield of about one candidate per three units, that is roughly 50 candidates before new books are needed. Adding a book:
+**Simulated on real data.** `hip nightly --max-articles 1` was run once in the worktree. The supply step needed 中国古代 and 世界. It tried one unit for each, got a candidate from each on the first try (《叫魂》 unit 13, Mackay unit 37), and logged both with `source_kind: book`. The bounds held: at most 3 units per category and 8 proposal calls per night (`project.json` → `supply`).
+
+The worktree's copy of the data lacked production's old final-editor attempt records. So the simulation also re-edited Snow and Curie there, which production skips: all its pending items have used their 3 attempts, checked with `final_edit.attempts_used` on the production database. Those simulation outputs were moved out of `samples/`, and the tracked records are unchanged.
+
+**Pool size.** 233 units in 8 books. At this run's yield of one candidate per two units, that is roughly 100 candidates before new books are needed. Adding a book:
 1. add its library.json entry: repository, commit, path, metadata, categories;
 2. run `hip library ingest --book ID` (or `--book all`).
 
 ## 6. Deployment (after merging; nothing else changes)
 
+Before 10:00 Beijing (the next `hip-prepare` run):
 1. Merge `feature/book-supply` into `main`. On the Pi: `cd ~/history-in-practice && git pull --ff-only`.
 2. Run `bin/hip library ingest --book all`. It:
-   - fetches the two new files (叫魂, 晚清七十年) from their pinned commits, blob verified;
-   - ingests the six books into the production data directory;
-   - prints each book's level and unit count.
-3. No change to timers, recipients or the send schedule. The next `hip-prepare` run draws from the books.
+   - fetches the two files production does not have yet (叫魂, 晚清七十年) from their pinned commits, blob verified;
+   - ingests the eight usable books into the production data directory;
+   - prints each book's level and unit count (expected: 233 units).
+3. Run `bin/hip adopt ADOPT_IDS`. It should print `"adopted": true` for each. If it doesn't, the edition stays pending with its reasons, and the nightly drafts nothing for it.
+4. Nothing else: timers, recipients, the send time and the stored plan are unchanged. Adopted articles join the inventory, and the mix places them after the planned issues. The next `hip-prepare` drafts the remaining book candidates; when fewer than 2 are waiting, it proposes from untried book units.
 
-**Rollback:** set the books' level back in library.json, or revert the merge. The picker then uses the catalogue only.
+**Rollback:** revert the merge. Book candidates not yet drafted are then never drafted, and the picker uses the catalogue only. Adopted articles are ordinary inventory: `hip requeue ID` sends one back to the pending queue, as for any other article.

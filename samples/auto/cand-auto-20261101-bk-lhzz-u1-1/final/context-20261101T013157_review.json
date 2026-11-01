@@ -1,0 +1,432 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261101-bk-lhzz-u1-1",
+ "content_sha256": "c130f432ba8cce1af678476fe1c7a66e26e18ff83e13fbddcf3cdfe4631af3a6",
+ "evidence_in_sha256": "b43091ccc3e80ede76e62e73188bdcc4300b7735f126e1495ccc69accaf8e9f1",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793518317.2302823,
+ "flagged": [],
+ "search": null,
+ "units": {
+  "S-BK-LHZZ": {
+   "title": "梁启超《李鸿章传（一名中国四十年来大事记）》，zh.wikisource 转录本（ws-export EPUB）；李鴻章傳 第三章 李鴻章未達以前及其時中國之形勢 李鴻章之家 / 李鴻章傳 第四章 兵家之李鴻章（上） 李鴻章之崛起與淮軍之成",
+   "url": null,
+   "ref": "book:BK-LHZZ",
+   "evidence_text_sha256": "441b7e7184c99696be7010dab96bd7a08b38e02d1dfb723662c8c24824ed70e0",
+   "cache_sha256": "441b7e7184c99696be7010dab96bd7a08b38e02d1dfb723662c8c24824ed70e0",
+   "cjk": true,
+   "source_chars": 65879,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     8589,
+     21013
+    ]
+   ],
+   "chars_reviewed": 12424
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 40.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "prompts": [
+    {
+     "file": "context_review.md",
+     "sha256": "166543d1f6ca"
+    }
+   ],
+   "output_tokens": 4252
+  }
+ ],
+ "finished_at": 1793518357.7653818,
+ "elapsed_min": 0.7,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-BK-LHZZ",
+    "outcome": "郜云官等杀谭绍洸、开城投降后，程学启与李鸿章密谋设宴诛杀八名降将，苏州平定，李鸿章加太子少保。戈登作为保人大怒，持枪要找李鸿章，数日后怒气渐消才作罢。梁启超评论此举“有慚德”，列出三罪，同时承认李鸿章或有不得已之处。此后常胜军仍与淮军共同进攻常州。",
+    "quote": "先是八酋之降也，戈登實爲保人。至是聞鴻章之食言也，大怒，欲殺鴻章以償其罪，自攜短銃以覓之。鴻章避之，不敢歸營。數日後，怒漸解，乃止。",
+    "in_evidence": true
+   }
+  ],
+  "additions": [],
+  "claims": [
+   {
+    "id": "N1",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "这部书以李鸿章为中心，降将一方和戈登本人的说法都没有进入证据。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-LHZZ"
+    ],
+    "scope": "核查范围是本文证据包和梁书第四章苏州一节（偏移约14786–15548）。这一节只有梁启超的叙述和按语，没有转述降将或戈登本人的说法。本句说的是“没有进入证据”，范围准确。",
+    "quote": {
+     "source_id": "S-BK-LHZZ",
+     "quote": "至是聞鴻章之食言也，大怒，欲殺鴻章以償其罪"
+    },
+    "fix": "保留。"
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "neither the defectors' version nor Gordon's own account is among the evidence.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-LHZZ"
+    ],
+    "scope": "同 N1。",
+    "quote": {
+     "source_id": "S-BK-LHZZ",
+     "quote": "戈登爲之保人，故云官等不疑"
+    },
+    "fix": "保留。"
+   },
+   {
+    "id": "N3",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "湖上订约时是“二品之赏”，城破后降将要求兑现的是“总兵副将等职”，本文无法判断两者的关系。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-LHZZ"
+    ],
+    "scope": "核查范围是梁书苏州一节阳澄湖订约至设宴诛杀各段。书中先后出现两种表述，没有说明二者的关系。",
+    "quote": {
+     "source_id": "S-BK-LHZZ",
+     "quote": "程學啟既許以總兵副將等職，至是求如約。"
+    },
+    "fix": "可以保留，并写明“梁书未说明二者关系”。如果要补“总兵为二品武职”一类背景，须另找来源，不要凭推测写入。"
+   },
+   {
+    "id": "N4",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "十几万部众、一千多余党等数字，都取自这部书，本文未与其他记载核对。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-LHZZ"
+    ],
+    "scope": "本句说的是本文自己的核对范围，不是断言梁启超或当时没有其他人核查。数字见梁书苏州一节。",
+    "quote": {
+     "source_id": "S-BK-LHZZ",
+     "quote": "當時此八將所部兵在城中者尚十餘萬人"
+    },
+    "fix": "保留。不要改写成“当时无人核查”或“梁书数字未经核实”一类推论。"
+   },
+   {
+    "id": "N5",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "The figures of more than a hundred thousand troops and more than a thousand followers killed are taken from this book and have not been checked against other records.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-LHZZ"
+    ],
+    "scope": "同 N4，指本文的核对范围。",
+    "quote": {
+     "source_id": "S-BK-LHZZ",
+     "quote": "並殺餘黨之強禦者千餘"
+    },
+    "fix": "保留。"
+   },
+   {
+    "id": "N6",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "全文只依据梁启超《李鸿章传》一种记载，缺少降将一方和戈登本人的叙述；许诺内容的两种表述之间是什么关系不明，文中数字均取自这部书，未另行核对。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-LHZZ"
+    ],
+    "scope": "本文证据包及梁书苏州一节。“缺少”指本文证据，“未另行核对”指本文的工作范围。",
+    "quote": {
+     "source_id": "S-BK-LHZZ",
+     "quote": "使殺秀成、紹洸以獻，許以二品之賞"
+    },
+    "fix": "保留。可以把“缺少……叙述”改为“本文未引用……叙述”，避免读者误以为梁书或史上不存在这些叙述。"
+   },
+   {
+    "id": "N7",
+    "path": "uncertainty_note",
+    "lang": "en",
+    "sentence": "lacks any narrative from the defectors or from Gordon himself ... have not been checked elsewhere.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-LHZZ"
+    ],
+    "scope": "同 N6。",
+    "quote": {
+     "source_id": "S-BK-LHZZ",
+     "quote": "使殺秀成、紹洸以獻，許以二品之賞"
+    },
+    "fix": "建议改为 \"does not draw on any narrative from…\"，范围更准确。"
+   },
+   {
+    "id": "N8",
+    "path": "sections.analysis.1",
+    "lang": "zh",
+    "sentence": "书中写戈登是「聞」，本文据此推测，他是事后才听说这件事的。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-BK-LHZZ"
+    ],
+    "scope": "梁书苏州一节。这是本文的推断，并已标明是推测。书中“密謀”也与此相符。",
+    "quote": {
+     "source_id": "S-BK-LHZZ",
+     "quote": "乃與李鴻章密謀，設宴大饗彼等於坐艦"
+    },
+    "fix": "可补一句：梁书写的是程学启与李鸿章“密谋”，可作为辅证。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.context.2",
+    "problem": "稿件只写白齐文勒索、殴打杨坊。梁书还写到他暗中通款李秀成、谋据松江为内应，这是李鸿章撤换他的重要背景。省略后，撤换看起来只是因为抢钱。",
+    "quote": {
+     "source_id": "S-BK-LHZZ",
+     "quote": "時見官軍之窘蹙，乃竊通款於李秀成。十月，謀據松江城爲內應。"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.context.3",
+    "problem": "稿件写宝带桥等营垒相继攻破、淮军名声大振，但证据包已有梁书的说明：白齐文投敌后为李秀成购械，致苏州之役官军死于宝带桥者数百人。不补也不致误判降约本身，可酌情补一句代价。",
+    "quote": {
+     "source_id": "S-BK-LHZZ",
+     "quote": "以故蘇州之役，官軍死於寶帶橋者數百人。"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "阅读范围已覆盖苏州降约的完整结局：杀降、戈登息怒、梁启超的评判和常胜军继续合作，稿件都已交代。各条否定性来源说明均限定在本文的证据和核对范围内，属实，可保留，可在措辞上更明确“本文未引用”。只有白齐文易帅背景可选择补充。"
+ },
+ "claims": [
+  {
+   "id": "N1",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "这部书以李鸿章为中心，降将一方和戈登本人的说法都没有进入证据。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-LHZZ"
+   ],
+   "scope": "核查范围是本文证据包和梁书第四章苏州一节（偏移约14786–15548）。这一节只有梁启超的叙述和按语，没有转述降将或戈登本人的说法。本句说的是“没有进入证据”，范围准确。",
+   "quote": {
+    "source_id": "S-BK-LHZZ",
+    "quote": "至是聞鴻章之食言也，大怒，欲殺鴻章以償其罪"
+   },
+   "fix": "保留。",
+   "unit_status": {
+    "S-BK-LHZZ": "windows"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "neither the defectors' version nor Gordon's own account is among the evidence.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-LHZZ"
+   ],
+   "scope": "同 N1。",
+   "quote": {
+    "source_id": "S-BK-LHZZ",
+    "quote": "戈登爲之保人，故云官等不疑"
+   },
+   "fix": "保留。",
+   "unit_status": {
+    "S-BK-LHZZ": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "湖上订约时是“二品之赏”，城破后降将要求兑现的是“总兵副将等职”，本文无法判断两者的关系。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-LHZZ"
+   ],
+   "scope": "核查范围是梁书苏州一节阳澄湖订约至设宴诛杀各段。书中先后出现两种表述，没有说明二者的关系。",
+   "quote": {
+    "source_id": "S-BK-LHZZ",
+    "quote": "程學啟既許以總兵副將等職，至是求如約。"
+   },
+   "fix": "可以保留，并写明“梁书未说明二者关系”。如果要补“总兵为二品武职”一类背景，须另找来源，不要凭推测写入。",
+   "unit_status": {
+    "S-BK-LHZZ": "windows"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "十几万部众、一千多余党等数字，都取自这部书，本文未与其他记载核对。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-LHZZ"
+   ],
+   "scope": "本句说的是本文自己的核对范围，不是断言梁启超或当时没有其他人核查。数字见梁书苏州一节。",
+   "quote": {
+    "source_id": "S-BK-LHZZ",
+    "quote": "當時此八將所部兵在城中者尚十餘萬人"
+   },
+   "fix": "保留。不要改写成“当时无人核查”或“梁书数字未经核实”一类推论。",
+   "unit_status": {
+    "S-BK-LHZZ": "windows"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "The figures of more than a hundred thousand troops and more than a thousand followers killed are taken from this book and have not been checked against other records.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-LHZZ"
+   ],
+   "scope": "同 N4，指本文的核对范围。",
+   "quote": {
+    "source_id": "S-BK-LHZZ",
+    "quote": "並殺餘黨之強禦者千餘"
+   },
+   "fix": "保留。",
+   "unit_status": {
+    "S-BK-LHZZ": "windows"
+   }
+  },
+  {
+   "id": "N6",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "全文只依据梁启超《李鸿章传》一种记载，缺少降将一方和戈登本人的叙述；许诺内容的两种表述之间是什么关系不明，文中数字均取自这部书，未另行核对。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-LHZZ"
+   ],
+   "scope": "本文证据包及梁书苏州一节。“缺少”指本文证据，“未另行核对”指本文的工作范围。",
+   "quote": {
+    "source_id": "S-BK-LHZZ",
+    "quote": "使殺秀成、紹洸以獻，許以二品之賞"
+   },
+   "fix": "保留。可以把“缺少……叙述”改为“本文未引用……叙述”，避免读者误以为梁书或史上不存在这些叙述。",
+   "unit_status": {
+    "S-BK-LHZZ": "windows"
+   }
+  },
+  {
+   "id": "N7",
+   "path": "uncertainty_note",
+   "lang": "en",
+   "sentence": "lacks any narrative from the defectors or from Gordon himself ... have not been checked elsewhere.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-LHZZ"
+   ],
+   "scope": "同 N6。",
+   "quote": {
+    "source_id": "S-BK-LHZZ",
+    "quote": "使殺秀成、紹洸以獻，許以二品之賞"
+   },
+   "fix": "建议改为 \"does not draw on any narrative from…\"，范围更准确。",
+   "unit_status": {
+    "S-BK-LHZZ": "windows"
+   }
+  },
+  {
+   "id": "N8",
+   "path": "sections.analysis.1",
+   "lang": "zh",
+   "sentence": "书中写戈登是「聞」，本文据此推测，他是事后才听说这件事的。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-BK-LHZZ"
+   ],
+   "scope": "梁书苏州一节。这是本文的推断，并已标明是推测。书中“密謀”也与此相符。",
+   "quote": {
+    "source_id": "S-BK-LHZZ",
+    "quote": "乃與李鴻章密謀，設宴大饗彼等於坐艦"
+   },
+   "fix": "可补一句：梁书写的是程学启与李鸿章“密谋”，可作为辅证。",
+   "unit_status": {
+    "S-BK-LHZZ": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.context.2",
+   "problem": "稿件只写白齐文勒索、殴打杨坊。梁书还写到他暗中通款李秀成、谋据松江为内应，这是李鸿章撤换他的重要背景。省略后，撤换看起来只是因为抢钱。",
+   "quote": {
+    "source_id": "S-BK-LHZZ",
+    "quote": "時見官軍之窘蹙，乃竊通款於李秀成。十月，謀據松江城爲內應。"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.context.3",
+   "problem": "稿件写宝带桥等营垒相继攻破、淮军名声大振，但证据包已有梁书的说明：白齐文投敌后为李秀成购械，致苏州之役官军死于宝带桥者数百人。不补也不致误判降约本身，可酌情补一句代价。",
+   "quote": {
+    "source_id": "S-BK-LHZZ",
+    "quote": "以故蘇州之役，官軍死於寶帶橋者數百人。"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-BK-LHZZ",
+   "outcome": "郜云官等杀谭绍洸、开城投降后，程学启与李鸿章密谋设宴诛杀八名降将，苏州平定，李鸿章加太子少保。戈登作为保人大怒，持枪要找李鸿章，数日后怒气渐消才作罢。梁启超评论此举“有慚德”，列出三罪，同时承认李鸿章或有不得已之处。此后常胜军仍与淮军共同进攻常州。",
+   "quote": "先是八酋之降也，戈登實爲保人。至是聞鴻章之食言也，大怒，欲殺鴻章以償其罪，自攜短銃以覓之。鴻章避之，不敢歸營。數日後，怒漸解，乃止。",
+   "in_evidence": true
+  }
+ ],
+ "additions": [],
+ "additions_failed": [],
+ "evidence_sha256": "b43091ccc3e80ede76e62e73188bdcc4300b7735f126e1495ccc69accaf8e9f1",
+ "outcome": "clean",
+ "blocking": []
+}
