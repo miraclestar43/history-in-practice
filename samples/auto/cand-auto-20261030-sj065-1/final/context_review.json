@@ -3,8 +3,8 @@
  "schema": "context-review/v1",
  "mode": "article",
  "edition_id": "cand-auto-20261030-sj065-1",
- "content_sha256": "54253159fee7b2734bb5be514e77ea49fca24eb7184b8dc69f22381ad13a92fd",
- "evidence_in_sha256": "cb0f9060b5b618c4feb6ad31367759427008a42985053e6e0423978e057e2245",
+ "content_sha256": "21596dbaad4430897e866940c5e5aa69b66286c72fff9b1df9c12f5cc330c7f9",
+ "evidence_in_sha256": "91470ea7108dd602caf566f53a3cb6559c0c2fccf9bd92c36264370653cd6366",
  "reviewer": {
   "name": "Pi Claude",
   "role": "named final editor (source-context review)",
@@ -35,7 +35,7 @@
    "extra_cap": 0.3
   }
  },
- "started_at": 1793496347.991269,
+ "started_at": 1793502825.2970164,
  "flagged": [
   {
    "id": "A1",
@@ -69,23 +69,35 @@
   {
    "step": "context_r1",
    "attempt": 1,
-   "wall_s": 21.6,
+   "wall_s": 22.0,
    "json_ok": true,
    "schema_ok": true,
    "schema_problems": null,
    "killed": null,
    "provider_refusal": null,
-   "output_tokens": 2025
+   "prompts": [
+    {
+     "file": "context_review.md",
+     "sha256": "166543d1f6ca"
+    }
+   ],
+   "output_tokens": 2087
   }
  ],
- "finished_at": 1793496369.9076462,
+ "finished_at": 1793502847.6046894,
  "elapsed_min": 0.4,
  "review": {
   "episode": [
    {
     "source_id": "S-SJ065",
-    "outcome": "In Wei, Wu Qi feared punishment after the marquis lost trust in him and left for Chu. There he became chief minister. When King Dao died, the royal clan rose against Wu Qi and killed him, and some of their blows struck the king's body. The new king then had those men executed, and more than seventy families were exterminated. Sima Qian's closing verdict is that his harshness and lack of kindness cost him his life.",
+    "outcome": "吴起在楚国相悼王、变法强兵，招致贵戚怨恨；悼王死后宗室大臣作乱攻杀吴起，射刺吴起时也射中了王尸。太子即位后诛杀这些人，被灭族的有七十余家。司马迁在传末评论吴起在楚「刻暴少恩」以致丧命。",
     "quote": "悼王既葬，太子立，乃使令尹盡誅射吳起而并中王尸者。坐射起而夷宗死者七十餘家。",
+    "in_evidence": true
+   },
+   {
+    "source_id": "S-SJ065",
+    "outcome": "传末太史公曰对吴起作总评：他劝武侯「在德不在险」，自己在楚国却以刻暴少恩丧身。",
+    "quote": "吳起說武侯以形勢不如德，然行之於楚，以刻暴少恩亡其軀。悲夫！",
     "in_evidence": true
    }
   ],
@@ -100,36 +112,36 @@
     "source_ids": [
      "S-SJ065"
     ],
-    "scope": "《孫子吳起列傳》吳起部分，田文论功一段（全文已读）",
+    "scope": "《史記·孫子吳起列傳》吴起与田文论功一段（全文已读）",
     "quote": {
      "source_id": "S-SJ065",
      "quote": "起默然良久，曰：「屬之子矣。」"
     },
-    "fix": "This narrates what Wu Qi did; it is not a claim about what the source records. It matches the source and needs no change."
+    "fix": "无需修改。这句叙述人物沉默，有原文依据，不是关于来源有无记载的断言。"
    }
   ],
   "context_issues": [
    {
-    "path": "sections.story.1",
-    "problem": "The paragraph goes straight from 'Wu Qi served Marquis Wu' to Tian Wen becoming chief minister. It leaves out the river dialogue and Marquis Wu's response, recorded in between: 'Good', followed by Wu Qi being (re)appointed governor of Xihe with a great reputation. analysis.1 later says Wu Qi had told Marquis Wu that terrain counts for less than virtue, but the body of the article never narrates that episode. Readers lack the context. Suggest adding a sentence to story.1 that briefly tells the 'virtue, not terrain' exchange and its result.",
+    "path": "dek",
+    "problem": "导语只写田文承认功劳不如吴起，没有交代这场论功的收尾：吴起被「主少国疑」一问说服，自知不如田文。正文 story.2 已经写到这一点，所以不构成误导；如果篇幅允许，可在导语中稍作呼应。",
     "quote": {
      "source_id": "S-SJ065",
-     "quote": "若君不修德，舟中之人盡為敵國也。」武侯曰：「善。」（即封）吳起為西河守，甚有聲名。"
+     "quote": "吳起乃自知弗如田文。"
     },
     "severity": "note"
    },
    {
-    "path": "dek",
-    "problem": "The dek ends at 'the ruler grew suspicious and stopped trusting him'. It does not give the immediate outcome in the source: Wu Qi, fearing punishment, left Wei for Chu. The title asks why he left Wei, so the dek can add this half-sentence to close the event. This is not a factual error.",
+    "path": "sections.hook.0",
+    "problem": "按原文计策，顺序是公叔先向武侯进言许婚，再召吴起回家、让公主当面发怒；hook 先写发怒一幕，后写武侯许婚，容易让读者误以为事情的先后正是如此。story.4 已按原顺序交代，影响较小，可考虑在 hook 中避免暗示时间先后。",
     "quote": {
      "source_id": "S-SJ065",
-     "quote": "吳起懼得罪，遂去，即之楚。"
+     "quote": "君因先與武侯言曰"
     },
     "severity": "note"
    }
   ],
   "search": [],
-  "overall": "The source was read in full. The story's ending and key turns are already covered by the evidence pack, including the added E26–E28. The draft contains no negative source claims ('not recorded / no verification' and the like) that need correcting. The statements in limits and uncertainty_note are accurate. Two points are optional improvements: adding the 'virtue, not terrain' exchange to story.1, and adding Wu Qi's departure for Chu to the dek."
+  "overall": "全文已读。稿件对鲁国辞退、魏国论功、公叔设计、去魏之楚以及楚国结局的交代都与原文相符；待核断言 A1 是有据的人物叙述，不是来源断言。limits 与 uncertainty_note 只说明史源数量和人物评语的性质，没有否定性的来源断言，无需补摘录，只有两处可选的 note。"
  },
  "claims": [
   {
@@ -141,12 +153,12 @@
    "source_ids": [
     "S-SJ065"
    ],
-   "scope": "《孫子吳起列傳》吳起部分，田文论功一段（全文已读）",
+   "scope": "《史記·孫子吳起列傳》吴起与田文论功一段（全文已读）",
    "quote": {
     "source_id": "S-SJ065",
     "quote": "起默然良久，曰：「屬之子矣。」"
    },
-   "fix": "This narrates what Wu Qi did; it is not a claim about what the source records. It matches the source and needs no change.",
+   "fix": "无需修改。这句叙述人物沉默，有原文依据，不是关于来源有无记载的断言。",
    "unit_status": {
     "S-SJ065": "complete"
    }
@@ -154,20 +166,20 @@
  ],
  "context_issues": [
   {
-   "path": "sections.story.1",
-   "problem": "The paragraph goes straight from 'Wu Qi served Marquis Wu' to Tian Wen becoming chief minister. It leaves out the river dialogue and Marquis Wu's response, recorded in between: 'Good', followed by Wu Qi being (re)appointed governor of Xihe with a great reputation. analysis.1 later says Wu Qi had told Marquis Wu that terrain counts for less than virtue, but the body of the article never narrates that episode. Readers lack the context. Suggest adding a sentence to story.1 that briefly tells the 'virtue, not terrain' exchange and its result.",
+   "path": "dek",
+   "problem": "导语只写田文承认功劳不如吴起，没有交代这场论功的收尾：吴起被「主少国疑」一问说服，自知不如田文。正文 story.2 已经写到这一点，所以不构成误导；如果篇幅允许，可在导语中稍作呼应。",
    "quote": {
     "source_id": "S-SJ065",
-    "quote": "若君不修德，舟中之人盡為敵國也。」武侯曰：「善。」（即封）吳起為西河守，甚有聲名。"
+    "quote": "吳起乃自知弗如田文。"
    },
    "severity": "note"
   },
   {
-   "path": "dek",
-   "problem": "The dek ends at 'the ruler grew suspicious and stopped trusting him'. It does not give the immediate outcome in the source: Wu Qi, fearing punishment, left Wei for Chu. The title asks why he left Wei, so the dek can add this half-sentence to close the event. This is not a factual error.",
+   "path": "sections.hook.0",
+   "problem": "按原文计策，顺序是公叔先向武侯进言许婚，再召吴起回家、让公主当面发怒；hook 先写发怒一幕，后写武侯许婚，容易让读者误以为事情的先后正是如此。story.4 已按原顺序交代，影响较小，可考虑在 hook 中避免暗示时间先后。",
    "quote": {
     "source_id": "S-SJ065",
-    "quote": "吳起懼得罪，遂去，即之楚。"
+    "quote": "君因先與武侯言曰"
    },
    "severity": "note"
   }
@@ -175,14 +187,20 @@
  "episode": [
   {
    "source_id": "S-SJ065",
-   "outcome": "In Wei, Wu Qi feared punishment after the marquis lost trust in him and left for Chu. There he became chief minister. When King Dao died, the royal clan rose against Wu Qi and killed him, and some of their blows struck the king's body. The new king then had those men executed, and more than seventy families were exterminated. Sima Qian's closing verdict is that his harshness and lack of kindness cost him his life.",
+   "outcome": "吴起在楚国相悼王、变法强兵，招致贵戚怨恨；悼王死后宗室大臣作乱攻杀吴起，射刺吴起时也射中了王尸。太子即位后诛杀这些人，被灭族的有七十余家。司马迁在传末评论吴起在楚「刻暴少恩」以致丧命。",
    "quote": "悼王既葬，太子立，乃使令尹盡誅射吳起而并中王尸者。坐射起而夷宗死者七十餘家。",
+   "in_evidence": true
+  },
+  {
+   "source_id": "S-SJ065",
+   "outcome": "传末太史公曰对吴起作总评：他劝武侯「在德不在险」，自己在楚国却以刻暴少恩丧身。",
+   "quote": "吳起說武侯以形勢不如德，然行之於楚，以刻暴少恩亡其軀。悲夫！",
    "in_evidence": true
   }
  ],
  "additions": [],
  "additions_failed": [],
- "evidence_sha256": "cb0f9060b5b618c4feb6ad31367759427008a42985053e6e0423978e057e2245",
+ "evidence_sha256": "91470ea7108dd602caf566f53a3cb6559c0c2fccf9bd92c36264370653cd6366",
  "outcome": "clean",
  "blocking": []
 }

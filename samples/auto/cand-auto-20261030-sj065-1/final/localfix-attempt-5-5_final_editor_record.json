@@ -1,0 +1,2587 @@
+{
+ "record_type": "final_editor",
+ "schema": "final-editor/v1",
+ "candidate_id": "cand-auto-20261030-sj065-1",
+ "edition_id": "cand-auto-20261030-sj065-1",
+ "editor": {
+  "name": "Pi Claude",
+  "role": "named final editor",
+  "runtime": "official Claude Code CLI on raspberrypi51 (claude_cli.py)",
+  "auth": "claude.ai subscription (dedicated config)",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)",
+  "model_reported": "claude-opus-5-5"
+ },
+ "code_rev": "58a8a4b",
+ "started_at": 1793502077.8315144,
+ "base_source": "samples/auto/cand-auto-20261030-sj065-1/final/article.json",
+ "base_content_sha256": "45a84f22f9b254e63fef61b9755a1afb7812e7ea5bc8a4e09a86dcb65e567d3b",
+ "evidence_sha256": "cb0f9060b5b618c4feb6ad31367759427008a42985053e6e0423978e057e2245",
+ "operator_note": "owner-authorized whole-article revision rev3 (one attempt; 4 earlier attempts kept): owner request 2026-10-31 (prompt-level reader feedback): rev2 text unchanged as the base; the final editor applies prompts/reader_first_zh.md (same-title people, gradual introduction, dek/hook division, turning points) with its own audit/revise/verify",
+ "model_record_sha256": null,
+ "prior_record_sha256": "97da37f91adc6d83408d0d6ba18091934fb8cc0ac0cf2fd77cb5bc225f74efbd",
+ "attempt": "attempt-5",
+ "context_review_sha256": null,
+ "inherited": [],
+ "contamination": [
+  {
+   "id": "K1",
+   "brief_line": "注意：以下摘录的锚点未通过逐字核对，已删除；简报中引用它们的句子也已删除，不得写入相关内容：SJ0651-E9。",
+   "dropped_ids": [
+    "SJ0651-E9"
+   ]
+  }
+ ],
+ "issues": [
+  {
+   "id": "F1",
+   "path": "dek",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "摘要一次罗列吴起、田文、公叔三人，又预先讲完整套计策和结局（辞婚、国君起疑、不再信他）。这违反摘要只提出处境、不交代结局、不罗列人物的要求，也与 hook.0 重复同一套情节。",
+   "evidence": [
+    {
+     "id": "SJ0651-E20",
+     "quote": "果辭魏武侯。武侯疑之而弗信也"
+    }
+   ],
+   "proposed": "删去结局句。例如改为：「吴起替魏国守住西河，功劳连宰相都承认不如他。可一门婚事，却让他在魏国待不下去。」英文同步，删去 'Wu Qi declined the marriage, and the ruler grew suspicious and stopped trusting him.' 并删去田文、公叔的点名。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "摘要删去田文、公叔的点名，删去两步计策和辞婚、国君起疑的结局，只保留吴起守西河、功劳被宰相承认的处境和一门婚事让他待不下去的问题。英文同步改写。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F2",
+   "path": "sections.hook.0",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "开头先概述了全部经过和结局（辞婚、武侯起疑、吴起怕获罪去楚），再在 story 中倒回去讲，并与 dek 重复。读者在开头就知道了结果，关键转折失去悬念。",
+   "evidence": [
+    {
+     "id": "SJ0651-E20",
+     "quote": "吳起懼得罪，遂去，即之楚"
+    }
+   ],
+   "proposed": "hook.0 停在处境上：保留公叔妻子当面轻慢公叔、武侯要把一位公主许配给吴起这两点，删去「吴起见了公叔家这一幕，推辞了这门婚事。武侯从此怀疑他，不再信任他。吴起怕获罪，离开魏国，去了楚国。」英文同步删去对应句。这些内容 story.5 已有。",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "hook.0 只写到公叔妻子当面轻慢丈夫、武侯要许配公主为止，删去辞婚、武侯起疑、去楚三句，这些内容由 story.5 讲述。为区分两位公主，发脾气的一方改称“公叔的妻子”。中英同步。ev 改为对应现存内容的 E17、E18、E19。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F3",
+   "path": "sections.story.5",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "本文有两位公主：武侯要许配给吴起的那位，和公叔的妻子。此处只写「公主」「魏相」，英文写 'the princess' 'the chief minister of Wei'，读者在关键转折处难以分清是哪位公主、谁被轻贱。",
+   "evidence": [
+    {
+     "id": "SJ0651-E20",
+     "quote": "於是吳起見公主之賤魏相，果辭魏武侯"
+    }
+   ],
+   "proposed": "中文改为「吴起见公叔的妻子轻贱公叔，果然推辞了武侯许配公主的婚事」。英文改为 'Seeing Gongshu's wife scorn Gongshu, Wu Qi declined Marquis Wu's offer of a princess.'",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "关键转折处把“公主”“魏相”改为“公叔的妻子”“公叔”，把婚事写明为“武侯许配公主的婚事”。英文同步改写，并把 him 写明为 Wu Qi。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F4",
+   "path": "sections.story.4",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "英文 'have the princess he had married flare up and slight him in front of Wu Qi' 中的 him 有两个可能对象（公叔或吴起），而这正是计策的关键一步。",
+   "evidence": [
+    {
+     "id": "SJ0651-E19",
+     "quote": "即令公主怒而輕君"
+    }
+   ],
+   "proposed": "改为 'have his own wife, the princess, flare up and slight Gongshu in front of Wu Qi.'",
+   "origin": "final-editor audit",
+   "disposition": "fixed",
+   "rationale": "英文把有歧义的 slight him 改为 slight Gongshu，并写明发怒的是 his own wife, the princess。中文原文已写“轻慢公叔”，没有歧义，按同步规则照原样给出。",
+   "decided_in": "revise_r1"
+  },
+  {
+   "id": "F5",
+   "path": "sections.context.0",
+   "category": "readability",
+   "severity": "note",
+   "problem": "英文用 Wey（卫）和 Wei（魏）两个拼写相近的国名，英语读者容易混淆。",
+   "evidence": [],
+   "proposed": "首次出现时写 'the small state of Wey (distinct from Wei, where he later served)'，此后沿用。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F6",
+   "path": "uncertainty_note",
+   "category": "readability",
+   "severity": "note",
+   "problem": "uncertainty_note 与 limits.0 几乎逐句重复（单一史源、未必逐字、三条评语的出处、作者推断），不符合“宁短勿凑”。",
+   "evidence": [],
+   "proposed": "uncertainty_note 只保留一句：「本篇仅依据《史記·孫子吳起列傳》（维基文库本）；思考题场景为虚构。」其余内容由 limits.0 承担。",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "F7",
+   "path": "reflection.example.alternative",
+   "category": "readability",
+   "severity": "note",
+   "problem": "英文 'whether he means to stay' 中的 he 与本段以 you 为主语的写法不一致；中文是中性的「留不留心」。",
+   "evidence": [],
+   "proposed": "改为 'force the question of whether you mean to stay into an open negotiation.'",
+   "origin": "final-editor audit"
+  },
+  {
+   "id": "V1-V1",
+   "path": "sections.hook.1",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "hook.1 的设问几乎逐句重复 dek：都写“替魏国守住西河、宰相承认功劳不如他、一门婚事让他在魏国待不下去”。这违反“摘要与开头不重复同一套情节”的要求。dek 里的“当时的宰相”也容易被读成同在开头出场的公叔。",
+   "evidence": [
+    {
+     "id": "SJ0651-E19",
+     "quote": "吳起見公主之賤君也，則必辭"
+    }
+   ],
+   "proposed": "hook.1 第二句改为“公叔的仆人凭什么断定，一门婚事就能让吴起在魏国待不下去？”。英文改为 “What made the servant so sure that a single marriage offer could drive Wu Qi out of Wei?”。dek 不动；或将其中“当时的宰相”改为“前一任宰相”，以便与公叔区分。",
+   "origin": "final-editor verify round 1",
+   "disposition": "fixed",
+   "rationale": "hook.1 第二句原先重复了 dek 的情节：守西河、宰相承认功劳不如他、一门婚事让他待不下去。现在改为追问公叔的仆人为何敢断定这门婚事能逼走吴起，中英同步修改。新设问依据的是仆人原话，即吴起见公主轻贱丈夫就“必辞”。改后开头不再复述 dek，也不再让“前任宰相田文”和公叔在开头并列出场。dek 中的“当时的宰相”未改：开头已不再重复这层情节，dek 里也没有出现公叔，不会和公叔混淆。",
+   "decided_in": "revise_r2"
+  },
+  {
+   "id": "V2-V1",
+   "path": "dek",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "摘要说“当时的宰相”承认功劳不如吴起，紧接着开头介绍的宰相是公叔。读者容易以为认输的是公叔，实际上认输的是前一任宰相田文。前后两任宰相在开头分不清。",
+   "evidence": [
+    {
+     "id": "SJ0651-E12",
+     "quote": "文曰：「不如子。」"
+    },
+    {
+     "id": "SJ0651-E17",
+     "quote": "田文既死，公叔為相"
+    }
+   ],
+   "proposed": "中文改为“功劳连魏国前一任宰相都承认不如他”；英文改为“even Wei's previous chief minister admitted that his record was the greater”。",
+   "origin": "final-editor verify round 2",
+   "disposition": "fixed",
+   "decided_in": "localfix-attempt-5-5",
+   "rationale": "local fix: standing owner rule 2026-10-31: wording fixes with source quotes; tell the two chief ministers apart (田文 before 公叔) and name who reformed Chu"
+  },
+  {
+   "id": "V2-V2",
+   "path": "sections.story.6",
+   "category": "readability",
+   "severity": "fix",
+   "problem": "上一句的主语是楚悼王，下一句“他严明法令”和“He made the laws clear and strict”的“他／He”既可指悼王，也可指吴起。读者分不清是谁在推行改革。",
+   "evidence": [
+    {
+     "id": "SJ0651-E21",
+     "quote": "至則相楚。明法審令"
+    }
+   ],
+   "proposed": "中文改为“吴起严明法令”；英文改为“Wu Qi made the laws clear and strict”。",
+   "origin": "final-editor verify round 2",
+   "disposition": "fixed",
+   "decided_in": "localfix-attempt-5-5",
+   "rationale": "local fix: standing owner rule 2026-10-31: wording fixes with source quotes; tell the two chief ministers apart (田文 before 公叔) and name who reformed Chu"
+  },
+  {
+   "id": "V3-V1",
+   "path": "sections.hook.0",
+   "category": "facts",
+   "severity": "fix",
+   "problem": "hook.0 把公主当面轻慢公叔写成已经发生的事；hook.1 说这场脾气和这门婚事“都是公叔按计策安排的”，也就是计策真的执行了。标注的证据 E17–E19 只是仆人的设想（“即令公主怒而輕君”“則必辭”）。证明计策确已执行、吴起确实看到这一幕的是 E20，但两段的 ev 都没有列入 E20。正文内容本身有证据支持，问题在于证据标注不全。",
+   "evidence": [
+    {
+     "id": "SJ0651-E19",
+     "quote": "君因召吳起而與歸，即令公主怒而輕君"
+    },
+    {
+     "id": "SJ0651-E20",
+     "quote": "於是吳起見公主之賤魏相，果辭魏武侯"
+    }
+   ],
+   "proposed": "在 sections.hook.0 和 sections.hook.1 的 ev 中补入 SJ0651-E20，正文不改。",
+   "origin": "final-editor verify after local fix (round 3)"
+  },
+  {
+   "id": "V3-V4",
+   "path": "sections.story.1",
+   "category": "chronology",
+   "severity": "fix",
+   "problem": "稿件把三件事的顺序写成“统领三军→镇守西河→治理百官”，并在“治理百官”之后写“三件比完”。证据包里 E13（守西河）与 E14（“此三者”）编号相连。据《史记》原文，三问的顺序是：将三军、治百官（亲万民、实府库）、守西河，守西河这一问紧接“此三者”。稿件把后两问的次序颠倒了。",
+   "evidence": [
+    {
+     "id": "SJ0651-E13",
+     "quote": "守西河而秦兵不敢東鄉，韓趙賓從，子孰與起？"
+    },
+    {
+     "id": "SJ0651-E14",
+     "quote": "此三者，子皆出吾下，而位加吾上，何也？"
+    },
+    {
+     "id": "SJ0651-E28",
+     "quote": "治百官，親萬民，實府庫，子孰與起？"
+    }
+   ],
+   "proposed": "把“治理百官、亲近百姓、充实国库……田文还是说不如你”移到第二问，“镇守西河……田文仍说不如你”放在第三问，紧接“三件比完”。英文同步调序。",
+   "origin": "final-editor verify after local fix (round 3)"
+  },
+  {
+   "id": "V3-V8",
+   "path": "uncertainty_note",
+   "category": "attribution",
+   "severity": "fix",
+   "problem": "中文把三条评语统称为“当事人的评价”。李克是文侯问询的对象，不是事件当事人，这个称呼不准确；英文作 the speakers' own judgments，中英也不一致。",
+   "evidence": [
+    {
+     "id": "SJ0651-E4",
+     "quote": "文侯問李克曰：「吳起何如人哉？」"
+    }
+   ],
+   "proposed": "把“这些是当事人的评价”改为“这些是说话人各自的评价”，与英文一致。",
+   "origin": "final-editor verify after local fix (round 3)"
+  }
+ ],
+ "edits": [
+  {
+   "path": "dek.zh",
+   "before": "吴起替魏国守住西河，连当时的宰相田文都承认功劳不如他。后来的魏相公叔忌恨他，想把他赶走，设了一个两步的局：先劝国君把公主许配给吴起，再请吴起到家里，看自己的公主妻子当面轻慢自己。吴起辞了婚，国君起了疑心，不再信他。",
+   "after": "吴起替魏国守住西河，功劳连当时的宰相都承认不如他。可一门婚事，却让他在魏国待不下去。",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "dek.en",
+   "before": "Wu Qi held Wei's western frontier at Xihe, and even Tian Wen, chief minister at the time, admitted that his record was the greater. A later chief minister, Gongshu, resented him and wanted to drive him out, so he laid a two-step trap: persuade the ruler to offer Wu Qi a princess in marriage, then bring Wu Qi home to watch Gongshu's own wife, a princess, treat her husband with contempt. Wu Qi declined the marriage, and the ruler grew suspicious and stopped trusting him.",
+   "after": "Wu Qi held Wei's western frontier at Xihe, and even the chief minister of the day admitted that his record was the greater. Yet a single marriage offer left him unable to stay in Wei.",
+   "issues": [
+    "F1"
+   ]
+  },
+  {
+   "path": "sections.hook.0.zh",
+   "before": "魏国宰相公叔的妻子，是魏国的一位公主。一天，公叔请大将吴起一同回家；当着吴起的面，公主发起脾气，对自己的丈夫很不客气。国君魏武侯要把一位公主许配给吴起，吴起见了公叔家这一幕，推辞了这门婚事。武侯从此怀疑他，不再信任他。吴起怕获罪，离开魏国，去了楚国。",
+   "after": "魏国宰相公叔的妻子，是魏国的一位公主。一天，公叔请大将吴起一同回家；当着吴起的面，公叔的妻子发起脾气，对自己的丈夫很不客气。国君魏武侯要把一位公主许配给吴起。",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.hook.0.en",
+   "before": "The wife of Gongshu, chief minister of the state of Wei, was a princess of Wei. One day Gongshu brought the general Wu Qi home with him, and in front of their guest the princess flew into a temper and treated her husband with contempt. Marquis Wu, the ruler of Wei, wanted to give Wu Qi a princess in marriage; having seen that scene in Gongshu's house, Wu Qi declined. From then on the marquis suspected him and no longer trusted him. Afraid of being punished, Wu Qi left Wei for the state of Chu.",
+   "after": "The wife of Gongshu, chief minister of the state of Wei, was a princess of Wei. One day Gongshu brought the general Wu Qi home with him, and in front of their guest Gongshu's wife flew into a temper and treated her husband with contempt. Marquis Wu, the ruler of Wei, wanted to give Wu Qi a princess in marriage.",
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.hook.0.ev",
+   "before": [
+    "SJ0651-E17",
+    "SJ0651-E19",
+    "SJ0651-E20"
+   ],
+   "after": [
+    "SJ0651-E17",
+    "SJ0651-E18",
+    "SJ0651-E19"
+   ],
+   "issues": [
+    "F2"
+   ]
+  },
+  {
+   "path": "sections.story.5.zh",
+   "before": "事情一如仆人所料。吴起见公主轻贱魏相，果然推辞了武侯的婚事。武侯「疑之而弗信」，从此怀疑他，不再信任他。吴起怕获罪，就离开魏国，去了楚国。",
+   "after": "事情一如仆人所料。吴起见公叔的妻子轻贱公叔，果然推辞了武侯许配公主的婚事。武侯「疑之而弗信」，从此怀疑吴起，不再信任他。吴起怕获罪，就离开魏国，去了楚国。",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.story.5.en",
+   "before": "It went exactly as the servant had foretold. Seeing the princess scorn the chief minister of Wei, Wu Qi declined Marquis Wu's offer. The marquis grew suspicious and no longer trusted him. Afraid of being punished, Wu Qi left Wei and went to Chu.",
+   "after": "It went exactly as the servant had foretold. Seeing Gongshu's wife scorn Gongshu, Wu Qi declined Marquis Wu's offer of a princess. The marquis grew suspicious of Wu Qi and no longer trusted him. Afraid of being punished, Wu Qi left Wei and went to Chu.",
+   "issues": [
+    "F3"
+   ]
+  },
+  {
+   "path": "sections.story.4.en",
+   "before": "The servant's plan: in step one, Gongshu would tell Marquis Wu that Wu Qi was a man of worth, but that the marquis's state was small and bordered on mighty Qin, and he privately feared Wu Qi had no mind to stay. In the servant's script, the marquis would ask what to do. Gongshu would then propose testing Wu Qi with the offer of a princess: if he meant to stay he would surely accept, and if not he would surely decline, so the offer would serve as a divination of his intentions. In step two, Gongshu would then invite Wu Qi home and have the princess he had married flare up and slight him in front of Wu Qi. Seeing a princess treat her husband with such contempt, the servant predicted, Wu Qi would surely turn the marriage down.",
+   "after": "The servant's plan: in step one, Gongshu would tell Marquis Wu that Wu Qi was a man of worth, but that the marquis's state was small and bordered on mighty Qin, and he privately feared Wu Qi had no mind to stay. In the servant's script, the marquis would ask what to do. Gongshu would then propose testing Wu Qi with the offer of a princess: if he meant to stay he would surely accept, and if not he would surely decline, so the offer would serve as a divination of his intentions. In step two, Gongshu would then invite Wu Qi home and have his own wife, the princess, flare up and slight Gongshu in front of Wu Qi. Seeing a princess treat her husband with such contempt, the servant predicted, Wu Qi would surely turn the marriage down.",
+   "issues": [
+    "F4"
+   ]
+  },
+  {
+   "path": "sections.hook.1.zh",
+   "before": "那场脾气和那门婚事都不是巧合，而是公叔按照自家仆人的计策一手安排的。一位替魏国守住西河、连公叔的前任宰相田文都承认功劳不如他的将军，为什么一门婚事就让他在魏国待不下去？",
+   "after": "那场脾气和那门婚事都不是巧合，而是公叔按照自家仆人的计策一手安排的。公叔的仆人凭什么断定，一门婚事就能让吴起在魏国待不下去？",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "sections.hook.1.en",
+   "before": "Neither the temper nor the marriage offer was an accident: both were arranged by Gongshu, following a plan from one of his own servants. How could a single marriage offer drive out a general who had held Wei's western frontier, and whose record even Tian Wen, the chief minister before Gongshu, admitted was greater than his own?",
+   "after": "Neither the temper nor the marriage offer was an accident: both were arranged by Gongshu, following a plan from one of his own servants. What made the servant so sure that a single marriage offer could drive Wu Qi out of Wei?",
+   "issues": [
+    "V1-V1"
+   ]
+  },
+  {
+   "path": "dek.zh",
+   "before": "吴起替魏国守住西河，功劳连当时的宰相都承认不如他。可一门婚事，却让他在魏国待不下去。",
+   "after": "吴起替魏国守住西河，功劳连魏国的前一任宰相都承认不如他。可一门婚事，却让他在魏国待不下去。",
+   "issues": [
+    "V2-V1",
+    "V2-V2"
+   ]
+  },
+  {
+   "path": "dek.en",
+   "before": "Wu Qi held Wei's western frontier at Xihe, and even the chief minister of the day admitted that his record was the greater. Yet a single marriage offer left him unable to stay in Wei.",
+   "after": "Wu Qi held Wei's western frontier at Xihe, and even Wei's previous chief minister admitted that his record was the greater. Yet a single marriage offer left him unable to stay in Wei.",
+   "issues": [
+    "V2-V1",
+    "V2-V2"
+   ]
+  },
+  {
+   "path": "sections.story.6.zh",
+   "before": "在楚国，楚悼王早就听说他贤能，让他做了宰相。他严明法令，裁掉不急需的官员，罢免与王室血缘疏远的公族，集中力量强兵，楚国强盛起来，各国都忧虑楚国的强大。史书写道，因此楚国的贵戚都想害他。悼王一死，王族大臣作乱，攻击吴起；吴起跑到悼王遗体处，伏在遗体上，攻击他的人又射又刺吴起，也击中了悼王的遗体。悼王下葬、太子即位后，下令把射吴起时也射中了王尸的人全部处死，因此被灭族的有七十多家。",
+   "after": "在楚国，楚悼王早就听说他贤能，让吴起做了宰相。吴起严明法令，裁掉不急需的官员，罢免与王室血缘疏远的公族，集中力量强兵，楚国强盛起来，各国都忧虑楚国的强大。史书写道，因此楚国的贵戚都想害他。悼王一死，王族大臣作乱，攻击吴起；吴起跑到悼王遗体处，伏在遗体上，攻击他的人又射又刺吴起，也击中了悼王的遗体。悼王下葬、太子即位后，下令把射吴起时也射中了王尸的人全部处死，因此被灭族的有七十多家。",
+   "issues": [
+    "V2-V1",
+    "V2-V2"
+   ]
+  },
+  {
+   "path": "sections.story.6.en",
+   "before": "In Chu, King Dao, who had long heard of his ability, made him chief minister. He made the laws clear and strict, cut offices that were not needed, dismissed royal kinsmen of distant blood, and put the state's strength into its army; Chu grew strong, and the other states feared its power. For this reason, the history says, Chu's nobles all wanted him dead. When King Dao died, members of the royal clan rose up and attacked Wu Qi. He ran to the king's body and threw himself on it; his attackers shot and stabbed him, and struck the king's body too. After King Dao was buried and the crown prince came to the throne, he had everyone who had shot at Wu Qi and also struck the king's body put to death, and more than seventy families were wiped out for it.",
+   "after": "In Chu, King Dao, who had long heard of his ability, made Wu Qi chief minister. Wu Qi made the laws clear and strict, cut offices that were not needed, dismissed royal kinsmen of distant blood, and put the state's strength into its army; Chu grew strong, and the other states feared its power. For this reason, the history says, Chu's nobles all wanted him dead. When King Dao died, members of the royal clan rose up and attacked Wu Qi. He ran to the king's body and threw himself on it; his attackers shot and stabbed him, and struck the king's body too. After King Dao was buried and the crown prince came to the throne, the new king had everyone who had shot at Wu Qi and also struck the king's body put to death, and more than seventy families were wiped out for it.",
+   "issues": [
+    "V2-V1",
+    "V2-V2"
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "issues_in": [
+    "F1",
+    "F2",
+    "F3",
+    "F4"
+   ],
+   "changes_applied": 8,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [],
+   "content_sha256_after": "56384fdc080b89cfc3c2b2e1ce8c6c0617eb733a2f1c5b347c8b0c9e9a8b122a",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V6"
+      ]
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.1",
+      "category": "readability",
+      "severity": "fix",
+      "problem": "hook.1 的设问几乎逐句重复 dek：都写“替魏国守住西河、宰相承认功劳不如他、一门婚事让他在魏国待不下去”。这违反“摘要与开头不重复同一套情节”的要求。dek 里的“当时的宰相”也容易被读成同在开头出场的公叔。",
+      "evidence": [
+       {
+        "id": "SJ0651-E19",
+        "quote": "吳起見公主之賤君也，則必辭"
+       }
+      ],
+      "proposed": "hook.1 第二句改为“公叔的仆人凭什么断定，一门婚事就能让吴起在魏国待不下去？”。英文改为 “What made the servant so sure that a single marriage offer could drive Wu Qi out of Wei?”。dek 不动；或将其中“当时的宰相”改为“前一任宰相”，以便与公叔区分。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.context.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "进言者翻出的旧事较长：杀乡人三十余、啮臂盟誓、母死不归、曾子绝交。这些属于早年经历，对“婚事为何能试出去意”的主线帮助有限，会拖慢开头。",
+      "evidence": [
+       {
+        "id": "SJ0651-E3",
+        "quote": "吳起殺其謗己者三十餘人"
+       }
+      ],
+      "proposed": "可酌情压缩为“这人翻出他早年杀人离乡、母死不归的旧事”，保留“猜忍”评语、鲁国小国与鲁卫兄弟之国的算计，以及鲁君辞退吴起。中英同步修改。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.story.4",
+      "category": "readability",
+      "severity": "note",
+      "problem": "中文“拿把公主许配给吴起来试探他”是病句。这里的“公主”又紧接在公叔妻子之前出现，读者可能以为两位公主是同一人。",
+      "evidence": [
+       {
+        "id": "SJ0651-E18",
+        "quote": "試延以公主"
+       }
+      ],
+      "proposed": "改为“也就是把一位公主许配给吴起，借此试探他”。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.story.6",
+      "category": "readability",
+      "severity": "note",
+      "problem": "楚国结局写得较细：伏王尸、射中王尸、太子诛杀七十余家。主线只需要交代吴起在楚国变法招怨、最终被杀，以便 analysis.1 的评语成立。其余细节属于后来结局，读者用不上。",
+      "evidence": [
+       {
+        "id": "SJ0651-E23",
+        "quote": "故楚之貴戚盡欲害吳起"
+       }
+      ],
+      "proposed": "可压缩为“史书写道，楚国贵戚因此都想害他；悼王一死，宗室大臣作乱，射杀了吴起。”。英文同步修改。属可选修改，不必加回其他内容。"
+     },
+     {
+      "id": "V5",
+      "path": "sections.limits.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "limits.0 与 uncertainty_note 内容几乎完全重复：单一史源、对话未必逐字、三条评语的出处、作者推断的标注。不符合“宁短勿凑”。",
+      "evidence": [],
+      "proposed": "二者保留其一的完整表述，另一处只写一句“本篇只依据《史記·孫子吳起列傳》，人物评语均为当事人所说”。"
+     },
+     {
+      "id": "V6",
+      "path": "reflection.example.alternative",
+      "category": "readability",
+      "severity": "note",
+      "problem": "英文前文一直对读者用 you，此处突然出现 “whether he means to stay”，指代对象不清。中文无此问题。",
+      "evidence": [],
+      "proposed": "改为 “force the question of whether you mean to stay into an open negotiation”。"
+     }
+    ],
+    "overall": "史实、引语和归属均有证据支持，没有事实类问题。需修正 hook.1 与 dek 的重复，其余为可选的易读性改进。",
+    "_content_sha256": "56384fdc080b89cfc3c2b2e1ce8c6c0617eb733a2f1c5b347c8b0c9e9a8b122a"
+   }
+  },
+  {
+   "round": 2,
+   "issues_in": [
+    "V1-V1"
+   ],
+   "changes_applied": 2,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [],
+   "content_sha256_after": "2d686c0ccb23460a1ec7b6dcc9e1ab1e0c73c0582ad8f0c01fe994d0dfcfbd36",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1"
+      ]
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V7"
+      ]
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V6"
+      ]
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "dek",
+      "category": "readability",
+      "severity": "fix",
+      "problem": "摘要说“当时的宰相”承认功劳不如吴起，紧接着开头介绍的宰相是公叔。读者容易以为认输的是公叔，实际上认输的是前一任宰相田文。前后两任宰相在开头分不清。",
+      "evidence": [
+       {
+        "id": "SJ0651-E12",
+        "quote": "文曰：「不如子。」"
+       },
+       {
+        "id": "SJ0651-E17",
+        "quote": "田文既死，公叔為相"
+       }
+      ],
+      "proposed": "中文改为“功劳连魏国前一任宰相都承认不如他”；英文改为“even Wei's previous chief minister admitted that his record was the greater”。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.story.6",
+      "category": "readability",
+      "severity": "fix",
+      "problem": "上一句的主语是楚悼王，下一句“他严明法令”和“He made the laws clear and strict”的“他／He”既可指悼王，也可指吴起。读者分不清是谁在推行改革。",
+      "evidence": [
+       {
+        "id": "SJ0651-E21",
+        "quote": "至則相楚。明法審令"
+       }
+      ],
+      "proposed": "中文改为“吴起严明法令”；英文改为“Wu Qi made the laws clear and strict”。"
+     },
+     {
+      "id": "V3",
+      "path": "sections.context.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "进言者翻出的旧事列得很全：家产败光、杀三十多人、啮臂发誓、母死不归、曾子绝交。这些对理解吴起在魏国的遭遇用处不大，让开头偏重。",
+      "evidence": [
+       {
+        "id": "SJ0651-E3",
+        "quote": "吳起殺其謗己者三十餘人"
+       }
+      ],
+      "proposed": "可以压缩旧事清单，只保留“猜忍”的评价和替鲁君算的那笔账。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.analysis.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "句首已经写明“司马迁在传末评论说”，末句“这是司马迁的评语／That is Sima Qian's own verdict”重复了出处，读起来像审核说明。",
+      "evidence": [
+       {
+        "id": "SJ0651-E25",
+        "quote": "以刻暴少恩亡其軀。悲夫！"
+       }
+      ],
+      "proposed": "中英文都删去末句。"
+     },
+     {
+      "id": "V5",
+      "path": "sections.limits.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "limits.0 与 uncertainty_note 的内容几乎逐句重复：单一史源、对话未必逐字、三条评语的出处、作者推断。不符合“宁短勿凑”。",
+      "evidence": [],
+      "proposed": "保留其中一处的完整说明，另一处压缩为一句。"
+     },
+     {
+      "id": "V6",
+      "path": "reflection.example.alternative",
+      "category": "readability",
+      "severity": "note",
+      "problem": "英文前半句用 you，后半句“whether he means to stay”改用 he，人称前后不一致。",
+      "evidence": [],
+      "proposed": "英文改为“whether you mean to stay”。"
+     },
+     {
+      "id": "V7",
+      "path": "sections.story.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "“司马穰苴／Sima Rangju”没有交代身份，不了解背景的读者看不出这个比较的分量。",
+      "evidence": [
+       {
+        "id": "SJ0651-E4",
+        "quote": "用兵司馬穰苴不能過也"
+       }
+      ],
+      "proposed": "中文加“齐国名将”，英文加“the famed Qi general”。"
+     }
+    ],
+    "overall": "事实、引文和归属都有证据支持，推断也已标明；需要修改两处易读性问题：摘要里两任宰相容易混淆，楚国一段中“他”的指代不清。其余为文风和易读性建议。",
+    "_content_sha256": "2d686c0ccb23460a1ec7b6dcc9e1ab1e0c73c0582ad8f0c01fe994d0dfcfbd36"
+   }
+  },
+  {
+   "round": 3,
+   "local_fix": {
+    "by": "operator (owner rule 2026-10-31: small evidence-backed fixes)",
+    "reason": "standing owner rule 2026-10-31: wording fixes with source quotes; tell the two chief ministers apart (田文 before 公叔) and name who reformed Chu",
+    "issues": [
+     "V2-V1",
+     "V2-V2"
+    ],
+    "rejected": [],
+    "pack_corrected": null,
+    "at": 1793502412.192898,
+    "dir": "localfix-attempt-5-5"
+   },
+   "issues_in": [
+    "V2-V1",
+    "V2-V2"
+   ],
+   "changes_applied": 4,
+   "changes_failed": [],
+   "still_open": [],
+   "checker_after": [],
+   "content_sha256_after": "45ce485ee26897990cefad4b75474c8b865d5a82ee84d121b2794755843dbe8d",
+   "verify": {
+    "fields": [
+     {
+      "path": "title",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "dek",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.hook.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V1",
+       "V2"
+      ]
+     },
+     {
+      "path": "sections.hook.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V3"
+      ]
+     },
+     {
+      "path": "sections.context.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.context.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V5"
+      ]
+     },
+     {
+      "path": "sections.story.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V4"
+      ]
+     },
+     {
+      "path": "sections.story.2",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.3",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.4",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V6"
+      ]
+     },
+     {
+      "path": "sections.story.5",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.story.6",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.analysis.1",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V7"
+      ]
+     },
+     {
+      "path": "sections.limits.heading",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "sections.limits.0",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V9"
+      ]
+     },
+     {
+      "path": "reflection.scenario",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.question",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.assumptions",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V10"
+      ]
+     },
+     {
+      "path": "reflection.example.steps",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": []
+     },
+     {
+      "path": "reflection.example.alternative",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V11"
+      ]
+     },
+     {
+      "path": "uncertainty_note",
+      "checked": [
+       "facts",
+       "attribution",
+       "chronology",
+       "causality",
+       "quotes",
+       "inner_life",
+       "interpretation_label",
+       "parity"
+      ],
+      "issue_ids": [
+       "V8"
+      ]
+     }
+    ],
+    "issues": [
+     {
+      "id": "V1",
+      "path": "sections.hook.0",
+      "category": "facts",
+      "severity": "fix",
+      "problem": "hook.0 把公主当面轻慢公叔写成已经发生的事；hook.1 说这场脾气和这门婚事“都是公叔按计策安排的”，也就是计策真的执行了。标注的证据 E17–E19 只是仆人的设想（“即令公主怒而輕君”“則必辭”）。证明计策确已执行、吴起确实看到这一幕的是 E20，但两段的 ev 都没有列入 E20。正文内容本身有证据支持，问题在于证据标注不全。",
+      "evidence": [
+       {
+        "id": "SJ0651-E19",
+        "quote": "君因召吳起而與歸，即令公主怒而輕君"
+       },
+       {
+        "id": "SJ0651-E20",
+        "quote": "於是吳起見公主之賤魏相，果辭魏武侯"
+       }
+      ],
+      "proposed": "在 sections.hook.0 和 sections.hook.1 的 ev 中补入 SJ0651-E20，正文不改。"
+     },
+     {
+      "id": "V2",
+      "path": "sections.hook.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "开头同时出现两位公主：先写“魏国的一位公主”（公叔的妻子），紧接着写“要把一位公主许配给吴起”。读者可能一时分不清这是不是同一人。英文 a princess of Wei / a princess 也有同样问题。",
+      "evidence": [
+       {
+        "id": "SJ0651-E18",
+        "quote": "試延以公主"
+       },
+       {
+        "id": "SJ0651-E17",
+        "quote": "公叔為相，尚魏公主"
+       }
+      ],
+      "proposed": "末句改为“国君魏武侯要把另一位公主许配给吴起。”英文改为 \"wanted to give Wu Qi another princess in marriage.\""
+     },
+     {
+      "id": "V3",
+      "path": "sections.hook.1",
+      "category": "readability",
+      "severity": "note",
+      "problem": "hook.1 的“一门婚事就能让吴起在魏国待不下去”和摘要“一门婚事，却让他在魏国待不下去”几乎同句，摘要与开头重复了同一个落点。",
+      "evidence": [],
+      "proposed": "hook.1 末句改为聚焦机制的问法，例如“公叔的仆人凭什么断定，吴起一定会推辞这门婚事，而推辞又一定会被看成要走？”英文相应调整。"
+     },
+     {
+      "id": "V4",
+      "path": "sections.story.1",
+      "category": "chronology",
+      "severity": "fix",
+      "problem": "稿件把三件事的顺序写成“统领三军→镇守西河→治理百官”，并在“治理百官”之后写“三件比完”。证据包里 E13（守西河）与 E14（“此三者”）编号相连。据《史记》原文，三问的顺序是：将三军、治百官（亲万民、实府库）、守西河，守西河这一问紧接“此三者”。稿件把后两问的次序颠倒了。",
+      "evidence": [
+       {
+        "id": "SJ0651-E13",
+        "quote": "守西河而秦兵不敢東鄉，韓趙賓從，子孰與起？"
+       },
+       {
+        "id": "SJ0651-E14",
+        "quote": "此三者，子皆出吾下，而位加吾上，何也？"
+       },
+       {
+        "id": "SJ0651-E28",
+        "quote": "治百官，親萬民，實府庫，子孰與起？"
+       }
+      ],
+      "proposed": "把“治理百官、亲近百姓、充实国库……田文还是说不如你”移到第二问，“镇守西河……田文仍说不如你”放在第三问，紧接“三件比完”。英文同步调序。"
+     },
+     {
+      "id": "V5",
+      "path": "sections.story.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "李克评语里的“司马穰苴”对一般读者是陌生人名，读者不知道这个比较有多重的分量。",
+      "evidence": [
+       {
+        "id": "SJ0651-E4",
+        "quote": "然用兵司馬穰苴不能過也"
+       }
+      ],
+      "proposed": "可在白话释义处加四五个字的身份说明，例如“连以善于用兵著称的司马穰苴也超不过他”。英文相应补 \"the celebrated general Sima Rangju\"。不另加生平。"
+     },
+     {
+      "id": "V6",
+      "path": "sections.story.4",
+      "category": "style",
+      "severity": "note",
+      "problem": "“拿把公主许配给吴起来试探他”中“拿把”连用，句子不通顺。",
+      "evidence": [],
+      "proposed": "改为“用把公主许配给吴起这件事来试探他”。"
+     },
+     {
+      "id": "V7",
+      "path": "sections.analysis.1",
+      "category": "style",
+      "severity": "note",
+      "problem": "段首已写“司马迁在传末评论说”，段末又补一句“这是司马迁的评语”，重复标注，读起来像审核说明。",
+      "evidence": [
+       {
+        "id": "SJ0651-E25",
+        "quote": "以刻暴少恩亡其軀"
+       }
+      ],
+      "proposed": "删去末句“这是司马迁的评语。”及英文 \"That is Sima Qian's own verdict.\""
+     },
+     {
+      "id": "V8",
+      "path": "uncertainty_note",
+      "category": "attribution",
+      "severity": "fix",
+      "problem": "中文把三条评语统称为“当事人的评价”。李克是文侯问询的对象，不是事件当事人，这个称呼不准确；英文作 the speakers' own judgments，中英也不一致。",
+      "evidence": [
+       {
+        "id": "SJ0651-E4",
+        "quote": "文侯問李克曰：「吳起何如人哉？」"
+       }
+      ],
+      "proposed": "把“这些是当事人的评价”改为“这些是说话人各自的评价”，与英文一致。"
+     },
+     {
+      "id": "V9",
+      "path": "sections.limits.0",
+      "category": "readability",
+      "severity": "note",
+      "problem": "limits.0 与 uncertainty_note 内容几乎逐句重复（单一史源、对话未必逐字、三条评语出处、作者推断），不符合“宁短勿凑”。",
+      "evidence": [],
+      "proposed": "二者保留其一的完整表述，另一处压缩为一句，例如 limits.0 只留“本篇只依据《史記·孫子吳起列傳》；文中对话是史书的叙述，未必逐字。”英文同步。"
+     },
+     {
+      "id": "V10",
+      "path": "reflection.example.assumptions",
+      "category": "style",
+      "severity": "note",
+      "problem": "第二条“试探已经执行，且不止一次的可能”语法残缺。",
+      "evidence": [],
+      "proposed": "改为“试探已经执行过，而且可能不止一次”。"
+     },
+     {
+      "id": "V11",
+      "path": "reflection.example.alternative",
+      "category": "readability",
+      "severity": "note",
+      "problem": "英文 \"whether he means to stay\" 中的 he 没有明确指代。此节其余部分用第二人称 you，中文作“对方把‘留不留心’的判断”，英文此处读者会不知道 he 是谁。",
+      "evidence": [],
+      "proposed": "改为 \"force the question of whether you mean to stay into an open negotiation\"。"
+     }
+    ],
+    "overall": "引语逐字无误，因果与评价归属基本清楚，开头也能让读者明白处境；但三问次序颠倒（V4）、开头两段证据标注缺 E20（V1）、不确定性说明误称“当事人”（V8）三处需修改后方可定稿，其余为文风与易读性建议。",
+    "_content_sha256": "45ce485ee26897990cefad4b75474c8b865d5a82ee84d121b2794755843dbe8d"
+   }
+  }
+ ],
+ "audit": {
+  "fields": [
+   {
+    "path": "title",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "dek",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F1"
+    ]
+   },
+   {
+    "path": "sections.hook.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.hook.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F2"
+    ]
+   },
+   {
+    "path": "sections.hook.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.context.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F5"
+    ]
+   },
+   {
+    "path": "sections.context.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.2",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.3",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.story.4",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F4"
+    ]
+   },
+   {
+    "path": "sections.story.5",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F3"
+    ]
+   },
+   {
+    "path": "sections.story.6",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.analysis.1",
+    "checked": [
+     "facts",
+     "attribution",
+     "chronology",
+     "causality",
+     "quotes",
+     "inner_life",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.heading",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "sections.limits.0",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.scenario",
+    "checked": [
+     "facts",
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.question",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.assumptions",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.steps",
+    "checked": [
+     "parity"
+    ],
+    "issue_ids": []
+   },
+   {
+    "path": "reflection.example.alternative",
+    "checked": [
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F7"
+    ]
+   },
+   {
+    "path": "uncertainty_note",
+    "checked": [
+     "facts",
+     "attribution",
+     "quotes",
+     "interpretation_label",
+     "parity"
+    ],
+    "issue_ids": [
+     "F6"
+    ]
+   }
+  ],
+  "issues": [
+   {
+    "id": "F1",
+    "path": "dek",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "摘要一次罗列吴起、田文、公叔三人，又预先讲完整套计策和结局（辞婚、国君起疑、不再信他）。这违反摘要只提出处境、不交代结局、不罗列人物的要求，也与 hook.0 重复同一套情节。",
+    "evidence": [
+     {
+      "id": "SJ0651-E20",
+      "quote": "果辭魏武侯。武侯疑之而弗信也"
+     }
+    ],
+    "proposed": "删去结局句。例如改为：「吴起替魏国守住西河，功劳连宰相都承认不如他。可一门婚事，却让他在魏国待不下去。」英文同步，删去 'Wu Qi declined the marriage, and the ruler grew suspicious and stopped trusting him.' 并删去田文、公叔的点名。"
+   },
+   {
+    "id": "F2",
+    "path": "sections.hook.0",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "开头先概述了全部经过和结局（辞婚、武侯起疑、吴起怕获罪去楚），再在 story 中倒回去讲，并与 dek 重复。读者在开头就知道了结果，关键转折失去悬念。",
+    "evidence": [
+     {
+      "id": "SJ0651-E20",
+      "quote": "吳起懼得罪，遂去，即之楚"
+     }
+    ],
+    "proposed": "hook.0 停在处境上：保留公叔妻子当面轻慢公叔、武侯要把一位公主许配给吴起这两点，删去「吴起见了公叔家这一幕，推辞了这门婚事。武侯从此怀疑他，不再信任他。吴起怕获罪，离开魏国，去了楚国。」英文同步删去对应句。这些内容 story.5 已有。"
+   },
+   {
+    "id": "F3",
+    "path": "sections.story.5",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "本文有两位公主：武侯要许配给吴起的那位，和公叔的妻子。此处只写「公主」「魏相」，英文写 'the princess' 'the chief minister of Wei'，读者在关键转折处难以分清是哪位公主、谁被轻贱。",
+    "evidence": [
+     {
+      "id": "SJ0651-E20",
+      "quote": "於是吳起見公主之賤魏相，果辭魏武侯"
+     }
+    ],
+    "proposed": "中文改为「吴起见公叔的妻子轻贱公叔，果然推辞了武侯许配公主的婚事」。英文改为 'Seeing Gongshu's wife scorn Gongshu, Wu Qi declined Marquis Wu's offer of a princess.'"
+   },
+   {
+    "id": "F4",
+    "path": "sections.story.4",
+    "category": "readability",
+    "severity": "fix",
+    "problem": "英文 'have the princess he had married flare up and slight him in front of Wu Qi' 中的 him 有两个可能对象（公叔或吴起），而这正是计策的关键一步。",
+    "evidence": [
+     {
+      "id": "SJ0651-E19",
+      "quote": "即令公主怒而輕君"
+     }
+    ],
+    "proposed": "改为 'have his own wife, the princess, flare up and slight Gongshu in front of Wu Qi.'"
+   },
+   {
+    "id": "F5",
+    "path": "sections.context.0",
+    "category": "readability",
+    "severity": "note",
+    "problem": "英文用 Wey（卫）和 Wei（魏）两个拼写相近的国名，英语读者容易混淆。",
+    "evidence": [],
+    "proposed": "首次出现时写 'the small state of Wey (distinct from Wei, where he later served)'，此后沿用。"
+   },
+   {
+    "id": "F6",
+    "path": "uncertainty_note",
+    "category": "readability",
+    "severity": "note",
+    "problem": "uncertainty_note 与 limits.0 几乎逐句重复（单一史源、未必逐字、三条评语的出处、作者推断），不符合“宁短勿凑”。",
+    "evidence": [],
+    "proposed": "uncertainty_note 只保留一句：「本篇仅依据《史記·孫子吳起列傳》（维基文库本）；思考题场景为虚构。」其余内容由 limits.0 承担。"
+   },
+   {
+    "id": "F7",
+    "path": "reflection.example.alternative",
+    "category": "readability",
+    "severity": "note",
+    "problem": "英文 'whether he means to stay' 中的 he 与本段以 you 为主语的写法不一致；中文是中性的「留不留心」。",
+    "evidence": [],
+    "proposed": "改为 'force the question of whether you mean to stay into an open negotiation.'"
+   }
+  ],
+  "inherited": []
+ },
+ "final_content_sha256": "45ce485ee26897990cefad4b75474c8b865d5a82ee84d121b2794755843dbe8d",
+ "open_issues": [
+  "V3-V1",
+  "V3-V4",
+  "V3-V8"
+ ],
+ "outcome": "pending_review",
+ "failure": null,
+ "finished_at": 1793502529.8603346,
+ "calls": [
+  {
+   "step": "verify_r3",
+   "attempt": 1,
+   "wall_s": 117.7,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "prompts": [
+    {
+     "file": "final_verify.md",
+     "sha256": "2a944e3ebd2a"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    }
+   ],
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15628,
+    "output_tokens": 12985
+   },
+   "cost_estimate_usd": 0.38473199999999996
+  }
+ ],
+ "elapsed_min": 7.5,
+ "model_wall_min": 2.0,
+ "local_fixes": [
+  {
+   "by": "operator (owner rule 2026-10-31: small evidence-backed fixes)",
+   "reason": "standing owner rule 2026-10-31: wording fixes with source quotes; tell the two chief ministers apart (田文 before 公叔) and name who reformed Chu",
+   "issues": [
+    "V2-V1",
+    "V2-V2"
+   ],
+   "rejected": [],
+   "pack_corrected": null,
+   "at": 1793502412.192898,
+   "dir": "localfix-attempt-5-5",
+   "edits": [
+    {
+     "path": "dek.zh",
+     "before": "吴起替魏国守住西河，功劳连当时的宰相都承认不如他。可一门婚事，却让他在魏国待不下去。",
+     "after": "吴起替魏国守住西河，功劳连魏国的前一任宰相都承认不如他。可一门婚事，却让他在魏国待不下去。",
+     "issues": [
+      "V2-V1",
+      "V2-V2"
+     ]
+    },
+    {
+     "path": "dek.en",
+     "before": "Wu Qi held Wei's western frontier at Xihe, and even the chief minister of the day admitted that his record was the greater. Yet a single marriage offer left him unable to stay in Wei.",
+     "after": "Wu Qi held Wei's western frontier at Xihe, and even Wei's previous chief minister admitted that his record was the greater. Yet a single marriage offer left him unable to stay in Wei.",
+     "issues": [
+      "V2-V1",
+      "V2-V2"
+     ]
+    },
+    {
+     "path": "sections.story.6.zh",
+     "before": "在楚国，楚悼王早就听说他贤能，让他做了宰相。他严明法令，裁掉不急需的官员，罢免与王室血缘疏远的公族，集中力量强兵，楚国强盛起来，各国都忧虑楚国的强大。史书写道，因此楚国的贵戚都想害他。悼王一死，王族大臣作乱，攻击吴起；吴起跑到悼王遗体处，伏在遗体上，攻击他的人又射又刺吴起，也击中了悼王的遗体。悼王下葬、太子即位后，下令把射吴起时也射中了王尸的人全部处死，因此被灭族的有七十多家。",
+     "after": "在楚国，楚悼王早就听说他贤能，让吴起做了宰相。吴起严明法令，裁掉不急需的官员，罢免与王室血缘疏远的公族，集中力量强兵，楚国强盛起来，各国都忧虑楚国的强大。史书写道，因此楚国的贵戚都想害他。悼王一死，王族大臣作乱，攻击吴起；吴起跑到悼王遗体处，伏在遗体上，攻击他的人又射又刺吴起，也击中了悼王的遗体。悼王下葬、太子即位后，下令把射吴起时也射中了王尸的人全部处死，因此被灭族的有七十多家。",
+     "issues": [
+      "V2-V1",
+      "V2-V2"
+     ]
+    },
+    {
+     "path": "sections.story.6.en",
+     "before": "In Chu, King Dao, who had long heard of his ability, made him chief minister. He made the laws clear and strict, cut offices that were not needed, dismissed royal kinsmen of distant blood, and put the state's strength into its army; Chu grew strong, and the other states feared its power. For this reason, the history says, Chu's nobles all wanted him dead. When King Dao died, members of the royal clan rose up and attacked Wu Qi. He ran to the king's body and threw himself on it; his attackers shot and stabbed him, and struck the king's body too. After King Dao was buried and the crown prince came to the throne, he had everyone who had shot at Wu Qi and also struck the king's body put to death, and more than seventy families were wiped out for it.",
+     "after": "In Chu, King Dao, who had long heard of his ability, made Wu Qi chief minister. Wu Qi made the laws clear and strict, cut offices that were not needed, dismissed royal kinsmen of distant blood, and put the state's strength into its army; Chu grew strong, and the other states feared its power. For this reason, the history says, Chu's nobles all wanted him dead. When King Dao died, members of the royal clan rose up and attacked Wu Qi. He ran to the king's body and threw himself on it; his attackers shot and stabbed him, and struck the king's body too. After King Dao was buried and the crown prince came to the throne, the new king had everyone who had shot at Wu Qi and also struck the king's body put to death, and more than seventy families were wiped out for it.",
+     "issues": [
+      "V2-V1",
+      "V2-V2"
+     ]
+    }
+   ]
+  }
+ ],
+ "calls_before_local_fix": [
+  {
+   "step": "audit",
+   "attempt": 1,
+   "wall_s": 93.9,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "prompts": [
+    {
+     "file": "final_audit.md",
+     "sha256": "eb2d48e03e23"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    }
+   ],
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16689,
+    "output_tokens": 10209
+   },
+   "cost_estimate_usd": 0.3377
+  },
+  {
+   "step": "revise_r1",
+   "attempt": 1,
+   "wall_s": 26.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "prompts": [
+    {
+     "file": "final_revise.md",
+     "sha256": "01e8737eac5e"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    }
+   ],
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16792,
+    "output_tokens": 3116
+   },
+   "cost_estimate_usd": 0.196664
+  },
+  {
+   "step": "verify_r1",
+   "attempt": 1,
+   "wall_s": 81.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "prompts": [
+    {
+     "file": "final_verify.md",
+     "sha256": "2a944e3ebd2a"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    }
+   ],
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15657,
+    "output_tokens": 9047
+   },
+   "cost_estimate_usd": 0.30620400000000003
+  },
+  {
+   "step": "revise_r2",
+   "attempt": 1,
+   "wall_s": 10.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "prompts": [
+    {
+     "file": "final_revise.md",
+     "sha256": "01e8737eac5e"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    }
+   ],
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15625,
+    "output_tokens": 929
+   },
+   "cost_estimate_usd": 0.143588
+  },
+  {
+   "step": "verify_r2",
+   "attempt": 1,
+   "wall_s": 82.2,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "prompts": [
+    {
+     "file": "final_verify.md",
+     "sha256": "2a944e3ebd2a"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "86b24636c031"
+    }
+   ],
+   "tokens": {
+    "input_tokens": 2,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15605,
+    "output_tokens": 9264
+   },
+   "cost_estimate_usd": 0.310128
+  }
+ ]
+}
