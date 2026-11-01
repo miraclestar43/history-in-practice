@@ -59,15 +59,20 @@ def cmd_doctor(a):
     out = {"python": sys.version.split()[0]}
     from .textnorm import HAVE_OPENCC
     out["opencc"] = HAVE_OPENCC
-    out["hermes_python"] = os.path.exists(llm.HERMES_PY)
-    from . import claude_cli
+    out["hermes_python"] = os.path.exists(llm.HERMES_PY)          # legacy (MiMo runs before 2026-11-01); not in the main chain
+    from . import claude_cli, writer
+    out["writer"] = {"runtime": writer.RUNTIME, "configured_model": claude_cli.MODEL, "preflight_problems": writer.preflight()}
+    if a.probe and not out["writer"]["preflight_problems"]:     # one minimal real call: what the CLI itself reports
+        r = writer.call('Reply with the JSON object {"ok": true} and nothing else.', timeout_s=300)
+        out["writer"]["probe"] = {"rc": r["rc"], "killed": r["killed"], "reply": r["text"].strip()[:40], **writer.label([r]),
+                                  "error": (r.get("meta") or {}).get("error")}
     hp = data_dir() / "health" / "final_editor.json"
     out["final_editor"] = {"preflight_problems": claude_cli.preflight(), "warnings": claude_cli.warnings(),
                            "last_nightly_health": json.loads(hp.read_text()) if hp.exists() else None}
     rt = config.load_runtime()
     out["runtime_env"] = {"path_exists": bool(rt.path and rt.path.exists()), "insecure_permissions": rt.insecure_permissions,
                           "keys": rt.describe(), "send_enabled": rt.send_enabled}
-    if a.probe and out["hermes_python"]:
+    if a.probe and out["hermes_python"] and os.environ.get("HIP_PROBE_HERMES"):    # legacy isolation probe, opt-in only
         probe = REPO / "validation/hermes_probe.py"
         with __import__("tempfile").TemporaryDirectory() as wd:
             r = subprocess.run([llm.HERMES_PY, str(probe), "direct", "[]"], capture_output=True, text=True, timeout=180, cwd=wd)
@@ -111,8 +116,7 @@ def _prepare_claude(d, c) -> dict:
 def cmd_prepare(a):
     c = pipeline.load_candidate(a.candidate); d = db()
     from . import claude_cli
-    rep = _prepare_claude(d, c) if a.drafter == "claude" else pipeline.prepare(c, d, drafter="MiMo (hermes-isolated)",
-                                                                                context_call=None if claude_cli.preflight() else claude_cli.call)
+    rep = pipeline.prepare(c, d, context_call=claude_cli.call)       # writer = Claude (writer.py); unavailable -> not_run
     if rep.get("outcome") == "not_run":
         print(json.dumps({"prepared": False, "reason": rep["reason"]}, ensure_ascii=False)); return 1
     print(json.dumps({k: v for k, v in rep.items() if k != "findings"} | {"findings": rep.get("findings", [])[:20]}, ensure_ascii=False, indent=1))
@@ -661,8 +665,9 @@ def _claude_redrafts(d, max_n) -> list:
 
 
 def cmd_nightly(a):
-    """One batch: top up candidates (if fewer than --min-candidates), MiMo prepares drafts, one Claude redraft for recorded
-    MiMo refusals, then the Pi-local Claude final editor admits or leaves pending. Never schedules, publishes or sends.
+    """One batch: top up candidates (if fewer than --min-candidates), Claude (writer.py) prepares drafts, then the Pi-local
+    Claude final editor admits or leaves pending. Claude unavailable -> nothing is drafted (no other model), exit 4.
+    Never schedules, publishes or sends.
     Exit: 0 ok; 1 inventory below the alert threshold; 4 final editor unavailable/degraded (drafts stay pending)."""
     import time as _t
     d = db(); t0 = _t.monotonic(); rep = {}
@@ -681,7 +686,9 @@ def cmd_nightly(a):
                 continue
             try:
                 from . import claude_cli
-                r = pipeline.prepare(c, d, context_call=None if claude_cli.preflight() else claude_cli.call)
+                r = pipeline.prepare(c, d, context_call=claude_cli.call)
+                if r.get("health"):                      # Claude unavailable: stop drafting; the final queue reports health
+                    rep["prepare"].append({"candidate": c["candidate_id"], "outcome": "not_run", "reason": r["reason"][:200]}); break
             except Exception as e:
                 r = {"outcome": "error", "reason": f"{type(e).__name__}: {e}"[:300]}
             rep["prepare"].append({"candidate": c["candidate_id"], "outcome": r.get("outcome"), "reason": str(r.get("reason", ""))[:200]})
@@ -853,7 +860,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser(prog="hip", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sp = ap.add_subparsers(dest="cmd", required=True)
     p = sp.add_parser("doctor"); p.add_argument("--probe", action="store_true"); p.set_defaults(f=cmd_doctor)
-    p = sp.add_parser("prepare"); p.add_argument("candidate"); p.add_argument("--drafter", choices=["mimo", "claude"], default="mimo")
+    p = sp.add_parser("prepare"); p.add_argument("candidate"); p.add_argument("--drafter", choices=["claude"], default="claude", help="kept for compatibility; Claude is the only writer")
     p.set_defaults(f=cmd_prepare)
     p = sp.add_parser("check"); p.add_argument("article"); p.add_argument("evidence"); p.set_defaults(f=cmd_check)
     p = sp.add_parser("render"); p.add_argument("articles", nargs="+"); p.add_argument("--out", required=True)

@@ -22,7 +22,7 @@ from .pipeline import PROMPTS, REFUSAL, CODE_REV, _evidence_block, load_prompt, 
 from .config import load_project as _lp
 MAX_ROUNDS = int(_lp().get("editor", {}).get("max_rounds", 2))
 TIMEOUTS = {"edit": 1500, "review": 1200, "parity": 1200}
-EDITOR_NAME = "hermes-isolated editor (prompts/edit_zh_en.md)"
+EDITOR_NAME = "writer edit rounds (prompts/edit_zh_en.md)"
 
 
 def sha(obj) -> str:
@@ -85,7 +85,8 @@ class Caller:
     """One logged model call with a single retry on invalid JSON or an invalid schema; refusals are not retried.
     A parseable object that fails its schema (e.g. a review without an `issues` list) is a failed step, not a result."""
     def __init__(self, outdir: Path, cid: str, call=None):
-        self.outdir, self.cid, self.call, self.metrics = outdir, cid, call or llm.call, []
+        from . import writer
+        self.outdir, self.cid, self.call, self.metrics = outdir, cid, call or writer.call, []
 
     def __call__(self, name, prompt, timeout, retry_suffix, validate=None):
         suffix = retry_suffix
@@ -270,6 +271,7 @@ def edit(draft_dir: Path, call=None, max_rounds: int = MAX_ROUNDS) -> dict:
     remaining = issues if final_reviewed else (issues or [{"id": "X", "source": "editor", "severity": "fix", "problem": "final content was not re-reviewed"}])
     record.update(final_content_sha256=o["content_sha256"], remaining=remaining, final_reviewed=bool(final_reviewed),
                   outcome="admissible" if final_reviewed and not remaining else "pending_review",
+                  model=__import__("history_in_practice.writer", fromlist=["label"]).label(caller.metrics),
                   model_calls=len(caller.metrics), model_wall_s=round(sum(m.get("wall_s", 0) for m in caller.metrics), 1),
                   edits_total=sum(len(r.get("edits_applied", [])) for r in record["rounds"]), finished_at=time.time())
     (d / "edited.json").write_text(json.dumps(o, ensure_ascii=False, indent=1), encoding="utf-8")

@@ -106,11 +106,15 @@ def pick_entry(category: str) -> dict | None:
     return min(pool, key=lambda e: tried.get(e["id"], 0)) if pool else None
 
 
-def propose(entry: dict, db, *, call=llm.call, cache: Path | None = None, date: str | None = None, out_dir: Path | None = None) -> dict:
+def propose(entry: dict, db, *, call=None, cache: Path | None = None, date: str | None = None, out_dir: Path | None = None) -> dict:
     """One proposal attempt for one catalogue entry. Writes a candidate file on success."""
     cache = Path(cache or data_dir() / "source_cache"); cache.mkdir(parents=True, exist_ok=True)
     date = date or time.strftime("%Y%m%d"); t0 = time.monotonic()
     rec = {"at": time.time(), "catalogue_id": entry["id"], "category": entry["category"], "code_rev": CODE_REV}
+    from . import writer
+    call = call or writer.call
+    if call is writer.call and writer.preflight():           # no other model: stop, the caller reports health
+        rec.update(outcome="not_run", health=True, reason="writer unavailable (Claude): " + "; ".join(writer.preflight())); return rec
     text, full, cjk, fetched = window(entry, cache)
     if not text:
         rec.update(outcome="rejected", reason=f"source not usable: {fetched.get('status')}"); _log(rec); return rec
@@ -122,6 +126,7 @@ def propose(entry: dict, db, *, call=llm.call, cache: Path | None = None, date: 
               f"\n\n【原文】（{entry['title']}）\n<source>\n{text}\n</source>")
     r = call(prompt, timeout_s=1800); m = {k: v for k, v in r.items() if k != "text"}
     rec["call"] = {"wall_s": m["wall_s"], "rc": m["rc"], "killed": m["killed"], "prompt_bytes": m["prompt_bytes"], "out_bytes": m["out_bytes"]}
+    rec["proposed_by"] = writer.name([m])
     try:
         prop = llm.parse_json(r["text"]) if r["rc"] == 0 and not r["killed"] else None
     except ValueError:
@@ -175,7 +180,7 @@ def propose(entry: dict, db, *, call=llm.call, cache: Path | None = None, date: 
             "further_reading": [{"title": entry["title"], "url": entry.get("url"), "what": {"zh": "本篇依据的原文。", "en": "The source this piece is based on."},
                                  "access": {"zh": "免费在线" + ("，古文/繁体" if cjk else "，英文"), "en": "Free online" + (", classical Chinese" if cjk else ", English")}}],
             "preheader": prop.get("preheader") or {"zh": "", "en": ""},
-            "provenance": {"proposed_by": "hermes isolated runner (prompts/propose_candidate.md)", "catalogue_id": entry["id"],
+            "provenance": {"proposed_by": f"{rec.get('proposed_by')} (prompts/propose_candidate.md)", "catalogue_id": entry["id"],
                            "proposed_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "code_rev": CODE_REV,
                            "excerpts_proposed": rec["proposed"], "excerpts_dropped": dropped, "model_wall_s": m["wall_s"]}}
     out = Path(out_dir or REPO / "config/candidates"); out.mkdir(parents=True, exist_ok=True)

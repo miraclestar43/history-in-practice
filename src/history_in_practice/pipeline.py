@@ -1,5 +1,5 @@
 """Automated supply: candidate -> sources -> evidence -> admission -> registry
--> Hermes (zh draft, evidence review, natural English) -> assemble -> checks ->
+-> writer (Claude via writer.py: zh draft, evidence review, natural English) -> assemble -> checks ->
 `pending_review` with reasons. Every draft then goes through the editor stage
 (editor.py: bounded edit rounds, re-review of the final Chinese, English parity
 review, record bound to the final content) before it can be admitted as
@@ -8,7 +8,7 @@ review, record bound to the final content) before it can be admitted as
 from __future__ import annotations
 import json, time
 from pathlib import Path
-from . import sources as src_mod, evidence, registry, render, checks, llm, state, schemas
+from . import sources as src_mod, evidence, registry, render, checks, llm, state, schemas, writer
 from .config import REPO, data_dir, load_project
 
 PROMPTS = Path(__file__).with_name("prompts")
@@ -135,9 +135,10 @@ def merge(zh, en):
     return o
 
 
-def run_model_steps(c, pack, outdir: Path, call=llm.call, timeouts=None) -> tuple[dict | None, dict | None, dict | None, list]:
-    cfg = load_project().get("hermes", {}); t = timeouts or cfg.get("timeouts_s", {"draft_zh": 1800, "review_zh": 1200, "en": 2100})
-    ev = _evidence_block(pack); metrics = []
+def run_model_steps(c, pack, outdir: Path, call=None, timeouts=None) -> tuple[dict | None, dict | None, dict | None, list]:
+    p = load_project(); cfg = p.get("writer") or p.get("hermes", {})
+    t = timeouts or cfg.get("timeouts_s", {"draft_zh": 1800, "review_zh": 1200, "en": 2100})
+    call = call or writer.call; ev = _evidence_block(pack); metrics = []
     style = load_prompt("style_zh")
 
     def step(name, prompt, timeout, retry_suffix, validate):
@@ -185,13 +186,18 @@ def run_model_steps(c, pack, outdir: Path, call=llm.call, timeouts=None) -> tupl
     return zh, review, en, metrics
 
 
-def prepare(c, db, *, call=llm.call, workdir: Path | None = None, cache: Path | None = None, drafter: str = "MiMo (hermes-isolated)",
+def prepare(c, db, *, call=None, workdir: Path | None = None, cache: Path | None = None, drafter: str | None = None,
             context_call=None) -> dict:
     """Run one candidate end to end. Returns a report dict; never raises for content problems.
     context_call: the reviewer for the pre-draft source-context step (context.review on the pack: how the episode ends
     in the source, additions cut from the reviewed text). Callers pass claude_cli.call; None skips it (tests). The
     article-mode review before admission is required either way."""
     cid = c["candidate_id"]; t0 = time.monotonic()
+    call = call or writer.call
+    if call is writer.call:                  # Claude is the only writer: unavailable -> stop and alert, never another model
+        pre = writer.preflight()
+        if pre:
+            return {"candidate_id": cid, "outcome": "not_run", "health": True, "reason": "writer unavailable (Claude): " + "; ".join(pre)}
     out = Path(workdir or data_dir() / "drafts" / cid); out.mkdir(parents=True, exist_ok=True)
     cache = Path(cache or data_dir() / "source_cache"); cache.mkdir(parents=True, exist_ok=True)
     report = {"candidate_id": cid, "category": c["category"], "steps": [], "code_rev": CODE_REV, "drafter": drafter}
@@ -240,6 +246,8 @@ def prepare(c, db, *, call=llm.call, workdir: Path | None = None, cache: Path | 
                 c = dict(c, brief=(c.get("brief") or "") + "\n" + note)
     zh, review, en, metrics = run_model_steps(c, pack, out, call=call)
     report["model_calls"] = metrics
+    report["writer"] = writer.label(metrics)                     # what the model calls actually reported
+    report["drafter"] = drafter or writer.name(metrics)
     if zh is None or en is None:
         registry.set_status(db, eid, "rejected")
         refusals = [m for m in metrics if m.get("provider_refusal")]

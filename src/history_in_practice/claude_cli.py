@@ -127,6 +127,11 @@ def call(prompt: str, timeout_s: float = 1800, *, system: str = SYSTEM, model: s
          extra_env: dict | None = None) -> dict:
     """Same contract as llm.call (rc, killed, wall_s, text, byte counts) plus `meta` (init + result metadata, no secrets)."""
     data = prompt.encode("utf-8")
+    import sys
+    if "unittest" in sys.modules and not os.environ.get("HIP_ALLOW_REAL_MODEL"):   # tests use fakes; never the real subscription
+        return {"rc": 1, "killed": None, "wall_s": 0.0, "prompt_bytes": len(data), "prompt_chars": len(prompt), "out_bytes": 0,
+                "out_chars": 0, "stderr": "", "text": "", "meta": {"error": "real Claude call refused under unittest (HIP_ALLOW_REAL_MODEL unset)"},
+                "editor": {"name": "Pi Claude (Claude Code CLI)", "model": None, "cli_version": None}}
     argv = [CLAUDE, "-p", "--output-format", "stream-json", "--verbose", "--safe-mode", "--tools", "",
             "--disallowedTools", "mcp__*", "--strict-mcp-config", "--no-session-persistence", "--permission-prompts", "none", "--disable-slash-commands",
             "--setting-sources", "user", "--model", model or MODEL, "--system-prompt", system] + (["--effort", effort] if effort else [])

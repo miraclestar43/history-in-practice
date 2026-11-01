@@ -1,7 +1,7 @@
 import json, os, shutil, sys, tempfile, unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src")); sys.path.insert(0, str(Path(__file__).parent))
-from history_in_practice import state, registry, llm, render, cli, pipeline
+from history_in_practice import state, registry, writer, render, cli, pipeline
 from test_registry_pipeline import fake_call_factory
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -17,11 +17,11 @@ class Rereview(unittest.TestCase):
         self.db = cli.db()
         state.transition(self.db, "cand-x", "prepared", category="us", path=str(self.auto / "article.json"))
         state.transition(self.db, "cand-x", "checked", content_sha256=o["content_sha256"])          # legacy: no approval
-        self._call, self._repo = llm.call, cli.REPO
+        self._call, self._repo = writer.call, cli.REPO
         cli.REPO = Path(self.td.name)                                                               # publish attempts into the temp tree
 
     def tearDown(self):
-        llm.call = self._call; cli.REPO = self._repo; self.td.cleanup(); os.environ.pop("HIP_DATA_DIR")
+        writer.call = self._call; cli.REPO = self._repo; self.td.cleanup(); os.environ.pop("HIP_DATA_DIR")
 
     def run_rereview(self, review_issues):
         base = fake_call_factory()
@@ -30,7 +30,7 @@ class Rereview(unittest.TestCase):
             if "事实审稿人" in prompt:
                 r["text"] = json.dumps({"issues": review_issues, "overall": "x"}, ensure_ascii=False)
             return r
-        llm.call = call
+        writer.call = call
         a = type("A", (), {"edition": "cand-x", "rounds": 0, "article": None})()
         return cli.cmd_rereview(a)
 
