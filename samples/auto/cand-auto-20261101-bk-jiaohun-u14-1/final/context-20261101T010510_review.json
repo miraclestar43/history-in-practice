@@ -1,0 +1,327 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261101-bk-jiaohun-u14-1",
+ "content_sha256": "437931aaad25b65b7a4b07f7c210cea22824c82857f01e594e14ec9a567cda4b",
+ "evidence_in_sha256": "b48a232e04680255a1420e21e07b26ecc5c3648e52cddc9436fc7237b72bcad6",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793516710.934676,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "reflection.example.steps",
+   "lang": "zh",
+   "sentence": "汇报“查无此事”时说明依据，而不是只写结论。"
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-BK-JIAOHUN": {
+   "title": "孔飞力（Philip A. Kuhn）《叫魂：1768年中国妖术大恐慌》（陈兼、刘昶 译）；第九章 政治罪与官僚君主制",
+   "url": null,
+   "ref": "book:BK-JIAOHUN",
+   "evidence_text_sha256": "6ffb877bade208c0bc1db4f495a533c5c32789f44424361336a099bb6924db5c",
+   "cache_sha256": "6ffb877bade208c0bc1db4f495a533c5c32789f44424361336a099bb6924db5c",
+   "cjk": true,
+   "source_chars": 172317,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     150924,
+     164688
+    ]
+   ],
+   "chars_reviewed": 13764
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 42.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "prompts": [
+    {
+     "file": "context_review.md",
+     "sha256": "166543d1f6ca"
+    }
+   ],
+   "output_tokens": 4286
+  }
+ ],
+ "finished_at": 1793516753.2981887,
+ "elapsed_min": 0.7,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-BK-JIAOHUN",
+    "outcome": "吴绍诗没有受到斥责，第二年反而升任刑部尚书。同一章里，吴坛以苏州经堂案交差，引出一场多为象征性处罚的追责闹剧。苏尔德则在收场时作为替罪羊之一被贬往新疆。",
+    "quote": "吴绍诗安然度过了这一危机：弘历不但没有斥责他，反而在第二年任命他为刑部尚书。",
+    "in_evidence": true
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-BK-JIAOHUN",
+    "start": "恼羞成怒的弘历以在官僚中寻找替罪羊",
+    "end": "他的清剿是正确的。",
+    "why": "这段紧接在苏尔德受罚（E19）之前，交代了收场时处罚的性质：案子的基础崩溃后，弘历在官僚中寻找替罪羊来结束清剿，并借处罚证明清剿正确。同时被处罚的还有富尼汉。稿件 story.8 和 analysis.2 把苏尔德的下场当作“不报和阻挠会被重罚”的风险证据，缺了这层替罪羊语境，读者会误解处罚的动机。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "reflection.example.steps",
+    "lang": "zh",
+    "sentence": "汇报“查无此事”时说明依据，而不是只写结论。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [],
+    "scope": "反思练习中的行动建议，不涉及来源记载",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": ""
+    },
+    "fix": "无需修改"
+   },
+   {
+    "id": "N1",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "高晋答应的后续报告，孔飞力没有找到。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "第九章“忙而不动：吴绍诗在江西”一节的脚注①",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "高晋并答应继续观察，随后报告，但我无法找到这份后续报告。"
+    },
+    "fix": "保留"
+   },
+   {
+    "id": "N2",
+    "path": "sections.story.6",
+    "lang": "zh",
+    "sentence": "孔飞力说，没有档案文字能证明江西曾像邻省那样搜捕过可疑嫌犯。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "第九章吴绍诗一节；这是作者本人对档案的判断，稿件已标明归属",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "没有档案文字证明江西曾像邻省那样搜捕过可疑嫌犯。"
+    },
+    "fix": "保留，并维持“孔飞力说”的归属"
+   },
+   {
+    "id": "N3",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "朱批和奏报都转引自书中译文，与档案原文是否逐字一致无法判断。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "本文实际查阅的仅为中译本第九章，未查阅档案原件；这句说的是我们自己的核查范围，没有断言书中缺少什么",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "弘历在朱批中斥骂道"
+    },
+    "fix": "保留"
+   },
+   {
+    "id": "N4",
+    "path": "sections.analysis.3",
+    "lang": "zh",
+    "sentence": "本文无法据此判定吴绍诗属于哪一种。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "第九章“官僚的抵制”引言及吴绍诗一节。孔飞力没有把吴绍诗归入所列的某一类，并说明每项抵制都可另作解释。不过他推断吴认为此案是“误传”，这接近“不可知论的轻视”一类。",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "我将要讨论的每一项抵制措施都可用其他的理由来解释"
+    },
+    "fix": "可保留。也可补一句：孔飞力推断吴绍诗视此案为误传，但他也说明每项抵制都可用其他理由解释。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.story.8",
+    "problem": "稿件只写苏尔德被单独重罚，analysis.2 又把这一下场当作“不报和阻挠会被重罚”的风险证据。来源紧接其前说明，收场时的处罚是弘历在案子崩溃后寻找替罪羊、为清剿正名的举动，富尼汉也同时受罚。缺了这层语境，处罚动机的含义会被改变。",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "恼羞成怒的弘历以在官僚中寻找替罪羊来结束对叫魂案的清剿。"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "稿件对吴绍诗的结局、吴坛经堂案的后果以及孔飞力推断的归属都交代得准确，否定性断言均有原文支持。建议补上收场时“寻找替罪羊”的语境，以免把苏尔德受罚简单读成对不报行为的常规惩处。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "reflection.example.steps",
+   "lang": "zh",
+   "sentence": "汇报“查无此事”时说明依据，而不是只写结论。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [],
+   "scope": "反思练习中的行动建议，不涉及来源记载",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": ""
+   },
+   "fix": "无需修改",
+   "unit_status": {}
+  },
+  {
+   "id": "N1",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "高晋答应的后续报告，孔飞力没有找到。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "第九章“忙而不动：吴绍诗在江西”一节的脚注①",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "高晋并答应继续观察，随后报告，但我无法找到这份后续报告。"
+   },
+   "fix": "保留",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.story.6",
+   "lang": "zh",
+   "sentence": "孔飞力说，没有档案文字能证明江西曾像邻省那样搜捕过可疑嫌犯。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "第九章吴绍诗一节；这是作者本人对档案的判断，稿件已标明归属",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "没有档案文字证明江西曾像邻省那样搜捕过可疑嫌犯。"
+   },
+   "fix": "保留，并维持“孔飞力说”的归属",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "朱批和奏报都转引自书中译文，与档案原文是否逐字一致无法判断。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "本文实际查阅的仅为中译本第九章，未查阅档案原件；这句说的是我们自己的核查范围，没有断言书中缺少什么",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "弘历在朱批中斥骂道"
+   },
+   "fix": "保留",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "sections.analysis.3",
+   "lang": "zh",
+   "sentence": "本文无法据此判定吴绍诗属于哪一种。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "第九章“官僚的抵制”引言及吴绍诗一节。孔飞力没有把吴绍诗归入所列的某一类，并说明每项抵制都可另作解释。不过他推断吴认为此案是“误传”，这接近“不可知论的轻视”一类。",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "我将要讨论的每一项抵制措施都可用其他的理由来解释"
+   },
+   "fix": "可保留。也可补一句：孔飞力推断吴绍诗视此案为误传，但他也说明每项抵制都可用其他理由解释。",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.story.8",
+   "problem": "稿件只写苏尔德被单独重罚，analysis.2 又把这一下场当作“不报和阻挠会被重罚”的风险证据。来源紧接其前说明，收场时的处罚是弘历在案子崩溃后寻找替罪羊、为清剿正名的举动，富尼汉也同时受罚。缺了这层语境，处罚动机的含义会被改变。",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "恼羞成怒的弘历以在官僚中寻找替罪羊来结束对叫魂案的清剿。"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-BK-JIAOHUN",
+   "outcome": "吴绍诗没有受到斥责，第二年反而升任刑部尚书。同一章里，吴坛以苏州经堂案交差，引出一场多为象征性处罚的追责闹剧。苏尔德则在收场时作为替罪羊之一被贬往新疆。",
+   "quote": "吴绍诗安然度过了这一危机：弘历不但没有斥责他，反而在第二年任命他为刑部尚书。",
+   "in_evidence": true
+  }
+ ],
+ "additions": [
+  {
+   "id": "BK-JIAOHUN-U141-E22",
+   "source_id": "S-BK-JIAOHUN",
+   "offset": 160259,
+   "chars": 167,
+   "why": "这段紧接在苏尔德受罚（E19）之前，交代了收场时处罚的性质：案子的基础崩溃后，弘历在官僚中寻找替罪羊来结束清剿，并借处罚证明清剿正确。同时被处罚的还有富尼汉。稿件 story.8 和 analysis.2 把苏尔德的下场当作“不报和阻挠会被重罚”的风险证据，缺了这层替罪羊语境，读者会误解处罚的动机。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "745543bd59e6685f8efe75b9be7c3c2dc69d8938a632be8f09816bdb3859cdf6",
+ "outcome": "needs_work",
+ "blocking": [
+  "evidence must be expanded first: 1 addition(s) ['BK-JIAOHUN-U141-E22']"
+ ]
+}

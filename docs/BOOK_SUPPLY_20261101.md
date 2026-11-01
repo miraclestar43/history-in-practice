@@ -84,7 +84,15 @@ Both went through the chain every article uses: pre-draft source-context review 
 - Post-draft context review: clean, 2 notes, no evidence additions.
 - Reading time: about 8 minutes (zh) / 11 (en).
 
-**叫魂 (`cand-auto-20261101-bk-jiaohun-u14-1`, 孔飞力《叫魂》第九章).** JIAOHUN_RESULT
+**叫魂 (`cand-auto-20261101-bk-jiaohun-u14-1`, 孔飞力《叫魂》第九章).** **Admitted** under the title 一张没有抓到人的警网 / A Net That Caught No One.
+- The final editor's attempts left a few attribution issues open. They were closed with recorded local fixes, as the standing owner rule allows (small, evidence-backed wording and attribution fixes). Each fix was re-verified by the final editor, and every quote was checked against the evidence pack:
+  1. `CTX-X1..3`: state 孔飞力's own inference about 吴绍诗 (that he regarded the case as a false rumour) instead of the draft's guess;
+  2. `V2-V1`: the type of resistance is this article's reading, and 孔飞力's inference stays his. The verifier's quote of E5 had a one-character typo (还有 vs 再有). The operator supplied the verbatim quote with `--basis`, and `local_fix` checked it against the pack before accepting it;
+  3. `V3-V1`: the verifier's own proposed split, so that 吴绍诗's report to 弘历 and 孔飞力's narration (no arrests in 江西) are no longer one sentence.
+- Final record: 12 issues (attribution 2, context 3, causality 2, parity 1, unsupported 1, all fixed; 3 notes), 14 edits, none open.
+- Post-draft context review: clean, with 1 note: 孔飞力's "当时已七十岁" may refer to 1767.
+- Reading time: about 9 minutes (zh) / 11 (en).
+- It was also rehearsed with `hip adopt` on the production copy: admitted, plan unchanged.
 
 **Using an article finished here in production: `hip adopt`.** Production does not re-run the model. `hip adopt ID` reads the records from `samples/auto/ID/final/`, registers the episode (dedupe check) and runs the unchanged admission: the final-editor record and the context review must be bound to exactly this content and evidence, and the sources are re-hashed from production's own source cache. Any mismatch leaves the edition pending with the reasons.
 
@@ -114,7 +122,7 @@ Before 10:00 Beijing (the next `hip-prepare` run):
    - fetches the two files production does not have yet (叫魂, 晚清七十年) from their pinned commits, blob verified;
    - ingests the eight usable books into the production data directory;
    - prints each book's level and unit count (expected: 233 units).
-3. Run `bin/hip adopt ADOPT_IDS`. It should print `"adopted": true` for each. If it doesn't, the edition stays pending with its reasons, and the nightly drafts nothing for it.
+3. Run `bin/hip adopt cand-auto-20261101-bk-lhzz-u1-1 cand-auto-20261101-bk-jiaohun-u14-1`. It should print `"adopted": true` for each. If it doesn't, the edition stays pending with its reasons, and the nightly drafts nothing for it.
 4. Nothing else: timers, recipients, the send time and the stored plan are unchanged. Adopted articles join the inventory, and the mix places them after the planned issues. The next `hip-prepare` drafts the remaining book candidates; when fewer than 2 are waiting, it proposes from untried book units.
 
 **Rollback:** revert the merge. Book candidates not yet drafted are then never drafted, and the picker uses the catalogue only. Adopted articles are ordinary inventory: `hip requeue ID` sends one back to the pending queue, as for any other article.
