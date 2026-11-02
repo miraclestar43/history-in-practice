@@ -208,6 +208,43 @@ def _acquire_md(e: dict, *, opener=None, tree_of=None) -> dict:
     mp.write_text(json.dumps(man, ensure_ascii=False, indent=1)); return rec
 
 
+def _acquire_wikisource(e: dict, *, opener=None) -> dict:
+    """A public-domain text on zh.wikisource, pinned by revision id: the page's wikitext of exactly that revision, reduced
+    to its paragraphs (header templates, tags and entities removed; nothing else changed) and, when `simplified` is set,
+    converted traditional -> simplified characters mechanically (OpenCC tw2s, phrase-aware: characters only, the author's
+    word usage kept). The raw wikitext hash and the conversion are recorded with the file."""
+    import hashlib, html as _html, time, urllib.parse, urllib.request
+    url = ("https://zh.wikisource.org/w/api.php?action=query&prop=revisions&rvprop=ids|content&rvslots=main&format=json&revids="
+           + urllib.parse.quote(str(e["ws_revid"])))
+    with (opener or urllib.request.urlopen)(urllib.request.Request(url, headers={"User-Agent": books.UA}), timeout=60) as r:
+        data = json.loads(r.read(4_000_000))
+    page = next(iter(data["query"]["pages"].values())); rev = page["revisions"][0]
+    if str(rev["revid"]) != str(e["ws_revid"]) or page["title"] != e["ws_title"]:
+        raise books.BookError(f"wikisource: got {page['title']} rev {rev['revid']}, expected {e['ws_title']} rev {e['ws_revid']}")
+    raw = rev["slots"]["main"]["*"]
+    body = re.sub(r"\{\{(?:[^{}]|\{\{[^{}]*\}\})*\}\}", "", raw)             # header / licence templates
+    body = re.sub(r"<[^>]+>", "", body); body = _html.unescape(body).replace("\u2003", "")
+    cjk = r"[一-鿿，。、；：！？“”‘’（）《》—…]"           # line breaks and spaces next to Chinese go; "Jo Shiki Rin" keeps its spaces
+    paras = [re.sub(rf"\s+(?={cjk})|(?<={cjk})\s+", "", re.sub(r"[ \t]*\n[ \t]*", " ", x)).strip() for x in re.split(r"\n\s*\n", body)]
+    paras = [x for x in paras if x and not x.startswith(("==", "[[Category"))]
+    if e.get("simplified"):                          # tw2s: phrase-aware (particle 著 -> 着, 著名/著作 kept); characters only
+        from opencc import OpenCC
+        cc = OpenCC(e.get("opencc") or "tw2s"); paras = [cc.convert(x) for x in paras]
+    text = "\n\n".join(([e["ws_heading"]] if e.get("ws_heading") else []) + paras) + "\n"
+    out = text.encode("utf-8")
+    files = data_dir() / "books" / "files"; files.mkdir(parents=True, exist_ok=True); mp = data_dir() / "books" / "manifest.json"
+    man = json.loads(mp.read_text()) if mp.exists() else {"files": []}
+    (files / f"{e['book_id']}.txt").write_bytes(out)
+    rec = _meta(e) | {"format": "txt", "path": f"{e['book_id']}.txt", "bytes": len(out), "file_sha256": hashlib.sha256(out).hexdigest(),
+                      "source_url": f"https://zh.wikisource.org/w/index.php?oldid={e['ws_revid']}", "ws_title": e["ws_title"], "ws_revid": e["ws_revid"],
+                      "wikitext_sha256": hashlib.sha256(raw.encode()).hexdigest(),
+                      "conversion": f"OpenCC {e.get('opencc') or 'tw2s'} (characters only, phrase-aware)" if e.get("simplified") else None,
+                      "provenance": f"zh.wikisource {e['ws_title']} revision {e['ws_revid']}; markup removed" + (f"; traditional -> simplified (OpenCC {e.get('opencc') or 'tw2s'})" if e.get("simplified") else ""),
+                      "acquired_at": time.strftime("%Y-%m-%dT%H:%M:%S%z")}
+    man["files"] = [f for f in man["files"] if f["book_id"] != e["book_id"]] + [rec]
+    mp.write_text(json.dumps(man, ensure_ascii=False, indent=1)); return rec
+
+
 def sync(*, opener=None, tree_of=None, max_new: int = 3) -> list[dict]:
     """Make this data directory match config/books/library.json. Books recorded as usable, and books `selected` for intake,
     are acquired if missing (one file from the pinned repository commit, Git blob verified; or a Markdown book chapter by
@@ -221,7 +258,9 @@ def sync(*, opener=None, tree_of=None, max_new: int = 3) -> list[dict]:
             if e["book_id"] not in have:
                 if new >= max_new:
                     out.append(dict(r, outcome="deferred", reason=f"at most {max_new} new files per run")); continue
-                if e.get("md_summary"):
+                if e.get("ws_revid"):
+                    _acquire_wikisource(e, opener=opener)
+                elif e.get("md_summary"):
                     _acquire_md(e, opener=opener, tree_of=tree_of)
                 elif e.get("url") and e.get("format") and not e.get("repo"):           # a public-domain edition at a stable URL
                     books.acquire(e["url"], data_dir() / "books" / "files", data_dir() / "books" / "manifest.json",

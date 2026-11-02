@@ -97,6 +97,11 @@ def display_parts(text: str, target: int = ZH_PART) -> list[str] | None:
 
 
 def add_display_parts(obj: dict) -> None:
+    """Only for a Chinese AI translation: a Chinese original keeps the author's own paragraphing."""
+    if obj["work"]["original_language"] == "zh":
+        for x in obj["passage"]:
+            x.pop("zh_parts", None)
+        return
     for x in obj["passage"]:
         parts = display_parts(x["zh"])
         if parts:
@@ -293,11 +298,13 @@ def assemble(e: dict, b: dict, sel: dict, guide: dict, passage: list[dict], edit
     lang = "zh" if e.get("language", "zh") == "zh" else "en"
     first, last = passage[0]["p"], passage[-1]["p"]
     head = chapter_heading(b, first); ch_zh, ch_en = chapter_labels(head)
+    if e.get("piece_zh"):                               # one essay of a collection: the essay is the "chapter"
+        ch_zh, ch_en, head = e["piece_zh"], e.get("piece_en") or e["piece_zh"], e["piece_zh"]
     return {"kind": "excerpt", "schema_version": "excerpt/1", "edition_id": edition_id, "revision": 1, "category": category,
             "title": sel["title"], "title_note": {"zh": "编辑拟题", "en": "Title by the editor"},
             "dek": guide["dek"], "intro": guide["intro"], "preheader": guide["dek"],
             "work": {"book_id": e["book_id"], "author": e.get("author_en") or e.get("author"), "author_zh": e.get("author_zh") or e.get("author"),
-                     "title": e["title"], "title_zh_note": e.get("title_zh_note"), "chapter_zh": ch_zh, "chapter_en": ch_en,
+                     "title": e["title"], "title_en": e.get("title_en"), "title_zh_note": e.get("title_zh_note"), "chapter_zh": ch_zh, "chapter_en": ch_en,
                      "rights_label": e.get("rights_label"), "edition": e.get("edition"),
                      "original_language": lang, "chapter": head, "paragraphs": [first, last],
                      "location": f"{head}; paragraphs {first}–{last} of the edition's text" + (" (with omissions marked 〔中略〕)" if any(x["gap_before"] for x in passage) else ""),

@@ -198,9 +198,9 @@ def byline(obj, lang) -> str:
     W = obj["work"]; src = W["original_language"]
     if lang == "zh":
         return (f"{W.get('author_zh') or W['author']} 著 ·《{W['title']}》" + (f"（{W['title_zh_note']}）" if W.get("title_zh_note") else "")
-                + (f" {W['chapter_zh']}" if W.get("chapter_zh") else "") + f" · 原文{'中文' if src == 'zh' else '英文'}"
+                + ((("·" if W["chapter_zh"].startswith("《") else " ") + W["chapter_zh"]) if W.get("chapter_zh") else "") + f" · 原文{'中文' if src == 'zh' else '英文'}"
                 + ("" if src == "zh" else " · 下文中文为 AI 译文"))
-    return (f"{W['author']}, {W['title']}" + (f", {W['chapter_en']}" if W.get("chapter_en") else "")
+    return (f"{W['author']}, {W.get('title_en') or W['title']}" + (f", {W['chapter_en']}" if W.get("chapter_en") else "")
             + f" · original in {'Chinese' if src == 'zh' else 'English'}" + ("" if src == "en" else " · the English below is an AI translation"))
 
 
