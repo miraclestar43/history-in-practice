@@ -125,6 +125,12 @@ class Excerpt(unittest.TestCase):
         story = mix.item("st-1", "china_modern", {"title": {"zh": "旧故事"}}, 1.0); ex = mix.item("ex-9", "china_modern", {"kind": "excerpt", "title": {"zh": "原文"}}, 9.0)
         seq = mix.plan([story, ex], 1, 0)
         self.assertEqual(seq[0]["edition_id"], "ex-9"); self.assertIn("原文精选优先", seq[0]["reason"])
+        a1 = mix.item("ex-a1", "china_ancient", {"kind": "excerpt", "work": {"book_id": "BK-A"}}, 1.0)
+        a2 = mix.item("ex-a2", "china_modern", {"kind": "excerpt", "work": {"book_id": "BK-A"}}, 2.0)
+        b1 = mix.item("ex-b1", "china_modern", {"kind": "excerpt", "work": {"book_id": "BK-B"}}, 3.0)
+        o1 = mix.item("st-o", "world", {"title": {"zh": "x"}}, 1.0); o2 = mix.item("st-o2", "us", {"title": {"zh": "y"}}, 1.0)
+        seq = [x["edition_id"] for x in mix.plan([a1, a2, b1, o1, o2], 5, 0)]
+        self.assertNotEqual(seq.index("ex-a2") - seq.index("ex-a1"), 1)                   # not the same book twice in a row
         db = state.connect(Path(self.td.name) / "s2.sqlite"); registry.init(db, {})
         old = excerpt.ADMIT_ROOT; excerpt.ADMIT_ROOT = self.out / "admitted"
         try:
