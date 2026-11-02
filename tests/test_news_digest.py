@@ -24,11 +24,17 @@ def fake_brief(date="2026-11-02", n=3, status=None, cutoff=None, tz="Asia/Shangh
     return snap
 
 
-def write_brief(export: Path, snap: dict, page: str | None = "<html>archive</html>"):
+def archive_page(snap: dict) -> str:
+    """As news-intel renders it: the page names its snapshot and text hash."""
+    return (f'<html><head><meta name="news-intel-snapshot" content="{snap["snapshot_id"]}">'
+            f'<meta name="news-intel-text-sha256" content="{snap["text_sha256"]}"></head><body>archive</body></html>')
+
+
+def write_brief(export: Path, snap: dict, page: str | None = "default"):
     d = export / snap["edition_date"]; d.mkdir(parents=True, exist_ok=True)
     (d / f"{snap['snapshot_id']}.json").write_text(json.dumps(snap, ensure_ascii=False))
     if page is not None:
-        (d / f"{snap['snapshot_id']}.archive.html").write_text(page)
+        (d / f"{snap['snapshot_id']}.archive.html").write_text(archive_page(snap) if page == "default" else page)
     (d / "current.json").write_text(json.dumps({"snapshot_id": snap["snapshot_id"], "file": f"{snap['snapshot_id']}.json"}))
 
 
@@ -92,7 +98,29 @@ class Bind(unittest.TestCase):
         d = self.bind()["digest"]
         self.assertTrue(d["text"].startswith("== 今日新闻速览（截至北京时间11月2日20:00） =="))
         self.assertIn("· 虚构速览1：某地发生了某事。", d["text"]); self.assertIn("完整新闻与来源：https://starhub.vip/history/news/2026-11-02/", d["text"])
-        self.assertEqual(news.site_files(self.bind()), {"history/news/2026-11-02/index.html": "<html>archive</html>"})
+        self.assertEqual(news.site_files(self.bind()), {"history/news/2026-11-02/index.html": archive_page(fake_brief(n=2))})
+
+    def test_an_archive_page_of_another_version_or_any_other_html_is_refused(self):
+        snap = fake_brief()
+        cases = {"another revision": archive_page(fake_brief(n=4, rev=2)), "any html": "<html>whatever</html>",
+                 "empty": "  "}
+        for i, (name, page) in enumerate(cases.items()):
+            write_brief(self.export, snap, page=page)
+            r = news.bind(self.bindings, dict(self.ed, edition_id=f"ed-p{i}"), self.export, "https://x", NOW)
+            self.assertEqual(r["status"], "absent", name); self.assertIn("archive page", r["reason"], name)
+
+    def test_a_binding_that_cannot_be_saved_is_absent_and_no_later_step_adds_news(self):
+        write_brief(self.export, fake_brief())
+        orig = news._write
+        news._write = lambda path, text: (_ for _ in ()).throw(OSError("disk full"))
+        try:
+            r = self.bind()
+        finally:
+            news._write = orig
+        self.assertEqual(r["status"], "absent"); self.assertIn("could not be saved", r["reason"])
+        self.assertFalse(news.binding_path(self.bindings, "ed-1", 1).exists())
+        later = news.read_binding(self.bindings, self.ed)            # the email step, and every retry
+        self.assertEqual(later["status"], "absent"); self.assertNotIn("digest", later)
 
 
 class Layout(unittest.TestCase):
@@ -158,6 +186,56 @@ class PublishWithNews(unittest.TestCase):
             self.assertIn("text_sha256", r["news"]["reason"]); self.assertNotIn("今日新闻速览", self.html_of(srv.messages[0]))
             files = subprocess.run(["git", "-C", str(self.site), "show", "--name-only", "--format=", "HEAD"], capture_output=True, text=True).stdout.split()
             self.assertFalse(any(f.startswith("history/news/") for f in files))
+        finally:
+            srv.shutdown(); srv.server_close()
+
+
+
+
+class PublishRetries(unittest.TestCase):
+    """Real publish flow (PublishFlow fixtures): a retry after some recipients were accepted carries the same news, never
+    resends to them, and an email step never binds news the site step did not."""
+    setUp, tearDown, add, served, rt, run_day, mail_rt = (PublishFlow.setUp, PublishFlow.tearDown, PublishFlow.add,
+                                                         PublishFlow.served, PublishFlow.rt, PublishFlow.run_day,
+                                                         PublishFlow.mail_rt)
+
+    def html_of(self, raw):
+        m = email.message_from_bytes(raw[1])
+        return next(p.get_payload(decode=True).decode() for p in m.walk() if p.get_content_type() == "text/html")
+
+    def test_partial_send_then_retry_keeps_the_same_news_and_the_accepted_recipient(self):
+        export = self.t / "news"; write_brief(export, fake_brief())
+        import smtp_fixture
+        srv = smtp_fixture.start(tls=True)
+        try:
+            srv.refuse_rcpt = {"r2@example.com"}
+            r1 = self.run_day(self.mail_rt(srv, NEWS_EXPORT_DIR=str(export)), "2026-11-02")
+            self.assertEqual(r1["outcome"], "partial"); self.assertEqual(r1["news"]["snapshot_id"], "brief-zh-2026-11-02-r1")
+            write_brief(export, fake_brief(n=5, rev=2))                 # news-intel makes r2 meanwhile
+            srv.refuse_rcpt = set(); n = len(srv.messages)
+            r2 = self.run_day(self.mail_rt(srv, NEWS_EXPORT_DIR=str(export)), "2026-11-02", "08:30")
+            self.assertEqual(r2["outcome"], "complete"); self.assertEqual(len(srv.messages), n + 1)   # only r2@ resent
+            self.assertEqual(r2["news"]["snapshot_id"], "brief-zh-2026-11-02-r1")
+            self.assertEqual(srv.messages[-1][0], "r2@example.com")
+            h = self.html_of(srv.messages[-1]); self.assertIn("虚构速览2", h); self.assertNotIn("虚构速览4", h)
+        finally:
+            srv.shutdown(); srv.server_close()
+
+    def test_news_that_could_not_be_bound_at_the_site_step_never_appears_later(self):
+        export = self.t / "news"; write_brief(export, fake_brief())
+        orig = news._write
+        news._write = lambda path, text: (_ for _ in ()).throw(OSError("read-only"))
+        try:                                                        # site step: binding cannot be saved
+            r = self.run_day(self.rt(NEWS_EXPORT_DIR=str(export)), "2026-11-02")
+        finally:
+            news._write = orig
+        self.assertEqual(r["news"]["status"], "absent")
+        import smtp_fixture
+        srv = smtp_fixture.start(tls=True)
+        try:                                                        # email step: the snapshot is fine now, still no news
+            r2 = self.run_day(self.mail_rt(srv, NEWS_EXPORT_DIR=str(export)), "2026-11-02", "07:40")
+            self.assertEqual(r2["outcome"], "complete"); self.assertEqual(r2["news"]["status"], "absent")
+            self.assertTrue(all("今日新闻速览" not in self.html_of(m) for m in srv.messages))
         finally:
             srv.shutdown(); srv.server_close()
 

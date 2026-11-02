@@ -248,8 +248,11 @@ def _send(a, retry=False):
     from . import news                                   # the same frozen news binding as the scheduled send
     from datetime import datetime, timezone
     rt = config.load_runtime()
-    nb = news.bind(data_dir() / "news_bindings", o, rt.get("NEWS_EXPORT_DIR"), a.base_url, datetime.now(timezone.utc),
-                   persist=bool(getattr(a, "real", False)))
+    if getattr(a, "real", False):                        # a real send carries exactly what the site step bound
+        nb = news.read_binding(data_dir() / "news_bindings", o)
+    else:                                                # a preview binds nothing
+        nb = news.bind(data_dir() / "news_bindings", o, rt.get("NEWS_EXPORT_DIR"), a.base_url,
+                       datetime.now(timezone.utc), persist=False)
     render.build([dict(o)], out, a.base_url, news={o["edition_id"]: nb})
     html = (out / "email" / f"{o['edition_id']}.html").read_text(encoding="utf-8")
     text = (out / "email" / f"{o['edition_id']}.txt").read_text(encoding="utf-8")

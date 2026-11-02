@@ -274,7 +274,7 @@ def publish_today(db, runtime, *, date: str | None = None, fetch=site_export.htt
             rep.update(outcome="waiting", reason="email configuration incomplete: " + "; ".join(problems)); return rep
         if past_deadline(date, clock()):
             return late(f"past the {date} send deadline before email started; nothing sent")
-        nb = news_binding({**ed, "edition_date": obj.get("edition_date") or date}, runtime, clock())
+        nb = news.read_binding(data_dir() / "news_bindings", ed)    # read-only: the email never binds news itself
         rep["news"] = {k: nb.get(k) for k in ("status", "snapshot_id", "text_sha256", "reason")}
         out = data_dir() / "outbox"; render.build([dict(obj)], out, runtime.get("SITE_BASE_URL", "https://starhub.vip"),
                                                   news={obj["edition_id"]: nb})

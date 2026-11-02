@@ -112,27 +112,65 @@ def digest(snap: dict, base: str) -> dict:
     return {"text": text, "html": frag, "url": url, "zh_chars": len(re.findall(r"[一-鿿]", "".join(lines) + head))}
 
 
+def page_problems(page: str | None, snap: dict) -> list[str]:
+    """The archive page must name this very snapshot (meta news-intel-snapshot / news-intel-text-sha256): any other
+    HTML -- an older revision, another day, an empty file -- is not the page the digest may link to."""
+    if not page or not page.strip():
+        return ["archive page missing (the digest's link would not resolve)"]
+    sid = re.search(r'<meta name="news-intel-snapshot" content="([^"]+)"', page)
+    sha = re.search(r'<meta name="news-intel-text-sha256" content="([0-9a-f]{64})"', page)
+    if not (sid and sha):
+        return ["archive page does not name its snapshot"]
+    if sid.group(1) != snap.get("snapshot_id") or sha.group(1) != snap.get("text_sha256"):
+        return [f"archive page is {sid.group(1)}/{sha.group(1)[:12]}, not {snap.get('snapshot_id')}/"
+                f"{str(snap.get('text_sha256'))[:12]}"]
+    return []
+
+
 def _write(path: Path, text: str) -> None:
+    """Durable: written, fsynced, renamed, directory fsynced -- or an OSError."""
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_name(f".{path.name}.tmp-{os.getpid()}")
-    tmp.write_text(text, encoding="utf-8")
+    with open(tmp, "w", encoding="utf-8") as fh:
+        fh.write(text)
+        fh.flush()
+        os.fsync(fh.fileno())
     os.replace(tmp, path)
+    dfd = os.open(path.parent, os.O_RDONLY)
+    try:
+        os.fsync(dfd)
+    finally:
+        os.close(dfd)
 
 
 def binding_path(bindings_dir: Path, edition_id: str, revision) -> Path:
     return Path(bindings_dir) / f"{edition_id}-r{revision}.json"
 
 
-def bind(bindings_dir: Path, edition: dict, export_dir: Path | None, base: str, now: datetime, *,
-         persist: bool = True) -> dict:
-    """The digest this edition revision carries, frozen on first call (persist=False: a preview that freezes
-    nothing). Never raises."""
+def read_binding(bindings_dir: Path, edition: dict) -> dict:
+    """The binding made at the site step, read-only -- what every email render and retry uses. No binding file
+    means no news: an email step can never bind news itself, so a retry after some recipients were sent can never
+    add news (or another version of it) that the first recipients did not get. Never raises."""
     path = binding_path(bindings_dir, edition["edition_id"], edition["revision"])
     try:
-        if path.exists():
-            return json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, ValueError):
-        return {"status": "absent", "reason": "binding file unreadable; story only"}
+        if not path.exists():
+            return {"status": "absent", "reason": "no binding was made at the site step; story only"}
+        rec = json.loads(path.read_text(encoding="utf-8"))
+        if rec.get("status") == "bound" and not (rec.get("digest") or {}).get("html"):
+            return {"status": "absent", "reason": "binding incomplete; story only"}
+        return rec
+    except (OSError, ValueError) as exc:
+        return {"status": "absent", "reason": f"binding unreadable ({type(exc).__name__}); story only"}
+
+
+def bind(bindings_dir: Path, edition: dict, export_dir: Path | None, base: str, now: datetime, *,
+         persist: bool = True) -> dict:
+    """The digest this edition revision carries, made once at the site step (an existing binding is returned as
+    it is). persist=False: a preview that freezes nothing. A binding that cannot be saved durably is reported
+    'absent' -- unsaved news never reaches an email. Never raises."""
+    path = binding_path(bindings_dir, edition["edition_id"], edition["revision"])
+    if path.exists():
+        return read_binding(bindings_dir, edition)
     rec = {"edition_id": edition["edition_id"], "revision": edition["revision"],
            "edition_date": edition.get("edition_date"), "bound_at": now.isoformat(timespec="seconds")}
     try:
@@ -141,8 +179,8 @@ def bind(bindings_dir: Path, edition: dict, export_dir: Path | None, base: str, 
         else:
             snap, page = load(Path(export_dir), str(edition["edition_date"]))
             problems = check(snap, str(edition["edition_date"]), now)
-            if snap and not problems and not page:
-                problems = ["archive page missing (the digest's link would not resolve)"]
+            if snap and not problems:
+                problems = page_problems(page, snap)
             if problems:
                 rec.update(status="absent", reason="; ".join(problems)[:500],
                            snapshot_id=(snap or {}).get("snapshot_id"))
@@ -157,7 +195,13 @@ def bind(bindings_dir: Path, edition: dict, export_dir: Path | None, base: str, 
     try:
         _write(path, json.dumps(rec, ensure_ascii=False, indent=1))
     except OSError as exc:
-        rec["reason"] = (rec.get("reason") or "") + f"; binding not saved: {exc}"
+        try:
+            path.unlink(missing_ok=True)
+        except OSError:
+            pass
+        return {"edition_id": rec["edition_id"], "revision": rec["revision"], "edition_date": rec["edition_date"],
+                "status": "absent", "snapshot_id": rec.get("snapshot_id"),
+                "reason": f"binding could not be saved ({type(exc).__name__}: {exc}); story only"[:500]}
     return rec
 
 
