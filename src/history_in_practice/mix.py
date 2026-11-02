@@ -65,8 +65,15 @@ def item(eid, category, o=None, admitted_at=0.0) -> dict:
             "kind": (o or {}).get("kind") or "story", "book": ((o or {}).get("work") or {}).get("book_id")}
 
 
+_E = load_project().get("editions", {})
+EXCERPTS_ONLY = _E.get("story_fallback", True) is False      # editor-in-chief 2026-11-02: unsent issues are 原文精选 only
+
+
 def plan(pool: list[dict], days: int, start: int, history: list[dict] | None = None) -> list[dict]:
-    """Deterministic greedy plan over `pool` (items, any order) for positions start..start+days-1."""
+    """Deterministic greedy plan over `pool` (items, any order) for positions start..start+days-1. With EXCERPTS_ONLY the
+    rewritten stories are archive only (never planned) and the 4/3 band is a preference that never stops the plan."""
+    if EXCERPTS_ONLY:
+        pool = [x for x in pool if x.get("kind") == "excerpt"]
     left = sorted(pool, key=lambda x: (x["admitted_at"], x["edition_id"]))
     seq = list(history or [])[-6:]; out = []
     for k in range(days):
@@ -113,7 +120,7 @@ def plan(pool: list[dict], days: int, start: int, history: list[dict] | None = N
                 break
             window = (seq + out + [x])[-7:]
             n = sum(1 for y in window if y["group"] == "china")
-            if n > MAX_CHINA or len(window) - n > 7 - MIN_CHINA:
+            if (n > MAX_CHINA or len(window) - n > 7 - MIN_CHINA) and not EXCERPTS_ONLY:
                 break                                        # substituting would break the 4/3 band in a window of 7: stop (coverage ends)
             why = f"替补：{'中国' if want == 'china' else '其他地区'}位暂无合格稿；" + why
         left.remove(x); out.append(dict(x, position=start + k, reason=why))

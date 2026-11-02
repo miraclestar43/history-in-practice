@@ -322,7 +322,7 @@ def assemble(e: dict, b: dict, sel: dict, guide: dict, passage: list[dict], edit
             "dek": guide["dek"], "intro": guide["intro"], "preheader": guide["dek"],
             "work": {"book_id": e["book_id"], "author": e.get("author_en") or e.get("author"), "author_zh": e.get("author_zh") or e.get("author"),
                      "title": e["title"], "title_en": e.get("title_en"), "title_zh_note": e.get("title_zh_note"), "chapter_zh": ch_zh, "chapter_en": ch_en,
-                     "rights_label": e.get("rights_label"), "edition": e.get("edition"),
+                     "rights_label": e.get("rights_label"), "edition": e.get("edition"), "role": e.get("role"),
                      "original_language": lang, "chapter": head, "paragraphs": [first, last],
                      "location": f"{head}; paragraphs {first}–{last} of the edition's text" + (" (with omissions marked 〔中略〕)" if any(x["gap_before"] for x in passage) else ""),
                      "file_sha256": e.get("file_sha256"), "rights": e.get("rights"), "rights_note": e.get("rights_note"),

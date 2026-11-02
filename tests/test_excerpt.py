@@ -142,6 +142,17 @@ class Excerpt(unittest.TestCase):
         self.assertTrue(any(a["outcome"] == "admitted" for a in excerpt.attempts()))
         self.assertFalse([u for u in excerpt.units_open() if u["unit"] == rs[0]["edition_id"].rsplit("-u", 1)[1] and u["book_id"] == "BK-X"])
 
+    def test_excerpts_only_plan_never_uses_stories_and_the_band_does_not_stop_it(self):
+        old = mix.EXCERPTS_ONLY; mix.EXCERPTS_ONLY = True
+        try:
+            pool = [mix.item(f"st-{k}", "world", {"title": {"zh": "旧故事"}}, 1.0) for k in range(3)] + \
+                   [mix.item(f"ex-{k}", "china_modern", {"kind": "excerpt", "work": {"book_id": f"BK-{k}"}}, 2.0 + k) for k in range(6)]
+            seq = mix.plan(pool, 7, 0)
+            self.assertEqual([x["kind"] for x in seq], ["excerpt"] * 6)                    # six Chinese pieces in a row is fine
+            self.assertFalse(any(x["edition_id"].startswith("st-") for x in seq))         # stories never stand in
+        finally:
+            mix.EXCERPTS_ONLY = old
+
     def test_reader_text_never_cites_paragraph_numbers(self):
         o = excerpt.run("BK-X", (0, len(PARAS)), "ex-p", "china_modern", call=fake(self.good_answers()), out_root=self.out)
         o["reflect"]["angle"]["zh"] = "对照前后两处（P6）。"

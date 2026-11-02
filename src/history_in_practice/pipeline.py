@@ -321,6 +321,8 @@ def inventory(db, today: str | None = None, verify: bool = False) -> dict:
     from . import mix
     cfg = load_project(); rot = list(mix.GROUP); inv = cfg.get("inventory", {})
     target, alert_below = inv.get("target_days", 14), inv.get("alert_below_days", 7)
+    if mix.EXCERPTS_ONLY:                                # 原文精选 only: alert while the next issues are not covered
+        alert_below = int(load_project().get("editions", {}).get("alert_below_days", 2))
     today = today or today_la()
     rows = db.execute("SELECT edition_id, category, status, approval, origin, edition_date FROM edition").fetchall()
     ok = {c: 0 for c in rot}; awaiting = {c: 0 for c in rot}; samples = {"total": 0, "approved": 0}; inelig, short = {}, []; pool = []
