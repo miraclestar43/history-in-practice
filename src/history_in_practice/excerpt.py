@@ -305,8 +305,9 @@ def _cn(n: int) -> str:
 def chapter_labels(head: str) -> tuple[str, str]:
     """'CHAPTER XIII, MY INTERVIEWS WITH TSANG KWOH FAN' -> ('第十三章', 'Chapter XIII, “My Interviews with Tsang Kwoh Fan”')."""
     m = re.match(r"CHAPTER ([IVXLC]+)(?:, (.*))?$", head or "")
-    if not m:
-        return head, head
+    if not m:                                           # a bare "CHAPTER" or a caption is no label at all
+        ok = bool(head) and not re.fullmatch(r"(?i)chapter\.?|\W*", head or "") and len(head) < 60
+        return (head, head) if ok else ("", "")
     n = _roman(m.group(1)); t = (m.group(2) or "").title().replace(" With ", " with ").replace(" To ", " to ").replace(" Of ", " of ").replace(" The ", " the ")
     return (f"第{_cn(n)}章" if n else head), f"Chapter {m.group(1)}" + (f", “{t}”" if t else "")
 
@@ -317,6 +318,10 @@ def assemble(e: dict, b: dict, sel: dict, guide: dict, passage: list[dict], edit
     head = chapter_heading(b, first); ch_zh, ch_en = chapter_labels(head)
     if e.get("piece_zh"):                               # one essay of a collection: the essay is the "chapter"
         ch_zh, ch_en, head = e["piece_zh"], e.get("piece_en") or e["piece_zh"], e["piece_zh"]
+    pa = sel.get("passage_author") or {}                # the passage is by someone other than the book's author (an
+    if pa.get("en") or pa.get("zh"):                    # introduction, a quoted letter): the byline names who wrote it
+        e = dict(e, author_en=pa.get("en") or e.get("author_en"), author_zh=pa.get("zh") or e.get("author_zh"),
+                 role={"zh": pa.get("role_zh") or "撰", "en": pa.get("role_en") or "author"})
     return {"kind": "excerpt", "schema_version": "excerpt/1", "edition_id": edition_id, "revision": 1, "category": category,
             "title": sel["title"], "title_note": {"zh": "编辑拟题", "en": "Title by the editor"},
             "dek": guide["dek"], "intro": guide["intro"], "preheader": guide["dek"],
