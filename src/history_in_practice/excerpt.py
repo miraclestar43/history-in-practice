@@ -74,6 +74,37 @@ def extract(b: dict, sel: dict) -> list[dict]:
     return out
 
 
+ZH_PART = 170                                         # display only: split long Chinese paragraphs near this length
+
+
+def display_parts(text: str, target: int = ZH_PART) -> list[str] | None:
+    """Phone-sized pieces of a long Chinese paragraph, cut only after a complete sentence (。！？… with any closing
+    quote); the pieces join back to the paragraph exactly, so the paragraph stays the unit of correspondence."""
+    if len(text) <= target * 1.4:
+        return None
+    sents = [s for s in re.findall(r".+?(?:[。！？…]+[”」』）]*|$)", text, flags=re.S) if s]
+    parts, cur = [], ""
+    for s in sents:
+        if cur and len(cur) >= target * 0.6 and (len(cur) + len(s) > target or s.lstrip().startswith(("“", "「"))):
+            parts.append(cur); cur = ""
+        cur += s
+    if cur:
+        if parts and len(cur) < target * 0.35:
+            parts[-1] += cur
+        else:
+            parts.append(cur)
+    return parts if len(parts) > 1 and "".join(parts) == text else None
+
+
+def add_display_parts(obj: dict) -> None:
+    for x in obj["passage"]:
+        parts = display_parts(x["zh"])
+        if parts:
+            x["zh_parts"] = parts
+        else:
+            x.pop("zh_parts", None)
+
+
 def passage_text(passage: list[dict]) -> str:
     return "\n\n".join((GAP + "\n\n" if x["gap_before"] else "") + f"[P{x['p']}] {x['orig']}" for x in passage)
 
@@ -102,6 +133,9 @@ def checks(obj: dict, b: dict, cache_text: str | None, cjk: bool) -> list[str]:
             p.append(f"note {i + 1}: paragraph P{n.get('para')} is not in the passage")
         elif n.get("term") and n["term"] not in by[n["para"]][lang]:
             p.append(f"note {i + 1}: term {n['term']!r} not in P{n['para']}")
+    for x in obj["passage"]:
+        if x.get("zh_parts") and "".join(x["zh_parts"]) != x["zh"]:
+            p.append(f"P{x['p']}: display parts do not join back to the paragraph")
     for k in ("zh", "en"):
         if not (obj.get("intro") or {}).get(k):
             p.append(f"intro.{k} missing")
@@ -186,6 +220,7 @@ def run(book_id: str, window: tuple[int, int], edition_id: str, category: str, *
         if rnd == 1 and not any(applied):
             break
     obj["open_issues"] = [i for i in (obj["review"][-1].get("issues") or []) if i.get("severity") == "fix" and not i.get("_applied")]
+    add_display_parts(obj)
     cache = data_dir() / "source_cache" / f"{e.get('source_id')}.txt"
     obj["checks"] = checks(obj, b, evidence.normalise(cache.read_text(encoding="utf-8"), cjk) if cache.exists() else None, cjk)
     obj["calls"] = [{k: m.get(k) for k in ("step", "attempt", "wall_s", "json_ok", "schema_ok", "prompts")} | {"model": (m.get("meta") or {}).get("model")}

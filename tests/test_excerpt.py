@@ -69,6 +69,17 @@ class Excerpt(unittest.TestCase):
         meta, text = render.search_index([dict(o, status="published")])
         self.assertIn("张某", meta["items"][0]["people"]); self.assertIn("My Life", meta["items"][0]["books"])
 
+    def test_long_chinese_paragraphs_display_in_sentence_pieces_that_join_back(self):
+        para = "".join(f"第{i}句话写一件事，写得比较长，要读一会儿才能读完。" for i in range(1, 15)) + "他说：“我们走吧。到了那边再说。”众人点头。"
+        parts = excerpt.display_parts(para)
+        self.assertGreater(len(parts), 1); self.assertEqual("".join(parts), para)            # display only: the paragraph is intact
+        self.assertTrue(all(x.endswith(("。", "”", "！", "？")) for x in parts))               # cut only after a full sentence
+        self.assertIsNone(excerpt.display_parts("短段落。"))
+        o = {"passage": [{"p": 1, "zh": para, "zh_parts": parts[:-1] + [parts[-1] + "多"]}], "notes": [], "intro": {"zh": "a", "en": "b"},
+             "work": {"original_language": "en"}}
+        o["passage"][0]["en"] = PARAS[1]
+        self.assertIn("P1: display parts do not join back to the paragraph", excerpt.checks(o, excerpt.book("BK-X")[1], None, False))
+
     def test_model_never_supplies_the_original(self):
         ans = {"select": {"skip": "没有完整段落"}}
         self.assertEqual(excerpt.run("BK-X", (0, 20), "ex-2", "china_modern", call=fake(ans), out_root=self.out)["outcome"], "skipped")

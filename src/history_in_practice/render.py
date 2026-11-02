@@ -224,10 +224,17 @@ def excerpt_block(obj, lang, base, with_buttons=False) -> str:
         if x["gap_before"]:
             out.append('<p style="text-align:center;color:#8a857d;letter-spacing:.3em;margin:0 0 16px;">〔中略〕</p>')
         sup = "".join(f'<sup style="font-size:12px;color:{ACCENT};">[{k}]</sup>' for k in marks.get(x["p"], []))
-        out.append(f'<p style="{BODY}">{e(x[lang])}{sup}</p>')
+        parts = x.get("zh_parts") if lang == "zh" and x.get("zh_parts") else [x[lang]]
+        opened = 0
+        for i, t in enumerate(parts):                # display pieces of a long Chinese paragraph; continued quotes reopen with “
+            out.append(f'<p style="{BODY}">{"“" if opened > 0 else ""}{e(t)}{sup if i == len(parts) - 1 else ""}</p>')
+            opened += t.count("“") - t.count("”")
     if obj.get("notes"):
         out.append(f'<h2 style="{H2}">{X["notes"]}</h2><ol style="font-size:16px;line-height:1.75;color:#3a3732;padding-left:22px;margin:0 0 10px;">')
-        out += [f'<li style="margin-bottom:6px;"><span style="color:#8a857d;">{e(n["term"])}：</span>{e(n[lang])}</li>' for n in obj["notes"]]
+        def word(n):
+            w = (n.get("label") or {}).get(lang) or n["term"]
+            return f'<b>{e(w)}</b>' + (f'<span style="color:#8a857d;"> ({e(n["term"])})</span>' if w != n["term"] else "")
+        out += [f'<li style="margin-bottom:6px;">{word(n)}{"：" if lang == "zh" else ": "}{e(n[lang])}</li>' for n in obj["notes"]]
         out.append("</ol>")
     if (obj.get("after") or {}).get(lang):
         out.append(f'<h2 style="{H2}">{X["after"]}</h2><p style="{BODY}">{e(obj["after"][lang])}</p>')
@@ -310,9 +317,11 @@ def excerpt_text(obj, lang, base, links=False) -> str:
     for i, n in enumerate(obj.get("notes") or []):
         marks.setdefault(n["para"], []).append(i + 1)
     for x in obj["passage"]:
-        out += (["〔中略〕", ""] if x["gap_before"] else []) + [x[lang] + "".join(f"[{k}]" for k in marks.get(x["p"], [])), ""]
+        parts = x.get("zh_parts") if lang == "zh" and x.get("zh_parts") else [x[lang]]
+        out += (["〔中略〕", ""] if x["gap_before"] else []) + [y for t in parts[:-1] for y in (t, "")] + [parts[-1] + "".join(f"[{k}]" for k in marks.get(x["p"], [])), ""]
     if obj.get("notes"):
-        out += [f"== {X['notes']} =="] + [f"[{i + 1}] {n['term']}: {n[lang]}" for i, n in enumerate(obj["notes"])] + [""]
+        out += [f"== {X['notes']} =="] + [f"[{i + 1}] {(n.get('label') or {}).get(lang) or n['term']}" + (f" ({n['term']})" if ((n.get('label') or {}).get(lang) or n['term']) != n['term'] else "")
+                                          + f": {n[lang]}" for i, n in enumerate(obj["notes"])] + [""]
     if (obj.get("after") or {}).get(lang):
         out += [f"== {X['after']} ==", obj["after"][lang], ""]
     if (obj.get("continue") or {}).get(lang):

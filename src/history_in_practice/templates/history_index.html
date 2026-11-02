@@ -74,7 +74,7 @@ sup.n a{text-decoration:none}
 .pair{display:block;font-size:.86em;color:var(--muted);border-left:2px solid var(--line);padding-left:10px;margin:.5em 0 0}
 .notes-list{font-size:16px;line-height:1.75;padding-left:1.4em}
 .notes-list li{margin-bottom:.5em}
-.notes-list .term{color:var(--muted)}
+.notes-list .term{color:var(--muted);font-size:.92em}
 .pairbtn{font:inherit;font-size:14px;min-height:36px;padding:2px 12px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;cursor:pointer;margin:0 0 12px}
 </style>
 </head>
@@ -317,17 +317,30 @@ function renderExcerpt(o){
   const noteNo = {}; (o.notes||[]).forEach((n,i) => { (noteNo[n.para] = noteNo[n.para] || []).push(i+1); });
   for (const x of o.passage){
     if (x.gap_before) sec.append(el("p",{class:"gap","aria-label":lang==="zh"?"中略":"omission"},"〔中略〕"));
-    const p = el("p",{"data-k":"p"+x.p}); p.append(document.createTextNode(x[lang]));
+    // long Chinese paragraphs are shown in sentence-boundary pieces (zh_parts join back to the paragraph exactly);
+    // a piece that continues an open quotation reopens it with “, as Chinese typography does
+    const parts = lang==="zh" && x.zh_parts ? x.zh_parts : [x[lang]];
+    let open = 0, p = null;
+    parts.forEach((t, i) => {
+      p = el("p",{"data-k":"p"+x.p+(i ? "."+i : "")}); p.textContent = (open > 0 ? "“" : "") + t;
+      open += (t.match(/“/g)||[]).length - (t.match(/”/g)||[]).length;
+      sec.append(p);
+    });
     for (const n of noteNo[x.p] || []){ const s = el("sup",{class:"n"}); s.append(el("a",{href:"#note-"+n,id:"ref-"+n},"["+n+"]")); p.append(s); }
     if (PAIRED){ const pl = lang==="zh" ? "en" : "zh";                      // the page's other language, labelled for what it is
                  const q = el("span",{class:"pair",lang:pl==="zh"?"zh-CN":"en"}); q.textContent = (pl===src ? Y.orig : Y.ai)+(lang==="zh"?"：":": ")+x[pl]; p.append(q); }
-    sec.append(p);
   }
   w.append(sec);
-  if ((o.notes||[]).length){
-    const ns = el("section",{id:"s-notes-list"}); ns.append(el("h2",{"data-k":"n.h"},Y.notes)); const ol = el("ol",{class:"notes-list"});
-    o.notes.forEach((n,i) => { const li = el("li",{id:"note-"+(i+1)}); li.append(el("span",{class:"term"},n.term+"："), document.createTextNode(n[lang]+" ")); li.append(el("a",{href:"#ref-"+(i+1),"aria-label":"↩"},"↩")); ol.append(li); });
+  if ((o.notes||[]).length){                           // folded by default: help when wanted, never a wall of text
+    const ns = el("details",{id:"s-notes-list",class:"notes"}); ns.append(el("summary",{},Y.notes+"（"+o.notes.length+"）"));
+    const ol = el("ol",{class:"notes-list"});
+    o.notes.forEach((n,i) => {
+      const li = el("li",{id:"note-"+(i+1)}), word = (n.label && n.label[lang]) || n.term;
+      li.append(el("strong",{},word)); if (word !== n.term) li.append(el("span",{class:"term"}," ("+n.term+")"));
+      li.append(document.createTextNode((lang==="zh"?"：":": ")+n[lang]+" ")); li.append(el("a",{href:"#ref-"+(i+1),"aria-label":"↩"},"↩")); ol.append(li);
+    });
     ns.append(ol); w.append(ns);
+    w.querySelectorAll("sup.n a").forEach(a => a.addEventListener("click", () => { ns.open = true; }));
   }
   if (o.after && o.after[lang]){ const a = el("section",{id:"s-after"}); a.append(el("h2",{"data-k":"a.h"},Y.after), el("p",{"data-k":"a.0"},o.after[lang])); w.append(a); }
   if (o["continue"] && o["continue"][lang]){
