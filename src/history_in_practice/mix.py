@@ -62,7 +62,7 @@ def item(eid, category, o=None, admitted_at=0.0) -> dict:
     tags = tags_of(eid, o)
     return {"edition_id": eid, "category": category, "group": GROUP.get(category, "other"), "region": region(o, eid, category),
             "tags": list(tags), "title": ((o or {}).get("title") or {}).get("zh", eid), "admitted_at": admitted_at,
-            "kind": (o or {}).get("kind") or "story"}
+            "kind": (o or {}).get("kind") or "story", "book": ((o or {}).get("work") or {}).get("book_id")}
 
 
 def plan(pool: list[dict], days: int, start: int, history: list[dict] | None = None) -> list[dict]:
@@ -81,7 +81,8 @@ def plan(pool: list[dict], days: int, start: int, history: list[dict] | None = N
                 return None, ""
             ex = [x for x in c if x.get("kind") == "excerpt"]
             if ex:                                           # 原文精选 is the default form since 2026-11-02: stories stand in
-                c = ex
+                other_book = [x for x in ex if not (prev and x.get("book") and x.get("book") == prev.get("book"))]
+                c = other_book or ex                         # not the same book two days running when another excerpt exists
             def score(x):
                 s = 0
                 if group == "china" and last_china and x["category"] != last_china["category"]:
