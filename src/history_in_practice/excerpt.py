@@ -219,16 +219,16 @@ def run(book_id: str, window: tuple[int, int], edition_id: str, category: str, *
         x[lang] = x.pop("orig"); x[other] = t["text"]
     obj = assemble(e, b, sel, guide, passage, edition_id, category)
     obj["review"] = []
-    for rnd in (1, 2):
+    for rnd in (1, 2, 3):                               # fixes applied after rounds 1 and 2; round 3 only checks
         rv = caller(f"review_r{rnd}", f"{load_prompt('excerpt_review')}\n\n{meta}\n\n【前文】\n{_context(b, int(sel['start']))}\n\n"
                                       f"【本期】\n{json.dumps(view(obj), ensure_ascii=False, indent=1)}",
                     TIMEOUT["review"], "\n\n[Reply with one valid JSON object only.]", validate=_schema("review"))
         if rv is None:
             obj["review"].append({"round": rnd, "failed": True}); break
         fixes = [i for i in rv["issues"] if i.get("severity") == "fix"]
-        applied = [apply_fix(obj, i) for i in fixes] if rnd == 1 else []
+        applied = [apply_fix(obj, i) for i in fixes] if rnd < 3 else []
         obj["review"].append({"round": rnd, "reading": rv.get("reading"), "issues": rv["issues"], "applied": applied})
-        if rnd == 1 and not any(applied):
+        if not any(applied):
             break
     obj["open_issues"] = [i for i in (obj["review"][-1].get("issues") or []) if i.get("severity") == "fix" and not i.get("_applied")]
     obj["episode_meta"] = guide.get("episode") or {}
@@ -253,6 +253,12 @@ def apply_fix(obj: dict, i: dict) -> bool:
     if not isinstance(new, str) or not new.strip():
         return False
     lang = obj["work"]["original_language"]; tr = "en" if lang == "zh" else "zh"
+    m = re.fullmatch(r"title\.(zh|en)", w)
+    if m:
+        obj["title"][m.group(1)] = new; i["_applied"] = True; return True
+    m = re.fullmatch(r"notes\.(\d+)\.label\.(zh|en)", w)
+    if m and 0 < int(m.group(1)) <= len(obj["notes"]):
+        obj["notes"][int(m.group(1)) - 1].setdefault("label", {})[m.group(2)] = new; i["_applied"] = True; return True
     m = re.fullmatch(r"(intro|after|dek)\.(zh|en)", w)
     if m and (obj.get(m.group(1)) or {}).get(m.group(2)) is not None:
         obj[m.group(1)][m.group(2)] = new; i["_applied"] = True; return True
@@ -479,7 +485,7 @@ def units_open(category: str | None = None) -> list[dict]:
     used = {(a["book_id"], a["unit"]) for a in attempts() if a.get("outcome") == "admitted"}
     out = []
     for e in lib_load()["books"]:
-        if e.get("level") != "usable" or e.get("exclude") or e.get("rights") not in ("public_domain", "licensed"):
+        if e.get("level") != "usable" or e.get("exclude") or e.get("excerpt") is False or e.get("rights") not in ("public_domain", "licensed"):
             continue
         if category and category not in (e.get("categories") or []):
             continue

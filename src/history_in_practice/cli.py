@@ -740,7 +740,8 @@ def _nightly_excerpt(d, a, cfg) -> int:
         pre = claude_cli.preflight()
         rep["health"] = {"final_editor": "unavailable" if pre else "ok", "problems": pre}
         inv = pipeline.inventory(d, verify=True)
-        cats = sorted(mix.GROUP, key=lambda c: (-inv["gaps_to_target"].get(c, 0), c not in ("china_ancient", "china_modern")))
+        # Chinese originals first (editor-in-chief 2026-11-02); the mix keeps the 4/3 balance and old stories stand in elsewhere
+        cats = sorted(mix.GROUP, key=lambda c: (c not in ("china_ancient", "china_modern"), -inv["gaps_to_target"].get(c, 0)))
         rep["excerpt_supply"] = [] if pre else excerpt.supply(d, cats, target=int(cfg.get("excerpt_target_ready", 6)),
                                                              max_runs=int(cfg.get("excerpt_max_per_night", 2)))
         if any(r.get("outcome") == "failed" for r in rep["excerpt_supply"]):

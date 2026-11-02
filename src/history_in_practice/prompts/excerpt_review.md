@@ -11,8 +11,8 @@
 
 输出格式：
 {"issues": [{"id": "X1", "area": "selection|context|reference|intro|translation", "severity": "fix|note",
-             "where": "intro.zh | intro.en | notes.<序号> | after.zh | tr.P<段号> | selection",
+             "where": "title.zh | title.en | dek.zh | intro.zh | intro.en | notes.<序号>.zh | notes.<序号>.en | notes.<序号>.label.zh | tr.P<段号> | selection",
              "problem": "具体问题", "proposed": "where 为文字字段时：该字段修改后的完整文字；selection 问题写建议"}],
  "reading": "一两句：作为读者，这一期读起来是否自然、连贯、有吸引力，作者的表达是否保留下来"}
 
-fix 只用于：误译漏译增译、导读或注释写了原文不支持的说法、剧透结局、删节误导、读者因缺前情或指代不清读不懂。措辞偏好、可有可无的补充都是 note。
+fix 只用于：误译漏译增译、导读或注释写了原文不支持的说法、标题或导读剧透结局、注释入口词与译文用词对不上、删节误导、读者因缺前情或指代不清读不懂。where 为文字字段时，proposed 必须是该字段修改后的完整文字（标题只写新标题）。措辞偏好、可有可无的补充都是 note。
