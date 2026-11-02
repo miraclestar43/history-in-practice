@@ -197,7 +197,7 @@ XL = {"zh": dict(think="读后想一想", angle="查看参考角度", editors="�
 def byline(obj, lang) -> str:
     W = obj["work"]; src = W["original_language"]
     if lang == "zh":
-        return (f"{W.get('author_zh') or W['author']} {(W.get('role') or {}).get('zh') or '著'} ·《{W['title']}》" + (f"（{W['title_zh_note']}）" if W.get("title_zh_note") else "")
+        return (f"{W.get('author_zh') or W['author']} {(W.get('role') or {}).get('zh') or '著'} ·《{W.get('title_zh') or W['title']}》" + (f"（{W['title_zh_note']}）" if W.get("title_zh_note") else "")
                 + ((("·" if W["chapter_zh"].startswith("《") else " ") + W["chapter_zh"]) if W.get("chapter_zh") else "") + f" · 原文{'中文' if src == 'zh' else '英文'}"
                 + ("" if src == "zh" else " · 下文中文为 AI 译文"))
     return (f"{W['author']}{(' (' + W['role']['en'] + ')') if (W.get('role') or {}).get('en') else ''}, {W.get('title_en') or W['title']}" + (f", {W['chapter_en']}" if W.get("chapter_en") else "")
