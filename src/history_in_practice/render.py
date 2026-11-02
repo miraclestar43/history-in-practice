@@ -72,73 +72,15 @@ def link(obj, lang, base):
     return f"{base}/history/?story={obj['edition_id']}&lang={lang}"
 
 # ---------------- email ----------------
-NEWS_SCHEMA = "news3min/v0-prototype"
-NEWS_MAX_AGE_H = 26
+# The news digest at the END of the email (owner, 2026-11-01; supersedes prompts/08's news-first module): `news` is
+# the edition's frozen binding from news.bind -- its own digest text and HTML, never a live snapshot. A binding that is
+# absent (missing, stale, damaged or unqualified news) leaves the email exactly as it is without news.
 
 
-# What kind of statement the "why" line is (owner feedback 2026-10-31: keep reported fact, a source's judgment and the
-# editor's interpretation apart). reported: a stated consequence from the sources; source_judgment: an attributed
-# opinion (analyst, publisher, the company itself); interpretation: the editor's own reading.
-NEWS_WHY_LABELS = {"reported": "为什么值得知道：", "source_judgment": "来源观点：", "interpretation": "编辑解读："}
-
-
-def news_why(it: dict) -> str:
-    return (NEWS_WHY_LABELS.get(it.get("why_kind"), "为什么值得知道：") + it["why"]) if it.get("why") else ""
-
-
-def news_problems(snap: dict | None, now_iso: str | None = None) -> list[str]:
-    """Consumer-side check of a frozen 3-minute news snapshot (prompts/08 §4). Any problem means the edition goes out
-    without news and says so briefly; a stale, degraded or unsourced snapshot is never shown as today's news."""
-    from datetime import datetime, timezone
-    if not snap:
-        return ["no snapshot"]
-    p = []
-    if snap.get("schema") != NEWS_SCHEMA: p.append(f"schema {snap.get('schema')!r}")
-    if snap.get("status") != "ready": p.append(f"status {snap.get('status')!r}")
-    items = snap.get("items") or []
-    if not 3 <= len(items) <= 5: p.append(f"{len(items)} items (3-5 expected)")
-    for i, it in enumerate(items):
-        if not (it.get("headline") and it.get("what")): p.append(f"item {i + 1}: headline/what missing")
-        if not any(web_url(s.get("url")) for s in it.get("sources") or []): p.append(f"item {i + 1}: no source link")
-        if it.get("why") and it.get("why_kind") not in NEWS_WHY_LABELS: p.append(f"item {i + 1}: why_kind must be one of {sorted(NEWS_WHY_LABELS)}")
-        if it.get("why") and _restates(it["why"], it.get("headline", "")): p.append(f"item {i + 1}: why restates the headline (omit it instead)")
-    try:
-        as_of = datetime.fromisoformat(snap["as_of"]); now = datetime.fromisoformat(now_iso) if now_iso else datetime.now(timezone.utc)
-        age = (now - as_of).total_seconds() / 3600
-        if age > NEWS_MAX_AGE_H or age < -0.1: p.append(f"as_of {snap['as_of']} is {age:.1f} h from now (max {NEWS_MAX_AGE_H} h)")
-    except (KeyError, ValueError, TypeError):
-        p.append("as_of missing or not ISO")
-    return p
-
-
-def _restates(why: str, headline: str) -> bool:
-    """Most of the why line's 2-character runs already occur in the headline: it adds nothing."""
-    grams = lambda t: {t[i:i + 2] for i in range(len(t) - 1) if re.match(r"[一-鿿]{2}", t[i:i + 2])}
-    w, h = grams(why), grams(headline)
-    return len(w) >= 4 and len(w & h) / len(w) >= 0.6
-
-
-def news_minutes(snap: dict) -> int:
-    t = "".join(it.get(k, "") for it in snap.get("items") or [] for k in ("headline", "what", "why", "qualifiers"))
-    return max(1, round(len(re.findall(r"[一-鿿]", t)) / ZH_CPM))
-
-
-def news_html(snap: dict | None, ok: bool) -> str:
-    h = f'<h2 id="news" style="font-size:19px;color:#1d1d1f;margin:6px 0 4px;">今日新闻 · 约 {news_minutes(snap) if ok else 1} 分钟</h2>'
-    if not ok:
-        return h + '<p style="font-size:15px;line-height:1.8;color:#55524d;margin:0 0 24px;">今天的新闻简报暂缺（没有及时、可核对来源的版本），下面直接进入今日故事。</p>'
-    out = [h, f'<p style="font-size:13px;color:#8a857d;margin:0 0 14px;">{e(snap["label"]["zh"])}</p>']
-    for i, it in enumerate(snap["items"]):
-        why = news_why(it)
-        srcs = " · ".join(f'<a href="{e(s["url"])}" style="color:{ACCENT};">{e(s["name"])}</a>' if web_url(s.get("url")) else e(s["name"])
-                          for s in it.get("sources") or [])
-        out.append(f'<p style="font-size:16px;line-height:1.8;margin:0 0 4px;color:#1d1d1f;"><b>{i + 1}. {e(it["headline"])}</b></p>'
-                   f'<p style="font-size:15px;line-height:1.85;margin:0 0 4px;color:#24221f;">{e(it["what"])}</p>'
-                   + (f'<p style="font-size:15px;line-height:1.85;margin:0 0 4px;color:#3a3732;">{e(why)}</p>' if why else "")
-                   + (f'<p style="font-size:13px;line-height:1.7;margin:0 0 4px;color:#8a857d;">{e(it["qualifiers"])}</p>' if it.get("qualifiers") else "")
-                   + f'<p style="font-size:13px;line-height:1.7;margin:0 0 16px;color:#8a857d;">来源：{srcs}</p>')
-    out.append('<hr style="border:none;border-top:1px solid #d8d2c8;margin:8px 0 22px;">')
-    return "\n".join(out)
+def _news_digest(news: dict | None, kind: str) -> str:
+    if not news or news.get("status") != "bound":
+        return ""
+    return news["digest"][kind]
 
 
 # Email layout (editor-in-chief 2026-11-01): column · date → title → [在网页阅读] [Read in English] → dek → body; 18px body,
@@ -212,12 +154,7 @@ def email_html(obj, base, news: dict | None = None, now_iso: str | None = None):
             f'{LBL["zh"]["col"]}｜{date}<br><a href="{e(link(obj,"zh",base))}" style="color:{ACCENT};">{LBL["zh"]["read_web"]}</a> · '
             f'<a href="{e(link(obj,"en",base))}" style="color:{ACCENT};">Read in English</a><br>{LBL["zh"]["feedback"]} {LBL["zh"]["pause"]}</p>')
     pre = e(obj["preheader"]["zh"])
-    nav = newsblock = ""
-    if news is not None:                     # one reading edition, two modules (prompts/08 §1); same text goes to the web copy
-        ok = not news_problems(news, now_iso)
-        nav = (f'<p style="font-size:15px;margin:10px 0 18px;"><a href="#news" style="color:{ACCENT};">今日新闻 · 约 {news_minutes(news) if ok else 1} 分钟</a>'
-               f' · <a href="#story" style="color:{ACCENT};">今日故事 · 约 {obj["reading_minutes"]["zh"]} 分钟</a></p>')
-        newsblock = news_html(news, ok)
+    newsblock = _news_digest(news, "html")
     if obj.get("status") == "test":
         head = (f'<p style="font-size:14px;line-height:1.7;margin:0 0 16px;padding:10px 14px;border:2px solid #b5542f;color:#7a2e12;border-radius:4px;">'
                 f'<b>测试 TEST</b> · {e(TEST_NOTE["zh"])}<br>{e(TEST_NOTE["en"])}</p>') + head
@@ -230,11 +167,11 @@ def email_html(obj, base, news: dict | None = None, now_iso: str | None = None):
 <table role="presentation" width="640" cellpadding="0" cellspacing="0" style="max-width:640px;width:100%;"><tr>
 <td class="hip-card" style="background:#ffffff;border:1px solid #ece7de;padding:24px 12px 30px;font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',Helvetica,Arial,sans-serif;">
 {head}
-{nav}{newsblock}<a id="story"></a>
+<a id="story"></a>
 {block("zh")}
 {sep_en}
 {block("en")}
-{foot}
+{newsblock}{foot}
 </td></tr></table></td></tr></table></body></html>'''
 
 def email_text(obj, base, news: dict | None = None, now_iso: str | None = None):
@@ -249,21 +186,11 @@ def email_text(obj, base, news: dict | None = None, now_iso: str | None = None):
                 f"{L['alt']}: {r['example']['alternative'][lang]}", "", notes_line(obj, lang, base) + f" {link(obj, lang, base)}#notes"]
         return "\n".join(out)
     test = [f"【测试 TEST】{TEST_NOTE['zh']}", TEST_NOTE["en"], ""] if obj.get("status") == "test" else []
-    nw = []
-    if news is not None:
-        if news_problems(news, now_iso):
-            nw = ["== 今日新闻 ==", "今天的新闻简报暂缺（没有及时、可核对来源的版本），下面直接进入今日故事。", ""]
-        else:
-            nw = [f"== 今日新闻 · 约 {news_minutes(news)} 分钟 ==", news["label"]["zh"], ""]
-            for i, it in enumerate(news["items"]):
-                nw += [f"{i + 1}. {it['headline']}", it["what"]]
-                if it.get("why"): nw.append(news_why(it))
-                if it.get("qualifiers"): nw.append(it["qualifiers"])
-                nw += ["来源：" + "；".join(s["name"] + (f" {s['url']}" if web_url(s.get("url")) else "") for s in it.get("sources") or []), ""]
-            nw += ["=" * 20, "== 今日故事 ==", ""]
+    digest = _news_digest(news, "text")
     date = dotted(obj['edition_date']) or obj['edition_date']
-    return "\n".join(test + nw + [f"{LBL['zh']['col']}｜{date} · {CAT[obj['category']][0]}", "", block("zh", links=True), "",
-                      "=" * 40, f"{LBL['en']['col']}｜{date} · {CAT[obj['category']][1]} · English", "", block("en"), "", "=" * 40,
+    return "\n".join(test + [f"{LBL['zh']['col']}｜{date} · {CAT[obj['category']][0]}", "", block("zh", links=True), "",
+                      "=" * 40, f"{LBL['en']['col']}｜{date} · {CAT[obj['category']][1]} · English", "", block("en"), "",
+                      *(["=" * 40, digest, ""] if digest else []), "=" * 40,
                       f"在网页阅读：{link(obj,'zh',base)}", f"Read in English：{link(obj,'en',base)}", f"{LBL['zh']['feedback']} {LBL['zh']['pause']}"])
 
 def markdown(obj, lang):
@@ -332,7 +259,9 @@ def search_index(objs) -> tuple[dict, dict]:
     return ({"schema": "history-search/v1", "items": meta}, {"schema": "history-search-text/v1", "items": text})
 
 
-def build(objs, out: Path, base):
+def build(objs, out: Path, base, news: dict | None = None):
+    """`news`: edition_id -> that edition's frozen news binding (news.bind); the email carries its digest at the end."""
+    news = news or {}
     (out/"email").mkdir(parents=True, exist_ok=True); (out/"site/history").mkdir(parents=True, exist_ok=True); (out/"site/data/history").mkdir(parents=True, exist_ok=True)
     index = []
     for o in objs:
@@ -346,8 +275,8 @@ def build(objs, out: Path, base):
                           "title": o["title"], "dek": o["dek"], "reading_minutes": o["reading_minutes"], "content_sha256": o["content_sha256"],
                           "path": rel, "sample": True})
             continue
-        (out/f"email/{o['edition_id']}.html").write_text(email_html(o, base), encoding="utf-8")
-        (out/f"email/{o['edition_id']}.txt").write_text(email_text(o, base), encoding="utf-8")
+        (out/f"email/{o['edition_id']}.html").write_text(email_html(o, base, news=news.get(o["edition_id"])), encoding="utf-8")
+        (out/f"email/{o['edition_id']}.txt").write_text(email_text(o, base, news=news.get(o["edition_id"])), encoding="utf-8")
         public = {k: v for k, v in o.items() if k not in ("evidence_map", "preheader", "editor_log")}
         prev_json = None
         if o.get("correction") and (o["correction"].get("previous") or {}).get("json"):

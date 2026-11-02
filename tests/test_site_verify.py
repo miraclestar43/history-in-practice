@@ -109,50 +109,7 @@ class ReadMoreLinks(unittest.TestCase):
         self.assertTrue(render.web_url("https://example.org/x")); self.assertFalse(render.web_url(None)); self.assertFalse(render.web_url("null"))
 
 
-def fake_news(as_of="2026-11-02T07:00:00-08:00", status="ready", n=3):
-    """Fictional snapshot: invented headlines and example.org links; contacts no one."""
-    return {"schema": "news3min/v0-prototype", "snapshot_id": "fake", "revision": 1, "status": status, "as_of": as_of,
-            "label": {"zh": "截至 07:00（洛杉矶时间）· 过去24小时要闻（虚构测试）", "en": "fake"},
-            "items": [{"headline": f"虚构新闻{i}", "what": "某地发生了某事。", "why": "这是测试。", "why_kind": "interpretation",
-                       "qualifiers": "测试限定。", "sources": [{"name": "Example", "url": f"https://example.org/{i}"}]} for i in range(n)]}
-
-
-class NewsModule(unittest.TestCase):
-    """prompts/08: an optional 3-minute news module in the reading email; stale or unsafe news is never shown as fresh."""
-    NOW = "2026-11-02T07:30:00-08:00"
-
-    def test_fresh_snapshot_adds_anchored_news_before_the_story(self):
-        o = frozen(); h = render.email_html(o, "https://x", news=fake_news(), now_iso=self.NOW)
-        self.assertEqual(render.news_problems(fake_news(), self.NOW), [])
-        self.assertIn('href="#news"', h); self.assertIn('href="#story"', h); self.assertIn('id="news"', h); self.assertIn('id="story"', h)
-        self.assertLess(h.index("虚构新闻0"), h.index('id="story"')); self.assertIn("编辑解读：这是测试。", h); self.assertIn("https://example.org/2", h)
-
-    def test_why_line_is_labelled_by_kind_and_never_restates_the_headline(self):
-        # owner feedback 2026-10-31: keep reported fact, a source's judgment and the editor's reading apart; a "why"
-        # that only repeats the headline is dropped, not shown
-        n = fake_news(); n["items"][0].update(why="分析机构认为需求推高了利润。", why_kind="source_judgment")
-        self.assertIn("来源观点：分析机构认为需求推高了利润。", render.email_html(frozen(), "https://x", news=n, now_iso=self.NOW))
-        rep = fake_news(); rep["items"][0].update(headline="刚果（金）埃博拉疫情死亡超过五千人", why="刚果（金）埃博拉疫情死亡超过五千人，值得关注。")
-        self.assertTrue(any("restates" in x for x in render.news_problems(rep, self.NOW)))
-        bad = fake_news(); bad["items"][0]["why_kind"] = "trend"
-        self.assertTrue(any("why_kind" in x for x in render.news_problems(bad, self.NOW)))
-
-    def test_stale_degraded_or_unsourced_news_is_replaced_by_a_short_note(self):
-        o = frozen()
-        stale = fake_news(as_of="2026-10-31T07:00:00-07:00"); degraded = fake_news(status="degraded"); few = fake_news(n=1)
-        nolink = fake_news(); nolink["items"][0]["sources"] = [{"name": "X", "url": None}]
-        for bad in (stale, degraded, few, nolink):
-            self.assertTrue(render.news_problems(bad, self.NOW))
-            h = render.email_html(o, "https://x", news=bad, now_iso=self.NOW)
-            self.assertIn("新闻简报暂缺", h); self.assertNotIn("虚构新闻1", h); self.assertIn('id="story"', h)   # the story still goes out
-
-    def test_without_news_the_email_is_unchanged(self):
-        o = frozen(); self.assertEqual(render.email_html(o, "https://x"), render.email_html(o, "https://x", news=None))
-        self.assertNotIn('id="news"', render.email_html(o, "https://x"))
-        self.assertEqual(render.email_text(o, "https://x"), render.email_text(o, "https://x", news=None))
-        txt = render.email_text(o, "https://x", news=fake_news(), now_iso=self.NOW); self.assertIn("1. 虚构新闻0", txt)
-        self.assertLess(txt.index("虚构新闻2"), txt.index("== 今日故事 =="))
-        self.assertIn("新闻简报暂缺", render.email_text(o, "https://x", news=fake_news(status="degraded"), now_iso=self.NOW))
+# The news module moved to the end of the email as a frozen digest (2026-11-01): tests/test_news_digest.py.
 
 
 if __name__ == "__main__":
