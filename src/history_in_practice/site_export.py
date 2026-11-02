@@ -114,10 +114,12 @@ def verify(obj: dict, base_url: str, fetch=http_fetch) -> tuple[bool, list[str]]
         problems.append(f"edition: revision {live.get('revision')} != {obj['revision']}")
     if live.get("content_sha256") != obj["content_sha256"]:
         problems.append("edition: content_sha256 differs from frozen local object")
-    recomputed = hashlib.sha256(render.canonical(live).encode()).hexdigest() if all(k in live for k in ("sections", "reflection")) else None
+    shape = ("passage", "intro") if live.get("kind") == "excerpt" else ("sections", "reflection")
+    recomputed = hashlib.sha256(render.canonical(live).encode()).hexdigest() if all(k in live for k in shape) else None
     if recomputed != obj["content_sha256"]:
         problems.append("edition: recomputed content hash differs (body changed or truncated)")
     for lang in ("zh", "en"):
-        if not live.get("title", {}).get(lang) or any(not p.get(lang) for s in live.get("sections", []) for p in s.get("paras", [])):
+        paras = live.get("passage", []) if live.get("kind") == "excerpt" else [p for s in live.get("sections", []) for p in s.get("paras", [])]
+        if not live.get("title", {}).get(lang) or not paras or any(not p.get(lang) for p in paras):
             problems.append(f"edition: language {lang} missing or incomplete")
     return (not problems), problems

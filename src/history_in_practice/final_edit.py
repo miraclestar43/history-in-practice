@@ -854,6 +854,9 @@ def admitted_file_problems(path: Path, cur: dict, cache: Path | None = None) -> 
     o = json.loads(Path(path).read_text(encoding="utf-8")); render.finalize(o); p = []
     if o.get("edition_id") != edition_id or o.get("revision") != cur["revision"] or o["content_sha256"] != cur["content_sha256"]:
         p.append("article file differs from the admitted edition (id, revision or content hash)")
+    if o.get("kind") == "excerpt":                      # 原文精选: the text re-extracted from the book on this machine
+        from . import excerpt
+        return p + excerpt.record_problems(o, approval=cur.get("approval")), o
     d = Path(path).parent; files = {n: d / f"{n}.json" for n in ("final_editor_record", "evidence", "base_article")}
     if (cur.get("origin") or "pipeline") == "sample" and str(cur.get("approval") or "").startswith("sample-approved"):
         evp = d / "evidence.json" if (d / "evidence.json").exists() else REPO / "samples" / f"evidence_{d.name}.json"
@@ -903,7 +906,8 @@ def send_problems(db, o: dict, cache: Path | None = None) -> list[str]:
         return ["admitted source file missing: " + af["path"]]
     p, src = admitted_file_problems(Path(af["path"]), src_cur, cache)
     if src is not None:
-        p += [f"{k} differs from the admitted article" for k in SEND_BODY_KEYS if src.get(k) != o.get(k)]
+        keys = render.EXCERPT_KEYS + ("category",) if src.get("kind") == "excerpt" else SEND_BODY_KEYS
+        p += [f"{k} differs from the admitted article" for k in keys if k not in ("edition_id", "revision") and src.get(k) != o.get(k)]
     return p
 
 

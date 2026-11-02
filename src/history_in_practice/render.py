@@ -44,7 +44,7 @@ def web_url(u) -> bool:
     its title and edition instead."""
     return isinstance(u, str) and bool(re.fullmatch(r"https?://\S+", u)) and not BOOK_FILE.match(u)
 
-EXCERPT_KEYS = ("edition_id", "revision", "title", "dek", "intro", "work", "translation", "passage", "notes", "after", "continue")
+EXCERPT_KEYS = ("edition_id", "revision", "title", "dek", "intro", "work", "translation", "passage", "notes", "after", "reflect", "continue")
 
 
 def canonical(obj) -> str:
@@ -189,8 +189,8 @@ def notes_line(obj, lang, base) -> str:
     return f"Sources: {srcs}." + (f" Read more: {more}." if more else "") + " Notes on the material are on the web page."
 
 
-XL = {"zh": dict(intro="导读", text="正文", orig="原文", ai="AI 译文", notes="注释", after="读后", cont="继续阅读", titled="标题为编辑所拟"),
-      "en": dict(intro="Introduction", text="The text", orig="Original", ai="AI translation", notes="Notes", after="Afterword", cont="Read on",
+XL = {"zh": dict(think="读后想一想", angle="查看参考角度", editors="以上为编辑提出的问题，不代表原作者观点。", intro="导读", text="正文", orig="原文", ai="AI 译文", notes="注释", after="读后", cont="继续阅读", titled="标题为编辑所拟"),
+      "en": dict(think="After reading", angle="One way to look at it (on the web page)", editors="These questions are the editor's, not the author's.", intro="Introduction", text="The text", orig="Original", ai="AI translation", notes="Notes", after="Afterword", cont="Read on",
                  titled="Title by the editor")}
 
 
@@ -236,7 +236,13 @@ def excerpt_block(obj, lang, base, with_buttons=False) -> str:
             return f'<b>{e(w)}</b>' + (f'<span style="color:#8a857d;"> ({e(n["term"])})</span>' if w != n["term"] else "")
         out += [f'<li style="margin-bottom:6px;">{word(n)}{"：" if lang == "zh" else ": "}{e(n[lang])}</li>' for n in obj["notes"]]
         out.append("</ol>")
-    if (obj.get("after") or {}).get(lang):
+    if (obj.get("reflect") or {}).get("questions"):       # questions shown; the reference angle stays on the web page (no folding in email)
+        out.append(f'<h2 style="{H2}">{X["think"]}</h2>')
+        out += [f'<p style="font-size:18px;line-height:1.8;margin:0 0 10px;font-weight:bold;color:#1d1d1f;border-left:3px solid {ACCENT};padding-left:12px;">{e(q)}</p>'
+                for q in obj["reflect"]["questions"][lang]]
+        out.append(f'<p style="font-size:16px;margin:4px 0 6px;"><a href="{e(link(obj, lang, base))}#angle" style="color:{ACCENT};">{X["angle"]} →</a></p>'
+                   f'<p class="hip-muted" style="font-size:14px;color:#8a857d;margin:0 0 10px;">{X["editors"]}</p>')
+    elif (obj.get("after") or {}).get(lang):
         out.append(f'<h2 style="{H2}">{X["after"]}</h2><p style="{BODY}">{e(obj["after"][lang])}</p>')
     if (obj.get("continue") or {}).get(lang):
         out.append(f'<p class="hip-muted" style="font-size:15px;line-height:1.75;color:#6f6a62;margin:22px 0 0;"><b>{X["cont"]}：</b>{e(obj["continue"][lang])}</p>'
@@ -322,7 +328,9 @@ def excerpt_text(obj, lang, base, links=False) -> str:
     if obj.get("notes"):
         out += [f"== {X['notes']} =="] + [f"[{i + 1}] {(n.get('label') or {}).get(lang) or n['term']}" + (f" ({n['term']})" if ((n.get('label') or {}).get(lang) or n['term']) != n['term'] else "")
                                           + f": {n[lang]}" for i, n in enumerate(obj["notes"])] + [""]
-    if (obj.get("after") or {}).get(lang):
+    if (obj.get("reflect") or {}).get("questions"):
+        out += [f"== {X['think']} =="] + [f"· {q}" for q in obj["reflect"]["questions"][lang]] + [f"{X['angle']}: {link(obj, lang, base)}#angle", X["editors"], ""]
+    elif (obj.get("after") or {}).get(lang):
         out += [f"== {X['after']} ==", obj["after"][lang], ""]
     if (obj.get("continue") or {}).get(lang):
         out += [f"{X['cont']}: {obj['continue'][lang]}"]
@@ -431,6 +439,10 @@ def search_index(objs) -> tuple[dict, dict]:
     return ({"schema": "history-search/v1", "items": meta}, {"schema": "history-search-text/v1", "items": text})
 
 
+# never on the public site: evidence maps, editor logs and an excerpt's internal records (selection reasons, review, calls)
+PRIVATE_KEYS = ("evidence_map", "preheader", "editor_log", "review", "calls", "checks", "open_issues", "selection", "episode_meta", "admitted_from")
+
+
 def build(objs, out: Path, base):
     (out/"email").mkdir(parents=True, exist_ok=True); (out/"site/history").mkdir(parents=True, exist_ok=True); (out/"site/data/history").mkdir(parents=True, exist_ok=True)
     index = []
@@ -438,7 +450,7 @@ def build(objs, out: Path, base):
         finalize(o)
         if o.get("status") == "reader_sample":
             # reader sample on the TEST preview: an admitted article shown before any schedule; listed as 样稿, never emailed
-            public = {k: v for k, v in o.items() if k not in ("evidence_map", "preheader", "editor_log")}
+            public = {k: v for k, v in o.items() if k not in PRIVATE_KEYS}
             rel = f"data/history/samples/{o['edition_id']}.json"; p = out/"site"/rel; p.parent.mkdir(parents=True, exist_ok=True)
             p.write_text(json.dumps(public, ensure_ascii=False, indent=1), encoding="utf-8")
             index.append({"edition_id": o["edition_id"], "revision": o["revision"], "edition_date": o["preview_date"], "category": o["category"],
@@ -447,7 +459,7 @@ def build(objs, out: Path, base):
             continue
         (out/f"email/{o['edition_id']}.html").write_text(email_html(o, base), encoding="utf-8")
         (out/f"email/{o['edition_id']}.txt").write_text(email_text(o, base), encoding="utf-8")
-        public = {k: v for k, v in o.items() if k not in ("evidence_map", "preheader", "editor_log")}
+        public = {k: v for k, v in o.items() if k not in PRIVATE_KEYS}
         prev_json = None
         if o.get("correction") and (o["correction"].get("previous") or {}).get("json"):
             public = json.loads(json.dumps(public)); prev_json = public["correction"]["previous"].pop("json")
