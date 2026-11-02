@@ -223,6 +223,10 @@ def sync(*, opener=None, tree_of=None, max_new: int = 3) -> list[dict]:
                     out.append(dict(r, outcome="deferred", reason=f"at most {max_new} new files per run")); continue
                 if e.get("md_summary"):
                     _acquire_md(e, opener=opener, tree_of=tree_of)
+                elif e.get("url") and e.get("format") and not e.get("repo"):           # a public-domain edition at a stable URL
+                    books.acquire(e["url"], data_dir() / "books" / "files", data_dir() / "books" / "manifest.json",
+                                  _meta(e) | {"format": e["format"], "provenance": f"{e['url']} ({e.get('edition') or 'edition as published there'})"},
+                                  opener=opener)
                 elif e.get("repo") and e.get("ref") and e.get("repo_path"):
                     loc = books.fork_file(e["repo"], e["ref"], _tree(e["repo"], e["ref"], tree_of), e["repo_path"])
                     books.acquire(loc["url"], data_dir() / "books" / "files", data_dir() / "books" / "manifest.json",

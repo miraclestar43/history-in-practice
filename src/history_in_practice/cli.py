@@ -790,6 +790,17 @@ def cmd_library(a):
     raise SystemExit(a.action)
 
 
+def cmd_excerpt(a):
+    """原文精选 (2026-11-02): the model selects a continuous passage by paragraph number from a window of a library book;
+    the program extracts it from the saved text; the model writes guide, notes and the AI translation; review + checks.
+    A sample: written to data/excerpts/<id>/excerpt.json, not admitted or scheduled."""
+    from . import excerpt
+    o = excerpt.run(a.book, (a.start, a.end), a.id, a.category)
+    print(json.dumps({k: o.get(k) for k in ("outcome", "reason", "title", "work", "checks", "open_issues", "reading_minutes", "length")}
+                     | {"review": [{k: r.get(k) for k in ("round", "reading", "applied")} for r in o.get("review") or []]}, ensure_ascii=False, indent=1))
+    return 0 if o.get("kind") == "excerpt" and not o.get("checks") else 2
+
+
 def cmd_adopt(a):
     """Admit articles finished in another data directory of this repo (records in samples/auto/<id>/final), through the
     unchanged admission checks (final_edit.adopt)."""
@@ -998,6 +1009,9 @@ def main(argv=None):
     p = sp.add_parser("library", help="book library for supply: status | ingest --book ID | units --book ID")
     p.add_argument("action", choices=["status", "check", "ingest", "units"]); p.add_argument("--book", help="book id; `ingest --book all` = sync the library"); p.add_argument("--verified")
     p.add_argument("--max-new", type=int, default=3, help="ingest --book all: at most this many new files per run (resumable)"); p.set_defaults(f=cmd_library)
+    p = sp.add_parser("excerpt", help="原文精选 sample: select (by paragraph number) -> extract -> guide/notes -> AI translation -> review")
+    p.add_argument("--book", required=True); p.add_argument("--start", type=int, required=True); p.add_argument("--end", type=int, required=True)
+    p.add_argument("--id", required=True); p.add_argument("--category", required=True); p.set_defaults(f=cmd_excerpt)
     p = sp.add_parser("registry-rebuild"); p.add_argument("content", nargs="+"); p.add_argument("--db"); p.set_defaults(f=cmd_registry_rebuild)
     a = ap.parse_args(argv)
     import signal as _sig                              # systemd stop/timeout sends SIGTERM: unwind so model children are killed

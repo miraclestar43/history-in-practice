@@ -64,6 +64,18 @@ a{color:var(--accent)}
 .search input:focus{outline:2px solid var(--accent);outline-offset:1px}
 .search .clear{font:inherit;font-size:15px;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--fg);cursor:pointer}
 [hidden]{display:none !important}
+.byline{font-size:15px;color:var(--muted);line-height:1.65;margin:.2em 0 .6em}
+.badge{display:inline-block;font-size:13px;line-height:1.4;padding:1px 8px;border:1px solid var(--accent);color:var(--accent);border-radius:999px;margin-left:8px;vertical-align:2px;font-weight:600;letter-spacing:0}
+.intro p{color:var(--fg)}
+.gap{text-align:center;color:var(--muted);letter-spacing:.3em}
+.passage p{margin-bottom:1.15em}
+sup.n{font-size:.7em;line-height:0;margin-left:2px}
+sup.n a{text-decoration:none}
+.pair{display:block;font-size:.86em;color:var(--muted);border-left:2px solid var(--line);padding-left:10px;margin:.5em 0 0}
+.notes-list{font-size:16px;line-height:1.75;padding-left:1.4em}
+.notes-list li{margin-bottom:.5em}
+.notes-list .term{color:var(--muted)}
+.pairbtn{font:inherit;font-size:14px;min-height:36px;padding:2px 12px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;cursor:pointer;margin:0 0 12px}
 </style>
 </head>
 <body>
@@ -192,6 +204,7 @@ function currentPara(){                                 // the first paragraph w
 }
 function applyScale(){ app.style.setProperty("--scale", SCALES[scale]); }
 function renderStory(o){
+  if (o.kind === "excerpt") return renderExcerpt(o);
   document.documentElement.lang = lang==="zh" ? "zh-CN" : "en";
   document.title = ["没事儿多读书", /^\d{4}-\d{2}-\d{2}$/.test(o.edition_date||"") ? o.edition_date.replace(/-/g,".") : "", o.title[lang]].filter(Boolean).join("｜");
   const L = T[lang], w = el("article"), date = (o.edition_date||o.preview_date||"").replace(/-/g,".");
@@ -257,6 +270,78 @@ function renderStory(o){
   app.replaceChildren(w); applyScale();
   if (location.hash === "#example") document.getElementById("example")?.scrollIntoView();
   else if (location.hash === "#notes") notes.scrollIntoView();
+}
+
+// 原文精选 (2026-11-02): the author's own text, the editor's short guide and notes, and an AI translation, each labelled.
+const X = {zh:{intro:"导读",text:"正文",orig:"原文",ai:"AI 译文",notes:"注释",after:"读后",cont:"继续阅读",book:"书目与版本",pair:"对照原文",unpair:"收起对照",
+               titled:"标题为编辑所拟",read:"在 Project Gutenberg 阅读全书",edition:"版本",loc:"位置",rights:"版权",tr:"译文"},
+           en:{intro:"Introduction",text:"The text",orig:"Original",ai:"AI translation",notes:"Notes",after:"Afterword",cont:"Read on",book:"Book and edition",pair:"Show the other language",unpair:"Hide",
+               titled:"Title by the editor",read:"Read the whole book",edition:"Edition",loc:"Location",rights:"Rights",tr:"Translation"}};
+let PAIRED = false;
+function renderExcerpt(o){
+  document.documentElement.lang = lang==="zh" ? "zh-CN" : "en";
+  document.title = ["没事儿多读书", /^\d{4}-\d{2}-\d{2}$/.test(o.edition_date||"") ? o.edition_date.replace(/-/g,".") : "", o.title[lang]].filter(Boolean).join("｜");
+  const L = T[lang], Y = X[lang], w = el("article"), date = (o.edition_date||o.preview_date||"").replace(/-/g,".");
+  const W = o.work, src = W.original_language, other = src==="zh" ? "en" : "zh", isOrig = lang === src;
+  w.append(el("a",{href:"./?lang="+lang,class:"back"},L.back));
+  if (o.status === "test") w.append(testNote());
+  if (o.status === "reader_sample" && !(ITEM && ITEM.notice)) w.append(sampleNote());
+  w.append(el("p",{class:"meta"}, BRAND[lang]+"｜"+date+" · "+CAT[o.category][lang==="zh"?0:1]+" · "+(lang==="zh"?"约 ":"~")+o.reading_minutes[lang]+" "+L.min));
+  w.append(el("h1",{},o.title[lang]));
+  const by = lang==="zh"
+    ? (W.author_zh||W.author)+" 著 ·《"+W.title+"》"+(W.title_zh_note ? "（"+W.title_zh_note+"）" : "")+(W.chapter_zh ? " "+W.chapter_zh : "")+" · 原文"+(src==="zh"?"中文":"英文")+(isOrig ? "" : " · 本页正文为 AI 译文")
+    : (W.author)+", "+W.title+(W.chapter_en ? ", "+W.chapter_en : "")+" · original in "+(src==="zh"?"Chinese":"English")+(isOrig ? "" : " · this page: AI translation");
+  w.append(el("p",{class:"byline"},by), el("p",{class:"dek"},o.dek[lang]));
+  const tools = el("div",{class:"tools"}), tabs = el("div",{class:"tabs",role:"tablist","aria-label":"语言 / Language"});
+  for (const [k,label] of [["zh","中文"],["en","English"]]){
+    const b = el("button",{type:"button",role:"tab","aria-selected":String(k===lang),tabindex:k===lang?"0":"-1"},label);
+    b.onclick = () => switchLang(k, o); tabs.append(b);
+  }
+  const fsz = el("div",{class:"fsz",role:"group","aria-label":L.fs}); fsz.append(el("span",{},L.fs));
+  for (const [d,label] of [[-1,"A−"],[1,"A+"]]){
+    const b = el("button",{type:"button","aria-label":label},label);
+    b.onclick = () => { const k = currentPara(); scale = Math.min(SCALES.length-1, Math.max(0, scale+d)); localStorage.setItem("hip-fs", String(scale)); applyScale();
+                        if (k) app.querySelector('[data-k="'+k+'"]')?.scrollIntoView({block:"start"}); };
+    fsz.append(b);
+  }
+  tools.append(tabs, fsz); w.append(tools);
+  const intro = el("section",{id:"s-intro",class:"intro"}); intro.append(el("h2",{"data-k":"i.h"},Y.intro));
+  o.intro[lang].split(/\n+/).filter(Boolean).forEach((t,i) => intro.append(el("p",{"data-k":"i."+i},t)));
+  w.append(intro);
+  const sec = el("section",{id:"s-text",class:"passage"}), h = el("h2",{"data-k":"t.h"},Y.text);
+  h.append(el("span",{class:"badge"}, isOrig ? Y.orig : Y.ai)); sec.append(h);
+  const pairBtn = el("button",{type:"button",class:"pairbtn","aria-pressed":String(PAIRED)}, PAIRED ? Y.unpair : Y.pair);
+  pairBtn.onclick = () => { PAIRED = !PAIRED; const k = currentPara(); renderExcerpt(o); applyScale(); if (k) app.querySelector('[data-k="'+k+'"]')?.scrollIntoView({block:"start"}); };
+  sec.append(pairBtn);
+  const noteNo = {}; (o.notes||[]).forEach((n,i) => { (noteNo[n.para] = noteNo[n.para] || []).push(i+1); });
+  for (const x of o.passage){
+    if (x.gap_before) sec.append(el("p",{class:"gap","aria-label":lang==="zh"?"中略":"omission"},"〔中略〕"));
+    const p = el("p",{"data-k":"p"+x.p}); p.append(document.createTextNode(x[lang]));
+    for (const n of noteNo[x.p] || []){ const s = el("sup",{class:"n"}); s.append(el("a",{href:"#note-"+n,id:"ref-"+n},"["+n+"]")); p.append(s); }
+    if (PAIRED){ const q = el("span",{class:"pair",lang:other==="zh"?"zh-CN":"en"}); q.textContent = (other===src ? Y.orig : Y.ai)+"："+x[other]; p.append(q); }
+    sec.append(p);
+  }
+  w.append(sec);
+  if ((o.notes||[]).length){
+    const ns = el("section",{id:"s-notes-list"}); ns.append(el("h2",{"data-k":"n.h"},Y.notes)); const ol = el("ol",{class:"notes-list"});
+    o.notes.forEach((n,i) => { const li = el("li",{id:"note-"+(i+1)}); li.append(el("span",{class:"term"},n.term+"："), document.createTextNode(n[lang]+" ")); li.append(el("a",{href:"#ref-"+(i+1),"aria-label":"↩"},"↩")); ol.append(li); });
+    ns.append(ol); w.append(ns);
+  }
+  if (o.after && o.after[lang]){ const a = el("section",{id:"s-after"}); a.append(el("h2",{"data-k":"a.h"},Y.after), el("p",{"data-k":"a.0"},o.after[lang])); w.append(a); }
+  if (o["continue"] && o["continue"][lang]){
+    const c = el("section",{id:"s-continue"}); c.append(el("h2",{},Y.cont), el("p",{},o["continue"][lang]));
+    if (okUrl(W.reading_url)) c.append(el("p",{class:"small"}).appendChild(el("a",{href:W.reading_url,rel:"noopener"},Y.read)).parentNode);
+    w.append(c);
+  }
+  const notes = el("details",{id:"s-notes",class:"notes"}); if (location.hash === "#notes") notes.open = true;
+  notes.append(el("summary",{},Y.book));
+  for (const [lab, val] of [[Y.titled, lang==="zh" ? "原书章节："+(W.chapter_en||W.chapter||"") : "Chapter in the book: "+(W.chapter_en||W.chapter||"")],
+                            [Y.edition, W.edition], [Y.loc, W.location], [Y.rights, W.rights_label ? W.rights_label[lang] : W.rights],
+                            [Y.tr, (o.translation.label[lang])+" · "+o.translation.by]]){
+    if (val) { const p = el("p"); p.append(el("strong",{},lab+(lang==="zh"?"：":": ")), document.createTextNode(val)); notes.append(p); }
+  }
+  w.append(notes);
+  app.replaceChildren(w); applyScale();
 }
 function switchLang(k, o, focus){
   const keep = currentPara(); lang = k; localStorage.setItem("hip-lang", k);

@@ -44,12 +44,25 @@ def web_url(u) -> bool:
     its title and edition instead."""
     return isinstance(u, str) and bool(re.fullmatch(r"https?://\S+", u)) and not BOOK_FILE.match(u)
 
+EXCERPT_KEYS = ("edition_id", "revision", "title", "dek", "intro", "work", "translation", "passage", "notes", "after", "continue")
+
+
 def canonical(obj) -> str:
+    if obj.get("kind") == "excerpt":                 # 原文精选 (2026-11-02): the author's text + the editor's guide + AI translation
+        keep = {k: obj.get(k) for k in EXCERPT_KEYS}
+        return json.dumps(keep, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     keep = {k: obj[k] for k in ("edition_id","revision","title","dek","sections","reflection","uncertainty_note","sources","further_reading")}
     return json.dumps(keep, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 def stats(obj):
     zh = en = 0
+    if obj.get("kind") == "excerpt":                 # what each language's reader reads: guide + passage (original or AI translation) + notes
+        cnt = lambda s, l: len(re.findall(r"[一-鿿]", s or "")) if l == "zh" else len(re.findall(r"[A-Za-z']+", s or ""))
+        for l in ("zh", "en"):
+            n = cnt(obj["intro"][l], l) + sum(cnt(x[l], l) for x in obj["passage"]) + sum(cnt(m.get(l), l) for m in obj.get("notes") or [])
+            n += cnt((obj.get("after") or {}).get(l), l)
+            zh, en = (n, en) if l == "zh" else (zh, n)
+        return zh, en
     for s in obj["sections"]:
         for p in s["paras"]:
             zh += len(re.findall(r"[一-鿿]", p["zh"])); en += len(re.findall(r"[A-Za-z']+", p["en"]))
@@ -62,7 +75,7 @@ def stats(obj):
 def finalize(obj):
     zh, en = stats(obj)
     # estimates only; calibrate with real readers (rates are configurable)
-    obj["length"] = {"zh_chars": zh, "en_words": en, "basis": "body + question + example; excludes sources and read-more"}
+    obj["length"] = {"zh_chars": zh, "en_words": en, "basis": "guide + passage + notes" if obj.get("kind") == "excerpt" else "body + question + example; excludes sources and read-more"}
     obj["reading_minutes"] = {"zh": max(1, round(zh / ZH_CPM)), "en": max(1, round(en / EN_WPM)),
                               "basis": f"estimate: {ZH_CPM} zh chars/min, {EN_WPM} en words/min"}
     obj["content_sha256"] = hashlib.sha256(canonical(obj).encode()).hexdigest()
@@ -176,6 +189,57 @@ def notes_line(obj, lang, base) -> str:
     return f"Sources: {srcs}." + (f" Read more: {more}." if more else "") + " Notes on the material are on the web page."
 
 
+XL = {"zh": dict(intro="导读", text="正文", orig="原文", ai="AI 译文", notes="注释", after="读后", cont="继续阅读", titled="标题为编辑所拟"),
+      "en": dict(intro="Introduction", text="The text", orig="Original", ai="AI translation", notes="Notes", after="Afterword", cont="Read on",
+                 titled="Title by the editor")}
+
+
+def byline(obj, lang) -> str:
+    W = obj["work"]; src = W["original_language"]
+    if lang == "zh":
+        return (f"{W.get('author_zh') or W['author']} 著 ·《{W['title']}》" + (f"（{W['title_zh_note']}）" if W.get("title_zh_note") else "")
+                + (f" {W['chapter_zh']}" if W.get("chapter_zh") else "") + f" · 原文{'中文' if src == 'zh' else '英文'}"
+                + ("" if src == "zh" else " · 下文中文为 AI 译文"))
+    return (f"{W['author']}, {W['title']}" + (f", {W['chapter_en']}" if W.get("chapter_en") else "")
+            + f" · original in {'Chinese' if src == 'zh' else 'English'}" + ("" if src == "en" else " · the English below is an AI translation"))
+
+
+def excerpt_block(obj, lang, base, with_buttons=False) -> str:
+    """One language of a 原文精选 issue for email: title, byline, (buttons), dek, guide, the text with its label, notes,
+    afterword, read-on line. No folding, no script."""
+    X = XL[lang]; src = obj["work"]["original_language"]; out = []
+    out.append(f'<h1 style="font-family:Georgia,\'Songti SC\',serif;font-size:28px;line-height:1.3;margin:6px 0 4px;color:#1d1d1f;">{e(obj["title"][lang])}</h1>')
+    out.append(f'<p class="hip-muted" style="font-size:15px;line-height:1.65;color:#6f6a62;margin:0 0 6px;">{e(byline(obj, lang))}</p>')
+    if with_buttons:
+        out.append(buttons(obj, base))
+    out.append(f'<p class="hip-muted" style="font-size:17px;line-height:1.75;color:#55524d;margin:0 0 18px;">{e(obj["dek"][lang])}</p>')
+    out.append(f'<h2 style="{H2}">{X["intro"]}</h2>')
+    out += [f'<p style="{BODY}">{e(t)}</p>' for t in obj["intro"][lang].split("\n") if t.strip()]
+    label = X["orig"] if lang == src else X["ai"]
+    out.append(f'<h2 style="{H2}">{X["text"]} <span style="font-size:13px;border:1px solid {ACCENT};border-radius:10px;padding:1px 8px;vertical-align:2px;">{label}</span></h2>')
+    marks = {}
+    for i, n in enumerate(obj.get("notes") or []):
+        marks.setdefault(n["para"], []).append(i + 1)
+    for x in obj["passage"]:
+        if x["gap_before"]:
+            out.append('<p style="text-align:center;color:#8a857d;letter-spacing:.3em;margin:0 0 16px;">〔中略〕</p>')
+        sup = "".join(f'<sup style="font-size:12px;color:{ACCENT};">[{k}]</sup>' for k in marks.get(x["p"], []))
+        out.append(f'<p style="{BODY}">{e(x[lang])}{sup}</p>')
+    if obj.get("notes"):
+        out.append(f'<h2 style="{H2}">{X["notes"]}</h2><ol style="font-size:16px;line-height:1.75;color:#3a3732;padding-left:22px;margin:0 0 10px;">')
+        out += [f'<li style="margin-bottom:6px;"><span style="color:#8a857d;">{e(n["term"])}：</span>{e(n[lang])}</li>' for n in obj["notes"]]
+        out.append("</ol>")
+    if (obj.get("after") or {}).get(lang):
+        out.append(f'<h2 style="{H2}">{X["after"]}</h2><p style="{BODY}">{e(obj["after"][lang])}</p>')
+    if (obj.get("continue") or {}).get(lang):
+        out.append(f'<p class="hip-muted" style="font-size:15px;line-height:1.75;color:#6f6a62;margin:22px 0 0;"><b>{X["cont"]}：</b>{e(obj["continue"][lang])}</p>'
+                   .replace("：</b>", ":</b> " if lang == "en" else "：</b>"))
+    out.append(f'<p class="hip-muted" style="font-size:14px;line-height:1.75;color:#8a857d;margin:10px 0 0;">{X["titled"]}{"；" if lang == "zh" else "; "}'
+               f'{e(obj["work"].get("edition") or "")} '
+               f'<a href="{e(link(obj, lang, base))}#notes" style="color:{ACCENT};">{"书目与版本" if lang == "zh" else "Book and edition"}</a></p>')
+    return "\n".join(out)
+
+
 def email_html(obj, base, news: dict | None = None, now_iso: str | None = None):
     cz, ce = CAT[obj["category"]]; date = e(dotted(obj["edition_date"]) or obj["edition_date"])
     def block(lang):
@@ -231,14 +295,36 @@ def email_html(obj, base, news: dict | None = None, now_iso: str | None = None):
 <td class="hip-card" style="background:#ffffff;border:1px solid #ece7de;padding:24px 12px 30px;font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',Helvetica,Arial,sans-serif;">
 {head}
 {nav}{newsblock}<a id="story"></a>
-{block("zh")}
+{excerpt_block(obj, "zh", base, True) if obj.get("kind") == "excerpt" else block("zh")}
 {sep_en}
-{block("en")}
+{excerpt_block(obj, "en", base) if obj.get("kind") == "excerpt" else block("en")}
 {foot}
 </td></tr></table></td></tr></table></body></html>'''
 
+def excerpt_text(obj, lang, base, links=False) -> str:
+    X = XL[lang]; src = obj["work"]["original_language"]
+    out = [obj["title"][lang], byline(obj, lang)] + ([f"在网页阅读：{link(obj,'zh',base)}", f"Read in English：{link(obj,'en',base)}"] if links else [])
+    out += ["", obj["dek"][lang], "", f"== {X['intro']} ==", obj["intro"][lang], "", f"== {X['text']}（{X['orig'] if lang == src else X['ai']}）==" if lang == "zh"
+            else f"== {X['text']} ({X['orig'] if lang == src else X['ai']}) =="]
+    marks = {}
+    for i, n in enumerate(obj.get("notes") or []):
+        marks.setdefault(n["para"], []).append(i + 1)
+    for x in obj["passage"]:
+        out += (["〔中略〕", ""] if x["gap_before"] else []) + [x[lang] + "".join(f"[{k}]" for k in marks.get(x["p"], [])), ""]
+    if obj.get("notes"):
+        out += [f"== {X['notes']} =="] + [f"[{i + 1}] {n['term']}: {n[lang]}" for i, n in enumerate(obj["notes"])] + [""]
+    if (obj.get("after") or {}).get(lang):
+        out += [f"== {X['after']} ==", obj["after"][lang], ""]
+    if (obj.get("continue") or {}).get(lang):
+        out += [f"{X['cont']}: {obj['continue'][lang]}"]
+    out += [f"{X['titled']}; {obj['work'].get('edition') or ''} {link(obj, lang, base)}#notes"]
+    return "\n".join(out)
+
+
 def email_text(obj, base, news: dict | None = None, now_iso: str | None = None):
     def block(lang, links=False):
+        if obj.get("kind") == "excerpt":
+            return excerpt_text(obj, lang, base, links)
         L = LBL[lang]; r = obj["reflection"]
         out = [obj["title"][lang]] + ([f"在网页阅读：{link(obj,'zh',base)}", f"Read in English：{link(obj,'en',base)}"] if links else []) + ["", obj["dek"][lang], ""]
         for s in obj["sections"]:
@@ -267,6 +353,8 @@ def email_text(obj, base, news: dict | None = None, now_iso: str | None = None):
                       f"在网页阅读：{link(obj,'zh',base)}", f"Read in English：{link(obj,'en',base)}", f"{LBL['zh']['feedback']} {LBL['zh']['pause']}"])
 
 def markdown(obj, lang):
+    if obj.get("kind") == "excerpt":
+        return excerpt_text(obj, lang, "https://starhub.vip") + "\n"
     L = LBL[lang]; r = obj["reflection"]
     out = [f"# {obj['title'][lang]}", "", f"*{obj['dek'][lang]}*", "",
            f"{obj['edition_date']} · {CAT[obj['category']][0 if lang=='zh' else 1]} · {obj['edition_id']} rev {obj['revision']}", ""]
@@ -316,18 +404,20 @@ def search_index(objs) -> tuple[dict, dict]:
         if o.get("status") in ("test", "reader_sample") or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(o.get("edition_date", ""))):
             continue
         books = []
+        if o.get("kind") == "excerpt":
+            books += [o["work"]["title"], o["work"].get("author") or "", o["work"].get("author_zh") or ""]
         for x in list(o.get("sources") or []) + list(o.get("further_reading") or []):
             t = x.get("citation") or x.get("title") or ""
             books += re.findall(r"《([^》]{1,40})》", t) or ([t[:80]] if x.get("title") else [])
         y, m, d = o["edition_date"].split("-")
         meta.append({"id": o["edition_id"], "date": o["edition_date"], "category": o["category"], "title": o["title"], "dek": o["dek"],
-                     "people": both((o.get("episode") or {}).get("persons") or []),
+                     "people": both(((o.get("episode") or {}).get("persons") or []) + [y for n in o.get("names") or [] for y in (n.get("zh"), n.get("orig")) if y]),
                      "tags": list(dict.fromkeys(list(tags.get(o["edition_id"]) or []) + ([regions[o["edition_id"]]] if regions.get(o["edition_id"]) else [])
                                                 + list(CAT[o["category"]]))),
                      "books": both(b.strip() for b in books if b.strip()),
                      "minutes": o.get("reading_minutes"), "path": f"data/history/{y}/{m}/{d}-{o['edition_id']}.json"})
-        text.append({"id": o["edition_id"], "zh": "\n".join(p["zh"] for s in o["sections"] for p in s["paras"]),
-                     "en": "\n".join(p["en"] for s in o["sections"] for p in s["paras"])})
+        paras = o["passage"] if o.get("kind") == "excerpt" else [p for s in o["sections"] for p in s["paras"]]
+        text.append({"id": o["edition_id"], "zh": "\n".join(p["zh"] for p in paras), "en": "\n".join(p["en"] for p in paras)})
     meta.sort(key=lambda x: x["date"], reverse=True)
     return ({"schema": "history-search/v1", "items": meta}, {"schema": "history-search-text/v1", "items": text})
 
