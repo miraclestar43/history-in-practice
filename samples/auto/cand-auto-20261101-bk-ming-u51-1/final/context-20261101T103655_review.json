@@ -1,0 +1,412 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261101-bk-ming-u51-1",
+ "content_sha256": "108900d636caa354599e652c79a65eefc2fb4a31eedcf0560f7707cbe746e9fb",
+ "evidence_in_sha256": "f1a350042c69aa0be2ed078b7e04f4744e391e93fa745c1ca1b8cf53903f6818",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793551015.3603735,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.6",
+   "lang": "zh",
+   "sentence": "张軏问的是胜算，徐有贞回的是一个不容商量的结论，没有给出新的理由。"
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.8",
+   "lang": "en",
+   "sentence": "Told that it was his elder brother summoning the ministers, he fell silent for a moment, then smiled and said only: \"Good, good, good.\" Zhu Qizhen sat on the throne once more."
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.0",
+   "lang": "zh",
+   "sentence": "不过，窗口紧迫只说明等待代价高，并不能证明计划行得通，东华门那个洞并没有因为时间紧而消失。"
+  },
+  {
+   "id": "A4",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "此后各人的结局未写。"
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-BK-MING": {
+   "title": "当年明月《明朝那些事儿》；第二十二章夺门（明朝那些事儿2：万国来朝）",
+   "url": null,
+   "ref": "book:BK-MING",
+   "evidence_text_sha256": "4717e5ac7d17bd182a4e73785bb57f54a34112bf6787c09c2626d073f2c8adfb",
+   "cache_sha256": "4717e5ac7d17bd182a4e73785bb57f54a34112bf6787c09c2626d073f2c8adfb",
+   "cjk": true,
+   "source_chars": 1478754,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     444113,
+     455291
+    ]
+   ],
+   "chars_reviewed": 11178
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 66.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "prompts": [
+    {
+     "file": "context_review.md",
+     "sha256": "043a0ab68f9b"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "c456b6a296e7"
+    }
+   ],
+   "output_tokens": 6979
+  }
+ ],
+ "finished_at": 1793551082.23934,
+ "elapsed_min": 1.1,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-BK-MING",
+    "outcome": "夺门成功、朱祁镇复位；登基次日论功封赏，同日徐有贞下令逮捕于谦、王文。阅读范围往后还写到于谦以“意欲”定罪，正月二十三日被斩，这一段不在证据包。",
+    "quote": "在登基后的第二天，他就给了“还乡团”的成员们优厚的回报……就在同一天，徐有贞便下令逮捕了于谦和王文等人，把他们关进了监狱",
+    "in_evidence": true
+   }
+  ],
+  "additions": [
+   {
+    "source_id": "S-BK-MING",
+    "start": "徐有贞到底是政治老流氓",
+    "end": "史载：天下冤之。",
+    "why": "稿件止于逮捕于谦。于谦以“意欲”定罪、六天后被斩，是这次夺门最直接的代价，也和 context.1 写的石亨与于谦结怨首尾相接。按栏目分寸，这一段可选补，不必为此重写。"
+   }
+  ],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.6",
+    "lang": "zh",
+    "sentence": "张軏问的是胜算，徐有贞回的是一个不容商量的结论，没有给出新的理由。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-BK-MING"
+    ],
+    "scope": "第二十二章【夺门之变】天色突暗一段",
+    "quote": {
+     "source_id": "S-BK-MING",
+     "quote": "徐有贞缓缓走到张軏的面前，突然用低沉的声音吼道：“一定能成功（必济）！”"
+    },
+    "fix": "这是对人物言行的描述，与书中一致，可保留。"
+   },
+   {
+    "id": "A2",
+    "path": "sections.story.8",
+    "lang": "en",
+    "sentence": "Told that it was his elder brother summoning the ministers, he fell silent for a moment, then smiled and said only: \"Good, good, good.\" Zhu Qizhen sat on the throne once more.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-BK-MING"
+    ],
+    "scope": "第二十二章朱祁钰闻钟鼓一段",
+    "quote": {
+     "source_id": "S-BK-MING",
+     "quote": "他笑得很从容，并最终吐出了三个字：“好，好，好！”"
+    },
+    "fix": "与书一致，无需修改。"
+   },
+   {
+    "id": "A3",
+    "path": "sections.analysis.0",
+    "lang": "zh",
+    "sentence": "不过，窗口紧迫只说明等待代价高，并不能证明计划行得通，东华门那个洞并没有因为时间紧而消失。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-BK-MING"
+    ],
+    "scope": "分析性判断，不涉及来源是否记载",
+    "quote": {
+     "source_id": "S-BK-MING",
+     "quote": "然而当他们到达东华门的时候，才发现了这个计划中的最大漏洞——他们进不去。"
+    },
+    "fix": "可保留。"
+   },
+   {
+    "id": "A4",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "此后各人的结局未写。",
+    "verdict": "unnecessary",
+    "source_ids": [
+     "S-BK-MING"
+    ],
+    "scope": "第二十二章至第三章【一个伟大的人】",
+    "quote": {
+     "source_id": "S-BK-MING",
+     "quote": "正月二十三日，于谦被押往崇文门外，就在这座他曾拼死保卫的城池前，得到了他最后的结局——斩决。"
+    },
+    "fix": "删去。这句说的是本文范围，对读者没有必要，还容易被误读为书中没有交代后续；书里紧接着就写了于谦的结局。"
+   },
+   {
+    "id": "N1",
+    "path": "uncertainty_note",
+    "lang": "zh",
+    "sentence": "文中只用书中的“正月某日”，未换算年份",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-MING"
+    ],
+    "scope": "第二十二章前一段（夺门前）",
+    "quote": {
+     "source_id": "S-BK-MING",
+     "quote": "景泰八年（1457）正月"
+    },
+    "fix": "书中已写明“景泰八年（1457）正月”，不需要换算。删去此句，或在正文首次出现日期时写“景泰八年（1457）正月十六日夜”。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.analysis.0",
+    "problem": "把“次日奏折一递上，密谋就失去意义”称为“可以核对的时间压力”，与“作者的解释”对立起来。实际上，奏折会被采纳、阴谋将失去作用，同样是当年明月的推断，本文也没有另行核对。",
+    "quote": {
+     "source_id": "S-BK-MING",
+     "quote": "因为朱祁钰在无子且奄奄一息的情况下，很有可能会同意这一建议"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.analysis.2",
+    "problem": "说撞墙入南宫是徐有贞“临场补上的办法”，但书中写他胸有成竹，并没有把这写成临场应变。",
+    "quote": {
+     "source_id": "S-BK-MING",
+     "quote": "徐有贞却胸有成竹，用一句话解决了难题"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.story.0",
+    "problem": "“没有朱祁镇点头，这件事就没有名分”放在“书里的解释”之后，但书中此处只说他们不可能自己做皇帝，“名分”是稿件的引申。",
+    "quote": {
+     "source_id": "S-BK-MING",
+     "quote": "毕竟你们就算杀了朱祁钰，也不可能自己做皇帝吧。"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.analysis.3",
+    "problem": "稿件止于“对于谦的逮捕”，没有交代六天后于谦被斩，读者对这场赌局代价的判断可能偏轻。按栏目分寸，补不补由编辑决定。",
+    "quote": {
+     "source_id": "S-BK-MING",
+     "quote": "“莫须有”杀掉了岳飞，“意欲”杀掉了于谦。"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "稿件对夺门经过的转述基本忠实于《明朝那些事儿》，未见“无独立核查”类断言。需修改一处：analysis.0 把作者推断写成“可以核对”。另外，uncertainty_note 中“未换算年份”与“结局未写”两句应删改。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.6",
+   "lang": "zh",
+   "sentence": "张軏问的是胜算，徐有贞回的是一个不容商量的结论，没有给出新的理由。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-BK-MING"
+   ],
+   "scope": "第二十二章【夺门之变】天色突暗一段",
+   "quote": {
+    "source_id": "S-BK-MING",
+    "quote": "徐有贞缓缓走到张軏的面前，突然用低沉的声音吼道：“一定能成功（必济）！”"
+   },
+   "fix": "这是对人物言行的描述，与书中一致，可保留。",
+   "unit_status": {
+    "S-BK-MING": "windows"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.8",
+   "lang": "en",
+   "sentence": "Told that it was his elder brother summoning the ministers, he fell silent for a moment, then smiled and said only: \"Good, good, good.\" Zhu Qizhen sat on the throne once more.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-BK-MING"
+   ],
+   "scope": "第二十二章朱祁钰闻钟鼓一段",
+   "quote": {
+    "source_id": "S-BK-MING",
+    "quote": "他笑得很从容，并最终吐出了三个字：“好，好，好！”"
+   },
+   "fix": "与书一致，无需修改。",
+   "unit_status": {
+    "S-BK-MING": "windows"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.0",
+   "lang": "zh",
+   "sentence": "不过，窗口紧迫只说明等待代价高，并不能证明计划行得通，东华门那个洞并没有因为时间紧而消失。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-BK-MING"
+   ],
+   "scope": "分析性判断，不涉及来源是否记载",
+   "quote": {
+    "source_id": "S-BK-MING",
+    "quote": "然而当他们到达东华门的时候，才发现了这个计划中的最大漏洞——他们进不去。"
+   },
+   "fix": "可保留。",
+   "unit_status": {
+    "S-BK-MING": "windows"
+   }
+  },
+  {
+   "id": "A4",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "此后各人的结局未写。",
+   "verdict": "unnecessary",
+   "source_ids": [
+    "S-BK-MING"
+   ],
+   "scope": "第二十二章至第三章【一个伟大的人】",
+   "quote": {
+    "source_id": "S-BK-MING",
+    "quote": "正月二十三日，于谦被押往崇文门外，就在这座他曾拼死保卫的城池前，得到了他最后的结局——斩决。"
+   },
+   "fix": "删去。这句说的是本文范围，对读者没有必要，还容易被误读为书中没有交代后续；书里紧接着就写了于谦的结局。",
+   "unit_status": {
+    "S-BK-MING": "windows"
+   }
+  },
+  {
+   "id": "N1",
+   "path": "uncertainty_note",
+   "lang": "zh",
+   "sentence": "文中只用书中的“正月某日”，未换算年份",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-MING"
+   ],
+   "scope": "第二十二章前一段（夺门前）",
+   "quote": {
+    "source_id": "S-BK-MING",
+    "quote": "景泰八年（1457）正月"
+   },
+   "fix": "书中已写明“景泰八年（1457）正月”，不需要换算。删去此句，或在正文首次出现日期时写“景泰八年（1457）正月十六日夜”。",
+   "unit_status": {
+    "S-BK-MING": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.analysis.0",
+   "problem": "把“次日奏折一递上，密谋就失去意义”称为“可以核对的时间压力”，与“作者的解释”对立起来。实际上，奏折会被采纳、阴谋将失去作用，同样是当年明月的推断，本文也没有另行核对。",
+   "quote": {
+    "source_id": "S-BK-MING",
+    "quote": "因为朱祁钰在无子且奄奄一息的情况下，很有可能会同意这一建议"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.analysis.2",
+   "problem": "说撞墙入南宫是徐有贞“临场补上的办法”，但书中写他胸有成竹，并没有把这写成临场应变。",
+   "quote": {
+    "source_id": "S-BK-MING",
+    "quote": "徐有贞却胸有成竹，用一句话解决了难题"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.story.0",
+   "problem": "“没有朱祁镇点头，这件事就没有名分”放在“书里的解释”之后，但书中此处只说他们不可能自己做皇帝，“名分”是稿件的引申。",
+   "quote": {
+    "source_id": "S-BK-MING",
+    "quote": "毕竟你们就算杀了朱祁钰，也不可能自己做皇帝吧。"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.analysis.3",
+   "problem": "稿件止于“对于谦的逮捕”，没有交代六天后于谦被斩，读者对这场赌局代价的判断可能偏轻。按栏目分寸，补不补由编辑决定。",
+   "quote": {
+    "source_id": "S-BK-MING",
+    "quote": "“莫须有”杀掉了岳飞，“意欲”杀掉了于谦。"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-BK-MING",
+   "outcome": "夺门成功、朱祁镇复位；登基次日论功封赏，同日徐有贞下令逮捕于谦、王文。阅读范围往后还写到于谦以“意欲”定罪，正月二十三日被斩，这一段不在证据包。",
+   "quote": "在登基后的第二天，他就给了“还乡团”的成员们优厚的回报……就在同一天，徐有贞便下令逮捕了于谦和王文等人，把他们关进了监狱",
+   "in_evidence": true
+  }
+ ],
+ "additions": [
+  {
+   "id": "BK-MING-U511-E26",
+   "source_id": "S-BK-MING",
+   "offset": 452997,
+   "chars": 277,
+   "why": "稿件止于逮捕于谦。于谦以“意欲”定罪、六天后被斩，是这次夺门最直接的代价，也和 context.1 写的石亨与于谦结怨首尾相接。按栏目分寸，这一段可选补，不必为此重写。"
+  }
+ ],
+ "additions_failed": [],
+ "evidence_sha256": "e518b96be664935a70ce69987166683751adca55b458ec08e2074cb35ae01f56",
+ "outcome": "needs_work",
+ "blocking": [
+  "uncertainty_note.zh: unnecessary — 此后各人的结局未写。",
+  "uncertainty_note.zh: contradicted — 文中只用书中的“正月某日”，未换算年份",
+  "sections.analysis.0: 把“次日奏折一递上，密谋就失去意义”称为“可以核对的时间压力”，与“作者的解释”对立起来。实际上，奏折会被采纳、阴谋将失去作用，同样是当年明月的推断，本文也没有另行核对。",
+  "evidence must be expanded first: 1 addition(s) ['BK-MING-U511-E26']"
+ ]
+}

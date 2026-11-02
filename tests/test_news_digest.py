@@ -107,7 +107,7 @@ class Layout(unittest.TestCase):
     def test_story_first_digest_last_and_absent_news_changes_nothing(self):
         o = frozen()
         h = render.email_html(o, "https://x", news=self.bound)
-        self.assertLess(h.index(o["title"]["en"]), h.index("今日新闻速览")); self.assertLess(h.index("今日新闻速览"), h.index(render.LBL["zh"]["edition"]))
+        self.assertLess(h.index(o["title"]["en"]), h.index("今日新闻速览")); self.assertLess(h.index("今日新闻速览"), h.rindex(render.LBL["zh"]["feedback"]))  # before the footer
         self.assertNotIn("某地发生了某事。</p>", h.split("今日新闻速览")[0])  # no news before the story
         txt = render.email_text(o, "https://x", news=self.bound)
         self.assertGreater(txt.index("今日新闻速览"), txt.index("Read in English"))

@@ -35,9 +35,14 @@ TEST_NOTE = {"zh": "测试邮件：用于检查排版与投递，不是正式的
 ZH_CPM, EN_WPM = 320, 200   # reading-rate assumptions for the per-language estimate
 e = lambda s: html.escape(s or "", quote=True)
 
+BOOK_FILE = re.compile(r"^https?://(raw\.githubusercontent\.com|github\.com)/.+\.(pdf|epub|mobi|azw3|txt|chm|djvu)(\?.*)?$", re.I)
+
+
 def web_url(u) -> bool:
-    """Only a real http(s) URL becomes a link; a missing one (None) is shown as plain text, never as "None"/"null"."""
-    return isinstance(u, str) and bool(re.fullmatch(r"https?://\S+", u))
+    """Only a real http(s) URL becomes a link; a missing one (None) is shown as plain text, never as "None"/"null".
+    A link straight to a book file in a code repository is never offered to readers (2026-11-01): the book is cited by
+    its title and edition instead."""
+    return isinstance(u, str) and bool(re.fullmatch(r"https?://\S+", u)) and not BOOK_FILE.match(u)
 
 def canonical(obj) -> str:
     keep = {k: obj[k] for k in ("edition_id","revision","title","dek","sections","reflection","uncertainty_note","sources","further_reading")}
@@ -78,87 +83,115 @@ def _news_digest(news: dict | None, kind: str) -> str:
     return news["digest"][kind]
 
 
+# Email layout (editor-in-chief 2026-11-01): column · date → title → [在网页阅读] [Read in English] → dek → body; 18px body,
+# 20px headings, ~20px total side padding on phones; no internal ids, revisions or review details for readers; notes are
+# a short line plus a link (no folding, no script). Both languages stay in full. Takes effect from the next issue.
+BODY = "font-size:18px;line-height:1.85;margin:0 0 16px;color:#24221f;"
+H2 = f"font-size:20px;line-height:1.45;color:{ACCENT};margin:30px 0 10px;letter-spacing:.02em;"
+EMAIL_STYLE = """<style>
+@media (min-width:600px){.hip-card{padding:32px 36px 36px !important}}
+@media (prefers-color-scheme:dark){.hip-bg{background:#171614 !important}.hip-card{background:#1f1d1a !important;border-color:#34312c !important}
+ .hip-card p,.hip-card li,.hip-card h1{color:#e9e5de !important}.hip-card h2{color:#d2a679 !important}.hip-muted{color:#a39d93 !important}
+ .hip-card a{color:#d2a679 !important}.hip-btn a{color:#ffffff !important}.hip-btn2{background:#1f1d1a !important}.hip-btn2 a{color:#d2a679 !important}
+ .hip-modern{background:#29261f !important}}
+</style>"""
+
+
+def buttons(obj, base, margin="14px 0 18px") -> str:
+    """Two tappable links (>= 44px tall) that wrap on narrow screens instead of overflowing; tables for Outlook."""
+    def one(href, label, solid):
+        td = (f'<td class="{"hip-btn" if solid else "hip-btn2"}" bgcolor="{ACCENT if solid else "#ffffff"}" style="border-radius:6px;'
+              + ("" if solid else f"border:1px solid {ACCENT};") + '">')
+        return (f'<table role="presentation" cellpadding="0" cellspacing="0" style="display:inline-block;vertical-align:top;margin:0 10px 10px 0;">'
+                f'<tr>{td}<a href="{e(href)}" style="display:inline-block;padding:12px 20px;line-height:20px;font-size:16px;font-weight:bold;'
+                f'text-decoration:none;color:{"#ffffff" if solid else ACCENT};">{label}</a></td></tr></table>')
+    return (f'<div style="margin:{margin};">' + one(link(obj, "zh", base), LBL["zh"]["read_web"], True)
+            + one(link(obj, "en", base), LBL["zh"]["read_en"], False) + "</div>")
+
+
+def notes_line(obj, lang, base) -> str:
+    """The end notes in one short paragraph: what the piece rests on, further reading, and where the full notes are."""
+    srcs = "；".join(x["citation"] for x in obj["sources"]) if lang == "zh" else "; ".join(x["citation"] for x in obj["sources"])
+    more = ("；" if lang == "zh" else "; ").join(m["title"] for m in obj["further_reading"])
+    if lang == "zh":
+        return f"本篇依据：{srcs}。" + (f"想再读一点：{more}。" if more else "") + "补充说明见网页版。"
+    return f"Sources: {srcs}." + (f" Read more: {more}." if more else "") + " Notes on the material are on the web page."
+
+
 def email_html(obj, base, news: dict | None = None, now_iso: str | None = None):
+    cz, ce = CAT[obj["category"]]; date = e(dotted(obj["edition_date"]) or obj["edition_date"])
     def block(lang):
         L = LBL[lang]; out = []
-        out.append(f'<h1 style="font-family:Georgia,\'Songti SC\',serif;font-size:26px;line-height:1.35;margin:8px 0 6px;color:#1d1d1f;">{e(obj["title"][lang])}</h1>')
-        out.append(f'<p style="font-size:16px;line-height:1.7;color:#55524d;margin:0 0 18px;">{e(obj["dek"][lang])}</p>')
+        out.append(f'<h1 style="font-family:Georgia,\'Songti SC\',serif;font-size:28px;line-height:1.3;margin:6px 0 4px;color:#1d1d1f;">{e(obj["title"][lang])}</h1>')
+        if lang == "zh":
+            out.append(buttons(obj, base))
+        out.append(f'<p class="hip-muted" style="font-size:17px;line-height:1.75;color:#55524d;margin:0 0 20px;">{e(obj["dek"][lang])}</p>')
         for s in obj["sections"]:
-            out.append(f'<h2 style="font-size:17px;color:{ACCENT};margin:26px 0 8px;letter-spacing:.02em;">{e(s["heading"][lang])}</h2>')
+            if not s["paras"]:
+                continue
+            out.append(f'<h2 style="{H2}">{e(s["heading"][lang])}</h2>')
             for p in s["paras"]:
-                style = "font-size:16px;line-height:1.85;margin:0 0 14px;color:#24221f;"
-                if p["kind"] == "modern": style += "background:#f6f2ec;padding:10px 14px;border-radius:4px;"
-                out.append(f'<p style="{style}">{e(p[lang])}</p>')
+                style = BODY + ("background:#f6f2ec;padding:10px 14px;border-radius:4px;" if p["kind"] == "modern" else "")
+                cls = ' class="hip-modern"' if p["kind"] == "modern" else ""
+                out.append(f'<p{cls} style="{style}">{e(p[lang])}</p>')
         r = obj["reflection"]
-        out.append(f'<h2 style="font-size:17px;color:{ACCENT};margin:28px 0 8px;">{L["q"]}</h2>')
-        out.append(f'<p style="font-size:16px;line-height:1.85;margin:0 0 10px;color:#24221f;">{e(r["scenario"][lang])}</p>')
-        out.append(f'<p style="font-size:17px;line-height:1.8;margin:0 0 10px;font-weight:bold;color:#1d1d1f;border-left:3px solid {ACCENT};padding-left:12px;">{e(r["question"][lang])}</p>')
-        out.append(f'<p style="font-size:14px;color:#8a857d;margin:0 0 30px;">{L["stop"]}</p>')
-        out.append(f'<h3 style="font-size:15px;color:#55524d;margin:30px 0 8px;border-top:1px dashed #d8d2c8;padding-top:14px;">{L["ex"]}</h3>')
+        out.append(f'<h2 style="{H2}">{L["q"]}</h2>')
+        out.append(f'<p style="{BODY}">{e(r["scenario"][lang])}</p>')
+        out.append(f'<p style="font-size:18px;line-height:1.8;margin:0 0 10px;font-weight:bold;color:#1d1d1f;border-left:3px solid {ACCENT};padding-left:12px;">{e(r["question"][lang])}</p>')
+        out.append(f'<p class="hip-muted" style="font-size:15px;color:#8a857d;margin:0 0 24px;">{L["stop"]}</p>')
+        out.append(f'<p class="hip-muted" style="font-size:16px;font-weight:bold;color:#55524d;margin:26px 0 8px;border-top:1px dashed #d8d2c8;padding-top:14px;">{L["ex"]}</p>')
         sep = "：" if lang == "zh" else ": "
         for k, lab in (("assumptions", L["assume"]), ("steps", L["steps"]), ("alternative", L["alt"])):
-            out.append(f'<p style="font-size:15px;line-height:1.8;margin:0 0 10px;color:#3a3732;"><b>{lab}{sep}</b>{e(r["example"][k][lang])}</p>')
-        out.append(f'<h3 style="font-size:15px;color:#55524d;margin:24px 0 6px;">{L["unc"]}</h3><p style="font-size:14px;line-height:1.75;color:#55524d;margin:0 0 10px;">{e(obj["uncertainty_note"][lang])}</p>')
-        out.append(f'<h3 style="font-size:15px;color:#55524d;margin:18px 0 6px;">{L["src"]}</h3><ol style="font-size:13px;line-height:1.7;color:#55524d;padding-left:20px;margin:0 0 12px;">')
-        for s in obj["sources"]:
-            a = ""
-            if s.get("url"):
-                a = ' · <a href="%s" style="color:%s;">%s</a>' % (e(s["url"]), ACCENT, e(s.get("link_label", "link")))
-            out.append(f'<li>{e(s["citation"])}{a}</li>')
-        out.append("</ol>")
-        out.append(f'<h3 style="font-size:15px;color:#55524d;margin:18px 0 6px;">{L["more"]}</h3><ul style="font-size:13px;line-height:1.7;color:#55524d;padding-left:20px;margin:0;">')
-        for m in obj["further_reading"]:
-            title = f'<a href="{e(m["url"])}" style="color:{ACCENT};">{e(m["title"])}</a>' if web_url(m.get("url")) else e(m["title"])
-            out.append(f'<li>{title} — {e(m["what"][lang])} <span style="color:#8a857d;">({e(m["access"][lang])})</span></li>')
-        out.append("</ul>")
+            out.append(f'<p style="font-size:16px;line-height:1.8;margin:0 0 10px;color:#3a3732;"><b>{lab}{sep}</b>{e(r["example"][k][lang])}</p>')
+        out.append(f'<p class="hip-muted" style="font-size:14px;line-height:1.75;color:#6f6a62;margin:22px 0 0;">{e(notes_line(obj, lang, base))} '
+                   f'<a href="{e(link(obj, lang, base))}#notes" style="color:{ACCENT};">{"书目与补充说明" if lang == "zh" else "Sources and notes"}</a></p>')
         return "\n".join(out)
-    cz, ce = CAT[obj["category"]]
-    head = (f'<p style="font-size:13px;color:#8a857d;margin:0;letter-spacing:.04em;">{LBL["zh"]["col"]}｜{e(dotted(obj["edition_date"]) or obj["edition_date"])} · {cz} · '
-            f'中文约 {obj["reading_minutes"]["zh"]} 分钟 · English ~{obj["reading_minutes"]["en"]} min（估算）</p>')
-    btn = (f'<table role="presentation" cellpadding="0" cellspacing="0" style="margin:34px 0;"><tr>'
-           f'<td style="background:{ACCENT};border-radius:4px;"><a href="{e(link(obj,"zh",base))}" style="display:inline-block;padding:10px 18px;color:#fff;text-decoration:none;font-size:15px;">{LBL["zh"]["read_web"]}</a></td>'
-           f'<td style="width:10px;"></td><td style="border:1px solid {ACCENT};border-radius:4px;"><a href="{e(link(obj,"en",base))}" style="display:inline-block;padding:9px 18px;color:{ACCENT};text-decoration:none;font-size:15px;">Read in English</a></td></tr></table>'
-           f'<hr style="border:none;border-top:1px solid #d8d2c8;margin:0 0 30px;">')
-    foot = (f'<p style="font-size:12px;line-height:1.7;color:#8a857d;margin:36px 0 0;border-top:1px solid #e6e1d8;padding-top:14px;">'
-            f'{LBL["zh"]["edition"]} {e(obj["edition_id"])} · rev {obj["revision"]} · {e(obj["edition_date"])} · '
-            f'<a href="{e(link(obj,"zh",base))}" style="color:{ACCENT};">{e(link(obj,"zh",base))}</a><br>{LBL["zh"]["feedback"]} {LBL["zh"]["pause"]}</p>')
+    head = (f'<p class="hip-muted" style="font-size:14px;color:#8a857d;margin:0;letter-spacing:.04em;">{LBL["zh"]["col"]}｜{date} · {cz} · '
+            f'中文约 {obj["reading_minutes"]["zh"]} 分钟 · English ~{obj["reading_minutes"]["en"]} min</p>')
+    sep_en = (f'<hr style="border:none;border-top:1px solid #d8d2c8;margin:34px 0 26px;">'
+              f'<p class="hip-muted" style="font-size:14px;color:#8a857d;margin:0;letter-spacing:.04em;">{LBL["en"]["col"]}｜{date} · {ce} · English</p>')
+    foot = (f'<p class="hip-muted" style="font-size:14px;line-height:1.8;color:#8a857d;margin:34px 0 0;border-top:1px solid #e6e1d8;padding-top:14px;">'
+            f'{LBL["zh"]["col"]}｜{date}<br><a href="{e(link(obj,"zh",base))}" style="color:{ACCENT};">{LBL["zh"]["read_web"]}</a> · '
+            f'<a href="{e(link(obj,"en",base))}" style="color:{ACCENT};">Read in English</a><br>{LBL["zh"]["feedback"]} {LBL["zh"]["pause"]}</p>')
     pre = e(obj["preheader"]["zh"])
     newsblock = _news_digest(news, "html")
     if obj.get("status") == "test":
         head = (f'<p style="font-size:14px;line-height:1.7;margin:0 0 16px;padding:10px 14px;border:2px solid #b5542f;color:#7a2e12;border-radius:4px;">'
                 f'<b>测试 TEST</b> · {e(TEST_NOTE["zh"])}<br>{e(TEST_NOTE["en"])}</p>') + head
-    return f'''<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(obj["title"]["zh"])}</title></head>
-<body style="margin:0;padding:0;background:#faf8f4;">
+    return f'''<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark"><meta name="supported-color-schemes" content="light dark"><title>{e(obj["title"]["zh"])}</title>
+{EMAIL_STYLE}</head>
+<body class="hip-bg" style="margin:0;padding:0;background:#faf8f4;-webkit-text-size-adjust:100%;">
 <div style="display:none;max-height:0;overflow:hidden;">{pre}</div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#faf8f4;"><tr><td align="center" style="padding:24px 12px;">
-<table role="presentation" width="640" cellpadding="0" cellspacing="0" style="max-width:640px;width:100%;background:#ffffff;border:1px solid #ece7de;">
-<tr><td style="padding:28px 30px 34px;font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',Helvetica,Arial,sans-serif;">
+<table role="presentation" class="hip-bg" width="100%" cellpadding="0" cellspacing="0" style="background:#faf8f4;"><tr><td align="center" style="padding:16px 8px;">
+<table role="presentation" width="640" cellpadding="0" cellspacing="0" style="max-width:640px;width:100%;"><tr>
+<td class="hip-card" style="background:#ffffff;border:1px solid #ece7de;padding:24px 12px 30px;font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',Helvetica,Arial,sans-serif;">
 {head}
 <a id="story"></a>
 {block("zh")}
-{btn}
-<p style="font-size:13px;color:#8a857d;margin:0;letter-spacing:.04em;">{LBL["en"]["col"]}｜{e(dotted(obj["edition_date"]) or obj["edition_date"])} · {ce}</p>
+{sep_en}
 {block("en")}
 {newsblock}{foot}
 </td></tr></table></td></tr></table></body></html>'''
 
 def email_text(obj, base, news: dict | None = None, now_iso: str | None = None):
-    def block(lang):
-        L = LBL[lang]; r = obj["reflection"]; out = [obj["title"][lang], obj["dek"][lang], ""]
+    def block(lang, links=False):
+        L = LBL[lang]; r = obj["reflection"]
+        out = [obj["title"][lang]] + ([f"在网页阅读：{link(obj,'zh',base)}", f"Read in English：{link(obj,'en',base)}"] if links else []) + ["", obj["dek"][lang], ""]
         for s in obj["sections"]:
-            out += [f"== {s['heading'][lang]} ==", *[p[lang] + "\n" for p in s["paras"]]]
+            if s["paras"]:
+                out += [f"== {s['heading'][lang]} ==", *[p[lang] + "\n" for p in s["paras"]]]
         out += [f"== {L['q']} ==", r["scenario"][lang], "", r["question"][lang], "", L["stop"], "", "-" * 20, f"{L['ex']}",
                 f"{L['assume']}: {r['example']['assumptions'][lang]}", f"{L['steps']}: {r['example']['steps'][lang]}",
-                f"{L['alt']}: {r['example']['alternative'][lang]}", "", f"== {L['unc']} ==", obj["uncertainty_note"][lang], "", f"== {L['src']} =="]
-        out += [f"[{i+1}] {s['citation']} {s.get('url') or ''}".strip() for i, s in enumerate(obj["sources"])]
-        out += ["", f"== {L['more']} =="] + [f"- {m['title']}: {m['what'][lang]} ({m['access'][lang]})" + (f" {m['url']}" if web_url(m.get("url")) else "") for m in obj["further_reading"]]
+                f"{L['alt']}: {r['example']['alternative'][lang]}", "", notes_line(obj, lang, base) + f" {link(obj, lang, base)}#notes"]
         return "\n".join(out)
     test = [f"【测试 TEST】{TEST_NOTE['zh']}", TEST_NOTE["en"], ""] if obj.get("status") == "test" else []
     digest = _news_digest(news, "text")
-    return "\n".join(test + [f"{LBL['zh']['col']}｜{dotted(obj['edition_date']) or obj['edition_date']} · {CAT[obj['category']][0]}", "", block("zh"), "",
-                      f"在网页阅读：{link(obj,'zh',base)}", f"Read in English: {link(obj,'en',base)}", "=" * 40, "", block("en"), "",
-                      *([("=" * 40), digest, ""] if digest else []),
-                      f"{obj['edition_id']} rev {obj['revision']} · {LBL['zh']['feedback']} {LBL['zh']['pause']}"])
+    date = dotted(obj['edition_date']) or obj['edition_date']
+    return "\n".join(test + [f"{LBL['zh']['col']}｜{date} · {CAT[obj['category']][0]}", "", block("zh", links=True), "",
+                      "=" * 40, f"{LBL['en']['col']}｜{date} · {CAT[obj['category']][1]} · English", "", block("en"), "",
+                      *(["=" * 40, digest, ""] if digest else []), "=" * 40,
+                      f"在网页阅读：{link(obj,'zh',base)}", f"Read in English：{link(obj,'en',base)}", f"{LBL['zh']['feedback']} {LBL['zh']['pause']}"])
 
 def markdown(obj, lang):
     L = LBL[lang]; r = obj["reflection"]
@@ -173,10 +206,58 @@ def markdown(obj, lang):
             f"- **{L['assume']}**: {r['example']['assumptions'][lang]}", f"- **{L['steps']}**: {r['example']['steps'][lang]}",
             f"- **{L['alt']}**: {r['example']['alternative'][lang]}", "", "</details>", "",
             f"## {L['unc']}", "", obj["uncertainty_note"][lang], "", f"## {L['src']}", ""]
-    out += [f"{i+1}. {s['citation']}" + (f" — <{s['url']}>" if s.get("url") else "") for i, s in enumerate(obj["sources"])]
+    out += [f"{i+1}. {s['citation']}" + (f" — <{s['url']}>" if web_url(s.get("url")) else "") for i, s in enumerate(obj["sources"])]
     out += ["", f"## {L['more']}", ""] + [(f"- [{m['title']}]({m['url']})" if web_url(m.get("url")) else f"- {m['title']}") + f" — {m['what'][lang]} ({m['access'][lang]})" for m in obj["further_reading"]]
     out += ["", "---", "", ("证据编号 [X-En] 对应同目录 evidence 文件中的逐字摘录。" if lang == "zh" else "Evidence ids [X-En] map to verbatim excerpts in the evidence file.")]
     return "\n".join(out) + "\n"
+
+def _tag_maps() -> tuple[dict, dict]:
+    """Theme tags and regions for the search index: config/edition_tags.json, config/regions.json, else the candidate file."""
+    cfg = Path(__file__).resolve().parents[2] / "config"
+    def load(name):
+        p = cfg / name
+        return {k: v for k, v in json.loads(p.read_text(encoding="utf-8")).items() if not k.startswith("_")} if p.exists() else {}
+    tags, regions = load("edition_tags.json"), load("regions.json")
+    for c in sorted((cfg / "candidates").glob("*.json")) if (cfg / "candidates").exists() else []:
+        try:
+            j = json.loads(c.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        if j.get("candidate_id") and j.get("tags") and j["candidate_id"] not in tags:
+            tags[j["candidate_id"]] = j["tags"]
+    return tags, regions
+
+
+def search_index(objs) -> tuple[dict, dict]:
+    """Reader search (2026-11-01), built with the site from PUBLISHED editions only: never samples, TEST editions,
+    unscheduled inventory, evidence or review records. Two static files: search.json (title, dek, people, tags, book
+    titles; loaded when the reader starts typing) and search_text.json (the article body, both languages; loaded on the
+    first query). One entry per story; both languages in the same entry."""
+    tags, regions = _tag_maps(); meta, text = [], []
+    try:                                             # traditional names (吳起) also findable as typed (吴起)
+        from .textnorm import t2s
+    except Exception:
+        t2s = lambda x: x
+    both = lambda xs: list(dict.fromkeys(y for x in xs for y in (x, t2s(x)) if y))
+    for o in objs:
+        if o.get("status") in ("test", "reader_sample") or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(o.get("edition_date", ""))):
+            continue
+        books = []
+        for x in list(o.get("sources") or []) + list(o.get("further_reading") or []):
+            t = x.get("citation") or x.get("title") or ""
+            books += re.findall(r"《([^》]{1,40})》", t) or ([t[:80]] if x.get("title") else [])
+        y, m, d = o["edition_date"].split("-")
+        meta.append({"id": o["edition_id"], "date": o["edition_date"], "category": o["category"], "title": o["title"], "dek": o["dek"],
+                     "people": both((o.get("episode") or {}).get("persons") or []),
+                     "tags": list(dict.fromkeys(list(tags.get(o["edition_id"]) or []) + ([regions[o["edition_id"]]] if regions.get(o["edition_id"]) else [])
+                                                + list(CAT[o["category"]]))),
+                     "books": both(b.strip() for b in books if b.strip()),
+                     "minutes": o.get("reading_minutes"), "path": f"data/history/{y}/{m}/{d}-{o['edition_id']}.json"})
+        text.append({"id": o["edition_id"], "zh": "\n".join(p["zh"] for s in o["sections"] for p in s["paras"]),
+                     "en": "\n".join(p["en"] for s in o["sections"] for p in s["paras"])})
+    meta.sort(key=lambda x: x["date"], reverse=True)
+    return ({"schema": "history-search/v1", "items": meta}, {"schema": "history-search-text/v1", "items": text})
+
 
 def build(objs, out: Path, base, news: dict | None = None):
     """`news`: edition_id -> that edition's frozen news binding (news.bind); the email carries its digest at the end."""
@@ -216,5 +297,8 @@ def build(objs, out: Path, base, news: dict | None = None):
             q.write_text(prev_json, encoding="utf-8")
     index.sort(key=lambda x: x["edition_date"], reverse=True)
     (out/"site/data/history/index.json").write_text(json.dumps({"schema_version": "0.2", "items": index}, ensure_ascii=False, indent=1), encoding="utf-8")
+    meta, text = search_index(objs)                  # rebuilt with every published issue (publish.commit_site -> site_export.export)
+    (out/"site/data/history/search.json").write_text(json.dumps(meta, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    (out/"site/data/history/search_text.json").write_text(json.dumps(text, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     tpl = Path(__file__).with_name("templates")/"history_index.html"
     (out/"site/history/index.html").write_text(tpl.read_text(encoding="utf-8"), encoding="utf-8")

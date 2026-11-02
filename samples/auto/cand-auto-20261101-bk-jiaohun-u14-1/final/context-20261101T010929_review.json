@@ -1,0 +1,496 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261101-bk-jiaohun-u14-1",
+ "content_sha256": "ed55f94545c1d0a2ab2465df5e3fe8ac41a66179a0ea4cd20f0a77842abe1ed8",
+ "evidence_in_sha256": "745543bd59e6685f8efe75b9be7c3c2dc69d8938a632be8f09816bdb3859cdf6",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793516969.911824,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "reflection.example.steps",
+   "lang": "zh",
+   "sentence": "汇报“查无此事”时说明依据，而不是只写结论。"
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-BK-JIAOHUN": {
+   "title": "孔飞力（Philip A. Kuhn）《叫魂：1768年中国妖术大恐慌》（陈兼、刘昶 译）；第九章 政治罪与官僚君主制",
+   "url": null,
+   "ref": "book:BK-JIAOHUN",
+   "evidence_text_sha256": "6ffb877bade208c0bc1db4f495a533c5c32789f44424361336a099bb6924db5c",
+   "cache_sha256": "6ffb877bade208c0bc1db4f495a533c5c32789f44424361336a099bb6924db5c",
+   "cjk": true,
+   "source_chars": 172317,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     150924,
+     164688
+    ]
+   ],
+   "chars_reviewed": 13764
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 46.4,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "prompts": [
+    {
+     "file": "context_review.md",
+     "sha256": "166543d1f6ca"
+    }
+   ],
+   "output_tokens": 5118
+  }
+ ],
+ "finished_at": 1793517016.7339556,
+ "elapsed_min": 0.8,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-BK-JIAOHUN",
+    "outcome": "吴绍诗安然度过危机。弘历没有斥责他，第二年反而任命他为刑部尚书。孔飞力把原因归于他的法律造诣，并推测还可能有高晋的袒护。",
+    "quote": "吴绍诗安然度过了这一危机：弘历不但没有斥责他，反而在第二年任命他为刑部尚书。由于他在法律方面的造诣，也可能由于他的顶头上司、弘历的姻亲高晋的袒护，要对他不愿加入这场集体游戏的行为予以惩罚并不是一件容易的事。",
+    "in_evidence": true
+   },
+   {
+    "source_id": "S-BK-JIAOHUN",
+    "outcome": "吴坛逮捕约七十名教徒，由此引发对历任官员的大规模追责，但多数人只受到象征性处罚，孔飞力称之为闹剧。",
+    "quote": "这个大张旗鼓的弹劾过程是一幕令人难堪的闹剧，但在吴坛和江苏省的其他官员们看来，这可能是用来应付来自弘历的无情压力的一种适当代价。",
+    "in_evidence": true
+   },
+   {
+    "source_id": "S-BK-JIAOHUN",
+    "outcome": "清剿以弘历在官僚中寻找替罪羊收场。富尼汉被降级受罚，苏尔德被单独挑出来贬往新疆。",
+    "quote": "恼羞成怒的弘历以在官僚中寻找替罪羊来结束对叫魂案的清剿。",
+    "in_evidence": true
+   }
+  ],
+  "additions": [],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "reflection.example.steps",
+    "lang": "zh",
+    "sentence": "汇报“查无此事”时说明依据，而不是只写结论。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [],
+    "scope": "反思练习中的行动建议，不涉及来源记载与否",
+    "quote": {
+     "source_id": "",
+     "quote": ""
+    },
+    "fix": "无需修改"
+   },
+   {
+    "id": "N1",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "高晋答应的后续报告，孔飞力没有找到。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "第九章“忙而不动：吴绍诗在江西”一节的脚注",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "高晋并答应继续观察，随后报告，但我无法找到这份后续报告。"
+    },
+    "fix": "保留。范围已准确限定为孔飞力本人未找到，并未断言这份报告不存在。"
+   },
+   {
+    "id": "N2",
+    "path": "sections.limits.0",
+    "lang": "en",
+    "sentence": "Kuhn was unable to find the follow-up report Gao Jin promised.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "第九章吴绍诗一节的脚注",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "但我无法找到这份后续报告。"
+    },
+    "fix": "保留"
+   },
+   {
+    "id": "N3",
+    "path": "sections.story.6",
+    "lang": "zh",
+    "sentence": "孔飞力说，没有档案文字能证明江西曾像邻省那样搜捕过可疑嫌犯。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "第九章吴绍诗一节。这是孔飞力本人对档案的判断，稿件已标明出处。",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "没有档案文字证明江西曾像邻省那样搜捕过可疑嫌犯。"
+    },
+    "fix": "保留，并继续标明这是孔飞力的判断。"
+   },
+   {
+    "id": "N4",
+    "path": "sections.story.6",
+    "lang": "en",
+    "sentence": "Kuhn notes that no archival document shows Jiangxi ever rounding up suspects as the neighbouring provinces did.",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "第九章吴绍诗一节",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "没有档案文字证明江西曾像邻省那样搜捕过可疑嫌犯。"
+    },
+    "fix": "保留"
+   },
+   {
+    "id": "N5",
+    "path": "sections.story.7",
+    "lang": "zh",
+    "sentence": "孔飞力自己说明无法证实，但他推测……",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "第九章“转移视线：对苏州教派的迫害”一节",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "我推测（虽然我无法证实）"
+    },
+    "fix": "保留"
+   },
+   {
+    "id": "N6",
+    "path": "sections.analysis.3",
+    "lang": "zh",
+    "sentence": "本文无法据此判定吴绍诗属于哪一种。",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "第九章“官僚的抵制”及“忙而不动”两节",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "据此，我们只能相信，巡抚吴绍诗根本就不打算查缉这个他认为是误传的案子"
+    },
+    "fix": "孔飞力把吴绍诗作为“抵制”的一例放在“忙而不动”的标题下，并推断他认为这是误传。这与“因不信其事而轻视此案”一类最接近，只是孔飞力没有明确贴标签。建议改为：孔飞力没有明说吴绍诗属于哪一类，但他的推断最接近“不信其事”这一种；动机是否另有怕误仕途或不愿冤枉无辜的成分，书中没有交代。"
+   },
+   {
+    "id": "N7",
+    "path": "sections.analysis.3",
+    "lang": "en",
+    "sentence": "This article cannot say which of these describes Wu Shaoshi.",
+    "verdict": "contradicted",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "第九章“官僚的抵制”及“忙而不动”两节",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "巡抚吴绍诗根本就不打算查缉这个他认为是误传的案子"
+    },
+    "fix": "与中文同步修改"
+   },
+   {
+    "id": "N8",
+    "path": "sections.limits.0",
+    "lang": "zh",
+    "sentence": "朱批和奏报都转引自书中译文，与档案原文是否逐字一致无法判断。",
+    "verdict": "supported",
+    "source_ids": [
+     "S-BK-JIAOHUN"
+    ],
+    "scope": "本文实际查阅的只有中译本第九章，没有查阅档案原件。这是对本文查阅范围的说明，不是关于来源内容的断言。",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "（朱批：“恐属空言，实难信矣口”）"
+    },
+    "fix": "保留"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.analysis.3",
+    "problem": "稿件称无法判定吴绍诗属于哪种抵制，但孔飞力已把吴案作为抵制的例证，并推断他认为此案是误传。这会让读者低估孔飞力判断的明确程度。",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "我将要讨论的每一项抵制措施都可用其他的理由来解释，但把它们综台在一起来考虑，我相信它们所展示的便是对专制权力谨慎而广泛的抵制。"
+    },
+    "severity": "fix"
+   },
+   {
+    "path": "sections.story.8",
+    "problem": "写替罪羊收场时只提到苏尔德。富尼汉也被降级受罚，原因是他关于口供并非刑求所得的说法误导了皇帝。补上这一点，读者才会看到处罚并不只针对“不报和阻挠”。",
+    "quote": {
+     "source_id": "S-BK-JIAOHUN",
+     "quote": "巡抚富尼汉关于叫魂案犯供词并非出自刑求逼供的说法误导了他，所以富尼汉必须降级并受罚。"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "三条结局（吴绍诗升任刑部尚书、经堂案追责成为闹剧、苏尔德被贬新疆）都已在证据包中，无需补充摘录。主要问题是 analysis.3 称无法判定吴绍诗属于哪种抵制，与孔飞力的明确推断不符，须修改；其余否定性来源断言均有原文支持。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "reflection.example.steps",
+   "lang": "zh",
+   "sentence": "汇报“查无此事”时说明依据，而不是只写结论。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [],
+   "scope": "反思练习中的行动建议，不涉及来源记载与否",
+   "quote": {
+    "source_id": "",
+    "quote": ""
+   },
+   "fix": "无需修改",
+   "unit_status": {}
+  },
+  {
+   "id": "N1",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "高晋答应的后续报告，孔飞力没有找到。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "第九章“忙而不动：吴绍诗在江西”一节的脚注",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "高晋并答应继续观察，随后报告，但我无法找到这份后续报告。"
+   },
+   "fix": "保留。范围已准确限定为孔飞力本人未找到，并未断言这份报告不存在。",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  },
+  {
+   "id": "N2",
+   "path": "sections.limits.0",
+   "lang": "en",
+   "sentence": "Kuhn was unable to find the follow-up report Gao Jin promised.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "第九章吴绍诗一节的脚注",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "但我无法找到这份后续报告。"
+   },
+   "fix": "保留",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  },
+  {
+   "id": "N3",
+   "path": "sections.story.6",
+   "lang": "zh",
+   "sentence": "孔飞力说，没有档案文字能证明江西曾像邻省那样搜捕过可疑嫌犯。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "第九章吴绍诗一节。这是孔飞力本人对档案的判断，稿件已标明出处。",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "没有档案文字证明江西曾像邻省那样搜捕过可疑嫌犯。"
+   },
+   "fix": "保留，并继续标明这是孔飞力的判断。",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  },
+  {
+   "id": "N4",
+   "path": "sections.story.6",
+   "lang": "en",
+   "sentence": "Kuhn notes that no archival document shows Jiangxi ever rounding up suspects as the neighbouring provinces did.",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "第九章吴绍诗一节",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "没有档案文字证明江西曾像邻省那样搜捕过可疑嫌犯。"
+   },
+   "fix": "保留",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  },
+  {
+   "id": "N5",
+   "path": "sections.story.7",
+   "lang": "zh",
+   "sentence": "孔飞力自己说明无法证实，但他推测……",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "第九章“转移视线：对苏州教派的迫害”一节",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "我推测（虽然我无法证实）"
+   },
+   "fix": "保留",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  },
+  {
+   "id": "N6",
+   "path": "sections.analysis.3",
+   "lang": "zh",
+   "sentence": "本文无法据此判定吴绍诗属于哪一种。",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "第九章“官僚的抵制”及“忙而不动”两节",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "据此，我们只能相信，巡抚吴绍诗根本就不打算查缉这个他认为是误传的案子"
+   },
+   "fix": "孔飞力把吴绍诗作为“抵制”的一例放在“忙而不动”的标题下，并推断他认为这是误传。这与“因不信其事而轻视此案”一类最接近，只是孔飞力没有明确贴标签。建议改为：孔飞力没有明说吴绍诗属于哪一类，但他的推断最接近“不信其事”这一种；动机是否另有怕误仕途或不愿冤枉无辜的成分，书中没有交代。",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  },
+  {
+   "id": "N7",
+   "path": "sections.analysis.3",
+   "lang": "en",
+   "sentence": "This article cannot say which of these describes Wu Shaoshi.",
+   "verdict": "contradicted",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "第九章“官僚的抵制”及“忙而不动”两节",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "巡抚吴绍诗根本就不打算查缉这个他认为是误传的案子"
+   },
+   "fix": "与中文同步修改",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  },
+  {
+   "id": "N8",
+   "path": "sections.limits.0",
+   "lang": "zh",
+   "sentence": "朱批和奏报都转引自书中译文，与档案原文是否逐字一致无法判断。",
+   "verdict": "supported",
+   "source_ids": [
+    "S-BK-JIAOHUN"
+   ],
+   "scope": "本文实际查阅的只有中译本第九章，没有查阅档案原件。这是对本文查阅范围的说明，不是关于来源内容的断言。",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "（朱批：“恐属空言，实难信矣口”）"
+   },
+   "fix": "保留",
+   "unit_status": {
+    "S-BK-JIAOHUN": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.analysis.3",
+   "problem": "稿件称无法判定吴绍诗属于哪种抵制，但孔飞力已把吴案作为抵制的例证，并推断他认为此案是误传。这会让读者低估孔飞力判断的明确程度。",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "我将要讨论的每一项抵制措施都可用其他的理由来解释，但把它们综台在一起来考虑，我相信它们所展示的便是对专制权力谨慎而广泛的抵制。"
+   },
+   "severity": "fix"
+  },
+  {
+   "path": "sections.story.8",
+   "problem": "写替罪羊收场时只提到苏尔德。富尼汉也被降级受罚，原因是他关于口供并非刑求所得的说法误导了皇帝。补上这一点，读者才会看到处罚并不只针对“不报和阻挠”。",
+   "quote": {
+    "source_id": "S-BK-JIAOHUN",
+    "quote": "巡抚富尼汉关于叫魂案犯供词并非出自刑求逼供的说法误导了他，所以富尼汉必须降级并受罚。"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-BK-JIAOHUN",
+   "outcome": "吴绍诗安然度过危机。弘历没有斥责他，第二年反而任命他为刑部尚书。孔飞力把原因归于他的法律造诣，并推测还可能有高晋的袒护。",
+   "quote": "吴绍诗安然度过了这一危机：弘历不但没有斥责他，反而在第二年任命他为刑部尚书。由于他在法律方面的造诣，也可能由于他的顶头上司、弘历的姻亲高晋的袒护，要对他不愿加入这场集体游戏的行为予以惩罚并不是一件容易的事。",
+   "in_evidence": true
+  },
+  {
+   "source_id": "S-BK-JIAOHUN",
+   "outcome": "吴坛逮捕约七十名教徒，由此引发对历任官员的大规模追责，但多数人只受到象征性处罚，孔飞力称之为闹剧。",
+   "quote": "这个大张旗鼓的弹劾过程是一幕令人难堪的闹剧，但在吴坛和江苏省的其他官员们看来，这可能是用来应付来自弘历的无情压力的一种适当代价。",
+   "in_evidence": true
+  },
+  {
+   "source_id": "S-BK-JIAOHUN",
+   "outcome": "清剿以弘历在官僚中寻找替罪羊收场。富尼汉被降级受罚，苏尔德被单独挑出来贬往新疆。",
+   "quote": "恼羞成怒的弘历以在官僚中寻找替罪羊来结束对叫魂案的清剿。",
+   "in_evidence": true
+  }
+ ],
+ "additions": [],
+ "additions_failed": [],
+ "evidence_sha256": "745543bd59e6685f8efe75b9be7c3c2dc69d8938a632be8f09816bdb3859cdf6",
+ "outcome": "needs_work",
+ "blocking": [
+  "sections.analysis.3.zh: contradicted — 本文无法据此判定吴绍诗属于哪一种。",
+  "sections.analysis.3.en: contradicted — This article cannot say which of these describes Wu Shaoshi.",
+  "sections.analysis.3: 稿件称无法判定吴绍诗属于哪种抵制，但孔飞力已把吴案作为抵制的例证，并推断他认为此案是误传。这会让读者低估孔飞力判断的明确程度。"
+ ]
+}

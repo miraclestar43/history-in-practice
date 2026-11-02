@@ -1,0 +1,298 @@
+{
+ "record_type": "context_review",
+ "schema": "context-review/v1",
+ "mode": "article",
+ "edition_id": "cand-auto-20261101-bk-ming-u51-1",
+ "content_sha256": "a23ae7aa0fbb0594e32cbeb58841f21a8df69b1ae0a2f5badfe1d2ec1ef0f574",
+ "evidence_in_sha256": "e518b96be664935a70ce69987166683751adca55b458ec08e2074cb35ae01f56",
+ "reviewer": {
+  "name": "Pi Claude",
+  "role": "named final editor (source-context review)",
+  "runtime": "official Claude Code CLI on raspberrypi51",
+  "model": "claude-opus-5-5",
+  "cli_version": "2.1.308 (Claude Code)"
+ },
+ "limits": {
+  "window_cjk": [
+   1200,
+   4000
+  ],
+  "window_latin": [
+   2500,
+   8000
+  ],
+  "cap": {
+   "true": 60000,
+   "false": 150000
+  },
+  "search": {
+   "terms": 6,
+   "hits": 4,
+   "win": {
+    "true": 1500,
+    "false": 3000
+   },
+   "extra_cap": 0.3
+  }
+ },
+ "started_at": 1793551340.4018822,
+ "flagged": [
+  {
+   "id": "A1",
+   "path": "sections.story.6",
+   "lang": "zh",
+   "sentence": "张軏问的是胜算，徐有贞回的是一个不容商量的结论，没有给出新的理由。"
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.8",
+   "lang": "en",
+   "sentence": "Told that it was his elder brother summoning the ministers, he fell silent for a moment, then smiled and said only: \"Good, good, good.\" Zhu Qizhen sat on the throne once more."
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.0",
+   "lang": "zh",
+   "sentence": "不过，窗口紧迫只说明等待代价高，并不能证明计划行得通，东华门那个洞并没有因为时间紧而消失。"
+  }
+ ],
+ "search": null,
+ "units": {
+  "S-BK-MING": {
+   "title": "当年明月《明朝那些事儿》；第二十二章夺门（明朝那些事儿2：万国来朝）",
+   "url": null,
+   "ref": "book:BK-MING",
+   "evidence_text_sha256": "4717e5ac7d17bd182a4e73785bb57f54a34112bf6787c09c2626d073f2c8adfb",
+   "cache_sha256": "4717e5ac7d17bd182a4e73785bb57f54a34112bf6787c09c2626d073f2c8adfb",
+   "cjk": true,
+   "source_chars": 1478754,
+   "status": "windows",
+   "whole_source": false,
+   "spans": [
+    [
+     444113,
+     457274
+    ]
+   ],
+   "chars_reviewed": 13161
+  }
+ },
+ "calls": [
+  {
+   "step": "context_r1",
+   "attempt": 1,
+   "wall_s": 54.0,
+   "json_ok": true,
+   "schema_ok": true,
+   "schema_problems": null,
+   "killed": null,
+   "provider_refusal": null,
+   "prompts": [
+    {
+     "file": "context_review.md",
+     "sha256": "043a0ab68f9b"
+    },
+    {
+     "file": "reader_first_zh.md",
+     "sha256": "c456b6a296e7"
+    }
+   ],
+   "output_tokens": 4081
+  }
+ ],
+ "finished_at": 1793551395.2150674,
+ "elapsed_min": 0.9,
+ "review": {
+  "episode": [
+   {
+    "source_id": "S-BK-MING",
+    "outcome": "夺门成功，朱祁镇复位；第二天密谋者受封，同一天徐有贞下令逮捕于谦、王文。于谦随后以“意欲”定罪，正月二十三日在崇文门外被斩。",
+    "quote": "就在同一天，徐有贞便下令逮捕了于谦和王文等人，把他们关进了监狱……正月二十三日，于谦被押往崇文门外，就在这座他曾拼死保卫的城池前，得到了他最后的结局——斩决。",
+    "in_evidence": true
+   }
+  ],
+  "additions": [],
+  "claims": [
+   {
+    "id": "A1",
+    "path": "sections.story.6",
+    "lang": "zh",
+    "sentence": "张軏问的是胜算，徐有贞回的是一个不容商量的结论，没有给出新的理由。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-BK-MING"
+    ],
+    "scope": "S-BK-MING 444113–457274 中“事济否／必济”一段",
+    "quote": {
+     "source_id": "S-BK-MING",
+     "quote": "徐有贞缓缓走到张軏的面前，突然用低沉的声音吼道：“一定能成功（必济）！”"
+    },
+    "fix": "这是对人物对话的解读，不是关于来源有无记载的断言，与原文一致，无需修改。"
+   },
+   {
+    "id": "A2",
+    "path": "sections.story.8",
+    "lang": "en",
+    "sentence": "Told that it was his elder brother summoning the ministers, he fell silent for a moment, then smiled and said only: \"Good, good, good.\" Zhu Qizhen sat on the throne once more.",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-BK-MING"
+    ],
+    "scope": "S-BK-MING 朱祁钰听到钟鼓一段及其后朱祁镇复位一段",
+    "quote": {
+     "source_id": "S-BK-MING",
+     "quote": "听到这个消息，朱祁钰沉默了一会，然后他抬起头来，笑了。他笑得很从容，并最终吐出了三个字：“好，好，好！”"
+    },
+    "fix": "这是情节叙述，与书中讲述一致，无需修改。"
+   },
+   {
+    "id": "A3",
+    "path": "sections.analysis.0",
+    "lang": "zh",
+    "sentence": "不过，窗口紧迫只说明等待代价高，并不能证明计划行得通，东华门那个洞并没有因为时间紧而消失。",
+    "verdict": "not_a_source_claim",
+    "source_ids": [
+     "S-BK-MING"
+    ],
+    "scope": "S-BK-MING 东华门一段",
+    "quote": {
+     "source_id": "S-BK-MING",
+     "quote": "然而当他们到达东华门的时候，才发现了这个计划中的最大漏洞——他们进不去。"
+    },
+    "fix": "这是本文的分析判断，有原文支持，无需修改。"
+   }
+  ],
+  "context_issues": [
+   {
+    "path": "sections.analysis.3",
+    "problem": "稿件写到“对于谦的逮捕”就停了。书中紧接着的结果是于谦以“意欲”定罪并被斩，这是赌赢之后最直接的代价。可选补一句，不改变主线判断。",
+    "quote": {
+     "source_id": "S-BK-MING",
+     "quote": "官员们浓缩了他的意思，将其提炼为更传神的两个字——“意欲”，并最后以此定罪。"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "reflection.example.alternative",
+    "problem": "稿件把朱祁钰把继承人一事推到三天后当作“拖延也是一种选项”的正面例子。但在书里，正是这三天的空档让密谋者赶在复议前动手，朱祁钰这次是“最后一次胜利”。拿它作正面例子不太贴切，可考虑改换说法。",
+    "quote": {
+     "source_id": "S-BK-MING",
+     "quote": "但估计他自己也没有想到，这竟然是他的最后一次朝会，最后一道谕令，最后一次胜利。"
+    },
+    "severity": "note"
+   },
+   {
+    "path": "sections.analysis.1",
+    "problem": "“这一千人也退不出去”是本文从扔钥匙推出的结论。书里只写到“后路已经全无”，可以保留为解读，但不宜说得像书中的明确记载。",
+    "quote": {
+     "source_id": "S-BK-MING",
+     "quote": "后路已经全无，几个人只好在徐有贞的带领下向着南宫出发。"
+    },
+    "severity": "note"
+   }
+  ],
+  "search": [],
+  "overall": "稿件忠实于《明朝那些事儿》的讲述。结局（复位、封赏、逮捕于谦，以及证据包已补入的于谦被斩）都有证据支持；没有需要 fix 的否定性来源断言或截断误导，只有三处可选的 note。"
+ },
+ "claims": [
+  {
+   "id": "A1",
+   "path": "sections.story.6",
+   "lang": "zh",
+   "sentence": "张軏问的是胜算，徐有贞回的是一个不容商量的结论，没有给出新的理由。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-BK-MING"
+   ],
+   "scope": "S-BK-MING 444113–457274 中“事济否／必济”一段",
+   "quote": {
+    "source_id": "S-BK-MING",
+    "quote": "徐有贞缓缓走到张軏的面前，突然用低沉的声音吼道：“一定能成功（必济）！”"
+   },
+   "fix": "这是对人物对话的解读，不是关于来源有无记载的断言，与原文一致，无需修改。",
+   "unit_status": {
+    "S-BK-MING": "windows"
+   }
+  },
+  {
+   "id": "A2",
+   "path": "sections.story.8",
+   "lang": "en",
+   "sentence": "Told that it was his elder brother summoning the ministers, he fell silent for a moment, then smiled and said only: \"Good, good, good.\" Zhu Qizhen sat on the throne once more.",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-BK-MING"
+   ],
+   "scope": "S-BK-MING 朱祁钰听到钟鼓一段及其后朱祁镇复位一段",
+   "quote": {
+    "source_id": "S-BK-MING",
+    "quote": "听到这个消息，朱祁钰沉默了一会，然后他抬起头来，笑了。他笑得很从容，并最终吐出了三个字：“好，好，好！”"
+   },
+   "fix": "这是情节叙述，与书中讲述一致，无需修改。",
+   "unit_status": {
+    "S-BK-MING": "windows"
+   }
+  },
+  {
+   "id": "A3",
+   "path": "sections.analysis.0",
+   "lang": "zh",
+   "sentence": "不过，窗口紧迫只说明等待代价高，并不能证明计划行得通，东华门那个洞并没有因为时间紧而消失。",
+   "verdict": "not_a_source_claim",
+   "source_ids": [
+    "S-BK-MING"
+   ],
+   "scope": "S-BK-MING 东华门一段",
+   "quote": {
+    "source_id": "S-BK-MING",
+    "quote": "然而当他们到达东华门的时候，才发现了这个计划中的最大漏洞——他们进不去。"
+   },
+   "fix": "这是本文的分析判断，有原文支持，无需修改。",
+   "unit_status": {
+    "S-BK-MING": "windows"
+   }
+  }
+ ],
+ "context_issues": [
+  {
+   "path": "sections.analysis.3",
+   "problem": "稿件写到“对于谦的逮捕”就停了。书中紧接着的结果是于谦以“意欲”定罪并被斩，这是赌赢之后最直接的代价。可选补一句，不改变主线判断。",
+   "quote": {
+    "source_id": "S-BK-MING",
+    "quote": "官员们浓缩了他的意思，将其提炼为更传神的两个字——“意欲”，并最后以此定罪。"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "reflection.example.alternative",
+   "problem": "稿件把朱祁钰把继承人一事推到三天后当作“拖延也是一种选项”的正面例子。但在书里，正是这三天的空档让密谋者赶在复议前动手，朱祁钰这次是“最后一次胜利”。拿它作正面例子不太贴切，可考虑改换说法。",
+   "quote": {
+    "source_id": "S-BK-MING",
+    "quote": "但估计他自己也没有想到，这竟然是他的最后一次朝会，最后一道谕令，最后一次胜利。"
+   },
+   "severity": "note"
+  },
+  {
+   "path": "sections.analysis.1",
+   "problem": "“这一千人也退不出去”是本文从扔钥匙推出的结论。书里只写到“后路已经全无”，可以保留为解读，但不宜说得像书中的明确记载。",
+   "quote": {
+    "source_id": "S-BK-MING",
+    "quote": "后路已经全无，几个人只好在徐有贞的带领下向着南宫出发。"
+   },
+   "severity": "note"
+  }
+ ],
+ "episode": [
+  {
+   "source_id": "S-BK-MING",
+   "outcome": "夺门成功，朱祁镇复位；第二天密谋者受封，同一天徐有贞下令逮捕于谦、王文。于谦随后以“意欲”定罪，正月二十三日在崇文门外被斩。",
+   "quote": "就在同一天，徐有贞便下令逮捕了于谦和王文等人，把他们关进了监狱……正月二十三日，于谦被押往崇文门外，就在这座他曾拼死保卫的城池前，得到了他最后的结局——斩决。",
+   "in_evidence": true
+  }
+ ],
+ "additions": [],
+ "additions_failed": [],
+ "evidence_sha256": "e518b96be664935a70ce69987166683751adca55b458ec08e2074cb35ae01f56",
+ "outcome": "clean",
+ "blocking": []
+}

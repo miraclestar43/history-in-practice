@@ -26,14 +26,14 @@
   },
   "length_reference": {
     "zh_chars": [
-      2800,
-      3600
+      3200,
+      4800
     ],
     "en_words": [
-      1800,
-      2200
+      2000,
+      3000
     ],
-    "basis": "body + question + example; per language ~10 min; reference only"
+    "basis": "body + question + example; each language ~10-15 min, need not match (editor-in-chief 2026-11-01); guidance only, never a rejection criterion"
   },
   "send_deadline": "23:40",
   "site_wait": {
@@ -95,5 +95,10 @@
     },
     "note": "owner decision 2026-11-01: Claude drafts, writes the English and edits; MiMo/Hermes left the main chain (no fallback). Writing and review stay separate calls and records."
   },
-  "schedule_note": "owner decision 2026-11-01: daily send 22:08 Beijing time (Asia/Shanghai; = 06:08 PST / 07:08 PDT in Los Angeles). Edition dates, subjects and duplicate checks use the Beijing date; the send window closes at 23:40 the same Beijing day (never sent on a later day). Nightly drafting at 10:00 Beijing time."
+  "schedule_note": "owner decision 2026-11-01: daily send 22:08 Beijing time (Asia/Shanghai; = 06:08 PST / 07:08 PDT in Los Angeles). Edition dates, subjects and duplicate checks use the Beijing date; the send window closes at 23:40 the same Beijing day (never sent on a later day). Nightly drafting at 10:00 Beijing time.",
+  "supply": {
+    "tries_per_category": 3,
+    "max_calls_per_night": 8,
+    "note": "books first (library.py); a book unit without a complete episode is skipped with a reason, so a night may try a few units per needed category; bounded"
+  }
 }
