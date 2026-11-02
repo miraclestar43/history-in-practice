@@ -351,7 +351,10 @@ function renderExcerpt(o){
   } else if (o.after && o.after[lang]){ const a = el("section",{id:"s-after"}); a.append(el("h2",{"data-k":"a.h"},Y.after), el("p",{"data-k":"a.0"},o.after[lang])); w.append(a); }
   if (o["continue"] && o["continue"][lang]){
     const c = el("section",{id:"s-continue"}); c.append(el("h2",{},Y.cont), el("p",{},o["continue"][lang]));
-    if (okUrl(W.reading_url)) c.append(el("p",{class:"small"}).appendChild(el("a",{href:W.reading_url,rel:"noopener"},Y.read)).parentNode);
+    if (okUrl(W.reading_url)){                           // name the place the link goes to
+      const h = new URL(W.reading_url).hostname, where = /gutenberg/.test(h) ? "Project Gutenberg" : /wikisource/.test(h) ? (lang==="zh" ? "维基文库" : "Wikisource") : h;
+      c.append(el("p",{class:"small"}).appendChild(el("a",{href:W.reading_url,rel:"noopener"},(lang==="zh" ? "在"+where+"阅读全书" : "Read the whole book on "+where))).parentNode);
+    }
     w.append(c);
   }
   const notes = el("details",{id:"s-notes",class:"notes"}); if (location.hash === "#notes") notes.open = true;
