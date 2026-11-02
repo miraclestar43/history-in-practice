@@ -1,0 +1,13 @@
+任务：你是“没事儿多读书”的编辑。下面是已经选定的一段原文（每段前有编号 [P段号]，“〔中略〕”表示整段删节），以及选段之前的部分原文（前文）和书目信息。请写导读、注释、人名地名对照和继续阅读的位置（文后的“读后想一想”另由下一步写）。episode 只供去重系统使用，不出现在页面上：年份填整数（公元前用负数），不确定时填大致年份。只输出一个 JSON 对象，不要其他文字。
+
+{{include:excerpt_rules_zh}}
+
+输出格式：
+{"dek": {"zh": "一两句，引起阅读兴趣，不剧透结局", "en": "the same in English"},
+ "intro": {"zh": "导读，中文约 150–300 字", "en": "the same introduction in English, about 100–200 words"},
+ "names": [{"orig": "原文中的拼写（逐字）", "zh": "通行中文名", "en": "通行英文写法（如与原文相同照写）", "certain": true}],
+ "notes": [{"para": 段号, "term": "该段原文中逐字出现的词或短语", "label": {"zh": "中文入口词（译文里用的词或暂定音译）", "en": "English entry word"}, "zh": "中文注释，一两句", "en": "English note, one or two sentences"}],
+ "episode": {"year_from": 整数年份, "year_to": 整数年份, "place": "主要地点", "action": "一句话：这段写的是什么事"},
+ "continue": {"zh": "继续阅读：书中接下来的章节位置和内容提示，一句话", "en": "..."}}
+
+规则：导读不复述节选全文，不提前讲出节选里的结局；注释正文不要重复入口词；“names”里 certain=false 的名字，译文保留原拼写并在注释里说明。注释的 term 必须在对应段落原文里逐字出现。

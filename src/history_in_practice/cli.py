@@ -694,6 +694,9 @@ def cmd_nightly(a):
     Exit: 0 ok; 1 inventory below the alert threshold; 4 final editor unavailable/degraded (drafts stay pending)."""
     import time as _t
     d = db(); t0 = _t.monotonic(); rep = {}
+    ed_cfg = config.load_project().get("editions", {})
+    if ed_cfg.get("default", "story") == "excerpt" and not ed_cfg.get("story_pipeline", False):
+        return _nightly_excerpt(d, a, ed_cfg)
     with publish.lock("prepare"):
         inv = pipeline.inventory(d, verify=True)
         if inv["candidates_unprocessed"] < a.min_candidates:
@@ -726,6 +729,27 @@ def cmd_nightly(a):
                                        "coverage_days": rep["inventory"].get("coverage_days"), "final_editor": rep["health"]["final_editor"]})
     print(json.dumps(rep, ensure_ascii=False, indent=1))
     return 4 if rep["health"]["final_editor"] != "ok" or na else 1 if rep["inventory"]["alert"] else 0
+
+
+def _nightly_excerpt(d, a, cfg) -> int:
+    """Since 2026-11-02 the nightly job keeps 原文精选 ready (excerpt.supply); rewritten story drafting, supply and final
+    editing are off (their inventory stays as backup). Claude unavailable -> nothing runs, exit 4 + alert."""
+    from . import excerpt, claude_cli, mix, alert
+    rep = {"mode": "excerpt"}
+    with publish.lock("prepare"):
+        pre = claude_cli.preflight()
+        rep["health"] = {"final_editor": "unavailable" if pre else "ok", "problems": pre}
+        inv = pipeline.inventory(d, verify=True)
+        cats = sorted(mix.GROUP, key=lambda c: (-inv["gaps_to_target"].get(c, 0), c not in ("china_ancient", "china_modern")))
+        rep["excerpt_supply"] = [] if pre else excerpt.supply(d, cats, target=int(cfg.get("excerpt_target_ready", 6)),
+                                                             max_runs=int(cfg.get("excerpt_max_per_night", 2)))
+        if any(r.get("outcome") == "failed" for r in rep["excerpt_supply"]):
+            rep["health"]["final_editor"] = "degraded"
+    rep["inventory"] = pipeline.inventory(d, verify=True)
+    alert.record("nightly_last.json", {"writer_unavailable": "; ".join(rep["health"]["problems"]) or None, "inventory_alert": rep["inventory"]["alert"],
+                                       "coverage_days": rep["inventory"].get("coverage_days"), "final_editor": rep["health"]["final_editor"]})
+    print(json.dumps(rep, ensure_ascii=False, indent=1))
+    return 4 if rep["health"]["final_editor"] != "ok" else 1 if rep["inventory"]["alert"] else 0
 
 
 def cmd_books(a):
@@ -788,6 +812,23 @@ def cmd_library(a):
         us = [x for x in library.entries() if x["book_id"] == a.book]
         print(json.dumps([{k: x[k] for k in ("id", "unit_title", "unit_location", "offsets")} for x in us], ensure_ascii=False, indent=1)); return 0
     raise SystemExit(a.action)
+
+
+def cmd_excerpt(a):
+    """原文精选 (2026-11-02): the model selects a continuous passage by paragraph number from a window of a library book;
+    the program extracts it from the saved text; the model writes guide, notes and the AI translation; review + checks.
+    A sample: written to data/excerpts/<id>/excerpt.json, not admitted or scheduled."""
+    from . import excerpt
+    o = excerpt.run(a.book, (a.start, a.end), a.id, a.category)
+    print(json.dumps({k: o.get(k) for k in ("outcome", "reason", "title", "work", "checks", "open_issues", "reading_minutes", "length")}
+                     | {"review": [{k: r.get(k) for k in ("round", "reading", "applied")} for r in o.get("review") or []]}, ensure_ascii=False, indent=1))
+    return 0 if o.get("kind") == "excerpt" and not o.get("checks") else 2
+
+
+def cmd_excerpt_admit(a):
+    from . import excerpt
+    d = db(); out = [excerpt.admit(d, Path(p)) for p in a.paths]
+    print(json.dumps(out, ensure_ascii=False, indent=1)); return 0 if all(r.get("admitted") for r in out) else 2
 
 
 def cmd_adopt(a):
@@ -893,13 +934,19 @@ def cmd_plan(a):
         if c in mix.GROUP and eid not in inv.get("not_currently_eligible", {}) and pipeline._schedulable(*d.execute(
                 "SELECT approval, origin FROM edition WHERE edition_id=?", (eid,)).fetchone()):
             o = pipeline._article_at(d, eid); pool.append(mix.item(eid, c, o, upd or 0) | {"minutes": (o or {}).get("reading_minutes")})
-    seq = mix.plan(pool, a.n, pos, history=pipeline.mix_history(d))
+    pins = []
+    for k, eid in enumerate(getattr(a, "pin", None) or []):     # owner-authorized order for the next positions (2026-11-02)
+        x = next((y for y in pool if y["edition_id"] == eid), None)
+        if x is None:
+            print(json.dumps({"planned": False, "reason": f"{eid} is not eligible now"}, ensure_ascii=False)); return 2
+        pool.remove(x); pins.append(dict(x, position=pos + k, reason=f"主编指定：第 {k + 1} 位（{getattr(a, 'pin_reason', '') or 'pinned'}）"))
+    seq = pins + mix.plan(pool, max(0, a.n - len(pins)), pos + len(pins), history=pipeline.mix_history(d) + pins)
     if a.commit:
-        mix.persist(d, pos, seq, "committed by hip plan --commit")
+        mix.persist(d, pos, seq, "committed by hip plan --commit" + (f" with pins {[x['edition_id'] for x in pins]}: {a.pin_reason}" if pins else ""))
     cn = {"china_ancient": "中国古代", "china_modern": "中国近现代", "world": "世界", "us": "美国"}
     print(json.dumps({"read_only": not a.commit, "next_position": pos, "china_of_planned": sum(x["group"] == "china" for x in seq), "planned": len(seq),
                       "plan": [{"#": k + 1, "edition": x["edition_id"], "category": cn[x["category"]], "region": x["region"], "themes": x["tags"],
-                                "title": x["title"], "minutes": x.get("minutes"), "why": x["reason"]} for k, x in enumerate(seq)],
+                                "title": x["title"], "kind": x.get("kind"), "minutes": x.get("minutes"), "why": x["reason"]} for k, x in enumerate(seq)],
                       "note": "拟排不等于已发布；不启用定时任务。"}, ensure_ascii=False, indent=1))
     return 0 if len(seq) >= a.n else 1
 
@@ -968,7 +1015,11 @@ def main(argv=None):
     p.set_defaults(f=cmd_edit_queue)
     p = sp.add_parser("rereview"); p.add_argument("edition"); p.add_argument("--rounds", type=int, default=0)
     p.add_argument("--article", help="re-review this file (e.g. after a manual editor pass) instead of the stored version"); p.set_defaults(f=cmd_rereview)
-    p = sp.add_parser("plan"); p.add_argument("-n", type=int, default=7); p.add_argument("--commit", action="store_true"); p.set_defaults(f=cmd_plan)
+    p = sp.add_parser("plan"); p.add_argument("-n", type=int, default=7); p.add_argument("--commit", action="store_true")
+    p.add_argument("--pin", action="append", metavar="EDITION_ID", help="owner-authorized: this edition at the next position (repeat for the following ones)")
+    p.add_argument("--pin-reason", default=""); p.set_defaults(f=cmd_plan)
+    p = sp.add_parser("excerpt-admit", help="admit 原文精选 objects (record re-verified on this machine) into inventory")
+    p.add_argument("paths", nargs="+"); p.set_defaults(f=cmd_excerpt_admit)
     p = sp.add_parser("context-review"); p.add_argument("editions", nargs="+"); p.set_defaults(f=cmd_context_review)
     p = sp.add_parser("final-edit"); p.add_argument("editions", nargs="+")
     p.add_argument("--extra-attempt", metavar="REASON", help="owner-directed: allow ONE attempt beyond max_attempts (one more only if the final editor passed the text and the context review then added evidence it has not seen); the reason is recorded")
@@ -998,6 +1049,9 @@ def main(argv=None):
     p = sp.add_parser("library", help="book library for supply: status | ingest --book ID | units --book ID")
     p.add_argument("action", choices=["status", "check", "ingest", "units"]); p.add_argument("--book", help="book id; `ingest --book all` = sync the library"); p.add_argument("--verified")
     p.add_argument("--max-new", type=int, default=3, help="ingest --book all: at most this many new files per run (resumable)"); p.set_defaults(f=cmd_library)
+    p = sp.add_parser("excerpt", help="原文精选 sample: select (by paragraph number) -> extract -> guide/notes -> AI translation -> review")
+    p.add_argument("--book", required=True); p.add_argument("--start", type=int, required=True); p.add_argument("--end", type=int, required=True)
+    p.add_argument("--id", required=True); p.add_argument("--category", required=True); p.set_defaults(f=cmd_excerpt)
     p = sp.add_parser("registry-rebuild"); p.add_argument("content", nargs="+"); p.add_argument("--db"); p.set_defaults(f=cmd_registry_rebuild)
     a = ap.parse_args(argv)
     import signal as _sig                              # systemd stop/timeout sends SIGTERM: unwind so model children are killed

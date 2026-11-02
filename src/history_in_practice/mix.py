@@ -61,7 +61,8 @@ _TAGS = None
 def item(eid, category, o=None, admitted_at=0.0) -> dict:
     tags = tags_of(eid, o)
     return {"edition_id": eid, "category": category, "group": GROUP.get(category, "other"), "region": region(o, eid, category),
-            "tags": list(tags), "title": ((o or {}).get("title") or {}).get("zh", eid), "admitted_at": admitted_at}
+            "tags": list(tags), "title": ((o or {}).get("title") or {}).get("zh", eid), "admitted_at": admitted_at,
+            "kind": (o or {}).get("kind") or "story"}
 
 
 def plan(pool: list[dict], days: int, start: int, history: list[dict] | None = None) -> list[dict]:
@@ -78,6 +79,9 @@ def plan(pool: list[dict], days: int, start: int, history: list[dict] | None = N
             c = [x for x in left if x["group"] == group]
             if not c:
                 return None, ""
+            ex = [x for x in c if x.get("kind") == "excerpt"]
+            if ex:                                           # 原文精选 is the default form since 2026-11-02: stories stand in
+                c = ex
             def score(x):
                 s = 0
                 if group == "china" and last_china and x["category"] != last_china["category"]:
@@ -91,7 +95,7 @@ def plan(pool: list[dict], days: int, start: int, history: list[dict] | None = N
                     s -= 1                                   # and between consecutive "elsewhere" stories
                 return s
             x = min(c, key=lambda x: (score(x), x["admitted_at"], x["edition_id"]))
-            why = [f"{'中国' if group == 'china' else '其他地区'}位（模式第 {(start + k) % len(PATTERN) + 1} 位）"]
+            why = [f"{'中国' if group == 'china' else '其他地区'}位（模式第 {(start + k) % len(PATTERN) + 1} 位）"] + (["原文精选优先"] if x.get("kind") == "excerpt" else [])
             if group == "china" and last_china and x["category"] != last_china["category"]:
                 why.append("古今交替")
             if prev and not set(x["tags"]) & set(prev["tags"]):
