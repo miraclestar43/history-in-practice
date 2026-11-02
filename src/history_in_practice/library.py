@@ -210,9 +210,9 @@ def _acquire_md(e: dict, *, opener=None, tree_of=None) -> dict:
     mp.write_text(json.dumps(man, ensure_ascii=False, indent=1)); return rec
 
 
-def _ws_page(revid, title, opener=None) -> str:
+def _ws_page(revid, title, opener=None, site: str = "zh") -> str:
     import urllib.parse, urllib.request
-    url = ("https://zh.wikisource.org/w/api.php?action=query&prop=revisions&rvprop=ids|content&rvslots=main&format=json&revids="
+    url = (f"https://{site}.wikisource.org/w/api.php?action=query&prop=revisions&rvprop=ids|content&rvslots=main&format=json&revids="
            + urllib.parse.quote(str(revid)))
     with (opener or urllib.request.urlopen)(urllib.request.Request(url, headers={"User-Agent": books.UA}), timeout=60) as r:
         data = json.loads(r.read(4_000_000))
@@ -220,6 +220,58 @@ def _ws_page(revid, title, opener=None) -> str:
     if str(rev["revid"]) != str(revid) or page["title"] != title:
         raise books.BookError(f"wikisource: got {page['title']} rev {rev['revid']}, expected {title} rev {revid}")
     return rev["slots"]["main"]["*"]
+
+
+class _WsBody:
+    """Paragraph text of a rendered Wikisource page: skips the header box and other ws-noexport furniture, page-number
+    markers, footnote markers and reference lists, scripts and styles; keeps <p>, <dd>, <li> and <blockquote> text."""
+    SKIP_CLASS = ("ws-noexport", "pagenum", "ws-pagenum", "reference", "references", "mw-editsection", "noprint", "ws-header", "licenseContainer")
+    BLOCK = {"p", "dd", "li", "blockquote", "h2", "h3", "h4"}
+
+    def __init__(self):
+        import html.parser
+        outer = self
+        class P(html.parser.HTMLParser):
+            def __init__(self):
+                super().__init__(convert_charrefs=True); self.stack, self.skip, self.buf, self.out = [], 0, [], []
+            def handle_starttag(self, tag, attrs):
+                if tag in ("br", "img", "hr", "meta", "link", "wbr"):
+                    if tag == "br" and not self.skip: self.buf.append(" ")
+                    return
+                a = dict(attrs); cls = (a.get("class") or "") + " " + (a.get("id") or "")
+                skip = self.skip > 0 or tag in ("script", "style", "sup", "table") or any(k in cls for k in outer.SKIP_CLASS) or a.get("id") == "headertemplate"
+                if skip and not self.skip and tag in outer.BLOCK: self.flush()
+                self.stack.append((tag, skip)); self.skip += 1 if skip else 0
+                if not skip and tag in outer.BLOCK: self.flush()
+            def handle_endtag(self, tag):
+                while self.stack:
+                    t, sk = self.stack.pop()
+                    if sk: self.skip -= 1
+                    if t == tag: break
+                if not self.skip and tag in outer.BLOCK: self.flush()
+            def handle_data(self, d):
+                if not self.skip: self.buf.append(d)
+            def flush(self):
+                t = re.sub(r"\s+", " ", "".join(self.buf)).strip(); self.buf = []
+                if t: self.out.append(t)
+        self.P = P
+
+    def paragraphs(self, html_text: str) -> list[str]:
+        p = self.P(); p.feed(html_text); p.flush(); return p.out
+
+
+def _ws_rendered(revid, title, opener=None, site: str = "en") -> str:
+    """The rendered HTML of exactly this page revision (the proofread text is transcluded from Page: pages, so the
+    wikitext holds no prose). The hash of this HTML is what the record pins."""
+    import urllib.parse, urllib.request
+    url = (f"https://{site}.wikisource.org/w/api.php?action=parse&prop=text|revid&disablelimitreport=1&disableeditsection=1&format=json&oldid="
+           + urllib.parse.quote(str(revid)))
+    with (opener or urllib.request.urlopen)(urllib.request.Request(url, headers={"User-Agent": books.UA}), timeout=60) as r:
+        data = json.loads(r.read(8_000_000))
+    pr = data["parse"]
+    if str(pr.get("revid")) != str(revid) or pr.get("title") != title:
+        raise books.BookError(f"wikisource: got {pr.get('title')} rev {pr.get('revid')}, expected {title} rev {revid}")
+    return pr["text"]["*"]
 
 
 def _ws_paragraphs(raw: str) -> list[str]:
@@ -245,8 +297,13 @@ def _acquire_wikisource(e: dict, *, opener=None) -> dict:
     pages = e.get("ws_pages") or [{"title": e["ws_title"], "revid": e["ws_revid"], "heading": e.get("ws_heading")}]
     raws, out_paras = [], []
     for pg in pages:
-        raw = _ws_page(pg["revid"], pg["title"], opener); raws.append(raw)
-        out_paras += ([pg["heading"]] if pg.get("heading") else []) + _ws_paragraphs(raw)
+        if e.get("ws_rendered"):                     # transcluded proofread text: paragraphs from the rendered revision
+            raw = _ws_rendered(pg["revid"], pg["title"], opener, e.get("ws_site") or "en"); raws.append(raw)
+            body = _WsBody().paragraphs(raw)
+        else:
+            raw = _ws_page(pg["revid"], pg["title"], opener, e.get("ws_site") or "zh"); raws.append(raw)
+            body = _ws_paragraphs(raw)
+        out_paras += ([pg["heading"]] if pg.get("heading") else []) + body
     if e.get("simplified"):
         from opencc import OpenCC
         cc = OpenCC(e.get("opencc") or "tw2s"); out_paras = [cc.convert(x) for x in out_paras]
@@ -257,7 +314,7 @@ def _acquire_wikisource(e: dict, *, opener=None) -> dict:
     conv = f"OpenCC {e.get('opencc') or 'tw2s'} (characters only, phrase-aware)" if e.get("simplified") else None
     rec = _meta(e) | {"format": "txt", "path": f"{e['book_id']}.txt", "bytes": len(out), "file_sha256": hashlib.sha256(out).hexdigest(),
                       "ws_pages": [{"title": pg["title"], "revid": pg["revid"], "wikitext_sha256": hashlib.sha256(r.encode()).hexdigest()} for pg, r in zip(pages, raws)],
-                      "conversion": conv, "provenance": f"zh.wikisource, {len(pages)} page(s) at pinned revisions; markup removed" + (f"; {conv}" if conv else ""),
+                      "conversion": conv, "provenance": f"{e.get('ws_site') or 'zh'}.wikisource, {len(pages)} page(s) at pinned revisions; markup removed" + (f"; {conv}" if conv else ""),
                       "acquired_at": time.strftime("%Y-%m-%dT%H:%M:%S%z")}
     man["files"] = [f for f in man["files"] if f["book_id"] != e["book_id"]] + [rec]
     mp.write_text(json.dumps(man, ensure_ascii=False, indent=1)); return rec

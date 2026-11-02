@@ -4,6 +4,20 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from history_in_practice import state, pipeline
 
 
+
+_EXCERPTS_ONLY = None
+
+
+def setUpModule():                    # these tests exercise the mix/publish mechanics with story fixtures
+    global _EXCERPTS_ONLY
+    from history_in_practice import mix
+    _EXCERPTS_ONLY, mix.EXCERPTS_ONLY = mix.EXCERPTS_ONLY, False
+
+
+def tearDownModule():
+    from history_in_practice import mix
+    mix.EXCERPTS_ONLY = _EXCERPTS_ONLY
+
 class Inventory(unittest.TestCase):
     """Coverage = days the editorial mix (mix.py: ~4 China / 3 elsewhere per 7, soft) can fill with approved editions."""
 

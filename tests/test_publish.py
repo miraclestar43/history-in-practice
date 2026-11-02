@@ -12,6 +12,20 @@ def at(date, hm="07:30"):
     return lambda: datetime.fromisoformat(date).replace(hour=h, minute=m, tzinfo=LA)
 
 
+
+_EXCERPTS_ONLY = None
+
+
+def setUpModule():                    # these tests exercise the mix/publish mechanics with story fixtures
+    global _EXCERPTS_ONLY
+    from history_in_practice import mix
+    _EXCERPTS_ONLY, mix.EXCERPTS_ONLY = mix.EXCERPTS_ONLY, False
+
+
+def tearDownModule():
+    from history_in_practice import mix
+    mix.EXCERPTS_ONLY = _EXCERPTS_ONLY
+
 class PublishFlow(unittest.TestCase):
     """Daily flow with local fixtures: temp content dir, temp website git repo with a bare remote,
     live check served from the working copy, local SMTPS, injected clock and sleep."""
