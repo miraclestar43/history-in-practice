@@ -434,7 +434,7 @@ def build(objs, out: Path, base):
             p.write_text(json.dumps(public, ensure_ascii=False, indent=1), encoding="utf-8")
             index.append({"edition_id": o["edition_id"], "revision": o["revision"], "edition_date": o["preview_date"], "category": o["category"],
                           "title": o["title"], "dek": o["dek"], "reading_minutes": o["reading_minutes"], "content_sha256": o["content_sha256"],
-                          "path": rel, "sample": True})
+                          "path": rel, "sample": True, **({"kind": o["kind"]} if o.get("kind") else {})})
             continue
         (out/f"email/{o['edition_id']}.html").write_text(email_html(o, base), encoding="utf-8")
         (out/f"email/{o['edition_id']}.txt").write_text(email_text(o, base), encoding="utf-8")
@@ -452,6 +452,7 @@ def build(objs, out: Path, base):
         index.append({"edition_id": o["edition_id"], "revision": o["revision"], "edition_date": o["edition_date"], "category": o["category"],
                       "title": o["title"], "dek": o["dek"], "reading_minutes": o["reading_minutes"], "content_sha256": o["content_sha256"],
                       "path": f"data/history/{y}/{m}/{d}-{o['edition_id']}.json", **({"test": True} if o.get("status") == "test" else {}),
+                      **({"kind": o["kind"]} if o.get("kind") else {}),
                       **({"corrected_at": o["correction"]["at"]} if o.get("correction") else {})})
         if prev_json is not None:                                     # the superseded revision stays published, byte for byte
             q = out/"site"/o["correction"]["previous"]["path"]; q.parent.mkdir(parents=True, exist_ok=True)

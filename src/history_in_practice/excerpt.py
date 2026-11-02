@@ -47,6 +47,14 @@ def chapter_heading(b: dict, k: int) -> str:
     return c["title"] + (f", {nxt}" if nxt.isupper() and len(nxt) < 90 else "")
 
 
+def is_heading(b: dict, k: int) -> bool:
+    """A chapter heading line ('CHAPTER XII') or the upper-case chapter title right after it."""
+    t = b["paragraphs"][k]["text"]
+    if any(c["first_para"] == k for c in b.get("chapters") or []):
+        return True
+    return k > 0 and any(c["first_para"] == k - 1 for c in b.get("chapters") or []) and t.isupper() and len(t) < 90
+
+
 def extract(b: dict, sel: dict) -> list[dict]:
     """The passage, from the saved book: paragraphs start..end, whole-paragraph omissions marked by gap_before."""
     a, z = int(sel["start"]), int(sel["end"])
@@ -55,6 +63,8 @@ def extract(b: dict, sel: dict) -> list[dict]:
         raise ValueError(f"paragraph range {a}-{z} outside the book")
     if any(not (a < k < z) for k in omit):
         raise ValueError("an omission must lie strictly inside the passage")
+    while a < z and is_heading(b, a):                 # chapter number / title lines are shown in the byline, not as text
+        a += 1
     out, gap = [], False
     for k in range(a, z + 1):
         if k in omit:
