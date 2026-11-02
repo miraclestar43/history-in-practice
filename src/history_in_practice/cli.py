@@ -828,7 +828,7 @@ def cmd_excerpt(a):
 
 def cmd_excerpt_admit(a):
     from . import excerpt
-    d = db(); out = [excerpt.admit(d, Path(p)) for p in a.paths]
+    d = db(); out = [excerpt.readmit(d, Path(p), a.readmit) if a.readmit else excerpt.admit(d, Path(p)) for p in a.paths]
     print(json.dumps(out, ensure_ascii=False, indent=1)); return 0 if all(r.get("admitted") for r in out) else 2
 
 
@@ -1020,7 +1020,8 @@ def main(argv=None):
     p.add_argument("--pin", action="append", metavar="EDITION_ID", help="owner-authorized: this edition at the next position (repeat for the following ones)")
     p.add_argument("--pin-reason", default=""); p.set_defaults(f=cmd_plan)
     p = sp.add_parser("excerpt-admit", help="admit 原文精选 objects (record re-verified on this machine) into inventory")
-    p.add_argument("paths", nargs="+"); p.set_defaults(f=cmd_excerpt_admit)
+    p.add_argument("paths", nargs="+"); p.add_argument("--readmit", metavar="REASON", help="re-admit an edited, still unscheduled excerpt")
+    p.set_defaults(f=cmd_excerpt_admit)
     p = sp.add_parser("context-review"); p.add_argument("editions", nargs="+"); p.set_defaults(f=cmd_context_review)
     p = sp.add_parser("final-edit"); p.add_argument("editions", nargs="+")
     p.add_argument("--extra-attempt", metavar="REASON", help="owner-directed: allow ONE attempt beyond max_attempts (one more only if the final editor passed the text and the context review then added evidence it has not seen); the reason is recorded")

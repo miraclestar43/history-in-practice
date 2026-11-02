@@ -321,7 +321,7 @@ def assemble(e: dict, b: dict, sel: dict, guide: dict, passage: list[dict], edit
             "title": sel["title"], "title_note": {"zh": "编辑拟题", "en": "Title by the editor"},
             "dek": guide["dek"], "intro": guide["intro"], "preheader": guide["dek"],
             "work": {"book_id": e["book_id"], "author": e.get("author_en") or e.get("author"), "author_zh": e.get("author_zh") or e.get("author"),
-                     "title": e["title"], "title_en": e.get("title_en"), "title_zh_note": e.get("title_zh_note"), "chapter_zh": ch_zh, "chapter_en": ch_en,
+                     "title": e["title"], "title_en": e.get("title_en"), "title_zh": e.get("title_zh"), "title_zh_note": e.get("title_zh_note"), "chapter_zh": ch_zh, "chapter_en": ch_en,
                      "rights_label": e.get("rights_label"), "edition": e.get("edition"), "role": e.get("role"),
                      "original_language": lang, "chapter": head, "paragraphs": [first, last],
                      "location": f"{head}; paragraphs {first}–{last} of the edition's text" + (" (with omissions marked 〔中略〕)" if any(x["gap_before"] for x in passage) else ""),
@@ -541,3 +541,22 @@ def supply(db, categories: list[str], *, target: int = 6, max_runs: int = 2, cal
         if len(out) >= max_runs:
             break
     return out
+
+
+def readmit(db, path: Path, reason: str) -> dict:
+    """An operator's recorded edit to an admitted, not yet scheduled 原文精选 (byline, a label, a note): the record is
+    re-verified exactly as at admission and the edition moves checked -> pending_review -> prepared -> checked with the
+    new content hash; the episode is kept. Never for a scheduled or sent edition."""
+    path = Path(path).resolve(); obj = json.loads(path.read_text(encoding="utf-8")); render.finalize(obj)
+    cur = state.get(db, obj["edition_id"])
+    if not cur or cur["status"] != "checked":
+        return {"admitted": False, "edition_id": obj["edition_id"], "reason": f"status {cur['status'] if cur else 'unknown'}: only a checked, unscheduled edition"}
+    probs = record_problems(obj)
+    if probs:
+        return {"admitted": False, "edition_id": obj["edition_id"], "problems": probs}
+    approval = approval_of(obj)
+    state.transition(db, obj["edition_id"], "pending_review", note=f"operator edit: {reason}"[:500], reason="re-admission")
+    state.transition(db, obj["edition_id"], "prepared", note="原文精选: record re-verified", path=str(path))
+    state.transition(db, obj["edition_id"], "checked", note=f"re-admitted: {approval}", content_sha256=obj["content_sha256"], reason="",
+                     approval=approval, origin="excerpt", revision=obj.get("revision") or 1)
+    return {"admitted": True, "edition_id": obj["edition_id"], "approval": approval}

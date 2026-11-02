@@ -290,7 +290,7 @@ function renderExcerpt(o){
   w.append(el("p",{class:"meta"}, BRAND[lang]+"｜"+date+" · "+CAT[o.category][lang==="zh"?0:1]+" · "+(lang==="zh"?"约 ":"~")+o.reading_minutes[lang]+" "+L.min));
   w.append(el("h1",{},o.title[lang]));
   const by = lang==="zh"
-    ? (W.author_zh||W.author)+" "+((W.role&&W.role.zh)||"著")+" ·《"+W.title+"》"+(W.title_zh_note ? "（"+W.title_zh_note+"）" : "")+(W.chapter_zh ? (W.chapter_zh.startsWith("《") ? "·" : " ")+W.chapter_zh : "")+" · 原文"+(src==="zh"?"中文":"英文")+(isOrig ? "" : " · 本页正文为 AI 译文")
+    ? (W.author_zh||W.author)+" "+((W.role&&W.role.zh)||"著")+" ·《"+(W.title_zh||W.title)+"》"+(W.title_zh_note ? "（"+W.title_zh_note+"）" : "")+(W.chapter_zh ? (W.chapter_zh.startsWith("《") ? "·" : " ")+W.chapter_zh : "")+" · 原文"+(src==="zh"?"中文":"英文")+(isOrig ? "" : " · 本页正文为 AI 译文")
     : (W.author)+((W.role&&W.role.en) ? " ("+W.role.en+")" : "")+", "+(W.title_en||W.title)+(W.chapter_en ? ", "+W.chapter_en : "")+" · original in "+(src==="zh"?"Chinese":"English")+(isOrig ? "" : " · this page: AI translation");
   w.append(el("p",{class:"byline"},by), el("p",{class:"dek"},o.dek[lang]));
   const tools = el("div",{class:"tools"}), tabs = el("div",{class:"tabs",role:"tablist","aria-label":"语言 / Language"});
