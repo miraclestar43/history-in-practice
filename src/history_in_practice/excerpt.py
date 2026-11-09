@@ -27,10 +27,10 @@ MAX_WINDOW_CHARS = {True: 40000, False: 90000}
 def book(book_id: str) -> tuple[dict, dict]:
     e = lib_get(lib_load(), book_id)
     f = next(x for x in json.loads((data_dir() / "books" / "manifest.json").read_text())["files"] if x["book_id"] == book_id)
-    b = books.parse(data_dir() / "books" / "files" / f["path"])
+    b = books.load(data_dir() / "books" / "files" / f["path"], e)
     if b["file_sha256"] != f["file_sha256"]:
         raise books.BookError(f"{book_id}: file changed since acquisition")
-    return e, books.apply_headings(b, e.get("headings"))
+    return e, b
 
 
 def numbered(b: dict, a: int, z: int) -> str:
@@ -161,6 +161,9 @@ def checks(obj: dict, b: dict, cache_text: str | None, cjk: bool) -> list[str]:
             p.append(f"P{x['p']}: 〔中略〕 where nothing was left out")
         if not (x.get(tr) or "").strip():
             p.append(f"P{x['p']}: translation missing")
+        mark = (b.get("img_mark") or "")
+        if mark and mark in src:
+            p.append(f"P{x['p']}: {src.count(mark)} character(s) are pictures in the source ({mark}); read them from the picture and record them before use")
         prev = x["p"]
     by = {x["p"]: x for x in obj["passage"]}
     for i, n in enumerate(obj.get("notes") or []):
@@ -230,7 +233,8 @@ def run(book_id: str, window: tuple[int, int], edition_id: str, category: str, *
     cjk = e.get("language", "zh") == "zh"; lang = "zh" if cjk else "en"; other = "en" if cjk else "zh"
     out = Path(out_root or data_dir() / "excerpts") / edition_id; out.mkdir(parents=True, exist_ok=True)
     caller = editor.Caller(out, edition_id, call)
-    meta = (f"【书目】{e.get('author')}《{e['title']}》；版本：{e.get('edition') or '见来源'}；原文语言：{'中文' if cjk else '英文'}；"
+    meta = (f"【书目】{e.get('author')}《{e['title']}》；" + (f"本书正文是人工译文，译者：{e['translator']}（署名写作：{e.get('author')}{(e.get('role') or {}).get('zh') or '著'}，"
+            f"{e['translator']}译；页面署名已按此显示）；" if e.get("translator") else "") + f"版本：{e.get('edition') or '见来源'}；原文语言：{'中文' if cjk else '英文'}；"
             f"性质：{e.get('genre')}；目录：{_toc(b)}")
     a, z = window
     if sum(len(b["paragraphs"][k]["text"]) for k in range(a, z)) > MAX_WINDOW_CHARS[cjk]:
@@ -291,7 +295,7 @@ def apply_fix(obj: dict, i: dict) -> bool:
     """A review fix may replace the editor's text (intro / notes / after / dek) or one translation paragraph; never the
     original. Selection-level problems are reported, not applied."""
     w, new = str(i.get("where") or ""), i.get("proposed")
-    if not isinstance(new, str) or not new.strip():
+    if not isinstance(new, str) or not new.strip() or is_xref(new):
         return False
     lang = obj["work"]["original_language"]; tr = "en" if lang == "zh" else "zh"
     m = re.fullmatch(r"title\.(zh|en)", w)
@@ -369,6 +373,7 @@ def assemble(e: dict, b: dict, sel: dict, guide: dict, passage: list[dict], edit
             "work": {"book_id": e["book_id"], "author": e.get("author_en") or e.get("author"), "author_zh": e.get("author_zh") or e.get("author"),
                      "title": e["title"], "title_en": e.get("title_en"), "title_zh": e.get("title_zh"), "title_zh_note": e.get("title_zh_note"), "chapter_zh": ch_zh, "chapter_en": ch_en,
                      "rights_label": e.get("rights_label"), "edition": e.get("edition"), "role": e.get("role"),
+                     "translator": e.get("translator"), "translator_en": e.get("translator_en"),
                      "original_language": lang, "chapter": head, "paragraphs": [first, last],
                      "location": f"{head}; paragraphs {first}–{last} of the edition's text" + (" (with omissions marked 〔中略〕)" if any(x["gap_before"] for x in passage) else ""),
                      "file_sha256": e.get("file_sha256"), "rights": e.get("rights"), "rights_note": e.get("rights_note"),
@@ -429,9 +434,17 @@ def _reflect_schema(o):
     return bad
 
 
+XREF = re.compile(r"^\s*(同|见|参见|参照|如|按)\s*[A-Z]+\d+|^\s*(same as|see)\s+[A-Z]+\d+", re.I)
+
+
+def is_xref(new) -> bool:
+    """A reviewer's 'proposed' that points at another fix ('同 Q3 修改后的 angle.zh 全文') instead of giving the text."""
+    return isinstance(new, str) and bool(XREF.search(new))
+
+
 def _apply_reflect_fix(obj: dict, i: dict) -> bool:
     w, new = str(i.get("where") or ""), i.get("proposed")
-    if not isinstance(new, str) or not new.strip():
+    if not isinstance(new, str) or not new.strip() or is_xref(new):
         return False
     m = re.fullmatch(r"angle\.(zh|en)", w)
     if m:

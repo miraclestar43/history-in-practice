@@ -761,6 +761,20 @@ def cmd_books(a):
         items = json.loads(Path(a.path).read_text(encoding="utf-8"))
         rep = books.import_catalogue(books.catalogue_db(root / "discovery.sqlite"), items, a.source or Path(a.path).name)
         print(json.dumps(rep, ensure_ascii=False, indent=1)); return 0
+    if a.action == "inbox":                           # what the owner downloaded by hand: list, unpack archives, dedupe (nothing imported)
+        from .library import load as lib_load
+        folder = Path(a.path or Path.home() / "Downloads")
+        rows = books.scan_inbox(folder, root / "inbox", root / "manifest.json", lib_load()["books"])
+        (root / "inbox").mkdir(parents=True, exist_ok=True)
+        (root / "inbox" / "report.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(json.dumps(rows, ensure_ascii=False, indent=1)); return 0
+    if a.action == "import-local":                    # one hand-downloaded file -> the book store (library entry must exist)
+        from .library import load as lib_load, get as lib_get
+        e = lib_get(lib_load(), a.book)
+        rec = books.import_local(Path(a.path), root / "files", root / "manifest.json",
+                                 {k: e.get(k) for k in ("title", "author", "translator", "year", "language", "genre", "edition")}
+                                 | {"book_id": a.book, "provenance": e.get("provenance") or "owner download"})
+        print(json.dumps(rec, ensure_ascii=False, indent=1)); return 0
     if a.action == "fetch-fork":                      # one file from a pinned fork snapshot, blob-verified; tree read remotely
         tree = json.loads(urllib.request.urlopen(urllib.request.Request(f"https://api.github.com/repos/{a.repo}/git/trees/{a.ref}?recursive=1",
                           headers={"User-Agent": books.UA, "Accept": "application/vnd.github+json"}), timeout=60).read())["tree"]
@@ -1040,7 +1054,7 @@ def main(argv=None):
     p.add_argument("--exception", action="append", metavar="ISSUE_ID=REASON", help="per-issue owner exception; repeat once per open issue")
     p.add_argument("--as-sample", action="store_true"); p.add_argument("--from-pending", action="store_true", help="kept for compatibility; implied")
     p.set_defaults(f=cmd_admit)
-    p = sp.add_parser("books"); p.add_argument("action", choices=["import-catalogue", "fetch-fork", "probe", "ingest", "locate"])
+    p = sp.add_parser("books"); p.add_argument("action", choices=["import-catalogue", "fetch-fork", "probe", "ingest", "locate", "inbox", "import-local"])
     p.add_argument("--path"); p.add_argument("--source"); p.add_argument("--book"); p.add_argument("--sid")
     p.add_argument("--repo", help="fork, e.g. miraclestar43/bo-guan-yue-qu"); p.add_argument("--ref", help="pinned snapshot commit")
     p.add_argument("--upstream"); p.add_argument("--meta", help="JSON: title, author, translator, year, language, genre, edition")

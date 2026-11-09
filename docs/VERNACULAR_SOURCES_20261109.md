@@ -70,7 +70,7 @@ The owner asked for human vernacular translations and modern explanations of 《
 | 王立群读《史记》 | no | not read (no file) | no: the author was born in 1945; in copyright |
 | Other complete vernacular 《史记》 (杨燕起 et al., 《白话史记》; the Taiwan 《白话史记》) | no | not read | no: contemporary, in copyright |
 | A public-domain human vernacular translation of 《史记》 | none found | | |
-| HarborLibrary/Chinese-History 「资治通鉴 (柏杨白话版)」 EPUB and MOBI | yes | the translation is readable (58.5) | no. **It is not 柏杨's translation**: classical and vernacular paragraphs alternate, “柏杨曰” never appears, and “柏杨版” is only in the title. The translators are not named; it is a contemporary 文白对照 translation, in copyright. Internal reference only |
+| HarborLibrary/Chinese-History 「资治通鉴 (柏杨白话版)」 EPUB and MOBI | yes | the translation is readable (58.5) | no: a contemporary translation, in copyright. **Translator not verified.** Classical and vernacular paragraphs alternate. The file has no copyright page and no translator credit (OPF publisher “babyshan”, source “Freesource”), and “柏杨版” is only in the title. It has not yet been compared with 柏杨's own text, so it cannot be called 柏杨's translation or not. The list's 《柏杨白话版资治通鉴（全72册）》 is to be downloaded and compared paragraph by paragraph. Internal reference only |
 | 柏杨's own 《白话资治通鉴》 | no | | no: 柏杨 d. 2008, in copyright until 2058 |
 | 吕思勉《白话本国史》 (1923), miraclestar43/bo-guan-yue-qu | yes | 1920s vernacular with many classical quotations and philological asides. The narrative parts read well (the 秦始皇 section scores 61); the philological parts are hard, so excerpts take narrative only. Years are counted before the Republic (前2124年 = 213 BC) and need a note | **yes**: 吕思勉 d. 1957, and a 1923 publication is also public domain in the US. This file is a 2023 calibre conversion with no source edition named. Its contents page is empty and most chapter headings are lost, so it cannot be ingested as is. A copy with its headings is needed (not on Wikisource) |
 | 朱自清《经典常谈·史记汉书第九》 (1942) | Wikisource rev 2565718 | yes: vivid; it retells 司马迁's life, the 李陵 affair and how the two histories differ (66.7) | public domain in China (d. 1948). In the US, a 1942 work was probably restored until 2037. Under the current rule (author d. by 1945, or published before 1931) not yet: **owner's decision** |
@@ -80,6 +80,29 @@ The owner asked for human vernacular translations and modern explanations of 《
 | 梁启超《要籍解题及其读法》, including the 《史记》 essay (1925) | no text source found | not read | yes: d. 1929, published 1925 |
 
 The record rows for the catalogue files are updated in `config/book_candidates/catalog_check_20261109.tsv`. Google Drive's 「经典古籍」 folder is still not enumerated.
+
+## The human 《史记》 translation, the inbox and the download test (owner, 2026-11-09)
+
+**Book.** The owner downloaded 《史记（精注全译）》（全12册） from a 城通网盘 page in jbiaojerry/ebook-treasure-chest `md/历史.md`; `~/Downloads/史记-原文-翻译.epub` is the only file there and stays where it is.
+- **Edition, from the cover image and the OPF:** [西汉]司马迁 著，石磊 主编，中国文史出版社, twelve volumes; EPUB metadata date 2021-09-13, Kindle ASIN B09G5TY32C. The file has no copyright page, so the ISBN, the print year and the translator of each chapter are recorded as not verified.
+- **Layout:** each chapter has an editor's preface, then 【原文】+【注释】 blocks, then one 【译文】 block (`div.yw`) holding the whole chapter's human translation.
+- **Reading view** (library `view`, `books.load`): only the 【译文】 paragraphs and the chapter title are kept; a spine file that opens on a label continues its chapter. The result is 130 chapters and 4,962 translation paragraphs, with no original text, note numbers or labels. 331 rare characters are pictures in the book and show as □; a passage containing one is refused until the character is read from the picture. The 12 paragraphs at the end of 《天官书》 that explain corrupt text sit under 【注释】 and are not kept.
+- **Library:** `BK-SHIJI-SL`, rights `in_copyright` (a 2021 translation), so the nightly supply never picks it. The credit line names both 司马迁 (原著) and the translation (石磊 主编，各篇译者书中未署名), in email and on the web.
+
+**Local sample:** 《袁盎晁错列传》, the whole chapter in the book's translation: 22 paragraphs, about 19 minutes in Chinese, 14 notes, two questions and a folded reference angle; checks pass.
+- Two small issues were fixed locally and recorded: an English note label, and a reflection fix that had pasted “同 Q3 修改后的 angle.zh 全文” in as text. The code now refuses such cross-references.
+- The sample is not admitted, scheduled or sent. Public use (web or email) needs permission and is a separate question.
+
+**Inbox** (`hip books inbox`, `hip books import-local --book ID --path FILE`): lists `~/Downloads`; unpacks .zip, .7z and .rar into `data/books/inbox/` with name and size checks, keeping the original; reads what each file says about itself; and marks files already acquired (same bytes) or with a possible duplicate title. Importing copies a file into the book store under the same caps. The only manual step is the download.
+
+**Download test (城通网盘):**
+- The page loads with curl only as a shell; the content comes from scripts.
+- Headless Chromium hangs on the page; its DevTools endpoint stopped answering.
+- Headless Firefox shows only the loading skeleton.
+- No attempt was made to get round the site's checks.
+- Downloads from this site are therefore done by hand in a normal browser; everything after the file reaches `~/Downloads` is automated.
+
+**Book list:** 1,748 entries parsed; 6 are already in the library. Ten candidates, and every book's five statuses (acquired / edition verified / text extractable / reading fit / public long excerpt), are in `config/book_candidates/intake_status_20261109.tsv`.
 
 ## Variety (owner, 2026-11-09)
 

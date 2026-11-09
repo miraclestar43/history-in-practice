@@ -130,7 +130,7 @@ def units(b: dict, lmap: list[dict], cjk: bool) -> list[dict]:
 def check(book_id: str) -> dict:
     """acquired -> readable or unsuitable, without entering the supply pool (parse + readability only)."""
     lib = load(); e = get(lib, book_id); f = next(x for x in manifest() if x["book_id"] == book_id)
-    b = books.parse(data_dir() / "books" / "files" / f["path"])
+    b = books.load(data_dir() / "books" / "files" / f["path"], e)
     if b["file_sha256"] != f["file_sha256"]:
         raise books.BookError(f"{book_id}: file changed since acquisition")
     why = readability(b, e.get("language", "zh"))
@@ -144,10 +144,9 @@ def ingest(book_id: str, *, verified: str) -> dict:
     """acquired -> readable -> usable (or unsuitable with reasons). Writes the source cache, its location map and the unit list."""
     lib = load(); e = get(lib, book_id); f = next(x for x in manifest() if x["book_id"] == book_id)
     path = data_dir() / "books" / "files" / f["path"]
-    b = books.parse(path)
+    b = books.load(path, e)
     if b["file_sha256"] != f["file_sha256"]:
         raise books.BookError(f"{book_id}: file changed since acquisition")
-    books.apply_headings(b, e.get("headings"))
     cjk = e.get("language", "zh") == "zh"
     e.update(file_sha256=b["file_sha256"], bytes=b["bytes"], format=b["format"], paragraphs=len(b["paragraphs"]),
              chapters_detected=len(b.get("chapters") or []))
