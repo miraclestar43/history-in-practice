@@ -169,6 +169,10 @@ def ingest(book_id: str, *, verified: str) -> dict:
         e.update(level="readable", reason=f"source status {m['status']}; units {len(us)}"); save(lib); return e
     e.update(level="usable", source_id=sid, text_sha256=m["text_sha256"], units=len(us), reason=None,
              unit_titles=[u["title"] for u in us][:60])
+    if cjk:                                              # 2026-11-08: classical / semi-classical bodies are not 原文精选 material
+        from .excerpt import register, VERNACULAR_MIN
+        reg = register("".join(p["text"] for p in b["paragraphs"][:4000]))
+        e.update(register="vernacular" if reg["modern"] >= VERNACULAR_MIN else "classical", register_score=reg)
     save(lib); return e
 
 

@@ -47,6 +47,22 @@ def chapter_heading(b: dict, k: int) -> str:
     return c["title"] + (f", {nxt}" if nxt.isupper() and len(nxt) < 90 else "")
 
 
+MODERN_MARKS, CLASSICAL_MARKS = set("的了们这那么吗呢着"), set("之乎者也矣焉哉曰其於遂乃亦皆")
+VERNACULAR_MIN = 30          # modern function words per 1,000 Chinese characters: 鲁迅/老残游记/叫魂 83-92, 晚清七十年 45,
+                             # 李鸿章传 0.6, 浮生六记 0.5, 史记 0 (measured 2026-11-09)
+
+
+def register(text: str) -> dict:
+    """How modern a Chinese text reads, by the density of modern vs classical function words (per 1,000 characters)."""
+    h = [c for c in text if "\u4e00" <= c <= "\u9fff"]; n = len(h) or 1
+    return {"modern": round(1000 * sum(c in MODERN_MARKS for c in h) / n, 1), "classical": round(1000 * sum(c in CLASSICAL_MARKS for c in h) / n, 1),
+            "chars": len(h)}
+
+
+def vernacular_ok(text: str) -> bool:
+    return register(text)["modern"] >= VERNACULAR_MIN
+
+
 def is_heading(b: dict, k: int) -> bool:
     """A chapter heading line ('CHAPTER XII') or the upper-case chapter title right after it."""
     t = b["paragraphs"][k]["text"]
@@ -147,6 +163,10 @@ def checks(obj: dict, b: dict, cache_text: str | None, cjk: bool) -> list[str]:
         shown += [r.get("angle") or {}, {"zh": " ".join(r["questions"]["zh"]), "en": " ".join(r["questions"]["en"])}]
     if any(re.search(r"(?<![A-Za-z])P\d{1,4}(?!\d)", str(t.get(k) or "")) for t in shown for k in ("zh", "en")):
         p.append("reader-facing editor text cites paragraph numbers (P12): readers do not see them")
+    if lang == "zh":                                    # editor-in-chief 2026-11-08: a Chinese body must be modern vernacular
+        reg = register("".join(x["zh"] for x in obj["passage"]))
+        if reg["modern"] < VERNACULAR_MIN:
+            p.append(f"Chinese body is classical or semi-classical (modern function words {reg['modern']}/1000 < {VERNACULAR_MIN}): not for 原文精选")
     for k in ("zh", "en"):
         if not (obj.get("intro") or {}).get(k):
             p.append(f"intro.{k} missing")
@@ -490,7 +510,8 @@ def units_open(category: str | None = None) -> list[dict]:
     used = {(a["book_id"], a["unit"]) for a in attempts() if a.get("outcome") == "admitted"}
     out = []
     for e in lib_load()["books"]:
-        if e.get("level") != "usable" or e.get("exclude") or e.get("excerpt") is False or e.get("rights") not in ("public_domain", "licensed"):
+        if e.get("level") != "usable" or e.get("exclude") or e.get("excerpt") is False or e.get("register") == "classical" \
+                or e.get("rights") not in ("public_domain", "licensed"):
             continue
         if category and category not in (e.get("categories") or []):
             continue
