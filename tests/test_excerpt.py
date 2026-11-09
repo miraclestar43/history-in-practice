@@ -153,6 +153,15 @@ class Excerpt(unittest.TestCase):
         finally:
             mix.EXCERPTS_ONLY = old
 
+    def test_chinese_body_must_be_modern_vernacular(self):
+        classical = "吴起者，卫人也，好用兵。尝学于曾子，事鲁君。齐人攻鲁，鲁欲将吴起，吴起取齐女为妻，而鲁疑之。" * 5
+        modern = "在东京的客店里，我们大抵一起来就看报。那时候大家都在研究这刺客是谁，汉字是怎样三个字。" * 5
+        self.assertFalse(excerpt.vernacular_ok(classical)); self.assertTrue(excerpt.vernacular_ok(modern))
+        o = {"passage": [{"p": 1, "zh": classical, "en": "Wu Qi was a man of Wei."}], "notes": [], "intro": {"zh": "a", "en": "b"},
+             "work": {"original_language": "zh"}}
+        b = {"paragraphs": [{"text": "x"}, {"text": classical}]}
+        self.assertTrue(any("classical or semi-classical" in p for p in excerpt.checks(o, b, None, True)))
+
     def test_reader_text_never_cites_paragraph_numbers(self):
         o = excerpt.run("BK-X", (0, len(PARAS)), "ex-p", "china_modern", call=fake(self.good_answers()), out_root=self.out)
         o["reflect"]["angle"]["zh"] = "对照前后两处（P6）。"
