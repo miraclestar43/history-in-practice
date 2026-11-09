@@ -58,8 +58,17 @@ def tags_of(eid: str, o: dict | None) -> list[str]:
 _TAGS = None
 
 
+def _book_themes(book_id: str | None) -> list[str]:
+    """A 原文精选's themes are its book's (library), minus the too-broad ones, so the plan can vary them."""
+    if not book_id:
+        return []
+    from .library import load as lib_load
+    e = next((x for x in lib_load()["books"] if x["book_id"] == book_id), {})
+    return [t for t in e.get("themes") or [] if t not in ("人物传记", "历史")]
+
+
 def item(eid, category, o=None, admitted_at=0.0) -> dict:
-    tags = tags_of(eid, o)
+    tags = tags_of(eid, o) or (_book_themes(((o or {}).get("work") or {}).get("book_id")) if (o or {}).get("kind") == "excerpt" else [])
     return {"edition_id": eid, "category": category, "group": GROUP.get(category, "other"), "region": region(o, eid, category),
             "tags": list(tags), "title": ((o or {}).get("title") or {}).get("zh", eid), "admitted_at": admitted_at,
             "kind": (o or {}).get("kind") or "story", "book": ((o or {}).get("work") or {}).get("book_id"),

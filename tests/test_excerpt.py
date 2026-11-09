@@ -153,14 +153,53 @@ class Excerpt(unittest.TestCase):
         finally:
             mix.EXCERPTS_ONLY = old
 
-    def test_chinese_body_must_be_modern_vernacular(self):
+    def test_vernacular_score_screens_and_reading_decides(self):
+        """2026-11-09: few modern function words is a screening hint; a recorded read-through decides. A reading that
+        finds the body hard blocks it whatever the score; an edition confirmed classical by reading stays out."""
         classical = "吴起者，卫人也，好用兵。尝学于曾子，事鲁君。齐人攻鲁，鲁欲将吴起，吴起取齐女为妻，而鲁疑之。" * 5
         modern = "在东京的客店里，我们大抵一起来就看报。那时候大家都在研究这刺客是谁，汉字是怎样三个字。" * 5
         self.assertFalse(excerpt.vernacular_ok(classical)); self.assertTrue(excerpt.vernacular_ok(modern))
+        b = {"paragraphs": [{"text": "x"}, {"text": classical}]}
         o = {"passage": [{"p": 1, "zh": classical, "en": "Wu Qi was a man of Wei."}], "notes": [], "intro": {"zh": "a", "en": "b"},
              "work": {"original_language": "zh"}}
-        b = {"paragraphs": [{"text": "x"}, {"text": classical}]}
-        self.assertTrue(any("classical or semi-classical" in p for p in excerpt.checks(o, b, None, True)))
+        self.assertTrue(any("needs a recorded read-through" in p for p in excerpt.checks(o, b, None, True)))
+        o["readability"] = {"verdict": "readable", "reason": ""}                          # a verdict without a reason is not a reading
+        self.assertTrue(any("needs a recorded read-through" in p for p in excerpt.checks(o, b, None, True)))
+        o["readability"] = {"verdict": "readable", "reason": "通读：浅近白话夹少量文言词，人物和事件不靠注释也读得懂。"}
+        self.assertEqual(excerpt.checks(o, b, None, True), [])                            # the number does not overrule the reading
+        o2 = {"passage": [{"p": 1, "zh": modern, "en": "In Tokyo."}], "notes": [], "intro": {"zh": "a", "en": "b"},
+              "work": {"original_language": "zh"}, "readability": {"verdict": "hard", "reason": "半文言，离不开注释。"}}
+        self.assertTrue(any("hard for a modern reader" in p for p in excerpt.checks(o2, {"paragraphs": [{"text": "x"}, {"text": modern}]}, None, True)))
+        o3 = excerpt.run("BK-X", (0, len(PARAS)), "ex-cl", "china_modern", call=fake(self.good_answers()), out_root=self.out)
+        self.assertEqual(excerpt.record_problems(o3), [])
+        lib = library.load(); lib["books"][0]["register"] = "classical"; library.save(lib)
+        self.assertTrue(any("confirmed classical" in p for p in excerpt.record_problems(o3)))
+        self.assertFalse(excerpt.units_open())                                            # and the supply skips that edition
+
+    def test_supply_order_favours_missing_themes_and_new_authors(self):
+        mixd = {"themes": {"社会与日常生活": 4, "教育": 2}, "authors": {"鲁迅": 3}}
+        econ = {"themes": ["经济与金融", "社会与日常生活"], "language": "en", "author": "Charles Mackay"}
+        luxun = {"themes": ["人物传记", "社会与日常生活"], "language": "zh", "author_zh": "鲁迅"}
+        cai = {"themes": ["教育", "人物传记"], "language": "zh", "author_zh": "蔡元培"}
+        order = sorted([("luxun", luxun), ("cai", cai), ("econ", econ)], key=lambda x: excerpt.variety_score(x[1], mixd))
+        self.assertEqual([k for k, _ in order], ["econ", "cai", "luxun"])
+        self.assertEqual(excerpt.recent_mix(None), {"themes": {}, "authors": {}})
+        lib = library.load(); lib["books"][0]["themes"] = ["人物传记", "科学与技术"]; library.save(lib)
+        it = mix.item("ex-t", "world", {"kind": "excerpt", "work": {"book_id": "BK-X"}}, 1.0)
+        self.assertEqual(it["tags"], ["科学与技术"])                                       # the plan can vary themes between issues
+
+    def test_plain_text_headings_and_picture_markers(self):
+        from history_in_practice import books
+        ps = ["CONTENTS.", "THE SOUTH-SEA BUBBLE.", "Its rise. " * 30, "PREFACE.", "x" * 250, "THE SOUTH-SEA BUBBLE.", "y" * 250,
+              "[Illustration: THE SOUTH SEA HOUSE]", "z" * 250, "w" * 250]
+        b = {"format": "txt", "chapters": [], "paragraphs": [{"text": t, "loc": {"offset": i, "length": 1}} for i, t in enumerate(ps)]}
+        books.apply_headings(b, ["THE SOUTH-SEA BUBBLE.", "LIST OF BUBBLES."])
+        self.assertEqual([c["first_para"] for c in b["chapters"]], [5])                   # the contents line is not a chapter start
+        got = excerpt.extract(b, {"start": 5, "end": 9})
+        self.assertEqual([x["p"] for x in got], [6, 8, 9])                                # heading shown in the byline; picture marker dropped
+        o = {"passage": [{"p": x["p"], "en": x["orig"], "zh": "译文", "gap_before": x["gap_before"]} for x in got], "notes": [],
+             "intro": {"zh": "a", "en": "b"}, "work": {"original_language": "en"}}
+        self.assertEqual(excerpt.checks(o, b, None, False), [])                           # not an unmarked omission
 
     def test_reader_text_never_cites_paragraph_numbers(self):
         o = excerpt.run("BK-X", (0, len(PARAS)), "ex-p", "china_modern", call=fake(self.good_answers()), out_root=self.out)

@@ -204,6 +204,14 @@ def byline(obj, lang) -> str:
             + f" · original in {'Chinese' if src == 'zh' else 'English'}" + ("" if src == "en" else " · the English below is an AI translation"))
 
 
+_ITALIC = re.compile(r"(?<![\w_])_([^_\s](?:[^_]{0,120}?[^_\s])?)_(?![\w_])")
+
+
+def italics(escaped: str) -> str:
+    """Display only: Project Gutenberg plain text marks italics as _word_; show them as italics, not underscores."""
+    return _ITALIC.sub(r"<i>\1</i>", escaped)
+
+
 def excerpt_block(obj, lang, base, with_buttons=False) -> str:
     """One language of a 原文精选 issue for email: title, byline, (buttons), dek, guide, the text with its label, notes,
     afterword, read-on line. No folding, no script."""
@@ -227,7 +235,8 @@ def excerpt_block(obj, lang, base, with_buttons=False) -> str:
         parts = x.get("zh_parts") if lang == "zh" and x.get("zh_parts") else [x[lang]]
         opened = 0
         for i, t in enumerate(parts):                # display pieces of a long Chinese paragraph; continued quotes reopen with “
-            out.append(f'<p style="{BODY}">{"“" if opened > 0 else ""}{e(t)}{sup if i == len(parts) - 1 else ""}</p>')
+            shown = italics(e(t)) if lang == "en" == src else e(t)
+            out.append(f'<p style="{BODY}">{"“" if opened > 0 else ""}{shown}{sup if i == len(parts) - 1 else ""}</p>')
             opened += t.count("“") - t.count("”")
     if obj.get("notes"):
         out.append(f'<h2 style="{H2}">{X["notes"]}</h2><ol style="font-size:16px;line-height:1.75;color:#3a3732;padding-left:22px;margin:0 0 10px;">')
@@ -440,7 +449,8 @@ def search_index(objs) -> tuple[dict, dict]:
 
 
 # never on the public site: evidence maps, editor logs and an excerpt's internal records (selection reasons, review, calls)
-PRIVATE_KEYS = ("evidence_map", "preheader", "editor_log", "review", "calls", "checks", "open_issues", "selection", "episode_meta", "admitted_from")
+PRIVATE_KEYS = ("evidence_map", "preheader", "editor_log", "review", "calls", "checks", "open_issues", "selection", "episode_meta", "admitted_from",
+                "readability")
 
 
 def build(objs, out: Path, base):

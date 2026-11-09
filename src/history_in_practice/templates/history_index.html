@@ -279,6 +279,13 @@ const X = {zh:{think:"读后想一想",angle:"一个参考角度",editors:"以�
            en:{think:"After reading",angle:"One way to look at it",editors:"The questions and the reading above are the editor's, not the author's. You may well disagree.",intro:"Introduction",text:"The text",orig:"Original",ai:"AI translation",notes:"Notes",after:"Afterword",cont:"Read on",book:"Book and edition",pair:"Show the other language",unpair:"Hide",
                titled:"Title by the editor",read:"Read the whole book",edition:"Edition",loc:"Location",rights:"Rights",tr:"Translation"}};
 let PAIRED = false;
+// display only: Project Gutenberg plain text marks italics as _word_; show italics, never raw underscores (text nodes, no HTML)
+function putItalics(node, t){
+  const re = /(^|[^\w_])_([^_\s](?:[^_]{0,120}?[^_\s])?)_(?![\w_])/g; let last = 0, m;
+  while ((m = re.exec(t))){ const at = m.index + m[1].length;
+    node.append(document.createTextNode(t.slice(last, at))); node.append(el("i",{},m[2])); last = at + m[2].length + 2; }
+  node.append(document.createTextNode(t.slice(last)));
+}
 function renderExcerpt(o){
   document.documentElement.lang = lang==="zh" ? "zh-CN" : "en";
   document.title = ["没事儿多读书", /^\d{4}-\d{2}-\d{2}$/.test(o.edition_date||"") ? o.edition_date.replace(/-/g,".") : "", o.title[lang]].filter(Boolean).join("｜");
@@ -322,7 +329,8 @@ function renderExcerpt(o){
     const parts = lang==="zh" && x.zh_parts ? x.zh_parts : [x[lang]];
     let open = 0, p = null;
     parts.forEach((t, i) => {
-      p = el("p",{"data-k":"p"+x.p+(i ? "."+i : "")}); p.textContent = (open > 0 ? "“" : "") + t;
+      p = el("p",{"data-k":"p"+x.p+(i ? "."+i : "")});
+      if (lang === "en" && src === "en") putItalics(p, t); else p.textContent = (open > 0 ? "“" : "") + t;
       open += (t.match(/“/g)||[]).length - (t.match(/”/g)||[]).length;
       sec.append(p);
     });

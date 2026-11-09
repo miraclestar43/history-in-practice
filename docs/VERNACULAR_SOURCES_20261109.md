@@ -6,7 +6,7 @@
 
 ## How the rule is enforced
 
-**The register gate** (`excerpt.register`, `VERNACULAR_MIN = 30`) measures modern function words (的了们这那么吗呢着) per 1,000 Chinese characters:
+**Reading decides; the score screens** (owner's follow-up, 2026-11-09). The register score (`excerpt.register`, `VERNACULAR_MIN = 30`) counts modern function words (的了们这那么吗呢着) per 1,000 Chinese characters. It catches obvious classical text but does not measure readability, so it never decides alone:
 
 | Text | Modern | Classical | Result |
 |---|---|---|---|
@@ -16,9 +16,11 @@
 | 《浮生六记》 | 0.5 | 70 | classical |
 | 《史记》 | 0 | 117 | classical |
 
-- **Excerpts:** a Chinese-original passage under 30 fails the mechanical checks. That blocks admission, eligibility and the send gate, so an old classical piece cannot be picked again.
-- **Library:** ingest records each Chinese book's register. Classical books leave 原文精选 selection, while staying available for choosing topics and internal reading. They can come back with a human vernacular translation.
-- **Prompts:** selection and review must read first and ask whether an ordinary modern reader can follow the people, events and connections without leaning on notes. A classical or note-dependent body is skipped, or a must-fix review issue. The model never turns classical text into vernacular as a stand-in.
+- **Every Chinese-original issue is read through.** The review reads the whole body and records a verdict (`readable` or `hard`) with its reason. `hard` blocks the issue at any score.
+- **A score under 30 is a flag, not a refusal.** Such a passage can be used only with a recorded read-through that finds it readable and says why. Without that record, admission, eligibility and the send gate refuse it.
+- **Editions read and confirmed classical stay out:** 《史记》, 《浮生六记》 and 《李鸿章传》 (library `register: classical`). The supply skips them and the send gate refuses them, whatever a review says. They can come back with a human vernacular translation.
+- **Library ingest** records each Chinese book's score as a hint (`register_hint`). Only a reader's judgment sets `register`.
+- **Prompts:** selection and review read first and ask whether an ordinary modern reader can follow the people, events and connections without leaning on notes. A classical or note-dependent body is skipped, or a must-fix review issue. The model never turns classical text into vernacular as a stand-in.
 
 ## Books: reading fit and publication status, recorded separately
 
@@ -31,11 +33,26 @@
 | 《范爱农》, 《琐记》 | 鲁迅 | as before | vernacular | yes |
 | 《老残游记》 | 刘鹗 | as before | late-Qing vernacular novel, readable; 83 | yes |
 | English originals with an AI Chinese translation: Yung Wing; Franklin, *Autobiography*; Darwin, *Autobiography*; Douglass, *Narrative*; *Up from Slavery*; Shackleton, *South*; *Pierre Curie* (1923) | | | | yes |
+| *Autobiography of Andrew Carnegie* (1920): business, economics | Andrew Carnegie | Gutenberg #17976 | memoir: telegraph boy to steel; how he ran firms, chose people, gave money away | yes: d. 1919 |
+| *My Life and Work* (1922): business, technology | Henry Ford, with Samuel Crowther | Gutenberg #7213 | first-person account of mass production and the $5 day | yes: published 1922 in the US; both d. 1947 |
+| *Personal Memoirs of U. S. Grant* (1885–86): political and military decisions | Ulysses S. Grant | Gutenberg #4367 | plain, famous memoir: judgments in the Civil War, Appomattox | yes: d. 1885 |
+| *Extraordinary Popular Delusions*, vol. I (1852 ed.): economics and finance | Charles Mackay | Gutenberg #24518, plain text | the Mississippi Scheme, the South Sea Bubble, tulip mania. Its EPUB is not used: chapter titles there are picture captions | yes: d. 1889 |
+| *The Chemical History of a Candle* (1861): science | Michael Faraday | Gutenberg #14474 | Christmas lectures for young people, built on experiments | yes: d. 1867 |
 | 《李鸿章传》, 《浮生六记》, 《史记》 | | Wikisource / EPUB | classical: out of 原文精选 | yes, but not used as a body |
 | 《叫魂》, 《晚清七十年》, 《万历十五年》, 《明朝那些事儿》, 《三案始末》, etc. | | owner's Git catalogues | vernacular, good reading | no (in copyright): topics and internal reading only |
 
 **The owner's catalogues, re-checked:**
-- **Git:** 1,962 book files in HarborLibrary ×9, bo-guan-yue-qu and english_ebooks. None is by a modern Chinese author whose works are public domain (died by 1945). They are contemporary, in-copyright books: good for choosing topics, not for long public excerpts.
+- **Git: no modern Chinese edition confirmed suitable for long public excerpts has been found this round.** That is not a finding that every file is in copyright. The per-file record is `config/book_candidates/catalog_check_20261109.tsv`, with 1,813 book files in 14 repositories at their pinned commits. Each file's status is one of:
+
+  | Status | Files | Meaning |
+  |---|---|---|
+  | in the library | 15 | ingested and checked; level and rights recorded |
+  | public domain but classical | 130 | 《史记》 chapters (gh73962/shiji_md) |
+  | to check: may hold public-domain documents | 131 | the 1840–1949 document anthology (treaties, declarations, memorials, speeches); author, date and register differ piece by piece |
+  | in copyright (contemporary) | 159 | 《明朝那些事儿》 chapters: readable vernacular; topics and internal reading only |
+  | not checked one by one | 1,378 | only their file names were searched for public-domain-era authors (鲁迅, 萧红, 郁达夫, 瞿秋白, 蔡元培, 邹韬奋, 徐志摩, 许地山, 刘半农, 李大钊, 梁启超, 林纾, 王国维); none matched. Author dates, edition and translator are not yet checked |
+
+  Update a row's status and note as each file is checked. The earlier figure of 1,962 counted every file in those repositories, not only books.
 - **Google Drive:** only the 63 top-level folder names are listed (传记, 纪实, 中国, 经典古籍, …). The contents were never enumerated because the download path is not connected, so nothing there is usable yet.
 
 **Where more publishable modern Chinese comes from:**
@@ -43,4 +60,14 @@
 - texts on Wikisource or in other public-domain editions;
 - human vernacular translations that are themselves public domain.
 
-The nightly supply takes Chinese originals first, from these books.
+## Variety (owner, 2026-11-09)
+
+The plan for 11-09 to 11-15 has six Chinese pieces out of seven, several around 鲁迅 and late-Qing literature. That is fine for a transition. Later issues should bring in economics, business, science, political decisions and a wider range of people, in the column's aim of 读书明事理.
+
+- **Nightly supply order:**
+  1. Each candidate book is scored by its least-covered theme across the latest 14 原文精选 (sent, scheduled or ready).
+  2. Economics and finance, business, science and technology, and politics and governance get a half step forward; so do Chinese originals.
+  3. An author who appeared lately gets a half step back per recent appearance.
+  4. The order is recomputed after every run.
+- **Plan:** a 原文精选 carries its book's themes, so consecutive days vary the theme as well as the book and author.
+- **Gutenberg plain text:** picture markers and footnote blocks are not running text. They are left out of the passage without a 〔中略〕 mark, and _italics_ are shown as italics. The author's words are never changed, and the source checks are unchanged.

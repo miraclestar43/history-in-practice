@@ -30,7 +30,7 @@ def book(book_id: str) -> tuple[dict, dict]:
     b = books.parse(data_dir() / "books" / "files" / f["path"])
     if b["file_sha256"] != f["file_sha256"]:
         raise books.BookError(f"{book_id}: file changed since acquisition")
-    return e, b
+    return e, books.apply_headings(b, e.get("headings"))
 
 
 def numbered(b: dict, a: int, z: int) -> str:
@@ -49,7 +49,9 @@ def chapter_heading(b: dict, k: int) -> str:
 
 MODERN_MARKS, CLASSICAL_MARKS = set("的了们这那么吗呢着"), set("之乎者也矣焉哉曰其於遂乃亦皆")
 VERNACULAR_MIN = 30          # modern function words per 1,000 Chinese characters: 鲁迅/老残游记/叫魂 83-92, 晚清七十年 45,
-                             # 李鸿章传 0.6, 浮生六记 0.5, 史记 0 (measured 2026-11-09)
+                             # 李鸿章传 0.6, 浮生六记 0.5, 史记 0 (measured 2026-11-09). A screening hint, not a verdict
+                             # (editor-in-chief 2026-11-09): below it a passage needs a recorded read-through finding it
+                             # readable; books a reader confirmed classical (library register=classical) stay out.
 
 
 def register(text: str) -> dict:
@@ -71,6 +73,15 @@ def is_heading(b: dict, k: int) -> bool:
     return k > 0 and any(c["first_para"] == k - 1 for c in b.get("chapters") or []) and t.isupper() and len(t) < 90
 
 
+# Gutenberg plain-text blocks that are not running text: picture markers, and footnote blocks ('[Footnote 3: ...]',
+# '[28] Biographie Universelle.'). Left out of the passage without a 〔中略〕 mark; the body text is never touched.
+NONTEXT = re.compile(r"^\[(Illustrations?[:\]. ]|Footnote \w+:|\d{1,3}\] )")
+
+
+def is_nontext(b: dict, k: int) -> bool:
+    return bool(NONTEXT.match(b["paragraphs"][k]["text"]))
+
+
 def extract(b: dict, sel: dict) -> list[dict]:
     """The passage, from the saved book: paragraphs start..end, whole-paragraph omissions marked by gap_before."""
     a, z = int(sel["start"]), int(sel["end"])
@@ -85,6 +96,8 @@ def extract(b: dict, sel: dict) -> list[dict]:
     for k in range(a, z + 1):
         if k in omit:
             gap = True; continue
+        if is_nontext(b, k):                          # a picture marker is not text and not an omission
+            continue
         p = b["paragraphs"][k]
         out.append({"p": k, "orig": p["text"], "loc": p["loc"], "gap_before": gap}); gap = False
     return out
@@ -141,9 +154,10 @@ def checks(obj: dict, b: dict, cache_text: str | None, cjk: bool) -> list[str]:
             p.append(f"P{x['p']}: displayed original differs from the source paragraph")
         if cache_text is not None and evidence.normalise(x[lang], cjk) not in cache_text:
             p.append(f"P{x['p']}: not found in the source cache")
-        if prev is not None and x["p"] != prev + 1 and not x["gap_before"]:
+        between = range(prev + 1, x["p"]) if prev is not None else range(0)
+        if prev is not None and not x["gap_before"] and not all(is_nontext(b, k) for k in between):
             p.append(f"P{x['p']}: paragraphs skipped without a 〔中略〕 mark")
-        if prev is not None and x["p"] == prev + 1 and x["gap_before"]:
+        if prev is not None and x["gap_before"] and all(is_nontext(b, k) for k in between):
             p.append(f"P{x['p']}: 〔中略〕 where nothing was left out")
         if not (x.get(tr) or "").strip():
             p.append(f"P{x['p']}: translation missing")
@@ -163,10 +177,14 @@ def checks(obj: dict, b: dict, cache_text: str | None, cjk: bool) -> list[str]:
         shown += [r.get("angle") or {}, {"zh": " ".join(r["questions"]["zh"]), "en": " ".join(r["questions"]["en"])}]
     if any(re.search(r"(?<![A-Za-z])P\d{1,4}(?!\d)", str(t.get(k) or "")) for t in shown for k in ("zh", "en")):
         p.append("reader-facing editor text cites paragraph numbers (P12): readers do not see them")
-    if lang == "zh":                                    # editor-in-chief 2026-11-08: a Chinese body must be modern vernacular
-        reg = register("".join(x["zh"] for x in obj["passage"]))
-        if reg["modern"] < VERNACULAR_MIN:
-            p.append(f"Chinese body is classical or semi-classical (modern function words {reg['modern']}/1000 < {VERNACULAR_MIN}): not for 原文精选")
+    if lang == "zh":                                    # editor-in-chief 2026-11-08: a Chinese body must be modern vernacular;
+        reg = register("".join(x["zh"] for x in obj["passage"]))   # 2026-11-09: the score screens, reading decides
+        rd = obj.get("readability") or {}
+        if rd.get("verdict") == "hard":
+            p.append(f"a read-through found the Chinese body hard for a modern reader: {str(rd.get('reason') or '')[:120]}")
+        elif reg["modern"] < VERNACULAR_MIN and not (rd.get("verdict") == "readable" and str(rd.get("reason") or "").strip()):
+            p.append(f"few modern function words ({reg['modern']}/1000 < {VERNACULAR_MIN}): needs a recorded read-through "
+                     "finding it readable modern Chinese before it can be used")
     for k in ("zh", "en"):
         if not (obj.get("intro") or {}).get(k):
             p.append(f"intro.{k} missing")
@@ -248,6 +266,9 @@ def run(book_id: str, window: tuple[int, int], edition_id: str, category: str, *
         fixes = [i for i in rv["issues"] if i.get("severity") == "fix"]
         applied = [apply_fix(obj, i) for i in fixes] if rnd < 3 else []
         obj["review"].append({"round": rnd, "reading": rv.get("reading"), "issues": rv["issues"], "applied": applied})
+        if cjk and isinstance(rv.get("readability"), dict):   # the reviewer's read-through of the Chinese body
+            obj["readability"] = {"verdict": rv["readability"].get("verdict"), "reason": rv["readability"].get("reason"),
+                                  "by": "review", "round": rnd}
         if not any(applied):
             break
     obj["open_issues"] = [i for i in (obj["review"][-1].get("issues") or []) if i.get("severity") == "fix" and not i.get("_applied")]
@@ -442,6 +463,8 @@ def record_problems(obj: dict, approval: str | None = None) -> list[str]:
         return [f"book {obj['work'].get('book_id')} not available here: {type(x).__name__}: {x}"]
     if e.get("file_sha256") != obj["work"].get("file_sha256"):
         p.append("the library's book file is not the edition this excerpt was taken from")
+    if e.get("register") == "classical":
+        p.append("this edition was read and confirmed classical / semi-classical (editor-in-chief 2026-11-08): not a 原文精选 body")
     cjk = e.get("language", "zh") == "zh"
     cache = data_dir() / "source_cache" / f"{e.get('source_id')}.txt"
     p += checks(obj, b, evidence.normalise(cache.read_text(encoding="utf-8"), cjk) if cache.exists() else None, cjk)
@@ -504,8 +527,43 @@ def _log(rec: dict) -> None:
         h.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
 
-def units_open(category: str | None = None) -> list[dict]:
-    """Untried chapter units of books that may be published at length (public domain / licensed), Chinese originals first."""
+FOCUS_THEMES = ("经济与金融", "企业与商业", "科学与技术", "政治与治理")   # editor-in-chief 2026-11-09: 读书明事理 needs these too
+GENERIC_THEMES = {"人物传记", "历史"}                                  # too broad to tell two issues apart
+
+
+def recent_mix(db, n: int = 14) -> dict:
+    """Themes and authors of the latest n 原文精选 (sent, scheduled or ready; withdrawn ones excluded)."""
+    themes, authors = {}, {}
+    if db is None:
+        return {"themes": themes, "authors": authors}
+    lib = {e["book_id"]: e for e in lib_load()["books"]}
+    rows = db.execute("SELECT path FROM edition WHERE origin='excerpt' AND status!='rejected' ORDER BY updated_at DESC LIMIT ?", (n,)).fetchall()
+    for (path,) in rows:
+        try:
+            w = json.loads(Path(path).read_text(encoding="utf-8"))["work"]
+        except Exception:
+            continue
+        e = lib.get(w.get("book_id")) or {}
+        for t in set(e.get("themes") or []) - GENERIC_THEMES:
+            themes[t] = themes.get(t, 0) + 1
+        a = w.get("author_zh") or w.get("author")
+        if a:
+            authors[a] = authors.get(a, 0) + 1
+    return {"themes": themes, "authors": authors}
+
+
+def variety_score(e: dict, mix: dict) -> float:
+    """Lower is wanted sooner: the book's least-covered theme lately, a little ahead for the focus themes and for
+    Chinese originals, a little behind for an author who appeared lately."""
+    ts = [t for t in e.get("themes") or [] if t not in GENERIC_THEMES]
+    gap = min((mix["themes"].get(t, 0) for t in ts), default=3)
+    return gap - 0.5 * any(t in FOCUS_THEMES for t in ts) - 0.5 * (e.get("language", "zh") == "zh") \
+        + 0.5 * mix["authors"].get(e.get("author_zh") or e.get("author"), 0)
+
+
+def units_open(category: str | None = None, mix: dict | None = None) -> list[dict]:
+    """Untried chapter units of books that may be published at length (public domain / licensed). With `mix` (recent
+    themes and authors) the order favours missing themes and new authors; without it, Chinese originals first."""
     tried = {(a["book_id"], a["unit"]) for a in attempts()}
     used = {(a["book_id"], a["unit"]) for a in attempts() if a.get("outcome") == "admitted"}
     out = []
@@ -525,8 +583,9 @@ def units_open(category: str | None = None) -> list[dict]:
             end = us[i + 1]["first_para"] if i + 1 < len(us) else None
             out.append({"book_id": e["book_id"], "unit": u["unit"], "start": u["first_para"], "end": end, "title": u["title"],
                         "lang": e.get("language", "zh"), "category": (e.get("categories") or ["china_modern"])[0] if not category else category,
-                        "n_used": sum(1 for b, _ in used if b == e["book_id"])})
-    return sorted(out, key=lambda x: (x["lang"] != "zh", x["n_used"], x["book_id"], x["unit"]))
+                        "n_used": sum(1 for b, _ in used if b == e["book_id"]),
+                        "variety": variety_score(e, mix) if mix is not None else 0.0})
+    return sorted(out, key=lambda x: (x["variety"], x["lang"] != "zh", x["n_used"], x["book_id"], x["unit"]))
 
 
 def supply(db, categories: list[str], *, target: int = 6, max_runs: int = 2, call=None, today: str | None = None) -> list[dict]:
@@ -537,35 +596,35 @@ def supply(db, categories: list[str], *, target: int = 6, max_runs: int = 2, cal
     if ready >= target:
         return [{"outcome": "enough", "ready": ready, "target": target}]
     today = (today or time.strftime("%Y%m%d"))
-    for cat in categories + [None]:
-        while len(out) < max_runs:
-            cand = units_open(cat)
-            if not cand:
-                break
-            u = cand[0]
-            if u["end"] is None:
-                u["end"] = len(book(u["book_id"])[1]["paragraphs"])
-            eid = f"excerpt-{today}-{u['book_id'].lower().removeprefix('bk-')}-u{u['unit']}"
-            rec = {"at": time.time(), "book_id": u["book_id"], "unit": u["unit"], "edition_id": eid, "category": u["category"]}
-            try:
-                o = run(u["book_id"], (u["start"], u["end"]), eid, u["category"], call=call)
-            except Exception as x:
-                o = {"outcome": "error", "reason": f"{type(x).__name__}: {x}"[:300]}
-            if o.get("kind") != "excerpt":
-                _log(rec | {"outcome": o.get("outcome"), "reason": o.get("reason")}); out.append(rec | {"outcome": o.get("outcome"), "reason": o.get("reason")})
-                if o.get("outcome") == "failed":
-                    return out                          # the model is unavailable or failing: stop for tonight
-                continue
-            if o.get("checks") or o.get("open_issues"):
-                why = "; ".join(o.get("checks") or [] ) or f"{len(o['open_issues'])} open review issue(s)"
-                _log(rec | {"outcome": "held", "reason": why[:300]}); out.append(rec | {"outcome": "held", "reason": why[:300]}); continue
-            dest = ADMIT_ROOT / eid / "excerpt.json"; dest.parent.mkdir(parents=True, exist_ok=True)
-            dest.write_text(json.dumps(o, ensure_ascii=False, indent=1), encoding="utf-8")
-            a = admit(db, dest)
-            _log(rec | {"outcome": "admitted" if a.get("admitted") else "refused", "reason": a.get("reason") or "; ".join(a.get("problems") or [])})
-            out.append(rec | {"outcome": "admitted" if a.get("admitted") else "refused", "title": o["title"]["zh"], "minutes": o.get("reading_minutes")})
-        if len(out) >= max_runs:
+    rank = {c: i for i, c in enumerate(categories)}
+    while len(out) < max_runs:
+        # editor-in-chief 2026-11-09: missing themes (economy, business, science, political decisions) and new authors
+        # first; the mix gaps (categories, in order) and Chinese originals break ties. Recomputed after each run.
+        cand = sorted(units_open(None, recent_mix(db)), key=lambda u: (u["variety"], rank.get(u["category"], len(rank))))
+        if not cand:
             break
+        u = cand[0]
+        if u["end"] is None:
+            u["end"] = len(book(u["book_id"])[1]["paragraphs"])
+        eid = f"excerpt-{today}-{u['book_id'].lower().removeprefix('bk-')}-u{u['unit']}"
+        rec = {"at": time.time(), "book_id": u["book_id"], "unit": u["unit"], "edition_id": eid, "category": u["category"]}
+        try:
+            o = run(u["book_id"], (u["start"], u["end"]), eid, u["category"], call=call)
+        except Exception as x:
+            o = {"outcome": "error", "reason": f"{type(x).__name__}: {x}"[:300]}
+        if o.get("kind") != "excerpt":
+            _log(rec | {"outcome": o.get("outcome"), "reason": o.get("reason")}); out.append(rec | {"outcome": o.get("outcome"), "reason": o.get("reason")})
+            if o.get("outcome") == "failed":
+                return out                          # the model is unavailable or failing: stop for tonight
+            continue
+        if o.get("checks") or o.get("open_issues"):
+            why = "; ".join(o.get("checks") or [] ) or f"{len(o['open_issues'])} open review issue(s)"
+            _log(rec | {"outcome": "held", "reason": why[:300]}); out.append(rec | {"outcome": "held", "reason": why[:300]}); continue
+        dest = ADMIT_ROOT / eid / "excerpt.json"; dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_text(json.dumps(o, ensure_ascii=False, indent=1), encoding="utf-8")
+        a = admit(db, dest)
+        _log(rec | {"outcome": "admitted" if a.get("admitted") else "refused", "reason": a.get("reason") or "; ".join(a.get("problems") or [])})
+        out.append(rec | {"outcome": "admitted" if a.get("admitted") else "refused", "title": o["title"]["zh"], "minutes": o.get("reading_minutes")})
     return out
 
 
