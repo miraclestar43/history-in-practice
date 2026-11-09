@@ -60,6 +60,27 @@
 - texts on Wikisource or in other public-domain editions;
 - human vernacular translations that are themselves public domain.
 
+## 《史记》 and 《资治通鉴》 in modern Chinese (owner, 2026-11-09)
+
+The owner asked for human vernacular translations and modern explanations of 《史记》 (such as 韩兆琦's annotated translation or 王立群读《史记》), and for the 柏杨 《资治通鉴》 in the catalogue. The 130 《史记》 files are the 130 chapters of one classical edition (gh73962/shiji_md); they are not a check of other editions. The topic stays open even though only the classical text is connected now.
+
+| Edition | In the catalogues? | Readable modern Chinese? | Publishable at length? |
+|---|---|---|---|
+| 韩兆琦, 《史记》 annotated translation | no | not read (no file) | no: a contemporary translation, in copyright |
+| 王立群读《史记》 | no | not read (no file) | no: the author was born in 1945; in copyright |
+| Other complete vernacular 《史记》 (杨燕起 et al., 《白话史记》; the Taiwan 《白话史记》) | no | not read | no: contemporary, in copyright |
+| A public-domain human vernacular translation of 《史记》 | none found | | |
+| HarborLibrary/Chinese-History 「资治通鉴 (柏杨白话版)」 EPUB and MOBI | yes | the translation is readable (58.5) | no. **It is not 柏杨's translation**: classical and vernacular paragraphs alternate, “柏杨曰” never appears, and “柏杨版” is only in the title. The translators are not named; it is a contemporary 文白对照 translation, in copyright. Internal reference only |
+| 柏杨's own 《白话资治通鉴》 | no | | no: 柏杨 d. 2008, in copyright until 2058 |
+| 吕思勉《白话本国史》 (1923), miraclestar43/bo-guan-yue-qu | yes | 1920s vernacular with many classical quotations and philological asides. The narrative parts read well (the 秦始皇 section scores 61); the philological parts are hard, so excerpts take narrative only. Years are counted before the Republic (前2124年 = 213 BC) and need a note | **yes**: 吕思勉 d. 1957, and a 1923 publication is also public domain in the US. This file is a 2023 calibre conversion with no source edition named. Its contents page is empty and most chapter headings are lost, so it cannot be ingested as is. A copy with its headings is needed (not on Wikisource) |
+| 朱自清《经典常谈·史记汉书第九》 (1942) | Wikisource rev 2565718 | yes: vivid; it retells 司马迁's life, the 李陵 affair and how the two histories differ (66.7) | public domain in China (d. 1948). In the US, a 1942 work was probably restored until 2037. Under the current rule (author d. by 1945, or published before 1931) not yet: **owner's decision** |
+| 蒋廷黻《中国近代史大纲》 (1938), HarborLibrary/Chinese-History PDF; Wikisource rev 2636855 | yes | yes: plain vernacular (PDF 56, Wikisource 70) | public domain in mainland China and Taiwan (d. 1965). The US is probably restored until 2033: same owner decision |
+| 吕思勉《吕著中国通史》 (1940) | Wikisource | not read this round | public domain in China. The US is probably restored until 2035: same decision |
+| 张荫麟《中国史纲》 (1941; covers up to the Eastern Han) | no text source found | not read | yes: d. 1942, public domain in China and not restored in the US. A text source is needed |
+| 梁启超《要籍解题及其读法》, including the 《史记》 essay (1925) | no text source found | not read | yes: d. 1929, published 1925 |
+
+The record rows for the catalogue files are updated in `config/book_candidates/catalog_check_20261109.tsv`. Google Drive's 「经典古籍」 folder is still not enumerated.
+
 ## Variety (owner, 2026-11-09)
 
 The plan for 11-09 to 11-15 has six Chinese pieces out of seven, several around 鲁迅 and late-Qing literature. That is fine for a transition. Later issues should bring in economics, business, science, political decisions and a wider range of people, in the column's aim of 读书明事理.
