@@ -285,7 +285,13 @@ def _ws_paragraphs(raw: str) -> list[str]:
     body = re.sub(r"<[^>]+>", "", body); body = _html.unescape(body).replace(" ", "")
     body = re.sub(r"\[\[(?:[^|\]]*\|)?([^\]]*)\]\]", r"\1", body)            # wiki links -> their text
     body = re.sub(r"'{2,}", "", body)                                          # wiki bold / italic marks
-    body = re.sub(r"-\{(?:[^{}|]*\|)?([^{}]*)\}-", r"\1", body)                  # language-conversion markup -{余}- -> 余
+    def _variant(m):                                    # language-conversion markup: -{余}- -> 余; -{zh-hans:甲; zh-hant:乙}- -> 甲
+        inner = m.group(1)
+        if re.search(r"zh-(hans|cn|hant|tw|hk)\s*:", inner):
+            parts = dict(re.findall(r"(zh-[a-z]+)\s*:\s*([^;]*)", inner))
+            return next((parts[k].strip() for k in ("zh-hans", "zh-cn", "zh-hant", "zh-tw", "zh-hk") if k in parts), inner)
+        return inner
+    body = re.sub(r"-\{(?:[^{}|]*\|)?([^{}]*)\}-", _variant, body)
     cjk = r"[一-鿿，。、；：！？“”‘’（）《》—…]"           # line breaks and spaces next to Chinese go; "Jo Shiki Rin" keeps its spaces
     paras = [re.sub(rf"\s+(?={cjk})|(?<={cjk})\s+", "", re.sub(r"[ \t]*\n[ \t]*", " ", x)).strip() for x in re.split(r"\n\s*\n", body)]
     return [x for x in paras if x and not x.startswith(("==", "[[Category", "Category:", "分类:"))]
