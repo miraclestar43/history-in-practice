@@ -147,6 +147,7 @@ def ingest(book_id: str, *, verified: str) -> dict:
     b = books.parse(path)
     if b["file_sha256"] != f["file_sha256"]:
         raise books.BookError(f"{book_id}: file changed since acquisition")
+    books.apply_headings(b, e.get("headings"))
     cjk = e.get("language", "zh") == "zh"
     e.update(file_sha256=b["file_sha256"], bytes=b["bytes"], format=b["format"], paragraphs=len(b["paragraphs"]),
              chapters_detected=len(b.get("chapters") or []))
@@ -169,10 +170,10 @@ def ingest(book_id: str, *, verified: str) -> dict:
         e.update(level="readable", reason=f"source status {m['status']}; units {len(us)}"); save(lib); return e
     e.update(level="usable", source_id=sid, text_sha256=m["text_sha256"], units=len(us), reason=None,
              unit_titles=[u["title"] for u in us][:60])
-    if cjk:                                              # 2026-11-08: classical / semi-classical bodies are not 原文精选 material
+    if cjk:                 # 2026-11-08/09: the score is a screening hint; only a reader's judgment sets e["register"]
         from .excerpt import register, VERNACULAR_MIN
         reg = register("".join(p["text"] for p in b["paragraphs"][:4000]))
-        e.update(register="vernacular" if reg["modern"] >= VERNACULAR_MIN else "classical", register_score=reg)
+        e.update(register_score=reg, register_hint="ok" if reg["modern"] >= VERNACULAR_MIN else "low: read before use")
     save(lib); return e
 
 

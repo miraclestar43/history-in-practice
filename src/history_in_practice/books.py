@@ -23,7 +23,7 @@ from xml.etree import ElementTree as ET
 from . import evidence
 from .textnorm import t2s
 
-LIMITS = {"max_files": 40, "max_file_bytes": 50 * 2**20, "max_total_bytes": 200 * 2**20,     # 2026-11-01: 40 files (book supply); byte caps unchanged
+LIMITS = {"max_files": 60, "max_file_bytes": 50 * 2**20, "max_total_bytes": 200 * 2**20,     # 2026-11-09: 60 files (theme variety); byte caps unchanged
           "zip_members": 3000, "zip_member_bytes": 30 * 2**20, "zip_total_bytes": 300 * 2**20, "zip_ratio": 200}
 UA = "history-in-practice-books/0.1 (+https://github.com/miraclestar43/history-in-practice)"
 BLOCK = {"p", "h1", "h2", "h3", "h4", "h5", "h6", "li", "blockquote", "dd", "dt", "pre", "td", "th", "div", "section", "tr", "table", "ul", "ol"}
@@ -513,6 +513,23 @@ def parse(path: Path) -> dict:
     data = Path(path).read_bytes(); suf = Path(path).suffix.lower()
     b = parse_epub(data) if suf == ".epub" else parse_pdf(data) if suf == ".pdf" else parse_txt(data)
     b["file_sha256"] = hashlib.sha256(data).hexdigest(); b["bytes"] = len(data)
+    return b
+
+
+def apply_headings(b: dict, headings: list[str] | None) -> dict:
+    """Chapter starts for a plain-text book whose headings CHAPTER_RE cannot see ('THE SOUTH-SEA BUBBLE.', 'LECTURE I.'):
+    the LAST paragraph whose whole text is a listed heading (earlier ones are table-of-contents lines). The list is
+    written by someone who read the book, in the body's exact spelling. Paragraphs are untouched; only b['chapters']
+    gains entries, so recorded paragraph numbers stay valid."""
+    if not headings or b.get("format") != "txt":
+        return b
+    ps = b["paragraphs"]
+    have = {c["first_para"] for c in b.get("chapters") or []}
+    last = {p["text"]: k for k, p in enumerate(ps) if p["text"] in set(headings)}
+    for t, k in last.items():
+        if k not in have:
+            b["chapters"].append({"title": t, "first_para": k})
+    b["chapters"].sort(key=lambda c: c["first_para"])
     return b
 
 
