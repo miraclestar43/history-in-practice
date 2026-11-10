@@ -81,28 +81,13 @@ The owner asked for human vernacular translations and modern explanations of 《
 
 The record rows for the catalogue files are updated in `config/book_candidates/catalog_check_20261109.tsv`. Google Drive's 「经典古籍」 folder is still not enumerated.
 
-## The human 《史记》 translation, the inbox and the download test (owner, 2026-11-09)
+## Private reading, the inbox and paired translations (owner, 2026-11-10)
 
-**Book.** The owner downloaded 《史记（精注全译）》（全12册） from a 城通网盘 page in jbiaojerry/ebook-treasure-chest `md/历史.md`; `~/Downloads/史记-原文-翻译.epub` is the only file there and stays where it is.
-- **Edition, from the cover image and the OPF:** [西汉]司马迁 著，石磊 主编，中国文史出版社, twelve volumes; EPUB metadata date 2021-09-13, Kindle ASIN B09G5TY32C. The file has no copyright page, so the ISBN, the print year and the translator of each chapter are recorded as not verified.
-- **Layout:** each chapter has an editor's preface, then 【原文】+【注释】 blocks, then one 【译文】 block (`div.yw`) holding the whole chapter's human translation.
-- **Reading view** (library `view`, `books.load`): only the 【译文】 paragraphs and the chapter title are kept; a spine file that opens on a label continues its chapter. The result is 130 chapters and 4,962 translation paragraphs, with no original text, note numbers or labels. 331 rare characters are pictures in the book and show as □; a passage containing one is refused until the character is read from the picture. The 12 paragraphs at the end of 《天官书》 that explain corrupt text sit under 【注释】 and are not kept.
-- **Library:** `BK-SHIJI-SL`, rights `in_copyright` (a 2021 translation), so the nightly supply never picks it. The credit line names both 司马迁 (原著) and the translation (石磊 主编，各篇译者书中未署名), in email and on the web.
-
-**Local sample:** 《袁盎晁错列传》, the whole chapter in the book's translation: 22 paragraphs, about 19 minutes in Chinese, 14 notes, two questions and a folded reference angle; checks pass.
-- Two small issues were fixed locally and recorded: an English note label, and a reflection fix that had pasted “同 Q3 修改后的 angle.zh 全文” in as text. The code now refuses such cross-references.
-- The sample is not admitted, scheduled or sent. Public use (web or email) needs permission and is a separate question.
-
-**Inbox** (`hip books inbox`, `hip books import-local --book ID --path FILE`): lists `~/Downloads`; unpacks .zip, .7z and .rar into `data/books/inbox/` with name and size checks, keeping the original; reads what each file says about itself; and marks files already acquired (same bytes) or with a possible duplicate title. Importing copies a file into the book store under the same caps. The only manual step is the download.
-
-**Download test (城通网盘):**
-- The page loads with curl only as a shell; the content comes from scripts.
-- Headless Chromium hangs on the page; its DevTools endpoint stopped answering.
-- Headless Firefox shows only the loading skeleton.
-- No attempt was made to get round the site's checks.
-- Downloads from this site are therefore done by hand in a normal browser; everything after the file reaches `~/Downloads` is automated.
-
-**Book list:** 1,748 entries parsed; 6 are already in the library. Ten candidates, and every book's five statuses (acquired / edition verified / text extractable / reading fit / public long excerpt), are in `config/book_candidates/intake_status_20261109.tsv`.
+- **Books the owner buys and downloads for personal reading** live on this Pi only. Their library entries are in `data/books/private_library.json` (outside Git, `"private": true`), next to the files. Private books never enter the nightly supply or admission. Public-use eligibility is a note on the entry, not a gate on local reading work. Reading pieces made from them stay in `data/excerpts/` and are not published to the site.
+- **Inbox:** `hip books inbox` lists `~/Downloads`, unpacks .zip/.7z/.rar with name and size checks (originals kept), reads what each file says about itself and flags duplicates. `hip books import-local --book ID --path FILE` copies a file into the book store. The only manual step is the download.
+- **Annotated editions:** a library `view` keeps only labelled sections, e.g. 【译文】 in an edition that prints 【原文】/【注释】/【译文】. Characters printed as pictures show as □, and a passage containing one is refused until it is read from the picture.
+- **Paired reading** (`hip excerpt-paired`): the author's original and an existing human translation, paragraph for paragraph from two editions. Both texts are taken verbatim; the model writes only the title, the reason to read, the guide, notes, review and questions. A mechanical check compares numbers (digits or spelled out), Latin-letter names and length ratios pair by pair. Review fixes never touch the human translation. Output is a local bilingual page (`paired.html`, 对照 / 中文 / English).
+- **Download site:** the 城通网盘 pages hang a headless browser on this Pi; nothing was done to get round them. Downloads are done by hand in a normal browser.
 
 ## Variety (owner, 2026-11-09)
 

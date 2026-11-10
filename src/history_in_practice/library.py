@@ -34,14 +34,29 @@ MIN_PARAS, MIN_CJK_SHARE = 40, 0.6
 PAUSED_PEOPLE = re.compile(r"胡適|胡适|吳起|吴起")
 
 
+def private_path() -> Path:
+    """Books the owner bought and downloaded for personal reading (2026-11-10): their entries live on this Pi only,
+    outside Git, next to the files. Same fields as the public library, plus "private": true."""
+    return data_dir() / "books" / "private_library.json"
+
+
 def load() -> dict:
-    return json.loads(LIB.read_text(encoding="utf-8")) if LIB.exists() else {"schema": "library/1", "books": []}
+    lib = json.loads(LIB.read_text(encoding="utf-8")) if LIB.exists() else {"schema": "library/1", "books": []}
+    pp = private_path()
+    if pp.exists():
+        lib["books"] += [dict(b, private=True) for b in json.loads(pp.read_text(encoding="utf-8")).get("books", [])]
+    return lib
 
 
 def save(lib: dict):
     LIB.parent.mkdir(parents=True, exist_ok=True)
     lib["books"].sort(key=lambda b: (LEVELS.index(b.get("level", "catalogued")), b["book_id"]))
-    LIB.write_text(json.dumps(lib, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    pub = dict(lib, books=[b for b in lib["books"] if not b.get("private")])
+    priv = [b for b in lib["books"] if b.get("private")]
+    LIB.write_text(json.dumps(pub, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    if priv or private_path().exists():
+        private_path().parent.mkdir(parents=True, exist_ok=True)
+        private_path().write_text(json.dumps({"schema": "library/1", "books": priv}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
 
 def get(lib: dict, book_id: str) -> dict:
@@ -375,7 +390,7 @@ def entries(category: str | None = None) -> list[dict]:
     """Supply entries for every unit of every usable book (optionally for one rotation category)."""
     out = []
     for e in load()["books"]:
-        if e.get("level") != "usable" or e.get("exclude") or (category and category not in e.get("categories", [])):
+        if e.get("level") != "usable" or e.get("exclude") or e.get("private") or (category and category not in e.get("categories", [])):
             continue
         p = data_dir() / "books" / "units" / f"{e['book_id']}.json"
         if not p.exists():

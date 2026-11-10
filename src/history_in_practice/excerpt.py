@@ -308,6 +308,8 @@ def apply_fix(obj: dict, i: dict) -> bool:
     if m and (obj.get(m.group(1)) or {}).get(m.group(2)) is not None:
         obj[m.group(1)][m.group(2)] = new; i["_applied"] = True; return True
     m = re.fullmatch(r"tr\.P(\d+)", w)
+    if m and (obj.get("translation") or {}).get("human"):
+        return False                                    # a published human translation is never rewritten (2026-11-10)
     if m:
         x = next((x for x in obj["passage"] if x["p"] == int(m.group(1))), None)
         if x:
@@ -384,6 +386,134 @@ def assemble(e: dict, b: dict, sel: dict, guide: dict, passage: list[dict], edit
             "passage": passage, "names": guide.get("names") or [], "notes": guide.get("notes") or [],
             "after": guide.get("after"), "continue": guide.get("continue"),
             "selection": {k: sel.get(k) for k in ("start", "end", "omit", "why", "standalone", "context_needed", "omit_check")}}
+
+
+# ------------------------------------------------------------------ paired reading: author's original + published human translation (2026-11-10)
+
+def run_paired(src_id: str, tr_id: str, src_range: tuple[int, int], tr_range: tuple[int, int], edition_id: str, category: str, *,
+               call=None, out_root: Path | None = None) -> dict:
+    """A private bilingual reading piece: the author's original (src) and an existing human translation (tr) of the same
+    passage, paragraph for paragraph, both taken verbatim from the two editions. The editor fixes the range; the
+    program checks the pairing; the model writes title, why-read, guide, notes, review and questions, never the text."""
+    es, bs = book(src_id); et, bt = book(tr_id)
+    a, z = src_range; ta, tz = tr_range
+    if z - a != tz - ta:
+        raise ValueError("paired ranges must have the same number of paragraphs (one-to-one)")
+    src_lang = "zh" if es.get("language", "zh") == "zh" else "en"; tr_lang = "en" if src_lang == "zh" else "zh"
+    out = Path(out_root or data_dir() / "excerpts") / edition_id; out.mkdir(parents=True, exist_ok=True)
+    caller = editor.Caller(out, edition_id, call)
+    passage = [{"p": k, src_lang: bs["paragraphs"][k]["text"], tr_lang: bt["paragraphs"][k - a + ta]["text"], "tr_p": k - a + ta, "gap_before": False}
+               for k in range(a, z)]
+    pairing = pair_check(passage, src_lang, tr_lang)
+    meta = (f"【书目】{es.get('author')}《{es['title']}》（原文，{es.get('edition')}）；中译：{et.get('author')}《{et['title']}》，"
+            f"{et.get('translator')} 译，{et.get('edition')}。本期是给主人私人阅读的双语成品：英文是作者原文，中文是已出版的人工译本，"
+            f"两者都按原书逐段照录，不得改写、不得重译；如发现某段中英不对应，只报告，不改文字。注释的中文入口词请用中译本里的原词。")
+    tr_text = "\n\n".join(f"[P{x['p']}] {x[tr_lang]}" for x in passage)
+    sel = caller("select", f"{load_prompt('excerpt_select')}\n\n{meta}\n\n【范围已由编辑定好：第 P{a}–P{z - 1} 段，请完整保留（start={a}, end={z - 1}, omit=[]），"
+                           f"只需给出标题、选段理由（为什么值得主人读：它帮人理解什么经济、商业或个人选择）、能否独立成篇、需要的背景】\n{numbered(bs, a, z)}",
+                 TIMEOUT["select"], "\n\n[Reply with one valid JSON object only.]", validate=_schema("select"))
+    if sel is None or "skip" in sel:
+        return {"outcome": "failed", "reason": (sel or {}).get("skip") or "selection call failed"}
+    sel.update(start=a, end=z - 1, omit=[], range_fixed_by="editor (owner's request 2026-11-10)")
+    ptext = "\n\n".join(f"[P{x['p']}] {x[src_lang]}" for x in passage)
+    guide = caller("guide", f"{load_prompt('excerpt_guide')}\n\n{meta}\n\n【前文（读者没有读过）】\n{_context(bs, a)}\n\n"
+                            f"【选段】标题：{json.dumps(sel['title'], ensure_ascii=False)}\n{ptext}\n\n【同一选段的已出版中译（逐段对应）】\n{tr_text}",
+                   TIMEOUT["guide"], "\n\n[Reply with one valid JSON object only.]", validate=_schema("guide"))
+    if guide is None:
+        return {"outcome": "failed", "reason": "guide call failed"}
+    obj = assemble(es, bs, sel, guide, passage, edition_id, category)
+    obj["private"] = True
+    obj["translation"] = {"lang": tr_lang, "human": True, "label": {"zh": "人工译文", "en": "published translation"},
+                          "by": f"{et.get('translator')} 译 · {et.get('edition')}", "book_id": tr_id, "file_sha256": et.get("file_sha256"),
+                          "paragraphs": [ta, tz - 1]}
+    obj["work"]["translator"] = et.get("translator"); obj["work"]["translator_en"] = f"Chinese translation by {et.get('translator')}"
+    obj["work"].update(paired_labels(es, bs, a, et, bt, ta))
+    obj["pairing"] = pairing
+    obj["review"] = []
+    for rnd in (1, 2, 3):
+        rv = caller(f"review_r{rnd}", f"{load_prompt('excerpt_review')}\n\n{meta}\n\n【前文】\n{_context(bs, a)}\n\n"
+                                      f"【本期】\n{json.dumps(view(obj), ensure_ascii=False, indent=1)}",
+                    TIMEOUT["review"], "\n\n[Reply with one valid JSON object only.]", validate=_schema("review"))
+        if rv is None:
+            obj["review"].append({"round": rnd, "failed": True}); break
+        fixes = [i for i in rv["issues"] if i.get("severity") == "fix"]
+        applied = [apply_fix(obj, i) for i in fixes] if rnd < 3 else []
+        obj["review"].append({"round": rnd, "reading": rv.get("reading"), "issues": rv["issues"], "applied": applied})
+        if not any(applied):
+            break
+    last = obj["review"][-1].get("issues") or []
+    obj["open_issues"] = [i for i in last if i.get("severity") == "fix" and not i.get("_applied") and not str(i.get("where", "")).startswith("tr.P")]
+    obj["translation_reports"] = [i for r in obj["review"] for i in (r.get("issues") or []) if str(i.get("where", "")).startswith("tr.P")]
+    obj["calls"] = [{k: m.get(k) for k in ("step", "attempt", "wall_s", "json_ok", "schema_ok", "prompts")} | {"model": (m.get("meta") or {}).get("model")}
+                    for m in caller.metrics]
+    if not obj["open_issues"] and reflect(obj, bs, call=call, out=out) is None:
+        obj["open_issues"] = [{"id": "R0", "severity": "fix", "problem": "reflect step failed"}]
+    add_display_parts(obj)
+    cache = data_dir() / "source_cache" / f"{es.get('source_id')}.txt"
+    obj["checks"] = checks(obj, bs, evidence.normalise(cache.read_text(encoding="utf-8"), src_lang == "zh") if cache.exists() else None, src_lang == "zh")
+    obj["checks"] += [f"P{x['p']}: displayed translation differs from paragraph {x['tr_p']} of the translation"
+                      for x in passage if x[tr_lang] != bt["paragraphs"][x["tr_p"]]["text"]]
+    obj["checks"] += [f"P{d['p']}: pairing doubtful ({d['why']})" for d in pairing["doubtful"]]
+    render.finalize(obj)
+    (out / "excerpt.json").write_text(json.dumps(obj, ensure_ascii=False, indent=1), encoding="utf-8")
+    return obj
+
+
+def paired_labels(es: dict, bs: dict, a: int, et: dict, bt: dict, ta: int) -> dict:
+    """Book and chapter as each language's reader knows them: the Chinese edition's own title and chapter heading for
+    the Chinese side, the original's for the English side ('第1章 风险投资' / 'Chapter 1: Venture')."""
+    zh_ch = chapter_heading(bt, ta) if bt.get("chapters") else ""
+    en_ch = chapter_heading(bs, a) if bs.get("chapters") else ""
+    m = re.match(r"第(\d+)章", zh_ch or "")
+    en_ch = ", ".join(dict.fromkeys(x.strip() for x in (en_ch or "").split(",") if x.strip()))     # 'VENTURE, VENTURE' -> 'VENTURE'
+    en = en_ch.title() if en_ch.isupper() else en_ch
+    return {"title_zh": et["title"] if et.get("language", "zh") == "zh" else es.get("title_zh"),
+            "chapter_zh": zh_ch, "chapter_en": (f"Chapter {m.group(1)}: {en}" if m and en else en)}
+
+
+ENDNOTE = re.compile(r"\[\d{1,4}\]")
+_UNITS = {w: i for i, w in enumerate("zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen "
+                                     "seventeen eighteen nineteen".split())} | {"twenty": 20, "thirty": 30, "forty": 40, "fifty": 50,
+                                     "sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90, "a": 1}
+
+
+def spelled_numbers(text: str) -> set[str]:
+    """'three thousand' -> '3000', 'twenty-five' -> '25', 'two hundred' -> '200' (enough to pair digits in a translation)."""
+    out = set()
+    for m in re.finditer(r"\b((?:[a-z]+[- ])*?[a-z]+)\s+(hundred|thousand|million)\b|\b([a-z]+)-([a-z]+)\b|\b([a-z]+)\b", text.lower()):
+        if m.group(2):
+            words = re.split(r"[- ]", m.group(1)); n = sum(_UNITS.get(w, 0) for w in words[-2:])
+            if n: out.add(str(n * {"hundred": 100, "thousand": 1000, "million": 1000000}[m.group(2)]))
+        elif m.group(3) and m.group(3) in _UNITS and m.group(4) in _UNITS:
+            out.add(str(_UNITS[m.group(3)] + _UNITS[m.group(4)]))
+        elif m.group(5) in _UNITS and m.group(5) != "a":
+            out.add(str(_UNITS[m.group(5)]))
+    return out
+
+
+def pair_check(passage: list[dict], src: str, tr: str) -> dict:
+    """Mechanical pairing check: numbers written as digits in the translation must be in the original (as digits, or
+    written out there), names given in Latin letters in the translation must be in the original, and the length ratio
+    must stay near the passage's median. Returns per-paragraph facts and the doubtful pairs."""
+    rows, doubtful = [], []
+    ratios = []
+    for x in passage:
+        o, t = x[src], ENDNOTE.sub("", x[tr])
+        ratios.append(len(o) / max(1, len(t)))
+    med = sorted(ratios)[len(ratios) // 2] if ratios else 1
+    for x, r in zip(passage, ratios):
+        o, t = x[src], ENDNOTE.sub("", x[tr])
+        latin = [w for w in re.findall(r"[（(]([A-Za-z][A-Za-z .'’-]+)[）)]", t) if w.split()[-1] not in o]
+        nums_t = {n.replace(",", "") for n in re.findall(r"\d[\d,]*", t)}; nums_o = {n.replace(",", "") for n in re.findall(r"\d[\d,]*", o)} | spelled_numbers(o)
+        big = sorted(n for n in nums_t - nums_o if len(n) >= 3 and not (len(n) == 4 and n.startswith(("1", "2")) and n in o))
+        row = {"p": x["p"], "tr_p": x["tr_p"], "ratio": round(r, 2), "latin_missing": latin, "numbers_only_in_translation": big}
+        rows.append(row)
+        why = []
+        if not (0.6 * med <= r <= 1.6 * med): why.append(f"length ratio {r:.2f} vs median {med:.2f}")
+        if latin: why.append(f"names not in the original: {latin}")
+        if big: why.append(f"numbers not in the original: {big}")
+        if why: doubtful.append((x, "; ".join(why)))
+    return {"median_ratio": round(med, 2), "rows": rows, "doubtful": [{"p": x["p"], "why": w} for x, w in doubtful]}
 
 
 # ------------------------------------------------------------------ after the text: 读后想一想 + 一个参考角度 (2026-11-02)
@@ -478,6 +608,8 @@ def record_problems(obj: dict, approval: str | None = None) -> list[str]:
         p.append("the library's book file is not the edition this excerpt was taken from")
     if e.get("register") == "classical":
         p.append("this edition was read and confirmed classical / semi-classical (editor-in-chief 2026-11-08): not a 原文精选 body")
+    if e.get("private") or obj.get("private"):
+        p.append("private reading piece from the owner's own books (2026-11-10): kept on this Pi, never admitted to the column")
     cjk = e.get("language", "zh") == "zh"
     cache = data_dir() / "source_cache" / f"{e.get('source_id')}.txt"
     p += checks(obj, b, evidence.normalise(cache.read_text(encoding="utf-8"), cjk) if cache.exists() else None, cjk)
@@ -582,7 +714,7 @@ def units_open(category: str | None = None, mix: dict | None = None) -> list[dic
     out = []
     for e in lib_load()["books"]:
         if e.get("level") != "usable" or e.get("exclude") or e.get("excerpt") is False or e.get("register") == "classical" \
-                or e.get("rights") not in ("public_domain", "licensed"):
+                or e.get("private") or e.get("rights") not in ("public_domain", "licensed"):
             continue
         if category and category not in (e.get("categories") or []):
             continue

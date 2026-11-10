@@ -89,3 +89,44 @@ class Credit(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PrivateAndPaired(unittest.TestCase):
+    def test_private_entries_never_reach_the_public_library_file(self):
+        import os
+        from unittest import mock
+        from history_in_practice import library
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d); pub = d / "library.json"; pub.write_text(json.dumps({"schema": "library/1", "books": [{"book_id": "BK-PUB", "title": "p", "level": "usable"}]}))
+            with mock.patch.object(library, "LIB", pub), mock.patch.dict(os.environ, {"HIP_DATA_DIR": str(d / "data")}):
+                lib = library.load()
+                lib["books"].append({"book_id": "BK-MINE", "title": "mine", "level": "usable", "private": True})
+                library.save(lib)
+                self.assertNotIn("BK-MINE", pub.read_text())
+                self.assertIn("BK-MINE", library.private_path().read_text())
+                self.assertTrue(library.get(library.load(), "BK-MINE")["private"])
+                self.assertEqual(library.entries(), [])                       # private books never enter the supply
+
+    def test_pair_check_reads_spelled_numbers_and_flags_a_shifted_pair(self):
+        from history_in_practice import excerpt
+        good = [{"p": 1, "tr_p": 7, "en": "They sold three thousand pounds of butter and raised sixty pounds in 1620.", "zh": "他们卖掉了3000磅黄油，筹集了60英镑[25]。1620年。"},
+                {"p": 2, "tr_p": 8, "en": "John Carver (the governor) wrote to Thomas Weston at length about the terms.", "zh": "约翰·卡弗（John Carver）给托马斯·韦斯顿写了长信。"}]
+        self.assertEqual(excerpt.pair_check(good, "en", "zh")["doubtful"], [])
+        shifted = [dict(good[0], zh=good[1]["zh"]), dict(good[1], zh=good[0]["zh"])]
+        self.assertTrue(excerpt.pair_check(shifted, "en", "zh")["doubtful"])
+
+    def test_review_fix_never_rewrites_a_human_translation(self):
+        from history_in_practice import excerpt
+        obj = {"work": {"original_language": "en"}, "translation": {"human": True}, "passage": [{"p": 3, "en": "x", "zh": "原译"}], "title": {}, "notes": []}
+        self.assertFalse(excerpt.apply_fix(obj, {"where": "tr.P3", "proposed": "改写"}))
+        self.assertEqual(obj["passage"][0]["zh"], "原译")
+        self.assertFalse(excerpt.apply_fix(obj, {"where": "intro.zh", "proposed": "同 Q3 修改后的全文"}))
+
+    def test_paired_page_shows_both_texts_and_hides_endnote_marks(self):
+        obj = {"title": {"zh": "标题", "en": "Title"}, "dek": {"zh": "提要", "en": "dek"}, "intro": {"zh": "导读", "en": "intro"},
+               "work": {"author": "A. Author", "title": "Book", "original_language": "en", "translator": "某某", "edition": "Ed."},
+               "translation": {"lang": "zh", "human": True, "label": {"zh": "人工译文", "en": "published translation"}, "by": "某某 译", "paragraphs": [7, 7]},
+               "passage": [{"p": 1, "en": "The _ship_ sailed.", "zh": "船起航了[24]。", "gap_before": False}], "notes": [], "selection": {"why": "值得读"}}
+        h = render.paired_html(obj)
+        self.assertIn("船起航了。", h); self.assertNotIn("[24]", h); self.assertIn("<i>ship</i>", h)
+        self.assertIn("中文为人工译文（某某 译）", h); self.assertNotIn("AI", h); self.assertNotIn("starhub", h)

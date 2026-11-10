@@ -840,6 +840,19 @@ def cmd_excerpt(a):
     return 0 if o.get("kind") == "excerpt" and not o.get("checks") else 2
 
 
+def cmd_excerpt_paired(a):
+    """Private bilingual reading (2026-11-10): author's original + a published human translation, paragraph for paragraph
+    from two editions; writes data/excerpts/<id>/excerpt.json and paired.html (local only, never admitted)."""
+    from . import excerpt, render
+    n = a.src_end - a.src_start + 1
+    o = excerpt.run_paired(a.src, a.tr, (a.src_start, a.src_end + 1), (a.tr_start, a.tr_start + n), a.id, a.category)
+    if o.get("kind") == "excerpt":
+        (data_dir() / "excerpts" / a.id / "paired.html").write_text(render.paired_html(o), encoding="utf-8")
+    print(json.dumps({k: o.get(k) for k in ("outcome", "reason", "title", "checks", "open_issues", "translation_reports", "reading_minutes")},
+                     ensure_ascii=False, indent=1))
+    return 0 if o.get("kind") == "excerpt" and not o.get("checks") else 2
+
+
 def cmd_excerpt_admit(a):
     from . import excerpt
     d = db(); out = [excerpt.readmit(d, Path(p), a.readmit) if a.readmit else excerpt.admit(d, Path(p)) for p in a.paths]
@@ -1033,6 +1046,10 @@ def main(argv=None):
     p = sp.add_parser("plan"); p.add_argument("-n", type=int, default=7); p.add_argument("--commit", action="store_true")
     p.add_argument("--pin", action="append", metavar="EDITION_ID", help="owner-authorized: this edition at the next position (repeat for the following ones)")
     p.add_argument("--pin-reason", default=""); p.set_defaults(f=cmd_plan)
+    p = sp.add_parser("excerpt-paired", help="private bilingual reading: original + published human translation (local only)")
+    p.add_argument("--src", required=True); p.add_argument("--tr", required=True); p.add_argument("--src-start", type=int, required=True)
+    p.add_argument("--src-end", type=int, required=True, help="last paragraph (inclusive)"); p.add_argument("--tr-start", type=int, required=True)
+    p.add_argument("--id", required=True); p.add_argument("--category", default="world"); p.set_defaults(f=cmd_excerpt_paired)
     p = sp.add_parser("excerpt-admit", help="admit 原文精选 objects (record re-verified on this machine) into inventory")
     p.add_argument("paths", nargs="+"); p.add_argument("--readmit", metavar="REASON", help="re-admit an edited, still unscheduled excerpt")
     p.set_defaults(f=cmd_excerpt_admit)
