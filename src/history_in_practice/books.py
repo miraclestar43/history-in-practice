@@ -95,9 +95,10 @@ def import_catalogue(db, items: list[dict], source: str) -> dict:
 def acquire(url: str, dest_dir: Path, manifest_path: Path, meta: dict, *, opener=None) -> dict:
     """Download one file with the pilot caps; records size, SHA-256 and provenance in a local manifest."""
     man = json.loads(manifest_path.read_text()) if manifest_path.exists() else {"files": []}
-    if len(man["files"]) >= LIMITS["max_files"]:
+    fetched = [f for f in man["files"] if not str(f.get("acquired_by", "")).startswith("local import")]   # the owner's own books do not count
+    if len(fetched) >= LIMITS["max_files"]:
         raise BookError(f"pilot limit: {LIMITS['max_files']} files already acquired")
-    used = sum(f["bytes"] for f in man["files"]); cap = min(LIMITS["max_file_bytes"], LIMITS["max_total_bytes"] - used)
+    used = sum(f["bytes"] for f in fetched); cap = min(LIMITS["max_file_bytes"], LIMITS["max_total_bytes"] - used)
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     with (opener or urllib.request.urlopen)(req, timeout=60) as r:
         ctype = r.headers.get("Content-Type", ""); body = r.read(cap + 1)
@@ -691,8 +692,6 @@ def import_local(path: Path, dest_dir: Path, manifest_path: Path, meta: dict) ->
     other = next((f for f in man["files"] if f.get("file_sha256") == sha and f["book_id"] != meta["book_id"]), None)
     if other:
         raise BookError(f"the same file is already acquired as {other['book_id']}")
-    if meta["book_id"] not in {f["book_id"] for f in man["files"]} and len(man["files"]) >= LIMITS["max_files"]:
-        raise BookError(f"pilot limit: {LIMITS['max_files']} files already acquired")
     if len(data) > LIMITS["local_file_bytes"]:            # the owner's own files (2026-11-10): image-heavy multi-volume EPUBs run 50-100 MB
         raise BookError("file exceeds the per-file cap for local imports")
     fmt = Path(path).suffix.lower().lstrip("."); dest_dir.mkdir(parents=True, exist_ok=True)
