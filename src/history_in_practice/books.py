@@ -23,7 +23,7 @@ from xml.etree import ElementTree as ET
 from . import evidence
 from .textnorm import t2s
 
-LIMITS = {"max_files": 60, "max_file_bytes": 50 * 2**20, "max_total_bytes": 200 * 2**20,     # 2026-11-09: 60 files (theme variety); byte caps unchanged
+LIMITS = {"max_files": 60, "max_file_bytes": 50 * 2**20, "local_file_bytes": 200 * 2**20, "max_total_bytes": 200 * 2**20,     # 2026-11-09: 60 files (theme variety); byte caps unchanged
           "zip_members": 3000, "zip_member_bytes": 30 * 2**20, "zip_total_bytes": 300 * 2**20, "zip_ratio": 200}
 UA = "history-in-practice-books/0.1 (+https://github.com/miraclestar43/history-in-practice)"
 BLOCK = {"p", "h1", "h2", "h3", "h4", "h5", "h6", "li", "blockquote", "dd", "dt", "pre", "td", "th", "div", "section", "tr", "table", "ul", "ol"}
@@ -693,8 +693,8 @@ def import_local(path: Path, dest_dir: Path, manifest_path: Path, meta: dict) ->
         raise BookError(f"the same file is already acquired as {other['book_id']}")
     if meta["book_id"] not in {f["book_id"] for f in man["files"]} and len(man["files"]) >= LIMITS["max_files"]:
         raise BookError(f"pilot limit: {LIMITS['max_files']} files already acquired")
-    if len(data) > LIMITS["max_file_bytes"]:
-        raise BookError("file exceeds the per-file cap")
+    if len(data) > LIMITS["local_file_bytes"]:            # the owner's own files (2026-11-10): image-heavy multi-volume EPUBs run 50-100 MB
+        raise BookError("file exceeds the per-file cap for local imports")
     fmt = Path(path).suffix.lower().lstrip("."); dest_dir.mkdir(parents=True, exist_ok=True)
     p = dest_dir / f"{meta['book_id']}.{fmt}"; p.write_bytes(data)
     rec = dict(meta, format=fmt, bytes=len(data), file_sha256=sha, original_name=Path(path).name, acquired_at=time.strftime("%Y-%m-%dT%H:%M:%S%z"),
