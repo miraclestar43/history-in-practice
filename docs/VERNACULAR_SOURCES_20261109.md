@@ -70,7 +70,7 @@ The owner asked for human vernacular translations and modern explanations of 《
 | 王立群读《史记》 | no | not read (no file) | no: the author was born in 1945; in copyright |
 | Other complete vernacular 《史记》 (杨燕起 et al., 《白话史记》; the Taiwan 《白话史记》) | no | not read | no: contemporary, in copyright |
 | A public-domain human vernacular translation of 《史记》 | none found | | |
-| HarborLibrary/Chinese-History 「资治通鉴 (柏杨白话版)」 EPUB and MOBI | yes | the translation is readable (58.5) | no. **It is not 柏杨's translation**: classical and vernacular paragraphs alternate, “柏杨曰” never appears, and “柏杨版” is only in the title. The translators are not named; it is a contemporary 文白对照 translation, in copyright. Internal reference only |
+| HarborLibrary/Chinese-History 「资治通鉴 (柏杨白话版)」 EPUB and MOBI | yes | the translation is readable (58.5) | no: a contemporary translation, in copyright. **Translator not verified.** Classical and vernacular paragraphs alternate. The file has no copyright page and no translator credit (OPF publisher “babyshan”, source “Freesource”), and “柏杨版” is only in the title. It has not yet been compared with 柏杨's own text, so it cannot be called 柏杨's translation or not. The list's 《柏杨白话版资治通鉴（全72册）》 is to be downloaded and compared paragraph by paragraph. Internal reference only |
 | 柏杨's own 《白话资治通鉴》 | no | | no: 柏杨 d. 2008, in copyright until 2058 |
 | 吕思勉《白话本国史》 (1923), miraclestar43/bo-guan-yue-qu | yes | 1920s vernacular with many classical quotations and philological asides. The narrative parts read well (the 秦始皇 section scores 61); the philological parts are hard, so excerpts take narrative only. Years are counted before the Republic (前2124年 = 213 BC) and need a note | **yes**: 吕思勉 d. 1957, and a 1923 publication is also public domain in the US. This file is a 2023 calibre conversion with no source edition named. Its contents page is empty and most chapter headings are lost, so it cannot be ingested as is. A copy with its headings is needed (not on Wikisource) |
 | 朱自清《经典常谈·史记汉书第九》 (1942) | Wikisource rev 2565718 | yes: vivid; it retells 司马迁's life, the 李陵 affair and how the two histories differ (66.7) | public domain in China (d. 1948). In the US, a 1942 work was probably restored until 2037. Under the current rule (author d. by 1945, or published before 1931) not yet: **owner's decision** |
@@ -80,6 +80,14 @@ The owner asked for human vernacular translations and modern explanations of 《
 | 梁启超《要籍解题及其读法》, including the 《史记》 essay (1925) | no text source found | not read | yes: d. 1929, published 1925 |
 
 The record rows for the catalogue files are updated in `config/book_candidates/catalog_check_20261109.tsv`. Google Drive's 「经典古籍」 folder is still not enumerated.
+
+## Private reading, the inbox and paired translations (owner, 2026-11-10)
+
+- **Books the owner buys and downloads for personal reading** live on this Pi only. Their library entries are in `data/books/private_library.json` (outside Git, `"private": true`), next to the files. Private books never enter the nightly supply or admission. Public-use eligibility is a note on the entry, not a gate on local reading work. Reading pieces made from them stay in `data/excerpts/` and are not published to the site.
+- **Inbox:** `hip books inbox` lists `~/Downloads`, unpacks .zip/.7z/.rar with name and size checks (originals kept), reads what each file says about itself and flags duplicates. `hip books import-local --book ID --path FILE` copies a file into the book store. The only manual step is the download.
+- **Annotated editions:** a library `view` keeps only labelled sections, e.g. 【译文】 in an edition that prints 【原文】/【注释】/【译文】. Characters printed as pictures show as □, and a passage containing one is refused until it is read from the picture.
+- **Paired reading** (`hip excerpt-paired`): the author's original and an existing human translation, paragraph for paragraph from two editions. Both texts are taken verbatim; the model writes only the title, the reason to read, the guide, notes, review and questions. A mechanical check compares numbers (digits or spelled out), Latin-letter names and length ratios pair by pair. Review fixes never touch the human translation. Output is a local bilingual page (`paired.html`, 对照 / 中文 / English).
+- **Download site:** the 城通网盘 pages hang a headless browser on this Pi; nothing was done to get round them. Downloads are done by hand in a normal browser.
 
 ## Variety (owner, 2026-11-09)
 

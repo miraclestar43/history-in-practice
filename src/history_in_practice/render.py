@@ -196,11 +196,20 @@ XL = {"zh": dict(think="读后想一想", angle="查看参考角度", editors="�
 
 def byline(obj, lang) -> str:
     W = obj["work"]; src = W["original_language"]
+    if (obj.get("translation") or {}).get("human"):        # paired reading: the other language is a published human translation
+        t = W.get("translator") or ""
+        if lang == "zh":
+            return (f"{W.get('author_zh') or W['author']} 著 ·《{W.get('title_zh') or W['title']}》" + (f" {W['chapter_zh']}" if W.get("chapter_zh") else "")
+                    + f" · 原文{'中文' if src == 'zh' else '英文'} · 中文为人工译文（{t} 译）")
+        return (f"{W['author']}, {W.get('title_en') or W['title']}" + (f", {W['chapter_en']}" if W.get("chapter_en") else "")
+                + f" · original in {'Chinese' if src == 'zh' else 'English'} · Chinese: published translation by {t}")
     if lang == "zh":
         return (f"{W.get('author_zh') or W['author']} {(W.get('role') or {}).get('zh') or '著'} ·《{W.get('title_zh') or W['title']}》" + (f"（{W['title_zh_note']}）" if W.get("title_zh_note") else "")
-                + ((("·" if W["chapter_zh"].startswith("《") else " ") + W["chapter_zh"]) if W.get("chapter_zh") else "") + f" · 原文{'中文' if src == 'zh' else '英文'}"
+                + ((("·" if W["chapter_zh"].startswith("《") else " ") + W["chapter_zh"]) if W.get("chapter_zh") else "")
+                + (f" · 白话译文：{W['translator']}" if W.get("translator") else "") + f" · 原文{'中文' if src == 'zh' else '英文'}"
                 + ("" if src == "zh" else " · 下文中文为 AI 译文"))
     return (f"{W['author']}{(' (' + W['role']['en'] + ')') if (W.get('role') or {}).get('en') else ''}, {W.get('title_en') or W['title']}" + (f", {W['chapter_en']}" if W.get("chapter_en") else "")
+            + (f" · {W.get('translator_en') or W['translator']}" if W.get("translator") else "")
             + f" · original in {'Chinese' if src == 'zh' else 'English'}" + ("" if src == "en" else " · the English below is an AI translation"))
 
 
@@ -223,7 +232,7 @@ def excerpt_block(obj, lang, base, with_buttons=False) -> str:
     out.append(f'<p class="hip-muted" style="font-size:17px;line-height:1.75;color:#55524d;margin:0 0 18px;">{e(obj["dek"][lang])}</p>')
     out.append(f'<h2 style="{H2}">{X["intro"]}</h2>')
     out += [f'<p style="{BODY}">{e(t)}</p>' for t in obj["intro"][lang].split("\n") if t.strip()]
-    label = X["orig"] if lang == src else X["ai"]
+    label = X["orig"] if lang == src else ((obj.get("translation") or {}).get("label") or {}).get(lang) or X["ai"]
     out.append(f'<h2 style="{H2}">{X["text"]} <span style="font-size:13px;border:1px solid {ACCENT};border-radius:10px;padding:1px 8px;vertical-align:2px;">{label}</span></h2>')
     marks = {}
     for i, n in enumerate(obj.get("notes") or []):
@@ -495,3 +504,76 @@ def build(objs, out: Path, base):
     (out/"site/data/history/search_text.json").write_text(json.dumps(text, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     tpl = Path(__file__).with_name("templates")/"history_index.html"
     (out/"site/history/index.html").write_text(tpl.read_text(encoding="utf-8"), encoding="utf-8")
+
+
+# ------------------------------------------------------------------ private bilingual reading page (2026-11-10)
+
+_ENDNOTE = re.compile(r"\[\d{1,4}\]")
+
+
+def paired_html(obj) -> str:
+    """One self-contained page for a private paired reading (author's original + published human translation): the two
+    texts paragraph by paragraph, with 对照 / 中文 / English views; guide, notes, questions and a folded reference angle.
+    Local file only: no site links, no external resources. Endnote markers of the translation ([24]) are hidden in
+    display; the stored text keeps them."""
+    W, T = obj["work"], obj["translation"]; src = W["original_language"]; tr = T["lang"]
+    def para(t, lang):
+        return italics(e(t)) if lang == "en" else e(_ENDNOTE.sub("", t))
+    marks = {}
+    for i, n in enumerate(obj.get("notes") or []):
+        marks.setdefault(n["para"], []).append(i + 1)
+    css = """:root{--bg:#faf8f4;--fg:#1f1d1a;--mut:#6f6a62;--acc:#7a5c3e;--line:#e6e0d6;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#181715;--fg:#ece8e1;--mut:#a39d93;--acc:#d2b48c;--line:#33302b;--card:#211f1c}}
+body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.85 Georgia,"Songti SC","Noto Serif CJK SC",serif}
+main{max-width:1060px;margin:0 auto;padding:24px 16px 80px}h1{font-size:30px;line-height:1.3;margin:4px 0}h1 .en{display:block;font-size:20px;color:var(--mut);font-weight:normal}
+.by{color:var(--mut);font-size:15px;margin:6px 0}.dek{font-size:18px;color:var(--mut)}h2{color:var(--acc);font-size:20px;margin:34px 0 10px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.tabs{position:sticky;top:0;background:var(--bg);padding:8px 0;z-index:2;border-bottom:1px solid var(--line)}.tabs button{font:inherit;font-size:15px;padding:4px 14px;margin-right:6px;border:1px solid var(--acc);background:none;color:var(--acc);border-radius:14px;cursor:pointer}
+.tabs button[aria-pressed=true]{background:var(--acc);color:var(--bg)}.pair{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.pair p{margin:0}.pair .en{font-size:17px}.pair .zh{font-size:18px}sup{color:var(--acc);font-size:12px}
+body.v-zh .pair .en,body.v-en .pair .zh{display:none}body.v-zh .pair,body.v-en .pair{grid-template-columns:1fr}
+.why{background:var(--card);border-left:3px solid var(--acc);padding:10px 16px}.en2{color:var(--mut);font-size:16px}
+details{background:var(--card);padding:10px 16px;border-radius:8px}summary{cursor:pointer;color:var(--acc)}ol li{margin-bottom:8px}.q{font-weight:bold;border-left:3px solid var(--acc);padding-left:12px}
+.n{display:inline-block;min-width:1.6em;color:var(--mut);font-size:12px;vertical-align:2px}.dif{color:#b4552d;text-decoration:none;font-weight:bold}.difs li{font-size:16px}
+@media (max-width:760px){.pair{grid-template-columns:1fr;gap:6px}}"""
+    out = [f'<!doctype html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+           f'<title>{e(obj["title"]["zh"])}</title><style>{css}</style></head><body class="v-both"><main>',
+           f'<p class="by">私人阅读 · 本地文件，不发布</p><h1>{e(obj["title"]["zh"])}<span class="en">{e(obj["title"]["en"])}</span></h1>',
+           f'<p class="by">{e(byline(obj, "zh"))}<br>{e(byline(obj, "en"))}</p>', f'<p class="dek">{e(obj["dek"]["zh"])}</p>']
+    why = (obj.get("selection") or {}).get("why")
+    if why:
+        out.append(f'<h2>为什么值得读</h2><div class="why">{e(why)}</div>')
+    out.append('<h2>导读</h2>' + "".join(f"<p>{e(t)}</p>" for t in obj["intro"]["zh"].split("\n") if t.strip())
+               + '<details><summary>Introduction (English)</summary>' + "".join(f'<p class="en2">{e(t)}</p>' for t in obj["intro"]["en"].split("\n") if t.strip()) + "</details>")
+    out.append('<h2>正文 · Text</h2><div class="tabs" role="group" aria-label="view">'
+               '<button data-v="both" aria-pressed="true">对照</button><button data-v="zh" aria-pressed="false">中文</button>'
+               '<button data-v="en" aria-pressed="false">English</button></div>')
+    num = {x["p"]: i + 1 for i, x in enumerate(obj["passage"])}
+    reps = {}
+    for rp in obj.get("translation_reports") or []:
+        m = re.fullmatch(r"tr\.P(\d+)", str(rp.get("where") or ""))
+        if m and int(m.group(1)) in num:
+            reps.setdefault(int(m.group(1)), []).append(rp)
+    for x in obj["passage"]:
+        sup = "".join(f"<sup>[{k}]</sup>" for k in marks.get(x["p"], []))
+        flag = f' <a class="dif" href="#d{num[x["p"]]}" title="译文与原文有出入">≠</a>' if x["p"] in reps else ""
+        out.append(f'<div class="pair" id="p{num[x["p"]]}"><p class="{src}" lang="{src}"><span class="n">{num[x["p"]]}</span>{para(x[src], src)}{sup}</p>'
+                   f'<p class="{tr}" lang="{tr}">{para(x[tr], tr)}{sup}{flag}</p></div>')
+    if obj.get("notes"):
+        out.append("<h2>注释 · Notes</h2><ol>" + "".join(
+            f'<li><b>{e((n.get("label") or {}).get("zh") or n["term"])}</b>（{e(n["term"])}）：{e(n.get("zh") or "")}'
+            f'<br><span class="en2">{e(n.get("en") or "")}</span></li>' for n in obj["notes"]) + "</ol>")
+    if reps:
+        out.append(f'<h2>译文与原文的出入</h2><details><summary>审读对照英文原文时发现 {sum(len(v) for v in reps.values())} 处出入（译文照录不改，供双语对照）</summary><ol class="difs">'
+                   + "".join(f'<li id="d{num[k]}"><a href="#p{num[k]}">第 {num[k]} 段</a>：{e(rp.get("problem") or "")}</li>' for k in sorted(reps) for rp in reps[k])
+                   + "</ol></details>")
+    r = obj.get("reflect") or {}
+    if r.get("questions"):
+        out.append("<h2>读后想一想</h2>" + "".join(f'<p class="q">{e(q)}</p>' for q in r["questions"]["zh"])
+                   + '<details><summary>Questions (English)</summary>' + "".join(f'<p class="en2">{e(q)}</p>' for q in r["questions"]["en"]) + "</details>")
+        out.append(f'<h2>参考角度</h2><details><summary>先自己想，再展开</summary><p>{e(r["angle"]["zh"])}</p><p class="en2">{e(r["angle"]["en"])}</p></details>'
+                   f'<p class="by">问题和参考角度是编辑写的，不代表作者观点。</p>')
+    out.append(f'<h2>版本</h2><p class="by">原文：{e(W.get("edition") or "")}；{e(W.get("location") or "")}<br>'
+               f'中译：{e(T.get("by") or "")}；第 {T["paragraphs"][0]}–{T["paragraphs"][1]} 段<br>标题、导读、注释、问题为编辑所写；正文两种语言均照录原书。</p>')
+    out.append("""</main><script>document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{
+document.body.className='v-'+b.dataset.v;document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-pressed',x===b))}));</script></body></html>""")
+    return "\n".join(out)

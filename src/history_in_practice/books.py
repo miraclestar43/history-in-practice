@@ -23,7 +23,7 @@ from xml.etree import ElementTree as ET
 from . import evidence
 from .textnorm import t2s
 
-LIMITS = {"max_files": 60, "max_file_bytes": 50 * 2**20, "max_total_bytes": 200 * 2**20,     # 2026-11-09: 60 files (theme variety); byte caps unchanged
+LIMITS = {"max_files": 60, "max_file_bytes": 50 * 2**20, "local_file_bytes": 200 * 2**20, "max_total_bytes": 200 * 2**20,     # 2026-11-09: 60 files (theme variety); byte caps unchanged
           "zip_members": 3000, "zip_member_bytes": 30 * 2**20, "zip_total_bytes": 300 * 2**20, "zip_ratio": 200}
 UA = "history-in-practice-books/0.1 (+https://github.com/miraclestar43/history-in-practice)"
 BLOCK = {"p", "h1", "h2", "h3", "h4", "h5", "h6", "li", "blockquote", "dd", "dt", "pre", "td", "th", "div", "section", "tr", "table", "ul", "ol"}
@@ -184,8 +184,9 @@ def parse_txt(data: bytes) -> dict:
 
 class _Blocks(html.parser.HTMLParser):
     """Paragraph-level text from XHTML. Character references only; no scripts, no external anything."""
-    def __init__(self):
+    def __init__(self, img_mark: str | None = None):
         super().__init__(convert_charrefs=True); self.out, self.buf, self.skip, self.tag = [], [], 0, None
+        self.img_mark = img_mark                           # opt-in: an inline <img> (a rare character drawn as a picture) leaves this mark
 
     def _flush(self):
         t = re.sub(r"\s+", " ", "".join(self.buf)).strip()
@@ -200,6 +201,8 @@ class _Blocks(html.parser.HTMLParser):
             self._flush(); self.tag = tag
         elif tag == "br":
             self.buf.append(" ")
+        elif tag == "img" and self.img_mark and not self.skip:
+            self.buf.append(self.img_mark)
 
     def handle_endtag(self, tag):
         if tag in ("script", "style", "head", "title"):
@@ -270,7 +273,7 @@ def _header_zone(blocks):
     return zone + body, title
 
 
-def parse_epub(data: bytes) -> dict:
+def parse_epub(data: bytes, img_mark: str | None = None) -> dict:
     try:
         zf = zipfile.ZipFile(io.BytesIO(data))
     except zipfile.BadZipFile as e:
@@ -298,7 +301,7 @@ def parse_epub(data: bytes) -> dict:
         raw = _read(zf, href)
         if b"<!ENTITY" in raw[:4096]:
             raise BookError(f"entity declarations in {href[:60]} refused")
-        p = _Blocks(); p.feed(raw.decode("utf-8", errors="replace")); p.close(); p._flush()
+        p = _Blocks(img_mark); p.feed(raw.decode("utf-8", errors="replace")); p.close(); p._flush()
         blocks = [(t, x) for t, x in p.out]
         text = " ".join(x for _, x in blocks)
         edge = si < 2 or si >= len(spine) - 3                # licence/credits/about pages sit at the ends
@@ -509,9 +512,9 @@ def parse_pdf(data: bytes) -> dict:
             "norm_sha256": hashlib.sha256(norm.encode()).hexdigest(), "chapters": chapters, "paragraphs": paras}
 
 
-def parse(path: Path) -> dict:
+def parse(path: Path, *, img_mark: str | None = None) -> dict:
     data = Path(path).read_bytes(); suf = Path(path).suffix.lower()
-    b = parse_epub(data) if suf == ".epub" else parse_pdf(data) if suf == ".pdf" else parse_txt(data)
+    b = parse_epub(data, img_mark) if suf == ".epub" else parse_pdf(data) if suf == ".pdf" else parse_txt(data)
     b["file_sha256"] = hashlib.sha256(data).hexdigest(); b["bytes"] = len(data)
     return b
 
@@ -531,6 +534,173 @@ def apply_headings(b: dict, headings: list[str] | None) -> dict:
             b["chapters"].append({"title": t, "first_para": k})
     b["chapters"].sort(key=lambda c: c["first_para"])
     return b
+
+
+def select_sections(b: dict, sections: dict | None) -> dict:
+    """Keep only the labelled sections of each chapter, e.g. the human translation (【译文】) of an edition that prints
+    original text, notes and translation (【原文】/【注释】/【译文】). Inside a chapter, a paragraph whose whole text is a
+    `keep` label opens a kept section and one that is a `drop` label closes it; the labels themselves are not kept, and
+    the chapter's title paragraph stays. A spine file that opens on a label (an EPUB chapter split across files) continues
+    the chapter before it. Chapters left with only a title (contents pages, volume covers) are removed.
+    The words of the kept paragraphs are untouched; paragraph numbers are those of the selected view."""
+    if not sections:
+        return b
+    keep, drop = set(sections.get("keep") or []), set(sections.get("drop") or [])
+    ps, chs = b["paragraphs"], b.get("chapters") or []
+    starts = {c["first_para"]: c for c in chs}
+    groups, on = [], False                                  # [(chapter, [paragraphs], kept body count)]
+    for k, p in enumerate(ps):
+        t = p["text"].strip()
+        cont = k in starts and starts[k].get("title", "").strip() in keep | drop    # a split file that opens on a label continues its chapter
+        if (k in starts and not cont) or not groups:
+            c = starts.get(k) or {"title": ""}
+            groups.append([c, [], 0]); on = False
+            if t and t == c.get("title", "").strip():
+                groups[-1][1].append(p); continue
+        if t in keep:
+            on = True
+        elif t in drop:
+            on = False
+        elif on:
+            groups[-1][1].append(p); groups[-1][2] += 1
+    out, chapters = [], []
+    for c, kept, body in groups:
+        if not body:
+            continue
+        chapters.append(dict(c, first_para=len(out)))
+        out += [dict(p, chapter=len(chapters) - 1) for p in kept]
+    b["chapters"], b["paragraphs"] = chapters, out
+    b["sections"] = {"keep": sorted(keep), "drop": sorted(drop), "paragraphs_before": len(ps), "paragraphs_kept": len(out)}
+    return b
+
+
+def load(path: Path, e: dict | None = None) -> dict:
+    """A library book as the column reads it: the file parsed, then the library entry's view applied (picture-character
+    mark, kept sections, plain-text headings). Every reader of a library book goes through here so paragraph numbers agree."""
+    v = (e or {}).get("view") or {}
+    b = parse(path, img_mark=v.get("img_mark"))
+    b["img_mark"] = v.get("img_mark")
+    select_sections(b, v.get("sections"))
+    return apply_headings(b, (e or {}).get("headings"))
+
+
+# ------------------------------------------------------------------ local inbox (files the owner downloaded by hand)
+
+BOOK_EXT = (".epub", ".pdf", ".txt", ".mobi", ".azw3")
+ARCHIVE_EXT = (".zip", ".7z", ".rar")
+
+
+def _norm(t: str) -> str:
+    return re.sub(r"[\s\W_]+", "", t2s(t or "")).lower()
+
+
+def file_meta(path: Path) -> dict:
+    """Title/author/publisher as the file states them (EPUB OPF, PDF info). Data, not a verified edition."""
+    suf = path.suffix.lower()
+    try:
+        if suf == ".epub":
+            zf = zipfile.ZipFile(path); _zip_guard(zf)
+            cont = _xml(_read(zf, "META-INF/container.xml"))
+            rootfile = next((e.get("full-path") for e in cont.iter() if e.tag.endswith("rootfile")), None)
+            opf = _xml(_read(zf, rootfile)); ns = lambda e: e.tag.split("}")[-1]
+            m = {}
+            for e in opf.iter():
+                if ns(e) in ("title", "creator", "publisher", "date", "language") and (e.text or "").strip():
+                    m.setdefault(ns(e), (e.text or "").strip())
+            return m
+        if suf == ".pdf":
+            out = _run(["pdfinfo", str(path)])
+            return {k.lower(): v.strip() for k, v in (l.split(":", 1) for l in out.splitlines() if ":" in l) if k in ("Title", "Author", "Producer", "Pages")}
+    except Exception as x:
+        return {"error": f"{type(x).__name__}: {x}"[:200]}
+    return {}
+
+
+def _extract_archive(path: Path, dest: Path) -> list[Path]:
+    """Book files out of one archive, size-capped and path-checked; the archive itself is left where it is."""
+    dest.mkdir(parents=True, exist_ok=True)
+    if path.suffix.lower() == ".zip":
+        zf = zipfile.ZipFile(path); _zip_guard(zf)
+        got = []
+        for i in zf.infolist():
+            if i.is_dir() or not i.filename.lower().endswith(BOOK_EXT):
+                continue
+            q = dest / Path(i.filename).name
+            q.write_bytes(_read(zf, i.filename)); got.append(q)
+        return got
+    listing = _run(["7z", "l", "-slt", "-ba", str(path)])                  # .7z / .rar: list first, check names and sizes
+    names, total = [], 0
+    for block in listing.split("\n\n"):
+        f = dict(l.split(" = ", 1) for l in block.splitlines() if " = " in l)
+        n = f.get("Path", "")
+        if not n or f.get("Folder") == "+":
+            continue
+        if n.startswith("/") or ".." in n.replace("\\", "/").split("/"):
+            raise BookError(f"unsafe archive member name: {n[:60]}")
+        if f.get("Encrypted") == "+":
+            raise BookError("encrypted archive member (password needed)")
+        size = int(f.get("Size") or 0); total += size
+        if size > LIMITS["zip_member_bytes"] or total > LIMITS["zip_total_bytes"]:
+            raise BookError("archive expands beyond the caps")
+        if n.lower().endswith(BOOK_EXT):
+            names.append(n)
+    if names:
+        _run(["7z", "e", "-y", f"-o{dest}", str(path)] + names)
+    return [dest / Path(n).name for n in names if (dest / Path(n).name).exists()]
+
+
+def scan_inbox(folder: Path, work: Path, manifest_path: Path, library: list[dict]) -> list[dict]:
+    """What is in the owner's download folder: each book file (archives are listed, then their book files extracted into
+    `work`; originals untouched), its SHA-256, what the file says about itself, and whether the library already has it
+    (same bytes = acquired; same normalised title = possible duplicate, to be checked by reading)."""
+    man = json.loads(manifest_path.read_text()) if manifest_path.exists() else {"files": []}
+    by_sha = {f["file_sha256"]: f["book_id"] for f in man["files"] if f.get("file_sha256")}
+    by_title = {}
+    for e in library:
+        by_title.setdefault(_norm(e.get("title", "")), []).append(e["book_id"])
+    rows = []
+    for x in sorted(Path(folder).iterdir()):
+        if not x.is_file():
+            continue
+        files, origin = [], None
+        if x.suffix.lower() in ARCHIVE_EXT:
+            try:
+                files = _extract_archive(x, work / hashlib.sha256(x.read_bytes()).hexdigest()[:12]); origin = x.name
+            except Exception as err:
+                rows.append({"file": x.name, "status": "archive_error", "reason": f"{type(err).__name__}: {err}"[:200]}); continue
+            if not files:
+                rows.append({"file": x.name, "status": "archive_without_books"}); continue
+        elif x.suffix.lower() in BOOK_EXT:
+            files = [x]
+        else:
+            continue
+        for f in files:
+            data = f.read_bytes(); sha = hashlib.sha256(data).hexdigest(); m = file_meta(f)
+            title = re.split(r"[（(【\[]", m.get("title") or f.stem)[0]
+            dup = [b for t, ids in by_title.items() if t and (t in _norm(title) or _norm(title) in t) for b in ids] if _norm(title) else []
+            rows.append({"file": f.name, "path": str(f), "from_archive": origin, "bytes": len(data), "sha256": sha, "format": f.suffix.lower().lstrip("."),
+                         "file_says": m, "status": "acquired" if sha in by_sha else "possible_duplicate" if dup else "new",
+                         "book_id": by_sha.get(sha), "same_title_in_library": sorted(set(dup))})
+    return rows
+
+
+def import_local(path: Path, dest_dir: Path, manifest_path: Path, meta: dict) -> dict:
+    """A file the owner downloaded by hand -> the book store, under the same caps and manifest as downloads."""
+    man = json.loads(manifest_path.read_text()) if manifest_path.exists() else {"files": []}
+    data = Path(path).read_bytes(); sha = hashlib.sha256(data).hexdigest()
+    other = next((f for f in man["files"] if f.get("file_sha256") == sha and f["book_id"] != meta["book_id"]), None)
+    if other:
+        raise BookError(f"the same file is already acquired as {other['book_id']}")
+    if meta["book_id"] not in {f["book_id"] for f in man["files"]} and len(man["files"]) >= LIMITS["max_files"]:
+        raise BookError(f"pilot limit: {LIMITS['max_files']} files already acquired")
+    if len(data) > LIMITS["local_file_bytes"]:            # the owner's own files (2026-11-10): image-heavy multi-volume EPUBs run 50-100 MB
+        raise BookError("file exceeds the per-file cap for local imports")
+    fmt = Path(path).suffix.lower().lstrip("."); dest_dir.mkdir(parents=True, exist_ok=True)
+    p = dest_dir / f"{meta['book_id']}.{fmt}"; p.write_bytes(data)
+    rec = dict(meta, format=fmt, bytes=len(data), file_sha256=sha, original_name=Path(path).name, acquired_at=time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+               path=p.name, acquired_by="local import (owner download)")
+    man["files"] = [f for f in man["files"] if f["book_id"] != meta["book_id"]] + [rec]
+    manifest_path.write_text(json.dumps(man, ensure_ascii=False, indent=1)); return rec
 
 
 # ------------------------------------------------------------------ book -> evidence source
